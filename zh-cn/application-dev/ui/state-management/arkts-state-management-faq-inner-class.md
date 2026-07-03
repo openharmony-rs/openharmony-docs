@@ -21,9 +21,9 @@ UIUtils.getTarget(value) === value
 
 ## 类的构造函数中通过捕获this修改变量无法观察
 
-当在构造函数中初始化修改`success`的[箭头函数](../../quick-start/introduction-to-arkts.md#箭头函数又名lambda函数)时，`TestModel`实例尚未被代理封装，`this`指向`TestModel`实例本身。因此，后续触发`query`事件时，状态管理无法观测到变化。
+当在构造函数中初始化修改`isSuccess`的[箭头函数](../../quick-start/introduction-to-arkts.md#箭头函数又名lambda函数)时，`TestModel`实例尚未被代理封装，`this`指向`TestModel`实例本身。因此，后续触发`query`事件时，状态管理无法观测到变化。
 
-当开发者将修改`success`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
+当开发者将修改`isSuccess`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
 【反例】
 <!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->  
@@ -848,7 +848,7 @@ struct PageChild {
           .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
-          .onClick(() => { // 在父组件中，仍使用 this.uiStyle.endRenderXxx.xxx 更改属性
+          .onClick(() => { // 在父组件中，仍使用 this.uiStyle.needRenderXxx.xxx 更改属性
             this.uiStyle.needRenderImage.imageWidth = (this.uiStyle.needRenderImage.imageWidth + 30) % 160;
             this.uiStyle.needRenderImage.imageHeight = (this.uiStyle.needRenderImage.imageHeight + 30) % 160;
           })

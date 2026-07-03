@@ -113,7 +113,7 @@ Wearable设备上默认字体大小为18fp。
 | 参数名 | 类型                                                  | 必填 | 说明                         |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: string \| undefined    | 是   | 搜索框末尾搜索按钮文本内容。 <br>从API version 20开始，支持Resource类型。<br/>默认值：''。设置undefined时按默认值处理。|
-| option | ArkTS-Dyn: [SearchButtonOptions](#searchbuttonoptions10对象说明)<br/>ArkTS-Sta: [SearchButtonOptions](#searchbuttonoptions10对象说明) \| undefined | 否   | 配置搜索框末尾搜索按钮文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}  <br/>设置undefined时按默认值处理。       |
+| option | ArkTS-Dyn: [SearchButtonOptions](#searchbuttonoptions10对象说明)<br/>ArkTS-Sta: [SearchButtonOptions](#searchbuttonoptions10对象说明) \| undefined | 否   | 配置搜索框末尾搜索按钮样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}  <br/>设置undefined时按默认值处理。       |
 
 ### placeholderColor
 
@@ -589,6 +589,12 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
 
+启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
+
+AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+ 
+AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -605,7 +611,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br>值为undefined时，开启选中词文本识别。 |
+| enable  | boolean \| undefined | 是   | 开启选中文本实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br>值为undefined时，开启选中文本实体识别。 |
 
 ### lineHeight<sup>12+</sup>
 
@@ -1346,11 +1352,11 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                    | 说明        |
-| ----------------------- | ---------------- |
-| CONSTANT  | 清除按钮常显样式。 |
-| INVISIBLE | 清除按钮常隐样式。 |
-| INPUT     | 清除按钮输入样式。 |
+| 名称                    | 值 | 说明        |
+| ----------------------- | ---- | ---------------- |
+| CONSTANT  | - | 清除按钮常显样式。 |
+| INVISIBLE | - | 清除按钮常隐样式。 |
+| INPUT     | - | 清除按钮输入样式。 |
 
 ## SearchType<sup>11+</sup>枚举说明
 
@@ -1830,7 +1836,7 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 ## SearchController
 
-Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)、[scrollToVisible](ts-universal-attributes-text-style.md#scrolltovisible23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 ### 导入对象
 ```ts
@@ -3417,3 +3423,31 @@ struct ShaderColorStyle {
 }
 ```
 ![SearchShaderStyle](figures/searchShaderStyle.png)
+
+### 示例32（设置文本选择的AI菜单）
+
+该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+
+从API version 22开始，新增enableSelectedDataDetector。
+
+```ts
+@Entry
+@Component
+struct Demo32 {
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Search({ value: this.exampleText })
+          .copyOption(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+<!--RP3--><!--RP3End-->

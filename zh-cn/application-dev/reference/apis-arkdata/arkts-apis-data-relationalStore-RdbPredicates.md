@@ -35,7 +35,7 @@ constructor(name: string)
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| name   | string | 是   | 数据库表名。 |
+| name   | string | 是   | 数据库表名，不能为空字符串。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ inDevices(devices: Array&lt;string&gt;): RdbPredicates
 | ------- | ------------------- | ---- | -------------------------- |
 | devices | Array&lt;string&gt; | 是   | 指定的组网内的远程设备ID。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -126,7 +126,7 @@ inAllDevices(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -143,7 +143,7 @@ predicates.inAllDevices();
 
 equalTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值为value的字段。
+配置谓词以匹配数据表的field列中值为value的字段。该方法等同于SQL语句中的"="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -155,10 +155,10 @@ equalTo(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -185,7 +185,7 @@ predicates.equalTo("NAME", "Lisa");
 
 notEqualTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值不为value的字段。
+配置谓词以匹配数据表的field列中值不为value的字段。该方法等同于SQL语句中的"!="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -197,10 +197,10 @@ notEqualTo(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -235,11 +235,11 @@ beginWrap(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有左括号的Rdb谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有左括号的谓词。 |
 
 **示例：**
 
@@ -277,11 +277,11 @@ endWrap(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有右括号的Rdb谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有右括号的谓词。 |
 
 **示例：**
 
@@ -319,11 +319,11 @@ or(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有或条件的Rdb谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有或条件的谓词。 |
 
 **示例：**
 
@@ -347,11 +347,11 @@ and(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有和条件的Rdb谓词。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回带有和条件的谓词。 |
 
 **示例：**
 
@@ -367,7 +367,7 @@ predicates.equalTo("NAME", "Lisa")
 
 contains(field: string, value: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中包含value的字段。
+配置谓词以匹配数据表的field列中包含value的字段。该方法等同于SQL语句中的"LIKE '%xxx%'"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -379,10 +379,10 @@ contains(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的值。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | string | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -408,7 +408,7 @@ predicates.contains("NAME", "os");
 
 beginsWith(field: string, value: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中以value开头的字段。
+配置谓词以匹配数据表的field列中以value开头的字段。该方法等同于SQL语句中的"LIKE 'xxx%'"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -420,10 +420,10 @@ beginsWith(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的值。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | string | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -449,7 +449,7 @@ predicates.beginsWith("NAME", "Li");
 
 endsWith(field: string, value: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中以value结尾的字段。
+配置谓词以匹配数据表的field列中以value结尾的字段。该方法等同于SQL语句中的"LIKE '%xxx'"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -461,10 +461,10 @@ endsWith(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的值。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | string | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -490,7 +490,7 @@ predicates.endsWith("NAME", "se");
 
 isNull(field: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中值为null的字段。
+配置谓词以匹配数据表的field列中值为null的字段。该方法等同于SQL语句中的"IS NULL"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -502,9 +502,9 @@ isNull(field: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -518,7 +518,7 @@ isNull(field: string): RdbPredicates
 | --------- |----------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
@@ -529,7 +529,7 @@ predicates.isNull("NAME");
 
 isNotNull(field: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中值不为null的字段。
+配置谓词以匹配数据表的field列中值不为null的字段。该方法等同于SQL语句中的"IS NOT NULL"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -541,9 +541,9 @@ isNotNull(field: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -568,7 +568,7 @@ predicates.isNotNull("NAME");
 
 like(field: string, value: string): RdbPredicates
 
-配置模糊查询条件，指定`field`列的模糊匹配条件。
+配置模糊查询条件，指定`field`列的模糊匹配条件。该方法等同于SQL语句中的"LIKE"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -580,10 +580,10 @@ like(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
 | value  | string | 是   | 指定模糊匹配条件，通常配合通配符使用，`%`表示任意长度任意字符，`_`表示单个字符。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -609,7 +609,7 @@ predicates.like("NAME", "%os%");
 
 glob(field: string, value: string): RdbPredicates
 
-配置谓词匹配数据字段为string的指定字段。
+配置RdbPredicates匹配数据字段为string且值符合指定通配符模式的字段，其中*匹配任意多个字符，?匹配单个字符。该方法等同于SQL语句中的"GLOB"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -621,10 +621,10 @@ glob(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| field  | string | 是   | 数据库表中的列名。                                           |
-| value  | string | 是   | 指示要与谓词匹配的值。<br>支持通配符，*表示0个、1个或多个数字或字符，?表示1个数字或字符。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。                                           |
+| value  | string | 是   | 指示要与谓词匹配的值，长度不超过1024字节。<br>支持通配符，*表示0个、1个或多个数字或字符，?表示1个数字或字符。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -650,7 +650,7 @@ predicates.glob("NAME", "?h*g");
 
 between(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值在给定范围内的字段（包含范围边界）。
+配置谓词以匹配数据表的field列中值在给定范围内的字段（包含范围边界）。该方法等同于SQL语句中的"BETWEEN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -662,11 +662,11 @@ between(field: string, low: ValueType, high: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                       |
 | ------ | ----------------------- | ---- | -------------------------- |
-| field  | string                  | 是   | 数据库表中的列名。         |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。         |
 | low    | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最小值。   |
 | high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最大值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -700,7 +700,7 @@ predicates.between("AGE", 10 as long, 50 as long);
 
 notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值超出给定范围的字段（不包含范围边界）。
+配置谓词以匹配数据表的field列中值超出给定范围的字段（不包含范围边界）。该方法等同于SQL语句中的"NOT BETWEEN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -712,11 +712,11 @@ notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                       |
 | ------ | ----------------------- | ---- | -------------------------- |
-| field  | string                  | 是   | 数据库表中的列名。         |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。         |
 | low    | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最小值。   |
 | high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最大值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -750,7 +750,7 @@ predicates.notBetween("AGE", 10 as long, 50 as long);
 
 greaterThan(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值大于value的字段。
+配置谓词以匹配数据表的field列中值大于value的字段。该方法等同于SQL语句中的">"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -762,10 +762,10 @@ greaterThan(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -799,7 +799,7 @@ predicates.greaterThan("AGE", 18 as long);
 
 lessThan(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值小于value的字段。
+配置谓词以匹配数据表的field列中值小于value的字段。该方法等同于SQL语句中的"<"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -811,10 +811,10 @@ lessThan(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -848,7 +848,7 @@ predicates.lessThan("AGE", 20 as long);
 
 greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值大于或者等于value的字段。
+配置谓词以匹配数据表的field列中值大于或者等于value的字段。该方法等同于SQL语句中的">="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -860,10 +860,10 @@ greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -897,7 +897,7 @@ predicates.greaterThanOrEqualTo("AGE", 18 as long);
 
 lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据表的field列中值小于或者等于value的字段。
+配置谓词以匹配数据表的field列中值小于或者等于value的字段。该方法等同于SQL语句中的"<="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -909,10 +909,10 @@ lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
 | 参数名 | 类型                    | 必填 | 说明                   |
 | ------ | ----------------------- | ---- | ---------------------- |
-| field  | string                  | 是   | 数据库表中的列名。     |
-| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值。 |
+| field  | string                  | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -946,7 +946,7 @@ predicates.lessThanOrEqualTo("AGE", 20 as long);
 
 orderByAsc(field: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中值按升序排序的列。
+配置谓词以匹配数据表的field列中值按升序排序的列。该方法等同于SQL语句中的"ORDER BY ASC"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -958,9 +958,9 @@ orderByAsc(field: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -985,7 +985,7 @@ predicates.orderByAsc("NAME");
 
 orderByDesc(field: string): RdbPredicates
 
-配置谓词以匹配数据表的field列中值按降序排序的列。
+配置谓词以匹配数据表的field列中值按降序排序的列。该方法等同于SQL语句中的"ORDER BY DESC"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -997,9 +997,9 @@ orderByDesc(field: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -1032,7 +1032,7 @@ distinct(): RdbPredicates
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                           |
 | ------------------------------------ | ------------------------------ |
@@ -1065,7 +1065,7 @@ ArkTS-Sta: limitAs(value: int): RdbPredicates
 | ------ | ------ | ---- | ---------------- |
 | value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 最大数据记录数，取值应为正整数，传入值小于等于0时，不会限制记录数量。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                                 |
 | ------------------------------------ | ------------------------------------ |
@@ -1106,7 +1106,7 @@ ArkTS-Sta: offsetAs(rowOffset: int): RdbPredicates
 | --------- | ------ | ---- | ---------------------------------- |
 | rowOffset | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定查询结果的起始位置，默认初始位置为结果集的最前端。当rowOffset为负数时，起始位置为结果集的最前端。当rowOffset超出结果集最后位置时，查询结果为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                                 |
 | ------------------------------------ | ------------------------------------ |
@@ -1145,7 +1145,7 @@ groupBy(fields: Array&lt;string&gt;): RdbPredicates
 | ------ | ------------------- | ---- | -------------------- |
 | fields | Array&lt;string&gt; | 是   | 指定分组依赖的列名。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                   |
 | ------------------------------------ | ---------------------- |
@@ -1182,13 +1182,13 @@ indexedBy(field: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| field  | string | 是   | 索引列的名称。 |
+| field  | string | 是   | 索引列的名称，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                                  |
 | ------------------------------------ | ------------------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回具有指定索引列的RdbPredicates。 |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 返回具有指定索引列的谓词。 |
 
 **错误码：**
 
@@ -1209,7 +1209,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-配置谓词条件，表示字段`field`的值必须在给定的`value`集合内。
+配置谓词条件，表示字段`field`的值必须在给定的`value`列表内。该方法等同于SQL语句中的"IN"。
 
 > **说明：**
 >
@@ -1225,10 +1225,10 @@ in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
 | 参数名 | 类型                                 | 必填 | 说明                                    |
 | ------ | ------------------------------------ | ---- | --------------------------------------- |
-| field  | string                               | 是   | 数据库表中的列名。                      |
+| field  | string                               | 是   | 数据库表中的列名，不能为空字符串。                      |
 | value  | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | 以ValueType型数组形式指定的要匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -1307,10 +1307,10 @@ notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
 | 参数名 | 类型                                 | 必填 | 说明                                  |
 | ------ | ------------------------------------ | ---- | ------------------------------------- |
-| field  | string                               | 是   | 数据库表中的列名。                    |
+| field  | string                               | 是   | 数据库表中的列名，不能为空字符串。                    |
 | value  | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | 以ValueType数组形式指定的要匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                       |
 | ------------------------------------ | -------------------------- |
@@ -1389,10 +1389,10 @@ notContains(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的值。 |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
+| value  | string | 是   | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                            | 说明                       |
 | ------------------------------- | -------------------------- |
@@ -1430,10 +1430,10 @@ notLike(field: string, value: string): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| field  | string | 是   | 数据库表中的列名。     |
+| field  | string | 是   | 数据库表中的列名，不能为空字符串。     |
 | value  | string | 是   | 指定**不包含**的模糊匹配条件，通常配合通配符使用，`%`表示任意长度任意字符，`_`表示单个字符。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                            | 说明                       |
 | ------------------------------- | -------------------------- |
@@ -1474,7 +1474,7 @@ having(conditions: string, args?: Array\<ValueType>): RdbPredicates
 | conditions  | string | 是   | 用于过滤使用[groupBy](#groupby)获得的数据，conditions参数不能为空字符串且必须与[groupBy](#groupby)配合使用。|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | 否   | 条件中使用的参数，用来替换条件语句中的占位符，不传时默认为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                            | 说明                       |
 | ------------------------------- | -------------------------- |
@@ -1494,7 +1494,7 @@ having(conditions: string, args?: Array\<ValueType>): RdbPredicates
 // 传递完整的条件
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.groupBy(["AGE"]);
-predicates.having("NAME = zhangsan");
+predicates.having("NAME = 'zhangsan'");
 ```
 **示例2：**
 

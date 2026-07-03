@@ -80,7 +80,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 效果展示
 
-![zh-cn_image_0000002246563765](figures/zh-cn_image_0000002246563765.png)
+![hello-chinese](figures/hello-chinese.png)
 
 
 ## 多行文本绘制与显示
@@ -160,7 +160,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | BREAK_HYPHEN（locale：未设置） | BREAK_HYPHEN（locale：en-gb） | BREAK_HYPHEN（locale：en-us） | 
 | -------- | -------- |-------- |
-| ![ndk_word_break_hyphen_locale_undefined.jpg](figures/ndk_word_break_hyphen_locale_undefined.jpg) | ![ndk_word_break_hyphen_local_en-gb.jpg](figures/ndk_word_break_hyphen_local_en-gb.jpg) | ![ndk_word_break_hyphen_local_en-us.jpg](figures/ndk_word_break_hyphen_local_en-us.jpg) |
+| ![hyphen-locale-undefined.jpg](figures/hyphen-locale-undefined.jpg) | ![hyphen-local-en-gb.jpg](figures/hyphen-local-en-gb.jpg) | ![hyphen-local-en-us.jpg](figures/hyphen-local-en-us.jpg) |
 
 ## 多样式文本绘制与显示
 
@@ -276,7 +276,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002211603604](figures/zh-cn_image_0000002211603604.png)
+![Decoration](figures/Decoration.png)
 
 
 ### 字体特征
@@ -353,7 +353,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002246603641](figures/zh-cn_image_0000002246603641.png)
+![Font-Feature](figures/Font-Feature.png)
 
 
 ### 可变字体
@@ -431,7 +431,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002211443824](figures/zh-cn_image_0000002211443824.png)
+![Font-Variation](figures/Font-Variation.png)
 
 
 ### 文本阴影
@@ -518,7 +518,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002246563769](figures/zh-cn_image_0000002246563769.png)
+![Text-Shadow](figures/Text-Shadow.png)
 
 
 ### 占位符
@@ -603,7 +603,7 @@ OH_Drawing_DestroyTypography(typographyWithPlaceholder);
 OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 ```
 
-![zh-cn_image_0000002211443820](figures/zh-cn_image_0000002211443820.png)
+![Placeholder](figures/Placeholder.png)
 
 
 ### 自动间距
@@ -680,8 +680,8 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 | 段落样式设置（自动间距） | 示意效果 | 
 | -------- | -------- |
-| 不使能自动间距 | ![zh-cn_image_autoSpace_1](figures/zh-cn_image_autoSpace_1.png) | 
-| 使能自动间距 | ![zh-cn_image_autoSpace_2](figures/zh-cn_image_autoSpace_2.png) | 
+| 不使能自动间距 | ![Disabled-autoSpace](figures/Disabled-autoSpace.png) | 
+| 使能自动间距 | ![Enabled-autoSpace](figures/Enabled-autoSpace.png) | 
 
 ### 渐变色
 
@@ -739,7 +739,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_gradient_c](figures/zh-cn_image_gradient_c.png)
+![gradient-c](figures/gradient-c.png)
 
 ### 垂直对齐
 
@@ -786,7 +786,7 @@ OH_Drawing_DestroyTypography(typography);
 
 效果如下（黑框仅为展示文本绘制区域，实际不绘制）：
 
-![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
+![verticalAlignment-center](figures/verticalAlignment-center.jpg)
 
 ### 上下标
 
@@ -837,7 +837,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)
+![superscript](figures/superscript.jpg)
 
 ### 高对比度
 
@@ -893,8 +893,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_highContrast_1](figures/zh-cn_image_highContrast_1.png) | 
-| 开启高对比度 | ![zh-cn_image_highContrast_2](figures/zh-cn_image_highContrast_2.png) | 
+| 不开启高对比度 | ![Disabled-highContrast](figures/Disabled-highContrast.png) | 
+| 开启高对比度 | ![Enabled-highContrast](figures/Enabled-highContrast.png) | 
 
 ### 行高调整
 
@@ -1225,4 +1225,4 @@ OH_Drawing_DestroyTypographyHandler(handlerCopy);
 OH_Drawing_DestroyTypography(typographyCopy);
 ```
 
-![zh-cn_image_styleCopy_1](figures/zh-cn_image_styleCopy_1.png)
+![styleCopy](figures/styleCopy.png)

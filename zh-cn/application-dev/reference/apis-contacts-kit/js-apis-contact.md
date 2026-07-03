@@ -1756,8 +1756,8 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
   // 查询key='xxx'，holderId为1的联系人
   contact.queryContact('xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contact. Code: ${err.code}, message: ${err.message}`);
@@ -1948,8 +1948,8 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
   // 查询key,holder,attrs满足条件的联系人
   contact.queryContact('xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -2055,8 +2055,8 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
   // 异步回调，查询联系人
   let promise = contact.queryContact('xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -2191,8 +2191,8 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts. Code: ${err.code}, message: ${err.message}`);
@@ -2232,8 +2232,8 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
   // 异步回调查询联系人
   contact.queryContacts({
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts. Code: ${err.code}, message: ${err.message}`);
@@ -2376,8 +2376,8 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -2420,8 +2420,8 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
   // 异步回调查询联系人
   contact.queryContacts({
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -2480,8 +2480,8 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContacts(context, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -2525,8 +2525,8 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
   // 根据holder和attrs查询所有联系人
   let promise = contact.queryContacts({
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -2706,8 +2706,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
   // 根据电话号码138xxxxxxxx和holderId查询联系人
   contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts By PhoneNumber. Code: ${err.code}, message: ${err.message}`);
@@ -2896,8 +2896,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
   contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -3002,8 +3002,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 
   let promise = contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -3181,8 +3181,8 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 
   contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts By Email. Code: ${err.code}, message: ${err.message}`);
@@ -3371,8 +3371,8 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 
   contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
   }, (err: BusinessError, data) => {
@@ -3476,8 +3476,8 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 
   let promise = contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
   });
@@ -3609,8 +3609,8 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
@@ -3649,8 +3649,8 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
   contact.queryGroups({
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
@@ -3706,8 +3706,8 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryGroups(context, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
@@ -3747,8 +3747,8 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
   let promise = contact.queryGroups({
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
@@ -4046,8 +4046,8 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryKey(context, 1, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
@@ -4087,8 +4087,8 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 
   contact.queryKey(1, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
@@ -4145,8 +4145,8 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryKey(context, 1, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Key. data->${JSON.stringify(data)}`);
@@ -4187,8 +4187,8 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
   let promise = contact.queryKey(1, {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Key. data->${JSON.stringify(data)}`);
@@ -4581,7 +4581,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
 
 **错误码：**
 
@@ -4594,7 +4594,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 | 16700002      | Invalid parameter value. |
 | 16700003      | Background usage is prohibited. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -4660,7 +4660,7 @@ queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.WRITE_CONTACTS
+**需要权限**：ohos.permission.READ_CONTACTS
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4740,7 +4740,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -4922,14 +4922,14 @@ import { contact } from '@kit.ContactsKit';
 
 let myContact: contact.Contact = {
     phoneNumbers: [{
-        phoneNumber: "138xxxxxxxx"
+        phoneNumber: '138xxxxxxxx'
     }],
     name: {
-        fullName: "fullName",
-        namePrefix: "namePrefix"
+        fullName: 'fullName',
+        namePrefix: 'namePrefix'
     },
     nickName: {
-        nickName: "nickName"
+        nickName: 'nickName'
     }
 };
 ```
@@ -5023,8 +5023,8 @@ let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, con
 import { contact } from '@kit.ContactsKit';
 
 let email: contact.Email = {
-    email: "xxx@email.com",
-    displayName: "displayName"
+    email: 'xxx@email.com',
+    displayName: 'displayName'
 }
 ```
 
@@ -5033,7 +5033,7 @@ let email: contact.Email = {
 
 ```js
 let email = new contact.Email();
-email.email = "xxx@email.com";
+email.email = 'xxx@email.com';
 ```
 
 ## Holder
@@ -5054,8 +5054,8 @@ email.email = "xxx@email.com";
 
 ```js
 let holder: contact.Holder = {
-  bundleName: "com.ohos.contacts",
-  displayName: "displayName",
+  bundleName: 'com.ohos.contacts',
+  displayName: 'displayName',
   holderId: 1
 };
 ```
@@ -5085,7 +5085,7 @@ let holder: contact.Holder = {
 
 ```js
 let event: contact.Event = {
-    eventDate: "2000-01-01"
+    eventDate: '2000-01-01'
 };
 ```
 
@@ -5093,7 +5093,7 @@ let event: contact.Event = {
 
 ```js
 let event = new contact.Event();
-event.eventDate = "2000-01-01";
+event.eventDate = '2000-01-01';
 ```
 
 ## Group
@@ -5118,7 +5118,7 @@ import { contact } from '@kit.ContactsKit';
 
 let group: contact.Group = {
     groupId: 1,
-    title: "title"
+    title: 'title'
 };
 ```
 
@@ -5153,8 +5153,8 @@ let group: contact.Group = {
 import { contact } from '@kit.ContactsKit';
 
 let imAddress: contact.ImAddress = {
-    imAddress: "imAddress",
-    labelName: "labelName"
+    imAddress: 'imAddress',
+    labelName: 'labelName'
 };
 ```
 
@@ -5163,7 +5163,7 @@ let imAddress: contact.ImAddress = {
 
 ```js
 let imAddress = new contact.ImAddress();
-imAddress.imAddress = "imAddress";
+imAddress.imAddress = 'imAddress';
 ```
 
 ## Name
@@ -5193,8 +5193,8 @@ imAddress.imAddress = "imAddress";
 import { contact } from '@kit.ContactsKit';
 
 let name: contact.Name = {
-    familyName: "familyName",
-    fullName: "fullName"
+    familyName: 'familyName',
+    fullName: 'fullName'
 };
 ```
 
@@ -5218,7 +5218,7 @@ let name: contact.Name = {
 import { contact } from '@kit.ContactsKit';
 
 let nickName: contact.NickName = {
-    nickName: "nickName"
+    nickName: 'nickName'
 };
 ```
 
@@ -5240,7 +5240,7 @@ let nickName: contact.NickName = {
 
 ```js
 let note: contact.Note = {
-    noteContent: "noteContent"
+    noteContent: 'noteContent'
 };
 ```
 
@@ -5265,8 +5265,8 @@ let note: contact.Note = {
 import { contact } from '@kit.ContactsKit';
 
 let organization: contact.Organization = {
-    name: "name",
-    title: "title"
+    name: 'name',
+    title: 'title'
 };
 ```
 
@@ -5315,7 +5315,7 @@ let organization: contact.Organization = {
 import { contact } from '@kit.ContactsKit';
 
 let phoneNumber: contact.PhoneNumber = {
-    phoneNumber: "138xxxxxxxx",
+    phoneNumber: '138xxxxxxxx',
     labelId: contact.PhoneNumber.NUM_HOME
 };
 ```
@@ -5324,7 +5324,7 @@ let phoneNumber: contact.PhoneNumber = {
 
 ```js
 let phoneNumber = new contact.PhoneNumber();
-phoneNumber.phoneNumber = "138xxxxxxxx";
+phoneNumber.phoneNumber = '138xxxxxxxx';
 ```
 
 ## Portrait
@@ -5360,7 +5360,7 @@ async function SetPortraitUri(uri: string) {
 
 async function SetPortraitPixelMap(photo: image.PixelMap) {
   let portrait: contact.Portrait = {
-    uri: "",
+    uri: '',
     photo: photo
   };
 }
@@ -5400,8 +5400,8 @@ async function SetPortraitPixelMap(photo: image.PixelMap) {
 import { contact } from '@kit.ContactsKit';
 
 let postalAddress: contact.PostalAddress = {
-    city: "city",
-    postalAddress: "postalAddress"
+    city: 'city',
+    postalAddress: 'postalAddress'
 };
 ```
 
@@ -5411,8 +5411,8 @@ let postalAddress: contact.PostalAddress = {
 import { contact } from '@kit.ContactsKit';
 
 let postalAddress = new contact.PostalAddress();
-postalAddress.city = "city";
-postalAddress.postalAddress = "postalAddress";
+postalAddress.city = 'city';
+postalAddress.postalAddress = 'postalAddress';
 ```
 
 ## Relation
@@ -5453,7 +5453,7 @@ postalAddress.postalAddress = "postalAddress";
 import { contact } from '@kit.ContactsKit';
 
 let relation: contact.Relation = {
-    relationName: "relationName",
+    relationName: 'relationName',
     labelId: contact.Relation.RELATION_ASSISTANT
 };
 ```
@@ -5464,7 +5464,7 @@ let relation: contact.Relation = {
 import { contact } from '@kit.ContactsKit';
 
 let relation = new contact.Relation();
-relation.relationName = "relationName";
+relation.relationName = 'relationName';
 relation.labelId = contact.Relation.RELATION_ASSISTANT;
 ```
 
@@ -5495,7 +5495,7 @@ relation.labelId = contact.Relation.RELATION_ASSISTANT;
 import { contact } from '@kit.ContactsKit';
 
 let sipAddress: contact.SipAddress = {
-    sipAddress: "sipAddress"
+    sipAddress: 'sipAddress'
 };
 ```
 
@@ -5505,7 +5505,7 @@ let sipAddress: contact.SipAddress = {
 import { contact } from '@kit.ContactsKit';
 
 let sipAddress = new contact.SipAddress();
-sipAddress.sipAddress = "sipAddress";
+sipAddress.sipAddress = 'sipAddress';
 ```
 
 ## Website
@@ -5528,7 +5528,7 @@ sipAddress.sipAddress = "sipAddress";
 import { contact } from '@kit.ContactsKit';
 
 let website: contact.Website = {
-    website: "website"
+    website: 'website'
 };
 ```
 
@@ -5540,12 +5540,14 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
-| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
-| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。 |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。                 |
 
 ## ContactSyncProgress
 
@@ -5555,7 +5557,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
@@ -5571,7 +5575,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |

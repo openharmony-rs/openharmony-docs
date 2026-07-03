@@ -90,7 +90,7 @@ type CustomStyles = (instance: CommonMethod) => void
 | focused | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | clicked | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | selected<sup>10+</sup> | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| hovered | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件悬浮状态的样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该参数支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| hovered | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件悬浮状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该参数支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 **selected选中状态说明**
 
@@ -249,7 +249,7 @@ struct StyleExample {
 }
 ```
 
-![zh-cn_image_0000001188742468](figures/zh-cn_image_0000001188742468.gif)
+![stateStyles](figures/stateStyles.gif)
 
 ### 示例2（设置Radio多态样式）
 

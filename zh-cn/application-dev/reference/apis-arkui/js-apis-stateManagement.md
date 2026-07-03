@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态、工具。
+状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility（包含用户界面的应用组件）数据存储能力和应用程序需要的环境状态、工具。
 
 >**说明：**
 >
@@ -32,7 +32,7 @@ import { AppStorageV2, PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 ## AppStorageV2
 
-AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../ui/state-management/arkts-new-appstoragev2.md)。
+AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨Ability的数据共享。具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../ui/state-management/arkts-new-appstoragev2.md)。
 
 ### connect
 
@@ -54,7 +54,7 @@ static&nbsp;connect\<T extends object\>( </br >
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 指定的类型，若未指定key，则使用type的name作为key。 |
 | keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器。默认值为undefined。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 获取默认值的构造器。默认值为undefined。 |
 
 >**说明：**
 >
@@ -158,7 +158,7 @@ const keys: Array<string> = AppStorageV2.keys();
 
 ## PersistenceV2
 
-继承自[AppStorageV2](#appstoragev2)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
+继承自[AppStorageV2](#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
 
 ### globalConnect<sup>18+</sup>
 
@@ -174,7 +174,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 | 参数名   |类型   |必填   | 说明                                                      |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的connect参数，详细说明见ConnectOptions参数说明。 |
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的globalConnect参数，详细说明见ConnectOptions参数说明。 |
 
 **返回值：**
 
@@ -184,7 +184,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 > **说明：**
 >
-> 1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
+> 1、若未指定key，使用默认构造器defaultCreator返回数据的类名作为key存入PersistenceV2中。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -300,7 +300,7 @@ struct Page1 {
 
 如下展示globalConnect持久化Map类型的示例代码：
 ```typescript
-import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -380,7 +380,7 @@ PersistenceV2.save('key_as1');
 
 static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
-在持久化失败时调用。
+注册持久化失败时的回调函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -414,7 +414,7 @@ globalConnect参数类型。
 |type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |否   |否   |指定的类型。         |
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
-|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -500,7 +500,7 @@ struct Comp {
             Text(`report?.() '${ri.item.report?.()}'`)
           }
         })
-      // 步骤1：点击'add item'，显示`propA 'a' propB 'b'report?.'a' - 'b'`。
+      // 步骤1：点击'add item'，显示`propA 'a' propB 'b' report?.() 'a - b'`。
       // 步骤2：关闭应用。
       Button('add item')
         .onClick(() => {
@@ -567,7 +567,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 | decoratorName | string  | 否 | 否   | 当对象是V1对象时，值是对象关联的装饰器名称。<br/> 当V1对象使用[@Track](./../../ui/state-management/arkts-track.md)时，值为：'@Track'。<br/> 当V2对象使用[@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md)时，值为：'@Trace'。<br/> 当V2对象使用[makeObserved](#makeobserved)时，值为：'MakeObserved'。<br/> 当V2对象使用[enableV2Compatibility](#enablev2compatibility19)时，值为：'EnableV2Compatible'。 <br/> 当V2对象使用built-in类型数据时，值为：'ProxyObservedV2'。 |
 | stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。 |
 | owningComponentOrClassName | string  | 否 | 否   | V1对象返回被使用的组件名称。<br/> V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时返回对象名称。<br/> V2对象返回对象名称。 |
-| owningComponentId | number  | 否 | 否   | V1对象返回被使用的组件id。<br/> **V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时和V2对象返回的是对象名称，无组件id，返回-1。** |
+| owningComponentId | number  | 否 | 否   | V1对象返回被使用的组件id。<br/> **当V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时，无组件id，返回-1；V2对象同样无组件id，返回-1。** |
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | 否 | 否   | 使用该可观察对象的组件信息。若对象没有用在任何UI上，则返回空数组。 |
 
 ## ElementInfo<sup>23+</sup>
@@ -757,8 +757,8 @@ class Student {
         // 装饰器关联的组件id
         const eleId = elementInfo.elementId;
         hilog.info(0x00, TAG, `elementId: ${eleId}`);
-      })
-    })
+      });
+    });
   }
 }
 
@@ -853,6 +853,7 @@ class NonObservedClass {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用makeObserved将NonObservedClass实例变为可观察对象
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
 
@@ -979,6 +980,7 @@ class Inner {
 @Entry
 @Component
 struct Index {
+  // 使用makeV1Observed将Inner实例包装为V1可观察对象，传入Outer构造函数
   @State outer: Outer = new Outer(UIUtils.makeV1Observed(new Inner()));
 
   build() {
@@ -1028,7 +1030,7 @@ static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1264,7 +1266,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange，且当前监听回调是同步监听
+    // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }
@@ -1473,6 +1475,7 @@ struct Index {
           this.w = 100;
           this.h = 100;
           this.message = 'Hello World';
+          // 立即处理上述状态变量修改，同步标脏对应的UI节点
           UIUtils.flushUIUpdates();
           // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
           this.getUIContext().animateTo({
@@ -1499,7 +1502,7 @@ struct Index {
 
 ### getCustomComponentContext
 
-getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
+static getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
 
 返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](#customcomponentcontext)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅[全局复用池：集中化的组件回收与复用](../../ui/state-management/arkts-global-reuse-pool.md)。
 
@@ -1547,7 +1550,7 @@ struct ReusableChild {
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
   poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
-  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
+  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须在声明reusePool时提供，也可以开启组件冻结。
 })
 struct Index {
   @Local showChild: boolean = true;
@@ -1623,7 +1626,7 @@ type MonitorCallback = (monitorValue: IMonitor) => void
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| monitorValue | IMonitor | 是   | 回调函数传入的变化信息。 |
+| monitorValue | [IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12) | 是   | 回调函数传入的变化信息。 |
 
 ## StorageDefaultCreator\<T\>
 
@@ -1657,7 +1660,7 @@ class FatherSampleClass {
   @Trace sampleClass: SampleClass = new SampleClass();
 }
 
-// 将key为SampleClass、value为new SampleClass()对象的键值对持久化，并赋值给source
+// 将key为FatherSampleClass、value为new FatherSampleClass()对象的键值对持久化，并赋值给source
 // StorageDefaultCreator 指的是 () => new FatherSampleClass()
 const source: FatherSampleClass | undefined = PersistenceV2.connect(FatherSampleClass, () => new FatherSampleClass());
 
@@ -1748,7 +1751,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
 | key | string    | 是   | 出错的键值。   |
-|reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。   |
+|reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。取值包括：'quota'表示存储配额超限；'serialization'表示序列化或反序列化失败；'unknown'表示未知错误。 |
 | message | string    | 是   | 出错的更多消息。   |
 | oldValue | string    | 否   | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。<br> **起始版本：** 26.0.0。   |
 
@@ -1995,7 +1998,7 @@ type SetterCallback\<T\> = (newValue: T) => void
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| newValue | T    | 是   | 类型为T的参数。   |
+| newValue | T    | 是   | 要设置的新值，当绑定值被修改时传入此参数。   |
 
 **示例：**
 
@@ -2124,7 +2127,7 @@ get value(): T
 
 | 类型             | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| T |返回值类型为泛型参数T，与Binding\<T\>定义的类型一致。|
+| T |返回值类型为泛型参数T，与MutableBinding\<T\>定义的类型一致。|
 
 **示例：**
 
@@ -2181,7 +2184,7 @@ struct CompV2 {
 
 getReusePool(): IReusePool | undefined
 
-返回该自定义组件拥有的全局复用池。如果组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
+返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过`reusePool`和`poolAccepts`配置全局复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
@@ -2264,14 +2267,14 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 | 参数名        | 类型                                 | 必填 |  说明            |
 | ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
-| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | 是   | 要查询的可复用自定义组件的名称。|
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | 是   | 要查询的可复用自定义组件的构造函数。|
 | reuseId      | string   | 否   | 可选的reuseId用于过滤结果。如果指定，则仅返回此特定reuseId复用池的信息。默认值是undefined，返回所有reuseId复用池信息。   |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2344,7 +2347,7 @@ struct PoolOwner {
 
 preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
-预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
+调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
 
 **起始版本：** 26.0.0
 
@@ -2358,14 +2361,14 @@ preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
-| times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+| builder | [WrappedBuilder](././arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../ui/state-management/arkts-create-custom-components.md#reusable)/[@ReusableV2](../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
+| times   | number               | 是   | 执行@Builder函数的次数。取值范围为正整数。传入0或负数时不生效。传入小数时会向上取整。 |
 
 **返回值：**
 
 | 类型 | 说明  |
 | --------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Promise\<void\> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。|
+| Promise\<void\> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。|
 
 > **说明：**
 >
@@ -2412,7 +2415,7 @@ struct Index {
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });
@@ -2473,7 +2476,7 @@ struct CompA {
 | 名称     | 类型   | 只读 | 可选 |  说明                               |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | count    | number | 是   | 否   | 池中当前回收的组件数。如果设置了`reuseId`，则`count`指的是具有此特定reuseId的组件数。                                   |
-| maxCount | number | 否   | 否   | 池中允许的最大回收组件数。如果设置了`reuseId`，则`maxCount`指的是具有此特定reuseId的组件数。将此设置为小于当前`count`的值会导致框架异步清除多余组件。在延迟期间，`count`可能暂时超过`maxCount`。默认值：100，最大值：200。 |
+| maxCount | number | 否   | 否   | 池中允许的最大回收组件数。如果设置了`reuseId`，则`maxCount`指的是具有此特定reuseId的组件数。将此设置为小于当前`count`的值会导致框架异步清除多余组件。在延迟期间，`count`可能暂时超过`maxCount`。默认值：100，最大值：200，最小值：0。赋值超出范围时，取最接近的最大值或最小值。赋值为小数时会向下取整。|
 | reuseId  | string | 是   | 是   | 回收组件时指定的reuseId。如果组件没有使用reuseId回收，则此属性为`undefined`。                                 |
 
 **示例：**

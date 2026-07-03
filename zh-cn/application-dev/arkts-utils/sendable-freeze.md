@@ -15,23 +15,23 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
 ## 使用示例
 
 1. 提供ts文件封装Object.freeze方法。
-   <!-- @[provide_encapsulate_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/helper.ts) -->
 
-   ```ts
-   // helper.ts
+   <!-- @[provide_encapsulate_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/helper.ts) --> 
+   
+   ``` TypeScript
    export function freezeObj(obj: any) {
      Object.freeze(obj);
    }
    ```
 
 2. 调用freeze方法冻结对象，然后将其发送到子线程。
-   <!-- @[freeze_obj_send_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/SendableFreeze.ets) -->
 
-   ```ts
-   // SendableFreeze.ets
+   <!-- @[freeze_obj_send_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/SendableFreeze.ets) --> 
+   
+   ``` TypeScript
    import { freezeObj } from './helper';
    import { worker } from '@kit.ArkTS';
-    
+   
    @Sendable
    export class GlobalConfig {
      // 一些配置属性与方法
@@ -40,21 +40,28 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
        freezeObj(this); // 初始化完成后冻结当前对象
      }
    }
-    
+   
    @Entry
    @Component
    struct Index {
+     @State message: string = 'Sendable freezeObj Test';
+   
      build() {
-       Column() {
-         Text("Sendable freezeObj Test")
+       RelativeContainer() {
+         Text(this.message)
            .id('HelloWorld')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
            .onClick(() => {
-             let gConfig = new GlobalConfig();
-             gConfig.init();
-             const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets', { name: "Worker1" });
-             workerInstance.postMessage(gConfig);
+             let gConifg = new GlobalConfig();
+             gConifg.init();
+             const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets', { name: 'Worker1' });
+             workerInstance.postMessage(gConifg);
+             this.message = 'success';
            })
        }
        .height('100%')
@@ -63,14 +70,16 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
    }
    ```
 
-3. 子线程直接操作对象，不加锁。
-   <!-- @[directly_operate_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/workers/Worker.ets) -->
 
-   ```ts
-   // Worker.ets
+3. 子线程直接操作对象，不加锁。
+
+   <!-- @[directly_operate_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/workers/Worker.ets) --> 
+
+   ```TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-   import { GlobalConfig } from '../pages/Index';
-   
+   // import { GlobalConfig } from '../pages/Index';
+   import { GlobalConfig } from '../managers/SendableFreeze';
+
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    workerPort.onmessage = (e: MessageEvents) => {
      let gConfig: GlobalConfig = e.data;

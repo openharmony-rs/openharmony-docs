@@ -849,6 +849,12 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
 
+启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
+
+AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+
+AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -865,7 +871,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>值为undefined时，开启选中词文本识别。 |
+| enable  | boolean \| undefined | 是   | 是否开启选中文本实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>值为undefined时，按默认值处理。 |
 
 ### passwordRules<sup>11+</sup>
 
@@ -895,7 +901,7 @@ ArkTS-Sta: passwordRules(value: string | undefined)
 
 cancelButton(options: CancelButtonOptions)
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -943,7 +949,7 @@ ArkTS-Dyn: selectAll(value: boolean)
 
 ArkTS-Sta: selectAll(value: boolean | undefined)
 
-设置初始状态时，是否全选文本。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置初始状态时，是否全选文本。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -973,7 +979,7 @@ ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions
 
 当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当thresholdPercentage数值在有效区间内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。highlightBorder设置为false，则不显示红色边框，计数器默认显示红色，框体抖动。
 
-[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
+[TextInputStyle](#textinputstyle9枚举说明)的内联模式、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
 
 [示例5（设置计数器）](#示例5设置计数器)展示了设置showCounter的效果。
 
@@ -1076,7 +1082,7 @@ ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本的文本行高。<br/>取值为undefined时，不限制文本行高，自适应字体大小。 |
+| value  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本行高。<br/>取值为undefined时，不限制文本行高，自适应字体大小。 |
 
 ### decoration<sup>12+</sup>
 
@@ -1186,7 +1192,7 @@ ArkTS-Dyn: wordBreak(value: WordBreak)
 
 ArkTS-Sta: wordBreak(value: WordBreak | undefined)
 
-设置文本断行规则。该属性在组件设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)时样式生效，但对placeholder文本无效。
+设置文本断行规则。该属性在组件设置[TextInputStyle](#textinputstyle9枚举说明)的内联模式时样式生效，但对placeholder文本无效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1214,7 +1220,7 @@ ArkTS-Dyn: textOverflow(value: TextOverflow)
 
 ArkTS-Sta: textOverflow(value: TextOverflow | undefined)
 
-设置文本超长时的显示方式。仅在[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)的编辑态、非编辑态下支持。
+设置文本超长时的显示方式。仅在[TextInputStyle](#textinputstyle9枚举说明)值为内联模式的编辑态、非编辑态下支持。
 
 文本截断是按字进行。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可将wordBreak属性设置为WordBreak.BREAK_ALL。
 
@@ -1234,10 +1240,10 @@ ArkTS-Sta: textOverflow(value: TextOverflow | undefined)
 
 | 参数名 | 类型                                                          | 必填 | 说明                                                                                                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------------------------------------------------------- |
-| value  | ArkTS-Dyn: [TextOverflow](ts-appendix-enums.md#textoverflow)<br/>ArkTS-Sta: [TextOverflow](ts-appendix-enums.md#textoverflow) \| undefined | 是   | 文本超长时的显示方式。<br/>[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip<br/>取值为undefined时，按默认值处理。                     |
+| value  | ArkTS-Dyn: [TextOverflow](ts-appendix-enums.md#textoverflow)<br/>ArkTS-Sta: [TextOverflow](ts-appendix-enums.md#textoverflow) \| undefined | 是   | 文本超长时的显示方式。<br/>[TextInputStyle](#textinputstyle9枚举说明)的内联模式非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip<br/>取值为undefined时，按默认值处理。                     |
 
 >  **说明：**  
->   TextInput组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)非编辑态下显示为TextOverflow.Ellipsis，内联模式编辑态下以及非内联模式下显示为TextOverflow.Clip。
+>   TextInput组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，[TextInputStyle](#textinputstyle9枚举说明)的内联模式非编辑态下显示为TextOverflow.Ellipsis，内联模式编辑态下以及非内联模式下显示为TextOverflow.Clip。
 >
 >  未设置内联模式时，按照默认风格显示。若此时设置textOverflow，则不生效。
 
@@ -1411,7 +1417,7 @@ ArkTS-Sta: lineBreakStrategy(strategy: LineBreakStrategy | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| strategy | ArkTS-Dyn: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12)<br/>ArkTS-Sta: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) \| undefined | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)时该属性生效。<br/>取值为undefined时，按默认值处理。 |
+| strategy | ArkTS-Dyn: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12)<br/>ArkTS-Sta: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) \| undefined | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置[TextInputStyle](#textinputstyle9枚举说明)的内联模式时该属性生效。<br/>取值为undefined时，按默认值处理。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -1482,7 +1488,7 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 ```json
 "requestPermissions": [
  {
-    "name": "ohos.permission.VIBRATE",
+    "name": "ohos.permission.VIBRATE"
  }
 ]
 ```
@@ -1701,7 +1707,7 @@ ArkTS-Dyn: cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
 ArkTS-Sta: cancelButton(symbolOptions: CancelButtonSymbolOptions | undefined)
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例15（设置symbol类型清除按钮）](#示例15设置symbol类型清除按钮)。
+设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](#示例15设置symbol类型清除按钮)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1725,7 +1731,7 @@ ArkTS-Dyn: ellipsisMode(mode: Optional\<EllipsisMode>)
 
 ArkTS-Sta: ellipsisMode(mode: EllipsisMode | undefined)
 
-设置省略位置。ellipsisMode属性仅在[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
+设置省略位置。ellipsisMode属性仅在[TextInputStyle](#textinputstyle9枚举说明)的内联模式下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
 非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END、EllipsisMode.MULTILINE_START和EllipsisMode.MULTILINE_CENTER正常生效。
 
@@ -2063,10 +2069,10 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称    | 说明                                                         |
-| ------- | ------------------------------------------------------------ |
-| Default | 默认风格，光标宽1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| Inline  | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下，不支持拖入文本。 |
+| 名称    |  值 | 说明                                                         |
+| ------- | --- | ------------------------------------------------------------ |
+| Default | - | 默认风格，光标宽1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
+| Inline  | - | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## PasswordIcon<sup>10+</sup>对象说明
 
@@ -2549,7 +2555,7 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 ## TextInputController<sup>8+</sup>
 
-TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)、[scrollToVisible](ts-universal-attributes-text-style.md#scrolltovisible23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3038,7 +3044,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
 struct TextInputExample {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = "";
-  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State componentContent?: ComponentContent<BuilderParams> = undefined;
   @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
   @State supportAvoidance: boolean = true;
 
@@ -4777,3 +4783,31 @@ struct ShaderColorStyle {
 }
 ```
 ![TextInputShaderStyle](figures/textInputShaderStyle.png)
+
+### 示例34（设置文本选择的AI菜单）
+
+该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+
+从API version 22开始，新增enableSelectedDataDetector。
+
+```ts
+@Entry
+@Component
+struct Demo34 {
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        TextInput({ text: this.exampleText })
+          .copyOption(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+<!--RP5--><!--RP5End-->

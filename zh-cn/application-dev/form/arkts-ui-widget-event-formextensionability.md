@@ -13,6 +13,8 @@
 > 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 - 在卡片页面通过注册Button的onClick点击事件回调，并在回调中调用postCardAction接口触发message事件拉起FormExtensionAbility。卡片页面中使用[LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)装饰需要刷新的卡片数据。
+
+    ArkTS-Dyn示例：
     <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
@@ -74,6 +76,64 @@
     }
     ```
 
+    ArkTS-Sta示例：
+
+    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetMessageStaDemo/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
+    
+    ``` TypeScript
+    // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
+    let storageUpdateByMsg = new LocalStorage();
+    
+    @Entry(storageUpdateByMsg)
+    @Component
+    struct UpdateByMessageCard {
+      // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
+      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+    
+      build() {
+        Column() {
+          Column() {
+            Text(this.title)
+              .opacity(0.9)
+              .fontSize(14)
+              .margin({ top: '8%', left: '10%' })
+            Text(this.detail)
+              .opacity(0.6)
+              .fontSize(12)
+              .margin({ top: '5%', left: '10%' })
+          }.width('100%').height('50%')
+          .alignItems(HorizontalAlign.Start)
+    
+          Row() {
+            Button() {
+              // $r('app.string.update')需要替换为开发者所需的资源文件
+              Text($r('app.string.update'))
+                .fontColor('#45A6F4')
+                .fontSize(12)
+            }
+            .width(120)
+            .height(32)
+            .margin({ top: '30%', bottom: '10%' })
+            .backgroundColor('#FFFFFF')
+            .borderRadius(16)
+            .onClick(() => {
+              postCardAction(this, {
+                action: 'message',
+                params: { msgTest: 'messageEvent' }
+              });
+            })
+          }.width('100%').height('40%')
+          .justifyContent(FlexAlign.Center)
+        }
+        .width('100%')
+        .height('100%')
+        .alignItems(HorizontalAlign.Start)
+        .backgroundImageSize(ImageSize.Cover)
+      }
+    }
+    ```
+
 - 在EntryFormAbility.ets中，导入相关模块
 
     ```TypeScript
@@ -85,7 +145,9 @@
     ``` 
 
 - 在FormExtensionAbility的onFormEvent生命周期中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
-  
+
+    ArkTS-Dyn示例：
+
     <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
@@ -117,6 +179,83 @@
       // ...
     }
     
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetMessageStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+    
+    ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ets
+    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+    import Want from '@ohos.app.ability.Want';
+    import { Configuration } from '@ohos.app.ability.Configuration';
+    import { BusinessError } from '@ohos.base';
+    import { AppStorage } from '@ohos.arkui.stateManagement';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = 'EntryFormAbility';
+    const DOMAIN_NUMBER: int = 0xFF00;
+    
+    class FormDataClass {
+      public title: string = 'Title Update.'; // 和卡片布局中对应
+      public detail: string = 'Description update success.'; // 和卡片布局中对应
+    }
+    
+    function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+      hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+      return formInfo.FormState.READY;
+    }
+    
+    export default class EntryFormAbility extends FormExtensionAbility {
+      constructor() {
+        hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+        try {
+          this.onStop = () => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+        }
+    
+        this.onAcquireFormState = onAcquireFormStateCallback;
+      }
+    
+      onAddForm(want: Want): formBindingData.FormBindingData {
+        hilog.error(DOMAIN_NUMBER, TAG, 'onAddForm testing');
+        // Called to return a FormBindingData object.
+        let wants = want?.parameters;
+        let formId = '';
+        if (wants) {
+          formId = wants['ohos.extra.param.key.form_identity'] as string;
+        }
+        let param: Record<string, string> = {};
+        param = {
+          'title1': '武汉2*2'
+        };
+        let data: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+        return data;
+      }
+    
+      // ...
+      onFormEvent(formId: string, message: string): void {
+        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+    
+        // 请根据业务替换为实际刷新的卡片数据
+        let formData = new FormDataClass();
+        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+        formProvider.updateForm(formId, formInfo).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+        }).catch((error) => {
+          hilog.error(DOMAIN_NUMBER, TAG,
+            `FormAbility updateForm success. code: ${error?.code}, message: ${error.message}`);
+        });
+      }
+    
+      // ...
+    }
     ```
   
   运行效果如下图所示。

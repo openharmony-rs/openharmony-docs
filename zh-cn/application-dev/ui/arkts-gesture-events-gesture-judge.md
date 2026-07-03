@@ -11,7 +11,7 @@
 - 父子组件的同类型手势识别器。
 - 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)滑动手势与子组件点击手势冲突）。
 
-干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下三种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)。
+干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下四种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)、[自定义干预事件和手势的收集结果](#自定义干预事件和手势的收集结果)。
 
 ## 自定义手势判定
 
@@ -311,7 +311,7 @@
    }
    ```
 
-   ![StackGesure20251119001](figures/StackGesure20251119001.png)
+   ![stack-gesture](figures/stack-gesture.png)
 
 ## 手势并行动态控制
 
@@ -1286,7 +1286,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1296,6 +1296,7 @@ struct Index {
   @Local total: number = 27490000; // 总时长，秒
   @Local currentWidth: string = '100%';
   @Local currentHeight: string = '100%';
+  @Local playbackProgress: string = '';
   private currentPosX: number = 0;
   private currentPosY: number = 0;
   private currentFullScreenState: boolean = true;
@@ -1305,6 +1306,12 @@ struct Index {
   private context = this.getUIContext().getHostContext()
 
   aboutToAppear(): void {
+    // 请将$r('app.string.Playback_progress')替换为实际资源文件，在本示例中该资源文件的value值为"播放进度"
+    try {
+      this.playbackProgress = this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id);
+    } catch (error) {
+      console.error('Get play back progress failed!');
+    }
     // 启动一个周期性定时器每隔一秒刷新一次进度
     this.startNormalPlayTimer();
   };
@@ -1344,7 +1351,11 @@ struct Index {
   };
 
   showMessage(message: string): void {
-    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+    try {
+      this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+    } catch (error) {
+      console.error('ShowToast failed!');
+    }
   };
 
   resetPosInfo(): void {
@@ -1363,9 +1374,13 @@ struct Index {
     };
     // 请将$r('app.string.Play_full_screen')替换为实际资源文件，在本示例中该资源文件的value值为"全屏播放"
     // 请将$r('app.string.Exit_play_full_screen')替换为实际资源文件，在本示例中该资源文件的value值为"取消全屏播放"
-    this.showMessage(this.currentFullScreenState
-      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
-      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+    try {
+      this.showMessage(this.currentFullScreenState
+        ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   togglePlayAndPause(): void {
@@ -1378,9 +1393,13 @@ struct Index {
     };
     // 请将$r('app.string.stop_playing')替换为实际资源文件，在本示例中该资源文件的value值为"暂停播放"
     // 请将$r('app.string.Continue_playing')替换为实际资源文件，在本示例中该资源文件的value值为"继续播放"
-    this.showMessage(this.isPlaying
-      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
-      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+    try {
+      this.showMessage(this.isPlaying
+        ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   doFastForward(start: boolean): void {
@@ -1388,16 +1407,24 @@ struct Index {
       this.stopFastForwardTimer();
       this.startNormalPlayTimer();
       // 请将$r('app.string.Cancel_FastForwarding')替换为实际资源文件，在本示例中该资源文件的value值为"取消快进"
-      this.showMessage(
-        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      try {
+        this.showMessage(
+          this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
 
     this.stopNormalPlayTimer();
     this.startFastForwardTimer();
     // 请将$r('app.string.Start_FastForwarding')替换为实际资源文件，在本示例中该资源文件的value值为"开始快进"
-    this.showMessage(
-      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+    try {
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   updateBrightness(start: boolean, event: BaseGestureEvent): void {
@@ -1405,17 +1432,25 @@ struct Index {
     if (start) {
       this.currentPosY = newY;
       // 请将$r('app.string.Start_adjusting_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"开始调整 亮度"
-      this.showMessage(this.context!.resourceManager
-        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      try {
+        this.showMessage(this.context!.resourceManager
+          .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
     let offsetY = newY - this.currentPosY;
     if (Math.abs(offsetY) > 10) {
       // 请将$r('app.string.Reduce_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"降低亮度"
       // 请将$r('app.string.Increase_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"提高亮度"
-      this.showMessage((offsetY > 0)
-        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
-        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      try {
+        this.showMessage((offsetY > 0)
+          ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+          : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       this.currentPosY = newY;
     };
   };
@@ -1425,8 +1460,12 @@ struct Index {
     if (start) {
       this.currentPosX = newX;
       // 请将$r('app.string.Adjust_schedule')替换为实际资源文件，在本示例中该资源文件的value值为"开始调整 进度"
-      this.showMessage(this.context!.resourceManager
-        .getStringSync($r('app.string.Adjust_schedule').id));
+      try {
+        this.showMessage(this.context!.resourceManager
+          .getStringSync($r('app.string.Adjust_schedule').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
     let offsetX = newX - this.currentPosX;
@@ -1438,8 +1477,7 @@ struct Index {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          // 请将$r('app.string.Playback_progress')替换为实际资源文件，在本示例中该资源文件的value值为"播放进度"
-          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
+          Text(this.playbackProgress + this.progress)
         }
         .width('100%').height('90%')
 
@@ -1777,4 +1815,149 @@ struct Index {
 }
 ```
 
-![Gesure20251119002](figures/Gesure20251119002.gif)
+![prevent-gesture-recognition](figures/prevent-gesture-recognition.gif)
+
+## 自定义干预事件和手势的收集结果
+
+从API版本26.0.0开始，在手势、触摸事件发起时，系统会收集已绑定手势和触摸识别器的识别结果。开发者可以通过`onGestureCollectIntercept`回调对收集结果进行干预，通过返回不同的干预策略来动态控制识别结果的收集行为，例如阻止触摸事件向父组件透传、丢弃当前节点的手势等。
+
+手势收集干预涉及以下接口。
+
+| 接口 | 说明 |
+| ------- | -------------- |
+| [onGestureCollectIntercept](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturecollectintercept) | 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。回调返回干预策略，控制后续收集流程。 |
+| [getUniqueId](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#getuniqueid) | 通过识别器的[getEventTargetInfo()](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#geteventtargetinfo12)获取的组件信息对象上调用，返回当前组件的唯一数字ID，可用于与其他组件的唯一ID进行比对。 |
+| [isHostBelongsTo](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在[GestureRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gesturerecognizer12)和[TouchRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#touchrecognizer20)上均可调用。 |
+
+下面通过示例介绍如何实现自定义干预事件和手势的收集结果。示例中构建了如下组件树。
+
+```mermaid
+graph TD
+    A((outerColumn))
+    B((innerColumn))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
+
+Button1未绑定点击事件，Button2绑定了点击事件。当用户点击Button2时，innerColumn上的`onGestureCollectIntercept`回调会对触摸识别器进行干预，阻止触摸事件继续向outerColumn透传；点击Button1时则允许正常透传。
+
+1. 在innerColumn组件上绑定`onGestureCollectIntercept`回调，在回调中获取触摸识别器列表。
+
+    <!-- @[gesture_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    
+    ``` TypeScript
+    .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
+      touchRecognizers?: Array<TouchRecognizer> | undefined) => {
+      if (!touchRecognizers) {
+        return GestureCollectIntervention.CONTINUE;
+      }
+      // 遍历所有触摸识别器，获取目标组件信息
+      for (let i = 0; i < touchRecognizers.length; i++) {
+        let touchRecognizer = touchRecognizers[i];
+        let targetInfo = touchRecognizer.getEventTargetInfo();
+        let uniqueId = targetInfo.getUniqueId();
+        // 使用 isHostBelongsTo 判断识别器是否属于 innerColumn 的后代
+        if (touchRecognizer.isHostBelongsTo(uniqueId)) {
+          console.info('Touch belongs to innerColumn subtree');
+        }
+        if (targetInfo.getId() == 'button2') {
+          // 丢弃低优先级节点的收集，阻止事件透传到 outerColumn
+          return GestureCollectIntervention.DISCARD_LOWER;
+        }
+      }
+      return GestureCollectIntervention.CONTINUE;
+    })
+    ```
+
+2. 代码完整示例。
+
+    <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct InterceptGestureCollection {
+      @State backgroundColorButton1: string = '#D5D5D5';
+      @State backgroundColorButton2: string = '#D5D5D5';
+      @State backgroundColorRow: string = '#FFFFFF';
+      @State backgroundColorColumn: string = '#FFFFFF';
+    
+      build() {
+        Column() {
+          Column() {
+            Row() {
+              Button('button1')
+                .width('30%')
+                .height(40)
+                .id('button1')
+                .onTouch((e?: TouchEvent) => {
+                  this.backgroundColorButton1 = '#E5E5E5';
+                })
+                .backgroundColor(this.backgroundColorButton1)
+              Button('button2')
+                .width('30%')
+                .height(40)
+                .id('button2')
+                .onTouch((e?: TouchEvent) => {
+                  this.backgroundColorButton2 = '#E5E5E5';
+                })
+                .onClick((e?: ClickEvent) => {
+                  console.info('button2 is clicked')
+                })
+                .backgroundColor(this.backgroundColorButton2)
+            }
+            .id('row')
+            .justifyContent(FlexAlign.Center)
+            .width('90%')
+            .height(200)
+            .margin(25)
+            .onTouch((e?: TouchEvent) => {
+              this.backgroundColorRow = '#666666';
+            })
+            .backgroundColor(this.backgroundColorRow)
+          }
+          .id('innerColumn')
+          .margin(25)
+          .padding(20)
+          .width('90%')
+          .height(250)
+          .borderWidth(2)
+          .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
+            touchRecognizers?: Array<TouchRecognizer> | undefined) => {
+            if (!touchRecognizers) {
+              return GestureCollectIntervention.CONTINUE;
+            }
+            // 遍历所有触摸识别器，获取目标组件信息
+            for (let i = 0; i < touchRecognizers.length; i++) {
+              let touchRecognizer = touchRecognizers[i];
+              let targetInfo = touchRecognizer.getEventTargetInfo();
+              let uniqueId = targetInfo.getUniqueId();
+              // 使用 isHostBelongsTo 判断识别器是否属于 innerColumn 的后代
+              if (touchRecognizer.isHostBelongsTo(uniqueId)) {
+                console.info('Touch belongs to innerColumn subtree');
+              }
+              if (targetInfo.getId() == 'button2') {
+                // 丢弃低优先级节点的收集，阻止事件透传到 outerColumn
+                return GestureCollectIntervention.DISCARD_LOWER;
+              }
+            }
+            return GestureCollectIntervention.CONTINUE;
+          })
+        }
+        .id('outerColumn')
+        .padding(15)
+        .onTouch((e?: TouchEvent) => {
+          this.backgroundColorColumn = '#E5E5E5';
+        })
+        .backgroundColor(this.backgroundColorColumn)
+      }
+    }
+    ```
+
+经过上述处理后，点击Button2时，`onGestureCollectIntercept`返回`DISCARD_LOWER`，触摸事件不会透传至outerColumn；点击Button1时，返回`CONTINUE`，触摸事件正常透传，outerColumn响应变色。

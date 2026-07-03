@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -413,7 +413,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -449,7 +449,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -1066,7 +1066,7 @@ ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -2260,7 +2260,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2924,7 +2924,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 

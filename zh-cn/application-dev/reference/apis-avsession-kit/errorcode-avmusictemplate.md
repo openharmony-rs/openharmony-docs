@@ -40,7 +40,7 @@ Failed to create the AVMusicTemplate controller.
 
 **可能原因**
 
-创建controller的参数sessionId不合法。
+创建AVMusicTemplateController的参数sessionId不合法。
 
 **处理步骤**
 
@@ -77,7 +77,7 @@ Controller callback not registered.
 
 **可能原因**
 
-controller callback 注册失败。
+控制器回调注册失败。
 
 **处理步骤**
 
@@ -177,7 +177,7 @@ AVMusicTemplate Manager services exception.
 1. 检查应用内其他核心功能是否出现了异常。
 2. 尝试重启设备。
 
-## 350000010 数据超过了允许的最大传输容量
+## 35000010 数据超过了允许的最大传输容量
 
 **错误信息**
 
@@ -195,7 +195,7 @@ The data exceeds the maximum allowable transmission capacity.
 
 针对超过1MB的数据采用分批传输。
 
-## 350000011 数据写入错误，数据无效
+## 35000011 数据写入错误，数据无效
 
 **错误信息**
 
@@ -213,7 +213,7 @@ The data write error, data is invalid.
 
 检查待传输的数据是否存在不合法的属性或者值。
 
-## 350000012 音频模板错误
+## 35000012 音频模板错误
 
 **错误信息**
 

@@ -4,20 +4,22 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @guozejun-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的瀑布流布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)、[FlowItem](ts-container-flowitem.md)或[LazyColumnLayout](ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
+更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - LazyVWaterFlowLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+> - LazyVWaterFlowLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](ts-universal-attributes-size.md#height)、[size](ts-universal-attributes-size.md#size)中的height、[constraintSize](ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](ts-universal-attributes-size.md#layoutweight)，以及[height](ts-universal-attributes-size.md#height15)取[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15)值的场景。
 > - 当父组件设置主轴方向尺寸时，LazyVWaterFlowLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVWaterFlowLayout会被内容撑开，导致所有子组件都会被加载布局。
 > - 该组件在不同父组件下的懒加载支持条件如下：
->   1. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
+>   1. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 >   2. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用该组件会导致应用崩溃。
->   3. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向为FlexDirection.Column时支持懒加载。当WaterFlow为多列模式或布局方向为FlexDirection.Row、FlexDirection.RowReverse时，该组件的懒加载功能会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
+>   3. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且[layoutDirection](ts-container-waterflow.md#layoutdirection)属性设置为FlexDirection.Column时支持懒加载。当WaterFlow为多列模式或布局方向为FlexDirection.Row、FlexDirection.RowReverse时，该组件的懒加载功能会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
 > - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
 > - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
@@ -51,15 +53,24 @@ LazyVWaterFlowLayout()
 
 columnsTemplate(value: string | ItemFillPolicy | undefined)
 
-设置当前LazyVWaterFlowLayout的列数，不设置时默认1列。
+设置当前LazyVWaterFlowLayout的列数、固定列宽或最小列宽值，不设置时默认1列。
 
-当value设置为string类型时，可设置当前LazyVWaterFlowLayout的列数或最小列宽值。例如，columnsTemplate('1fr 1fr 2fr')可将LazyVWaterFlowLayout分为3列，LazyVWaterFlowLayout宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
+当value设置为string类型时，可设置当前LazyVWaterFlowLayout的列数、固定列宽或最小列宽值。例如，columnsTemplate('1fr 1fr 2fr')可将LazyVWaterFlowLayout分为3列，LazyVWaterFlowLayout宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill, track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
+columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-size，自动计算列数和实际列宽。
 
-当value设置为ItemFillPolicy类型时，将根据LazyVWaterFlowLayout组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track-size，自动计算列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr（表示每列占用1等份可用宽度）。
+columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用[columnsGap](#columnsgap)作为最小列间距，自动计算列数和实际列间距。
+
+其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
+
+使用效果可以参考[示例3](#示例3设置自适应列数)。
+
+当value设置为ItemFillPolicy类型时，将根据LazyVWaterFlowLayout组件宽度对应的[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+例如，ItemFillPolicy的fillType属性设置为PresetFillType.BREAKPOINT_DEFAULT时，在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr（表示每列占用1等份可用宽度）。
 
 **起始版本：** 26.0.0
 
@@ -73,7 +84,7 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前LazyVWaterFlowLayout的列数或最小列宽值。<br/>方法入参为undefined时，恢复为默认值（1列）。 |
+| value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前LazyVWaterFlowLayout的列数、固定列宽或最小列宽值。<br/>设置为ItemFillPolicy类型时，根据组件宽度对应断点类型确定列数。<br/>方法入参为undefined时，恢复为默认值（1列）。 |
 
 **返回值：**
 
@@ -99,7 +110,7 @@ columnsGap(value: LengthMetrics | undefined): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>方法入参为undefined时，恢复为默认值（0vp）。 |
+| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按默认值显示。<br/>方法入参为undefined时，恢复为默认值。 |
 
 **返回值：**
 
@@ -125,7 +136,7 @@ rowsGap(value: LengthMetrics | undefined): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>方法入参为undefined时，恢复为默认值（0vp）。|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按默认值显示。<br/>方法入参为undefined时，恢复为默认值。 |
 
 **返回值：**
 
@@ -135,7 +146,7 @@ rowsGap(value: LengthMetrics | undefined): T
 
 ### header
 
-header(builder: CustomBuilder | undefined)
+header(builder: CustomBuilder | undefined): T
 
 设置当前LazyVWaterFlowLayout的头部组件。
 
@@ -163,7 +174,7 @@ header(builder: CustomBuilder | undefined)
 
 ### footer
 
-footer(builder: CustomBuilder | undefined)
+footer(builder: CustomBuilder | undefined): T
 
 设置当前LazyVWaterFlowLayout的尾部组件。
 
@@ -191,7 +202,7 @@ footer(builder: CustomBuilder | undefined)
 
 ### sticky
 
-sticky(sticky: StickyStyle | undefined)
+sticky(sticky: StickyStyle | undefined): T
 
 设置[header](#header)和[footer](#footer)的吸附效果。
 
@@ -268,6 +279,7 @@ MyDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-contro
 <!--code_no_check-->
 ```ts
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -306,6 +318,7 @@ struct LazyVWaterFlowLayoutSample1 {
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
         .onVisibleIndexesChange((start: number, end: number) => {
+          console.info('LazyVWaterFlowLayout visible indexes: start: ' + start + ', end: ' + end);
           // 滚动监听：即将触底时提前加载更多数据
           if (end + 20 >= this.arr.totalCount()) {
             // 添加100个新数据到数据源
@@ -435,6 +448,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 <!--code_no_check-->
 ```ts
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -452,6 +466,7 @@ struct LazyVWaterFlowLayoutStickyDemo {
     return colors[index % colors.length]
   }
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Column() {
@@ -502,8 +517,10 @@ struct LazyVWaterFlowLayoutStickyDemo {
         .columnsGap(LengthMetrics.vp(10))
         .header(this.HeaderBuilder)
         .footer(this.FooterBuilder)
+        // 设置头部和尾部同时吸附
         .sticky(StickyStyle.BOTH)
         .onVisibleIndexesChange((start: number, end: number) => {
+          console.info('LazyVWaterFlowLayout visible indexes: start: ' + start + ', end: ' + end);
           // 滚动监听：即将触底时提前加载更多数据
           if (end + 20 >= this.arr.totalCount()) {
             // 添加100个新数据到数据源
@@ -530,3 +547,133 @@ struct LazyVWaterFlowLayoutStickyDemo {
 }
 ```
 ![scroll_lazyvwaterflowlayout_header_footer.gif](figures/scroll_lazyvwaterflowlayout_header_footer.gif)
+
+### 示例3（设置自适应列数）
+
+该示例通过[columnsTemplate](#columnstemplate)设置repeat(auto-fill, track-size)和ItemFillPolicy，实现LazyVWaterFlowLayout列数自适应。
+
+从API版本26.0.0开始，新增[columnsTemplate](#columnstemplate)接口。
+
+<!--code_no_check-->
+```ts
+import {
+  LengthMetrics,
+  LazyColumnLayout,
+  LazyColumnLayoutAttribute,
+  LazyVWaterFlowLayout,
+  LazyVWaterFlowLayoutAttribute,
+} from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVWaterFlowLayoutColumnsTemplateDemo {
+  private autoFillData: MyDataSource<number> = new MyDataSource<number>();
+  private breakpointData: MyDataSource<number> = new MyDataSource<number>();
+  private breakpointPolicy: ItemFillPolicy = { fillType: PresetFillType.BREAKPOINT_DEFAULT };
+
+  aboutToAppear(): void {
+    // 初始化固定数量的数据，不进行滚动触底加载
+    for (let i = 0; i < 18; i++) {
+      this.autoFillData.pushData(i);
+      this.breakpointData.pushData(i);
+    }
+  }
+
+  private itemHeight(index: number): number {
+    return 80 + (index * 37 % 121)
+  }
+
+  private itemColor(index: number): string {
+    const colors: string[] = ['#CDE7FF', '#D8F5D0', '#FFE6A8', '#F8D7DA', '#E4D7FF', '#D2F4EA']
+    return colors[index % colors.length]
+  }
+
+  @Builder
+  ModeTitle(title: string, description: string) {
+    Column() {
+      Text(title)
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+      Text(description)
+        .fontSize(12)
+        .fontColor('#667085')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 })
+  }
+
+  @Builder
+  AutoFillHeader() {
+    this.ModeTitle('repeat(auto-fill, 96vp)',
+      '固定列宽为96vp，LazyVWaterFlowLayout根据可用宽度自动计算瀑布流列数。')
+  }
+
+  @Builder
+  BreakpointHeader() {
+    this.ModeTitle('ItemFillPolicy: BREAKPOINT_DEFAULT',
+      '根据组件宽度对应的断点类型确定列数，sm及以下为2列，md为3列，lg及以上为5列。')
+  }
+
+  @Builder
+  WaterFlowItemBuilder(item: number) {
+    Text('item ' + item)
+      .height(this.itemHeight(item))
+      .width('100%')
+      .borderRadius(8)
+      .backgroundColor(this.itemColor(item))
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          // repeat(auto-fill, 96vp)：固定列宽为96vp，根据可用宽度自动计算瀑布流列数
+          LazyVWaterFlowLayout() {
+            LazyForEach(this.autoFillData, (item: number) => {
+              this.WaterFlowItemBuilder(item)
+            })
+          }
+          .columnsTemplate('repeat(auto-fill, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoFillHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+
+          // ItemFillPolicy：根据组件宽度对应的断点类型确定列数
+          LazyVWaterFlowLayout() {
+            LazyForEach(this.breakpointData, (item: number) => {
+              this.WaterFlowItemBuilder(item)
+            })
+          }
+          .columnsTemplate(this.breakpointPolicy)
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.BreakpointHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+![scroll_lazyvwaterflowlayout_header_footer.gif](figures/scroll-lazyvwaterflowlayout-columntemplate.gif)

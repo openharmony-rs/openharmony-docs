@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebviewController可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
+WebviewController是Web组件各种行为的核心控制器，提供网页加载与导航控制、JavaScript交互、生命周期、滚动控制、页面缩放与内容查找、消息端口通信、缓存与证书管理等广泛功能。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
 
 > **说明：**
 >
@@ -751,6 +751,7 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. <br/>适用版本：9-10 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -1399,6 +1400,8 @@ onActive(): void
 调用此接口通知Web组件进入前台激活状态。
 
 激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
+
+若页面此前处于未激活状态，H5页面中通过document.addEventListener('visibilitychange',...)注册的事件监听器将被触发，document.visibilityState 从"hidden"变为"visible"。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6375,7 +6378,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前Webview上下文相关的资源缓存。
+清除与当前WebView上下文相关的资源缓存。
 
 > **说明：**
 >
@@ -6790,7 +6793,7 @@ struct WebComponent {
 
 getBackForwardEntries(): BackForwardList
 
-获取当前Webview的历史信息列表。
+获取当前WebView的历史信息列表。
 
 > **说明：**
 >
@@ -6806,7 +6809,7 @@ getBackForwardEntries(): BackForwardList
 
 | 类型                                | 说明                        |
 | ----------------------------------- | --------------------------- |
-| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前Webview的历史信息列表。 |
+| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前WebView的历史信息列表。 |
 
 **错误码：**
 
@@ -6877,7 +6880,7 @@ struct WebComponent {
 
 serializeWebState(): Uint8Array
 
-将当前Webview的页面状态历史记录信息序列化。
+将当前WebView的页面状态历史记录信息序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6890,7 +6893,7 @@ serializeWebState(): Uint8Array
 
 | 类型       | 说明                                          |
 | ---------- | --------------------------------------------- |
-| Uint8Array | 当前Webview的页面状态历史记录序列化后的数据。 |
+| Uint8Array | 当前WebView的页面状态历史记录序列化后的数据。 |
 
 **错误码：**
 
@@ -7014,7 +7017,7 @@ export default class EntryAbility extends UIAbility {
 
 restoreWebState(state: Uint8Array): void
 
-当前Webview从序列化数据中恢复页面状态历史记录。
+当前WebView从序列化数据中恢复页面状态历史记录。
 
 如果state过大，可能会导致异常。建议state大于512k时，放弃恢复页面状态历史记录。
 
@@ -8295,7 +8298,7 @@ ArkTS-Dyn: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: int): void
 
-根据指定的请求信息和附加的http请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的post请求。最多可以预获取6个post请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的post请求缓存，否则会自动清除最早预获取的post缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的post请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
+根据指定的请求信息和附加的HTTP请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的POST请求。最多可以预获取6个POST请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的POST请求缓存，否则会自动清除最早预获取的POST缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的POST请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
 
 内存缓存中的资源由内核自动管理。当注入的资源过多，导致内存压力过大时，内核会自动释放未使用的资源，但仍应避免向内存缓存中注入大量资源。
 
@@ -9441,7 +9444,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9531,7 +9534,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9620,7 +9623,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9709,7 +9712,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9798,7 +9801,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -19114,7 +19117,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------- | ------ | ---- | ---- |
-| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)。 |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)，交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。 |
 
 **返回值：**
 

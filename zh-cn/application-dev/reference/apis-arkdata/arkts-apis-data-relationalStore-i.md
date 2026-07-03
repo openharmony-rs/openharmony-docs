@@ -17,7 +17,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符，不能为空字符串且不能包含路径分隔符/。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | 否 | 否 | 设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | encrypt | boolean | 否 | 是 | 指定数据库是否加密，默认非加密。数据库创建完成后，此参数不允许直接修改。如需变更数据库加密状态，请调用[rekeyEx](arkts-apis-data-relationalStore-RdbStore.md#rekeyex22)接口进行更新操作。<br/> true：加密。<br/> false：非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | dataGroupId<sup>10+</sup> | string | 否 | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应的沙箱路径下创建RdbStore实例。<!--RP1End--><br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>从API version 10开始，支持此可选参数。dataGroupId共享沙箱的方式不支持多进程访问加密数据库，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
@@ -64,9 +64,9 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 资产的名称。 |
-| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径。 |
-| path | string | 否 | 否 | 资产在应用沙箱里的路径。 |
+| name | string | 否 | 否 | 资产的名称，长度不超过256字节。 |
+| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径，路径长度不超过1024字节。 |
+| path | string | 否 | 否 | 资产在应用沙箱里的路径，路径长度不超过1024字节。 |
 | createTime | string | 否 | 否 | 资产被创建出来的时间。 |
 | modifyTime | string | 否 | 否 | 资产最后一次被修改的时间。 |
 | size | string | 否 | 否 | 资产占用空间的大小。在端云同步机制中，本字段作为判定资产是否发生变更的关键依据之一，需确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数），避免因格式差异导致同步异常或误判。 |
@@ -204,7 +204,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| sql  | string | 否 | 否 | 表示执行的sql语句。 |
+| sql  | string | 否 | 否 | 表示执行的SQL语句。 |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否 | 否 | 表示执行SQL中的参数信息。 |
 
 ## ExceptionMessage<sup>20+</sup>
@@ -220,8 +220,8 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
-| message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
-| sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
+| message | string | 否 | 否 | 表示执行SQL返回的错误信息，长度不超过1024字节。 |
+| sql | string | 否 | 否 | 表示报错执行的SQL语句，长度不超过1024字节。 |
 
 ## TransactionOptions<sup>14+</sup>
 
@@ -239,7 +239,7 @@
 
 ## pluginLibs的使用约束和示例
 
-**使用约束：** <br/>1. 动态库名的数量限制最多为16个，如果超过该数量会开库失败，返回错误码14800000。<br/>2. 动态库名需为本应用沙箱路径下或系统路径下的动态库，如果动态库无法加载会开库失败，返回错误码14800010。<br/>3. 动态库名需为完整路径，用于被sqlite加载。路径由[context.bundleCodeDir+ "/libs/arm64/" + so名称]组成，其中context.bundleCodeDir是应用沙箱对应的路径，"libs"是固定目录，"arm64"是由系统架构确定的子目录，例如，系统架构为arm64-v8a时，子目录为"arm64"。<br/>样例：[context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]。当此参数不填时，默认不加载动态库。<br/>4. 动态库需要包含其全部依赖，避免依赖项丢失导致无法运行。<br/>例如：在ndk工程中，使用默认编译参数构建libtokenizer.so，此动态库依赖c++标准库。在加载此动态库时，由于namespace与编译时不一致，链接到了错误的libc++_shared.so，导致`__emutls_get_address`符号找不到。要解决此问题，需在编译时静态链接c++标准库，具体请参见[NDK工程构建概述](../../napi/build-with-ndk-overview.md)。<br/>
+**使用约束：** <br/>1. 动态库名的数量限制最多为16个，如果超过该数量会开库失败，返回错误码14800000。<br/>2. 动态库名需为本应用沙箱路径下或系统路径下的动态库，如果动态库无法加载会开库失败，返回错误码14800010。<br/>3. 动态库名需为完整路径，用于被SQLite加载。路径由[context.bundleCodeDir+ "/libs/arm64/" + so名称]组成，其中context.bundleCodeDir是应用沙箱对应的路径，"libs"是固定目录，"arm64"是由系统架构确定的子目录，例如，系统架构为arm64-v8a时，子目录为"arm64"。<br/>样例：[context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]。当此参数不填时，默认不加载动态库。<br/>4. 动态库需要包含其全部依赖，避免依赖项丢失导致无法运行。<br/>例如：在ndk工程中，使用默认编译参数构建libtokenizer.so，此动态库依赖c++标准库。在加载此动态库时，由于namespace与编译时不一致，链接到了错误的libc++_shared.so，导致`__emutls_get_address`符号找不到。要解决此问题，需在编译时静态链接c++标准库，具体请参见[NDK工程构建概述](../../napi/build-with-ndk-overview.md)。<br/>
 **使用pluginLibs加载开发者自定义分词器示例：** <br/> 1. 开发者需要实现一个FTS5可加载分词器扩展，并将其编译成so，编译可参考[使用命令行CMake构建NDK工程](../../napi/build-with-ndk-cmake.md)。<br/>2. 将生成的so文件拷贝到工程目录"entry/libs/"文件夹下的相应子目录中(没有相应目录时用户可自行创建)，子目录根据系统架构确定。例如，系统架构为arm64-v8a时，放置在"entry/libs/arm64-v8a"目录下；系统架构为armeabi-v7a时，放置在"entry/libs/armeabi-v7a"目录下。<br/>3. 加载自定义分词器。
 
 ```ts
@@ -336,7 +336,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |

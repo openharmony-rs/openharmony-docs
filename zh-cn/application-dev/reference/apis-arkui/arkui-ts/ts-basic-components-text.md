@@ -199,7 +199,7 @@ ArkTS-Sta: baselineOffset(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                             |
 | ------ | -------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp; undefined | 是   | 文本基线的偏移量。<br/>默认值：0 <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp; undefined | 是   | 文本基线的偏移量。<br/>默认值：0 <br/>单位：fp <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
 
 ### bindSelectionMenu<sup>11+</sup>
 
@@ -590,6 +590,12 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
 
+启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
+
+AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+
+AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -606,7 +612,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>取值为undefined时，按默认值处理。 |
+| enable  | boolean \| undefined | 是   | 是否对选中文本进行实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>取值为undefined时，按默认值处理。 |
 
 ### font<sup>10+</sup>
 
@@ -1411,7 +1417,7 @@ ArkTS-Sta: minLines(minLines: int | undefined)
 
 如果实际文本高度小于最小行数对应的高度，最后显示高度为最小行数对应的高度。
 
-与[maxLines](#maxlines)同时配置时，最小行高显示范围不会超过最大行高限制。
+与[maxLines](#maxlines)同时配置时，最小行数对应的显示高度不会超过最大行数对应的高度限制。
 
 如果文本设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
 
@@ -1793,7 +1799,7 @@ ArkTS-Sta: textContentAlign(textContentAlign: TextContentAlign | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textContentAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)><br/>ArkTS-Sta: [TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21) \| undefined | 是   | 文本段落在垂直方向的对齐方式。<br/>默认(undefined或异常值情况下)和align属性设置为Center效果一致。|
+| textContentAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)><br/>ArkTS-Sta: [TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21) \| undefined | 是   | 文本内容区在垂直方向的对齐方式。<br/>默认(undefined或异常值情况下)和align属性设置为Center效果一致。|
 
 ### textDirection<sup>23+</sup>
 
@@ -1845,7 +1851,7 @@ ArkTS-Sta: textIndent(value: Length | undefined)
 
 ### tailIndents
 
-ArkTS-Dyn: tailIndents(value: Optional\<LengthMetrics | Array\<LengthMetrics>>)
+ArkTS-Dyn: tailIndents(value: Optional<LengthMetrics | Array\<LengthMetrics>>)
 
 ArkTS-Sta: tailIndents(value: LengthMetrics | Array\<LengthMetrics> | undefined)
 
@@ -1865,7 +1871,7 @@ ArkTS-Sta: tailIndents(value: LengthMetrics | Array\<LengthMetrics> | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; <br/> ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| undefined | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。 <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;&gt; <br/> ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| undefined | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。 <br/>取值为undefined时，按默认值处理。|
 
 ### textOverflow
 
@@ -3978,8 +3984,6 @@ struct TextExample10 {
   @State str2: string = ""
   @State str3: string = ""
   @State str4: string = ""
-  textStyleAttrs: TextStyle =
-    new TextStyle({ fontWeight: FontWeight.Bolder, fontSize: LengthMetrics.vp(24), fontStyle: FontStyle.Italic });
   titleParagraphStyleAttr: ParagraphStyle =
     new ParagraphStyle({ paragraphSpacing: LengthMetrics.px(50), textIndent: LengthMetrics.vp(15) });
   mutableStyledString: MutableStyledString =
@@ -4608,3 +4612,31 @@ struct Index {
 ```
 
 ![tailIndents](figures/tailIndents.png)
+
+### 示例33（设置文本选择的AI菜单）
+
+该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+
+从API version 22开始，新增enableSelectedDataDetector。
+
+```ts
+@Entry
+@Component
+struct Demo33 {
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row(){
+        Text(this.exampleText)
+          .copyOption(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .padding(10)
+          .margin(10)
+      }
+    }.width('100%')
+  }
+}
+```
+<!--RP5--><!--RP5End-->

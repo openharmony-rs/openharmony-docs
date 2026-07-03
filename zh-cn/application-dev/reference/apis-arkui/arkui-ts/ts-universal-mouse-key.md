@@ -68,8 +68,8 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined): this
 | rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | eventHandleId<sup>24+</sup> | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### stopPropagation<sup>23+</sup>
@@ -162,10 +162,10 @@ ArkTS-Sta: default getHistoricalPoints(): MouseHistoricalPoint[] | undefined
  
 | 名称         | 类型        | 只读 | 可选 | 说明                                      |
 | ---------- | --------- | ---- | ---- | --------------------------------------- |
-| x          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的X坐标。<br>单位：vp          |
-| y          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的Y坐标。<br>单位：vp          |
-| displayX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的X坐标。<br>单位：vp            |
-| displayY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的Y坐标。<br>单位：vp            |
+| x          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的X坐标。<br>单位：vp          |
+| y          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的Y坐标。<br>单位：vp          |
+| displayX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于当前应用左上角的X坐标。<br>单位：vp            |
+| displayY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于当前应用左上角的Y坐标。<br>单位：vp            |
 | windowX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的X坐标。<br>单位：vp            |
 | windowY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
 | globalDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br>单位：vp  |
@@ -237,9 +237,6 @@ struct MouseEventExample {
             }
             // 判断触发的鼠标动作类型
             switch (event.action) {
-              case MouseAction.Hover:
-                this.action = 'Hover';
-                break;
               case MouseAction.Press:
                 this.action = 'Press';
                 break;
@@ -248,6 +245,12 @@ struct MouseEventExample {
                 break;
               case MouseAction.Release:
                 this.action = 'Release';
+                break;
+              case MouseAction.ENTER_WINDOW:
+                this.action = 'ENTER_WINDOW';
+                break;
+              case MouseAction.LEAVE_WINDOW:
+                this.action = 'LEAVE_WINDOW';
                 break;
             }
             // 拼接鼠标事件全量信息并展示

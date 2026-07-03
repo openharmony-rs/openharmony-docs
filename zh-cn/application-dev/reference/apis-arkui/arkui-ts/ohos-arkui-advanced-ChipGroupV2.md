@@ -1,9 +1,9 @@
 # ChipGroupV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @youzhi92-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroupV2组件提供操作块群组，用于文件或资源内容的分类等场景。
@@ -321,7 +321,7 @@ ChipGroupV2ItemStyleConfig定义了ChipV2的共通属性配置。
 
 ## ChipGroupV2Space
 
-ChipGroupV2Space定义了ChipGroupV2左右内边距，以及Chip与Chip之间的间距。
+ChipGroupV2Space定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距。
 
 ### 属性
 
@@ -371,7 +371,7 @@ ChipGroupV2Space的构造函数。
 
 ## ChipGroupV2SpaceConfig
 
-ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及Chip与Chip之间的间距配置。
+ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距配置。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -527,7 +527,7 @@ ChipGroupV2IconItemConfig定义了尾部builder接口配置，针对背板大小
 
 | 名称     | 类型                            | 只读 | 可选 | 说明                                    |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
-| icon     | [ChipV2ImageIconConfig](ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)    | 否  | 否  | 自定义尾部图标。<br/>Chip大小是ChipV2Size.SMALL时，图标尺寸为：{ width: 16, height: 16 }。<br/>Chip大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。 |
+| icon     | [ChipV2ImageIconConfig](ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)    | 否  | 否  | 自定义尾部图标。<br/>ChipV2大小是ChipV2Size.SMALL时，图标尺寸为：{ width: 16, height: 16 }。<br/>ChipV2大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。 |
 | action   | [Callback](ts-types.md#callback12)\<void>        | 否  | 否  | 自定义尾部图标的响应事件。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
@@ -1121,3 +1121,80 @@ struct Index {
 ```
 
 ![](figures/chipgroupv2_3.png)
+
+### 示例4（监听ChipGroupV2内对象类型属性的内部属性变化）
+
+[ChipGroupV2Items](#chipgroupv2items)、[ChipGroupV2Item](#chipgroupv2item)、[ChipGroupV2ItemStyle](#chipgroupv2itemstyle)等类使用了@ObservedV2装饰器，ChipGroupV2组件通过@Param接收各属性参数。对于@Trace装饰的基本类型属性（如ChipGroupV2Space的itemSpace等），@Param已能观测到属性变化并触发UI刷新，无需额外处理。但对于这些类中对象类型属性（如ChipGroupV2Item中prefixIcon的size）的内部属性，这些对象类型本身未被@ObservedV2装饰，其内部属性变化无法被@Param感知，导致修改内部属性时UI不会自动刷新。使用[makeObserved](../js-apis-stateManagement.md#makeobserved)接口对对象类型属性进行包裹，可以为该对象的内部属性补充深度观察能力。makeObserved接口的详细说明请参考[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。
+
+以下示例对比了两种场景：点击“修改itemSpace间距”按钮修改chipGroupSpace的itemSpace属性（@Trace装饰的基本类型属性，已支持观测），UI自动刷新；点击“修改图标大小”按钮修改ChipGroupV2Item中prefixIcon的size内部属性（对象类型属性的内部属性，需通过UIUtils.makeObserved包裹size才能观测），UI同样自动刷新。
+
+```ts
+import {
+  ChipGroupV2,
+  ChipGroupV2Items,
+  ChipGroupV2ItemStyle,
+  ChipGroupV2Space,
+  ChipGroupV2Padding,
+  LengthMetrics,
+  UIUtils
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local items: ChipGroupV2Items = new ChipGroupV2Items([
+    {
+      // 使用UIUtils.makeObserved包裹size，使内部属性width和height可被观测。
+      prefixIcon: {
+        src: $r('sys.media.ohos_ic_public_clock'),
+        size: UIUtils.makeObserved({ width: LengthMetrics.fp(16), height: LengthMetrics.fp(16) })
+      },
+      label: { text: '操作块1' }
+    },
+    {
+      label: { text: '操作块2' }
+    },
+    {
+      label: { text: '操作块3' }
+    }
+  ]);
+  // ChipGroupV2Space的内部属性已被@Trace装饰，无需makeObserved。
+  @Local chipGroupSpace: ChipGroupV2Space = new ChipGroupV2Space({ itemSpace: 8 });
+  @Local chipGroupPadding: ChipGroupV2Padding = new ChipGroupV2Padding({ top: 10, bottom: 10 });
+  @Local itemStyle: ChipGroupV2ItemStyle = new ChipGroupV2ItemStyle({});
+  @Local selectedIndexes: number[] = [];
+  @Local currentIconSize: number = 16;
+  @Local currentItemSpace: number = 8;
+
+  build() {
+    Column({ space: 10 }) {
+      ChipGroupV2({
+        items: this.items,
+        $items: (items: ChipGroupV2Items) => { this.items = items; },
+        itemStyle: this.itemStyle,
+        chipGroupSpace: this.chipGroupSpace,
+        chipGroupPadding: this.chipGroupPadding,
+        selectedIndexes: this.selectedIndexes,
+        $selectedIndexes: (indexes: number[]) => { this.selectedIndexes = indexes; },
+      })
+      // 修改@Trace装饰的基本类型属性，UI自动刷新。
+      Button('修改itemSpace间距')
+        .onClick(() => {
+          this.currentItemSpace = this.currentItemSpace === 8 ? 16 : 8;
+          this.chipGroupSpace.itemSpace = this.currentItemSpace;
+        })
+      // 修改对象类型属性的内部属性，由于makeObserved包裹，UI同样自动刷新。
+      Button('修改图标大小')
+        .onClick(() => {
+          if (this.items.length >= 1 && this.items[0] && this.items[0].prefixIcon && this.items[0].prefixIcon.size) {
+            this.currentIconSize = this.currentIconSize === 16 ? 30 : 16;
+            this.items[0].prefixIcon.size.width = LengthMetrics.fp(this.currentIconSize);
+            this.items[0].prefixIcon.size.height = LengthMetrics.fp(this.currentIconSize);
+          }
+        })
+    }
+  }
+}
+```
+
+![chipgroupv2-sample4](figures/chipgroupv2-make-observed.gif)

@@ -9,7 +9,7 @@
 
 ## 概述
 
-文件中定义了与矩阵相关的功能函数。
+文件中定义了与矩阵相关的功能函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 <!--RP1-->
 **相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
@@ -286,7 +286,7 @@ bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果设置失败，则返回false；如果设置成功，则返回true；如果矩阵为空，则返回true，并将矩阵设置为：<br> 如果源矩形src的宽高任意一个小于等于0，则返回false，并将矩阵设置为单位矩阵；<br> 如果目标矩形dst的宽高任意一个小于等于0，则返回true，并将矩阵设置为除透视缩放系数为1外其余值皆为0的矩阵; |
+| bool | 如果设置失败，则返回false；如果设置成功，则返回true；<br> 如果源矩形src的宽高任意一个小于等于0，则返回false，并将矩阵设置为单位矩阵；<br> 如果目标矩形dst的宽高任意一个小于等于0，则返回true，并将矩阵设置为除透视缩放系数为1外其余值皆为0的矩阵; |
 
 ### OH_Drawing_MatrixPreRotate()
 

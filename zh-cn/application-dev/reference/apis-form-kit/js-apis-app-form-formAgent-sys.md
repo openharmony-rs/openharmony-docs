@@ -56,7 +56,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
 
 **示例：**
 
@@ -79,13 +79,13 @@ let want: Want = {
 try {
   formAgent.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formAgent requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -115,7 +115,7 @@ try {
   formAgent.requestPublishForm(want, (error: BusinessError | null, data: string | undefined) => {
     if (error?.code !== 0) {
       hilog.error(DOMAIN, TAG,
-        `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message})`);
+        `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message}`);
       return;
     }
     console.info('testTag', `formAgent requestPublishForm callback success`);
@@ -123,7 +123,7 @@ try {
 } catch (e) {
   let code = e.code;
   let message = e.message;
-  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm callback error, code: ${code}, message: ${message})`);
+  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm callback error, code: ${code}, message: ${message}`);
 }
 ```
 
@@ -166,7 +166,7 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
 
 **示例：**
 
@@ -190,10 +190,10 @@ try {
   formAgent.requestPublishForm(want).then((data: string) => {
     console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -225,11 +225,11 @@ try {
   }).catch((e) => {
     let code = e.code;
     let message = e.message;
-    hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise error, code: ${code}, message: ${message})`);
+    hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise error, code: ${code}, message: ${message}`);
   });
 } catch (e) {
   let code = e.code;
   let message = e.message;
-  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise catch error, code: ${code}, message: ${message})`);
+  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise catch error, code: ${code}, message: ${message}`);
 }
 ```

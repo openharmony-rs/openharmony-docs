@@ -9,7 +9,7 @@
 
 ## 概述
 
-层叠布局（StackLayout）用于在屏幕上预留一块区域来显示组件中的元素，提供元素可以重叠的布局。层叠布局通过[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)容器组件实现位置的固定定位与层叠，容器中的子元素依次入栈，后一个子元素覆盖前一个子元素，子元素可以叠加，也可以设置位置。
+层叠布局（Stack）用于在屏幕上预留一块区域来显示组件中的元素，提供元素可以重叠的布局。层叠布局通过[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)容器组件实现位置的固定定位与层叠，容器中的子元素依次入栈，后一个子元素覆盖前一个子元素，子元素可以叠加，也可以设置位置。
 
 层叠布局具有较强的页面层叠、位置定位能力，其使用场景有广告、卡片层叠效果等。
 
@@ -95,9 +95,7 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 
   **图2** Stack容器内元素的对齐方式  
 
-![zh-cn_image_0000001562940621](figures/zh-cn_image_0000001562940621.png)
-
-ArkTS-Dyn示例：
+![stack2](figures/stack2.png)
 
 <!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
 
@@ -194,7 +192,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 ```
 
 
-![zh-cn_image_0000001511900544](figures/zh-cn_image_0000001511900544.png)
+![stackLayoutNozIndex](figures/stackLayoutNozIndex.png)
 
 上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1、子元素2的zIndex属性后，可以将元素展示出来。
 
@@ -243,7 +241,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 ```
 
 
-![zh-cn_image_0000001563060797](figures/zh-cn_image_0000001563060797.png)
+![stackLayoutzIndex](figures/stackLayoutzIndex.png)
 
 
 ## 场景示例
@@ -351,5 +349,5 @@ struct StackSample {
 
 
 
-![zh-cn_image_0000001511421368](figures/zh-cn_image_0000001511421368.png)
+![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 <!--RP1--><!--RP1End-->

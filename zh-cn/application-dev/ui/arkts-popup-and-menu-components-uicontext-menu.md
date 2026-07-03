@@ -12,6 +12,8 @@
 
 通过[openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18)可以弹出菜单。
    
+ ArkTS-Dyn示例：
+
  <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
  ``` TypeScript
@@ -26,22 +28,57 @@
      hilog.error(0xFF00, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
    });
  ```
+
+ ArkTS-Sta示例：
+
+ <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+ 
+ ``` TypeScript
+ this.getUIContext().getPromptAction()
+   .openMenu(this.contentNode, { id: targetId }, {
+     enableArrow: true
+   })
+   .then(() => {
+     hilog.info(DOMAIN, 'globalOpenMenu', 'openMenu success');
+   })
+   .catch((err) => {
+     hilog.error(DOMAIN, 'globalOpenMenu', 'openMenu error: %{public}s', err);
+   });
+ ```
  
  ![openMenu](figures/openMenu.gif)
 
 ### 创建ComponentContent
    
-   通过调用openMenu接口弹出菜单，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)说明。
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+  
+  ``` TypeScript
+  private contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(this.getUIContext(), wrapBuilder(buildText), this.message);
+  ```
    
-  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message);
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+  
+  ``` TypeScript
+  private contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(this.getUIContext(), wrapBuilder(buildText), this.message);
   ```
    
    如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
+ ArkTS-Dyn示例：
+
  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
  ``` TypeScript
@@ -93,6 +130,60 @@
  let contentNode: ComponentContent<Object> =
    new ComponentContent(uiContext, wrapBuilder(buildText), message, { nestingBuilderSupported: true });
  ```
+
+ ArkTS-Sta示例：
+
+ <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+ 
+ ``` TypeScript
+ @Builder
+ export function buildText(params: Params): void {
+   Popup({
+     // 类型设置图标内容
+     icon: {
+       // 请将$r('app.media.app_icon')替换为实际资源文件
+       image: $r('app.media.app_icon'),
+       width: 32,
+       height: 32,
+       fillColor: Color.White,
+       borderRadius: 10
+     } as PopupIconOptions,
+     // 设置文字内容
+     title: {
+       text: `This is a Popup title 1`,
+       fontSize: 20,
+       fontColor: Color.Black,
+       fontWeight: FontWeight.Normal
+     } as PopupTextOptions,
+     // 设置文字内容
+     message: {
+       text: `This is a Popup message 1`,
+       fontSize: 15,
+       fontColor: Color.Black
+     } as PopupTextOptions,
+     // 设置按钮内容
+     buttons: [{
+       text: 'confirm',
+       action: (): void => {
+         hilog.info(DOMAIN, 'globalOpenMenu', 'confirm button click');
+       },
+       fontSize: 15,
+       fontColor: Color.Black,
+     },
+       {
+         text: 'cancel',
+         action: (): void => {
+           hilog.info(DOMAIN, 'globalOpenMenu', 'cancel button click');
+         },
+         fontSize: 15,
+         fontColor: Color.Black
+       },] as [PopupButtonOptions | undefined, PopupButtonOptions | undefined]
+   })
+ }
+ 
+ let contentNode: ComponentContent<Params> =
+   new ComponentContent<Params>(uiContext, wrapBuilder(buildText), message);
+ ```
  
  
 
@@ -105,15 +196,28 @@
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
+   ArkTS-Dyn示例：
+
    <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
    let targetId = frameNode?.getChild(0)?.getUniqueId();
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+   
+   ``` TypeScript
+   let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
+   let targetId: int = frameNode?.getChild(0)?.getUniqueId() as int;
+   ```
    
 - target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
+   ArkTS-Dyn示例：
+
    <!-- @[openMenuWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets) -->
    
    ``` TypeScript
@@ -153,22 +257,76 @@
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[openMenuWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets) -->
+   
+   ``` TypeScript
+   build(): void {
+     NavDestination() {
+       Column() {
+         Row() {
+           Button('button1')
+             .id(this.targetIdString)
+         }
+   
+         Row() {
+           Button('button2')
+             .id(this.targetIdString)
+         }
+   
+         Button('openMenu')
+           .onClick((): void => {
+             let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+             let componentId: int = frameNode?.getChild(1)?.getChild(0)?.getChild(1)?.getUniqueId() as int;
+             if (componentId == undefined) {
+               this.componentId = 0;
+             } else {
+               this.componentId = componentId;
+             }
+             this.promptAction.openMenu(this.contentNode, { id: this.targetIdString, componentId: this.componentId }, {
+               enableArrow: true
+             })
+               .then(() => {
+                 hilog.info(DOMAIN, 'openMenuWithTargetIdString', 'openMenu success');
+               })
+               .catch((err) => {
+                 hilog.error(DOMAIN, 'openMenuWithTargetIdString', 'openMenu error: %{public}s', err);
+               });
+           })
+       }
+     }
+   }
+   ```
    
 
 ### 设置弹出菜单样式
    
    通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的属性调整菜单样式。title属性不生效。preview参数仅支持设置[MenuPreviewMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menupreviewmode11)类型。
    
+  ArkTS-Dyn示例：
+
   <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
   
   ``` TypeScript
   private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+  
+  ``` TypeScript
+  private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom } as MenuOptions;
+  ```
+
 ## 更新菜单样式
 
 从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
+ArkTS-Dyn示例：
+
 <!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 
 ``` TypeScript
@@ -183,6 +341,23 @@ this.getUIContext().getPromptAction()
     hilog.error(0xFF00, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
   });
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+
+``` TypeScript
+this.getUIContext().getPromptAction()
+  .updateMenu(this.contentNode, {
+    enableArrow: false
+  }, true)
+  .then(() => {
+    hilog.info(DOMAIN, 'globalOpenMenu', 'updateMenu success');
+  })
+  .catch((err) => {
+    hilog.error(DOMAIN, 'globalOpenMenu', 'updateMenu error: %{public}s', err);
+  });
+```
    
    ![openMenu](figures/openMenu.gif)
 
@@ -190,6 +365,8 @@ this.getUIContext().getPromptAction()
 
 从API version 18开始，通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
    
+ArkTS-Dyn示例：
+
 <!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
 
 ``` TypeScript
@@ -200,6 +377,21 @@ this.getUIContext().getPromptAction()
   })
   .catch((err: BusinessError) => {
     hilog.error(0xFF00, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
+  });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+
+``` TypeScript
+this.getUIContext().getPromptAction()
+  .closeMenu(this.contentNode)
+  .then(() => {
+    hilog.info(DOMAIN, 'globalOpenMenu', 'closeMenu success');
+  })
+  .catch((err) => {
+    hilog.error(DOMAIN, 'globalOpenMenu', 'closeMenu error: %{public}s', err);
   });
 ```
    

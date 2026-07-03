@@ -557,7 +557,7 @@ class DrawingRenderNode extends RenderNode {
     let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
     let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
     let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
-    canvas.drawShadow(path, point1, point2, 30.0, 0xFF0000FF, 0xFFFF0000, shadowFlag);
+    canvas.drawShadow(path, point1, point2, 30.0, (0xFF0000FF).toInt(), (0xFFFF0000).toInt(), shadowFlag);
   }
 }
 ```
@@ -828,10 +828,29 @@ class DrawingRenderNode extends RenderNode {
   pixelMap: image.PixelMap | null = null;
 
   draw(context : DrawContext) {
-    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.BGRA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
-    if (this.pixelMap != null) {
-      canvas.drawImage(this.pixelMap!, 0.0, 0.0, options);
+    if (pixelMap != null) {
+      canvas.drawImage(pixelMap, 0.0, 0.0, options);
     }
   }
 }
@@ -918,8 +937,27 @@ class DrawingRenderNode extends RenderNode {
     let pen = new drawing.Pen();
     canvas.attachPen(pen);
     let rect: common2D.Rect = { left: 0.0, top: 0.0, right: 200.0, bottom: 200.0 };
-    if (this.pixelMap != null) {
-      canvas.drawImageRect(this.pixelMap!, rect);
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
+      canvas.drawImageRect(pixelMap, rect);
     }
     canvas.detachPen();
   }
@@ -1009,10 +1047,30 @@ pixelMap: image.PixelMap | null = null;
     const canvas = context.canvas;
     let pen = new drawing.Pen();
     canvas.attachPen(pen);
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let srcRect: common2D.Rect = { left: 0.0, top: 0.0, right: 100.0, bottom: 100.0 };
     let dstRect: common2D.Rect = { left: 100.0, top: 100.0, right: 200.0, bottom: 200.0 };
-    if (this.pixelMap != null) {
-      canvas.drawImageRectWithSrc(this.pixelMap!, srcRect, dstRect);
+    if (pixelMap != null) {
+      canvas.drawImageRectWithSrc(pixelMap, srcRect, dstRect);
     }
     canvas.detachPen();
   }
@@ -1198,7 +1256,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    canvas.drawColor(0xff000a0a, drawing.BlendMode.CLEAR);
+    canvas.drawColor((0xff000a0a).toInt(), drawing.BlendMode.CLEAR);
   }
 }
 ```
@@ -1240,6 +1298,7 @@ ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Arr
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1262,6 +1321,35 @@ class DrawingRenderNode extends RenderNode {
     texsArray.push(texs2);
     texsArray.push(texs3);
     const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [(0xFFFF0000).toInt(), (0xFF00FF00).toInt(), (0xFF0000FF).toInt()];
     const indices = [0, 1, 2];
     canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
   }
@@ -1355,11 +1443,31 @@ class DrawingRenderNode extends RenderNode {
 
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    if (this.pixelMap != null) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
       const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
       canvas.attachBrush(brush);
       let verts : Array<double> = [0.0, 0.0, 50.0, 0.0, 410.0, 0.0, 0.0, 180.0, 50.0, 180.0, 410.0, 180.0, 0.0, 360.0, 50.0, 360.0, 410.0, 360.0]; // 18
-      canvas.drawPixelMapMesh(this.pixelMap!, 2, 2, verts, 0, [0xFFFFFFFF,0xFFEFFFFF,0xFFFFEFFF,0xFFFFFFEF,0xFFFFFF00,0xFFEFFFF,0xFFEFFFF,0xFFEFFFF,0xFFEFFFF], 0);
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, [(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt()], 0);
       canvas.detachBrush();
     }
   }
@@ -1466,7 +1574,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let color: int = 0xffff0000;
+    let color: int = (0xffff0000).toInt();
     canvas.clear(color);
   }
 }
@@ -2252,8 +2360,31 @@ ArkTS-Sta: drawSingleCharacterWithFeatures(text: string, font: Font, x: double, 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    let fontFeatures : Array<drawing.FontFeature> = [];
+    fontFeatures.push({name: 'calt', value: 0});
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
+    canvas.detachBrush();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -4239,8 +4370,8 @@ class DrawingRenderNode extends RenderNode {
     let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 4, 4);
     let dst: common2D.Rect = { left: 100, top: 0, right: 164, bottom: 64 };
     let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
-    canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
-    canvas.drawImageLattice(pixelMap, lattice, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+    canvas.drawImageLattice(pixelMap, lattice!, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageLattice(pixelMap, lattice!, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
   }
 }
 ```

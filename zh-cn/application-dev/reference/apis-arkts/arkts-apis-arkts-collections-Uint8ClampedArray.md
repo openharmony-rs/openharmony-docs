@@ -35,7 +35,7 @@ import { collections } from '@kit.ArkTS';
 | byteLength | number | 是   | 否   | ArkTS Uint8ClampedArray所占的字节数。|
 | byteOffset | number | 是   | 否   | ArkTS Uint8ClampedArray距离其ArrayBuffer起始位置的偏移。|
 | length | number | 是   | 否  | ArkTS Uint8ClampedArray元素个数。|
-| BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint8ClampedArray中每个元素所占用的字节数。|
+| BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint8ClampedArray中每个元素所占的字节数。|
 
 ## constructor
 constructor()
@@ -452,7 +452,7 @@ let copied: collections.Uint8ClampedArray = array.copyWithin(3, 1, 3);
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint8ClampedArray>): boolean
 
-测试ArkTS Uint8ClampedArray中的是否存在元素满足指定条件。
+测试ArkTS Uint8ClampedArray中是否存在元素满足指定条件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -316,7 +316,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp<br/>超出取值范围按默认值处理。                                            |
-| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120vp <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设置环形进度条总刻度数。<br/><br/>默认值：120 <br/>取值范围：[2, min(width, height)*π/scaleWidth]，超出取值范围时，样式显示为环形无刻度进度条。当总刻度数为120、刻度粗细为2vp时，设置组件宽度或高度小于77vp会显示为环形无刻度进度条。  |
 | scaleWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## CapsuleStyleOptions<sup>10+</sup>
@@ -395,7 +395,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp                                            |
-| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120vp <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)*π/scaleWidth]，超出取值范围时，样式显示为环形无刻度进度条。当总刻度数为120、刻度粗细为2vp时，设置组件宽度或高度小于77vp会显示为环形无刻度进度条。  |
 | scaleWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## EclipseStyleOptions<sup>10+</sup>
@@ -680,7 +680,6 @@ function myProgress(config: ProgressConfiguration) {
 struct Index {
   @State currentValue: number = 0;
   modifier = new MyProgressModifier('rgb(39, 135, 217)');
-  @State myModifier: (MyProgressModifier | undefined) = this.modifier;
 
   build() {
     Column() {

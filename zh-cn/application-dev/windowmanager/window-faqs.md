@@ -265,9 +265,9 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#free-multi-window-mode自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由窗口](window-terminology.md#freeform-window自由窗口)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
-> - 在2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
+> - 在PC/2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
 示例代码如下所示：
 
@@ -492,7 +492,7 @@ module.json5配置示例如下：
   | 名称 | 值 | 说明 |
   | -------- | -------- | -------- |
   | UNDEFINED | 0 | 表示APP未定义窗口模式。 |
-  | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
+  | FULL_SCREEN | 1 | 表示APP全屏模式。<br>[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
   | MAXIMIZE | 2 | 表示APP窗口最大化模式，在PC/2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
   | MINIMIZE | 3 | 表示APP窗口最小化模式。 |
   | FLOATING | 4 | 表示APP自由悬浮窗口模式。 |

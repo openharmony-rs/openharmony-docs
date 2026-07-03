@@ -41,6 +41,8 @@
 
 创建并显示操作菜单后，菜单的响应结果会异步返回选中按钮在[buttons](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions)数组中的索引。
 
+ArkTS-Dyn示例：
+
 <!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
 
 ``` TypeScript
@@ -91,6 +93,57 @@ export struct ShowActionMenuExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
+
+``` TypeScript
+
+@Entry
+@Component
+export struct ShowActionMenuExample {
+  build(): void {
+    // ...
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('ShowActionMenu')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showActionMenu({
+                  title: 'showActionMenu Title Info',
+                  buttons: [
+                    {
+                      text: 'item1',
+                      color: '#666666'
+                    },
+                    {
+                      text: 'item2',
+                      color: '#000000'
+                    },
+                  ] as promptAction.PromptActionDoubleButtons
+                })
+                  .then(data => {
+                    hilog.info(DOMAIN, 'testTag', 'showActionMenu success, click button: %{public}d', data.index);
+                  })
+                  .catch((err) => {
+                    hilog.error(DOMAIN, 'testTag', 'showActionMenu error: %{public}s', err);
+                  })
+              } catch (error) {
+              }
+            })
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      // ...
+  }
+}
+```
+
 ![image](figures/UIContextShowMenu.gif)
 
 ## 对话框 (showDialog)
@@ -100,6 +153,8 @@ export struct ShowActionMenuExample {
 对话框中，title字段的字体最大放大倍数为2。
 
 创建并显示对话框，对话框响应后异步返回选中按钮在buttons数组中的索引。
+
+ArkTS-Dyn示例：
 
 <!-- @[show_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets) -->
 
@@ -157,6 +212,72 @@ export struct ShowDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[show_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  Column,
+  ColumnOptions,
+  Button,
+  NavDestination,
+  Entry,
+  Component,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { PromptAction } from '@ohos.arkui.UIContext'
+
+const DOMAIN: int = 0x0000;
+
+@Entry
+@Component
+export struct ShowDialogExample {
+  build(): void {
+    // ...
+      Column({ space: 12 } as ColumnOptions) {
+        Column() {
+          Button('ShowDialog')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showDialog({
+                  title: 'showDialog Title Info',
+                  message: 'Message Info',
+                  buttons: [
+                    {
+                      text: 'button1',
+                      color: '#000000'
+                    },
+                    {
+                      text: 'button2',
+                      color: '#000000'
+                    }
+                  ]
+                }, (err, data): void => {
+                  if (err) {
+                    hilog.error(DOMAIN, 'testTag', 'showDialog err: %{public}s', err);
+                    return;
+                  }
+                });
+              } catch (error) {
+                hilog.error(DOMAIN, 'testTag', 'showdialog args error: %{public}s', error);
+              }
+            })
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+      // ...
+  }
+}
+```
+
 ![image](figures/UIShowDialog.gif)
 
 ## 选择器弹窗 (PickerDialog)
@@ -170,6 +291,8 @@ export struct ShowDialogExample {
 日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](arkts-global-interface.md#ui上下文不明确)的地方使用，具体约束参见[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
 
 通过配置[CalendarDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md#calendardialogoptions对象说明)中的acceptButtonStyle、cancelButtonStyle属性可以实现自定义按钮样式。
+
+ArkTS-Dyn示例：
 
 <!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
 
@@ -224,6 +347,61 @@ export struct CalendarDialog {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
+
+``` TypeScript
+// xxx.ets
+
+@Entry
+@Component
+export struct CalendarDialog {
+  private selectedDate: Date = new Date('2024-04-23');
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('Show CalendarPicker Dialog')
+            .margin(20)
+            .onClick(() => {
+              hilog.info(DOMAIN, 'testTag', 'CalendarDialog.show');
+              CalendarPickerDialog.show({
+                selected: this.selectedDate,
+                acceptButtonStyle: {
+                  fontColor: '#2787d9',
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                cancelButtonStyle: {
+                  fontColor: Color.Red,
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                onAccept: (date: Date): void => {
+                  // 当弹出框再次弹出时显示选中的是上一次确定的日期
+                  this.selectedDate = date;
+                }
+              })
+            })
+        }.width('100%')
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ...
+    // 请将$r('app.string.CustomDialog_calender')替换为实际资源文件，在本示例中该资源文件的value值为"日历选择器弹窗"
+    .title($r('app.string.CustomDialog_calender'))
+  }
+}
+```
+
 
 ![image](figures/UIContextShowCalendarpickerDialog.gif)
 
@@ -234,6 +412,8 @@ export struct CalendarDialog {
 日期滑动选择器弹窗通过UIContext中的[showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)接口实现。
 
 弹窗中配置[DatePickerDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
+
+ArkTS-Dyn示例：
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
@@ -276,11 +456,56 @@ export struct DatePickerDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
+
+``` TypeScript
+
+@Entry
+@Component
+export struct DatePickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('showDatePickerDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showDatePickerDialog({
+                start: new Date('2000-1-1'),
+                end: new Date('2100-12-31'),
+                selected: this.selectTime,
+                lunarSwitch: true,
+                showTime: true,
+                onDateAccept: (value: Date): void => {
+                  this.selectTime = value;
+                  hilog.info(DOMAIN, 'testTag', 'DatePickerDialog:onAccept()' + JSON.stringify(value));
+                },
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ...
+  }
+}
+```
+
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
+
+ArkTS-Dyn示例：
 
 <!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
 
@@ -324,6 +549,50 @@ export struct DatePickerCustomDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
+
+``` TypeScript
+
+@Entry
+@Component
+export struct DatePickerCustomDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('showDatePickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date('2000-1-1'),
+              end: new Date('2100-12-31'),
+              selected: this.selectTime,
+              textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
+              selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
+              acceptButtonStyle: {
+                fontColor: '#2787d9',
+                fontSize: '16fp',
+                backgroundColor: '#f7f7f7',
+                borderRadius: 10
+              },
+              cancelButtonStyle: {
+                fontColor: Color.Red,
+                fontSize: '16fp',
+                backgroundColor: '#f7f7f7',
+                borderRadius: 10
+              }
+            })
+          })
+      }.width('100%').margin({ top: 5 })
+    }
+    // ...
+    }
+}
+```
+
 ![image](figures/UIShowDatePickerDialog.gif)
 
 ### 时间滑动选择器弹窗 (TimePickerDialog)
@@ -333,6 +602,8 @@ export struct DatePickerCustomDialogExample {
 时间滑动选择器弹窗通过UIContext中的[showTimePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)接口实现。
 
 该示例通过配置[disappearTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#disappeartextstyle10)、[textStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#textstyle10)、[selectedTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#selectedtextstyle10)、[acceptButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)、[cancelButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions对象说明)实现了自定义文本以及按钮样式。
+
+ArkTS-Dyn示例：
 
 <!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
 
@@ -379,6 +650,53 @@ export struct TimePickerDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
+
+``` TypeScript
+// xxx.ets
+
+@Entry
+@Component
+export struct TimePickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('showTimePickerDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showTimePickerDialog({
+                selected: this.selectTime,
+                textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
+                selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
+                acceptButtonStyle: {
+                  fontColor: '#2787d9',
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                cancelButtonStyle: {
+                  fontColor: Color.Red,
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                }
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+      }
+      // ...
+    }
+    // ...
+  }
+}
+```
+
 ![image](figures/UIContextShowTimepickerDialog.gif)
 
 ### 文本滑动选择器弹窗 (TextPickerDialog)
@@ -388,6 +706,8 @@ export struct TimePickerDialogExample {
 文本滑动选择器弹窗通过UIContext中的[showTextPickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)接口实现。
 
 该示例通过设置[range](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#textpickeroptions对象说明)的参数类型为[TextCascadePickerRangeContent](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#textcascadepickerrangecontent10对象说明)[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过[onAccept](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptions对象说明)返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
+
+ArkTS-Dyn示例：
 
 <!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
 
@@ -436,6 +756,54 @@ export struct TextPickerCNDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct TextPickerCNDialogExample {
+  private fruits: Array<TextCascadePickerRangeContent> = [
+    {
+      text: '辽宁省',
+      children: [{ text: '沈阳市', children: [{ text: '沈河区' }, { text: '和平区' }, { text: '浑南区' }] },
+        { text: '大连市', children: [{ text: '中山区' }, { text: '金州区' }, { text: '长海县' }] }]
+    },
+    {
+      text: '吉林省',
+      children: [{ text: '长春市', children: [{ text: '南关区' }, { text: '宽城区' }, { text: '朝阳区' }] },
+        { text: '四平市', children: [{ text: '铁西区' }, { text: '铁东区' }, { text: '梨树县' }] }]
+    },
+    {
+      text: '黑龙江省',
+      children: [{ text: '哈尔滨市', children: [{ text: '道里区' }, { text: '道外区' }, { text: '南岗区' }] },
+        { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
+    }
+  ];
+  private select: int = 0;
+
+  build(): void {
+    // ...
+      Column() {
+        Button('showTextPickerDialog')
+        // ...
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult): void => {
+                this.select = value.index as int
+              }
+            } as TextPickerDialogOptions);
+          })
+      }.width('100%').margin({ top: 5 })
+      // ...
+  }
+}
+```
+
 ![image](figures/UIShowTextPickerDialog.gif)
 
 ## 列表选择弹窗 (ActionSheet)
@@ -447,6 +815,8 @@ export struct TextPickerCNDialogExample {
 列表选择弹窗中，title字段的字体最大放大倍数为2。
 
 该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)等接口，定义了弹窗的样式以及弹出动效。
+
+ArkTS-Dyn示例：
 
 <!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
 
@@ -522,6 +892,82 @@ export struct showActionSheetExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct showActionSheetExample {
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('showActionSheet')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showActionSheet({
+                title: 'ActionSheet title',
+                message: 'message',
+                autoCancel: false,
+                width: 300,
+                height: 300,
+                cornerRadius: 20,
+                borderWidth: 1,
+                borderStyle: BorderStyle.Solid,
+                borderColor: Color.Blue,
+                backgroundColor: Color.White,
+                transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                  .animation({ duration: 3000, curve: Curve.Sharp })
+                  .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 })
+                  .animation({ duration: 3000, curve: Curve.Sharp })),
+                  TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                    .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                    .animation({ duration: 100, curve: Curve.Smooth }))),
+                confirm: {
+                  value: 'Confirm button',
+                  action: () => {
+                    hilog.info(DOMAIN, 'testTag', 'Get Alert Dialog handled');
+                  }
+                },
+                alignment: DialogAlignment.Center,
+                sheets: [
+                  {
+                    title: 'apples',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'bananas',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'pears',
+                    action: () => {
+                      hilog.info(DOMAIN, 'testTag', 'pears');
+                    }
+                  }
+                ]
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.CustomDialog_ActionSheet')替换为实际资源文件，在本示例中该资源文件的value值为"列表选择弹窗"
+    .title($r('app.string.CustomDialog_ActionSheet'))
+  }
+}
+```
+
 
 ![image](figures/UIContextShowactionSheet.gif)
 
@@ -537,6 +983,8 @@ export struct showActionSheetExample {
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
 该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
+
+ArkTS-Dyn示例：
 
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
@@ -585,6 +1033,69 @@ export struct showAlertDialogExample {
                       }
                     }],
                 }
+              )
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.CustomDialog_AlertDialog')替换为实际资源文件，在本示例中该资源文件的value值为"警告弹窗"
+    .title($r('app.string.CustomDialog_AlertDialog'))
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct showAlertDialogExample {
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Column() {
+          Button('showAlertDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showAlertDialog(
+                {
+                  title: 'title',
+                  message: 'text',
+                  autoCancel: true,
+                  alignment: DialogAlignment.Center,
+                  offset: { dx: 0, dy: -20 },
+                  gridCount: 3,
+                  transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                    .animation({ duration: 3000, curve: Curve.Sharp })
+                    .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 })
+                    .animation({ duration: 3000, curve: Curve.Sharp })),
+                    TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                      .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                      .animation({ duration: 100, curve: Curve.Smooth }))),
+                  buttons: [{
+                    value: 'cancel',
+                    action: () => {
+                      hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
+                    }
+                  },
+                    {
+                      enabled: true,
+                      defaultFocus: true,
+                      style: DialogButtonStyle.HIGHLIGHT,
+                      value: 'ok',
+                      action: () => {
+                        hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
+                      }
+                    }],
+                } as AlertDialogParamWithOptions
               )
             })
         }.width('100%').margin({ top: 5 })

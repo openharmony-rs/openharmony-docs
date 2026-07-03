@@ -1,4 +1,10 @@
 # applyStyles：定义组件重用样式（ArkTS-ST）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 如果每个组件的样式都需要单独设置，在开发过程中会出现大量代码在进行重复样式设置，虽然可以复制粘贴，但为了代码简洁性和后续方便维护，我们推出了可以提炼公共样式进行复用的方法applyStyles。
 
@@ -32,8 +38,9 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 - 定义在组件内的Styles方法可以通过this访问组件的常量和状态变量，并可以在Styles方法里通过事件来改变状态变量的值，示例如下：
 
   ``` TypeScript
-  import { ClickEvent, Color, Component, CommonMethod } from '@ohos.arkui.component';
-  import { State } from '@ohos.arkui.stateManagement';
+  'use static'
+
+  import { ClickEvent, Color, Component, CommonMethod, State } from '@kit.ArkUI';
 
   @Component
   struct FancyUse {
@@ -75,10 +82,10 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 
 ### 组件内Styles方法和全局Styles方法的用法
 
-<!-- @[ApplyStylesFancy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ApplyStyles/entry/src/main/ets/pages/ApplyStylesFancy.ets) -->
+<!-- @[ApplyStylesFancy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ApplyStyles/entry/src/main/ets/pages/ApplyStylesFancy.ets) --> 
+
 ``` TypeScript
-import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles, State } from '@kit.ArkUI';
 
 // 定义在全局的Styles方法
 function globalFancy  (instance: CommonMethod) {
@@ -107,11 +114,16 @@ struct FancyUse {
       Text('FancyA')
         .applyStyles(globalFancy)
         .fontSize(30)
+        .margin(10)
       // 使用组件内的Styles方法
       Text('FancyB')
         .applyStyles(this.fancy)
         .fontSize(30)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-apply-styles-0](./figures/arkts-apply-styles-0.gif)

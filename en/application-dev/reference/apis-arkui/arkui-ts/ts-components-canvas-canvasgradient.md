@@ -66,7 +66,7 @@ This example shows how to add a color stop using **addColorStop**. Colors in RGB
     }
   }
   ```
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.jpeg)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
  
  ## addColorStop<sup>20+</sup>
@@ -154,5 +154,5 @@ struct AddColorStop {
     .height('100%')
   }
 }
-  ```
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032517.png)
+```
+![addColorStop](figures/addColorStop.png)

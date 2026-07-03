@@ -39,7 +39,7 @@ Web媒体策略的配置。
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
 | resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
 | audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>                    |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -89,7 +89,7 @@ Web媒体策略的配置。
 
 ## NativeMediaPlayerConfig<sup>12+</sup>
 
-用于[开启应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的配置信息。
+用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -526,6 +526,10 @@ Web同层渲染的配置。
 ## VerifyPinEvent<sup>22+</sup>
 定义当需要用户进行PIN码认证时触发回调。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
@@ -716,7 +720,7 @@ Web同层渲染的配置。
 | ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
-| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br/>ArkTS-Sta:  [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
 | permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 

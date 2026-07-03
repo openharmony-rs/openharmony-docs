@@ -59,7 +59,7 @@ text{
 ```
 
 
-![zh-cn_image_0000001181495038](figures/zh-cn_image_0000001181495038.gif)
+![swiper-Component](figures/swiper-Component.gif)
 
 
 > **说明：** 
@@ -120,7 +120,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001181655292](figures/zh-cn_image_0000001181655292.gif)
+![Adding-Attributes](figures/Adding-Attributes.gif)
 
 > **说明：**
 > - 设置indicator（是否启用导航点指示器）属性为true时digital（是否启用数字导航点）属性才会生效。
@@ -186,12 +186,12 @@ text{
 }
 ```
 
-![zh-cn_image_0000001226896657](figures/zh-cn_image_0000001226896657.gif)
+![Setting-Style-1](figures/Setting-Style-1.gif)
 
 
 ## 绑定事件
 
-创建两个text组件添加点击事件，当点击后就调用showPrevious（显示上一个子组件）或showNext（显示下一个子组件）方法。添加select组件下拉选择时触发change事件后调用swipeTo方法跳转到指定轮播页面。swiper组件绑定change（当前显示的组件索引变化时触发）和finish（切换动画结束时触发）事件。
+创建两个button组件添加点击事件，当点击后就调用showPrevious（显示上一个子组件）或showNext（显示下一个子组件）方法。添加select组件下拉选择时触发change事件后调用swipeTo方法跳转到指定轮播页面。swiper组件绑定change（当前显示的组件索引变化时触发）和finish（切换动画结束时触发）事件。
 
 
 ```html
@@ -288,7 +288,7 @@ export default{
 }
 ```
 
-![zh-cn_image_0000001227016767](figures/zh-cn_image_0000001227016767.gif)
+![Binding-Event-5](figures/Binding-Event-5.gif)
 
 
 ## 场景示例
@@ -369,7 +369,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263359599](figures/zh-cn_image_0000001263359599.gif)
+![Example-Scenario-13](figures/Example-Scenario-13.gif)
 
 
 ## 相关实例

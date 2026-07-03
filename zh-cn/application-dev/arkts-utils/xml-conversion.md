@@ -77,8 +77,6 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    }
    ```
 
-   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
-
 3. 调用fastConvertToJSObject函数并打印结果。
 
    <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  

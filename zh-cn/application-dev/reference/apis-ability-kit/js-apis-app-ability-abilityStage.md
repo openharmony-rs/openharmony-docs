@@ -294,8 +294,8 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 **ArkTS-Sta起始版本：** 23
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -339,8 +339,8 @@ onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 **ArkTS-Sta起始版本：** 23
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 

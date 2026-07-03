@@ -254,7 +254,7 @@ static setImageCacheCount(value: number): void
 
 setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-setImageCacheCount、setImageRawDataCacheSize、和setImageFileCacheSize并不灵活，后续不继续演进，对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进，对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -412,7 +412,7 @@ static requestFullWindow(options?: RequestFullWindowOptions): void
 
 | 参数名  | 类型                                                  | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [RequestFullWindowOptions](#requestfullwindowoptions) | 否   | 请求全屏时，设定非全屏到全屏的过渡时间，单位为毫秒，默认时间与非全屏到全屏的距离成正比。 |
+| options | [RequestFullWindowOptions](#requestfullwindowoptions) | 否   | 请求全窗口时，设定非全窗口到全窗口的过渡时间，单位为毫秒，默认时间与非全窗口到全窗口的距离成正比。 |
 
 **示例：**
 

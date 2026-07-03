@@ -81,7 +81,7 @@
   @Entry
   @Component
   struct WindowRefGridLayout {
-    @State currentBp: string = "unknown"
+    @State currentBp: string = 'unknown'
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -130,6 +130,8 @@
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -145,31 +147,41 @@
   @Entry
   @Component
   struct WindowRefGridLayout {
+    @State currentBp: string = 'unknown'
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
   
     build() {
-      GridRow({
-        columns: {
-          xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
-          sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
-          md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
-          lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
-          xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
-          xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
-        },
-        breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
-          reference: BreakpointsReference.WindowSize
+      Column({ space: 6 }) {
+        Text(this.currentBp)
+
+        GridRow({
+          columns: {
+            xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
+            sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
+            md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
+            lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
+            xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
+            xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
+          },
+          breakpoints: {
+            value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+            reference: BreakpointsReference.WindowSize
+          }
+        }) {
+          ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+            GridCol({ span: 1 }) { // 所有子组件占一列。
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }.backgroundColor(color)
+          })
         }
-      }) {
-        ForEach(this.bgColors, (color: string, index: Int) => {
-          GridCol({ span: 1 }) { // 所有子组件占一列。
-            Row() {
-              Text(index.toString())
-            }.width('100%').height('50vp')
-          }.backgroundColor(color)
+        .height(200)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .onBreakpointChange((breakPoint) => {
+          this.currentBp = breakPoint
         })
       }
     }
@@ -177,7 +189,7 @@
   ```
 
 
-  ![zh-cn_image_0000001511421272](figures/zh-cn_image_0000001511421272.gif)
+  ![breakpoints2](figures/breakpoints2.gif)
 
 
 ### 布局的总列数
@@ -259,11 +271,11 @@ GridRow中通过columns设置栅格布局的总列数。
 
     API version 20之前布局显示：
 
-    ![zh-cn_image_0000001563060709](figures/zh-cn_image_0000001563060709.png)
+    ![columns3](figures/columns3.png)
     
     API version 20及以后布局显示（以sm设备为例，默认栅格列数为4）：
     
-    ![zh-cn_image_0000001563060710](figures/zh-cn_image_0000001563060710.png)
+    ![columns4](figures/columns4.png)
 
 
 columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型, 可按两种方式设置栅格布局的总列数。
@@ -314,6 +326,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -321,7 +335,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     GridRowOptions,
     GridCol,
     GridColOptions,
-    ForEach
+    ForEach,
+    ItemAlign
   } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   
@@ -332,23 +347,27 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 4 }) {
-          ForEach(this.bgColors, (item: string, index: Int) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 } as ColumnOptions) {
+        Text('columns：4').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 4 }) {
+            ForEach(this.bgColors, (item: string, index?: int | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -399,6 +418,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -406,7 +427,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     GridRowOptions,
     GridCol,
     GridColOptions,
-    ForEach
+    ForEach,
+    ItemAlign
   } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   
@@ -419,27 +441,31 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
         'rgb(255,192,0)', 'rgb(170,10,33)'];
     @State currentBp: string = 'unknown';
     build() {
-      Row() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (item: string, index: Int) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 } as ColumnOptions) {
+        Text('columns：8').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (item: string, index?: int | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
 
 
-    ![zh-cn_image_0000001511421268](figures/zh-cn_image_0000001511421268.png)
+    ![columns](figures/columns.png)
 
 - 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
 
@@ -526,11 +552,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
-    ![zh-cn_image_0000001563060689](figures/zh-cn_image_0000001563060689.gif)
+    ![gridLayoutColumnOption](figures/gridLayoutColumnOption.gif)
 
     API version 20及以后布局显示（xs设备继承sm设备栅格列数）：
 
-    ![zh-cn_image_0000001563060689](figures/zh-cn_image_0000001563060690.gif)
+    ![gridLayoutColumnOption2](figures/gridLayoutColumnOption2.gif)
 
   仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)）取默认值。
 
@@ -559,7 +585,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     ```
 
 
-    ![zh-cn_image_0000001511740488](figures/zh-cn_image_0000001511740488.png)
+    ![gridLayoutDirectionRow](figures/gridLayoutDirectionRow.png)
 
 - 子组件从右往左排列。
 
@@ -581,7 +607,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     ```
 
 
-    ![zh-cn_image_0000001562940517](figures/zh-cn_image_0000001562940517.png)
+    ![gridLayoutDirectionRowReverse](figures/gridLayoutDirectionRowReverse.png)
 
 
 ### 子组件间距
@@ -608,7 +634,7 @@ GridRow中通过[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.m
     ```
 
 
-    ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
+    ![gridLayoutGutterToNumber](figures/gridLayoutGutterToNumber.png)
 
 - 当gutter类型为[GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption)时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
@@ -630,7 +656,7 @@ GridRow中通过[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.m
     ```
 
 
-    ![zh-cn_image_0000001511900456](figures/zh-cn_image_0000001511900456.png)
+    ![gridLayoutGutterOption](figures/gridLayoutGutterOption.png)
 
 
 ## 子组件GridCol
@@ -841,12 +867,14 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
             .backgroundColor(color)
           })
         }
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .height('150vp')
       }
     }
     ```
 
 
-    ![zh-cn_image_0000001511421264](figures/zh-cn_image_0000001511421264.png)
+    ![span](figures/span.png)
 
 - 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)）取默认值。
 
@@ -859,7 +887,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct SpanColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown'
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -903,6 +931,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     import {
       Entry,
       Component,
+      Column,
+      ColumnOptions,
       Row,
       RowOptions,
       Text,
@@ -917,27 +947,44 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct SpanColumnOptionExample {
+      @State currentBp: string = 'unknown'
       @State bgColors: string[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
     
       build() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (color: string, index: Int) => {
-            GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+        Column({ space: 6 } as ColumnOptions) {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+              GridCol({
+                span: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                }
+              }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .height('150vp')
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
       }
     }
     ```
 
 
-    ![zh-cn_image_0000001511740492](figures/zh-cn_image_0000001511740492.gif)
+    ![gridColSpanToOption](figures/gridColSpanToOption.gif)
 
 
 ### offset
@@ -986,6 +1033,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     import {
       Entry,
       Component,
+      Column,
+      ColumnOptions,
       Row,
       RowOptions,
       Text,
@@ -993,7 +1042,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       GridRowOptions,
       GridCol,
       GridColOptions,
-      ForEach
+      ForEach,
+      Blank
     } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
     
@@ -1003,24 +1053,28 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       @State bgColors: string[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color: string, index: Int) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
     }
     ```
 
 
-    ![zh-cn_image_0000001563060705](figures/zh-cn_image_0000001563060705.png)
+    ![offset](figures/offset.png)
 
   在lg及以上尺寸的设备上，栅格分成12列，每一个子组件占1列，偏移2列，每个子组件及间距共占3列，1行放4个子组件。
 
@@ -1035,7 +1089,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct OffsetColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown'
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -1116,7 +1170,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ```
 
 
-    ![zh-cn_image_0000001562700433](figures/zh-cn_image_0000001562700433.gif)
+    ![offset3](figures/offset3.gif)
 
 
 ### order
@@ -1189,11 +1243,10 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           Text('4')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(39,135,217)')
-    }
+    }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp')
     ```
 
-
-    ![zh-cn_image_0000001511580892](figures/zh-cn_image_0000001511580892.png)
+    ![gridColOrderToNumber](figures/gridColOrderToNumber.png)
 
 - 当order类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234；sm为2341，md为3412，lg为2431。
 
@@ -1310,7 +1363,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ```
 
 
-    ![zh-cn_image_0000001511900444](figures/zh-cn_image_0000001511900444.gif)
+    ![order](figures/order.gif)
 
 
 ## 栅格组件的嵌套使用
@@ -1422,7 +1475,7 @@ struct GridRowExample {
 
 
 
-![zh-cn_image_0000001563060697](figures/zh-cn_image_0000001563060697.png)
+![gridRowExample](figures/gridRowExample.png)
 
 
 综上所述，栅格组件提供了丰富的自定义能力，功能非常灵活和强大。只需要明确栅格在不同断点下的[columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)、[margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)及[span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)等参数，即可确定最终布局，无需关心具体的设备类型及设备状态（如横竖屏）等。

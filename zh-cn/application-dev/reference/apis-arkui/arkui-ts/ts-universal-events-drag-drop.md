@@ -27,7 +27,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## onDragStart
 
@@ -943,7 +943,7 @@ ArkTS-Sta: getGlobalDisplayX(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：(-∞, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
@@ -967,7 +967,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
 
 ## DragResult<sup>10+</sup>枚举说明
 
@@ -1026,7 +1026,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 
 ## UnifiedData<sup>10+</sup>
 
-ArkTS-Dyn: type UnifiedData = UnifiedData
+ArkTS-Dyn: type UnifiedData = import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData
 
 ArkTS-Sta: type UnifiedData = unifiedDataChannel.UnifiedData
 
@@ -1044,11 +1044,11 @@ ArkTS-Sta: type UnifiedData = unifiedDataChannel.UnifiedData
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)<br/>ArkTS-Sta: unifiedDataChannel.[UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) |  拖拽相关的数据。|
+| ArkTS-Dyn: import('../api/@ohos.data.unifiedDataChannel').default.[UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)<br/>ArkTS-Sta: unifiedDataChannel.[UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) |  拖拽相关的数据。|
 
 ## Summary<sup>10+</sup>
 
-ArkTS-Dyn: type Summary = Summary
+ArkTS-Dyn: type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary
 
 ArkTS-Sta: type Summary = unifiedDataChannel.Summary
 
@@ -1066,11 +1066,11 @@ ArkTS-Sta: type Summary = unifiedDataChannel.Summary
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary)<br/>ArkTS-Sta: unifiedDataChannel.[Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
+| ArkTS-Dyn: import('../api/@ohos.data.unifiedDataChannel').default.[Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary)<br/>ArkTS-Sta: unifiedDataChannel.[Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
 
 ## DataLoadParams<sup>20+</sup>
 
-ArkTS-Dyn: type DataLoadParams = DataLoadParams
+ArkTS-Dyn: type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams
 
 ArkTS-Sta: type DataLoadParams = unifiedDataChannel.DataLoadParams
 
@@ -1088,11 +1088,11 @@ ArkTS-Sta: type DataLoadParams = unifiedDataChannel.DataLoadParams
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)<br/>ArkTS-Sta: unifiedDataChannel.[DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20) | 落入操作时使用的数据加载参数。|
+| ArkTS-Dyn: import('../api/@ohos.data.unifiedDataChannel').default.[DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)<br/>ArkTS-Sta: unifiedDataChannel.[DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20) | 落入操作时使用的数据加载参数。|
 
 ## DataSyncOptions<sup>15+</sup>
 
-ArkTS-Dyn: type DataSyncOptions = GetDataParams
+ArkTS-Dyn: type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams
 
 ArkTS-Sta: type DataSyncOptions = unifiedDataChannel.GetDataParams
 
@@ -1110,7 +1110,7 @@ ArkTS-Sta: type DataSyncOptions = unifiedDataChannel.GetDataParams
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15)<br/>ArkTS-Sta: unifiedDataChannel.[GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
+| ArkTS-Dyn: import('../api/@ohos.data.unifiedDataChannel').default.[GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15)<br/>ArkTS-Sta: unifiedDataChannel.[GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
 
 ## OnDragEventCallback<sup>15+</sup>
 
@@ -1155,7 +1155,7 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
-ArkTS-Dyn: type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
+ArkTS-Dyn: type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration
 
 ArkTS-Sta: type DragSpringLoadingConfiguration = dragController.DragSpringLoadingConfiguration
 
@@ -1173,11 +1173,11 @@ ArkTS-Sta: type DragSpringLoadingConfiguration = dragController.DragSpringLoadin
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)<br/>ArkTS-Sta: dragController.[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
+| ArkTS-Dyn: import('../api/@ohos.arkui.dragController').default.[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)<br/>ArkTS-Sta: dragController.[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
 
 ## SpringLoadingContext<sup>20+</sup>
 
-ArkTS-Dyn: type SpringLoadingContext = SpringLoadingContext
+ArkTS-Dyn: type SpringLoadingContext = import('../api/@ohos.arkui.dragController').default.SpringLoadingContext
 
 ArkTS-Sta: type SpringLoadingContext = dragController.SpringLoadingContext
 
@@ -1195,7 +1195,7 @@ ArkTS-Sta: type SpringLoadingContext = dragController.SpringLoadingContext
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)<br/>ArkTS-Sta: dragController.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
+| ArkTS-Dyn: import('../api/@ohos.arkui.dragController').default.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)<br/>ArkTS-Sta: dragController.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
 
 ## 示例
 
@@ -1877,6 +1877,8 @@ struct Index {
 
 从API version 20开始，示例6展示了通过[onDragSpringLoading](#ondragspringloading20)接口注册回调，并调用[SpringLoadingContext](#springloadingcontext20)接口获取上下文（当前状态、通知序列）。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1950,6 +1952,88 @@ struct Index {
       }, this.config)
       .id("column")
       .backgroundColor(Color.Grey)
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, State, $r, dragController, Column, Row, Text, Image } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State targetText: string = 'Drag Text';
+  @State state: number = 0;
+  @State currentNotifySequence: number = 0;
+  @State config: dragController.DragSpringLoadingConfiguration = {
+    stillTimeLimit: 200,
+    updateInterval: 300,
+    updateNotifyCount: 4,
+    updateToFinishInterval: 300
+  } as dragController.DragSpringLoadingConfiguration;
+
+  build() {
+    Row() {
+      Column() {
+        Text('start Drag')
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.startIcon'))
+          .id("ori_image")
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('当前状态是： ' + this.state)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+        Text('当前通知序列是： ' + this.currentNotifySequence)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+      }
+      .width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+          .id("text")
+        Image("")
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .border({ color: '#000000', width: 2 })
+          .onDragSpringLoading((context: dragController.SpringLoadingContext): void => {
+            this.state = context.state;
+            this.currentNotifySequence = context.currentNotifySequence;
+          }, this.config)
+      }
+      .width('45%')
+      .height('100%')
+      .margin({ left: '5%' })
+      .onDragSpringLoading((context: dragController.SpringLoadingContext): void => {
+        this.state = context.state;
+        this.currentNotifySequence = context.currentNotifySequence;
+      }, this.config)
+      .id("column")
+      .backgroundColor('#808080')
     }
     .height('100%')
   }

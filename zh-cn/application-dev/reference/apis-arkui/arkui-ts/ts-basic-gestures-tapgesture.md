@@ -105,8 +105,8 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 | windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getCurrentLocalPosition
 
@@ -168,7 +168,7 @@ struct TapGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174422900](figures/zh-cn_image_0000001174422900.gif)
+![tapGesture1](figures/tapGesture1.gif)
 
 ### 示例2（获取单击手势坐标）
 

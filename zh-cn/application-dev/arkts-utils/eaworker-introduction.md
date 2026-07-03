@@ -1,4 +1,4 @@
-# EAWorker简介
+# EAWorker简介 (ArkTS-Sta)
 <!--Kit: ArkTS-->
 <!--Subsystem: Utils-->
 <!--Owner: @MofengMa-->

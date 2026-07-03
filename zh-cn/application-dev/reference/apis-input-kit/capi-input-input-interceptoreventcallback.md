@@ -36,30 +36,11 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)](#input_keyeventcallback) | Input_KeyEventCallback() | 按键事件的回调函数，keyEvent的生命周期为回调函数内。 |
 | [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback() | 鼠标事件的回调函数，mouseEvent的生命周期为回调函数内。 |
 | [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback() | 触屏输入事件的回调函数，touchEvent的生命周期为回调函数内。 |
 | [typedef void (\*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)](#input_axiseventcallback) | Input_AxisEventCallback() | 轴事件的回调函数，axisEvent的生命周期为回调函数内。 |
 
 ## 成员函数说明
-
-### Input_KeyEventCallback()
-
-```c
-typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
-```
-
-**描述**
-
-按键事件的回调函数，keyEvent的生命周期为回调函数内。
-
-**起始版本：** 12
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| const [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | 按键事件对象。 |
 
 ### Input_MouseEventCallback()
 

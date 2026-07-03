@@ -208,7 +208,7 @@ prop.get() // == 49
 
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
-<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
+<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -242,13 +242,17 @@ struct TestStorageProp {
     Column({ space: 20 }) {
       // @StorageLink与AppStorage建立双向联系，更改数据会同步回AppStorage中key为'propA'的值
       Text(`storageLink ${this.storageLink}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageLink += 1;
         })
 
       // @StorageProp与AppStorage建立单向联系，更改数据不会同步回AppStorage中key为'propA'的值
-      // 但能被AppStorage的set/setorCreate更新值
+      // 但能被AppStorage的set/setOrCreate更新值
       Text(`storageProp ${this.storageProp}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageProp += 1;
         })
@@ -256,30 +260,39 @@ struct TestStorageProp {
       // AppStorage的API虽然能获取值，但是不具有刷新UI的能力，日志能看到数值更改
       // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
       Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           hilog.info(DOMAIN, TAG, `Appstorage.get: ${AppStorage.get<number>('propA')}`);
           AppStorage.set<number>('propA', 100);
         })
 
       Text(`storageLinkObject ${this.storageLinkObject.code}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageLinkObject.code += 1;
         })
 
       Text(`storagePropObject ${this.storagePropObject.code}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storagePropObject.code += 1;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-demo-0](figures/appstorage-demo-0.gif)
 
 ### AppStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。[Text](../arkts-common-components-text-display.md)组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) --> 
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->  
 
 ``` TypeScript
 @Component
@@ -290,15 +303,24 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink接口初始化，@StorageLink取值')
+        .fontSize(20)
+        .margin(10)
       // linkA为null时，点击后会切换为1；linkA为1时，点击后会切换为null
-      Text(`${this.linkA}`).fontSize(20).onClick(() => {
-        this.linkA ? this.linkA = null : this.linkA = 1;
-      })
-      Text(`${this.linkB}`).fontSize(20).onClick(() => {
-        this.linkB ? this.linkB = undefined : this.linkB = 1;
-      })
+      Text(`${this.linkA}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.linkA ? this.linkA = null : this.linkA = 1;
+        })
+      Text(`${this.linkB}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.linkB ? this.linkB = undefined : this.linkB = 1;
+        })
     }
     .borderWidth(3).borderColor(Color.Red)
+    .width('100%')
   }
 }
 
@@ -310,14 +332,23 @@ struct StoragePropComponent {
   build() {
     Column() {
       Text('@StorageProp接口初始化，@StorageProp取值')
-      Text(`${this.propA}`).fontSize(20).onClick(() => {
-        this.propA ? this.propA = null : this.propA = 1;
-      })
-      Text(`${this.propB}`).fontSize(20).onClick(() => {
-        this.propB ? this.propB = undefined : this.propB = 1;
-      })
+        .fontSize(20)
+        .margin(10)
+      Text(`${this.propA}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.propA ? this.propA = null : this.propA = 1;
+        })
+      Text(`${this.propB}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.propB ? this.propB = undefined : this.propB = 1;
+        })
     }
     .borderWidth(3).borderColor(Color.Blue)
+    .width('100%')
   }
 }
 
@@ -337,11 +368,13 @@ struct TestPageStorageLink {
 }
 ```
 
+![appstorage-demo-1](figures/appstorage-demo-1.gif)
+
 ### 装饰Array类型变量
 
 在下面的示例中，@StorageLink装饰的message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[appstorage_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets) -->
+<!-- @[appstorage_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -358,36 +391,39 @@ struct ArraySample {
       })
       // 新增数组元素，触发UI刷新
       Button('Push element')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.push(4);
         })
-        .width(300)
-        .margin(10)
       // 删除数组元素，触发UI刷新
       Button('Pop element')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.pop();
         })
-        .width(300)
-        .margin(10)
       // 对数组整体重新赋值，触发UI刷新
       Button('Reset array')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = [9, 8, 7, 6];
         })
-        .width(300)
-        .margin(10)
       // 更新数组元素，触发UI刷新
       Button('Modify element[0]')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message[0] = 10;
         })
-        .width(300)
-        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-demo-2](figures/appstorage-demo-2.gif)
 
 ### 装饰Date类型变量
 
@@ -397,7 +433,7 @@ struct ArraySample {
 
 在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) --> 
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -408,22 +444,26 @@ struct DateSample {
   build() {
     Column() {
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick(() => {
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
       // 点击Button更新selectedDate年份数据，触发视图刷新
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
@@ -438,6 +478,8 @@ struct DateSample {
 }
 ```
 
+![appstorage-demo-3](figures/appstorage-demo-3.gif)
+
 ### 装饰Map类型变量
 
 > **说明：**
@@ -446,7 +488,7 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) --> 
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -458,26 +500,45 @@ struct MapSample {
     Row() {
       Column() {
         ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
+          Text(`${item[0]}`)
+            .fontSize(30)
+            .margin(10)
+          Text(`${item[1]}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 点击Button初始化message
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the existing one').onClick(() => {
-          AppStorage.get<Map<number, string>>('map')?.delete(0);
-        })
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(4, 'd');
+          })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(0, 'aa');
+          })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            AppStorage.get<Map<number, string>>('map')?.delete(0);
+          })
       }
       .width('100%')
     }
@@ -486,6 +547,7 @@ struct MapSample {
 }
 ```
 
+![appstorage-demo-4](figures/appstorage-demo-4.gif)
 
 ### 装饰Set类型变量
 
@@ -495,7 +557,7 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) --> 
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -509,22 +571,31 @@ struct SetSample {
         ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 点击Button初始化memberSet
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             AppStorage.get<Set<number>>('set')?.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.delete(0);
           })
@@ -536,11 +607,13 @@ struct SetSample {
 }
 ```
 
+![appstorage-demo-5](figures/appstorage-demo-5.gif)
+
 ### AppStorage在多页面中共享使用
 
 在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
 
-<!-- @[appstorage_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[appstorage_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 AppStorage.setOrCreate('linkA', 47)
@@ -560,20 +633,28 @@ struct Index {
           Text(`${this.linkA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Text(`${this.propB}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('Change linkA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改将会被同步回AppStorage
               this.linkA++;
             })
           Button('Change propB')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改不会被同步回AppStorage
               this.propB++;
             })
           Button('To Page')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pushPathByName('Page', null);
             })
@@ -586,7 +667,7 @@ struct Index {
 }
 ```
 
-<!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) --> 
+<!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) -->  
 
 ``` TypeScript
 @Builder
@@ -608,20 +689,28 @@ struct Page {
           Text(`${this.linkA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Text(`${this.propB}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('Change linkA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改将会被同步回AppStorage
               this.linkA++;
             })
           Button('Change propB')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改不会被同步回AppStorage
               this.propB++;
             })
           Button('Back Index')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pop();
             })
@@ -653,6 +742,8 @@ struct Page {
 }
 ```
 
+![appstorage-demo-6](figures/appstorage-demo-6.gif)
+
 ## AppStorage使用建议
 
 ### 不建议借助@StorageLink的双向同步机制实现事件通知
@@ -663,7 +754,7 @@ struct Page {
 
 使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制@Watch函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->  
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -707,7 +798,7 @@ struct Gallery {
         })
       }.columnsTemplate('1fr 1fr')
     }
-
+    .width('100%')
   }
 }
 
@@ -754,7 +845,7 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
@@ -856,6 +947,11 @@ export struct TapImage {
     });
   }
 
+  aboutToDisappear(): void {
+    let innerEvent: emitter.InnerEvent = { eventId: this.index };
+    emitter.off(innerEvent.eventId);
+  }
+
   build() {
     Column() {
       Image(this.uri)
@@ -869,7 +965,7 @@ export struct TapImage {
 
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->  
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->   
 
 ``` TypeScript
 
@@ -909,7 +1005,7 @@ struct Gallery {
         })
       }.columnsTemplate('1fr 1fr')
     }
-
+    .width('100%')
   }
 }
 
@@ -945,7 +1041,7 @@ export struct TapImage {
 
 使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。示例如下。
 
-<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
+<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -970,16 +1066,23 @@ struct PageStorageProp {
   build() {
     Column() {
       Text(`${this.propA}`)
+        .fontSize(20)
+        .margin(10)
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
           // 输出当前this.propA的值
           hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-demo-7](figures/appstorage-demo-7.gif)
 
 上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 

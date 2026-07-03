@@ -25,11 +25,12 @@
 
 ## 接口说明
 
-这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[@ohos.ai.mindSporeLite (推理能力)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)。
+这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[@ohos.ai.mindSporeLite (端侧AI框架)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |
 | loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt; | 从路径加载模型。 |
+| loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt; | 从内存加载模型。 |
 | getInputs(): MSTensor[]                                      | 获取模型的输入。 |
 | predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;       | 推理模型。       |
 | getData(): ArrayBuffer                                       | 获取张量的数据。 |
@@ -77,10 +78,9 @@
    3. 加载数据。模型执行之前需要先获取输入，再向输入的张量中填充数据。
    4. 执行推理。使用predict接口进行模型推理。
    
-   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) -->
-
-   ```typescript
-   // model.ets
+   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) --> 
+   
+   ``` TypeScript
    import { mindSporeLite } from '@kit.MindSporeLiteKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -118,14 +118,13 @@
 
 1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
 
-2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md)（实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)（实现基础文件操作）API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 
 3. 加载模型文件，调用推理函数，对相册选择的图片进行推理，并对推理结果进行处理。
 
-   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```typescript
-   // Index.ets
+   ``` TypeScript
    import modelPredict from './model';
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -148,16 +147,19 @@
      @State maxIndex: number = 0;
      @State maxArray: Array<number> = [];
      @State maxIndexArray: Array<number> = [];
+     // ...
    
      build() {
        Row() {
          Column() {
            Text(this.modelPredict)
+           // ...
            Button() {
              Text('photo')
                .fontSize(30)
                .fontWeight(FontWeight.Bold)
            }
+           // ...
            .onClick(() => {
              let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
              if (resMgr === null || resMgr === undefined){
@@ -325,7 +327,6 @@
        .height('100%')
      }
    }
-   
    ```
 
 ### 调测验证

@@ -4,7 +4,7 @@
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 打包工具用于在程序编译完成后，对编译出的文件等进行打包，以供安装发布。开发者可以使用DevEco Studio进行打包，也可使用打包工具的JAR包进行打包，JAR包通常存放在SDK路径下的toolchains目录中。
 
@@ -1160,7 +1160,7 @@ Check shared App mode invalid.
 
 1. 存在两个以上的[HSP包](../quick-start/in-app-hsp.md)。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
 
-    ![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
+    ![alt text](figures/error-causes.png)
 
 2. HSP包在`module.json5`中配置了`dependencies`。
 

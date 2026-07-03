@@ -4,20 +4,22 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的垂直线性布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
 该组件支持嵌套懒加载容器[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)、及其自身LazyColumnLayout。
 
+更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - LazyColumnLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+> - LazyColumnLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](ts-universal-attributes-size.md#height)、[size](ts-universal-attributes-size.md#size)中的height、[constraintSize](ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](ts-universal-attributes-size.md#layoutweight)，以及[height](ts-universal-attributes-size.md#height15)取[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15)值的场景。
 > - 当父组件设置主轴方向尺寸时，LazyColumnLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyColumnLayout会被内容撑开，导致所有子组件都会被加载布局。
 > - 该组件在不同父组件下的懒加载支持条件如下：
->   1. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
+>   1. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 >   2. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用该组件会导致应用崩溃。
 >   3. 在WaterFlow组件下，要求WaterFlow组件布局方向必须是竖直方向（即[layoutDirection](ts-container-waterflow.md#layoutdirection)属性设置为FlexDirection.Column），在非竖直方向的WaterFlow中使用该组件会导致应用崩溃。当WaterFlow为多列模式或布局方向为FlexDirection.Row、FlexDirection.RowReverse时，该组件的懒加载功能会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
 > - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
@@ -67,7 +69,7 @@ space(space: LengthMetrics | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| space  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 子组件在垂直方向上的间距。<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
+| space  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 子组件在垂直方向上的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
 
 ### alignItems
 
@@ -216,6 +218,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 ```ts
 import { LengthMetrics, LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 
+// 关注列表数据结构
 class Follow {
   name: string;
   image: Resource;
@@ -228,6 +231,7 @@ class Follow {
   }
 }
 
+// 推荐列表数据结构
 class Recommend {
   name: string;
   icon: Resource;
@@ -285,6 +289,7 @@ struct LazyColumnLayoutSample1 {
         LazyColumnLayout() {
           Text('关注列表：')
 
+          // 嵌套LazyColumnLayout展示双列关注列表
           LazyColumnLayout() {
             ForEach(this.followPairs, (pair: Follow[], rowIndex: number) => {
               Row({ space: 12 }) {
@@ -307,6 +312,7 @@ struct LazyColumnLayoutSample1 {
 
           Text('推荐的人：')
 
+          // 使用独立LazyColumnLayout展示推荐列表
           LazyColumnLayout() {
             ForEach(this.recommend, (item: Recommend, index: number) => {
               Row() {
@@ -351,6 +357,7 @@ struct LazyColumnLayoutSample1 {
 <!--code_no_check-->
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -364,6 +371,7 @@ struct LazyColumnLayoutStickyDemo {
     }
   }
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Row() {
@@ -408,6 +416,7 @@ struct LazyColumnLayoutStickyDemo {
       }
       .header(this.HeaderBuilder)
       .footer(this.FooterBuilder)
+      // 设置头部和尾部同时吸附
       .sticky(StickyStyle.BOTH)
     }
     .width('100%')

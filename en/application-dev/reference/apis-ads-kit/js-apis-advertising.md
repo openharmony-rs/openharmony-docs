@@ -6,15 +6,17 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=ea2d8082679fb01eb444ae8d25a7681c82490ad7 translatedAt=2026-05-25T07:02:07.946Z pushedAt=2026-05-27T13:10:01.965Z -->
 
 The advertising module provides APIs for requesting and displaying ads.
 
-> **NOTE**<br>
+> **Note:**
+> 
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
 ```
 
@@ -30,11 +32,11 @@ Shows a full-screen ad.
 
 **Parameters**
 
-| Name | Type                                                                                        | Mandatory| Description                                                              |
-|---------|----------------------------------------------------------------------------------------------|-----|------------------------------------------------------------------|
-| ad      | [Advertisement](#advertisement)                                                              | Yes  | Ad object.                                                         |
-| options | [AdDisplayOptions](#addisplayoptions)                                                        | Yes  | Ad display parameters.                                                     |
-| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | No  | Context of the UIAbility. If this parameter is not set, the value is obtained from @ohos.app.ability.common.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| ad      | [Advertisement](#advertisement)                                                              | Yes   | Ad object.                                                          |
+| options | [AdDisplayOptions](#addisplayoptions)                                                        | Yes   | Ad display parameters.                                                      |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | No   | Context of the UIAbility. If not set, it is obtained from the api: [@ohos.app.ability.common](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-app-ability-common). |
 
 **Error codes**
 
@@ -42,15 +44,21 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                               |
 |----------|-----------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                                  |
 | 21800004 | Failed to display the ad.                                                               |
+
+> **Note:**
+> 
+> 1. To ensure that ads can be displayed correctly, this API must be used together with the ad request API.
+> 
+> 2. This API only supports displaying rewarded ads and interstitial ads.
 
 **Example**
 
 For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 
@@ -66,16 +74,16 @@ function showAd(ad: advertising.Advertisement, context?: common.UIAbilityContext
 
 getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise&lt;string&gt;
 
-Obtains the body of an ad request. This API uses a promise to return the result.
+Obtains the body of an ad request. This API uses a promise to return the result (this API is only open to some pre-installed system applications).
 
 **System capability**: SystemCapability.Advertising.Ads
 
 **Parameters**
 
-| Name   | Type                                 | Mandatory| Description         |
-|-----------|---------------------------------------|-----|-------------|
-| adParams  | [AdRequestParams[]](#adrequestparams) | Yes  | Ad request parameters.|
-| adOptions | [AdOptions](#adoptions)               | Yes  | Ad configuration options.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| adParams  | [AdRequestParams[]](#adrequestparams) | Yes   | Ad request parameters.<br/>**Note:** The **adId** parameter of this API can be empty. |
+| adOptions | [AdOptions](#adoptions)               | Yes   | Ad configuration parameters. |
 
 **Return value**
 
@@ -87,23 +95,26 @@ Obtains the body of an ad request. This API uses a promise to return the result.
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| ID| Error Message                                                                                                                                               |
-|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801      | Device not supported.                                                                                                                                   |
-| 21800001 | System internal error.                                                                                                                                  |
+| Error Code ID | Error Message | 
+| -------- | -------- |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Device not supported. | 
+| 21800001 | System internal error. | 
 
 **Example**
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function getAdRequestBody(adRequestParamsArray: advertising.AdRequestParams[]): void {
+async function getAdRequestBody(adRequestParamsArray: advertising.AdRequestParams[]): Promise<void> {
   // Ad configuration options. You can set the options based on the project requirements.
   const adOptions: advertising.AdOptions = {};
-  advertising.getAdRequestBody(adRequestParamsArray, adOptions).then((data: string) => {
+  await advertising.getAdRequestBody(adRequestParamsArray, adOptions).then((data: string) => {
     hilog.info(0x0000, 'testTag', `Succeeded in getting ad request body. Data is ${data}`);
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'testTag', `Failed to get ad request body. Code is ${error.code}, message is ${error.message}`);
   });
 }
 ```
@@ -112,25 +123,25 @@ function getAdRequestBody(adRequestParamsArray: advertising.AdRequestParams[]): 
 
 parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void
 
-Parses the body of an ad response.
+Parses and processes the body of an ad response (this API is only open to some pre-installed system applications).
 
 **System capability**: SystemCapability.Advertising.Ads
 
 **Parameters**
 
-| Name    | Type                                                                                        | Mandatory| Description                  |
-|------------|----------------------------------------------------------------------------------------------|-----|----------------------|
-| adResponse | string                                                                                       | Yes  | Ad response body.           |
-| listener   | [MultiSlotsAdLoadListener](#multislotsadloadlistener)                                        | Yes  | Ad request callback.     |
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | UIAbility context.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| adResponse | string                                                                                       | Yes   | Ad response body.            |
+| listener   | [MultiSlotsAdLoadListener](#multislotsadloadlistener)                                        | Yes   | Callback listener for ad requests.      |
+| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of the UIAbility. |
 
 **Error codes**
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| ID| Error Message                                                                                                                                               |
-|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| Error Code ID | Error Message | 
+| -------- | -------- |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
 | 801      | Device not supported.                                                                                                                                   |
 | 21800001 | System internal error.                                                                                                                                  |
 | 21800005 | Failed to parse the ad response.                                                                                                                        |
@@ -139,7 +150,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -166,7 +177,7 @@ function parseAdResponse(adResponse: string, context: common.UIAbilityContext): 
 
 registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void
 
-Injects an ad JavaScript object to the **Web** component.
+Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -174,10 +185,10 @@ Injects an ad JavaScript object to the **Web** component.
 
 **Parameters**
 
-| Name    | Type                                                                                        | Mandatory| Description                  |
-|------------|----------------------------------------------------------------------------------------------|-----|----------------------|
-| controller | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md)         | Yes  | Controller of the **Web** component.        |
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | UIAbility context.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| controller | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md)         | Yes   | Web component controller.         |
+| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of the UIAbility. |
 
 **Error codes**
 
@@ -185,12 +196,12 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                               |
 |----------|-----------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                                  |
 
 **Example**
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
@@ -207,6 +218,7 @@ struct Index {
         .onClick(() => {
           advertising.registerWebAdInterface(this.webViewController, this.context);
         })
+      // ...
 
       Web({ src: 'https://www.example.com', controller: this.webViewController })
     }
@@ -220,7 +232,7 @@ struct Index {
 
 registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, needRefresh: boolean): void
 
-Injects an ad JavaScript object to the **Web** component.
+Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications).
 
 **Atomic service API**: This API can be used in atomic services since API version 16.
 
@@ -228,11 +240,11 @@ Injects an ad JavaScript object to the **Web** component.
 
 **Parameters**
 
-| Name     | Type                                                                                        | Mandatory| Description                                       |
-|-------------|----------------------------------------------------------------------------------------------|-----|-------------------------------------------|
-| controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md)         | Yes  | Controller of the **Web** component.                             |
-| context     | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | UIAbility context.                     |
-| needRefresh | boolean                                                                                      | Yes  | Whether a page needs to be refreshed. (The value **true** means that a page needs to be refreshed; the value **false** means the opposite.)|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md)         | Yes   | Web component controller.                              |
+| context     | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of the UIAbility.                      |
+| needRefresh | boolean                                                                                      | Yes   | Whether to refresh the page (true: yes; false: no). |
 
 **Error codes**
 
@@ -245,7 +257,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
@@ -258,6 +270,7 @@ struct Index {
 
   build() {
     Column() {
+      // ...
       Button('registerWebAdInterface')
         .onClick(() => {
           advertising.registerWebAdInterface(this.webViewController, this.context, true);
@@ -275,7 +288,7 @@ struct Index {
 
 deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boolean): void
 
-Deletes the ad JavaScript object injected through **registerWebAdInterface**.
+Deletes the ad JavaScript object injected through **registerWebAdInterface** (this API is only open to some pre-installed system applications).
 
 **Atomic service API**: This API can be used in atomic services since API version 16.
 
@@ -283,10 +296,10 @@ Deletes the ad JavaScript object injected through **registerWebAdInterface**.
 
 **Parameters**
 
-| Name     | Type                                                                                | Mandatory| Description                                       |
-|-------------|--------------------------------------------------------------------------------------|-----|-------------------------------------------|
-| controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | Yes  | Controller of the **Web** component.                             |
-| needRefresh | boolean                                                                              | Yes  | Whether a page needs to be refreshed. (The value **true** means that a page needs to be refreshed; the value **false** means the opposite.)|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | Yes   | Web component controller.                              |
+| needRefresh | boolean                                                                              | Yes   | Whether to refresh the page (true: yes; false: no). |
 
 **Error codes**
 
@@ -299,7 +312,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
 
@@ -343,17 +356,18 @@ Constructor.
 
 **Parameters**
 
-| Name | Type                                                                      | Mandatory| Description                             |
-|---------|----------------------------------------------------------------------------|-----|---------------------------------|
-| context | common.[Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability or application.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| context | common.[Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Context of the ability or application. |
 
 **Example**
 
-For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
+For details about how to obtain the context, see [Acquisition of Various Contexts](../../application-models/application-context-stage.md#acquisition-of-context).
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
+// ...
 
 function createAdLoader(context: common.Context): void {
   const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
@@ -372,32 +386,33 @@ Loads an ad.
 
 **Parameters**
 
-| Name   | Type                               | Mandatory| Description             |
-|-----------|-------------------------------------|-----|-----------------|
-| adParam   | [AdRequestParams](#adrequestparams) | Yes  | Ad request parameters.    |
-| adOptions | [AdOptions](#adoptions)             | Yes  | Ad configuration options.    |
-| listener  | [AdLoadListener](#adloadlistener)   | Yes  | Ad request callback.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| adParam   | [AdRequestParams](#adrequestparams) | Yes   | Ad request parameters.     |
+| adOptions | [AdOptions](#adoptions)             | Yes   | Ad configuration parameters.     |
+| listener  | [AdLoadListener](#adloadlistener)   | Yes   | Callback listener for ad requests. |
 
 **Error codes**
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| ID| Error Message                                                                                                                                              |
-|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
-| 801      | Device not supported.                                                                                                                                  |
-| 21800001 | System internal error.                                                                                                                                 |
-| 21800003 | Failed to load the ad request.                                                                                                                         |
+| Error Code ID | Error Message | 
+| -------- | -------- |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Device not supported. | 
+| 21800001 | System internal error. | 
+| 21800003 | Failed to load the ad request. | 
 
 **Example**
 
-For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
+For details about how to obtain the context, see [Acquisition of Various Contexts](../../application-models/application-context-stage.md#acquisition-of-context).
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// ...
 function loadAd(context: common.Context, adRequestParams: advertising.AdRequestParams): void {
   // Ad configuration options. You can set the options based on the project requirements.
   const adOptions: advertising.AdOptions = {};
@@ -431,32 +446,33 @@ Loads multiple ads.
 
 **Parameters**
 
-| Name   | Type                                                 | Mandatory| Description             |
-|-----------|-------------------------------------------------------|-----|-----------------|
-| adParams  | [AdRequestParams](#adrequestparams)[]                 | Yes  | Ad request parameters.    |
-| adOptions | [AdOptions](#adoptions)                               | Yes  | Ad configuration options.    |
-| listener  | [MultiSlotsAdLoadListener](#multislotsadloadlistener) | Yes  | Ad request callback.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| adParams  | [AdRequestParams](#adrequestparams)[]                 | Yes   | Ad request parameters.     |
+| adOptions | [AdOptions](#adoptions)                               | Yes   | Ad configuration parameters.     |
+| listener  | [MultiSlotsAdLoadListener](#multislotsadloadlistener) | Yes   | Callback listener for ad requests. |
 
 **Error codes**
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| ID| Error Message                                                                                                                                              |
-|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
-| 801      | Device not supported.                                                                                                                                  |
-| 21800001 | System internal error.                                                                                                                                 |
-| 21800003 | Failed to load the ad request.                                                                                                                         |
+| Error Code ID | Error Message | 
+| -------- | -------- |
+| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Device not supported. | 
+| 21800001 | System internal error. | 
+| 21800003 | Failed to load the ad request. | 
 
 **Example**
 
 For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
-```ts
+```typescript
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// ...
 function loadAdWithMultiSlots(context: common.Context, adRequestParamsArray: advertising.AdRequestParams[]): void {
   // Ad configuration options. You can set the options based on the project requirements.
   const adOptions: advertising.AdOptions = {};
@@ -497,12 +513,26 @@ Called when an ad request fails.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-**Parameters**
+| Name | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| errorCode | number | Yes | Error code for the ad request failure. | 
+| errorMsg | string | Yes | Error message for the ad request failure. | 
 
-| Name   | Type  | Mandatory| Description                   |
-|-----------|--------|-----|-----------------------|
-| errorCode | number | Yes  | Result code indicating the ad request failure.  |
-| errorMsg  | string | Yes  | Error message about the ad request failure.|
+**Example:**
+
+```typescript
+import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const adLoaderListener: advertising.AdLoadListener = {
+  onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+    hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
+  },
+  onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
+    hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
+  }
+}
+```
 
 ### onAdLoadSuccess
 
@@ -514,21 +544,22 @@ Called when an ad request is successful.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-**Parameters**
-
-| Name| Type                                        | Mandatory| Description     |
-|--------|----------------------------------------------|-----|---------|
-| ads    | Array&lt;[Advertisement](#advertisement)&gt; | Yes  | Ad data.|
+| Name | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| ads    | Array&lt;[Advertisement](#advertisement)&gt; | Yes   | Ad data. |
 
 **Example**
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const adLoaderListener: advertising.AdLoadListener = {
   onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+    hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
   },
   onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
+    hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
   }
 }
 ```
@@ -551,12 +582,26 @@ Called when a request for loading multiple ads fails.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-**Parameters**
+| Name | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| errorCode | number | Yes | Error code for the ad request failure. | 
+| errorMsg | string | Yes | Error message for the ad request failure. | 
 
-| Name   | Type  | Mandatory| Description                   |
-|-----------|--------|-----|-----------------------|
-| errorCode | number | Yes  | Result code indicating the ad request failure.  |
-| errorMsg  | string | Yes  | Error message about the ad request failure.|
+**Example:**
+
+```typescript
+import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const multiSlotsAdLoadListener: advertising.MultiSlotsAdLoadListener = {
+  onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+    hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
+  },
+  onAdLoadSuccess: (adsMap: Map<string, Array<advertising.Advertisement>>) => {
+    hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
+  }
+}
+```
 
 ### onAdLoadSuccess
 
@@ -568,21 +613,22 @@ Called when a request for loading multiple ads is successful.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-**Parameters**
-
-| Name| Type                                                           | Mandatory| Description     |
-|--------|-----------------------------------------------------------------|-----|---------|
-| adsMap | Map&lt;string, Array&lt;[Advertisement](#advertisement)&gt;&gt; | Yes  | Ad data.|
+| **Parameter Name** | **Type** | Mandatory | **Description** | 
+| -------- | -------- | -------- | -------- |
+| adsMap | Map&lt;string, Array&lt;[Advertisement](#advertisement)&gt;&gt; | Yes   | Ad data, which is a mapping set that uses ad slot IDs as keys to store the requested ad content. |
 
 **Example**
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const multiSlotsAdLoadListener: advertising.MultiSlotsAdLoadListener = {
   onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+    hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
   },
   onAdLoadSuccess: (adsMap: Map<string, Array<advertising.Advertisement>>) => {
+    hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
   }
 }
 ```
@@ -609,17 +655,71 @@ Called when the ad display status changes.
 
 | Name| Type                           | Mandatory| Description                                                                        |
 |--------|---------------------------------|------|------------------------------------------------------------------------------|
-| status | string                          | Yes  | Ad display status.<br>- **onAdLoad**: The ad is successfully loaded.<br>- **onAdFail**: The ad fails to be loaded.|
+| status | string | Yes | Ad show status.<br/>- onAdLoad: Ad loaded successfully.<br/>- onAdFail: Ad failed to load.<br/>- onAdOpen: Ad opened.<br/>- onAdClick: Ad clicked.<br/>- onAdClose: Ad closed.<br/>- onMediaProgress: Ad playback progress.<br/>- onMediaStart: Ad playback started.<br/>- onMediaPause: Ad playback paused.<br/>- onMediaStop: Ad playback stopped.<br/>- onMediaComplete: Ad playback completed.<br/>- onMediaCountDown: Ad countdown.<br/>- onMediaError: Ad playback failed.<br/>- onLandscape: Full-screen button clicked in portrait mode.<br/>- onPortrait: Back button clicked in full-screen mode.<br/>- onBackClicked: Back button clicked. |
 | ad     | [Advertisement](#advertisement) | Yes  | Content of the ad.                                                    |
-| data   | string                          | Yes  | Extended information.                                                                  |
+| data | string | Yes | Extended information.<br/>When **status** is **onAdClose**, the data value is the close reason, described as follows:<br/>- adShowEnded: Ad show ended.<br/>- adCloseBtnClicked: Close button clicked.<br/>- adSkipBtnClicked: Skip button clicked.<br/>- adFeedbackClosed: The ad is closed due to negative feedback.<br/>- adBackgroundClosed: The splash ad is closed when the app switches to the background. |
 
 **Example**
 
-```ts
+```typescript
 import { advertising } from '@kit.AdsKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const adInteractionListener: advertising.AdInteractionListener = {
   onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
+    switch (status) {
+      case 'onAdLoad':
+        hilog.info(0x0000, 'testTag', 'Status is onAdLoad');
+        break;
+      case 'onAdFail':
+        hilog.error(0x0000, 'testTag', 'Status is onAdFail');
+        break;
+      case 'onAdOpen':
+        hilog.info(0x0000, 'testTag', 'Status is onAdOpen');
+        break;
+      case 'onAdClick':
+        hilog.info(0x0000, 'testTag', 'Status is onAdClick');
+        break;
+      case 'onAdClose':
+        // The data value is the close reason.
+        hilog.info(0x0000, 'testTag', `Status is onAdClose, Close Reason is ${data}`);
+        if (data === 'adShowEnded') {
+          // The close reason is that the ad show has ended. You can add processing logic based on the actual scenario.
+        }
+        break;
+      case 'onMediaProgress':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaProgress');
+        break;
+      case 'onMediaStart':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaStart');
+        break;
+      case 'onMediaPause':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaPause');
+        break;
+      case 'onMediaStop':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaStop');
+        break;
+      case 'onMediaComplete':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaComplete');
+        break;
+      case 'onMediaCountDown':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaCountDown');
+        break;
+      case 'onMediaError':
+        hilog.info(0x0000, 'testTag', 'Status is onMediaError');
+        break;
+      case 'onLandscape':
+        hilog.info(0x0000, 'testTag', 'Status is onLandscape');
+        break;
+      case 'onPortrait':
+        hilog.info(0x0000, 'testTag', 'Status is onPortrait');
+        break;
+      case 'onBackClicked':
+        hilog.info(0x0000, 'testTag', 'Status is onBackClicked');
+        break;
+      default:
+        break;
+    }
   }
 }
 ```
@@ -632,12 +732,12 @@ Defines the ad configuration.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-| Name                   | Type                                    | Read-Only| Optional| Description                                                                                                                  |
-|-------------------------|------------------------------------------|-----|-----|----------------------------------------------------------------------------------------------------------------------|
-| tagForChildProtection   | number                                   | No  | Yes  | Tag for child protection, which specifies whether you want the ad content to be treated as COPPA-compliant.<br>- **-1**: Uncertain.<br>- **0**: No. You do not want the ad content to be treated as COPPA-compliant.<br>- **1**: Yes. You want the ad content to be treated as COPPA-compliant.|
-| adContentClassification | string                                   | No  | Yes  | Maximum ad content rating.<br>- **W**: ages 3+, all audiences.<br>- **PI**: ages 7+, audiences under parental instruction.<br>- **J**: ages 12+, teenagers.<br>- **A**: ages 16+/18+, adults.        |
-| nonPersonalizedAd       | number                                   | No  | Yes  | Whether to request only non-personalized ads.<br>- **0**: request for personalized and non-personalized ads.<br>- **1**: request for only non-personalized ads.                         |
-| [key: string]           | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.                                                                                                           |
+| Name | Type | Mandatory | Description | 
+| -------- | -------- | -------- | -------- |
+| tagForChildProtection | number | No | Whether you want your content to be treated as child-directed for purposes of COPPA.<br/> -1: Default value, unspecified.<br/> 0: No.<br/> 1: Yes.<br/>The default value is -1. | 
+| adContentClassification | string | No | Sets the maximum ad content rating.<br/> W: 3+, all audiences.<br/> PI: 7+, parental guidance.<br/> J: 12+, teen.<br/> A: 16+/18+, adult audience.<br/>If not set, the business logic prevails. | 
+| nonPersonalizedAd | number | No | Sets whether to request only non-personalized ads.<br/> 0: Request both personalized and non-personalized ads.<br/> 1: Request only non-personalized ads.<br/>If not set, the business logic prevails. | 
+| [key: string] | number \| boolean \| string \| undefined | No | Custom parameter.<br/><!--RP1--><!--RP1End--> | 
 
 ## AdRequestParams
 
@@ -647,15 +747,15 @@ Defines the ad request parameters.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-| Name           | Type                                    | Read-Only| Optional| Description                                                                                                                         |
-|-----------------|------------------------------------------|-----|-----|-----------------------------------------------------------------------------------------------------------------------------|
-| adId            | string                                   | No  | No  | Ad ID.                                                                                                                    |
-| adType          | number                                   | No  | Yes  | Type of the requested ad.<br>- **1**: splash ad.<br>- **3**: native ad.<br>- **7**: rewarded ad.<br>- **8**: banner ad.<br>- **12**: interstitial ad.<br>- **60**: roll ad.|
-| adCount         | number                                   | No  | Yes  | Number of ads requested.                                                                                                              |
-| adWidth         | number                                   | No  | Yes  | Expected creative width of ads requested, in vp.                                                                                             |
-| adHeight        | number                                   | No  | Yes  | Expected creative height of ads requested, in vp.                                                                                             |
-| adSearchKeyword | string                                   | No  | Yes  | Ad keyword.                                                                                                                  |
-| [key: string]   | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.<br>- **oaid**: open anonymous device identifier, which is used to push ads accurately. The value is of the string type.                                                      |
+| Name | Type | Mandatory | Description | 
+| -------- | -------- | -------- | -------- |
+| adId | string | Yes | Ad slot ID.<br/>Note: The getAdRequestBody API can omit this parameter. | 
+| adType | number | No | Requested ad type.<br/>- 1: Splash ad.<br/>- 3: Native ad.<br/>- 7: Rewarded ad.<br/>- 8: Banner ad.<br/>- 12: Interstitial ad.<br/>- 60: Roll ad.<br/>If not set, the default is the native ad type. | 
+| adCount | number | No | Number of ads requested. If not set, the business logic prevails. | 
+| adWidth | number | No | Expected creative width when requesting an ad, in vp (mandatory for banner ads). If not set, the business logic prevails. | 
+| adHeight | number | No | Expected creative height when requesting an ad, in vp (mandatory for banner ads). If not set, the business logic prevails. | 
+| adSearchKeyword | string | No | Ad keyword. Defaults to "" if not set.<br/>Note: Not supported for use currently. | 
+| [key: string] | number \| boolean \| string \| undefined | No | Custom parameter.<br/><!--RP2--><!--RP2End--> | 
 
 ## AdDisplayOptions
 
@@ -665,14 +765,14 @@ Defines the ad display parameters.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-| Name                 | Type                                    | Read-Only| Optional| Description                                                                                                                                                                                                                                    |
-|-----------------------|------------------------------------------|-----|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| customData            | string                                   | No  | Yes  | Custom media data.                                                                                                                                                                                                                         |
-| userId                | string                                   | No  | Yes  | User ID.                                                                                                                                                                                                                       |
-| useMobileDataReminder | boolean                                  | No  | Yes  | Whether to display a dialog box to notify users when they use mobile data to play videos or download applications.<br>- **true**: A dialog box is displayed.<br>- **false**: No dialog box is displayed.                                                                                                                                          |
-| mute                  | boolean                                  | No  | Yes  | Whether to mute the ad video.<br>- **true**: The ad video is muted.<br>- **false**: The ad video is not muted.                                                                                                                                                                      |
-| audioFocusType        | number                                   | No  | Yes  | Type of the scenario where the audio focus is obtained during video playback.<br>- **0**: The focus is obtained when the video is played in mute or non-mute mode.<br>- **1**: The focus is not obtained when the video is played in mute mode.<br>- **2**: The focus is not obtained when the video is played in mute or non-mute mode.                                                                             |
-| [key: string]         | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.<br>- **refreshTime**: The value is of the number type, in ms. The value is in the range [30000, 120000]. This parameter is optional for the AutoAdComponent module and specifies the interval at which the ads rotate. If this parameter is set, ads are rotated at the interval specified by this parameter. Otherwise, ads are not rotated and only the first ad in the ad response is displayed.|
+| Name | Type | Mandatory | Description | 
+| -------- | -------- | -------- | -------- |
+| customData | string | No | Media custom data. Used for the server to notify the media server that a user should be rewarded for interacting with a rewarded video ad, thereby preventing fraudulent behavior (no notification will be sent if not set). | 
+| userId | string | No | Media custom user ID. Used for the server to notify the media server that a user should be rewarded for interacting with a rewarded video ad, thereby preventing fraudulent behavior (no notification will be sent if not set). | 
+| useMobileDataReminder | boolean | No | Whether to display a pop-up notification to the user when using mobile data to play videos or download apps.<br/>- true: Display pop-up notification.<br/>- false: Do not display pop-up notification.<br/>- This parameter depends on the traffic pop-up feature, which currently does not support full functionality, so the default value is temporarily uncertain. | 
+| mute | boolean | No | Whether to mute the ad video playback.<br/>- true: Mute playback.<br/>- false: Non-mute playback.<br/>If not set, the business logic prevails. | 
+| audioFocusType | number | No | Scenario type for obtaining audio focus during video playback.<br/>- 0: Obtain focus during both muted and non-muted video playback.<br/>- 1: Do not obtain focus during muted video playback.<br/>- 2: Do not obtain focus during either muted or non-muted video playback.<br/>- The related features that this API depends on are currently not supported for use, so the default value is temporarily uncertain. | 
+| [key: string] | number \| boolean \| string \| undefined | No | Custom parameter.<br/>- refreshTime: An optional custom parameter for the AutoAdComponent, used to control the ad rotation interval. Type number, unit: ms, value range [30000, 120000]. If not set or the value is non-numeric or less than or equal to 0, no rotation occurs, and only the first ad content in the ad response is displayed. Values less than 30000 are set to 30000, and values greater than 120000 are set to 120000.<br/><!--RP3--><!--RP3End--> | 
 
 ## Advertisement
 
@@ -686,4 +786,4 @@ Defines the requested ad content.
 
 | Type                                                        | Description                  |
 |--------------------------------------------------------------|----------------------|
-| [_Advertisement](js-apis-inner-advertising-advertisement.md) | Advertisement object.|
+| [_Advertisement](js-apis-advertisement.md) | Advertisement object.|

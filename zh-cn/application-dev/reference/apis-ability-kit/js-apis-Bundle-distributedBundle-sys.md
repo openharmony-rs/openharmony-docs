@@ -69,7 +69,7 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getRemoteAbilityInfo(elementName: ElementName): Promise&lt;RemoteAbilityInfo&gt;
 
@@ -103,7 +103,7 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;, callback: AsyncCallback&lt;Array&lt;RemoteAbilityInfo&gt;&gt;): void
 
@@ -134,7 +134,7 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;): Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt;
 

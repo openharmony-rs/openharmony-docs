@@ -142,7 +142,6 @@
             - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
-          - [\@Env：环境变量](state-management-static/arkts-static-new-env.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
@@ -173,8 +172,10 @@
   - 渲染控制（ArkTS-Sta）<!--arkts-rendering-control-static-->
     - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
-    - [\@Env：环境变量](arkts-env-system-property.md)
-    - [\@CustomEnv：自定义环境变量](arkts-custom-env-property.md)
+    - [\@Env：环境变量 (ArkTS-Dyn)](arkts-env-system-property.md)
+    - [\@Env：环境变量 (ArkTS-Sta)](state-management-static/arkts-static-new-env.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Dyn)](arkts-custom-env-property.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Sta)](state-management-static/arkts-static-custom-env-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
@@ -195,6 +196,7 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -266,6 +268,7 @@
       - [支持键盘输入事件](arkts-interaction-development-guide-keyboard.md)
       - [支持游戏手柄输入事件](arkts-interaction-development-guide-gamepad.md)
       - [支持表冠输入事件](arkts-common-events-crown-event.md)
+      - [支持智慧手势输入事件](arkts-common-events-smartgesture-event.md)
     - [添加手势响应](arkts-interaction-development-guide-support-gesture.md)
       - [绑定手势方法](arkts-gesture-events-binding.md)
       - [单一手势](arkts-gesture-events-single-gesture.md)
@@ -340,6 +343,7 @@
     <!--DelEnd-->
   - [内置组件扩展](state-management-static/arkts-static-extendable-inner-component.md)
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+    - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](arkts-dyn-sta-ui-rules.md)
     - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
       - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
       - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
@@ -348,6 +352,7 @@
       - [UI组件适配（文本）](arkts-sta-deprecated-text.md)
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
       - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
+      - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - [UI互操作概述](arkts-dyn-sta-ui-interop.md)
     - [UI互操作声明文件规范](arkts-ui-interop-declaration-spec.md)

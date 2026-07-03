@@ -31,6 +31,8 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -276,7 +278,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        return AbilityConstant.CollaborateResult.ACCEPT;
      }
  
-     onCollab(collabParam: Record<string, Object>) {
+     onCollab(collabParam: Record<string, Object>):void {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
          hilog.info(0x0000, 'testTag', 'Invalid session ID.');
@@ -313,6 +315,8 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -356,6 +360,8 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回空值。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -414,6 +420,8 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -486,6 +494,8 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -590,7 +600,7 @@ export default class EntryAbility extends UIAbility {
     return AbilityConstant.CollaborateResult.ACCEPT;
   }
 
-  onCollab(collabParam: Record<string, Object>) {
+  onCollab(collabParam: Record<string, Object>): void {
     const sessionId = this.createSessionFromWant(collabParam);
     if (sessionId == -1) {
       hilog.info(0x0000, 'testTag', 'Invalid session ID.');
@@ -633,6 +643,8 @@ disconnect(sessionId:&nbsp;number):&nbsp;void
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -677,6 +689,8 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -750,6 +764,8 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 **相关接口**：该接口对应的ArkTS-Sta接口是[onConnect](#abilityconnectionmanageronconnect23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -834,6 +850,8 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **参数：**
@@ -912,6 +930,8 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -996,6 +1016,8 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **参数：**
@@ -1074,6 +1096,8 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 **相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveMessage](#abilityconnectionmanageronreceivemessage23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1159,6 +1183,8 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **参数：**
@@ -1239,6 +1265,8 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 **相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#abilityconnectionmanageronreceivedata23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1323,6 +1351,8 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **参数：**
@@ -1402,6 +1432,8 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -1466,6 +1498,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1535,6 +1569,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用协同信息。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
  **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1555,6 +1591,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用连接时所需的连接选项。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1573,6 +1611,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 连接的结果。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
  **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1590,6 +1630,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## EventCallbackInfo
 
 回调方法的接收信息。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1610,6 +1652,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 协同事件信息。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
  **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1626,6 +1670,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## ConnectErrorCode
 
 连接的错误码。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1648,6 +1694,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 启动选项参数的枚举。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
  **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1663,6 +1711,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## CollaborateEventType
 
 协同事件类型的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1680,6 +1730,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## DisconnectReason
 
 当前断连原因的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1699,6 +1751,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用协作键值的枚举。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
  **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -1714,6 +1768,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 | COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | 表示协作类型的键值。   |
 
 ## CollaborationValues
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 

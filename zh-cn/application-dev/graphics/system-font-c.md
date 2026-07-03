@@ -106,7 +106,7 @@
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-   ![zh-cn_image_0000002211603636](figures/zh-cn_image_0000002211603636.png)
+   ![System-Font-Information](figures/System-Font-Information.png)
 
 5. 如若后续不再需要系统字体的系统配置信息时，则释放其占用的内存。
 
@@ -135,7 +135,7 @@
    #include <hilog/log.h>
    ```
 
-3. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+3. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    > **说明：**
    >
@@ -222,7 +222,7 @@
    #include <hilog/log.h>
    ```
 
-4. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+4. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    

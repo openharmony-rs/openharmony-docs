@@ -16,6 +16,9 @@
 >
 > - 示例效果请以真机运行为准。
 
+## 概述
+Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web组件的网页加载行为、安全策略、运行环境与交互能力，是定制Web组件行为的主要入口。其中通用的样式与布局类属性（如尺寸、边距、背景、可见性等）请参考[尺寸设置](../apis-arkui/arkui-ts/ts-universal-attributes-size.md)，本章仅描述Web组件特有的属性；运行期动态控制类能力（如加载URL、前进后退、注册/反注册JS对象、运行JavaScript、注入CSS等）请配合[WebviewController](./arkts-apis-webview-WebviewController.md)使用。
+
 ## domStorageAccess
 
 ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
@@ -2666,9 +2669,11 @@ ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
-> - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2787,9 +2792,11 @@ ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 >
 > - 该脚本按照字典序执行，非数组本身顺序。
 >
-> - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2892,8 +2899,6 @@ ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentStart](#javascriptondocumentstart11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -3019,8 +3024,6 @@ ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentEnd](#javascriptondocumentend11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -3252,7 +3255,7 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined)
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置web布局模式，跟随系统或自适应布局。<br>ArkTS-Dyn：传入null或undefined时为`WebLayoutMode.NONE`。 <br>ArkTS-Sta：传入undefined时为`WebLayoutMode.NONE`。|
+| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置Web布局模式，跟随系统或自适应布局。<br>ArkTS-Dyn：传入null或undefined时为`WebLayoutMode.NONE`。 <br>ArkTS-Sta：传入undefined时为`WebLayoutMode.NONE`。|
 
 **示例：**
 
@@ -4166,7 +4169,7 @@ ArkTS-Sta: metaViewport(enabled: boolean | undefined)
 
 > **说明：**
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置metaViewport属性为true来覆盖关闭状态。
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7437,7 +7440,7 @@ ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | --------- | ---- | ---- |
@@ -7500,4 +7503,75 @@ ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
     <input type="text" placeholder="Text">
   </body>
   </html>
+  ```
+
+## enableFullscreenVideoOverlay
+
+ArkTS-Dyn: enableFullscreenVideoOverlay(enabled: boolean)
+
+ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
+
+设置Web组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持H264、H265解码格式的视频。
+> - 只有视频元素发出的全屏请求才会响应。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
   ```

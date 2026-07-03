@@ -6,15 +6,17 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
->**说明：**
+> **说明：**
 >
 > - 本模块仅适用于ArkTS-Sta。
->
-> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## JsonType
 
 JSON值类型的枚举，用于在运行时识别JsonElement的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称      | 值  | 说明 |
 | ---- | ---- | ---- |
@@ -31,11 +33,19 @@ JSON值类型的枚举，用于在运行时识别JsonElement的类型。
 
 JSON的基本错误类。当发生一般的JSON解析或操作错误时抛出。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 ### constructor
 
 constructor(msg: string)
 
 JsonError的构造函数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -43,9 +53,20 @@ JsonError的构造函数。
 | ----- | ---- | ---- | ---- |
 | msg | string | 是 | 错误信息。 |
 
+**示例：**
+
+```ts
+const error = new jsonx.JsonError("parse failed");
+console.info(error.message); // "parse failed"
+```
+
 ## JsonTypeError
 
 尝试访问具有不兼容类型的JSON元素时抛出错误。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### constructor
 
@@ -53,15 +74,30 @@ constructor(msg: string)
 
 JsonTypeError的构造函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
 | msg | string | 是 | 错误信息。 |
 
+**示例：**
+
+```ts
+const error = new jsonx.JsonTypeError("expected string");
+console.info(error.message); // "expected string"
+```
+
 ## BigIntMode
 
 parseJsonElement定义处理BigInt的模式。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值| 说明            |
 | ------ | ------ | --------------- |
@@ -73,6 +109,10 @@ parseJsonElement定义处理BigInt的模式。
 
 解析的选项，可定义处理BigInt的模式。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称 | 类型| 只读 | 可选 |说明            |
 | ------ | ------ | ---- | ---- | --------------- |
 | bigIntMode   | [BigIntMode](#bigintmode) | 是 | 否 | 定义处理BigInt的模式。|
@@ -81,11 +121,19 @@ parseJsonElement定义处理BigInt的模式。
 
 可容纳任何有效JSON值的JSON元素。提供类型安全的JSON值访问接口，包含严格模式和宽松模式两种API。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 - 严格模式：例如getString，会返回string值。
 
 - 宽松模式：例如tryGetString，当可以找到时会返回string值，未找到则返回空字符串。
 
 ### 属性
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -98,6 +146,10 @@ constructor()
 
 JsonElement的构造函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **示例：**
 
 ```ts
@@ -109,6 +161,10 @@ const elem = new jsonx.JsonElement();
 constructor(other: JsonElement)
 
 JsonElement的构造函数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -129,6 +185,10 @@ constructor(elements: Record\<string, JsonElement\>)
 
 JsonElement的构造函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -146,6 +206,10 @@ const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 $_get(index: int): JsonElement
 
 通过下标获取数组中的JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -170,7 +234,7 @@ const items = [
 ];
 arrayElem.setArray(items);
 const firstElement = arrayElem[0].asString();
-console.info("firstElement = ${firstElement}"); // firstElement = item1
+console.info(`firstElement = ${firstElement}`); // firstElement = item1
 ```
 
 ### createString
@@ -178,6 +242,10 @@ console.info("firstElement = ${firstElement}"); // firstElement = item1
 createString(value: string): JsonElement
 
 创建一个代表string值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -196,7 +264,7 @@ createString(value: string): JsonElement
 ```ts
 const stringElem = jsonx.JsonElement.createString("Hello, Factory!");
 const result = stringElem.asString();
-console.info("result = ${result}"); // result = Hello, Factory!
+console.info(`result = ${result}`); // result = Hello, Factory!
 ```
 
 ### createDouble
@@ -204,6 +272,10 @@ console.info("result = ${result}"); // result = Hello, Factory!
 createDouble(value: double): JsonElement
 
 创建一个代表double值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -222,7 +294,7 @@ createDouble(value: double): JsonElement
 ```ts
 const doubleElem = jsonx.JsonElement.createDouble(3.14159);
 const result = doubleElem.asDouble();
-console.info("result = ${result}"); // result = 3.14159
+console.info(`result = ${result}`); // result = 3.14159
 ```
 
 ### createInteger
@@ -230,6 +302,10 @@ console.info("result = ${result}"); // result = 3.14159
 createInteger(value: int): JsonElement
 
 创建一个代表int值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -248,7 +324,7 @@ createInteger(value: int): JsonElement
 ```ts
 const integerElem = jsonx.JsonElement.createInteger(42);
 const result = integerElem.asInteger();
-console.info("result = ${result}"); // result = 42
+console.info(`result = ${result}`); // result = 42
 ```
 
 ### createLong
@@ -256,6 +332,10 @@ console.info("result = ${result}"); // result = 42
 createLong(value: long): JsonElement
 
 创建一个代表long值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -274,7 +354,7 @@ createLong(value: long): JsonElement
 ```ts
 const longElem = jsonx.JsonElement.createLong(123456);
 const result = longElem.asLong();
-console.info("result = ${result}"); // result = 123456
+console.info(`result = ${result}`); // result = 123456
 ```
 
 ### createBigInt
@@ -282,6 +362,10 @@ console.info("result = ${result}"); // result = 123456
 createBigInt(value: bigint): JsonElement
 
 创建一个代表bigint值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -300,7 +384,7 @@ createBigInt(value: bigint): JsonElement
 ```ts
 const bigintElem = jsonx.JsonElement.createBigInt(123456789123456789n);
 const result = bigintElem.asBigInt();
-console.info("result = ${result}"); // result = 123456789123456789
+console.info(`result = ${result}`); // result = 123456789123456789
 ```
 
 ### createBoolean
@@ -308,6 +392,10 @@ console.info("result = ${result}"); // result = 123456789123456789
 createBoolean(value: boolean): JsonElement
 
 创建一个代表boolean值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -326,7 +414,7 @@ createBoolean(value: boolean): JsonElement
 ```ts
 const trueElem = jsonx.JsonElement.createBoolean(true);
 const result = trueElem.asBoolean();
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### createNull
@@ -334,6 +422,10 @@ console.info("result = ${result}"); // result = true
 createNull(): JsonElement
 
 创建一个代表Null值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -346,7 +438,7 @@ createNull(): JsonElement
 ```ts
 const nullElem = jsonx.JsonElement.createNull();
 const result = nullElem.jsonType;
-console.info("result = ${result}"); // result = 7
+console.info(`result = ${result}`); // result = 7
 ```
 
 ### createUndefined
@@ -354,6 +446,10 @@ console.info("result = ${result}"); // result = 7
 createUndefined(): JsonElement
 
 创建一个代表undefined值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -366,7 +462,7 @@ createUndefined(): JsonElement
 ```ts
 const undefinedElem = jsonx.JsonElement.createUndefined();
 const result = undefinedElem.jsonType;
-console.info("result = ${result}"); // result = 0
+console.info(`result = ${result}`); // result = 0
 ```
 
 ### createArray
@@ -374,6 +470,10 @@ console.info("result = ${result}"); // result = 0
 createArray(elements: Array\<JsonElement\>): JsonElement
 
 创建一个代表Array\<JsonElement\>值的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -397,7 +497,7 @@ const arrayElements = [
 ];
 const arrayElem = jsonx.JsonElement.createArray(arrayElements);
 const result = arrayElem.asArray()[0].asString();
-console.info("result = ${result}"); // result = item1
+console.info(`result = ${result}`); // result = item1
 ```
 
 ### createObject
@@ -405,6 +505,10 @@ console.info("result = ${result}"); // result = item1
 createObject(map: Map\<string, JsonElement\>): JsonElement
 
 创建一个代表键值对对象的JsonElement对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -427,7 +531,7 @@ map.set("age", jsonx.JsonElement.createInteger(30));
 
 const objectElem = jsonx.JsonElement.createObject(map);
 const result = objectElem.getString("name");
-console.info("result = ${result}"); // result = John Doe
+console.info(`result = ${result}`); // result = John Doe
 ```
 
 ### $_get
@@ -435,6 +539,10 @@ console.info("result = ${result}"); // result = John Doe
 $_get(key: string): JsonElement
 
 根据key获取JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -455,7 +563,7 @@ const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const result = original["name"].asString();
-console.info("result = ${result}"); // result = John
+console.info(`result = ${result}`); // result = John
 ```
 
 ### getElement
@@ -463,6 +571,10 @@ console.info("result = ${result}"); // result = John
 getElement(key: string): JsonElement
 
 根据key获取JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -483,7 +595,7 @@ const original = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
 original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const result = original.getElement("name").asString();
-console.info("result = ${result}"); // result = John
+console.info(`result = ${result}`); // result = John
 ```
 
 ### tryGetElement
@@ -491,6 +603,10 @@ console.info("result = ${result}"); // result = John
 tryGetElement(key: string): JsonElement | undefined
 
 尝试根据key获取JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -512,7 +628,7 @@ original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 const nameString = original.tryGetElement("name");
 const result = nameString?.asString();
-console.info("result = ${result}"); // result = John
+console.info(`result = ${result}`); // result = John
 ```
 
 ### $_iterator
@@ -520,6 +636,10 @@ console.info("result = ${result}"); // result = John
 $_iterator(): IterableIterator\<[string, JsonElement]\>
 
 返回对象属性的迭代器。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -541,7 +661,7 @@ while(true) {
         break;
     }
     const key = v.value![0];
-    console.info("key = ${key}");
+    console.info(`key = ${key}`);
     // key = name
     // key = age
     propertyCount++;
@@ -553,6 +673,10 @@ while(true) {
 getArray(key: string): Array\<JsonElement\>
 
 通过key获取JsonElement数组。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -578,7 +702,7 @@ const tagsArray = [
 userElem.setElement("tags", jsonx.JsonElement.createArray(tagsArray));
 const tags = userElem.getArray("tags");
 const result = tags[0].asString();
-console.info("result = ${result}"); // result = developer
+console.info(`result = ${result}`); // result = developer
 ```
 
 ### tryGetArray
@@ -586,6 +710,10 @@ console.info("result = ${result}"); // result = developer
 tryGetArray(key: string): Array\<JsonElement\>
 
 尝试通过key获取JsonElement数组。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -611,7 +739,7 @@ const tagsArray = [
 userElem.setElement("tags", jsonx.JsonElement.createArray(tagsArray));
 const tags = userElem.tryGetArray("tags");
 const result = tags[0]?.asString();
-console.info("result = ${result}"); // result = developer
+console.info(`result = ${result}`); // result = developer
 ```
 
 ### removeElement
@@ -619,6 +747,10 @@ console.info("result = ${result}"); // result = developer
 removeElement(key: string): boolean
 
 通过key删除JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -640,7 +772,7 @@ objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 const result = objectElem.removeElement("age");
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### setElement
@@ -648,6 +780,10 @@ console.info("result = ${result}"); // result = true
 setElement(key: string, value: JsonElement)
 
 通过key设置JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -665,7 +801,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(31));
 const result = objectElem.getInteger("age");
-console.info("result = ${result}"); // result = 31
+console.info(`result = ${result}`); // result = 31
 ```
 
 ### getDouble
@@ -673,6 +809,10 @@ console.info("result = ${result}"); // result = 31
 getDouble(key: string): double
 
 通过key获取double值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -695,7 +835,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.getDouble("height");
-console.info("result = ${result}"); // result = 1.85
+console.info(`result = ${result}`); // result = 1.85
 ```
 
 ### tryGetDouble
@@ -703,6 +843,10 @@ console.info("result = ${result}"); // result = 1.85
 tryGetDouble(key: string, fallback?: double): double | undefined
 
 尝试通过key获取double值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -726,7 +870,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.tryGetDouble("height");
-console.info("result = ${result}"); // result = 1.85
+console.info(`result = ${result}`); // result = 1.85
 ```
 
 ### getLong
@@ -734,6 +878,10 @@ console.info("result = ${result}"); // result = 1.85
 getLong(key: string): long
 
 通过key获取long值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -757,7 +905,7 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("num", jsonx.JsonElement.createLong(3000000000));
 const result = objectElem.getLong("num");
-console.info("result = ${result}"); // result = 3000000000
+console.info(`result = ${result}`); // result = 3000000000
 ```
 
 ### tryGetLong
@@ -765,6 +913,10 @@ console.info("result = ${result}"); // result = 3000000000
 tryGetLong(key: string, fallback: long = 0): long
 
 尝试通过key获取long值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -789,9 +941,9 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("num", jsonx.JsonElement.createLong(3000000000));
 const result = objectElem.tryGetLong("num");
-console.info("result = ${result}"); // result = 3000000000
+console.info(`result = ${result}`); // result = 3000000000
 const result2 = objectElem.tryGetLong("num2", 100);
-console.info("result2 = ${result2}"); // result2 = 100
+console.info(`result2 = ${result2}`); // result2 = 100
 ```
 
 ### getBigInt
@@ -799,6 +951,10 @@ console.info("result2 = ${result2}"); // result2 = 100
 getBigInt(key: string): bigint
 
 通过key获取bigint值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -822,7 +978,7 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("num", jsonx.JsonElement.createBigInt(1000000000000000n));
 const result = objectElem.getBigInt("num");
-console.info("result = ${result}"); // result = 1000000000000000
+console.info(`result = ${result}`); // result = 1000000000000000
 ```
 
 ### tryGetBigInt
@@ -830,6 +986,10 @@ console.info("result = ${result}"); // result = 1000000000000000
 tryGetBigInt(key: string, fallback: bigint = 0n): bigint
 
 尝试通过key获取bigint值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -854,9 +1014,9 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("num", jsonx.JsonElement.createBigInt(1000000000000000n));
 const result = objectElem.tryGetBigInt("num");
-console.info("result = ${result}"); // result = 1000000000000000
+console.info(`result = ${result}`); // result = 1000000000000000
 const result2 = objectElem.tryGetBigInt("num2", 100n);
-console.info("result2 = ${result2}"); // result2 = 100
+console.info(`result2 = ${result2}`); // result2 = 100
 ```
 
 ### getInteger
@@ -864,6 +1024,11 @@ console.info("result2 = ${result2}"); // result2 = 100
 getInteger(key: string): int
 
 通过key获取int值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -885,7 +1050,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.getInteger("age");
-console.info("result = ${result}"); // result = 30
+console.info(`result = ${result}`); // result = 30
 ```
 
 ### tryGetInteger
@@ -893,6 +1058,10 @@ console.info("result = ${result}"); // result = 30
 tryGetInteger(key: string, fallback: int = 0): int
 
 尝试通过key获取int值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -916,7 +1085,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.tryGetInteger("age");
-console.info("result = ${result}"); // result = 30
+console.info(`result = ${result}`); // result = 30
 ```
 
 ### getString
@@ -924,6 +1093,10 @@ console.info("result = ${result}"); // result = 30
 getString(key: string): string
 
 通过key获取string值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -946,7 +1119,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.getString("name");
-console.info("result = ${result}"); // result = John Doe
+console.info(`result = ${result}`); // result = John Doe
 ```
 
 ### tryGetString
@@ -954,6 +1127,10 @@ console.info("result = ${result}"); // result = John Doe
 tryGetString(key: string, fallback: string = ""): string
 
 尝试通过key获取string值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -977,7 +1154,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.tryGetString("name");
-console.info("result = ${result}"); // result = John Doe
+console.info(`result = ${result}`); // result = John Doe
 ```
 
 ### getBoolean
@@ -985,6 +1162,10 @@ console.info("result = ${result}"); // result = John Doe
 getBoolean(key: string): boolean
 
 通过key获取boolean值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1007,7 +1188,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.getBoolean("isActive");
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### tryGetBoolean
@@ -1015,6 +1196,10 @@ console.info("result = ${result}"); // result = true
 tryGetBoolean(key: string, fallback: boolean = false): boolean
 
 尝试通过key获取boolean值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1038,7 +1223,7 @@ objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 const result = objectElem.tryGetBoolean("isActive");
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### getNull
@@ -1046,6 +1231,10 @@ console.info("result = ${result}"); // result = true
 getNull(key: string): null
 
 通过key获取null值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1069,7 +1258,7 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("isUseful", jsonx.JsonElement.createNull());
 const result = objectElem.getNull("isUseful");
-console.info("result = ${result}"); // result = null
+console.info(`result = ${result}`); // result = null
 ```
 
 ### tryGetNull
@@ -1077,6 +1266,10 @@ console.info("result = ${result}"); // result = null
 tryGetNull(key: string): null | undefined
 
 尝试通过key获取null值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1100,9 +1293,9 @@ objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
 objectElem.setElement("isUseful", jsonx.JsonElement.createNull());
 const result = objectElem.getNull("isUseful");
-console.info("result = ${result}"); // result = null
-const result2 = objectElem.getNull("isSet");
-console.info("result2 = ${result2}"); // result2 = null
+console.info(`result = ${result}`); // result = null
+const result2 = objectElem.tryGetNull("isSet");
+console.info(`result2 = ${result2}`); // result2 = undefined
 ```
 
 ### asDouble
@@ -1110,6 +1303,10 @@ console.info("result2 = ${result2}"); // result2 = null
 asDouble(): double
 
 将JsonElement对象转换为double类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1122,7 +1319,7 @@ asDouble(): double
 ```ts
 const doubleElem = jsonx.JsonElement.createDouble(3.14159);
 const result = doubleElem.asDouble();
-console.info("result = ${result}"); // result = 3.14159
+console.info(`result = ${result}`); // result = 3.14159
 ```
 
 ### tryAsDouble
@@ -1130,6 +1327,10 @@ console.info("result = ${result}"); // result = 3.14159
 tryAsDouble(): double | undefined
 
 尝试将JsonElement对象转换为double类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1143,7 +1344,7 @@ tryAsDouble(): double | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsBoolean();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asLong
@@ -1151,6 +1352,10 @@ console.info("result = ${result}"); // result = undefined
 asLong(): long
 
 将JsonElement对象转换为long类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1163,7 +1368,7 @@ asLong(): long
 ```ts
 const longElem = jsonx.JsonElement.createLong(123456);
 const result = longElem.asLong();
-console.info("result = ${result}"); // result = 123456
+console.info(`result = ${result}`); // result = 123456
 ```
 
 ### tryAsLong
@@ -1171,6 +1376,10 @@ console.info("result = ${result}"); // result = 123456
 tryAsLong(): long | undefined
 
 尝试将JsonElement对象转换为long类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1184,7 +1393,7 @@ tryAsLong(): long | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsLong();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asBigInt
@@ -1192,6 +1401,10 @@ console.info("result = ${result}"); // result = undefined
 asBigInt(): bigint 
 
 将JsonElement对象转换为bigint类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1204,7 +1417,7 @@ asBigInt(): bigint
 ```ts
 const bigintElem = jsonx.JsonElement.createBigInt(100000000000000n);
 const result = bigintElem.asBigInt();
-console.info("result = ${result}"); // result = 100000000000000
+console.info(`result = ${result}`); // result = 100000000000000
 ```
 
 ### tryAsBigInt
@@ -1212,6 +1425,10 @@ console.info("result = ${result}"); // result = 100000000000000
 tryAsBigInt(): bigint | undefined
 
 尝试将JsonElement对象转换为bigint类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1225,7 +1442,7 @@ tryAsBigInt(): bigint | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsBigInt();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asInteger
@@ -1233,6 +1450,10 @@ console.info("result = ${result}"); // result = undefined
 asInteger(): int
 
 将JsonElement对象转换为int类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1245,7 +1466,7 @@ asInteger(): int
 ```ts
 const integerElem = jsonx.JsonElement.createInteger(42);
 const result = integerElem.asInteger();
-console.info("result = ${result}"); // result = 42
+console.info(`result = ${result}`); // result = 42
 ```
 
 ### tryAsInteger
@@ -1253,6 +1474,10 @@ console.info("result = ${result}"); // result = 42
 tryAsInteger(): int | undefined
 
 尝试将JsonElement对象转换为int类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1266,7 +1491,7 @@ tryAsInteger(): int | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsInteger();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asString
@@ -1274,6 +1499,10 @@ console.info("result = ${result}"); // result = undefined
 asString(): string
 
 将JsonElement对象转换为string类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1286,7 +1515,7 @@ asString(): string
 ```ts
 const stringElem = jsonx.JsonElement.createString("Hello, Factory!");
 const result = stringElem.asString();
-console.info("result = ${result}"); // result = Hello, Factory!
+console.info(`result = ${result}`); // result = Hello, Factory!
 ```
 
 ### tryAsString
@@ -1294,6 +1523,10 @@ console.info("result = ${result}"); // result = Hello, Factory!
 tryAsString(): string | undefined
 
 尝试将JsonElement对象转换为string类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1307,7 +1540,7 @@ tryAsString(): string | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsString();
-console.info("result = ${result}"); // result = Hello, world!
+console.info(`result = ${result}`); // result = Hello, world!
 ```
 
 ### asBoolean
@@ -1315,6 +1548,10 @@ console.info("result = ${result}"); // result = Hello, world!
 asBoolean(): boolean
 
 将JsonElement对象转换为boolean类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1327,7 +1564,7 @@ asBoolean(): boolean
 ```ts
 const trueElem = jsonx.JsonElement.createBoolean(true);
 const result = trueElem.asBoolean();
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### tryAsBoolean
@@ -1335,6 +1572,10 @@ console.info("result = ${result}"); // result = true
 tryAsBoolean(): boolean | undefined
 
 尝试将JsonElement对象转换为boolean类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1348,7 +1589,7 @@ tryAsBoolean(): boolean | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsBoolean();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asNull
@@ -1356,6 +1597,10 @@ console.info("result = ${result}"); // result = undefined
 asNull(): null
 
 将JsonElement对象转换为null类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1368,7 +1613,7 @@ asNull(): null
 ```ts
 const nullElem = jsonx.JsonElement.createNull();
 const result = nullElem.asNull();
-console.info("result = ${result}"); // result = null
+console.info(`result = ${result}`); // result = null
 ```
 
 ### tryAsNull
@@ -1376,6 +1621,10 @@ console.info("result = ${result}"); // result = null
 tryAsNull(): null | undefined
 
 尝试将JsonElement对象转换为null类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1388,8 +1637,8 @@ tryAsNull(): null | undefined
 ```ts
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
-const result = stringElem.tryASNull();
-console.info("result = ${result}"); // result = undefined
+const result = stringElem.tryAsNull();
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### asArray
@@ -1397,6 +1646,10 @@ console.info("result = ${result}"); // result = undefined
 asArray(): Array\<JsonElement\>
 
 将JsonElement对象转换为Array\<JsonElement\>类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1414,7 +1667,7 @@ const arrayElements = [
 ];
 const arrayElem = jsonx.JsonElement.createArray(arrayElements);
 const result = arrayElem.asArray()[0].asString();
-console.info("result = ${result}"); // result = item1
+console.info(`result = ${result}`); // result = item1
 ```
 
 ### tryAsArray
@@ -1422,6 +1675,10 @@ console.info("result = ${result}"); // result = item1
 tryAsArray(): Array\<JsonElement\> | undefined
 
 尝试将JsonElement对象转换为Array\<JsonElement\>类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1435,7 +1692,7 @@ tryAsArray(): Array\<JsonElement\> | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsArray();
-console.info("result = ${result}"); // result = undefined
+console.info(`result = ${result}`); // result = undefined
 ```
 
 ### setDouble
@@ -1443,6 +1700,10 @@ console.info("result = ${result}"); // result = undefined
 setDouble(value: double): void
 
 将当前JsonElement设置成double值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1456,7 +1717,7 @@ setDouble(value: double): void
 const elem = new jsonx.JsonElement();
 elem.setDouble(3.14);
 const result = elem.asDouble();
-console.info("result = ${result}"); // result = 3.14
+console.info(`result = ${result}`); // result = 3.14
 ```
 
 ### setLong
@@ -1464,6 +1725,10 @@ console.info("result = ${result}"); // result = 3.14
 setLong(value: long): void
 
 将当前JsonElement设置成long值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1477,7 +1742,7 @@ setLong(value: long): void
 const elem = new jsonx.JsonElement();
 elem.setLong(123456);
 const result = elem.asLong();
-console.info("result = ${result}"); // result = 123456
+console.info(`result = ${result}`); // result = 123456
 ```
 
 ### setBigInt
@@ -1485,6 +1750,10 @@ console.info("result = ${result}"); // result = 123456
 setBigInt(value: bigint): void
 
 将当前JsonElement设置成bigint值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1498,7 +1767,7 @@ setBigInt(value: bigint): void
 const elem = new jsonx.JsonElement();
 elem.setBigInt(123456789123456789n);
 const result = elem.asBigInt();
-console.info("result = ${result}"); // result = 123456789123456789
+console.info(`result = ${result}`); // result = 123456789123456789
 ```
 
 ### setInteger
@@ -1506,6 +1775,10 @@ console.info("result = ${result}"); // result = 123456789123456789
 setInteger(value: int): void
 
 将当前JsonElement设置成int值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1519,7 +1792,7 @@ setInteger(value: int): void
 const elem = new jsonx.JsonElement();
 elem.setInteger(42);
 const result = elem.asInteger();
-console.info("result = ${result}"); // result = 42
+console.info(`result = ${result}`); // result = 42
 ```
 
 ### setString
@@ -1527,6 +1800,10 @@ console.info("result = ${result}"); // result = 42
 setString(value: string): void
 
 将当前JsonElement设置成string值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1540,7 +1817,7 @@ setString(value: string): void
 const elem = new jsonx.JsonElement();
 elem.setString("Hello");
 const result = elem.asString();
-console.info("result = ${result}"); // result = Hello
+console.info(`result = ${result}`); // result = Hello
 ```
 
 ### setBoolean
@@ -1548,6 +1825,10 @@ console.info("result = ${result}"); // result = Hello
 setBoolean(value: boolean): void
 
 将当前JsonElement设置成boolean值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1561,7 +1842,7 @@ setBoolean(value: boolean): void
 const elem = new jsonx.JsonElement();
 elem.setBoolean(true);
 const result = elem.asBoolean();
-console.info("result = ${result}"); // result = true
+console.info(`result = ${result}`); // result = true
 ```
 
 ### setArray
@@ -1569,6 +1850,10 @@ console.info("result = ${result}"); // result = true
 setArray(value: Array\<JsonElement\>): void
 
 将当前JsonElement设置成Array值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1588,10 +1873,10 @@ const items = [
 arrayElem.setArray(items);
 
 const arr = arrayElem.asArray();
-console.info("length = ${arr.length}"); // length = 3
-console.info("arr[0] = ${arr[0].asString()}"); // arr[0] = item1
-console.info("arr[1] = ${arr[1].asInteger()}"); // arr[1] = 42
-console.info("arr[2] = ${arr[2].asBoolean()}"); // arr[2] = true
+console.info(`length = ${arr.length}`); // length = 3
+console.info(`arr[0] = ${arr[0].asString()}`); // arr[0] = item1
+console.info(`arr[1] = ${arr[1].asInteger()}`); // arr[1] = 42
+console.info(`arr[2] = ${arr[2].asBoolean()}`); // arr[2] = true
 ```
 
 ### setNull
@@ -1600,13 +1885,17 @@ setNull(): void
 
 将当前JsonElement设置成null。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **示例：**
 
 ```ts
 const elem = new jsonx.JsonElement();
 elem.setNull();
 const result = elem.jsonType;
-console.info("result = ${result}"); // result = 7
+console.info(`result = ${result}`); // result = 7
 ```
 
 ### setUndefined
@@ -1615,24 +1904,36 @@ setUndefined(): void
 
 将当前JsonElement设置成undefined。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **示例：**
 
 ```ts
 const elem = new jsonx.JsonElement();
 elem.setUndefined();
 const result = elem.jsonType;
-console.info("result = ${result}"); // result = 0
+console.info(`result = ${result}`); // result = 0
 ```
 
 ## JsonElementDeserializable
 
 定义可从JSON反序列化的类型接口,实现该接口的类可从JsonElement进行转换。
 
-### fromJson
+**系统能力：** SystemCapability.Utils.Lang
 
-fromJson(jsonElem: JsonElement)
+**ArkTS-Sta起始版本：** 26.0.0
+
+### fromJSON
+
+fromJSON(jsonElem: JsonElement)
 
 从JsonElement反序列化对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1658,19 +1959,27 @@ original.setElement("name", jsonx.JsonElement.createString("John"));
 original.setElement("age", jsonx.JsonElement.createInteger(30));
 let user = new User();
 user.fromJSON(original);
-console.info("name = ${user.name}"); // name = John
-console.info("age = ${user.age}"); // age = 30
+console.info(`name = ${user.name}`); // name = John
+console.info(`age = ${user.age}`); // age = 30
 ```
 
 ## JsonElementSerializable
 
 定义可序列化为JSON的类型接口，实现该接口的类可转换为JsonElement。
 
-### toJson
+**系统能力：** SystemCapability.Utils.Lang
 
-toJson(): JsonElement
+**ArkTS-Sta起始版本：** 26.0.0
+
+### toJSON
+
+toJSON(): JsonElement
 
 将对象序列化JsonElement。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1697,6 +2006,6 @@ let user = new User();
 user.name = "John";
 user.age = 30;
 const elem = user.toJSON();
-console.info("age = ${elem.getElement("name").asString()}"); // age = 30
-console.info("name = ${elem.getElement("age").asInteger()}"); // name = John
+console.info(`name = ${elem.getElement("name").asString()}`); // name = John
+console.info(`age = ${elem.getElement("age").asInteger()}`); // age = 30
 ```

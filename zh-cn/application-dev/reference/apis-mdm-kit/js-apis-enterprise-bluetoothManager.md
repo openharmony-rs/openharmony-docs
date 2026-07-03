@@ -194,7 +194,7 @@ try {
 
 ## bluetoothManager.getAllowedBluetoothDevices
 
-getAllowedBluetoothDevices(admin: Want): Array\<string>
+getAllowedBluetoothDevices(admin: Want | null): Array\<string>
 
 获取蓝牙设备可用名单。
 
@@ -209,7 +209,7 @@ getAllowedBluetoothDevices(admin: Want): Array\<string>
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -359,7 +359,7 @@ try {
 
 ## bluetoothManager.getDisallowedBluetoothDevices<sup>20+</sup>
 
-getDisallowedBluetoothDevices(admin: Want): Array&lt;string&gt;
+getDisallowedBluetoothDevices(admin: Want | null): Array&lt;string&gt;
 
 获取蓝牙设备禁用名单。
 
@@ -373,7 +373,7 @@ getDisallowedBluetoothDevices(admin: Want): Array&lt;string&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 

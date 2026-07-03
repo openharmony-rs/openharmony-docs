@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @guozejun-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的网格布局。
@@ -13,6 +13,8 @@ API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)
 
 从API版本26.0.0开始，其父组件新增支持[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)和[LazyColumnLayout](ts-container-lazycolumnlayout.md)，同时新增支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
 
+更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -20,11 +22,11 @@ API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - LazyVGridLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+> - LazyVGridLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](ts-universal-attributes-size.md#height)、[size](ts-universal-attributes-size.md#size)中的height、[constraintSize](ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](ts-universal-attributes-size.md#layoutweight)，以及[height](ts-universal-attributes-size.md#height15)取[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15)值的场景。
 > - 当父组件设置主轴方向尺寸时，LazyVGridLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVGridLayout会被内容撑开，导致所有子组件都会被加载布局。
 > - 该组件在不同父组件下的懒加载支持条件如下：
 >   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](ts-appendix-enums.md#flexdirection)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或横向布局（FlexDirection.Row或FlexDirection.RowReverse）下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
->   2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
+>   2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 >   3. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical）。在非竖直方向的Scroll中使用该组件会导致应用崩溃。
 > - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
 > - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
@@ -61,12 +63,12 @@ columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-
 
 columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track-size，自动计算列数。
 
-columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
+columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用[columnsGap](#columnsgap)作为最小列间距，自动计算列数和实际列间距。
 
-其中repeat、auto-fit、auto-fill、auto-stretch为关键字。<br>
-track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。<br/>
-auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。<br>
-auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
+其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
+
+使用效果可以参考[示例3](#示例3设置自适应列数)。
 
 设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
@@ -108,7 +110,7 @@ ArkTS-Dyn: columnsGap(value: LengthMetrics)
 
 ArkTS-Sta: columnsGap(value: LengthMetrics | undefined)
 
-设置列与列的间距。设置为小于0的值时，按默认值显示。
+设置列与列的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -122,7 +124,7 @@ ArkTS-Sta: columnsGap(value: LengthMetrics | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值为undefined时，按默认值处理。 |
+| value  |  ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### rowsGap
 
@@ -130,7 +132,7 @@ ArkTS-Dyn: rowsGap(value: LengthMetrics)
 
 ArkTS-Sta: rowsGap(value: LengthMetrics | undefined)
 
-设置行与行的间距。设置为小于0的值时，按默认值显示。
+设置行与行的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -144,11 +146,11 @@ ArkTS-Sta: rowsGap(value: LengthMetrics | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### header
 
-header(builder: CustomBuilder | undefined)
+header(builder: CustomBuilder | undefined): T
 
 设置当前LazyVGridLayout的头部组件。
 
@@ -176,7 +178,7 @@ header(builder: CustomBuilder | undefined)
 
 ### footer
 
-footer(builder: CustomBuilder | undefined)
+footer(builder: CustomBuilder | undefined): T
 
 设置当前LazyVGridLayout的尾部组件。
 
@@ -204,7 +206,7 @@ footer(builder: CustomBuilder | undefined)
 
 ### sticky
 
-sticky(sticky: StickyStyle | undefined)
+sticky(sticky: StickyStyle | undefined): T
 
 设置[header](#header)和[footer](#footer)的吸附效果。
 
@@ -236,7 +238,7 @@ sticky(sticky: StickyStyle | undefined)
 
 ### onVisibleIndexesChange
 
-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 设置onVisibleIndexesChange回调函数。当LazyVGridLayout在可视区域内的子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和结束索引值。
 
@@ -277,6 +279,7 @@ MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -302,8 +305,8 @@ struct LazyVGridLayoutSample1 {
         .rowsGap(LengthMetrics.vp(10)) // 行间距10vp
         // 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
         .onVisibleIndexesChange((start: number, end: number) => {
-          console.info('visible indexes: start= ' + 'start,' + 'end= ' + 'end');
-      })
+          console.info('visible indexes: start: ' + start + ', end: ' + end);
+        })
 
         // 第二个LazyVGridLayout：双列布局
         LazyVGridLayout() {
@@ -429,7 +432,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/zh-cn_image_lazyvgridlayout1.gif)
+![](figures/image-lazyvgridlayout1.gif)
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 
@@ -440,6 +443,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -447,6 +451,7 @@ import { MyDataSource } from './MyDataSource';
 struct LazyVGridLayoutStickyDemo {
   private arr:MyDataSource<number> = new MyDataSource<number>();
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Column() {
@@ -491,6 +496,7 @@ struct LazyVGridLayoutStickyDemo {
         .columnsGap(LengthMetrics.vp(10))
         .header(this.HeaderBuilder)
         .footer(this.FooterBuilder)
+        // 设置头部和尾部同时吸附
         .sticky(StickyStyle.BOTH)
       }.padding(10)
       .rowsGap(10)
@@ -507,3 +513,138 @@ struct LazyVGridLayoutStickyDemo {
 }
 ```
 ![](figures/scroll_lazyvgridlayout_header_footer.gif)
+
+### 示例3（设置自适应列数）
+
+该示例通过设置[columnsTemplate](#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
+
+从API version 19开始，新增[columnsTemplate](#columnstemplate)接口。
+
+<!--code_no_check-->
+```ts
+import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutColumnsTemplateDemo {
+  private autoFillData: MyDataSource<number> = new MyDataSource<number>();
+  private autoFitData: MyDataSource<number> = new MyDataSource<number>();
+  private autoStretchData: MyDataSource<number> = new MyDataSource<number>();
+
+  aboutToAppear(): void {
+    // 初始化固定数量的数据，不进行滚动触底加载
+    for (let i = 0; i < 12; i++) {
+      this.autoFillData.pushData(i);
+      this.autoFitData.pushData(i);
+      this.autoStretchData.pushData(i);
+    }
+  }
+
+  @Builder
+  ModeTitle(title: string, description: string) {
+    Column() {
+      Text(title)
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+      Text(description)
+        .fontSize(12)
+        .fontColor('#667085')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 })
+  }
+
+  @Builder
+  AutoFillHeader() {
+    this.ModeTitle('auto-fill', '固定列宽为96vp，自动计算列数，剩余空间保留在行尾')
+  }
+
+  @Builder
+  AutoFitHeader() {
+    this.ModeTitle('auto-fit', '以96vp为最小列宽，剩余空间均分到每一列，列宽会被拉伸')
+  }
+
+  @Builder
+  AutoStretchHeader() {
+    this.ModeTitle('auto-stretch', '固定列宽为96vp，剩余空间均分到列间距中，列间距会被拉伸')
+  }
+
+  @Builder
+  GridItemBuilder(item: number, backgroundColor: string) {
+    Text(item.toString())
+      .height(56)
+      .width('100%')
+      .borderRadius(6)
+      .backgroundColor(backgroundColor)
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          // auto-fill：固定列宽为96vp，根据可用宽度自动计算列数
+          LazyVGridLayout() {
+            LazyForEach(this.autoFillData, (item: number) => {
+              this.GridItemBuilder(item, '#CDE7FF')
+            })
+          }
+          .columnsTemplate('repeat(auto-fill, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoFillHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+
+          // auto-fit：以96vp为最小列宽，剩余空间均分到每一列
+          LazyVGridLayout() {
+            LazyForEach(this.autoFitData, (item: number) => {
+              this.GridItemBuilder(item, '#D8F5D0')
+            })
+          }
+          .columnsTemplate('repeat(auto-fit, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoFitHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+
+          // auto-stretch：固定列宽为96vp，剩余空间均分到列间距中
+          LazyVGridLayout() {
+            LazyForEach(this.autoStretchData, (item: number) => {
+              this.GridItemBuilder(item, '#FFE6A8')
+            })
+          }
+          .columnsTemplate('repeat(auto-stretch, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoStretchHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+
+![](figures/scroll-lazyvgridlayout-columntemplate.gif)

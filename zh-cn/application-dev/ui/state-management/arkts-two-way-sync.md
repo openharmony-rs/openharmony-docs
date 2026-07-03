@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @Cuecuexiaoyu--> 
-<!--Designer: @lixingchi1--> 
+<!--Designer: @VictorS67--> 
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -50,10 +50,9 @@
 ## 使用示例
 
 以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)方法的text参数为例：
-<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) --> 
 
 ``` TypeScript
-// xxx.ets
 @Entry
 @Component
 struct TextInputExample {
@@ -63,6 +62,7 @@ struct TextInputExample {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+      // $$运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步
       TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })

@@ -244,7 +244,7 @@ struct FlexExample1 {
 }
 ```
 
-![zh-cn_image_0000001219744189](figures/zh-cn_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### 示例2（子组件单/多行排列）
 
@@ -344,7 +344,7 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174264366](figures/zh-cn_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### 示例3（子组件在主轴上的对齐格式）
 
@@ -356,7 +356,7 @@ struct FlexExample2 {
 // xxx.ets
 @Component
 struct JustifyContentFlex {
-  justifyContent : number = 0;
+  justifyContent: number = 0;
 
   build() {
     Flex({ justifyContent: this.justifyContent }) {
@@ -407,7 +407,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, FlexA
 
 @Component
 struct JustifyContentFlex {
-  justifyContent : FlexAlign = FlexAlign.Start;
+  justifyContent: FlexAlign = FlexAlign.Start;
 
   build() {
     Flex({ justifyContent: this.justifyContent as FlexAlign } as FlexOptions) {
@@ -450,7 +450,7 @@ struct FlexExample3 {
 }
 ```
 
-![zh-cn_image_0000001174582854](figures/zh-cn_image_0000001174582854.PNG)
+![flex3](figures/flex3.PNG)
 
 ### 示例4（子组件在交叉轴上的对齐方式）
 
@@ -462,7 +462,7 @@ struct FlexExample3 {
 // xxx.ets
 @Component
 struct AlignItemsFlex {
-  alignItems : number = 0;
+  alignItems: number = 0;
 
   build() {
     Flex({ alignItems: this.alignItems }) {
@@ -513,7 +513,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, ItemA
 
 @Component
 struct AlignItemsFlex {
-  alignItems : ItemAlign = ItemAlign.Auto;
+  alignItems: ItemAlign = ItemAlign.Auto;
 
   build() {
     Flex({ alignItems: this.alignItems } as FlexOptions) {
@@ -534,10 +534,10 @@ struct FlexExample4 {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
         Text('alignItems:Auto').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignItemsFlex({ alignItems: ItemAlign.Center }) // 子组件在容器交叉轴上居中对齐
@@ -556,7 +556,7 @@ struct FlexExample4 {
 }
 ```
 
-![zh-cn_image_0000001174422904](figures/zh-cn_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### 示例5（多行内容的对齐方式）
 
@@ -598,7 +598,7 @@ struct FlexExample5 {
         AlignContentFlex({ alignContent: FlexAlign.End }) // 多行布局下子组件尾部对齐
 
         Text('alignContent:SpaceBetween').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与列首对齐，最后一行子组件与列尾对齐
+        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与行首对齐，最后一行子组件与行尾对齐
 
         Text('alignContent:SpaceAround').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignContentFlex({ alignContent: FlexAlign.SpaceAround }) // 多行布局下第一行子组件到列首的距离和最后一行子组件到列尾的距离是相邻行之间距离的一半
@@ -686,7 +686,7 @@ struct FlexExample5 {
 }
 ```
 
-![zh-cn_image_0000001174422906](figures/zh-cn_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### 示例6（子组件单/多行排列时的主/交叉轴间距）
 
@@ -699,7 +699,7 @@ import {LengthMetrics} from '@kit.ArkUI';
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 }) {
@@ -747,7 +747,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, FlexW
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
@@ -787,7 +787,7 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174422907](figures/zh-cn_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### 示例7（宽度自适应的Flex容器）
 
@@ -797,7 +797,7 @@ struct FlexExample2 {
 
 ```ts
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @Prop text: string
 
   build() {
@@ -865,7 +865,7 @@ import {
 import { Require, PropRef } from '@ohos.arkui.stateManagement'
 
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @PropRef text: string
 
   build() {
@@ -914,4 +914,4 @@ struct Index {
 }
 ```
 
-![zh-cn_flexDemo_7](figures/zh-cn_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

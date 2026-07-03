@@ -51,7 +51,7 @@ TextTimer(options?: TextTimerOptions)
 | 名称   | 类型     | 只读 | 可选 | 说明                   |
 | ----------- | -------- | -------- | -------- | -------- |
 | isCountDown | boolean  | 否  | 是  | 倒计时开关。<br/>true：计时器开启倒计时，例如从30秒~0秒。<br/>false：计时器开始计时，例如从0秒~30秒。<br/>默认值：false <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| count       | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| count       | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br/>默认值：60000 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | startTime | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br/>默认值：0 <br/>单位：毫秒 <br/>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
@@ -103,7 +103,7 @@ ArkTS-Sta: format(value: string | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是   | 自定义日期显示的格式。<br/>默认值：'HH:mm:ss.SS' <br/>设置undefined时按默认值处理。|
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是   | 自定义时间显示的格式。<br/>默认值：'HH:mm:ss.SS' <br/>设置undefined时按默认值处理。|
 
 
 ### fontColor
@@ -479,7 +479,7 @@ struct TextTimerExample {
         .fontColor(Color.Black)
         .fontSize(50)
         .onTimer((utc: number, elapsedTime: number) => {
-          console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
+          console.info('textTimer countDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
         })
       Row() {
         Button('start').onClick(() => {
@@ -498,7 +498,7 @@ struct TextTimerExample {
 ```
 
 
-![zh-cn_image_0000001251007721](figures/zh-cn_image_0000001251007721.gif)
+![textTimer](figures/textTimer.gif)
 
 ### 示例2（设定文本阴影样式）
 
@@ -666,9 +666,8 @@ struct TextTimerStart {
 // xxx.ets
 @Entry
 @Component
-struct demo {
+struct Demo {
   textTimerController: TextTimerController = new TextTimerController();
-  @State format: string = 'HH:mm:ss.SS';
   @State countValue: number = 5025678;
 
   build() {

@@ -413,8 +413,8 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-currentAVSession.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+avCastController.on('customDataChange', (data: Record<string, Object>) => {
+    console.info(`Caught customDataChange event, the new data is: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1052,7 +1052,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<keyof AVPlaybackstate> 表示关注Array中的字段变化。|
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all'表示关注播放状态所有字段变化；Array\<keyof AVPlaybackState>表示关注Array中的字段变化。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**

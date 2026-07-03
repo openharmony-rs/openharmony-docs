@@ -308,11 +308,11 @@
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 说明               | 动效参数                          | 默认缩放比                     |
-| ------ | --------------------------------- | --------------------------------- | --------------------------------- |
-| LIGHT  | 小面积（轻盈） | 弹簧动效， 刚性：410，阻尼：38，初始速度：1 | 90% |
-| MIDDLE | 中面积（稳定） | 弹簧动效， 刚性：350，阻尼：35，初始速度：0.5 | 95% |
-| HEAVY  | 大面积（厚重） | 弹簧动效， 刚性：240，阻尼：28，初始速度：0 | 95% |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| LIGHT  | 0 | 小面积（轻盈），弹簧动效，刚性：410，阻尼：38，初始速度：1，默认缩放比90%。 |
+| MIDDLE | 1 | 中面积（稳定），弹簧动效，刚性：350，阻尼：35，初始速度：0.5，默认缩放比95%。 |
+| HEAVY  | 2 | 大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。 |
 
 ## Color
 
@@ -326,17 +326,17 @@
 
 | 名称                     | 值            |说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | ArkTS-Dyn: 0x000000<br/>ArkTS-Sta: '#FF000000'      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Blue                     | ArkTS-Dyn: 0x0000ff<br/>ArkTS-Sta: '#FF0000FF'      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Brown                    | ArkTS-Dyn: 0xa52a2a<br/>ArkTS-Sta: '#FFA52A2A'      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Gray                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Grey                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Green                    | ArkTS-Dyn: 0x008000<br/>ArkTS-Sta: '#FF008000'      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Orange                   | ArkTS-Dyn: 0xffa500<br/>ArkTS-Sta: '#FFFFA500'      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Pink                     | ArkTS-Dyn: 0xffc0cb<br/>ArkTS-Sta: '#FFFFC0CB'      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Red                      | ArkTS-Dyn: 0xff0000<br/>ArkTS-Sta: '#FFFF0000'      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| White                    | ArkTS-Dyn: 0xffffff<br/>ArkTS-Sta: '#FFFFFFFF'      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| Yellow                   | ArkTS-Dyn: 0xffff00<br/>ArkTS-Sta: '#FFFFFF00'      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Black                    | ArkTS-Dyn: 0x000000<br/>ArkTS-Sta: '#FF000000'      | ![black](figures/black.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Blue                     | ArkTS-Dyn: 0x0000ff<br/>ArkTS-Sta: '#FF0000FF'      | ![blue](figures/blue.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Brown                    | ArkTS-Dyn: 0xa52a2a<br/>ArkTS-Sta: '#FFA52A2A'      | ![brown](figures/brown.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Gray                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![gray](figures/gray.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Grey                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![gray](figures/gray.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Green                    | ArkTS-Dyn: 0x008000<br/>ArkTS-Sta: '#FF008000'      | ![green](figures/green.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Orange                   | ArkTS-Dyn: 0xffa500<br/>ArkTS-Sta: '#FFFFA500'      | ![orange](figures/orange.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Pink                     | ArkTS-Dyn: 0xffc0cb<br/>ArkTS-Sta: '#FFFFC0CB'      | ![pink](figures/pink.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Red                      | ArkTS-Dyn: 0xff0000<br/>ArkTS-Sta: '#FFFF0000'      | ![red](figures/red.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| White                    | ArkTS-Dyn: 0xffffff<br/>ArkTS-Sta: '#FFFFFFFF'      | ![white](figures/white.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Yellow                   | ArkTS-Dyn: 0xffff00<br/>ArkTS-Sta: '#FFFFFF00'      | ![yellow](figures/yellow.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | Transparent<sup>9+</sup> | ArkTS-Dyn: rgba(0,0,0,0)<br/>ArkTS-Sta: '#00000000' | 透明色<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                       |
 
 ## ColorSpace<sup>20+</sup>
@@ -484,7 +484,7 @@
 
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
+| DEFAULT   | 0    | 白底蓝字（深色主题下为黑底蓝字）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
 ## DialogDisplayMode<sup>24+</sup>
@@ -744,8 +744,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -1094,8 +1094,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
 | Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
 | End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Baseline | 4 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Stretch  | 5 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
 
 ## ImageRepeat
 
@@ -1633,7 +1633,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)和[WaterFlow](./ts-container-waterflow.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)和[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -1977,7 +1977,7 @@ type Nullable\<T> = T | undefined
 | 名称    | 值 | 说明                                                         |
 | ------- | ----------- | ------------------------------------------------------------ |
 | DEFAULT | ArkTS-Dyn: - <br/>ArkTS-Sta: 0| 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| INLINE  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
 

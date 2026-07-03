@@ -831,10 +831,10 @@ TabBar布局模式枚举。
 | 名称          | 值   | 说明                                                         |
 | ------------- | ---- | ------------------------------------------------------------ |
 | CONTENT_FIRST | 0    | 先加载目标页内容，再开始切换动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时需要满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | NO_ANIMATION  | 2    | 关闭默认动画。调用TabsController的[changeIndex](#changeindex)接口切换TabContent时该枚举值不生效。<br>可以通过设置[animationDuration](#animationduration)为0实现调用TabsController的changeIndex接口时不带动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | CONTENT_FIRST_WITH_JUMP<sup>15+</sup> | 3    | 先加载目标页内容，再无动画跳转到目标页附近，最后有动画跳转到目标页。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | 先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时需要满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | 先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## LayoutStyle<sup>10+</sup>枚举说明
 
@@ -859,7 +859,7 @@ TabBar布局模式枚举。
 
 ## CommonModifier<sup>15+</sup>
 
-type CommonModifier = CommonModifier
+type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier
 
 作为Tabs组件的参数对象。
 
@@ -875,7 +875,7 @@ type CommonModifier = CommonModifier
 
 | 类型         | 说明                                     |
 | ---------- | ---------------------------------------- |
-| [CommonModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 设置TabBar的通用属性。 |
+| import('../api/arkui/CommonModifier').[CommonModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 设置TabBar的通用属性。 |
 
 ## TabsCacheMode<sup>19+</sup>枚举说明
 
@@ -1311,7 +1311,7 @@ ArkTS-Sta: type OnTabsGestureSwipeCallback = (index: int, extraInfo: TabsAnimati
 
 ArkTS-Dyn: type TabsCustomContentTransitionCallback = (from: number, to: number) => TabContentAnimatedTransition | undefined
 
-ArkTS-Sta: type TabsCustomContentTransitionCallback = (from: int, to: int) => TabContentAnimatedTransition | undefined
+ArkTS-Sta: type TabsCustomContentTransitionCallback = (from: int, to: int) => (TabContentAnimatedTransition | undefined)
 
 自定义Tabs页面切换动画开始时触发的回调。
 
@@ -1650,6 +1650,8 @@ ArkTS-Sta: setTabBarOpacity(opacity: double): void
 
 本示例通过[barMode](#barmode)分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1719,6 +1721,95 @@ struct TabsExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Alignment,
+  Color,
+  BarMode,
+  Row,
+  Tabs,
+  TabContent,
+  ButtonOptions,
+  SubTabBarStyle,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+
+  build() {
+    Column(undefined) {
+      Row(undefined) {
+        Button('文本增加 ')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text += '文本增加';
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('文本重置')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text = '文本';
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Row() {
+        Button('BarMode.Fixed')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Fixed;
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('BarMode.Scrollable')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Scrollable;
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Tabs() {
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar(SubTabBarStyle.of(this.text))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(this.barMode)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+```
+
 ![tabs1](figures/tabs_barMode.gif)
 
 ### 示例2（设置Scrollable模式下的TabBar的布局样式）
@@ -1902,7 +1993,7 @@ struct TabsExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        // selectedIndex控制自定义TabBar内Text颜色切换
         this.selectedIndex = targetIndex;
       })
       .width(360)
@@ -2913,8 +3004,8 @@ struct TabsExample {
   }
 
   @Builder
-  tabBuilder(title: string,targetIndex: number) {
-    Column(){
+  tabBuilder(title: string, targetIndex: number) {
+    Column() {
       Text(title).fontColor(this.currentIndex === targetIndex ? '#FF0000' : '#6B6B6B')
     }.width('100%')
     .height(50)
@@ -2924,13 +3015,13 @@ struct TabsExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
-        ForEach(this.data, (item: string) => {
+        ForEach(this.data, (item: number) => {
           TabContent() {
-            Column(){
+            Column() {
               Text('' + item)
             }.width('100%').height('100%').backgroundColor('#00CB87').justifyContent(FlexAlign.Center)
-          }.tabBar(this.tabBuilder('P' + item, parseInt(item)))
-        }, (item: string) => item)
+          }.tabBar(this.tabBuilder('P' + item, item))
+        }, (item: number) => item.toString())
       }
       .barWidth(360)
       .barHeight(60)
@@ -2946,7 +3037,7 @@ struct TabsExample {
       Text('AnimationMode:' + AnimationMode[this.currentAnimationMode])
 
       Button('AnimationMode').width('50%').margin({ top: 1 }).height(25)
-        .onClick(()=>{
+        .onClick(() => {
           if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
             this.currentAnimationMode = AnimationMode.ACTION_FIRST;
           } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
@@ -3593,7 +3684,7 @@ struct TabsDidScrollExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        // selectedIndex控制自定义TabBar内Text颜色切换
         this.selectedIndex = targetIndex;
       })
       .width(360)

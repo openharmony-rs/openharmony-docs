@@ -48,8 +48,13 @@
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | 创建OH_PictureMetadata指针。 |
 | [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | 根据key获取Metadata的单条属性。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。 |
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | 根据key修改Metadata的单条属性。 |
+| [Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)](#oh_picturemetadata_setblobdata) | 使用二进制数据替换当前元数据。 |
+| [Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)](#oh_picturemetadata_getblobdatasize) | 获取元数据中blob数据的大小。 |
+| [Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)](#oh_picturemetadata_getblobdata) | 以二进制数据的形式获取元数据。 |
 | [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | 获取图片元数据的属性值。输出的value.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | 释放OH_PictureMetadata指针。 |
+| <!--DelRow--> [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)](#oh_picturemetadata_getmetadatabytype) | 从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。 |
+| <!--DelRow--> [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)](#oh_picturemetadatas_release) | 释放OH_PictureMetadata对象数组。 |
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | 拷贝元数据。 |
 
 ### 变量
@@ -226,7 +231,7 @@
 | static const char * OHOS_DNG_PROPERTY_DEFAULT_SCALE = "DefaultScale" | 默认缩放比例。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_DEFAULT_CROP_ORIGIN = "DefaultCropOrigin" | 默认裁剪原点。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_DEFAULT_CROP_SIZE = "DefaultCropSize" | 默认裁剪尺寸。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray)共同获取。<br>**起始版本：** 24 |
-| static const char * OHOS_DNG_PROPERTY_COLOR_MATRIX1 = "ColorMatrix1" | 第一个校准光源下的变换矩阵。取值可以通过[OH_ImageSourceNative_GetImagePropertyArray](capi-image-source-native-h.md)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
+| static const char * OHOS_DNG_PROPERTY_COLOR_MATRIX1 = "ColorMatrix1" | 第一个校准光源下的变换矩阵。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_COLOR_MATRIX2 = "ColorMatrix2" | 第二个校准光源下的变换矩阵。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_CAMERA_CALIBRATION1 = "CameraCalibration1" | 第一个校准光源下的校准矩阵。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_CAMERA_CALIBRATION2 = "CameraCalibration2" | 第二个校准光源下的校准矩阵。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
@@ -403,6 +408,10 @@ Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_Pi
 
 创建OH_PictureMetadata指针。
 
+使用约束：metadata不能为空指针。接口返回失败时，输出参数内容不应使用。
+
+资源管理：接口成功返回的OH_PictureMetadata对象由调用方管理，使用完成后应调用[OH_PictureMetadata_Release](#oh_picturemetadata_release)释放。
+
 **起始版本：** 13
 
 **参数：**
@@ -410,7 +419,7 @@ Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_Pi
 | 参数项 | 描述 |
 | -- | -- |
 | [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | 元数据的类型。 |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | 被操作的OH_PictureMetadata指针。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | 指向OH_PictureMetadata对象的指针。 |
 
 **返回：**
 
@@ -428,13 +437,17 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 根据key获取Metadata的单条属性。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
+使用约束：metadata、key、key->data和value均不能为空指针，key->size必须大于0。接口返回失败时，不应读取value.data。
+
+资源管理：接口执行成功后，value.data由接口分配，调用方使用完成后应使用delete[]释放。该接口返回的value.data不以字符串结束符'\0'结尾，如需按C字符串处理，建议使用[OH_PictureMetadata_GetPropertyWithNull](#oh_picturemetadata_getpropertywithnull)。
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 被操作的OH_PictureMetadata指针。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata对象的指针。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 属性的键。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 属性的值。 |
 
@@ -454,13 +467,17 @@ Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Ima
 
 根据key修改Metadata的单条属性。
 
+使用约束：metadata、key、key->data、value和value->data均不能为空指针，key->size和value->size必须大于0。
+
+资源管理：接口会读取传入的key和value内容，不持有调用方传入的Image_String指针。接口返回后，调用方仍需自行管理key和value的生命周期。
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 被操作的OH_PictureMetadata指针。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata对象的指针。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 属性的键。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 属性的值。 |
 
@@ -469,6 +486,83 @@ Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Ima
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。<br>         IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型，或元数据类型与辅助图片类型不匹配。 |
+
+### OH_PictureMetadata_SetBlobData()
+
+```c
+Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)
+```
+
+**描述**
+
+使用二进制数据替换当前元数据。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata对象的指针。 |
+| uint8_t *blob | 指向二进制数据的指针。 |
+| uint32_t blobSize | 二进制数据的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：未能设置二进制数据。</li><br>         </ul> |
+
+### OH_PictureMetadata_GetBlobDataSize()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)
+```
+
+**描述**
+
+获取元数据中blob数据的大小。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata对象的指针。 |
+| uint32_t *blobSize | 指向二进制数据大小的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blobSize为空指针。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         </ul> |
+
+### OH_PictureMetadata_GetBlobData()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)
+```
+
+**描述**
+
+以二进制数据的形式获取元数据。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata对象的指针。 |
+| uint8_t *blob | 指向获取到的二进制数据的指针。 |
+| uint32_t blobSize | 二进制数据的大小。该值必须大于或等于通过OH_PictureMetadata_GetBlobDataSize方法获取的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0或小于要求。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：无法获取二进制数据。</li><br>         </ul> |
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
@@ -479,6 +573,12 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 **描述**
 
 获取图片元数据的属性值。输出的value.data以字符串结束符'\0'结尾。
+
+使用场景：适用于读取字符串形式的元数据属性值。与[OH_PictureMetadata_GetProperty](#oh_picturemetadata_getproperty)相比，本接口返回的value.data以'\0'结尾，更适合直接按C字符串处理。
+
+使用约束：metadata、key、key->data和value均不能为空指针，key->size必须大于0。接口返回失败时，不应读取value.data。
+
+资源管理：接口执行成功后，value.data由接口分配，调用方使用完成后应使用delete[]释放。
 
 **起始版本：** 19
 
@@ -506,6 +606,10 @@ Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 
 释放OH_PictureMetadata指针。
 
+使用约束：metadata不能为空指针。
+
+资源管理：调用该接口后，metadata指向的OH_PictureMetadata对象会被释放，不应继续使用。
+
 **起始版本：** 13
 
 **参数：**
@@ -519,6 +623,63 @@ Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
+<!--Del-->
+### OH_PictureMetadata_GetMetadataByType()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)
+```
+
+**描述**
+
+从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadatas | 指向OH_PictureMetadata数组的指针。 |
+| uint32_t metadataCount | OH_PictureMetadata数组的长度。 |
+| int32_t type | 要匹配的目标元数据类型。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | 指向OH_PictureMetadata输出对象的指针，用于存储匹配的内容。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas或metadata为空指针、数组长度为0。</li><br>         </ul> |
+
+### OH_PictureMetadatas_Release()
+
+```c
+Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)
+```
+
+**描述**
+
+释放OH_PictureMetadata对象数组。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadatas | 指向OH_PictureMetadata数组的指针。 |
+| uint32_t metadatasCount | OH_PictureMetadata数组的长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas为空指针、数组长度为0。</li><br>         </ul> |
+<!--DelEnd-->
 
 ### OH_PictureMetadata_Clone()
 
@@ -529,6 +690,10 @@ Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_Pic
 **描述**
 
 拷贝元数据。
+
+使用约束：oldMetadata和newMetadata均不能为空指针；接口返回失败时，输出参数内容不应使用。
+
+资源管理：接口成功返回的newMetadata由调用方管理，使用完成后应调用[OH_PictureMetadata_Release](#oh_picturemetadata_release)释放。
 
 **起始版本：** 13
 
