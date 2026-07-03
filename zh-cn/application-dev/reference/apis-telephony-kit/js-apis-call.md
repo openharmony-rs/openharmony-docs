@@ -948,6 +948,7 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -994,6 +995,7 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1041,6 +1043,7 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1157,6 +1160,7 @@ call.getCallTransferInfo(type, number)
 | isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。   |
 | isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍能力，默认为false。true表示支持，false表示不支持。  <br>**起始版本:** 26.0.0|
 
+
 ## TelCallState<sup>21+</sup>
 
 通话状态码。
@@ -1249,10 +1253,10 @@ call.getCallTransferInfo(type, number)
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|          名称            |                 类型               | 必填 |       说明       |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
-| startHour   | number                             |  是  | 开始时间的小时数。 |
-| startMinute | number                             |  是  | 开始时间的分钟数。 |
-| endHour     | number                             |  是  | 结束时间的小时数。 |
-| endMinute   | number                             |  是  | 结束时间的分钟数。 |
+|          名称            |                 类型               | 只读 | 可选 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) | 否 |  否  | 转移状态。         |
+| startHour   | number                             | 否 |  否  | 开始时间的小时数。 |
+| startMinute | number                             | 否 |  否  | 开始时间的分钟数。 |
+| endHour     | number                             | 否 |  否  | 结束时间的小时数。 |
+| endMinute   | number                             | 否 |  否  | 结束时间的分钟数。 |
