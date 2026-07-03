@@ -18,7 +18,7 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别在ArkTS-Dyn中都为MessageLevel.Info，在ArkTS-Sta中都为MessageLevel.INFO。
+> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别在ArkTS-Dyn中都为MessageLevel.Info，在ArkTS-Sta中都为MessageLevel.INFO。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -29,10 +29,10 @@ ConsoleMessage的信息级别。
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
 | ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 1 | 调试级别。 |
+| ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO | 2 | 消息级别。 |
+| ArkTS-Dyn: Warn  <br>ArkTS-Sta: WARN | 3 | 警告级别。 |
 | ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 4 | 错误级别。 |
-| ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO| 2 | 消息级别。 |
-| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 5 | 日志级别。 |
-| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 3 | 警告级别。 |
+| ArkTS-Dyn: Log   <br>ArkTS-Sta: LOG  | 5 | 日志级别。<br/> **废弃版本：** 26.0.0 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 

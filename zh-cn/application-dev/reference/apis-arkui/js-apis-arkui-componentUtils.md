@@ -85,9 +85,9 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | 名称           | 类型             | 只读    | 可选           | 说明                         |
 | ---------------|------------| --------------- | -----------------------------| -----------------------------|
 | size           | [Size](#size) | 否       | 否     | 组件大小。                    |
-| localOffset    | [Offset](#offset) | 否       | 否    | 组件相对于父组件信息。         |
-| windowOffset   | [Offset](#offset) | 否       | 否    | 组件相对于窗口信息。           |
-| screenOffset   | [Offset](#offset) | 否       | 否    | 组件相对于屏幕信息。           |
+| localOffset    | [Offset](#offset) | 否       | 否    | 组件相对于父组件的偏移量。         |
+| windowOffset   | [Offset](#offset) | 否       | 否    | 组件相对于窗口的偏移量。           |
+| screenOffset   | [Offset](#offset) | 否       | 否    | 组件相对于屏幕的偏移量。           |
 | translate      | [TranslateResult](#translateresult)| 否       | 否     | 组件平移信息。                |
 | scale          | [ScaleResult](#scaleresult) | 否       | 否     | 组件缩放信息。                |
 | rotate         | [RotateResult](#rotateresult) | 否       | 否     | 组件旋转信息。                |

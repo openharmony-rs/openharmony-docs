@@ -9710,7 +9710,7 @@ ArkTS-Dyn: getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array
 
 ArkTS-Sta: getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array&lt;Sensor&gt;
 
-同步获取指定设备和类型的传感器信息，使用同步方式返回结果。
+同步获取指定设备和类型的传感器信息，使用同步方式返回结果。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11519,7 +11519,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -11582,7 +11582,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 

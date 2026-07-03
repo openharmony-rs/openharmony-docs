@@ -3295,9 +3295,9 @@ class MyLeadingMarginSpan extends LeadingMarginSpan {
 
   // 回调给开发者行信息，用于canvas绘制
   onDraw(context: DrawContext, options: LeadingMarginSpanDrawInfo) {
-    console.info("x = " + options.x + options.direction + ", top = " + options.top
+    console.info("x = " + options.x + ", direction = " + options.direction + ", top = " + options.top
       + ", bottom = " + options.bottom + ", baseline = " + options.baseline
-      + ", direction = " + ", start = " + options.start + ", end = " + options.end + ", first = " + options.first)
+      + ", start = " + options.start + ", end = " + options.end + ", first = " + options.first)
     let canvas = context.canvas;
     if (!options.first) {
       return

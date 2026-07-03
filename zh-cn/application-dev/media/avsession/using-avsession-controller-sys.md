@@ -53,7 +53,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 | sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 通过会话控制器发送自定义命令到其对应的会话。 |
 | getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+</sup> | 获取当前播放列表相关信息。 |
 | getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+</sup> | 获取当前播放列表的名称。 |
-| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置指定播放列表单项的ID，发送给会话提供方处理，会话提供方可以选择对这个单项歌曲进行播放。 |
+| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置指定播放列表单项的ID，发送给会话提供方处理。会话提供方可以选择对这个单项歌曲进行播放。 |
 | getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+</sup> | 获取媒体提供方设置的自定义媒体数据包。 |
 | getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | 使用同步方法获取当前输出设备信息。 |
 | getAVPlaybackStateSync(): AVPlaybackState<sup>10+</sup> | 使用同步方法获取当前会话播放状态相关信息。 |

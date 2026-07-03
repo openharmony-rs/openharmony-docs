@@ -125,7 +125,7 @@ struct Parent {
 
 - \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
-- 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
+- 按回调传递和按引用传递时，支持\@LocalBuilder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持\@LocalBuilder函数内UI组件刷新。
 
 ### 按回调传递参数
 

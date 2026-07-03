@@ -674,7 +674,7 @@ struct WebComponent {
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
 ArkTS-Dyn示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -721,7 +721,6 @@ struct SelectionMenuLongPress {
           .style({ strokeWidth: 3, enableSmoothEffect: true })
           .backgroundColor(Color.White)
           .opacity(this.progressVisible?1:0)
-          .backgroundColor(Color.White)
       }.alignContent(Alignment.Bottom)
       Web({src:$$.url,controller: new webview.WebviewController()})
         .javaScriptAccess(true)
@@ -848,11 +847,9 @@ struct SelectionMenuLongPress {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import webview from '@ohos.web.webview';
 import { Entry, Text, Column, Component, Web, Image, Resource, Menu, ImageFit, Stack,
   WebContextMenuResult, Progress, UIContext, TextOverflow, MenuItem, TextAlign, CopyOptions,
@@ -915,7 +912,6 @@ struct SelectionMenuLongPress {
           .style({ strokeWidth: 3, enableSmoothEffect: true } as LinearStyleOptions)
           .backgroundColor(Color.White)
           .opacity(this.progressVisible ? 1 : 0)
-          .backgroundColor(Color.White)
       }.alignContent(Alignment.Bottom)
       Web({ src: this.linkURL, controller: this.previewController })
         .javaScriptAccess(true)
@@ -1027,7 +1023,6 @@ struct SelectionMenuLongPress {
   }
 }
 ```
-
 <!---->
 
 html示例
@@ -1061,7 +1056,7 @@ html示例
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
 ArkTS-Dyn示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1103,6 +1098,7 @@ struct WebComponent {
         }
       }
       fileIo.close(dest.fd);
+      fileIo.close(srcFileDes.fd)
       return dest.path;
     } catch (err) {
       console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
@@ -1186,12 +1182,10 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
+ArkTS-Dyn示例：
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import webview from '@ohos.web.webview';
 import { Entry, Column, Component, ClickEvent, Web, Context, Row, ResponseType, FlexAlign, SaveButton, Padding,
   SaveButtonOnClickResult, SaveButtonOptions, SaveIconStyle, SaveDescription, ButtonType, $rawfile, Color } from '@ohos.arkui.component';
@@ -1247,17 +1241,17 @@ struct WebComponent {
     let off: number = 0;
     let len: number = 0;
     let readLen: number = 0;
-    let srcFd: int = Number(srcFileDes.fd) as int;
+    let srcFd: int = Double.toInt(srcFileDes.fd);
     let srcOffset: number = srcFileDes.offset;
     let srcLength: number = srcFileDes.length;
     while (true) {
-      let readOptions: ReadOptions = { offset: srcOffset + off as long, length: bufsize as long};
+      let readOptions: ReadOptions = { offset: Double.toLong(srcOffset + off), length: Double.toLong(bufsize)};
       len = fs.readSync(srcFd, buf, readOptions);
       if (len <= 0) {
         break;
       }
       readLen += len;
-      let writeOptions: WriteOptions = { offset: off as long, length: len as long};
+      let writeOptions: WriteOptions = { offset: Double.toLong(off), length: Double.toLong(len)};
       fs.writeSync(dest.fd, buf, writeOptions);
       off += len;
       if ((srcLength - readLen) < bufsize) {
@@ -1268,6 +1262,7 @@ struct WebComponent {
       }
     }
     fs.close(dest.fd);
+    fs.close(srcFileDes.fd)
     return dstPath;
   }
 
@@ -1326,9 +1321,6 @@ struct WebComponent {
   }
 }
 ```
-
-<!---->
-
   ```html
   <!--index4.html-->
   <!DOCTYPE html>

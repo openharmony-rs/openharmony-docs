@@ -131,3 +131,21 @@ type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackRe
 | 类型                                                           | 说明                                                                                                          |
 |--------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | [AudioDataCallbackResult](arkts-apis-audio-e.md#audiodatacallbackresult12) | 如果返回 AudioDataCallbackResult.VALID：表示数据有效，将播放音频数据；如果返回 AudioDataCallbackResult.INVALID：表示数据无效，且音频数据不播放。 |
+
+## DeviceTypeArray
+
+type DeviceTypeArray = Array&lt;DeviceType&gt;
+
+数组类型，[DeviceType](arkts-apis-audio-e.md#devicetype)数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 类型      | 说明                                                            |
+|---------|---------------------------------------------------------------|
+| Array&lt; [DeviceType](arkts-apis-audio-e.md#devicetype)&gt; | DeviceType数组。 |

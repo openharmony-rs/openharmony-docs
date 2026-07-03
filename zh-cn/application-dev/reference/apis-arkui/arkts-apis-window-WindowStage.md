@@ -351,6 +351,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -463,6 +464,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and can not be created again.|
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -628,7 +630,8 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.<br/>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -685,7 +688,8 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.<br/>适用版本：10+ |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 <!--code_no_check-->
@@ -746,6 +750,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -850,6 +855,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -946,6 +952,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300005 | This window stage is abnormal.<br/>适用版本：9|
 
 **示例：**
 
@@ -3069,7 +3076,7 @@ ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageF
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。该接口不支持应用在后台状态时调用，否则返回错误码1300002。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

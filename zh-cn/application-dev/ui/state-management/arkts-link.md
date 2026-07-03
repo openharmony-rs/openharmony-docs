@@ -178,35 +178,29 @@
 
     ![arkts-link-0](figures/arkts-link-0.png)
 
-4. \@Link装饰的变量仅能被状态变量初始化，不能使用常规变量初始化，否则编译期会给出告警，并在运行时崩溃。
+4. \@Link装饰的变量仅能被状态变量初始化，不能使用常规变量初始化，否则会编译报错。
 
     【反例】
   
-    ```ts
-    class Info {
-      info: string = 'Hello';
-    }
-
+    ``` TypeScript
     @Component
     struct Child {
-      @Link msg: string;
-      @Link info: string;
-
+      @Link message: string;
+    
       build() {
-        Text(this.msg + this.info)
+        Text(`${this.message}`).margin('20%')
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
-      @State message: string = 'Hello';
-      @State info: Info = new Info();
-
+      message: string = 'Hello';
+    
       build() {
         Column() {
           // 错误写法，常规变量不能初始化@Link
-          Child({msg: 'World', info: this.info.info})
+          Child({ message: this.message })
         }
       }
     }
@@ -217,19 +211,12 @@
     <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) --> 
     
     ``` TypeScript
-    class LinkInfo2 {
-      public info: string = 'Hello';
-    }
-    
     @Component
     struct LinkChild2 {
-      @Link msg: string;
-      @Link info: LinkInfo2;
+      @Link message: string;
     
       build() {
-        Text(this.msg + this.info.info)
-          .fontSize(20)
-          .margin(10)
+        Text(`${this.message}`).margin('20%')
       }
     }
     
@@ -237,19 +224,18 @@
     @Component
     struct LinkExample2 {
       @State message: string = 'Hello';
-      @State info: LinkInfo2 = new LinkInfo2();
     
       build() {
         Column() {
           // 正确写法
-          LinkChild2({msg: this.message, info: this.info})
+          LinkChild2({ message: this.message })
         }
         .width('100%')
       }
     }
     ```
 
-    ![arkts-link-1](figures/arkts-link-1.png)
+    ![arkts-link-0](figures/arkts-link-0.png)
 
 5. \@Link不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 

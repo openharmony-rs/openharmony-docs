@@ -1066,7 +1066,7 @@ struct TestRemove {
 
 上面的例子中：
 
-- 点击`add Child`，`TestRemove`中\@Consumer向上找到最近的`RemoChildDisconnectProvider`中的\@Provider，将\@Consumer从默认值更新为\@Provider的值，并回调\@Consumer的\@Monitor方法。
+- 点击`add child`，`TestRemove`中\@Consumer向上找到最近的`RemoChildDisconnectProvider`中的\@Provider，将\@Consumer从默认值更新为\@Provider的值，并回调\@Consumer的\@Monitor方法。
 - \@Provider和\@Consumer配对后，建立双向同步关系。点击`change Provider`和`change cc`，\@Provider和\@Consumer绑定的Text组件刷新，并回调\@Provider和\@Consumer的\@Monitor方法。
-- 点击`remove Child`，BuilderNode子节点从组件树卸载，`TestRemove`中的\@Consumer和`RemoChildDisconnectProvider`中的\@Provider断开连接，`TestRemove`中的\@Consumer恢复成默认值，并回调\@Consumer的\@Monitor方法。
-- 点击`dispose Child`，释放BuilderNode下的子节点`TestRemove`，随后该子节点销毁，执行aboutToDisappear回调。
+- 点击`remove child`，BuilderNode子节点从组件树卸载，`TestRemove`中的\@Consumer和`RemoChildDisconnectProvider`中的\@Provider断开连接，`TestRemove`中的\@Consumer恢复成默认值，并回调\@Consumer的\@Monitor方法。
+- 点击`dispose child`，释放BuilderNode下的子节点`TestRemove`，随后该子节点销毁，执行aboutToDisappear回调。

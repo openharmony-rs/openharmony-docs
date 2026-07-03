@@ -194,7 +194,7 @@ try {
 
 ## networkManager.isNetworkInterfaceDisabledSync
 
-isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
+isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: string): boolean
 
 查询指定网络接口是否被禁用。
 
@@ -208,7 +208,7 @@ isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -522,7 +522,7 @@ getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.Http
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. <br>适用版本：20+ |
 
 **示例：**
 

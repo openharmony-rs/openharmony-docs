@@ -625,7 +625,7 @@ onChange(callback: (value: DatePickerResult) => void)
 
 | 参数名 | 类型                                          | 必填 | 说明             |
 | ------ | --------------------------------------------- | ---- | ---------------- |
-| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的时间。 |
+| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的日期。 |
 
 ### onDateChange<sup>10+</sup>
 

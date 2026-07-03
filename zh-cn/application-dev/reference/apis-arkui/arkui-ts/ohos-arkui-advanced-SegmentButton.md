@@ -1,9 +1,9 @@
 # SegmentButton
-<!--Kit: ArkUI--> 
-<!--Subsystem: ArkUI--> 
-<!--Owner: @xieziang--> 
-<!--Designer: @youzhi92--> 
-<!--Tester: @TerryTsao--> 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 分段按钮组件，包含页签类分段按钮、胶囊类单选分段按钮和胶囊类多选分段按钮。
@@ -1085,7 +1085,7 @@ import {
 @Entry
 @Component
 struct Index {
-  @State selectedIndexes: int[] = new Array<int>(5).fill(0)
+  @State selectedIndexes: int[] = Array.create<int>(5, 0);
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' },
       { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,

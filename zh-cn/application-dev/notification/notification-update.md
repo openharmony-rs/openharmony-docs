@@ -27,6 +27,7 @@
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
@@ -38,8 +39,21 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 发布进度条通知。
 
+   ArkTS-Dyn示例：
    <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
@@ -71,8 +85,42 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
+   
+   ``` TypeScript
+   let templateData : Record<string, RecordData> = { 'title': 'File Title', 'fileName': 'music.mp4', 'progressValue': 50 }
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 5,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     // 构造进度条模板，name字段当前需要固定配置为downloadTemplate
+     template : {
+       name: 'downloadTemplate',
+       data: templateData
+     }
+   };
+   
+   // 发布通知
+   notificationManager.publish(notificationRequest, (err) => {
+     if (err && err.code !== 0) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+   });
+   ```
+
 3. 通过[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)接口携带updateOnly字段更新进度条通知。
 
+   ArkTS-Dyn示例：
    <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
@@ -97,6 +145,40 @@
    // 更新发布通知
    notificationManager.publish(notificationRequest, (err: BusinessError) => {
      if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to update notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in updating notification.');
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
+   
+   ``` TypeScript
+   let templateData : Record<string, RecordData> = { 'title': 'File Title', 'fileName': 'music.mp4', 'progressValue': 99 }
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 5,
+     updateOnly: true,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     // 构造进度条模板，name字段当前需要固定配置为downloadTemplate
+     template: {
+       name: 'downloadTemplate',
+       data: templateData
+     }
+   };
+   
+   // 更新发布通知
+   notificationManager.publish(notificationRequest, (err) => {
+     if (err && err.code !== 0) {
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to update notification. Code is ${err.code}, message is ${err.message}`);
        return;

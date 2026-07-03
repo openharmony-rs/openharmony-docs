@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
@@ -146,7 +146,7 @@ ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -329,7 +329,7 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -567,7 +567,7 @@ ArkTS-Dyn: isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
-检查指定系统账号是否已验证。使用Promise异步回调。
+检查指定系统账号是否已解锁。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -583,13 +583,13 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。用于指定要检查是否已解锁的系统账号。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -766,7 +766,7 @@ ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -964,7 +964,7 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
 | constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
-| enable      | boolean                   | 是   | 设置(true)/删除(false) 。                          |
+| enable      | boolean                   | 是   | 设置(true)/删除(false)。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -977,7 +977,7 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid localId or constraints.    |
+| 12300002 | Invalid localId or constraints. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
@@ -1058,8 +1058,8 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 **返回值：**
 
 | 类型                | 说明                                 |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1139,7 +1139,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                             |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
+| -------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
 | localName | string                    | 是   | 账号名，最大长度为1024个字符。                          |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
@@ -1235,7 +1235,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1854,7 +1854,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                                                                         |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
 | localName | string                                               | 是   | 创建的系统账号的名称。                                                        |
 | type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | 是   | 创建的系统账号的类型。                                                        |
 | callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
@@ -2743,7 +2743,7 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 
 | 类型                | 说明                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3295,6 +3295,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -3912,7 +3913,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                               |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -3987,7 +3988,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                                  |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -4474,7 +4475,7 @@ ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo)
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  系统账号ID。 |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
 
 **返回值：**
@@ -4485,7 +4486,7 @@ ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo)
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -4518,7 +4519,7 @@ ArkTS-Dyn示例：
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -4686,7 +4687,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
 
 **错误码：**
 
@@ -5929,7 +5930,7 @@ ArkTS-Sta: getVersion(): int
 **返回值：**
 
 | 类型   | 说明         |
-| :----- | :----------- |
+| ----- | ----------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回版本信息。|
 
 **错误码：**
@@ -6163,7 +6164,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器属性信息。 |
 
 **错误码：**
@@ -6262,7 +6263,7 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器的属性信息。 |
 
 **错误码：**
@@ -6470,8 +6471,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6559,8 +6560,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6658,7 +6659,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 类型        | 说明               |
 | ---------- | ------------------ |
-| Uint8Array | 返回取消的上下文ID。 |
+| Uint8Array | 返回认证上下文ID，可用于取消认证操作。 |
 
 **错误码：**
 
@@ -6981,7 +6982,7 @@ cancelAuth(contextID: Uint8Array): void
 
 | 参数名    | 类型       | 必填  | 说明                                        |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
+| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID由认证流程动态生成，用于标识认证操作。 |
 
 **错误码：**
 
@@ -8953,7 +8954,7 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示绑定域账号的系统账号的本地标识。|
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示绑定域账号的系统账号ID。|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
@@ -9126,7 +9127,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
@@ -9307,8 +9308,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9488,7 +9489,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
@@ -9712,7 +9713,7 @@ getAccessToken(businessParams: Record&lt;string, Object&gt;): Promise&lt;Uint8Ar
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
@@ -9780,7 +9781,7 @@ getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uin
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
@@ -9850,7 +9851,7 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
@@ -10043,7 +10044,7 @@ ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
@@ -10801,7 +10802,7 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -10880,7 +10881,7 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -10971,7 +10972,7 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 **返回值：**
 
 | 类型                       | 说明                                                                     |
-| :------------------------ | :----------------------------------------------------------------------- |
+| ------------------------ | ----------------------------------------------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。|
 
 **错误码：**
@@ -11673,7 +11674,7 @@ ArkTS-Sta示例：
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AuthSubType<sup>8+</sup>
@@ -12120,7 +12121,7 @@ ArkTS-Sta示例：
 | accountId          | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
-| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0  |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

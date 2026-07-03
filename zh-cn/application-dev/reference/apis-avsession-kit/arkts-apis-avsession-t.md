@@ -136,18 +136,18 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'stop'           | 停止。 无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
 | 'playNext'       | 下一首。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
 | 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'fastForward'    | 快进。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'rewind'         | 快退。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'fastForward'    | 快进。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'rewind'         | 快退。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
 | 'seek'           | 跳转到指定时间点。对应参数使用number类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
 | 'setSpeed'       | 设置播放倍速。对应参数使用number类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'setLoopMode'    | 设置循环模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
 | 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>***ArkTS-Sta起始版本：** 23 |
-| 'toggleFavorite' | 切换收藏状态。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23     |
+| 'toggleFavorite' | 切换收藏状态。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23     |
 | 'playFromAssetId'<sup>11+</sup> | 播放指定的assetId。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
 | 'playWithAssetId' <sup>20+</sup>    | 播放指定的assetId。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)，<br>字符串长度<40960字节。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>***ArkTS-Sta起始版本：** 23 |
 | 'answer'<sup>11+</sup>          | 接听。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
 | 'hangUp'<sup>11+</sup> | 挂断。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
-| 'toggleCallMute'<sup>11+</sup>  | 切换通话静音状态。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
+| 'toggleCallMute'<sup>11+</sup>  | 切换通话静音状态。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
 
 ## AVMediaCenterControlType
 

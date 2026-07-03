@@ -1650,6 +1650,8 @@ ArkTS-Sta: setTabBarOpacity(opacity: double): void
 
 本示例通过[barMode](#barmode)分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1719,6 +1721,95 @@ struct TabsExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Alignment,
+  Color,
+  BarMode,
+  Row,
+  Tabs,
+  TabContent,
+  ButtonOptions,
+  SubTabBarStyle,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+
+  build() {
+    Column(undefined) {
+      Row(undefined) {
+        Button('文本增加 ')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text += '文本增加';
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('文本重置')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text = '文本';
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Row() {
+        Button('BarMode.Fixed')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Fixed;
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('BarMode.Scrollable')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Scrollable;
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Tabs() {
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar(SubTabBarStyle.of(this.text))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(this.barMode)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+```
+
 ![tabs1](figures/tabs_barMode.gif)
 
 ### 示例2（设置Scrollable模式下的TabBar的布局样式）
@@ -2913,8 +3004,8 @@ struct TabsExample {
   }
 
   @Builder
-  tabBuilder(title: string,targetIndex: number) {
-    Column(){
+  tabBuilder(title: string, targetIndex: number) {
+    Column() {
       Text(title).fontColor(this.currentIndex === targetIndex ? '#FF0000' : '#6B6B6B')
     }.width('100%')
     .height(50)
@@ -2926,11 +3017,11 @@ struct TabsExample {
       Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
         ForEach(this.data, (item: number) => {
           TabContent() {
-            Column(){
+            Column() {
               Text('' + item)
             }.width('100%').height('100%').backgroundColor('#00CB87').justifyContent(FlexAlign.Center)
-          }.tabBar(this.tabBuilder('P' + item, parseInt(item)))
-        }, (item: string) => item)
+          }.tabBar(this.tabBuilder('P' + item, item))
+        }, (item: number) => item.toString())
       }
       .barWidth(360)
       .barHeight(60)
@@ -2946,7 +3037,7 @@ struct TabsExample {
       Text('AnimationMode:' + AnimationMode[this.currentAnimationMode])
 
       Button('AnimationMode').width('50%').margin({ top: 1 }).height(25)
-        .onClick(()=>{
+        .onClick(() => {
           if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
             this.currentAnimationMode = AnimationMode.ACTION_FIRST;
           } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {

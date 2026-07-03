@@ -54,6 +54,8 @@ isEnhancedRoutingSupported(): boolean
 ```ts
 import { audio } from '@kit.AudioKit';
 
+let audioManager = audio.getAudioManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
 let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
 console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
 ```
@@ -106,7 +108,10 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let outputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+let outputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectOutputDevice(outputDevice).then(() => {
   console.info('Succeeded in selecting output device.');
 }).catch((err: BusinessError) => {
@@ -162,7 +167,10 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDevice(inputDevice).then(() => {
   console.info('Succeeded in selecting input device.');
 }).catch((err: BusinessError) => {
@@ -216,8 +224,15 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 **示例：**
 
 ```ts
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+// audioRenderer需提前通过audio.createAudioRenderer创建。
+let audioRenderer: audio.AudioRenderer;
+let outputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(audioRenderer, outputDevice).then(() => {
   console.info('Succeeded in selecting output device for audio renderer.');
 }).catch((err: BusinessError) => {
@@ -271,8 +286,15 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 **示例：**
 
 ```ts
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+// audioCapturer需提前通过audio.createAudioCapturer创建。
+let audioCapturer: audio.AudioCapturer;
+let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(audioCapturer, inputDevice).then(() => {
   console.info('Succeeded in selecting input device for audio capturer.');
 }).catch((err: BusinessError) => {

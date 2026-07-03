@@ -169,14 +169,14 @@
 
 在监听音频播放焦点变化事件之前，需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
 
-<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-let isPlay: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
+let isPlaying: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
 let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
@@ -197,12 +197,12 @@ async function onAudioInterrupt(): Promise<void> {
         case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
           // 此分支表示系统已将音频流暂停（临时失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 临时失去焦点：待其他音频流释放音频焦点后，本音频流会收到resume对应的音频焦点事件，到时可自行继续播放。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_STOP:
           // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 永久失去焦点：后续不会再收到任何音频焦点事件，若想恢复播放，需要用户主动触发。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_DUCK:
           // 此分支表示系统已将音频音量降低（默认降到正常音量的20%）。
@@ -225,14 +225,17 @@ async function onAudioInterrupt(): Promise<void> {
           if (audioRenderer == undefined) {
             return;
           }
-          await audioRenderer.start().then(() => {
-            started = true; // start()执行成功。
-          }).catch((err: BusinessError) => {
-            started = false; // start()执行失败。
-          });
+          try {
+            await audioRenderer.start();
+            started = true;
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to start audio renderer. Code: ${error.code}, message: ${error.message}`);
+            started = false;
+          }
           // 若start()执行成功，则切换至音频播放状态。
           if (started) {
-            isPlay = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
+            isPlaying = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
           } else {
             // 音频继续播放的操作执行失败。
           }

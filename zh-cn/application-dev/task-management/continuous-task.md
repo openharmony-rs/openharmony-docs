@@ -99,6 +99,8 @@
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
+>
+> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用[setWillMuteWhenInterrupted](../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#setwillmutewheninterrupted20)接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 
