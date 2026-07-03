@@ -523,7 +523,7 @@ the secure element is not available.
 
 **错误信息**
 
-the internet is unavaliable.
+the internet is unavailable.
 
 **错误描述**
 
