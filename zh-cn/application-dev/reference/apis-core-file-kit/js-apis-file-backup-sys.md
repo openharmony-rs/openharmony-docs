@@ -29,7 +29,7 @@ import { backup } from '@kit.CoreFileKit';
 | ---------- | ------ | ---- | ---- |--------------------------------------------------------------------------------------------------- |
 | bundleName | string | 否   | 否 | 应用名称，可通过[bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)提供的获取方式获取。 |
 | uri        | string | 否   | 否 | 应用沙箱内待传输文件的名称，当前uri尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。      |
-| uris        | Array&lt;string&gt; | 否   | 是 | 应用沙箱内待传输文件的名称数组，当前uris尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0      |
+| uris        | Array&lt;string&gt; | 否   | 是 | 应用沙箱内待传输文件的名称数组，当前uris尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>     |
 
 ## FileData
 
