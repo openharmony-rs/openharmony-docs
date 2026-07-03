@@ -391,9 +391,7 @@ function getNode(): void {
 }
 ```
 
-**说明：**
-
-可以通过以下代码查询节点路径参数path。
+调用getNodeByPath时需传入节点路径参数path。可通过遍历节点树并打印各节点的属性获取可用的path值，示例如下：
 
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
@@ -417,6 +415,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
     printRelative(node.children.get(i));
   }
 }
+```
 
 ## Geometry
 
