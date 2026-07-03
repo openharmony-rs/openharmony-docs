@@ -20990,7 +20990,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":54,
 						"name":"sync_state_manager_$$",
 						"start_line":30
 					}
@@ -22602,7 +22602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":33,
 						"name":"Child1_start",
 						"start_line":15
 					}
@@ -22612,7 +22612,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":34,
 						"name":"Child2_start",
 						"start_line":16
 					}
@@ -22622,7 +22622,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":43,
 						"name":"example1_start",
 						"start_line":15
 					}
@@ -22632,7 +22632,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":44,
 						"name":"example2_start",
 						"start_line":15
 					}
@@ -22642,7 +22642,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Parent5_start",
 						"start_line":15
 					}
@@ -22652,7 +22652,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Parent6_start",
 						"start_line":15
 					}
@@ -22662,7 +22662,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":54,
 						"name":"Parent7_start",
 						"start_line":15
 					}
@@ -22672,7 +22672,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":55,
 						"name":"Parent8_start",
 						"start_line":15
 					}
@@ -22682,7 +22682,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Parent9_start",
 						"start_line":15
 					}
@@ -22692,7 +22692,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Parent10_start",
 						"start_line":15
 					}
@@ -22702,7 +22702,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":72,
 						"name":"Parent11_start",
 						"start_line":15
 					}
@@ -22712,7 +22712,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":80,
 						"name":"Parent12_start",
 						"start_line":15
 					}
@@ -22722,7 +22722,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV1.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"Parent13_start",
 						"start_line":15
 					}
@@ -22732,7 +22732,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"Parent14_start",
 						"start_line":15
 					}
@@ -22742,7 +22742,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":58,
 						"name":"Parent15_start",
 						"start_line":15
 					}
@@ -22752,7 +22752,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":69,
 						"name":"Parent16_start",
 						"start_line":15
 					}
@@ -22762,7 +22762,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV1.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"Parent17_start",
 						"start_line":15
 					}
@@ -22772,7 +22772,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"Parent18_start",
 						"start_line":15
 					}
@@ -22782,7 +22782,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeNoInitV1.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":40,
 						"name":"Parent19_start",
 						"start_line":15
 					}
@@ -22792,7 +22792,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Parent20_start",
 						"start_line":15
 					}
@@ -22802,7 +22802,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":45,
 						"name":"Parent21_start",
 						"start_line":15
 					}
@@ -22812,7 +22812,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"Parent22_start",
 						"start_line":15
 					}
@@ -22822,7 +22822,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":52,
 						"name":"GrandParent1_start",
 						"start_line":15
 					}
@@ -22832,7 +22832,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":52,
 						"name":"GrandParent2_start",
 						"start_line":15
 					}
@@ -22842,7 +22842,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":46,
 						"name":"WatchExample1_start",
 						"start_line":15
 					}
@@ -22852,7 +22852,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":47,
 						"name":"MonitorExample1_start",
 						"start_line":15
 					}
@@ -22862,7 +22862,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":60,
 						"name":"WatchExample2_start",
 						"start_line":15
 					}
@@ -22872,7 +22872,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":59,
 						"name":"MonitorExample2_start",
 						"start_line":15
 					}
@@ -22882,7 +22882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":41,
 						"name":"ComputedV1_start",
 						"start_line":15
 					}
@@ -22892,7 +22892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"ComputedV2_start",
 						"start_line":15
 					}
@@ -22902,7 +22902,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":54,
 						"name":"sync_state_manager_$$",
 						"start_line":30
 					}
@@ -22912,7 +22912,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":54,
 						"name":"sync_state_manager_!!",
 						"start_line":30
 					}
