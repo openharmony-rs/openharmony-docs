@@ -318,18 +318,18 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 设备A上创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
 
   ```ts
-   import { abilityConnectionManager } from '@kit.DistributedServiceKit';	 
-   import { hilog } from '@kit.PerformanceAnalysisKit';	 
- 
-   let sessionId = 100;	 
-   abilityConnectionManager.connect(sessionId).then((ConnectResult) => {	 
-     if (!ConnectResult.isConnected) {	 
-       hilog.info(0x0000, 'testTag', 'connect failed');	 
-       return;	 
-     }	 
-   }).catch(() => {	 
-     hilog.error(0x0000, 'testTag', "connect failed");	 
-   })
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+    if (!ConnectResult.isConnected) {
+      hilog.info(0x0000, 'testTag', 'connect failed');
+      return;
+    }
+  }).catch(() => {
+    hilog.error(0x0000, 'testTag', "connect failed");
+  })
   ```
 
 ## abilityConnectionManager.acceptConnect
@@ -370,54 +370,54 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 在设备B上，createAbilityConnectionSession接口调用并获取sessionId成功后，调用acceptConnect接口选择接受连接。
 
   ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
-
-  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-    this.onCollab(param);
-    return 0;
-  }
-
-  onCollab(collabParam: Record<string, Object>) {
-    const sessionId = this.createSessionFromWant(collabParam);
-    if (sessionId == -1) {
-      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-      return;
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     }
-    const collabToken = collabParam["ohos.dms.collabToken"] as string;
-    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-      hilog.info(0x0000, 'testTag', 'acceptConnect success');
-    }).catch(() => {
-      hilog.error(0x0000, 'testTag', 'failed'); 
-    })
-  }
 
-  createSessionFromWant(collabParam: Record<string, Object>): number {
-    let sessionId = -1;
-    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-    if (peerInfo == undefined) {
+    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+      let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+      this.onCollab(param);
+      return 0;
+    }
+
+    onCollab(collabParam: Record<string, Object>) {
+      const sessionId = this.createSessionFromWant(collabParam);
+      if (sessionId == -1) {
+        hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+        return;
+      }
+      const collabToken = collabParam["ohos.dms.collabToken"] as string;
+      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+        hilog.info(0x0000, 'testTag', 'acceptConnect success');
+      }).catch(() => {
+        hilog.error(0x0000, 'testTag', 'failed'); 
+      })
+    }
+
+    createSessionFromWant(collabParam: Record<string, Object>): number {
+      let sessionId = -1;
+      const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+      if (peerInfo == undefined) {
+        return sessionId;
+      }
+
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+      try {
+        sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+        AppStorage.setOrCreate('sessionId', sessionId);
+        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', error);
+      }
       return sessionId;
     }
-
-    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
-    try {
-      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-      AppStorage.setOrCreate('sessionId', sessionId);
-      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', error);
-    }
-    return sessionId;
   }
-}
   ```
 
 ## abilityConnectionManager.disconnect
