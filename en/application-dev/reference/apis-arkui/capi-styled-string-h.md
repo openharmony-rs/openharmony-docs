@@ -1348,7 +1348,7 @@ Sets font weight for a text font style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | Pointer to the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.|
-| uint32_t fontWeight | Font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **100** or **900**.|
+| uint32_t fontWeight | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**.|
 
 **Return value**
 
@@ -1373,7 +1373,7 @@ Obtains the font weight of a text font style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | Pointer to the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.|
-| uint32_t* fontWeight | Pointer to the font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **100** or **900**.|
+| uint32_t* fontWeight | Pointer to the font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**.|
 
 **Return value**
 
@@ -1398,7 +1398,7 @@ Sets font style for a text font style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | Pointer to the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.|
-| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle) fontStyle | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle).|
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle) fontStyle | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 
 **Return value**
 
@@ -1423,7 +1423,7 @@ Obtains the font style of a text font style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | Pointer to the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.|
-| [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)* fontStyle | Pointer to the font style. The value is an enumerated value of [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle).|
+| [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)* fontStyle | Pointer to the font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 
 **Return value**
 
@@ -2705,7 +2705,7 @@ Sets the text direction in the custom drawing information object for paragraph i
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md)* drawInfo | Pointer to the [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md) object.|
-| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection) direction | Text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection) direction | Text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 **Return value**
 
@@ -2730,7 +2730,7 @@ Obtains the text direction in the custom drawing information object for paragrap
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md)* drawInfo | Pointer to the [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md) object.|
-| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)* direction | Pointer to the text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)* direction | Pointer to the text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 **Return value**
 
@@ -2945,7 +2945,7 @@ Sets the horizontal text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment) align | Horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
+| [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment) align | Horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment).|
 
 **Return value**
 
@@ -2970,7 +2970,7 @@ Obtains the horizontal text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)* align | Pointer to the horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
+| [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment)* align | Pointer to the horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment).|
 
 **Return value**
 
@@ -3095,7 +3095,7 @@ Sets the display mode when the paragraph is too long in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) overflow | Display mode when the paragraph is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow).|
+| [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow) overflow | Display mode when the paragraph is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow).|
 
 **Return value**
 
@@ -3120,7 +3120,7 @@ Obtains the display mode when the paragraph is too long in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)* overflow | Pointer to the display mode when the paragraph is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow).|
+| [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)* overflow | Pointer to the display mode when the paragraph is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow).|
 
 **Return value**
 
@@ -3145,7 +3145,7 @@ Sets the word breaking rule in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) wordBreak | Word breaking rule. The value is an enumerated value of [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak).|
+| [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) wordBreak | Word breaking rule. The value is an enumerated value of [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak).|
 
 **Return value**
 
@@ -3170,7 +3170,7 @@ Obtains the word breaking rule in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)* wordBreak | Pointer to the word breaking rule. The value is an enumerated value of [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak).|
+| [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)* wordBreak | Pointer to the word breaking rule. The value is an enumerated value of [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak).|
 
 **Return value**
 
@@ -3395,7 +3395,7 @@ Sets the vertical text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment) verticalAlignment | Vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
+| [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment) verticalAlignment | Vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment).|
 
 **Return value**
 
@@ -3420,7 +3420,7 @@ Obtains the vertical text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)* verticalAlignment | Pointer to the vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
+| [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment)* verticalAlignment | Pointer to the vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment).|
 
 **Return value**
 
@@ -3495,7 +3495,7 @@ Sets the text direction in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection) textDirection | Text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection) textDirection | Text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 **Return value**
 
@@ -3520,7 +3520,7 @@ Obtains the text direction in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)* textDirection | Pointer to the text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)* textDirection | Pointer to the text direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 **Return value**
 
@@ -3793,7 +3793,7 @@ Sets the decoration type for the text decorative line style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype) type | Type of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype).|
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype) type | Type of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype).|
 
 **Return value**
 
@@ -3818,7 +3818,7 @@ Obtains the decoration type of the text decorative line style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype)* type | Pointer to the type of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype).|
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)* type | Pointer to the type of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype).|
 
 **Return value**
 
@@ -3893,7 +3893,7 @@ Sets the decoration style for the text decorative line style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle) style | Style of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle).|
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle) style | Style of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle).|
 
 **Return value**
 
@@ -3918,7 +3918,7 @@ Obtains the decoration style of the text decorative line style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle)* style | Pointer to the style of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle).|
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)* style | Pointer to the style of the text decorative line. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle).|
 
 **Return value**
 
@@ -5240,7 +5240,7 @@ Sets the image alignment method in the image style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment) verticalAlign | Image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment) verticalAlign | Image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment).|
 
 **Return value**
 
@@ -5265,7 +5265,7 @@ Obtains the image alignment method in the image style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment)* verticalAlign | Pointer to the image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment)* verticalAlign | Pointer to the image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment).|
 
 **Return value**
 

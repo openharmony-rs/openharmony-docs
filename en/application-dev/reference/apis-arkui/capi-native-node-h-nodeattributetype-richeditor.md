@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType (Rich Text Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @hddgzw-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -36,13 +36,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key. The parameter type is [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_NEW_LINE**.|
+| .value[0].i32 | Type of the **Enter** key. The parameter type is [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is **ARKUI_ENTER_KEY_TYPE_NEW_LINE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **Enter** key. The parameter type is [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype).|
+| .value[0].i32 | Type of the **Enter** key. The parameter type is [ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype).|
 
 ## NODE_TEXT_EDITOR_CARET_COLOR
 
@@ -98,7 +98,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_EDITOR_BAR_STATE = 22003
 ```
 
-Scroll bar display mode of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Scroll bar state of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
@@ -108,13 +108,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
+| .value[0].i32 | Scroll bar state. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate).|
+| .value[0].i32 | Scroll bar state. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate).|
 
 ## NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR
 
@@ -438,13 +438,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance).|
+| .value[0].i32 | Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).|
 
 ## NODE_TEXT_EDITOR_STOP_BACK_PRESS
 
@@ -664,7 +664,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_EDITOR_ORPHAN_CHAR_OPTIMIZATION = 22028
 ```
 
-Whether to enable orphan character optimization during text layout in **TextEditor**. When set, the orphan character (in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
+Whether to enable orphan character optimization during text layout in **TextEditor**. When set, the orphan character (in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -728,4 +728,4 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether punctuation hanging at the end of a line is enabled.|
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line.|

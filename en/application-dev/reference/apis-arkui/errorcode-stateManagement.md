@@ -110,7 +110,7 @@ Not supported type! The type should have function constructor signature.
 
 **Description**
 
-When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the **type** parameter is invalid.
+This error code is reported in the following scenario: When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the **type** parameter is invalid.
 
 **Possible Causes**
 
@@ -128,7 +128,7 @@ The default creator should be function when first connect.
 
 **Description**
 
-When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the default data constructor specified by **defaultCreator** is not [StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort).
+This error code is reported in the following scenario: When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the default data constructor specified by **defaultCreator** is not [StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort).
 
 **Possible Causes**
 
@@ -277,7 +277,7 @@ Old toolchain detected. Please upgrade to the latest.
 
 **Description**
 
-Since API version 23, [@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) (in the child component) can be created in [@Reusable](../../ui/state-management/arkts-reusable.md) (in the parent component). However, you need to use the SDK of API version 18 or later. For details, see the [@ReusableV2 usage constraints](../../ui/state-management/arkts-new-reusableV2.md#constraints).
+This error code is reported in the following scenarios: Since API version 18, [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) (child component) can be created in [\@Reusable](../../ui/state-management/arkts-reusable.md) (parent component). However, you need to use the SDK of API version 18 or later. Otherwise, a runtime error will be reported. Since API version 23, this error code will be returned. For details, see the [\@ReusableV2 usage constraints](../../ui/state-management/arkts-new-reusableV2.md#constraints).
 
 **Possible Causes**
 
@@ -323,7 +323,7 @@ The type decorated by the state variable decorator of state management V1 is inv
 
 Use the type supported by the state variable of state management V1. @State is used as an example. For details, see the [@State usage rules](../../ui/state-management/arkts-state.md#usage-rules).
 
-## 140116 Invalid Key Used by AppStorageV2
+## 140116 AppStorageV2 or PersistenceV2 Uses an Invalid Key
 
 **Error Message**
 

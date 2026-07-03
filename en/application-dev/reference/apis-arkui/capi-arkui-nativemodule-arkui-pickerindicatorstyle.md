@@ -18,4 +18,4 @@ Defines the style of the selected item indicator.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [picker.h](capi-picker-h.md)

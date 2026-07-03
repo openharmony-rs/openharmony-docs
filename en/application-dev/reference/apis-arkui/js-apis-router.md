@@ -34,7 +34,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -111,7 +111,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -180,7 +180,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushurl-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -258,7 +258,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -329,7 +329,7 @@ Replaces the current page with another one in the application and destroys the c
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl](arkts-apis-uicontext-router.md#replaceurl) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -395,7 +395,7 @@ Replaces the current page with another one in the application and destroys the c
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl](arkts-apis-uicontext-router.md#replaceurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -454,7 +454,7 @@ Replaces the current page with another one in the application and destroys the c
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl](arkts-apis-uicontext-router.md#replaceurl-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replaceurl-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -522,7 +522,7 @@ Replaces the current page with another one in the application and destroys the c
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl](arkts-apis-uicontext-router.md#replaceurl-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18 except for lite wearables. You are advised to use [replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -582,7 +582,7 @@ Navigates to a page using the named route.
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#pushnamedroute) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -663,7 +663,7 @@ Navigates to a page using the named route.
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -734,7 +734,7 @@ Navigates to a page using the named route.
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushnamedroute-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -814,7 +814,7 @@ Navigates to a page using the named route.
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -887,7 +887,7 @@ Replaces the current page with another one using the named route and destroys th
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#replacenamedroute) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -955,7 +955,7 @@ Replaces the current page with another one using the named route and destroys th
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -1016,7 +1016,7 @@ Replaces the current page with another one using the named route and destroys th
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replacenamedroute-2) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -1086,7 +1086,7 @@ Replaces the current page with another one using the named route and destroys th
 
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-3) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -1148,7 +1148,7 @@ Returns to the previous page or a specified page, which deletes all pages betwee
 
 > **NOTE**
 >
-> - This API is supported since API version 8 and deprecated since API version 18. You are advised to use [back](arkts-apis-uicontext-router.md#back) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 8 and deprecated since API version 18. You are advised to use [back](arkts-apis-uicontext-router.md#back)(options?: router.RouterOptions) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -1176,7 +1176,7 @@ Returns to the specified page, which deletes all pages between the current page 
 
 > **NOTE**
 >
-> - This API is supported since API version 12 and deprecated since API version 18. You are advised to use [back](arkts-apis-uicontext-router.md#back12) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 12 and deprecated since API version 18. You are advised to use [back(index: number, params?: Object)](arkts-apis-uicontext-router.md#back12) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 12, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -1691,7 +1691,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1737,7 +1737,7 @@ Replaces the current page with another one in the application and destroys the c
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [replaceUrl](arkts-apis-uicontext-router.md#replaceurl) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Lite
 

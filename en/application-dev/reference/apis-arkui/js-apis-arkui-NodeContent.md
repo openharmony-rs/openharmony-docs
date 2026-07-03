@@ -90,7 +90,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." <br>Applicable versions: 22+|
 
 ### removeFrameNode<sup>12+</sup>
 

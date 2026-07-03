@@ -10,7 +10,7 @@
 
 Defines **Image** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/image.h>
+**File to include:** <arkui/node_attributes/image.h>
 
 **Library:** libace_ndk.z.so
 
