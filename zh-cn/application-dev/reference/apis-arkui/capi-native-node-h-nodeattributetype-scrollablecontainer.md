@@ -1258,6 +1258,56 @@ NODE_LIST_BACK_PRESS_BEHAVIOR = 1003020
 | -- | -- |
 | .value[0].i32 | 系统返回键生效时是否收起ListItem的划出组件。0：不收起，1：收起。 |
 
+## NODE_LIST_ENABLE_EDIT_MODE
+
+```c
+NODE_LIST_ENABLE_EDIT_MODE = 1003021
+```
+
+设置List组件是否启用编辑模式。进入编辑模式后，默认显示复选框，并支持手指滑动多选。支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | List组件是否启用编辑模式。0：不启用，1：启用。默认值：0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | List组件是否启用编辑模式。0：未启用，1：已启用。 |
+
+## NODE_LIST_EDIT_MODE_OPTIONS
+
+```c
+NODE_LIST_EDIT_MODE_OPTIONS = 1003022
+```
+
+设置List组件的编辑模式选项，支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | List组件是否使用默认多选样式。0：不使用，1：使用。默认值：1。 |
+| .value[1].i32 | List组件是否启用双指滑动多选。0：不启用，1：启用。默认值：1。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | List组件是否使用默认多选样式。0：不使用，1：使用。 |
+| .value[1].i32 | List组件是否启用双指滑动多选。0：未启用，1：已启用。 |
+
 ## NODE_LIST_ITEM_SWIPE_ACTION
 
 ```c
@@ -2320,6 +2370,56 @@ NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1013015
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | Grid组件是否支持空分支。0：不支持，1：支持。 |
+
+## NODE_GRID_ENABLE_EDIT_MODE
+
+```c
+NODE_GRID_ENABLE_EDIT_MODE = 1013016
+```
+
+设置Grid组件是否启用编辑模式。进入编辑模式后，默认显示复选框，并支持手指滑动多选。支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | Grid组件是否启用编辑模式。0：不启用，1：启用。默认值：0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | Grid组件是否启用编辑模式。0：未启用，1：已启用。 |
+
+## NODE_GRID_EDIT_MODE_OPTIONS
+
+```c
+NODE_GRID_EDIT_MODE_OPTIONS = 1013017
+```
+
+设置Grid组件的编辑模式选项，支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | Grid组件是否使用默认多选样式。0：不使用，1：使用。默认值：1。 |
+| .value[1].i32 | Grid组件是否启用双指滑动多选。0：不启用，1：启用。默认值：1。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | Grid组件是否使用默认多选样式。0：不使用，1：使用。 |
+| .value[1].i32 | Grid组件是否启用双指滑动多选。0：未启用，1：已启用。 |
 
 ## NODE_GRID_ITEM_STYLE
 

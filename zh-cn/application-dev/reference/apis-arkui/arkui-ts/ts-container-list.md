@@ -2884,11 +2884,11 @@ struct ListExample {
           ListItem() {
             Text(item.toString())
               .fontSize(16)
-              .backgroundColor(Color.White)
               .width('100%')
               .height(50)
               .textAlign(TextAlign.Center)
           }
+          .backgroundColor(Color.White)
           .selected(this.selectedIndexes.includes(index))
           .onSelect((isSelected: boolean) => {
             if (isSelected) {
