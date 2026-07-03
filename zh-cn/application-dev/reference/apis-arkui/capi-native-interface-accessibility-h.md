@@ -2047,4 +2047,4 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数node或者provider为空指针。<br>2. node对应的ArkUI_NodeHandle类型不为ARKUI_NODE_CUSTOM。 |
+| int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数node或者provider为空指针。<br>2. node对应的ArkUI_NodeHandle类型不为ARKUI_NODE_CUSTOM。 |

@@ -366,7 +366,7 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].i32 | 表示图片解码的宽，单位px。 |
-| .value[1].i32 | 表示图片解码的高，单位px。当任意参数小于等于0时，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常。 |
+| .value[1].i32 | 表示图片解码的高，单位px。当任意参数小于等于0时，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)函数参数异常。 |
 
 **返回：**
 
@@ -391,7 +391,7 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
+| .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
 
 **返回：**
 
