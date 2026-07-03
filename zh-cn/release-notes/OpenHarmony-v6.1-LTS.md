@@ -69,7 +69,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 #### [设置](https://gitcode.com/openharmony/applications_settings)
 
 - 支持设置内全局搜索。
-- 支持WLAN/蓝牙/移动网络/热点。
+- 支持WLAN/蓝牙/移动网络。
 - 支持壁纸、亮度、深色模式（含定时）、字体与显示大小。
 - 支持声音模式、音量面板、来电/信息/通知铃声。
 - 支持通知和状态栏管理。
@@ -113,7 +113,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持通知栏整合、标记已读、通知回复。
 - 支持详情页复制、转发、选择文本等操作。
 - 支持列表与详情展示联系人头像。
-- 支持信息收藏、送达报告、CBS小区广播。
+- 支持信息收藏、送达报告。
 
 #### [通话](https://gitcode.com/openharmony/applications_call)
 
