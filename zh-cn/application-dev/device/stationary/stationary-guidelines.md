@@ -77,6 +77,11 @@
 1. 导入模块。
 
    <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   import { stationary } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 订阅绝对静止的进入事件，1秒上报一次。
 
