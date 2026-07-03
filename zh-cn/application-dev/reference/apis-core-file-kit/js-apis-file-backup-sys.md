@@ -175,6 +175,7 @@ import { backup } from '@kit.CoreFileKit';
 | -------- | -------- | -------- | -------- | -------- |
 | onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
 | onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。当迁移操作成功，err为undefined，data为string（应用名称）；否则为错误对象。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：<br>以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。<br>- 202：Permission verification failed, application which is not a system application uses system API.<br>- 13600001：IPC error.<br>- 13900001：Operation not permitted.<br>- 13900005：I/O error.<br>- 13900011：Out of memory.<br>- 13900020：Invalid argument.<br>- 13900025：No space left on device. |
+| onFileReadyBatch | [OnFileReadyBatch](#onfilereadybatch) | 否 | 是 | 当一批文件准备好发送给客户端时触发的回调。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：<br>以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。<br>- 202：Permission verification failed, application which is not a system application uses system API.<br>- 13600001：IPC error.<br>- 13900005：I/O error.<br>- 13900011：Out of memory.<br>- 13900020：Invalid argument.<br>- 13900025：No space left on device. |
 
 ### onFileReady
 
@@ -456,62 +457,6 @@ onProcess (bundleName: string, process: string): void
   onProcess: (bundleName: string, process: string) => {
     console.info('onProcess bundleName : ' + bundleName);
     console.info('onProcess processInfo : ' + process);
-  }
-  ```
-
-### onFileReadyBatch
-
-onFileReadyBatch: OnFileReadyBatch
-
-回调函数。当一批文件准备好发送给客户端时调用。使用callback异步回调。
-
-> **说明**
->
-> OnFileReadyBatch返回的Array&lt;File&gt;是文件数组[backup.File](#file)。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**系统接口**：此接口为系统接口。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**起始版本**：26.0.0
-
-**参数：**
-
-| 参数名     | 类型   | 必填 | 说明                            |
-| ---------- | ------ | ---- | ------------------------------- |
-| error | BusinessError&lt;void&gt; | 是   | 当获取文件句柄成功，error为undefined；否则为错误对象。 |
-| files     | Array&lt;[File](#file)&gt; | 是   | 当获取文件句柄成功，返回获取到的文件句柄数组。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息                |
-| -------- | ----------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 13600001 | IPC error.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900020 | Invalid argument.        |
-| 13900025 | No space left on device. |
-
-**示例：**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo, backup } from '@kit.CoreFileKit';
-
-  const onFileReadyBatch: backup.OnFileReadyBatch = (error: BusinessError<void>, files: Array<backup.File>): void => {
-    if (error) {
-      console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    for (let file of files) {
-      console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
-      fileIo.closeSync(file.fd);
-    }
   }
   ```
 
@@ -1053,7 +998,7 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File
       console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
       fileIo.closeSync(file.fd);
     }
-  }
+  };
   ```
 
 ## SessionBackup
@@ -3689,7 +3634,8 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+  // 创建恢复流程实例。
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
   async function getFileHandles() {
     let testArray: string[] = ["test1", "test2"];
     try {
