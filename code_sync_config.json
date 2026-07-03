@@ -33394,7 +33394,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/inheritonly/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":33,
 						"name":"counter_example",
 						"start_line":17
 					}
@@ -33404,7 +33404,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/inheritedfromnon/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":32,
 						"name":"counter_example",
 						"start_line":17
 					}
@@ -33429,7 +33429,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/variablesupport/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":32,
 						"name":"counter_example",
 						"start_line":17
 					}
@@ -33439,7 +33439,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/variablenotsupported/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":32,
 						"name":"counter_example",
 						"start_line":17
 					}
@@ -33449,7 +33449,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/nocalculationsupport/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":29,
 						"name":"counter_example",
 						"start_line":17
 					}
