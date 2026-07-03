@@ -124,7 +124,7 @@ For details about the property values, see [PropertyKey](arkts-apis-image-e.md#p
 | meteringMode                        | number                                             | No  | Yes  | Metering mode.                                                  |
 | lightSource                         | number                                             | No  | Yes  | Light source.                                                      |
 | flash                               | number                                             | No  | Yes  | Flash.                                                      |
-| focalLength                         | number                                             | No  | Yes  | Focal length of the lens, in milliseconds.                                                      |
+| focalLength                         | number                                             | No  | Yes  | Focal length of the lens, in millimeters.                                                      |
 | subjectArea                         | number[]                                           | No  | Yes  | Location and area of the main object in the entire scene.                  |
 | makerNote                           | ArrayBuffer                                        | No  | Yes  | Information required by the Exif/Design rule for Camera File system (DCF) writer manufacturer.                    |
 | userComment                         | string                                             | No  | Yes  | User comments.                                                  |
@@ -151,7 +151,7 @@ For details about the property values, see [PropertyKey](arkts-apis-image-e.md#p
 | exposureMode                        | number                                             | No  | Yes  | Exposure mode.                                  |
 | whiteBalance                        | number                                             | No  | Yes  | White balance.                                                    |
 | digitalZoomRatio                    | number                                             | No  | Yes  | Digital zoom ratio used when the image is captured.                                        |
-| focalLengthIn35mmFilm               | number                                             | No  | Yes  | 35 mm equivalent focal length, in milliseconds.                                            |
+| focalLengthIn35mmFilm               | number                                             | No  | Yes  | 35 mm equivalent focal length, in millimeters.                                            |
 | sceneCaptureType                    | number                                             | No  | Yes  | Type of the scene that is captured.                                            |
 | gainControl                         | number                                             | No  | Yes  | Degree of overall image gain adjustment.                                      |
 | contrast                            | number                                             | No  | Yes  | Contrast optimization policy applied by the camera. For example, standard processing and contrast reduction.    |
