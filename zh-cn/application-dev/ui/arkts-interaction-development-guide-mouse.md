@@ -37,7 +37,7 @@ onMouse(event: (event?: MouseEvent) => void)
 
 ArkTS-Dyn示例：
 
-<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -77,7 +77,7 @@ struct MouseMove {
     .justifyContent(FlexAlign.Center)
     .borderWidth(2)
     .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
       if (event) {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
