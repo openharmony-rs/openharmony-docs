@@ -19,7 +19,7 @@
 
 调用[phAccessHelper.getSupportedPhotoFormats](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18)接口获取支持保存的图片类型资源格式。
 
-<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) --> 
+<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->  
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
