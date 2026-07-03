@@ -766,7 +766,7 @@ struct TestChild {
 }
 
 @Entry
-// 配置全局复用池，使用perInstance所有权模式，接纳TestChild复用组件
+  // 配置全局复用池，使用perInstance所有权模式，接纳TestChild复用组件
 @ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
@@ -917,7 +917,7 @@ struct ReusableLeaf {
 }
 
 @Entry
-// 配置全局复用池，接纳ChildA复用组件
+  // 配置全局复用池，接纳ChildA复用组件
 @ComponentV2({ reusePool: 'shared', poolAccepts: [ChildA], freezeWhenInactive: false })
 struct EntryComp {
   @Local showParent: boolean = true;
