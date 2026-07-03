@@ -21,7 +21,7 @@ Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚
 **完整代码**
 
 ArkTS-Dyn示例：
-<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) --> 
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -62,7 +62,7 @@ struct NestedScroll {
 }
 ```
 ArkTS-Sta示例：
-<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) --> 
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
 
 ``` TypeScript
 import {
@@ -243,7 +243,7 @@ struct NestedScroll {
 **完整代码**
 
 ArkTS-Dyn示例：
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -352,7 +352,7 @@ struct Index {
 }
 ```
 ArkTS-Sta示例：
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
 
 ``` TypeScript
 import {
