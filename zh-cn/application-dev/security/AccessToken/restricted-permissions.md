@@ -1420,3 +1420,16 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.DETECT_DEVICE
+
+允许应用调用智能检测服务获取数据。
+
+<!--RP98--><!--RP98End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
