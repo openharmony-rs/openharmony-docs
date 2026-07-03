@@ -968,13 +968,15 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File
 
 当服务器将文件发送回客户端时触发的回调函数。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**起始版本**：26.0.0
 
 **参数：**
 
@@ -3544,6 +3546,10 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 > - 根据待恢复文件数量，可多次调用getFileHandles接口。
 > - 待恢复文件不能是相对路径（../）或软链接。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -3551,8 +3557,6 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**起始版本**：26.0.0
 
 **参数：**
 
