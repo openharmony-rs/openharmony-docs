@@ -7,8 +7,6 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 权限请求结果对象，在调用[requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)申请权限时返回此对象表明此次权限申请的结果。
 
 > **说明：**
