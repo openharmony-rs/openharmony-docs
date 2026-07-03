@@ -6,6 +6,7 @@
 <!--Designer: @yylong-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:27:02.683Z pushedAt=2026-07-02T08:59:56.747Z -->
 
 The **ArcList** component is a circular layout container that displays a series of list items in an arc shape. It is suitable for presenting homogeneous data, such as images and text, in a continuous, multi-row format.
 
@@ -14,7 +15,6 @@ The **ArcList** component is a circular layout container that displays a series 
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
-
 ## Modules to Import
 
 > **NOTE**
@@ -22,7 +22,6 @@ The **ArcList** component is a circular layout container that displays a series 
 > - **ArcListAttribute** is essential for configuring the **ArcList** component. In API version 21 and earlier, you must manually import **ArcListAttribute** after importing the **ArcList** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListAttribute** when it detects the **ArcList** component, so manual import is no longer necessary.
 >
 > - If you manually import **ArcListAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
-
 
 API version 21 and earlier:
 
@@ -42,18 +41,17 @@ Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
 
 > **NOTE**
 >
-> Below are the rules for calculating the indexes of the child components of **ArcList**:
+> Index value calculation rules for child components of **ArcList**:
 >
-> - The index increases in ascending order of child components. 
+> - The index values increase sequentially based on the order of the child components.
 >
-> - In the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) statement, only the child components for which the condition evaluates to true participate in the index calculation. 
+> - In an [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) statement, only the child components in the branch where the condition is true participate in the index value calculation. Child components in branches where the condition is false are not counted.
 >
-> - In the [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) or [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the indexes of all expanded subnodes are calculated. 
+> - In a [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the index values of all expanded child components are calculated.
 >
-> - If the values of [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the indexes of subnodes are updated. 
+> - When [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the child component index values are updated.
 >
-> - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **Hidden** or **None** are still included in the index calculation. 
-
+> - The index value is still calculated even if the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of **ArcList**'s child components is set to **Hidden** or **None**.  
 
 ## APIs
 
@@ -270,6 +268,7 @@ Sets the size information of the child components of the **ArcList** component a
 **Parameters**
 
 <!--Table: 10%; auto; 10%; auto-->
+
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12)&gt;| Yes  | Precise size information for all child components along the main axis. This ensures accurate scrolling positions in scenarios where child components have varying sizes, are added or removed, or when APIs like [scrollToIndex](ts-container-scroll.md#scrolltoindex) are used. It guarantees that [scrollTo](ts-container-scroll.md#scrollto) can accurately navigate to the specified position, [currentOffset](ts-container-scroll.md#currentoffset) or [offset](ts-container-scroll.md#offset23) can accurately reflect the current scrolling position, and the built-in scrollbar can move smoothly without any jumps or abrupt changes. The **offset** API is added from API version 23.<br> **NOTE**<br>The provided sizes must match the actual sizes of the child components. Any changes to the sizes, or any additions or removals of child components, must be notified to the **ArcList** component through the **ChildrenMainSize** object.|
@@ -383,6 +382,7 @@ Triggered before each frame during list scrolling. The callback returns the offs
 > **onWillScroll** is not triggered when [scrollEdge](ts-container-scroll.md#scrolledge) and [scrollToIndex](ts-container-scroll.md#scrolltoindex) (without animation) are called.
 
 ### onDidScroll
+
 onDidScroll(handler: Optional\<OnScrollCallback>)
 
 Triggered when the list scrolls. The return value is the offset amount by which the list has scrolled and the current scroll state.

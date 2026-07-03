@@ -22,7 +22,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 ### PushParameterForStage<sup>9+</sup>
 
-Sets the parameters to be passed in the **PluginManager.Push** API in the stage model.
+Sets the parameters to be passed in the **pluginComponentManager.push** API in the stage model.
 
 **Model restriction**: This API can be used only in the [stage model](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage-model).
 
@@ -41,7 +41,7 @@ Sets the parameters to be passed in the **PluginManager.Push** API in the stage 
 
 ### RequestParameterForStage<sup>9+</sup>
 
-Sets the parameters to be passed in the **PluginManager.Request** API in the stage model.
+Sets the parameters to be passed in the **pluginComponentManager.request** API in the stage model.
 
 **System API**: This is a system API.
 
@@ -110,7 +110,7 @@ pluginComponentManager.push(
 
 ### request<sup>9+</sup>
 
-request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&gt;): void
+request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&nbsp;\|&nbsp;void&gt;): void
 
 Requests the component from the component provider.
 
@@ -125,7 +125,7 @@ Requests the component from the component provider.
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
 | param    | [RequestParameterForStage](js-apis-plugincomponent-sys.md#requestparameterforstage9) | Yes   | Information about the component request.                       |
-| callback | AsyncCallback&lt;[RequestCallbackParameters](js-apis-plugincomponent.md#requestcallbackparameters) \| void&gt; | Yes   | Asynchronous callback used to return the requested data.|
+| callback | AsyncCallback&lt;[RequestCallbackParameters](js-apis-plugincomponent.md#requestcallbackparameters)&nbsp;\|&nbsp;void&gt; | Yes   | Asynchronous callback used to return the requested data.|
 
 **Example**
 

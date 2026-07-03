@@ -74,6 +74,7 @@ struct Index {
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // 切换Child组件的显示状态，触发组件的回收或复用
           this.changeChild = !this.changeChild;
@@ -130,6 +131,8 @@ struct Child {
 }
 ```
 
+![new-lifecycle-syn-0](./figures/new-lifecycle-syn-0.gif)
+
 上述代码建议按以下步骤执行。
 
 1. 点击change，Child组件第一次创建。
@@ -168,18 +171,21 @@ struct Index {
     Column() {
       Navigation(this.pageStack) {
         Text(this.message)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageOne页面
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`PageTwo`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageTwo页面
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
       }
     }
   }
@@ -202,18 +208,21 @@ struct PageOne {
     NavDestination() {
       Column() {
         Text(`PageOne`)
+          .margin(10)
         Button('PageTwo')
+          .margin(10)
           .onClick(() => {
             // 跳转到PageTwo页面
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // 返回上一页
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -247,18 +256,21 @@ struct PageTwo {
     NavDestination() {
       Column() {
         Text(`PageTwo`)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageOne页面
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // 返回上一页
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
         Row() {
           Column() {
             Button(`change message`)
@@ -269,7 +281,7 @@ struct PageTwo {
           }
           .width('100%')
         }
-        .height('100%')
+        .margin(10)
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -318,6 +330,7 @@ struct TabsComponent {
         .onClick(() => {
           this.message++;
         })
+        .margin(10)
       Tabs() {
         ForEach(this.data, (item: number) => {
           TabContent() {
@@ -330,7 +343,7 @@ struct TabsComponent {
       .scrollable(true)
       .barMode(BarMode.Fixed)
       .barWidth(400)
-      .barHeight(150)
+      .barHeight(50)
       .animationDuration(400)
       .width('100%')
       .height(200)
@@ -368,6 +381,8 @@ struct TabsComponent {
   }
 }
 ```
+
+![new-lifecycle-syn-1](./figures/new-lifecycle-syn-1.gif)
 
 **场景说明与日志输出：**
 
@@ -419,13 +434,14 @@ struct Index {
 
   aboutToAppear(): void {
     for (let index = 1; index <= 50; index++) {
-      this.dataSource.pushData('page-' + index);
+      this.dataSource.pushData('page - ' + index);
     }
   }
 
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // 控制List的创建和销毁
           this.changeShow = !this.changeShow;
@@ -436,15 +452,18 @@ struct Index {
             ListItem() {
               Child({ item: item.toString(), index: index.toString() })
             }
-            .backgroundColor(Color.Orange)
+            .backgroundColor(Color.Pink)
             .width('100%')
+            .height('15%')
           }, (item: string) => item.toString())
         }
-        .height(360)
+        .width('80%')
+        .height('60%')
         // 预加载区域可容纳节点数量为5
         .cachedCount(5, false)
       }
     }
+    .width('100%')
   }
 }
 
@@ -520,23 +539,26 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
+
+![new-lifecycle-syn-2](./figures/new-lifecycle-syn-2.gif)
+
 **场景说明与日志输出：**
 
 上述代码建议按以下步骤执行。
 
 1. 点击change按钮，位于预加载区域的组件触发@ComponentInactive。
    ```text
-   Child myInactive, index: 13
-   Child myInactive, index: 14
-   Child myInactive, index: 15
-   Child myInactive, index: 16
-   Child myInactive, index: 17
+   Child myInactive, index: 6
+   Child myInactive, index: 7
+   Child myInactive, index: 8
+   Child myInactive, index: 9
+   Child myInactive, index: 10
    ```
 
 2. 向下滑动List，进入加载区域的组件触发@ComponentActive，进入预加载区域的组件触发@ComponentInactive，离开加载区域的组件触发@ComponentInactive。
    ```text
-   Child myActive, index: 13
-   Child myInactive, index: 18
+   Child myActive, index: 6
+   Child myInactive, index: 11
    Child myInactive, index: 0
    ```
 
@@ -577,6 +599,8 @@ struct MyActiveSample {
   }
 }
 ```
+
+![new-lifecycle-syn-3](./figures/new-lifecycle-syn-3.png)
 
 **场景说明与日志输出：**
 
@@ -633,6 +657,7 @@ struct Index {
     Column() {
       Button('delete Parent And Child')
         .margin(20)
+        .width('60%')
         .backgroundColor(this.btnColor)
         .onClick(() => {
           this.show = !this.show;
@@ -641,6 +666,7 @@ struct Index {
         Parent()
       }
     }
+    .width('100%')
   }
 }
 @Component
@@ -670,6 +696,7 @@ struct Parent {
         Child()
       }
       Button('delete Child')
+        .width('60%')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -707,6 +734,8 @@ struct Child {
   }
 }
 ```
+
+![new-lifecycle-syn-4](./figures/new-lifecycle-syn-4.gif)
 
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
 
@@ -765,26 +794,28 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
 
   build() {
     Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .width('50%')
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      // 通过改变switch，实现Child的回收和复用
-      // 更改this.switch为false，回收Child子组件，执行Child myRecycle
-      // 更改this.switch为true，复用Child子组件，执行Child myReuse
-      if (this.switch) {
+      // 通过改变changeChild，实现Child的回收和复用
+      // 更改this.changeChild为false，回收Child子组件，执行Child myRecycle
+      // 更改this.changeChild为true，复用Child子组件，执行Child myReuse
+      if (this.changeChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
+          .margin(10)
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -794,7 +825,8 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
+  @State changeGrandChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'Child myInit');
@@ -829,19 +861,19 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .margin(10)
+      Button(this.changeGrandChild ? 'recycle grandchild' : 'reuse grandchild')
+        .width('50%')
+        .margin(20)
+        .backgroundColor(this.btnColor)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeGrandChild = !this.changeGrandChild;
         })
-      if (this.switch) {
-        GrandChild({ message: new Message('GrandChild') })
+      if (this.changeGrandChild) {
+        GrandChild({ message: new Message('grandchild') })
           .reuseId('GrandChild')
       }
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 
@@ -884,12 +916,13 @@ struct GrandChild {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(10)
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 ```
+
+![new-lifecycle-syn-5](./figures/new-lifecycle-syn-5.gif)
 
 以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
 
@@ -904,7 +937,7 @@ GrandChild myAppear
 GrandChild myBuilt
 ```
 
-- 点击Button按钮，更改switch为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+- 点击Button按钮，更改changeChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
 ```text
 Child myRecycle
@@ -929,23 +962,23 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
 
   build() {
     Column() {
-      Button('Hello')
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(10)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      if (this.switch) {
+      if (this.changeChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -954,7 +987,6 @@ struct Index {
 @Component
 struct Child {
   @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
   @ComponentInit
   myInit(): void {
     registerObserver(UIUtils.getLifecycle(this));
@@ -1005,9 +1037,11 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 }
 ```
 
+![new-lifecycle-syn-6](./figures/new-lifecycle-syn-6.gif)
+
 在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
 
-按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
+按两次按钮，然后关闭程序，此时日志输出信息如下：
 
 ```text
 MyObserver aboutToAppear
@@ -1182,6 +1216,9 @@ export struct SwiperExample {
   }
 }
 ```
+
+![new-lifecycle-syn-7](./figures/new-lifecycle-syn-7.gif)
+
 启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
 日志输出信息如下：
@@ -1235,12 +1272,14 @@ struct ReusableTest {
   build() {
     Column() {
       // 点击Button切换flag1，触发ReusableComp1和ReusableComp2的回收/复用
-      Button('a')
+      Button('change flag 1')
+        .margin(10)
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
       // 点击Button切换flag2，触发ReusableComp1和ReusableComp3的回收/复用
-      Button('b')
+      Button('change flag 2')
+        .margin(10)
         .onClick(() => {
           this.flag2 = !this.flag2;
         })
@@ -1251,6 +1290,7 @@ struct ReusableTest {
         ReusableComp1({ flag: false })
       }
     }
+    .width('100%')
   }
 }
 
@@ -1271,7 +1311,8 @@ struct ReusableComp1 {
 @Component
 struct ReusableComp2 {
   build() {
-    Text('A')
+    Text('ReusableComp2')
+      .margin(10)
   }
 }
 
@@ -1298,12 +1339,15 @@ struct ReusableComp3 {
   }
 
   build() {
-    Text('B')
+    Text('ReusableComp3')
+      .margin(10)
   }
 }
 ```
 
-按下a按钮，此时ReusableComp2进入回收状态，再按下b按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
+![new-lifecycle-syn-8](./figures/new-lifecycle-syn-8.gif)
+
+按下change flag 1按钮，此时ReusableComp2进入回收状态，再按下change flag 2按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
 
 ```text
 ReusableComp3 aboutToReuse
@@ -1312,4 +1356,4 @@ ReusableComp3 myAppear
 ReusableComp3 myBuilt
 ```
 
-ReusableComp3从未创建过，但按下b按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。
+ReusableComp3从未创建过，但按下change flag 2按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。

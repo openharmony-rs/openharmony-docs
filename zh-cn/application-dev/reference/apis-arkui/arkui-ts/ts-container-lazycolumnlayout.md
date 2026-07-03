@@ -11,6 +11,8 @@
 
 该组件支持嵌套懒加载容器[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)、及其自身LazyColumnLayout。
 
+更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
+
 > **说明：**
 >
 > - LazyColumnLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](ts-universal-attributes-size.md#height)、[size](ts-universal-attributes-size.md#size)中的height、[constraintSize](ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](ts-universal-attributes-size.md#layoutweight)，以及[height](ts-universal-attributes-size.md#height15)取[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15)值的场景。
@@ -66,7 +68,7 @@ space(space: LengthMetrics | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| space  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 子组件在垂直方向上的间距。<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
+| space  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 子组件在垂直方向上的间距。<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按0vp显示。<br/>方法入参为undefined时，恢复为0vp。 |
 
 ### alignItems
 
@@ -209,6 +211,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 ```ts
 import { LengthMetrics, LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 
+// 关注列表数据结构
 class Follow {
   name: string;
   image: Resource;
@@ -221,6 +224,7 @@ class Follow {
   }
 }
 
+// 推荐列表数据结构
 class Recommend {
   name: string;
   icon: Resource;
@@ -278,6 +282,7 @@ struct LazyColumnLayoutSample1 {
         LazyColumnLayout() {
           Text('关注列表：')
 
+          // 嵌套LazyColumnLayout展示双列关注列表
           LazyColumnLayout() {
             ForEach(this.followPairs, (pair: Follow[], rowIndex: number) => {
               Row({ space: 12 }) {
@@ -300,6 +305,7 @@ struct LazyColumnLayoutSample1 {
 
           Text('推荐的人：')
 
+          // 使用独立LazyColumnLayout展示推荐列表
           LazyColumnLayout() {
             ForEach(this.recommend, (item: Recommend, index: number) => {
               Row() {
@@ -344,6 +350,7 @@ struct LazyColumnLayoutSample1 {
 <!--code_no_check-->
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -357,6 +364,7 @@ struct LazyColumnLayoutStickyDemo {
     }
   }
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Row() {
@@ -401,6 +409,7 @@ struct LazyColumnLayoutStickyDemo {
       }
       .header(this.HeaderBuilder)
       .footer(this.FooterBuilder)
+      // 设置头部和尾部同时吸附
       .sticky(StickyStyle.BOTH)
     }
     .width('100%')
