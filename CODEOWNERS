@@ -295,9 +295,9 @@ zh-cn/application-dev/basic-services/print/native-print-file.md @guoshengbang @b
 zh-cn/application-dev/basic-services/print/printExtensionAbilityGuide.md @guoshengbang @gcw_4D6e0BBd @fang-jinxu
 zh-cn/application-dev/basic-services/request/app-cache-download.md @huaxin05 @hu-kai45 @fang-jinxu
 zh-cn/application-dev/basic-services/request/app-file-upload-download.md @huaxin05 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/basic-services/selectionInput/selection-services-application-guide.md @no86 @mmwwbb @fang-jinxu
-zh-cn/application-dev/basic-services/selectionInput/selection-services-glossary.md @no86 @mmwwbb @fang-jinxu
-zh-cn/application-dev/basic-services/selectionInput/selection-services-intro.md @no86 @mmwwbb @fang-jinxu
+zh-cn/application-dev/basic-services/selectionInput/selection-services-application-guide.md @no86 @fang-jinxu
+zh-cn/application-dev/basic-services/selectionInput/selection-services-glossary.md @no86 @fang-jinxu
+zh-cn/application-dev/basic-services/selectionInput/selection-services-intro.md @no86 @fang-jinxu
 zh-cn/application-dev/basic-services/update/sample-server-guidelines.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
 zh-cn/application-dev/basic-services/update/sample-server-overview.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
 zh-cn/application-dev/basic-services/update/update-kit-term.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
@@ -3369,7 +3369,7 @@ zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-print.md 无
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md @huaxin05 @hu-kai45 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-runninglock.md @zhang-yinglie @volcano_wang @wangyantian0 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-screenlock.md 无
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-selection.md @no86 @mmwwbb @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-selection.md @no86 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-settings.md @YingCong @Kun_Wu @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-system-parameterV9.md 无
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-thermal.md @zhang-yinglie @volcano_wang @wangyantian0 @fang-jinxu
@@ -3425,10 +3425,10 @@ zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-scan-sys.md @guo
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-scan.md @guoshengbang @Q-haosu @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock-sys.md @jiayunpeng2 @starrylight @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock.md @jiayunpeng2 @yaoruijiang @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md @no86 @mmwwbb @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionContext.md @no86 @mmwwbb @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md @no86 @mmwwbb @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionPanel.md @no86 @mmwwbb @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md @no86 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionContext.md @no86 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md @no86 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionPanel.md @no86 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-serialManager-sys.md @hwymlgitcode @w00373942 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-serialManager.md @hwymlgitcode @w00373942 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings-sys.md @YingCong @Kun_Wu @fang-jinxu
