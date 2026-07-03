@@ -66,6 +66,7 @@ static napi_value RequestMediaAssets(napi_env env, napi_callback_info info)
         MediaLibrary_RequestOptions options;
         options.deliveryMode = MEDIA_LIBRARY_HIGH_QUALITY_MODE;
 
+        // URI格式为：const char *srcUri = "file://media/Photo/[albumId]/[photoName].[ext]", 实际使用时该URI需要通过媒体库接口获取。
         // 预置图片资源Uri，默认为高质量图片。注：以下Uri是示例，开发者需根据实际情况创建或获取
         const char *srcUri = "file://media/Photo/87/VID_1712195295_025/request_image_src.jpg";
 

@@ -44,6 +44,7 @@
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 // ...
+import { fileUri } from '@kit.CoreFileKit';
 
 @Entry({ routeName : 'Scene1' })
 @Component
@@ -71,8 +72,9 @@ export struct Scene1 {
                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 // Ensure that the assets specified by imageFileUri and videoFileUri exist.
-                let imageFileUri = 'file://' + context.filesDir + '/create_moving_photo.jpg';
-                let videoFileUri = 'file://' + context.filesDir + '/create_moving_photo.mp4';
+                let photoPath = context.filesDir;
+                let imageFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.jpg';
+                let videoFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.mp4';
 
                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
                   photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context,
