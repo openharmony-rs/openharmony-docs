@@ -547,6 +547,3 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 | 类型 | 说明 |
 | -- | -- |
 | int | 返回操作是否成功，成功时返回RDB_OK，出错时返回对应的错误码。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
-
-
-
