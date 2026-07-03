@@ -141,7 +141,7 @@ onSuccess: OnFillSuccessFn
 
 onFailure: OnFillFailureFn
 
-当填充请求失败时，该回调被调用。
+当填充请求失败时，会触发该回调。
 
 **起始版本：** 26.0.0
 
@@ -239,7 +239,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uiContext = AppStorage.get<UIContext>("uiContext");
+let uiContext = AppStorage.get<UIContext>('uiContext');
 let callback: autoFillManager.AutoSaveCallback = {
   onSuccess: () => {
     console.info(`save request on success.`);
