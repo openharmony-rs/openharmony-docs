@@ -11295,3 +11295,110 @@ struct WebComponent {
   }
 }
 ```
+
+## setErrorPageEnabled
+
+setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
+
+设置是否启用subframe默认错误页。
+
+在当前接口的enable和includeSubframe设都为true时如果页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，可在该回调接口中设置自定义的错误展示页面。
+
+> **说明：**
+>
+> - 当enable设置为false时，includeSubframe设置不生效。
+> - includeSubframe的配置同样受onOverrideErrorPage回调影响，可以通过该接口自定义subframe的错误展示页面。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | 是 | 表示是否启用默认错误页。true表示启用，false表示不启用。 |                |
+| -------- | ------- | ---- | -------------------------------------- |
+| includeSubframe | boolean | 是 | 表示是否启用Subframe默认错误页。true表示启用，false表示不启用。如果enable设置为false，该配置项无效。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+       .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true, false);
+            if (!this.controller.getSubframeErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true, true);
+            }
+        })
+    }
+  }
+}
+```
+
+## getSubframeErrorPageEnabled
+
+getSubframeErrorPageEnabled(): boolean
+
+查询是否启用了subframe默认错误页功能。
+
+> **说明：**
+>
+> - 不开启默认错误页功能或者没有设置subframe错误页功能时，返回false。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用默认错误页功能或者未启用subframe默认错误页功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+       .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true，false);
+            if (!this.controller.getSubframeErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true, true);
+            }
+        })
+    }
+  }
+}
+```
