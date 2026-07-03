@@ -461,7 +461,7 @@ onProcess (bundleName: string, process: string): void
 
 onFileReadyBatch: OnFileReadyBatch
 
-回调函数。当一批文件准备好发送给客户端时调用。使用callback异步回调。当获取文件句柄成功，error为undefined，files为获取到的文件句柄数组；否则为错误对象。
+回调函数。当一批文件准备好发送给客户端时调用。使用callback异步回调。
 
 > **说明**
 >
