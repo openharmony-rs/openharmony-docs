@@ -7,8 +7,6 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 **faceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，用于管理人脸录入功能。该模块提供了面部认证管理的核心API，使开发者能够在应用内录入和管理人脸信息。
 
 该模块主要用于以下场景：
