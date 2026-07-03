@@ -53,11 +53,11 @@ togglePipButton.addEventListener("click", async () => {
 
 ```js
 // 示例：先获取video元素
-	 const video = document.getElementById('video');
- 	 
- 	 try {
- 	   if (video !== document.pictureInPictureElement) {
- 	     await video.requestPictureInPicture();
+const video = document.getElementById('video');
+
+try {
+  if (video !== document.pictureInPictureElement) {
+    await video.requestPictureInPicture();
   }
 }
 // ...
