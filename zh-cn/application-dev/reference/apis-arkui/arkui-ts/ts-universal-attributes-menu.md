@@ -255,9 +255,9 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | Array<MenuE
 
 ## bindContextMenuByIsShow
 
-bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
+bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
 
-给组件绑定菜单，菜单的显隐通过控制绑定的isShown触发。
+给组件绑定菜单，菜单的显隐通过控制绑定的isShow触发。
 
 菜单项支持自定义和固定样式数组。
 
@@ -281,7 +281,7 @@ bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuEle
 
 | 参数名       | 类型                                               | 必填 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| isShown | boolean | 是   | 是否支持开发者通过状态变量控制菜单显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
+| isShow | boolean | 是   | 是否支持开发者通过状态变量控制菜单显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
 | content      | [CustomBuilder](ts-types.md#custombuilder8) \| Array<[MenuElement](#menuelement)&gt;       | 是   | 自定义菜单内容构造器或固定样式菜单。 |
 | options      | [ContextMenuOptions](#contextmenuoptions10)                      | 否   | 配置弹出菜单的参数。                         |
 

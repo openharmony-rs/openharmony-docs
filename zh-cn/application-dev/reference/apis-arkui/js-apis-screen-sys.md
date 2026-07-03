@@ -26,7 +26,7 @@ import { screen } from '@kit.ArkUI';
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
-获取所有的屏幕，使用callback异步回调。
+获取所有的屏幕对象，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -71,7 +71,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
-获取所有的屏幕，使用Promise异步回调。
+获取所有的屏幕对象，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -110,6 +110,109 @@ promise.then((data: Array<screen.Screen>) => {
 });
 ```
 
+## screen.getAllScreens
+
+getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?: boolean): void
+
+获取所有的屏幕对象，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                   |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | 是   | 回调函数。返回当前获取的屏幕对象集合。 |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕对象。true表示返回值会提供未使用的屏幕对象，false表示不提供未使用的屏幕对象。<br>默认值为：false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+}, true);
+```
+
+## screen.getAllScreens
+
+getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
+
+获取所有的屏幕对象，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                   |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕对象。true表示返回值会提供未使用的屏幕对象，false表示不提供未使用的屏幕对象。<br>默认值为：false。 |
+
+**返回值：** 
+
+| 类型                                          | 说明                                      |
+| --------------------------------------------- | ----------------------------------------- |
+| Promise&lt;Array&lt;[Screen](#screen)&gt;&gt; | Promise对象。返回当前获取的屏幕对象集合。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
+promise.then((data: Array<screen.Screen>) => {
+  if(data.length > 0){
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## screen.on('connect' | 'disconnect' | 'change')
 
 on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&gt;): void
@@ -124,8 +227,8 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 | 参数名    | 类型                   | 必填 | 说明                                                        |
 | --------- | ---------------------- | ---- | ----------------------------------------------------------- |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
-| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。                                    |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
+| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。 |
 
 **错误码：**
 
@@ -160,7 +263,7 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | --------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
 | callback  | Callback&lt;number&gt; | 否   | 回调函数。返回屏幕的ID，该参数为整数。若无此参数，则取消该eventType监听的所有回调函数。                                     |
 
 **错误码：**
@@ -294,7 +397,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，ID应为整数。mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1351,8 +1454,7 @@ let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
 // 将屏幕设置为扩展模式
-screen.makeExpand(expandOptionArray).then((
-  data: number) => {
+screen.makeExpand(expandOptionArray).then((data: number) => {
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
@@ -1514,7 +1616,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
-| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br/>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
 
 ## Screen
 
@@ -1540,6 +1642,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
@@ -1550,6 +1653,12 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
@@ -1618,6 +1727,12 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
@@ -1688,6 +1803,8 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 可通过orientationOptions参数指定旋转时是否带有动画、是否忽略系统窗口的旋转锁定。
 
+不传入orientationOptions参数时，接口行为与`setOrientation(orientation: Orientation): Promise<void>`相同。
+
 当设置的方向符合应用旋转策略（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛出异常。
 
 **起始版本：** 26.0.0
@@ -1697,6 +1814,12 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下调用不生效不报错；在非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
@@ -2106,4 +2229,4 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
 | needAnimation          | boolean   | 否   | 是   |  是否带动画旋转。true表示带动画旋转屏幕，false表示不带动画旋转屏幕。默认值为true。 | 
-| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的电脑模式下生效，在其他设备中调用不生效不报错。|
+| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中调用不生效不报错。|

@@ -1,12 +1,14 @@
 # @ohos.notificationManager (NotificationManager) (System API)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:42:01.799Z pushedAt=2026-06-30T11:39:53.001Z -->
 
-The **NotificationManager** module provides notification management capabilities, covering notifications, notification slots, notification enabled status, and notification badge status.
+This module provides system API capabilities for notification management, including publishing notifications to specified users, publishing agent notifications, canceling agent notifications, creating, obtaining, and removing notification channels, setting and querying notification enable status, badge enable status, and channel enable status, setting and querying do-not-disturb time and DND mode configuration, managing distributed notification collaboration, managing notification publishing permission control, obtaining active notification information, setting notification reminder methods, subscribing to system live view, registering notification verification callbacks, managing notification priority policies, and setting advanced features such as geofence, ringtone information, and silent reminders.
 
 > **NOTE**<br>
 >
@@ -46,27 +48,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> Applicable versions: 23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> Applicable versions: 11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> Applicable versions: 11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+ |
+| 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 18+ |
+| 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
+| 1600026  | The location switch is off.<br> Applicable versions: 23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 2300007  | Network unreachable.<br> Applicable versions: 11+                              |
 
 **Example**
 
@@ -129,27 +131,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> Applicable versions: 23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                           |
 | 1600004  | Notification disabled.                         |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> Applicable versions: 11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> Applicable versions: 11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+ |
+| 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 18+ |
+| 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
+| 1600026  | The location switch is off.<br> Applicable versions: 23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
+| 2300007  | Network unreachable.<br> Applicable versions: 11+                              |
 
 **Example**
 
@@ -203,9 +205,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -261,9 +263,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -310,9 +312,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -372,9 +374,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -399,7 +401,6 @@ notificationManager.addSlots(notificationSlotArray).then(() => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.setNotificationEnable
 
@@ -427,9 +428,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -484,9 +485,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -633,9 +634,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -691,9 +692,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -739,9 +740,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -796,9 +797,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -847,10 +848,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. | 
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -907,10 +908,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -958,10 +959,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1017,10 +1018,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1075,10 +1076,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1132,10 +1133,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1197,10 +1198,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1258,10 +1259,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1309,10 +1310,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1368,10 +1369,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1420,10 +1421,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1481,10 +1482,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1505,7 +1506,6 @@ notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
     console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.getAllActiveNotifications
 
@@ -1531,9 +1531,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1608,7 +1608,6 @@ Obtains information about the common live view that matches the specified filter
 
 **System API**: This is a system API.
 
-
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                          |
@@ -1621,8 +1620,8 @@ Obtains information about the common live view that matches the specified filter
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                 |
-| -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ---------------------------------------- |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.           |
 | 17700001 | The specified bundle name was not found. |
 
@@ -1666,7 +1665,6 @@ Obtains information about the common live view that matches the specified filter
 
 **System API**: This is a system API.
 
-
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                          |
@@ -1684,8 +1682,8 @@ Obtains information about the common live view that matches the specified filter
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                 |
-| -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ---------------------------------------- |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.         |
 | 17700001 | The specified bundle name was not found. |
 
@@ -1740,9 +1738,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1798,9 +1796,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1848,10 +1846,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1899,7 +1897,6 @@ Sets the DND time. This API uses a promise to return the result.
 | ---- | ---------------- | ---- | -------------- |
 | date | [DoNotDisturbDate](#donotdisturbdate) | Yes  | DND time to set.|
 
-
 **Return value**
 
 | Type     | Description       | 
@@ -1912,10 +1909,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1937,7 +1934,6 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.setDoNotDisturbDate
 
@@ -1967,10 +1963,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2035,10 +2031,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2066,7 +2062,6 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
 });
 ```
 
-
 ## notificationManager.getDoNotDisturbDate
 
 getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
@@ -2093,10 +2088,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2144,9 +2139,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2163,7 +2158,6 @@ notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotD
     console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.getDoNotDisturbDate
 
@@ -2183,8 +2177,8 @@ Obtains the DND time of a specified user. This API uses an asynchronous callback
 
 | Name    | Type                             | Mandatory| Description                  |
 | -------- | --------------------------------- | ---- | ---------------------- |
+| userId   | number                            | Yes   | User ID. |
 | callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | Yes  | Callback used to return the result.|
-| userId   | number                            | Yes  | User ID.|
 
 **Error codes**
 
@@ -2192,10 +2186,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2253,10 +2247,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2277,7 +2271,6 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
     console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.isSupportDoNotDisturbMode
 
@@ -2305,9 +2298,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -2388,8 +2381,6 @@ Sets whether to enable distributed notification on this device. This API uses an
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API.
@@ -2407,10 +2398,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2446,8 +2437,6 @@ Sets whether to enable distributed notification on this device. This API uses a 
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API.
@@ -2470,10 +2459,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2502,11 +2491,9 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
+**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2526,10 +2513,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2555,8 +2542,6 @@ let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
 ```
 
-
-
 ## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
@@ -2567,11 +2552,9 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
+**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2596,10 +2579,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2632,11 +2615,9 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
+**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2655,10 +2636,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2693,11 +2674,9 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since**: 26.0.0
 
-**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
+**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2721,10 +2700,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2746,7 +2725,6 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 });
 ```
 
-
 ## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
@@ -2758,8 +2736,6 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 **Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2777,10 +2753,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2812,8 +2788,6 @@ Obtains the notification reminder type. This API uses a promise to return the re
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API.
@@ -2830,9 +2804,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2849,7 +2823,6 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 });
 ```
 
-
 ## notificationManager.publishAsBundle
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
@@ -2858,7 +2831,7 @@ Publishes a notification through the reminder agent. This API uses an asynchrono
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
@@ -2877,10 +2850,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> Applicable versions: 23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -2893,9 +2866,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
+| 1600026  | The location switch is off.<br> Applicable versions: 23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -2938,12 +2911,11 @@ Publishes a notification through the reminder agent. This API uses a promise to 
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
 **Parameters**
-
 
 | Name              | Type                                       | Mandatory| Description                                         |
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
@@ -2963,10 +2935,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> Applicable versions: 23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -2979,9 +2951,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
+| 1600026  | The location switch is off.<br> Applicable versions: 23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -3020,12 +2992,11 @@ Publishes a notification through the reminder agent. This API uses a promise to 
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
 **Parameters**
-
 
 | Name              | Type                                       | Mandatory| Description                                         |
 |----------------------|--------------------------------------------|------|-----------------------------------------------|
@@ -3044,10 +3015,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> Applicable versions: 23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -3060,9 +3031,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600025  | Geofencing disabled.<br> Applicable versions: 23+ |
+| 1600026  | The location switch is off.<br> Applicable versions: 23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> Applicable versions: 23+ |
 | 2300007  | Network unreachable.                              |
 
 **Example**
@@ -3101,7 +3072,7 @@ Cancels a notification published through the reminder agent. This API uses an as
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
@@ -3120,9 +3091,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3158,7 +3129,7 @@ Cancels a notification published through the reminder agent. This API uses a pro
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
@@ -3182,9 +3153,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3208,7 +3179,6 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 });
 ```
 
-
 ## notificationManager.cancelAsBundle<sup>12+</sup>
 
 cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
@@ -3217,12 +3187,11 @@ Cancels a notification published through the reminder agent. This API uses a pro
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **System API**: This is a system API.
 
 **Parameters**
-
 
 | Name              | Type                                       | Mandatory| Description                                         |
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
@@ -3241,9 +3210,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -3297,9 +3266,9 @@ The current application must have a proxy relationship with another application,
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3323,7 +3292,7 @@ notificationManager.cancel(bundle, id).then(() => {
 });
 ```
 
-## notificationManager.setNotificationEnableSlot 
+## notificationManager.setNotificationEnableSlot
 
 setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, callback: AsyncCallback\<void>): void
 
@@ -3352,14 +3321,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> Applicable versions: 11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -3412,10 +3381,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3478,14 +3447,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> Applicable versions: 11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -3532,10 +3501,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3594,10 +3563,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3617,7 +3586,6 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 });
 ```
 
-
 ## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
@@ -3629,8 +3597,6 @@ Sets whether to enable the notification sync feature for devices where the appli
 **Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3650,10 +3616,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3677,7 +3643,6 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
-
 ## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
@@ -3689,8 +3654,6 @@ Sets whether to enable the notification sync feature for devices where the appli
 **Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3715,10 +3678,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3738,7 +3701,6 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
     console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
@@ -3769,9 +3731,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3793,7 +3756,6 @@ let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError, data: bo
 }
 notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotificationEnabledWithoutAppCallback);
 ```
-
 
 ## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
@@ -3829,9 +3791,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3879,9 +3842,9 @@ Each [SlotType](./js-apis-notificationManager.md#slottype) in the system can hav
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **Example**
@@ -3936,9 +3899,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3989,8 +3952,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **Example**
@@ -4039,10 +4002,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4070,7 +4033,6 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
   console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.subscribeSystemLiveView<sup>11+</sup>
 
@@ -4101,10 +4063,10 @@ Subscribes to the system live view notification. This API uses a promise to retu
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4162,10 +4124,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4211,7 +4173,6 @@ Sets whether applications enable cross-device collaboration. This API uses a pro
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | Yes  | Applications to set.                  |
 | deviceType | string | Yes  | Device type.|
-
 
 **Return value**
 
@@ -4294,10 +4255,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4355,10 +4316,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4412,10 +4373,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4468,10 +4429,10 @@ The current application must have a proxy relationship with another application,
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4531,10 +4492,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4591,10 +4552,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4739,10 +4700,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4765,6 +4726,7 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
 ## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
 
 removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
@@ -4861,10 +4823,10 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4915,8 +4877,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4956,7 +4918,6 @@ Queries the Do Not Disturb profile of a specified user. This API uses a promise 
 | ------ | ---------------- | ---- | -------------- |
 | id   | number | Yes | ID of the Do Not Disturb profile.|
 | userId   | number | Yes | Target user.|
-
 
 **Return value**
 
@@ -5029,7 +4990,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -5087,7 +5048,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -5145,7 +5106,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
 
@@ -5193,7 +5154,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
 
@@ -5245,7 +5206,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
 
@@ -5369,6 +5330,124 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
 }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setNotificationSwitch
+
+setNotificationSwitch(switchName: string, switchState: boolean, userId: number): Promise\<void\>
+
+Sets the notification switch state. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name   | Type   | Mandatory| Description |
+| -------- | ------ | ---- | ---- |
+| switchName | string | Yes| Name of the notification switch. The value can be **DEAL** (aggregated switch for transaction notifications) or **LOGISTICS** (aggregated switch for logistics notifications). |
+| switchState | boolean | Yes| Whether to enable the notification switch.<br> - **true**: enable.<br> - **false**: disable. |
+| userId | number | Yes| User ID. |
+
+**Return value**
+
+| Type           | Description                    | 
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: number = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitch
+
+getNotificationSwitch(switchName: string, userId: number): Promise\<SwitchState\>
+
+Obtains the notification switch state. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name   | Type   | Mandatory| Description |
+| -------- | ------ | ---- | ---- |
+| switchName | string | Yes| Name of the notification switch. The value can be **DEAL** (aggregated switch for transaction notifications) or **LOGISTICS** (aggregated switch for logistics notifications). |
+| userId | number | Yes| User ID. |
+
+**Return value**
+
+| Type           | Description                    | 
+|-----------------|-------------------------|
+| Promise\<[SwitchState](#switchstate20)\> | Promise used to return the notification switch state.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: number = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5980,7 +6059,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 
@@ -6029,7 +6108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -6081,7 +6160,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -6132,7 +6211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -6184,7 +6263,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -6233,7 +6312,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **Example**
 
@@ -6284,7 +6363,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **Example**
 
@@ -6335,7 +6414,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -6354,7 +6433,6 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
   hilog.error(0x0000, 'testTag', `getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
 
 ## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
@@ -6392,7 +6470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -6412,7 +6490,7 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 
 ## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
-getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>;
+getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
 
 Obtains the application priority notification strategies in batches. This API uses a promise to return the result.
 
@@ -6446,7 +6524,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -6502,7 +6580,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **Example**
@@ -6764,6 +6842,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbDate
 
+Defines the DND time.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -6776,6 +6856,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbType
 
+Defines the DND time type.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -6787,8 +6869,9 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | TYPE_DAILY   | 2 | Daily DND at the specified time segment (only considering the hour and minute).|
 | TYPE_CLEARLY | 3 | DND at the specified time segment (with the hour, day, and month specified).    |
 
-
 ## DeviceRemindType
+
+Defines the notification reminder type.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6801,8 +6884,9 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | ACTIVE_DONOT_REMIND  | 2   | The device is in use. No notification is required.           |
 | ACTIVE_REMIND        | 3   | The device is in use.                |
 
-
 ## SourceType
+
+Defines the notification source type.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6815,6 +6899,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | TYPE_TIMER           | 2   | Timed notification.           |
 
 ## NotificationCheckInfo<sup>10+</sup>
+
+Defines the notification check parameters.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6834,6 +6920,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckResult<sup>10+</sup>
 
+Defines the notification check result.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER, ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -6844,7 +6932,6 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | ------- | ------- | ---- | ---- | ----------------------- |
 | code    | number  |  No | No  | Result code.<br>**0**: display.<br>**1**: no display.|
 | message | string  |  No | No  | Result.               |
-
 
 ## ButtonOptions<sup>11+</sup>
 
@@ -6860,7 +6947,6 @@ Provides the button information of the notification.
 | ---------- | ------ | ---- | ---- | ---------------------- |
 | buttonName | string |  No | No  | Button name.             |
 
-
 ## SystemLiveViewSubscriber<sup>11+</sup>
 
 Subscriber of the system live view notification.
@@ -6873,7 +6959,6 @@ Subscriber of the system live view notification.
 | ----------- | ---------------------------------------------------------------------------------- | ---- | ---- | --------------------- |
 | onResponse  | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void | No  |  Yes | Callback when the button is touched.       |
 
-
 ## SlotType
 
 **System capability**: SystemCapability.Notification.Notification
@@ -6882,8 +6967,8 @@ Subscriber of the system live view notification.
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
 | EMERGENCY_INFORMATION<sup>12+</sup> | 10     | Emergency event. **System API**: This is a system API.                              |
 
-
 ## NotificationControlFlagStatus<sup>12+</sup>
+
 Each bit can control the notification mode. When the bitwise OR operation is performed on **notificationControlFlags** and the enumerated values in the following table, the notification mode is disabled.
 
 **System capability**: SystemCapability.Notification.Notification
@@ -6995,7 +7080,7 @@ Describes the information about the application reminder.
 | Name     | Type   | Read-Only| Optional| Description          |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
-| reminderFlags | number | No| No| Reminder flag.|
+| reminderFlags | number | No | No | Notification reminder mode flags.<br>- bit0: sound prompt. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit1: lock screen. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit2: banner. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit3: screen on. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit4: vibration. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit5: status bar notification icon. The value **0** indicates disabled, and **1** indicates enabled. |
 | silentReminderEnabled | boolean | No| No| Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.|
 
 ## BundleNotificationStatistics
@@ -7011,8 +7096,8 @@ Describes the notification statistics of a specified application.
 | Name     | Type   | Read-Only| Optional| Description          |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
-| lastTime | number | No| No| Last time when the application sent a notification. Data format: timestamp, in ms.|
-| recentCount | number | No| No| Total number of notifications released by the application in the last seven days.|
+| lastTime | number | No | No | Time when the app last published a notification.<br>Data format: timestamp.<br>Unit: millisecond. |
+| recentCount | number | No| No| Total number of notifications published by the application in the last seven days.|
 
 ## PriorityNotificationType<sup>23+</sup>
 

@@ -35,6 +35,8 @@ getStatus(options?: GetStatusOptions): void;
 
 Obtains the current charging state and battery level.
 
+**Model restriction**: This API can be used in both the FA and Stage models.
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 **Parameters**
@@ -114,6 +116,8 @@ export default {
 
 Object that contains the API calling result.
 
+**Model restriction**: This API can be used in both the FA and Stage models.
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 | Name  | Type                                               | Mandatory| Description                                                        |
@@ -125,6 +129,8 @@ Object that contains the API calling result.
 ## BatteryResponse<sup>(deprecated)</sup>
 
 Defines a response that returns the charging status and remaining power of the device.
+
+**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 

@@ -45,7 +45,9 @@
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_GetPropertyNames的样例方法
 static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -75,12 +77,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = '{ data: 0, message: "hello world"}';
     let script = getPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -93,7 +94,9 @@ JSVM OH_JSVM_GetPropertyNames success
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_SetProperty的样例方法
 static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -106,7 +109,10 @@ static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
         return nullptr;
     }
     // 通过调用OH_JSVM_SetProperty接口将属性与值设置入object如果失败，直接抛出错误
-    status = OH_JSVM_SetProperty(env, args[0], args[1], args[2]);
+    constexpr size_t TARGET_OBJECT_INDEX = 0;
+    constexpr size_t PROPERTY_NAME_INDEX = 1;
+    constexpr size_t PROPERTY_VALUE_INDEX = 2;
+    status = OH_JSVM_SetProperty(env, args[TARGET_OBJECT_INDEX], args[PROPERTY_NAME_INDEX], args[PROPERTY_VALUE_INDEX]);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_SetProperty fail");
         return nullptr;
@@ -114,7 +120,7 @@ static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_SetProperty success");
     }
     // 将设置成功后的object返回出去
-    return args[0];
+    return args[TARGET_OBJECT_INDEX];
 }
 // SetProperty注册回调
 static JSVM_CallbackStruct param[] = {
@@ -127,12 +133,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     setProperty(obj, "code", "hi")
 )JS";
 ```
-<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -145,7 +150,9 @@ JSVM OH_JSVM_SetProperty success
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_GetProperty的样例方法
 static JSVM_Value GetProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -175,12 +182,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     getProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -193,7 +199,9 @@ JSVM OH_JSVM_GetProperty success
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_HasProperty的样例方法
 static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -202,7 +210,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转化为JSVM_Value类型抛出，否则抛出错误
-    bool result = false;
+    bool result;
     JSVM_Status status = OH_JSVM_HasProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_HasProperty fail");
@@ -226,13 +234,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasProperty(obj, "data")
     hasProperty(obj, 0)
 )JS";
 ```
-<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -250,7 +257,9 @@ JSVM OH_JSVM_HasProperty success:0
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_DeleteProperty的样例方法
 static JSVM_Value DeleteProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -289,12 +298,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     deleteProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -307,7 +315,9 @@ JSVM OH_JSVM_DeleteProperty success:1
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_HasOwnProperty的样例方法
 static JSVM_Value HasOwnProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -325,12 +335,12 @@ static JSVM_Value HasOwnProperty(JSVM_Env env, JSVM_CallbackInfo info)
     // 检查第二个参数是否为string
     JSVM_ValueType valuetype2;
     OH_JSVM_Typeof(env, args[1], &valuetype2);
-    if (valuetype2 != JSVM_STRING ) {
+    if (valuetype2 != JSVM_STRING) {
         OH_JSVM_ThrowError(env, nullptr, "Second argument must be a string.");
         return nullptr;
     }
     // 检查对象是否具有指定属性，结果存储在hasProperty中
-    bool hasProperty = false;
+    bool hasProperty;
     JSVM_Status status = OH_JSVM_HasOwnProperty(env, args[0], args[1], &hasProperty);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_HasOwnProperty failed");
@@ -354,13 +364,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasOwnProperty(obj, "message")
     hasOwnProperty(obj, "__defineGetter__")
 )JS";
 ```
-<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -377,18 +386,21 @@ JSVM OH_JSVM_HasOwnProperty success:0
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_SetNamedProperty的样例方法
+const size_t STR_KEY_LEN = 32;
 static JSVM_Value SetNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 获取js侧传入的一个参数
     size_t argc = 1;
     JSVM_Value str;
-    char strKey[32] = "";
+    char strKey[STR_KEY_LEN] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, &str, nullptr, nullptr);
     // 获取传入参数字符串并存储在strKey中
-    size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, str, strKey, 32, &keyLength);
+    size_t keyLength;
+    OH_JSVM_GetValueStringUtf8(env, str, strKey, STR_KEY_LEN, &keyLength);
     // 创建一个新对象
     JSVM_Value newObj;
     OH_JSVM_CreateObject(env, &newObj);
@@ -418,11 +430,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     setNamedProperty("message")
 )JS";
 ```
-<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -435,18 +446,21 @@ JSVM OH_JSVM_SetNamedProperty success
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_GetNamedProperty的样例方法
+const size_t MAX_KEY_LENGTH = 32;
 static JSVM_Value GetNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
-    char strKey[32] = "";
+    char strKey[MAX_KEY_LENGTH] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取要获取的属性名
-    size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, 32, &keyLength);
+    size_t keyLength;
+    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, MAX_KEY_LENGTH, &keyLength);
     // 获取指定属性的值并存储在result中
     JSVM_Value result;
     JSVM_Status status = OH_JSVM_GetNamedProperty(env, args[0], strKey, &result);
@@ -469,12 +483,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     getNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -487,18 +500,21 @@ JSVM OH_JSVM_GetNamedProperty success
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_HasNamedProperty的样例方法
+const size_t STR_KEY_LEN = 32;
 static JSVM_Value HasNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
-    char strKey[32] = "";
+    char strKey[STR_KEY_LEN] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取要检查的属性名
-    size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, 32, &keyLength);
+    size_t keyLength;
+    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, STR_KEY_LEN, &keyLength);
     // 检查对象是否具有指定命名的属性，并将结果存储在hasProperty中
     bool hasProperty = false;
     JSVM_Status status = OH_JSVM_HasNamedProperty(env, args[0], strKey, &hasProperty);
@@ -524,12 +540,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -542,9 +557,9 @@ JSVM OH_JSVM_HasNamedProperty success:1
 
 cpp部分代码：
 
-```cpp
-#include <fstream>
-#include <string>
+<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
+
+``` C++
 // 属性描述符列表中defineMethodPropertiesExample属性的回调函数
 static JSVM_Value DefineMethodPropertiesExample(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -565,7 +580,8 @@ static JSVM_Value GetterCallback(JSVM_Env env, JSVM_CallbackInfo info)
 }
 
 // 执行JavaScript字符串的函数
-static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode) {
+static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode)
+{
     JSVM_Value sourceCodeValue;
     OH_JSVM_CreateStringUtf8(env, srcCode.c_str(), srcCode.size(), &sourceCodeValue);
     JSVM_Script script;
@@ -578,7 +594,8 @@ static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode
 }
 
 // OH_JSVM_DefineProperties的样例方法
-static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 接受一个JavaScript侧传入的空object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -599,18 +616,19 @@ static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
         // 定义string类型的属性值
         {"defineStringPropertiesExample", nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT},
         // 定义getter类型的属性值
-        {"getterCallback", nullptr, nullptr, &param[1], nullptr, nullptr,JSVM_DEFAULT}};
+        {"getterCallback", nullptr, nullptr, &param[1], nullptr, nullptr, JSVM_DEFAULT}};
     // 根据属性描述符列表为obj对象创建属性
-    JSVM_Status statusProperty;
-    statusProperty = OH_JSVM_DefineProperties(env, *argv, sizeof(descriptor) / sizeof(descriptor[0]), descriptor);
+    JSVM_Status statusProperty = OH_JSVM_DefineProperties(env,
+                                                          *argv,
+                                                          sizeof(descriptor) / sizeof(descriptor[0]),
+                                                          descriptor);
     if (statusProperty != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM DefineProperties fail");
         return nullptr;
     }
     // 调用obj对象中添加的属性
     // 运行obj.defineMethodPropertiesExample()并将结果返回给JavaScript
-    static std::string srcMethod;
-    srcMethod = R"JS(obj.defineMethodPropertiesExample();)JS";
+    std::string srcMethod = R"JS(obj.defineMethodPropertiesExample();)JS";
     JSVM_Value jsVmResult = RunScriptAndLogResult(env, srcMethod);
     if (jsVmResult != nullptr) {
         int32_t number;
@@ -618,35 +636,32 @@ static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
         OH_LOG_INFO(LOG_APP, "JSVM DefineMethodPropertiesExample success:%{public}d", number);
     }
     // 运行obj.defineStringPropertiesExample()并将结果返回给JavaScript
-    static std::string srcString;
-    srcString = R"JS(obj.defineStringPropertiesExample;)JS";
+    static std::string srcString = R"JS(obj.defineStringPropertiesExample;)JS";
     JSVM_Value jsVmResult1 = RunScriptAndLogResult(env, srcString);
     if (jsVmResult1 != nullptr) {
         size_t length = 0;
         OH_JSVM_GetValueStringUtf8(env, jsVmResult1, nullptr, 0, &length);
-        char *buf = (char *)malloc(length + 1);
-        if (buf == nullptr) {
-            OH_LOG_ERROR(LOG_APP, "malloc failed");
-            return nullptr;
+        if (length == 0 || length > MAX_MALLOC_SIZE) {
+            OH_LOG_ERROR(LOG_APP, "Invalid string length: %{public}zu", length);
+            return jsVmResult;
         }
-        memset(buf, 0, length + 1);
+        char *buf = (char *)malloc(length + 1);
         OH_JSVM_GetValueStringUtf8(env, jsVmResult1, buf, length + 1, &length);
         OH_LOG_INFO(LOG_APP, "JSVM defineStringPropertiesExample success:%{public}s", buf);
         free(buf);
     }
     // 调用obj的getterCallback()并将结果字符串返回给JavaScript
-    static std::string srcGetter;
-    srcGetter = R"JS(obj.getterCallback;)JS";
+    static std::string srcGetter = R"JS(obj.getterCallback;)JS";
     JSVM_Value jsVmResult2 = RunScriptAndLogResult(env, srcGetter);
     if (jsVmResult2 != nullptr) {
         size_t length = 0;
         OH_JSVM_GetValueStringUtf8(env, jsVmResult2, nullptr, 0, &length);
-        char *buf = (char *)malloc(length + 1);
-        if (buf == nullptr) {
-            OH_LOG_ERROR(LOG_APP, "malloc failed");
-            return nullptr;
+        OH_JSVM_GetValueStringUtf8(env, jsVmResult1, nullptr, 0, &length);
+        if (length == 0 || length > MAX_MALLOC_SIZE) {
+            OH_LOG_ERROR(LOG_APP, "Invalid string length: %{public}zu", length);
+            return jsVmResult;
         }
-        memset(buf, 0, length + 1);
+        char *buf = (char *)malloc(length + 1);
         OH_JSVM_GetValueStringUtf8(env, jsVmResult2, buf, length + 1, &length);
         OH_LOG_INFO(LOG_APP, "JSVM getterCallback success:%{public}s", buf);
         free(buf);
@@ -665,12 +680,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = {};
     defineProperties(obj)
 )JS";
 ```
-<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -685,20 +699,22 @@ JSVM getterCallback success:Hello world!
 
 cpp部分代码：
 
-```cpp
+<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
+
+``` C++
 // OH_JSVM_GetAllPropertyNames的样例方法
 static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 获取js侧传入的一个参数
+    // // 获取js侧传入的一个参数
     size_t argc = 1;
     JSVM_Value args[1];
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取给定对象的所有属性名称(自有属性)
     JSVM_Value result;
     JSVM_Status status = OH_JSVM_GetAllPropertyNames(env, args[0],
-                                         JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
-                                         JSVM_KeyFilter::JSVM_KEY_WRITABLE,
-                                         JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
+                                                     JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
+                                                     JSVM_KeyFilter::JSVM_KEY_WRITABLE,
+                                                     JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "Failed to get all property names");
         return nullptr;
@@ -718,12 +734,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = '{ data: 0, message: "hello world", 50: 1}';
     let script = getAllPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts

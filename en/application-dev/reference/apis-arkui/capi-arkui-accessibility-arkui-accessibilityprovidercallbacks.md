@@ -29,7 +29,7 @@ Defines callback functions of a third-party operation [provider](capi-arkui-acce
 | [int32_t (\*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbyid) | Finds node information for the specified node. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId,ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbytext) | Finds the nodes that contain specific text content. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findfocusedaccessibilitynode) | Finds the node that has obtained the focus based on the focus type and returns the element information of the node. Callback function implemented by the third-party platform and registered with the system.|
-| [int32_t (\*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Finds the next node that can be focused based on the reference node. Callback function implemented by the third-party platform and registered with the system.|
+| [int32_t (\*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Finds the next node that can be focused based on the reference node and focus movement direction. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action,ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)](#executeaccessibilityaction) | Called to execute a specified action on a specified node.|
 | [int32_t (\*clearFocusedFocusAccessibilityNode)()](#clearfocusedfocusaccessibilitynode) | Called to clear the focus state of the current focused node.|
 | [int32_t (\*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)](#getaccessibilitynodecursorposition) | Called to query the current cursor position of the specified node.|
@@ -56,7 +56,7 @@ Finds node information for the specified node. Callback function implemented by 
 | int64_t elementId                                                              | Unique ID of the accessibility element.|
 | [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode) mode | Accessibility search mode.|
 | int32_t requestId                                                              | Request ID.|
-| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | Accessibility element information list.|
+| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | Pointer to the accessibility element information list.|
 
 **Returns**
 
@@ -81,9 +81,9 @@ Finds the nodes that contain specific text content. Callback function implemente
 | Name| Description|
 | -- | -- |
 | int64_t elementId | Unique ID of the accessibility element.|
-|  const char* text | Accessibility text.|
+|  const char* text | Pointer to the accessibility text.|
 |  int32_t requestId | Request ID.|
-| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | Accessibility element information list.|
+| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | Pointer to the accessibility element information list.|
 
 **Returns**
 
@@ -110,7 +110,7 @@ Finds the node that has obtained the focus based on the focus type and returns t
 | int64_t elementId                                                                                               | Unique ID of the accessibility element.|
 | [ArkUI_AccessibilityFocusType](capi-native-interface-accessibility-h.md#arkui_accessibilityfocustype) focusType | Focus type.|
 | int32_t requestId                                                                                               | Request ID.|
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                 | Accessibility element information.|
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                 | Pointer to the accessibility element information.|
 
 **Returns**
 
@@ -126,7 +126,7 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 **Description**
 
-Finds the next node that can be focused based on the reference node. Callback function implemented by the third-party platform and registered with the system.
+Finds the next node that can be focused based on the reference node and focus movement direction. Callback function implemented by the third-party platform and registered with the system.
 
 **Since**: 13
 
@@ -135,9 +135,9 @@ Finds the next node that can be focused based on the reference node. Callback fu
 | Name                                                                                                                              | Description|
 |-----------------------------------------------------------------------------------------------------------------------------------| -- |
 | int64_t elementId                                                                                                                 | Unique ID of the accessibility element.|
-| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Search direction.|
+| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Focus movement direction.|
 | int32_t requestId                                                                                                                 | Request ID.|
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                                       | Information about the found accessibility element.|
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                                       | Pointer to the found accessibility element information.|
 
 **Returns**
 
@@ -153,7 +153,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 **Description**
 
-Executes an accessibility action on the specified accessibility node.
+Called to execute a specified action on a specified node.
 
 **Since**: 13
 
@@ -163,7 +163,7 @@ Executes an accessibility action on the specified accessibility node.
 |------------------------------------------------------------------------------------------------------------------| -- |
 | int64_t elementId                                                                                                | Unique ID of the accessibility element.|
 | [ArkUI_Accessibility_ActionType](capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) action | Action to execute.|
-| [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) *actionArguments                                                          | Action parameters.|
+| [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) *actionArguments                                                          | Pointer to the action argument array.|
 | int32_t requestId                                                                                                | Request ID.|
 
 **Returns**
@@ -208,7 +208,7 @@ Called to query the current cursor position of the specified node.
 | -- | -- |
 | int64_t elementId | Unique ID of the accessibility element.|
 |  int32_t requestId | Request ID.|
-|  int32_t* index | Index of the cursor position.|
+|  int32_t* index | Pointer to the index of the cursor position.|
 
 **Returns**
 

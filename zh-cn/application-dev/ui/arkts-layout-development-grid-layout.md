@@ -79,15 +79,15 @@
   @Entry
   @Component
   struct WindowRefGridLayout {
-    @State currentBp: string = "unknown"
+    @State currentBp: string = 'unknown'
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text(this.currentBp)
-
+  
         GridRow({
           columns: {
             xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
@@ -178,11 +178,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text('columns：4').alignSelf(ItemAlign.Start)
-
+  
         Row() {
           GridRow({ columns: 4 }) {
             ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -213,11 +213,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text('columns：8').alignSelf(ItemAlign.Start)
-
+  
         Row() {
           GridRow({ columns: 8 }) {
             ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -414,7 +414,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+    
       build() {
         GridRow({ columns: 8 }) {
           ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
@@ -443,11 +443,11 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct SpanColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown'
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+    
       build() {
         Column({ space: 6 }) {
           GridRow({ columns: 8 }) {
@@ -472,7 +472,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           .onBreakpointChange((breakPoint) => {
             this.currentBp = breakPoint
           })
-
+    
           Text(this.currentBp)
         }
       }
@@ -498,7 +498,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+    
       build() {
         Column() {
           GridRow({ columns: 12 }) {
@@ -511,7 +511,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
               .backgroundColor(color)
             })
           }
-
+    
           Blank().width('100%').height(150)
         }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
@@ -531,11 +531,11 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct OffsetColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown';
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+        
       build() {
         Column({ space: 6 }) {
           GridRow({ columns: 12 }) {
@@ -561,7 +561,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           .onBreakpointChange((breakPoint) => {
             this.currentBp = breakPoint
           })
-
+    
           Text(this.currentBp)
         }
       }
@@ -589,19 +589,19 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           Text('1')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(213,213,213)')
-
+    
       GridCol({ order: 3, span: 1 }) {
         Row() {
           Text('2')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(150,150,150)')
-
+    
       GridCol({ order: 2, span: 1 }) {
         Row() {
           Text('3')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(0,74,175)')
-
+    
       GridCol({ order: 1, span: 1 }) {
         Row() {
           Text('4')

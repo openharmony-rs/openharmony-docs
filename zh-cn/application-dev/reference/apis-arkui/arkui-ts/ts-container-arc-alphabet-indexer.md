@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。
+弧形索引条是一种弧形排列、可按字母顺序快速定位的组件，可与容器组件联动，按逻辑结构快速定位至容器显示区域，适用于手表等圆形屏幕设备。
 
 >  **说明：**
 >
@@ -20,7 +20,7 @@
 >
 > - ArcAlphabetIndexerAttribute是用于配置ArcAlphabetIndexer组件属性的关键接口。API version 21及之前版本，导入ArcAlphabetIndexer组件后需要开发者手动导入ArcAlphabetIndexerAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcAlphabetIndexer组件后，会自动导入ArcAlphabetIndexerAttribute，无需开发者手动导入ArcAlphabetIndexerAttribute。
 >
-> - 如果开发者手动导入ArcAlphabetIndexerAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，API version 22开始，删除对功能无影响。
+> - 如果开发者手动导入ArcAlphabetIndexerAttribute，DevEco Studio会将该导入语句显示为置灰状态，API version 21及之前版本删除会编译报错，API version 22开始，删除对功能无影响。
 
 API version 21及之前版本：
 
@@ -44,13 +44,13 @@ import { ArcAlphabetIndexer } from '@kit.ArkUI';
 
 ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
-创建弧形索引条实例，传入弧形索引条配置项参数。
+创建并初始化弧形索引条组件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**参数：**  参数内容为设置弧形索引条索引项字符串数组、初始选中项索引位置。
+**参数：**
 
 | 参数名     | 类型     | 必填     | 说明     |
 | -------- | -------- | -------- | -------- |
@@ -197,7 +197,7 @@ popupFont(font: Optional&lt;Font&gt;)
 
 font(font: Optional&lt;Font&gt;)
 
-设置字母索引条默认字体样式。
+设置弧形字母索引条默认字体样式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -213,7 +213,7 @@ font(font: Optional&lt;Font&gt;)
 
 itemSize(size: Optional&lt;LengthMetrics&gt;)
 
-设置字母索引条字母区域大小。
+设置弧形索引条索引项区域大小。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -223,7 +223,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 弧形索引条索引项区域大小，索引项区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 ### selected
 
@@ -239,13 +239,13 @@ selected(index: Optional&lt;number&gt;)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | Optional&lt;number&gt; | 是   | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| index  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;number&gt; | 是   | 选中项索引值。若超出有效索引范围，则取默认值0。<br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ### autoCollapse
 
 autoCollapse(enable: Optional&lt;boolean&gt;)
 
-设置是否使用自适应折叠模式。
+设置是否使用自适应折叠模式。当索引项过多时，组件会根据可用显示空间自动调整索引项的显示布局。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -275,7 +275,7 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>默认值：BlurStyle.NONE。<br/>设置此属性后不建议再设置[popupBackground](#popupbackground)属性。 |
 
 ## 事件
 
@@ -295,7 +295,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数类型。 |
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数，用于处理索引条选中事件。 |
 
 
 ## ArcAlphabetIndexerInitInfo对象说明
@@ -369,7 +369,7 @@ struct ArcListAndIndexer {
     Column() {
       Row() {
         Stack() {
-          ArcList({ scroller : this.scrollerForList, initialIndex: 0 }) {
+          ArcList({ scroller: this.scrollerForList, initialIndex: 0 }) {
             ForEach(this.arrName, (itemName: string, index: number) => {
               ArcListItem() {
                 Text(itemName)
@@ -411,16 +411,16 @@ struct ArcListAndIndexer {
             .popupBackground(ColorMetrics.resourceColor(0xD8404040))
             .itemSize(LengthMetrics.px(this.itemSize))
             .selectedFont({
-              size:'11.0fp',
-              style:FontStyle.Normal,
-              weight:500,
-              family:'HarmonyOS Sans'
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
             })
             .font({
-              size:'11.0fp',
-              style:FontStyle.Normal,
-              weight:500,
-              family:'HarmonyOS Sans'
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
             })
 
         }.width('100%').height('100%')

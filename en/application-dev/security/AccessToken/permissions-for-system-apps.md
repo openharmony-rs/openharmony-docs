@@ -6205,6 +6205,20 @@ Allows an application to adjust the policy in gaming scenarios.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+Allows a system application to manage sandbox applications of browsers.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
@@ -6559,6 +6573,89 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+Allows an application to set cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+Allows an application to read cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+Allows an application to set TBox WiFi related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+Allows an application to obtain T-Box Wi-Fi–related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+Allows an application to trigger network packet capture.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+Allows the triggering of network self-check and self-healing.
+
+**Permission level**: system_basic
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
@@ -6571,4 +6668,32 @@ Allows an application to manage clone preferences.
  	 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
+**Valid since**: 26.1.0
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 26.1.0

@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ArkTSUtils.isSendable
@@ -32,7 +32,7 @@ isSendable(value: Object | null | undefined): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | Object \| null \| undefined  | 是 | 待校验的对象。|
+| value | Object \| null \| undefined  | 是 | 待判断是否为Sendable数据类型的对象。|
 
 **返回值：**
 

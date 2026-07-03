@@ -10,7 +10,7 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 106205 Invalid Input Parameter for the Color Inversion Capability
+## 106205 Color Inversion Capability Configuration Error
 
 **Error Message**
 
@@ -18,7 +18,7 @@ Force dark config is invalid.
 
 **Description**
 
-This error code is reported when the input parameter for the color inversion capability is incorrect.
+This error code is reported when the color inversion capability configuration is incorrect.
 
 **Possible Causes**
 

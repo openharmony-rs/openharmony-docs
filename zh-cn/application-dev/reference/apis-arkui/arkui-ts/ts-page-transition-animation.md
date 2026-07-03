@@ -112,7 +112,7 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 | 名称     | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。    |
+| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。<br/>**说明：**<br/>当pageTransition函数中配置了多个[PageTransitionEnter](#pagetransitionenter)或[PageTransitionExit](#pagetransitionexit)时，按照RouteType匹配规则生效：系统会根据当前路由操作类型（Push或Pop）从所有配置的PageTransitionEnter/PageTransitionExit中选择最后一个匹配的组件生效。如果存在多个匹配相同RouteType的PageTransitionEnter，则最后配置的生效；如果存在多个匹配相同RouteType的PageTransitionExit，则最后配置的生效。RouteType.None与所有路由类型均匹配。    |
 | duration | number                                                       | 否   | 是   | 动画的时长。<br/>单位：毫秒<br/>默认值：1000<br/>取值范围：[0, +∞)                 |
 | curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 是   | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
 | delay    | number                                                       | 否   | 是   | 动画延迟时长。<br/>单位：毫秒<br/>默认值：0<br/>**说明：** <br/>没有匹配时使用系统默认的页面转场效果(根据设备可能会有差异)，如需禁用系统默认页面转场效果，可以指定duration为0。 |

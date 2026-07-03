@@ -57,7 +57,7 @@ Obtains the result code (number type) of an ordered common event. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -149,7 +149,7 @@ Sets the result code (number type) of an ordered common event. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -193,7 +193,7 @@ Sets the result code (number type) of an ordered common event. This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -229,7 +229,7 @@ Sets the result code (number type) of an ordered common event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
 
@@ -266,7 +266,7 @@ Obtains the result data (string type) of an ordered common event. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -359,7 +359,7 @@ Sets the result data (string type) of an ordered common event. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -403,7 +403,7 @@ Sets the result data (string type) of an ordered common event. This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -439,7 +439,7 @@ Sets the result data (string type) of an ordered common event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
 
@@ -478,7 +478,7 @@ Sets the result code and data of an ordered common event. This API uses an async
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -523,7 +523,7 @@ Sets the result code and data of an ordered common event. This API uses a promis
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -560,7 +560,7 @@ Sets the result code and data of an ordered common event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
 
@@ -596,7 +596,7 @@ Checks whether the current common event is an ordered common event. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -681,7 +681,7 @@ Checks whether a common event is a sticky one. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -766,7 +766,7 @@ Aborts an ordered common event. This API is used with [finishCommonEvent](#finis
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -861,7 +861,7 @@ Clears the abort state of an ordered common event. Use this API together with [f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -956,7 +956,7 @@ Checks whether this ordered common event should be aborted. This API uses an asy
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -1043,7 +1043,7 @@ Obtains the subscriber information. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -1132,7 +1132,7 @@ Finishes this ordered common event. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 

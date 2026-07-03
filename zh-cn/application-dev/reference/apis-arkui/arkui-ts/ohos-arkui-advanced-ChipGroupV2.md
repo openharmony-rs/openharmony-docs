@@ -1,9 +1,9 @@
 # ChipGroupV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @youzhi92-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroupV2组件提供操作块群组，用于文件或资源内容的分类等场景。
@@ -43,12 +43,22 @@ ChipGroupV2({
   suffix?: Callback<void>
 })
 ```
+ 
+**起始版本：** 26.0.0
+ 
+**装饰器类型：** @ComponentV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ### 属性
 
 **起始版本：** 26.0.0
-
-**装饰器类型：** @ComponentV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -91,11 +101,21 @@ build函数用于构造ChipGroupV2高级组件。
 
 ChipGroupV2Item定义了芯片组中单个芯片项。
 
-### 属性
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -207,11 +227,21 @@ ChipGroupV2Items的构造函数。
 
 ChipGroupV2ItemStyle定义了ChipV2的共通属性类。
 
-### 属性
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -281,11 +311,21 @@ ChipGroupV2ItemStyleConfig定义了ChipV2的共通属性配置。
 
 ChipGroupV2Space定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距。
 
-### 属性
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -347,11 +387,21 @@ ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及ChipV2与ChipV
 
 ChipGroupV2Padding定义了ChipGroupV2的上下内边距，用于控制其整体高度。
 
-### 属性
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -416,11 +466,21 @@ ChipGroupV2IconGroupSuffix({
 })
 ```
 
-### 属性
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
