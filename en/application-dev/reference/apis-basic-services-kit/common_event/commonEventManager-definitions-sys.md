@@ -465,7 +465,7 @@ When a distributed account is unbound, the common event service is triggered to 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required permissions** none
+**Required permissions:** none
 
 **Value:** "usual.event.DISTRIBUTED_ACCOUNT_UNBOUND"
 
