@@ -119,3 +119,15 @@
 4. 取消订阅绝对静止状态的进入事件。
 
    <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
+   } catch (error) {
+     let message = (error as BusinessError).message;
+     console.error('stationary off failed:' + message);
+   }
+   ```
