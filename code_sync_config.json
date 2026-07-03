@@ -58170,6 +58170,38 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets",
 				"functions":[
 					{
 						"end_line":66,
@@ -58179,7 +58211,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets",
 				"functions":[
 					{
 						"end_line":71,
@@ -58189,7 +58221,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets",
 				"functions":[
 					{
 						"end_line":103,
@@ -58199,7 +58231,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets",
 				"functions":[
 					{
 						"end_line":124,
@@ -58209,7 +58241,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets",
 				"functions":[
 					{
 						"end_line":184,
@@ -58219,7 +58251,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets",
 				"functions":[
 					{
 						"end_line":110,
@@ -58229,7 +58261,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets",
 				"functions":[
 					{
 						"end_line":117,
@@ -58239,7 +58271,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets",
 				"functions":[
 					{
 						"end_line":94,
