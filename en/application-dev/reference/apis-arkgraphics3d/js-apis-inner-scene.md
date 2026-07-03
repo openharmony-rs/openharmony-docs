@@ -1,10 +1,12 @@
 # Scene
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=11a06408076fbdefdb83e0cc63016b17d84005d3 translatedAt=2026-07-02T01:36:14.603Z pushedAt=2026-07-02T12:33:22.671Z -->
 
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
@@ -58,14 +60,14 @@ function createShaderPromise(): Promise<Shader> {
 
 ## SceneNodeParameters
 
-Describes the scene node parameters, which are used to provide the name and path in the scene node tree.
+Scene node parameter object, used to provide the name and path in the scene node hierarchy.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Name of the scene node. It is customizable.|
-| path | string | No| Yes| Path in the scene node tree. It specifies the position of the created camera, light, or node in the scene node tree. Each layer is separated by a slash (/). If no path is provided, the node is set as a child node of the root node. The default value is undefined.|
+| name | string | No | No | Name of the node to be created, which can be customized by the developer to identify the scene node.|
+| path | string | No | Yes | Path in the scene node hierarchy. It is used to specify the placement position of the created camera, light, or node in the scene node hierarchy. Each level is separated by the '/' symbol. If not provided, it is set as a child of the root node. The default value is undefined.|
 
 **Example**
 
@@ -101,8 +103,8 @@ Describes a result object from raycasting, containing details about the 3D objec
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | No| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
-| centerDistance | number | No| No| Distance from the center of the bounding box of the hit object to the center of the camera. The value must be greater than 0.|
-| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Precise world coordinates ({x: number, y: number, z: number}) of the point where the ray hit the object.|
+| centerDistance | number | No| No| Distance from the center of the bounding box of the hit object to the center of the camera, measured in scene units of the world coordinate system (such as cm, m, km, etc.). The value must be greater than 0.|
+| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Precise world coordinates ({x: number, y: number, z: number}) of the point where the ray hits the object, measured in scene units of the world coordinate system (such as cm, m, km, etc.).|
 
 ## RaycastParameters<sup>20+</sup>
 
@@ -116,7 +118,7 @@ Describes the configuration parameters for raycasting, defining the behavior of 
 
 ## RenderResourceFactory<sup>20+</sup>
 
-Provides APIs to create rendering resources that can be shared among multiple scenes with a shared RenderContext.
+Used to create rendering resources that can be shared across multiple scenes ([Scene](#scene-1)) sharing the same [RenderContext](#rendercontext20).
 
 ### createShader<sup>20+</sup>
 
@@ -386,7 +388,7 @@ Describes the camera parameters, which are used to define additional configurati
 
 ## EffectParameters<sup>21+</sup>
 
-Describes the effect parameters.
+Effect parameter configuration, used to specify the effect ID required when creating an effect, serving as the input parameter for the [createEffect](#createeffect21) API to create an effect object.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -402,7 +404,7 @@ Provides APIs for creating resources, such as cameras and light sources, used in
 
 createCamera(params: SceneNodeParameters): Promise\<Camera>
 
-Creates a camera based on scene node parameters. This API uses a promise to return the result.
+Creates a camera based on node parameters. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -410,7 +412,7 @@ Creates a camera based on scene node parameters. This API uses a promise to retu
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes | Scene node parameters. |
 
 **Return value**
 
@@ -445,7 +447,7 @@ function createCameraPromise(): Promise<Camera> {
 
 createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
 
-Creates a camera based on scene node parameters and camera parameters. This API uses a promise to return the result.
+Creates a camera based on node parameters and camera parameters. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -453,7 +455,7 @@ Creates a camera based on scene node parameters and camera parameters. This API 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes | Scene node parameters.|
 | cameraParams | [CameraParameters](#cameraparameters21) | Yes| Camera parameters.|
 
 **Return value**
@@ -491,7 +493,7 @@ function createCameraPromise(): Promise<Camera> {
 
 createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
-Creates a light based on the scene node parameters and light type. This API uses a promise to return the result.
+Creates a light based on node parameters and light type. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -499,7 +501,7 @@ Creates a light based on the scene node parameters and light type. This API uses
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes | Scene node parameters. |
 | lightType | [LightType](js-apis-inner-scene-nodes.md#lighttype) | Yes| Light type.|
 
 **Return value**
@@ -543,13 +545,13 @@ Creates a node. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes | Scene node parameters. |
 
 **Return value**
 
 | Type| Description|
 | ---- | ---- |
-| Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise used to return the Node object.|
+| Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise used to return the node object. |
 
 **Example**
 
@@ -667,7 +669,7 @@ function createEnvironmentPromise(): Promise<Environment> {
 
 createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometry>
 
-Creates a geometry object based on the scene node parameters and mesh data. This API uses a promise to return the result.
+Creates a geometry object based on scene node parameters and mesh data. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -675,7 +677,7 @@ Creates a geometry object based on the scene node parameters and mesh data. This
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes | Scene node parameters. |
 | mesh | [MeshResource](js-apis-inner-scene-resources.md#meshresource18) | Yes| Mesh data parameters.|
 
 **Return value**
@@ -697,10 +699,13 @@ function createGeometryPromise() : Promise<Geometry> {
         return;
       }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // Create cube geometry data
       let cubeGeom = new CubeGeometry();
       cubeGeom.size = { x: 1, y: 1, z: 1 };
+      // Create a mesh resource based on the cube geometry data
       let meshRes = await sceneFactory.createMesh({ name: "MeshName" }, cubeGeom);
       console.info("TEST createGeometryPromise");
+      // Create a geometry object based on the scene node parameters and the mesh resource
       let geometry: Geometry = await sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
       resolve(geometry);
     }).catch((error: Error) => {
@@ -729,7 +734,7 @@ Creates an effect object based on the effect parameters. This API uses a promise
 
 | Type| Description|
 | ---- | ---- |
-| Promise\<[Effect](./js-apis-inner-scene-resources.md#effect21)> | Promise used to return the Environment object created.|
+| Promise\<[Effect](./js-apis-inner-scene-resources.md#effect21)> | Promise used to return the Effect object.|
 
 **Example**
 
@@ -765,7 +770,7 @@ Represents a basic scene component, which is used to describe the component info
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene component, which is customizable.|
-| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | Yes| No| A set of component properties stored in key-value pairs. It supports various basic and complex types to describe various properties of the scene component.|
+| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | Yes| No| A set of component properties stored in key-value pairs. It supports various basic and complex types to describe various properties of the scene component. The unit and value range depend on the specific scene component.|
 
 ## RenderContext<sup>20+</sup>
 
@@ -848,8 +853,8 @@ Registers the directory path and retrieval name for asset files, such as shaders
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| protocol | string | Yes| Retrieval name for the path. It must be a non-empty string that is not already predefined or registered by the system.|
-| uri | string | Yes| Directory path of the assets, which corresponds to the retrieval name. It must be the path to the folder containing the asset files.|
+| protocol | string | Yes | Path retrieval name to register, used as the prefix identifier for the associated file path within the shader. It must be a non-empty retrieval name that is not predefined or registered by the system.|
+| uri | string | Yes | Asset path directory to register, corresponding to the retrieval name. When the shader loads, the retrieval name prefix in the path will be replaced with this directory. It must be the folder path where the asset file is located.|
 
 **Return value**
 
@@ -865,13 +870,17 @@ import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 function registerResourcePath(): void {
   // Create shader resources. The path and file name can be customized based on the specific project resources.
   Scene.load($rawfile("shaders/custom_shader/custom_material_sample.shader"))
-    .then(scene => {
+    .then(() => {
       const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
       if (!renderContext) {
         console.error("RenderContext is null");
         return false;
       }
-      return renderContext.registerResourcePath("protocol", "OhosRawFile://uri");
+      // Register the path retrieval name "myproto" and its corresponding asset path directory "OhosRawFile://shaders/custom_shader/"
+      // When the shader internally references associated files through the retrieval name, for example, the path is "myproto://textures/base.png",
+      // The system will replace "myproto://" with "OhosRawFile://shaders/custom_shader/",
+      // Finally, the associated file is loaded from "OhosRawFile://shaders/custom_shader/textures/base.png"
+      return renderContext.registerResourcePath("myproto", "OhosRawFile://shaders/custom_shader/");
     })
     .then(result => {
       if (result) {
@@ -915,7 +924,7 @@ Describes a scene.
 | ---- | ---- | ---- | ---- | ---- |
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | No| No| Environment object.|
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | Yes| No| Animation objects in the 3D scene.|
-| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes| No| Root node in the 3D scene tree.|
+| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes | No | Root node of the 3D scene tree. |
 | renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | Yes| No| Rendering configuration.|
 
 ### load
@@ -941,26 +950,29 @@ Loads a resource by path. This API uses a promise to return the result.
 **Example**
 
 Example 1: Load resources via rawfile (a relative path).
+
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
 function loadModel(): void {
   // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {});
+  scene.then((result: Scene) => {
+    console.info("Scene loaded, root node: " + result.root?.name);
+  });
 }
 ```
 
 Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { Scene } from '@kit.ArkGraphics3D';
 
-async loadModelFromAbsolutePath(): Promise<void> {
+async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Promise<void> {
   // Obtain the application sandbox directory. (Scene.load can read only files written by the application itself, not files written by hdc/adb push.)
-  const uiCtx = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  const appCtx = uiCtx.getApplicationContext();
+  const appCtx = context.getApplicationContext();
   const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
 
   // Read the model content from rawfile. (In practice, you can replace rawfile with data from other sources.)
@@ -969,7 +981,7 @@ async loadModelFromAbsolutePath(): Promise<void> {
   const load_uri = `${filesDir}/AnimatedCube.glb`;
 
   // Write the model file to the application sandbox directory to create a file accessible by Scene.load (absolute path).
-  const rawData = await uiCtx.resourceManager.getRawFileContent(src);
+  const rawData = await context.resourceManager.getRawFileContent(src);
   const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
   fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
   fileIo.closeSync(file);
@@ -987,7 +999,7 @@ async loadModelFromAbsolutePath(): Promise<void> {
 
 getNodeByPath(path: string, type?: NodeType): Node | null
 
-Obtains a node by path.
+Gets a node by path.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -995,14 +1007,14 @@ Obtains a node by path.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| path | string | Yes| Path in the scene node tree. Each layer is separated by a slash (/).|
-| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | No| Type of the node expected. The default value is null.|
+| path | string | Yes | Path in the scene node hierarchy. Each level is separated by the '/' symbol.|
+| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | No | Expected node type to return. Default value is empty.|
 
 **Return value**
 
 | Type| Description|
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | Returns the Node object requested. If no node is found in the specified path or the found node type does not match the expected type, null is returned.|
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | Returns the instance of the requested node. If the node is not found or the found node type does not match the passed parameter, null is returned. |
 
 **Example**
 
@@ -1081,7 +1093,7 @@ function destroy(): void {
 
 importNode(name: string, node: Node, parent: Node | null): Node
 
-Imports a node from another scene.
+Generally used to import a node from another scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -1089,15 +1101,15 @@ Imports a node from another scene.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| name | string | Yes| Name of the imported node, which can be customized without specific constraints.|
-| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Node to import.|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes| Parent node of the imported node in the new scene.|
+| name | string | Yes | Name after node import, which is custom-defined by the developer with no special requirements.|
+| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node to import.|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes | Parent node of the imported node in the new scene.|
 
 **Return value**
 
 | Type| Description|
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) | Node imported.|
+| [Node](js-apis-inner-scene-nodes.md#node) | Imported node.|
 
 **Example**
 
@@ -1135,9 +1147,9 @@ Imports another scene into the current one.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| name | string | Yes| Root node name of the imported scene, which can be customized without specific constraints.|
+| name | string | Yes | Name of the root node of the imported scene, which is custom-defined by the developer with no special requirements.|
 | scene | [Scene](#scene-1) | Yes| Scene to import.|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes| Parent node of the imported scene in the new scene.|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes | Parent node of the imported scene in the new scene.|
 
 **Return value**
 
@@ -1325,7 +1337,7 @@ function getDefaultRenderContextTest() {
 
 cloneNode(node: Node, parent: Node, name: string): Node | null
 
-Imports a node by cloning it from another scene.
+Clones a node within the current scene. Cross-scene node cloning is not supported.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -1333,15 +1345,15 @@ Imports a node by cloning it from another scene.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Source node to clone.|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Parent node under which the clone will be placed in the target scene.|
-| name | string | Yes| Name of the cloned node, which can be customized without specific constraints.|
+| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Node to clone.|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | Yes | Target parent node of the cloned node in the current scene. The node to clone and the target parent node must belong to the same scene.|
+| name | string | Yes | Name of the cloned node, which is custom and has no special requirements.|
 
 **Return value**
 
 | Type| Description|
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | Cloned node. If the operation fails, null is returned.|
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | Returns the cloned node. Returns null if cloning fails. |
 
 **Example**
 
