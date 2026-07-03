@@ -339,7 +339,7 @@ Swiper(
 
 Swiper支持在一个页面内同时显示多个子组件，通过[displayCount](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount8)属性设置。
 
-<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->
+<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->  
 
 ``` TypeScript
   Swiper() {
