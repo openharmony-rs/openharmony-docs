@@ -273,7 +273,7 @@ Defines the intent information, which is the specific parameter configuration of
 | bundleName | string | Yes| No| Bundle name of the application.|
 | moduleName | string | Yes| No| Module name.|
 | intentName | string | Yes| No| Intent name.|
-| domain | string | Yes| No| Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in [smart distribution features in different vertical domains](https://developer.huawei.com/consumer/en/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215).|
+| domain | string | Yes| No| Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in smart distribution features in different vertical domains.|
 | intentVersion | string | Yes| No| Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve.|
 | displayName | string | Yes| No| Name of the intent displayed in the InsightIntent framework.|
 | displayDescription | string | Yes| No| Description of the intent displayed in the InsightIntent framework.|
