@@ -6572,17 +6572,3 @@ Allows an application to manage clone preferences.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
 **Valid since**: 26.1.0
-
-## ohos.permission.DETECT_DEVICE
-
-Allows an application to detect device.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Valid since**: 26.0.0
