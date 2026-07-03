@@ -100,6 +100,8 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
+全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
+
 **需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
