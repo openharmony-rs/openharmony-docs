@@ -12,6 +12,8 @@ WebSchemeHandler与[WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHandl
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -36,6 +38,10 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                 | 必填 | 说明       |
@@ -50,7 +56,7 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 | -------- | ------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
-**示例：**
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -146,6 +152,104 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { buffer } from '@kit.ArkTS';
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
+                console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
+                console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
+                console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
+                console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
+                console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
+                console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
+                console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+                let header = request.getHeader();
+                for (let i: int = 0; i < header.length; i++) {
+                  console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+                }
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  console.info("[schemeHandler] onRequestStart has http body stream");
+                } else {
+                  console.info("[schemeHandler] onRequestStart has no http body stream");
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith("example.com")) {
+                return false;
+              }
+
+              let response = new webview.WebSchemeHandlerResponse();
+              try {
+                response.setNetErrorCode(WebNetErrorList.NET_OK);
+                response.setStatus(200);
+                response.setStatusText("OK");
+                response.setMimeType("text/html");
+                response.setEncoding("utf-8");
+                response.setHeaderByName("header1", "value1", false);
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+              }
+
+              // 调用 didFinish/didFail 前需要优先调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。
+              let buf = buffer.from(this.htmlData)
+              try {
+                if (buf.length == 0) {
+                  console.info("[schemeHandler] length 0");
+                  resourceHandler.didReceiveResponse(response);
+                  // 如果认为buf.length为0是正常情况，则调用resourceHandler.didFinish，否则调用resourceHandler.didFail
+                  resourceHandler.didFail(WebNetErrorList.ERR_FAILED);
+                } else {
+                  console.info("[schemeHandler] length 1");
+                  resourceHandler.didReceiveResponse(response);
+                  resourceHandler.didReceiveResponseBody(buf.buffer);
+                  resourceHandler.didFinish();
+                }
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
 ## onRequestStop<sup>12+</sup>
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
@@ -157,6 +261,10 @@ onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 2. 此请求因为其他原因中断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 

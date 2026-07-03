@@ -12,6 +12,8 @@ UserAgentBrandVersion提供品牌名称和版本号的设置与获取方法：se
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 24开始支持。
@@ -25,6 +27,10 @@ setBrand(brand: string): void
 设置品牌名称。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,6 +52,10 @@ getBrand(): string
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
@@ -65,6 +75,10 @@ setMajorVersion(majorVersion: string): void
 设置主版本号。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,6 +100,10 @@ getMajorVersion(): string
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
@@ -106,6 +124,10 @@ setFullVersion(fullVersion: string): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
@@ -125,6 +147,10 @@ getFullVersion(): string
 获取完整版本号。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
