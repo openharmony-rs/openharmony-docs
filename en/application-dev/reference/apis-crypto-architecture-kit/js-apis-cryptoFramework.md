@@ -271,10 +271,10 @@ Enumerates the asymmetric key data types.
 | ML_KEM_PRIVATE_RAW | 4 | Raw data of the ML-KEM private key.|
 | ML_KEM_PUBLIC_RAW | 5 | Raw data of the ML-KEM public key.|
 | EC_PRIVATE_K | 6 | Private key **K** on the elliptic curve (EC).|
-| EC_PRIVATE_04_X_Y_K | 7 | Private key **04||X||Y||K** on the EC.|
-| EC_PUBLIC_X_Y | 8 | Public key **X||Y** on the EC.|
-| EC_PUBLIC_04_X_Y | 9 | Public key **04||X||Y** on the EC.|
-| EC_PUBLIC_COMPRESS_X | 10 | Public key **02||X** or **03||X** on the EC.|
+| EC_PRIVATE_04_X_Y_K | 7 | Private key **04\|\|X\|\|Y\|\|K** on the EC.|
+| EC_PUBLIC_X_Y | 8 | Public key **X\|\|Y** on the EC.|
+| EC_PUBLIC_04_X_Y | 9 | Public key **04\|\|X\|\|Y** on the EC.|
+| EC_PUBLIC_COMPRESS_X | 10 | Public key **02\|\|X** or **03\|\|X** on the EC.|
 
 ## AsyKeySpecType<sup>10+</sup>
 
@@ -1180,7 +1180,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, the value can only be **X509|COMPRESSED** or **X509|UNCOMPRESSED**.<br>Since API version 26.0.0, the RSA public key can be in PKCS #1 or X.509 format.|
+| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, the value can only be **X509\|COMPRESSED** or **X509\|UNCOMPRESSED**.<br>Since API version 26.0.0, the RSA public key can be in PKCS #1 or X.509 format.|
 
 **Return value**
 
@@ -8143,7 +8143,7 @@ Creates a key derivation function instance.
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2|SHA256**, **HKDF|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 
