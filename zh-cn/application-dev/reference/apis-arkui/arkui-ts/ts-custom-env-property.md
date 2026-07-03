@@ -25,7 +25,7 @@ CustomEnv\<T\>(key: CustomEnvKey\<T\>): PropertyDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+### 属性
 
 |名称|类型|说明|
 | ----- | ----- | ------ |

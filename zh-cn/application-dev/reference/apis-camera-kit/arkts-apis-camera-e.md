@@ -537,6 +537,39 @@
 | EXPOSURE_STATE_SCAN       | 0    | 曝光处于扫描状态。     |
 | EXPOSURE_STATE_CONVERGED  | 1    | 曝光已经收敛。     |
 
+## NotificationName
+
+枚举，通知的事件名。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| DEFOCUS_FROM_PROXIMITY       | 0    | 对焦物体和镜头距离过近的事件。     |
+
+## ProximityStateForFocus
+
+对焦物体与镜头之间距离状态的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| IN_RANGE_RAISE_NONE       | 0    | 对焦物体和镜头距离合理。     |
+| OUT_OF_RANGE_RAISE_REQUIRED  | 1    | 对焦物体和镜头距离过近。  |
+
 ## AutomotiveCameraPosition
 
 表示Car设备摄像头位置的枚举。

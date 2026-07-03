@@ -602,7 +602,7 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 | 参数项                                                                                    | 描述 |
 |----------------------------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node                       | 需要注册事件的节点对象。 |
-| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) eventType | 需要注册的事件类型。 |
+| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype) eventType | 需要注册的事件类型。 |
 | int32_t targetId                                                                       | 自定义事件ID，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
 | void* userData                                                                         | 自定义事件参数，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
 
@@ -630,7 +630,7 @@ void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventTy
 | 参数项                                                                                    | 描述            |
 |----------------------------------------------------------------------------------------|---------------|
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node                       | 需要反注册事件的节点对象。 |
-| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) eventType | 需要反注册的事件类型。              |
+| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype) eventType | 需要反注册的事件类型。              |
 
 ### registerNodeCustomEventReceiver()
 

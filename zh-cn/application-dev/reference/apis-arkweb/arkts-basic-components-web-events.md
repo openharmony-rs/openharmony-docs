@@ -2038,13 +2038,13 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.request.deny();
+                    event.request.deny(); // 拒绝权限请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    event.request.grant(event.request.getAccessibleResource()); // 授权请求的权限资源
                   }
                 },
                 cancel: () => {
@@ -2578,7 +2578,7 @@ onFullScreenExit(callback: () => void)
           .onFullScreenExit(() => {
             console.info("onFullScreenExit...")
             if (this.handler) {
-              this.handler.exitFullScreen();
+              this.handler.exitFullScreen(); // 退出全屏模式
             }
           })
           .onFullScreenEnter((event) => {
@@ -3461,13 +3461,13 @@ onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.handler.deny();
+                    event.handler.deny(); // 拒绝屏幕捕获请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
+                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN }); // 授权屏幕捕获请求，设置捕获模式为主屏幕
                   }
                 },
                 cancel: () => {

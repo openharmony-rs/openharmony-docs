@@ -741,17 +741,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureCollectIntervention
 
@@ -1708,15 +1708,15 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明   |
-| ---- | ---- |
-| Mon  | 星期一。  |
-| Tue  | 星期二。  |
-| Wed  | 星期三。  |
-| Thur | 星期四。  |
-| Fri  | 星期五。  |
-| Sat  | 星期六。  |
-| Sun  | 星期日。  |
+| 名称   | 值 | 说明   |
+| ---- | - | ---- |
+| Mon  | 0 | 星期一。  |
+| Tue  | 1 | 星期二。  |
+| Wed  | 2 | 星期三。  |
+| Thur | 3 | 星期四。  |
+| Fri  | 4 | 星期五。  |
+| Sat  | 5 | 星期六。  |
+| Sun  | 6 | 星期日。  |
 
 ## WidthBreakpoint<sup>13+</sup>
 

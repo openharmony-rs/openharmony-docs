@@ -530,7 +530,13 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                        "OH_ArkUI_StartDrag returnValue = %{public}d",
                        returnValue);
-                   OH_ArkUI_DragAction_Dispose(action);
+                   if (returnValue != ARKUI_ERROR_CODE_NO_ERROR && action) {
+                       OH_ArkUI_DragAction_UnregisterStatusListener(action);
+                       OH_ArkUI_DragAction_Dispose(action);
+                       ReleaseDragUdmfData();
+                       ReleaseDragPixelMaps();
+                       action = nullptr;
+                   }
                    break;
                }
                // ...
@@ -547,7 +553,9 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "dragTest OH_UdmfRecord_AddPlainText returnStatus = %{public}d", returnStatus);
        // 创建OH_UdmfData对象
+       ReleaseDragUdmfData();
        OH_UdmfData *data = OH_UdmfData_Create();
+       dragUdmfData = data;
        // 向OH_UdmfData中添加OH_UdmfRecord
        returnStatus = OH_UdmfData_AddRecord(data, record);
        OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
@@ -570,8 +578,11 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
            data[i] = i + 1;
        }
        // 创建参数结构体实例，并设置参数
-       OH_Pixelmap_InitializationOptions *createOpts;
+       OH_Pixelmap_InitializationOptions *createOpts = nullptr;
        OH_PixelmapInitializationOptions_Create(&createOpts);
+       if (!createOpts) {
+           return;
+       }
        OH_PixelmapInitializationOptions_SetWidth(createOpts, 200U);
        OH_PixelmapInitializationOptions_SetHeight(createOpts, 300U);
        OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
@@ -579,9 +590,18 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        // 创建Pixelmap实例
        OH_PixelmapNative *pixelmap = nullptr;
        OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmap);
+       OH_PixelmapInitializationOptions_Release(createOpts);
+       if (!pixelmap) {
+           return;
+       }
        OH_PixelmapNative_Flip(pixelmap, true, true);
        pixelVector.push_back(pixelmap);
        int returnValue = OH_ArkUI_DragAction_SetPixelMaps(action, pixelVector.data(), pixelVector.size());
+       if (returnValue == ARKUI_ERROR_CODE_NO_ERROR) {
+           dragPixelMaps.push_back(pixelmap);
+       } else {
+           OH_PixelmapNative_Release(pixelmap);
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetPixelMaps returnValue = %{public}d", returnValue);
    }
@@ -624,7 +644,6 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                case NODE_ON_DROP: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");
                    GetUdmfDataText(dragEvent);
-                   OH_ArkUI_DragAction_UnregisterStatusListener(action);
                    break;
                }
                // ...

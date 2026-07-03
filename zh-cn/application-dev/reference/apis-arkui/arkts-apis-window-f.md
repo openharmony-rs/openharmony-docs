@@ -22,11 +22,13 @@ import { window } from '@kit.ArkUI';
 
 createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
-创建子窗口或者系统窗口，使用callback异步回调。
+创建子窗口、全局悬浮窗口、模态窗口或系统窗口，使用callback异步回调。
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+
+全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
 **需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
 
@@ -94,11 +96,13 @@ export default class EntryAbility extends UIAbility {
 
 createWindow(config: Configuration): Promise&lt;Window&gt;
 
-创建子窗口或者系统窗口，使用Promise异步回调。
+创建子窗口、全局悬浮窗口、模态窗口或系统窗口，使用Promise异步回调。
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+
+全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
 **需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
 
@@ -178,7 +182,7 @@ findWindow(name: string): Window
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| name   | string | 是   | 窗口名称。查找子窗口或系统窗口时使用[Configuration](arkts-apis-window-i.md#configuration9)中的窗口名称；查找主窗口时使用[getWindowName](arkts-apis-uicontext-uicontext.md#getwindowname12)获取当前实例的窗口名称。 |
+| name   | string | 是   | 窗口名称。查找子窗口、全局悬浮窗口、模态窗口或系统窗口时使用[Configuration](arkts-apis-window-i.md#configuration9)中的窗口名称；查找主窗口时使用[getWindowName](arkts-apis-uicontext-uicontext.md#getwindowname12)获取当前实例的窗口名称。 |
 
 **返回值：**
 

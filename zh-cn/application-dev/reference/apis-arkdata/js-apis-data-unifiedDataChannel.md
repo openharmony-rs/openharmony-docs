@@ -2069,7 +2069,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 设置应用内拖拽通道数据可使用的范围[ShareOptions](#shareoptions12)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设置为指定的ShareOptions值。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2110,7 +2110,7 @@ removeAppShareOptions(intention: Intention): void
 
 清除[setAppShareOptions](#unifieddatachannelsetappshareoptions14)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖拽通道数据恢复到默认使用范围。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
