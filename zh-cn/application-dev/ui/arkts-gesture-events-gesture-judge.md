@@ -74,7 +74,7 @@
       ArkTS-Dyn示例：
 
       <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) --> 
-       
+      
       ``` TypeScript
       Stack() {}
       .width('200vp')
