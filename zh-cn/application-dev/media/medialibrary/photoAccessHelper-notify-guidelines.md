@@ -38,7 +38,7 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 2. 对指定PhotoAsset注册监听。
 3. 将指定媒体资源删除。
 
-<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) --> 
+<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) -->  
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
