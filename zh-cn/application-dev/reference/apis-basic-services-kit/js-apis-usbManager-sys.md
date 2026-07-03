@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。作为系统接口，本模块提供系统级权限控制机制，帮助系统应用实现灵活的USB设备管理，满足不同业务场景下的USB通信需求。
 
 > **说明：**
 > 
@@ -24,11 +24,11 @@ import usbManager from '@ohos.usbManager';
 
 usbFunctionsFromString(funcs: string): number
 
-在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
+在设备模式下，将字符串形式的USB功能列表转化为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -53,13 +53,13 @@ usbFunctionsFromString(funcs: string): number
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
+| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
 
 **示例：**
 
 ```ts
 // 定义USB功能字符串
-let funcs: string = "acm";
+let funcs: string = 'acm';
 // 将字符串转化为数字掩码
 let ret: number = usbManager.usbFunctionsFromString(funcs);
 ```
@@ -68,11 +68,11 @@ let ret: number = usbManager.usbFunctionsFromString(funcs);
 
 usbFunctionsToString(funcs: FunctionType): string
 
-在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
+在设备模式下，将数字掩码形式的USB功能列表转化为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -103,7 +103,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 ```ts
 // 定义USB功能类型组合
-let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+let funcs: usbManager.FunctionType = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
 // 将数字掩码转化为字符串
 let ret: string = usbManager.usbFunctionsToString(funcs);
 ```
@@ -116,7 +116,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -126,7 +126,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。 |
 
 **返回值：**
 
@@ -141,14 +141,14 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 14400002 | Permission denied. The HDC is disabled by the system.                                                   |
+| 14400002 | Permission denied. The HDC is disabled by the system. Possible causes: The HDC (HarmonyOS Device Connector) feature is disabled in developer settings. Solution: Enable HDC in developer settings or check system configuration. |
 
 **示例：**
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // 设置USB功能类型为HDC
-let funcs: number = usbManager.FunctionType.HDC;
+let funcs: usbManager.FunctionType = usbManager.FunctionType.HDC;
 // 异步设置当前USB功能
 usbManager.setCurrentFunctions(funcs).then(() => {
     console.info('usb setCurrentFunctions successfully.');
@@ -165,7 +165,7 @@ getCurrentFunctions(): FunctionType
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getDeviceFunctions](#getdevicefunctions12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getDeviceFunctions](#getdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -190,7 +190,7 @@ getCurrentFunctions(): FunctionType
 
 ```ts
 // 获取当前USB功能的数字掩码
-let ret: number = usbManager.getCurrentFunctions();
+let ret: usbManager.FunctionType = usbManager.getCurrentFunctions();
 ```
 
 ## getPorts<sup>(deprecated)</sup>
@@ -201,7 +201,7 @@ getPorts(): Array\<USBPort\>
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortList](#getportlist12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getPortList](#getportlist12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -237,7 +237,7 @@ getSupportedModes(portId: number): PortModeType
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getPortSupportModes](#getportsupportmodes12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getPortSupportModes](#getportsupportmodes12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -268,7 +268,7 @@ getSupportedModes(portId: number): PortModeType
 
 ```ts
 // 获取端口ID为0的端口支持的模式
-let ret: number = usbManager.getSupportedModes(0);
+let ret: usbManager.PortModeType = usbManager.getSupportedModes(0);
 ```
 
 ## setPortRoles<sup>(deprecated)</sup>
@@ -279,7 +279,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setPortRoleTypes](#setportroletypes12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [setPortRoleTypes](#setportroletypes12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -361,7 +361,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: The current device or system does not support this USB capability. Solution: Check if the device supports this capability and ensure the system version meets the requirements. |
 
 **示例：**
 
@@ -369,10 +369,10 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 定义设备名称
-let devicesName: string = "1-1";
+let devicesName: string = '1-1';
 // 定义tokenId变量
-let tokenId: string = "";
-
+let tokenId: string = '';
+  // 为指定应用添加USB设备访问权限
   try {
     // 获取bundle信息标志
     let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
@@ -387,7 +387,7 @@ let tokenId: string = "";
         console.info(`Succeed in adding right`);
       }
     }).catch((err : BusinessError) => {
-      console.error('testTag getBundleInfoForSelf failed' );
+      console.error('testTag getBundleInfoForSelf failed:' + err.code + ' message: ' + err.message);
     });
   } catch (err) {
     console.error('testTag failed');
@@ -416,7 +416,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表。可用值包括:'acm'，'ecm'，'hdc'，'mtp'，'ptp'等，可通过',(逗号)'分隔多个功能。 |
+| funcs  | string | 是   | 字符串形式的功能列表。可用值包括：'acm'，'ecm'，'hdc'，'mtp'，'ptp'等，可通过',(逗号)'分隔多个功能。 |
 
 **返回值：**
 
@@ -498,11 +498,11 @@ ArkTS-Dyn: setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。调用成功后，设备的USB功能将切换为指定的功能列表。部分USB功能可能不被当前设备支持设置前建议先查询设备支持的功能列表。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。部分USB功能可能不被当前设备支持，设置前建议先查询设备支持的功能列表。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。
 
 > **说明：**
 >
-> 从 API version 12开始支持。
+> 从API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -559,11 +559,11 @@ ArkTS-Dyn: getDeviceFunctions(): FunctionType
 
 ArkTS-Sta: getDeviceFunctions(): int
 
-在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
+在设备模式下，获取当前的USB功能列表的数字组合掩码。适用于需要检查当前USB功能状态、确认功能配置、或在功能切换前后进行状态对比的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
-> 从 API version 12开始支持。
+> 从API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -604,11 +604,11 @@ let ret: int = usbManager.getDeviceFunctions();
 
 getPortList(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
+获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
-> 从 API version 12开始支持。
+> 从API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -655,7 +655,7 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 > **说明：**
 >
-> 从 API version 12开始支持。
+> 从API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -694,7 +694,7 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 ```ts
 // 获取端口ID为0的支持模式
-let ret: int = usbManager.getPortSupportModes(0);
+let ret: usbmanager.PortModeType = usbManager.getPortSupportModes(0);
 ```
 
 ## setPortRoleTypes<sup>12+</sup>
@@ -703,11 +703,11 @@ ArkTS-Dyn: setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: 
 
 ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口的充电角色和数据传输角色将切换为指定的角色。
+设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口的充电角色和数据传输角色将切换为指定的角色。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。
 
 > **说明：**
 >
-> 从 API version 12开始支持。
+> 从API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -771,7 +771,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 > **说明：**
 >
-> 从 API version 14开始支持。
+> 从API version 14开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -788,13 +788,13 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 | 参数名    | 类型         | 必填 | 说明                     |
 | --------- | ------------ | ---- | ------------------------ |
 | tokenId   | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是   | 应用程序的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。|
-| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。可通过[getAccessoryList](js-apis-usbManager.md#usbmanagergetaccessorylist14)获取配件列表后获得。 |
+| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件对象，包含配件的标识和属性信息。可通过[getAccessoryList](js-apis-usbManager.md#usbmanagergetaccessorylist14)获取配件列表后获得。详细字段定义参见[USBAccessory](js-apis-usbManager.md#usbaccessory14)接口。 |
 
 **返回值：**
 
 | 类型      | 说明          |
 | --------- | ------------- |
-| void      | 调用成功时无返回值，调用失败时抛出异常。 |
+| void      | 调用成功时无返回值；调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -806,8 +806,8 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. Solution: Ensure the USB accessory is properly plugged into the device and try again. |
+| 14400005 | Database operation exception. Possible causes: Database corruption or insufficient storage space. Solution: Check device storage space, clear cache, or restart the device. If the problem persists, contact support. |
 
 **示例：**
 
@@ -815,22 +815,28 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 获取USB配件列表
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  // 设置bundle信息标志
-  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
-  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
-  // 异步获取当前应用的bundle信息
-  let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
-  // 获取应用的tokenId
-  let tokenId: int = bundleInfo.appInfo.accessTokenId
-  // 为应用添加USB配件访问权限
-  usbManager.addAccessoryRight(tokenId, accList[0])
-  hilog.info(0, 'testTag ui', `addAccessoryRight success`)
-} catch (error: BusinessError) {
-  hilog.info(0, 'testTag ui', `addAccessoryRight error ${error.code}, message is ${error.message}`)
+async function addAccessoryRightExample() {
+  // 为指定应用添加USB配件访问权限
+  try {
+    // 获取USB配件列表
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    if (accList.length === 0) {
+ 	    console.error('No USB accessory found');
+ 	    return;
+ 	  }
+    // 设置bundle信息标志
+    let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+    bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+    // 异步获取当前应用的bundle信息
+    let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
+    // 获取应用的tokenId
+    let tokenId: int = bundleInfo.appInfo.accessTokenId
+    // 为应用添加USB配件访问权限
+    usbManager.addAccessoryRight(tokenId, accList[0])
+    hilog.info(0, 'testTag ui', `addAccessoryRight success`)
+  } catch (error: BusinessError) {
+    hilog.info(0, 'testTag ui', `addAccessoryRight error ${error.code}, message is ${error.message}`)
+  }
 }
 ```
 
@@ -850,7 +856,7 @@ USB设备端口。
 | -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
 | id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                        | 否   | 否   | USB端口唯一标识。                   |
 | supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。status.currentMode应在此范围内。 |
-| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。其currentMode应在supportedModes范围内。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色信息。其currentMode应在supportedModes范围内。 |
 
 ## USBPortStatus
 
