@@ -1201,25 +1201,6 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
   });
   ```
 
-## VerifyType
-
-刻录数据校验类型的枚举。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：此接口为系统接口。
-
-| 名称         | 值    | 说明                 |
-| ----------- | ------- | -------------------- |
-| KEY_DATA    | 0       | 关键数据校验类型，对刻录数据的头部分元数据信息进行校验，不含用户实际数据，校验速度较快。     |
-| FULL_DATA   | 1       | 全量数据校验类型，对刻录数据的全部内容进行校验，校验结果更可靠。     |
-
 ## volumemanager.erase
 
 erase(volumeId: string): Promise&lt;void&gt;
@@ -1317,6 +1298,7 @@ eject(diskId: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
+| 13600027 | Eject operation failed. |
 
 **示例：**
 
@@ -1490,7 +1472,7 @@ ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
 
 | 类型                   | 说明       |
 | ---------------------- | ---------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回光驱刻录操作进度，进度值为0-100的整数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回当前操作的进度，进度值为0-100的整数。 |
 
 **错误码：**
 
@@ -1529,65 +1511,6 @@ volumeManager.getOpProcess(volumeId).then((progress: int) => {
   console.info("getOpProcess successfully, progress:" + progress);
 }).catch((error: BusinessError) => {
   console.error(`Failed to getOpProcess. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
-## volumemanager.verifyBurnData
-
-verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
-
-校验指定卷设备的刻录数据，使用Promise异步回调。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型   | 必填 | 说明 |
-| -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
-| verType | [VerifyType](#verifytype) | 是   | 刻录数据的校验类型。 |
-
-**返回值：**
-
-| 类型                   | 说明       |
-| ---------------------- | ---------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
-| 13600030 | Verification failed. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// volumeId可通过getAllVolumes()接口获取
-let volumeId: string = "";
-let filePath: string = "";
-volumeManager.createIsoImage(volumeId, filePath).then(() => {
-  console.info("createIsoImage successfully.");
-}).catch((error: BusinessError) => {
-  console.error(`Failed to createIsoImage. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
