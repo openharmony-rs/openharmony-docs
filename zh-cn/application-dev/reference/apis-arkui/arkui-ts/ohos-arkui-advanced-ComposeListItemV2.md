@@ -33,7 +33,7 @@ import { ComposeListItemV2, IconTypeV2, ContentItemV2, OperateItemV2 } from "@ki
 
 ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2 })
 
-列表组件，可自定义列表左侧、中间元素以及右侧显示内容。
+列表项组件，可自定义列表左侧、中间元素以及右侧显示内容。
 
 **起始版本：** 26.0.0
 
@@ -45,11 +45,13 @@ ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| contentItemV2 | [ContentItemV2](#contentitemv2) | 否 | \@Param | 定义左侧以及中间元素。 |
-| operateItemV2 | [OperateItemV2](#operateitemv2) | 否 | \@Param | 定义右侧元素。 |
+| contentItemV2 | [ContentItemV2](#contentitemv2) | 否 | \@Param | 定义列表项左侧以及中间元素。 |
+| operateItemV2 | [OperateItemV2](#operateitemv2) | 否 | \@Param | 定义列表项右侧元素。 |
 
 ## ContentItemV2
 
@@ -64,6 +66,8 @@ ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 
 | 名称 | 类型 | 只读 | 可选 | 说明    |
@@ -89,7 +93,7 @@ ContentItemV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -109,6 +113,8 @@ ContentItemV2构造函数的参数选项。
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明    |
 | -------- | -------- | -------- | -------- | -------- |
@@ -131,9 +137,11 @@ ContentItemV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| BADGE | 1 | 左侧图标为badge类型，图标大小为8\*8vp。 |
+| BADGE | 1 | 左侧图标为BADGE类型，图标大小为8\*8vp。 |
 | NORMAL_ICON | 2 | 左侧图标为小图标类型，图标大小为16\*16vp。 |
 | SYSTEM_ICON | 3 | 左侧图标为系统图标类型，图标大小为24\*24vp。 |
 | HEAD_SCULPTURE | 4 | 左侧图标为头像类型，图标大小为40\*40vp。 |
@@ -144,7 +152,7 @@ ContentItemV2构造函数的参数选项。
 
 ## OperateItemV2
 
-列表右侧显示的元素类型。
+列表项右侧显示的元素类型。
 
 **起始版本：** 26.0.0
 
@@ -156,18 +164,20 @@ ContentItemV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明           |
 | -------- | -------- |---|---|-----------------|
-| arrow | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素为箭头，大小为12\*24vp。<br/>默认不设置或设置为undefined，右侧箭头不显示。<br>**装饰器类型：** @Trace   |
-| icon | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素的第一个图标，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧图标不显示。<br>**装饰器类型：** @Trace    |
-| subIcon | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素的第二个图标，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧第二个图标不显示。<br>**装饰器类型：** @Trace   |
-| button | [OperateButtonV2](#operatebuttonv2) | 否 | 是 | 右侧元素为按钮。<br/>默认不设置或设置为undefined，右侧按钮不显示。<br>**装饰器类型：** @Trace     |
-| toggle | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为开关。<br/>默认不设置或设置为undefined，右侧开关不显示。<br>**装饰器类型：** @Trace     |
-| checkbox | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为多选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧多选框不显示。<br>**装饰器类型：** @Trace  |
-| radio | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为单选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧单选框不显示。<br>**装饰器类型：** @Trace  |
-| image | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧元素为图片，大小为48\*48vp。<br/>默认不设置或设置为undefined，右侧图片不显示。<br>**装饰器类型：** @Trace    |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 右侧元素为Symbol图标资源，大小为48\*48vp。<br/>默认不设置或设置为undefined，右侧Symbol图标不显示。<br>**装饰器类型：** @Trace  |
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧元素为文字。 <br/>默认不设置或设置为undefined，右侧文字不显示。<br>**装饰器类型：** @Trace       |
+| arrow | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素为箭头，大小为12\*24vp。<br/>默认不设置或设置为undefined，列表项右侧箭头不显示。<br>**装饰器类型：** @Trace   |
+| icon | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素的第一个图标，大小为24\*24vp。<br/>默认不设置或设置为undefined，列表项右侧图标不显示。<br>**装饰器类型：** @Trace    |
+| subIcon | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素的第二个图标，大小为24\*24vp。<br/>默认不设置或设置为undefined，列表项右侧第二个图标不显示。<br>**装饰器类型：** @Trace   |
+| button | [OperateButtonV2](#operatebuttonv2) | 否 | 是 | 列表项右侧元素为按钮。<br/>默认不设置或设置为undefined，列表项右侧按钮不显示。<br>**装饰器类型：** @Trace     |
+| toggle | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为开关。<br/>默认不设置或设置为undefined，列表项右侧开关不显示。<br>**装饰器类型：** @Trace     |
+| checkbox | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为多选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，列表项右侧多选框不显示。<br>**装饰器类型：** @Trace  |
+| radio | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为单选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，列表项右侧单选框不显示。<br>**装饰器类型：** @Trace  |
+| image | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素为图片，大小为48\*48vp。<br/>默认不设置或设置为undefined，列表项右侧图片不显示。<br>**装饰器类型：** @Trace    |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 列表项右侧元素为Symbol图标资源，大小为48\*48vp。<br/>默认不设置或设置为undefined，列表项右侧Symbol图标不显示。<br>**装饰器类型：** @Trace  |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素为文字。 <br/>默认不设置或设置为undefined，列表项右侧文字不显示。<br>**装饰器类型：** @Trace       |
 
 ### constructor
 
@@ -183,13 +193,13 @@ OperateItemV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateItemV2Options](#operateitemv2options) | 是 | 列表右侧属性配置。 |
+| options | [OperateItemV2Options](#operateitemv2options) | 是 | 列表项右侧属性配置。 |
 
 
 ## OperateItemV2Options
@@ -204,22 +214,24 @@ OperateItemV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| arrow | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素为箭头。 |
-| icon | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素的第一个图标。 |
-| subIcon | [OperateIconV2](#operateiconv2) | 否 | 是 | 右侧元素的第二个图标。 |
-| button | [OperateButtonV2](#operatebuttonv2) | 否 | 是 | 右侧元素为按钮。 |
-| toggle | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为开关。 |
-| checkbox | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为多选框。 |
-| radio | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 右侧元素为单选框。 |
-| image | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧元素为图片。 |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 右侧元素为Symbol图标资源。 |
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧元素为文字。 |
+| arrow | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素为箭头。 |
+| icon | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素的第一个图标。 |
+| subIcon | [OperateIconV2](#operateiconv2) | 否 | 是 | 列表项右侧元素的第二个图标。 |
+| button | [OperateButtonV2](#operatebuttonv2) | 否 | 是 | 列表项右侧元素为按钮。 |
+| toggle | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为开关。 |
+| checkbox | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为多选框。 |
+| radio | [OperateCheckV2](#operatecheckv2) | 否 | 是 | 列表项右侧元素为单选框。 |
+| image | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素为图片。 |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 列表项右侧元素为Symbol图标资源。 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素为文字。 |
 
 ## OperateIconV2
 
-列表右侧图标元素的类型。
+列表项右侧图标元素的类型。
 
 **起始版本：** 26.0.0
 
@@ -231,14 +243,16 @@ OperateItemV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明               |
 | -------- | -------- |---|---|------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头资源。<br>**装饰器类型：** @Trace    |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 右侧Symbol图标/箭头资源，优先级大于value。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br>**装饰器类型：** @Trace      |
-| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 右侧图标/箭头点击事件。<br>**装饰器类型：** @Trace       |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace   |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值为"单指双击即可执行"。<br>**装饰器类型：** @Trace   |
-| accessibilityLevel | string | 否 | 是 | 右侧图标/箭头的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace  |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头资源。<br>**装饰器类型：** @Trace    |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 列表项右侧Symbol图标/箭头资源，优先级大于value。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br>**装饰器类型：** @Trace      |
+| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 列表项右侧图标/箭头点击事件。<br>**装饰器类型：** @Trace       |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace   |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值为"单指双击即可执行"。<br>**装饰器类型：** @Trace   |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧图标/箭头的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace  |
 
 ### constructor
 
@@ -254,13 +268,13 @@ OperateIconV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateIconV2Options](#operateiconv2options) | 是 | 列表右侧图标属性配置。 |
+| options | [OperateIconV2Options](#operateiconv2options) | 是 | 列表项右侧图标属性配置。 |
 
 
 ## OperateIconV2Options
@@ -275,18 +289,20 @@ OperateIconV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头资源。 |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 右侧Symbol图标/箭头资源。 |
-| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 右侧图标/箭头点击事件。 |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:"" |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧图标/箭头的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值为"单指双击即可执行"。 |
-| accessibilityLevel | string | 否 | 是 | 右侧图标/箭头的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头资源。 |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 列表项右侧Symbol图标/箭头资源。 |
+| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 列表项右侧图标/箭头点击事件。 |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:"" |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值为"单指双击即可执行"。 |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧图标/箭头的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
 
 ## OperateButtonV2
 
-列表右侧按钮元素的类型。
+列表项右侧按钮元素的类型。
 
 **起始版本：** 26.0.0
 
@@ -298,12 +314,14 @@ OperateIconV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明    |
 | -------- | -------- |---|---|-------------------|
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮文字。<br/>默认值:""<br>**装饰器类型：** @Trace      |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace     |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值:"单指双击即可执行"。<br>**装饰器类型：** @Trace  |
-| accessibilityLevel | string | 否 | 是 | 右侧按钮的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace  |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮文字。<br/>默认值:""<br>**装饰器类型：** @Trace      |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace     |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值:"单指双击即可执行"。<br>**装饰器类型：** @Trace  |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧按钮的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace  |
 
 ### constructor
 
@@ -319,13 +337,13 @@ OperateButtonV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateButtonV2Options](#operatebuttonv2options) | 是 | 列表右侧按钮属性配置。 |
+| options | [OperateButtonV2Options](#operatebuttonv2options) | 是 | 列表项右侧按钮属性配置。 |
 
 
 ## OperateButtonV2Options
@@ -340,16 +358,18 @@ OperateButtonV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮文字。 |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮的无障碍文本属性。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮的无障碍描述。 |
-| accessibilityLevel | string | 否 | 是 | 右侧按钮的无障碍重要性。 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮文字。 |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:"" |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值:"单指双击即可执行"。 |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧按钮的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
 
 ## OperateCheckV2
 
-列表右侧元素为Switch、CheckBox、Radio的类型。当右侧元素需要使用Switch、CheckBox、Radio时，可通过该类型配置对应属性。
+列表项右侧元素为Switch、CheckBox、Radio的类型。当列表项右侧元素需要使用Switch、CheckBox、Radio时，可通过该类型配置对应属性。
 
 **起始版本：** 26.0.0
 
@@ -361,13 +381,15 @@ OperateButtonV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明              |
 | -------- | -------- |---|----|--------------|
-| isCheck | boolean | 否 | 是  | 右侧Switch/CheckBox/Radio选中状态。<br> isCheck默认值为false。<br> isCheck为true时，表示为选中。<br> isCheck为false时，表示为未选中。<br>**装饰器类型：** @Trace   |
-| onChange | [OnChangeCallback](#onchangecallback) | 否 | 是  | 右侧Switch/CheckBox/Radio选中状态改变时触发回调。<br> value为true时，表示从未选中变为选中。<br> value为false时，表示从选中变为未选中。<br>**装饰器类型：** @Trace   |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是  | 右侧Switch/CheckBox/Radio的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace   |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是  | 右侧Switch/CheckBox/Radio的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认跟随基础组件Switch/CheckBox/Radio播报规则。<br>**装饰器类型：** @Trace |
-| accessibilityLevel | string | 否 | 是  | 右侧Switch/CheckBox/Radio的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace |
+| isCheck | boolean | 否 | 是  | 列表项右侧元素Switch/CheckBox/Radio选中状态。<br> isCheck默认值为false。<br> isCheck为true时，表示为选中。<br> isCheck为false时，表示为未选中。<br>**装饰器类型：** @Trace   |
+| onChange | [OnChangeCallback](#onchangecallback) | 否 | 是  | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时触发回调。<br> value为true时，表示从未选中变为选中。<br> value为false时，表示从选中变为未选中。<br>**装饰器类型：** @Trace   |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是  | 列表项右侧元素Switch/CheckBox/Radio的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace   |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是  | 列表项右侧元素Switch/CheckBox/Radio的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认跟随基础组件Switch/CheckBox/Radio播报规则。<br>**装饰器类型：** @Trace |
+| accessibilityLevel | string | 否 | 是  | 列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto"<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -383,13 +405,13 @@ OperateCheckV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateCheckV2Options](#operatecheckv2options) | 是 | 列表右侧元素为Switch、CheckBox、Radio属性配置。 |
+| options | [OperateCheckV2Options](#operatecheckv2options) | 是 | 列表项右侧元素为Switch、CheckBox、Radio属性配置。 |
 
 ## OperateCheckV2Options
 
@@ -403,19 +425,21 @@ OperateCheckV2构造函数的参数选项。
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 只读 | 类型 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isCheck | boolean | 否 | 是 | 右侧Switch/CheckBox/Radio选中状态。 |
-| onChange | [OnChangeCallback](#onchangecallback) | 否 | 是 | 右侧Switch/CheckBox/Radio选中状态改变时触发回调。 |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧Switch/CheckBox/Radio的无障碍文本属性。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧Switch/CheckBox/Radio的无障碍描述。 |
-| accessibilityLevel | string | 否 | 是 | 右侧Switch/CheckBox/Radio的无障碍重要性。 |
+| isCheck | boolean | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态。 |
+| onChange | [OnChangeCallback](#onchangecallback) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时触发回调。 |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:"" |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认跟随基础组件Switch/CheckBox/Radio播报规则。 |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
 
 ## OnActionCallback
 
 type OnActionCallback = () => void
 
-列表右侧元素为图标/箭头，通过点击触发回调函数的类型。
+列表项右侧元素为图标/箭头，通过点击触发回调函数的类型。
 
 **起始版本：** 26.0.0
 
@@ -425,15 +449,17 @@ type OnActionCallback = () => void
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 类型 | 说明 |
 | -------- | -------- |
-| () => void | 右侧图标/箭头点击时的回调函数。 |
+| () => void | 列表项右侧图标/箭头点击时的回调函数。 |
 
 ## OnChangeCallback
 
 type OnChangeCallback = (value: boolean) => void
 
-列表右侧元素为Switch/CheckBox/Radio时，当状态发生改变时的回调函数对应的类型。
+列表项右侧元素为Switch/CheckBox/Radio时，当状态发生改变时的回调函数对应的类型。
 
 **起始版本：** 26.0.0
 
@@ -443,9 +469,11 @@ type OnChangeCallback = (value: boolean) => void
 
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 类型 | 说明 |
 | -------- | -------- |
-| (value: boolean) => void | 右侧Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |
+| (value: boolean) => void | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
@@ -495,9 +523,9 @@ struct ComposeListItemV2Example {
 ```
 ![示例1-ComposeListItemV2 左右元素+文本](figures/image-composelistitemv2-demo-01.jpg)
 
-### 示例2(设置右侧不同元素自定义播报)
+### 示例2(设置列表项右侧不同元素自定义播报)
 
-从API版本26.0.0开始，通过设置属性接口accessibilityText、accessibilityDescription、accessibilityLevel，实现右侧图标、按钮、单选框自定义屏幕朗读播报文本。
+从API版本26.0.0开始，通过设置属性接口accessibilityText、accessibilityDescription、accessibilityLevel，实现列表项右侧图标、按钮、单选框自定义屏幕朗读播报文本。
 
 ```ts
 import {
@@ -584,7 +612,7 @@ struct ComposeListItemV2Example {
   }
 }
 ```
-![示例2-ComposeListItemV2 设置右侧元素自定义播报](figures/image-composelistitemv2-demo-02.png)
+![示例2-ComposeListItemV2 设置列表项右侧元素自定义播报](figures/image-composelistitemv2-demo-02.png)
 
 ### 示例3(设置Symbol类型图标)
 
