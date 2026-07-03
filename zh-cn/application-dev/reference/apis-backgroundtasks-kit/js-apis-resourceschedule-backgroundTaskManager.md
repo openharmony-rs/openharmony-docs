@@ -212,9 +212,9 @@ cancelSuspendDelay(requestId: number): void
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-  let id = 1;
+  let requestId = 1;
   try {
-    backgroundTaskManager.cancelSuspendDelay(id);
+    backgroundTaskManager.cancelSuspendDelay(requestId);
   } catch (error) {
     console.error(`cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
   }
