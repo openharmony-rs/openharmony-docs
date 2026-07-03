@@ -1068,7 +1068,7 @@ call.rejectCall((err: BusinessError) => {
 
 getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
 
-获取带有电话号码的呼叫转移信息。使用Promise异步回调。
+获取电话号码的呼叫转移状态。使用Promise异步回调。
 
 **起始版本**: 26.0.0
 
