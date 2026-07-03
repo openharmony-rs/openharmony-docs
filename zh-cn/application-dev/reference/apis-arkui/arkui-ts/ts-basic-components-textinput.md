@@ -1143,9 +1143,9 @@ enableHapticFeedback(isEnabled: boolean)
 
 ```json
 "requestPermissions": [
- {
+  {
     "name": "ohos.permission.VIBRATE"
- }
+  }
 ]
 ```
 
