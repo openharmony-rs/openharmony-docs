@@ -126,7 +126,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
 
 ### OH_AVSource_CreateWithFD()
 
@@ -148,7 +148,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t fd | 数据资源的文件描述符。 |
-| int64_t offset | 开始读取数据的位置。 |
+| int64_t offset | 开始读取数据的位置，单位为字节。 |
 | int64_t size | 文件的字节数大小。 |
 
 **返回：**
@@ -247,7 +247,7 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 
 **描述**
 
-获取自定义元数据的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+获取自定义元数据的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
