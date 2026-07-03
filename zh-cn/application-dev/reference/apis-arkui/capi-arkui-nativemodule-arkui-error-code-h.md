@@ -10,6 +10,8 @@
 
 定义错误码枚举值。
 
+**引用文件：** <arkui/error_code.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
