@@ -39,7 +39,7 @@ The **FormBindingData** class has the following APIs. For details, see [FormBind
 
 | API| Description|
 | -------- | -------- |
-| createFormBindingData(obj?: Object \ string): FormBindingData| | Creates a **FormBindingData** object.|
+| createFormBindingData(obj?:&nbsp;Object&nbsp;\|&nbsp;string):&nbsp;FormBindingData | Creates a **FormBindingData** object.|
 
 
 ## How to Develop
