@@ -217,31 +217,32 @@ class SendableTestClass {
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) -->
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
-```ts
+``` TypeScript
 @Sendable
 type SendableFuncType = () => void;
 
 @Sendable
 class TopLevelSendableClass {
   num: number = 1;
+
   PrintNum() {
-    console.info("Top level sendable class");
+    console.info('Top level sendable class');
   }
 }
 
 @Sendable
-function TopLevelSendableFunction() {
-  console.info("Top level sendable function");
+function topLevelSendableFunction() {
+  console.info('Top level sendable function');
 }
 
 @Sendable
-function SendableTestFunction() {
+function sendableTestFunction() {
   const topClass = new TopLevelSendableClass(); // 顶层sendable class
   topClass.PrintNum();
-  TopLevelSendableFunction(); // 顶层sendable function
-  console.info("Sendable test function");
+  topLevelSendableFunction(); // 顶层sendable function
+  console.info('Sendable test function');
 }
 
 @Sendable
@@ -249,14 +250,11 @@ class SendableTestClass {
   constructor(func: SendableFuncType) {
     this.callback = func;
   }
+
   callback: SendableFuncType; // 顶层sendable function
 
   CallSendableFunc() {
-    SendableTestFunction(); // 顶层sendable function
+    sendableTestFunction(); // 顶层sendable function
   }
 }
-
-let sendableClass = new SendableTestClass(SendableTestFunction);
-sendableClass.callback();
-sendableClass.CallSendableFunc();
 ```
