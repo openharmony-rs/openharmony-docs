@@ -30,7 +30,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 针对展锐P7885芯片开发板，新增如下预置应用：
 
-#### 文件管理
+#### [文件管理](https://gitcode.com/openharmony/applications_filepicker)
 
 - 支持外置存储浏览。
 - 支持文管内访问图库。
@@ -39,11 +39,11 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持文件的打开、分享、重命名、复制、移动、收藏。
 - 支持最近删除、文件属性、列表/宫格等视图。
 
-#### 时钟
+#### [时钟](https://gitcode.com/openharmony/applications_clock)
 
 - 支持世界时钟/计时器。
 
-#### 计算器
+#### [计算器](https://gitcode.com/openharmony/applications_calculator)
 
 - 支持标准计算器/科学计算器。
 
@@ -52,7 +52,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 针对展锐P7885芯片开发板，如下预置应用在6.1 Release版本的基础上进行了更新：
 
-#### 桌面
+#### [桌面](https://gitcode.com/openharmony/window_scene_board)
 
 - 支持数字密码/滑动解锁、防暴力破解、锁屏时钟与卡片。
 - 支持4×4桌面图标布局、Dock栏、桌面图标角标、应用快捷方式、桌面编辑模式。
@@ -66,7 +66,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持窗口任务管理（启停、多任务、任务链、持久化恢复）。
 - 支持壁纸库、静态壁纸设置、免打扰模式。
 
-#### 设置
+#### [设置](https://gitcode.com/openharmony/applications_settings)
 
 - 支持设置内全局搜索。
 - 支持WLAN/蓝牙/移动网络/热点。
@@ -77,13 +77,13 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持系统导航、语言与输入法、日期时间、重置、开发者选项。
 - 支持关于设备完整信息（IMEI、序列号、运行内存等）。
 
-#### 相机
+#### [相机](https://gitcode.com/openharmony/applications_camera)
 
 - 支持前/后置拍照、前/后置录像。
 - 支持相机Picker（仅拍照/仅录像/拍照+录像）。
 - 支持相机设置页、百宝箱入口。
 
-#### 图库
+#### [图库](https://gitcode.com/openharmony/applications_photos)
 
 - 支持照片浏览/大图浏览/大图手势/大图组件。
 - 支持宫格操作/大图菜单操作/卡片操作/相册操作。
@@ -92,7 +92,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持图库Picker。
 
 
-#### 联系人
+#### [联系人](https://gitcode.com/openharmony/applications_contacts)
 
 - 支持拨号盘搜索及结果快捷操作（详情、黑名单、复制、标记、新建/保存联系人、发短信）。
 - 支持通话记录（全部/未接）及长按管理（多选、删除、标记、加入黑名单等）。
@@ -105,7 +105,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持服务卡片（快捷拨打、未接来电、桌面快捷方式）。
 - 支持联系人Picker。
 
-#### 短信
+#### [短信](https://gitcode.com/openharmony/applications_mms)
 
 - 支持短信发送，长短信、表情。
 - 支持群发、转发、失败重发。
@@ -115,7 +115,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持列表与详情展示联系人头像。
 - 支持信息收藏、送达报告、CBS小区广播。
 
-#### 通话
+#### [通话](https://gitcode.com/openharmony/applications_call)
 
 - 支持语音来去电、接听/挂断/拒接、静音、扬声器、音频设备切换。
 - 支持紧急拨号、SOS 连按电源键、紧急位置展示。
