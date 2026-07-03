@@ -88,62 +88,6 @@
 
 3. 创建订阅者对象。
 
-   ArkTS-Dyn示例：
-   
-   ```ts
-   let subscriber: notificationSubscribe.NotificationSubscriber = {
-     onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
-       let req: notificationManager.NotificationRequest = data.request;
-       hilog.info(DOMAIN_NUMBER, TAG, `onConsume callback. req.id: ${req.id}`);
-     },
-     onCancel: (data:notificationSubscribe.SubscribeCallbackData) => {
-       let req: notificationManager.NotificationRequest = data.request;
-       hilog.info(DOMAIN_NUMBER, TAG, `onCancel callback. req.id: ${req.id}`);
-     },
-     onUpdate: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onUpdate callback. req.id: ${data.sortedHashCode}`);
-     },
-     onConnect: () => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onConnect callback.`);
-     },
-     onDisconnect: () => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect callback.`);
-     },
-     onDestroy: () => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onDestroy callback.`);
-     },
-     onDoNotDisturbChanged: (mode) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onDoNotDisturbChanged callback. mode: ${JSON.stringify(mode)}`);
-     },
-     onEnabledNotificationChanged: (callbackData) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledNotificationChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
-     },
-     onBadgeChanged: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeChanged callback. data: ${JSON.stringify(data)}`);
-     },
-     onBatchCancel: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onBatchCancel callback. data: ${JSON.stringify(data)}`);
-     },
-     onEnabledPriorityChanged: (callbackData) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
-     },
-     onEnabledPriorityByBundleChanged: (callbackData) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityByBundleChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
-     },
-     onSystemUpdate: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onSystemUpdate callback. data: ${JSON.stringify(data)}`);
-     },
-     onEnabledSilentReminderChanged: (callbackData) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledSilentReminderChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
-     },
-     onBadgeEnabledChanged: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeEnabledChanged callback. data: ${JSON.stringify(data)}`);
-     },
-   };
-   ```
-
-   ArkTS-Sta示例：
-   
    ```ts
    let subscriber: notificationSubscribe.NotificationSubscriber = {
      onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
@@ -213,7 +157,8 @@
    ```ts
    notificationSubscribe.subscribeNotification(subscriber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
-   }).catch((err) => {
-     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+   }).catch((err: Error) => {
+     let error: BusinessError = err as BusinessError;
+     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
    });
    ```
