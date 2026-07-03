@@ -86,6 +86,19 @@
 2. 订阅绝对静止的进入事件，1秒上报一次。
 
    <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let reportLatencyNs = 1000000000; // 单位：纳秒
+   try {
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
+   } catch (error) {
+     let message = (error as BusinessError).message;
+     console.error('stationary on failed:' + message);
+   }
+   ```
 
 3. 查询绝对静止状态的进入事件。
 
