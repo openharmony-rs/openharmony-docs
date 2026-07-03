@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-树视图作为一种分层显示的列表，适合显示嵌套结构。拥有父列表项和子列表项，可展开或折叠。
+树视图V2组件。树视图作为一种分层显示的列表，适合显示嵌套结构。拥有父列表项和子列表项，可展开或折叠。
 
 用于效率型应用，如备忘录、电子邮件、图库中的侧边导航栏。
 
@@ -35,7 +35,7 @@ import { TreeViewV2 } from '@kit.ArkUI';
 
 TreeViewV2({ treeControllerV2: TreeControllerV2 })
 
-树视图作为一种分层显示的列表，适合显示嵌套结构。
+树视图作为一种分层显示的列表，用于树形结构的组件显示。
 
 **起始版本：** 26.0.0
 
@@ -47,9 +47,7 @@ TreeViewV2({ treeControllerV2: TreeControllerV2 })
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
@@ -75,9 +73,7 @@ addNode(nodeParam?: NodeParamV2): TreeControllerV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -105,9 +101,7 @@ removeNode(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 ### modifyNode
 
@@ -123,11 +117,7 @@ modifyNode(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 ### buildDone
 
@@ -143,9 +133,7 @@ buildDone(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 
 ### refreshNode
@@ -162,9 +150,7 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -186,17 +172,15 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                               |
 | -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| parentNodeId | number | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。                               |
+| parentNodeId | number | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，该节点无效，不显示在树视图上。                               |
 | currentNodeId | number | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1  |
 | isFolder | boolean | 否 | 是 | 是否是目录。<br />默认值：false<br />true：是目录，false：不是目录。                                                         |
 | icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。<br/>默认值：空字符串。                  |
-| symbolIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式，优先级大于icon。<br/>默认值：undefined，不显示Symbol图标                  |
+| symbolIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式，显示优先级大于icon，同时设置symbolIconStyle和icon，只显示Symbol图标。<br/>默认值：undefined，表示不显示Symbol图标。                  |
 | selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 选中图标。<br/>默认值：空字符串。        |
 | symbolSelectedIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol选中图标样式，优先级大于selectedIcon。<br/>默认值：undefined，选中时显示与未选中一样        |
 | editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 编辑图标。<br/>默认值：空字符串。          |
@@ -207,13 +191,13 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 ## TreeListenerManagerV2
 
-树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
+树视图组件的监听管理器，可以将此对象绑定至树视图组件，然后通过它树视图监听器的变化，同一个监听管理器不可以控制多个树视图组件。
 
 ### getInstance
 
 static getInstance(): TreeListenerManagerV2
 
-获取监听管理器单例对象。
+获取树视图组件的监听管理器单例对象。
 
 **起始版本：** 26.0.0
 
@@ -223,22 +207,20 @@ static getInstance(): TreeListenerManagerV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **返回值：**
 
 | 类型              | 说明               |
 | --------------- |------------------|
-| [TreeListenerManagerV2](#treelistenermanagerv2) | 返回获取到的监听管理器单例对象。 |
+| [TreeListenerManagerV2](#treelistenermanagerv2) | 返回获取到的树视图组件的监听管理器单例对象。 |
 
 
 ### getTreeListener
 
 getTreeListener(): TreeListenerV2
 
-获取树监听器实例。
+获取树视图监听器实例。
 
 **起始版本：** 26.0.0
 
@@ -248,20 +230,18 @@ getTreeListener(): TreeListenerV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **返回值：**
 
 | 类型           | 说明         |
 | ------------ |------------|
-| [TreeListenerV2](#treelistenerv2) | 返回获取到的树监听器实例。 |
+| [TreeListenerV2](#treelistenerv2) | 返回获取到的树视图监听器实例。 |
 
 
 ## TreeListenerV2
 
-树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
+树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树视图的节点的变化，同一个树视图监听器不可以控制多个树视图组件。
 
 ### onNodeClick
 
@@ -277,15 +257,13 @@ onNodeClick(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点点击回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点点击回调函数。 |
 
 
 ### onceNodeClick
@@ -302,15 +280,13 @@ onceNodeClick(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点点击回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点点击回调函数。 |
 
 
 ### offNodeClick
@@ -327,9 +303,7 @@ offNodeClick(callback?: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -352,15 +326,13 @@ onNodeAdd(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点添加回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点添加回调函数。 |
 
 
 ### onceNodeAdd
@@ -377,15 +349,13 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点添加回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点添加回调函数。 |
 
 
 ### offNodeAdd
@@ -402,9 +372,7 @@ offNodeAdd(callback?: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -427,15 +395,13 @@ onNodeDelete(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点删除回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点删除回调函数。 |
 
 
 ### onceNodeDelete
@@ -452,15 +418,13 @@ onceNodeDelete(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点删除回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点删除回调函数。 |
 
 
 ### offNodeDelete
@@ -477,9 +441,7 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -502,15 +464,13 @@ onNodeModify(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点修改回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点修改回调函数。 |
 
 
 ### onceNodeModify
@@ -527,15 +487,13 @@ onceNodeModify(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点修改回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点修改回调函数。 |
 
 
 ### offNodeModify
@@ -552,9 +510,7 @@ offNodeModify(callback?: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -577,15 +533,13 @@ onNodeMove(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点移动回调函数，接收CallbackParamV2参数，包含childIndex表示移动后的位置索引。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点移动回调函数。 |
 
 
 ### onceNodeMove
@@ -602,15 +556,13 @@ onceNodeMove(callback: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点移动回调函数，接收CallbackParamV2参数。 |
+| callback | [OnChangedCallback](#onchangedcallback) | 是 | 节点移动回调函数。 |
 
 
 ### offNodeMove
@@ -627,9 +579,7 @@ offNodeMove(callback?: OnChangedCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -652,8 +602,6 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
 **参数：**
 
 | 参数名     | 类型      | 必填 | 说明                                            |
@@ -672,9 +620,7 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                       |
 | -------- | -------- |---|---|------------------------------------------|
@@ -696,18 +642,16 @@ type OnContainerCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 
-### 示例1（设置简单树视图）
+### 示例1（设置树视图）
 
-从API版本26.0.0开始，通过树视图组件的控制器接口对树的节点进行新增、删除、重命名，展示新增不同参数节点的实现效果。
+从API版本26.0.0开始，以下示例通过树视图组件的控制器接口对树视图的节点进行新增、删除、重命名等功能。
 
 ```ts
 import {
@@ -899,7 +843,7 @@ struct TreeViewV2Demo {
 
 ### 示例2（设置Symbol类型图标）
 
-从API版本26.0.0开始，该示例通过设置[NodeParamV2](#nodeparamv2)的属性symbolIconStyle、symbolEditIconStyle、symbolSelectedIconStyle，展示了自定义Symbol类型图标。
+从API版本26.0.0开始，以下示例通过设置[NodeParamV2](#nodeparamv2)的symbolIconStyle、symbolEditIconStyle、symbolSelectedIconStyle等属性接口，实现树视图中自定义Symbol类型图标的功能。
 
 ```ts
 import {
