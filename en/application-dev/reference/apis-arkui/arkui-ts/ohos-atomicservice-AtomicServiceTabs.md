@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @qq_36417014-->
-<!--Designer: @zhangbeilei-->
+<!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
@@ -56,23 +56,25 @@ AtomicServiceTabs({
 ```
 **Decorator**: \@Component
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Decorator| Description|
-| --------------- | ------ | ---- | ----|----------|
-| tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | No| @BuilderParam| Array of content view containers. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | Yes| @Prop | Array of tab bar container configurations.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| tabBarPosition | [TabBarPosition](#tabbarposition) | No  |@Prop | Position of the tab bar. The default value is **TabBarPosition.Bottom**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| --------------- | ------ | ---- | ----|----|
+| tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | No| @BuilderParam| Array of tab content containers. By default, this parameter is undefined, and no content is displayed.|
+| tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | Yes| @Prop | Array of tab bar container configurations.|
+| tabBarPosition | [TabBarPosition](#tabbarposition) | No  |@Prop | Position of the tab bar. The default value is **TabBarPosition.Bottom**.|
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | No  |@Prop | Layout mode of the images and text on the bottom tab. The default value is **LayoutMode.VERTICAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| @Prop | Background color of the tab bar. The default value is transparent.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| index | number | No| @Prop | Index of the currently displayed tab. The index is zero-based.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| barOverlap | boolean| No| @Prop | Whether the tab bar overlaps the **TabContent** component with a blurred background effect. **true** means that the tab bar overlaps the **TabContent** component with a blurred background effect. Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| controller|[TabsController](ts-container-tabs.md#tabscontroller) | No| - |Tab controller, which is used to control switching of tabs.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onChange | Callback\<number\> | No| - | Callback invoked when a tab is switched.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onTabBarClick | Callback\<number\> | No| - |Callback invoked when a tab is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onContentWillChange | [OnContentWillChangeCallback](#oncontentwillchangecallback) | No| - | Callback invoked when a new page is about to be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| @Prop | Background color of the tab bar. The default value is transparent.|
+| index | number | No| @Prop | Index of the currently displayed tab. The index is zero-based. The default value is **0**.|
+| barOverlap | boolean| No| @Prop | Whether the tab bar overlaps the **TabContent** component with a blurred background effect. **true** means that the tab bar overlaps the **TabContent** component with a blurred background effect. The default value is **true**.|
+| controller|[TabsController](ts-container-tabs.md#tabscontroller) | No| - | Tab controller, which is used to control switching of tabs. The default value is **new TabsController()**.|
+| onChange | Callback\<number\> | No| - | Callback invoked when a tab is switched. The parameter is undefined by default.|
+| onTabBarClick | Callback\<number\> | No| - | Callback invoked when a tab is clicked. The parameter is undefined by default.|
+| onContentWillChange | [OnContentWillChangeCallback](#oncontentwillchangecallback) | No| - | Callback invoked when a new page is about to be displayed. The parameter is undefined by default.|
 
 ## TabContentBuilder
 
@@ -99,7 +101,7 @@ A constructor used to create a **TabBarOptions** instance.
 
 | Name| Type| Mandatory| Description|
 | --------------- | ------ |------ |------ |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol](ts-container-tabcontent.md#tabbarsymbol12) | Yes| Image for the tab.|
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol](ts-container-tabcontent.md#tabbarsymbol12)| Yes| Image for the tab.|
 | text | [ResourceStr](ts-types.md#resourcestr) | Yes| Text of the tab.|
 | unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Color of the tab when it is not selected.<br>Default value: **#99182431**|
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Color of the tab when it is selected.<br>Default value: **#FF007DFF**|
@@ -159,7 +161,7 @@ struct Index {
     console.info('OnContentWillChangeCallback')
      return true;
   }
-  onTabClick: Callback<number> = (index:number)=>{
+  onTabClick: Callback<number> = (index: number)=>{
     this.onClickNumber ++;
     console.info('onTabClick');
   }
@@ -203,7 +205,7 @@ struct Index {
       onContentWillChange: this.onContentWillChangeCallBack,
     })
     Column() {
-      Text("onchange callback times:" + this.onClickNumber)
+      Text("onchange callback times: " + this.onClickNumber)
       Text("comingIndex = " + this.comingIndex + ", currentIndex = " + this.currentIndex)
     }.margin({top:500})
     }.height('100%')
@@ -231,7 +233,7 @@ struct Index {
     console.info('OnContentWillChangeCallback');
     return true;
   }
-  onTabClick: Callback<number> = (index:number)=>{
+  onTabClick: Callback<number> = (index: number)=>{
     this.onClickNumber ++;
     console.info('onTabClick');
   }
@@ -275,7 +277,7 @@ struct Index {
       onContentWillChange: this.onContentWillChangeCallBack,
     })
     Column() {
-      Text("onchange callback times:" + this.onClickNumber)
+      Text("onchange callback times: " + this.onClickNumber)
       Text("comingIndex = " + this.comingIndex + ", currentIndex = " + this.currentIndex)
     }.margin({top:500})
     }.height('100%')
@@ -310,7 +312,7 @@ struct AtomicserviceTabs  {
     this.onClickNumber++;
     console.info('onTabClick');
   }
-  onChange: Callback<number, void> = (Index: number) => {
+  onChange: Callback<number> = (index: number) => {
     console.info('onChange');
     console.info('onChange2');
   }

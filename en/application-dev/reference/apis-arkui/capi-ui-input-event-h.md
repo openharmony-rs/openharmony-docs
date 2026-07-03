@@ -328,7 +328,7 @@ Enumerates the action types of the mouse event.
 
 | Value| Description|
 | -- | -- |
-| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | Unknown action.|
+| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | Unknown action.<br>Note: This action is processed by the system. You do not need to focus on it.|
 | UI_MOUSE_EVENT_ACTION_PRESS = 1 | The mouse button is pressed.|
 | UI_MOUSE_EVENT_ACTION_RELEASE = 2 | The mouse button is released.|
 | UI_MOUSE_EVENT_ACTION_MOVE = 3 | The mouse cursor moves.|
@@ -3281,7 +3281,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetFingerIdByIndex(const ArkUI_UIInputEvent
 **Description**
 
 
-Sets the touch point ID of a specific contact point in a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
+Sets the touch point ID of a specific contact point for a cloned event. This API applies to touch events. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent).
 
 **Since**: 24
 

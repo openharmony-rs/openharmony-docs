@@ -35,13 +35,13 @@ NODE_HIT_TEST_BEHAVIOR = 26
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
+| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
+| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
 
 ## NODE_DEFAULT_FOCUS
 
@@ -106,7 +106,7 @@ NODE_RESPONSE_REGION = 41
 NODE_OVERLAY = 42
 ```
 
-定义遮罩属性，支持属性设置，属性重置和属性获取。开发者可以通过如下.string或.object设置浮层内容，.string有更高的优先级。<br>
+定义浮层属性，支持属性设置，属性重置和属性获取。开发者可以通过如下.string或.object设置浮层内容，.string有更高的优先级。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -115,22 +115,22 @@ NODE_OVERLAY = 42
 
 | 参数项 | 描述 |
 | -- | -- |
-| .string | 遮罩文本。 |
-| .value[0]?.i32 | 可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 |
+| .string | 浮层文本。 |
+| .value[0]?.i32 | 可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 |
 | .value[1]?.f32 | 可选值，浮层基于自身左上角的偏移量X，单位为vp，默认值为0vp。 |
 | .value[2]?.f32 | 可选值，浮层基于自身左上角的偏移量Y，单位为vp，默认值为0vp。 |
-| .value[3]?.i32 | 可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。<br>在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。从API version 21开始支持。 |
+| .value[3]?.i32 | 可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。<br>在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。从API version 21开始支持。 |
 | .object | 用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)，默认值为nullptr。从API version 21开始支持。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .string | 遮罩文本。 |
-| .value[0].i32 | 浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 |
+| .string | 浮层文本。 |
+| .value[0].i32 | 浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 |
 | .value[1].f32 | 浮层基于自身左上角的偏移量X，单位为vp。 |
 | .value[2].f32 | 浮层基于自身左上角的偏移量Y，单位为vp。 |
-| .value[3].i32 | 浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。从API version 21开始支持。 |
+| .value[3].i32 | 浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。从API version 21开始支持。 |
 | .object | 用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。从API version 21开始支持。 |
 
 ## NODE_FOCUS_STATUS
@@ -197,8 +197,8 @@ NODE_EXPAND_SAFE_AREA = 92
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0]?.u32 | 扩展安全区域的枚举值集合[ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype)，例如：ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT。 |
-| .value[1]?.u32 | 扩展安全区域的方向枚举值集合[ArkUI_SafeAreaEdge](capi-native-type-h.md#arkui_safeareaedge)，例如：ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM。 |
+| .value[0]?.u32 | 设置扩展安全区域的枚举值集合[ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype)，例如：ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT。 |
+| .value[1]?.u32 | 设置扩展安全区域的方向枚举值集合[ArkUI_SafeAreaEdge](capi-layout-h.md#arkui_safeareaedge)，例如：ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM。 |
 
 **返回：**
 
@@ -289,7 +289,7 @@ NODE_NEXT_FOCUS = 101
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 走焦类型，定义在[ArkUI_FocusMove](capi-native-type-h.md#arkui_focusmove)。 |
+| .value[0].i32 | 走焦类型，定义在[ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove)。 |
 | .object | 下一个焦点。参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。 |
 
 ## NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO
@@ -356,13 +356,13 @@ NODE_HOVER_EFFECT = 112
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。默认值为ARKUI_HOVER_EFFECT_AUTO。 |
+| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect)。默认值为ARKUI_HOVER_EFFECT_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。 |
+| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect)。 |
 
 ## NODE_FOCUS_SCOPE_ID
 
@@ -407,14 +407,14 @@ NODE_FOCUS_SCOPE_PRIORITY = 114
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 焦点作用域标识符。 |
-| .value[0].i32 | 焦点作用域内获焦优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。默认值为ARKUI_FOCUS_PRIORITY_AUTO。 |
+| .value[0].i32 | 焦点作用域内获焦优先级。参数类型为[ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority)。默认值为ARKUI_FOCUS_PRIORITY_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .string | 焦点作用域标识符。 |
-| .value[0].i32 | 焦点作用域优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。 |
+| .value[0].i32 | 焦点作用域优先级。参数类型为[ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority)。 |
 
 ## NODE_ON_CLICK_EVENT_DISTANCE_THRESHOLD
 
@@ -457,7 +457,7 @@ NODE_RESPONSE_REGION_LIST = 116
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
+| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
 | .data[1].f32 | 触摸点相对于组件左上角的x轴坐标，默认值：0.0，单位为vp。 |
 | .data[2].f32 | 触摸点相对于组件左上角的y轴坐标，默认值：0.0，单位为vp。 |
 | .data[3].f32 | 触摸热区的宽度，默认值：100.0，单位为百分比。 |
@@ -468,7 +468,7 @@ NODE_RESPONSE_REGION_LIST = 116
 
 | 类型 | 说明 |
 | -- | -- |
-| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
+| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
 | .data[1].f32 | 触摸点相对于组件左上角的x轴坐标，默认值：0.0，单位为vp。 |
 | .data[2].f32 | 触摸点相对于组件左上角的y轴坐标，默认值：0.0，单位为vp。 |
 | .data[3].f32 | 触摸热区的宽度，默认值：100.0，单位为百分比。 |

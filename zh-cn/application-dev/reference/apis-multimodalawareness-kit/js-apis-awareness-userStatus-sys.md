@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @wyxpku-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -49,9 +49,9 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| deviceId | string | 否 | 否 | 表示设备ID。 |
-| networkId | string | 否 | 否 | 表示设备网络ID。 |
-| deviceName | string | 否 | 否 | 表示设备名称。 |
+| deviceId | string | 否 | 否 | 表示设备ID。字符串长度范围[0,64]。 |
+| networkId | string | 否 | 否 | 表示设备网络ID。字符串长度范围[0,64]。 |
+| deviceName | string | 否 | 否 | 表示设备名称。字符串长度范围[0,64]。 |
 | deviceType | [DeviceType](#devicetype) | 否 | 否 | 表示设备类型。 |
 
 ## UserStatusFeature
@@ -135,9 +135,9 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
-| status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。 |
-| result | number | 是 | 否 | 表示用户状态检测结果。 |
-| errCode | number | 是 | 否 | 表示业务错误码，默认0表示成功。|
+| status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。字符串长度范围[0,64]。 |
+| result | number | 是 | 否 | 表示用户状态检测结果。0表示成功，非0表示失败。 |
+| errCode | number | 是 | 否 | 表示业务错误码。0表示成功，非0表示失败。 |
 
 ## UserBlowData
 
@@ -151,13 +151,13 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| facePosition | number[] | 是 | 是 | 表示人脸相对于屏幕的位置。 |
-| strengthLevel | number | 是 | 是 | 表示吹气力度。 |
-| blowDirection | number | 是 | 是 | 表示吹气方向。 |
-| emotion | number | 是 | 是 | 表示用户情绪级别。 |
-| isGazeStatus | boolean | 是 | 是 | 表示用户是否注视屏幕。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
+| facePosition | number[] | 是 | 是 | 表示人脸相对于屏幕的位置。取值范围[0,640]。 |
+| strengthLevel | number | 是 | 是 | 表示吹气力度。取值范围[1,12]。 |
+| blowDirection | number | 是 | 是 | 表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2：顶部麦克风。 |
+| emotion | number | 是 | 是 | 表示用户情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
+| isGazeStatus | boolean | 是 | 是 | 表示用户是否注视屏幕。取值范围[true,false]。 |
+| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
+| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 
 ## UserEmotionData
 
@@ -171,12 +171,12 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| emotionRealTime | number | 是 | 是 | 表示用户实时情绪级别。 |
-| confidence | number | 是 | 是 | 表示用户情绪置信度。 |
-| isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。 |
-| emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
+| emotionRealTime | number | 是 | 是 | 表示用户实时情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
+| confidence | number | 是 | 是 | 表示用户情绪置信度。取值范围[0,100]。 |
+| isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。取值范围[true,false]。 |
+| emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
+| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
+| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 
 ## ComfortReminderData
 
@@ -192,7 +192,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | fusionReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示综合检测后的提醒级别。 |
 | swingReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示注视设备时提醒级别。 |
-| eventType | number | 是 | 否 | 表示事件类型。 |
+| eventType | number | 是 | 否 | 表示事件类型。取值范围[0,1]。0：注视事件，1：环境音事件。 |
 
 ## UserFacesData
 
@@ -206,12 +206,12 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| visualAngle | number[] | 是 | 是 | 表示用户看屏幕的视角。 |
-| angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
-| azimuth | number[] | 是 | 是 | 表示当前状态下设备的方位角。 |
-| faceNum | number | 是 | 是 | 表示检测到的人脸数量。 |
+| visualAngle | number[] | 是 | 是 | 表示用户看屏幕的视角。取值范围[0,90]。 |
+| angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。单位为rad/s。 |
+| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
+| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
+| azimuth | number[] | 是 | 是 | 表示当前状态下设备的方位角。取值范围[0,360]。 |
+| faceNum | number | 是 | 是 | 表示检测到的人脸数量。取值范围[0,3]。 |
 
 ## UserGesturesData
 
@@ -225,12 +225,12 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| isHandExist | boolean | 是 | 是 | 表示用户手是否存在。 |
-| handPosition | number[] | 是 | 是 | 表示手相对于屏幕的位置。 |
-| motionGesture | number | 是 | 是 | 表示用户动态手势类型。 |
-| handType | number | 是 | 是 | 表示用户静态手势类型。 |
-| directionAngle | number[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。 |
-| gestureSpeed | number[] | 是 | 是 | 表示手势速度。 |
+| isHandExist | boolean | 是 | 是 | 表示用户手是否存在。取值范围[true,false]。 |
+| handPosition | number[] | 是 | 是 | 表示手相对于屏幕的位置。取值范围[0,640]。 |
+| motionGesture | number | 是 | 是 | 表示用户动态手势类型。取值范围[0,3]。0：上翻，1：下翻，2：抓屏，3：释放。 |
+| handType | number | 是 | 是 | 表示用户静态手势类型。取值范围[0,3]。0：掌型，1：拳型，2：剪刀，3：比心。 |
+| directionAngle | number[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。取值范围[0,90]。 |
+| gestureSpeed | number[] | 是 | 是 | 表示手势速度。单位为帧/秒。 |
 
 ## UserFaceAngleData
 
@@ -244,7 +244,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| hpeNetworkId | string | 是 | 否 | 表示用户所面向的设备的网络ID。 |
+| hpeNetworkId | string | 是 | 否 | 表示用户所面向的设备的网络ID。字符串长度范围[0,128]。 |
 
 ## userStatus.subscribe
 
@@ -264,7 +264,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 | --- | --- | --- | --- |
 | featureId | [UserStatusFeature](#userstatusfeature) | 是 | 表示用户状态检测功能类型。 |
 | callback | Callback<[UserStatusData](#userstatusdata)> | 是 | 回调函数，返回用户状态数据。 |
-| deviceInfo | [DeviceInfo](#deviceinfo)[] | 否 | 表示要开启用户状态监控的设备列表。 |
+| deviceInfo | [DeviceInfo](#deviceinfo)[] | 否 | 表示要开启用户状态监控的设备列表。当featureId为HAND_GAZE_COORDINATION时需要输入真实的deviceInfo信息。如果输入空、undefined或null，则认为没有传入实际值。 |
 
 **返回值**：
 
@@ -278,10 +278,10 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Permission check failed. A non-system application uses the system API. |
-| 801 | Capability not supported. Function can not work correctly due to limited device capabilities. |
-| 33900001 | Service exception. Possible causes: <br>1. System error, such as null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
-| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind native object to JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
+| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
 **示例**：
 
@@ -318,13 +318,13 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | featureId | [UserStatusFeature](#userstatusfeature) | 是 | 表示用户状态检测功能类型。 |
-| callback | Callback<[UserStatusData](#userstatusdata)> | 否 | 回调函数，返回用户状态数据。 |
+| callback | Callback<[UserStatusData](#userstatusdata)> | 否 | 表示取消指定的callback通知。如果输入空、undefined或null，则取消featureId订阅的所有通知事件。 |
 
 **返回值**：
 
 | 类型                           | 说明         |
 | ---------------------------- | ---------- |
-| number | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
+| number | 返回执行结果。返回0表示操作成功，非零值表示操作失败。 |
 
 
 **错误码**：
@@ -333,9 +333,9 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Permission check failed. A non-system application uses the system API. |
-| 801 | Capability not supported. Function can not work correctly due to limited device capabilities. |
-| 33900001 | Service exception. Possible causes: <br>1. System error, such as null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900003 | Unsubscription failed. Possible causes: <br>1. Callback failure. <br>2. Node-API invocation exception, such as invalid Node-API status. <br>3. IPC request exception. |
 
 **示例**：
@@ -375,6 +375,16 @@ configure(featureId: UserStatusFeature, detail: string): number
 | featureId | [UserStatusFeature](#userstatusfeature) | 是 | 表示要配置的用户状态检测功能类型。 |
 | detail | string | 是 | 表示详细的配置参数，JSON格式。 |
 
+**detail定义说明**：
+
+| featureId | description | value | 说明 |
+| --- | --- | --- | --- |
+| USER_MOOD | isRealTime | [ ] | isRealTime取值为0或1，0表示非实时，1表示实时。 |
+| - | atomicCapabilities | [ ] | atomicCapabilities取值可以包含至少一个或多个值，重复值无效。<br>5=原子重力传感器<br>8=原子线性加速度传感器<br>12=原子情绪能力 |
+| GESTURES_RECOGNITION<br>QUICK_GESTURES_RECOGNITION | dynamicGestureTypes | [ ] | dynamicGestureTypes取值可以包含至少一个或多个值，重复值无效。<br>"fetch"=抓取<br>"slide_up"=向上滑动<br>"slide_down"=向下滑动<br>"start_up"=上翻初始手势<br>"start_down"=下翻初始手势<br>"fist_to_palm"=拳头变掌<br>"disappear"=消失 |
+| - | staticGestureTypes | [ ] | staticGestureTypes取值可以包含至少一个或多个值，重复值无效。<br>"palm"=手掌<br>"fingerV"=剪刀手<br>"fist"=拳头<br>"heartGesture"=爱心手势 |
+| USER_BLOWING_STATUS | atomicCapabilities | [ ] | atomicCapabilities取值可以包含至少一个或多个值，重复值无效。<br>5=原子重力传感器<br>8=原子线性加速度传感器<br>11=原子吹气能力<br>12=原子情绪能力<br>15=原子屏幕注视能力 |
+
 **返回值**：
 
 | 类型                           | 说明         |
@@ -387,8 +397,8 @@ configure(featureId: UserStatusFeature, detail: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Permission check failed. A non-system application uses the system API. |
-| 33900001 | Service exception. Possible causes: <br>1. Invalid parameter. <br>2. Node-API invocation exception, such as invalid Node-API status. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 
 **示例**：
 
@@ -407,7 +417,7 @@ const moodFeatureId = userStatus.UserStatusFeature.USER_MOOD;
 const configData: ConfigDetail = {
   params: [
     { description: "isRealTime", value: [1] },
-    { description: "report_time", value: [1000] }
+    { description: "atomicCapabilities", value: [5] }
   ]
 };
 try {
@@ -449,8 +459,8 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Permission check failed. A non-system application uses the system API. |
-| 33900001 | Service exception. Possible causes: <br>1. Node-API invocation exception, such as invalid Node-API status. <br>2. IPC request exception. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 
 **示例**：
 

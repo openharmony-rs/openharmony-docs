@@ -79,7 +79,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-   ![en-us_image_0000001236694521](figures/en-us_image_0000001236694521.png)
+   ![linearGradientHorizontal](figures/linearGradientHorizontal.png)
 
 4. Repeating gradient
 
@@ -88,4 +88,4 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-   ![en-us_image_0000001237134475](figures/en-us_image_0000001237134475.png)
+   ![gradient](figures/gradient.png)

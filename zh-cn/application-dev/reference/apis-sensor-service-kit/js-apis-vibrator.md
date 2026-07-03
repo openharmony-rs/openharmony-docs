@@ -782,7 +782,7 @@ stopVibration(param?: VibratorInfoParam): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+以下错误码的详细介绍请参见[振动错误码](errorcode-vibrator.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -1272,7 +1272,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
 
-| 名称                | 类型      | 必填 | 可选 | 说明                            |
+| 名称                | 类型      | 只读 | 可选 | 说明                            |
 |-------------------|---------|----|----|-------------------------------|
 | isEffectSupported | boolean | 是  | 否  | 预置效果是否受支持。true表示支持该预置振动效果，可用于[startVibration](#vibratorstartvibration9)；false表示不支持，使用该effectId触发振动可能效果不佳。 |
 

@@ -1,14 +1,14 @@
-# 使用AVTranscoder实现视频转码(C/C++)
+# 使用AVTranscoder实现音视频转码(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 20开始支持使用NDK接口（C/C++）实现视频转码。
+从API version 20开始支持使用NDK接口（C/C++）实现音视频转码。
 
-使用[AVTranscoder](media-kit-intro.md#avtranscoder)可以实现视频转码功能<!--RP1--><!--RP1End-->。可以通过调用[canIUse](../../reference/common/init.md#caniuse)接口来判断当前设备是否支持AVTranscoder。当canIUse("SystemCapability.Multimedia.Media.AVTranscoder")返回值为true时，表示可以使用转码能力。
+使用[AVTranscoder](media-kit-intro.md#avtranscoder)可以实现音视频转码功能<!--RP1--><!--RP1End-->。可以通过调用[canIUse](../../reference/common/init.md#caniuse)接口来判断当前设备是否支持AVTranscoder。当canIUse("SystemCapability.Multimedia.Media.AVTranscoder")返回值为true时，表示可以使用转码能力。
 
 本开发指导将以“开始转码-暂停转码-恢复转码-完成转码”的一次完整流程为示例，向开发者讲解AVTranscoder视频转码相关功能。
 
@@ -221,7 +221,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
     ```c++
     const std::int32_t AUDIO_BITRATE = 200000;
-    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 音频比特率，可选。
+    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 参考avcodec音频编码器码率设置，具体根据实际需要设置。
     ```
 
 10. （可选）设置转码输出视频的码率：调用OH_AVTranscoderConfig_SetDstVideoBitrate()设置输出视频的码率。

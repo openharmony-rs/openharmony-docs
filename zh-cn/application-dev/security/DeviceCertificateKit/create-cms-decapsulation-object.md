@@ -110,7 +110,7 @@ async function testCmsDecryptTest() {
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info('[XTS] decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
+    console.info('decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
     console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);

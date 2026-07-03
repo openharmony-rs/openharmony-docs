@@ -62,7 +62,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -95,6 +95,7 @@ struct Parent {
         Child()
       }
       Button(this.showChild ? 'delete Child' : 'add Child')
+        .width(300)
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -103,6 +104,7 @@ struct Parent {
           this.showChild = !this.showChild;
         })
     }
+    .width('100%')
   }
 }
 
@@ -135,6 +137,8 @@ struct Child {
   }
 }
 ```
+
+![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
 
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 

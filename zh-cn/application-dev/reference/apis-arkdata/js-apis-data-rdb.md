@@ -99,7 +99,7 @@ getRdbStore(context: Context, config: StoreConfig, version: number): Promise&lt;
 | config  | [StoreConfig](#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 | version | number                      | 是   | 数据库版本。<br>目前暂不支持通过version自动识别数据库升级降级操作，只能由开发者自行维护。                                                 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                 | 说明                            |
 | ------------------------------------ | ------------------------------- |
@@ -213,7 +213,7 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 | context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。 |
 | name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -267,7 +267,7 @@ type ValueType = number | string | boolean
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | number  | 表示值类型为数字。   |
-| string  | 表示值类型为字符。   |
+| string  | 表示值类型为字符串。   |
 | boolean | 表示值类型为布尔值。 |
 
 
@@ -358,7 +358,7 @@ inDevices(devices: Array&lt;string&gt;): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | devices | Array&lt;string&gt; | 是 | 指定的组网内的远程设备ID，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -397,7 +397,7 @@ inAllDevices(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -425,7 +425,7 @@ equalTo(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -454,7 +454,7 @@ notEqualTo(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -476,7 +476,7 @@ beginWrap(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -502,7 +502,7 @@ endWrap(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -528,7 +528,7 @@ or(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -551,7 +551,7 @@ and(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -581,7 +581,7 @@ contains(field: string, value: string): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -609,7 +609,7 @@ beginsWith(field: string, value: string): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -637,7 +637,7 @@ endsWith(field: string, value: string): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -664,13 +664,13 @@ isNull(field: string): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | [RdbPredicates](#rdbpredicates) | 返回配置了值为null条件的谓词。 |
 
-**示例**：
+**示例：**
 ```ts
 let predicates = new data_rdb.RdbPredicates("EMPLOYEE")
 predicates.isNull("NAME")
@@ -690,7 +690,7 @@ isNotNull(field: string): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -726,7 +726,7 @@ like(field: string, value: string): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -754,7 +754,7 @@ glob(field: string, value: string): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节<br>支持通配符，*表示0个、1个或多个数字或字符，?表示1个数字或字符。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -783,7 +783,7 @@ between(field: string, low: ValueType, high: ValueType): RdbPredicates
 | low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
 | high | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的最大值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -812,7 +812,7 @@ notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 | low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
 | high | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的最大值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -840,7 +840,7 @@ greaterThan(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -868,7 +868,7 @@ lessThan(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -896,7 +896,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -924,7 +924,7 @@ lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -951,7 +951,7 @@ orderByAsc(field: string): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -978,7 +978,7 @@ orderByDesc(field: string): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -999,7 +999,7 @@ distinct(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1026,7 +1026,7 @@ limitAs(value: number): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 最大数据记录数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1053,7 +1053,7 @@ offsetAs(rowOffset: number): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | rowOffset | number | 是 | 返回结果的起始位置，取值为正整数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1080,7 +1080,7 @@ groupBy(fields: Array&lt;string&gt;): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | fields | Array&lt;string&gt; | 是 | 指定分组依赖的列名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1107,7 +1107,7 @@ indexedBy(field: string): RdbPredicates
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 索引列的名称，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 
 | 类型 | 说明 |
@@ -1136,7 +1136,7 @@ in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType型数组形式指定的要匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1164,7 +1164,7 @@ notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType数组形式指定的要匹配的值。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1243,7 +1243,7 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | values | [ValuesBucket](#valuesbucket) | 是 | 表示要插入到表中的数据行。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1358,7 +1358,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 | table | string | 是 | 指定的目标表名，不能为空字符串。 |
 | values | Array&lt;[ValuesBucket](#valuesbucket)&gt; | 是 | 表示要插入到表中的一组数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1475,7 +1475,7 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 | values | [ValuesBucket](#valuesbucket) | 是 | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | RdbPredicates的实例对象指定的更新条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1554,7 +1554,7 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 | -------- | -------- | -------- | -------- |
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | RdbPredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1620,7 +1620,7 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | RdbPredicates的实例对象指定的查询条件。 |
 | columns | Array&lt;string&gt; | 否 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1685,7 +1685,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
 | bindArgs | Array&lt;[ValueType](#valuetype)&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1747,7 +1747,7 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
 | bindArgs | Array&lt;[ValueType](#valuetype)&gt; | 否 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1926,7 +1926,7 @@ rdbStore.setDistributedTables(["EMPLOYEE"], (err: BusinessError) => {
 | -------- | -------- | -------- | -------- |
 | tables | Array&lt;string&gt; | 是 | 要设置的分布式列表表名。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -2012,7 +2012,7 @@ rdbStore.obtainDistributedTableName(deviceId, "EMPLOYEE", (err: BusinessError, t
 | device | string | 是 | 远程设备ID。 |
 | table | string | 是 | 远程设备的本地表名。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -2111,7 +2111,7 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
 | mode | [SyncMode](#syncmode8) | 是 | 指同步模式。该值可以是推、拉。 |
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | 约束同步数据和设备。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |

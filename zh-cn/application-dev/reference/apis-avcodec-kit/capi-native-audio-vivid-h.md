@@ -47,6 +47,10 @@
 | [OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, int32_t *len)](#oh_audiovividmetabuilder_getmetalen) | 获取元数据长度。 |
 | [OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, uint8_t *buffer, int32_t len)](#oh_audiovividmetabuilder_getmeta) | 获取元数据缓冲区。 |
 | [OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)](#oh_audiovividmetabuilder_destroy) | 销毁Audio Vivid元数据构建器并释放资源。 |
+| [OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)](#oh_audiovividmetabuilder_createemptybuilder) | 创建一个空的Audio Vivid元数据构建器。该函数用于合并Audio Vivid元数据的场景。在创建一个空的元数据构造器后，用户可以通过调用[OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta)接口来增加、修改或者删除音频对象。 |
+| [OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)](#oh_audiovividmetabuilder_updatebasemeta) | 更新Audio Vivid元数据构造器的基础元数据。buffer需要包含完整的Audio Vivid元数据。构造器会将元数据里的音频声床和音频对象信息保留下来。 |
+| [OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)](#oh_audiovividmetabuilder_addobject) | Audio Vivid元数据构造器内添加一个音频对象。添加音频对象后，可以通过[OH_AudioVividMetaBuilder_UpdateObjectPos](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectpos)和[OH_AudioVividMetaBuilder_UpdateObjectGain](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectgain)接口，更新该对象的位置和对象渲染的线性增益。 |
+| [OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)](#oh_audiovividmetabuilder_removeobject) | 从Audio Vivid元数据构造器内删除一个音频对象。只有通过[OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject)函数新增的音频对象可以被删除。通过[OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta)函数新增的音频对象无法删除。删除音频对象后，其他音频对象的索引保持不变。 |
 
 ## 枚举类型说明
 
@@ -170,7 +174,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出长度包含静态元数据；false表示输出长度仅包含动态元数据。 |
 | int32_t *len | 用于接收元数据长度的指针。单位为字节。 |
 
@@ -196,7 +200,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出缓冲区包含静态元数据；false表示输出缓冲区仅包含动态元数据。 |
 | uint8_t *buffer | 用于接收元数据内容的缓冲区指针。 |
 | int32_t len | 缓冲区长度。单位为字节。 |
@@ -230,5 +234,120 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：参数builder为空指针。 |
+
+### OH_AudioVividMetaBuilder_CreateEmptyBuilder()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)
+```
+
+**描述**
+
+创建一个空的Audio Vivid元数据构建器。该函数用于合并Audio Vivid元数据的场景。在创建一个空的元数据构造器后，用户可以通过调用[OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta)接口来增加、修改或者删除音频对象。
+
+> **说明：** 
+> 
+> 生命周期管理：
+> - 通过本函数创建的实例不再使用时，必须调用[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)手动释放，以避免内存泄漏。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | 输出参数，用于获取OH_AudioVividMetaBuilder实例指针的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder为空指针或无效。</li><br>         <li>AV_ERR_UNSUPPORT：当前设备不支持此功能。</li><br>         <li>AV_ERR_UNKNOWN：创建构建器失败，属于未知错误，请查看日志获取详细信息。</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_UpdateBaseMeta()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)
+```
+
+**描述**
+
+更新Audio Vivid元数据构造器的基础元数据。buffer需要包含完整的Audio Vivid元数据。构造器会将元数据里的音频声床和音频对象信息保留下来。
+
+> **说明：** 
+> 
+> 约束条件：
+> - 基础元数据内音频的声床声道数 + 对象数必须小于等于16个。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| const uint8_t *buffer | 指向包含基础元数据的指针。 |
+| int32_t len | 缓冲区长度。单位为字节（Byte）。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder、format为空指针或无效。</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_AddObject()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)
+```
+
+**描述**
+
+Audio Vivid元数据构造器内添加一个音频对象。添加音频对象后，可以通过[OH_AudioVividMetaBuilder_UpdateObjectPos](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectpos)和[OH_AudioVividMetaBuilder_UpdateObjectGain](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updateobjectgain)接口，更新该对象的位置和对象渲染的线性增益。
+
+> **说明：** 
+>
+> 约束条件： 
+> - 音频的声床声道数 + 对象数必须小于等于16个。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| int32_t *objectIndex | 输出参数，用于输出新增对象的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder、objectIndex为空指针或无效。</li><br>         <li>AV_ERR_UNKNOWN：添加对象失败，属于未知错误，请查看日志获取详细信息。</li><br>         </ul> |
+
+### OH_AudioVividMetaBuilder_RemoveObject()
+
+```c
+OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)
+```
+
+**描述**
+
+从Audio Vivid元数据构造器内删除一个音频对象。只有通过[OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject)函数新增的音频对象可以被删除。通过[OH_AudioVividMetaBuilder_UpdateBaseMeta](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_updatebasemeta)函数新增的音频对象无法删除。删除音频对象后，其他音频对象的索引保持不变。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| int32_t objectIndex | 要移除的音频对象的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：</li><br>         <li>    1. 参数builder为空指针或无效；</li><br>         <li>    2. 参数objectIndex无效。</li><br>         </ul> |
 
 

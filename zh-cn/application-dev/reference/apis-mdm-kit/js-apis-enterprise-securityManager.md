@@ -375,6 +375,7 @@ let policy: securityManager.PasswordPolicy = {
   complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
+  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4,
 };
 try {
   securityManager.setPasswordPolicy(wantTemp, policy);
@@ -1944,6 +1945,7 @@ try {
 | complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
 | validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
 | additionalDescription | string | 否 | 是 | 口令复杂度描述文本，例如：密码中必须包含字母、数字、特殊字符，至少8个字符，最多30个字符。 |
+| passwordAlgs | [PasswordAlgs](#passwordalgs) | 否 | 是 | 处理口令数据使用的加密算法。设置后，PC/2in1设备上将原始口令处理成口令凭据会使用该参数指定的加密算法，其他设备无效果。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ClipboardPolicy
 
@@ -2000,3 +2002,18 @@ try {
 | ----------- | --------| ---- | ----| ---------------------------- |
 | intervalsRow | number | 否   | 否 | 显示水印的行数。|
 | intervalsCol | number | 否   | 否 | 显示水印的列数。|
+
+## PasswordAlgs
+
+处理口令数据使用的加密算法。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| SCRYPT_HKDF_AES | 0  | SCRYPT-HKDF-AES组合加密算法。 |
+| SCRYPT_HKDF_SM4 | 1  | SCRYPT-HKDF-SM4组合加密算法。 |

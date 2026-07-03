@@ -77,7 +77,7 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Restart reason. For example, "updater" indicates entering the updater mode after the restart. If the parameter is not specified, the system enters the normal mode after the restart. |
+| reason | string | Yes  | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after reboot. If this parameter is not specified, the system enters the normal mode after reboot.|
 
 **Error codes**
 
@@ -521,7 +521,7 @@ try {
 
 getPowerConfig(sceneName: string): string
 
-Query the power configuration value for a given scene name.
+Obtains the power configuration based on the specified scenario.
 
 **Since**: 26.0.0
 
@@ -537,13 +537,13 @@ Query the power configuration value for a given scene name.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Scene name of the power configuration. The name can contain a maximum of 128 bytes.|
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
 
 **Return value**
 
 | Type    | Description        |
 | ------ | ------------ |
-| string | Value of the configuration node.|
+| string | Power configuration value.|
 
 **Error codes**
 
@@ -572,7 +572,7 @@ try {
 
 setPowerConfig(sceneName: string, value: string): void
 
-Update the power configuration value for a given scene name.
+Sets the power configuration based on the specified scenario.
 
 **Since**: 26.0.0
 
@@ -588,8 +588,8 @@ Update the power configuration value for a given scene name.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Scene name of the power configuration. The name can contain a maximum of 128 bytes.|
-| value | string | Yes   | Power configuration value. The value can contain a maximum of 128 bytes.|
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
+| value | string | Yes   | Power configuration value. The name can contain a maximum of 128 bytes.|
 
 **Error codes**
 

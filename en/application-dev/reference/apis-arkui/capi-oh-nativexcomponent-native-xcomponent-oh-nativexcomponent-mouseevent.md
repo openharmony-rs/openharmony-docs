@@ -26,10 +26,10 @@ Defines a mouse event.
 
 | Name| Description|
 | -- | -- |
-| float x | X coordinate of the clicked point relative to the upper left corner of the component. Unit: vp.|
-| float y | Y coordinate of the clicked point relative to the upper left corner of the component. Unit: vp.|
-| float screenX | X coordinate of the click point relative to the upper left corner of the application screen where the XComponent is located. Unit: vp.|
-| float screenY | Y coordinate of the click point relative to the upper left corner of the application screen where the XComponent is located. Unit: vp.|
+| float x | X coordinate of the mouse point relative to the upper left corner of the current component. Unit: vp.|
+| float y | Y coordinate of the mouse point relative to the upper left corner of the current component. Unit: vp.|
+| float screenX | X coordinate of the mouse point relative to the upper left corner of the application screen where the **XComponent** is located. Unit: vp.|
+| float screenY | Y coordinate of the mouse point relative to the upper left corner of the application screen where the **XComponent** is located. Unit: vp.|
 | int64_t timestamp | Timestamp of the mouse event. It is interval between the time when the event is triggered and the time when the system starts, in nanoseconds.|
 | [OH_NativeXComponent_MouseEventAction](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_mouseeventaction) action | Action of the mouse event.|
 | [OH_NativeXComponent_MouseEventButton](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_mouseeventbutton) button | Button of the mouse event.|

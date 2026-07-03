@@ -80,6 +80,8 @@ OffscreenCanvas支持以下属性：
 
 ### width
 
+**示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -115,6 +117,8 @@ struct OffscreenCanvasPage {
 ![zh-cn_image_0000001194032666](figures/offscreen_canvas_width.png)
 
 ### height
+
+**示例：**
 
 ```ts
 // xxx.ets

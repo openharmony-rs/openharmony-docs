@@ -28,7 +28,7 @@ CPU密集型任务是指需要占用系统资源进行大量计算的任务，�
 
 3. 汇总处理结果数组。
 
-<!-- @[process_image_histogram](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
+<!-- @[process_image_histogram](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -40,7 +40,7 @@ function imageProcessing(dataSlice: ArrayBuffer): ArrayBuffer {
   return dataSlice;
 }
 
-function histogramStatistic(pixelBuffer: ArrayBuffer): void {
+async function histogramStatistic(pixelBuffer: ArrayBuffer): Promise<void> {
   // 步骤2: 分成三段并发调度
   let number: number = pixelBuffer.byteLength / 3;
   let buffer1: ArrayBuffer = pixelBuffer.slice(0, number);
@@ -52,7 +52,7 @@ function histogramStatistic(pixelBuffer: ArrayBuffer): void {
   group.addTask(imageProcessing, buffer2);
   group.addTask(imageProcessing, buffer3);
 
-  taskpool.execute(group, taskpool.Priority.HIGH).then((ret: Object) => {
+  await taskpool.execute(group, taskpool.Priority.HIGH).then((ret: Object) => {
     // 步骤3: 结果数组汇总处理
   })
 }
@@ -70,9 +70,14 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let buffer: ArrayBuffer = new ArrayBuffer(24);
-            histogramStatistic(buffer);
-            this.message = 'success';
-// ...
+            histogramStatistic(buffer).then(() => {
+              this.message = 'success';
+            }).catch((e: BusinessError) => {
+              this.message = 'failed';
+              console.error('histogramStatistic is failed.');
+            });
+            
+            // ...
           })
       }
       .width('100%')
@@ -95,10 +100,11 @@ struct Index {
 
    例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
 
-   <!-- @[call_worker_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
+   <!-- @[call_worker_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) --> 
    
    ``` TypeScript
    import { worker } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
    
    const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker1.ts');
    

@@ -1473,13 +1473,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format.|
+| .value[0].u32 | Caret color, in 0xARGB format.|
 
 ## NODE_TEXT_AREA_EDITING
 

@@ -1,28 +1,26 @@
 # Cross-Device Sync of KV Stores (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:37:57.773Z pushedAt=2026-06-25T07:34:13.247Z -->
 
 ## When to Use
 
 KV Stores are suitable for storing service data with simple relationships. It provides higher read and write performance than the SQL database. KV stores are widely used because the simplicity of the KV data model poses fewer database version compatibility issues in distributed scenarios and simplifies conflict handling in cross-device data sync.
 
-
 ## Basic Concepts
 
 Before implementing cross-device data sync of KV stores, understand the following concepts:
-
 
 ### Single KV Store
 
 In a single KV store, data is stored locally as individual entries. When data is modified, the change is applied directly to the entry. After sync, only one global copy of the data is retained across multiple devices. If multiple devices have the same record (with the same primary key), the latest version is preserved irrespective of the device. If data with the same key is modified on multiple devices, the latest change will overwrite the previous ones. For the data written or modified locally, the data with the latest time is synced to other devices. Single KV store is used to store information, such as the contacts and weather application data.
 
 ![singleKVStore](figures/singleKVStore.jpg)
-
 
 ### Device KV Store
 
@@ -32,25 +30,23 @@ The underlying devices manage the data by device. The device KV stores support d
 
 ![deviceKVStore](figures/deviceKVStore.jpg)
 
-
 ## Sync Types
 
 The data management service provides two sync types: manual sync and auto sync. You can use either mode to sync the data of an application across devices:
 
 ### Manual Sync
 
-The application calls **sync()** with the devices to be synced and the sync mode specified to trigger the sync. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use the [**sync()** with the **query** parameter](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) to sync the data that meets the specified conditions.
+Applications trigger end-to-end synchronization by calling the **sync** API, specifying the target device list and the synchronization mode. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use [sync()](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) with the **query** parameter to sync the data that meets the specified conditions.
 
 ### Auto Sync
 
 <!--RP5-->
-In [multi-device collaboration via cross-device calls](../application-models/hop-multi-device-collaboration.md#using-cross-device-call), after an application updates data, the distributed database automatically pushes the local data to the peer ends and pulls the peer data to the local device for data sync. In this case, the application does not need to call **sync()**.<!--RP5End-->
 
+In [multi-device collaboration via cross-device calls](../application-models/hop-multi-device-collaboration.md#using-cross-device-call), after an application updates data, the distributed database automatically pushes the local data to the peer ends and pulls the peer data to the local device for data sync. In this case, the application does not need to call **sync()**.<!--RP5End-->
 
 ## Working Principles
 
 After completing device discovery and authentication, the underlying communication component notifies the application that the device goes online. The **DatamgrService** then establishes an encrypted transmission channel to sync data between the two devices.
-
 
 ### Cross-Device Data Sync Mechanism
 
@@ -60,7 +56,6 @@ When **put()** or **delete()** is called successfully, an auto sync is triggered
 
 If **sync()** is called successfully, a manual sync is triggered to send distributed data to the peer device through the communication adaptation layer.
 
-
 ### Data Change Notification Mechanism
 
 When data is added, deleted, or modified, a notification is sent to the subscriber. The notifications can be classified into the following types:
@@ -68,7 +63,6 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 - Local data change notification: subscription of the application data changes on the local device. When the data in the local KV store is added, deleted, or modified in the database, a notification is received.
 
 - Distributed data change notification: subscription of the application data changes of other devices in the network. When the data in the local KV store changes after being synced with data from another device in the same network, a notification is received.
-
 
 ## Constraints
 
@@ -82,20 +76,18 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 - A single KV store supports a maximum of eight listener callbacks for data changes.
 
-
 ## Available APIs
 
-The following table lists the APIs for cross-device data sync of the single KV store. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
+The following APIs are provided for end-to-end cross-device data synchronization in the single-version distributed KV store. For more APIs and their usage, see [@ohos.data.distributedKVStore (Distributed KV Store)](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
 | createKVManager(config: KVManagerConfig): KVManager | Creates a **KvManager** instance to manage database objects.|
-| getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified type.|
+| getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified **options** and **storeId**.|
 | put(key: string, value: Uint8Array \| string \| number \| boolean, callback: AsyncCallback&lt;void&gt;): void | Inserts and updates data.|
 | on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotification&gt;): void | Subscribes to data changes in the KV store.|
 | get(key: string, callback: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;): void | Queries the value of the specified key.|
 | sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void | Triggers a manual sync of the KV store.|
-
 
 ## How to Develop
 
@@ -107,7 +99,7 @@ The following uses a single KV store as an example to describe how to implement 
 >
 > The security level of the destination device (to which data is synced) cannot be higher than that of the source device. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
 
-1. Import module to obtain the context.
+1. Import modules to obtain the context.
 
    ```ts
    // Import modules.
@@ -140,15 +132,17 @@ The following uses a single KV store as an example to describe how to implement 
 2. Request permissions.
 
    1. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+
    2. Display a dialog box to ask for authorization from the user when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
 3. Call the **createKVManager()** method to create a **KvManager** instance.
 
    1. Create a **kvManagerConfig** object based on the application context.
+
    2. Create a **KvManager** instance.
 
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -173,10 +167,11 @@ The following uses a single KV store as an example to describe how to implement 
 4. Call the **getKVStore()** method to obtain the KV store of the specified type.
 
    1. Declare the ID of the distributed KV store to create, for example, **'storeId'** in the sample code.
+
    2. Disable the auto sync function (**autoSync:false**) to facilitate subsequent verification of the sync feature. If sync is required, call the **sync()** API.
 
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -236,7 +231,7 @@ The following uses a single KV store as an example to describe how to implement 
 5. Call the **on()** method to subscribe to distributed data changes. To unsubscribe from the data changes, call [off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange).
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public On = (() =>{
      Logger.info('On start');
@@ -258,10 +253,11 @@ The following uses a single KV store as an example to describe how to implement 
 6. Call the **put()** method to write data to the distributed KV store.
 
    1. Construct the key and value to be written to the single KV store.
+
    2. Write KV pairs to the single KV store.
 
    <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Put = (() => {
      Logger.info('Put start');
@@ -290,10 +286,11 @@ The following uses a single KV store as an example to describe how to implement 
 7. Query data from the distributed KV store.
 
    1. Construct the key to be queried from the single KV store.
+
    2. Query data from the single KV store.
 
    <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Get = (() => {
      Logger.info('Get start');
@@ -326,7 +323,7 @@ The following uses a single KV store as an example to describe how to implement 
    > In manual sync mode, **deviceIds** can be obtained by using [devManager.getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
 
    <!-- @[kv_store13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Sync = (() =>{
      Logger.info('Sync start');

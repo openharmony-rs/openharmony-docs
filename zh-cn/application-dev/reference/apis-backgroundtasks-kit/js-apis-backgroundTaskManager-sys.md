@@ -34,7 +34,7 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 ## BackgroundMode<sup>8+</sup>
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |

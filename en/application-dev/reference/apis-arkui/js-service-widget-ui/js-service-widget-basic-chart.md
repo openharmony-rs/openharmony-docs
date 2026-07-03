@@ -1,10 +1,12 @@
 # chart
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T08:17:24.381Z pushedAt=2026-06-23T08:19:18.881Z -->
 
 The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
@@ -15,7 +17,6 @@ The **\<chart>** component displays line charts, gauge charts, and bar charts.
 ## Child Components
 
 Not supported.
-
 
 ## Attributes
 
@@ -130,7 +131,6 @@ For the **gauge** charts, the following attributes are also supported.
 | ------- | ------ | ---- | ---- | ---------------------- |
 | percent | number | 0    | No   | Percentage of the current value to the total value. The value ranges from 0 to 100.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
@@ -148,16 +148,14 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | font-family  | Array          | -                          | No   | Font style of the description text. You can use a [custom font](js-service-widget-common-customizing-font.md).|
 | font-size    | &lt;length&gt; | -                          | No   | Font size of the description text.                           |
 
-
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
-
 ## Example
 
 1. Line chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -167,7 +165,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -187,7 +185,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 600px;
    }
    ```
-   
+
    ```json
    // xxx.json
    {
@@ -254,11 +252,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-   
+
    ![string-diagram](figures/string-diagram.png)
 
 2. Bar chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -268,7 +266,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -288,7 +286,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 400px;
    }
    ```
-   
+
    ```json
    {
      "data": {
@@ -322,11 +320,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-    
+
    ![barchart](figures/barchart.PNG)
 
 3. Gauge chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -335,7 +333,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </div>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -352,5 +350,5 @@ The [universal events](js-service-widget-common-events.md) are supported.
      weights: 4, 2, 1;
    }
    ```
-   
+
    ![gauge](figures/gauge.PNG)

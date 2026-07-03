@@ -134,7 +134,6 @@ type Vector4 = Vector4
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：动态更新角点形变，组件前景内容会跟随角点位置发生形变
 @Entry
 @Component
 struct DistortionCornerExample {
@@ -148,6 +147,7 @@ struct DistortionCornerExample {
 
   build() {
     Column({ space: 40 }) {
+      // 动态更新角点形变，组件前景内容会跟随角点位置发生形变。
       DistortionComponent({
         distortion: this.distortionParam
       }) {
@@ -194,7 +194,6 @@ struct DistortionCornerExample {
 从API版本26.0.0开始，新增[DistortionParam](#distortionparam)的barrelDistortion属性。
 
 ```ts
-// 示例：单独控制四条边的桶形扭曲，突出z/w对上下边的作用
 @Entry
 @Component
 struct DistortionBarrelExample {
@@ -202,6 +201,7 @@ struct DistortionBarrelExample {
 
   build() {
     Column({ space: 40 }) {
+      // 单独控制四条边的桶形扭曲，突出z/w对上下边的作用
       DistortionComponent({
         distortion: {
           topLeft: { x: 0, y: 0 },
@@ -267,7 +267,6 @@ struct DistortionBarrelExample {
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：组合角点形变与桶形扭曲，产生更强烈的空间透视感
 @Entry
 @Component
 struct DistortionCombinedExample {
@@ -305,6 +304,7 @@ struct DistortionCombinedExample {
 
   build() {
     Column({ space: 40 }) {
+      // 组合角点形变与桶形扭曲，产生更强烈的空间透视感
       DistortionComponent({
         distortion: this.distortionParam
       }) {
@@ -312,6 +312,7 @@ struct DistortionCombinedExample {
           Column()
             .width(200)
             .height(200)
+            // 'app.media.icon'需要替换为开发者所需的图像资源文件
             .backgroundImage($r('app.media.icon'))
             .backgroundImageSize(ImageSize.Cover)
             .opacity(0.8)

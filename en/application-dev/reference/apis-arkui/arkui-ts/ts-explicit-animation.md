@@ -245,7 +245,7 @@ struct AttrAnimationExample {
               playMode: PlayMode.Normal,
               onFinish: () => {
                 this.count--;
-                if (this.count = = 0 &&!this.isToBottom) { // The component disappears only after completing the downward animation.
+                if (this.count == 0 &&!this.isToBottom) { // The component disappears only after completing the downward animation.
                   this.isShow = false;
                 }
               }

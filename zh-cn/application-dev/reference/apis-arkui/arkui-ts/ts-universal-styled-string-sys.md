@@ -138,7 +138,7 @@ type StyledStringMarshallingValue = UserDataSpan
 
 | 类型  | 说明   |
 | ------ | ---------- |
-| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan样式。 |
+| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan自定义数据片段。 |
 
 ## StyledStringMarshallCallback<sup>19+</sup>
 
@@ -234,7 +234,7 @@ struct Index {
           if (!this.flag) {
             console.info("Debug: 反序列化");
             let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer);
-            this.textTitle = "调取decodeTlv接口后，反序列化的结果显示：";
+            this.textTitle = "调用unmarshalling接口后，反序列化的结果显示：";
             if (styles == undefined) {
               console.error("Debug: styledString 获取失败！！！");
               return;
@@ -260,7 +260,7 @@ struct Index {
             console.info("Debug: 序列化");
             let resultBuffer = StyledString.marshalling(this.styledString);
             this.buff = new Uint8Array(resultBuffer);
-            this.textTitle = "调取encodeTlv接口后，序列化的结果显示：";
+            this.textTitle = "调用marshalling接口后，序列化的结果显示：";
             this.textResult = this.buff.toString();
             console.info("Debug: buff = " + this.buff.toString());
             this.serializeStr = "反序列化";
@@ -303,8 +303,8 @@ class MyUserData extends UserDataSpan {
     const uint8View = new Uint8Array(buffer);
     // 写入类型
     uint8View[0] = MyUserDataType.TYPE1;
-    for (let i = 1; i < text.length; i++) {
-      uint8View[i] = text.charCodeAt(i);
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
     }
     return uint8View.buffer;
   }
@@ -322,8 +322,8 @@ class MyUserData2 extends UserDataSpan {
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
     uint8View[0] = MyUserDataType.TYPE2;
-    for (let i = 1; i < text.length; i++) {
-      uint8View[i] = text.charCodeAt(i);
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
     }
     return uint8View.buffer;
   }
@@ -388,7 +388,7 @@ struct MarshallExample1 {
               let myUserData = new MyUserData2();
               return myUserData.unmarshalling();
             }
-            return new ArrayBuffer(0);
+            return new MyUserData();
           });
           this.controller.setStyledString(newStyledString);
         })

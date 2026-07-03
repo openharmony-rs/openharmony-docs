@@ -1,16 +1,18 @@
 # Path2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:23.275Z pushedAt=2026-06-23T02:49:01.057Z -->
 
 **Path2D** allows you to describe a path through an existing path. This path can be drawn through the [stroke](js-components-canvas-canvasrenderingcontext2d.md#stroke) API of **Canvas**.
 
 >  **NOTE**
 >
->  This component is supported since API version 6. Updates will be marked with a superscript to indicate their earliest API version.
+>  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## addPath
 
@@ -88,8 +90,7 @@ export default {
 }
 ```
 
-  ![Yellow-triangle-02](figures/Yellow-triangle-02.png)
-
+![Yellow-triangle-02](figures/Yellow-triangle-02.png)
 
 ## closePath
 
@@ -123,7 +124,6 @@ export default {
 ```
 
   ![Yellow-triangle-01](figures/Yellow-triangle-01.png)
-
 
 ## moveTo
 
@@ -165,7 +165,6 @@ export default {
 
   ![moveTo01](figures/moveTo01.png)
 
-
 ## lineTo
 
 lineTo(x: number, y: number): void
@@ -206,7 +205,6 @@ export default {
 ```
 
   ![lineto](figures/lineto.png)
-
 
 ## bezierCurveTo
 
@@ -250,21 +248,20 @@ export default {
 
   ![bezierCurveTo](figures/bezierCurveTo.png)
 
-
 ## quadraticCurveTo
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-Draws a quadratic curve on the canvas.
+Draws a quadratic Bezier curve on the canvas.
 
 **Parameters** 
 
 | Name  | Type    | Description         |
 | ---- | ------ | ----------- |
-| cpx  | number | X-coordinate of the bezier curve parameter.|
-| cpy  | number | Y-coordinate of the bezier curve parameter.|
-| x    | number | X-coordinate of the end point on the bezier curve.|
-| y    | number | Y-coordinate of the end point on the bezier curve.|
+| cpx  | number | X-coordinate of the Bezier curve parameter.|
+| cpy  | number | Y-coordinate of the Bezier curve parameter.|
+| x    | number | X-coordinate of the end point on the Bezier curve.|
+| y    | number | Y-coordinate of the end point on the Bezier curve.|
 
 **Example**
 
@@ -291,7 +288,6 @@ export default {
 
   ![quadraticCurveTo-01](figures/quadraticCurveTo-01.png)
 
-
 ## arc
 
 arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
@@ -300,14 +296,14 @@ Draws an arc on the canvas.
 
 **Parameters** 
 
-| Name           | Type     | Description        |
-| ------------- | ------- | ---------- |
-| x             | number  | X-coordinate of the center point of the arc.|
-| y             | number  | Y-coordinate of the center point of the arc.|
-| radius        | number  | Radius of the arc.   |
-| startAngle    | number  | Start radian of the arc.  |
-| endAngle      | number  | End radian of the arc.  |
-| counterclockwise | boolean | Whether to draw the arc counterclockwise. The value **true** means counterclockwise, and **false** means clockwise. Default value: **false**.|
+| Name | Type    | Mandatory | Description                         |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number  | Yes | X-coordinate of the center point of the arc.|
+| y             | number  | Yes | Y-coordinate of the center point of the arc.|
+| radius        | number  | Yes | Radius of the arc.   |
+| startAngle    | number  | Yes | Start radian of the arc.  |
+| endAngle      | number  | Yes | End radian of the arc.  |
+| counterclockwise | boolean | No | Whether to draw the arc counterclockwise. The value **true** means counterclockwise, and **false** means clockwise. Default value: **false**.|
 
 **Example** 
 
@@ -332,7 +328,6 @@ export default {
 ```
 
   ![arc01](figures/arc01.png)
-
 
 ## arcTo
 
@@ -373,7 +368,6 @@ export default {
 ```
 
   ![Yellow-Curve](figures/Yellow-Curve.png)
-
 
 ## ellipse
 
@@ -417,7 +411,6 @@ export default {
 ```
 
   ![ellipse01](figures/ellipse01.png)
-
 
 ## rect
 

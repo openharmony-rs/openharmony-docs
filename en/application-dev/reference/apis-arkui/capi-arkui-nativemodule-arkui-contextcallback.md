@@ -26,7 +26,7 @@ Defines the event callback type.
 
 | Name| Description|
 | -- | -- |
-| void* userData | Custom type. The data of the custom type is passed as a parameter during callback.|
+| void* userData | Pointer to the user-defined data, which is passed as a parameter during callback.|
 
 
 ### Member Functions

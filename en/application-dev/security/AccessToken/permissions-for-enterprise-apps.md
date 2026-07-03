@@ -187,7 +187,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -207,6 +207,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -745,3 +747,22 @@ Allows an enterprise common application to obtain the list of all installed appl
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.0
+
+ ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+
+Allows an application to use backup and restore capabilities.
+
+With this permission, the application can back up and restore user data and application sandbox data.
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0

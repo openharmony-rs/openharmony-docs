@@ -7,11 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
+以下权限仅对MDM（Mobile Device Management）设备管理应用开放。
+
+<!--RP2-->
+MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
 > 
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+<!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -181,7 +185,7 @@
 
 允许设备管理应用订阅管理事件。
 
-比如应用安装事件、应用卸载事件和系统更新事件等。订阅成功后，事件触发时会通知MDM应用。
+比如应用安装事件、应用卸载事件和系统更新事件等。订阅成功后，事件触发时会通知设备管理应用。
 
 <!--RP1--><!--RP1End-->
 
@@ -502,7 +506,7 @@
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
 
-允许应用管理企业级恢复密钥。
+允许设备管理应用管理企业级恢复密钥。
 
 <!--RP1--><!--RP1End-->
 
@@ -638,7 +642,7 @@
 
 ## ohos.permission.ENTERPRISE_FILE_TRANSFER_AUDIT_POLICY_MANAGEMENT
 
-允许MDM应用管理文件传输的策略和审计信息。
+允许设备管理应用管理文件传输的策略和审计信息。
 
 <!--RP1--><!--RP1End-->
 
@@ -672,7 +676,7 @@
 
 ## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
 
-允许MDM应用管理系统预装的防病毒软件。
+允许设备管理应用管理系统预装的防病毒软件。
 
 <!--RP1--><!--RP1End-->
 
@@ -689,9 +693,9 @@
 
 ## ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
-允许设备管理应用（MDM）设置user_grant类权限策略。
+允许设备管理应用设置user_grant类权限策略。
 
-获取该权限后，MDM应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
+获取该权限后，设备管理应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
 
 <!--RP1--><!--RP1End-->
 
@@ -708,7 +712,7 @@
 
 ## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
-允许MDM应用识别文件敏感内容。
+允许设备管理应用识别文件敏感内容。
 
 <!--RP1--><!--RP1End-->
 
@@ -725,7 +729,7 @@
 
 ## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
-允许设备管理应用（MDM）生成、解密DLP文件，查询DLP文件策略。
+允许设备管理应用生成、解密DLP文件，查询DLP文件策略。
 
 <!--RP1--><!--RP1End-->
 
@@ -780,7 +784,7 @@
 
 ## ohos.permission.ENTERPRISE_READ_LOG
 
-允许MDM应用收集系统日志。
+允许设备管理应用收集系统日志。
 
 <!--RP1--><!--RP1End-->
 
@@ -797,7 +801,7 @@
 
 ## ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
 
-允许已激活的MDM应用解除自身的激活状态。
+允许已激活的设备管理应用解除自身的激活状态。
 
 <!--RP1--><!--RP1End-->
 
@@ -814,7 +818,7 @@
 
 ## ohos.permission.ENTERPRISE_ACTIVATE_DEVICE_ADMIN
 
-允许企业MDM应用自行完成激活操作。
+允许企业设备管理应用自行完成激活操作。
 
 <!--RP1--><!--RP1End-->
 
@@ -827,11 +831,11 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.0.0
+**起始版本**：24
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
-允许企业MDM应用管理本地账号。
+允许企业设备管理应用管理本地账号。
 
 <!--RP1--><!--RP1End-->
 
@@ -848,7 +852,7 @@
 
 ## ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-允许企业MDM应用进行多用户操作。
+允许企业设备管理应用进行多用户操作。
 
 <!--RP1--><!--RP1End-->
 
@@ -865,7 +869,7 @@
 
 ## ohos.permission.ENTERPRISE_VPN
 
-允许MDM应用默认拥有VPN接入权限。
+允许设备管理应用默认拥有VPN接入权限。
 
 获取此权限后，应用无需经过用户确认，默认可接入VPN。
 
@@ -876,8 +880,25 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+允许设备管理应用在桌面添加卡片。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0

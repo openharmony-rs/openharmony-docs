@@ -699,7 +699,7 @@ Sensor.unsubscribeCompass();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **参数**：
 
@@ -755,7 +755,7 @@ static unsubscribeProximity(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **ArkTS示例**：
 
@@ -785,7 +785,7 @@ Sensor.unsubscribeProximity();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **参数**：
 
@@ -841,7 +841,7 @@ static unsubscribeLight(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **ArkTS示例**：
 
@@ -1265,6 +1265,8 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
+
 **参数**：
 
 | 参数名  | 类型                                                         | 必填 | 说明                                             |
@@ -1324,6 +1326,8 @@ static unsubscribeDeviceOrientation(): void
 > 除Lite Wearable外，从API Version8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **ArkTS示例**：
 
@@ -1483,6 +1487,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
+
 | 名称    | 类型                                    | 只读 | 可选 | 说明                               |
 | ------- | --------------------------------------- | ---- | ---- | ---------------------------------- |
 | success | [ProximityResponse](#proximityresponse) | 否   | 否   | 距离感应数据改变后调用的回调函数，回调参数为ProximityResponse对象。 |
@@ -1494,6 +1500,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
+
 | 名称     | 类型   | 只读 | 可选 | 说明                                       |
 | -------- | ------ | ---- | ---- | ------------------------------------------ |
 | distance | number | 否   | 否   | 可见物体相对于设备显示屏的接近或远离状态。取值说明：0表示物体接近屏幕（近状态），大于0表示物体远离屏幕（远状态）。具体远状态数值由硬件传感器决定。 |
@@ -1503,6 +1511,8 @@ Sensor.unsubscribeGyroscope();
 用于设置环境光传感器订阅的参数，包括回调函数。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称    | 类型                            | 只读 | 可选 | 说明                           |
 | ------- | ------------------------------- | ---- | ---- | ------------------------------ |
@@ -1514,6 +1524,8 @@ Sensor.unsubscribeGyroscope();
 光线感应数据改变后的回调函数的响应对象，包含环境光线强度数据。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称      | 类型   | 只读 | 可选 | 说明                  |
 | --------- | ------ | ---- | ---- | --------------------- |
@@ -1629,7 +1641,7 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称     | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1642,6 +1654,8 @@ Sensor.unsubscribeGyroscope();
 设备方向传感器数据变化后的回调函数的响应对象，包含设备方向的三个旋转角度数据。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |

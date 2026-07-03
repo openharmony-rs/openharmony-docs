@@ -45,7 +45,7 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 |-------------------------------|-----------------------------------------------------|-----|-----|------------------|
 | brand                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 品牌色。当使用[ResourceColor](arkui-ts/ts-types.md#resourcecolor)中非[Resource](./arkui-ts/ts-types.md#resource)类型设置该颜色时，backgroundEmphasize、compBackgroundEmphasize、compEmphasizeSecondary、compEmphasizeTertiary、interactiveFocus、interactiveSelect的缺省值会随映射关系发生变化，具体参考对应颜色属性说明。<br/>**影响组件：** [TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | primary                     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 是   | 主色。默认值undefined，代表不生效primary主题色。从API版本26.0.0开始，当使用[ResourceColor](arkui-ts/ts-types.md#resourcecolor)中非[Resource](./arkui-ts/ts-types.md#resource)类型设置该颜色时，fontPrimary、fontSecondary、fontTertiary、fontFourth、iconPrimary、iconSecondary、iconTertiary、iconFourth的缺省值会随映射关系发生变化，具体参考对应颜色属性说明。<br/>**影响组件：** 暂无组件使用。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。        |
-| onPrimary                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 是   | 强调色。默认值undefined，代表不生效onPrimary主题色。从API版本26.0.0开始，当使用[ResourceColor](arkui-ts/ts-types.md#resourcecolor)中非[Resource](./arkui-ts/ts-types.md#resource)类型设置该颜色时，fontOnPrimary、fontOnSecondary、fontOnTertiary、fontOnFourth、iconOnPrimary、iconOnSecondary、iconOnTertiary、iconOnFourth的缺省值会随映射关系发生变化，具体参考对应颜色属性说明。<br/>**影响组件：** 暂无组件使用。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。        |
+| onPrimary                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 是   | 主色反转颜色。默认值undefined，代表不生效onPrimary主题色。从API版本26.0.0开始，当使用[ResourceColor](arkui-ts/ts-types.md#resourcecolor)中非[Resource](./arkui-ts/ts-types.md#resource)类型设置该颜色时，fontOnPrimary、fontOnSecondary、fontOnTertiary、fontOnFourth、iconOnPrimary、iconOnSecondary、iconOnTertiary、iconOnFourth的缺省值会随映射关系发生变化，具体参考对应颜色属性说明。<br/>**影响组件：** 暂无组件使用。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。        |
 | container                        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 是   | 容器色。默认值undefined，代表不生效container主题色。从API版本26.0.0开始，当使用[ResourceColor](arkui-ts/ts-types.md#resourcecolor)中非[Resource](./arkui-ts/ts-types.md#resource)类型设置该颜色时，compBackgroundSecondary、compBackgroundTertiary、compDivider、interactiveHover、interactivePressed、interactiveClick的缺省值会随映射关系发生变化，具体参考对应颜色属性说明。<br/>**影响组件：** 暂无组件使用。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。        |
 | warning                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 一级警示色。<br/>**影响组件：** [TipsDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#tipsdialog)、[AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)、[CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)、<br/>[Badge](./arkui-ts/ts-container-badge.md)、[Button](./arkui-ts/ts-basic-components-button.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。          |
 | alert                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 二级提示色。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
@@ -74,10 +74,10 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 | backgroundTertiary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 三级背景颜色（实色，不透明）。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | backgroundFourth              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 四级背景颜色（实色，不透明）。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | backgroundEmphasize           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 高亮背景颜色（实色，不透明）。<br/>**说明：** 当作为[CustomColors](#customcolors)的属性被使用时，若设置了brand，backgroundEmphasize在浅色模式和深色模式下的缺省值均为brand的颜色值叠加100%透明度。<br/>**影响组件：** [Progress](./arkui-ts/ts-basic-components-progress.md)、[Button](./arkui-ts/ts-basic-components-button.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 前背景。<br/>**影响组件：** [QRCode](./arkui-ts/ts-basic-components-qrcode.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 前景色。<br/>**影响组件：** [QRCode](./arkui-ts/ts-basic-components-qrcode.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | compBackgroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 白色背景。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | compBackgroundPrimaryTran     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 白色透明背景。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 常亮背景。<br/>**影响组件：** [Toggle](./arkui-ts/ts-basic-components-toggle.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 反转背景。<br/>**影响组件：** [Toggle](./arkui-ts/ts-basic-components-toggle.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | compBackgroundGray            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 灰色背景。<br/>**影响组件：** 暂无组件使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | compBackgroundSecondary       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 二级背景。<br/>**说明：** 从API版本26.0.0开始，当作为[CustomColors](#customcolors)的属性被使用时，若设置了container，compBackgroundSecondary在浅色模式和深色模式下的缺省值均为container的颜色值叠加10%透明度。<br/>**影响组件：** [Swiper](./arkui-ts/ts-container-swiper.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | compBackgroundTertiary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 三级背景。<br/>**说明：** 从API版本26.0.0开始，当作为[CustomColors](#customcolors)的属性被使用时，若设置了container，compBackgroundTertiary在浅色模式下的缺省值为container的颜色值叠加5%透明度，在深色模式下的缺省值为container的颜色值叠加10%透明度。<br/>**影响组件：** [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md)、[Progress](./arkui-ts/ts-basic-components-progress.md)、[AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md)、<br/>[Button](./arkui-ts/ts-basic-components-button.md)、[Select](./arkui-ts/ts-basic-components-select.md)、[Toggle](./arkui-ts/ts-basic-components-toggle.md)、<br/>[Chip](./arkui-ts/ohos-arkui-advanced-Chip.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)。从API版本26.0.0开始，新增[UIPickerComponent](./arkui-ts/ts-container-ui-picker-component.md)、[TextPicker](./arkui-ts/ts-basic-components-textpicker.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
@@ -107,7 +107,7 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 | 名称                           | 类型                                                 | 只读  | 可选  | 说明         |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
 | colors | [CustomColors](#customcolors) | 否   | 是   | 自定义浅色主题颜色资源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | 否   | 是   | 自定义深色主题颜色资源。<br/>**说明**：如果未设置darkColors，颜色值将与浅色模式下的colors配置相同，并且不会随着颜色模式的变化而变化，除非该颜色是通过dark目录下的资源进行设置的。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | 否   | 是   | 自定义深色主题颜色资源。<br/>**说明**：如果未设置darkColors，则使用浅色模式下的colors配置，并且不会随着系统深浅色模式的切换而变化；如果对应颜色通过dark目录下的资源进行设置，则会优先使用dark目录下的资源。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## CustomColors
 
@@ -159,7 +159,7 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
 | 参数名       | 类型                           | 必填 | 说明             |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | 是    | 表示设置的自定义主题风格。 |
+| theme | [CustomTheme](#customtheme)  | 是    | 自定义主题风格对象。 |
 
 ## 示例
 
@@ -171,9 +171,9 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = "#FF707070";
-  backgroundPrimary = "#FF2787D9";
-  brand = "#FFEEAAFF"; // 品牌色
+  fontPrimary = '#FF707070'; // 一级文本字体颜色
+  backgroundPrimary = '#FF2787D9'; // 一级背景颜色
+  brand = '#FFEEAAFF'; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -184,9 +184,9 @@ class PageCustomTheme implements CustomTheme {
   }
 }
 // 创建实例
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
-// 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为BlueColorsTheme。
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
+// 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为blueColorsTheme。
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @Component

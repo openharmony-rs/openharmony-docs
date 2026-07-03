@@ -3930,6 +3930,8 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Certificate-based authorization**: true
 
 **Since**: 12
@@ -4465,6 +4467,8 @@ A system application can create a virtual keyboard window only after obtaining t
 **Certificate-based authorization**: true
 
 **Valid since**: 15
+
+**Supported devices**: PCs/2-in-1 devices
 
 ## ohos.permission.GET_FAMILY_INFO
 
@@ -5831,6 +5835,20 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.ACCESS_DFT_LOG
+
+Allows a system application to read directory logs of the vehicle log service, Bluetooth, system stability, and system upgrades.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.vehicle.AUTO_UPDATER
 
 Allows an application to send update instructions to the head unit.
@@ -5844,6 +5862,20 @@ Allows an application to send update instructions to the head unit.
 **Supported devices**: cars
 
 **Since**: 26.0.0
+
+## ohos.permission.vehicle.CAR_LOG_SERVICE
+
+Allows a system application to send commands to collect logs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -6041,6 +6073,20 @@ Allows a system application to set and query the permissions required for runnin
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
 
 Allows an application to use the device interconnectivity capability.
@@ -6159,6 +6205,20 @@ Allows an application to adjust the policy in gaming scenarios.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+Allows a system application to manage sandbox applications of browsers.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
@@ -6229,6 +6289,20 @@ Allows an agent application to stop a specific application using CLI commands.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.ACCESS_FUNCTION
+
+Allows a system application to access available functions.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 Allows a system application to read and write map data.
@@ -6286,6 +6360,20 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.HDC_REPORT_INFO
+
+Allows a system application to subscribe to the hdc events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.0.0
 
@@ -6484,3 +6572,128 @@ Allows a system application to access the file cache path of the file transfer s
 **Supported devices**: PCs/2-in-1 devices
  	 
 **Valid since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+Allows an application to set cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+Allows an application to read cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+Allows an application to set TBox WiFi related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+Allows an application to obtain T-Box Wi-Fi–related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+Allows an application to trigger network packet capture.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+Allows the triggering of network self-check and self-healing.
+
+**Permission level**: system_basic
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+ 	 
+Allows an application to manage clone preferences.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+ 	 
+**Valid since**: 26.1.0
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0

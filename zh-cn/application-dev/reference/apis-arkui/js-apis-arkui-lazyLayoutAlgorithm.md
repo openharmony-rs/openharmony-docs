@@ -220,7 +220,6 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 >
 > - 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[measure()](js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考LazyDynamicLayout组件[示例1（实现懒加载自定义布局）](./arkui-ts/ts-container-lazydynamiclayout.md#示例1实现懒加载自定义布局)。
 > - 在此函数中调用[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件时，必须传入[ExpandMode.LAZY_NOT_EXPAND](js-apis-arkui-frameNode.md#expandmode15)，避免全量加载子组件导致懒加载失效。调用[getChildrenCount()](js-apis-arkui-frameNode.md#getchildrencount12)方法获取子组件总数时，必须传入[ChildrenCountMode.ALL_NOT_EXPAND](js-apis-arkui-frameNode.md#childrencountmode)，避免获取子组件总数时全量加载子组件导致懒加载失效。
-> - helper参数为undefined时，表示当前组件未在可滚动组件下使用，不支持懒加载。
 
 **起始版本：** 26.0.0
 
@@ -236,7 +235,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 | ---- | ---- | ---- | ---- |
 | self | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | 是 | 懒加载动态布局组件在组件树上的实体节点。|
 | constraint | [LayoutConstraint](js-apis-arkui-frameNode.md#layoutconstraint12) | 是 | 懒加载动态布局组件进行测量时使用的布局约束。|
-| helper | [LazyLayoutHelper](#lazylayouthelper) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。|
+| helper | [LazyLayoutHelper](#lazylayouthelper) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下：<br>1. 在[WaterFlow](./arkui-ts/ts-container-waterflow.md)组件多列模式或分段模式的多列分段下使用时不支持懒加载。<br>2. 在[List](./arkui-ts/ts-container-list.md)组件下使用，当List设置了[lanes](./arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](./arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](./arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个时不支持懒加载。 |
 
 ### onLayout
 

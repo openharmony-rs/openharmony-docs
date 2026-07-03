@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:26.947Z pushedAt=2026-06-25T10:36:58.628Z -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
@@ -140,8 +141,8 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | general.pem                         | general.text                  | .pem                                   | application/x-pem-file                                                                 | Privacy-Enhanced Mail (PEM) format.                      |
 | general.log                         | general.text                  | .log                                   | text/plain                                                                             | Log file format.                            |
 | general.tel                         | general.text                  | .tel                                   |               -                   | Schematic information file type, such as files containing device packaging diagram, network topology, encoding information, and more.                            |
-| general.ion                         | general.text                  | .ion                                   | text/plain                                                                             | File content description type.                 |
-| general.conf                        | general.text                  | .conf                                  | text/plain                                                                             | Generic configuration file type.       |
+| general.ion                         | general.text                  | .ion                                   | -                                                                             | File content description type.                  |
+| general.conf                        | general.text                  | .conf                                  | -                                                                             | General configuration file type.        |
 | general.calendar                    | general.text                  |                 -                      |                                               -                                        | Calendar.                       |
 | general.vcs                         | general.calendar              | .vcs                                   | text/calendar                                                                          | vCalendar format.                   |
 | general.ics                         | general.calendar              | .ics                                   | text/calendar                                                                          | iCalendar format.                   |
@@ -216,6 +217,8 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | com.apple.iwork.keynote.key                                     |                 general.composite-object,com.apple.iwork                                                            | .key                            |    application/vnd.apple.keynote                   |  Presentation file of iWork Keynote. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
 | com.apple.iwork.numbers.numbers                                     |                 general.composite-object,com.apple.iwork                                                            | .numbers                            |    application/vnd.apple.numbers                   |  Spreadsheet file of iWork Numbers. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  Document file of iWork Pages. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
+| com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  **musiccreate** file format. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
+| com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF audio data file. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 
 
 ## System-specific UTDs
