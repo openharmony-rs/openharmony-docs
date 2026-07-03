@@ -31,7 +31,7 @@
 | -- | -- | -- |
 | [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) | OH_Filter_ColorMatrix | 定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素取值范围为浮点数。 |
 | [OH_Filter](capi-effectkit-oh-filter.md) | OH_Filter | 滤镜结构体，用于配合effectKit模块相关接口实现滤镜效果处理。 |
-| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) | OH_PixelmapNative | 定义一个位图，用于配合滤镜效果相关接口进行图像数据输入输出处理。 |
+| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) | OH_PixelmapNative | 声明由图像框架定义的像素图对象。 |
 
 ### 枚举
 

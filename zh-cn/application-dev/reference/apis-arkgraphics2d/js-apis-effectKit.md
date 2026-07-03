@@ -153,7 +153,7 @@ createColorPicker(source: image.PixelMap, region: Array\<number>): Promise\<Colo
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | ----------- | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   |  image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[Image Kit简介](../../media/image/image-overview.md)。 |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素，违反限制时返回null。|
+| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
 
 **返回值：**
 
@@ -273,7 +273,7 @@ createColorPicker(source: image.PixelMap, region:Array\<number>, callback: Async
 | 参数名     | 类型                | 必填 | 说明                       |
 | -------- | ------------------ | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  |image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[Image Kit简介](../../media/image/image-overview.md)。  |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素，违反限制时返回null。|
+| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。|
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
@@ -527,7 +527,7 @@ getTopProportionColors(colorCount: number): Array\<Color \| null>
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要获取的颜色个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。取色个数小于1时返回`[null]`。   |
+| colorCount | number | 是   | 需要获取的颜色个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。 |
 
 **返回值：**
 

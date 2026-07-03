@@ -13,7 +13,7 @@ typedef struct OH_Filter OH_Filter;
 
 ## 概述
 
-OH_Filter是滤镜结构体，用于生成经过滤镜效果处理的位图，提升图像视觉效果和用户体验。
+滤镜结构体，用于配合effectKit模块相关接口实现滤镜效果处理。
 
 **起始版本：** 12
 
