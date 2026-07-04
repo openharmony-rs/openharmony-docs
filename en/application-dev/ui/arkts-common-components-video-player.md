@@ -252,7 +252,7 @@ The video controller is used to control video playback. For details, see [VideoC
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
     // Initialize the current time to 0.
     @State currentTime: number = 0;
-    // Initialize the current time to 0.
+    // Initialize the duration time to 0.
     @State durationTime: number = 0;
     controller: VideoController = new VideoController();
 

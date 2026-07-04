@@ -26,7 +26,7 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
 
 2. 调用freeze方法冻结对象，然后将其发送到子线程。
 
-   <!-- @[freeze_obj_send_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/SendableFreeze.ets) --> 
+   <!-- @[freeze_obj_send_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/SendableFreeze.ets) -->  
    
    ``` TypeScript
    import { freezeObj } from './helper';
@@ -57,10 +57,10 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
              middle: { anchor: '__container__', align: HorizontalAlign.Center }
            })
            .onClick(() => {
-             let gConifg = new GlobalConfig();
-             gConifg.init();
+             let gConfig = new GlobalConfig();
+             gConfig.init();
              const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets', { name: 'Worker1' });
-             workerInstance.postMessage(gConifg);
+             workerInstance.postMessage(gConfig);
              this.message = 'success';
            })
        }

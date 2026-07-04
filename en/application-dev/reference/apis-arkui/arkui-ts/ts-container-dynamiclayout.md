@@ -10,7 +10,9 @@ Defines the dynamic layout container component, which supports dynamically switc
 
 > **NOTE**
 >
-> This component is supported since API version 24. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 24. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Child Components
 
@@ -34,7 +36,7 @@ Defines the dynamic layout container.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | Yes| Layout algorithm of the dynamic layout component. If an invalid value is used, the child components are stacked and arranged according to [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm).|
+| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | Yes| Layout algorithm of the dynamic layout container. If an invalid value is used, the child components are stacked and arranged according to [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm).|
 
 ## Attributes
 
@@ -225,10 +227,11 @@ interface Product {
   image: string;
 }
 ```
+![](figures/dynamiclayout_waterflow_customlayout.png)
 
 ### Example 2: Switching the Layout Algorithm
 
-This example demonstrates how to dynamically switch the layout algorithm of the **DynamicLayout** component by changing the **LayoutAlgorithm** variable decorated by [@Local](../../../ ui/state-management/arkts-new-local.md). Specifically, it shows how to switch between [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) and [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm).
+This example shows how to dynamically switch the layout algorithm of the **DynamicLayout** component by changing the [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) variable decorated by [@Local](../../../ui/state-management/arkts-new-local.md). Specifically, it shows how to switch between [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) and [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm).
 
 Since API version 24, **RowLayoutAlgorithm**, **ColumnLayoutAlgorithm**, **StackLayoutAlgorithm**, and **GridLayoutAlgorithm** have been added.
 
@@ -340,6 +343,7 @@ struct LayoutSwitchExample {
   }
 }
 ```
+![](figures/dynamiclayout_change_flag.gif)
 
 ### Example 3: Modifying the Layout Algorithm Attributes
 
@@ -407,4 +411,5 @@ struct PropertyChangeExample {
   }
 }
 ```
+![](figures/dynamiclayout_change_property.gif)
 <!--no_check-->

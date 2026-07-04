@@ -175,7 +175,7 @@ struct KeyEventPreventBubble {
 
 ![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
 
-使用OnKeyPreIme屏蔽在输入框中使用方向左键。
+使用onKeyPreIme屏蔽在输入框中使用方向左键。
 
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
 
@@ -268,12 +268,13 @@ struct Index {
 
 ![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
 
-使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+使用onKeyPreIme实现回车提交（建议使用物理键盘）。
 
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyCode } from '@kit.InputKit';
 
 const TAG = '[Sample_Eventproject]';
 const DOMAIN = 0xF811;
@@ -292,7 +293,7 @@ struct TextAreaDemo {
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
           hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
-          if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+          if (event.keyCode === KeyCode.KEYCODE_ENTER && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
               hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');

@@ -162,7 +162,7 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
 示例一使用媒体查询，实现屏幕横竖屏切换时，为页面文本应用添加不同的内容和样式。
 
 <!--deprecated_code_no_check-->
-<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -189,6 +189,7 @@ struct MediaQueryExample {
   }
 
   aboutToAppear() {
+    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult);

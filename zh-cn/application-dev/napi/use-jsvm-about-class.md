@@ -41,13 +41,12 @@ cpp部分代码
 
 <!-- @[oh_jsvm_newinstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/newinstance/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
-#include <string.h>
-#include <fstream>
-
-std::string ToString(JSVM_Env env, JSVM_Value val) {
-    JSVM_Value jsonString = nullptr;
+``` C++
+#include <string>
+// ...
+std::string ToString(JSVM_Env env, JSVM_Value val)
+{
+    JSVM_Value jsonString;
     JSVM_CALL(OH_JSVM_JsonStringify(env, val, &jsonString));
     size_t totalLen = 0;
     JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, jsonString, nullptr, 0, &totalLen));
@@ -61,7 +60,8 @@ std::string ToString(JSVM_Env env, JSVM_Value val) {
 }
 
 // OH_JSVM_NewInstance的样例方法
-static JSVM_Value NewInstance(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value NewInstance(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
@@ -89,7 +89,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 
 **样例JS**
-```cpp
+``` C++
 const char *srcCallNative = R"JS( 
    function Fruit(name) {
        this.name = name;
@@ -100,7 +100,7 @@ const char *srcCallNative = R"JS(
 **执行结果**
 
 在LOG中输出下面的结果：
-```cpp
+``` C++
 NewInstance:{"name":"apple"}
 ```
 ### OH_JSVM_GetNewTarget
@@ -115,16 +115,18 @@ cpp部分代码
 
 <!-- @[oh_jsvm_defineclass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/defineclass/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include <string>
-
-JSVM_Value CreateInstance(JSVM_Env env, JSVM_CallbackInfo info) {
+// ...
+JSVM_Value CreateInstance(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_Value newTarget;
     // 获取构造函数的new.target值
     JSVM_CALL(OH_JSVM_GetNewTarget(env, info, &newTarget));
     OH_LOG_INFO(LOG_APP, "Create Instance");
-    OH_LOG_INFO(LOG_APP, "NAPI MyObject::New %{public}s", newTarget != nullptr ? "newTarget != nullptr" : "newTarget == nullptr");
+    OH_LOG_INFO(LOG_APP,
+                "NAPI MyObject::New %{public}s",
+                newTarget != nullptr ? "newTarget != nullptr" : "newTarget == nullptr");
     JSVM_Value jsObject = nullptr;
     JSVM_CALL(OH_JSVM_CreateObject(env, &jsObject));
     JSVM_Value jsName = nullptr;
@@ -135,8 +137,9 @@ JSVM_Value CreateInstance(JSVM_Env env, JSVM_CallbackInfo info) {
     return jsObject;
 }
 
-std::string ToString(JSVM_Env env, JSVM_Value val) {
-    JSVM_Value jsonString = nullptr;
+std::string ToString(JSVM_Env env, JSVM_Value val)
+{
+    JSVM_Value jsonString;
     JSVM_CALL(OH_JSVM_JsonStringify(env, val, &jsonString));
     size_t totalLen = 0;
     JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, jsonString, nullptr, 0, &totalLen));
@@ -150,7 +153,8 @@ std::string ToString(JSVM_Env env, JSVM_Value val) {
 }
 
 // 封装c++中的自定义数据结构
-JSVM_Value DefineClass(JSVM_Env env, JSVM_CallbackInfo info) {
+JSVM_Value DefineClass(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_CallbackStruct param;
     param.data = nullptr;
     param.callback = CreateInstance;
@@ -162,14 +166,14 @@ JSVM_Value DefineClass(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_CALL(OH_JSVM_NewInstance(env, cons, 0, nullptr, &instanceValue));
     std::string str = ToString(env, instanceValue);
     OH_LOG_INFO(LOG_APP, "NewInstance:%{public}s", str.c_str());
-    
+
     // 作为普通的函数调用
-    JSVM_Value global = nullptr;
+    JSVM_Value global;
     JSVM_CALL(OH_JSVM_GetGlobal(env, &global));
     JSVM_Value key;
     JSVM_CALL(OH_JSVM_CreateStringUtf8(env, "Constructor", JSVM_AUTO_LENGTH, &key));
     JSVM_CALL(OH_JSVM_SetProperty(env, global, key, cons));
-    JSVM_Value result = nullptr;
+    JSVM_Value result;
     JSVM_CALL(OH_JSVM_CallFunction(env, global, cons, 0, nullptr, &result));
     std::string buf = ToString(env, result);
     OH_LOG_INFO(LOG_APP, "NewInstance:%{public}s", buf.c_str());
@@ -187,11 +191,10 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"defineClass", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-
 ```
 
 **样例JS**
-```cpp
+``` C++
 const char *srcCallNative = R"JS( 
     defineClass();
 )JS";
@@ -199,7 +202,7 @@ const char *srcCallNative = R"JS(
 **执行结果**
 
 在LOG中输出下面的结果：
-```cpp
+``` C++
 Create Instance
 
 NAPI MyObject::New newTarget != nullptr
@@ -228,10 +231,9 @@ cpp部分代码
 
 <!-- @[oh_jsvm_removewrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/removewrap/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include <string>
-
+// ...
 // OH_JSVM_GetNewTarget、OH_JSVM_DefineClass、OH_JSVM_Wrap、OH_JSVM_Unwrap、OH_JSVM_RemoveWrap的样例方法
 
 // 自定义类结构体Object
@@ -241,17 +243,20 @@ struct Object {
 };
 
 // 定义一个回调函数
-static void DerefItem(JSVM_Env env, void *data, void *hint) {
+static void DerefItem(JSVM_Env env, void *data, void *hint)
+{
     OH_LOG_INFO(LOG_APP, "JSVM deref_item");
     (void)hint;
 }
 
-static JSVM_Value WrapObject(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value WrapObject(JSVM_Env env, JSVM_CallbackInfo info)
+{
     OH_LOG_INFO(LOG_APP, "JSVM wrap");
     Object obj;
     // 设置Object属性
     obj.name = "lilei";
-    obj.age = 18;
+    const int adultAge = 18;
+    obj.age = adultAge;
     Object *objPointer = &obj;
     // 获取回调信息中的参数数量和将要被封装的值
     size_t argc = 1;
@@ -267,12 +272,14 @@ static JSVM_Value WrapObject(JSVM_Env env, JSVM_CallbackInfo info) {
     return nullptr;
 }
 
-static JSVM_Value RemoveWrap(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value RemoveWrap(JSVM_Env env, JSVM_CallbackInfo info)
+{
     OH_LOG_INFO(LOG_APP, "JSVM removeWrap");
     Object obj;
     // 设置Object属性
     obj.name = "lilei";
-    obj.age = 18;
+    const int adultAge = 18;
+    obj.age = adultAge;
     Object *objPointer = &obj;
     // 获取回调信息中的参数数量和将要被封装的值
     size_t argc = 1;
@@ -299,13 +306,13 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // WrapObject、RemoveWrap方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"wrapObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"removeWrap", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"wrapObject", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"removeWrap", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
 
 **样例JS**
-```cpp
+``` C++
 const char *srcCallNative = R"JS( 
     class Obj {};
     wrapObject(new Obj());
@@ -315,7 +322,7 @@ const char *srcCallNative = R"JS(
 **执行结果**
 
 在LOG中输出下面的结果：
-```cpp
+``` C++
 JSVM wrap
 
 JSVM name: lilei
@@ -508,12 +515,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 ```
 **样例JS**
-```cpp
+``` C++
 const char *srcCallNative = R"JS(testDefineClassWithOptions();)JS";
 ```
 **执行结果**
 
 在LOG中输出下面的结果：
-```cpp
+``` C++
 Run OH_JSVM_DefineClassWithOptions: Success
 ```

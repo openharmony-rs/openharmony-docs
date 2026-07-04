@@ -23,7 +23,7 @@ Defines a cross-language configuration option.
 **Related APIs**
 | Name                                                                             | Description|
 |---------------------------------------------------------------------------------| -- |
-| [OH_ArkUI_NodeUtils_SetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_setcrosslanguageoption) | Sets the cross-language option for the target node.|
+| [OH_ArkUI_NodeUtils_SetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_setcrosslanguageoption) | Sets a cross-language option for the target node.|
 | [OH_ArkUI_NodeUtils_GetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_getcrosslanguageoption) | Obtains the cross-language option for the target node.|
 | [OH_ArkUI_CrossLanguageOption_Create](capi-native-type-h.md#oh_arkui_crosslanguageoption_create) | Creates an instance of the cross-language configuration option.|
 | [OH_ArkUI_CrossLanguageOption_Destroy](capi-native-type-h.md#oh_arkui_crosslanguageoption_destroy) | Destroys an instance of the cross-language configuration option.|

@@ -18,4 +18,4 @@ Defines snapshot options.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_attributes.h](capi-common-attributes-h.md)

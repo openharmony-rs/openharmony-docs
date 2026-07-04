@@ -455,12 +455,12 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型                     | 说明                             |
-| -------------- | ---------------------- | ------------------------------ |
-| width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
-| height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
+| 名称             | 类型                     | 只读 | 可选 | 说明                             |
+| -------------- | ---------------------- | --------| -----| ------------------------------ |
+| width          | [Length](#length)      | 否 | 否 | 目标元素的宽度。<br/>单位：vp |
+| height         | [Length](#length)      | 否 | 否 | 目标元素的高度。<br/>单位：vp |
+| position       | [Position](#position) | 否 | 否 | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 否 | 否 | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -832,6 +832,8 @@ type LPX = { number }lpx
 
 ## Degree<sup>10+</sup>
 
+type Degree = `${number}deg`
+
 角度类型，用于描述以deg像素单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -854,14 +856,14 @@ type LPX = { number }lpx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型定义 | 描述       |
-| ------ | ----------------------| ---------- |
-| X | [Dimension](#dimension10) | 跟手点X轴坐标。 |
-| Y | [Dimension](#dimension10) | 跟手点Y轴坐标。 |
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | ------|--------|--------| ---------- |
+| x | [Dimension](#dimension10) | 否 | 否 | 跟手点X轴坐标。 |
+| y | [Dimension](#dimension10) | 否 | 否 | 跟手点Y轴坐标。 |
 
 ## VoidCallback<sup>12+</sup>
 
-type VoidCallback：() => void;
+type VoidCallback = () => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -962,7 +964,7 @@ Callback<T,V = void> = (data: T) => V;
 
 type ResponsiveFillType = PresetFillType
 
-响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+响应式布局填充模式，用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -976,7 +978,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1117,21 +1119,3 @@ type ResponsiveFillType = PresetFillType
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | name  | [ResourceStr](#resourcestr) | 否 | 否 | 自定义操作的名称，用于标识和绑定操作回调。<br/>**说明：**<br/>名称的文本长度需在128字节以内，超出部分将被截断。 |
 | onAction  | [VoidCallback](#voidcallback12) | 否 | 否 | 处理自定义操作的回调。 |
-
-## SmartGestureShortcutOptions
-
-智慧手势响应行为配置对象。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY，表示组件在智慧手势的滑动，点击等操作中作为首选响应目标。<br/>默认值为GestureShortcut.PRIMARY。 |
-| enabled | boolean | 否 | 是 | 当前组件是否响应智慧手势。<br/>true表示组件响应智慧手势，false表示组件不响应智慧手势。<br/>默认值为false。 |
-| selectable | boolean | 否 | 是 | 组件被智慧手势操作选中后是否展示并保留选中态。<br/>true表示显示选中框，false表示不显示选中框。<br/>当enabled为true时，默认值为true；当enabled为false时，默认值为false。 |
