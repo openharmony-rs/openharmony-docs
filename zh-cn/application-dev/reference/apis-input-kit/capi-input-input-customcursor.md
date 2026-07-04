@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```c
-typedef struct Input_CustomCursor Input_CustomCursor;
+typedef struct Input_CustomCursor Input_CustomCursor
 ```
 
 ## 概述
