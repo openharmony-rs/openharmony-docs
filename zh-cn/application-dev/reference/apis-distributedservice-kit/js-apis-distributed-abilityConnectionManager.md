@@ -8,35 +8,58 @@
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息）。
 
-多端协同的完整流程如下图所示：
+多端协同的逻辑分层架构视图如下：
 
 ```mermaid
 sequenceDiagram
-    participant A as 设备A
-    participant B as 设备B
+    participant AppA as 设备A·应用层
+    participant FrameA as 设备A·分布式组件管理服务
+    participant Bus as 分布式通信层（软总线）
+    participant FrameB as 设备B·分布式组件管理服务
+    participant AppB as 设备B·应用层
 
-    Note over A,B: 1. 创建会话
-    A->>A: createAbilityConnectionSession()
-    A-->>A: 返回sessionId
+    Note over AppA,Bus: 1. 创建会话
+    AppA->>FrameA: createAbilityConnectionSession()
+    FrameA-->>AppA: 返回sessionId
 
-    Note over A,B: 2. 建立连接
-    A->>B: connect(sessionId)，拉起设备B应用
-    B->>B: onCollaborate生命周期回调
-    B->>B: createAbilityConnectionSession()
-    B-->>B: 返回sessionId
-    B->>A: acceptConnect(sessionId, token)
+    Note over AppA,AppB: 2. 建立连接（基于软总线秒级建连，自动拉起对端应用）
+    AppA->>FrameA: connect(sessionId)
+    FrameA->>Bus: 发起跨端连接
+    Bus->>FrameB: 建立会话通道，拉起设备B应用
+    FrameB->>AppB: onCollaborate生命周期回调
+    AppB->>FrameB: createAbilityConnectionSession()
+    AppB->>FrameB: acceptConnect(sessionId, token)
+    FrameB->>Bus: 接受连接
+    Bus-->>FrameA: 连接建立成功
+    FrameA-->>AppA: connect完成（connect事件回调）
 
-    Note over A,B: 3. 数据传输
-    A->>B: sendMessage / sendData
-    B->>A: sendMessage / sendData
+    Note over AppA,AppB: 3. 数据传输（基于sessionId点对点通信，更高效安全）
+    AppA->>FrameA: sendMessage / sendData
+    FrameA->>Bus: 传输数据
+    Bus->>FrameB: 转发数据
+    FrameB->>AppB: receiveMessage / receiveData 事件回调
+    AppB->>FrameB: sendMessage / sendData
+    FrameB->>Bus: 传输数据
+    Bus->>FrameA: 转发数据
+    FrameA->>AppA: receiveMessage / receiveData 事件回调
 
-    Note over A,B: 4. 断开连接
-    A->>A: disconnect(sessionId)
+    Note over AppA,AppB: 4. 断开连接
+    AppA->>FrameA: disconnect(sessionId)
+    FrameA->>Bus: 断开会话通道
+    Bus->>FrameB: 通知断连
+    FrameB->>AppB: disconnect 事件回调
 
-    Note over A,B: 5. 销毁会话
-    A->>A: destroyAbilityConnectionSession(sessionId)
-    B->>B: destroyAbilityConnectionSession(sessionId)
+    Note over AppA,AppB: 5. 销毁会话
+    AppA->>FrameA: destroyAbilityConnectionSession(sessionId)
+    AppB->>FrameB: destroyAbilityConnectionSession(sessionId)
 ```
+
+逻辑分层架构视图的关键原理说明如下：
+
+1. **应用适配协同接口**：应用通过abilityConnectionManager适配协同接口，基于软总线实现秒级快速建立连接和会话，并在connect时自动拉起对端应用。
+2. **基于会话ID的数据传输**：连接建立后，双端应用基于sessionId直接通过软总线通道进行数据传输（sendMessage/sendData），点对点通信效率更高、更加安全。
+3. **对等协同框架**：设备A与设备B运行对称的协同框架层，统一管理会话全生命周期（创建→连接→传输→断开→销毁），双端接口配对调用（connect与acceptConnect）保证连接可靠性。
+4. **事件驱动通信**：通过on/off注册机制监听连接状态（connect/disconnect）和数据接收（receiveMessage/receiveData）事件，实现异步解耦的协同通信。
 
 > **说明：**
 >
