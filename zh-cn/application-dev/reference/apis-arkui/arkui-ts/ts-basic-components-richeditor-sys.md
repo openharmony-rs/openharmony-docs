@@ -17,7 +17,7 @@
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[RichEditor](ts-basic-components-richeditor.md)。
 ## RichEditorBuilderSpanOptions<sup>11+</sup>
 
-添加builder的偏移位置和builder样式信息。
+设置builder的偏移位置和样式。
 
 **系统接口：** 此接口为系统接口。
 
@@ -25,12 +25,12 @@
 
 | 名称     | 类型     | 必填   | 说明                                    |
 | ------ | ------ | ---- | ------------------------------------- |
-| dragBackgroundColor<sup>18+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否    | 添加builder单独拖拽时的背板背景颜色。不配置或者异常值时，颜色按系统默认配置。  |
-| isDragShadowNeeded<sup>18+</sup> | boolean | 否    | 添加builder单独拖拽时是否需要投影。不配置或者异常值时，默认需要投影。true表示需要投影，false表示不需要投影。<br/>默认值： true |
+| dragBackgroundColor<sup>18+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 设置 BuilderSpan 单独拖拽时的背板颜色。未配置或传入无效颜色值时，按默认值处理。<br/>默认值：跟随系统主题拖拽背板色。  |
+| isDragShadowNeeded<sup>18+</sup> | boolean | 否    | 设置 BuilderSpan 单独拖拽时是否需要投影。true表示需要投影，false表示不需要投影。未配置或传入无效值时，按默认值处理。<br/>默认值：true。 |
 
 ## RichEditorGesture<sup>11+</sup>
 
-手势回调。
+用户手势事件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -38,7 +38,7 @@
 
 | 名称          | 类型         | 必填   | 说明            |
 | ----------- | ---------- | ---- | ------------- |
-| onDoubleClick<sup>14+</sup> | Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)\>  | 否    | [GestureEvent](ts-gesture-common.md#gestureevent对象说明)为用户双击事件。<br/>双击完成时回调事件。|
+| onDoubleClick<sup>14+</sup> | Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)\>  | 否    | 双击事件回调函数，在用户双击操作完成时触发。回调参数为[GestureEvent](ts-gesture-common.md#gestureevent对象说明)对象，包含手势事件信息。|
 
 ## RichEditorChangeValue<sup>12+</sup>
 
@@ -50,7 +50,7 @@
 
 | 名称 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| changeReason<sup>20+</sup> | [TextChangeReason](ts-text-common-sys.md#textchangereason20) | 否 | 组件内容变化的原因。 |
+| changeReason<sup>20+</sup> | [TextChangeReason](ts-text-common-sys.md#textchangereason20)  | 否 | 组件内容变化的原因，用于标识触发内容变化的操作类型（如用户输入、粘贴、剪切等），需通过注册onWillChange回调获取。开发者可根据changeReason的值在onWillChange回调中针对不同变化原因做出相应处理决策。字段缺省值为undefined。|
 
 ## 示例
 
@@ -61,8 +61,8 @@
 @Entry
 @Component
 struct RichEditorExample {
-  controller: RichEditorController = new RichEditorController()
-  options: RichEditorOptions = { controller: this.controller }
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
 
   build() {
     Column() {
@@ -71,8 +71,8 @@ struct RichEditorExample {
         .width('100%')
         .border({ width: 1, color: Color.Blue })
         .onWillChange((value: RichEditorChangeValue) => {
-          console.info('onWillChange, changeReason=' + value.changeReason)
-          return true
+          console.info('onWillChange, changeReason=' + value.changeReason);
+          return true; // 允许图文被更改
         })
     }
   }
@@ -88,40 +88,42 @@ import { ColorMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct richEditorNew03 {
+struct RichEditorDragConfigExample {
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller }
+  options: RichEditorOptions = { controller: this.controller };
   build() {
     Column({ space: 10 }) {
       Column() {
         RichEditor(this.options)
           .onReady(() => {
+            // 添加自定义布局Span，设置RGBA颜色拖拽背板且禁用拖拽投影
             this.controller.addBuilderSpan(() => {
               this.placeholderBuilder()
             }, {
               offset: -1,
-              dragBackgroundColor: ColorMetrics.rgba(0xff, 0x80, 0, 0xff),
-              isDragShadowNeeded: false
+              dragBackgroundColor: ColorMetrics.rgba(0xff, 0x80, 0, 0xff), // 设置拖拽背板为橙色
+              isDragShadowNeeded: false // 禁用拖拽投影
             })
+            // 添加自定义布局Span，设置拖拽背板且启用拖拽投影
             this.controller.addBuilderSpan(() => {
               this.placeholderBuilder()
             }, {
               offset: -1,
-              dragBackgroundColor: ColorMetrics.resourceColor("#ffff0000")
-                .blendColor(ColorMetrics.resourceColor("#ff00ff00")),
-              isDragShadowNeeded: true
+              dragBackgroundColor: ColorMetrics.resourceColor('#ffff0000')
+                .blendColor(ColorMetrics.resourceColor('#ff00ff00')), // 设置基础拖拽背板颜色为红色，叠加混合色为绿色
+              isDragShadowNeeded: true // 启用拖拽投影
             })
             this.controller.addBuilderSpan(() => {
               this.placeholderBuilder()
             }, { offset: -1 })
           })
           .borderWidth(1)
-          .width("100%")
-          .height("50%")
+          .width('100%')
+          .height('50%')
           .margin(50)
       }
       .width('100%')
-      .margin({top:100})
+      .margin({ top:100 })
     }
   }
 
@@ -135,4 +137,4 @@ struct richEditorNew03 {
   }
 }
 ```
-![StyledString](figures/builderspan_drag_config.gif)
+![builderspan_drag_config](figures/builderspan_drag_config.gif)

@@ -39,19 +39,20 @@
 | [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) | OH_ArkUI_DecorationStyle | 定义文本装饰线样式。 <br> 可以通过[OH_ArkUI_DecorationStyle_Create](capi-styled-string-h.md#oh_arkui_decorationstyle_create)接口创建对应的文本装饰线样式对象。 <br> 可以通过[OH_ArkUI_DecorationStyle_Destroy](capi-styled-string-h.md#oh_arkui_decorationstyle_destroy)接口销毁文本装饰线样式对象。 <br> 对象创建后通过OH_ArkUI_DecorationStyle_SetXXX系列接口设置生效的具体样式，例如通过[OH_ArkUI_DecorationStyle_SetTextDecorationType](capi-styled-string-h.md#oh_arkui_decorationstyle_settextdecorationtype)设置装饰线类型。 |
 | [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md) | OH_ArkUI_BaselineOffsetStyle | 定义基线偏移量样式。 <br> 可以通过[OH_ArkUI_BaselineOffsetStyle_Create](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_create)接口创建对应的基线偏移量样式对象。 <br> 可以通过[OH_ArkUI_BaselineOffsetStyle_Destroy](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_destroy)接口销毁基线偏移量样式对象。 <br> 对象创建后通过[OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_setbaselineoffset)接口设置具体的基线偏移量值。 |
 | [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md) | OH_ArkUI_LetterSpacingStyle | 定义字符间距样式。 <br> 可以通过[OH_ArkUI_LetterSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_letterspacingstyle_create)接口创建对应的字符间距样式对象。 <br> 可以通过[OH_ArkUI_LetterSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_letterspacingstyle_destroy)接口销毁字符间距样式对象。 <br> 对象创建后通过[OH_ArkUI_LetterSpacingStyle_SetLetterSpacing](capi-styled-string-h.md#oh_arkui_letterspacingstyle_setletterspacing)接口设置具体的字符间距值。 |
-| [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md) | OH_ArkUI_LineHeightStyle | 定义行高样式。 <br> 可以通过[OH_ArkUI_LineHeightStyle_Create](capi-styled-string-h.md#oh_arkui_lineheightstyle_create)接口创建对应的行高样式对象。 <br> 可以通过[OH_ArkUI_LineHeightStyle_Destroy](capi-styled-string-h.md#oh_arkui_lineheightstyle_destroy)接口销毁行高样式对象。 <br> 对象创建后可以通过[OH_ArkUI_LineHeightStyle_SetLineHeight](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheight)接口设置具体的固定行高值。<br>        从API版本26.0.0开始，对象创建后可以通过[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)接口设置具体的行高的倍数值。 |
-| [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) | OH_ArkUI_LineSpacingStyle | 定义行间距样式。 <br>        可以通过[OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create)接口创建对应的行间距样式对象，通过[OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy)接口销毁行间距样式对象。 <br>        对象创建后可以通过[OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing)接口设置具体的行间距值，通过[OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines)接口设置行间距是否只在行间生效。 |
+| [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md) | OH_ArkUI_LineHeightStyle | 定义行高样式。 <br> 可以通过[OH_ArkUI_LineHeightStyle_Create](capi-styled-string-h.md#oh_arkui_lineheightstyle_create)接口创建对应的行高样式对象。 <br> 可以通过[OH_ArkUI_LineHeightStyle_Destroy](capi-styled-string-h.md#oh_arkui_lineheightstyle_destroy)接口销毁行高样式对象。 <br> 对象创建后可以通过[OH_ArkUI_LineHeightStyle_SetLineHeight](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheight)接口设置具体的固定行高值。<br> 从API版本26.0.0开始，[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)接口设置具体的行高倍数值。 |
+| [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) | OH_ArkUI_LineSpacingStyle | 定义行间距样式。 <br> 可以通过[OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create)接口创建对应的行间距样式对象。 <br> 可以通过[OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy)接口销毁行间距样式对象。 <br> 对象创建后可以通过[OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing)接口设置具体的行间距值。<br> 可以通过[OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines)接口设置行间距是否只在行间生效。 |
 | [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) | OH_ArkUI_UrlStyle | 定义超链接样式。 <br> 可以通过[OH_ArkUI_UrlStyle_Create](capi-styled-string-h.md#oh_arkui_urlstyle_create)接口创建对应的超链接样式对象。 <br> 可以通过[OH_ArkUI_UrlStyle_Destroy](capi-styled-string-h.md#oh_arkui_urlstyle_destroy)接口销毁超链接样式对象。 <br> 对象创建后通过[OH_ArkUI_UrlStyle_SetUrl](capi-styled-string-h.md#oh_arkui_urlstyle_seturl)接口设置链接地址。 |
 | [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) | OH_ArkUI_BackgroundColorStyle | 定义背景颜色样式。 <br> 可以通过[OH_ArkUI_BackgroundColorStyle_Create](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_create)接口创建对应的背景颜色样式对象。 <br> 可以通过[OH_ArkUI_BackgroundColorStyle_Destroy](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_destroy)接口销毁背景颜色样式对象。 <br> 对象创建后通过[OH_ArkUI_BackgroundColorStyle_SetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setcolor)和[OH_ArkUI_BackgroundColorStyle_SetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setradius)接口设置背景颜色和圆角。 |
 | [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md) | OH_ArkUI_UserDataSpan | 定义用户数据Span样式。 <br> 可以通过[OH_ArkUI_UserDataSpan_Create](capi-styled-string-h.md#oh_arkui_userdataspan_create)接口创建对应的用户数据Span样式对象。 <br> 可以通过[OH_ArkUI_UserDataSpan_Destroy](capi-styled-string-h.md#oh_arkui_userdataspan_destroy)接口销毁用户数据Span样式对象。 <br> 对象创建后通过[OH_ArkUI_UserDataSpan_SetUserData](capi-styled-string-h.md#oh_arkui_userdataspan_setuserdata)接口绑定用户数据。 |
 | [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md) | OH_ArkUI_LeadingMarginSpanDrawInfo | 定义段落缩进的自定义绘制信息。 <br> 可以通过[OH_ArkUI_LeadingMarginSpanDrawInfo_Create](capi-styled-string-h.md#oh_arkui_leadingmarginspandrawinfo_create)接口创建对应的段落缩进的自定义绘制信息对象。 <br> 可以通过[OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy](capi-styled-string-h.md#oh_arkui_leadingmarginspandrawinfo_destroy)接口销毁段落缩进的自定义绘制信息对象。 <br> 对象用于在[OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback](capi-styled-string-h.md#oh_arkui_paragraphstyle_registerondrawleadingmargincallback)注册的回调函数中，提供当前行的绘制上下文信息。 |
 | [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md) | ArkUI_TextLayoutManager | 定义文本布局管理器对象。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义属性字符串数据对象。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey) | OH_ArkUI_StyledStringKey | 属性字符串的属性类型枚举。 |
+| [OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey) | OH_ArkUI_StyledStringKey | 属性字符串的样式类型枚举。 |
 | [OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle) | OH_ArkUI_SuperscriptStyle | 定义文本上下角标样式枚举。 |
 
 ### 函数
@@ -59,14 +60,14 @@
 | 名称 | 描述 |
 | -- | -- |
 | [ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)](#oh_arkui_styledstring_create) | 创建指向ArkUI_StyledString对象的指针。 |
-| [void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)](#oh_arkui_styledstring_destroy) | 释放被ArkUI_StyledString对象占据的内存。 |
+| [void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)](#oh_arkui_styledstring_destroy) | 释放ArkUI_StyledString对象占用的内存。 |
 | [void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)](#oh_arkui_styledstring_pushtextstyle) | 将新的排版风格设置到当前格式化字符串样式栈顶。 |
 | [void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)](#oh_arkui_styledstring_addtext) | 基于当前格式化字符串样式设置对应的文本内容。 |
 | [void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)](#oh_arkui_styledstring_poptextstyle) | 将当前格式化字符串对象中栈顶样式出栈。 |
-| [OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)](#oh_arkui_styledstring_createtypography) | 基于格式字符串对象创建指向[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的指针，用于提前进行文本测算排版。[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的生命周期由应用管理，当应用销毁该对象时，应同步调用[NODE_TEXT_CONTENT_WITH_STYLED_STRING](./capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)对应的reset方法进行置空，避免野指针崩溃风险。 |
-| [void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)](#oh_arkui_styledstring_addplaceholder) | 设置占位符。 |
+| [OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)](#oh_arkui_styledstring_createtypography) | 基于格式化字符串对象创建指向[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的指针，用于提前进行文本测算排版。[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的生命周期由应用管理，当应用销毁该对象时，应同步调用[NODE_TEXT_CONTENT_WITH_STYLED_STRING](./capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)对应的reset方法进行置空，避免野指针崩溃风险。 |
+| [void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)](#oh_arkui_styledstring_addplaceholder) | 向格式化字符串中添加占位符。 |
 | [ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)](#oh_arkui_styledstring_descriptor_create) | 创建属性字符串数据对象。 |
-| [void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_styledstring_descriptor_destroy) | 释放被[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象占据的内存。 |
+| [void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_styledstring_descriptor_destroy) | 释放[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象占用的内存。 |
 | [int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_unmarshallstyledstringdescriptor) | 将包含属性字符串信息的字节数组反序列化为属性字符串。 |
 | [int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)](#oh_arkui_marshallstyledstringdescriptor) | 将属性字符串信息序列化为字节数组。 |
 | [const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_converttohtml) | 将属性字符串信息转换成HTML。 |
@@ -84,7 +85,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length)](#oh_arkui_styledstring_descriptor_removestring) | 移除属性字符串指定范围的文本。 |
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)](#oh_arkui_styledstring_descriptor_replacestyle) | 替换属性字符串指定范围内的样式。 |
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)](#oh_arkui_styledstring_descriptor_setstyle) | 为属性字符串指定范围设置新样式。 |
-| [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey)](#oh_arkui_styledstring_descriptor_removestyle) | 清除属性字符串指定范围内容的指定类型样式。 |
+| [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey)](#oh_arkui_styledstring_descriptor_removestyle) | 清除属性字符串指定范围内的指定类型样式。 |
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ClearStyles(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_styledstring_descriptor_clearstyles) | 清除属性字符串对象的所有样式。 |
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, const ArkUI_StyledString_Descriptor* other)](#oh_arkui_styledstring_descriptor_replacestyledstring) | 替换指定范围的属性字符串。 |
 | [ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InsertStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, const ArkUI_StyledString_Descriptor* other)](#oh_arkui_styledstring_descriptor_insertstyledstring) | 在属性字符串的指定位置插入新的属性字符串。 |
@@ -181,15 +182,15 @@
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetParagraphSpacing(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* paragraphSpacing)](#oh_arkui_paragraphstyle_getparagraphspacing) | 获取段落样式中的段落间距。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextVerticalAlign(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment verticalAlignment)](#oh_arkui_paragraphstyle_settextverticalalign) | 设置段落样式中的垂直方向的文本对齐方式。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextVerticalAlign(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment* verticalAlignment)](#oh_arkui_paragraphstyle_gettextverticalalign) | 获取段落样式中的垂直方向的文本对齐方式。 |
-| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, void(\*onDraw)(ArkUI_DrawContext* context, OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo))](#oh_arkui_paragraphstyle_registerondrawleadingmargincallback) | 设置段落样式中绘制段落缩进时触发的回调函数。 |
-| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnGetLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, float(\*leadingMargin)())](#oh_arkui_paragraphstyle_registerongetleadingmargincallback) | 设置段落样式中获取段落缩进距离时触发的回调函数。 |
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, void(\*onDraw)(ArkUI_DrawContext* context, OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo))](#oh_arkui_paragraphstyle_registerondrawleadingmargincallback) | 注册段落样式中绘制段落缩进时触发的回调函数。 |
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnGetLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, float(\*leadingMargin)())](#oh_arkui_paragraphstyle_registerongetleadingmargincallback) | 注册段落样式中获取段落缩进距离时触发的回调函数。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextDirection(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection textDirection)](#oh_arkui_paragraphstyle_settextdirection) | 设置段落样式中的文本方向。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextDirection(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection* textDirection)](#oh_arkui_paragraphstyle_gettextdirection) | 获取段落样式中的文本方向。 |
 | [OH_ArkUI_GestureStyle* OH_ArkUI_GestureStyle_Create()](#oh_arkui_gesturestyle_create) | 创建[OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)对象。 |
 | [void OH_ArkUI_GestureStyle_Destroy(OH_ArkUI_GestureStyle* gestureStyle)](#oh_arkui_gesturestyle_destroy) | 释放[OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)对象占用的内存。 |
-| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onClick)(ArkUI_NodeEvent*))](#oh_arkui_gesturestyle_registeronclickcallback) | 设置事件手势样式中的点击事件回调。 |
-| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onLongPress)(ArkUI_GestureEvent*))](#oh_arkui_gesturestyle_registeronlongpresscallback) | 设置事件手势样式中的长按事件回调。 |
-| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onTouch)(ArkUI_NodeEvent*))](#oh_arkui_gesturestyle_registerontouchcallback) | 设置事件手势样式中的触摸事件回调。 |
+| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onClick)(ArkUI_NodeEvent*))](#oh_arkui_gesturestyle_registeronclickcallback) | 注册事件手势样式中的点击事件回调。 |
+| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onLongPress)(ArkUI_GestureEvent*))](#oh_arkui_gesturestyle_registeronlongpresscallback) | 注册事件手势样式中的长按事件回调。 |
+| [ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureStyle* gestureStyle, void(\*onTouch)(ArkUI_NodeEvent*))](#oh_arkui_gesturestyle_registerontouchcallback) | 注册事件手势样式中的触摸事件回调。 |
 | [OH_ArkUI_TextShadowStyle* OH_ArkUI_TextShadowStyle_Create()](#oh_arkui_textshadowstyle_create) | 创建[OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md)对象。 |
 | [void OH_ArkUI_TextShadowStyle_Destroy(OH_ArkUI_TextShadowStyle* textShadowStyle)](#oh_arkui_textshadowstyle_destroy) | 释放[OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md)对象占用的内存。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_SetTextShadow(OH_ArkUI_TextShadowStyle* textShadowStyle, const OH_ArkUI_ShadowOptions** options, uint32_t length)](#oh_arkui_textshadowstyle_settextshadow) | 设置文本阴影样式的文本阴影选项。 |
@@ -244,7 +245,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_UserDataSpan_GetUserData(const OH_ArkUI_UserDataSpan* userDataSpan, void** userData)](#oh_arkui_userdataspan_getuserdata) | 获取用户数据Span样式中的用户数据。 |
 | [OH_ArkUI_CustomSpan* OH_ArkUI_CustomSpan_Create()](#oh_arkui_customspan_create) | 创建[OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)对象。 |
 | [void OH_ArkUI_CustomSpan_Destroy(OH_ArkUI_CustomSpan* customSpan)](#oh_arkui_customspan_destroy) | 释放[OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)对象占用的内存。 |
-| [ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpan* customSpan, ArkUI_CustomSpanMetrics*(\*onMeasure)(float))](#oh_arkui_customspan_registeronmeasurecallback) | 设置自定义绘制Span获取尺寸大小时的回调函数。 |
+| [ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpan* customSpan, ArkUI_CustomSpanMetrics*(\*onMeasure)(float))](#oh_arkui_customspan_registeronmeasurecallback) | 注册自定义绘制Span获取尺寸大小时的回调函数。 |
 | [ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnDrawCallback(OH_ArkUI_CustomSpan* customSpan, void(\*onDraw)(ArkUI_DrawContext*, ArkUI_CustomSpanDrawInfo*))](#oh_arkui_customspan_registerondrawcallback) | 注册自定义绘制Span绘制时的回调函数。 |
 | [OH_ArkUI_ImageAttachment* OH_ArkUI_ImageAttachment_Create()](#oh_arkui_imageattachment_create) | 创建[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象。 |
 | [void OH_ArkUI_ImageAttachment_Destroy(OH_ArkUI_ImageAttachment* imageAttachment)](#oh_arkui_imageattachment_destroy) | 释放[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象占用的内存。 |
@@ -272,12 +273,12 @@
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetDrawingColorFilter(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_ColorFilter* drawingColorFilter)](#oh_arkui_imageattachment_getdrawingcolorfilter) | 获取图片样式中的图片颜色滤镜。 |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSyncLoad(OH_ArkUI_ImageAttachment* imageAttachment, bool syncLoad)](#oh_arkui_imageattachment_setsyncload) | 设置图片样式中是否同步加载图片。 |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSyncLoad(const OH_ArkUI_ImageAttachment* imageAttachment, bool* syncLoad)](#oh_arkui_imageattachment_getsyncload) | 获取图片样式中是否同步加载图片。 |
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)](#oh_arkui_imageattachment_setsupportsvg) | 设置图片样式中是否开启SVG标签解析能力增强功能。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)](#oh_arkui_imageattachment_setsupportsvg) | 设置图片样式中是否开启SVG标签解析能力增强功能，开启后支持解析扩展SVG标签及属性。 |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSupportSvg(const OH_ArkUI_ImageAttachment* imageAttachment, bool* supportSvg)](#oh_arkui_imageattachment_getsupportsvg) | 获取图片样式中是否开启SVG标签解析能力增强功能。 |
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorchangeevent_getrangebefore) | 获取文本变化信息中的待替换内容的范围。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorchangeevent_getrangebefore) | 获取文本变化信息中待被替换的原文本的范围。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetReplacementStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getreplacementstyledstring) | 获取文本变化信息中的用于替换的属性字符串。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetPreviewStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getpreviewstyledstring) | 获取文本变化信息中的预览内容属性字符串。 |
-| [void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)](#oh_arkui_textlayoutmanager_dispose) | 释放被文本布局管理器对象占据的内存。 |
+| [void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)](#oh_arkui_textlayoutmanager_dispose) | 释放文本布局管理器对象占用的内存。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager* layoutManager, int32_t* outLineCount)](#oh_arkui_textlayoutmanager_getlinecount) | 获取文本行数。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutManager* layoutManager, int32_t start, int32_t end, OH_Drawing_RectWidthStyle widthStyle, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_TextBox** outTextBoxes)](#oh_arkui_textlayoutmanager_getrectsforrange) | 获取给定的矩形区域宽度样式以及高度样式的规格下，文本中任意区间范围内的字符或占位符所占的绘制区域信息。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)](#oh_arkui_textlayoutmanager_getglyphpositionatcoordinate) | 获取距离给定坐标最近的字形的位置信息。 |
@@ -309,14 +310,14 @@ enum OH_ArkUI_StyledStringKey
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | 未指定样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式，适用于需要自定义字体颜色、大小、粗细等字体属性的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式，适用于需要为文本添加下划线、删除线等装饰线的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式，适用于需要微调文本垂直位置的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式，适用于需要调整字符之间间距的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式，适用于需要为文本添加阴影效果的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式，适用于需要调整文本行高的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式，适用于需要为文本区域添加背景色高亮的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式，适用于需要为文本添加可点击超链接的场景。 |
 | OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | 文本行间距样式。**起始版本：** 26.0.0 |
 | OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | 事件手势样式。 |
 | OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | 文本段落样式。 |
@@ -338,9 +339,9 @@ enum OH_ArkUI_SuperscriptStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | 普通文本样式。 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT = 1 | 上标文本样式。 |
-| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT = 2 | 下标文本样式。 |
+| OH_ARKUI_SUPERSCRIPTSTYLE_NORMAL = 0 | 普通文本样式，适用于不需要上下标效果的常规文本场景。 |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUPERSCRIPT = 1 | 上标文本样式，适用于数学公式中的指数表示（如x²）或脚注引用标记等场景。 |
+| OH_ARKUI_SUPERSCRIPTSTYLE_SUBSCRIPT = 2 | 下标文本样式，适用于化学式中的元素下标表示（如H₂O）或数学变量下标等场景。 |
 
 ## 函数说明
 
@@ -350,9 +351,13 @@ enum OH_ArkUI_SuperscriptStyle
 ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)
 ```
 
-**描述：**
+**描述**
 
 创建指向ArkUI_StyledString对象的指针。
+
+>**说明：**
+>
+>当该对象不再使用时，调用[OH_ArkUI_StyledString_Destroy](#oh_arkui_styledstring_destroy)销毁它。
 
 **起始版本：** 12
 
@@ -367,7 +372,7 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 
 | 类型                      | 说明 |
 |-------------------------| -- |
-| [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)* | 创建指向ArkUI_StyledString对象的指针。如果对象返回空指针，表示创建失败，失败的原因是地址空间已满，或者是style，collection参数异常如空指针。 |
+| [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)* | 创建指向ArkUI_StyledString对象的指针。如果返回空指针，表示创建失败，可能原因包括地址空间已满或参数异常（如style、collection为空指针）。 |
 
 ### OH_ArkUI_StyledString_Destroy()
 
@@ -375,9 +380,9 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 ```
 
-**描述：**
+**描述**
 
-释放被ArkUI_StyledString对象占据的内存。
+释放ArkUI_StyledString对象占用的内存。
 
 **起始版本：** 12
 
@@ -393,9 +398,13 @@ void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)
 ```
 
-**描述：**
+**描述**
 
 将新的排版风格设置到当前格式化字符串样式栈顶。
+
+>**说明：**
+>
+>调用此方法压入的样式，必须在使用完毕后调用[OH_ArkUI_StyledString_PopTextStyle](#oh_arkui_styledstring_poptextstyle)将其出栈。未出栈的样式会持续影响后续添加的文本排版。典型使用流程：PushTextStyle → AddText → PopTextStyle。
 
 **起始版本：** 12
 
@@ -404,7 +413,7 @@ void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)* handle | 指向ArkUI_StyledString对象的指针。 |
-| [OH_Drawing_TextStyle](../apis-arkgraphics2d/capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针。 |
+| [OH_Drawing_TextStyle](../apis-arkgraphics2d/capi-drawing-oh-drawing-textstyle.md)* style | 指向[OH_Drawing_TextStyle](../apis-arkgraphics2d/capi-drawing-oh-drawing-textstyle.md)对象的指针，由[OH_Drawing_CreateTextStyle](../apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)创建获取。 |
 
 ### OH_ArkUI_StyledString_AddText()
 
@@ -412,9 +421,9 @@ void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_
 void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)
 ```
 
-**描述：**
+**描述**
 
-基于当前格式化字符串样式设置对应的文本内容。
+基于当前格式化字符串样式设置对应的文本内容。所添加的文本将使用当前栈顶的排版样式，该样式由[OH_ArkUI_StyledString_PushTextStyle](#oh_arkui_styledstring_pushtextstyle)压入。当栈顶样式通过[OH_ArkUI_StyledString_PopTextStyle](#oh_arkui_styledstring_poptextstyle)出栈后，后续添加的文本将使用新的栈顶样式。
 
 **起始版本：** 12
 
@@ -431,9 +440,13 @@ void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* conte
 void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 ```
 
-**描述：**
+**描述**
 
 将当前格式化字符串对象中栈顶样式出栈。
+
+>**说明：**
+>
+>此方法必须在[OH_ArkUI_StyledString_PushTextStyle](#oh_arkui_styledstring_pushtextstyle)之后调用，用于将之前压入的样式从栈中移除。对空栈调用此方法不产生效果。
 
 **起始版本：** 12
 
@@ -449,9 +462,13 @@ void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)
 ```
 
-**描述：**
+**描述**
 
-基于格式字符串对象创建指向[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的指针，用于提前进行文本测算排版。[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的生命周期由应用管理，当应用销毁该对象时，应同步调用[NODE_TEXT_CONTENT_WITH_STYLED_STRING](./capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)对应的reset方法进行置空，避免野指针崩溃风险。
+基于格式化字符串对象创建指向[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的指针，用于提前进行文本测算排版。
+
+>**说明：**
+>
+>[OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)对象的生命周期由应用管理。当应用销毁该对象时，应同步调用[NODE_TEXT_CONTENT_WITH_STYLED_STRING](./capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)对应的reset方法进行置空，避免野指针崩溃风险。
 
 **起始版本：** 12
 
@@ -465,7 +482,7 @@ OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString
 
 | 类型                         | 说明 |
 |----------------------------| -- |
-| [OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)* | 指向OH_Drawing_Typography对象的指针。如果对象返回空指针，表示创建失败，失败的原因可能是handle参数异常如空指针。 |
+| [OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md)* | 指向OH_Drawing_Typography对象的指针。如果对象返回空指针，表示创建失败，失败的原因是handle参数为空指针。 |
 
 ### OH_ArkUI_StyledString_AddPlaceholder()
 
@@ -473,9 +490,9 @@ OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString
 void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)
 ```
 
-**描述：**
+**描述**
 
-设置占位符。
+设置占位符，用于在格式化字符串中预留指定宽高的空白区域或嵌入自定义内容。其尺寸等信息由[OH_Drawing_PlaceholderSpan](../apis-arkgraphics2d/capi-drawing-oh-drawing-placeholderspan.md)指定。
 
 **起始版本：** 12
 
@@ -492,9 +509,13 @@ void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing
 ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 ```
 
-**描述：**
+**描述**
 
 创建属性字符串数据对象。
+
+>**说明：**
+>
+>当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy)销毁它。
 
 **起始版本：** 14
 
@@ -502,7 +523,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 
 | 类型                                 | 说明 |
 |------------------------------------| -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向ArkUI_StyledString_Descriptor对象的指针。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 
 ### OH_ArkUI_StyledString_Descriptor_Destroy()
 
@@ -510,9 +531,9 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)
 ```
 
-**描述：**
+**描述**
 
-释放被ArkUI_StyledString_Descriptor对象占据的内存。
+释放ArkUI_StyledString_Descriptor对象占用的内存。
 
 **起始版本：** 14
 
@@ -528,7 +549,7 @@ void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* des
 int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)
 ```
 
-**描述：**
+**描述**
 
 将包含属性字符串信息的字节数组反序列化为属性字符串。
 
@@ -546,7 +567,7 @@ int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t buffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，可能原因包括传入参数为空指针或参数值不在有效范围内，请检查参数是否有效。 |
 
 ### OH_ArkUI_MarshallStyledStringDescriptor()
 
@@ -554,7 +575,7 @@ int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t buffer
 int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)
 ```
 
-**描述：**
+**描述**
 
 将属性字符串信息序列化为字节数组。
 
@@ -573,7 +594,7 @@ int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效。 |
+| int32_t | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，可能原因包括传入参数为空指针或参数值不在有效范围内，请检查参数是否有效。<br>        [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效，可能原因包括属性字符串对象已被销毁或未正确创建，请确保使用有效的属性字符串对象。 |
 
 ### OH_ArkUI_ConvertToHtml()
 
@@ -581,9 +602,9 @@ int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSi
 const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 ```
 
-**描述：**
+**描述**
 
-将属性字符串信息转化成html。
+将属性字符串信息转换成HTML。
 
 **起始版本：** 14
 
@@ -597,7 +618,7 @@ const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | html。该指针由内部管理，在[OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy)时释放。 |
+| const char* | HTML。该指针由内部管理，在[OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy)时释放。 |
 
 ### OH_ArkUI_StyledString_Descriptor_CreateWithString()
 
@@ -611,7 +632,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithString
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](#oh_arkui_styledstring_descriptor_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -619,15 +640,15 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithString
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* value | 属性字符串文本内容字符串。 |
-| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)** styles | 属性字符串初始化选项，指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象数组的指针。 |
-| int32_t length | 属性字符串初始化选项的长度。 |
+| const char* value | 属性字符串的纯文本内容。 |
+| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)** styles | 属性字符串的样式集合，指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象数组的指针。数组中每个OH_ArkUI_SpanStyle对象需先调用[OH_ArkUI_SpanStyle_SetStart](capi-styled-string-h.md#oh_arkui_spanstyle_setstart)和[OH_ArkUI_SpanStyle_SetLength](capi-styled-string-h.md#oh_arkui_spanstyle_setlength)设置样式作用的范围。 |
+| int32_t length | 样式对象数组的数量。取值范围[0, +∞)，需与传入的styles指针所指向的数组实际长度一致。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因可能是传入参数异常。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因是传入参数为空指针或参数值无效。 |
 
 ### OH_ArkUI_StyledString_Descriptor_CreateWithImageAttachment()
 
@@ -641,7 +662,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithImageA
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](#oh_arkui_styledstring_descriptor_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -655,7 +676,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithImageA
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因可能是传入参数异常。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因是传入参数为空指针或参数值无效。 |
 
 ### OH_ArkUI_StyledString_Descriptor_CreateWithCustomSpan()
 
@@ -669,7 +690,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithCustom
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_StyledString_Descriptor_Destroy](#oh_arkui_styledstring_descriptor_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -683,7 +704,7 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithCustom
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因可能是传入参数异常。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* | 指向创建的[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 <br>         如果结果为空指针，表示创建失败，失败的原因是传入参数为空指针或参数值无效。 |
 
 ### OH_ArkUI_StyledString_Descriptor_GetLength()
 
@@ -702,13 +723,13 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetLength(const ArkUI_StyledStr
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
-| int32_t* length | 字符长度。 |
+| int32_t* length | 输出参数，用于接收属性字符串的字符长度结果。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，可能原因包括descriptor为空指针或length为空指针，请检查参数是否有效。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效，可能原因包括属性字符串对象已被销毁或未正确创建，请确保使用有效的属性字符串对象。 |
 
 ### OH_ArkUI_StyledString_Descriptor_GetString()
 
@@ -735,7 +756,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetString(const ArkUI_StyledStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常，可能原因包括descriptor为空指针、buffer为空指针或writeLength为空指针，请检查参数是否有效。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-native-type-h.md#arkui_errorcode) 属性字符串无效，可能原因包括属性字符串对象已被销毁或未正确创建，请确保使用有效的属性字符串对象。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 缓冲区大小不足，当提供的bufferSize小于实际需要写入的数据长度时返回此错误码。处理步骤：通过writeLength参数获取所需最小缓冲区大小，重新分配足够大小的缓冲区后再次调用。 |
 
 ### OH_ArkUI_StyledString_Descriptor_IsEqual()
 
@@ -781,7 +802,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SubStyledString(const ArkUI_Sty
 | -- | -- |
 | const [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* subDescriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)子属性字符串对象的指针。 |
-| uint32_t start | 子属性字符串的起始位置。取值范围[0, 属性字符串的字符长度]。 |
+| uint32_t start | 子属性字符串的起始位置。取值范围[0, 属性字符串的字符长度]，超出范围时返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 | uint32_t length | 子属性字符串的字符长度。取值范围[0, 属性字符串的字符长度与参数start的差值]。 |
 
 **返回：**
@@ -818,7 +839,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetStyles(const ArkUI_StyledStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效。 |
 
 ### OH_ArkUI_StyledString_Descriptor_FromHtml()
 
@@ -837,7 +858,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_FromHtml(ArkUI_StyledString_Des
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
-| const char* html | 待转换为属性字符串的HTML格式字符串。 |
+| const char* html | 待转换为属性字符串的HTML格式字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>。 |
 
 **返回：**
 
@@ -932,7 +953,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString
 
 **描述**
 
-替换属性字符串指定范围内的样式。
+替换属性字符串指定范围内的样式。与[OH_ArkUI_StyledString_Descriptor_SetStyle](#oh_arkui_styledstring_descriptor_setstyle)的区别：ReplaceStyle会覆盖指定范围内已有的样式进行替换；SetStyle为指定范围设置样式，不覆盖已有样式。建议需要完全替换已有样式时使用ReplaceStyle，需要叠加设置样式时使用SetStyle。
 
 **起始版本：** 24
 
@@ -941,7 +962,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
-| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 <br>                  需先调用[OH_ArkUI_SpanStyle_SetStart](capi-styled-string-h.md#oh_arkui_spanstyle_setstart)和[OH_ArkUI_SpanStyle_SetLength](capi-styled-string-h.md#oh_arkui_spanstyle_setlength)在该对象中设置目标范围。 |
+| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 <br>                  需先调用[OH_ArkUI_SpanStyle_SetStart](#oh_arkui_spanstyle_setstart)和[OH_ArkUI_SpanStyle_SetLength](#oh_arkui_spanstyle_setlength)在该对象中设置目标范围。 |
 
 **返回：**
 
@@ -957,7 +978,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Des
 
 **描述**
 
-为属性字符串指定范围设置新样式。
+为属性字符串指定范围设置新样式。与[OH_ArkUI_StyledString_Descriptor_ReplaceStyle](#oh_arkui_styledstring_descriptor_replacestyle)的区别：SetStyle为指定范围设置样式，不覆盖已有样式，适用于叠加设置样式的场景；ReplaceStyle会覆盖指定范围内已有的样式进行替换，适用于完全替换已有样式的场景。
 
 **起始版本：** 24
 
@@ -966,7 +987,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Des
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
-| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。需先调用[OH_ArkUI_SpanStyle_SetStart](capi-styled-string-h.md#oh_arkui_spanstyle_setstart)和[OH_ArkUI_SpanStyle_SetLength](capi-styled-string-h.md#oh_arkui_spanstyle_setlength)在该对象中设置目标范围。 |
+| const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。需先调用[OH_ArkUI_SpanStyle_SetStart](#oh_arkui_spanstyle_setstart)和[OH_ArkUI_SpanStyle_SetLength](#oh_arkui_spanstyle_setlength)在该对象中设置目标范围。 |
 
 **返回：**
 
@@ -982,11 +1003,11 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_
 
 **描述**
 
-清除属性字符串指定范围内容的指定类型样式。
+清除属性字符串指定范围内的指定类型样式。
 
 >**说明：**
 >
->被清除后属性样式取对应TextEditor组件对应属性的默认值。
+>被清除后属性样式取TextEditor组件对应类型属性的默认值（如清除TextStyle后取TextEditor的字体默认样式）。
 
 **起始版本：** 24
 
@@ -997,7 +1018,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
 | uint32_t start | 指定范围的起始位置。取值范围[0, 属性字符串的字符长度]。 |
 | uint32_t length | 指定范围的长度。取值范围[0, 属性字符串的字符长度与参数start的差值]。 |
-| [OH_ArkUI_StyledStringKey](capi-styled-string-h.md#oh_arkui_styledstringkey) styledKey | 样式类型枚举值，取值为[OH_ArkUI_StyledStringKey](capi-styled-string-h.md#oh_arkui_styledstringkey)中的枚举。 |
+| [OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey) styledKey | 样式类型枚举值，取值为[OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey)中的枚举。 |
 
 **返回：**
 
@@ -1017,7 +1038,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ClearStyles(ArkUI_StyledString_
 
 >**说明：**
 >
->被清除后属性样式取对应TextEditor组件对应属性的默认值。
+>被清除后属性样式取TextEditor组件对应类型属性的默认值（如清除TextStyle后取TextEditor的字体默认样式）。
 
 **起始版本：** 24
 
@@ -1279,7 +1300,7 @@ ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontFamily(const OH_ArkUI_TextStyle* textS
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足，当提供的bufferSize小于实际需要写入的数据长度时返回此错误码。处理步骤：通过writeLength参数获取所需最小缓冲区大小，重新分配足够大小的缓冲区后再次调用。 |
 
 ### OH_ArkUI_TextStyle_SetFontSize()
 
@@ -1298,7 +1319,7 @@ ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontSize(OH_ArkUI_TextStyle* textStyle, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | 指向[OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)对象的指针。 |
-| float fontSize | 字体大小，单位为vp。 |
+| float fontSize | 字体大小，单位为vp。取值范围[0, +∞)。传入负数时使用默认字体大小。默认值为16vp |
 
 **返回：**
 
@@ -1448,7 +1469,7 @@ ArkUI_ErrorCode OH_ArkUI_TextStyle_SetStrokeWidth(OH_ArkUI_TextStyle* textStyle,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | 指向[OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)对象的指针。 |
-| float strokeWidth | 描边宽度，单位为vp。 |
+| float strokeWidth | 描边宽度，取值范围(-∞, +∞)，单位为vp。值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。默认值：0vp。 |
 
 **返回：**
 
@@ -1548,7 +1569,7 @@ ArkUI_ErrorCode OH_ArkUI_TextStyle_SetSuperscript(OH_ArkUI_TextStyle* textStyle,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | 指向[OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)对象的指针。 |
-| [OH_ArkUI_SuperscriptStyle](capi-styled-string-h.md#oh_arkui_superscriptstyle) superscript | 上下标样式。取值为[OH_ArkUI_SuperscriptStyle](capi-styled-string-h.md#oh_arkui_superscriptstyle)中的枚举。 |
+| [OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle) superscript | 上下标样式。取值为[OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle)中的枚举。 |
 
 **返回：**
 
@@ -1573,7 +1594,7 @@ ArkUI_ErrorCode OH_ArkUI_TextStyle_GetSuperscript(const OH_ArkUI_TextStyle* text
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)* textStyle | 指向[OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md)对象的指针。 |
-| [OH_ArkUI_SuperscriptStyle](capi-styled-string-h.md#oh_arkui_superscriptstyle)* superscript | 上下标样式。取值为[OH_ArkUI_SuperscriptStyle](capi-styled-string-h.md#oh_arkui_superscriptstyle)中的枚举。 |
+| [OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle)* superscript | 上下标样式。取值为[OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle)中的枚举。 |
 
 **返回：**
 
@@ -1593,7 +1614,7 @@ OH_ArkUI_SpanStyle* OH_ArkUI_SpanStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_SpanStyle_Destroy](capi-styled-string-h.md#oh_arkui_spanstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_SpanStyle_Destroy](#oh_arkui_spanstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -1601,7 +1622,7 @@ OH_ArkUI_SpanStyle* OH_ArkUI_SpanStyle_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 |
+| [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针，用于设置属性字符串样式的作用范围和具体样式。 |
 
 ### OH_ArkUI_SpanStyle_Destroy()
 
@@ -1638,7 +1659,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetStyledKey(const OH_ArkUI_SpanStyle* spanSt
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 |
-| [OH_ArkUI_StyledStringKey](capi-styled-string-h.md#oh_arkui_styledstringkey)* styledKey | 样式类型的枚举值。取值为[OH_ArkUI_StyledStringKey](capi-styled-string-h.md#oh_arkui_styledstringkey)中的枚举。 |
+| [OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey)* styledKey | 样式类型的枚举值。取值为[OH_ArkUI_StyledStringKey](#oh_arkui_styledstringkey)中的枚举。 |
 
 **返回：**
 
@@ -1663,7 +1684,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetStart(OH_ArkUI_SpanStyle* spanStyle, int32
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 |
-| int32_t start | 属性字符串样式对象的起始位置。 |
+| int32_t start | 属性字符串样式对象的起始位置，需与[OH_ArkUI_SpanStyle_SetLength](capi-styled-string-h.md#oh_arkui_spanstyle_setlength)配合使用以指定样式作用的范围。取值范围[0, 属性字符串的长度]，超出范围时按0处理。 |
 
 **返回：**
 
@@ -1713,7 +1734,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLength(OH_ArkUI_SpanStyle* spanStyle, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)* spanStyle | 指向[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象的指针。 |
-| int32_t length | 属性字符串样式对象的长度。 |
+| int32_t length | 属性字符串样式对象的长度，需与[OH_ArkUI_SpanStyle_SetStart](#oh_arkui_spanstyle_setstart)配合使用以指定样式作用的范围。当length的值小于0或超出字符串长度与start的差值时，按字符串长度与start的差值处理。取值范围[0, 属性字符串的长度与参数start的差值]，按字符串长度与start的差值处理。 |
 
 **返回：**
 
@@ -1758,7 +1779,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextStyle(OH_ArkUI_SpanStyle* spanStyle, c
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -1812,7 +1833,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetParagraphStyle(OH_ArkUI_SpanStyle* spanSty
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle]对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、GestureStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -1866,7 +1887,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetGestureStyle(OH_ArkUI_SpanStyle* spanStyle
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle]对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -1920,7 +1941,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextShadowStyle(OH_ArkUI_SpanStyle* spanSt
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -1974,7 +1995,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetDecorationStyle(OH_ArkUI_SpanStyle* spanSt
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2028,7 +2049,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBaselineOffsetStyle(OH_ArkUI_SpanStyle* sp
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2082,7 +2103,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLetterSpacingStyle(OH_ArkUI_SpanStyle* spa
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2136,7 +2157,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineHeightStyle(OH_ArkUI_SpanStyle* spanSt
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2190,7 +2211,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUrlStyle(OH_ArkUI_SpanStyle* spanStyle, co
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2244,7 +2265,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBackgroundColorStyle(OH_ArkUI_SpanStyle* s
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2298,7 +2319,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUserDataSpan(OH_ArkUI_SpanStyle* spanStyle
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2352,7 +2373,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetCustomSpan(OH_ArkUI_SpanStyle* spanStyle, 
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2406,7 +2427,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetImageAttachment(OH_ArkUI_SpanStyle* spanSt
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -2900,7 +2921,7 @@ OH_ArkUI_ParagraphStyle* OH_ArkUI_ParagraphStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_ParagraphStyle_Destroy](capi-styled-string-h.md#oh_arkui_paragraphstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_ParagraphStyle_Destroy](#oh_arkui_paragraphstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -2995,7 +3016,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextIndent(OH_ArkUI_ParagraphStyle* p
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| float textIndent | 首行缩进值，单位为vp。 |
+| float textIndent | 首行缩进值，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -3045,7 +3066,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetMaxLines(OH_ArkUI_ParagraphStyle* par
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| int32_t maxLines | 最大行数。 |
+| int32_t maxLines | 最大行数，取值为正整数。 |
 
 **返回：**
 
@@ -3445,7 +3466,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback(OH_A
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)\* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| void(\*onDraw)(ArkUI_DrawContext\* context | 绘制段落缩进的回调函数。context 图形绘制上下文。drawInfo 自定义绘制信息。 |
+| void(\*onDraw)(ArkUI_DrawContext\* context, OH_ArkUI_LeadingMarginSpanDrawInfo\* drawInfo) | 绘制段落缩进时触发的回调函数。回调参数：context为图形绘制上下文，drawInfo为段落缩进的自定义绘制信息对象。 |
 
 **返回：**
 
@@ -3470,7 +3491,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnGetLeadingMarginCallback(OH_Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)\* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| float(\*leadingMargin)() | 获取段落缩进距离时触发的回调函数。 |
+| float(\*leadingMargin)() | 获取段落缩进距离时触发的回调函数。回调返回值表示段落缩进距离，单位为vp。 |
 
 **返回：**
 
@@ -3540,7 +3561,7 @@ OH_ArkUI_GestureStyle* OH_ArkUI_GestureStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_GestureStyle_Destroy](capi-styled-string-h.md#oh_arkui_gesturestyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_GestureStyle_Destroy](#oh_arkui_gesturestyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -3576,7 +3597,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureSt
 
 **描述**
 
-设置事件手势样式中的点击事件回调。
+注册事件手势样式中的点击事件回调。
 
 **起始版本：** 24
 
@@ -3585,7 +3606,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureSt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)\* gestureStyle | 指向[OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)对象的指针。 |
-| void(\*onClick)(ArkUI_NodeEvent\*) | 点击事件的回调。 |
+| void(\*onClick)(ArkUI_NodeEvent\*) | 点击事件的回调函数。回调参数：event为节点事件对象，包含点击事件的相关信息。 |
 
 **返回：**
 
@@ -3601,7 +3622,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_Gestu
 
 **描述**
 
-设置事件手势样式中的长按事件回调。
+注册事件手势样式中的长按事件回调。
 
 **起始版本：** 24
 
@@ -3610,7 +3631,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_Gestu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)\* gestureStyle | 指向[OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)对象的指针。 |
-| void(\*onLongPress)(ArkUI_GestureEvent\*) | 长按事件回调。 |
+| void(\*onLongPress)(ArkUI_GestureEvent\*) | 长按事件的回调函数。回调参数：event为手势事件对象，包含长按事件的相关信息。 |
 
 **返回：**
 
@@ -3626,7 +3647,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureSt
 
 **描述**
 
-设置事件手势样式中的触摸事件回调。
+注册事件手势样式中的触摸事件回调。
 
 **起始版本：** 24
 
@@ -3635,7 +3656,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureSt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)\* gestureStyle | 指向[OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md)对象的指针。 |
-| void(\*onTouch)(ArkUI_NodeEvent\*) | 触摸事件回调。 |
+| void(\*onTouch)(ArkUI_NodeEvent\*) | 触摸事件的回调函数。回调参数：event为节点事件对象，包含触摸事件的相关信息。 |
 
 **返回：**
 
@@ -3655,7 +3676,7 @@ OH_ArkUI_TextShadowStyle* OH_ArkUI_TextShadowStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_TextShadowStyle_Destroy](capi-styled-string-h.md#oh_arkui_textshadowstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_TextShadowStyle_Destroy](#oh_arkui_textshadowstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -3701,7 +3722,7 @@ ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_SetTextShadow(OH_ArkUI_TextShadowStyle*
 | -- | -- |
 | [OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md)* textShadowStyle | 指向[OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md)对象的指针。 |
 | const [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)** options | 文本阴影选项，指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象数组的指针。 |
-| uint32_t length | 文本阴影选项长度。 |
+| uint32_t length | 文本阴影选项数组元素的数量。 |
 
 **返回：**
 
@@ -3734,7 +3755,7 @@ ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_GetTextShadow(const OH_ArkUI_TextShadow
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_DecorationStyle_Create()
 
@@ -3748,7 +3769,7 @@ OH_ArkUI_DecorationStyle* OH_ArkUI_DecorationStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_DecorationStyle_Destroy](capi-styled-string-h.md#oh_arkui_decorationstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_DecorationStyle_Destroy](#oh_arkui_decorationstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -3993,7 +4014,7 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetEnableMultiType(OH_ArkUI_DecorationS
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | 指向[OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)对象的指针。 |
-| bool enableMultiType | 是否开启多装饰线显示。true表示开启，false表示关闭。 |
+| bool enableMultiType | 是否开启多装饰线显示。传入true时开启多装饰线显示，允许同时显示多种类型的装饰线（如同时显示下划线和删除线），适用于需要复合装饰效果的场景；传入false时不开启，仅显示单一类型装饰线，适用于只需要一种装饰线的场景。 |
 
 **返回：**
 
@@ -4038,7 +4059,7 @@ OH_ArkUI_BaselineOffsetStyle* OH_ArkUI_BaselineOffsetStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_BaselineOffsetStyle_Destroy](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_BaselineOffsetStyle_Destroy](#oh_arkui_baselineoffsetstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -4074,7 +4095,7 @@ ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset(OH_ArkUI_Baseline
 
 **描述**
 
-设置基线偏移量。
+设置基线偏移量。适用于需要调整文本基线位置的场景，例如上下角标定位、行内图标与文字垂直对齐等。
 
 **起始版本：** 24
 
@@ -4083,7 +4104,7 @@ ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset(OH_ArkUI_Baseline
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)* baselineOffsetStyle | 指向[OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)对象的指针。 |
-| float baselineOffset | 基线偏移量，单位为vp。 |
+| float baselineOffset | 基线偏移量，单位为vp。取值范围(-∞, +∞)。正值与负值分别对应不同的偏移方向，0表示无偏移。具体方向效果需结合上下角标等场景确定。 |
 
 **返回：**
 
@@ -4128,7 +4149,7 @@ OH_ArkUI_LetterSpacingStyle* OH_ArkUI_LetterSpacingStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_LetterSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_letterspacingstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_LetterSpacingStyle_Destroy](#oh_arkui_letterspacingstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -4164,7 +4185,7 @@ ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_SetLetterSpacing(OH_ArkUI_LetterSpac
 
 **描述**
 
-设置字符间距。
+设置字符间距。适用于需要调整文字间距的场景，例如标题加宽间距提升可读性、紧凑排版缩小间距等。
 
 **起始版本：** 24
 
@@ -4173,7 +4194,7 @@ ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_SetLetterSpacing(OH_ArkUI_LetterSpac
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)* letterSpacingStyle | 指向[OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)对象的指针。 |
-| float letterSpacing | 字符间距值，单位为vp。 |
+| float letterSpacing | 字符间距值，单位为vp。取值范围(-∞, +∞)。正值表示加宽字符间距，负值表示缩小字符间距，0表示使用默认间距。 |
 
 **返回：**
 
@@ -4218,7 +4239,7 @@ OH_ArkUI_LineHeightStyle* OH_ArkUI_LineHeightStyle_Create()
 
 >**说明：**
 >
->当该对象不再使用时，调用[OH_ArkUI_LineHeightStyle_Destroy](capi-styled-string-h.md#oh_arkui_lineheightstyle_destroy)销毁它。
+>当该对象不再使用时，调用[OH_ArkUI_LineHeightStyle_Destroy](#oh_arkui_lineheightstyle_destroy)销毁它。
 
 **起始版本：** 24
 
@@ -4256,6 +4277,10 @@ ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeight(OH_ArkUI_LineHeightStyle*
 
 设置文本行高。
 
+>**说明：**
+>
+>与[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)同时设置时，仅lineHeightMultiple生效，lineHeight不生效。lineHeightMultiple小于0时不生效，此时使用lineHeight设置行高。
+
 **起始版本：** 24
 
 **参数：**
@@ -4263,7 +4288,7 @@ ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeight(OH_ArkUI_LineHeightStyle*
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)* lineHeightStyle | 指向[OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)对象的指针。 |
-| float lineHeight | 固定行高值，单位为vp。 |
+| float lineHeight | 固定行高值，单位为vp。与[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)同时设置时，仅lineHeightMultiple生效，lineHeight不生效，lineHeightMultiple小于0时不生效，此时使用lineHeight设置行高。取值范围(-∞, +∞)，负值表示自适应字体大小。 |
 
 **返回：**
 
@@ -4324,7 +4349,7 @@ ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeightMultiple(OH_ArkUI_LineHeig
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)* lineHeightStyle | 指向[OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)对象的指针。 |
-| float lineHeightMultiple | 行高倍数。取值范围为[0, +∞)。 |
+| float lineHeightMultiple | 行高倍数。取值范围为[0, +∞)。传入负数时不生效，传入0时等效于设置为1。 |
 
 **返回：**
 
@@ -4369,7 +4394,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineSpacingStyle(OH_ArkUI_SpanStyle* spanS
 
 > **说明：**
 >
-> 此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他样式。
+> 此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的GestureStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 26.0.0
 
@@ -4423,7 +4448,7 @@ OH_ArkUI_LineSpacingStyle* OH_ArkUI_LineSpacingStyle_Create()
 
 > **说明：**
 > 
-> 该对象不再使用时，请及时调用[OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy)销毁。
+> 当该对象不再使用时，调用[OH_ArkUI_LineSpacingStyle_Destroy](#oh_arkui_linespacingstyle_destroy)销毁它。
 
 **起始版本：** 26.0.0
 
@@ -4461,6 +4486,10 @@ ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetLineSpacing(OH_ArkUI_LineSpacingSty
 
 设置行间距。
 
+>**说明：**
+>
+>与[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)同时设置时，仅lineHeightMultiple生效，行间距不生效。lineHeightMultiple小于0时不生效，此时行间距正常生效。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -4468,7 +4497,7 @@ ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetLineSpacing(OH_ArkUI_LineSpacingSty
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)* lineSpacingStyle | 指向[OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)对象的指针。 |
-| float lineSpacing | 行间距值，单位为vp。 |
+| float lineSpacing | 行间距值，单位为vp。取值范围(-∞, +∞)。与[OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple)同时设置时，仅lineHeightMultiple生效，行间距不生效。lineHeightMultiple小于0时不生效，此时行间距正常生效。 |
 
 **返回：**
 
@@ -4484,7 +4513,7 @@ ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetLineSpacing(const OH_ArkUI_LineSpac
 
 **描述**
 
-查询行间距。
+获取行间距。
 
 **起始版本：** 26.0.0
 
@@ -4534,7 +4563,7 @@ ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetOnlyBetweenLines(const OH_ArkUI_Lin
 
 **描述**
 
-查询行间距是否只在行间生效。
+获取行间距是否只在行间生效。
 
 **起始版本：** 26.0.0
 
@@ -4658,10 +4687,10 @@ ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColor
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
-| float topLeft | 左上角圆角半径，单位为vp。 |
-| float topRight | 右上角圆角半径，单位为vp。 |
-| float bottomLeft | 左下角圆角半径，单位为vp。 |
-| float bottomRight | 右下角圆角半径，单位为vp。 |
+| float topLeft | 左上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float topRight | 右上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float bottomLeft | 左下角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float bottomRight | 右下角圆角半径，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -4787,7 +4816,7 @@ ArkUI_ErrorCode OH_ArkUI_UrlStyle_GetUrl(const OH_ArkUI_UrlStyle* style, char* b
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足，可通过writeLength参数获取所需最小缓冲区大小，重新分配足够大小的缓冲区后再次调用。 |
 
 ### OH_ArkUI_UserDataSpan_Create()
 
@@ -4931,7 +4960,7 @@ ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpa
 
 **描述**
 
-设置自定义绘制Span获取尺寸大小时的回调函数。
+设置自定义绘制Span获取尺寸大小时的回调函数。适用于在文本中嵌入自定义内容（如自定义图标、内联控件、特殊表情等）时，需要根据内容计算占用尺寸的场景。回调返回的尺寸将影响该Span在文本排版中的占位大小。
 
 **起始版本：** 24
 
@@ -4940,7 +4969,7 @@ ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)\* customSpan | 指向[OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)对象的指针。 |
-| ArkUI_CustomSpanMetrics\*(\*onMeasure)(float) | 获取尺寸大小的回调函数。fontSize 组件中的文本字体大小，单位为fp。 |
+| ArkUI_CustomSpanMetrics\*(\*onMeasure)(float) | 获取尺寸大小的回调函数。fontSize为组件中的文本字体大小，单位为fp。 |
 
 **返回：**
 
@@ -4956,7 +4985,7 @@ ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnDrawCallback(OH_ArkUI_CustomSpan* 
 
 **描述**
 
-注册自定义绘制Span绘制时的回调函数。
+注册自定义绘制Span绘制时的回调函数。适用于需要绘制非标准文本内容的场景，例如在文本中绘制自定义图标、装饰图形、特殊标记等。通过该回调，开发者可以使用图形绘制上下文实现任意自定义绘制效果。
 
 **起始版本：** 24
 
@@ -4965,7 +4994,7 @@ ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnDrawCallback(OH_ArkUI_CustomSpan* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)\* customSpan | 指向[OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)对象的指针。 |
-| void(\*onDraw)(ArkUI_DrawContext\* | 绘制时的回调函数。context 图形绘制上下文。drawInfo 自定义绘制Span的绘制信息。 |
+| void(\*onDraw)(ArkUI_DrawContext\*, ArkUI_CustomSpanDrawInfo\*) | 绘制时的回调函数。回调参数：context为图形绘制上下文，drawInfo为自定义绘制Span的绘制信息。 |
 
 **返回：**
 
@@ -5140,7 +5169,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeWidth(OH_ArkUI_ImageAttachment* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| float width | 图片宽度，单位为vp。 |
+| float width | 图片宽度，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -5190,7 +5219,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeHeight(OH_ArkUI_ImageAttachment*
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| float height | 图片高度，单位为vp。 |
+| float height | 图片高度，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -5440,10 +5469,10 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetBorderRadiuses(OH_ArkUI_ImageAttachm
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| float topLeft | 左上角圆角半径，单位为vp。 |
-| float topRight | 右上角圆角半径，单位为vp。 |
-| float bottomLeft | 左下角圆角半径，单位为vp。 |
-| float bottomRight | 右下角圆角半径，单位为vp。 |
+| float topLeft | 左上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float topRight | 右上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float bottomLeft | 左下角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float bottomRight | 右下角圆角半径，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -5468,10 +5497,10 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetBorderRadiuses(const OH_ArkUI_ImageA
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| float* topLeft | 左上角圆角半径，单位为vp。 |
-| float* topRight | 右上角圆角半径，单位为vp。 |
-| float* bottomLeft | 左下角圆角半径，单位为vp。 |
-| float* bottomRight | 右下角圆角半径，单位为vp。 |
+| float* topLeft | 左上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float* topRight | 右上角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float* bottomLeft | 左下角圆角半径，单位为vp。取值范围[0, +∞)。 |
+| float* bottomRight | 右下角圆角半径，单位为vp。取值范围[0, +∞)。 |
 
 **返回：**
 
@@ -5501,7 +5530,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetColorFilter(OH_ArkUI_ImageAttachment
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
 | const float* colorFilter | 图片颜色过滤器。 |
-| uint32_t size | 过滤器数组大小。 |
+| uint32_t size | 颜色过滤器数组的元素数量。 |
 
 **返回：**
 
@@ -5611,7 +5640,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSyncLoad(OH_ArkUI_ImageAttachment* i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| bool syncLoad | 是否同步加载图片。true表示同步加载；false表示异步加载。 |
+| bool syncLoad | 是否同步加载图片。true表示同步加载，同步加载时阻塞UI线程，不会显示占位图；false表示异步加载。 |
 
 **返回：**
 
@@ -5702,7 +5731,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_Tex
 
 **描述**
 
-获取文本变化信息中的待替换内容的范围。
+获取文本变化信息中待被替换的原文本的范围。
 
 **起始版本：** 24
 
@@ -5778,7 +5807,7 @@ void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)
 
 **描述**
 
-释放被文本布局管理器对象占据的内存。
+释放文本布局管理器对象占用的内存。
 
 **起始版本：** 22
 
@@ -5851,7 +5880,7 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_Te
 
 **描述**
 
-获取距离给定坐标最近的字形的位置信息。
+获取距离给定坐标最近的字形(glyph)的位置信息。返回的位置索引基于字形单位而非字符单位——字形是渲染视觉单位，与字符(character)可能存在多对多映射关系。例如文本为"世界Hello"，其字形索引范围为[0, 7]，一个汉字占三个字符，其对应的字符索引范围为[0, 11]。
 
 **起始版本：** 22
 
