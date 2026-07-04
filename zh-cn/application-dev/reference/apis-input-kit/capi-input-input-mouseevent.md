@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```c
-typedef struct Input_MouseEvent Input_MouseEvent;
+typedef struct Input_MouseEvent Input_MouseEvent
 ```
 
 ## 概述

@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```c
-typedef struct Input_InterceptorOptions Input_InterceptorOptions;
+typedef struct Input_InterceptorOptions Input_InterceptorOptions
 ```
 
 ## 概述
