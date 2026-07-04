@@ -955,7 +955,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
-| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。不能传入DEVELOPER_DEFINED_ICON作为参数。          |
+| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。          |
 
 **返回值**：
 
