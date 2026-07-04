@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供NativeBuffer模块的公共类型定义。
+提供NativeBuffer模块的公共类型定义，包括颜色空间、元数据类型、像素格式、转换类型等枚举定义，用于图形处理中的缓冲区配置和管理。支持多种颜色空间标准（如BT601、BT709、BT2020、P3等）和像素格式（如RGB、YUV、RGBA等），适用于视频编解码、图像处理、相机预览等需要灵活配置缓冲区属性的图形场景，帮助开发者实现不同格式间的兼容转换和高效处理。
 
 **引用文件：** <native_buffer/buffer_common.h>
 
@@ -38,7 +38,7 @@
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 |
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据、ROI元数据等。 |
 | [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer格式的枚举。 |
 | [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer转换类型的枚举。 |
 
@@ -119,7 +119,7 @@ OH_NativeBuffer的图像标准。
 | OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br/>**起始版本：** 22 |
 | OH_IMAGE_HDR_ISO_DUAL | 图片HDR ISO DUAL。<br/>**起始版本：** 23 |
-| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23|
+| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br/>**起始版本：** 23 |
 | OH_VIDEO_NONE = -1 |  无元数据。<br/>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey
@@ -205,7 +205,7 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 | NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br/>**起始版本：** 15 |
 | NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br/>**起始版本：** 20 |
 | NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16格式。<br/>**起始版本：** 20 |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12|
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | 无效格式。 |
 
 ### OH_NativeBuffer_TransformType

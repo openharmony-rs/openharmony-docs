@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeFence的相关函数。
+定义获取和使用NativeFence的相关函数。NativeFence用于图形系统中的同步控制，支持检查fence有效性、阻塞等待fence信号、关闭fence等操作，适用于多线程或多进程间需要同步图形资源访问的场景。
 
 **引用文件：** <native_fence/native_fence.h>
 
@@ -76,7 +76,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 | 参数项           | 描述                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | int fenceFd      | 表示一个文件描述符，用于定时同步。                           |
-| uint32_t timeout | 表示等待时间。单位为毫秒，0表示接口立即返回。 |
+| uint32_t timeout | 表示等待时间。大于0的值表示具体等待时长（适用于需要限制等待时间的场景，推荐根据实际业务需求设置合理超时值）；0表示接口立即返回（适用于仅检查fenceFd状态而不阻塞的场景）；如需永久等待，请使用[OH_NativeFence_WaitForever](#oh_nativefence_waitforever)接口。 |
 
 **返回：**
 
