@@ -61,12 +61,12 @@ ArkTS-Dyn示例：
             console.info('testTag setExecuteResult success');
           })
           .catch((error: BusinessError) => {
-            console.error(`testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}`);
+            console.error(`Failed to setExecuteResult. Code: ${error.code}, message: ${error.message}`);
           });
       } catch (e) {
         let code = (e as BusinessError).code;
         let msg = (e as BusinessError).message;
-        console.error(`testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
+        console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
       }
       return result;
     }
@@ -185,7 +185,8 @@ ArkTS-Dyn示例：
           }
         })
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -312,7 +313,8 @@ ArkTS-Dyn示例：
         await this.context.startAbility(want);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability finished');
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -371,6 +373,8 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 23
@@ -415,9 +419,8 @@ ArkTS-Dyn示例：
       try {
         this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       } catch (error) {
-        let code = (error as BusinessError).code;
-        let msg = (error as BusinessError).message;
-        console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, err msg: ${msg}.`);
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to setReturnModeForUIAbilityForeground. Code: ${err.code}, message: ${err.message}`);
       }
 
       let localStorageData: Record<string, number> = {
@@ -547,9 +550,8 @@ ArkTS-Dyn示例：
         storage.setOrCreate('session', pageLoader);
         pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        let code = (err as BusinessError).code;
-        let msg = (err as BusinessError).message;
-        console.info(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+        const err: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${err.code}, message: ${err.message}`);
       }
       return result;
     }

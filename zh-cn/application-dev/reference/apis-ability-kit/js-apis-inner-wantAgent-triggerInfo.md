@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-作为[trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger)的入参定义触发WantAgent所需要的信息。
+作为[trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger)的入参定义执行WantAgent所需要的信息。
 
 > **说明：**
 >
@@ -32,5 +32,5 @@ import { wantAgent } from '@kit.AbilityKit';
 | code       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示传递的公共事件数据，仅当WantAgent实例的[OperationType](js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时有效。该字段与发布者使用[commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish-1)发布公共事件时，传递[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md)公共事件数据中的`code`字段含义一致。<br>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | want       | [Want](./js-apis-app-ability-want.md)                 | 否 | 是 | 对象间信息传递的载体，可以用于应用组件间的信息传递。<br>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | permission | string               | 否 | 是 | 表示公共事件订阅者的权限。仅当WantAgent实例的[OperationType](js-apis-app-ability-wantAgent.md#operationtype)类型是'SEND_COMMON_EVENT'时，该字段生效。若权限为null，则接收方无需具备任何权限。<br>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| extraInfo  | ArkTS-Dyn: { [key: string]: any }<br>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 额外数据。<br>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| extraInfos<sup>11+</sup>  | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是 | 额外数据。推荐使用该属性替代extraInfo，设置该属性后，extraInfo不再生效。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| extraInfo  | ArkTS-Dyn: { [key: string]: any }<br>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 额外数据，用于传递自定义扩展信息。参数为键值对对象，key为字符串类型的键名，value为任意类型的值。建议优先使用类型安全的extraInfos属性替代本属性。设置extraInfos属性后，本属性将不再生效。<br>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| extraInfos<sup>11+</sup>  | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是 | 额外数据，用于传递自定义键值对信息，类型安全。推荐使用该属性替代extraInfo。当需要在触发WantAgent时携带额外的自定义数据时传入此参数，不传入时默认为null，不会携带额外数据。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |

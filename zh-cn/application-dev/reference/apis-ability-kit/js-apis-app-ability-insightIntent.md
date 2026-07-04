@@ -222,9 +222,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
   supportedQueryProperties: ['entityId', 'name', 'extension'] // 表示onQueryEntity支持通过entityId、name或者extension属性来查询实体信息
 })
 export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntentEntityImpl> {
-  entityId: string = "default";
-  name: string = "";
-  displayName: string = "";
+  entityId: string = 'default';
+  name: string = '';
+  displayName: string = '';
   description?: string;
   extension?: string;
 

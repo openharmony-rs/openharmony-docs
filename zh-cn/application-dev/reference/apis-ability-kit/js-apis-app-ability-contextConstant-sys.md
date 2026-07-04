@@ -8,7 +8,7 @@
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 > **说明：**
 >
@@ -53,8 +53,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryServiceExtAbility extends ServiceExtensionAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // 检查当前上下文是否为ServiceExtensionContext类型
     let result = this.context.isContextOf(contextConstant.ContextType.SERVICE_EXTENSION_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
-}
+  }
 ```

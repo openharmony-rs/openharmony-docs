@@ -140,7 +140,7 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-| uiAbility | string | 是 | 否 | Ability名称。 |
+| uiAbility | string | 是 | 否 | UIAbility名称。 |
 | pagePath | string | 是 | 否 | 页面名称。 |
 | navigationId | string | 是 | 否 |  表示与意图绑定[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)的id。 |
 | navDestinationName | string | 是 | 否 | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
@@ -637,7 +637,7 @@ ArkTS-Sta: getAllInsightIntentInfo(intentFlags: int): Promise<Array\<[InsightInt
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 
@@ -942,7 +942,11 @@ function queryEntityInfoByPromise() {
   try {
     insightIntentDriver.queryEntityInfo(queryParam)
       .then((data: Array<Record<string, Object>> | undefined) => {
-        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+        if (data) {
+          hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+        } else {
+          hilog.info(0x0000, 'testTag', 'queryEntityInfo return empty result');
+        }
       })
       .catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);

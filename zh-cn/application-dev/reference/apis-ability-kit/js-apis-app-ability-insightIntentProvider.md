@@ -327,9 +327,6 @@ class PlayVideoResultDef {
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
 })
 export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResultDef> {
-  entityId: string = 'zhz';
-  episodeId: string = '50';
-  episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
     console.info('testTag', 'PlayVideo onExecute success')
