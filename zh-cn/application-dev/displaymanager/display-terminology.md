@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @hejunfei1991-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
