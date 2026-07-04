@@ -566,6 +566,7 @@
     - [SubHeader](arkui-ts/ohos-arkui-advanced-SubHeader.md)
     - [SubHeaderV2](arkui-ts/ohos-arkui-advanced-SubHeaderV2.md)
     - [SwipeRefresher](arkui-ts/ohos-arkui-advanced-SwipeRefresher.md)
+    - [SwipeRefresherV2](arkui-ts/ohos-arkui-advanced-SwipeRefresherV2.md)
     - [TabTitleBar](arkui-ts/ohos-arkui-advanced-TabTitleBar.md)
     - [ToolBar](arkui-ts/ohos-arkui-advanced-ToolBar.md)
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
