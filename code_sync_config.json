@@ -12155,7 +12155,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":76,
 						"name":"alert_dialog",
 						"start_line":16
 					}
@@ -16612,17 +16612,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":37,
 						"name":"dialog_focus_text",
 						"start_line":20
 					},
 					{
-						"end_line":87,
+						"end_line":57,
 						"name":"dialog_focus_text_input",
-						"start_line":58
+						"start_line":42
 					},
 					{
-						"end_line":93,
+						"end_line":63,
 						"name":"dialog_focus",
 						"start_line":16
 					}
@@ -18089,7 +18089,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":91,
 						"name":"OverlayManager_Demo2",
 						"start_line":16
 					}
@@ -19140,7 +19140,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"dialog_animation_new",
 						"start_line":18
 					}
@@ -19150,7 +19150,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"dialog_style_new",
 						"start_line":16
 					}
@@ -19170,7 +19170,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets",
 				"functions":[
 					{
-						"end_line":115,
+						"end_line":109,
 						"name":"dialog_with_physical_back",
 						"start_line":18
 					}
@@ -19375,7 +19375,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets",
 				"functions":[
 					{
-						"end_line":88,
+						"end_line":76,
 						"name":"click_radio_to_change_function",
 						"start_line":16
 					}
@@ -19490,7 +19490,7 @@
 						"start_line":54
 					},
 					{
-						"end_line":212,
+						"end_line":210,
 						"name":"content_node",
 						"start_line":200
 					},
@@ -19500,9 +19500,9 @@
 						"start_line":122
 					},
 					{
-						"end_line":225,
+						"end_line":221,
 						"name":"dialog_controller_component",
-						"start_line":216
+						"start_line":214
 					},
 					{
 						"end_line":168,
@@ -19510,9 +19510,9 @@
 						"start_line":143
 					},
 					{
-						"end_line":238,
+						"end_line":232,
 						"name":"dialog_controller_id",
-						"start_line":229
+						"start_line":225
 					},
 					{
 						"end_line":98,
@@ -19530,7 +19530,7 @@
 						"start_line":170
 					},
 					{
-						"end_line":269,
+						"end_line":261,
 						"name":"dialog_example_controller",
 						"start_line":16
 					}
@@ -21981,7 +21981,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets",
 				"functions":[
 					{
-						"end_line":91,
+						"end_line":93,
 						"name":"avoid_central_axis_menu",
 						"start_line":16
 					}
@@ -21991,7 +21991,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":59,
 						"name":"eventTrans_menu",
 						"start_line":15
 					}
@@ -22021,7 +22021,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets",
 				"functions":[
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"builder_custom_menu",
 						"start_line":16
 					},
@@ -22121,7 +22121,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":107,
 						"name":"supportedAvoidAxis_popup",
 						"start_line":16
 					}
