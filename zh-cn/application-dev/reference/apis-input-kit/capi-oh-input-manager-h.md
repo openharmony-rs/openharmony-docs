@@ -860,7 +860,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2032,7 +2032,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。
 
-从API version 26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
+从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2063,7 +2063,7 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 
 查询当前应用注入的权限状态。
 
-从API version 26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
+从API版本26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
 
 **起始版本：** 20
 
@@ -3858,7 +3858,7 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3893,7 +3893,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3978,7 +3978,7 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -4095,7 +4095,7 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 如果当前未获得事件注入授权，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -4311,7 +4311,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
-从API version 26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
+从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
 
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
 

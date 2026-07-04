@@ -45,7 +45,7 @@ typedef struct Input_DeviceListener {
 ### Input_DeviceAddedCallback()
 
 ```c
-typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
 **描述**
@@ -63,7 +63,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
 ### Input_DeviceRemovedCallback()
 
 ```c
-typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 
 **描述**
