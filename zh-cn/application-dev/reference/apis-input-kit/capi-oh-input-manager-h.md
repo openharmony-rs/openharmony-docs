@@ -446,13 +446,13 @@ enum Input_Result
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14。 |
 | INPUT_OCCUPIED_BY_OTHER = 4200003 | 已经被其他应用占用。<br>**起始版本：** 14。 |
-| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 |  未连接键盘设备。<br>**起始版本：** 15。 |
-| INPUT_INJECTION_AUTHORIZING = 3900005 |  正在授权中。<br>**起始版本：** 20。 |
-| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 |  重复请求。<br>**起始版本：** 20。 |
-| INPUT_INJECTION_AUTHORIZED = 3900007 |  当前应用已经授权。<br>**起始版本：** 20。 |
-| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 |  其它应用已经授权。<br>**起始版本：** 20。 |
-| INPUT_APP_NOT_FOCUSED = 3900009 |  当前应用不是焦点应用。<br>**起始版本：** 20。 |
-| INPUT_DEVICE_NO_POINTER = 3900010 |  无鼠标类输入外设。<br>**起始版本：** 20。 |
+| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 | 未连接键盘设备。<br>**起始版本：** 15。 |
+| INPUT_INJECTION_AUTHORIZING = 3900005 | 正在授权中。<br>**起始版本：** 20。 |
+| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 | 重复请求。<br>**起始版本：** 20。 |
+| INPUT_INJECTION_AUTHORIZED = 3900007 | 当前应用已经授权。<br>**起始版本：** 20。 |
+| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 | 其它应用已经授权。<br>**起始版本：** 20。 |
+| INPUT_APP_NOT_FOCUSED = 3900009 | 当前应用不是焦点应用。<br>**起始版本：** 20。 |
+| INPUT_DEVICE_NO_POINTER = 3900010 | 无鼠标类输入外设。<br>**起始版本：** 20。 |
 | INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22。 |
 
 ### Input_TouchEventToolType
@@ -859,7 +859,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -1474,7 +1474,7 @@ void OH_Input_SetMouseEventAxisValue(struct Input_MouseEvent* mouseEvent, float 
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| float axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位）,零表示没有滚动。 |
+| float axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位），零表示没有滚动。 |
 
 ### OH_Input_GetMouseEventAxisValue()
 
@@ -2031,7 +2031,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。
 
-从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
+从API version 26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2062,7 +2062,7 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 
 查询当前应用注入的权限状态。
 
-从API版本26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
+从API version 26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
 
 **起始版本：** 20
 
@@ -2344,7 +2344,7 @@ Input_Result OH_Input_GetAxisEventAxisValue(const Input_AxisEvent* axisEvent,Inp
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
 | [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype) axisType | 轴类型，具体请参考[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。 |
-| double* axisValue | 出参，返回轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位）,零表示没有滚动。 |
+| double* axisValue | 出参，返回轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位），零表示没有滚动。 |
 
 **返回：**
 
@@ -2976,7 +2976,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若添加按键事件的拦截成功，则返回[INPUT_SUCCESS](#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](#input_result)；<br>         若callback为空，则返回[INPUT_PARAMETER_ERROR](#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](#input_result)；<br>         若服务异常；则返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
+| [Input_Result](#input_result) | 若添加按键事件的拦截成功，则返回[INPUT_SUCCESS](#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](#input_result)；<br>         若callback为空，则返回[INPUT_PARAMETER_ERROR](#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](#input_result)；<br>         若服务异常，则返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
 
 ### OH_Input_AddInputEventInterceptor()
 
@@ -3008,7 +3008,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若添加输入事件的拦截成功，则返回[INPUT_SUCCESS](#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](#input_result)；<br>         若callback为空，则返回[INPUT_PARAMETER_ERROR](#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](#input_result)；<br>         若服务异常；则返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
+| [Input_Result](#input_result) | 若添加输入事件的拦截成功，则返回[INPUT_SUCCESS](#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](#input_result)；<br>         若callback为空，则返回[INPUT_PARAMETER_ERROR](#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](#input_result)；<br>         若服务异常，则返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
 
 ### OH_Input_RemoveKeyEventInterceptor()
 
@@ -3857,7 +3857,9 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备上调用无效果。
 
@@ -3890,7 +3892,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3975,7 +3977,7 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -4092,7 +4094,7 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 如果当前未获得事件注入授权，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -4643,7 +4645,7 @@ Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool followSystem | 是否根据系统设置调整鼠标光标大小。false表示使用自定义鼠标光标样式大小，true表示根据系统设置调整鼠标光标大小，可调整范围为：[光标资源图大小，256×256]，单位为像素（px）。|
+| bool followSystem | 是否根据系统设置调整鼠标光标大小。false表示使用自定义鼠标光标样式大小，true表示根据系统设置调整鼠标光标大小，可调整范围为：[光标资源图大小, 256×256]，单位为像素（px）。|
 
 **返回：**
 
@@ -4921,7 +4923,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的压力。如果未设置压力值，或者不在合法范围内，默认值是0.0。
+设置触屏输入事件的压力。如果未设置压力值，或设置的值不在[0.0, 1.0]范围内，默认值是0.0。
 
 **起始版本：** 24
 

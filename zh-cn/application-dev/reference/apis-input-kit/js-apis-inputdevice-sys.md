@@ -44,7 +44,7 @@ ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&g
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| delay    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
+| delay    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 键盘按键的重复时延，默认值500ms，调节范围[300ms, 1000ms]。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复延迟时间成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -83,7 +83,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -142,7 +142,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
+| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms, 1000ms]。 |
 
 **返回值**：
 
@@ -179,10 +179,10 @@ struct Index {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -241,7 +241,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt;                | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键重复延迟时间；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt;                | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键的重复时延，单位为ms；否则为错误对象。 |
 
 **错误码**：
 
@@ -338,7 +338,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复时延。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复时延，单位为ms。 |
 
 **错误码**：
 
@@ -369,7 +369,7 @@ struct Index {
             inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
               console.info(`Succeeded in getting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -430,7 +430,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| rate    | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
+| rate    | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是    | 键盘按键重复速率，单位为ms/次，取值范围[36, 100]。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复速率成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -527,7 +527,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rate | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
+| rate | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次, 100ms/次]。 |
 
 **返回值**：
 
@@ -564,7 +564,7 @@ struct Index {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -624,7 +624,7 @@ ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键的重复速率，单位为ms/次；否则为错误对象。 |
 
 **错误码**：
 
@@ -719,7 +719,7 @@ ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复速率。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复速率，单位为ms/次。 |
 
 **错误码**：
 
@@ -750,7 +750,7 @@ struct Index {
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -826,7 +826,7 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. The application does not have the permission required to call the API |
+| 201      | Permission denied. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
