@@ -33,7 +33,7 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 预加载指定UIExtensionAbility实例。使用Promise异步回调。
 
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的OnCreate生命周期，然后等待被当前应用正式加载。
+被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
 支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
 
@@ -78,6 +78,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    // 构造预加载UIExtensionAbility的want参数
     let want: Want = {
       bundleName: 'com.ohos.uiextensionprovider',
       abilityName: 'UIExtensionProvider',
@@ -88,14 +89,16 @@ export default class EntryAbility extends UIAbility {
       }
     };
     try {
+      // 获取ApplicationContext实例
       let applicationContext = this.context.getApplicationContext();
+      // 预加载UIExtensionAbility
       applicationContext.preloadUIExtensionAbility(want)
         .then(() => {
-          // 执行正常业务
+          // 预加载成功处理
           console.info('preloadUIExtensionAbility succeed');
         })
         .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
+          // 预加载失败处理
           console.error('preloadUIExtensionAbility failed');
         });
     } catch (err) {
@@ -180,6 +183,7 @@ export default class EntryAbility extends UIAbility {
       }
     }
     // 1.通过context属性获取applicationContext
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext注册监听应用内生命周期
@@ -225,6 +229,7 @@ let lifecycleId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
@@ -280,6 +285,7 @@ let lifecycleId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
@@ -341,6 +347,7 @@ export default class EntryAbility extends UIAbility {
       }
     };
     // 1.获取applicationContext
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext注册监听系统环境变化
@@ -386,6 +393,7 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     try {
       applicationContext.unregisterEnvironmentCallback(callbackId, (error, data) => {
@@ -440,6 +448,7 @@ let callbackId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     try {
       applicationContext.unregisterEnvironmentCallback(callbackId);
@@ -487,6 +496,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     applicationContext.getProcessRunningInformation().then((data) => {
       console.info(`The process running information is: ${JSON.stringify(data)}`);
@@ -533,6 +543,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // 获取ApplicationContext实例
     let applicationContext = this.context.getApplicationContext();
     applicationContext.getProcessRunningInformation((err, data) => {
       if (err) {
