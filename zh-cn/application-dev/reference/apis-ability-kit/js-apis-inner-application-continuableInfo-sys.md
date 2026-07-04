@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息。ContinuableInfo封装了任务流转过程中的源设备ID、应用包名和迁移类型等关键信息，用于标识和追踪任务在设备间的流转状态，适用于应用跨设备流转、应用包名变更等需要追踪任务流转信息的场景。使用场景为跨设备协同办公时任务流转、游戏进度跨设备迁移、视频播放状态同步等。注册详见：[distributedMissionManager.on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange10)。
+当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息。注册详见：[distributedMissionManager.on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange10)。
 
 > **说明：**
 >
