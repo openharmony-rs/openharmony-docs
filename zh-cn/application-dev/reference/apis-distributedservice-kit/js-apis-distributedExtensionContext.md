@@ -33,7 +33,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
-将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源。
+将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备限定协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源。
 
 **起始版本：** 26.0.0
 
@@ -45,7 +45,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的Want（意图）信息，如ability名称、bundle名称、deviceId等。系统将基于这些信息建立到远端设备的连接。 |
+| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的Want信息。系统将基于这些信息建立到远端设备的连接。 |
 | options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | ConnectOptions类型的配置对象，包含服务连接状态回调。连接成功时触发onConnect，连接断开时触发onDisconnect，连接失败时触发onFailed。 |
 
 **返回值：**
@@ -160,10 +160,6 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 断开与远端ServiceExtensionAbility的连接，与[connectServiceExtensionAbility](#distributedextensioncontextconnectserviceextensionability)配对使用。调用connectServiceExtensionAbility后，必须在使用完毕后调用此方法释放连接资源，需要使用connectServiceExtensionAbility返回的连接ID调用此方法。断开连接之后开发者需要将连接成功时onConnect回调中返回的remote对象置空，以避免后续误用已失效的代理对象。使用Promise异步回调。
 
-> **说明：**
->
-> 与connectServiceExtensionAbility采用同步返回不同，disconnectServiceExtensionAbility采用异步回调方式，需要通过Promise.then/catch或async/await处理异步结果。
-
 **起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在`Stage`模型下使用。
@@ -174,13 +170,13 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。使用不存在的连接ID将抛出16000003错误码（The connection id does not exist）。 |
+| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。 |
 
 **返回值：**
 
 | 类型            | 说明                               |
 | --------------- | ---------------------------------- |
-| Promise\<void\> | Promise对象。表示异步断开连接操作，resolve表示断开连接成功，reject表示断开连接失败并返回错误。 |
+| Promise\<void\> | Promise对象。表示异步断开连接操作。 |
 
 **错误码：**
 
