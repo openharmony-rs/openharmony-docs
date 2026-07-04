@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供通过PATH获取文件统一资源标识符（Uniform Resource Identifier，URI），后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行相关open、read、write等操作，实现文件分享。
+该模块提供通过路径获取文件统一资源标识符（Uniform Resource Identifier，URI）的能力，后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行open、read、write等操作，实现文件分享。
 
 > **说明：**
 >
@@ -40,8 +40,8 @@ import { fileUri } from '@kit.CoreFileKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明|
 | -------- | --------| --- |-------- |----------------|
-| path<sup>10+</sup> | string | 否 | 否 | 将uri转换成对应的沙箱路径path。 1、uri转path过程中会将uri中存在的ASCII码进行解码后拼接在原处，非系统接口生成的uri中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果的一定可以访问。 |
-| name<sup>10+</sup> | string | 是 | 否 | 通过传入的uri获取到对应的文件名称。（如果文件名中存在ASCII码将会被解码处理后拼接在原处）<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+| path<sup>10+</sup> | string | 否 | 否 | 将URI转换成对应的沙箱路径。1、URI转路径过程中会将URI中存在的ASCII码进行解码后拼接在原处，非系统接口生成的URI中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果一定可以访问。 |
+| name<sup>10+</sup> | string | 是 | 否 | 通过传入的URI获取到对应的文件名称。如果文件名中存在ASCII码，将会被解码处理后拼接在原处。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 
 ### constructor<sup>10+</sup>
 
@@ -57,11 +57,12 @@ constructor是FileUri的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | 是 | URI或路径。URI类型：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
+| uriOrPath | string | 是 | URI或路径。URI需符合以下格式之一，也可传入有效路径：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
 | 错误码ID| 错误信息        |
 | -------- | ---------- |
 | 13900005 | I/O error |
@@ -75,7 +76,7 @@ constructor是FileUri的构造函数。
   let path = pathDir + '/test';
   let uri = fileUri.getUriFromPath(path);  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
   let fileUriObject = new fileUri.FileUri(uri);
-  console.info("The name of FileUri is " + fileUriObject.name);
+  console.info(`The name of FileUri is ${fileUriObject.name}`);
   ```
 
 ### toString<sup>10+</sup>
@@ -97,7 +98,7 @@ toString(): string
   ```ts
   let path = pathDir + '/test';
   let fileUriObject = new fileUri.FileUri(path);
-  console.info("The uri of FileUri is " + fileUriObject.toString());
+  console.info(`The URI of FileUri is ${fileUriObject.toString()}`);
   ```
 
 ### getFullDirectoryUri<sup>11+</sup>
@@ -158,7 +159,7 @@ isRemoteUri(): boolean
 
 | 类型| 说明|
 | -------- |---------|
-| boolean | - 返回true，表示当前FileUri指向远端文件或目录，如`xxx/example.txt?networkid=xxx`。<br>- 返回false，表示当前FileUri指向本地的文件或目录。 |
+| boolean | - 返回true，表示当前FileUri指向远端URI，如`file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx`。<br>- 返回false，表示当前FileUri指向本地URI。 |
 
 **错误码：**
 
@@ -171,13 +172,12 @@ isRemoteUri(): boolean
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
   function isRemoteUriExample() {
-    let uri = "file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx";// ?networkid设备id，远端URI的标识
+    let uri = 'file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx'; // ?networkid设备id，远端URI的标识
     let fileUriObject = new fileUri.FileUri(uri);
     let ret = fileUriObject.isRemoteUri();
     if (ret) {
-        console.info(`It is a remote uri.`);
+      console.info('It is a remote URI.');
     }
   }
   ```
@@ -209,11 +209,11 @@ getUriFromPath(path: string): string
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 | 错误码ID| 错误信息        |
 | ---------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types |
+| 401 | The input parameter is invalid. |
 
 **示例：**
 
   ```ts
-  let filePath = pathDir + "/test";
+  let filePath = pathDir + '/test';
   let uri = fileUri.getUriFromPath(filePath);
   ```

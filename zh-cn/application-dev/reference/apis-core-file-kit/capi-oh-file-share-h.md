@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供基于URI的文件及目录授予持久化权限、权限激活、权限查询等方法。
+提供基于URI的文件及目录持久化授权、取消持久化授权、权限激活、权限查询等方法。
 
 **引用文件：** <filemanagement/fileshare/oh_file_share.h>
 
@@ -26,15 +26,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | 授予或使能权限失败的URI策略结果。 |
-| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | 需要授予或使能权限URI的策略信息。 |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | 授予或激活权限失败的URI策略结果。 |
+| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | 需要授予或激活URI访问权限的策略信息。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | URI操作模式枚举值。 |
-| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或使能权限策略失败的URI对应的错误码。 |
+| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或激活权限策略失败的URI对应的错误码。 |
 
 ### 函数
 
@@ -42,8 +42,8 @@
 | -- | -- |
 | [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | 对所选择的多个文件或目录URI持久化授权。 |
 | [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | 对所选择的多个文件或目录URI取消持久化授权。 |
-| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 使能多个已经持久化授权的文件或目录。 |
-| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消使能持久化授权过的多个文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 激活多个已经持久化授权的文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消激活持久化授权过的多个文件或目录。 |
 | [FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)](#oh_fileshare_checkpersistentpermission) | 校验所选择的多个文件或目录URI的持久化授权。 |
 | [void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)](#oh_fileshare_releasepolicyerrorresult) | 释放FileShare_PolicyErrorResult指针指向的内存资源。 |
 
@@ -74,7 +74,7 @@ enum FileShare_PolicyErrorCode
 
 **描述**
 
-授予或使能权限策略失败的URI对应的错误码。
+授予或激活权限策略失败的URI对应的错误码。
 
 **起始版本：** 12
 
@@ -106,16 +106,16 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
-| unsigned int *resultNum | FileShare_PolicyErrorResult数组大小。 |
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
+| unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_RevokePermission()
 
@@ -135,16 +135,16 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
-| unsigned int *resultNum | FileShare_PolicyErrorResult数组大小。 |
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
+| unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -154,7 +154,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 **描述**
 
-使能多个已经持久化授权的文件或目录。
+激活多个已经持久化授权的文件或目录。调用此接口前，需要先调用[OH_FileShare_PersistPermission](#oh_fileshare_persistpermission)完成持久化授权。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -164,16 +164,16 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
-| unsigned int *resultNum | FileShare_PolicyErrorResult数组大小。 |
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
+| unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_DeactivatePermission()
 
@@ -183,7 +183,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 **描述**
 
-取消使能持久化授权过的多个文件或目录。
+取消激活持久化授权过的多个文件或目录。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -193,16 +193,16 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
-| unsigned int *resultNum | FileShare_PolicyErrorResult数组大小。 |
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
+| unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -222,16 +222,16 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| bool **result | 授权校验结果指针。true表示有持久化授权；false表示不具有持久化授权。请引用头文件malloc.h并使用free()进行资源释放。 |
-| unsigned int *resultNum | 校验结果数组的大小。 |
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| bool **result | 输出参数，指向授权校验结果数组。数组元素与policies数组元素一一对应，true表示有持久化授权；false表示不具有持久化授权。请引用头文件malloc.h并使用free()进行资源释放。 |
+| unsigned int *resultNum | 输出参数，表示校验结果数组的元素个数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。可能的原因为policies中携带的所有uri都不符合规范或者uri转换出来的路径不存在。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 
@@ -249,7 +249,5 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 
 | 参数项 | 描述 |
 | -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) *errorResult | 一个指向FileShare_PolicyErrorResult实例的指针。 |
-| unsigned int resultNum | FileShare_PolicyErrorResult实例数组的大小。 |
-
-
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) *errorResult | 指向FileShare_PolicyErrorResult实例数组的指针。 |
+| unsigned int resultNum | FileShare_PolicyErrorResult实例数组的元素个数。 |

@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
+该模块提供文件分享能力，支持系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）按指定访问模式授权给其他应用。授权后，应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行open、read、write等操作，实现应用间文件共享、跨应用文件编辑、文档协作等场景。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## OperationMode<sup>11+</sup>
 
-枚举，授予或使能权限的URI访问模式。
+枚举，授予或激活权限的URI访问模式。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -34,7 +34,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorCode<sup>11+</sup>
 
-枚举，授予或使能权限策略失败的URI对应的错误码。
+枚举，授予或激活权限策略失败的URI对应的错误码。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -47,7 +47,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorResult<sup>11+</sup>
 
-授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
+授予或激活权限失败的URI策略结果。支持在persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
 
 > **说明：**
 >
@@ -57,20 +57,20 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | 名称| 类型| 只读 | 可选 | 说明|
 |--------|--------|--------|--------|---------|
-| uri     | string| 否  | 否 | 授予或使能权限失败的URI。|
+| uri     | string| 否  | 否 | 授予或激活权限失败的URI。|
 | code    | [PolicyErrorCode](#policyerrorcode11) | 否  | 否 | 授权策略失败的URI对应的错误码。 |
 | message | string| 否   | 否 | 授权策略失败的URI对应的原因。  |
 
 ## PolicyInfo<sup>11+</sup>
 
-需要授予或使能权限URI的策略信息。
+需要授予或激活URI访问权限的策略信息。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
-| uri| string | 否   | 否 | 需要授予或使能权限的URI。                                       |
-| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
+| uri| string | 否   | 否 | 需要授予或激活访问权限的URI，需符合URI格式规范。                                       |
+| operationMode | number | 否   | 否 | 授予或激活权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -80,8 +80,8 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | 名称 | 类型  | 只读 | 可选 | 说明  |
 |------|-------|-----|-----|--------|
-| path          | string        | 否 | 否   | 需要查询的path。|
-| operationMode | OperationMode | 否 | 否   | 需要查询的path的访问模式，参考[OperationMode](#operationmode11)。 |
+| path          | string        | 否 | 否   | 需要查询的文件或目录路径。|
+| operationMode | OperationMode | 否 | 否   | 需要查询的文件或目录访问模式，参考[OperationMode](#operationmode11)，如需查询多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE查询读写权限。 |
 
 ## PolicyType<sup>15+</sup>
 
@@ -113,13 +113,13 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |---------| -------- |--------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已获取的临时权限进行持久化授权，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -130,7 +130,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -140,33 +140,33 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { picker } from '@kit.CoreFileKit';
-  
+
   async function persistPermissionExample() {
     try {
-      let DocumentSelectOptions = new picker.DocumentSelectOptions();
+      let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
-      let uris = await documentPicker.select(DocumentSelectOptions);
+      let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
-        uri: uris[0], 
+        uri: uris[0],
         // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.persistPermission(policies).then(() => {
-        console.info("persistPermission successfully");
+        console.info('persistPermission successfully');
       }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-        console.error("persistPermission failed with error message: " + err.message + ", error code: " + err.code);
-        if (err.code == 13900001 && err.data) {
+        console.error(`persistPermission failed with error message: ${err.message}, error code: ${err.code}`);
+        if (err.code === 13900001 && err.data) {
           for (let i = 0; i < err.data.length; i++) {
-            console.error("error code : " + JSON.stringify(err.data[i].code));
-            console.error("error uri : " + JSON.stringify(err.data[i].uri));
-            console.error("error reason : " + JSON.stringify(err.data[i].message));
+            console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
+            console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
+            console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
           }
         }
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error('persistPermission failed with err: ' + JSON.stringify(err));
+      console.error(`persistPermission failed with err: ${JSON.stringify(err)}`);
     }
   }
   ```
@@ -175,7 +175,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录uri取消持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法对所选择的多个文件或目录URI取消持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
@@ -190,13 +190,13 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |----------| -------- |----------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消持久化授权，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -207,7 +207,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -217,33 +217,33 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { picker } from '@kit.CoreFileKit';
-  
+
   async function revokePermissionExample() {
     try {
-      let DocumentSelectOptions = new picker.DocumentSelectOptions();
+      let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
-      let uris = await documentPicker.select(DocumentSelectOptions);
+      let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
-        uri: uris[0], 
+        uri: uris[0],
         // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.revokePermission(policies).then(() => {
-        console.info("revokePermission successfully");
+        console.info('revokePermission successfully');
       }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-        console.error("revokePermission failed with error message: " + err.message + ", error code: " + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error("error code : " + JSON.stringify(err.data[i].code));
-              console.error("error uri : " + JSON.stringify(err.data[i].uri));
-              console.error("error reason : " + JSON.stringify(err.data[i].message));
-            }
+        console.error(`revokePermission failed with error message: ${err.message}, error code: ${err.code}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
+            console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
+            console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
           }
+        }
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error('revokePermission failed with err: ' + JSON.stringify(err));
+      console.error(`revokePermission failed with err: ${JSON.stringify(err)}`);
     }
   }
   ```
@@ -252,12 +252,12 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法使能多个已经永久授权过的文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法激活多个已经持久化授权过的文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
 >
-> 可以组合使能多个权限。只能对已持久化的权限进行使能，否则会报错。
+> 可以组合激活多个权限。只能对已持久化的权限进行激活，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -267,24 +267,24 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行激活，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
-如果存在URI使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
+如果存在URI激活权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -293,34 +293,34 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   async function activatePermissionExample() {
     try {
-      let uri = "file://docs/storage/Users/username/tmp.txt";
+      let uri = 'file://docs/storage/Users/username/tmp.txt';
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
-        // 可以组合使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合激活多个权限，例如读写权限可使用fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.activatePermission(policies).then(() => {
-        console.info("activatePermission successfully");
+        console.info('activatePermission successfully');
       }).catch(async (err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-        console.error("activatePermission failed with error message: " + err.message + ", error code: " + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error("error code : " + JSON.stringify(err.data[i].code));
-              console.error("error uri : " + JSON.stringify(err.data[i].uri));
-              console.error("error reason : " + JSON.stringify(err.data[i].message));
-              if(err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED){
-                await fileShare.persistPermission(policies);
-              }
+        console.error(`activatePermission failed with error message: ${err.message}, error code: ${err.code}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
+            console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
+            console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
+            if (err.data[i].code === fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
+              await fileShare.persistPermission(policies);
             }
           }
+        }
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error('activatePermission failed with err: ' + JSON.stringify(err));
+      console.error(`activatePermission failed with err: ${JSON.stringify(err)}`);
     }
   }
   ```
@@ -329,12 +329,12 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法取消使能授权过的多个文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法取消激活授权过的多个文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
 >
-> 可以组合取消使能多个权限。只能对已持久化的权限进行取消使能，否则会报错。
+> 可以组合取消激活多个权限。只能对已持久化的权限进行取消激活，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -344,24 +344,24 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消激活，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
-如果存在URI取消使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
+如果存在URI取消激活权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -370,31 +370,31 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   async function deactivatePermissionExample() {
     try {
-      let uri = "file://docs/storage/Users/username/tmp.txt";
+      let uri = 'file://docs/storage/Users/username/tmp.txt';
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
-        // 可以组合取消使能多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
+        // 可以组合取消激活多个权限，例如读写权限可使用fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.deactivatePermission(policies).then(() => {
-        console.info("deactivatePermission successfully");
+        console.info('deactivatePermission successfully');
       }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-        console.error("deactivatePermission failed with error message: " + err.message + ", error code: " + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error("error code : " + JSON.stringify(err.data[i].code));
-              console.error("error uri : " + JSON.stringify(err.data[i].uri));
-              console.error("error reason : " + JSON.stringify(err.data[i].message));
-            }
+        console.error(`deactivatePermission failed with error message: ${err.message}, error code: ${err.code}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
+            console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
+            console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
           }
+        }
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error('deactivatePermission failed with err: ' + JSON.stringify(err));
+      console.error(`deactivatePermission failed with err: ${JSON.stringify(err)}`);
     }
   }
   ```
@@ -411,13 +411,13 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 | 参数名 | 类型                                    | 必填 | 说明                      |
 | -------- |---------------------------------------| -------- |-------------------------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要授权URI的策略信息，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。超出上限时抛出错误码401。|
 
 **返回值：**
 
 |   类型   |  说明   |
 | ------- | ------- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象。返回true表示有持久化授权；false表示不具有持久化授权。 |
+| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象，返回持久化授权校验结果数组，数组元素与policies数组元素一一对应。返回true表示有持久化授权；false表示不具有持久化授权。 |
 
 **错误码：**
 
@@ -425,7 +425,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. |
 | 801      | Capability not supported. |
 | 13900042 | Out of memory.|
 
@@ -434,14 +434,14 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { picker } from '@kit.CoreFileKit';
-  
+
   async function checkPersistentPermissionExample() {
     try {
       let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
       let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
-        uri: uris[0], 
+        uri: uris[0],
         // 可以组合校验多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
         operationMode: fileShare.OperationMode.READ_MODE,
       };
@@ -449,23 +449,22 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
       fileShare.checkPersistentPermission(policies).then(async (data) => {
         let result: Array<boolean> = data;
         for (let i = 0; i < result.length; i++) {
-          console.info("checkPersistentPermission result: " + JSON.stringify(result[i]));
-          if(!result[i]){
+          console.info(`checkPersistentPermission result: ${JSON.stringify(result[i])}`);
+          if (!result[i]) {
             let info: fileShare.PolicyInfo = {
-              uri: policies[i].uri, 
+              uri: policies[i].uri,
               operationMode: policies[i].operationMode,
             };
-            let policy : Array<fileShare.PolicyInfo> = [info];
+            let policy: Array<fileShare.PolicyInfo> = [info];
             await fileShare.persistPermission(policy);
           }
         }
       }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-        console.error("checkPersistentPermission failed with error message: " + err.message + ", error code: " + err.code);
+        console.error(`checkPersistentPermission failed with error message: ${err.message}, error code: ${err.code}`);
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error('checkPersistentPermission failed with err: ' + JSON.stringify(err));
+      console.error(`checkPersistentPermission failed with err: ${JSON.stringify(err)}`);
     }
   }
   ```
-  
