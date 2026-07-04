@@ -18,7 +18,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
 ## OH_VObject
 
@@ -32,5 +32,5 @@
 
 | 名称                             | typedef关键字 | 描述               |
 | -------------------------------- | ------------- | ------------------ |
-| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
+| [OH_VObject](#ohvobject) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
 

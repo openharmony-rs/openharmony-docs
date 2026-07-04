@@ -16,9 +16,9 @@ typedef struct {...} OH_VBucket
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
-**所在头文件：** [oh_values_bucket.h](capi-oh-values-bucket-h.md)
+**所在头文件：** [oh_values_bucket.h](capi-oh-values-bucket-h.md#oh_values_bucket.h)
 
 ### 成员变量
 
@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **描述**
 
-清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
+清空[OH_VBucket](#oh_vbucket)对象。
 
 **起始版本：** 10
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **描述**
 
-销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
+销毁[OH_VBucket](#oh_vbucket)对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 

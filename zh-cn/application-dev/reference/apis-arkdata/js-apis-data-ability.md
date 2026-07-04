@@ -703,7 +703,6 @@ offsetAs(rowOffset: number): DataAbilityPredicates
   dataAbilityPredicates.equalTo("NAME", "Rose").offsetAs(3).limitAs(3)
   ```
 
-
 ### groupBy
 
 groupBy(fields: Array&lt;string&gt;): DataAbilityPredicates

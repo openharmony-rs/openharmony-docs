@@ -16,9 +16,9 @@ typedef struct {...} OH_Predicates
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
-**所在头文件：** [oh_predicates.h](capi-oh-predicates-h.md)
+**所在头文件：** [oh_predicates.h](capi-oh-predicates-h.md#oh_predicates.h)
 
 ### 成员变量
 
@@ -76,7 +76,7 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。                            |
 | const char *field         | 数据库表中的列名                                             |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -102,7 +102,7 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -274,7 +274,7 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -301,7 +301,7 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -327,7 +327,7 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -353,7 +353,7 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -379,7 +379,7 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -405,7 +405,7 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 数据库表中的列名，不能为空。                                           |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -431,7 +431,7 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 | ------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。                            |
 | const char *field         | 数据库表中的列名，不能为空。                                           |
-| OH_VObject *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| OH_VObject *valueObject   | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -457,7 +457,7 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 | ------------------------------------- | ---------------------------------------------- |
 | OH_Predicates *predicates             | 表示指向OH_Predicates实例的指针。              |
 | const char *field                     | 数据库表中的列名，不能为空。                             |
-| [OH_VObject](capi-rdb-oh-vobject.md) type | 表示排序类型[OH_VObject](capi-rdb-oh-vobject.md)。 |
+| [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | 表示排序类型[OH_OrderType](capi-oh-predicates-h.md#oh_ordertype)。 |
 
 **返回：**
 
@@ -557,7 +557,7 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 | ------------------------- | ---------------------------------------------------- |
 | OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。                    |
 | char const *const *fields | 指定分组依赖的列名，不能为空。                                 |
-| int length                | 该参数为输入参数，表示开发者传入的fields数值的长度。 |
+| int length                | 该参数为输入参数，表示fields数组的长度。 |
 
 **返回：**
 
@@ -583,7 +583,7 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 表示数据库表中的列名，不能为空。                                       |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 
@@ -609,7 +609,7 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 | --------------------------------------------- | ------------------------------------------------------------ |
 | OH_Predicates *predicates                     | 表示指向OH_Predicates实例的指针。                            |
 | const char *field                             | 表示数据库表中的列名，不能为空。                                       |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针，指示要与谓词匹配的值。 |
+| [OH_VObject](capi-rdb-oh-vobject.md#oh_vobject) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md#oh_vobject)实例的指针，指示要与谓词匹配的值。 |
 
 **返回：**
 

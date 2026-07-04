@@ -16,7 +16,7 @@ typedef struct OH_Rdb_CryptoParam OH_Rdb_CryptoParam
 
 **起始版本：** 20
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
-**所在头文件：** [oh_rdb_crypto_param.h](capi-oh-rdb-crypto-param-h.md)
+**所在头文件：** [oh_rdb_crypto_param.h](capi-oh-rdb-crypto-param-h.md#oh_rdb_crypto_param.h)
 

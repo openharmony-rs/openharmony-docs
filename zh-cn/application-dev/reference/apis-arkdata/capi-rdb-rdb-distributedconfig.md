@@ -16,9 +16,9 @@ typedef struct Rdb_DistributedConfig {...} Rdb_DistributedConfig
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
-**所在头文件：** [relational_store.h](capi-relational-store-h.md)
+**所在头文件：** [relational_store.h](capi-relational-store-h.md#relational_store.h)
 
 ## 汇总
 

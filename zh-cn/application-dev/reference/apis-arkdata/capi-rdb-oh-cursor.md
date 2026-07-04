@@ -16,9 +16,9 @@ typedef struct {...} OH_Cursor
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
-**所在头文件：** [oh_cursor.h](capi-oh-cursor-h.md)
+**所在头文件：** [oh_cursor.h](capi-oh-cursor-h.md#oh_cursor.h)
 
 ### 成员变量
 

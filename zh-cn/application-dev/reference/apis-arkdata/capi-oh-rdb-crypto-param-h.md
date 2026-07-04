@@ -18,7 +18,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-rdb.md#rdb)
 
 ## 汇总
 
@@ -26,7 +26,7 @@
 
 | 名称                                             | typedef关键字      | 描述                                 |
 | ------------------------------------------------ | ------------------ | ------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | OH_Rdb_CryptoParam | 指定打开加密数据库时使用的加密参数。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) | OH_Rdb_CryptoParam | 指定打开加密数据库时使用的加密参数。 |
 
 ### 枚举
 
@@ -40,9 +40,9 @@
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)](#oh_rdb_createcryptoparam) | 创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。 |
-| [int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)](#oh_rdb_destroycryptoparam) | 销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。 |
-| [int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)](#oh_crypto_setencryptionkey) | 设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)对象的密钥数据。 |
+| [OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)](#oh_rdb_createcryptoparam) | 创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例对象。 |
+| [int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)](#oh_rdb_destroycryptoparam) | 销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例对象。 |
+| [int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)](#oh_crypto_setencryptionkey) | 设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)对象的密钥数据。 |
 | [int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)](#oh_crypto_setiteration) | 设置打开加密数据库时使用的KDF算法迭代次数。                  |
 | [int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)](#oh_crypto_setencryptionalgo) | 设置打开加密数据库时使用的加密算法。                         |
 | [int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)](#oh_crypto_sethmacalgo) | 设置打开加密数据库时使用的HMAC算法。                         |
@@ -116,7 +116,7 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 
 **描述**
 
-创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
+创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例对象。
 
 **起始版本：** 20
 
@@ -124,7 +124,7 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 
 | 类型                                             | 说明                                                         |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | 成功时返回指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。<br>否则返回nullptr。使用完成后，必须通过[OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam)接口释放内存。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) | 成功时返回指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。<br>否则返回nullptr。使用完成后，必须通过[OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam)接口释放内存。 |
 
 ### OH_Rdb_DestroyCryptoParam()
 
@@ -134,7 +134,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 **描述**
 
-销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
+销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例对象。
 
 **起始版本：** 20
 
@@ -143,7 +143,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 
 **返回：**
 
@@ -159,7 +159,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 
 **描述**
 
-设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)对象的密钥数据。
+设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)对象的密钥数据。
 
 **起始版本：** 20
 
@@ -168,7 +168,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | const uint8_t *key                                      | 表示指向数组数据的指针。                                     |
 | int32_t length                                          | 表示密钥数组的大小。                                         |
 
@@ -195,7 +195,7 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | int64_t iteration                                       | 表示迭代次数。                                               |
 
 **返回：**
@@ -221,7 +221,7 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | int32_t algo                                            | 表示加密算法。                                               |
 
 **返回：**
@@ -247,7 +247,7 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | int32_t algo                                            | 表示HMAC算法。                                               |
 
 **返回：**
@@ -273,7 +273,7 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | int32_t algo                                            | 表示KDF算法。                                                |
 
 **返回：**
@@ -299,7 +299,7 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 
 | 参数项                                                  | 描述                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md#oh_rdb_cryptoparam)实例的指针。 |
 | int64_t size                                            | 表示页大小，单位为字节，取值应为2的幂值，最小值为1024，最大值65536。 |
 
 **返回：**
