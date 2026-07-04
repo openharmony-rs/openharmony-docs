@@ -222,6 +222,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：9
 
 **变更信息：** API 9-10，权限级别为system_basic；从API 11开始，变更为normal。
