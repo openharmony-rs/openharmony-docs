@@ -91,7 +91,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| serviceName  | string | 是    | 应用设置的服务名称（两端必须一致），最大长度为256字符。此值需与peerInfo.serviceName保持一致。serviceName是用于标识协同会话的唯一标识，由应用自定义，两端设备的应用必须使用相同的serviceName值才能建立协同连接。超出长度限制时返回错误码401。 |
+| serviceName  | string | 是    | 应用设置的服务名称（两端必须一致），最大长度为256字符。 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 |
 | peerInfo  | [PeerInfo](#peerinfo)               | 是    | 对端的协同信息。 |
 | connectOptions  | [ConnectOptions](#connectoptions)               | 是    | 应用设置的连接选项。 |
