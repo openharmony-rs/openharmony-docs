@@ -997,7 +997,7 @@ audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused capturer or ignore');
         // 若选择继续采集，需在此处主动执行开始采集的若干操作。
         break;
       default:
@@ -1614,7 +1614,7 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
-如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1648,7 +1648,7 @@ onPeriodReach(frame: long, callback: Callback&lt;long&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
-如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1857,10 +1857,10 @@ audioCapturer.off('stateChange');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let stateChangeCallback = (state: audio.AudioState) => {
   if (state == 1) {
-    console.info('audio renderer state is: STATE_PREPARED');
+    console.info('audio capturer state is: STATE_PREPARED');
   }
   if (state == 2) {
-    console.info('audio renderer state is: STATE_RUNNING');
+    console.info('audio capturer state is: STATE_RUNNING');
   }
 };
 
