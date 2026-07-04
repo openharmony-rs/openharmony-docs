@@ -197,7 +197,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowMode()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowMode(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_WindowMode &windowMode)
 ```
 
@@ -292,7 +292,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsDisplayId()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayId(AbilityRuntime_StartOptions *startOptions,int32_t &displayId)
 ```
 
@@ -340,7 +340,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWithAnimation()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWithAnimation(AbilityRuntime_StartOptions *startOptions,bool withAnimation)
 ```
 
@@ -387,7 +387,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWithAnimation()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimation(AbilityRuntime_StartOptions *startOptions,bool &withAnimation)
 ```
 
@@ -482,7 +482,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowLeft()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeft(AbilityRuntime_StartOptions *startOptions,int32_t &windowLeft)
 ```
 
@@ -577,7 +577,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowTop()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTop(AbilityRuntime_StartOptions *startOptions,int32_t &windowTop)
 ```
 
@@ -672,7 +672,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowHeight()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeight(AbilityRuntime_StartOptions *startOptions,int32_t &windowHeight)
 ```
 
@@ -767,7 +767,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowWidth()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidth(AbilityRuntime_StartOptions *startOptions,int32_t &windowWidth)
 ```
 
@@ -863,7 +863,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsStartVisibility()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_StartVisibility &startVisibility)
 ```
 
@@ -1068,7 +1068,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundC
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者StartWindowBackgroundColor没有置为空指针。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者startWindowBackgroundColor为空指针。 |
 
 **示例代码：**
 
@@ -1095,7 +1095,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColor()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColor(AbilityRuntime_StartOptions *startOptions, char **startWindowBackgroundColor, size_t &size)
 ```
 
@@ -1213,7 +1213,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsSupportedWindowModes()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_SupportedWindowMode **supportedWindowModes,size_t &size)
 ```
 
@@ -1321,7 +1321,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMinWindowWidth()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t &minWindowWidth)
 ```
 
@@ -1419,7 +1419,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMaxWindowWidth()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t &maxWindowWidth)
 ```
 
@@ -1517,7 +1517,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMinWindowHeight()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t &minWindowHeight)
 ```
 
@@ -1616,7 +1616,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMaxWindowHeight()
 
-```c
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t &maxWindowHeight)
 ```
 
