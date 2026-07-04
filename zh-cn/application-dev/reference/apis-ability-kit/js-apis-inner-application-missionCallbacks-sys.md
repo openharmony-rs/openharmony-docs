@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。用于监听分布式任务的变化，包括任务变化、快照变化、网络断开连接等场景，能够实时获取任务状态信息，帮助开发者实现跨设备的任务同步和状态管理，适用于需要在多设备间协调任务、监控任务生命周期的场景。
+作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。
 
 > **说明：**
 >
