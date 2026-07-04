@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-abilityConnectionManager模块提供了应用协同接口管理能力。该模块支持会话管理、连接状态监听、跨设备数据传输等核心功能，帮助开发者快速构建跨设备协同应用。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息和二进制数据），有效解决多端协同场景下的数据互通问题。
+abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息）。
 
 多端协同的完整流程如下图所示：
 
@@ -40,7 +40,7 @@ sequenceDiagram
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。当前文档中的所有接口均为首批接口。
+> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -828,7 +828,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-创建协同会话成功并获得会话ID、调用connect接口建立连接成功后，设备A或设备B可向对端设备发送文本信息。文本信息通过底层分布式通道传输，最大限制为1KB。如需传输更大数据，请使用sendData接口。使用Promise异步回调。
+创建协同会话成功并获得会话ID、调用connect接口建立连接成功后，设备A或设备B可向对端设备发送文本信息。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -875,7 +875,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-创建协同会话成功并获得会话ID、应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。字节流数据适合传输较大数据或二进制数据，与sendMessage相比支持更大数据量。使用Promise异步回调。
+创建协同会话成功并获得会话ID、应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
