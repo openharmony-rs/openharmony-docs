@@ -24,8 +24,8 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 
 sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
-意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
+意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -148,7 +148,7 @@ struct Index {
 
 sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
 意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -207,9 +207,6 @@ class PlayVideoResultDef {
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
 })
 export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResultDef> {
-  entityId: string = 'zhz';
-  episodeId: string = '50';
-  episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
     console.info('testTag', 'PlayVideo onExecute success')
