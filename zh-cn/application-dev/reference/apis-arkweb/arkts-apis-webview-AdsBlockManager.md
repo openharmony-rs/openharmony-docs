@@ -30,7 +30,7 @@ import { webview } from '@kit.ArkWeb';
 
 static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
-向Web组件中设置自定义的符合通用easylist语法规则的广告过滤配置文件。
+向Web组件中设置自定义的符合通用EasyList语法规则的广告过滤配置文件。
 
 > **说明：**
 >
@@ -42,7 +42,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | -------------------------------- |
-| rulesFile | string | 是   | 指定了符合easylist通用语法的规则文件路径，应用需要有此文件的读权限。 |
+| rulesFile | string | 是   | 指定了符合EasyList通用语法的规则文件路径，应用需要有此文件的读权限。 |
 | replace   | boolean | 是   | true表示强制替换掉内置的默认规则，false表示设置的自定义规则将与内置规则共同工作。 |
 
 **错误码：**
@@ -65,7 +65,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 import { webview } from '@kit.ArkWeb';
 import { picker, fileUri } from '@kit.CoreFileKit';
 
-// 演示点击按钮，通过filepicker打开一个easylist规则文件并设置到Web组件中
+// 演示点击按钮，通过filepicker打开一个EasyList规则文件并设置到Web组件中
 @Entry
 @Component
 struct WebComponent {
@@ -411,7 +411,7 @@ struct WebComponent {
       }
       Web({ src: this.main_url, controller: this.controller })
         .onControllerAttached(()=>{
-          this.controller.enableAdsBlock(true)
+          this.controller.enableAdsBlock(true);
         })
     }
   }

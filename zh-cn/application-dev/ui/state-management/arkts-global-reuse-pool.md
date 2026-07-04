@@ -58,7 +58,7 @@
 
 默认复用池实例代码：
 
-<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
+<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
 
 ``` TypeScript
 @Entry
@@ -114,7 +114,7 @@ struct ReusableComponent { // 复用组件
 
 适配全局复用能力的示例如下：
 
-<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
+<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -252,7 +252,7 @@ struct ChildComponentB {
 
 在此示例中，多个`CompA`实例为`ReusableCompA`子组件创建了共享类型的全局复用池。当删除`CompA`实例时，`ReusableCompA`子组件被回收到全局复用池中。当添加新的`CompA`实例时，它从全局复用池中复用组件，避免创建新组件。
 
-<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
+<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
 
 ``` TypeScript
 @Entry
@@ -372,7 +372,7 @@ ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
 
 此示例演示与特定父实例绑定的`perInstance`池。它还展示了[@Consumer](./arkts-new-provider-and-consumer.md)在复用周期后如何重连到[@Provider](./arkts-new-provider-and-consumer.md)。
 
-<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
+<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -507,7 +507,7 @@ SubChild aboutToReuse          // 子树级联
 
 此示例演示如何使用`getReusableInfo`接口在运行时检查池状态和控制缓存大小。
 
-<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
+<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -739,7 +739,7 @@ getReusableInfo(LegacyComp): count=0, maxCount=0
 
 当使用不同的`reuseId`值回收组件时，相同reuseId的复用组件在全局复用池中分区存放，可以通过`getReusableInfo`接口返回每个reuseId分区的信息。
 
-<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
+<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -865,7 +865,7 @@ struct PoolOwner {
 
 当在组件树的不同级别存在多个复用池配置时，每个可复用组件路由到接受它的最近的祖先池。
 
-<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
+<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -994,7 +994,9 @@ ReusableLeaf aboutToReuse       // 从EntryComp的复用池中取出
 
 `preRender`用于提前创建可复用组件实例并将其放入复用池，后续创建时可直接复用。
 
-```typescript
+<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
+
+``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
