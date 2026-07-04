@@ -46,12 +46,12 @@ SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- |----------|
 | content | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。 |
-| isLoading | boolean | 是 | \@Require\@Param | 当前内容是否正在加载。<br> true：内容正在加载。<br> false：内容未在加载。 |
+| isLoading | boolean | 是 | \@Require<br/>\@Param | 当前内容是否正在加载。<br> true：内容正在加载。<br> false：内容未在加载。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
