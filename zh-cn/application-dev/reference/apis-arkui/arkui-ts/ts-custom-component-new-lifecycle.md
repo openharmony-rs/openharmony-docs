@@ -8,6 +8,8 @@
 
 自定义组件的生命周期回调函数用于通知开发者该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。该生命周期机制涵盖了自定义组件的初始化、出现、构建、回收与复用、激活与非激活、销毁等阶段，开发者可在相应阶段的回调中执行状态修改、数据埋点上报、监听注册等操作，还可借助CustomComponentLifecycle对生命周期状态进行监控与观察，适用于需要对组件生命周期进行精细化管理（如组件复用回收、状态埋点、激活控制等）的场景。
 
+开发者指南见：[自定义组件生命周期（推荐）](../../../ui/state-management/arkts-custom-components-new-lifecycle.md)。
+
 >**说明：**
 >
 > - 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -66,7 +68,7 @@ ComponentBuilt: MethodDecorator
 
 ComponentDisappear: MethodDecorator
 
-\@ComponentDisappear装饰的函数在自定义组件销毁时执行。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
++@ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -86,9 +88,9 @@ ComponentReuse: MethodDecorator
 
 > **说明：**
 >
-> -  在状态管理V1的组件里，\@ComponentReuse装饰的函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
+> - 在状态管理V1的组件里，\@ComponentReuse装饰的函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
 >
-> -  在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
+> - 在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -100,7 +102,7 @@ ComponentReuse: MethodDecorator
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
 
 **示例：**
 
@@ -140,7 +142,7 @@ ArkTS-Dyn: ComponentActive: MethodDecorator
 
 ArkTS-Dyn: ComponentInactive: MethodDecorator
 
-自定义组件由激活状态转变为非激活状态后，调用此装饰器装饰的函数。在组件回收复用场景下，当组件被回收到缓存池时，组件由激活状态转为非激活状态，触发此回调。
+自定义组件由激活状态转变为非激活状态后，调用此装饰器装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。
 
 **起始版本：** 26.0.0
 
@@ -206,7 +208,7 @@ struct Index {
 
 addObserver(observer: CustomComponentLifecycleObserver): void
 
-addObserver函数用于注册自定义组件生命周期监听器。当自定义组件的生命周期发生变化时，会触发监听器中相应的生命周期回调函数。
+addObserver函数用于注册自定义组件生命周期监听器。调用此方法前，需先通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。当自定义组件的生命周期发生变化时，会触发监听器中相应的生命周期回调函数。
 
 调用addObserver注册监听器后，必须在组件销毁或不再需要监听时调用[removeObserver](#removeobserver)移除监听器，两者需成对使用。若未调用removeObserver移除监听器，可能导致监听器持续触发回调并引发内存泄漏。
 
@@ -228,7 +230,7 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 
 removeObserver(observer: CustomComponentLifecycleObserver): void
 
-removeObserver函数用于移除自定义组件生命周期监听器。解除注册后，即使自定义组件的生命周期状态发生变化，也不会触发监听器中相应的生命周期回调函数。
+removeObserver函数用于移除自定义组件生命周期监听器。调用此方法前，需先通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。解除注册后，即使自定义组件的生命周期状态发生变化，也不会触发监听器中相应的生命周期回调函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -278,7 +280,7 @@ ArkTS-Sta: onDidBuild(): void
 
 ArkTS-Dyn: onDidBuild?(): void
 
-onDidBuild函数在自定义组件的build()函数执行后被调用。开发者可以在此阶段实现不影响实际UI的功能，例如事件数据上报。
+onDidBuild函数在自定义组件的build()函数执行后被调用，受自定义组件状态机约束，在被监听的自定义组件状态向CustomComponentLifecycleState.BUILT转变时触发回调。开发者可以在此阶段实现不影响实际UI的功能，例如事件数据上报。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -297,7 +299,7 @@ ArkTS-Sta: aboutToDisappear(): void
 
 ArkTS-Dyn: aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
+aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -316,7 +318,7 @@ ArkTS-Sta: aboutToReuse(params?: ReuseObject): void
 
 ArkTS-Dyn: aboutToReuse?(params?: Record\<string, Object \| undefined \| null\>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数。在状态管理V1的组件里，该函数允许有一个入参或者无参，当params存在时表示V1组件的复用回调；在状态管理V2的组件里，该函数没有入参。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发回调。在状态管理V1的组件里，该函数允许有一个入参或者无参，当params存在时表示V1组件的复用回调；在状态管理V2的组件里，该函数没有入参。
 
 > **说明：**
 >
@@ -338,7 +340,7 @@ ArkTS-Dyn: aboutToReuse?(params?: Record\<string, Object \| undefined \| null\>)
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
 
 ### aboutToRecycle
 
@@ -346,7 +348,7 @@ ArkTS-Sta: aboutToRecycle(): void
 
 ArkTS-Dyn: aboutToRecycle?(): void
 
-当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -495,11 +497,11 @@ struct Index {
 
 本示例展示了生命周期回调函数的部分使用场景：
 
-1. 自定义组件Child的创建触发\@ComponentInit、\@ComponentAppear，Child执行build()后，触发\@ComponentBuilt。
+1. 创建自定义组件Child时触发\@ComponentInit、\@ComponentAppear；Child执行build()后，触发\@ComponentBuilt。
 
-2. 更改this.switch为false，回收Child子组件，触发\@ComponentRecycle。
+2. 更改this.switchChild为false，回收Child子组件，触发\@ComponentRecycle。
 
-3. 更改this.switch为true，复用Child子组件，触发\@ComponentReuse。
+3. 更改this.switchChild为true，复用Child子组件，触发\@ComponentReuse。
 
 4. 退出应用，在自定义组件Child销毁前，触发\@ComponentDisappear。
 
@@ -516,16 +518,16 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State switchChild: boolean = true;
   build() {
     Column() {
       Button('Hello')
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.switchChild = !this.switchChild;
         })
-      if (this.switch) {
+      if (this.switchChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
         Child({ message: new Message('Child') })
           .reuseId('Child')
