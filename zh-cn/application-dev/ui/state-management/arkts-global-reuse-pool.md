@@ -62,7 +62,7 @@
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
+<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
 
 ``` TypeScript
 @Entry
@@ -179,7 +179,7 @@ struct ReusableComponent { // 复用组件
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
+<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -385,7 +385,7 @@ struct ReusableComponent { // 复用组件
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
+<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
 
 ``` TypeScript
 @Entry
@@ -607,7 +607,7 @@ ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
+<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -859,7 +859,7 @@ SubChild aboutToReuse          // 子树级联
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
+<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -1272,7 +1272,7 @@ getReusableInfo(LegacyComp): count=0, maxCount=0
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
+<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -1500,7 +1500,7 @@ struct PoolOwner {
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
+<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -1738,7 +1738,7 @@ ReusableLeaf aboutToReuse       // 从EntryComp的复用池中取出
 
 **ArkTS-Dyn:**
 
-<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
+<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
