@@ -130,13 +130,10 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 创建输入节点。
    OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
    
-   // 重置构造器配置并设置为均衡器节点类型。
+   // 重置构造器配置，创建效果节点。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
-   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
-   // 创建均衡器节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.eqNode);
-   // 设置均衡器节点效果为默认。
-   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(nodes.eqNode, OH_EQUALIZER_PARAM_DEFAULT);
+   // 可根据需要设置不同的效果节点类型。
+   // ...
    
    // 重置构造器配置并设置为输出节点类型。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
