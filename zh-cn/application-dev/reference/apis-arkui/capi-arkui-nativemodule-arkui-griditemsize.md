@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @guozejun-->
+<!--Owner: @guozejun; @rongShao-Z-->
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@ typedef struct {...} ArkUI_GridItemSize
 
 ## 概述
 
-定义Grid布局选项onGetIrregularSizeByIndex回调返回值结构体。
+定义Grid布局选项[OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback](capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback)回调返回值结构体，用于通过GridItem索引指定不规则GridItem占用的行数和列数。
 
 **起始版本：** 22
 
@@ -29,7 +29,7 @@ typedef struct {...} ArkUI_GridItemSize
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t rowSpan | GridItem占用的行数。 |
-| uint32_t columnSpan | GridItem占用的列数。 |
+| uint32_t rowSpan | GridItem占用的行数，用于设置GridItem在行方向上的跨度。 |
+| uint32_t columnSpan | GridItem占用的列数，用于设置GridItem在列方向上的跨度。 |
 
 

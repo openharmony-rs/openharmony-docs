@@ -2,12 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Owner: @guozejun; @rongShao-Z-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
+网格容器，由“行”和“列”分割的单元格组成，通过指定“项目”所在的单元格实现各种各样的布局。
 
 > **说明：**
 >
@@ -28,8 +28,8 @@ Grid布局选项。
 
 | 名称    | 类型      | 只读   | 可选 | 说明                    |
 | ----- | ------- | ---- | --  | --------------------- |
-| onGetStartIndexByOffset<sup>23+</sup> | [OnGetStartIndexByOffsetCallback](#ongetstartindexbyoffsetcallback23类型) | 否 | 是 | 根据Grid滚动的总偏移量，计算Grid当前页面起始行位置，用于快速滑动或反向滑动场景。<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| onGetStartIndexByIndex<sup>23+</sup> | [OnGetStartIndexByIndexCallback](#ongetstartindexbyindexcallback23类型) | 否 | 是 | 根据指定的目标索引，计算Grid滚动到该位置时页面内的起始行，用于支持[scrollToIndex](ts-container-scroll.md#scrolltoindex)等操作。<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| onGetStartIndexByOffset<sup>23+</sup> | [OnGetStartIndexByOffsetCallback](#ongetstartindexbyoffsetcallback23类型) | 否 | 是 | 根据Grid滚动的总偏移量，计算Grid当前页面起始行位置，用于快速滑动或反向滑动场景。不设置时不启用该回调，需与onGetStartIndexByIndex同时设置才能生效。<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| onGetStartIndexByIndex<sup>23+</sup> | [OnGetStartIndexByIndexCallback](#ongetstartindexbyindexcallback23类型) | 否 | 是 | 根据指定的目标索引，计算Grid滚动到该位置时页面内的起始行，用于支持[scrollToIndex](ts-container-scroll.md#scrolltoindex)等操作。不设置时不启用该回调，需与onGetStartIndexByOffset同时设置才能生效。<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## StartLineInfo<sup>23+</sup>对象说明  
 
@@ -43,8 +43,8 @@ Grid布局选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-| startIndex | number | 否 | 否 | 目标索引或目标偏移量所在行的起始索引。 |
-| startLine | number | 否 | 否 | startIndex对应的GridItem所在的起始行，一般为Grid视窗内的起始行，对于跨多行的GridItem需要找到该节点的起始行，可能在视窗外。 |
+| startIndex | number | 否 | 否 | 在OnGetStartIndexByOffsetCallback中，表示滚动偏移量所在行的起始索引；在OnGetStartIndexByIndexCallback中，表示目标索引所在行的起始索引。 |
+| startLine | number | 否 | 否 | startIndex对应GridItem在Grid布局中的起始行号。若该GridItem跨多行，且当前视窗从该GridItem中间位置开始显示，startLine仍表示该GridItem在完整Grid布局中实际占用的首行行号。 |
 | startOffset | number | 否 | 否 | startIndex对应的GridItem的顶部与Grid顶部之间的偏移量。<br/>单位：vp |
 | totalOffset | number | 否 | 否 | 总滚动偏移量，即Grid中第一个GridItem的顶部与Grid顶部之间的偏移量。<br/>单位：vp  |
 
@@ -52,7 +52,7 @@ Grid布局选项。
 
 type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLineInfo
 
-根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。
+根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +76,7 @@ type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLineInfo
 
 type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLineInfo
 
-根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](ts-container-scroll.md#scrolltoindex)等操作。
+根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](ts-container-scroll.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设置才能生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +99,7 @@ type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLineInfo
 ## 示例
 
 ### 示例1(基本用法)
-本示例介绍如何使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetStartIndexByOffset和onGetStartIndexByIndex快速定位滚动位置。
+本示例展示如何使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetStartIndexByOffset和onGetStartIndexByIndex快速定位Grid滚动位置。
 
 从API version 23开始，GridLayoutOptions新增支持onGetStartIndexByOffset和onGetStartIndexByIndex。
 ```ts
@@ -138,9 +138,9 @@ struct Index {
     },
     onGetStartIndexByIndex: (index: number) => {
       let line = Math.floor(index / this.crossCount)
-      let offset = index % 3 == 2 ? -this.itemHeight : 0
+      let offset = index % this.crossCount == this.crossCount - 1 ? -this.itemHeight : 0
       return {
-        startIndex: line * 3,
+        startIndex: line * this.crossCount,
         startLine: line * 2,
         startOffset: offset,
         totalOffset: line * this.itemHeight * 2 - offset
@@ -152,7 +152,7 @@ struct Index {
   aboutToAppear() {
     let list: string[] = [];
     let irregularList: number[] = []
-    for (let i = 0; i <= this.childrenCount; i++) {
+    for (let i = 0; i < this.childrenCount; i++) {
       list.push(i.toString())
       if (i % 3 == 0) {
         irregularList.push(i)
@@ -199,9 +199,9 @@ struct Index {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return {
           totalOffset: (index / this.crossCount) * (this.itemHeight) * 2 - offset,
-          totalLength: this.itemHeight * 2 * (this.childrenCount + 1) / this.crossCount
+          totalLength: this.itemHeight * 2 * this.childrenCount / this.crossCount
         };
-      }) // 只适用于当前示例代码数据源，如果数据源有变化，则需要修改该部分代码
+      }) // 该计算方式依赖当前示例中的数据量、列数和不规则节点规则，修改数据源时需要同步调整。
     }.width('100%').margin({ top: 5 })
   }
 }

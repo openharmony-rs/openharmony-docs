@@ -3,11 +3,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Designer: @yylong; @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在List或Grid组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem或GridItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
+拖拽排序用于实现列表条目或网格条目的手动排序，适用于待办列表排序、歌单管理等需要用户自定义条目顺序的场景。在List或Grid组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem或GridItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动起始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
 
 > **说明：**
 >
@@ -23,19 +23,19 @@
 
 onMove(handler: Optional\<OnMoveHandler\>): T
 
-拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)或[Grid](./ts-container-grid.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem或GridItem组件时才生效。设置拖拽排序时可以定义不同的拖拽操作，并在响应事件发生时响应。
+拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)或[Grid](./ts-container-grid.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem或GridItem组件时才生效。调用后开启拖拽排序功能；拖拽排序离手后，如果数据位置发生变化，将触发handler回调，上报数据移动起始索引号和目标索引号。需要在回调中修改数据源，并确保数据仅顺序发生变化，才能正常执行落位动画。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | 是   | 拖拽动作。 |
+| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | 是   | 拖拽排序数据移动回调。当数据位置因拖拽发生变化时触发，需在回调中根据起始索引号和目标索引号修改数据源。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型      | 说明       |
 | ------ | --------- |
@@ -45,20 +45,20 @@ onMove(handler: Optional\<OnMoveHandler\>): T
 
 onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler): T
 
-拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)或[Grid](./ts-container-grid.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem或GridItem组件时才生效。设置拖拽排序时可以定义不同的拖拽操作，并在响应事件发生时响应。与[onMove](#onmove)相比，新增eventHandler参数，可以监听拖拽时上报的回调事件。
+拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)或[Grid](./ts-container-grid.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem或GridItem组件时才生效。调用后开启拖拽排序功能；拖拽排序离手后，如果数据位置发生变化，将触发handler回调，上报数据移动起始索引号和目标索引号。需要在回调中修改数据源，并确保数据仅顺序发生变化，才能正常执行落位动画。与[onMove](#onmove)相比，新增eventHandler参数，可监听长按、开始拖拽、经过其他组件、拖拽结束等拖拽阶段事件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | 是   | 拖拽动作。 |
-| eventHandler  | [ItemDragEventHandler](#itemdrageventhandler20) | 是   | 拖拽发生时产生的回调。 |
+| handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | 是   | 拖拽排序数据移动回调。当数据位置因拖拽发生变化时触发，需在回调中根据起始索引号和目标索引号修改数据源。 |
+| eventHandler  | [ItemDragEventHandler](#itemdrageventhandler20) | 是   | 拖拽事件回调集合，用于监听长按、开始拖拽、经过其他组件、拖拽结束等拖拽阶段事件。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型      | 说明       |
 | ------ | --------- |
@@ -74,7 +74,7 @@ type OnMoveHandler = (from: number, to: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
@@ -91,10 +91,10 @@ type OnMoveHandler = (from: number, to: number) => void
 
 | 名称 | 类型   | 只读 | 可选 | 说明                 |
 | ------ | ------ | ---- | ---- | -------------------- |
-| onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否  | 是 | 长按时触发的回调。<br>- 参数index为长按时当前目标的索引号。 |
-| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动开始时触发的回调。<br>- 参数index为拖拽开始时当前目标的索引号。 |
-| onMoveThrough  | [OnMoveHandler](#onmovehandler) | 否   | 是 | 在页面跟手滑动过程中经过其他组件时触发的回调。 |
-| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动结束时触发的回调。<br>- 参数index为拖拽结束时当前目标的索引号。 |
+| onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否  | 是 | 长按时触发的回调，不设置时不触发该回调。<br>- 参数index为长按时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
+| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动开始时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽开始时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
+| onMoveThrough  | [OnMoveHandler](#onmovehandler) | 否   | 是 | 在页面跟手滑动过程中经过其他组件时触发的回调，不设置时不触发该回调。<br>- 参数from为拖拽起始索引号，参数to为当前经过的目标索引号，取值范围均是[0, 数据源长度-1]。 |
+| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动结束时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽结束时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
 
 ## 示例
 
@@ -113,7 +113,7 @@ struct ForEachSort {
       List() {
         ForEach(this.arr, (item: string) => {
           ListItem() {
-            Text(item.toString())
+            Text(item)
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .size({height: 100, width: '100%'})
@@ -121,7 +121,8 @@ struct ForEachSort {
           .borderRadius(10)
           .backgroundColor('#FFFFFFFF')
         }, (item: string) => item)
-          .onMove((from:number, to:number) => {
+          .onMove((from: number, to: number) => {
+            // 根据拖拽起止索引移动数据，确保数据顺序与拖拽结果一致。
             let tmp = this.arr.splice(from, 1);
             this.arr.splice(to, 0, tmp[0]);
           })
@@ -148,7 +149,7 @@ struct ForEachSort {
 @Entry
 @Component
 struct ListOnMoveExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6];
+  @State arr: number[] = [0, 1, 2, 3, 4, 5, 6];
 
   build() {
     Column() {
@@ -165,6 +166,7 @@ struct ListOnMoveExample {
           }
         }, (item: number) => item.toString())
           .onMove((from: number, to: number) => {
+            // 根据拖拽起止索引移动数据，确保数据顺序与拖拽结果一致。
             let tmp = this.arr.splice(from, 1);
             this.arr.splice(to, 0, tmp[0]);
             console.info('List onMove From: ' + from);

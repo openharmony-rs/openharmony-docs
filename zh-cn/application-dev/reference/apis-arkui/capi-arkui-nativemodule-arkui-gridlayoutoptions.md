@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @guozejun-->
+<!--Owner: @guozejun; @rongShao-Z-->
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@ typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
 
 ## 概述
 
-定义Grid布局选项。
+定义Grid布局选项，用于配置Grid中不规则GridItem的索引、跨行跨列大小以及指定索引GridItem的起始行列和占用行列数。
 
 **起始版本：** 22
 

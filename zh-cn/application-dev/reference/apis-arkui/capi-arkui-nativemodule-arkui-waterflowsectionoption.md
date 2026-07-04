@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
+typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption;
 ```
 
 ## 概述
