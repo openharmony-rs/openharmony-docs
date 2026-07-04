@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-作为 [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions) 的入参，用于配置分布式任务同步参数，支持指定设备ID、版本冲突处理和任务标签，适用于多设备协同场景下需要精确控制同步行为。
+作为 [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions) 的入参，表示同步时所需参数的枚举。
 
 > **说明：**
 >
