@@ -546,6 +546,7 @@
     - [DialogV2](arkui-ts/ohos-arkui-advanced-DialogV2.md)
     - [EditableTitleBar](arkui-ts/ohos-arkui-advanced-EditableTitleBar.md)
     - [ExceptionPrompt](arkui-ts/ohos-arkui-advanced-ExceptionPrompt.md)
+    - [ExceptionPromptV2](arkui-ts/ohos-arkui-advanced-ExceptionPromptV2.md)
     - [Filter](arkui-ts/ohos-arkui-advanced-Filter.md)
     - [FolderStack](arkui-ts/ts-container-folderstack.md)
     - [FoldSplitContainer](arkui-ts/ohos-arkui-advanced-FoldSplitContainer.md)
