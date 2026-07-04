@@ -5110,7 +5110,8 @@ notificationManager.isNotificationSlotEnabledByBundles(
         console.info(`bundle: ${key.bundle}, enabled: ${value}`);
     });
 }).catch((err: Error): void => {
-    console.error(`isNotificationSlotEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
