@@ -359,6 +359,20 @@
 | EFFECT_NONE        | 0      | 关闭音效。 |
 | EFFECT_DEFAULT     | 1      | 默认音效。 |
 
+## NoiseReductionMode<sup>26.0.0+</sup>
+
+表示录音降噪模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| FIDELITY | 0 | 保真模式，不进行降噪。 |
+| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
+| STANDARD | 2 | 标准模式，弱降噪。 |
+
 ## AudioRendererRate<sup>8+</sup>
 
 表示音频渲染速度的枚举。
