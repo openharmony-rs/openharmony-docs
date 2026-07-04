@@ -291,7 +291,7 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 | 参数项 | 描述 |
 | -- | -- |
 | const char *data | 响应体。 |
-| size_t length | 响应体的长度。 |
+| size_t length | 响应体的长度。单位：Byte。 |
 
 ### Http_OnProgressCallback()
 
@@ -310,8 +310,8 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t totalSize | 数据总大小。单位：字节。 |
-| uint64_t transferredSize | 已传输的数据大小。单位：字节。 |
+| uint64_t totalSize | 数据总大小。单位：Byte。 |
+| uint64_t transferredSize | 已传输的数据大小。单位：Byte。 |
 
 ### Http_OnHeaderReceiveCallback()
 
