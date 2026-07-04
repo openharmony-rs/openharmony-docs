@@ -416,10 +416,10 @@ export struct TextPickerCNDialogExample {
   private select: number = 0;
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('showTextPickerDialog')
-        // ···
+        // ...
           .margin(30)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -431,7 +431,7 @@ export struct TextPickerCNDialogExample {
             });
           })
       }.width('100%').margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```

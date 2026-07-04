@@ -45,14 +45,14 @@ Radio({ value: 'Radio1', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
       //需要执行的操作
-      // ···
+      // ...
     }
   })
 Radio({ value: 'Radio2', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
       //需要执行的操作
-      // ···
+      // ...
     }
   })
 ```
@@ -76,7 +76,7 @@ export struct RadioExample {
   @State sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           Radio({ value: 'Ringing', group: 'radioGroup' }).checked(true)
@@ -117,7 +117,7 @@ export struct RadioExample {
           Text('Silent')
         }
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
