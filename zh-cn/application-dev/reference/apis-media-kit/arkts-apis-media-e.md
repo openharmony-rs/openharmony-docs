@@ -470,7 +470,6 @@ Codec MIME类型枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称                       | 值   | 说明                                   |
