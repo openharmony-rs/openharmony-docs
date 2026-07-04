@@ -87,7 +87,7 @@ Initializes the C API environment and obtains the native module API collection o
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type | Type of the native API collection provided by ArkUI, for example, **ARKUI_NATIVE_NODE** or **ARKUI_NATIVE_GESTURE**.|
-| const char* structName | Name of a native struct, obtained by querying the struct definitions in the corresponding header file, for example, **ArkUI_NativeNodeAPI_1** in [native_node.h](./capi-native-node-h.md).|
+| const char* structName | Pointer to the name of a native struct, obtained by querying the struct definitions in the corresponding header file, for example, **ArkUI_NativeNodeAPI_1** in [native_node.h](./capi-native-node-h.md).|
 
 **Return value**
 
@@ -110,7 +110,7 @@ do {                                                                            
 **Description**
 
 
-Obtains the corresponding struct pointer based on the struct type. This API takes parameters of **nativeAPIVariantKind** (an enumeration of type [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)), **structType** (of type const char*), **structPtr** (of type structType\*). It calls [OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname) to obtain a native API pointer, casts it to structType*, and assigns the result to **structPtr**.
+Obtains the corresponding struct pointer based on the struct type. This API takes parameters of **nativeAPIVariantKind** (an enumeration of type [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)), **structType** (of type const char\*), **structPtr** (of type structType\*). It calls [OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname) to obtain a native API pointer, casts it to structType\*, and assigns the result to **structPtr**.
 
 **Since**: 12
 

@@ -560,7 +560,7 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-指定url设置单个cookie的值。使用Promise异步回调。
+为指定url设置单个cookie的值。使用Promise异步回调。
 
 > **说明：**
 >
@@ -641,7 +641,7 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-指定url设置单个cookie的值。使用Promise异步回调。
+为指定url设置单个cookie的值。使用Promise异步回调。
 
 > **说明：**
 >

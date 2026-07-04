@@ -34,7 +34,7 @@ The Ark bytecode uses a variety of basic and composite data types. Below are the
 
 | **Name**| **Format**| **Description**                                              |
 | -------------- | -------------- | ------------------------------------------------------------ |
-| `utf16_length`   | `uleb128`  | The value is **len << 1 \**| **is_ascii**, where **len** is the length of a string encoded by UTF-16, and **is_ascii** specifies whether the string contains only ASCII characters.|
+| `utf16_length`   | `uleb128`  | The value is **`len << 1 \| is_ascii`**, where **len** is the length of a string encoded by UTF-16, and **is_ascii** specifies whether the string contains only ASCII characters.|
 | `data`           | `uint8_t[]` | Null-terminated sequence of characters encoded in MUTF-8 format. |
 
 

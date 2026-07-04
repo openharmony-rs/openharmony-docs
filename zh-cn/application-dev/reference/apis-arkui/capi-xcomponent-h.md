@@ -10,7 +10,7 @@
 
 XComponent组件的枚举类型定义。
 
-**引用文件：** <arkui/xcomponent.h>
+**引用文件：** <arkui/node_attributes/xcomponent.h>
 
 **库：** libace_ndk.z.so
 

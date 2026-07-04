@@ -7,7 +7,9 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等。effectKit用于离线处理图像（如pixelmap、png、jpeg）以获得视觉效果，而uiEffect则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
+图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等，适用于图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理、UI主题色自动提取、图片配色分析等场景。
+
+本模块用于离线处理[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
 
 该模块提供以下图像效果相关的常用功能：
 
@@ -90,7 +92,7 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, number | null>
 
-读取图像占比靠前的颜色值以及对应比例，个数由`colorCount`指定，结果写入Color与其对应比例的字典中，使用同步方式返回。
+同步返回图像占比靠前的颜色值及其对应比例，个数由`colorCount`指定。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -101,13 +103,13 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要取主色及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
+| colorCount | number | 是   | 颜色值及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。 |
+| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值及比例的Map，比例的取值范围为[0, 1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。 |
 
 **错误码：**
 
@@ -131,7 +133,7 @@ let opts: image.InitializationOptions = {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -144,7 +146,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       })
     }
   })
-})
+});
 ```
 ![Top-Proportion-Colors-And-Percentages.png](figures/Top-Proportion-Colors-And-Percentages.png)
 
@@ -152,7 +154,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getShadeDegree(): PictureShadeDegree
 
-获取图像颜色深浅度。
+获取图像颜色深浅度。当无法判别图像颜色深浅度时，返回默认值UNKNOWN_SHADE_DEGREE_PICTURE。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -188,7 +190,7 @@ let opts: image.InitializationOptions = {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -199,14 +201,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('The shade degree of the image is ' + shadeDegree);
     }
   })
-})
+});
 ```
 
 ### getComplexityDegree<sup>22+</sup>
 
 getComplexityDegree(): PictureComplexityDegree
 
-获取图像内容复杂度。
+获取图像内容复杂度。当无法判别图像内容复杂度时，返回默认值UNKNOWN_COMPLEXITY_DEGREE_PICTURE。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -242,7 +244,7 @@ let opts: image.InitializationOptions = {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -253,7 +255,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('The complexity degree of the image is ' + complexityDegree);
     }
   })
-})
+});
 ```
 
 ### getAlphaZeroTransparentProportion<sup>23+</sup>
@@ -272,7 +274,7 @@ getAlphaZeroTransparentProportion(): number
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| number | 完全透明的像素占比，比例的取值范围为[0,1]。 |
+| number | 完全透明的像素占比，比例的取值范围为[0, 1]。 |
 
 **错误码：**
 
@@ -296,7 +298,7 @@ let opts: image.InitializationOptions = {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -307,7 +309,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
   })
-})
+});
 ```
 
 ### getMorandiShadowColor
@@ -330,7 +332,7 @@ getMorandiShadowColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-| [Color](js-apis-effectKit.md#color)   | Color实例，即图像莫兰迪阴影色对应的颜色值，失败时返回null。 |
+| [Color](js-apis-effectKit.md#color)   | Color实例，即图像莫兰迪阴影色对应的颜色值。当图像处理失败或无法获取莫兰迪阴影色时返回null。 |
 
 **示例：**
 
@@ -357,7 +359,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('get Morandi shadow color =' + color);
     }
   })
-})
+});
 ```
 
 ### getDeepenImmersionColor
@@ -380,7 +382,7 @@ getDeepenImmersionColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值，失败时返回null。 |
+|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值。当图像处理失败或无法生成沉浸色时返回null。 |
 
 **示例：**
 
@@ -407,7 +409,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('get deepen immersion color =' + color);
     }
   })
-})
+});
 ```
 
 ### getImmersiveBackgroundColor
@@ -430,7 +432,7 @@ getImmersiveBackgroundColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式背景色对应的颜色值，失败时返回null。 |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式背景色对应的颜色值。当图像处理失败或无法生成沉浸式背景色时返回null。 |
 
 **示例：**
 
@@ -457,7 +459,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('get immersive background color =' + color);
     }
   })
-})
+});
 ```
 
 ### getImmersiveForegroundColor
@@ -480,7 +482,7 @@ getImmersiveForegroundColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式前景色对应的颜色值，失败时返回null。 |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式前景色对应的颜色值。当图像处理失败或无法生成沉浸式前景色时返回null。 |
 
 **示例：**
 
@@ -507,14 +509,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('get immersive foreground color =' + color);
     }
   })
-})
+});
 ```
 
 ### discriminatePictureLightDegree()
 
 discriminatePictureLightDegree(): PictureLightDegree
 
-获取图片的明亮程度。
+获取图片的明亮程度。当无法判别图片明亮程度时，返回UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE。
 
 **起始版本：** 26.0.0
 
@@ -554,7 +556,7 @@ let opts: image.InitializationOptions = {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -565,7 +567,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('The color light degree of the image is ' + pictureLightDegree);
     }
   })
-})
+});
 ```
 
 ### getReverseColor
@@ -588,7 +590,7 @@ getReverseColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-| [Color](js-apis-effectKit.md#color)    | Color实例，即图像反向颜色对应的颜色值，失败时返回null。 |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像反向颜色对应的颜色值。当图像处理失败或无法生成反向颜色时返回null。 |
 
 **示例：**
 
@@ -615,7 +617,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('get reverse color =' + color);
     }
   })
-})
+});
 ```
 
 ## Filter
@@ -647,7 +649,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 |  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 椭圆形遮罩的中心点坐标。 |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 椭圆形遮罩在X轴和Y轴方向的半径。 |
-|  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数不能小于2，最大为12。 |
+|  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。数组元素为二元数组，第一个元素表示位置，第二个元素表示模糊程度。位置取值范围为[0, 1]，椭圆中心对应位置0，椭圆边界对应位置1。模糊程度取值范围为[0, 1]，0表示无模糊，大于1的值自动转为1。位置参数值需严格递增，数组长度不能小于2，最大为12。 |
 
 **返回值：**
 
@@ -674,13 +676,13 @@ function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap
       if (headFilter != null) {
         // 对图片添加效果标识
         headFilter.ellipticalGradientBlur(blurRadius, center, maskRadius, fractionStops);
+        // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+        headFilter.getEffectPixelMap(false).then(imageData => {
+          resolve(imageData);
+        });
       }
-      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
-        resolve(imageData);
-      })
-    })
-  })
+    });
+  });
 }
 
 @Entry
@@ -690,19 +692,19 @@ struct Index {
   private imageBuffer: ArrayBuffer | undefined = undefined;
   // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
   async getFileBuffer(): Promise<ArrayBuffer | undefined> {
-    try{
+    try {
       const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
       const buffer: ArrayBuffer = fileData.buffer.slice(0);
       return buffer;
-    }catch (err){
-      return undefined
+    } catch (err) {
+      return undefined;
     }
   }
 
-  async aboutToAppear(): Promise<void>{
+  async aboutToAppear(): Promise<void> {
     this.imageBuffer = await this.getFileBuffer();
-    if(this.imageBuffer == undefined){
+    if (this.imageBuffer == undefined) {
       return;
     }
     // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步

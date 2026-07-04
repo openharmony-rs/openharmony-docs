@@ -808,7 +808,7 @@ struct Index {
 
 ### 调测验证
 
-1. 在DevEco Studio中连接设备，点击Run entry，编译Hap，有如下显示：
+1. 在DevEco Studio中连接设备，点击Run entry，编译HAP，有如下显示：
 
    ```shell
    Launching com.samples.mindsporelitecdemoasr

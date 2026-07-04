@@ -1,14 +1,14 @@
 # Application State Management Overview
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=59b65fcc65a22b7c940ca535023658111a023e22 translatedAt=2026-06-29T10:55:15.484Z pushedAt=2026-06-29T11:42:47.950Z -->
 
-
-The decorators described in the previous topics are used to share state variables within a page, that is, within a component tree. If you want to share state data at the application level or across multiple pages, you would need to apply application-level state management. ArkTS provides a wide variety of application state management capabilities:
-
+The decorators introduced in the component status management chapter can only share state variables within a page, that is, on a single component tree. If you want to implement application-level state data sharing or share state across multiple pages, you need to implement application-level state management. ArkTS provides various application state management capabilities based on different characteristics:
 
 - [LocalStorage](arkts-localstorage.md): API for storing the UI state, usually used for state sharing within a [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) or between pages.
 

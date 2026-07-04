@@ -6394,7 +6394,7 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor] (#getdrawabledescriptor10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor](#getdrawabledescriptor10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7696,7 +7696,7 @@ Obtains a color value based on the specified resource object. This API uses a pr
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName] (#getcolorbyname10-1) or [getColor] (#getcolor10-1) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName](#getcolorbyname10-1) or [getColor](#getcolor10-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

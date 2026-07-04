@@ -380,7 +380,7 @@ Defines the parameters for routing back.
 | Name  | Type| Mandatory| Description                                                        |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | uri<sup>7+</sup> | string   | No  | URI of the page to return to. If the specified page does not exist in the page stack, the application does not respond. If this parameter is not set, the application returns to the previous page.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full|
-| params<sup>7+</sup> | object   | No  | Data that needs to be passed to the target page during redirection.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
+| params<sup>7+</sup> | Object   | No  | Data to be passed to the target page when the page is returned.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
 
 ## RouterState
 
