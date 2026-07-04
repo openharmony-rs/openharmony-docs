@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息。注册详见：[distributedMissionManager.on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange10)。
+当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息，注册详见：[distributedMissionManager.on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange10)。
 
 > **说明：**
 >
