@@ -1339,9 +1339,9 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
