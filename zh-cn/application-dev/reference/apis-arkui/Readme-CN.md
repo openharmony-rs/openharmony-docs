@@ -541,6 +541,7 @@
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
     - [ChipGroupV2](arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)
     - [ComposeListItem](arkui-ts/ohos-arkui-advanced-ComposeListItem.md)
+    - [ComposeListItemV2](arkui-ts/ohos-arkui-advanced-ComposeListItemV2.md)
     - [ComposeTitleBar](arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md)
     - [ComposeTitleBarV2](arkui-ts/ohos-arkui-advanced-ComposeTitleBarV2.md)
     - [DownloadFileButton](arkui-ts/ohos-arkui-advanced-DownloadFileButton.md)
