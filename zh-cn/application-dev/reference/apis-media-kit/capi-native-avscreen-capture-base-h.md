@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) | OH_AudioCaptureInfo | 音频采样信息。<br> 当audioSampleRate和audioChannels同时为0时，忽略该类型音频相关参数，不录制该类型音频数据。 |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) | OH_AudioCaptureInfo | 音频采样信息。<br> 当audioSampleRate和audioChannels同时为0时，忽略该类型音频相关参数，不录制该类型音频数据。<br> 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采样参数需要相同。 |
 | [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) | OH_AudioEncInfo | 音频编码信息。 |
 | [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) | OH_AudioInfo | 音频信息。<br> 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采样参数需要相同。 |
 | [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) | OH_VideoCaptureInfo | 视频录制信息。当videoFrameWidth和videoFrameHeight同时为0时，忽略视频相关参数不录制屏幕数据。 |
@@ -458,7 +458,7 @@ typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capt
 
 **描述**
 
-当OH_AVScreenCapture实例操作期间发生状态变更时，将调用函数指针。
+当OH_AVScreenCapture实例操作期间发生状态变更时，将调用函数指针。<br> 需通过OH_AVScreenCapture相关接口设置该回调后方可生效，未设置时回调不会被调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -560,7 +560,7 @@ typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* c
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCaptureContentChangedEvent](#oh_avscreencapturecontentchangedevent) event | 录屏内容变更事件。 |
-| [OH_Rect](capi-avscreencapture-oh-rect.md)* area | 录屏内容可见时，对应位置信息。 |
+| [OH_Rect](capi-avscreencapture-oh-rect.md)* area | 录屏内容可见时，对应位置信息；录屏内容隐藏或不可见时，该参数无效。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnUserSelected()

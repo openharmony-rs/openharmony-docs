@@ -139,7 +139,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVSc
 
 **描述**
 
-开始录屏，采集原始码流。<br> 调用后可以通过回调的监听（[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)）来监听当前是否有码流的产生,通过回调的监听（[OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)）来监听启动状态。<br> 通过调用获取音频buffer（[OH_AVScreenCapture_AcquireAudioBuffer](#oh_avscreencapture_acquireaudiobuffer)）和视频buffer（[OH_AVScreenCapture_AcquireVideoBuffer](#oh_avscreencapture_acquirevideobuffer)）的接口来获取录屏的原始码流。
+开始录屏，采集原始码流。<br> 调用后可以通过回调的监听（[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)）来监听当前是否有码流的产生，通过回调的监听（[OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)）来监听启动状态。<br> 通过调用获取音频buffer（[OH_AVScreenCapture_AcquireAudioBuffer](#oh_avscreencapture_acquireaudiobuffer)）和视频buffer（[OH_AVScreenCapture_AcquireVideoBuffer](#oh_avscreencapture_acquirevideobuffer)）的接口来获取录屏的原始码流。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -747,7 +747,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScree
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t *windowIDs | 向隐私窗口ID的指针。 |
+| int32_t *windowIDs | 指向隐私窗口ID的指针。 |
 | int32_t windowCount | 隐私窗口ID列表的长度。 |
 
 **返回：**
@@ -818,7 +818,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVSc
 
 **描述**
 
-设置获取录屏屏幕Id的回调。
+设置获取录屏屏幕ID的回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -829,8 +829,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVSc
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_AVScreenCapture_OnDisplaySelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_ondisplayselected) callback | 指向录屏屏幕Id回调方法实例的指针。 |
-| void *userData | 指向应用提供的自定义数据的指针，在状态处理回调方法被调用时作为入参回传。 |
+| [OH_AVScreenCapture_OnDisplaySelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_ondisplayselected) callback | 指向录屏屏幕ID回调方法实例的指针。 |
+| void *userData | 指向应用提供的自定义数据的指针，在录屏屏幕ID回调方法被调用时作为入参回传。 |
 
 **返回：**
 
@@ -944,7 +944,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(
 
 **描述**
 
-向CaptureStrategy实例设置蜂窝通话时是否保持录屏。<br> value设置为true时并且录屏时接听蜂窝通话的过程中，出于隐私要求，双方通话的声音（本地麦克风和对方说话声音）不会被录制，其他系统音录制正常。电话挂断之后，录屏框架恢复麦克风录制。注意，如果挂断电话时录屏应用在后台运行，麦克风录制会启动失败，原因是音频模块不允许后台应用启动麦克风录制。
+向CaptureStrategy实例设置蜂窝通话时是否保持录屏。<br> value设置为true时，若录屏期间接听蜂窝通话，出于隐私要求，双方通话的声音（本地麦克风和对方说话声音）不会被录制，其他系统音录制正常。电话挂断之后，录屏框架恢复麦克风录制。注意，如果挂断电话时录屏应用在后台运行，麦克风录制会启动失败，原因是音频模块不允许后台应用启动麦克风录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -983,7 +983,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCapture_OnCaptureContentChanged](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_oncapturecontentchanged) callback | 指向录屏内容变更回调方法实例的指针。 |
-| void *userData | 指向应用提供的自定义数据的指针，在错误处理回调方法被调用时作为入参回传。 |
+| void *userData | 指向应用提供的自定义数据的指针，在录屏内容变更回调方法被调用时作为入参回传。 |
 
 **返回：**
 
@@ -1368,7 +1368,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct 
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCapture_OnPrivacyProtect](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onprivacyprotect) callback | 隐私保护回调函数。 |
-| void *userData | 指向应用提供的自定义数据的指针，在状态处理回调方法被调用时作为入参回传。 |
+| void *userData | 指向应用提供的自定义数据的指针，在隐私保护回调方法被调用时作为入参回传。 |
 
 **返回：**
 
@@ -1399,7 +1399,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCaptu
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 参数strategy为空指针。 |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：参数strategy为空指针。 |
 
 ### OH_AVScreenCapture_PauseScreenCapture()
 
@@ -1423,7 +1423,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVSc
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |
 
 ### OH_AVScreenCapture_ResumeScreenCapture()
 
@@ -1447,4 +1447,4 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVS
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |
