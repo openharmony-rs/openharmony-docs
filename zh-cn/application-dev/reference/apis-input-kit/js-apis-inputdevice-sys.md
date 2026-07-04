@@ -25,7 +25,7 @@ import { inputDevice } from '@kit.InputKit';
 ```
 
 ## inputDevice.setKeyboardRepeatDelay<sup>10+</sup>
-
+| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键的重复时延，默认值500ms，调节范围[300ms，1000ms]。 |
 ArkTS-Dyn: setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&gt;): void
