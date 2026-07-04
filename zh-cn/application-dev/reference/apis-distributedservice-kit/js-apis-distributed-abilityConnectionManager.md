@@ -246,7 +246,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明                              |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。超出范围时返回错误码401。 |
+| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。|
 
 **示例：**
 
@@ -275,7 +275,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 协同会话ID。取值范围是大于100的整数，由createAbilityConnectionSession接口返回。   |
+| sessionId | number  | 是    | 协同会话ID。由createAbilityConnectionSession接口返回。   |
 
 **返回值：**
 
@@ -320,7 +320,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| sessionId | number | 是    | 已创建的协同会话ID，由createAbilityConnectionSession接口返回。取值范围是大于100的整数。    |
+| sessionId | number | 是    | 已创建的协同会话ID，由createAbilityConnectionSession接口返回。 |
 
 **返回值：**
 
@@ -371,7 +371,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 已创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number | 是    | 已创建的协同会话ID。 |
 | token | string | 是    | 设备A应用传入的token值，该值通过wantParam参数中'ohos.dms.collabToken'键获取（在应用被拉起后的onCollaborate生命周期方法的wantParam参数中获取）。当设备A调用connect方法时，系统会自动生成collabToken并通过want参数传递给设备B，设备B在onCollaborate生命周期回调中可以从wantParam参数获取此token。    |
 
 **返回值：**
@@ -537,7 +537,7 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connect'，完成[abilityConnectionManager.connect()](#abilityconnectionmanagerconnect)调用，触发该事件。   |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
 
 **错误码：**
@@ -579,7 +579,7 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connect'，需通过[abilityConnectionManager.on('connect')](#abilityconnectionmanageronconnect)注册后才能取消。    |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 回调函数，不传则取消所有该事件的回调监听。    |
 
 **错误码：**
@@ -618,7 +618,7 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnect'，完成[abilityConnectionManager.disconnect()](#abilityconnectionmanagerdisconnect)调用，触发该事件。   |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。 |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
 
 **错误码：**
@@ -660,7 +660,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnect'，需通过[abilityConnectionManager.on('disconnect')](#abilityconnectionmanagerondisconnect)注册后才能取消。    |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
 **错误码：**
@@ -700,7 +700,7 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'receiveMessage'，完成[abilityConnectionManager.sendMessage()](#abilityconnectionmanagersendmessage)调用，触发该事件。   |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
 
 **错误码：**
@@ -742,7 +742,7 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'receiveMessage'，需通过[abilityConnectionManager.on('receiveMessage')](#abilityconnectionmanageronreceivemessage)注册后才能取消。    |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
 **错误码：**
@@ -782,7 +782,7 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'receiveData'，完成[abilityConnectionManager.sendData()](#abilityconnectionmanagersenddata)调用，触发该事件。   |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
 
 **错误码：**
@@ -824,7 +824,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'receiveData'，需通过[abilityConnectionManager.on('receiveData')](#abilityconnectionmanageronreceivedata)注册后才能取消。    |
-| sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
+| sessionId | number  | 是    | 创建的协同会话ID。|
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
 **错误码：**
@@ -863,7 +863,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 协同会话ID。取值范围是大于100的整数，由createAbilityConnectionSession接口返回。 |
+| sessionId | number | 是    | 协同会话ID。由createAbilityConnectionSession接口返回。 |
 | msg | string | 是    | 文本信息内容（内容最大限制为1KB）。超出长度限制时返回错误码401。 |
 
 **返回值：**
@@ -910,14 +910,14 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 协同会话ID。取值范围是大于100的整数。 |
+| sessionId | number | 是    | 协同会话ID。 |
 | data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | 是    | 字节流信息。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。数据发送成功时resolve，发送失败时reject。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。|
 
 **错误码：**
 
@@ -1007,7 +1007,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。取值范围是大于100的整数。 |
+| sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。|
 | reason | [DisconnectReason](#disconnectreason)     | 否   | 是   | 表示断连原因。触发disconnect事件时存在，用于标识具体的断连原因。其他事件类型下不存在。 |
 | msg | string   | 否   | 是   | 表示接收的消息。触发receiveMessage事件时存在，包含接收到的文本消息内容。其他事件类型下不存在。 |
 | data  | ArrayBuffer | 否   | 是   | 表示接收的字节流。触发receiveData事件时存在，包含接收到的二进制数据。其他事件类型下不存在。 |
