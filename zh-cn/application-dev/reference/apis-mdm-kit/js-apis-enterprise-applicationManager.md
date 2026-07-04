@@ -57,7 +57,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：21+ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -1429,7 +1429,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：26.0.0+ |
 | 9200012  | Parameter verification failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 

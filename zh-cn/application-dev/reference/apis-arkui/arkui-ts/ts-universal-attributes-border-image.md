@@ -308,7 +308,7 @@ struct BorderImage {
         }
 
         Column() {
-          Text(`borderImageEndSliceStart = ${this.SliceEndValue}px`)
+          Text(`borderImageSliceEnd = ${this.SliceEndValue}px`)
           Slider({
             value: this.SliceEndValue,
             min: 0,

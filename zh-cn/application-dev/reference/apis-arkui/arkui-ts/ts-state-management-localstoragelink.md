@@ -1,13 +1,13 @@
-# @LocalStorageLink：页面级UI状态存储
+# @LocalStorageLink：LocalStorage双向数据同步
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhangboren-->
+<!--Owner: @zhushilin0206-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@LocalStorageLink用于状态管理V1中，与LocalStorage中给定属性建立双向同步关系。
+@LocalStorageLink在状态管理V1中使用，用于与LocalStorage中指定键名对应的属性建立双向数据同步：@LocalStorageLink装饰的变量与LocalStorage中对应属性任一方发生变化时，变更均会同步到另一方。
 
 在ArkTS-Dyn中使用时，开发指南参考：[LocalStorage：页面级UI状态存储（ArkTS-Dyn）](../../../ui/state-management/arkts-localstorage.md)。
 
@@ -27,20 +27,26 @@ const LocalStorageLink: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | string | 是   | 用于标识LocalStorage的属性。 |
+| value  | string | 是   | LocalStorage中的属性键名，用于建立与该键名对应属性的双向数据同步。若LocalStorage中已存在该键名对应的属性，则@LocalStorageLink装饰变量的本地初始值将被LocalStorage中对应属性的值覆盖；若LocalStorage中不存在该键名对应的属性，则使用@LocalStorageLink装饰变量的本地初始值在LocalStorage中创建该属性。|
+
+**返回值：**
+
+| 类型              | 说明                                 |
+| ----------------- | ------------------------------------ |
+| PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 
 ```ts
 // 创建LocalStorage的初始数据，键为'LinkA'，值为47
-let para: Record<string, number> = { 'LinkA': 47 };
-let storage: LocalStorage = new LocalStorage(para);
+const initialData: Record<string, number> = { 'LinkA': 47 };
+const storage: LocalStorage = new LocalStorage(initialData);
 
 // 使用@Entry装饰器标记入口组件，并传入LocalStorage实例
 @Entry(storage)
 @Component
 struct Parent {
-  // 使用@LocalStorageLink装饰器与LocalStorage中'LinkA'属性建立双向绑定
+  // 使用@LocalStorageLink装饰器与LocalStorage中'LinkA'属性建立双向数据同步
   @LocalStorageLink('LinkA') linkA: number = 1;
 
   build() {

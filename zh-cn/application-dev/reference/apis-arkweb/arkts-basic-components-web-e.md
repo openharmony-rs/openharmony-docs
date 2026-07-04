@@ -275,6 +275,8 @@ Web布局模式的配置。
 
 ## ProtectedResourceType<sup>9+</sup>
 
+受保护的资源类型。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称                          | 值 | 说明            |    可申请的权限          |

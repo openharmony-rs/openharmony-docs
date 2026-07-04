@@ -203,7 +203,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog.gif)
+![DatePickerDialog](figures/DatePickerDialog.gif)
 
 ### 示例2（自定义样式）
 
@@ -374,7 +374,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_CustomButton.png)
+![DatePickerDialog](figures/DatePickerDialog_CustomButton.png)
 
 > **说明：**
 >
@@ -437,7 +437,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_HoverMode.gif)
+![DatePickerDialog](figures/DatePickerDialog_HoverMode.gif)
 
 ### 示例4（设置弹窗位置）
 
@@ -473,7 +473,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo4.png)
+![DatePickerDialog](figures/DatePickerDialogDemo4.png)
 
 ### 示例5（设置遮蔽区）
 
@@ -513,7 +513,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo5.png)
+![DatePickerDialog](figures/DatePickerDialogDemo5.png)
 
 ### 示例6（设置弹窗背板）
 
@@ -550,7 +550,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo6.png)
+![DatePickerDialog](figures/DatePickerDialogDemo6.png)
 
 ### 示例7（设置公历农历）
 
@@ -601,7 +601,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo7.gif)
+![DatePickerDialog](figures/DatePickerDialogDemo7.gif)
 
 ### 示例8（设置显示月、日列）
 
@@ -636,7 +636,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo8.gif)
+![DatePickerDialog](figures/DatePickerDialogDemo8.gif)
 
 ### 示例9（设置循环滚动）
 
@@ -680,7 +680,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![TextPickerDialog](figures/DatePickerDialogDemo9.gif)
+![DatePickerDialog](figures/DatePickerDialogDemo9.gif)
 
 ### 示例10（自定义背景模糊效果参数）
 
@@ -720,7 +720,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_BackgroundBlurStyleOptions.png)
+![DatePickerDialog](figures/DatePickerDialog_BackgroundBlurStyleOptions.png)
 
 ### 示例11（自定义背景效果参数）
 
@@ -762,4 +762,4 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
+![DatePickerDialog](figures/DatePickerDialog_BackgroundEffect.png)

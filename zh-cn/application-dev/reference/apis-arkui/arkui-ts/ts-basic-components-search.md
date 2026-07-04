@@ -1352,11 +1352,11 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                    | 说明        |
-| ----------------------- | ---------------- |
-| CONSTANT  | 清除按钮常显样式。 |
-| INVISIBLE | 清除按钮常隐样式。 |
-| INPUT     | 清除按钮输入样式。 |
+| 名称                    | 值 | 说明        |
+| ----------------------- | ---- | ---------------- |
+| CONSTANT  | - | 清除按钮常显样式。 |
+| INVISIBLE | - | 清除按钮常隐样式。 |
+| INPUT     | - | 清除按钮输入样式。 |
 
 ## SearchType<sup>11+</sup>枚举说明
 
