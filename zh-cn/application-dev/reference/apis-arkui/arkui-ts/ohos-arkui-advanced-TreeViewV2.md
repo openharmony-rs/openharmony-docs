@@ -191,7 +191,7 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 ## TreeListenerManagerV2
 
-树视图组件的监听管理器，可以将此对象绑定至树视图组件，然后通过它树视图监听器的变化，同一个监听管理器不可以控制多个树视图组件。
+树视图组件的监听管理器，可以将此对象绑定至树视图组件，然后通过它管理树视图监听器的变化，同一个监听管理器不可以控制多个树视图组件。
 
 ### getInstance
 
