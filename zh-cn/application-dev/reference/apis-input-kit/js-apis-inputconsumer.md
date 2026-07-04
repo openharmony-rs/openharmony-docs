@@ -150,7 +150,7 @@ struct Index {
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           try {
             // 订阅热键变更事件
             inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
@@ -206,7 +206,7 @@ struct Index {
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
@@ -239,7 +239,7 @@ struct Index {
           // 取消订阅所有应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
@@ -365,7 +365,7 @@ struct Index {
             }
             let callback = (event: KeyEvent) => {
               console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
-            }
+            };
             // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, callback);
             // 取消订阅按键按下事件

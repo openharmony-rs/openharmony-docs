@@ -41,7 +41,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API version 26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
 | callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，返回组合按键数据。 |
 
 **错误码**：
@@ -76,7 +76,7 @@ struct Index {
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
             console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
-          }
+          };
           try {
             // 订阅按键事件
             inputConsumer.on('key', keyOptions, callback);
@@ -103,7 +103,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 | 参数名         | 类型                         | 必填   | 说明                              |
 | ---------- | -------------------------- | ---- | ------------------------------- |
 | type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API version 26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
 | callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
@@ -133,7 +133,7 @@ struct Index {
           // 取消订阅单个回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
             console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
-          }
+          };
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             // 订阅按键事件
@@ -165,7 +165,7 @@ struct Index {
           // 取消订阅所有回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
             console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
-          }
+          };
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             // 订阅按键事件
@@ -219,6 +219,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let leftCtrlKey = 2072;
 let cKey = 2049;
@@ -231,16 +232,18 @@ let keyOptions: inputConsumer.KeyOptions = {
 };
 let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`keyOptions: ${keyOptions} keyEvents: ${keyEvents}`);
-}
+};
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to subscribe. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyOptions: inputConsumer.KeyOptions = {
   preKeys: [],
@@ -255,12 +258,14 @@ let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void =
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to subscribe. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let leftAltKey = 2045;
 let tabKey = 2049;
@@ -277,7 +282,8 @@ let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void =
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to subscribe. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -313,6 +319,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let leftCtrlKey = 2072;
 let cKey = 2049;
@@ -331,12 +338,14 @@ try {
   inputConsumer.offKey(keyOptions, callback);
   console.info(`Unsubscribe success`);
 } catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to execute operation. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let leftCtrlKey = 2072;
 let cKey = 2049;
@@ -351,7 +360,8 @@ try {
   inputConsumer.offKey(keyOptions);
   console.info(`Unsubscribe all success`);
 } catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to execute operation. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -417,7 +427,7 @@ struct Index {
           let FACTORY_MODE = 0;
           try {
             // 设置屏蔽状态
-            inputConsumer.setShieldStatus(FACTORY_MODE,true);
+            inputConsumer.setShieldStatus(FACTORY_MODE, true);
             console.info(`Succeeded in setting shield status.`);
           } catch (error) {
             console.error(`Failed to set shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -475,8 +485,8 @@ struct Index {
         .onClick(() => {
           try {
             let FACTORY_MODE = 0;
-            let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
-            console.info(`Succeeded in getting shield status, result:${JSON.stringify(shieldstatusResult)}.`);
+            let shieldStatusResult: boolean = inputConsumer.getShieldStatus(FACTORY_MODE);
+            console.info(`Succeeded in getting shield status, result: ${JSON.stringify(shieldStatusResult)}.`);
           } catch (error) {
             console.error(`Failed to get shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -494,14 +504,14 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
+| preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
 | finalKey             | number  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键。 |
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位为微秒（μs）。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
-| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](#inputconsumeronkey)接口该参数是可选参数，对于[inputConsumer.onKey](#inputconsumeronkey-1)接口该参数是必填参数。<br>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED（1）、REPEAT_PRESSED（2）或ALL_RELEASED（3）。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](#inputconsumeronkey)接口该参数是可选参数，对于[inputConsumer.onKey](#inputconsumeronkey-1)接口该参数是必填参数。<br>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
-## shieldMode<sup>11+</sup>
+## ShieldMode<sup>11+</sup>
 
 系统快捷键屏蔽类型。
 
