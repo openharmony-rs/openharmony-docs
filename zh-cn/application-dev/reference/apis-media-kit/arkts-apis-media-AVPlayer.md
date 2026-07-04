@@ -5765,37 +5765,6 @@ async function test(){
 }
 ```
 
-## offTimedMetaData
-
-offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
-
-取消注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
-
-**示例：**
-
-```ts
-async function test(){
-  let avPlayer = await media.createAVPlayer();
-  avPlayer.offTimedMetaData();
-}
-```
-
 ### getCurrentTrack
 
 getCurrentTrack(trackType: MediaType): Promise\<number>

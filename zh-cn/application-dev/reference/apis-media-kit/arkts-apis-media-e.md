@@ -81,6 +81,7 @@ Codec MIME类型枚举。
 | AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
+| AUDIO_RAW    | 'audio/raw'           | 表示音频/raw类型。       |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23      |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G711-mulaw类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
@@ -521,6 +522,12 @@ Codec MIME类型枚举。
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+| AV_METRICS_EVENT_LIP_ASYNC | 2    | 表示音画不同步的指标事件。 |
+| AV_METRICS_EVENT_LOADINGRATE_CHANGE | 3    |表示加载速率变化超过10%的事件。 |
+| AV_METRICS_EVENT_LOADING_ERROR | 4    |表示加载数据请求错误的事件。 |
+| AV_METRICS_EVENT_CONTENT_CHANGED | 5    |表示播放内容切换的事件。 |
+| AV_METRICS_EVENT_CONTENT_DISCONTINUITY | 6    |表示播放内容不连续的事件。 |
+| AV_METRICS_EVENT_AUDIO_ABNORMAL | 7    |表示音频状态变化的事件。 |
 
 ## PlaylistLoopMode
 
