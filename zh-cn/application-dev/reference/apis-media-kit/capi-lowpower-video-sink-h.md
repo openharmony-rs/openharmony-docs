@@ -74,7 +74,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | 视频解码器的MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
+| const char* mime | 视频解码器的MIME类型，取值范围请参考[OH_AVCODEC_MIMETYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
@@ -430,7 +430,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSi
 
 **描述**
 
-LowPowerVideoSink设置用于音画同步的OH_LowPowerAudioSink。
+LowPowerVideoSink设置用于音画同步的OH_LowPowerAudioSink。需要在OH_LowPowerVideoSink_Prepare前完成。
 
 **起始版本：** 20
 
@@ -729,7 +729,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 **描述**
 
-为LowPowerVideoSinkCallback回调设置首帧准备完成监听。
+为LowPowerVideoSinkCallback回调设置首帧解码完成监听。
 
 **起始版本：** 20
 
@@ -738,7 +738,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
-| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameReady方法，在FirstFrameReady事件触发时调用。 |
+| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameDecoded方法，在第一帧解码成功时调用。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**

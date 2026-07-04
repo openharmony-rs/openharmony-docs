@@ -93,6 +93,7 @@
         - [组件复用迁移](state-management/arkts-v1-v2-migration-reusable.md)
         - [循环渲染迁移](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [内置对象的迁移](state-management/arkts-v1-v2-migration-inner-object.md)
+        - [卡片状态变量迁移](state-management/arkts-v1-v2-migration-card.md)
         - [AnimateTo使用迁移](state-management/arkts-v1-v2-migration-animateTo.md)
       - 状态管理V1和V2混用场景<!--v1v2-mixing-->
         - [状态管理V1和V2混用指导（API version 19前）](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -142,6 +143,7 @@
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
     - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)<!--RP4--><!--RP4End-->
+    - [创建懒加载自定义布局 (LazyDynamicLayout)](arkts-layout-development-create-lazy-custom-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)

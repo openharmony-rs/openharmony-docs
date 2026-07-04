@@ -137,20 +137,24 @@ EXTERN_C_END
     @Entry
     @Component
     struct Index {
-    @State message: string = 'IMAGE';
-    @State _PixelMap : image.PixelMap | undefined = undefined;
+      @State message: string = 'IMAGE';
+      @State _PixelMap: image.PixelMap | undefined = undefined;
 
-    build() {
+      build() {
         Row() {
-        Column() {
+          Column() {
             Button(this.message)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-                const color : ArrayBuffer = new ArrayBuffer(96);
-                let opts: image.InitializationOptions = { alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: { height: 4, width: 6 } };
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+              .onClick(() => {
+                const color: ArrayBuffer = new ArrayBuffer(96);
+                let opts: image.InitializationOptions = {
+                  editable: true,
+                  pixelFormat: image.PixelMapFormat.BGRA_8888,
+                  size: { height: 4, width: 6 }
+                };
                 image.createPixelMap(color, opts)
-                .then( (pixelmap : image.PixelMap) => {
+                  .then((pixelmap: image.PixelMap) => {
                     this._PixelMap = pixelmap;
                     testNapi.testGetImageInfo(this._PixelMap);
                     console.info("Test GetImageInfo success");
@@ -160,12 +164,14 @@ EXTERN_C_END
 
                     testNapi.testUnAccessPixels(this._PixelMap);
                     console.info("Test UnAccessPixels success");
-                })
-            })
-        }
-        .width('100%')
+                  });
+              })
+          }
+          .width('100%')
+          Image(this._PixelMap)
+            .width('100%')
         }
         .height('100%')
-    }
+      }
     }
     ```

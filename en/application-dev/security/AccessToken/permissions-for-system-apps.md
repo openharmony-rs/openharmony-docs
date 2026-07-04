@@ -5875,7 +5875,7 @@ Allows a system application to send commands to collect logs.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -6668,4 +6668,32 @@ Allows an application to manage clone preferences.
  	 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
+**Valid since**: 26.1.0
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 26.1.0

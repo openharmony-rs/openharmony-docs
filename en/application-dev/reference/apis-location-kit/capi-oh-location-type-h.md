@@ -18,7 +18,7 @@ Defines common attributes of the location service.
 
 **Since**: 13
 
-**Related module**: [Location] (capi-location.md)
+**Related module**: [Location](capi-location.md)
 
 ## Summary
 
