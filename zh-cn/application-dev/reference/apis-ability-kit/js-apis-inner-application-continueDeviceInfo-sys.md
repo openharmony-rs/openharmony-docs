@@ -26,7 +26,7 @@
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| srcDeviceId | string | 否    | 否    | 表示Mission迁移源设备ID。长度范围1-128字符。超出长度限制时抛出异常。 |
-| dstDeviceId | string | 否    | 否    | 表示Mission迁移目标设备ID。长度范围1-128字符。超出长度限制时抛出异常。 |
-| missionId | number | 否    | 否    | 表示Mission迁移任务ID。取值范围为非负整数。传入负数时抛出异常。 |
+| srcDeviceId | string | 否    | 否    | 表示Mission迁移源设备ID。 |
+| dstDeviceId | string | 否    | 否    | 表示Mission迁移目标设备ID。 |
+| missionId | number | 否    | 否    | 表示Mission迁移任务ID。 |
 | wantParam | Record<string, Object> | 否    | 否    | 表示Mission迁移扩展参数，用于传递任务迁移时的自定义信息。可以包含开发者自定义的键值对，用于标识迁移场景或携带迁移相关的配置信息。 |
