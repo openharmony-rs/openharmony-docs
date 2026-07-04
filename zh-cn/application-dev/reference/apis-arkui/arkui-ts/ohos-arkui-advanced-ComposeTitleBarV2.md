@@ -36,9 +36,8 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 > **说明：**
 > 
-> 入参对象不可为undefined，即`ComposeTitleBarV2(undefined)`。
+> 入参不可为undefined，即ComposeTitleBarV2(undefined)。
 
-### 属性
 
 **起始版本：** 26.0.0
 
@@ -50,7 +49,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称    | 类型   | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- | -------- |
@@ -73,7 +72,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -100,7 +99,7 @@ ComposeTitleBarV2MenuItem的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -120,7 +119,7 @@ ComposeTitleBarV2MenuItem的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -147,7 +146,7 @@ type OnActionCallback = () => void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
