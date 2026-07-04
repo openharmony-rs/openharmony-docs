@@ -8630,7 +8630,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -8728,7 +8728,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -9216,8 +9216,8 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -9311,8 +9311,8 @@ offSubWindowClose(callback?: Callback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -18183,8 +18183,6 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **ArkTS-Dyn起始版本：** 22
 
 **参数：**
@@ -18227,8 +18225,6 @@ onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -18243,7 +18239,7 @@ onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -18320,8 +18316,6 @@ offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -18336,7 +18330,7 @@ offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
