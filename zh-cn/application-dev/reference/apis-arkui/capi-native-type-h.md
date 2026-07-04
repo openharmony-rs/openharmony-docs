@@ -1005,24 +1005,6 @@ enum ArkUI_ScrollBarDisplayMode
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | 按需显示(触摸时显示，2s后消失)。 |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | 常驻显示。 |
 
-### ArkUI_Axis
-
-```c
-enum ArkUI_Axis
-```
-
-**描述：**
-
-
-定义滚动方向和[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动，该值为默认值。 |
-| ARKUI_AXIS_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
-
 ### ArkUI_StickyStyle
 
 ```c
