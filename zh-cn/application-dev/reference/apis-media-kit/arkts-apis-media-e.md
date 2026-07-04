@@ -81,7 +81,7 @@ Codec MIME类型枚举。
 | AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
-| AUDIO_RAW    | 'audio/raw'           | 表示音频/raw类型。       |
+| AUDIO_RAW    | 'audio/raw'           | 表示音频/raw类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23      |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G711-mulaw类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
