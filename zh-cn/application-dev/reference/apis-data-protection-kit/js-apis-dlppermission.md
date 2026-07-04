@@ -264,7 +264,7 @@ getOriginalFileName(fileName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -564,7 +564,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -610,7 +610,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -660,7 +660,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -705,7 +705,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -747,7 +747,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 否 | 指定应用包名，用于查询该应用的保留沙箱信息列表。当需要查询其他应用的保留沙箱信息时传入此参数，当需要查询当前应用的保留沙箱信息时可不传此参数。长度范围[7, 128]字节，超出此范围抛出错误码19100001。 |
+| bundleName | string | 否 | 指定应用包名，用于查询该应用的保留沙箱信息列表。当需要查询其他应用的保留沙箱信息时传入此参数，当需要查询当前应用的保留沙箱信息时可不传此参数。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -792,7 +792,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码19100001。 |
+| bundleName | string | 是 | 指定应用包名，用于查询该应用的保留沙箱信息列表。长度范围[7, 128]字节，超出此范围抛出错误码401。 |
 | callback | AsyncCallback&lt;Array&lt;[RetentionSandboxInfo](#retentionsandboxinfo)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
@@ -1016,7 +1016,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码19100001。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -1331,7 +1331,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
+| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围输出错误日志，函数停止运行。 |
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1364,7 +1364,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码：**
+**错误码：**   
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
@@ -1586,7 +1586,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码401。 |
 | options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
@@ -1598,16 +1598,16 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
-| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度不超过255字节，超出此范围抛出错误码401。 |
+| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。长度不超过255字节，超出此范围抛出错误码401。 |
 | ownerAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示权限设置者账号类型。 |
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | 否 | 是 | 表示授权用户列表，默认为空。 |
-| contactAccount | string | 否 | 否 | 表示联系人账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| contactAccount | string | 否 | 否 | 表示联系人账号。长度不超过255字节，超出此范围抛出错误码401。 |
 | offlineAccess | boolean | 否 | 否 | 表示是否是离线打开。true表示允许离线打开，false表示不可离线打开。 |
 | everyoneAccessList | Array&lt;[DLPFileAccess](#dlpfileaccess)&gt; | 否 | 是 | 表示授予所有人的权限，默认为空。 |
 | expireTime | number | 否 | 是 | 表示文件权限到期时间戳，默认为空。取值范围大于等于0，超出此范围抛出错误码。单位：s。 |
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效，默认为空。 |
-| fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码401。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
 | countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
@@ -1621,7 +1621,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码19100001。 |
+| authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码401。 |
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
 | permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
