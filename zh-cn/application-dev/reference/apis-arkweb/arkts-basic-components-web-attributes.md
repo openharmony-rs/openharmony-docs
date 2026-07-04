@@ -236,7 +236,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 overScrollMode(mode: OverScrollMode)
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
+设置Web过滚动模式。开启时，用户在Web根页面滑动到边缘会触发弹性动画弹回界面，但根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -577,27 +577,27 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button('refresh')
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .horizontalScrollBarAccess(this.isShow)
       }
     }
@@ -659,27 +659,27 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变纵向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button(this.btnMsg)
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .verticalScrollBarAccess(this.isShow)
       }
     }
