@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-分布式任务管理模块提供跨设备任务管理能力，包括注册和取消任务状态监听、开始和停止同步远端设备任务列表、通过任务ID和包名进行迁移任务等。该模块适用于需要跨设备协同工作的场景，如多设备办公、无缝切换等，能够解决用户在不同设备间同步和迁移应用状态的问题，提升用户体验和设备间的协同效率。
+分布式任务管理模块提供跨设备任务管理能力，包括注册和取消任务状态监听、开始和停止同步远端设备任务列表、通过任务ID和包名进行迁移任务等。
 
 > **说明：**
 >
@@ -28,7 +28,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, callback: AsyncCallback&lt;void&gt;): void;
 
-注册任务状态监听。使用callback异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化。使用场景为需要实时获取远端设备任务状态变化时，例如多设备协同办公应用中需要同步显示各设备的任务运行状态。此接口需与 `unRegisterMissionListener` 成对使用，注册监听后应及时取消以释放资源，建议在应用不需要监听任务状态时调用 `unRegisterMissionListener`。
+注册任务状态监听。使用callback异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化，该监听需与 `unRegisterMissionListener` 成对使用，注册后应在不需要监听任务状态时及时调用 `unRegisterMissionListener` 取消监听，以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -97,7 +97,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback): Promise&lt;void&gt;
 
-注册任务状态监听。使用Promise异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化。使用场景为需要实时获取远端设备任务状态变化时，例如多设备协同办公应用中需要同步显示各设备的任务运行状态。此接口需与 `unRegisterMissionListener` 成对使用，注册监听后应及时取消以释放资源，建议在应用不需要监听任务状态时调用 `unRegisterMissionListener`。
+注册任务状态监听。使用Promise异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化，该监听需与 `unRegisterMissionListener` 成对使用，注册后应在不需要监听任务状态时及时调用 `unRegisterMissionListener` 取消监听，以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -169,7 +169,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-取消任务状态监听。使用callback异步回调。调用成功后，系统将停止监听指定设备上的任务状态变化。使用场景为不再需要监听远端设备任务状态变化时，例如用户关闭协同功能或退出多设备应用。需先调用 registerMissionListener 注册监听后再调用，未注册时调用不生效。
+取消任务状态监听。使用callback异步回调。停止监听前，请确保已通过 registerMissionListener 完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -221,7 +221,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-取消任务状态监听。使用Promise异步回调。调用成功后，系统将停止监听指定设备上的任务状态变化。使用场景为在不再需要监听远端设备任务状态变化时，例如用户关闭协同功能或退出多设备应用。需先调用 registerMissionListener 注册监听后再调用，未注册时调用不生效。
+取消任务状态监听。使用Promise异步回调。停止监听前，请确保已通过 registerMissionListener 完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -273,7 +273,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;void&gt;): void;
 
-开始同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将开始同步指定远端设备的任务列表到本地。使用场景为需要获取并展示远端设备任务信息时，例如多设备任务管理中心需要展示所有设备的运行任务。此接口需与 `stopSyncRemoteMissions` 配合使用，在不需要同步时应及时停止以释放资源；调用顺序为先调用 `startSyncRemoteMissions` 开始同步，完成后调用 `stopSyncRemoteMissions` 停止。
+开始同步远端设备的任务列表。使用callback异步回调。使用时须与 stopSyncRemoteMissions 严格配对，按“先启动、后停止”的顺序执行，同步完成后应立即停止以释放系统资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -329,7 +329,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
-开始同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将开始同步指定远端设备的任务列表到本地。使用场景为需要获取并展示远端设备任务信息时，例如多设备任务管理中心需要展示所有设备的运行任务。此接口需与 `stopSyncRemoteMissions` 配合使用，在不需要同步时应及时停止以释放资源；调用顺序为先调用 `startSyncRemoteMissions` 开始同步，完成后调用 `stopSyncRemoteMissions` 停止。
+开始同步远端设备的任务列表。使用Promise异步回调。使用时须与 stopSyncRemoteMissions 严格配对，按“先启动、后停止”的顺序执行，同步完成后应立即停止以释放系统资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -441,7 +441,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-停止同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。使用场景为不再需要同步远端设备任务信息时，例如用户关闭设备协同功能或退出多设备应用。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
+停止同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -496,7 +496,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callback: AsyncCallback&lt;void&gt;): void;
 
-通过指定任务ID（missionId）的方式进行迁移任务。当需要迁移特定任务时使用此方式，当只知道应用包名但不知道具体任务ID时，建议使用bundleName方式迁移。使用callback异步回调。使用场景为在需要将当前设备的任务流转到其他设备的场景中，如视频播放应用支持跨设备继续播放，或游戏应用支持跨设备继续游戏。
+通过指定任务ID（missionId）的方式进行迁移任务。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -567,7 +567,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promise&lt;void&gt;
 
-通过指定任务ID（missionId）的方式进行迁移任务。使用Promise异步回调。调用成功后，指定任务将从源设备迁移到目标设备继续运行。使用场景为在需要将当前设备的任务流转到其他设备的场景中，如视频播放应用支持跨设备继续播放，或游戏应用支持跨设备继续游戏。
+通过指定任务ID（missionId）的方式进行迁移任务。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -640,7 +640,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。调用成功后，指定包名对应的应用任务将从源设备迁移到目标设备继续运行。该方式通过bundleName定位任务实例，适用于无需指定missionId的场景。
+通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -703,7 +703,7 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。调用成功后，指定包名对应的应用任务将从源设备迁移到目标设备继续运行。使用场景为在不需要指定具体任务ID，而是将指定应用的所有任务流转到其他设备的场景中，适用于支持多任务并行流转的应用。
+通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -769,7 +769,7 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
-注册当前任务流转状态变化事件的监听。调用成功后，当任务流转状态发生变化时，将通过回调函数通知监听者。监听可以实时获取任务在迁移过程中的状态变化（如激活、未激活等）。使用场景为在需要实时感知任务流转进度的场景中，例如需要向用户显示任务流转状态变化，或根据流转状态执行特定逻辑的应用。此接口需与 `off('continueStateChange')` 成对使用，不再监听时应及时取消；调用顺序为先通过 `on` 注册监听，不需要时再调用 `off` 取消监听。
+注册当前任务流转状态变化事件的监听。此接口需与 `off('continueStateChange')` 成对使用，不再监听时应及时取消；调用顺序为先通过 `on` 注册监听，不需要时再调用 `off` 取消监听。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -814,7 +814,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
-取消当前任务流转的状态监听。调用成功后，将停止接收任务流转状态变化的回调通知。在不再需要监听任务流转状态的场景中，如用户关闭流转状态显示功能或退出需要状态感知的应用页面时使用。此接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
+取消当前任务流转的状态监听。此接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
