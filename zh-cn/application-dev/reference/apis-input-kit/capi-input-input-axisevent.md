@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```c
-typedef struct Input_AxisEvent Input_AxisEvent
+typedef struct Input_AxisEvent Input_AxisEvent;
 ```
 
 ## 概述

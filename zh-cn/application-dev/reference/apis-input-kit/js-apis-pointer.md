@@ -17,6 +17,7 @@
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## pointer.setPointerVisible
@@ -68,7 +69,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -354,7 +355,7 @@ struct Index {
         .onClick(() => {
           // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
-            if (error.code) {
+            if (error) {
               console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
@@ -582,7 +583,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
-| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
+| pointerStyle | [PointerStyle](#pointerstyle) | 是 | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。不能传入DEVELOPER_DEFINED_ICON作为参数。 |
 
 **返回值**：
 
@@ -653,7 +654,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
-| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
+| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。          |
 
 **错误码**：
 
@@ -692,7 +693,7 @@ struct Index {
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
               console.info(`Succeeded in setting pointer style.`);
             } catch (error) {
-              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -838,7 +839,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -882,7 +883,7 @@ struct Index {
 
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
-| followSystem  | boolean  | 否   | 否   | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小，256×256]。 |
+| followSystem  | boolean  | 否   | 否   | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小, 256×256]。 |
 
 ## pointer.setCustomCursor<sup>15+</sup>
 
@@ -900,7 +901,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 | -------- | -------- | -------- | -------- |
 | windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | cursor  | [CustomCursor](#customcursor15) | 是    | 自定义光标资源。 |
-| config  | [CursorConfig](#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
+| config  | [CursorConfig](#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小, 256×256]。 |
 
 **返回值**：
 
@@ -934,7 +935,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -1007,7 +1008,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             // 光标图片宽高
