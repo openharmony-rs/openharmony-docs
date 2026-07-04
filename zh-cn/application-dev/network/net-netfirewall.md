@@ -135,8 +135,7 @@
          startPort: 443,
          endPort: 443
        }] as IpPort[],
-     userId: 100,
-     interface:"wlan0"
+     userId: 100
    };
    // 添加防火墙规则。
    netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
@@ -206,8 +205,7 @@
        isWildcard: true,
        domain: '*.HarmonyOS.cn'
      }] as domain[],
-     userId: 100,
-     interface:"wlan0"
+     userId: 100
    };
    
    // 添加防火墙规则。
