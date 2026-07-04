@@ -32827,5 +32827,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-graphics-display.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"multimedia_pixel",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkui-support-for-aging-adaptation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"trigger_aging_friendly_by_long_press",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets",
+				"functions":[
+					{
+						"end_line":110,
+						"name":"trigger_aging_friendly_by_set_font_size",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
