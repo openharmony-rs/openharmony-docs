@@ -58,7 +58,7 @@ Restarts the system.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| reason | string | Yes   | Restart reason. For example, "updater" indicates entering the updater mode after the restart. If the parameter is not specified, the system enters the normal mode after the restart.|
+| reason | string | Yes   | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after restart. If this parameter is not specified, the system enters the normal mode after restart.|
 
 **Example**
 
@@ -197,5 +197,5 @@ Enumerates the power key filtering strategies.
 
 | Name                   | Value  | Description                  |
 | ----------------------- | ---- | ---------------------- |
-| DISABLE_LONG_PRESS_FILTERING | 0  | Disable the filtering of power key long-press event. This is the default value.|
-| LONG_PRESS_FILTERING_ONCE | 1  | Filters the current power key long-press event once. Subsequent long-press events are not filtered by default.|
+| DISABLE_LONG_PRESS_FILTERING | 0  | Disables the filtering strategy for the long-press event of the power key. This is the default value.|
+| LONG_PRESS_FILTERING_ONCE | 1  | Filters the long-press event of the current power key once.|

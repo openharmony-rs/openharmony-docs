@@ -83,9 +83,10 @@ struct WebComponent {
 
 - 示例1：
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
   
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -121,6 +122,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -144,10 +146,9 @@ struct WebComponent {
  
 - 示例2：
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
    
    ``` TypeScript
-   // xxx.ets
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';

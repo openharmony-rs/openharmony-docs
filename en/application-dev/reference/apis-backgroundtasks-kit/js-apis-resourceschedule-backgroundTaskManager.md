@@ -49,7 +49,7 @@ Requests a transient task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 9800001 | Memory operation failed. |
@@ -101,7 +101,7 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
@@ -153,7 +153,7 @@ Obtains the remaining time of a transient task. This API uses a promise to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
@@ -196,7 +196,7 @@ Cancels a transient task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
@@ -238,7 +238,7 @@ Obtains all transient task information, including the remaining quota of the cur
 
 For details about the error codes, see [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900003 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
@@ -286,7 +286,7 @@ Requests a continuous task of a specific type. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -382,7 +382,7 @@ Requests a continuous task of a specific type. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -474,7 +474,7 @@ Requests continuous tasks of multiple types. This API uses a promise to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -608,7 +608,7 @@ Requests a continuous task. This API allows a UIAbility (ServiceAbility in the F
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800001 | Memory operation failed. |
@@ -700,7 +700,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | 9800001 | Memory operation failed. |
@@ -763,7 +763,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | 9800001 | Memory operation failed. |
@@ -823,7 +823,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 
 For details about the error codes, see [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 9800001 | Memory operation failed. |
 | 9800004 | System service operation failed. |
@@ -883,7 +883,7 @@ Updates continuous tasks of multiple types. This API uses a promise to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -953,7 +953,7 @@ The following restrictions apply when updating a continuous task:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800001 | Memory operation failed. |
@@ -1048,7 +1048,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 201 | Permission denied. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
@@ -1105,7 +1105,7 @@ Obtains all continuous task information, including the task ID and type. It supp
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 201 | Permission denied. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
@@ -1156,7 +1156,7 @@ Subscribes to continuous task cancellation events. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
@@ -1204,7 +1204,7 @@ Unsubscribes from continuous task cancellation events. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
@@ -1252,7 +1252,7 @@ Registers a listener for continuous task suspension. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
@@ -1302,7 +1302,7 @@ Unregisters from the listener for continuous task suspension. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
@@ -1351,7 +1351,7 @@ Registers a listener for continuous task activation. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
@@ -1398,7 +1398,7 @@ Unregisters from the listener for continuous task activation. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
@@ -1689,7 +1689,7 @@ Checks whether **BackgroundTaskMode** specified in [ContinuousTaskRequest](#cont
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
@@ -1741,7 +1741,7 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800004 | System service operation failed. |
@@ -1801,7 +1801,7 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800004 | System service operation failed. |
@@ -1870,7 +1870,7 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800004 | System service operation failed. |
@@ -1930,7 +1930,7 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 9800004 | System service operation failed. |

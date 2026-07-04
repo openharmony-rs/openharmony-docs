@@ -242,7 +242,7 @@ struct TouchTargetExample {
           this.text = 'button1 clicked'
         })
 
-      // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2左边按钮大小区域，点击事件生效
+      // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2右边按钮大小区域，点击事件生效
       // 热区二的大小为整个按钮，且下移一个按钮高度，鼠标点击button2下方按钮大小区域，点击事件生效
       Text("one button size right of button2," + "\n one button size below button2")
       Button("button2")

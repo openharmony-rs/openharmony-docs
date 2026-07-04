@@ -12,7 +12,7 @@ typedef struct {...} ArkWeb_JavaScriptBridgeData
 
 ## 概述
 
-定义JavaScript Bridge数据的基础结构。
+ArkWeb_JavaScriptBridgeData是JavaScript桥接数据定义结构体，用于在Native代码和Web页面之间传递JavaScript桥接相关的数据。该结构体封装了桥接调用中的参数数据，是JavaScript桥接子系统中的基本数据单元，配合ArkWeb_ControllerAPI中的JavaScript Proxy注册接口使用。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ typedef struct {...} ArkWeb_JavaScriptBridgeData
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint8_t* buffer | 指向传输数据的指针。仅支持前端传入String和ArrayBuffer类型，其余类型会被json序列化后，以String类型传递。 |
+| const uint8_t* buffer | 指向传输数据的指针。仅支持前端传入String和ArrayBuffer类型，其余类型会被JSON序列化后，以String类型传递。 |
 | size_t size | 传输数据的长度。 |
 
 

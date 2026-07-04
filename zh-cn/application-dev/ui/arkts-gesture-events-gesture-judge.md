@@ -52,7 +52,7 @@
 
 2. Stack组件设置手势。
 
-      <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+      <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) --> 
       
       ``` TypeScript
       Stack() {}
@@ -69,7 +69,7 @@
              */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
-          .tag('longpress')
+          .tag('longPress')
       ))
       ```
 
@@ -93,7 +93,7 @@
 
 4. 代码完整示例。
 
-   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->   
+   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
    
    ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';
@@ -111,7 +111,7 @@
            请将$r('app.string.Drag_instructions')替换为实际资源文件，在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，
            下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。"
             */
-           Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
+           Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('#ffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
                // 模拟上半区和下半区
@@ -119,7 +119,7 @@
                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
              }.width('200vp').height('200vp')
    
-             // Stack的下半区是绑定了滑动手势的图像区域。
+             // Stack的下半区是绑定了拖拽手势的图像区域。
              // $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
@@ -718,16 +718,17 @@
 
 以下为完整示例代码：
 
-<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->  
 
 ``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000; // 初始进度，秒
-  @Local total: number = 27490000; // 总时长，秒
+  @Local progress: number = 496000; // 初始进度，毫秒
+  @Local total: number = 27490000; // 总时长，毫秒
   @Local currentWidth: string = '100%';
   @Local currentHeight: string = '100%';
+  @Local playbackProgress: string = '';
   private currentPosX: number = 0;
   private currentPosY: number = 0;
   private currentFullScreenState: boolean = true;
@@ -737,6 +738,12 @@ struct Index {
   private context = this.getUIContext().getHostContext()
 
   aboutToAppear(): void {
+    // 请将$r('app.string.Playback_progress')替换为实际资源文件，在本示例中该资源文件的value值为"播放进度"
+    try {
+      this.playbackProgress = this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id);
+    } catch (error) {
+      console.error('Get play back progress failed!');
+    }
     // 启动一个周期性定时器每隔一秒刷新一次进度
     this.startNormalPlayTimer();
   };
@@ -776,7 +783,11 @@ struct Index {
   };
 
   showMessage(message: string): void {
-    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+    try {
+      this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+    } catch (error) {
+      console.error('ShowToast failed!');
+    }
   };
 
   resetPosInfo(): void {
@@ -795,9 +806,13 @@ struct Index {
     };
     // 请将$r('app.string.Play_full_screen')替换为实际资源文件，在本示例中该资源文件的value值为"全屏播放"
     // 请将$r('app.string.Exit_play_full_screen')替换为实际资源文件，在本示例中该资源文件的value值为"取消全屏播放"
-    this.showMessage(this.currentFullScreenState
-      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
-      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+    try {
+      this.showMessage(this.currentFullScreenState
+        ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   togglePlayAndPause(): void {
@@ -810,9 +825,13 @@ struct Index {
     };
     // 请将$r('app.string.stop_playing')替换为实际资源文件，在本示例中该资源文件的value值为"暂停播放"
     // 请将$r('app.string.Continue_playing')替换为实际资源文件，在本示例中该资源文件的value值为"继续播放"
-    this.showMessage(this.isPlaying
-      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
-      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+    try {
+      this.showMessage(this.isPlaying
+        ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   doFastForward(start: boolean): void {
@@ -820,16 +839,24 @@ struct Index {
       this.stopFastForwardTimer();
       this.startNormalPlayTimer();
       // 请将$r('app.string.Cancel_FastForwarding')替换为实际资源文件，在本示例中该资源文件的value值为"取消快进"
-      this.showMessage(
-        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      try {
+        this.showMessage(
+          this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
 
     this.stopNormalPlayTimer();
     this.startFastForwardTimer();
     // 请将$r('app.string.Start_FastForwarding')替换为实际资源文件，在本示例中该资源文件的value值为"开始快进"
-    this.showMessage(
-      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+    try {
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+    } catch (error) {
+      console.error('GetStringSync failed!');
+    }
   };
 
   updateBrightness(start: boolean, event: BaseGestureEvent): void {
@@ -837,17 +864,25 @@ struct Index {
     if (start) {
       this.currentPosY = newY;
       // 请将$r('app.string.Start_adjusting_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"开始调整 亮度"
-      this.showMessage(this.context!.resourceManager
-        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      try {
+        this.showMessage(this.context!.resourceManager
+          .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
     let offsetY = newY - this.currentPosY;
     if (Math.abs(offsetY) > 10) {
       // 请将$r('app.string.Reduce_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"降低亮度"
       // 请将$r('app.string.Increase_brightness')替换为实际资源文件，在本示例中该资源文件的value值为"提高亮度"
-      this.showMessage((offsetY > 0)
-        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
-        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      try {
+        this.showMessage((offsetY > 0)
+          ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+          : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       this.currentPosY = newY;
     };
   };
@@ -857,8 +892,12 @@ struct Index {
     if (start) {
       this.currentPosX = newX;
       // 请将$r('app.string.Adjust_schedule')替换为实际资源文件，在本示例中该资源文件的value值为"开始调整 进度"
-      this.showMessage(this.context!.resourceManager
-        .getStringSync($r('app.string.Adjust_schedule').id));
+      try {
+        this.showMessage(this.context!.resourceManager
+          .getStringSync($r('app.string.Adjust_schedule').id));
+      } catch (error) {
+        console.error('GetStringSync failed!');
+      }
       return;
     };
     let offsetX = newX - this.currentPosX;
@@ -870,8 +909,7 @@ struct Index {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          // 请将$r('app.string.Playback_progress')替换为实际资源文件，在本示例中该资源文件的value值为"播放进度"
-          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
+          Text(this.playbackProgress + this.progress)
         }
         .width('100%').height('90%')
 

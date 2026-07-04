@@ -197,7 +197,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 ```ts
 let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5, 6]);
 console.info("byteLength: " + uint8Array.buffer.byteLength); // byteLength: 6
-// 从int8Array对应buffer第1个字节开始，长度为5
+// 从uint8Array的buffer中下标为1的成员开始获取，长度为5
 let uint8Array1: collections.Uint8Array = new collections.Uint8Array(uint8Array.buffer, 1, 5);
 console.info("[" + uint8Array1 + "]"); // [2, 3, 4, 5, 6]
 ```

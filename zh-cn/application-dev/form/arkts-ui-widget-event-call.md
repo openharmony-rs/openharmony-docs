@@ -19,7 +19,7 @@
 
 2. 页面布局代码实现
 
-    在卡片页面中布局两个按钮，点击按钮A或按钮B，会调用postCardAction向指定UIAbility发送call事件，在call事件内定义了需要调用的方法。按钮A和按钮B分别对应调用funA、funB方法，其中funA携带了formID参数，funB携带了formID和num参数，开发过程中请根据实际需要传参。postCardAction中的method参数为必填参数，用于标识需要调用的方法名称，与步骤3中UIAbility监听的方法一致，其他参数为非必填。
+    在卡片页面中布局两个按钮，点击按钮A或按钮B，会调用postCardAction向指定UIAbility发送call事件，在call事件内定义了需要调用的方法。按钮A和按钮B分别对应调用funA、funB方法，其中funA携带了formId参数，funB携带了formId和num参数，开发过程中请根据实际需要传参。postCardAction中的method参数为必填参数，用于标识需要调用的方法名称，与步骤3中UIAbility监听的方法一致，其他参数为非必填。
 
     <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) -->
     
@@ -90,7 +90,7 @@
     
     在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过[rpc.Parcelable](../reference/apis-ipc-kit/js-apis-rpc.md#parcelable9)获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
 
-    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
+    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
     
     ``` TypeScript
     //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
@@ -134,16 +134,16 @@
           // 监听call事件所需的方法并调用
           this.callee.on('funA', (data: rpc.MessageSequence) => {
             // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_1, 'aaa');
           });
           this.callee.on('funB', (data: rpc.MessageSequence) => {
             // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_2, 'bbb');
           });
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     
@@ -152,8 +152,8 @@
         try {
           this.callee.off('funA');
           this.callee.off('funB');
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }

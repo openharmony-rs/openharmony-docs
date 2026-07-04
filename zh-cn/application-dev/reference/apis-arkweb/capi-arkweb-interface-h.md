@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkWeb在Native侧获取API的接口，及基础Native API类型。
+`arkweb_interface.h`是ArkWeb在Native侧（C/C++）的核心入口头文件：它定义了基础Native API类型[ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md)与API类型枚举[ArkWeb_NativeAPIVariantKind](#arkweb_nativeapivariantkind)，并提供[OH_ArkWeb_GetNativeAPI](#oh_arkweb_getnativeapi)接口用于按需获取Controller、Component、CookieManager等具体Native API结构体，同时提供[OH_ArkWeb_RegisterScrollCallback](#oh_arkweb_registerscrollcallback)用于注册Web组件滚动事件回调；当开发者需要在Native代码中控制Web组件行为（如执行JavaScript、管理Cookie、监听组件生命周期或滚动事件）时，应首先通过本头文件获取对应的Native API，而页面渲染显示等能力仍需由ArkTS侧的Web组件提供。
 
 **引用文件：** <web/arkweb_interface.h>
 
@@ -39,7 +39,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)](#oh_arkweb_getnativeapi) | 根据传入的API类型，获取对应的Native API结构体。 |
-| [bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)](#oh_arkweb_registerscrollcallback) | 注册滚动事件回调。 |
+| [bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)](#oh_arkweb_registerscrollcallback) | 注册组件滚动时的回调函数。 |
 
 ## 枚举类型说明
 

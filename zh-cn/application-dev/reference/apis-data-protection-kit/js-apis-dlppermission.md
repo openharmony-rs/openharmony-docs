@@ -1953,3 +1953,109 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
   console.info("after closing opened enterprise dlp files");
 });
 ```
+
+## dlpPermission.setControlledAppLists
+
+setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
+
+设置受企业DLP控制的应用程序列表。使用Promise异步回调。
+  
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。<br> 数组最大长度为100，超过最大长度返回19100001错误码。<br>数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)，单个appIdentifier最大长度为4096字节，超过最大长度返回19100001错误码。|
+| userId | number | 否 | 为其配置受控应用列表的用户ID。<br>若参数未指定，则默认使用当前用户。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100023 | The specified userId is inconsistent with the current userId. |
+| 19100024 | The specified userId belongs to a personal space user and cannot be managed. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appList: Array<string> = ["appId1", "appId2"];
+let userId: number = 100;
+dlpPermission.setControlledAppLists(appList, userId).then(() => {
+  console.info("Successfully set controlled appLists.");
+}).catch((error: BusinessError) => {
+  console.error(error.message);
+}).finally(() => {
+  console.info("Completed set controlled appLists operation.");
+});
+```
+
+## dlpPermission.getControlledAppLists
+
+getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
+
+获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。
+
+>**说明：**
+>
+> 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.DLP_POLICY_MANAGER
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回当前用户受企业DLP控制的应用程序列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100011 | The system ability works abnormally. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dlpPermission.getControlledAppLists().then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed getControlledAppLists operation.");
+})
+```

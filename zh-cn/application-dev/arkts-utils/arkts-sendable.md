@@ -200,48 +200,54 @@ struct enumusage {
 | 适用场景 | 1. 在TaskPool或Worker中使用类方法或Sendable函数。<br/>2. 传输对象数据量较大的场景。序列化耗时会随着数据量增大而增大，使用Sendable对数据进行改造后，传输100KB数据效率提升约20倍，传输1MB数据效率提升约100倍。 |
 
 **装饰器修饰Class使用示例：**
-<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) -->
+<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) --> 
 
-```ts
+``` TypeScript
+export { MainPage } from './src/main/ets/components/MainPage';
+
 @Sendable
 class SendableTestClass {
-  desc: string = "sendable: this is SendableTestClass ";
+  desc: string = 'sendable: this is SendableTestClass ';
   num: number = 5;
   printName() {
-    console.info("sendable: SendableTestClass desc is: " + this.desc);
+    console.info('sendable: SendableTestClass desc is: ' + this.desc);
   }
-  getNum(): number {
+  get getNum(): number {
     return this.num;
   }
 }
+
+let object = new SendableTestClass;
+export { object }
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) -->
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
-```ts
+``` TypeScript
 @Sendable
 type SendableFuncType = () => void;
 
 @Sendable
 class TopLevelSendableClass {
   num: number = 1;
+
   PrintNum() {
-    console.info("Top level sendable class");
+    console.info('Top level sendable class');
   }
 }
 
 @Sendable
-function TopLevelSendableFunction() {
-  console.info("Top level sendable function");
+function topLevelSendableFunction() {
+  console.info('Top level sendable function');
 }
 
 @Sendable
-function SendableTestFunction() {
+function sendableTestFunction() {
   const topClass = new TopLevelSendableClass(); // 顶层sendable class
   topClass.PrintNum();
-  TopLevelSendableFunction(); // 顶层sendable function
-  console.info("Sendable test function");
+  topLevelSendableFunction(); // 顶层sendable function
+  console.info('Sendable test function');
 }
 
 @Sendable
@@ -249,14 +255,11 @@ class SendableTestClass {
   constructor(func: SendableFuncType) {
     this.callback = func;
   }
+
   callback: SendableFuncType; // 顶层sendable function
 
   CallSendableFunc() {
-    SendableTestFunction(); // 顶层sendable function
+    sendableTestFunction(); // 顶层sendable function
   }
 }
-
-let sendableClass = new SendableTestClass(SendableTestFunction);
-sendableClass.callback();
-sendableClass.CallSendableFunc();
 ```

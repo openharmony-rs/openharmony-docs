@@ -279,13 +279,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to show or hide the component. The parameter type is [ArkUI_Visibility](capi-native-type-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
+| .value[0].i32 | Whether to show or hide the component. The parameter type is [ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component is shown or hidden. The parameter type is [ArkUI_Visibility](capi-native-type-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
+| .value[0].i32 | Whether the component is shown or hidden. The parameter type is [ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
 
 ## NODE_CLIP
 

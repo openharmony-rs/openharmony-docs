@@ -57,7 +57,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：21+ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -205,7 +205,7 @@ addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId:
 >
 > 1. 由于MDM Kit下大多数接口仅对MDM应用开放，本接口使用时，请将MDM应用同时添加至应用运行允许名单，否则会导致MDM应用不允许运行，阻塞接口调用。接口是否仅对MDM应用开放请查看对应的模块说明。
 >
-> 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->。
+> 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-2)<!--DelEnd-->。
 >
 > 3. 本接口仅对三方应用生效，系统应用不受该名单管控，默认可以运行。
 
@@ -795,7 +795,7 @@ isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: numb
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--PR1--><!--PR1End-->|
+| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--RP1--><!--RP1End-->|
 
 **错误码**：
 
@@ -1429,7 +1429,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：26.0.0+ |
 | 9200012  | Parameter verification failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 

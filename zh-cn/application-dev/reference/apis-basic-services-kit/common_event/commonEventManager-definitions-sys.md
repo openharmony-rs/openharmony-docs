@@ -8,7 +8,7 @@
 
 本文档提供了系统定义的公共事件清单。
 
-公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
+公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager-sys.md#support)中。
 
 > **说明：**
 >
@@ -148,6 +148,40 @@
 **订阅者所需权限：** ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
 
 **取值：** "usual.event.APP_FIRST_LAUNCH"
+
+
+### COMMON_EVENT_SANDBOX_BUNDLE_ADDED
+
+表示设备上已安装新的沙箱应用的公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_ADDED"
+
+
+### COMMON_EVENT_SANDBOX_BUNDLE_REMOVED
+
+表示设备上安装的沙箱应用被卸载的公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_REMOVED"
 
 
 ## Background Tasks Kit 

@@ -7,12 +7,12 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink
+typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink;
 ```
 
 ## 概述
 
-LowPowerVideoSink声明。
+LowPowerVideoSink是低功耗视频输出场景中使用的数据结构，开发者通过该结构体实现低功耗视频输出功能。
 
 **起始版本：** 20
 

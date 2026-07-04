@@ -94,6 +94,8 @@
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
+| [OH_Camera_NotificationName](#oh_camera_notificationname) | OH_Camera_NotificationName | 相机通知名称枚举类型。 |
+| [OH_Camera_ProximityStateForFocus](#oh_camera_proximitystateforfocus) | OH_Camera_ProximityStateForFocus | 对焦物体和相机距离状态枚举类型。 |
 
 ### 函数
 
@@ -129,6 +131,7 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
+| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
@@ -264,7 +267,7 @@ enum Camera_Format
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12 |
-| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 13 |
+| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23 |
 
 ### Camera_FlashMode
 
@@ -456,6 +459,13 @@ enum Camera_MetadataObjectType
 | FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。 |
 | CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23 |
 | CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | 元数据的对象类型，用于猫脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | 元数据的对象类型，用于猫体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | 元数据的对象类型，用于狗脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | 元数据的对象类型，用于狗体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | 元数据的对象类型，用于显著性物体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | 元数据的对象类型，用于二维码检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | 元数据的对象类型，用于基础人脸检测。<br>**起始版本：** 26.0.0 |
 
 ### Camera_TorchMode
 
@@ -755,6 +765,38 @@ enum OH_Camera_MetadataObjectEmotion
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
 
+### OH_Camera_NotificationName
+
+```c
+enum OH_Camera_NotificationName
+```
+
+**描述**
+
+相机通知名称枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_DEFOCUS_FROM_PROXIMITY  = 0 | 相机因距离对焦物体过近导致失焦的通知。<br>**起始版本：** 26.0.0 |
+
+### OH_Camera_ProximityStateForFocus 
+
+```c
+enum OH_Camera_ProximityStateForFocus 
+```
+
+**描述**
+
+对焦物体和相机距离的状态枚举类型。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_PROXIMITY_STATE_IN_RANGE_RAISE_NONE   = 0 | 对焦物体和镜头距离在合理范围内。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_PROXIMITY_STATE_OUT_OF_RANGE_RAISE_REQUIRED   = 1 | 对焦物体和相机过近，需要远离对焦物体。<br>**起始版本：** 26.0.0 |
 
 ## 函数说明
 

@@ -6,6 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+本文档提供 ArkWeb 组件中使用的类型定义，包括 Web 控制器及各类事件回调函数类型。其中，WebviewController 用于控制 Web 组件的行为；各类回调函数类型为开发者提供 Web 组件运行过程中多种事件场景的事件监听和处理能力。
+
 > **说明：**
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -324,7 +326,7 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
-type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void
 
 当页面摄像设备状态发生改变时触发此回调。
 
@@ -338,7 +340,7 @@ type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) 
 
 ## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
 
-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void
 
 当页面麦克风状态发生改变时触发此回调。
 

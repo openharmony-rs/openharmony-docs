@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-一个Object对象，使用[createPattern](ts-canvasrenderingcontext2d.md#createpattern)方法创建，通过指定图像和重复方式创建图片填充的模板。
+一个Object对象，使用[createPattern](ts-components-canvas-common-method.md#createpattern)方法创建，通过指定图像和重复方式创建图片填充的模板。
 
 >  **说明：**
 >

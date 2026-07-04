@@ -14,7 +14,7 @@
 
 **错误信息**
 
-System resources does not exist.
+System resource does not exist.
 
 **错误描述**
 

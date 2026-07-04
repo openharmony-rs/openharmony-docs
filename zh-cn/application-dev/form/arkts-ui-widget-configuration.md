@@ -50,7 +50,7 @@
 ## 独立卡片包配置
 相对应地，在卡片包的[module.json5配置文件](../quick-start/module-configuration-file.md)中，`formExtensionModule`字段用来关联应用包的`module`。<br>
 配置示例如下：
-<!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) --> 
+<!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) -->
 
 ``` JSON5
 {
@@ -59,7 +59,7 @@
     "type": "shared",
     "description": "$string:shared_desc",
     "deviceTypes": [
-      "phone"
+      "default"
     ],
     "deliveryWithInstall": true,
     // 只在独立卡片包形态中会使用，用来关联应用包模块。
@@ -109,7 +109,7 @@
 |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 |[sceneAnimationParams](#sceneanimationparams标签)| [场景动效类型互动卡片](./arkts-ui-liveform-sceneanimation-overview.md)扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 | resizable | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
-| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizeable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
+| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
 | [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
 | [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |

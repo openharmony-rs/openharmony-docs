@@ -35,6 +35,8 @@ getStatus(options?: GetStatusOptions): void;
 
 Obtains the current charging state and battery level.
 
+**Model restriction**: This API can be used in both the FA and Stage models.
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 **Parameters**
@@ -114,6 +116,8 @@ export default {
 
 Object that contains the API calling result.
 
+**Model restriction**: This API can be used in both the FA and Stage models.
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 | Name  | Type                                               | Mandatory| Description                                                        |
@@ -126,9 +130,11 @@ Object that contains the API calling result.
 
 Defines a response that returns the charging status and remaining power of the device.
 
+**Model restriction**: This API can be used in both the FA and Stage models.
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being charged; **false** indicates the opposite. The default value is **false**.<br>**Note**: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[chargingStatus](js-apis-battery-info.md#constants) instead.|
-| level | number | No| No| Current battery level in percent, which ranges from **0.00** to **1.00**.<br>**Note**: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[batterySOC](js-apis-battery-info.md#constants) instead.|
+| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[chargingStatus](js-apis-battery-info.md#constants) instead.|
+| level | number | No| No| Battery level, in percentage. The value ranges from 0.00 to 1.00.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[batterySOC](js-apis-battery-info.md#constants) instead.|

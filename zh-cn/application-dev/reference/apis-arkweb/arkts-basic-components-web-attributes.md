@@ -14,6 +14,9 @@
 >
 > - 示例效果请以真机运行为准。
 
+## 概述
+Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web组件的网页加载行为、安全策略、运行环境与交互能力，是定制Web组件行为的主要入口。其中通用的样式与布局类属性（如尺寸、边距、背景、可见性等）请参考[尺寸设置](../apis-arkui/arkui-ts/ts-universal-attributes-size.md)，本章仅描述Web组件特有的属性；运行期动态控制类能力（如加载URL、前进后退、注册/反注册JS对象、运行JavaScript、注入CSS等）请配合[WebviewController](./arkts-apis-webview-WebviewController.md)使用。
+
 ## domStorageAccess
 
 domStorageAccess(domStorageAccess: boolean)
@@ -1925,7 +1928,7 @@ layoutMode(mode: WebLayoutMode)
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置web布局模式，跟随系统或自适应布局。<br>传入null或undefined时为`WebLayoutMode.NONE` |
+| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置Web布局模式，跟随系统或自适应布局。<br>传入null或undefined时为`WebLayoutMode.NONE` |
 
 **示例：**
 
@@ -2451,7 +2454,7 @@ metaViewport(enabled: boolean)
 
 > **说明：**
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置metaViewport属性为true来覆盖关闭状态。
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -10,7 +10,7 @@
 
 为NativeNode API提供Image节点类型定义。
 
-**引用文件：** <arkui/image.h>
+**引用文件：** <arkui/node_attributes/image.h>
 
 **库：** libace_ndk.z.so
 

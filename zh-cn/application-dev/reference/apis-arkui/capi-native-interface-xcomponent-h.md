@@ -47,8 +47,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [anonymous](#anonymous) | - | 枚举API访问状态。 |
-| [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码. |
+| [anonymous](#anonymous) | - | 枚举API执行结果状态。 |
+| [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码。 |
 | [OH_NativeXComponent_TouchEventType](#oh_nativexcomponent_toucheventtype) | OH_NativeXComponent_TouchEventType | 触摸事件类型。 |
 | [OH_NativeXComponent_TouchPointToolType](#oh_nativexcomponent_touchpointtooltype) | OH_NativeXComponent_TouchPointToolType | 触摸点工具类型。 |
 | [OH_NativeXComponent_EventSourceType](#oh_nativexcomponent_eventsourcetype) | OH_NativeXComponent_EventSourceType | 触摸事件源类型。 |
@@ -129,7 +129,7 @@
 | [int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_initialize) | 初始化XComponent组件持有的Surface。 |
 | [int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_finalize) | 销毁XComponent组件持有的Surface。 |
 | [int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitialized)](#oh_arkui_xcomponent_isinitialized) | 获取XComponent组件是否已经初始化的标志位。 |
-| [int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)](#oh_arkui_xcomponent_setexpectedframeraterange) | 为此XComponent组件实例设置期望帧率。 |
+| [int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)](#oh_arkui_xcomponent_setexpectedframeraterange) | 为此XComponent组件实例设置期望帧率范围。 |
 | [int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (\*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))](#oh_arkui_xcomponent_registeronframecallback) | 为此XComponent组件实例注册帧回调函数。 |
 | [int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_unregisteronframecallback) | 为此XComponent组件实例取消注册帧回调函数。 |
 | [int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard)](#oh_arkui_xcomponent_setneedsoftkeyboard) | 为此XComponent组件实例设置是否需要软键盘。 |
@@ -161,7 +161,7 @@ enum anonymous
 **描述：**
 
 
-枚举API访问状态。
+枚举API执行结果状态。
 
 **起始版本：** 8
 
@@ -180,7 +180,7 @@ enum ArkUI_XComponent_ImageAnalyzerState
 **描述：**
 
 
-XComponent图像AI分析状态码.
+XComponent图像AI分析状态码。
 
 **起始版本：** 18
 
@@ -234,9 +234,9 @@ enum OH_NativeXComponent_TouchPointToolType
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER = 3 | 表示用橡皮擦。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH = 4 | 表示用画笔。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL = 5 | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用气笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用喷枪。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE = 7 | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用晶状体。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用透镜。 |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -320,8 +320,8 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 | 未知的触摸事件的源工具。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 | 表示触摸事件的源工具是手指。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是钢笔。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮。 |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是触笔。 |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮擦。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 | 表示触摸事件的源工具是笔刷。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 | 表示触摸事件的源工具是铅笔。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 | 表示触摸事件的源工具是喷枪。 |
@@ -778,7 +778,7 @@ int32_t OH_NativeXComponent_GetExtraMouseEventInfo(OH_NativeXComponent* componen
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetMouseEventModifierKeyStates()
 
@@ -805,7 +805,7 @@ int32_t OH_NativeXComponent_GetMouseEventModifierKeyStates(OH_NativeXComponent_E
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterFocusEventCallback()
 
@@ -1075,7 +1075,7 @@ int32_t OH_NativeXComponent_GetKeyEventModifierKeyStates(OH_NativeXComponent_Key
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventNumLockState()
 
@@ -1102,7 +1102,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventCapsLockState()
 
@@ -1129,7 +1129,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventScrollLockState()
 
@@ -1156,7 +1156,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_NativeXComponent_SetExpectedFrameRateRange()
 
@@ -1324,7 +1324,7 @@ int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 参数异常。 |
+| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 参数异常。 |
 
 ### OH_NativeXComponent_RegisterOnTouchInterceptCallback()
 
@@ -1351,7 +1351,7 @@ int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 参数异常。 |
+| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 参数异常。 |
 
 ### OH_NativeXComponent_SetNeedSoftKeyboard()
 
@@ -1568,7 +1568,7 @@ int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* user
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_StopImageAnalyzer()
 
@@ -1594,7 +1594,7 @@ int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_SurfaceHolder_Create()
 
@@ -1667,7 +1667,7 @@ int32_t OH_ArkUI_SurfaceHolder_SetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_SurfaceHolder_GetUserData()
 
@@ -1822,7 +1822,7 @@ int32_t OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfac
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback()
 
@@ -1849,7 +1849,7 @@ int32_t OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* sur
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_GetNativeWindow()
 
@@ -1902,7 +1902,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_Initialize()
 
@@ -1928,7 +1928,7 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。<br>返回 [ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID](capi-native-type-h.md#arkui_errorcode) - XComponent持有的Surface已经被初始化。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。<br>返回 [ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - XComponent持有的Surface已经被初始化。 |
 
 ### OH_ArkUI_XComponent_Finalize()
 
@@ -1954,7 +1954,7 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。<br>返回 [ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID](capi-native-type-h.md#arkui_errorcode) - XComponent持有的Surface已经被销毁。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。<br>返回 [ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - XComponent持有的Surface已经被销毁。 |
 
 ### OH_ArkUI_XComponent_IsInitialized()
 
@@ -1981,7 +1981,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_SetExpectedFrameRateRange()
 
@@ -1992,7 +1992,7 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 **描述：**
 
 
-为此XComponent组件实例设置期望帧率。
+为此XComponent组件实例设置期望帧率范围。
 
 **起始版本：** 20
 
@@ -2008,7 +2008,7 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_RegisterOnFrameCallback()
 
@@ -2035,7 +2035,7 @@ int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t  | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_UnregisterOnFrameCallback()
 
@@ -2061,7 +2061,7 @@ int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_XComponent_SetNeedSoftKeyboard()
 
@@ -2088,7 +2088,7 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
 
 ### OH_ArkUI_AccessibilityProvider_Create()
 
@@ -2264,4 +2264,4 @@ int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceH
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行结果。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) - 传入参数异常。 |
+| int32_t | 返回执行结果。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |

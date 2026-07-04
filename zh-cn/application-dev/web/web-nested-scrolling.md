@@ -104,6 +104,9 @@ struct NestedScroll {
 </html>
 ```
 ![web-nested-scrolling](figures/web-nested-scrolling2.gif)
+## 使用nestedScroll常见问题
+### 在父组件优先滚动的场景中，当Web组件进行惯性滚动（抛滑）时，若父组件到达边界且未完全消耗滚动速度，会导致Web组件停止滚动
+该问题存在于API 26.0.0以下版本，已在API 26.0.0中修复。若需在低版本实现“父组件优先且不中断 Web 滚动”的效果，建议采用[方案2：滚动偏移量由滚动父组件统一派发](#滚动偏移量由滚动父组件统一派发)。
 
 ## 滚动偏移量由滚动父组件统一派发
 
@@ -182,7 +185,7 @@ struct NestedScroll {
 
 **完整代码**
 
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -225,7 +228,7 @@ struct Index {
         this.isWebAtEnd = true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`checkScrollBottom failed with error: ${err.code}, ${err.message}`);
     }
   }
 

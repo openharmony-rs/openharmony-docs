@@ -49,19 +49,19 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                | The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 // pssh数据为版权保护系统描述头，封装在加密码流中，mp4文件中位于pssh box、dash码流中位于mpd及mp4的pssh box、hls+ts的码流位于m3u8及每个ts片段中，请按实际值传入。
 let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
+mediaKeySession.generateMediaKeyRequest('video/avc', uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
   console.info('generateMediaKeyRequest' + mediaKeyRequest);
 });
 ```
@@ -95,8 +95,8 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -134,15 +134,15 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 let keyStatus: drm.MediaKeyStatus[] =  mediaKeySession.checkMediaKeyStatus();
 ```
@@ -163,8 +163,8 @@ clearMediaKeys(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -210,8 +210,8 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -259,8 +259,8 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -310,8 +310,8 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -349,15 +349,15 @@ getContentProtectionLevel(): ContentProtectionLevel
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 let contentProtectionLevel: drm.ContentProtectionLevel = mediaKeySession.getContentProtectionLevel();
 console.info(`contentProtectionLevel: ${contentProtectionLevel}`);
@@ -392,8 +392,8 @@ requireSecureDecoderModule(mimeType: string): boolean
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
@@ -402,7 +402,7 @@ import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-let status: boolean = mediaKeySession.requireSecureDecoderModule("video/avc");
+let status: boolean = mediaKeySession.requireSecureDecoderModule('video/avc');
 ```
 
 ## on('keyRequired')
@@ -429,14 +429,14 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
   console.info('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
@@ -469,14 +469,14 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('keyRequired');
 ```
@@ -505,14 +505,14 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
   console.info('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
@@ -543,14 +543,14 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('keyExpired');
 ```
@@ -579,14 +579,14 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('vendorDefined', (eventInfo: drm.EventInfo) => {
   console.info('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
@@ -617,14 +617,14 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('vendorDefined');
 ```
@@ -653,14 +653,14 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
   console.info('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
@@ -691,14 +691,14 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.       |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('expirationUpdate');
 ```
@@ -727,14 +727,14 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
   for (let i = 0; i < keyInfo.length; i++) {
@@ -767,14 +767,14 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.off('keysChange');
 ```
@@ -795,15 +795,15 @@ destroy(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors                  |
+| 24700201                | Fatal service error, for example, service died                  |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.destroy();
 ```

@@ -62,7 +62,7 @@ enum ArkUI_NativeAPIVariantKind
 | ARKUI_NATIVE_NODE = 0 | UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。 |
 | ARKUI_NATIVE_DIALOG = 1 | 弹窗相关接口类型，详见[native_dialog.h](./capi-native-dialog-h.md)中的[结构体](capi-native-dialog-h.md#结构体)类型定义。 |
 | ARKUI_NATIVE_GESTURE = 2 | 手势相关接口类型，详见[native_gesture.h](./capi-native-gesture-h.md)中的[结构体](capi-native-gesture-h.md#结构体)类型定义。 |
-| ARKUI_NATIVE_ANIMATE = 3 | 动画相关接口类型。详见[native_animate.h](./capi-native-animate-h.md)中的[结构体](capi-native-animate-h.md#结构体)类型定义。 |
+| ARKUI_NATIVE_ANIMATE = 3 | 动画相关接口类型，详见[native_animate.h](./capi-native-animate-h.md)中的[结构体](capi-native-animate-h.md#结构体)类型定义。 |
 | ARKUI_MULTI_THREAD_NATIVE_NODE = 4 | 多线程UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。<br>**起始版本：** 22 |
 
 
@@ -86,14 +86,14 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type | ArkUI提供的native接口集合大类，例如UI组件接口类：ARKUI_NATIVE_NODE, 手势类：ARKUI_NATIVE_GESTURE。 |
-| const char* structName | native接口结构体的名称，通过查询对应头文件内结构体定义，例如位于[native_node.h](./capi-native-node-h.md)中的"ArkUI_NativeNodeAPI_1"。 |
+| [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type | ArkUI提供的Native接口集合大类，例如UI组件接口类：ARKUI_NATIVE_NODE, 手势类：ARKUI_NATIVE_GESTURE。 |
+| const char* structName | Native接口结构体的名称，通过查询对应头文件内结构体定义，例如位于[native_node.h](./capi-native-node-h.md)中的"ArkUI_NativeNodeAPI_1"。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 返回native接口抽象指针，在转换为具体类型后进行使用。 |
+| void* | 返回Native接口抽象指针，在转换为具体类型后进行使用。 |
 
 ### OH_ArkUI_GetModuleInterface()
 
@@ -110,7 +110,7 @@ do {                                                                            
 **描述：**
 
 
-基于结构体类型获取对应结构体指针的宏函数。此宏函数接收[ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、const char\*类型参数structType、structType\*类型参数structPtr，调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取native接口抽象指针，转换为structType\*类型后赋值给structPtr。
+基于结构体类型获取对应结构体指针的宏函数。此宏函数接收[ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、const char\*类型参数structType、structType\*类型参数structPtr，调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
 
 **起始版本：** 12
 
@@ -122,7 +122,7 @@ const char* OH_ArkUI_NativeModule_GetErrorMessage()
 
 **描述：**
 
-获取最新一次的报错信息，包括错误码、方法名称和错误原因。错误码相关信息请参考[ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode)。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误信息。返回的字符串是由系统创建的线程局部全局字符串，不得修改其内容。如需任何编辑，请自行创建字符串内容的拷贝副本。该接口返回的信息可能随版本演进而变化，仅用于输出以辅助分析与故障排查，不应作为逻辑判断依据。返回的报错信息无需手动释放。
+获取最新一次的报错信息，包括错误码、方法名称和错误原因。错误码相关信息请参考[ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误信息。返回的字符串是由系统创建的线程局部全局字符串，不得修改其内容。如需任何编辑，请自行创建字符串内容的拷贝副本。该接口返回的信息可能随版本演进而变化，仅用于输出以辅助分析与故障排查，不应作为逻辑判断依据。返回的报错信息无需手动释放。
 
 **起始版本：** 26.0.0
 

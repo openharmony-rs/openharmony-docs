@@ -18,7 +18,7 @@
 
 onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 
-鼠标或手写笔进入或退出组件时，触发hover事件。
+鼠标或手写笔进入或退出组件时，触发悬浮事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -28,7 +28,7 @@ onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event  | (isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void  | 是   | 鼠标的状态信息。<br />event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。<br />isHover表示鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。 |
+| event  | (isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void  | 是   | 鼠标或手写笔的状态信息。<br />event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。<br />isHover表示鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。 |
 
 **返回值：**
 
@@ -77,8 +77,8 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 | displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
 | displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
 | stopPropagation | () => void |否|否| 阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 

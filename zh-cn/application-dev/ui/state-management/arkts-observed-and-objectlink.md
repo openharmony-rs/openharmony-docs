@@ -940,7 +940,7 @@ struct SetSampleNestedChild {
 
 ![Observed_ObjectLink_inherit_set](figures/Observed_ObjectLink_inherit_set.gif)
 
-### ObjectLink支持联合类型
+### \@ObjectLink支持联合类型
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child组件中对应的Text组件刷新。
 
@@ -1765,7 +1765,7 @@ struct DelayedChangeIndex {
 
 ![observed-sync-7](./figures/observed-sync-7.png)
 
-上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is：false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“The value of renderClass is：true”，日志输出“The value of renderClass is changed to：true”。
+上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is: false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“The value of renderClass is: true”，日志输出“The value of renderClass is changed to: true”。
 
 因此，更推荐开发者在组件中对\@Observed装饰的类成员变量进行修改，以实现刷新。
 
