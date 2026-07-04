@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-abilityConnectionManager模块提供了应用协同接口管理能力，支持在设备间建立协同会话并实现跨设备数据传输与实时音视频流传输。该模块适用于协同办公等场景，解决了应用在不同设备间无缝协作的问题，打破了单一设备的使用边界，让用户可以在多设备之间顺畅切换，提升工作效率和用户体验。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
+abilityConnectionManager模块提供了应用协同接口管理能力，支持在设备间建立协同会话并实现跨设备数据传输与实时音视频流传输。该模块适用于协同办公等场景，解决了应用在不同设备间无缝协作的问题，打破了单一设备的使用边界，让用户可以在多设备之间顺畅切换，提升工作效率和用户体验。设备组网成功后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
 
 > **说明：**
 >
