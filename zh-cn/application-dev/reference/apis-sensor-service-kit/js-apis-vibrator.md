@@ -1449,7 +1449,7 @@ offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
 
 | 名称                | 类型      | 只读 | 可选 | 说明                            |
 |-------------------|---------|----|----|-------------------------------|
-| isEffectSupported | boolean | 是  | 否  | 预置效果是否受支持。true表示支持该预置振动效果，可用于[startVibration](#vibratorstartvibration9)；false表示不支持，使用该effectId触发振动可能效果不佳。 |
+| isEffectSupported | boolean | 否  | 否  | 预置效果是否受支持。true表示支持该预置振动效果，可用于[startVibration](#vibratorstartvibration9)；false表示不支持，使用该effectId触发振动可能效果不佳。 |
 
 
 ## VibratorInfo<sup>19+</sup>
