@@ -215,13 +215,13 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 | --------- | --------------------------------------- | ---- | ----- |
 | sessionId | number | 是    | 表示协同会话ID，需先创建协同会话后获取。 |
 | image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 表示图片信息。 |
-| quality | number | 否    | 表示图像压缩质量，取值范围为0到100，默认值为30。数值越大，图片压缩质量越好，但文件体积越大；数值越小，压缩质量越低，文件体积越小。0-50适合快速预览场景，51-80适合普通传输场景，81-100适合高质量需求场景。 |
+| quality | number | 否    | 表示图像压缩质量，取值范围为0到100，默认值为30。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。resolve表示图片发送成功，reject表示图片发送失败或出错。 |
+| Promise&lt;void&gt; | 无返回值的Promise对象。 |
 
 **错误码：**
 
@@ -636,7 +636,7 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 | -------- | ------ | ---- | ---- | ----------- |
 | name  | string   | 否    | 否 |   表示流传输的名称（接收端必须与发送端一致）。 |
 | role  | [StreamRole](#streamrole)     | 否    | 否   |   表示流传输的方式（可以是接收流或发送流）。bitrate参数仅在role为SOURCE时有效。 |
-| bitrate  | number   | 否    | 是   |   表示视频比特率，单位为bps，仅在发送端有效，默认值为80000。取值范围需参考设备支持的比特率范围，超出范围时返回错误码32300003。数值越大，视频清晰度越高，但带宽占用越大；数值越小，视频越模糊，但传输更流畅。 |
+| bitrate  | number   | 否    | 是   |   表示视频比特率，单位为bps，仅在发送端有效，默认值为80000。 |
 | colorSpaceConversionTarget  | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)     | 否    | 是   |  表示转换的目标色彩空间。设置该参数后，视频流的色彩空间将转换为目标色彩空间，用于适配不同设备的色彩显示需求。不传此参数时不进行色彩空间转换。 |
 
 ## SurfaceParam
@@ -651,9 +651,9 @@ Surface配置参数。
 
 | 名称       | 类型   | 只读 | 可选 | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| width | number | 否    | 否   | 表示编码宽度，单位为像素。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
-| height | number | 否    | 否  | 表示编码高度，单位为像素。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
-| format | [VideoPixelFormat](#videopixelformat) | 否    | 是   | 表示视频像素格式，此选项必须在发送端配置。NV12适合大多数场景，NV21适合Android平台兼容场景。不同格式对压缩效率和视频质量有影响，建议根据实际需求选择。必须在流启动前设置，流启动后到停止前均无法更新。不传入时默认为NV21。 |
+| width | number | 否    | 否   | 表示编码宽度。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
+| height | number | 否    | 否  | 表示编码高度。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
+| format | [VideoPixelFormat](#videopixelformat) | 否    | 是   | 表示视频像素格式，此选项必须在发送端配置。 |
 | rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。0表示不旋转，90表示向右旋转90度（适合竖屏视频），180表示旋转180度，270表示向左旋转90度。不传入时默认为0。 |
 | flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。HORIZONTAL表示水平翻转（适合镜像场景），VERTICAL表示垂直翻转。不传入时不进行翻转。 |
 
