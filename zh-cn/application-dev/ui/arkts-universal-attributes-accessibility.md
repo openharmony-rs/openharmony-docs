@@ -284,11 +284,11 @@ Column() {
   Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-  .accessibilityText('分组')
-  .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
-  .accessibilitySelected(undefined)
+.accessibilityLevel('yes')
+// accessibilityText设置为"分组"
+.accessibilityText('分组')
+.accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
+.accessibilitySelected(undefined)
 ```
 
 ### accessibilityChecked属性与accessibilitySelected属性的关键区别

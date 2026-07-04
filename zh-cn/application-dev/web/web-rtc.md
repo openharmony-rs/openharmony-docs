@@ -55,14 +55,10 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
 通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于打开摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
 
-### 系统侧授权
-在进入应用时会弹出访问摄像头和麦克风的权限授权框，需点击允许，授权应用访问摄像头和麦克风。
-
-### 应用侧授权
-在下面的示例中，单击前端界面中的开启摄像头按钮再单击onConfirm，打开摄像头和麦克风。
+在下面的示例中，点击前端界面中的"开启摄像头"按钮会触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
 
 - 应用侧代码。
-  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -78,7 +74,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
     aboutToAppear() {
       // 配置Web开启调试模式
       webview.WebviewController.setWebDebuggingAccess(true);
-      // 获取权限请求通知，点击onConfirm按钮后，拉起摄像头和麦克风。
+      // 获取摄像头和麦克风权限，在组件创建时主动申请权限。
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])
         .then((data) => {

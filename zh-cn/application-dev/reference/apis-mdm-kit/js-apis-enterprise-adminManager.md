@@ -156,7 +156,7 @@ subscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): voi
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200002  | The administrator application does not have permission to manage the device. <br>适用版本：26.0.0+ |
 | 9200008  | The specified system event is invalid.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -579,7 +579,7 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 ## adminManager.enableSelfDeviceAdmin
 
-enableSelfDeviceAdmin(admin: Want, credential: string): void
+enableSelfDeviceAdmin(admin: Want, credential: string): Promise&lt;void&gt;
 
 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。
 
@@ -602,6 +602,11 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | credential | string                   | 是   | 激活凭证。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当激活MDM应用自身失败时，会抛出错误对象。 |
 
 **错误码**：
 
@@ -611,6 +616,7 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | -------- | ------------------------------------------------------------ |
 | 9200003  | The administrator ability component is invalid.              |
 | 9200004  | Failed to activate the administrator application of the device. |
+| 9200012  | Parameter verification failed. |
 | 9200017  | The self-activation credential of the enterprise device administrator is invalid. |
 | 9200018  | This device is not an enterprise device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
