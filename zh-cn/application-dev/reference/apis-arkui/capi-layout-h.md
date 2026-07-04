@@ -256,14 +256,14 @@ enum ArkUI_Axis
 
 **描述**
 
-定义方向和[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
+定义方向或[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | 竖直方向，或者仅支持竖直方向滚动,该值为默认值。 |
-| ARKUI_AXIS_HORIZONTAL | 水平方向，或者仅支持水平方向滚动. |
+| ARKUI_AXIS_VERTICAL = 0 | 竖直方向，或者仅支持竖直方向滚动，该值为默认值。 |
+| ARKUI_AXIS_HORIZONTAL | 水平方向，或者仅支持水平方向滚动。 |
 
 ### ArkUI_VerticalAlignment
 
