@@ -175,7 +175,7 @@ export default class MigrationAbility extends UIAbility {
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
 | resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。提供操作成功或失败的详细描述信息，可用来向用户展示或用于日志记录。默认为空字符串。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明，提供操作成功或失败的详细描述信息。 |
 
 ## ContinueStateCode
 
