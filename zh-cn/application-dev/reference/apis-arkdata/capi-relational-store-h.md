@@ -375,7 +375,7 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md#oh_rdb_configv2) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md#oh_rdb_configv2)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig)接口释放内存。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md#oh_rdb_configv2) * | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md#oh_rdb_configv2)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig)接口释放内存。 |
 
 **参考：**
 
@@ -824,7 +824,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| const int * | 返回一个指向支持数据库类型的数组的指针。调用者不应释放或修改返回的指针。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_CreateValueObject()
 
@@ -864,7 +864,7 @@ OH_VBucket *OH_Rdb_CreateValuesBucket()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md#oh_vbucket) | 创建成功则返回一个指向[OH_VBucket](capi-rdb-oh-vbucket.md#oh_vbucket)结构体实例的指针，否则返回NULL。 |
+| [OH_VBucket](capi-rdb-oh-vbucket.md#oh_vbucket) * | 创建成功则返回一个指向[OH_VBucket](capi-rdb-oh-vbucket.md#oh_vbucket)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -893,7 +893,7 @@ OH_Predicates *OH_Rdb_CreatePredicates(const char *table)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md#oh_predicates) | 创建成功则返回一个指向[OH_Predicates](capi-rdb-oh-predicates.md#oh_predicates)结构体实例的指针，否则返回NULL。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md#oh_predicates) * | 创建成功则返回一个指向[OH_Predicates](capi-rdb-oh-predicates.md#oh_predicates)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 
@@ -949,7 +949,7 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md#oh_rdb_store) | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md#oh_rdb_store)结构体实例的指针，否则返回NULL。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数。 |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md#oh_rdb_store) * | 创建成功则返回一个指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md#oh_rdb_store)结构体实例的指针，否则返回NULL。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Rdb_CloseStore()
 
@@ -1085,7 +1085,7 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 ### OH_Rdb_BatchInsert()
 
 ```c
-int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
+int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
 **描述**
@@ -1348,7 +1348,7 @@ OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md#oh_cursor) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md#oh_cursor)结构体实例的指针，否则返回NULL。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md#oh_cursor) * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md#oh_cursor)结构体实例的指针，否则返回NULL。 |
 
 **参考：**
 

@@ -128,7 +128,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md#data_asset) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md#data_asset)实例的指针。 |
-| const char *uri |  表示要设置的URI。 |
+| const char *uri | 表示要设置的URI。 |
 
 **返回：**
 
@@ -258,7 +258,7 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md#data_asset) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md#data_asset)实例的指针。 |
-| [Data_AssetStatus](#data_assetstatus) status | 表示需要设置的状态码。详细信息可以查看[Data_AssetStatus](capi-data-asset-h.md#data_assetstatus)。 |
+| [Data_AssetStatus](#data_assetstatus) status | 表示需要设置的状态码。详细信息可以查看[Data_AssetStatus](#data_assetstatus)。 |
 
 **返回：**
 
@@ -447,7 +447,7 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md#data_asset) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md#data_asset)实例的指针。 |
-| [Data_AssetStatus](#data_assetstatus) *status | 参数是输出参数，资产类型数据的状态码会以[Data_AssetStatus](capi-data-asset-h.md#data_assetstatus)形式写入该变量。 |
+| [Data_AssetStatus](#data_assetstatus) *status | 参数是输出参数，资产类型数据的状态码会以[Data_AssetStatus](#data_assetstatus)形式写入该变量。 |
 
 **返回：**
 
@@ -514,7 +514,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t count | 代表创建的资产类型数据的数量。 |
+| uint32_t count | 表示要创建的[Data_Asset](capi-rdb-data-asset.md#data_asset)类型实例的数量。 |
 
 **返回：**
 

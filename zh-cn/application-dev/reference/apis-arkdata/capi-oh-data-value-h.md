@@ -38,7 +38,7 @@
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Value *OH_Value_Create(void)](#oh_value_create)     | 创建[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例，用于储存单条键值对数据。 |
+| [OH_Data_Value *OH_Value_Create(void)](#oh_value_create)     | 创建[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例，用于存储单条键值对数据。 |
 | [int OH_Value_Destroy(OH_Data_Value *value)](#oh_value_destroy) | 销毁[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)对象。             |
 | [int OH_Value_PutNull(OH_Data_Value *value)](#oh_value_putnull) | 添加空数据。                                                 |
 | [int OH_Value_PutInt(OH_Data_Value *value, int64_t val)](#oh_value_putint) | 添加整型数据。                                               |
@@ -100,7 +100,7 @@ OH_Data_Value *OH_Value_Create(void)
 
 **描述**
 
-创建[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例，用于储存单条键值对数据。
+创建[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例，用于存储单条键值对数据。
 
 **起始版本：** 18
 
@@ -108,7 +108,7 @@ OH_Data_Value *OH_Value_Create(void)
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
+| [OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](#oh_value_destroy)接口释放内存。 |
 
 ### OH_Value_Destroy()
 
@@ -337,7 +337,7 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 | --------------------------------------------- | ---------------------------------------------------------- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例的指针。 |
 | const float *val                              | 表示指向float数组对象的指针。                              |
-| size_t length                                 | 该参数是输入参数，表示开发者传入的表示float数组的大小。    |
+| size_t length                                 | 该参数是输入参数，表示开发者传入的float数组的大小。    |
 
 **返回：**
 
@@ -365,7 +365,7 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 | [OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md#oh_data_value)实例的指针。 |
 | int sign                                      | 表示正负数，0表示正整数，1表示负整数。                     |
 | const uint64_t *trueForm                      | 表示指向整型数组的指针。                                   |
-| size_t length                                 | 该参数是输入参数，表示开发者传入的表示整型数组的大小。     |
+| size_t length                                 | 该参数是输入参数，表示开发者传入的整型数组的大小。     |
 
 **返回：**
 

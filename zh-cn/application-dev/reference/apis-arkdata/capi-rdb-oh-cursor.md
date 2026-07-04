@@ -68,7 +68,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 | 参数项            | 描述                                         |
 | ----------------- | -------------------------------------------- |
 | OH_Cursor *cursor | 表示指向OH_Cursor实例的指针                  |
-| int *count        | 该参数是输出参数，结果集中的列数会写入该变量 |
+| int *count        | 该参数是输出参数，结果集中的行数会写入该变量 |
 
 **返回：**
 
@@ -87,7 +87,6 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 函数指针，根据指定的列索引获取列类型。
 
 **起始版本：** 10
-
 
 **参数：**
 
