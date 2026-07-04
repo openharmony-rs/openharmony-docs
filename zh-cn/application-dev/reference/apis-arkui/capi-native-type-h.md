@@ -394,24 +394,6 @@ enum ArkUI_AccessibilityActionType
 | ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | 复制操作。 |
 | ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | 粘贴操作。 |
 
-### ArkUI_Axis
-
-```c
-enum ArkUI_Axis
-```
-
-**描述：**
-
-
-定义滚动方向和[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动，该值为默认值。 |
-| ARKUI_AXIS_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
-
 ### ArkUI_BorderStyle
 
 ```c
