@@ -2620,7 +2620,7 @@ NODE_ARC_LIST_CHILDREN_MAIN_SIZE = 1019005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 参数格式为[ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)。 |
+| .object | 参数格式为[ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)。定义ArcList的所有子项主轴尺寸信息的结构体。<br>通过[OH_ArkUI_ListChildrenMainSizeOption_Create](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_create)接口来创建，并且可以使用[OH_ArkUI_ListChildrenMainSizeOption_Splice](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_splice)方法对ArcList组件子项主轴尺寸数组进行大小调整。 |
 
 ## NODE_ARC_LIST_SET_HEADER
 
@@ -2851,7 +2851,7 @@ NODE_ARC_LIST_ITEM_SWIPE_ACTION = 1020001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。 |
+| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。<br>定义ArcListItem的划出组件信息的结构体。通过[OH_ArkUI_ListItemSwipeActionOption_Create](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_create)接口来创建，并且可以使用[OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_setstart)方法设置ListItemSwipeActionItem左侧（垂直布局）或上方（横向布局）内容。 |
 
 ## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
 
