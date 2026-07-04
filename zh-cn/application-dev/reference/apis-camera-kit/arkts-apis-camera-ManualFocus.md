@@ -1,4 +1,4 @@
-# Interface (ManualFocus)
+capi-camera-h.md# Interface (ManualFocus)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->

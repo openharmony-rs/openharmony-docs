@@ -37,7 +37,7 @@
 | [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | 点参数。 |
 | [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | 拍照位置。 |
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesetting.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（扩展拍照设置对象，提供镜像、旋转等基础拍照配置，新增支持连续调节图片压缩质量的接口）。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesetting.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
 | [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
