@@ -32715,5 +32715,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/stationary/stationary-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"import_the_stationary_module",
+						"start_line":16
+					},
+					{
+						"end_line":40,
+						"name":"stationary_subscribe",
+						"start_line":27
+					},
+					{
+						"end_line":72,
+						"name":"stationary_getStatus",
+						"start_line":60
+					},
+					{
+						"end_line":56,
+						"name":"stationary_unsubscribe",
+						"start_line":44
+					}
+				]
+			}
+		]
 	}
 ]
