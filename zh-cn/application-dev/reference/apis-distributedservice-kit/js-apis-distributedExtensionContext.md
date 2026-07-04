@@ -6,11 +6,11 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-DistributedExtensionContext模块是DistributedExtensionAbility（分布式扩展能力）的上下文环境，继承自ExtensionContext（扩展上下文）。它提供协同Extension所需的上下文信息与能力，用于跨设备连接远端ServiceExtensionAbility（服务扩展能力）等协同场景，支持开发者实现分布式协作。
+DistributedExtensionContext模块是DistributedExtensionAbility（分布式扩展能力）的上下文环境，继承自ExtensionContext（扩展上下文）。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
 
