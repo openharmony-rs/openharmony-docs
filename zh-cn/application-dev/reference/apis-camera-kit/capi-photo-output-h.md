@@ -1089,7 +1089,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 | 参数项 | 描述 | 
 | -- | -- | 
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | photoOutput 拍照输出实例。 | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，如果函数调用成功, setting 指向创建的 OH_Camera_PhotoCaptureSettingExt 实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，setting 指向创建的 OH_Camera_PhotoCaptureSettingExt 实例。 |
 
 **返回：** 
 
