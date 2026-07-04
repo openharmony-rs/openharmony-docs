@@ -540,10 +540,6 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
-**起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
 | 名称        | 类型                                                        |只读| 可选|说明                                                           |
 | ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
 | userId      | number                                                      | 否 |否 |系统用户ID，只能是存在的用户ID。                   |
@@ -562,7 +558,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
-| interface   | string                                                      | 否 |是 |物理网口特定接口，当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。                   |
+| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br>**起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。                 |
 
 ## RequestParam
 
