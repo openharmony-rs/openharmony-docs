@@ -310,8 +310,8 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t totalSize | 数据总大小。 |
-| uint64_t transferredSize | 已传输的数据大小。 |
+| uint64_t totalSize | 数据总大小。单位：字节。 |
+| uint64_t transferredSize | 已传输的数据大小。单位：字节。 |
 
 ### Http_OnHeaderReceiveCallback()
 
