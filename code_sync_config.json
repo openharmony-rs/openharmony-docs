@@ -54782,9 +54782,9 @@
 						"start_line":55
 					},
 					{
-						"end_line":133,
+						"end_line":138,
 						"name":"audioSuite_CreateBaseNode",
-						"start_line":85
+						"start_line":88
 					},
 					{
 						"end_line":183,
