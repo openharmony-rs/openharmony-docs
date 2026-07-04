@@ -28,12 +28,6 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('loadData')
-        .onClick(() => {
-          if (this.webviewController.accessBackward()) {
-            this.webviewController.backward();
-          }
-        })
       Web({ src: 'https://www.example.com/', controller: this.webviewController })
         .onAppear(() => {
           // 指定第二个参数为true，代表要进行预连接，如果为false该接口只会对网址进行dns预解析
@@ -316,7 +310,7 @@ export default class EntryAbility extends UIAbility {
        try {
          controller.precompileJavaScript(config.url, content, config.options)
            .then(errCode => {
-             console.error('precompile successfully! ' + errCode);
+             console.info('precompile successfully! ' + errCode);
            }).catch((errCode: number) => {
              console.error('precompile failed. ' + errCode);
          });
@@ -479,7 +473,7 @@ export default class EntryAbility extends UIAbility {
      private rootNode: BuilderNode<BuilderData[]> | null = null;
      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
    
-     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>,  context: UIContext) {
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
      storage = context.getSharedLocalStorage();
        super();
        this.wrappedBuilder = wrappedBuilder;
