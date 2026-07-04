@@ -13,7 +13,7 @@ typedef struct HiTraceId {...} HiTraceId
 
 ## 概述
 
-HiTraceId定义。
+HiTraceId是用于标识调用链的结构体。
 
 **使用场景**：
 - 跨服务调用追踪：在分布式系统中，用于标识和关联同一业务请求在不同服务间的调用链路。

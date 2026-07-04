@@ -104,8 +104,8 @@ HiTraceId是否有效标志。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_ID_INVALID = 0 | 无效HiTraceId。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_ID_VALID = 1 | 有效HiTraceId。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
+| HITRACE_ID_INVALID = 0 | 无效HiTraceId。 |
+| HITRACE_ID_VALID = 1 | 有效HiTraceId。 |
 
 ### HiTrace_Version
 
@@ -123,7 +123,7 @@ HiTrace版本号。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_VER_1 = 0 | 版本1。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
+| HITRACE_VER_1 = 0 | 版本1。|
 
 ### HiTrace_Flag
 
@@ -141,14 +141,14 @@ HiTrace跟踪标志。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_FLAG_DEFAULT = 0 | 缺省标志。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | 异步调用标志。<br>     设置该标志，同时跟踪同步和异步调用；缺省只跟踪同步调用。<br><br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | 无分支标志。<br>     设置该标志，不创建分支信息；缺省创建分支信息。<br><br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_TP_INFO = 1 << 2 | 埋点标志。<br>     调试场景下设置该标志，调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)时，会打印埋点信息hilog日志；缺省不打印埋点信息hilog日志。<br><br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | 无开始结束信息标志。<br>     调试场景下设置该标志，调用开始跟踪接口[OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain)和结束跟踪接口[OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain)时，分别会打印开始、结束跟踪信息hilog日志；缺省不打印开始、结束跟踪信息hilog日志。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | 日志关联标志。<br>     设置该标志，不会在hilog日志中附加HiTraceId信息；缺省会在hilog日志中附加HiTraceId信息。<br><br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | 故障触发标志。预置标志，暂未启用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | 设备间埋点标志。[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)的一个子集，调试场景下使用。<br>     当已设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志不生效；<br> 当未设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，设置[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志，此时调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)，仅当mode参数为设备间通信[HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode)的情况下，会打印埋点信息hilog日志。<br><br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
+| HITRACE_FLAG_DEFAULT = 0 | 默认标志。 |
+| HITRACE_FLAG_INCLUDE_ASYNC = 1 << 0 | 异步调用标志。<br>     设置该标志，同时跟踪同步和异步调用；默认只跟踪同步调用。<br> |
+| HITRACE_FLAG_DONOT_CREATE_SPAN = 1 << 1 | 无分支标志。<br>     设置该标志，不创建分支信息；默认创建分支信息。<br> |
+| HITRACE_FLAG_TP_INFO = 1 << 2 | 埋点标志。<br>     调试场景下设置该标志，调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)时，会打印埋点信息hilog日志；默认不打印埋点信息hilog日志。<br> |
+| HITRACE_FLAG_NO_BE_INFO = 1 << 3 | 无开始结束信息标志。<br>     调试场景下设置该标志，调用开始跟踪接口[OH_HiTrace_BeginChain](capi-trace-h.md#oh_hitrace_beginchain)和结束跟踪接口[OH_HiTrace_EndChain](capi-trace-h.md#oh_hitrace_endchain)时，分别会打印开始、结束跟踪信息hilog日志；默认不打印开始、结束跟踪信息hilog日志。 |
+| HITRACE_FLAG_DONOT_ENABLE_LOG = 1 << 4 | 日志关联标志。<br>     设置该标志，不会在hilog日志中附加HiTraceId信息；默认会在hilog日志中附加HiTraceId信息。<br> |
+| HITRACE_FLAG_FAULT_TRIGGER = 1 << 5 | 故障触发标志。预置标志，暂未启用。 |
+| HITRACE_FLAG_D2D_TP_INFO = 1 << 6 | 设备间埋点标志。[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)的一个子集，调试场景下使用。<br>     当已设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志不生效；<br> 当未设置[HITRACE_FLAG_TP_INFO](capi-trace-h.md#hitrace_flag)标志时，设置[HITRACE_FLAG_D2D_TP_INFO](capi-trace-h.md#hitrace_flag)标志，此时调用信息埋点接口[OH_HiTrace_Tracepoint](capi-trace-h.md#oh_hitrace_tracepoint)，仅当mode参数为设备间通信[HITRACE_CM_DEVICE](capi-trace-h.md#hitrace_communication_mode)的情况下，会打印埋点信息hilog日志。<br> |
 
 ### HiTrace_Tracepoint_Type
 
@@ -166,11 +166,11 @@ enum HiTrace_Tracepoint_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_TP_CS = 0 | 客户端发送。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_TP_CR = 1 | 客户端接收。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_TP_SS = 2 | 服务端发送。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_TP_SR = 3 | 服务端接收。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_TP_GENERAL = 4 | 通用类型，标识HITRACE_TP_CS、HITRACE_TP_CR、HITRACE_TP_SS、HITRACE_TP_SR四种场景之外的埋点。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
+| HITRACE_TP_CS = 0 | 客户端发送。 |
+| HITRACE_TP_CR = 1 | 客户端接收。 |
+| HITRACE_TP_SS = 2 | 服务端发送。 |
+| HITRACE_TP_SR = 3 | 服务端接收。 |
+| HITRACE_TP_GENERAL = 4 | 通用类型，标识HITRACE_TP_CS、HITRACE_TP_CR、HITRACE_TP_SS、HITRACE_TP_SR四种场景之外的埋点。 |
 
 ### HiTrace_Communication_Mode
 
@@ -188,10 +188,10 @@ enum HiTrace_Communication_Mode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HITRACE_CM_DEFAULT = 0 | 缺省通信类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_CM_THREAD = 1 | 线程间通信。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_CM_PROCESS = 2 | 进程间通信。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
-| HITRACE_CM_DEVICE = 3 | 设备间通信。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
+| HITRACE_CM_DEFAULT = 0 | 默认通信类型。 |
+| HITRACE_CM_THREAD = 1 | 线程间通信。|
+| HITRACE_CM_PROCESS = 2 | 进程间通信。 |
+| HITRACE_CM_DEVICE = 3 | 设备间通信。 |
 
 ### HiTrace_Output_Level
 
@@ -227,6 +227,8 @@ typedef void (*OH_HiTrace_TraceEventListener)(bool traceStatus)
 **描述**
 
 定义应用trace捕获开关状态切换时的回调函数类型。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 22
 
@@ -818,13 +820,15 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const
 
 标记一个同步跟踪耗时任务的开始，分级控制跟踪输出。<br> 同步跟踪打点接口[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)和[OH_HiTrace_FinishTraceEx](capi-trace-h.md#oh_hitrace_finishtraceex)必须配对使用。<br> [OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)和[OH_HiTrace_FinishTraceEx](capi-trace-h.md#oh_hitrace_finishtraceex)函数对可以嵌套使用，跟踪解析时使用栈式数据结构进行匹配。<br>
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为[HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level）。 |
 | const char *name | 同步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
 | const char *customArgs | 自定义键值对参数，用于附加额外的跟踪信息，多个键值对使用逗号分隔，例'key1=value1,key2=value2'。这些参数可以在性能分析时帮助过滤或标记特定的跟踪点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
 
@@ -839,13 +843,15 @@ void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 
 标记一个同步跟踪耗时任务的结束，分级控制跟踪输出。<br> 必须和[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)配对使用，参数level必须与同步跟踪的开始打点接口[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)的对应参数值一致。<br> 跟踪数据解析时，和其前执行流程中最近的[OH_HiTrace_StartTraceEx](capi-trace-h.md#oh_hitrace_starttraceex)进行匹配。<br>
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。 |
 
 ### OH_HiTrace_StartAsyncTraceEx()
 
@@ -857,15 +863,17 @@ void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, 
 
 标记一个异步跟踪耗时任务的开始，分级控制跟踪输出。<br> 用于在异步操作执行前进行开始打点，异步跟踪开始和结束数据由于不是顺序发生的，所以解析时需要通过一个唯一的taskId进行识别。<br> 和[OH_HiTrace_FinishAsyncTraceEx](capi-trace-h.md#oh_hitrace_finishasynctraceex)配对使用，参数name和taskId相同的开始与结束打点相匹配，构成一个异步跟踪耗时任务。<br> 如果有多个相同name的任务需要跟踪或者对同一个任务跟踪多次，并且任务同时被执行，则每次调用的taskId需不相同。<br> 如果具有相同name的任务是串行执行的，则taskId可以相同。<br> 不同进程的taskId不会相互干扰。<br>
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。 |
 | const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
-| int32_t taskId | 异步跟踪的ID。 |
+| int32_t taskId | 异步跟踪的ID。异步跟踪开始和结束由于不是顺序发生的，所以需要通过name和每次执行唯一的taskId进行开始和结束的匹配。 |
 | const char *customCategory | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
 | const char *customArgs | 键值对，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
 
@@ -879,15 +887,17 @@ void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name,
 
 标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。<br> 用于在异步操作完成后进行结束打点，例如在回调函数中调用。<br> 和[OH_HiTrace_StartAsyncTraceEx](capi-trace-h.md#oh_hitrace_startasynctraceex)配对使用，参数level、name和taskId必须与异步跟踪开始打点接口的对应参数值保持一致。<br>
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。 |
 | const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
-| int32_t taskId | 异步跟踪的ID。 |
+| int32_t taskId | 异步跟踪的ID。异步跟踪开始和结束由于不是顺序发生的，所以需要通过name和每次执行唯一的taskId进行开始和结束的匹配。 |
 
 ### OH_HiTrace_CountTraceEx()
 
@@ -899,13 +909,15 @@ void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64
 
 标记一个跟踪的整数变量，分级控制跟踪输出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 19
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。 |
 | const char *name | 整数变量的名称，不必与实际变量名相同。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int64_t count | 要记录的整数值，用于跟踪该变量在不同时刻的数值变化。 |
 
@@ -918,6 +930,8 @@ bool OH_HiTrace_IsTraceEnabled(void)
 **描述**
 
 判断当前是否开启应用trace捕获。
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 19
 
@@ -945,13 +959,15 @@ int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)
 
 因此，建议不要在应用主线程中注册或注销包含耗时操作的回调，避免发生应用冻屏。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiTrace_TraceEventListener](capi-trace-h.md#oh_hitrace_traceeventlistener) callback | 注册的回调函数。 |
+| [OH_HiTrace_TraceEventListener](capi-trace-h.md#oh_hitrace_traceeventlistener) callback | 注册的回调函数。应避免耗时操作，否则会阻塞注册或注销操作；建议不在主线程注册或注销含耗时操作的回调，避免应用冻屏。 |
 
 **返回：**
 
@@ -969,13 +985,15 @@ int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)
 
 注销应用trace捕获开关通知回调。<br> 使用[OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener)返回的回调索引，注销该索引关联的回调函数。
 
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t index | 已注册回调函数索引。 |
+| int32_t index | 已注册回调函数索引，有效取值范围为0到9。|
 
 **返回：**
 
