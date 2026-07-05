@@ -149,6 +149,7 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    generator.fdsrc = await context.resourceManager.getRawFd();
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
