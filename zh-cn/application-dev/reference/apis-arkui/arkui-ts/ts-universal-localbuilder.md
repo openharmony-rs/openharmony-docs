@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@LocalBuilder拥有和局部[@Builder](./ts-universal-builder-dynamic.md)相同的功能，且比局部`@Builder`能够更好地确定组件的父子关系和状态管理的父子关系。开发指南见[@LocalBuilder装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。
+`@LocalBuilder`拥有和局部[`@Builder`](./ts-universal-builder-dynamic.md)相同的功能，且比局部`@Builder`能够更好地确定组件的父子关系和状态管理的父子关系。适用于需要在自定义构建函数中保持组件父子关系和状态管理同步的场景。开发指南见[`@LocalBuilder` 装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。
 
 > **说明：**
 >
@@ -57,5 +57,5 @@ struct Parent {
         })
     }
   }
-} 
+}
 ```

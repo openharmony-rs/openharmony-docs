@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-使用`wrapBuilder`封装全局[@Builder](./ts-universal-builder-dynamic.md)，可以将`@Builder`函数作为参数传递，提升代码复用性。开发指南见[wrapBuilder：封装全局@Builder](../../../ui/state-management/arkts-wrapBuilder.md)。
+`wrapBuilder`用于封装全局[`@Builder`](./ts-universal-builder-dynamic.md)函数，并返回可传递的`WrappedBuilder`对象，适用于需要在组件之间复用或传递全局`@Builder`函数的场景。开发指南见[wrapBuilder：封装全局`@Builder`](../../../ui/state-management/arkts-wrapBuilder.md)。
 
 > **说明：**
 >
@@ -18,9 +18,9 @@
 
 ## wrapBuilder
 
-wrapBuilder\<Args extends Object[]>(builder: (...args: Args) => void): WrappedBuilder\<Args>
+wrapBuilder&lt;Args extends Object[]&gt;(builder: (...args: Args) => void): WrappedBuilder&lt;Args&gt;
 
-`wrapBuilder`是一个模板函数，返回一个`WrappedBuilder`对象。模板参数`Args extends Object[]`是需要封装的`@Builder`函数的参数列表。
+`wrapBuilder`是一个模板函数，返回一个`WrappedBuilder`对象。模板参数`Args extends Object[]`是需要封装的`@Builder`函数的参数列表。需要传递全局`@Builder`函数时，建议先通过`wrapBuilder`封装，再将返回的`WrappedBuilder`对象作为参数或变量使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -30,13 +30,13 @@ wrapBuilder\<Args extends Object[]>(builder: (...args: Args) => void): WrappedBu
 
 | 参数名         | 类型                                   | 必填 | 说明                                                         |
 | -------------- | -------------------------------------- | ---- | ---- |
-| builder        | (...args: Args) => void                | 是   | `@Builder`装饰的全局函数，传入后将被封装为`WrappedBuilder`对象。函数参数args为该`@Builder`函数所需的参数列表。 |
+| builder        | (...args: Args) => void                | 是   | `@Builder`装饰的全局函数，传入后将被封装为`WrappedBuilder`对象。该函数必须是无返回值（`void`）的函数，其参数列表`...args`的类型和顺序由泛型`Args`定义。当需要在组件间按引用传递或复用某个全局`@Builder`函数时传入此参数。 |
 
 **返回值：**
 
 | 类型                  | 说明                       |
 | --------------------- | -------------------------- |
-| [WrappedBuilder\<Args>](#wrappedbuilder) | `@Builder`函数的包装类对象，用于将全局`@Builder`函数及其参数封装为可按引用传递、支持动态调用的对象。 |
+| [WrappedBuilder\<Args>](#wrappedbuilder) | `WrappedBuilder<Args>`的实例，用于在组件之间复用或传递全局`@Builder`函数。该实例封装了指定的全局`@Builder`函数，可通过其`builder`属性调用被封装的构建函数，便于在组件间作为参数传递或赋值给变量。 |
 
 **示例：**
 
@@ -53,7 +53,7 @@ let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
 
 ## WrappedBuilder
 
-`WrappedBuilder`是`@Builder`函数的包装类，用于封装全局`@Builder`函数及其参数，实现按引用传递和动态调用。模板参数`Args extends Object[]`应传入`@Builder`函数的参数类型列表。
+`WrappedBuilder`是`@Builder`函数的包装类，用于封装全局`@Builder`函数及其参数，实现按引用传递和动态调用。
 
 ### 属性
 
@@ -63,7 +63,7 @@ let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
 
 | 名称    | 类型                    | 只读 | 可选 | 说明      |
 | ------- | ---------------------- | ---- | ---  | -------- |
-| builder | (...args: Args) => void | 否  | 否   | `@Builder`装饰的全局函数。 |
+| builder | (...args: Args) => void | 否  | 否   | `@Builder`装饰的全局函数，用于生成对应的自定义构建内容。 |
 
 ### constructor
 
@@ -79,7 +79,7 @@ constructor(builder: (...args: Args) => void)
 
 | 参数名    | 类型                                    | 必填 | 说明                                                              |
 | --------- | --------------------------------------- | ---- | ----------------------------------------------------------------- |
-| builder   | (...args: Args) => void               | 是 | `@Builder`装饰的全局函数，作为构造参数用于初始化`WrappedBuilder`实例。函数参数args为该`@Builder`函数所需的参数列表。 |
+| builder   | (...args: Args) => void               | 是 | `@Builder`装饰的全局函数，作为构造参数用于初始化`WrappedBuilder`实例。函数参数`args`为该`@Builder`函数所需的参数列表。 |
 
 **示例：**
 
