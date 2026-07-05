@@ -35,7 +35,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)](#oh_lowpowervideosink_ondataneeded) | OH_LowPowerVideoSink_OnDataNeeded | LowPowerVideoSink需要数据时调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。 |
-| [typedef void (\*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)](#oh_lowpowervideosink_onerror) | OH_LowPowerVideoSink_OnError | LowPowerVideoSink发生错误时调用该方法。 |
+| [typedef void (\*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)](#oh_lowpowervideosink_onerror) | OH_LowPowerVideoSink_OnError | LowPowerVideoSink发生错误时调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)](#oh_lowpowervideosink_ontargetarrived) | OH_LowPowerVideoSink_OnTargetArrived | LowPowerVideoSink到达目标点时调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)](#oh_lowpowervideosink_onrenderstarted) | OH_LowPowerVideoSink_OnRenderStarted | LowPowerVideoSink开始渲染时调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)](#oh_lowpowervideosink_onstreamchanged) | OH_LowPowerVideoSink_OnStreamChanged | LowPowerVideoSink流切换调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。 |
@@ -63,7 +63,7 @@ LowPowerVideoSink需要数据时调用该方法，包含在[OH_LowPowerVideoSink
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* buffer | 指向OH_AVSamplesBuffer实例的指针。 |
-| void *userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnError()
 
@@ -73,7 +73,7 @@ typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink,OH_AVErr
 
 **描述**
 
-LowPowerVideoSink发生错误时调用该方法。
+LowPowerVideoSink发生错误时调用该方法，包含在[OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)中。
 
 **起始版本：** 20
 
