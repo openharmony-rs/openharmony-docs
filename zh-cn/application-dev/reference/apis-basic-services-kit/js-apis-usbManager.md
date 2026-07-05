@@ -1217,7 +1217,7 @@ try {
 
 cancelAccessoryRight(accessory: USBAccessory): void
 
-取消当前应用程序访问USB配件的权限。
+取消当前应用程序访问USB配件的权限。与requestAccessoryRight()方法配合使用，用于取消此前通过requestAccessoryRight()申请的配件访问权限。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1278,7 +1278,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 类型                          | 说明                                               |
 | ----------------------------- | -------------------------------------------------- |
-| Array<Readonly&lt;[USBAccessory](#usbaccessory14)&gt;> | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
+| Array<Readonly&lt;[USBAccessory](#usbaccessory14)&gt;> | 只读的USB配件列表。包含所有可用的USB配件信息。 |
 
 **错误码：**
 
@@ -1418,7 +1418,11 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 > **说明：**
 >
-> 本接口调用后会重置此前设置的配置和替换接口，请在调用之前确认相关业务已结束。
+> 本接口调用后会重置此前设置的配置和接口设置，请在调用之前确认相关业务已结束。
+
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表。
+2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限。
+3. 调用[usbManager.connectDevice](#usbmanagerconnectdevice)得到devicepipe作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1446,7 +1450,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
+| 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
@@ -1466,8 +1470,8 @@ async function resetUsbDevice() {
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err) {
-    console.error(`resetUsbDevice failed: ` + err);
+  } catch (err: BusinessError) {
+    console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicepipe);
 }
@@ -1541,9 +1545,22 @@ async function controlTransfer() {
 
 >**说明：**
 >
-> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isoc)采用宽带预留调度，适合音视频等实时数据流。
+> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用宽带预留调度，适合音视频等实时数据流。
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
+
+```mermaid
+graph LR
+ 	  A[端点类型] --> B[批量端点 bulk]
+ 	  A --> C[中断端点 interrupt]
+ 	  A --> D[实时端点 isoc]
+ 	  B --> B1[宽带共享调度]
+ 	  B1 --> B2[适合大量数据非实时传输]
+ 	  C --> C1[固定轮询调度]
+ 	  C1 --> C2[适合小数据量实时传输]
+ 	  D --> D1[宽带预留调度]
+ 	  D1 --> D2[适合音视频等实时数据流]
+```
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1554,8 +1571,8 @@ async function controlTransfer() {
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点地址。         |
-| attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性。         |
-| interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔，（单位：毫秒）。         |
+| attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时、控制）和同步类型等。取值遵循USB端点描述符规范。|
+| interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔，（单位：毫秒）。中断端点和实时端点为时间间隔（单位：毫秒）；批量端点不使用此字段。|
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
 | number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该字段仅适用于ArkTS-Dyn。         |
@@ -1579,7 +1596,7 @@ async function controlTransfer() {
 | protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的协议。                |
 | clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备类型。                 |
 | subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备子类。                 |
-| alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。alternateSetting的值表示支持可选模式个数，其中0表示不支持可选模式。 |
+| alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的替代设置索引号，用于在同一个接口的多个可选描述符中进行切换选择。0表示默认设置，其他值表示特定的替代设置。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
 
@@ -1596,7 +1613,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | 名称             | 类型                                             | 只读  | 可选  |说明              |
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
 | id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的唯一标识。        |
-| attributes     | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的属性。          |
+| attributes     | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的属性，取值遵循USB配置描述符规范，用于表示配置的供电方式、远程唤醒能力等特性。|
 | maxPower       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否 |最大功耗，（单位：毫安）。    |
 | name           | string                                           | 否 | 否 |配置的名称，可以为空字符串。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
@@ -1631,7 +1648,7 @@ USB设备信息。
 
 ## USBDevicePipe
 
-USB设备消息传输通道，用于确定设备。
+USB设备消息传输通道，用于确定总线地址和设备地址。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1662,7 +1679,7 @@ USB设备消息传输通道，用于确定设备。
 | wValue | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。|
 | wIndex   | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点索引。|
 | wLength   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求数据的长度，用于指定控制传输中期望接收或发送的数据字节数。 |
-| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
+| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区，数组长度对应wLength参数指定的数据字节数。用于控制传输时发送或接收数据。|
 
 ## USBRequestTargetType
 
@@ -1726,13 +1743,13 @@ USB配件信息。
 | ------------ | ------ | ---- | ---- | ---------------- |
 | manufacturer | string | 否 | 否   | 配件的生产厂商。 |
 | product      | string | 否 | 否   | 配件的产品类型。 |
-| description  | string | 否 | 否   | 配件的描述。     |
+| description  | string | 否 | 否   | 配件的描述信息，由厂商提供，用于说明配件的功能、用途或特性。 |
 | version      | string | 否 | 否   | 配件的版本。     |
 | serialNumber | string | 否 | 否   | 配件的SN号。     |
 
 ## USBAccessoryHandle<sup>14+</sup>
 
-USB配件句柄。
+USB配件句柄，包含配件文件描述符，用于通过CoreFileKit提供的read/write接口和配件进行通信。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1746,7 +1763,7 @@ USB配件句柄。
 
 ## UsbDataTransferParams<sup>18+</sup>
 
-作为通用USB数据传输接口，客户端需要填充这个对象中的参数，用以发起传输请求。
+USB数据传输参数对象，包含USB数据传输所需的所有参数，用于usbSubmitTransfer和usbCancelTransfer接口发起传输请求。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1757,15 +1774,15 @@ USB配件句柄。
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
-| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。  |
-| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间，（单位：毫秒），指定时间内等待传输完成若在指定时间内传输完成则正常返回否则返回超时，设置为0时无限等待直到传输完成。 |
-| length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
-| callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
-| userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
+| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动传输）、3（传输增加一个额外的数据包）。 |
+| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。  |
+| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
+| length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度），（单位：字节）。 |
+| callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
+| userData | Uint8Array | 否 | 否 | 用户上下文数据，用于在回调函数中传递自定义的上下文信息。大小和格式由用户定义，在传输请求中指定，回调中原样返回。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个）。 |
+| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。取值范围为[0, INT_MAX]的非负数，（单位：个）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1781,7 +1798,7 @@ USB传输标志。
 | ---------------------------- | ---- | ------ |
 | USB_TRANSFER_SHORT_NOT_OK    | 0    | 将短帧报告为错误。 |
 | USB_TRANSFER_FREE_BUFFER | 1    | 自动释放传输缓冲区。 |
-| USB_TRANSFER_FREE_TRANSFER  | 2    | 完成回调后自动传输。 |
+| USB_TRANSFER_FREE_TRANSFER  | 2    | 完成回调后自动释放传输资源。 |
 | USB_TRANSFER_ADD_ZERO_PACKET     | 3    | 传输将增加一个额外的数据包。 |
 
 ## UsbEndpointTransferType<sup>18+</sup>
@@ -1858,7 +1875,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbdevicerequestparams12)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbmanagerusbdevicerequestparams12)替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 
