@@ -547,6 +547,7 @@
     - [DownloadFileButton](arkui-ts/ohos-arkui-advanced-DownloadFileButton.md)
     - [DialogV2](arkui-ts/ohos-arkui-advanced-DialogV2.md)
     - [EditableTitleBar](arkui-ts/ohos-arkui-advanced-EditableTitleBar.md)
+    - [EditableTitleBarV2](arkui-ts/ohos-arkui-advanced-EditableTitleBarV2.md)
     - [ExceptionPrompt](arkui-ts/ohos-arkui-advanced-ExceptionPrompt.md)
     - [ExceptionPromptV2](arkui-ts/ohos-arkui-advanced-ExceptionPromptV2.md)
     - [Filter](arkui-ts/ohos-arkui-advanced-Filter.md)
