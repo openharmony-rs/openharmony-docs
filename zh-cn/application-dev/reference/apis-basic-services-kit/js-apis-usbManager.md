@@ -1875,7 +1875,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbmanagerusbdevicerequestparams12)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbdevicerequestparams12)替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 
