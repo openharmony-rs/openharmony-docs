@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -47,7 +47,7 @@
 
 设备需要支持加速度传感器。
 
-目前只提供了算法框架，api接口测试框架的调用返回结果为:data={"type":3,"value":-1};
+目前只提供了算法框架，API接口测试框架的调用返回结果为：data={"type":3,"value":-1};
 
 如需相对静止和绝对静止能力，则具体算法需要开发者自己在device_status/libs/src/algorithm实现，可参考案例如下：
 
@@ -74,63 +74,60 @@
 
 ## 开发步骤
 
-1. 订阅绝对静止的进入事件，1秒上报一次。
+1. 导入模块。
 
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
+2. 订阅绝对静止的进入事件，1秒上报一次。
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    let reportLatencyNs = 1000000000; // 单位：纳秒
    try {
-      stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
    } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary on failed:' + message);
+     let message = (error as BusinessError).message;
+     console.error('stationary on failed:' + message);
    }
    ```
 
-2. 查询绝对静止状态的进入事件。
+3. 查询绝对静止状态的进入事件。
 
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   try {
-      stationary.once('still', (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
-   } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary once failed:' + message);
-   }
-   ```
-
-3. 取消订阅绝对静止状态的进入事件。
-
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```ts
-   import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
+   ``` TypeScript
    try {
-      stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
+     stationary.once('still', (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
    } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary off failed:' + message);
+     let message = (error as BusinessError).message;
+     console.error('stationary once failed:' + message);
+   }
+   ```
+
+4. 取消订阅绝对静止状态的进入事件。
+
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
+   } catch (error) {
+     let message = (error as BusinessError).message;
+     console.error('stationary off failed:' + message);
    }
    ```
