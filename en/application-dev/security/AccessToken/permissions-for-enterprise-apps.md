@@ -750,7 +750,7 @@ Allows an enterprise common application to obtain the list of all installed appl
 
 ## ohos.permission.kernel.TRAFFIC_FILTER
 
-Allows an application to check data packets in the network traffic path and determine whether to permit their passage ,and redirect traffic to local ports.
+Allows an application to check data packets in the network traffic path and determine whether to permit their passage, and redirect traffic to local ports.
 
 With this permission, the application can:
 
