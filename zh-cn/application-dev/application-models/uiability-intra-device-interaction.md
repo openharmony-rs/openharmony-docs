@@ -491,8 +491,8 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-     // ···
-     
+      // ...
+    
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
@@ -515,7 +515,7 @@ export default class ColdStartAbility extends UIAbility {
         });
       }
     
-    // ···
+      // ...
     }
     ```
 
@@ -528,12 +528,12 @@ export default class ColdStartAbility extends UIAbility {
         ``` TypeScript
         import { hilog } from '@kit.PerformanceAnalysisKit';
         import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-        // ···
+        // ...
         const DOMAIN_NUMBER: number = 0xFF00;
         const TAG: string = '[HotStartAbility]';
         
         export default class HotStartAbility extends UIAbility {
-        // ···
+          // ...
         
           onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
             hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'onNewWant');
