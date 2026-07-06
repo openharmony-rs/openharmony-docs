@@ -30,7 +30,7 @@ Not supported
 
 FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
-Creates a **FoldSplitContainer** component to manage regions for two-panel and three-panel arrangements on a foldable device across various states, including the expanded state, the semi-folded state, and the folded state.
+Creates a **FoldSplitContainer** component to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover, and folded states.
 
 **Decorator**: [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
@@ -41,7 +41,7 @@ Creates a **FoldSplitContainer** component to manage regions for two-panel and t
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | primary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the primary region.|
-| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the secondary region.|
+| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region.|
 | extra | Callback\<void> | No| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region. If this parameter is not provided, there is no corresponding region.|
 | expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the expanded state.|
 | hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the hover state.|
@@ -51,7 +51,7 @@ Creates a **FoldSplitContainer** component to manage regions for two-panel and t
 
 ## ExpandedRegionLayoutOptions
 
-Layout information for the expanded state.
+Defines layout information for the expanded state.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -62,11 +62,11 @@ Layout information for the expanded state.
 | isExtraRegionPerpendicular | boolean | No| Yes| Whether the extra region extends perpendicularly through the entire component from top to bottom. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite. This setting takes effect only when **extra** is effective.<br>Default value: **true**.|
 | verticalSplitRatio | number | No| Yes| Height ratio between the primary and extra regions.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
 | horizontalSplitRatio | number | No| Yes| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is set to **false**.<br>Default value: **ExtraRegionPosition.top**.|
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is set to **false**.<br>Default value: **ExtraRegionPosition.TOP**|
 
 ## HoverModeRegionLayoutOptions
 
-Layout information for the hover state.
+Defines layout information for the hover state.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -76,7 +76,7 @@ Layout information for the hover state.
 | -------- | -------- | -------- | -------- | -------- |
 | showExtraRegion | boolean | No| Yes| Whether to display the extra region in the half-folded state. The value **true** means to display the extra region in the half-folded state, and **false** means the opposite.<br>Default value: **false**.|
 | horizontalSplitRatio | number | No| Yes| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **showExtraRegion** is set to **true**.<br>Default value: **ExtraRegionPosition.top**.|
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **showExtraRegion** is set to **true**.<br>Default value: **ExtraRegionPosition.TOP**|
 
 > **NOTE**
 >
@@ -85,7 +85,7 @@ Layout information for the hover state.
 
 ## FoldedRegionLayoutOptions
 
-Provides the layout information of the folded state.
+Defines the layout information for the folded state.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -109,11 +109,11 @@ Implements a handler for the **onHoverStatusChange** event.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| status | [HoverModeStatus](#hovermodestatus) | Yes| Callback invoked when the foldable device enters or exits the hover state.|
+| status | [HoverModeStatus](#hovermodestatus) | Yes| Hover mode status of the foldable device.|
 
 ## HoverModeStatus
 
-Provides information about the device or application's folding, rotation, and window state.
+Provides device or application information covering fold status, hover mode, application rotation, and window status type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -124,7 +124,7 @@ Provides information about the device or application's folding, rotation, and wi
 | foldStatus | [display.FoldStatus](../js-apis-display.md#foldstatus10) | No| No| Fold status of the device.|
 | isHoverMode | boolean | No| No| Whether the application is in the hover state. The value **true** means that the application is in the hover state, and **false** means the opposite.|
 | appRotation | number | No| No| Rotation angle of the application.|
-| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | No| No| Window mode.|
+| windowStatusType | [window.WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) | No| No| Windowed mode.|
 
 ## ExtraRegionPosition
 
@@ -405,7 +405,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Vertical split ratio",
+          label: "Height ratio",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -452,7 +452,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Horizontal split ratio",
+          label: "Width ratio",
           value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -537,7 +537,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Horizontal split ratio",
+          label: "Width ratio",
           value: this.expandedRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -572,7 +572,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "Vertical split ratio",
+          label: "Height ratio",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {

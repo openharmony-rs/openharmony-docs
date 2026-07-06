@@ -63,7 +63,7 @@ ChipGroup({
 >
 > 2. To use the suffix functionality, the **IconGroupSuffix** API must be imported. If this API is not provided, the suffix area will remain empty.
 >
-> 3. The icon fill colors (**fillColor** and **activedFillColor**) must match the font color (**fontColor**). If different colors need to be set, use **prefixSymbol** when passing in [ChipGroupSpaceOptions](#chipgroupspaceoptions).
+> 3. The icon fill colors (**fillColor** and **activatedFillColor**) must match the font color (**fontColor**). If different colors need to be set, specify **prefixSymbol** in [ChipGroupItemOptions](#chipgroupitemoptions).
 
 ## ChipGroupItemOptions
 
@@ -166,7 +166,7 @@ Inherits from [IconOptions](#iconoptions).
 
 ## SymbolItemOptions<sup>14+</sup>
 
-Suffix icon option type of ChipGroup.
+Defines trailing symbol item options of **ChipGroup**.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -176,13 +176,17 @@ Suffix icon option type of ChipGroup.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | ---- |
-| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| Settings of the trailing symbol item.|
+| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| **SymbolGlyphModifier** configuration object of the tailing symbol item, used to set the display style and rendering mode.|
 | action | [VoidCallback](ts-types.md#voidcallback12) | No| No| Action of the trailing symbol item.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.|
 
 ## IconGroupSuffix
+
+```typescript
+IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>})
+```
 
 **Decorator**: @Component
 
@@ -194,7 +198,7 @@ Suffix icon option type of ChipGroup.
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Custom builder items.|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Array of custom items displayed in the tailing area. It supports the following types: IconItemOptions (image icons), SymbolGlyphModifier (symbol icons), and SymbolItemOptions (symbol icon configuration).|
 
 > **NOTE**
 >
