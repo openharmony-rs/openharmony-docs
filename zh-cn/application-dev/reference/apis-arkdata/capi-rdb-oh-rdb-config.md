@@ -16,9 +16,9 @@ typedef struct  {...} OH_Rdb_Config
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [relational_store.h](capi-relational-store-h.md#relational_store.h)
+**所在头文件：** [relational_store.h](capi-relational-store-h.md)
 
 ## 汇总
 
@@ -32,6 +32,6 @@ typedef struct  {...} OH_Rdb_Config
 | const char* bundleName  | 应用包名，不能为空。                                                   |
 | const char* moduleName  | 应用模块名，不能为空。                                                 |
 | bool isEncrypt          | 指定数据库是否加密。true表示加密，false表示不加密。             |
-| int securityLevel       | 设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。 |
-| int area                | 设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)。<br>**起始版本：** 11 |
+| int securityLevel       | 设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md)。 |
+| int area                | 设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md)。<br>**起始版本：** 11 |
 

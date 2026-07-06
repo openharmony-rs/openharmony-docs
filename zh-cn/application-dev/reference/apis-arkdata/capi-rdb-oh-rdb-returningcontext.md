@@ -17,6 +17,6 @@ returning相关接口的上下文。
 
 **起始版本：** 23
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [oh_rdb_types.h](capi-oh-rdb-types-h.md#oh_rdb_types.h)
+**所在头文件：** [oh_rdb_types.h](capi-oh-rdb-types-h.md)

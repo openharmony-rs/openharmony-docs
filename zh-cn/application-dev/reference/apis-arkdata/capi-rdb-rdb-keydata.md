@@ -14,9 +14,9 @@ union Rdb_KeyData { ... }
 
 存放变化的具体数据。
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [relational_store.h](capi-relational-store-h.md#relational_store.h)
+**所在头文件：** [relational_store.h](capi-relational-store-h.md)
 
 ## 汇总
 

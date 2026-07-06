@@ -16,7 +16,7 @@ typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
 
 **起始版本：** 18
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [oh_rdb_transaction.h](capi-oh-rdb-transaction-h.md#oh_rdb_transaction.h)
+**所在头文件：** [oh_rdb_transaction.h](capi-oh-rdb-transaction-h.md)
 

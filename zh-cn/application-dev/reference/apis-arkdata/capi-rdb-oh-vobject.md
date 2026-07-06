@@ -16,9 +16,9 @@ typedef struct {...} OH_VObject
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [oh_value_object.h](capi-oh-value-object-h.md#oh_value_object.h)
+**所在头文件：** [oh_value_object.h](capi-oh-value-object-h.md)
 
 ## 汇总
 

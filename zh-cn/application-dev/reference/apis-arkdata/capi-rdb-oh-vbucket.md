@@ -16,9 +16,9 @@ typedef struct {...} OH_VBucket
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [oh_values_bucket.h](capi-oh-values-bucket-h.md#oh_values_bucket.h)
+**所在头文件：** [oh_values_bucket.h](capi-oh-values-bucket-h.md)
 
 ### 成员变量
 
@@ -67,7 +67,7 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### putInt64()
 
@@ -93,7 +93,7 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### putReal()
 
@@ -119,7 +119,7 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### putBlob()
 
@@ -146,7 +146,7 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### putNull()
 
@@ -171,7 +171,7 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### clear()
 
@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **描述**
 
-清空[OH_VBucket](#oh_vbucket)对象。
+清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
 
 **起始版本：** 10
 
@@ -195,7 +195,7 @@ int (*clear)(OH_VBucket *bucket)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 
 ### destroy()
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **描述**
 
-销毁[OH_VBucket](#oh_vbucket)对象，并回收该对象占用的内存。
+销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 
@@ -219,5 +219,5 @@ int (*destroy)(OH_VBucket *bucket)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
 

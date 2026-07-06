@@ -16,9 +16,9 @@ typedef struct Rdb_TableDetails {...} Rdb_TableDetails
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [relational_store.h](capi-relational-store-h.md#relational_store.h)
+**所在头文件：** [relational_store.h](capi-relational-store-h.md)
 
 ## 汇总
 
@@ -27,6 +27,6 @@ typedef struct Rdb_TableDetails {...} Rdb_TableDetails
 | 名称                                            | 描述                                       |
 | ----------------------------------------------- | ------------------------------------------ |
 | const char* table                               | 数据库表名。                               |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md#rdb_statistic) upload   | 表示数据库表中端云同步上传过程的统计信息。 |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md#rdb_statistic) download | 表示数据库表中端云同步下载过程的统计信息。 |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload   | 表示数据库表中端云同步上传过程的统计信息。 |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | 表示数据库表中端云同步下载过程的统计信息。 |
 

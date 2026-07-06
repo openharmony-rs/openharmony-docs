@@ -16,9 +16,9 @@ typedef struct {...} OH_Cursor
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md#rdb)
+**相关模块：** [RDB](capi-rdb.md)
 
-**所在头文件：** [oh_cursor.h](capi-oh-cursor-h.md#oh_cursor.h)
+**所在头文件：** [oh_cursor.h](capi-oh-cursor-h.md)
 
 ### 成员变量
 
@@ -94,7 +94,7 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_Cursor *cursor                                            | 表示指向OH_Cursor实例的指针                                  |
 | int32_t columnIndex                                          | 表示结果集中指定列的索引，索引值从0开始。                    |
-| [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) *columnType | 该参数是输出参数，结果集中指定列的数据类型[OH_ColumnType](capi-oh-data-value-h.md#oh_columntype)会写入该变量。 |
+| [OH_ColumnType](capi-oh-data-value-h.md) *columnType | 该参数是输出参数，结果集中指定列的数据类型[OH_ColumnType](capi-oh-data-value-h.md)会写入该变量。 |
 
 **返回：**
 
