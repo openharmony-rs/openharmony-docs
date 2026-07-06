@@ -977,7 +977,7 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
 
 **参数：**
 
@@ -1027,7 +1027,7 @@ turnOffMobileData(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
 
 **参数：**
 
