@@ -467,7 +467,7 @@ revokePermission(tokenID: number): Promise&lt;void&gt;
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 
 **返回值：**
 
@@ -527,7 +527,7 @@ revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | 是 | 需要撤销持久化授权的策略信息数组，policies数组大小上限为500。 |
 
 **返回值：**
@@ -604,7 +604,7 @@ getPersistentPolicy(tokenID: number): Promise&lt;Array&lt;PolicyInfo&gt;&gt;
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 
 **返回值：**
 
