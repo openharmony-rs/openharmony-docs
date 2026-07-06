@@ -33467,5 +33467,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/uniform-data-type-descriptors.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"uniform_type_descriptor_test",
+						"start_line":22
+					},
+					{
+						"end_line":103,
+						"name":"get_filename_extensions_by_mimeType",
+						"start_line":85
+					},
+					{
+						"end_line":125,
+						"name":"get_filename_extension_by_mimeType",
+						"start_line":107
+					}
+				]
+			}
+		]
 	}
 ]
