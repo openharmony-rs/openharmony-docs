@@ -76,33 +76,33 @@ export const add: (a: number, b: number) => number;
 
 1. When loading a local .so library, configure **dependencies** in the **oh-package.json5** file. For details, see [Fields in the Module-level oh-package.json5 File](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-oh-package-json5#en-us_topic_0000001792256137_oh-packagejson5-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E).
 
-```json
-{
-  "dependencies": {
-    "libentry.so": "file:./src/main/cpp/types/libentry"
+  ```json
+  {
+    "dependencies": {
+      "libentry.so": "file:./src/main/cpp/types/libentry"
+    }
   }
-}
-```
+  ```
 
 2. Configure the module-level **build-profile.json5** file. For details, see [Module-level build-profile.json5 File](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile).
 
-```json
-{
-  "buildOption": {
-    "arkOptions": {
-      "runtimeOnly": {
-        "packages": [
-          "libentry.so"
-        ]
+  ```json
+  {
+    "buildOption": {
+      "arkOptions": {
+        "runtimeOnly": {
+          "packages": [
+            "libentry.so"
+          ]
+        }
       }
     }
   }
-}
-```
+  ```
 
 3. Use **loadNativeModule** to load **libentry.so** and call the **add** function.
 
-```js
-let module: ESObject = loadNativeModule("libentry.so");
-let sum: number = module.add(1, 2);
-```
+  ```js
+  let module: ESObject = loadNativeModule("libentry.so");
+  let sum: number = module.add(1, 2);
+  ```
