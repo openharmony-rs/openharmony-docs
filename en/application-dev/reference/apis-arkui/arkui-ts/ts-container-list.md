@@ -2624,7 +2624,7 @@ struct ContactsList {
                 .onAction((event: GestureEvent) => {
                   if (event) {
                     const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
-                    console.info('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
+                    console.info('The x of the No.', subIndex + 1, 'ListItem of the No.', index + 1, 'ListItemGroup:', itemRect.x,
                       ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
                     this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
                   }
