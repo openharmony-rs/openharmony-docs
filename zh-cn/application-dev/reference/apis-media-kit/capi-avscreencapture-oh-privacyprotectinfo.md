@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_PrivacyProtectInfo
+typedef struct {...} OH_PrivacyProtectInfo;
 ```
 
 ## 概述

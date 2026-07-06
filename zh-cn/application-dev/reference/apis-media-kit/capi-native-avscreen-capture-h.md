@@ -79,7 +79,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludePickerWindows(struct OH_AVScreenCapture *capture, const int32_t *excludedWindowIDs, uint32_t windowCount)](#oh_avscreencapture_excludepickerwindows) | 在Picker界面中隐藏指定的窗口。在picker界面显示前调用本接口，可对指定窗口进行过滤和隐藏。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t** displayIds, size_t *count)](#oh_avscreencapture_getmultidisplayidsselected) | 获取picker页面上用户选择录制的DisplayID列表。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)](#oh_avscreencapture_getmultidisplaycapturecapability) | 获取多屏幕录制能力信息，判断用户选择的多个屏幕是否支持联合录制。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)](#oh_avscreencapture_setprivacyprotectcallback) | 设置隐私保护回调函数，以便应用程序响应屏幕捕获产生的隐私保护事件。该接口必须在调用开始录屏之前调用。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)](#oh_avscreencapture_setprivacyprotectcallback) | 设置隐私保护回调函数，以便应用程序响应屏幕捕获产生的隐私保护事件。该接口必须在调用开始录屏之前调用。当录屏过程中检测到隐私窗口或隐私内容时，将通过该回调通知应用，应用可根据回调信息进行相应的隐私保护处理。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforpause) | 允许暂停屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | 暂停屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。 |
@@ -1056,6 +1056,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AV
 
 注册手工确认界面用户选择结果的回调，需在录屏启动前被调用。
 
+当录屏启动时，系统会弹出确认界面供用户选择录屏对象（屏幕、窗口或应用），用户选择结果通过该回调返回给应用。
+
 **起始版本：** 20
 
 **参数：**
@@ -1184,6 +1186,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCa
 
 设置捕获图像在目标区域的填充模式。
 
+当捕获的图像尺寸与目标输出区域不一致时，通过填充模式决定图像在目标区域中的显示方式。详见[OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode)。
+
 **起始版本：** 20
 
 **参数：**
@@ -1232,6 +1236,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 **描述**
 
 设置屏幕捕获区域高亮模式。
+
+在录屏过程中，可对指定的捕获区域进行高亮显示，以区分捕获区域与非捕获区域的视觉效果，帮助用户识别当前录屏范围。
 
 **起始版本：** 22
 
@@ -1362,6 +1368,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct 
 
 设置隐私保护回调函数，以便应用程序响应屏幕捕获产生的隐私保护事件。该接口必须在调用开始录屏之前调用。
 
+当录屏过程中检测到隐私窗口或隐私内容时，将通过该回调通知应用，应用可根据回调信息进行相应的隐私保护处理。
+
 **起始版本：** 24
 
 **参数：**
@@ -1413,6 +1421,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVSc
 
 暂停屏幕捕获。
 
+与[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)配合使用，调用后暂停录屏数据采集，已采集的数据保持有效。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -1436,6 +1446,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVS
 **描述**
 
 恢复屏幕捕获。
+
+与[OH_AVScreenCapture_PauseScreenCapture](#oh_avscreencapture_pausescreencapture)配合使用，调用后恢复录屏数据采集。
 
 **起始版本：** 26.0.0
 
