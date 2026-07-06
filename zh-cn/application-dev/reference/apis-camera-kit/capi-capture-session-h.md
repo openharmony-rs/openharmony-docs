@@ -1241,7 +1241,7 @@ Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, 
 
 **描述**
 
-设置ISO感光度值。需在[OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange)获取到的范围内进行设置，且仅曝光模式为EXPOSURE_MODE_LOCKED时生效。
+设置ISO感光度值。当曝光锁定模式[ExposureMode](arkts-apis-camera-e.md#exposuremode)为EXPOSURE_MODE_LOCKED时，不支持设置ISO感光度值，设置的值需在[OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange)范围内。
 
 **起始版本：** 24
 
