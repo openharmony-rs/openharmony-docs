@@ -196,7 +196,7 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
+<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) --> 
 
 ``` TypeScript
 // xxx.ets

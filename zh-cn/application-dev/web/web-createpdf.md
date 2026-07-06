@@ -150,7 +150,7 @@ struct Index {
 通过Promise方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
 ArkTS-Dyn示例：
-<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) --> 
 
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -206,7 +206,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) --> 
 
 ``` TypeScript
 // xxx.ets
