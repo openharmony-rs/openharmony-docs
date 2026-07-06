@@ -63,7 +63,7 @@ LowPowerVideoSink需要数据时调用该方法。
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* buffer | 指向OH_AVSamplesBuffer实例的指针。 |
-| void* userData | 用户执行回调所依赖的数据。 |
+| void *userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnError()
 
