@@ -94,7 +94,7 @@ PromptOptionsV2用于定义异常提示组件的配置信息。
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- | -------- |
+| -------- | -------- | -------- | -------- | -------- |
 | icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 指定当前异常提示的异常图标样式。<br/>默认不设置或设置为undefined，不显示异常图标。<br/>**装饰器类型：** @Trace |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br/>**装饰器类型：** @Trace |
 | tip | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持自定义资源，或如下四种状态文字系统资源。<br />1. 无网络状态：显示网络未连接，引用\$r('sys.string.ohos_network_not_connected')。<br />2. 网络差状态：显示网络连接不稳定，请点击重试，引用\$r('sys.string.ohos_network_connected_unstable')。<br />3. 连不上服务器状态：显示无法连接到服务器，请点击重试，引用\$r('sys.string.ohos_unstable_connect_server')。<br />4. 有网但是获取不到位置状态：显示无法获取位置，请点击重试，引用\$r('sys.string.ohos_custom_network_tips_left')。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**装饰器类型：** @Trace |
