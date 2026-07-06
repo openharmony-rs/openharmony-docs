@@ -218,7 +218,7 @@
       ];
   
       let formBinding = formBindingData.createFormBindingData(formData);
-          formBinding.proxies = proxies;
+         formBinding.proxies = proxies;
       return formBinding;
     }
   
