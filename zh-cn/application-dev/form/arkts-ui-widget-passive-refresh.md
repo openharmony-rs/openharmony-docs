@@ -42,7 +42,7 @@
   >
   > 在使用定时刷新时，需要在form_config.json配置文件中设置`updateEnabled`字段为`true`，以启用周期性刷新功能。
 
-- 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以在接口调用后的5分钟内刷新卡片内容。
+- 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以设置卡片在调用接口5分钟后刷新。
 
    ArkTS-Dyn示例：
   <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
@@ -218,7 +218,7 @@
   }
   ```
 
-在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)进行提供方刷新卡片。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
+在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
 
 **约束限制：**
 
@@ -286,7 +286,7 @@
   }
   ```
 
-在触发定点刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)进行提供方刷新卡片。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
+在触发定点刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
 
 > **说明：**
 > 1. 当同时配置了定时刷新`updateDuration`和定点刷新`scheduledUpdateTime`时，定时刷新的优先级更高且定点刷新不会执行。如果想要配置定点刷新，则需要将`updateDuration`配置为0。

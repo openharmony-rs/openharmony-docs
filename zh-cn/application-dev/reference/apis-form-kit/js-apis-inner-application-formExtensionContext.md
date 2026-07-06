@@ -6,8 +6,6 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
-
 FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 
 > **说明：**
@@ -17,6 +15,20 @@ FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 > 本模块接口仅可在Stage模型下使用。
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
+## FormExtensionContext
+
+FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 本模块接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ## 使用说明
 FormExtensionContext主要用于查询所属FormExtensionAbility的信息、Module的配置信息以及HAP包的信息，开发者可根据自身业务需求使用对应的信息。
@@ -36,17 +48,3 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 };
 ```
-
-## FormExtensionContext
-
-FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境。
-
-**系统能力：** SystemCapability.Ability.Form
-
-**模型约束：** 本模块接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
