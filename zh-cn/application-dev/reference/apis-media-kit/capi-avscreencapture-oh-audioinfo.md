@@ -7,14 +7,14 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioInfo {/* 成员变量详见下方汇总表 */} OH_AudioInfo;
+typedef struct OH_AudioInfo {...} OH_AudioInfo
 ```
 
 ## 概述
 
 音频信息。
 
-OH_AudioInfo作为OH_ScreenCaptureConfig的音频配置成员，包含麦克风采集信息、内录采集信息和音频编码信息三个部分，开发者需根据采集场景选择配置micCapInfo或innerCapInfo，并在需要编码输出时配置audioEncInfo。适用于需要在屏幕录制中采集音频数据的场景。
+OH_AudioInfo作为OH_ScreenCaptureConfig的音频配置成员，包含麦克风采集信息、内录采集信息和音频编码信息三个部分，开发者需根据采集场景选择配置麦克风采集信息或内录采集信息，并在需要编码输出时配置音频编码信息。适用于需要在屏幕录制中采集音频数据的场景。
 
 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采样参数需要相同，因为两路音频数据将合并为同一音频流输出，采样参数不一致会导致音频同步异常或采集失败。
 
