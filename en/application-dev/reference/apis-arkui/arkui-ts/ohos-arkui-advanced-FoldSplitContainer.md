@@ -60,7 +60,7 @@ Defines layout information for the expanded state.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | isExtraRegionPerpendicular | boolean | No| Yes| Whether the extra region extends perpendicularly through the entire component from top to bottom. The value **true** means that the extra region extends perpendicularly through the entire component from top to bottom, and **false** means the opposite. This setting takes effect only when **extra** is effective.<br>Default value: **true**.|
-| verticalSplitRatio | number | No| Yes| Height ratio between the primary and extra regions.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
+| verticalSplitRatio | number | No| Yes| Height ratio between the primary and secondary regions.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
 | horizontalSplitRatio | number | No| Yes| Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective.<br>Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_3V2|
 | extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | No| Yes| Position information of the extra region. This setting takes effect only when **isExtraRegionPerpendicular** is set to **false**.<br>Default value: **ExtraRegionPosition.TOP**|
 
@@ -93,7 +93,7 @@ Defines the layout information for the folded state.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| verticalSplitRatio | number | No| Yes| Height ratio between the primary and extra regions. Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
+| verticalSplitRatio | number | No| Yes| Height ratio between the primary and secondary regions. Default value: [PresetSplitRatio](#presetsplitratio).LAYOUT_1V1|
 
 ## OnHoverStatusChangeHandler
 
