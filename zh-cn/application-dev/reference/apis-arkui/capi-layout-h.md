@@ -44,7 +44,7 @@
 | [ArkUI_FlexDirection](#arkui_flexdirection) | ArkUI_FlexDirection | 定义Flex容器的主轴方向。 |
 | [ArkUI_FlexWrap](#arkui_flexwrap) | ArkUI_FlexWrap | 定义Flex行列布局模式。 |
 | [ArkUI_Direction](#arkui_direction) | ArkUI_Direction | 设置容器元素内主轴方向上的布局枚举值。 |
-| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | 定义滚动方向和List组件排列方向枚举值。 |
+| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | 定义方向或List组件排列方向枚举值。 |
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) | ArkUI_VerticalAlignment | 定义垂直对齐方式。 |
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) | ArkUI_HorizontalAlignment | 定义语言方向对齐方式。 |
 | [ArkUI_BarrierDirection](#arkui_barrierdirection) | ArkUI_BarrierDirection | 定义屏障线的方向。 |
@@ -256,14 +256,14 @@ enum ArkUI_Axis
 
 **描述**
 
-定义滚动方向和List组件排列方向枚举值。
+定义方向或[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动，该值为默认值。 |
-| ARKUI_AXIS_HORIZONTAL | 仅支持水平方向滚动。 |
+| ARKUI_AXIS_VERTICAL = 0 | 竖直方向，或者仅支持竖直方向滚动，该值为默认值。 |
+| ARKUI_AXIS_HORIZONTAL | 水平方向，或者仅支持水平方向滚动。 |
 
 ### ArkUI_VerticalAlignment
 
@@ -1515,7 +1515,7 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1559,7 +1559,7 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1603,7 +1603,7 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1647,7 +1647,7 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1727,7 +1727,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1771,7 +1771,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1815,7 +1815,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1859,4 +1859,4 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+| int32_t | 错误码。<br>      [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>      [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数无效。 |

@@ -165,22 +165,23 @@ on(type: 'error', callback: ErrorCallback): void
 | 801      | Capability not supported. |
 | 5400101  | No memory. |
 | 5400102  | Operation not allowed.|
+| 5400103  | I/O error. |
 | 5400104  | Time out.              |
 | 5400105  | Service died.         |
 | 5400106  | Unsupported format.     |
-| 5410002  | Seek continuous unsupported.     |
-| 5411001  | IO can not find host.    |
-| 5411002  | IO connection timeout.  |
-| 5411003  | IO network abnormal.     |
-| 5411004  | IO network unavailable.  |
-| 5411005  | IO no permission.        |
-| 5411006  | IO request denied.  |
-| 5411007  | IO resource not found. |
-| 5411008  | IO SSL client cert needed.    |
-| 5411009  | IO SSL connect fail.     |
-| 5411010  | IO SSL server cert untrusted.    |
-| 5411011  | IO unsupported request.      |
-| 5411012  | Http cleartext traffic is not permitted.      |
+| 5410002  | Seek continuous unsupported.  <br>适用版本：18+     |
+| 5411001  | IO can not find host.  <br>适用版本：14+    |
+| 5411002  | IO connection timeout.  <br>适用版本：14+  |
+| 5411003  | IO network abnormal.  <br>适用版本：14+     |
+| 5411004  | IO network unavailable.  <br>适用版本：14+  |
+| 5411005  | IO no permission.  <br>适用版本：14+        |
+| 5411006  | IO request denied.  <br>适用版本：14+  |
+| 5411007  | IO resource not found.  <br>适用版本：14+ |
+| 5411008  | IO SSL client cert needed.  <br>适用版本：14+    |
+| 5411009  | IO SSL connect fail.  <br>适用版本：14+     |
+| 5411010  | IO SSL server cert untrusted.  <br>适用版本：14+    |
+| 5411011  | IO unsupported request.  <br>适用版本：14+      |
+| 5411012  | Http cleartext traffic is not permitted.  <br>适用版本：23+     |
 
 **示例：**
 
@@ -503,7 +504,7 @@ clearPlaybackList(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed or no next mediasource in the list. Return by promise. |
+| 5400102  | operation not allowed . Returned via promise. |
 
 **示例：**
 
