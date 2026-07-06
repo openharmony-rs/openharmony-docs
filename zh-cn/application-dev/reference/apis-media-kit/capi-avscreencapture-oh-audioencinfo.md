@@ -14,9 +14,7 @@ typedef struct OH_AudioEncInfo {...} OH_AudioEncInfo
 
 音频编码信息。
 
-用于配置屏幕录制场景下的音频编码参数，包括音频编码比特率和音频编码格式，支持的编码格式详见[OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat)枚举定义。
-
-OH_AudioEncInfo用于配置屏幕录制时的音频编码参数，支持设置音频编码比特率和编码格式，适用于需要在屏幕录制场景中指定音频编码质量和编码方式的场景。
+用于配置屏幕录制场景下的音频编码参数，包括音频编码比特率和音频编码格式，适用于需要在屏幕录制场景中指定音频编码质量和编码方式的场景。支持的编码格式详见[OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat)枚举定义。
 
 **起始版本：** 10
 
