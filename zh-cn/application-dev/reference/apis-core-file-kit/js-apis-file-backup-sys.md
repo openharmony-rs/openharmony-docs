@@ -88,7 +88,7 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                   |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| priority | number | 否   | 是 | 数值越大优先级越高；优先级相同的情况下，先调用的先执行。默认为0。 |
+| priority | number | 否   | 是 | 数值越大优先级越高。优先级相同的情况下，先调用的先执行。默认为0。 |
 
 ## IncrementalBackupData<sup>12+</sup>
 
@@ -136,9 +136,9 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  否  |  否  | 指定碎片清理的触发类型，取值范围为0，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能；其他取值返回参数错误。|
-| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB；超出范围返回参数错误。|
-| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-300秒；超出范围返回参数错误。|
+| triggerType | number |  否  |  否  | 指定碎片清理的触发类型，取值范围为0，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能，其他取值返回参数错误。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB，超出范围返回参数错误。|
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-300秒，超出范围返回参数错误。|
 
 ## PathInfo
 
@@ -154,8 +154,8 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                     |
 | ---------- | ------ | ---- | --- | ---------------------------------------- |
-| srcPath | string | 否   | 否 | 迁移的源路径。长度限制为4096个字符，不支持使用相对路径和软链接；超出长度限制返回参数错误。 |
-| destPath | string | 否   | 否 | 迁移的目标路径。长度限制为4096个字符，不支持使用相对路径和软链接；超出长度限制返回参数错误。 |
+| srcPath | string | 否   | 否 | 迁移的源路径。长度限制为4096个字符，不支持使用相对路径和软链接，超出长度限制返回参数错误。 |
+| destPath | string | 否   | 否 | 迁移的目标路径。长度限制为4096个字符，不支持使用相对路径和软链接，超出长度限制返回参数错误。 |
 
 ## GeneralCallbacks
 
@@ -179,7 +179,7 @@ import { backup } from '@kit.CoreFileKit';
 
 onFileReady : AsyncCallback&lt;File&gt;
 
-回调函数。当服务端向客户端发送文件，如果成功触发回调，返回对应文件的[File](#file)内容；如果触发失败，则返回err错误对象。
+回调函数。当服务端向客户端发送文件，如果成功触发回调，返回对应文件的[File](#file)内容。如果触发失败，则返回err错误对象。
 
 > **说明：**
 >
@@ -228,7 +228,7 @@ onFileReady : AsyncCallback&lt;File&gt;
 
 onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
-回调函数。当应用备份/恢复开始时，如果成功触发回调，返回对应的bundleName；如果触发失败，则返回err错误对象。从API version 12开始，返回err时也会返回第二个string参数bundleName。
+回调函数。当应用备份/恢复开始时，如果成功触发回调，返回对应的bundleName。如果触发失败，则返回err错误对象。从API version 12开始，返回err时也会返回第二个string参数bundleName。
 
 **系统接口**：此接口为系统接口。
 
@@ -238,7 +238,7 @@ onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
 | 参数名     | 类型          | 必填 | 说明                                                        |
 | ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| err        | BusinessError | 否   | 当发生错误时，为错误对象；否则为undefined。 |
+| err        | BusinessError | 否   | 当发生错误时，为错误对象，否则为undefined。 |
 | bundleName | string        | 是   | 服务返回的应用名称，表示当前开始备份/恢复的应用包名。开发者可根据该参数记录当前应用的备份/恢复开始状态、初始化进度展示或准备后续处理。                                          |
 
 **错误码：**
@@ -274,7 +274,7 @@ onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
 onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 
-回调函数。当应用备份/恢复结束后，如果成功触发回调，返回对应的bundleName；如果触发失败，则返回err错误对象。从API version 12开始，返回err的同时，将同时返回第二个string参数bundleName。
+回调函数。当应用备份/恢复结束后，如果成功触发回调，返回对应的bundleName。如果触发失败，则返回err错误对象。从API version 12开始，返回err的同时，将同时返回第二个string参数bundleName。
 
 **系统接口**：此接口为系统接口。
 
@@ -284,7 +284,7 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 
 | 参数名     | 类型          | 必填 | 说明                                                        |
 | ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| err        | BusinessError | 否   | 当发生错误时，为错误对象；否则为undefined。 |
+| err        | BusinessError | 否   | 当发生错误时，为错误对象，否则为undefined。 |
 | bundleName | string        | 是   | 服务返回的应用名称，表示当前结束备份/恢复的应用包名。开发者可根据该参数记录当前应用的备份/恢复结束状态、更新结果展示或清理临时状态。                                          |
 
 **错误码：**
@@ -834,13 +834,13 @@ updateTimer(bundleName: string, timeout: number): boolean
 | 参数名          | 类型     | 必填 | 说明                       |
 | --------------- | -------- | ---- | -------------------------- |
 | bundleName | string | 是   | 需要设置备份或恢复时长的应用名称。 |
-| timeout | number | 是   | 备份或恢复的限制时长，入参范围[0,14400000]，单位：ms；超出范围返回参数错误。 |
+| timeout | number | 是   | 备份或恢复的限制时长，入参范围[0,14400000]，单位：ms，超出范围返回参数错误。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| boolean | 超时时间是否设置成功。true为设置成功；false为设置失败。 |
+| boolean | 超时时间是否设置成功。true为设置成功，false为设置失败。 |
 
 **错误码：**
 
@@ -898,7 +898,7 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| boolean | 发送速率是否设置成功。true为设置成功；false为设置失败。 |
+| boolean | 发送速率是否设置成功。true为设置成功，false为设置失败。 |
 
 **错误码：**
 
@@ -947,7 +947,7 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| reportInfo | string | 是   | 框架获取到的应用待备份数据量大小的信息，JSON格式字符串，包含scanned和scanning字段。scanned表示本次已扫描完成的应用数据量列表，scanning表示当前正在扫描的应用包名；开发者可通过JSON.parse解析后使用。 |
+| reportInfo | string | 是   | 框架获取到的应用待备份数据量大小的信息，JSON格式字符串，包含scanned和scanning字段。scanned表示本次已扫描完成的应用数据量列表，scanning表示当前正在扫描的应用包名，开发者可通过JSON.parse解析后使用。 |
 
 **示例：**
 
@@ -980,7 +980,7 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| error | BusinessError&lt;void&gt; | 是   | 当获取文件句柄成功，error为undefined；否则为错误对象。 |
+| error | BusinessError&lt;void&gt; | 是   | 当获取文件句柄成功，error为undefined，否则为错误对象。 |
 | files     | Array&lt;[File](#file)&gt; | 是   | 当获取文件句柄成功，返回获取到的文件句柄数组。 |
 
 **示例：**
@@ -1003,7 +1003,7 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File
 
 ## SessionBackup
 
-备份流程对象，用来支撑应用全量备份流程。在使用前，需要先创建SessionBackup实例。SessionBackup适用于需要备份应用全部数据的场景；IncrementalBackupSession适用于根据上次增量备份时间和清单文件只处理变化数据的场景。
+备份流程对象，用来支撑应用全量备份流程。在使用前，需要先创建SessionBackup实例。SessionBackup适用于需要备份应用全部数据的场景。IncrementalBackupSession适用于根据上次增量备份时间和清单文件只处理变化数据的场景。
 
 ### constructor
 
@@ -1247,7 +1247,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 | 参数名        | 类型                                                     | 必填 | 说明                                                         |
 | ------------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isPreciseScan | boolean                                                  | 是   | 是否精确扫描。true为精确扫描，false为非精确扫描。非精确扫描速度快，为估算数据量；精确扫描速度慢，结果更准确。但由于在实际备份过程中待备份数据可能发生变动，精确扫描结果和实际备份数据量不保证完全匹配。 |
+| isPreciseScan | boolean                                                  | 是   | 是否精确扫描。true为精确扫描，false为非精确扫描。非精确扫描速度快，为估算数据量。精确扫描速度慢，结果更准确。但由于在实际备份过程中待备份数据可能发生变动，精确扫描结果和实际备份数据量不保证完全匹配。 |
 | dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | 是   | 备份应用列表，用于描述待获取数据量的应用和上一次备份时间（全量备份填0）。 |
 
 **返回值：**
@@ -1381,7 +1381,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): void
 
-添加需要备份的应用。当前整个流程中，在获取SessionBackup类的实例后只能调用一次；备份流程结束后需要调用release释放资源。使用callback异步回调。
+添加需要备份的应用。当前整个流程中，在获取SessionBackup类的实例后只能调用一次。备份流程结束后需要调用release释放资源。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1478,7 +1478,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): v
 
 appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
-添加需要备份的应用。当前整个流程中，在获取SessionBackup类的实例后只能调用一次；备份流程结束后需要调用release释放资源。使用Promise异步回调。
+添加需要备份的应用。当前整个流程中，在获取SessionBackup类的实例后只能调用一次。备份流程结束后需要调用release释放资源。使用Promise异步回调。
 
 从API version 12开始, 新增可选参数infos, 可携带备份时各应用所需要的扩展信息, infos和bundlesToBackup根据索引一一对应。
 
@@ -1732,7 +1732,7 @@ cancel(bundleName: string): number
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| number | 返回取消状态。<br/>0：取消任务下发成功；<br/> 13500011：想要取消的任务未开始；<br/> 13500012：想要取消的任务不存在。|
+| number | 返回取消状态。<br/>0：取消任务下发成功，<br/> 13500011：想要取消的任务未开始，<br/> 13500012：想要取消的任务不存在。|
 
 **错误码：**
 
@@ -1827,7 +1827,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功；返回false表示清理失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功，返回false表示清理失败。 |
 
 **错误码：**
 
@@ -2351,7 +2351,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: s
 
 添加需要恢复的应用。从API version 12开始，新增可选参数infos，可携带应用恢复所需信息，infos和bundlesToBackup根据索引一一对应。
 
-当前整个流程中，在获取SessionRestore类的实例后只能调用一次；恢复流程结束后需要调用release释放资源。使用Promise异步回调。
+当前整个流程中，在获取SessionRestore类的实例后只能调用一次。恢复流程结束后需要调用release释放资源。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3054,7 +3054,7 @@ cancel(bundleName: string): number
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| number | 返回取消状态。<br/>0：取消任务下发成功；<br/> 13500011：想要取消的任务未开始；<br/> 13500012：想要取消的任务不存在。|
+| number | 返回取消状态。<br/>0：取消任务下发成功，<br/> 13500011：想要取消的任务未开始，<br/> 13500012：想要取消的任务不存在。|
 
 **错误码：**
 
@@ -3155,7 +3155,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功；返回false表示清理失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功，返回false表示清理失败。 |
 
 **错误码：**
 
@@ -3468,8 +3468,8 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;FileData&gt;
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| path | string | 是   | APK文件的路径，与fileName拼接后的总长度限制为4096个字符，不支持使用相对路径和软链接；超出长度限制返回参数错误。 |
-| fileName | string | 是   | APK文件的名称，与path拼接后的总长度限制为4096个字符，不支持使用相对路径和软链接；超出长度限制返回参数错误。 |
+| path | string | 是   | APK文件的路径，与fileName拼接后的总长度限制为4096个字符，不支持使用相对路径和软链接，超出长度限制返回参数错误。 |
+| fileName | string | 是   | APK文件的名称，与path拼接后的总长度限制为4096个字符，不支持使用相对路径和软链接，超出长度限制返回参数错误。 |
 
 **返回值：**
 
@@ -3937,7 +3937,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 | 参数名        | 类型                                                     | 必填 | 说明                                                         |
 | ------------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isPreciseScan | boolean                                                  | 是   | 是否精确扫描。true为精确扫描，false为非精确扫描。非精确扫描速度快，为估算数据量；精确扫描速度慢，结果更准确。但由于在实际备份过程中待备份数据可能发生变动，精确扫描结果和实际备份数据量不保证完全匹配。 |
+| isPreciseScan | boolean                                                  | 是   | 是否精确扫描。true为精确扫描，false为非精确扫描。非精确扫描速度快，为估算数据量。精确扫描速度慢，结果更准确。但由于在实际备份过程中待备份数据可能发生变动，精确扫描结果和实际备份数据量不保证完全匹配。 |
 | dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | 是   | 备份应用列表，用于描述待获取数据量的应用和上一次备份时间（全量备份填0）。 |
 
 **返回值：**
@@ -4422,7 +4422,7 @@ cancel(bundleName: string): number
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| number | 返回取消状态。<br/>0：取消任务下发成功；<br/> 13500011：想要取消的任务未开始；<br/> 13500012：想要取消的任务不存在。|
+| number | 返回取消状态。<br/>0：取消任务下发成功，<br/> 13500011：想要取消的任务未开始，<br/> 13500012：想要取消的任务不存在。|
 
 **错误码：**
 
@@ -4521,7 +4521,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功；返回false表示清理失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示清理成功，返回false表示清理失败。 |
 
 **错误码：**
 
