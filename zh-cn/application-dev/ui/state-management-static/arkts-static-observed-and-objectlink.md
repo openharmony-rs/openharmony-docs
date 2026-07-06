@@ -674,7 +674,7 @@ struct Index {
 
 > **说明：**
 >
-> NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
+> NextID是用来在[ForEach](../rendering-control/arkts-rendering-control-foreach.md)循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
 
 <!-- @[ObjectLinkArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkArray.ets) -->
 

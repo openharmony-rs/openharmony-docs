@@ -8,7 +8,7 @@
 
 ## 概述
 
-从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义组件。
+从API version 23开始，支持在[ArkTS-Sta](../quick-start/arkts-interop-overview.md)中使用ArkTS-Dyn自定义组件。
 
 在互操作场景下，[compatibleComponent](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
