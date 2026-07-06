@@ -229,7 +229,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
     const std::int32_t VIDEO_BITRATE = 3000000;
     OH_AVTranscoderConfig_SetDstVideoBitrate(config, VIDEO_BITRATE); // (Optional) Video bit rate.
     ```
-<!--RP2--><!--RP2End-->
+    <!--RP2--><!--RP2End-->
 11. Call **OH_AVTranscoder_Prepare()** to prepare for transcoding. After a successful call, the instance transitions to the **AVTRANSCODER_PREPARED** state.
 
     ```c++

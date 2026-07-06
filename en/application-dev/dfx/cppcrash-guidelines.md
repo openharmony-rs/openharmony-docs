@@ -50,9 +50,9 @@ After a process crashes, the system detects the crash, captures crash informatio
 
 The system detects a process crash as follows:
 
-- After a process crashes, it receives a crash signal from the kernel, which is processed by the signal handling module registered by the process during startup.
+1. After a process crashes, it receives a crash signal from the kernel, which is processed by the signal handling module registered by the process during startup.
 
-- After receiving the crash signal, the process saves the current process context and forks a child process to execute the **ProcessDump** command to capture crash information.
+2. After receiving the crash signal, the process saves the current process context and forks a child process to execute the **ProcessDump** command to capture crash information.
 
 3. The **ProcessDump** process writes the crash log data to a temporary directory for storage.
 

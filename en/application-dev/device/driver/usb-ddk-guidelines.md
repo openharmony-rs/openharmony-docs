@@ -107,7 +107,7 @@ libusb_ndk.z.so
 
 2. Obtain a configuration descriptor, and declare the USB interface.
 
-Use the **OH_Usb_GetConfigDescriptor** API of **usb_ddk_api.h** to obtain the configuration descriptor **config**, and use **OH_Usb_ClaimInterface** to declare the API.
+   Use the **OH_Usb_GetConfigDescriptor** API of **usb_ddk_api.h** to obtain the configuration descriptor **config**, and use **OH_Usb_ClaimInterface** to declare the API.
 
    <!-- @[driver_usb_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
 

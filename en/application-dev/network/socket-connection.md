@@ -681,7 +681,7 @@ To implement the TLS socket process (two-way authentication) on the client, perf
    });
    ```
 
-5. Enable the TLS socket connection to be automatically closed after use.
+4. Enable the TLS socket connection to be automatically closed after use.
 
    <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    

@@ -36,11 +36,11 @@ For details about the APIs, see [rawfile](../reference/apis-localization-kit/cap
 
    The following uses the ArkTS as an example to describe how to obtain the rawfile list, rawfile content, rawfile descriptor (**fd**, **offset**, and **length**), and determine whether the path of a rawfile is a subdirectory in the **rawfile** directory.
 
-1. Create a project on DevEco Studio.
+**1. Create a project on DevEco Studio.**
 
-![Creating a C++ application](figures/rawfile1.png)
+    ![Creating a C++ application](figures/rawfile1.png)
 
-2. Add dependencies.
+**2. Add dependencies.**
 
 After the project is created, the **cpp** directory is created in the project directory. In the **cpp** directory, there are files such as **libentry/index.d.ts**, **hello.cpp**, and **CMakeLists.txt**.
 
@@ -62,7 +62,7 @@ After the project is created, the **cpp** directory is created in the project di
     export const isRawDir: (resMgr: resourceManager.ResourceManager, path: string) => boolean;
     ```
 
-3. Modify the source file.
+**3. Modify the source file.**
 
 1. Open the **src/main/cpp/hello.cpp** file, and add the mapping between ArkTS APIs and C++ APIs in the **Init** method. The ArkTS APIs **getFileList**, **getRawFileContent**, **getRawFileDescriptor**, and **isRawDir** map to the C++ APIs **GetFileList**, **GetRawFileContent**, **GetRawFileDescriptor**, and **IsRawDir**, respectively.
 
@@ -443,9 +443,3 @@ After the project is created, the **cpp** directory is created in the project di
       }
     }
     ```
-
-##  
-
- 
-
-- [Native Rawfile](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkRawfile)

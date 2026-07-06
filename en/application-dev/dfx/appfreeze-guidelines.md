@@ -622,7 +622,7 @@ In a log file that contains multiple application main thread stacks (for example
    Define the content of the standard stack frame, remove variable information (such as the line number, byte offset, and build ID), and retain the key information for clustering as required.
    Perform the following cleaning operations on each service stack frame:
 
-  (1) Native stack frame standardization
+    (1) Native stack frame standardization
 
    | Original Stack Frame Content| Standardized Stack Frame Content|
    | ------------- | ---------------- |
@@ -636,7 +636,7 @@ In a log file that contains multiple application main thread stacks (for example
 
    c. Retain the complete function signature (including **const** and parameter types, if parsed in logs).
 
-  (2) JS stack frame standardization
+   (2) JS stack frame standardization
 
    | Original Stack Frame Content| Standardized Stack Frame Content|
    | ------------- |---------------- |
@@ -654,9 +654,9 @@ In a log file that contains multiple application main thread stacks (for example
 
 4. Generate cluster features.
 
-  |Original Sampling Stack|Final Cluster Features (Calling Sequence from Top to Bottom)|
-  | ----------- |-------------- |
-  | # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0...)<br># 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6ce...)<br># 02 pc 00008909 /data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)(d6ce...)<br># 03 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)<br>/data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)<br>at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
+    |Original Sampling Stack|Final Cluster Features (Calling Sequence from Top to Bottom)|
+    | ----------- |-------------- |
+    | # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0...)<br># 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6ce...)<br># 02 pc 00008909 /data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)(d6ce...)<br># 03 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)<br>/data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)<br>at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
 
    Cluster all sampling stacks based on cluster features.
 

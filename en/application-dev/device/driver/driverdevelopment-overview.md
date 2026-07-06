@@ -37,7 +37,6 @@ With DDK, you can develop dedicated or extended peripheral drivers in an efficie
 - External Device Manager: performs lifecycle management of peripheral devices and driver packages.
 
 - Bundle Manager Service (BMS): manages application installation, uninstallation, and data on the system.
-- 
 
 - Ability Manager Service (AMS): used to start and stop **DriverExtensionAbility**.
 
@@ -102,36 +101,36 @@ The following table lists the associated modules you may use during development 
 
 1. Driver application definition
 
-- A driver application is a user-mode driver developed based on DDK for non-standard peripherals.
+    - A driver application is a user-mode driver developed based on DDK for non-standard peripherals.
 
-- Since driver applications are based on **DriverExtensionAbility**, you need to override its lifecycle callback APIs.
+    - Since driver applications are based on **DriverExtensionAbility**, you need to override its lifecycle callback APIs.
 
 2. Driver application installation and uninstallation
 
-- Installation policy
+    - Installation policy
 
-  - When a user installs a driver application, the system installs the application in all existing user spaces.
+        - When a user installs a driver application, the system installs the application in all existing user spaces.
 
-  - When a user is created, the system installs the installed driver application in the respective user space.
+        - When a user is created, the system installs the installed driver application in the respective user space.
 
-- Uninstallation policy: When a user uninstalls a driver application in any user space, the system uninstalls the driver application in all user spaces.
+    - Uninstallation policy: When a user uninstalls a driver application in any user space, the system uninstalls the driver application in all user spaces.
 
 3. DriverExtensionAbility-based lifecycle management
 
-- ExtensionAbility is a general term of scenario-based service extension abilities, such as user-mode peripheral drivers, service widgets, and input methods.
+    - ExtensionAbility is a general term of scenario-based service extension abilities, such as user-mode peripheral drivers, service widgets, and input methods.
 
-- The lifecycle of each ExtensionAbility is managed by its SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of the defined service APIs. When the service is complete, the SA calls **disconnectAbility** to disconnect the ExtensionAbility. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether the ExtensionAbility has any active SA connections. In the user-mode driver development scenario, the system SA that manages the **DriverExtensionAbility** lifecycle is the driver extension SA.
+    - The lifecycle of each ExtensionAbility is managed by its SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of the defined service APIs. When the service is complete, the SA calls **disconnectAbility** to disconnect the ExtensionAbility. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether the ExtensionAbility has any active SA connections. In the user-mode driver development scenario, the system SA that manages the **DriverExtensionAbility** lifecycle is the driver extension SA.
 
 4. API access security control in **DriverExtensionAbility**
 
-- The system supports scenario-based extension abilities built on ExtensionAbility. **DriverExtensionAbility** is a type of ability designed to support the development of user-mode drivers.
+    - The system supports scenario-based extension abilities built on ExtensionAbility. **DriverExtensionAbility** is a type of ability designed to support the development of user-mode drivers.
 
-- In **DriverExtensionAbility, only access to DDK (Driver Development Kit) APIs is supported, enabling access control and data communication for non-standard peripherals.
+    - In **DriverExtensionAbility, only access to DDK (Driver Development Kit) APIs is supported, enabling access control and data communication for non-standard peripherals.
 
-- In **DriverExtensionAbility**, only the Driver Development Kit (DDK) APIs can be called to control access to non-standard peripherals and implement data communication.
+    - In **DriverExtensionAbility**, only the Driver Development Kit (DDK) APIs can be called to control access to non-standard peripherals and implement data communication.
 
-- Restricted access to ArkTS APIs in DriverExtensionAbility is implemented as follows:
+    - Restricted access to ArkTS APIs in DriverExtensionAbility is implemented as follows:
 
-  - During the initialization and creation of DriverExtensionAbility, system modules are loaded based on the list of ArkTS APIs that can be accessed by DriverExtensionAbility. If a restricted ArkTS API is called in DriverExtensionAbility during the operation process, the API call fails because the corresponding system module is not loaded during the initialization and creation process.
+        - During the initialization and creation of DriverExtensionAbility, system modules are loaded based on the list of ArkTS APIs that can be accessed by DriverExtensionAbility. If a restricted ArkTS API is called in DriverExtensionAbility during the operation process, the API call fails because the corresponding system module is not loaded during the initialization and creation process.
 
-- For the list of restricted ArkTS APIs in **DriverExtensionAbility**, see the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
+    - For the list of restricted ArkTS APIs in **DriverExtensionAbility**, see the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
