@@ -1841,15 +1841,5 @@ The following demonstrates how to create an **XComponent** of the surface type o
    ```
 
 <!--RP1-->
-##  
 
- 
-
--  [XComponent3D (API version 10) ](https://gitc
--  
--  
-
- 
-
-- [ArkTSXComponent(API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)
 <!--RP1End-->

@@ -12,7 +12,7 @@ The **Web** component can start a camera and microphone by calling the W3C Stand
 
 - For details about how to add audio permissions, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-   ```json
+  ```json5
     // src/main/resources/base/element/string.json
     {
       "name": "reason_for_camera",
@@ -24,7 +24,7 @@ The **Web** component can start a camera and microphone by calling the W3C Stand
     }
   ```
 
-  ```json
+  ```json5
     // src/main/module.json5
     "requestPermissions":[
       {

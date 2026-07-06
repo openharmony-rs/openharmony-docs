@@ -15,13 +15,13 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by SCRYPT.
 
-When a key derivation failure occurs, check whether the following parameters are set:
-   - **CRYPTO_KDF_KEY_DATABLOB**: original password used to generate the derived key.
-   - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
-   - **CRYPTO_KDF_SCRYPT_N_UINT64**: CPU/memory overhead, which must be a power of 2.
-   - **CRYPTO_KDF_SCRYPT_R_UINT64**: block size, which affects the degree of parallelism.
-   - **CRYPTO_KDF_SCRYPT_P_UINT64**: parallelization.
-   - **CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64**: maximum memory limit (bytes).
+    When a key derivation failure occurs, check whether the following parameters are set:
+    - **CRYPTO_KDF_KEY_DATABLOB**: original password used to generate the derived key.
+    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
+    - **CRYPTO_KDF_SCRYPT_N_UINT64**: CPU/memory overhead, which must be a power of 2.
+    - **CRYPTO_KDF_SCRYPT_R_UINT64**: block size, which affects the degree of parallelism.
+    - **CRYPTO_KDF_SCRYPT_P_UINT64**: parallelization.
+    - **CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64**: maximum memory limit (bytes).
 
 3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and specify the string parameter **SCRYPT** to create a key derivation function object.
 

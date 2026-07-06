@@ -66,7 +66,7 @@ Click **UpdateReport** on the toolbar to view the report.
 1. Clone the [api_diff](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/api_diff) and [collect_application_api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/collect_application_api) tools from the [Interface repository](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools) to the local host. The api_diff tool is used to compare API differences in the SDK of the two versions, and the collect_application_api tool is used to parse and summarize APIs used in the application.
 
 
-3. Open the terminal in the local api_diff and collect_application_api tool directories,
+2. Open the terminal in the local api_diff and collect_application_api tool directories,
 
 > **NOTE**
 >

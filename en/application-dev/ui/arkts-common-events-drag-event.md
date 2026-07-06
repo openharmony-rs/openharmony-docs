@@ -1262,7 +1262,7 @@ You can customize spring loading detection parameters to dynamically determine w
   >
   >Avoid setting excessively long time intervals or overly frequent trigger counts, as these typically fail to provide meaningful user feedback.
 
-2. Dynamic termination
+2. Dynamically terminate the process.
 
   When the system detects sufficient hover duration and invokes the **onDragSpringLoading** callback, you can decide whether to allow the pending spring loading notification to proceed. This is particularly useful when you need to check the type of dragged data and align it with your service logic.
 
@@ -1291,7 +1291,7 @@ You can customize spring loading detection parameters to dynamically determine w
     })
   ```
 
-3. Disabling spring loading
+3. Disable spring loading.
 
   If you no longer need a component to respond to spring loading, you can explicitly disable the feature by passing **null** to **onDragSpringLoading**:
 
