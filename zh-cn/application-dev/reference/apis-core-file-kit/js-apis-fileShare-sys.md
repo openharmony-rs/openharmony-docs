@@ -170,8 +170,8 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识。可通过应用的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。无效时抛出错误码13900020。|
-| policies| Array&lt;[PathPolicyInfo](js-apis-fileShare.md#pathpolicyinfo15)> | 是 | 需要查询授权状态的路径策略信息数组，数组元素与返回结果一一对应，policies数组大小上限为500。超出上限时抛出错误码401。|
+| tokenID| number | 是 | 目标应用的访问令牌标识。可通过应用的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| policies| Array&lt;[PathPolicyInfo](js-apis-fileShare.md#pathpolicyinfo15)> | 是 | 需要查询授权状态的路径策略信息数组，数组元素与返回结果一一对应，policies数组大小上限为500。|
 | policyType| [PolicyType](js-apis-fileShare.md#policytype15) | 是 | 要查询的授权类型。使用TEMPORARY_TYPE查询临时授权，使用PERSISTENT_TYPE查询持久化授权。 |
 
 **返回值：**
@@ -190,7 +190,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
-| 13900011 | Out of memory.|
+| 13900042 | Out of memory.|
 
 **示例：**
 
@@ -242,7 +242,7 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
 | -------- |-------| -------- |----------|
 | policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)> | 是 | 需要授权URI的策略信息数组，数组元素为PolicyInfo对象，policies数组大小上限为500。|
 | targetBundleName| string | 是 | 被授权应用的应用包名。 |
-| appCloneIndex| number | 是 | 被授权应用的分身索引，取值为0时表示主应用，非0值表示对应分身应用。无效时抛出错误码401。 |
+| appCloneIndex| number | 是 | 被授权应用的分身索引，取值为0时表示主应用，非0值表示对应分身应用。 |
 
 **返回值：**
 

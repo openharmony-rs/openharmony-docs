@@ -113,7 +113,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |---------| -------- |--------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已获取的临时权限进行持久化授权，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已获取的临时权限进行持久化授权，不支持远端URI。|
 
 **返回值：**
 
@@ -194,7 +194,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |----------| -------- |----------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消持久化授权，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消持久化授权，不支持远端URI。|
 
 **返回值：**
 
@@ -275,7 +275,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行激活，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行激活，不支持远端URI。|
 
 **返回值：**
 
@@ -352,7 +352,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已激活的权限进行取消激活，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已激活的权限进行取消激活，不支持远端URI。|
 
 **返回值：**
 
@@ -419,7 +419,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 | 参数名 | 类型                                    | 必填 | 说明                      |
 | -------- |---------------------------------------| -------- |-------------------------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要校验持久化授权的URI策略信息数组，policies数组大小上限为500。不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要校验持久化授权的URI策略信息数组，policies数组大小上限为500。不支持远端URI。|
 
 **返回值：**
 
@@ -431,7 +431,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
-如果参数校验失败，则抛出401错误码。当policies数组大小超过上限500时，也会抛出401错误码。
+如果参数校验失败，则抛出401错误码。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
