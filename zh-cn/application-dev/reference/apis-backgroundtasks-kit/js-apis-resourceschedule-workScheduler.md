@@ -557,7 +557,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-## workScheduler.isLastWorkTimeOut<sup>10+<sup>
+## workScheduler.isLastWorkTimeOut<sup>10+</sup>
 
 ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
