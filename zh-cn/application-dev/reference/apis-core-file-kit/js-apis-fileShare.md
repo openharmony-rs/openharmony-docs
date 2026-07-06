@@ -130,7 +130,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -211,7 +211,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -292,7 +292,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -369,7 +369,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 | 错误码ID    | 错误信息       |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 401      | Parameter error. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
 | 13900042 | Out of memory.|
@@ -435,7 +435,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 401      | Parameter error. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900042 | Out of memory.|
 
