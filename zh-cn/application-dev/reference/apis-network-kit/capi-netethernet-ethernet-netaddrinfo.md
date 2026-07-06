@@ -1,5 +1,12 @@
 # Ethernet_NetAddrInfo
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ```c
 typedef struct Ethernet_NetAddrInfo {...} Ethernet_NetAddrInfo
 ```
@@ -20,8 +27,8 @@ typedef struct Ethernet_NetAddrInfo {...} Ethernet_NetAddrInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] |  |
-| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) netAddrInfo[ETHERNET_MAX_NET_SIZE] |  |
-| int32_t netAddrInfoSize |  |
+| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称 |
+| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) netAddrInfo[ETHERNET_MAX_NET_SIZE] | 网络地址。 |
+| int32_t netAddrInfoSize | 网络地址数组的实际大小。 |
 
 
