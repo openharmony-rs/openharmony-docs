@@ -1108,7 +1108,7 @@ $ hdc -e 0.0.0.0 -m # Specify the local listening IP address 0.0.0.0 for port fo
 | jpid | Displays the PIDs of started applications on the device.|
 | track-jpid [-a\|-p] | Displays the PIDs and bundle names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
 | target boot [-bootloader\|-recovery] | Restarts the target device. You can use the **-bootloader** option to enter the fastboot mode and the **-recovery** option to enter the recovery mode.|
-| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the `hdc shell "/bin/begetctl -h | grep reboot"` command to check the restart mode.|  |
+| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the `hdc shell "/bin/begetctl -h \| grep reboot"` command to check the restart mode.|  |
 | <!--DelRow--> target mount | Mounts the system partition in read/write mode. (This command is supported after the device has required the root permission.)|
 | <!--DelRow--> smode [-r] | Grants the root permission to the hdc background server process on the device. You can use the **-r** parameter to cancel the permission. (This command is supported after the device has required the root permission.)|
 
@@ -1872,10 +1872,6 @@ To solve the port exception problem, perform the following steps:
 3. Run the **hdc kill** command to stop the server and run the **hdc -l5 start** command to collect logs. (The **hdc.log** file is stored in the **TEMP** directory on the execution end. The directory varies depending on the operating system. For details, see [Server Logs](#server-logs).)
 
 4. Locate the problem based on the **hdc.log** file.
-
-> **NOTE**
->
-> For more FAQs, see [FAQs](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-performance-analysis-kit).
 
 ## hdc Error Codes
 

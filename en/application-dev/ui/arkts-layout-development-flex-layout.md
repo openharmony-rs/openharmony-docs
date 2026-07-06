@@ -487,28 +487,8 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 - **FlexAlign.End**: The child elements are aligned toward the end edge of the cross axis in the container.
 
 
-  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
-
-  ``` TypeScript
-  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
-    Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
-    Text('2').width('60%').height(20).backgroundColor('#D2B48C')
-    Text('3').width('40%').height(20).backgroundColor('#D2B48C')
-    Text('4').width('30%').height(20).backgroundColor('#F5DEB3')
-    Text('5').width('20%').height(20).backgroundColor('#D2B48C')
-  }
-  .width('90%')
-  .height(100)
-  .backgroundColor('#AFEEEE')
-  ```
-
-  ![en-us_image_0000001562820801](figures/en-us_image_0000001562820801.png)
-
-- **FlexAlign.SpaceBetween**: The child elements are evenly distributed within the container along the cross axis. The first and last child elements are aligned with the edges of the container.
-
-
   <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
-
+  
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -522,7 +502,27 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900448](figures/en-us_image_0000001511900448.png)
+  ![zh-cn_image_0000001562820801](figures/en-us_image_0000001562820801.png)
+
+- **FlexAlign.SpaceBetween**: The child elements are evenly distributed within the container along the cross axis. The first and last child elements are aligned with the edges of the container.
+
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
+
+  
+  ``` TypeScript
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
+    Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
+    Text('2').width('60%').height(20).backgroundColor('#D2B48C')
+    Text('3').width('40%').height(20).backgroundColor('#D2B48C')
+    Text('4').width('30%').height(20).backgroundColor('#F5DEB3')
+    Text('5').width('20%').height(20).backgroundColor('#D2B48C')
+  }
+  .width('90%')
+  .height(100)
+  .backgroundColor('#AFEEEE')
+  ```
+
+  ![zh-cn_image_0000001511900448](figures/en-us_image_0000001511900448.png)
 
 - **FlexAlign.SpaceAround**: The child elements are evenly distributed within the container along the cross axis. The space between the first child element and cross-start, and that between the last child element and cross-end are both half of the space between two adjacent child elements.
 
