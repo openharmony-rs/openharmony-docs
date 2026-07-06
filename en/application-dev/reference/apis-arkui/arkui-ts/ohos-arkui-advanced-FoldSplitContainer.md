@@ -41,7 +41,7 @@ Creates a **FoldSplitContainer** component to manage two-panel and three-panel l
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | primary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the primary region.|
-| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region.|
+| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the secondary region.|
 | extra | Callback\<void> | No| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region. If this parameter is not provided, there is no corresponding region.|
 | expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the expanded state.|
 | hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the hover state.|
