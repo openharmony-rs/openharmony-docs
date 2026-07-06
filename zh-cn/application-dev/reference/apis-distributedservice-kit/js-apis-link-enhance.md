@@ -1,4 +1,4 @@
-# @ohos.distributedsched.linkEnhance (增强连接)
+﻿# @ohos.distributedsched.linkEnhance (增强连接)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
@@ -624,7 +624,7 @@ try {
 
 close():&nbsp;void
 
-业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。close()会销毁Connection对象并释放资源，之后需重新创建Connection对象；disconnect()仅断开连接，Connection对象仍可重新连接。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
+业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。close()会销毁Connection对象并释放资源，之后需重新创建Connection对象；disconnect()仅断开连接，Connection对象仍可重新连接。如果还需要重新连接，使用connect()；如果业务完全结束，使用close()。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
