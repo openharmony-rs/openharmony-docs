@@ -1976,12 +1976,14 @@ export struct DropAnimationExample {
    
    ``` TypeScript
    onPageShow(): void {
-     let i: int = 0;
-     for (i = 0; i < 500; i++) {
-       this.numbers.push(i);
-       this.isSelectedGrid.push(false);
-       this.previewData.push({} as DragItemInfo);
+     if (this.gridItemInfoList.length > 0) {
+       return;
      }
+     let gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
+     for (let i: int = 0; i < 500; i++) {
+       gridItemInfoList.push(new GridItemInfo(i, false, {} as DragItemInfo));
+     }
+     this.gridItemInfoList = gridItemInfoList;
    }
    ```
     
@@ -2036,8 +2038,8 @@ export struct DropAnimationExample {
    
    ``` TypeScript
    .onClick(() => {
-     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     if (this.isSelectedGrid[idx]) {
+     this.gridItemInfoList[index].isSelected = !this.gridItemInfoList[index].isSelected;
+     if (this.gridItemInfoList[index].isSelected) {
        let data: UDC.Image = new UDC.Image();
        // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
        data.uri = '/resource/image.jpeg';
@@ -2046,20 +2048,20 @@ export struct DropAnimationExample {
        }
        this.unifiedData!.addRecord(data);
        this.numberBadge++;
-       let gridItemName = 'grid' + idx;
+       let gridItemName = 'grid' + gridItemInfo.id;
        // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
        this.getUIContext()
          .getComponentSnapshot()
          .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
            this.pixmap = pixmap;
-           this.previewData[idx] = {
+           this.gridItemInfoList[index].previewData = {
              pixelMap: this.pixmap
            };
          });
      } else {
        this.numberBadge--;
-       for (let i = 0; i < this.isSelectedGrid.length; i++) {
-         if (this.isSelectedGrid[i] === true) {
+       for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+         if (this.gridItemInfoList[i].isSelected === true) {
            let data: UDC.Image = new UDC.Image();
            // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
            data.uri = '/resource/image.jpeg';
@@ -2347,6 +2349,7 @@ import {
   Margin,
   PreDragStatus,
   State,
+  Observed,
   UnifiedData,
   dragController,
   DragPreviewOptions,
@@ -2356,13 +2359,24 @@ import { image } from '@kit.ImageKit';
 import { unifiedDataChannel as UDC } from '@kit.ArkData';
 import { BusinessError } from '@ohos.base';
 
+@Observed
+export class GridItemInfo {
+  id: int;
+  isSelected: boolean;
+  previewData: DragItemInfo;
+
+  constructor(id: int, isSelected: boolean, previewData: DragItemInfo) {
+    this.id = id;
+    this.isSelected = isSelected;
+    this.previewData = previewData;
+  }
+}
+
 @Entry
 @Component
 struct GridEts {
   @State pixmap: image.PixelMap | undefined = undefined;
-  @State numbers: Array<int> = new Array<int>();
-  @State isSelectedGrid: Array<boolean> = new Array<boolean>();
-  @State previewData: Array<DragItemInfo> = new Array<DragItemInfo>();
+  @State gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
   @State numberBadge: int = 0;
   unifiedData: UnifiedData | undefined = undefined;
   timeout: int = 1;
@@ -2376,12 +2390,14 @@ struct GridEts {
   }
 
   onPageShow(): void {
-    let i: int = 0;
-    for (i = 0; i < 500; i++) {
-      this.numbers.push(i);
-      this.isSelectedGrid.push(false);
-      this.previewData.push({} as DragItemInfo);
+    if (this.gridItemInfoList.length > 0) {
+      return;
     }
+    let gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
+    for (let i: int = 0; i < 500; i++) {
+      gridItemInfoList.push(new GridItemInfo(i, false, {} as DragItemInfo));
+    }
+    this.gridItemInfoList = gridItemInfoList;
   }
 
   loadData(): void {
@@ -2409,10 +2425,10 @@ struct GridEts {
       // 请将$r('app.string.Select_All')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.Select_All'))
         .onClick(() => {
-          for (let i = 0; i < this.isSelectedGrid.length; i++) {
-            if (this.isSelectedGrid[i] === false) {
+          for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+            if (this.gridItemInfoList[i].isSelected === false) {
               this.numberBadge++;
-              this.isSelectedGrid[i] = true;
+              this.gridItemInfoList[i].isSelected = true;
               let data: UDC.Image = new UDC.Image();
               // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
               data.uri = '/resource/image.jpeg';
@@ -2420,13 +2436,13 @@ struct GridEts {
                 this.unifiedData = new UDC.UnifiedData(data);
               }
               this.unifiedData!.addRecord(data);
-              let gridItemName = 'grid' + i;
+              let gridItemName = 'grid' + this.gridItemInfoList[i].id;
               // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
               this.getUIContext()
                 .getComponentSnapshot()
                 .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
                   this.pixmap = pixmap;
-                  this.previewData[i] = {
+                  this.gridItemInfoList[i].previewData = {
                     pixelMap: this.pixmap
                   };
                 });
@@ -2434,28 +2450,28 @@ struct GridEts {
           }
         })
       Grid() {
-        ForEach(this.numbers, (idx: int, index: int) => {
+        ForEach(this.gridItemInfoList, (gridItemInfo: GridItemInfo, index: int) => {
           GridItem() {
             Column()
               .backgroundColor(Color.Blue)
               .width(50)
               .height(50)
               .opacity(1.0)
-              .id('grid' + idx)
+              .id('grid' + gridItemInfo.id)
           }
-          .dragPreview(this.previewData[idx])
+          .dragPreview(gridItemInfo.previewData)
           .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
             { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
           .selectable(true)
-          .selected(this.isSelectedGrid[idx])
+          .selected(gridItemInfo.isSelected)
           // 设置多选显示效果
           .stateStyles({
             normal: this.normalStyles,
             selected: this.selectStyles
           })
           .onClick(() => {
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-            if (this.isSelectedGrid[idx]) {
+            this.gridItemInfoList[index].isSelected = !this.gridItemInfoList[index].isSelected;
+            if (this.gridItemInfoList[index].isSelected) {
               let data: UDC.Image = new UDC.Image();
               // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
               data.uri = '/resource/image.jpeg';
@@ -2464,20 +2480,20 @@ struct GridEts {
               }
               this.unifiedData!.addRecord(data);
               this.numberBadge++;
-              let gridItemName = 'grid' + idx;
+              let gridItemName = 'grid' + gridItemInfo.id;
               // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
               this.getUIContext()
                 .getComponentSnapshot()
                 .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
                   this.pixmap = pixmap;
-                  this.previewData[idx] = {
+                  this.gridItemInfoList[index].previewData = {
                     pixelMap: this.pixmap
                   };
                 });
             } else {
               this.numberBadge--;
-              for (let i = 0; i < this.isSelectedGrid.length; i++) {
-                if (this.isSelectedGrid[i] === true) {
+              for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+                if (this.gridItemInfoList[i].isSelected === true) {
                   let data: UDC.Image = new UDC.Image();
                   // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
                   data.uri = '/resource/image.jpeg';
@@ -2517,7 +2533,7 @@ struct GridEts {
           })
           .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
             { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
-        }, (idx: int, index: int) => idx.toString())
+        }, (gridItemInfo: GridItemInfo, index: int) => gridItemInfo.id.toString())
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(5)
