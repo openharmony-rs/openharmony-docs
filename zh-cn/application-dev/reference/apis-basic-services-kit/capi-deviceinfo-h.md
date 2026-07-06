@@ -49,7 +49,7 @@
 | [const char *OH_GetBuildHost(void)](#oh_getbuildhost) | 获取系统的构建主机。 |
 | [const char *OH_GetBuildTime(void)](#oh_getbuildtime) | 获取系统的构建时间。 |
 | [const char *OH_GetBuildRootHash(void)](#oh_getbuildroothash) | 获取系统的构建版本Hash。 |
-获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
+| [const char *OH_GetDistributionOSName(void)](#oh_getdistributionosname) | 获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。 |
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | 获取ISV发行版系统版本号。 |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | 获取ISV发行版系统API版本。 |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | 获取ISV发行版系统类型。 |
