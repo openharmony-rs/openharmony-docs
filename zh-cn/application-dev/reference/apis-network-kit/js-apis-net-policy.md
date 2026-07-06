@@ -44,7 +44,7 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异**：该接口在Phone、2in1、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone和Tablet设备中可正常调用，在其他设备调用不生效。
 
 
 **参数：**
@@ -99,7 +99,7 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>
 
 **错误码：**
 
-以下错误码的详细介绍参见[应用联网错误码](errorcode-net-policy.md)。
+以下错误码的详细介绍参见[策略管理错误码](errorcode-net-policy.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

@@ -220,7 +220,7 @@ enum Input_KeyCode
 | KEYCODE_STOP = 2616 | 停止键<br/>**起始版本：** 22 |
 | KEYCODE_AGAIN = 2617 | 重复键<br/>**起始版本：** 22 |
 | KEYCODE_PROPS = 2618 | 道具键<br/>**起始版本：** 22 |
-| KEYCODE_UNDO = 2619 | 撤消键<br/>**起始版本：** 22 |
+| KEYCODE_UNDO = 2619 | 撤销键<br/>**起始版本：** 22 |
 | KEYCODE_COPY = 2620 | 复制键<br/>**起始版本：** 22 |
 | KEYCODE_OPEN = 2621 | 打开键<br/>**起始版本：** 22 |
 | KEYCODE_PASTE = 2622 | 粘贴键<br/>**起始版本：** 22 |

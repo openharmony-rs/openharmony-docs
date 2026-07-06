@@ -61,9 +61,9 @@ Native Messaging的错误列表。
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| PERMISSION_DENY | 17100203 | Permission denied due to missing ohos.permission.WEB_NATIVE_MESSAGING. |
-| WANT_CONTENT_ERROR | 17100202 | The want content is invalid. |
-| INNER_ERROR | 17100201 | Inner error for native messaging. |
+| PERMISSION_DENY | 17100203 | 由于缺少ohos.permission.WEB_NATIVE_MESSAGING，权限被拒绝。 |
+| WANT_CONTENT_ERROR | 17100202 | Want内容无效。 |
+| INNER_ERROR | 17100201 | 表示有内部错误发生。 |
 
 ## WebExtensionConnectionCallback
 

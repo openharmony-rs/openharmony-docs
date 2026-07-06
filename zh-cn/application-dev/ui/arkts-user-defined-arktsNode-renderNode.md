@@ -203,7 +203,7 @@ struct Index {
 }
 ```
 
-![](figures/operation_node_tree.png)
+![](figures/operation-node-tree.png)
 
 ## 设置和获取渲染相关属性
 
@@ -460,8 +460,8 @@ mask.setRectShape({
   top: 0,
   bottom: 150
 });
-mask.fillColor = 0X55FF0000.toInt();
-mask.strokeColor = 0XFFFF0000.toInt();
+mask.fillColor = 0x55ff0000.toInt();
+mask.strokeColor = 0xffff0000.toInt();
 mask.strokeWidth = 24;
 
 const clip = new ShapeClip();
@@ -532,7 +532,7 @@ struct Index {
         Button('rotation')
           .width(300)
           .onClick((event: ClickEvent) => {
-            renderNode.rotation = { x: 45, y: 0, z: 0 };
+            renderNode.rotation = { x: 135, y: 0, z: 0 };
             console.info(TEST_TAG + ' rotation:' + JSON.stringify(renderNode.rotation));
           })
         Button('transform')
@@ -553,7 +553,7 @@ struct Index {
           .width(300)
           .onClick((event: ClickEvent) => {
             renderNode.shadowElevation = 10;
-            renderNode.shadowColor = 0XFF00FF00.toInt();
+            renderNode.shadowColor = 0xff2787d9.toInt();
             renderNode.shadowOffset = { x: 10, y: 10 };
             renderNode.shadowAlpha = 0.1;
             console.info(TEST_TAG + ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
@@ -590,10 +590,10 @@ struct Index {
               bottom: BorderStyle.Solid
             }
             renderNode.borderColor = {
-              left: 0xFF0000FF.toInt(),
-              top: 0xFF0000FF.toInt(),
-              right: 0xFF0000FF.toInt(),
-              bottom: 0xFF0000FF.toInt()
+              left: 0xffd5d5d5.toInt(),
+              top: 0xffd5d5d5.toInt(),
+              right: 0xffd5d5d5.toInt(),
+              bottom: 0xffd5d5d5.toInt()
             };
             renderNode.borderRadius = {
               topLeft: 32,
@@ -635,7 +635,7 @@ struct Index {
 }
 ```
 
-![](figures/rendering_properties.gif)
+![](figures/rendering-properties.gif)
 
 ## 自定义绘制
 
@@ -828,6 +828,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .width('100%')
+        .height(320)
       Button('Invalidate')
         .onClick((event: ClickEvent) => {
           // 同步调用多次，仅触发一次重绘，draw回调中的日志仅打印一次
@@ -1466,6 +1467,8 @@ struct Index {
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
+ArkTS-Dyn示例：
+
 <!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 
 ``` TypeScript
@@ -1554,7 +1557,8 @@ import {
   RenderNode,
   State,
   Text,
-  UIContext
+  UIContext,
+  ColumnOptions
 } from '@kit.ArkUI';
 
 export class MyNodeController extends NodeController {
@@ -1592,12 +1596,12 @@ export class MyNodeController extends NodeController {
 
 @Entry
 @Component
-export struct CheckRanderNodeDisposed {
+export struct CheckRenderNodeDisposed {
   @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
   build(): void {
-    Column() {
+    Column({ space: 4 } as ColumnOptions) {
       NodeContainer(this.myNodeController);
       Button('RenderNode dispose')
         .onClick(() => {

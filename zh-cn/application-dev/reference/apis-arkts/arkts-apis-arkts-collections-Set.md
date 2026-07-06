@@ -94,7 +94,7 @@ const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|O
 
 constructor(iterable: Iterable\<T>)
 
-创建ArkTS Set对象的构造函数。
+构造函数，用于通过可迭代对象创建ArkTS Set对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -307,7 +307,7 @@ delete(value: T): boolean
 
 | 类型    | 说明                              |
 | ------- | --------------------------------- |
-| boolean | 成功删除返回true，否则返回false。 |
+| boolean | 成功删除返回true，指定元素不存在时返回false。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ console.info("result:" + mySet.delete("hello"));
 ## forEach
 forEach(callbackFn: (value: T, value2: T, set: Set\<T>) => void): void
 
-按插入顺序对该Set中的每个键/值对执行一次回调函数。
+按插入顺序对该Set中的每个键值对执行一次回调函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -371,7 +371,7 @@ callbackFn的参数说明：
 ```ts
 // 正例：
 // 遍历Set中每个元素
-new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set) => {
+new collections.Set<string>(["foo", "bar", "baz"]).forEach((value1, value2, set) => {
   console.info(`s[${value1}] = ${value2}`);
 });
 ```
@@ -379,7 +379,7 @@ new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set)
 <!--code_no_check-->
 ```ts
 // 反例：
-new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set) => {
+new collections.Set<string>(["foo", "bar", "baz"]).forEach((value1, value2, set) => {
   // Throw exception `Concurrent modification error.`
   set.delete(value1);
 });
@@ -508,11 +508,11 @@ mySet.add(obj);
 
 ```ts
 // 创建Set对象
-let set = new collections.Set<number>([1, 2, 3, 4, 5]);
+let mySet = new collections.Set<number>([1, 2, 3, 4, 5]);
 // 将Set的values转换为数组
-let val: Array<number> = Array.from(set.values());
+let values: Array<number> = Array.from(mySet.values());
 // 遍历并输出每个元素
-for (let item of val) {
+for (let item of values) {
   console.info("value: " + item);
 }
 ```

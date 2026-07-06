@@ -1,7 +1,7 @@
 # ScenePostProcessSettings
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
+import { ToneMappingType, ToneMappingSettings, BloomSettings, VignetteSettings, ColorFringeSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
 ```
 
 ## ToneMappingType

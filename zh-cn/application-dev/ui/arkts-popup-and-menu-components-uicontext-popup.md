@@ -50,11 +50,11 @@
    
   ArkTS-Dyn示例：
 
-  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
+    new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
   ```
 
   ArkTS-Sta示例：
@@ -539,7 +539,7 @@
 
   ArkTS-Dyn示例：
 
-  <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
   
   ``` TypeScript
   import { PromptActionClass } from './PopupMainPage';
@@ -589,7 +589,7 @@
     private promptActionClass: PromptActionClass = new PromptActionClass();
     private targetId: number = ID;
     private contentNode: ComponentContent<Object> =
-      new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
+      new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
     private options: PopupCommonOptions = { enableArrow: true };
   
   

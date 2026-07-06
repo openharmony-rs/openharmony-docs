@@ -15,7 +15,7 @@
 >
 > - 本装饰器首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 从API版本26.0.0开始，\@ComponentV2可以接受可选参数`reusePool`和`poolAccepts`，用于配置全局复用池，开发指南参考：[全局复用：集中化的组件回收与复用](../../../ui/state-management/arkts-global-reuse-pool.md)
+> - 从API版本26.0.0开始，\@ComponentV2的[ComponentOptions](./ts-custom-component-parameter.md#componentoptions)参数支持可选属性`reusePool`和`poolAccepts`，用于配置全局复用池，开发指南参考：[全局复用：集中化的组件回收与复用](../../../ui/state-management/arkts-global-reuse-pool.md)。
 
 ## @ComponentV2
 
@@ -31,7 +31,7 @@ const ComponentV2: ClassDecorator & ((options: ComponentOptions) => ClassDecorat
 
 | 名称                  | 类型    | 必填  | 说明                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
-| options               | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@ComponentV2装饰器选项，缺省时默认关闭组件冻结和全局复用功能。 |
+| options               | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@ComponentV2装饰器选项。当需要开启组件冻结或全局复用功能时传入此参数进行自定义配置；缺省时关闭组件冻结和全局复用功能。 |
 
 **示例：**
 

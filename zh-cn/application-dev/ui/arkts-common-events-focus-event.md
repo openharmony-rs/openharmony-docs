@@ -136,7 +136,7 @@ export struct FocusActiveExample {
 
 ArkTS-Dyn示例：
 
-<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) --> 
+<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
 
 ``` TypeScript
 @Entry
@@ -180,7 +180,7 @@ export struct FocusTransferExample {
                   console.error('Get string failed!');
                 }
               })
-            Button('button 3')
+            Button('Button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
@@ -469,11 +469,11 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_2.gif)
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_3.gif)
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
@@ -642,7 +642,7 @@ onFocus(event: () => void)
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
 
 ```ts
-onBlur(event:() => void)
+onBlur(event: () => void)
 ```
 
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
@@ -795,7 +795,7 @@ export struct OnFocusBlur {
 
 ArkTS-Dyn示例：
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -824,7 +824,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
@@ -843,7 +843,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
@@ -979,7 +979,7 @@ focusOnTouch(value: boolean)
 
  ArkTS-Dyn示例：
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -1012,7 +1012,7 @@ focusOnTouch(value: boolean)
              })
            Divider()
  
-           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusOnTouch为true
              .borderColor(this.color2)
              .borderWidth(2)
              .width(300)
@@ -2051,7 +2051,7 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
 
   ArkTS-Dyn示例：
 

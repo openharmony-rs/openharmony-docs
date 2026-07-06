@@ -300,7 +300,7 @@ ArkTS-Dyn示例：
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
 ``` TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
+import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -325,7 +325,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     };
     return config;
   }
-// ···
+  // ...
 }
 ```
 
@@ -517,14 +517,14 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "har1",
             "type": "har",
-            // ···
-            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ...
+            "appStartup": "$profile:startup_config" // 启动框架的配置文件
           }
         }
         ```
@@ -763,20 +763,19 @@ struct Index {
 
      ArkTS-Dyn示例：
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
-
+     
      ``` TypeScript
-     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
-     // ···
+     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+     // ...
      
      export default class MyStartupConfigEntry extends StartupConfigEntry {
-     // ···
+       // ...
        onRequestCustomMatchRule(want: Want): string {
          if (want?.parameters?.fromType == 'card') {
            return 'ruleCard';
          }
          return '';
        }
-     
      }
      ```
 

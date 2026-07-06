@@ -32,6 +32,7 @@
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
@@ -43,18 +44,46 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 发布通知。
 
    参考[发布文本类型通知](./text-notification.md)。
 
 3. 取消通知。
 
+   ArkTS-Dyn示例：
    <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
    // 当拉起应用到前台，查看消息后，调用该接口取消通知。
    notificationManager.cancel(1, (err: BusinessError) => {
      if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
+   
+   ``` TypeScript
+   // 当拉起应用到前台，查看消息后，调用该接口取消通知。
+   notificationManager.cancel(1, (err) => {
+     if (err && err.code !== 0) {
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
        return;

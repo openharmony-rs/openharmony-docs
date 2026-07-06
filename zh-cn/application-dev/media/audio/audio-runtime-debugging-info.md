@@ -13,7 +13,7 @@
 > - 快照信息的内容和格式后续会根据开发者使用情况和反馈建议优化调整，随版本迭代可能发生变化，所以仅供人工调试参考，**不建议开发者依据快照信息开发功能逻辑**。
 > - 音频快照能力同时提供C/C++ API和ArkTS API，开发者可根据开发语言选择对应接口。
 
-### 音频快照使用场景
+**音频快照使用场景**
 
 | 模块 | 接口类型 | 说明 | 典型使用场景 |
 | :--- | :--- | :--- | :--- |
@@ -434,6 +434,45 @@ let filePath = getContext().filesDir + '/audio_loopback_debug.txt';
 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 debugManager.printLoopbackInfo(audioLoopback, file.fd);
 fs.closeSync(file);
+```
+
+**ArkTS-Sta示例：**
+
+<!-- @[print_LoopbackInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopbackDebugInfo_Sta/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 查询返听器调试信息，输出到 hilog 与文件。
+function printLoopbackInfo(context: common.Context, updateCallback?: (msg: string, isError: boolean) => void): void {
+  if (audioLoopback === undefined) {
+    console.error('Audio loopback not created.');
+    if (updateCallback) {
+      updateCallback('Audio loopback not created.', true);
+    }
+    return;
+  }
+  try {
+    let debugManager = audio.getAudioManager().getDebuggingManager();
+    debugManager.printLoopbackInfo(audioLoopback as audio.AudioLoopback, -1);
+    // 输出到文件。
+    let filePath = context.filesDir + '/audio_loopback_debug.txt';
+    let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    try {
+      debugManager.printLoopbackInfo(audioLoopback as audio.AudioLoopback, file.fd);
+    } finally {
+      fs.closeSync(file);
+    }
+    const successMsg = `Loopback debug info written to: ${filePath}`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+  } catch (err) {
+    let e = err as BusinessError;
+    console.error(`Failed to print loopback info. Code: ${e.code}, message: ${e.message}`);
+    if (updateCallback) {
+      updateCallback(`Failed to print loopback info. Code: ${e.code}, message: ${e.message}`, true);
+    }
+  }
+}
 ```
 
 **输出示例：**

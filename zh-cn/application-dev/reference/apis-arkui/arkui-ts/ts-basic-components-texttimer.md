@@ -91,8 +91,6 @@ ArkTS-Sta: format(value: string | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -118,8 +116,6 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -143,8 +139,6 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,8 +164,6 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -196,8 +188,6 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -221,8 +211,6 @@ ArkTS-Sta: fontFamily(value: ResourceStr | undefined)
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,8 +290,6 @@ ArkTS-Sta: onTimer(event: TimerCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -348,8 +334,6 @@ TextTimerController的构造函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -367,8 +351,6 @@ ArkTS-Sta: start(): void
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -388,8 +370,6 @@ ArkTS-Sta: pause(): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -407,8 +387,6 @@ ArkTS-Sta: reset(): void
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -479,7 +457,7 @@ struct TextTimerExample {
         .fontColor(Color.Black)
         .fontSize(50)
         .onTimer((utc: number, elapsedTime: number) => {
-          console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
+          console.info('textTimer countDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
         })
       Row() {
         Button('start').onClick(() => {
@@ -666,9 +644,8 @@ struct TextTimerStart {
 // xxx.ets
 @Entry
 @Component
-struct demo {
+struct Demo {
   textTimerController: TextTimerController = new TextTimerController();
-  @State format: string = 'HH:mm:ss.SS';
   @State countValue: number = 5025678;
 
   build() {
