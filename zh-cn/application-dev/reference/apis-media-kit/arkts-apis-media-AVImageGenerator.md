@@ -88,7 +88,7 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
- 	  generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
       if (error) {
         console.error(`Failed to fetch FrameByTime, err = ${JSON.stringify(error)}`);
@@ -165,7 +165,7 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
- 	  generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
@@ -236,7 +236,7 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
- 	  generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
