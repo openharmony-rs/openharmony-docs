@@ -1,8 +1,8 @@
 # FileShare_PolicyInfo
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie; @hongjin-li_admin-->
-<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -31,4 +31,3 @@ typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
 | char *uri | 需要授予或激活访问权限的URI，需符合系统URI格式规范。 |
 | unsigned int length | uri指向字符串的字节长度，不包含字符串结束符'\0'。 |
 | unsigned int operationMode | 授予或激活权限的URI访问模式。READ_MODE表示读取权限，WRITE_MODE表示写入权限。<br>示例：FileShare_OperationMode.READ_MODE、FileShare_OperationMode.WRITE_MODE，或者FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE。 |
-

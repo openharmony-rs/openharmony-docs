@@ -1,8 +1,8 @@
 # @ohos.file.fileuri (文件URI)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
