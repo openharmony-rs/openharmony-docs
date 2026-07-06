@@ -741,34 +741,6 @@ With this permission, the application can improve handwriting performance, ensur
 
 **Since**: 26.0.0
 
-## ohos.permission.QUERY_PUBLIC_CLI_TOOL
-
-Allows an application to query available CLI tools.
-
-With this permission, third-party agent applications can access the Claw function.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Since**: 26.1.0
-
-## ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-Allows an application to execute available CLI tools.
-
-With this permission, third-party agent applications can access the Claw function.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Since**: 26.1.0
-
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 
 Allows an application to obtain custom enterprise device management (EDM) configuration files.
