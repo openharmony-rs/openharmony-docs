@@ -12,7 +12,7 @@ typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
 
 ## 概述
 
-定义[OH_Rdb_Transaction](#oh_rdb_transaction)结构体类型。
+定义OH_Rdb_Transaction结构体类型。
 
 **起始版本：** 18
 

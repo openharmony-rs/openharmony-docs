@@ -457,7 +457,7 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 | ------------------------------------- | ---------------------------------------------- |
 | OH_Predicates *predicates             | 表示指向OH_Predicates实例的指针。              |
 | const char *field                     | 数据库表中的列名，不能为空。                             |
-| [OH_OrderType](capi-oh-predicates-h.md) type | 表示排序类型[OH_OrderType](capi-oh-predicates-h.md)。 |
+| [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | 表示排序类型[OH_OrderType](capi-oh-predicates-h.md#oh_ordertype)。 |
 
 **返回：**
 
@@ -663,7 +663,7 @@ int (*destroy)(OH_Predicates *predicates)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md)。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 
 

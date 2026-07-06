@@ -27,5 +27,5 @@ typedef struct Rdb_ProgressObserver {...} Rdb_ProgressObserver
 | 名称                                                         | 描述                           |
 | ------------------------------------------------------------ | ------------------------------ |
 | void* context                                                | 端云同步进度观察者的上下文。   |
-| [Rdb_ProgressCallback](capi-relational-store-h.md) callback | 端云同步进度观察者的回调函数。 |
+| [Rdb_ProgressCallback](capi-relational-store-h.md#rdb_progresscallback) callback | 端云同步进度观察者的回调函数。 |
 

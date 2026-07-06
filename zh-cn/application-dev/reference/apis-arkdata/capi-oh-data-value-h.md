@@ -601,7 +601,7 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。   |
 | [Data_Asset](capi-rdb-data-asset.md) **val        | 表示指向[Data_Asset](capi-rdb-data-asset.md)对象的指针。<br>需要申请数据内存。<br>此函数仅填充数据。否则执行失败。 |
-| size_t inLen                                  | 表示val的大小。可以通过[OH_Values_GetAssetsCount](capi-oh-data-values-h.md)获取。 |
+| size_t inLen                                  | 表示val的大小。可以通过[OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount)获取。 |
 | size_t *outLen                                | 一个输出参数，表示实际获取的数据大小。                       |
 
 **返回：**
@@ -655,7 +655,7 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。   |
 | float *val                                    | 表示指向float数组的指针。<br>需要申请数据内存。<br>此函数仅填充数据。否则执行失败。 |
-| size_t inLen                                  | 表示val的大小。可以通过[OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md)获取。 |
+| size_t inLen                                  | 表示val的大小。可以通过[OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount)获取。 |
 | size_t *outLen                                | 一个输出参数，表示实际获取的数据大小。                       |
 
 **返回：**
@@ -710,7 +710,7 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。   |
 | int *sign                                     | 一个输出参数，表示正负数，0表示正整数，1表示负整数。         |
 | uint64_t *trueForm                            | 表示指向整型数组的指针。<br>需要申请数据内存。<br>此函数仅填充数据。否则执行失败。 |
-| size_t inLen                                  | 表示trueForm的大小。可以通过[OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md)获取。 |
+| size_t inLen                                  | 表示trueForm的大小。可以通过[OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband)获取。 |
 | size_t *outLen                                | 一个输出参数，表示实际获取的数据大小。                       |
 
 **返回：**

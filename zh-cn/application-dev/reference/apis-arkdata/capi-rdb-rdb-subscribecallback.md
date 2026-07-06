@@ -26,6 +26,6 @@ typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
 
 | 名称                                                         | 描述                               |
 | ------------------------------------------------------------ | ---------------------------------- |
-| [Rdb_DetailsObserver](capi-relational-store-h.md) detailsObserver | 端云数据更改事件的细节的回调函数。 |
-| [Rdb_BriefObserver](capi-relational-store-h.md) briefObserver | 端云数据更改事件的回调函数。       |
+| [Rdb_DetailsObserver](capi-relational-store-h.md#rdb_detailsobserver) detailsObserver | 端云数据更改事件的细节的回调函数。 |
+| [Rdb_BriefObserver](capi-relational-store-h.md#rdb_briefobserver) briefObserver | 端云数据更改事件的回调函数。       |
 

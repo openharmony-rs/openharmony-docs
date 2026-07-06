@@ -12,7 +12,7 @@ typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
 
 ## 概述
 
-定义[OH_RDB_TransOptions](#oh_rdb_transoptions)结构体类型。
+定义OH_RDB_TransOptions结构体类型。
 
 **起始版本：** 18
 
