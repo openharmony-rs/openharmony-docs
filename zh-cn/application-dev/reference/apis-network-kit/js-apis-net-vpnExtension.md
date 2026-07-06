@@ -783,7 +783,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   vpnId: '123',
   routes: [{
     // 网卡名称配置为空时，系统默认将路由配置到VPN虚拟网卡。
-    // 如填写非虚拟网卡实际名称，可能导致路由配置异常。 
+    // 如填写非虚拟网卡实际名称，可能导致路由配置异常。
     interface: "vpn-tun",
     destination: {
       address: {
