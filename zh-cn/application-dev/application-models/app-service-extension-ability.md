@@ -29,7 +29,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 ## 运作机制
 
-开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中以[启动](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)或[连接](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)的方式来拉起AppServiceExtensionAbility组件。
+开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中以启动（[startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)）或连接（[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)）的方式来拉起AppServiceExtensionAbility组件。
 
 - **启动：** 客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用才能调用[startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)接口。
 - **连接：** 如果[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用才能调用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)接口。如果实例已启动，则没有上述限制。
@@ -132,9 +132,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     ``` JSON5
     {
       "module": {
-        // ···
+        // ...
         "extensionAbilities": [
-        // ···
+          // ...
           {
             "name": "MyAppServiceExtAbility",
             "description": "appService",
@@ -143,7 +143,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
             "srcEntry": "./ets/myappserviceextability/MyAppServiceExtAbility.ets",
             "appIdentifierAllowList": [
               // 此处填写允许启动该后台服务的客户端应用的appIdentifier列表
-            ],
+            ]
           }
         ]
       }
@@ -463,9 +463,15 @@ let options: common.ConnectOptions = {
     let data = new rpc.MessageSequence();
     let reply = new rpc.MessageSequence();
 
-    // 写入请求数据
-    data.writeInt(1);
-    data.writeInt(2);
+    try {
+         // 写入请求数据
+         data.writeInt(1);
+         data.writeInt(2);
+       } catch (error) {
+         let e: BusinessError = error as BusinessError;
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorCode ' + e.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorMessage ' + e.message);
+       }
 
     remote.sendMessageRequest(REQUEST_CODE, data, reply, option).then((ret: rpc.RequestResult) => {
       if (ret.errCode === 0) {
@@ -494,13 +500,13 @@ let options: common.ConnectOptions = {
 struct ClientServerExt {
   build() {
     Column() {
-    // ···
+      // ...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            // ···
+            // ...
           }
-        // ···
+          // ...
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             connectionId = context.connectAppServiceExtensionAbility(want, options);
@@ -508,7 +514,7 @@ struct ClientServerExt {
           })
         }
       }
-    // ···
+      // ...
     }
   }
 }
@@ -523,6 +529,7 @@ struct ClientServerExt {
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[MyAppServiceExtAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -533,9 +540,15 @@ class Stub extends rpc.RemoteObject {
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
     options: rpc.MessageOption): boolean | Promise<boolean> {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onRemoteMessageRequest');
-    let sum = data.readInt() + data.readInt();
-    reply.writeInt(sum);
+    try {
+         hilog.info(DOMAIN_NUMBER, TAG, 'onRemoteMessageRequest');
+         let sum = data.readInt() + data.readInt();
+         reply.writeInt(sum);
+       } catch (error) {
+         let e: BusinessError = error as BusinessError;
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorCode ' + e.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorMessage ' + e.message);
+       }
     return true;
   }
 }
