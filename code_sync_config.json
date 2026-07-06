@@ -14048,14 +14048,14 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":90,
 						"name":"gridExample_onPageShow",
-						"start_line":66
+						"start_line":78
 					},
 					{
-						"end_line":183,
+						"end_line":197,
 						"name":"gridExample_onclick",
-						"start_line":146
+						"start_line":160
 					},
 					{
 						"end_line":191,
@@ -14068,7 +14068,7 @@
 						"start_line":204
 					},
 					{
-						"end_line":232,
+						"end_line":246,
 						"name":"gridExample_start",
 						"start_line":17
 					}
