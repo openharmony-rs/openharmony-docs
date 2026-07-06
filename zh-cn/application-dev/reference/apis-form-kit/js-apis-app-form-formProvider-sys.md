@@ -35,7 +35,7 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 参数名 | 类型                                                                    | 必填 | 说明             |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)                           | 是   | 发布请求，需包含以下字段。<br>abilityName: 目标卡片ability<br>parameters:<br>'ohos.extra.param.key.form_dimension'<br>'ohos.extra.param.key.form_name'<br>'ohos.extra.param.key.module_name' |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 创建卡片的数据。 |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否   | 创建卡片的数据，不传入时默认为空。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回卡片标识。 |
 
 **错误码：**
@@ -346,7 +346,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。 |
+| formId | string | 是 | 卡片标识。 |
 
 **返回值：**
 
