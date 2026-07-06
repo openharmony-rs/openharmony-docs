@@ -1229,7 +1229,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 
 **描述** 
 
-使用拍照捕获扩展设置拍摄照片。 
+使用拍照扩展设置拍摄照片。 
 
 **起始版本：** 26.0.0 
 
