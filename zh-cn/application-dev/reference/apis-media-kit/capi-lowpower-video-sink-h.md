@@ -53,7 +53,7 @@
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)](#oh_lowpowervideosinkcallback_seterrorlistener) | 为LowPowerVideoSinkCallback回调设置错误监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)](#oh_lowpowervideosinkcallback_setrenderstartlistener) | 为LowPowerVideoSinkCallback回调设置开始渲染监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)](#oh_lowpowervideosinkcallback_setstreamchangedlistener) | 为LowPowerVideoSinkCallback回调设置流切换监听。 |
-| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | 为LowPowerVideoSinkCallback回调设置首帧准备完成监听。 |
+| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | 为LowPowerVideoSinkCallback回调设置首帧解码完成监听。 |
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)](#oh_lowpowervideosinkcallback_seteoslistener) | 为LowPowerVideoSinkCallback回调设置播放结束监听。 |
 
 ## 函数说明
@@ -729,7 +729,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 **描述**
 
-为LowPowerVideoSinkCallback回调设置首帧准备完成监听。
+为LowPowerVideoSinkCallback回调设置首帧解码完成监听。
 
 **起始版本：** 20
 
@@ -738,7 +738,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)* callback | 指向OH_LowPowerVideoSinkCallback实例的指针。 |
-| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameReady方法，在FirstFrameReady事件触发时调用。 |
+| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameDecoded方法，在第一帧解码成功时调用。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 **返回：**
