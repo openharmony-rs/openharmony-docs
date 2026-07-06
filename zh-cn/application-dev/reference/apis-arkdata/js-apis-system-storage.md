@@ -302,10 +302,6 @@ export default {
 }
 ```
 
-## storage.get
-
-get(options: GetStorageOptions): void
-
 ## storage.delete
 
 delete(options: DeleteStorageOptions): void
