@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioInfo {/* 成员变量详见下方汇总表*/} OH_AudioInfo;
+typedef struct OH_AudioInfo {/* 成员变量详见下方汇总表 */} OH_AudioInfo;
 ```
 
 ## 概述
