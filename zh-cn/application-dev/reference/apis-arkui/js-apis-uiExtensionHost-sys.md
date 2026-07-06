@@ -34,7 +34,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-uiExtensionHost-sys.md#onwindowsizechange)回调之后获取。 |
+| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](#onwindowsizechange)回调之后获取。 |
 
 ### getWindowAvoidArea
 
@@ -42,11 +42,11 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -90,11 +90,11 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 注册宿主应用窗口避让区变化的监听。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -109,8 +109,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -135,18 +135,18 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 注销宿主应用窗口避让区变化的监听。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
 | type     | string | 是   | 注销的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 否 | 回调函数，用于指定要注销的监听。如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **错误码：** 
 
@@ -154,8 +154,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -178,11 +178,11 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -197,8 +197,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -223,18 +223,18 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | 是   | 注销的事件类型，固定值：'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数，用于指定要注销的监听。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）所有尺寸变化的监听。 |
 
 **错误码：** 
 
@@ -242,8 +242,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -271,13 +271,13 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。
 > - 针对PC/2in1设备，当调用hideNonSecureWindows(true)时，不安全窗口中的全局悬浮窗不会被隐藏。
 
-**需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
+**需要权限：** ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -289,7 +289,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：** 
 
@@ -316,7 +316,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.info(`Succeeded in hiding the non-secure windows.`);
     }).catch((err: BusinessError)=> {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    });
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
@@ -325,7 +325,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.info(`Succeeded in showing the non-secure windows.`);
     }).catch((err: BusinessError)=> {
       console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    });
   }
 }
 ```
@@ -348,7 +348,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| name   | string | 是   | 子窗口的名字。 |
+| name   | string | 是   | 子窗口的名字，用于唯一标识该子窗口，当前进程内全局唯一。 |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是 | 子窗口参数。 |
 
 **返回值：**
@@ -363,7 +363,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
@@ -410,7 +410,7 @@ export default class EntryAbility extends UIExtensionAbility {
         });
       }).catch((error: BusinessError) => {
         console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-      })
+      });
   }
 }
 ```
@@ -419,7 +419,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
-创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗口是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -427,15 +427,15 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowConfig](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| name   | string | 是   | 子窗口的名字。 |
+| name   | string | 是   | 子窗口的名字，用于唯一标识该子窗口，当前进程内全局唯一。 |
 | subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是 | 子窗口参数。 |
-| followCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化。|
+| followCreatorLifecycle | boolean | 是   | 子窗口生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗口隐藏，该组件显示时子窗口显示，false表示子窗口的显隐不跟随该组件变化。|
 
 **返回值：**
 
@@ -450,7 +450,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -495,7 +495,7 @@ export default class EntryAbility extends UIExtensionAbility {
         });
       }).catch((error: BusinessError) => {
         console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-      })
+      });
   }
 }
 ```
@@ -509,11 +509,11 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 >
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -525,7 +525,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -549,8 +549,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(true).then(() => {
       console.info(`Succeeded in setting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to set water mark flag of window. Cause:${JSON.stringify(err)}`);
+    });
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
@@ -558,8 +558,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(false).then(() => {
       console.info(`Succeeded in deleting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to delete water mark flag of window. Cause:${JSON.stringify(err)}`);
+    });
   }
 }
 ```
@@ -572,13 +572,13 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 > **说明：**
 >
 > 开启截图隐私内容保护后，使用窗口截图[window.snapshot](arkts-apis-window-Window.md#snapshot9)或者组件截图[UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)
-将无法截取到当前组件的内容（不包括该组件下创建的子窗）。
+将无法截取到当前组件的内容（不包括该组件下创建的子窗口）。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -590,7 +590,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -614,10 +614,10 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 开启截图隐私内容保护
     extensionHostWindow.hidePrivacyContentForHost(true).then(() => {
-      console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+      console.info(`Succeeded in enabling privacy protection for non-system screenshots.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to enable privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+    });
   }
 }
 ```
@@ -626,11 +626,11 @@ export default class EntryAbility extends UIExtensionAbility {
 
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                         | 类型        | 只读  | 可选    | 说明                             |
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
@@ -730,17 +730,16 @@ export default class EntryAbility extends UIExtensionAbility {
       this.extensionHostWindow?.on('avoidAreaChange', (info) => {
           console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
       });
-      let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
-      promise?.then(()=> {
+      this.extensionHostWindow?.hideNonSecureWindows(true)?.then(()=> {
         console.info(`Succeeded in hiding the non-secure windows.`);
       }).catch((err: BusinessError)=> {
         console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
-      })
+      });
       this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+        console.info(`Succeeded in enabling privacy protection for non-system screenshots.`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
-      })
+        console.error(`Failed to enable privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+      });
     }
 
     aboutToDisappear(): void {
@@ -751,7 +750,7 @@ export default class EntryAbility extends UIExtensionAbility {
         console.info(`Succeeded in showing the non-secure windows.`);
       }).catch((err: BusinessError)=> {
         console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
-      })
+      });
     }
 
     build() {
@@ -769,7 +768,7 @@ export default class EntryAbility extends UIExtensionAbility {
         })
         Button("创建子窗口").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {
-            'title': 'This is a subwindow',
+            title: 'This is a subwindow',
             decorEnabled: true
           };
           this.extensionHostWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
@@ -799,7 +798,7 @@ export default class EntryAbility extends UIExtensionAbility {
               });
             }).catch((error: BusinessError) => {
               console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
-            })
+            });
         })
       }.width('100%').height('100%')
     }
