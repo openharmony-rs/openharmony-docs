@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_VideoCaptureInfo {/* 结构体成员定义详见下方成员变量表格 */ } OH_VideoCaptureInfo;
+typedef struct OH_VideoCaptureInfo {...} OH_VideoCaptureInfo
 ```
 
 ## 概述
