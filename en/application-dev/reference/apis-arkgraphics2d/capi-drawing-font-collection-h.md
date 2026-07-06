@@ -180,4 +180,4 @@ Obtains the global [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcolle
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | Returns the pointer to the global {@link OH_Drawing_FontCollection} object obtained.|
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | Pointer to the global font collection object.|
