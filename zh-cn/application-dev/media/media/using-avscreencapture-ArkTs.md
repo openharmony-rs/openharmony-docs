@@ -8,7 +8,7 @@
 
 屏幕录制主要为主屏幕录屏功能。
 
-开发者可以调用录屏（[AVScreenCaptureRecorder](media-kit-intro.md#avscreencapture)）模块的ArkTs接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
+开发者可以调用录屏（[AVScreenCaptureRecorder](media-kit-intro.md#avscreencapture)）模块的ArkTS接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
 
 录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
 
@@ -37,7 +37,7 @@
 
 使用AVScreenCaptureRecorder时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。在确定的状态下执行不合适的方法会导致AVScreenCaptureRecorder发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
-1. 添加头文件。
+1. 导入模块（import）。
 
    <!-- @[screenCapture_arkts_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
    
@@ -368,7 +368,7 @@ export class AVScreenCaptureDemo {
     // 调用release()方法销毁实例，释放资源。
     await this.screenCapture?.release();
 
-    // 最后需要关闭创建的录屏文件;
+    // 最后需要关闭创建的录屏文件。
     this.closeFile();
   }
 }
