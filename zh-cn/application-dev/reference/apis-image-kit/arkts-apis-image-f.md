@@ -742,7 +742,6 @@ function CreatePixelMapSync() {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     console.info('Succeeded in creating PixelMap.');
-    return pixelMap;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
@@ -764,7 +763,6 @@ function CreatePixelMapSync() {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     console.info('Succeeded in creating PixelMap.');
-    return pixelMap;
   } catch (error) {
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   }
@@ -820,7 +818,6 @@ function CreatePixelMapSync() {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
     console.info('Succeeded in creating PixelMap.');
-    return pixelMap;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
@@ -836,7 +833,6 @@ function CreatePixelMapSync() {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
     console.info('Succeeded in creating PixelMap.');
-    return pixelMap;
   } catch (error) {
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   }
@@ -1138,7 +1134,6 @@ function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
     console.info('Succeeded in creating PixelMap from Surface.');
-    return pixelMap;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
@@ -1154,7 +1149,6 @@ function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
     console.info('Succeeded in creating PixelMap from Surface.');
-    return pixelMap;
   } catch (error) {
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   }
@@ -1276,7 +1270,6 @@ function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
     console.info('Succeeded in creating PixelMap from Surface.');
-    return pixelMap;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
@@ -1291,7 +1284,6 @@ function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
     console.info('Succeeded in creating PixelMap from Surface.');
-    return pixelMap;
   } catch (error) {
     console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   }
