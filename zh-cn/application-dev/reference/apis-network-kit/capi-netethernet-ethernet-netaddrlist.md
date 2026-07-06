@@ -1,5 +1,12 @@
 # Ethernet_NetAddrList
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ```c
 typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
 ```
@@ -20,7 +27,7 @@ typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
 
 | 名称 | 描述 |
 | -- | -- |
-| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] |  |
-| int32_t netAddrListSize |  |
+| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] | 以太网网络地址列表。 |
+| int32_t netAddrListSize | netAddrList的实际大小。 |
 
 
