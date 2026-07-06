@@ -696,7 +696,7 @@ build() {
           .dragPreview(this.previewData[idx])
           .selectable(true)
           .selected(this.isSelectedGrid[idx])
-          // Set the multi-select display effects.
+          // Set the multi-selection display effect.
           .stateStyles({
             normal: this.normalStyles,
             selected: this.selectStyles
@@ -706,7 +706,7 @@ build() {
             if (this.isSelectedGrid[idx]) {
               this.numberBadge++;
               let gridItemName = 'grid' + idx;
-              // Call the get API in componentSnapshot to obtain the component snapshot pixel map on selection.
+              // Pre-call componentSnapshot.get() to get the pixmap when selected.
               this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
                 this.pixmap = pixmap;
                 this.previewData[idx] = {
@@ -717,7 +717,7 @@ build() {
               this.numberBadge--;
             }
           })
-          // Enable multiselect and set the number badge.
+          // Enable multi-select drag-and-drop; the number badge in the upper-right corner needs the numberBadge parameter set.
           .dragPreviewOptions({ numberBadge: this.numberBadge },
             { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
           .onDragStart(() => {
