@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 WorkerLocal为多线程环境提供了线程本地存储机制，允许每个工作线程拥有自己的独立数据副本，无需担心线程安全问题。可以使用WorkerLocal API创建线程在本地的变量，这些变量在每个线程中都是独立存在的，互不干扰。WorkerLocal适用于需要在多线程环境中维护线程特定状态的场景。
 

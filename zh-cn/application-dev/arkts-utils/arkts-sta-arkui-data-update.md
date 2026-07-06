@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 当网络下载、本地计算或数据库查询等耗时操作需要将结果展示到界面时，可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)在后台线程处理数据，并在宿主线程中更新ArkUI状态变量。ArkTS-Sta中对象默认可跨线程共享，但ArkUI状态对象和UIUtils.makeObserved返回的可观察数据应在UI线程侧使用，不建议直接传入TaskPool任务中修改。
 

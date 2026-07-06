@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS 1.2原生支持多任务并发，与ArkTS 1.0（JS）的单线程事件循环模型有很大不同。因此，ANI的设计鼓励将异步流程的编排放在ArkTS层，而不是像NAPI那样在native层管理异步任务。
 
