@@ -165,7 +165,7 @@
 
    <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ``` TypeScript
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -174,7 +174,7 @@
 
    <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ``` TypeScript
    let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
      console.info('callback succeeded' + data);
    };
@@ -184,13 +184,15 @@
 
    <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ``` TypeScript
    try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('holdingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
@@ -198,12 +200,14 @@
 
    <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
    
-   ```ts
+   ``` TypeScript
    try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
+     motion.off('holdingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
