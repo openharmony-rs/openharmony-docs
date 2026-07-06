@@ -110,7 +110,7 @@ int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestId | 短时任务的请求ID。 |
+| int32_t requestId | 短时任务的请求ID。为[OH_BackgroundTaskManager_RequestSuspendDelay](#oh_backgroundtaskmanager_requestsuspenddelay)成功返回的requestId。 |
 
 **返回：**
 

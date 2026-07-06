@@ -39,12 +39,12 @@
 **表2** 能效资源申请参数
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| resourceTypes | number | 是 | 申请的资源类型 |
-| isApply | boolean | 是 | 申请或释放资源<br/>- true表示申请资源<br/>- false表示释放部分资源 |
-| timeOut | number | 是 | 资源使用时间（ms） |
-| isPersist | boolean | 否 | 是否为永久持有资源，默认为false<br/>- true表示永久持有<br/>- false表示有限时间内持有 |
-| isProcess | boolean | 否 | 进程或应用申请，默认为false<br/>- true表示进程申请<br/>- false表示应用申请 |
-| reason | string | 是 | 申请资源原因 |
+| resourceTypes | number | 是 | 申请的资源类型。 |
+| isApply | boolean | 是 | 申请或释放资源。<br/>- true表示申请资源。<br/>- false表示释放部分资源。 |
+| timeOut | number | 是 | 资源使用时间，单位：ms。设置后能效资源会在指定时间后自动释放。当isPersist为true时，此字段不生效。 |
+| isPersist | boolean | 否 | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。 |
+| isProcess | boolean | 否 | 进程或应用申请，默认为false。<br>- true表示进程申请，能效资源只对当前进程有效。<br>- false表示应用申请，能效资源对整个应用的所有进程有效。 |
+| reason | string | 是 | 申请资源原因。 |
 | cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
 
 **表3** 能效资源类型
