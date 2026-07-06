@@ -87,7 +87,7 @@ Requests focus for a specific node.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-native-type-h.md#arkui_errorcode) if the node cannot receive focus.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-native-type-h.md#arkui_errorcode) if the ancestor node cannot receive focus.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-native-type-h.md#arkui_errorcode) if the node does not exist.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the request is successful.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node cannot gain focus.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the ancestor node cannot gain focus.<br>         Returns [ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node does not exist.|
 
 ### OH_ArkUI_FocusClear()
 

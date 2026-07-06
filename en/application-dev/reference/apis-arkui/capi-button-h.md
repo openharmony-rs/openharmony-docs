@@ -10,7 +10,7 @@
 
 Defines **Button** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/button.h>
+**File to include:** <arkui/node_attributes/button.h>
 
 **Library:** libace_ndk.z.so
 

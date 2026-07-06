@@ -10,7 +10,7 @@
 
 Defines **Checkbox** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/checkbox.h>
+**File to include:** <arkui/node_attributes/checkbox.h>
 
 **Library:** libace_ndk.z.so
 

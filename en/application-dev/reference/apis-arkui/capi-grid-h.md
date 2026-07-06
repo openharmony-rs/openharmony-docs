@@ -117,7 +117,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 Disposes of the **Grid** layout option.
 
-**Since**: 22
+**Since:** 22
 
 
 **Parameters**
@@ -137,7 +137,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 Sets the irregular grid item index array for the grid layout.
 
-**Since**: 22
+**Since:** 22
 
 
 **Parameters**
@@ -152,7 +152,7 @@ Sets the irregular grid item index array for the grid layout.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
@@ -164,7 +164,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.
 
-**Since**: 22
+**Since:** 22
 
 
 **Parameters**
@@ -179,7 +179,7 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the array size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the array size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
@@ -191,7 +191,7 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_Gr
 
 Registers a callback to obtain the row and column span for the grid item at the specified index.
 
-**Since**: 22
+**Since:** 22
 
 
 **Parameters**
@@ -212,7 +212,7 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutO
 
 Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.
 
-**Since**: 22
+**Since:** 22
 
 
 **Parameters**
