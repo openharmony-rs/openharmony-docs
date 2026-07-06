@@ -119,7 +119,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取图片资源。
 4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 
-<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->
+<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->  
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -134,22 +134,28 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
+  let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
+  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM,
+      photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
 
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await album.getAssets(fetchOptions);
+    photoFetchResult = await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
-    photoFetchResult.close();
-    albumFetchResult.close();
     // ...
   } catch (err) {
     console.error('favorite failed with err: ' + err);
     // ...
+  } finally {
+    if (photoFetchResult) {
+      photoFetchResult.close();
+    }
+    if (albumFetchResult) {
+      albumFetchResult.close();
+    }
   }
 }
 ```

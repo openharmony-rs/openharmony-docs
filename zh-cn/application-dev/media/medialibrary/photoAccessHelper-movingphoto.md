@@ -38,12 +38,13 @@
 
 5. 调用[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口提交创建资产的变更请求。
 
-<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->
+<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->  
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 // ...
+import { fileUri } from '@kit.CoreFileKit';
 
 @Entry({ routeName : 'Scene1' })
 @Component
@@ -71,8 +72,9 @@ export struct Scene1 {
                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 // Ensure that the assets specified by imageFileUri and videoFileUri exist.
-                let imageFileUri = 'file://' + context.filesDir + '/create_moving_photo.jpg';
-                let videoFileUri = 'file://' + context.filesDir + '/create_moving_photo.mp4';
+                let photoPath = context.filesDir;
+                let imageFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.jpg';
+                let videoFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.mp4';
 
                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
                   photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context,
