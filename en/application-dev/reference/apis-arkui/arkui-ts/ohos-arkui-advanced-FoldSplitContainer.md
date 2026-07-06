@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-**FoldSplitContainer** is a layout container designed to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover and folded states.
+**FoldSplitContainer** is a layout container designed to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover, and folded states.
 
 
 > **NOTE**
