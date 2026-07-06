@@ -19,7 +19,7 @@
 该模块提供以下端云服务相关的常用功能：
 
 - [Config](#config)：提供配置端云协同的方法，包括云同步打开、关闭、清除数据、数据变化通知。
-- [sharing](#sharing11)：提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查找共享参与者、确认邀请、更改已确认的邀请、查找共享资源。
+- [sharing](#sharing11)：提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查询共享参与者、确认邀请、更改已确认的邀请、查询共享资源。
 
 > **说明：** 
 >
@@ -70,7 +70,7 @@ import { cloudData } from '@kit.ArkData';
 let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
   extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
-}
+};
 ```
 
 ## StatisticInfo<sup>12+</sup>
@@ -133,14 +133,14 @@ let extraData: cloudData.ExtraData = {
 
 ## DBActionInfo<sup>23+</sup>
 
-端云协同数据库级清除配置信息。
+端云协同数据库级清除规则。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| action     | [ClearAction](#clearaction)           | 否   | 否   | 数据库默认数据清除方式。 |
-| tableInfo  | Record<string, [ClearAction](#clearaction)> | 否   | 是   | 要清除数据的表信息及清除规则。键为表名称，值为该表的清除方式。当未配置该参数时，默认使用数据库的数据清除方式。   |
+| action     | [ClearAction](#clearaction)           | 否   | 否   | 数据库默认数据清除规则。 |
+| tableInfo  | Record<string, [ClearAction](#clearaction)> | 否   | 是   | 待清除数据的表信息及各表的清除规则。键为表名称，值为该表的清除规则。当未配置该参数时，默认使用数据库的数据清除规则。   |
 
 ## BundleInfo
 
@@ -159,13 +159,15 @@ let extraData: cloudData.ExtraData = {
 
 ## ClearConfig<sup>23+</sup>
 
-端云协同数据库级清除配置。
+端云协同数据库级清除规则。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | 否   | 否   | 要清除数据的库信息及清除规则。键为数据库名称，值为该数据库的清除配置信息。   |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | 否   | 否   | 待清除数据的库信息及各库的清除规则。键为数据库名称，值为该数据库的清除规则。 |
 
 ## Config
 
@@ -188,7 +190,7 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | accountId | string                          | 是   | 已登录的云账号ID。                                         |
-| switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
+| switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。键为应用的包名，值为该应用的开关状态，true为打开该应用端云开关，false为关闭该应用端云开关。 |
 | callback  | AsyncCallback&lt;void&gt;       | 是   | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -217,8 +219,8 @@ try {
       console.error(`Failed to enable.Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -240,7 +242,7 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | accountId | string                          | 是   | 已登录的云账号ID。                                         |
-| switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
+| switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。键为应用的包名，值为该应用的开关状态，true为打开该应用端云开关，false为关闭该应用端云开关。 |
 
 **返回值：**
 
@@ -272,8 +274,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to enable.Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -322,8 +324,8 @@ try {
       console.error(`Failed to disableCloud. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -375,8 +377,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to disableCloud. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -428,8 +430,8 @@ try {
       console.error(`Failed to change App cloud switch. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -484,8 +486,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -546,15 +548,15 @@ let config: cloudData.SwitchConfig = {
       }
     }
   }
-}
+};
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
     console.info('Succeeded in changing App cloud switch');
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -605,8 +607,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -660,8 +662,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -713,8 +715,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -723,7 +725,7 @@ try {
 
 static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallback&lt;void&gt;):void
 
-通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
+通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户账号ID，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -736,7 +738,7 @@ static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallb
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | 是   | 透传数据，包含通知数据变更后的应用信息。        |
-| userId   | number                    | 是   | 用户ID，对应为系统中现有的用户ID。 |
+| userId   | number                    | 是   | 用户账号ID，指系统中现有的用户账号ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -768,8 +770,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -778,7 +780,7 @@ try {
 
 static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
 
-通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
+通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户账号ID，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -826,8 +828,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -909,7 +911,7 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 | 类型                                                         | 说明                                         |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| Promise&lt;Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt; | 返回数据库名以及上一次端云同步的信息结果集。 |
+| Promise&lt;Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt; | 返回以数据库名为键，上一次端云同步信息为值的结果集。 |
 
 **错误码：**
 
@@ -935,9 +937,9 @@ try {
     console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
-	});
-} catch(e) {
-  let error = e as BusinessError;
+  });
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -999,8 +1001,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1053,8 +1055,8 @@ try {
   cloudData.Config.onSyncInfoChanged(bundleInfos, (result) => {
     console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1110,24 +1112,24 @@ const progressCallback = (result: Record<string, Record<string, cloudData.SyncIn
 // 订阅同步信息变化
 try {
   cloudData.Config.onSyncInfoChanged(bundleInfos, progressCallback);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 
 // 取消订阅指定的回调
 try {
   cloudData.Config.offSyncInfoChanged(bundleInfos, progressCallback);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 
 // 取消所有订阅
 try {
   cloudData.Config.offSyncInfoChanged(bundleInfos);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1232,8 +1234,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to sync cloud data. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1255,7 +1257,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, callbac
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | 是   | 已登录的云账号ID。             |
-| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
+| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 待清除数据的应用信息及各应用的清除规则，键为应用包名，值为清除规则。 |
 | callback   | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1275,7 +1277,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, callbac
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let account: string = "test_id";
-type dataType = Record<string, cloudData.ClearAction>
+type dataType = Record<string, cloudData.ClearAction>;
 let appActions: dataType = {
   'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO
@@ -1288,8 +1290,8 @@ try {
       console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1311,7 +1313,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | 是   | 已登录的云账号ID。             |
-| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
+| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 待清除数据的应用信息及各应用的清除规则，键为应用包名，值为清除规则。 |
 
 **返回值：**
 
@@ -1347,8 +1349,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1372,8 +1374,8 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, config?
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | 是   | 已登录的云账号ID。             |
-| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
-| config | Record<string, [ClearConfig](#clearconfig23)>         | 否   | 端云协同数据库级清除配置信息。键为应用包名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除方式。|
+| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 待清除数据的应用信息及各应用的清除规则，键为应用包名，值为清除规则。 |
+| config | Record<string, [ClearConfig](#clearconfig23)>         | 否   | 端云协同数据库级清除规则。键为应用包名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除规则。|
 
 **返回值：**
 
@@ -1414,15 +1416,15 @@ let config: Record<string, cloudData.ClearConfig> = {
       }
     }
   }
-}
+};
 try {
   cloudData.Config.clear(account, appActions, config).then(() => {
     console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1492,8 +1494,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1553,15 +1555,15 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ## sharing<sup>11+</sup>
 
-提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查找共享参与者、确认邀请、更改已确认的邀请、查找共享资源。
+提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查询共享参与者、确认邀请、更改已确认的邀请、查询共享资源。
 
 ### Role<sup>11+</sup>
 
@@ -1666,9 +1668,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | 是   | 数据库名称。 |
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查找共享资源标识的数据的谓词条件。 |
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查询共享资源标识的数据的谓词条件。 |
 | participants | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享的参与者。 |
-| columns      | Array&lt;string&gt;           | 否   | 表示要查找的列字段名。默认为undefined，不返回列字段。 |
+| columns      | Array&lt;string&gt;           | 否   | 表示要查询的列字段名。默认为undefined，不返回列字段。 |
 
 **返回值：**
 
@@ -1705,21 +1707,27 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data']).then((resultSet) => {
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
-    return;
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
 }).catch((err: BusinessError) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1737,9 +1745,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | 是   | 数据库名称。 |
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查找共享资源标识的数据的谓词条件。 |
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查询共享资源标识的数据的谓词条件。 |
 | participants | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享的参与者。 |
-| columns      | Array&lt;string&gt;           | 是   | 表示要查找的列字段名。 |
+| columns      | Array&lt;string&gt;           | 是   | 表示要查询的列字段名。 |
 | callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | 是  | 回调函数。返回查询并共享的共享资源标识结果集。 |
 
 **错误码：**
@@ -1771,7 +1779,7 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
@@ -1780,14 +1788,20 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
-    return;
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
-})
+});
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1805,7 +1819,7 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | 是   | 数据库名称。 |
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查找共享资源标识的数据的谓词条件。 |
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查询共享资源标识的数据的谓词条件。 |
 | participants | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享的参与者。 |
 | callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | 是   | 回调函数。返回查询并共享的共享资源标识结果集。 |
 
@@ -1838,7 +1852,7 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
@@ -1847,14 +1861,20 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
-    return;
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
-})
+});
 ```
 
 ### share<sup>11+</sup>
@@ -1908,12 +1928,12 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 cloudData.sharing.share('sharing_resource_test', participants).then((result) => {
   console.info(`share success, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### share<sup>11+</sup>
@@ -1962,14 +1982,14 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
-cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessError, result) => {
+});
+cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`share succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### unshare<sup>11+</sup>
@@ -2023,12 +2043,12 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 cloudData.sharing.unshare('sharing_resource_test', participants).then((result) => {
   console.info(`unshare succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### unshare<sup>11+</sup>
@@ -2078,13 +2098,13 @@ participants.push({
   },
   attachInfo: ''
 })
-cloudData.sharing.unshare('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.unshare('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`unshare succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### exit<sup>11+</sup>
@@ -2128,7 +2148,7 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
   console.info(`exit share success, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### exit<sup>11+</sup>
@@ -2163,13 +2183,13 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.exit('sharing_resource_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`exit share succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2223,13 +2243,13 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
 cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((result) => {
   console.info(`change privilege succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2278,15 +2298,15 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
-cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.changePrivilege('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`change privilege succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2330,7 +2350,7 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
   console.info(`query participants succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2348,7 +2368,7 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                | 是   | 端云共享数据的资源标识。 |
-| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt;  | 是   | 回调函数。返回查找共享参与者的结果。 |
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt;  | 是   | 回调函数。返回查询共享参与者的结果。 |
 
 **错误码：**
 
@@ -2365,13 +2385,13 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipants('sharing_resource_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`query participants succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2394,7 +2414,7 @@ queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Arra
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Promise对象，返回查找共享参与者的结果。|
+| Promise&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Promise对象，返回查询共享参与者的结果。|
 
 **错误码：**
 
@@ -2415,7 +2435,7 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
   console.info(`query participants by invitation succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2433,7 +2453,7 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | invitationCode  | string                | 是   | 端云共享的邀请码。 |
-| callback        | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | 是   | 回调函数。返回查找共享参与者的结果。 |
+| callback        | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | 是   | 回调函数。返回查询共享参与者的结果。 |
 
 **错误码：**
 
@@ -2450,13 +2470,13 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`query participants by invitation succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2503,7 +2523,7 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
   shareResource = result.value;
 }).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2540,14 +2560,14 @@ confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let shareResource: string;
-cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, ((err: BusinessError, result) => {
+cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, (err: BusinessError, result) => {
   if (err) {
     console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
-}))
+});
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2592,7 +2612,7 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   console.info(`change confirmation succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2628,12 +2648,12 @@ changeConfirmation(sharingResource: string, state: State, callback: AsyncCallbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, ((err: BusinessError, result) => {
+cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, (err: BusinessError, result) => {
   if (err) {
     console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`change confirmation succeeded, result: ${result}`);
-}))
+});
 ```
 <!--no_check-->
