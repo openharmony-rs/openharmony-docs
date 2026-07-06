@@ -560,7 +560,7 @@ try {
 
 off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
-取消订阅卡片删除事件。使用callback异步回调，返回当前删除卡片的信息。
+取消订阅卡片删除事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
