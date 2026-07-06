@@ -3621,7 +3621,7 @@ isNotificationSlotEnabledByBundles(bundles: Array\<BundleOption\>, type: SlotTyp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。 |
+| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
 | type | [SlotType](./js-apis-notificationManager.md#slottype) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
 
 **返回值：**
