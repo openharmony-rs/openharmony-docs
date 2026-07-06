@@ -2109,7 +2109,7 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 > **说明：**
 >
 > 1.如果Kiosk模式与通知白名单策略同时设置，那么设置Kiosk模式的应用与通知白名单中的应用都可以发送通知。<br>
-> 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)设置了禁用设备通知能力时，再通过本接口设置通知白名单，会抛出错误码9200010。<br>
+> 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知白名单，会抛出错误码9200010。<br>
 > 3.通知白名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知白名单管控。<br>
 > 4.支持跨用户设置，设置后跨用户立即生效。
 
@@ -2284,12 +2284,12 @@ try {
 
 addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)的限制，通过使用该特定分布式业务跨设备传输数据。
+为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据。
 
 当前支持的分布式业务类型有：[协同业务](#servicetype)。
 > **说明：**
 >
-> 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
+> 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
 > 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。
 
 **起始版本：** 26.0.0
@@ -2362,7 +2362,7 @@ try {
 
 removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。
+为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。
 
 **起始版本：** 26.0.0
 
