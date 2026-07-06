@@ -334,82 +334,82 @@ SQL语句中的函数，如下所示：
    ArkTS-Dyn示例：
 
     <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
-   
-   ``` TypeScript
-   let resultSet: relationalStore.ResultSet | undefined = undefined;
-   // 单表查询
-   try {
-     // 使用参数绑定
-     const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
-     const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
-     resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
-     while (resultSet?.goToNextRow()) {
-       let id = resultSet?.getValue(0);
-       let dis = resultSet?.getValue(1);
-     }
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   } finally {
-     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet?.close();
-   }
-
-   try {
-     // 不使用参数绑定
-     const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
-     resultSet = await store!.querySql(QUERY_SQL1);
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   } finally {
-     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet?.close();
-   }
-
-   // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
-   try {
-     // 创建第二张表
-     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
-     await store!.execute(CREATE_SQL);
-     let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
-     resultSet!.close();
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   }
-
-   // 子查询
-   try {
-     // 创建第二张表
-     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
-     await store!.execute(CREATE_SQL);
-     resultSet = await store!.querySql('select * from test where id in (select id from test1);');
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   } finally {
-     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet?.close();
-   }
-   
-   // 聚合查询
-   try {
-     resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   } finally {
-     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet?.close();
-   }
-   
-   // 多表查询
-   try {
-     // union all与union的区别在于union会将数据去重
-     resultSet = await store!.querySql("select id, repr <-> '[1.5, 5.6]' as distance from test union select id, repr <-> '[1.5, 5.6]' as distance from test order by distance limit 5;");
-   } catch (err) {
-     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
-   } finally {
-     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet?.close();
-   }
-   ```
+    
+    ``` TypeScript
+    let resultSet: relationalStore.ResultSet | undefined = undefined;
+    // 单表查询
+    try {
+      // 使用参数绑定
+      const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
+      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
+      resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
+      while (resultSet?.goToNextRow()) {
+        let id = resultSet?.getValue(0);
+        let dis = resultSet?.getValue(1);
+      }
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet?.close();
+    }
+    
+    try {
+      // 不使用参数绑定
+      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
+      resultSet = await store!.querySql(QUERY_SQL1);
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet?.close();
+    }
+    
+    // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
+    try {
+      // 创建第二张表
+      let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+      await store!.execute(CREATE_SQL);
+      let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
+      resultSet!.close();
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    }
+    
+    // 子查询
+    try {
+      // 创建第二张表
+      let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
+      await store!.execute(CREATE_SQL);
+      resultSet = await store!.querySql('select * from test where id in (select id from test1);');
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet?.close();
+    }
+    
+    // 聚合查询
+    try {
+      resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet?.close();
+    }
+    
+    // 多表查询
+    try {
+      // union all与union的区别在于union会将数据去重
+      resultSet = await store!.querySql("select id, repr <-> '[1.5, 5.6]' as distance from test union select id, repr <-> '[1.5, 5.6]' as distance from test order by distance limit 5;");
+    } catch (err) {
+      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet?.close();
+    }
+    ```
 
    ArkTS-Sta示例：
 
