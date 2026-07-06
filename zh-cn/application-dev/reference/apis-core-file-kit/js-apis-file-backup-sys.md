@@ -33,7 +33,7 @@ import { backup } from '@kit.CoreFileKit';
 
 ## FileData
 
-文件数据，包含一个已经打开的文件描述符。FileData在执行备份/恢复时是不可缺少的对象。
+文件的元数据，包含一个已经打开的文件描述符。FileData在执行备份/恢复时是不可缺少的对象。
 
 > **说明：**
 >
@@ -132,7 +132,7 @@ import { backup } from '@kit.CoreFileKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.backup
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
@@ -2103,7 +2103,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 | 13600001 | IPC error.                                                    |
 | 13900001 | Operation not permitted.                                      |
 | 13900020 | Invalid argument.                                             |
-| 13900042 | Unknown error.                                                 |
+| 13900042 | Internal error.                                                |
 
 **示例：**
 
@@ -2237,7 +2237,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): void
 
-添加需要恢复的应用。当前整个流程中，在获取SessionRestore类的实例后只能调用一次；恢复流程结束后需要调用release释放资源。使用callback异步回调。
+添加需要恢复的应用。当前整个流程中，在获取SessionRestore类的实例后只能调用一次。恢复流程结束后需要调用release释放资源。使用callback异步回调。
 
 > **说明：**
 >
