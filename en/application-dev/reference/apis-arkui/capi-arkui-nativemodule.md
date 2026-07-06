@@ -30,8 +30,12 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [image_animator.h](capi-image-animator-h.md) | Defines **ImageAnimator** node types for **NativeNode** APIs.|
 | [layout.h](capi-layout-h.md) | Defines layout-related enumerations and APIs.|
 | [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | Declares the custom node events for **NativeNode** APIs.|
+| [grid.h](capi-grid-h.md) | Defines the enumerations and APIs of the **Grid** component.|
+| [list.h](capi-list-h.md) | Defines the enumerations and APIs of the **List** component.|
 | [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations and APIs of the **Navigation** or **Router** component.|
+| [scroll.h](capi-scroll-h.md) | Defines the enumerations related to the **Scroll** component.|
 | [swiper.h](capi-swiper-h.md) | Defines the enumerations and APIs of the **Swiper** component.|
+| [water_flow.h](capi-water-flow-h.md) | Defines the enumerations and APIs of the **WaterFlow** component.|
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**.|
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | Declares the APIs of **NativeDrawableDescriptor**.|
 | [native_animate.h](capi-native-animate-h.md) | Declares a set of animation APIs of ArkUI on the native side.|
@@ -44,6 +48,14 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_node.h](capi-native-node-h.md) | Declares the APIs of **NativeNode**.|
 | [native_node_napi.h](capi-native-node-napi-h.md) | Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.|
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module.|
+| [text.h](capi-text-h.md) | Defines enumerations and APIs related to **Text**.|
+| [text_common.h](capi-text-common-h.md) | Defines common text enumerations and APIs.|
+| [text_input.h](capi-text-input-h.md) | Defines enumerations and APIs related to **TextInput**.|
+| [text_area.h](capi-text-area-h.md) | Defines enumerations and APIs related to **TextArea**.|
+| [image_span.h](capi-image-span-h.md) | Defines enumerations and APIs related to **ImageSpan**.|
+| [progress.h](capi-progress-h.md) | Defines enumerations and APIs related to **Progress**.|
+| [rich_editor.h](capi-rich-editor-h.md) | Defines enumerations and APIs related to **RichEditor**.|
+| [custom_span.h](capi-custom-span-h.md) | Defines enumerations and APIs related to **CustomSpan**.|
 | [picker.h](capi-picker-h.md) | Defines **Picker** node types for **NativeNode** APIs.|
 | [button.h](capi-button-h.md) | Defines **Button** node types for **NativeNode** APIs.|
 | [checkbox.h](capi-checkbox-h.md) | Defines **Checkbox** node types for **NativeNode** APIs.|

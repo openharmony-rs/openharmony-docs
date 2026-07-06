@@ -285,7 +285,7 @@ Enumerates the intentions corresponding to key events.
 | ARKUI_KEY_INTENSION_PAGE_DOWN = 12 | Next.|
 | ARKUI_KEY_INTENSION_ZOOM_OUT = 13 | Zoom out.|
 | ARKUI_KEY_INTENSION_ZOOM_IN = 14 | Zoom in.|
-| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play.|
+| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play/Pause.|
 | ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101 | Fast-forward.|
 | ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103 | Fast playback.|
 | ARKUI_KEY_INTENTION_MEDIA_NEXT = 104 | Play the next media asset.|

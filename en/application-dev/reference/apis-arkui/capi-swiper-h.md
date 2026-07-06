@@ -10,7 +10,7 @@
 
 Defines the enumerations and APIs of the **Swiper** component.
 
-**File to include:** <arkui/swiper.h>
+**File to include:** <arkui/node_attributes/swiper.h>
 
 **Library:** libace_ndk.z.so
 
