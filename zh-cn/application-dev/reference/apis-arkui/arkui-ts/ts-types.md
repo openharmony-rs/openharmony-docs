@@ -590,9 +590,23 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型       | 必填   | 描述                                       |
-| ----------- | -------- | ---- | ---------------------------------------- |
-| constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+### constructor<sup>9+</sup>
+
+constructor(value: number[])
+
+ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ---- | ---- | ---- | ---- |
+| value | number[] | 是   | 4\*5颜色矩阵的值，[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
 
 
 ## CustomBuilder<sup>8+</sup>
@@ -657,16 +671,20 @@ type CustomBuilderT\<T> = (t: T) => void
 
 外描边选项设置。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 | 名称   | 类型                   | 只读   |   可选                             | 说明                                                         |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
-| width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
-| color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
-| radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| width  | [EdgeOutlineWidths](#edgeoutlinewidths11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。  |
+| color  | [EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                    |
+| radius | [OutlineRadiuses](#outlineradiuses11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。  |
+| style  | [EdgeOutlineStyles](#edgeoutlinestyles11对象说明)&nbsp;\|&nbsp;[OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID             |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
