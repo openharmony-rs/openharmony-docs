@@ -235,6 +235,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
 | type | [RouteType](#routetype枚举说明) | 是 |  页面转场类型。 |
