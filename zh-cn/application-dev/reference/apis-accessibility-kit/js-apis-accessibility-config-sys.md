@@ -1192,10 +1192,10 @@ type OnDisconnectCallback = () => void
 
 ### 属性
 
-| 名称                            | 类型                                       | 只读   | 可选   | 说明                                       |
-| ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| 名称                           | 类型                                       | 只读   | 可选   | 说明                                       |
+| -----------------------------    | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | SINGLE_BLINK                     | number | 否    | 否    | 表示单次闪烁。                                 |
-| CONTINUOUS_BLINK                     | number | 否    | 否    | 表示持续闪烁。                             |
+| CONTINUOUS_BLINK                 | number | 否    | 否    | 表示持续闪烁。                             |
 
 ## BlinkingScenario
 
@@ -1212,7 +1212,7 @@ type OnDisconnectCallback = () => void
 | ALARM                     | number | 否    | 否    | 表示闹钟触发闪烁。                          |
 | NOTIFICATION              | number | 否    | 否    | 表示通知触发闪烁。                          |
 | CALL                      | number | 否    | 否    | 表示来电触发闪烁。                          |
-| TESTING                   | number | 否    | 否    | 表示测试场景以进行测试。                     |
+| TESTING                   | number | 否    | 否    | 表示测试场景触发闪烁。                     |
 
 ## BlinkResultCode
 
@@ -1226,9 +1226,9 @@ type OnDisconnectCallback = () => void
 
 | 名称                            | 类型                                       | 只读   | 可选   | 说明                                       |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| SUCCESS                     | number | 否    | 否    | 表示执行成功。                          |
+| SUCCESS                       | number | 否    | 否    | 表示执行成功。                          |
 | ALREADY_FLASHING              | number | 否    | 否    | 表示当前正在闪烁。                          |
-| DEVICE_IN_USE                      | number | 否    | 否    | 表示设备正在使用中。                          |
-| FLASH_BLINKING_UNSUPPORTED                   | number | 否    | 否    | 表示不支持闪光灯闪烁。                     |
-| SCREEN_BLINKING_UNSUPPORTED                   | number | 否    | 否    | 表示不支持屏幕闪烁。                     |
-| FEATURE_DISABLED                   | number | 否    | 否    | 表示功能开关已关闭。                     |
+| DEVICE_IN_USE                 | number | 否    | 否    | 表示设备正在使用中。                          |
+| FLASH_BLINKING_UNSUPPORTED    | number | 否    | 否    | 表示不支持闪光灯闪烁。                     |
+| SCREEN_BLINKING_UNSUPPORTED   | number | 否    | 否    | 表示不支持屏幕闪烁。                     |
+| FEATURE_DISABLED              | number | 否    | 否    | 表示闪烁功能开关已关闭。                     |
