@@ -1891,11 +1891,11 @@ In a class, if a property is not initialized and is not assigned a value in the 
 
 2. For object type (including function type) **A**, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
 
-​ Mode (i): **prop: A | null = null**
+   - Mode (i): **prop: A | null = null**
 
-​ Mode (ii): **prop?:A**
+   - Mode (ii): **prop?:A**
 
-​ Method (iii): **prop: A | undefined = undefined**
+   - Method (iii): **prop: A | undefined = undefined**
 
    - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
    - In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
