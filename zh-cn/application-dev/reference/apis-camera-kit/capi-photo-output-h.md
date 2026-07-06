@@ -1245,3 +1245,5 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 | 类型 | 说明 | 
 | -- | -- | 
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+
