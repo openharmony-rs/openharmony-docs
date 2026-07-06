@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行open、read、write等操作，实现文件分享。
+该模块提供文件分享能力，支持系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）授权给其他应用，并提供授权状态校验、临时授权和持久化授权管理能力。授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行open、read、write等操作，实现系统应用间文件共享和公共目录文件访问控制。
 
 > **说明：**
 >
@@ -35,13 +35,13 @@ import { fileShare } from '@kit.CoreFileKit';
 |------|-------|------|-----|------------------------------------------------------|
 | bundleName | string | 是   | 否 | 应用程序的包名。                                       |
 | path | string | 是   | 否 | 应用程序捐献的目录。 |
-| permissionMode | number | 是   | 否 | 应用程序捐献目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)中对应枚举值，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。  |
+| permissionMode | number | 是   | 否 | 应用程序捐献目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)中对应的枚举值，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。  |
 
 ## fileShare.grantUriPermission
 
 grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, callback: AsyncCallback&lt;void&gt;): void
 
-对公共目录文件URI进行授权操作，使用callback异步回调。  
+对公共目录文件URI进行临时授权操作，使用callback异步回调。
 
 **需要权限：** ohos.permission.WRITE_MEDIA  
 
@@ -74,6 +74,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
 
   let uri: string =
     'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath('沙箱路径');
@@ -97,7 +98,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 
 grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): Promise&lt;void&gt;
 
-将公共目录文件URI进行授权操作，使用Promise异步回调。  
+对公共目录文件URI进行临时授权操作，使用Promise异步回调。
 
 **需要权限：** ohos.permission.WRITE_MEDIA  
 
@@ -135,6 +136,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
 
   let uri: string =
     'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath('沙箱路径');
@@ -168,9 +170,9 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识。可通过应用的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
-| policies| Array&lt;[PathPolicyInfo](js-apis-fileShare.md#pathpolicyinfo15)> | 是 | 需要查询授权状态的路径策略信息数组，policies数组大小上限为500。|
-| policyType| [PolicyType](js-apis-fileShare.md#policytype15) | 是 | 要查询的授权类型，具体是临时授权或持久化授权。 |
+| tokenID| number | 是 | 目标应用的访问令牌标识。可通过应用的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。无效时抛出错误码13900020。|
+| policies| Array&lt;[PathPolicyInfo](js-apis-fileShare.md#pathpolicyinfo15)> | 是 | 需要查询授权状态的路径策略信息数组，数组元素与返回结果一一对应，policies数组大小上限为500。超出上限时抛出错误码401。|
+| policyType| [PolicyType](js-apis-fileShare.md#policytype15) | 是 | 要查询的授权类型。使用TEMPORARY_TYPE查询临时授权，使用PERSISTENT_TYPE查询持久化授权。 |
 
 **返回值：**
 
@@ -188,7 +190,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. |
 | 801      | Capability not supported. |
-| 13900042 | Out of memory.|
+| 13900011 | Out of memory.|
 
 **示例：**
 
@@ -211,10 +213,10 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
       let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
 
       fileShare.checkPathPermission(tokenID, policies, policyType).then((result: Array<boolean>) => {
-        for (let x of result) {
-          console.info('check permission result is', x);
+        for (let hasPermission of result) {
+          console.info('check permission result is', hasPermission);
         }
-      })
+      });
       console.info('checkPathPermission finish');
     } catch (error) {
       console.info(`checkPathPermission error, Code: ${error.code}, message: ${error.message}`);
@@ -226,7 +228,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 
 grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, appCloneIndex: number): Promise&lt;void&gt;
 
-给应用授予目标文件临时权限，使用Promise异步回调。
+给应用授予目标文件临时权限，使用Promise异步回调。临时权限可在不需要时通过revokePermission撤销。
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -238,9 +240,9 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。|
+| policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)> | 是 | 需要授权URI的策略信息数组，数组元素为PolicyInfo对象，policies数组大小上限为500。|
 | targetBundleName| string | 是 | 被授权应用的应用包名。 |
-| appCloneIndex| number | 是 | 被授权应用的分身索引，取值为0时表示主应用。 |
+| appCloneIndex| number | 是 | 被授权应用的分身索引，取值为0时表示主应用，非0值表示对应分身应用。无效时抛出错误码401。 |
 
 **返回值：**
 
@@ -345,7 +347,7 @@ async function getSharedDirectoryInfo() {
 
 grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
-授予应用捐献目录的临时访问权限。使用Promise异步回调。
+授予应用捐献目录的临时访问权限。使用Promise异步回调。临时访问权限可通过revokeSharedDirectoryPermission撤销。
 
 **起始版本：** 26.0.0
 
@@ -397,7 +399,7 @@ async function grantSharedDirectoryPermission() {
 
 revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
-撤销应用的捐献目录临时访问权限。使用Promise异步回调。
+撤销应用的捐献目录临时访问权限。使用Promise异步回调。该接口用于撤销grantSharedDirectoryPermission授予的临时访问权限。
 
 **起始版本：** 26.0.0
 
@@ -449,7 +451,7 @@ async function revokeSharedDirectoryPermission() {
 
 revokePermission(tokenID: number): Promise&lt;void&gt;
 
-撤销指定应用的持久化文件授权，使用Promise异步回调。
+撤销指定应用的全部持久化文件授权，使用Promise异步回调。如需仅撤销指定URI的持久化授权，请使用revokePermission(tokenID, policies)。
 
 **起始版本：** 26.0.0
 
@@ -465,7 +467,7 @@ revokePermission(tokenID: number): Promise&lt;void&gt;
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
 
 **返回值：**
 
@@ -493,7 +495,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function revokeAllPermissionExample() {
   try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
     fileShare.revokePermission(tokenID).then(() => {
       console.info('revoke persist permission successfully.');
     }).catch((err: BusinessError) => {
@@ -509,7 +511,7 @@ async function revokeAllPermissionExample() {
 
 revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-撤销指定应用对URI的持久化授权，使用Promise异步回调。
+撤销指定应用对URI的持久化授权，使用Promise异步回调。该重载仅撤销policies指定的URI授权；如需撤销指定应用的全部持久化授权，请使用revokePermission(tokenID)。
 
 **起始版本：** 26.0.0
 
@@ -525,8 +527,8 @@ revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
-| policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | 是 | 需要撤销授权的策略信息数组。 |
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
+| policies| Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | 是 | 需要撤销持久化授权的策略信息数组，policies数组大小上限为500。 |
 
 **返回值：**
 
@@ -558,7 +560,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function revokeSpecificPermissionExample() {
   try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
     let policyInfo: fileShare.PolicyInfo = {
       uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
       operationMode: fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE,
@@ -602,7 +604,7 @@ getPersistentPolicy(tokenID: number): Promise&lt;Array&lt;PolicyInfo&gt;&gt;
 
 | 参数名 | 类型| 必填 | 说明|
 | -------- |-------| -------- |----------|
-| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
+| tokenID| number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。无效时抛出错误码13900020。|
 
 **返回值：**
 
@@ -631,7 +633,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function getPersistentPolicyExample() {
   try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
     fileShare.getPersistentPolicy(tokenID).then((result: Array<fileShare.PolicyInfo>) => {
       for (let policy of result) {
         console.info(`get persist policy URI: ${policy.uri}, operationMode: ${policy.operationMode}`);

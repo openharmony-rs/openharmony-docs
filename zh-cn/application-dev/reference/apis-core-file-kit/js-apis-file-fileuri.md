@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供通过路径获取文件统一资源标识符（Uniform Resource Identifier，URI）的能力，后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行open、read、write等操作，实现文件分享。
+该模块提供通过路径获取文件统一资源标识符（Uniform Resource Identifier，URI）的能力，支持URI与应用沙箱路径之间的转换。后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行open、read、write等操作，实现文件分享。
 
 > **说明：**
 >
@@ -40,14 +40,14 @@ import { fileUri } from '@kit.CoreFileKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明|
 | -------- | --------| --- |-------- |----------------|
-| path<sup>10+</sup> | string | 否 | 否 | 将URI转换成对应的沙箱路径。1、URI转路径过程中会将URI中存在的ASCII码进行解码后拼接在原处，非系统接口生成的URI中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果一定可以访问。 |
-| name<sup>10+</sup> | string | 是 | 否 | 通过传入的URI获取到对应的文件名称。如果文件名中存在ASCII码，将会被解码处理后拼接在原处。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+| path<sup>10+</sup> | string | 否 | 否 | 将URI转换成沙箱路径。1、URI转路径过程中会将URI中存在的百分号编码字符进行解码后拼接在原处，非系统接口生成的URI中可能存在不符合编码规范的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果一定可以访问。 |
+| name<sup>10+</sup> | string | 是 | 否 | 通过传入的URI获取文件名称。如果文件名中存在百分号编码字符，将会被解码处理后拼接在原处。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 
 ### constructor<sup>10+</sup>
 
 constructor(uriOrPath: string)
 
-constructor是FileUri的构造函数。
+constructor是FileUri的构造函数。传入路径时，可通过应用上下文获取应用沙箱路径，例如context.filesDir。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -57,7 +57,7 @@ constructor是FileUri的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | 是 | URI或路径。URI需符合以下格式之一，也可传入有效路径：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
+| uriOrPath | string | 是 | URI或路径。URI需符合以下格式之一，也可传入有效路径；格式无效时抛出错误码14300002：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
 
 **错误码：**
 
@@ -73,6 +73,7 @@ constructor是FileUri的构造函数。
 **示例：**
 
   ```ts
+  let pathDir = this.context.filesDir; // 获取应用沙箱路径。
   let path = pathDir + '/test';
   let uri = fileUri.getUriFromPath(path);  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
   let fileUriObject = new fileUri.FileUri(uri);
@@ -96,6 +97,7 @@ toString(): string
 **示例：**
 
   ```ts
+  let pathDir = this.context.filesDir; // 获取应用沙箱路径。
   let path = pathDir + '/test';
   let fileUriObject = new fileUri.FileUri(path);
   console.info(`The URI of FileUri is ${fileUriObject.toString()}`);
@@ -105,7 +107,7 @@ toString(): string
 
 getFullDirectoryUri(): string
 
-获取所在路径URI。URI指向文件则返回所在路径的URI，URI指向目录则不处理直接返回原串；URI指向的文件不存在或属性获取失败则返回空串。
+获取所在路径URI。URI指向文件则返回所在路径的URI，URI指向目录则不处理直接返回原串；如果URI指向的文件不存在，或无法获取文件属性，则返回空串。
 
 如果当前FileUri指向文件，将返回文件所在路径URI。如`xxx/example.txt`，将返回`xxx`。
 
@@ -136,6 +138,7 @@ getFullDirectoryUri(): string
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   try {
+    let pathDir = this.context.filesDir; // 获取应用沙箱路径。
     let path = pathDir + '/test.txt';
     let fileUriObject = new fileUri.FileUri(path);
     let directoryUri = fileUriObject.getFullDirectoryUri();
@@ -149,7 +152,7 @@ getFullDirectoryUri(): string
 
 isRemoteUri(): boolean
 
-判断当前URI是否是远端URI。
+判断当前URI是否是远端URI。远端URI包含远端标识`networkid`。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -186,7 +189,7 @@ isRemoteUri(): boolean
 
 getUriFromPath(path: string): string
 
-通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。
+通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被百分号编码，拼接在URI中。传入路径可通过应用上下文获取，例如context.filesDir。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -196,13 +199,13 @@ getUriFromPath(path: string): string
 
 | 参数名 | 类型   | 必填 | 说明|
 | ------ | ------ | ---- | ------- |
-| path   | string | 是   | 文件的沙箱路径。 |
+| path   | string | 是   | 文件的沙箱路径。路径中的中文及非数字字母的特殊字符会被百分号编码；参数无效时抛出错误码401。 |
 
 **返回值：**
 
   | 类型 | 说明|
   | ------- |------|
-  | string | 通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。 |
+  | string | 通过传入的路径path生成的URI。 |
 
 **错误码：**  
 
@@ -214,6 +217,7 @@ getUriFromPath(path: string): string
 **示例：**
 
   ```ts
+  let pathDir = this.context.filesDir; // 获取应用沙箱路径。
   let filePath = pathDir + '/test';
   let uri = fileUri.getUriFromPath(filePath);
   ```

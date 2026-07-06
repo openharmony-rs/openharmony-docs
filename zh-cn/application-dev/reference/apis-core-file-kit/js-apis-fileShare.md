@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件分享能力，支持系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）按指定访问模式授权给其他应用。授权后，应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行open、read、write等操作，实现应用间文件共享、跨应用文件编辑、文档协作等场景。
+该模块提供文件分享能力，支持系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）按指定访问模式授权给其他应用，并支持持久化授权、权限激活和授权状态查询。授权后，应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行open、read、write等操作，实现应用间文件共享、跨应用文件编辑、文档协作等场景。
 
 > **说明：**
 >
@@ -70,7 +70,7 @@ import { fileShare } from '@kit.CoreFileKit';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | 否   | 否 | 需要授予或激活访问权限的URI，需符合URI格式规范。                                       |
-| operationMode | number | 否   | 否 | 授予或激活权限的URI访问模式，参考[OperationMode](#operationmode11)，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
+| operationMode | number | 否   | 否 | 授予或激活权限的URI访问模式，参考[OperationMode](#operationmode11)。可取READ_MODE、WRITE_MODE、CREATE_MODE、DELETE_MODE、RENAME_MODE；如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。 |
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -81,11 +81,11 @@ import { fileShare } from '@kit.CoreFileKit';
 | 名称 | 类型  | 只读 | 可选 | 说明  |
 |------|-------|-----|-----|--------|
 | path          | string        | 否 | 否   | 需要查询的文件或目录路径。|
-| operationMode | OperationMode | 否 | 否   | 需要查询的文件或目录访问模式，参考[OperationMode](#operationmode11)，如需查询多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE查询读写权限。 |
+| operationMode | OperationMode | 否 | 否   | 需要查询的文件或目录访问模式，参考[OperationMode](#operationmode11)。可取READ_MODE、WRITE_MODE、CREATE_MODE、DELETE_MODE、RENAME_MODE；如需查询多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE查询读写权限。 |
 
 ## PolicyType<sup>15+</sup>
 
-枚举，所查询策略信息对应的授权模式。
+枚举，所查询策略信息对应的授权模式。临时授权用于短期访问场景，持久化授权用于需要长期访问文件或目录的场景。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -98,7 +98,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录URI持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法，用于对所选择的多个文件或目录URI进行持久化授权，使用Promise异步回调。持久化授权用于将已获取的临时权限保存为长期授权。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
@@ -113,7 +113,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |---------| -------- |--------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已获取的临时权限进行持久化授权，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已获取的临时权限进行持久化授权，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
@@ -146,6 +146,10 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
       let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
       let uris = await documentPicker.select(documentSelectOptions);
+      if (uris.length === 0) {
+        console.error('No file selected');
+        return;
+      }
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0],
         // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
@@ -175,7 +179,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录URI取消持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法，用于对所选择的多个文件或目录URI取消持久化授权，使用Promise异步回调。取消持久化授权后，需要重新获取临时权限才能再次持久化授权。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
@@ -190,7 +194,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明  |
 | -------- |----------| -------- |----------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消持久化授权，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消持久化授权的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消持久化授权，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
@@ -223,6 +227,10 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
       let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
       let uris = await documentPicker.select(documentSelectOptions);
+      if (uris.length === 0) {
+        console.error('No file selected');
+        return;
+      }
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0],
         // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
@@ -252,12 +260,12 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法激活多个已经持久化授权过的文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法，用于激活多个已持久化授权的文件或目录，使用Promise异步回调。持久化授权是激活的前提，激活后可通过deactivatePermission取消激活。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
 >
-> 可以组合激活多个权限。只能对已持久化的权限进行激活，否则会报错。
+> 可以组合激活多个权限。需要先调用persistPermission完成持久化授权，才能激活权限，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -267,7 +275,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行激活，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行激活，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
@@ -329,12 +337,12 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法取消激活授权过的多个文件或目录，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法，用于取消激活多个已激活的文件或目录权限，使用Promise异步回调。取消激活后，持久化授权仍保留，可再次通过activatePermission激活。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
 >
-> 可以组合取消激活多个权限。只能对已持久化的权限进行取消激活，否则会报错。
+> 可以组合取消激活多个权限。只能对已激活的权限进行取消激活，需要先调用activatePermission激活权限，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -344,7 +352,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消激活，不支持远端URI。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已激活的权限进行取消激活，不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
@@ -403,7 +411,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;boolean&gt;&gt;
 
-异步方法校验所选择的多个文件或目录URI持久化授权，使用Promise异步回调。
+异步方法，用于校验所选择的多个文件或目录URI的持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -411,7 +419,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 | 参数名 | 类型                                    | 必填 | 说明                      |
 | -------- |---------------------------------------| -------- |-------------------------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。超出上限时抛出错误码401。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)&gt; | 是 | 需要校验持久化授权的URI策略信息数组，policies数组大小上限为500。不支持远端URI。超出上限时抛出错误码401。|
 
 **返回值：**
 
@@ -422,6 +430,8 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 **错误码：**
 
 以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+
+如果参数校验失败，则抛出401错误码。当policies数组大小超过上限500时，也会抛出401错误码。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -440,6 +450,10 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
       let documentSelectOptions = new picker.DocumentSelectOptions();
       let documentPicker = new picker.DocumentViewPicker();
       let uris = await documentPicker.select(documentSelectOptions);
+      if (uris.length === 0) {
+        console.error('No file selected');
+        return;
+      }
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0],
         // 可以组合校验多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE

@@ -8,7 +8,7 @@
 
 ## 概述
 
-文件统一资源标识符（File Uniform Resource Identifier）。<br>支持fileUri与路径之间的转换，以及fileUri的格式校验。该模块主要用于URI格式验证和URI转换处理，URI用于应用间文件分享场景，可将应用沙箱路径按系统规则转换为URI。调用者需保证所有接口入参的有效性，接口按照固定规则转换输出结果，并不检查对应文件或目录是否存在。
+文件统一资源标识符（File Uniform Resource Identifier）。<br>支持fileUri与路径之间的转换，以及fileUri的格式校验。该模块主要用于URI格式验证和URI转换处理，URI用于应用间文件分享场景，可将应用沙箱路径按系统规则转换为URI，避免直接传递沙箱路径。调用者需保证所有接口入参的有效性，接口按照固定规则转换输出结果，并不检查对应文件或目录是否存在。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
