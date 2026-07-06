@@ -138,8 +138,8 @@ import { audio } from '@kit.AudioKit';
     (isSpatializationEnabledForCurrentDevice: boolean) => {
       console.info(`Succeeded in using on function, IsSpatializationEnabledForCurrentDevice:
       ${isSpatializationEnabledForCurrentDevice}.`);
-    // ...
-  });
+      // ...
+    });
 ```
 
 ### 取消订阅当前发声设备空间音频渲染效果的开关状态变化事件
