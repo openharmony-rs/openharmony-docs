@@ -667,13 +667,13 @@ zh-cn/application-dev/graphics/textblock-drawing-arkts.md @hangmengxin @wanyangl
 zh-cn/application-dev/graphics/textblock-drawing-c.md @hangmengxin @wanyanglan @ge-yafang
 zh-cn/application-dev/graphics/theme-font-arkts.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/theme-font-c.md @gmiao522 @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-animation.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-overview.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-resource-environment.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-resource-image.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-resource-material.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-scene.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/graphics3d/arkgraphics3D-shader-resource.md @jason_stark @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-animation.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-overview.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-resource-environment.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-resource-image.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-resource-material.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-scene.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/graphics3d/arkgraphics3D-shader-resource.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/IDL/idl-guidelines.md @c_bing_b @liveery @huipeizi
 zh-cn/application-dev/inputmethod/ime-kit-glossary.md @codexu62 @andeszhang @zhang_yixin13
 zh-cn/application-dev/inputmethod/ime-kit-intro.md @codexu62 @andeszhang @zhang_yixin13
@@ -1926,15 +1926,14 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-hdrCapability.md @xia
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md @hanamaru @chensiyi_CE @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect.md @hanamaru @chensiyi_CE @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-boids-sim-sys.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-types.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-sys.md @jason_stark @zdustc @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-scene.md @jason_stark @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-boids-sim-sys.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-types.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene.md @zzhao0 @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-scene.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Array.md @wang_zhaoyong @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md @wang_zhaoyong @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md @wang_zhaoyong @weng-changcheng @ge-yafang
@@ -2602,7 +2601,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.m
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md @houguobiao @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md @jason_stark @zdustc @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
