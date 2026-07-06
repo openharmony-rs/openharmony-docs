@@ -34,6 +34,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -51,6 +53,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -104,6 +108,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **ArkTS-Dyn起始版本：** 11
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -150,6 +156,8 @@ onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -190,6 +198,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -235,6 +245,8 @@ offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -275,6 +287,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -322,6 +336,8 @@ onWindowSizeChange(callback: Callback<window.Size>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -361,6 +377,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -405,6 +423,8 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -453,6 +473,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -471,10 +493,10 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal. |
-| 1300003  | This window manager service works abnormally. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br/>适用版本：12+ |
+| 1300003  | This window manager service works abnormally.<br/>适用版本：12+ |
 
 **示例：**
 
@@ -553,7 +575,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -576,7 +598,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -689,7 +711,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -712,7 +734,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -826,6 +848,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -923,6 +947,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -996,6 +1022,8 @@ export default class EntryAbility extends UIExtensionAbility {
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 

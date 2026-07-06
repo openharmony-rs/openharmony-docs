@@ -6,7 +6,22 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-将所支持格式的图片文件解码成[Picture](image-overview.md#基础概念)。当前支持的图片文件格式包括JPEG、HEIF。
+将所支持格式的图片文件解码成[Picture](image-overview.md#基础概念)多图对象，以便在应用或系统中进行HDR图片显示、辅助图处理等操作。当前支持的图片文件格式包括JPEG、HEIF。
+
+Picture是包含主图、辅助图和元数据的多图对象。主图包含主要图像信息，辅助图用于存储与主图相关的附加信息（如HDR增益图GAINMAP），元数据用于存储与图片相关的其他信息。Picture适用于HDR图片处理、HEIF专业格式解码等场景。
+
+## Picture与PixelMap的区别
+
+Picture和PixelMap是两种不同的图片解码对象，适用于不同的场景：
+
+| 对象类型 | 适用场景 | 特性 |
+|---|---|---|
+| [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作，可直接传给Image组件显示。 |
+| [Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md) | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
+
+> **选择建议：**
+> - 需要直接显示单张图片或进行裁剪、缩放、旋转等图像处理时，使用PixelMap。
+> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过[getMainPixelmap](../../reference/apis-image-kit/arkts-apis-image-Picture.md#getmainpixelmap13)等方法提取PixelMap后再处理。
 
 ## 开发步骤
 
@@ -14,14 +29,14 @@
 
 1. 全局导入Image模块。
 
-   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPicture.ets) -->   
+   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPicture.ets) -->    
    
    ``` TypeScript
    // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
@@ -55,9 +70,9 @@
      }
      ```
    
-   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
    
-     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
      
      ``` TypeScript
      async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
@@ -76,7 +91,7 @@
      }
      ```
    
-   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
      
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -130,9 +145,21 @@
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
 
-4. 设置解码参数DecodingOptions，解码获取picture多图对象。并对picture进行操作，如获取辅助图等。对于picture和辅助图的具体操作请参考文档[Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md)。
+4. 设置解码参数DecodingOptionsForPicture，解码获取picture多图对象。
 
-   配置解码选项参数进行解码：
+   解码时可指定需要解码的辅助图类型。辅助图本身不作为独立图像直接显示，而是作为辅助数据参与图像处理（如HDR合成、深度信息提取等）。常见的辅助图类型包括：
+
+   | 辅助图类型 | 说明 |
+   |---|---|
+   | GAINMAP | 增益图，用于HDR图像的高动态范围渲染。 |
+   | DEPTH_MAP | 深度图，存储像素距离信息，用于3D重建、背景分离等场景。 |
+   | UNREFOCUS_MAP | 未重对焦原图，用于人像虚化后期处理。 |
+   | LINEAR_MAP | 线性图，用于视觉效果增强与色彩后期处理。 |
+   | FRAGMENT_MAP | 水印裁剪图，用于水印移除、原图恢复等场景。 |
+
+   > **说明：**
+   >
+   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用Picture的[getAuxiliaryPicture](../../reference/apis-image-kit/arkts-apis-image-Picture.md#getauxiliarypicture13)方法尝试获取。其他辅助图类型请参考[AuxiliaryPictureType](../../reference/apis-image-kit/arkts-apis-image-e.md#auxiliarypicturetype13)。
 
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    

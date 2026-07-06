@@ -38,13 +38,15 @@
 | [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组。      |
 | [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | 提供手势识别器句柄类型对象定义。   |
 | [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义。   |
+| [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)               | ArkUI_NativeGestureAPI_3 | 定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口。      |
+| [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md) | ArkUI_ParallelGestureEvent  | 定义并行手势事件，用于并行手势事件的回调函数[setGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_GestureEventActionType](#arkui_gestureeventactiontype) | ArkUI_GestureEventActionType | 定义手势事件类型。 |
-| [ArkUI_GesturePriority](#arkui_gesturepriority) | ArkUI_GesturePriority | 定义手势事件模式。 |
+| [ArkUI_GesturePriority](#arkui_gesturepriority) | ArkUI_GesturePriority | 定义手势优先级。 |
 | [ArkUI_GroupGestureMode](#arkui_groupgesturemode) | ArkUI_GroupGestureMode | 定义手势组事件模式。 |
 | [ArkUI_GestureDirection](#arkui_gesturedirection) | ArkUI_GestureDirection | 定义滑动手势方向。 |
 | [ArkUI_GestureMask](#arkui_gesturemask) | ArkUI_GestureMask | 定义手势屏蔽模式。 |
@@ -66,20 +68,20 @@
 | [ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecognizerHandle recognizer)](#oh_arkui_touchrecognizer_getnodehandle) | - | 获取触摸识别器对应的组件句柄。 |
 | [int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)](#oh_arkui_touchrecognizer_canceltouch) | - | 在手势打断回调中向指定的触摸识别器发送取消触摸的事件 |
 | [ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getactiontype) | - | 返回手势事件类型。 |
-| [const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getrawinputevent) | - | 返回手势输入。 |
+| [const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getrawinputevent) | - | 返回手势的原始输入事件。 |
 | [int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)](#oh_arkui_longpress_getrepeatcount) | - | 返回是否为重复触发事件。 |
 | [float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocity) | - | 滑动手势返回手势主方向速度。 |
 | [float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocityx) | - | 滑动手势返回当前手势的x轴方向速度。 |
 | [float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocityy) | - | 滑动手势返回当前手势的y轴方向速度。 |
 | [float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsetx) | - | 滑动手势返回当前手势事件x轴相对偏移量。 |
 | [float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsety) | - | 滑动手势返回当前手势事件y轴相对偏移量。 |
-| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br> |
+| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 快滑手势返回当前手势事件角度信息，即手指滑动的瞬时方向与水平正方向的夹角。以水平正方向为基准，滑动方向位于水平正方向顺时针侧时，角度范围为0到180度；位于水平正方向逆时针侧时，角度范围为0到-180度。 |
 | [float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getvelocity) | - | 快滑手势场景中所有手指滑动平均速度。 |
 | [float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_rotationgesture_getangle) | - | 旋转手势返回当前手势事件角度信息。 |
 | [float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getscale) | - | 捏合手势返回当前手势事件缩放信息。 |
 | [float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcenterx) | - | 捏合手势中心点相对于当前组件元素左上角x轴坐标。 |
 | [float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcentery) | - | 捏合手势中心点相对于当前组件元素左上角y轴坐标。 |
-| [ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getnode) | - | 获取绑定该手势的ARKUI组件 |
+| [ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getnode) | - | 获取绑定该手势的ArkUI组件。 |
 | [int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInterruptInfo* event,ArkUI_GestureRecognizerHandleArray* responseChain, int32_t* count)](#oh_arkui_getresponserecognizersfrominterruptinfo) | - | 获取手势响应链的信息。 |
 | [int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)](#oh_arkui_setgesturerecognizerenabled) | - | 设置手势识别器的使能状态。 |
 | [int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* recognizer, bool limitFingerCount)](#oh_arkui_setgesturerecognizerlimitfingercount) | - | 设置是否严格检查触摸手指数量的标志。实际触摸手指数量不等于设置的手指数量的时候，该手势识别不成功。 |
@@ -166,7 +168,7 @@ enum ArkUI_GesturePriority
 **描述：**
 
 
-定义手势事件模式。
+定义手势优先级。
 
 **起始版本：** 12
 
@@ -497,7 +499,7 @@ ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecogni
 
 | 参数项                                              | 描述 |
 |--------------------------------------------------| -- |
-| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 触摸识别器的句柄。 |
+| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 触摸识别器的句柄。 |
 
 **返回：**
 
@@ -523,7 +525,7 @@ int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recogni
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 触摸识别器的句柄。 |
+| [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 触摸识别器的句柄。 |
 | [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info | 指向手势打断信息的指针。 |
 
 **返回：**
@@ -634,7 +636,7 @@ float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 当前手势主方向速度，为xy轴方向速度的平方和的算数平方根，单位px/秒。 |
+| float | 当前手势主方向速度，为xy轴方向速度的平方和的算术平方根，单位px/秒。 |
 
 ### OH_ArkUI_PanGesture_GetVelocityX()
 
@@ -748,8 +750,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 **描述：**
 
-
-快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br>
+快滑手势返回当前手势事件角度信息，即手指滑动的瞬时方向与水平正方向的夹角。以水平正方向为基准，滑动方向位于水平正方向顺时针侧时，角度范围为0到180度；位于水平正方向逆时针侧时，角度范围为0到-180度。
 
 **起始版本：** 12
 
@@ -905,7 +906,7 @@ ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 **描述：**
 
 
-获取绑定该手势的ARKUI组件
+获取绑定该手势的ArkUI组件。
 
 **起始版本：** 12
 
@@ -920,7 +921,7 @@ ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 绑定该手势的ARKUI组件。若返回Null，则表示event是无效值。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 绑定该手势的ArkUI组件。若返回Null，则表示event是无效值。 |
 
 ### OH_ArkUI_GetResponseRecognizersFromInterruptInfo()
 
@@ -1932,7 +1933,7 @@ bool OH_ArkUI_TouchRecognizer_IsHostBelongsTo(const ArkUI_TouchRecognizerHandle 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 表示触摸识别器句柄。 |
+| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 表示触摸识别器句柄。 |
 | int32_t uniqueId | 表示组件的唯一ID。 |
 
 **返回：**

@@ -1,9 +1,9 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
@@ -64,10 +64,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     return wantParams;
   }
-};
+}
 ```
 
-## onAcquireFormData<sup>10+<sup>
+## onAcquireFormData<sup>10+</sup>
 
 onAcquireFormData?(formId: string): Record\<string, Object>
 
@@ -107,7 +107,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     return wantParams;
   }
-};
+}
 ```
 ## OnShareFormFn<sup>23+</sup>
 

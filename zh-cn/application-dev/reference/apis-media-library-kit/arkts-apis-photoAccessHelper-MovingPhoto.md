@@ -25,7 +25,7 @@ getUri(): string
 
 获取动态照片的uri。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -94,7 +94,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
 同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -188,7 +188,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 请求指定资源类型的动态照片内容，并写入参数指定的uri中。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -277,7 +277,7 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
 请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

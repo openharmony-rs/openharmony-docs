@@ -1,7 +1,7 @@
 # OH_Drawing_FontParser
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -11,7 +11,7 @@ typedef struct OH_Drawing_FontParser OH_Drawing_FontParser
 
 ## 概述
 
-用来解析系统字体文件。
+用于解析系统字体文件。
 
 **起始版本：** 12
 

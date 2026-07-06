@@ -13,7 +13,11 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
+> 
+> - 本模块接口仅可在Stage模型下使用。
+> 
 > - 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br />
+> 
 > - 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
   "metadata": [<br />
     &nbsp;&nbsp;{<br />
@@ -55,7 +59,7 @@ ArkTS-Sta: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;Sa
 > 
 > - 对于expandSafeArea属性无法生效的场景，若要将组件部署在避让区，需要手动调整组件的坐标。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,9 +84,13 @@ ArkTS-Sta: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;Sa
 
 扩展安全区域的枚举类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
@@ -94,9 +102,13 @@ ArkTS-Sta: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;Sa
 
 扩展安全区域的边缘。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
@@ -113,7 +125,7 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 扩展组件布局时的安全区。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,9 +160,13 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 扩展布局安全区域的枚举类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
@@ -158,19 +174,23 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-扩展安全区域的边缘。
+扩展布局安全区域的边缘。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| TOP    | 0 | 上方区域。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BOTTOM | 1 | 下方区域。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| START<sup>20+</sup>      | 2 | 前部区域。LTR模式时表示左侧区域，RTL模式表示右侧区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| END<sup>20+</sup>        | 3 |尾部区域。LTR模式时表示右侧区域，RTL模式表示左侧区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| VERTICAL<sup>20+</sup>   | 4 |垂直区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| HORIZONTAL<sup>20+</sup> | 5 |水平区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| ALL<sup>20+</sup>        | 6 |全部区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| TOP    | 0 | 上方区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| BOTTOM | 1 | 下方区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| START<sup>20+</sup>      | 2 | 前部区域。LTR模式时表示左侧区域，RTL模式表示右侧区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| END<sup>20+</sup>        | 3 |尾部区域。LTR模式时表示右侧区域，RTL模式表示左侧区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| VERTICAL<sup>20+</sup>   | 4 |垂直区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| HORIZONTAL<sup>20+</sup> | 5 |水平区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| ALL<sup>20+</sup>        | 6 |全部区域。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 
@@ -183,9 +203,6 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 @Entry
 @Component
 struct SafeAreaExample1 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
   build() {
     Row() {
       Column()
@@ -324,9 +341,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -379,9 +395,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时把页面上抬直到露出光标
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -427,9 +442,9 @@ struct KeyboardAvoidExample2 {
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyboardAvoidMode } from '@kit.ArkUI';
+
 @Entry
 @Component
-
 struct KeyboardAvoidExample3 {
   build() {
     Column() {
@@ -626,8 +641,6 @@ struct IgnoreLayoutSafeAreaTest2 {
 该示例展示了容器分别设置了expandSafeArea和ignoreLayoutSafeArea的布局效果和各自对子组件布局效果的影响。两种设置下，容器都可见地进行了延伸，但前者的子组件不受延伸影响，后者的子组件因父容器的延伸改变了位置。
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct IgnoreLayoutSafeAreaTest3 {

@@ -1,7 +1,7 @@
 # @ohos.router (页面路由)(不推荐)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -20,7 +20,7 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息不一致。
+> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息不一致。
 
 ## 导入模块
 
@@ -36,11 +36,11 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +58,7 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -78,6 +78,8 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class innerParams {
@@ -103,10 +105,10 @@ router.pushUrl({
   params: new RouterParams('message', [123, 456, 789])
 })
   .then(() => {
-    console.error(`pushUrl finish`);
+    console.info(`pushUrl finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`pushUrl failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -118,11 +120,11 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-1)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,7 +137,7 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型                              | 必填   | 说明        |
 | ------- | ------------------------------- | ---- | --------- |
 | options | [RouterOptions](#routeroptions) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -155,6 +157,8 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class innerParams {
   data3: number[];
 
@@ -178,7 +182,7 @@ router.pushUrl({
   params: new RouterParams('message', [123, 456, 789])
 }, (err) => {
   if (err) {
-    console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`pushUrl failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('pushUrl success');
@@ -192,11 +196,11 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-2)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushurl-2)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,7 +219,7 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -235,6 +239,8 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class innerParams {
@@ -260,10 +266,10 @@ router.pushUrl({
   params: new RouterParams('message', [123, 456, 789])
 }, router.RouterMode.Standard)
   .then(() => {
-    console.error(`pushUrl finish`);
+    console.info(`pushUrl finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`pushUrl failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -275,11 +281,11 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-3)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-3)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,7 +299,7 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [RouterOptions](#routeroptions) | 是    | 跳转页面描述信息。  |
 | mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -313,6 +319,8 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class innerParams {
   data3: number[];
 
@@ -336,7 +344,7 @@ router.pushUrl({
   params: new RouterParams('message', [123, 456, 789])
 }, router.RouterMode.Standard, (err) => {
   if (err) {
-    console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`pushUrl failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('pushUrl success');
@@ -351,11 +359,11 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -373,7 +381,7 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -392,6 +400,8 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
@@ -407,10 +417,10 @@ router.replaceUrl({
   params: new RouterParams('message')
 })
   .then(() => {
-    console.error(`replaceUrl finish`);
+    console.info(`replaceUrl finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -418,15 +428,15 @@ router.replaceUrl({
 
 replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../ui/arkts-navigation-architecture.md)。
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-1)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-1)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -439,7 +449,7 @@ replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 | 参数名  | 类型                            | 必填 | 说明               |
 | ------- | ------------------------------- | ---- | ------------------ |
 | options | [RouterOptions](#routeroptions) | 是   | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -458,6 +468,8 @@ replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -471,7 +483,7 @@ router.replaceUrl({
   params: new RouterParams('message')
 }, (err) => {
   if (err) {
-    console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceUrl success');
@@ -482,15 +494,15 @@ router.replaceUrl({
 
 replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../ui/arkts-navigation-architecture.md)。
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-2)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replaceurl-2)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -503,14 +515,14 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [RouterOptions](#routeroptions) | 是    | 替换页面描述信息。  |
-| mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
+| mode    | [RouterMode](#routermode9)      | 是    | 替换页面使用的模式。 |
 
 
 **返回值：**
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -529,12 +541,14 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
-  data1:string;
+  data1: string;
 
-  constructor(str:string) {
+  constructor(str: string) {
     this.data1 = str;
   }
 }
@@ -544,10 +558,10 @@ router.replaceUrl({
   params: new RouterParams('message')
 }, router.RouterMode.Standard)
   .then(() => {
-    console.error(`replaceUrl finish`);
+    console.info(`replaceUrl finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -555,15 +569,15 @@ router.replaceUrl({
 
 replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../ui/arkts-navigation-architecture.md)。
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-3)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-3)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -577,7 +591,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [RouterOptions](#routeroptions) | 是    | 替换页面描述信息。  |
 | mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -596,6 +610,8 @@ replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -609,7 +625,7 @@ router.replaceUrl({
   params: new RouterParams('message')
 }, router.RouterMode.Standard, (err) => {
   if (err) {
-    console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceUrl success');
@@ -624,11 +640,13 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#pushnamedroute)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -646,7 +664,7 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -666,6 +684,8 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 **示例：** 
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class innerParams {
@@ -691,14 +711,14 @@ router.pushNamedRoute({
   params: new RouterParams('message', [123, 456, 789])
 })
   .then(() => {
-    console.error(`pushNamedRoute finish`);
+    console.info(`pushNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`pushNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
-详细示例请参考：[UI开发-命名路由](../../ui/arkts-routing.md#命名路由)
+详细示例请参考：[UI开发-命名路由](../../ui/arkts-routing.md#命名路由)。
 
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 
@@ -708,11 +728,13 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-1)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,7 +747,7 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 | 参数名     | 类型                              | 必填   | 说明        |
 | ------- | ------------------------------- | ---- | --------- |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。  |
 
 **错误码：**
 
@@ -745,6 +767,8 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class innerParams {
   data3: number[];
 
@@ -768,7 +792,7 @@ router.pushNamedRoute({
   params: new RouterParams('message', [123, 456, 789])
 }, (err) => {
   if (err) {
-    console.error(`pushNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('pushNamedRoute success');
@@ -782,11 +806,13 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-2)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushnamedroute-2)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -805,7 +831,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -825,6 +851,8 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class innerParams {
@@ -840,8 +868,8 @@ class RouterParams {
   data2: innerParams;
 
   constructor(str: string, tuple: number[]) {
-    this.data1 = str
-    this.data2 = new innerParams(tuple)
+    this.data1 = str;
+    this.data2 = new innerParams(tuple);
   }
 }
 
@@ -850,10 +878,10 @@ router.pushNamedRoute({
   params: new RouterParams('message', [123, 456, 789])
 }, router.RouterMode.Standard)
   .then(() => {
-    console.error(`pushNamedRoute finish`);
+    console.info(`pushNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`pushNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -865,11 +893,13 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-3)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-3)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -883,7 +913,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是    | 跳转页面描述信息。  |
 | mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -903,6 +933,8 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class innerParams {
   data3: number[];
 
@@ -926,7 +958,7 @@ router.pushNamedRoute({
   params: new RouterParams('message', [123, 456, 789])
 }, router.RouterMode.Standard, (err) => {
   if (err) {
-    console.error(`pushNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('pushNamedRoute success');
@@ -941,11 +973,13 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -963,7 +997,7 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -982,6 +1016,8 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
@@ -997,10 +1033,10 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 })
   .then(() => {
-    console.error(`replaceNamedRoute finish`);
+    console.info(`replaceNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -1012,11 +1048,13 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-1)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-1)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1029,7 +1067,7 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 | 参数名  | 类型                            | 必填 | 说明               |
 | ------- | ------------------------------- | ---- | ------------------ |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是   | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -1048,6 +1086,8 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -1061,7 +1101,7 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, (err) => {
   if (err) {
-    console.error(`replaceNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceNamedRoute success');
@@ -1076,11 +1116,13 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-2)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replacenamedroute-2)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1093,13 +1135,13 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是    | 替换页面描述信息。  |
-| mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
+| mode    | [RouterMode](#routermode9)      | 是    | 替换页面使用的模式。 |
 
 **返回值：**
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1118,6 +1160,8 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
@@ -1133,10 +1177,10 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, router.RouterMode.Standard)
   .then(() => {
-    console.error(`replaceNamedRoute finish`);
+    console.info(`replaceNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -1148,11 +1192,13 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-3)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-3)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1166,7 +1212,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是    | 替换页面描述信息。  |
 | mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;      | 是   | 异常响应回调。   |
+| callback | AsyncCallback&lt;void&gt;      | 是   | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -1185,6 +1231,8 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -1198,7 +1246,7 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, router.RouterMode.Standard, (err) => {
   if (err) {
-    console.error(`replaceNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceNamedRoute success');
@@ -1207,17 +1255,17 @@ router.replaceNamedRoute({
 
 ## router.back<sup>(deprecated)</sup>
 
-back(options?: RouterOptions ): void
+back(options?: RouterOptions): void
 
 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。
 
 > **说明：**
 >
-> - 从API version 8开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 8开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back)(options?: router.RouterOptions)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1245,11 +1293,13 @@ back(index: number, params?: Object): void;
 
 > **说明：**
 >
-> - 从API version 12开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back12)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 12开始支持，从API version 18开始废弃，建议使用[back(index: number, params?: Object)](arkts-apis-uicontext-router.md#back12)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1261,7 +1311,7 @@ back(index: number, params?: Object): void;
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | number | 是    | 跳转目标页面的索引值。 从栈底到栈顶，index从1开始递增。 |
+| index | number | 是    | 返回目标页面的索引值。 从栈底到栈顶，index从1开始递增。 |
 | params    | Object      | 否    | 页面返回时携带的参数。 |
 
 **示例：**
@@ -1285,7 +1335,7 @@ clear(): void
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1311,7 +1361,7 @@ getLength(): string
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1340,11 +1390,11 @@ getState(): RouterState
 
 > **说明：**
 >
-> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getState](arkts-apis-uicontext-router.md#getstate)替代。getLength需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getState](arkts-apis-uicontext-router.md#getstate)替代。getState需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1379,7 +1429,9 @@ getStateByIndex(index: number): RouterState | undefined
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1402,6 +1454,8 @@ getStateByIndex(index: number): RouterState | undefined
 **示例：** 
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 let options: router.RouterState | undefined = router.getStateByIndex(1);
 if (options != undefined) {
   console.info('index = ' + options.index);
@@ -1422,7 +1476,9 @@ getStateByUrl(url: string): Array&lt;RouterState&gt;
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1440,11 +1496,13 @@ getStateByUrl(url: string): Array&lt;RouterState&gt;
 
 | 类型                          | 说明      |
 | --------------------------- | ------- |
-| Array<[RouterState](#routerstate)> | 页面状态信息。 |
+| Array<[RouterState](#routerstate)> | 页面状态信息数组。 |
 
 **示例：** 
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 let options: Array<router.RouterState> = router.getStateByUrl('pages/index');
 for (let i: number = 0; i < options.length; i++) {
   console.info('index = ' + options[i].index);
@@ -1462,10 +1520,10 @@ for (let i: number = 0; i < options.length; i++) {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| index | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 否   | 表示当前页面在页面栈中的索引。从栈底到栈顶，index从1开始递增。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| name  | string | 否   | 否   | 表示当前页面的名称，即对应文件名。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| path  | string | 否   | 否   | 表示当前页面的路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                                       |
+| index | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 否   | 表示当前页面在页面栈中的索引。从栈底到栈顶，index从1开始递增。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| name  | string | 否   | 否   | 表示当前页面的名称，即对应文件名。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| path  | string | 否   | 否   | 表示当前页面的路径。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                                       |
 
 ## router.showAlertBeforeBackPage<sup>(deprecated)</sup>
 
@@ -1479,7 +1537,7 @@ showAlertBeforeBackPage(options: EnableAlertOptions): void
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1512,14 +1570,14 @@ try {
     message: 'Message Info'
   });
 } catch (err) {
-  console.error(`showAlertBeforeBackPage failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  console.error(`showAlertBeforeBackPage failed. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 }
 ```
 ## EnableAlertOptions
 
 页面返回询问对话框选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 以下各项对应的系统能力均为SystemCapability.ArkUI.ArkUI.Full。
 
@@ -1543,7 +1601,7 @@ hideAlertBeforeBackPage(): void
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1571,7 +1629,7 @@ getParams(): Object
 >
 > getParams只获取当前页面的参数，并不会清除页面关联的参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1599,8 +1657,8 @@ this.getUIContext().getRouter().getParams();
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| url    | string | 否   | 否   | 表示目标页面的url，可以用以下两种格式：<br/>-&nbsp;页面绝对路径，由配置文件中pages列表提供，例如：<br/>&nbsp;&nbsp;-&nbsp;pages/index/index<br/>&nbsp;&nbsp;-&nbsp;pages/detail/detail<br/>-&nbsp;特殊值，如果url的值是"/"，则跳转到首页，首页默认为页面跳转配置项src数组的第一个数据项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据，切换到其他页面时，当前接收的数据失效。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。<br/>**说明：** <br/>params参数只能传递可序列化的参数，不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| url    | string | 否   | 否   | 表示目标页面的url，可以用以下两种格式：<br/>-&nbsp;页面绝对路径，由配置文件中pages列表提供，例如：<br/>&nbsp;&nbsp;-&nbsp;pages/index/index<br/>&nbsp;&nbsp;-&nbsp;pages/detail/detail<br/>-&nbsp;特殊值，如果url的值是"/"，则跳转到首页，首页默认为页面跳转配置项src数组的第一个数据项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据，切换到其他页面时，当前接收的数据失效。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。<br/>**说明：** <br/>params参数只能传递可序列化的参数，不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 
   > **说明：**
@@ -1610,7 +1668,7 @@ this.getUIContext().getRouter().getParams();
 
 路由跳转模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1629,16 +1687,17 @@ this.getUIContext().getRouter().getParams();
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据，切换到其他页面时，当前接收的数据失效。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数只能传递可序列化的参数，不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 完整示例
 
 ### 基于JS扩展的类Web开发范式
 
-以下代码仅适用于javascript文件，不适用于ArkTS文件
+以下代码仅适用于javascript文件，不适用于ArkTS文件。
 
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
@@ -1654,13 +1713,14 @@ export default {
   }
 }
 ```
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
 // 在detail页面中
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```
@@ -1671,7 +1731,6 @@ export default {
 > 
 > 直接使用router可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
-<!--deprecated_code_no_check-->
 ```ts
 // 通过router.pushUrl跳转至目标页携带params参数
 import { router } from '@kit.ArkUI';
@@ -1707,10 +1766,10 @@ struct Index {
     // 建议使用this.getUIContext().getRouter().pushUrl()
     this.getUIContext().getRouter().pushUrl(options)
       .then(() => {
-        console.error(`pushUrl finish`);
+        console.info(`pushUrl finish`);
       })
-      .catch((err: ESObject) => {
-        console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+      .catch((err: BusinessError) => {
+        console.error(`pushUrl failed. Code: ${err.code}, message: ${err.message}`);
       })
     }
 
@@ -1761,7 +1820,7 @@ class RouterParams {
 @Entry
 @Component
 struct Second {
-  private content: string = "这是第二页";
+  private content: string = '这是第二页';
   // 建议使用this.getUIContext().getRouter().getParams()
   @State text: string = (this.getUIContext().getRouter().getParams() as RouterParams).text;
   @State data: object = (this.getUIContext().getRouter().getParams() as RouterParams).data;
@@ -1797,7 +1856,7 @@ push(options: RouterOptions): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1815,6 +1874,8 @@ push(options: RouterOptions): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class innerParams {
   data3: number[];
 
@@ -1847,7 +1908,7 @@ replace(options: RouterOptions): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -1864,6 +1925,8 @@ replace(options: RouterOptions): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -1903,6 +1966,8 @@ enableAlertBeforeBackPage(options: EnableAlertOptions): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 router.enableAlertBeforeBackPage({
   message: 'Message Info'
 });
@@ -1927,6 +1992,8 @@ disableAlertBeforeBackPage(): void
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
+
 router.disableAlertBeforeBackPage();
 ```
 
@@ -1946,6 +2013,8 @@ pages
    ├─ routerPage.hml
    └─ routerPage.js
 ```
+
+<!--code_no_check-->
 ```css
 /* index.css */
 .page {
@@ -2002,7 +2071,9 @@ pages
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--index.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -2012,9 +2083,12 @@ pages
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to routerPage" onclick="replaceUrlToRouterPage"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
-import router from '@ohos.router';
+import { router } from '@kit.ArkUI';
 
 export default {
     data: {
@@ -2024,7 +2098,7 @@ export default {
     },
     replaceToRouterPage: function() {
         router.replace({
-            uri: 'pages/routerPages/routerPage',
+            url: 'pages/routerPages/routerPage',
             params: {
                 statusText: 'Opened by router.replace.'
             }
@@ -2032,7 +2106,7 @@ export default {
     },
     replaceUrlToRouterPage: function() {
         router.replaceUrl({
-            uri: 'pages/routerPages/routerPage',
+            url: 'pages/routerPages/routerPage',
             params: {
                 statusText: 'Opened by router.replaceUrl.'
             }
@@ -2040,6 +2114,8 @@ export default {
     }
 }
 ```
+
+<!--code_no_check-->
 ```css
 /* routerPage.css */
 .page {
@@ -2096,7 +2172,9 @@ export default {
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--routerPage.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -2106,9 +2184,12 @@ export default {
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to index" onclick="replaceUrlToIndex"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
-import router from '@ohos.router';
+import { router } from '@kit.ArkUI';
 
 export default {
     data: {
@@ -2118,7 +2199,7 @@ export default {
     },
     replaceToIndex: function() {
         router.replace({
-            uri: 'pages/index/index',
+            url: 'pages/index/index',
             params: {
                 statusText: 'Returned by router.replace.'
             }
@@ -2126,7 +2207,7 @@ export default {
     },
     replaceUrlToIndex: function() {
         router.replaceUrl({
-            uri: 'pages/index/index',
+            url: 'pages/index/index',
             params: {
                 statusText: 'Returned by router.replaceUrl.'
             }

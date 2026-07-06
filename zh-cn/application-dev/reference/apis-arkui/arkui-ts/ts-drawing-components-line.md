@@ -20,8 +20,27 @@
 
 无
 
-
 ## 接口
+
+### Line
+
+new Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Line
 
 Line(options?: LineOptions)
 
@@ -50,6 +69,8 @@ Line(options?: LineOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,6 +351,8 @@ type ShapePoint = [Length, Length]
 
 通过startPoint、endPoint、fillOpacity、stroke、strokeDashArray、strokeDashOffset属性分别绘制直线的起始点、结束点、透明度、直线颜色、边框间隙、绘制起点。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -380,11 +403,64 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image_0000001219982725](figures/zh-cn_image_0000001219982725.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Line, Color, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct LineExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([0, 0])
+        .endPoint([50, 100])
+        .stroke(Color.Black)
+        .backgroundColor('#F5F5F5')
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([50, 50])
+        .endPoint([150, 150])
+        .strokeWidth(5)
+        .stroke(Color.Orange)
+        .strokeOpacity(0.5)
+        .backgroundColor('#F5F5F5')
+      Line()
+        .width(200)
+        .height(150)
+        .startPoint([0, 0])
+        .endPoint([100, 100])
+        .stroke(Color.Black)
+        .strokeWidth(3)
+        .strokeDashArray([10, 3])
+        .strokeDashOffset(5)
+        .backgroundColor('#F5F5F5')
+      Line()
+        .width(50)
+        .height(50)
+        .startPoint([0, 0])
+        .endPoint([100, 100])
+        .stroke(Color.Black)
+        .strokeWidth(3)
+        .strokeDashArray([10, 3])
+        .backgroundColor('#F5F5F5')
+    }
+  }
+}
+```
+
+![line1](figures/line1.png)
 
 ### 示例2（边框端点绘制）
 
 通过strokeLineCap属性绘制直线的边框端点样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -429,11 +505,57 @@ struct LineExample1 {
 }
 ```
 
-![zh-cn_image1_0000001219982725](figures/zh-cn_image1_0000001219982725.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Row, Line, Color, LineCapStyle, RowOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct LineExample1 {
+  build() {
+    Row({ space: 10 } as RowOptions) {
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Butt)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Round)
+        .backgroundColor('#F5F5F5')
+      Line()
+        .width(100)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([50, 200])
+        .stroke(Color.Black)
+        .strokeWidth(20)
+        .strokeLineCap(LineCapStyle.Square)
+        .backgroundColor('#F5F5F5')
+    }
+  }
+}
+```
+
+![line](figures/line.png)
 
 ### 示例3（边框间隙绘制）
 
 通过strokeDashArray属性绘制直线的边框间隙。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -490,11 +612,68 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image2_0000001219982725](figures/zh-cn_image2_0000001219982725.PNG)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Line, Color, ShapePoint } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct LineExample {
+  build() {
+    Column() {
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 30])
+        .endPoint([300, 30])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50])
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10])
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10, 20])
+      Line()
+        .width(300)
+        .height(30)
+        .startPoint([50, 20])
+        .endPoint([300, 20])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .strokeDashArray([50, 10, 20, 30])
+    }
+  }
+}
+```
+
+![line2](figures/line2.PNG)
 
 ### 示例4（宽和高使用不同参数类型绘制直线）
 
 width、height属性分别使用不同的长度类型绘制直线。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -532,17 +711,92 @@ struct LineTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Line, Color, LineOptions, ColumnOptions, ShapePoint, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct LineTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Line({ width: '200', height: '200' } as LineOptions)
+        .startPoint([0, 0])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      Line({ width: 200, height: 200 } as LineOptions)
+        .startPoint([0, 50])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+      Line({ width: $r('app.string.LineWidth'), height: $r('app.string.LineHeight') } as LineOptions)
+        .startPoint([0, 100])
+        .endPoint([150, 150])
+        .stroke(Color.Black)
+        .strokeWidth(10)
+        .backgroundColor('#F5F5F5')
+        .margin(10)
+    }.width('100%')
+  }
+}
+```
+
 ![lineDemo4](figures/lineDemo4.png)
 
 ### 示例5（使用attributeModifier动态设置Line组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Line组件的startPoint、endPoint、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
     // 一个起始点为（10, 10），终点为（120, 10）的直线，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.startPoint([10, 10])
+    instance.endPoint([120, 10])
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct LineModifierDemo {
+  @State modifier: MyLineModifier = new MyLineModifier()
+
+  build() {
+    Column() {
+      Line()
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Line, LineAttribute, AttributeModifier, LineCapStyle, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyLineModifier implements AttributeModifier<LineAttribute> {
+  applyNormalAttribute(instance: LineAttribute): void {
     instance.startPoint([10, 10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")

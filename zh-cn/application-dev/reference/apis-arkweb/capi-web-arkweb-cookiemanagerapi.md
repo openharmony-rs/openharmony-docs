@@ -12,7 +12,9 @@ typedef struct {...} ArkWeb_CookieManagerAPI
 
 ## 概述
 
-定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
+ArkWeb_CookieManagerAPI是Cookie管理相关Native API结构体。该结构体提供了Cookie的读取、设置、清除和同步等操作能力。
+
+CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
 **起始版本：** 12
 
@@ -35,9 +37,9 @@ typedef struct {...} ArkWeb_CookieManagerAPI
 |-------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | [ArkWeb_ErrorCode (\*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)](#fetchcookiesync)       | 获取指定URL对应的cookie值。 |
 | [ArkWeb_ErrorCode (\*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)](#configcookiesync) | 设置指定URL的cookie值。   |
-| [bool (\*existCookies)(bool incognito)](#existcookies)                                                                                    | 检查Cookie是否存在。      |
+| [bool (\*existCookies)(bool incognito)](#existcookies)                                                                                    | 检查cookie是否存在。      |
 | [void (\*clearAllCookiesSync)(bool incognito)](#clearallcookiessync)                                                                      | 清除所有cookies。       |
-| [void (*clearSessionCookiesSync)()](#clearsessioncookiessync)                                                                             | 清除所有会话Cookies。                   |
+| [void (*clearSessionCookiesSync)()](#clearsessioncookiessync)                                                                             | 清除所有会话cookies。                   |
 
 ## 成员函数说明
 
@@ -64,12 +66,12 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 
 | 类型                                                               | 说明                                                                                                                         |
 |------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookie成功。<br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 设置的URL无效。<br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) cookieValue参数无效。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookie成功。<br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) cookieValue参数无效。 |
 
 ### configCookieSync()
 
 ```c
-ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)
+ArkWeb_ErrorCode (*configCookieSync)(const char* url, const char* cookieValue, bool incognito, bool includeHttpOnly)
 ```
 
 **描述：**
@@ -82,14 +84,14 @@ ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bo
 | -- | -- |
 | const char* url | 指定cookie所属的URL，建议填写完整的URL。 |
 | const char* cookieValue | 要设置的cookie的值。 |
-|  bool incognito | true表示在隐私模式下设置对应URL的Cookie，false表示以非隐私模式设置对应URL的cookie。 |
+|  bool incognito | true表示在隐私模式下设置对应URL的cookie，false表示以非隐私模式设置对应URL的cookie。 |
 |  bool includeHttpOnly | 如果为true，则标记为HTTP-Only的cookie也可以被覆盖。 |
 
 **返回：**
 
 | 类型                                                               | 说明                                                                                                                         |
 |------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 设置cookie成功。<br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 设置的URL无效。<br>[ARKWEB_INVALID_COOKIE_VALUE](capi-arkweb-error-code-h.md#arkweb_errorcode) cookieValue参数无效。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 设置cookie成功。<br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br>[ARKWEB_INVALID_COOKIE_VALUE](capi-arkweb-error-code-h.md#arkweb_errorcode) cookieValue参数无效。 |
 
 ### existCookies()
 
@@ -99,7 +101,7 @@ bool (*existCookies)(bool incognito)
 
 **描述：**
 
-检查Cookie是否存在。
+检查cookie是否存在。
 
 **参数：**
 
@@ -138,4 +140,4 @@ void (*clearSessionCookiesSync)()
 
 **描述：**
 
-清除所有会话Cookies。
+清除所有会话cookies。

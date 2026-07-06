@@ -14,7 +14,7 @@
 >
 > - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
 > - NavDestination组件必须配合Navigation使用，作为Navigation目的页面的根节点，单独使用只能作为普通容器组件，不具备路由相关属性能力。
 >
@@ -38,7 +38,7 @@ NavDestination()
 
 创建[Navigation](ts-basic-components-navigation.md)子页面的根容器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +62,7 @@ ArkTS-Sta: title(value: string | CustomBuilder | NavDestinationCommonTitle | Nav
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +75,7 @@ ArkTS-Sta: title(value: string | CustomBuilder | NavDestinationCommonTitle | Nav
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
 | value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavDestinationCommonTitle](#navdestinationcommontitle)&nbsp;\|&nbsp;[NavDestinationCustomTitle](#navdestinationcustomtitle)&nbsp;\|&nbsp;[Resource<sup>14+</sup>](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavDestinationCommonTitle](#navdestinationcommontitle)&nbsp;\|&nbsp;[NavDestinationCustomTitle](#navdestinationcustomtitle)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 页面标题。<br/>取值为undefined时，无标题。 |
-| options<sup>12+</sup> | ArkTS-Dyn: [NavigationTitleOptions](ts-basic-components-navigation.md#navigationtitleoptions11)<br/>ArkTS-Sta: NavigationTitleOptions \| undefined  | 否   | 标题栏选项。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。 |
+| options<sup>12+</sup> | ArkTS-Dyn: [NavigationTitleOptions](ts-basic-components-navigation.md#navigationtitleoptions11)<br/>ArkTS-Sta: NavigationTitleOptions \| undefined  | 否   | 标题栏选项。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### hideTitleBar
 
@@ -85,7 +85,7 @@ ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 设置是否隐藏标题栏。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +107,9 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 
 设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +134,7 @@ ArkTS-Sta: fullScreenOverlay(fullScreenOverlay: boolean | undefined)
 
 当参数设置为true时，在Navigation分栏模式下，当前页面会覆盖整个Navigation容器，包括NavBar和内容区。该配置作用于当前NavDestination的所有实例；当路由栈中已有页面以全屏覆盖模式显示时，其后入栈的[DIALOG](#navdestinationmode枚举说明11)页面与未设置fullScreenOverlay为false的[STANDARD](#navdestinationmode枚举说明11)页面也会继承为全屏覆盖显示。未通过该接口设置时，NavDestination默认是普通显示模式，遵循Navigation分栏显示规则。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,7 +164,9 @@ ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomB
 >
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,7 +189,9 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated?: boolean | undefined
 
 设置是否隐藏工具栏。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,7 +218,9 @@ ArkTS-Sta: mode(value: NavDestinationMode | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,7 +246,9 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 >
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,7 +276,9 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 >
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,7 +292,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | 是   | 标题栏返回键图标。 |
+| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### backButtonIcon<sup>23+</sup>
@@ -292,6 +304,8 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, a
 > 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 设置标题栏返回键图标和无障碍播报内容。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,7 +319,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, a
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined  | 是   | 标题栏返回键图标。<br/>取值为undefined时，显示返回图标。 |
+| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| undefined  | 是   | 标题栏返回键图标。<br/>取值为undefined时，显示返回图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) \| undefined | 否 | 返回键无障碍播报内容。<br/>取值为undefined时，按默认值处理。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### menus<sup>12+</sup>
@@ -320,7 +334,9 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 >
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,7 +364,9 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 >
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,6 +392,8 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined, option
 > 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus12)相比，新增菜单选项。使用Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,7 +427,9 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 >
 > - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](ts-basic-components-navigation.md#barstyle12枚举说明)模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,7 +442,7 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | types  | ArkTS-Dyn: Array <[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> <br/>ArkTS-Sta: Array&lt;LayoutSafeAreaType&gt; \| undefined | 否   | 配置扩展安全区域的类型。<br />取值为undefined时，按照默认值处理。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
-| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)><br/>ArkTS-Sta: Array&lt;LayoutSafeAreaEdge&gt; \| undefined  | 否   | 配置扩展安全区域的方向。<br />取值为undefined时，按照默认值处理。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
+| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)><br/>ArkTS-Sta: Array&lt;LayoutSafeAreaEdge&gt; \| undefined  | 否   | 配置扩展安全区域的方向。<br />取值为undefined时，按照默认值处理。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
 
 ### systemBarStyle<sup>12+</sup>
 
@@ -438,7 +460,9 @@ ArkTS-Sta: systemBarStyle(style: SystemBarStyle | undefined)
 >
 > - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,7 +484,9 @@ ArkTS-Sta: systemTransition(type: NavigationSystemTransitionType | undefined)
 
 设置NavDestination系统转场动画，支持分别设置系统标题栏动画和内容动画。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -480,11 +506,13 @@ ArkTS-Dyn: recoverable(recoverable: Optional&lt;boolean&gt;)
 
 ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
-配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了[可恢复属性](ts-basic-components-navigation.md#recoverable14)。
+配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了可恢复属性[recoverable](ts-basic-components-navigation.md#recoverable14)。
 
 > **说明：**
 >
 > 该接口需要配合Navigation的[recoverable](./ts-basic-components-navigation.md#recoverable14)接口使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,7 +524,7 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | NavDestination是否可恢复。<br/>取值为undefined时，按默认值处理。<br/>默认值：false<br/>true：路由栈可恢复。<br/>false：路由栈不可恢复。 |
+| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | NavDestination是否可恢复，默认为不可恢复。<br/>默认值：false<br/>true：NavDestination可恢复。<br/>false：NavDestination不可恢复。 |
 
 ### bindToScrollable<sup>14+</sup>
 
@@ -514,7 +542,9 @@ ArkTS-Sta: bindToScrollable(scrollers: Array&lt;Scroller&gt; | undefined)
 >
 > - 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -544,7 +574,9 @@ ArkTS-Sta: bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt; | u
 >
 > - 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -566,7 +598,9 @@ ArkTS-Sta: hideBackButton(hide: boolean | undefined)
 
 设置是否隐藏标题栏中的返回键。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -594,7 +628,9 @@ ArkTS-Sta: customTransition(delegate: NavDestinationTransitionDelegate | undefin
 >
 > - 该属性与[systemTransition](#systemtransition14)同时设置时，后设置的属性生效。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -625,7 +661,9 @@ ArkTS-Sta: preferredOrientation(orientation: Orientation | undefined)
 >
 > - 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的[setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1)接口。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -657,7 +695,9 @@ ArkTS-Sta: enableStatusBar(enabled: boolean | undefined, animated?: boolean | un
 >
 > - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,7 +730,9 @@ ArkTS-Sta: enableNavigationIndicator(enabled: boolean | undefined)
 >
 > 设置系统导航条的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -710,6 +752,8 @@ attributeModifier(modifier: AttributeModifier\<NavDestinationAttribute> | Attrib
 
 动态设置NavDestination组件的属性方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -720,13 +764,15 @@ attributeModifier(modifier: AttributeModifier\<NavDestinationAttribute> | Attrib
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<NavDestinationAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<NavDestinationAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>NavDestinationAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## NavDestinationMode枚举说明<sup>11+</sup>
 
 NavDestination类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -743,18 +789,20 @@ NavDestination类型。
 
 系统转场动画类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 值   | 说明 |
 | ----  | ---   | ----- |
-| DEFAULT | 0 | 默认系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
-| NONE| 1 | 无系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
-| TITLE | 2 | 标题栏系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
-| CONTENT | 3 | 内容区系统转场动画。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
-| FADE<sup>15+</sup> | 4 | 渐变类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| EXPLODE<sup>15+</sup> | 5 | 中心缩放类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| DEFAULT | 0 | 默认系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| NONE| 1 | 无系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| TITLE | 2 | 标题栏系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| CONTENT | 3 | 内容区系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| FADE<sup>15+</sup> | 4 | 渐变类型的系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| EXPLODE<sup>15+</sup> | 5 | 中心缩放类型的系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
 >
@@ -764,7 +812,7 @@ NavDestination类型。
 > 1. 设置NavigationSystemTransitionType为TITLE时，系统转场只有标题栏动画。
 > 2. 设置NavigationSystemTransitionType为CONTENT时，系统转场只有内容区动画。
 >
-> 设置NONE或者TITLE时没有系统转场动画，设置CONTENT和DEFAULT时默认系统转场动画。
+> 设置NONE时没有系统转场动画，设置TITLE时只有标题栏系统转场动画，设置CONTENT和DEFAULT时默认系统转场动画。
 
 ## 事件
 
@@ -778,7 +826,9 @@ ArkTS-Sta: onShown(callback: Callback&lt;VisibilityChangeReason&gt; | undefined)
 
 当该NavDestination页面显示时触发此回调。从API version 21开始，支持通过VisibilityChangeReason说明onShown触发的原因。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -800,7 +850,9 @@ ArkTS-Sta: onHidden(callback: Callback&lt;VisibilityChangeReason&gt; | undefined
 
 当该NavDestination页面隐藏时触发此回调。从API version 21开始，支持通过VisibilityChangeReason说明onHidden触发的原因。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -826,7 +878,9 @@ ArkTS-Sta: onWillAppear(callback: VoidCallback | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -852,7 +906,9 @@ ArkTS-Sta: onWillShow(callback: VoidCallback | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -878,7 +934,9 @@ ArkTS-Sta: onWillHide(callback: VoidCallback | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -904,7 +962,9 @@ ArkTS-Sta: onWillDisappear(callback: VoidCallback | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -928,7 +988,9 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 返回值为true时，表示重写返回键逻辑，返回值为false时，表示回退到上一个页面。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -944,7 +1006,7 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 ### onReady<sup>11+</sup>
 
-ArkTS-Dyn: onReady(callback: Callback\<NavDestinationContext\>)
+ArkTS-Dyn: onReady(callback: import('../api/@ohos.base').Callback\<NavDestinationContext\>)
 
 ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
@@ -954,7 +1016,9 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -966,7 +1030,59 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   | ArkTS-Dyn: Callback\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
+| callback   | ArkTS-Dyn:  import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
+
+### onSaveState
+
+ArkTS-Dyn: onSaveState(callback: Optional&lt;SaveStateCallback&gt;)
+
+ArkTS-Sta: onSaveState(callback: SaveStateCallback | undefined)
+
+设置自定义页面状态保存回调。在NavDestination页面的[onHidden](#onhidden10)生命周期后触发该回调，用于保存当前页面的自定义状态，以便页面后续重建时恢复。
+
+该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面创建时传入的初始参数由Navigation单独保留，开发者只需在该回调中返回自定义页面状态。返回的状态对象必须可序列化；页面重建时，保存的状态会通过[onRestoreState](#onrestorestate)回调传入。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)&lt;[SaveStateCallback](#savestatecallback)&gt;<br/>ArkTS-Sta: [SaveStateCallback](#savestatecallback) \| undefined | 是 | 页面状态保存回调。 |
+
+### onRestoreState
+
+ArkTS-Dyn: onRestoreState(callback: Optional&lt;RestoreStateCallback&gt;)
+
+ArkTS-Sta: onRestoreState(callback: RestoreStateCallback | undefined)
+
+设置自定义页面状态恢复回调。当NavDestination页面被重建时触发该回调，用于恢复页面自定义状态。
+
+该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面重建时，系统会将[onSaveState](#onsavestate)返回并保存的状态作为入参传入该回调；如果没有保存自定义状态，则入参为null。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)&lt;[RestoreStateCallback](#restorestatecallback)&gt;<br/>ArkTS-Sta: [RestoreStateCallback](#restorestatecallback) \| undefined | 是 | 页面状态恢复回调。 |
 
 ### onResult<sup>15+</sup>
 
@@ -980,7 +1096,9 @@ NavDestination返回时触发该回调。
 >
 > 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1006,7 +1124,9 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 >
 > 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1032,7 +1152,9 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 >
 > 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1060,7 +1182,9 @@ ArkTS-Sta: onNewParam(callback: Callback\<Object | null | undefined\> | undefine
 >
 > - 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1073,11 +1197,55 @@ ArkTS-Sta: onNewParam(callback: Callback\<Object | null | undefined\> | undefine
 | ------ | ------ | ---- | ---------------- |
 |callback |ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Object \| null \| undefined\> \| undefined | 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。<br/>取值为undefined时，不使用回调函数。|
 
+## SaveStateCallback
+
+type SaveStateCallback = () =&gt; Record&lt;string, Object&gt; | null
+
+页面状态保存回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Record&lt;string, Object&gt; \| null | 自定义页面状态。状态对象必须可序列化，否则不会被保存；返回null表示不保存页面状态。 |
+
+## RestoreStateCallback
+
+type RestoreStateCallback = (savedState: Record&lt;string, Object&gt; | null) =&gt; void
+
+页面状态恢复回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| savedState | Record&lt;string, Object&gt; \| null | 是 | [onSaveState](#onsavestate)保存的自定义页面状态。没有保存自定义状态时为null。 |
+
 ## NavDestinationCommonTitle
 
 NavDestination通用标题。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1094,7 +1262,7 @@ NavDestination通用标题。
 
 NavDestination自定义标题。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1105,20 +1273,22 @@ NavDestination自定义标题。
 | 名称      | 类型                                       | 只读 | 可选 | 说明       |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否 | 设置标题栏内容。 |
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否 | 设置标题栏高度。<br/>取值范围：[0, +∞)。 |
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否 | 设置标题栏高度。<br/>取值范围：[0, +∞)<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
 
 ## NavDestinationContext<sup>11+</sup>
 
 NavDestination上下文信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读 | 可选 |  说明     |
 | ---- | ------ | ----- | ----- | ------ |
-| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 否    | 否 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否    | 否 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| navDestinationId<sup>12+</sup> | string | 否    | 是 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 否    | 否 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否    | 否 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| navDestinationId<sup>12+</sup> | string | 否    | 是 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getConfigInRouteMap<sup>12+</sup>
 
@@ -1126,7 +1296,9 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 获取当前NavDestination的路由配置信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1145,7 +1317,9 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 路由配置信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1163,7 +1337,9 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 嵌套可滚动容器组件信息
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1180,7 +1356,9 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 NavDestination激活态或者非激活态变化的原因。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1201,7 +1379,9 @@ NavDestination激活态或者非激活态变化的原因。
 
 NavDestination可见性发生变化的原因。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1219,7 +1399,9 @@ NavDestination可见性发生变化的原因。
 
 NavDestination自定义动画接口。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1237,11 +1419,15 @@ NavDestination自定义动画接口。
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
-type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+ArkTS-Dyn: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+
+ArkTS-Sta: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => (Array\<NavDestinationTransition> | undefined)
 
 NavDestination自定义转场动画的代理函数。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1264,15 +1450,17 @@ NavDestination自定义转场动画的代理函数。
 
 ## Orientation<sup>19+</sup>
 
-ArkTS-Dyn: type Orientation = Orientation
+ArkTS-Dyn: type Orientation = import('../api/@ohos.window').default.Orientation
 
 ArkTS-Sta: type Orientation = window.Orientation
 
 Orientation实例对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -1280,13 +1468,15 @@ Orientation实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.window').default[Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
 
 ## 示例
 
 ### 示例1（标题栏工具栏与可滚动类组件联动）
 
 以下示例主要演示NavDestination绑定可滚动容器组件来实现滚动内容时触发标题栏和工具栏显示隐藏的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -1319,7 +1509,7 @@ struct MyPageOne {
                   .borderRadius(10)
                   .backgroundColor(Color.Gray)
               }
-            }, (item: string) => item);
+            }, (item: number) => item.toString());
           }.width('100%').height('80%').scrollBar(BarState.Off)
           .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
 
@@ -1334,7 +1524,7 @@ struct MyPageOne {
                 .borderRadius(10)
                 .backgroundColor(Color.Pink)
             }
-          }, (item: string) => item);
+          }, (item: number) => item.toString());
         }
       }
       .width('100%')
@@ -1380,7 +1570,7 @@ struct MyPageTwo {
               .borderRadius(10)
               .backgroundColor(Color.Gray)
           }
-        }, (item: string) => item);
+        }, (item: number) => item.toString());
       }.width('100%')
     }
     .title('PageTwo', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
@@ -1427,11 +1617,191 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  Scroller,
+  Scroll,
+  List,
+  ForEach,
+  ListItem,
+  TextAlign,
+  BarState,
+  NestedScrollMode,
+  ScrollDirection,
+  EdgeEffect,
+  BarStyle,
+  ToolbarItem,
+  NavigationToolbarOptions,
+  FlexAlign,
+  $r,
+  State
+} from '@kit.ArkUI';
+
+@Component
+struct MyPageOne {
+  private listScroller: Scroller = new Scroller();
+  private scrollScroller: Scroller = new Scroller();
+  private arr: int[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 30; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    NavDestination() {
+      Scroll(this.scrollScroller) {
+        Column(undefined) {
+          List({ space: 0, initialIndex: 0, scroller: this.listScroller }) {
+            ForEach(this.arr, (item: int, index: int) => {
+              ListItem() {
+                Text('' + item)
+                  .height(100)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .width('90%')
+                  .margin({ left: '5%' })
+                  .borderRadius(10)
+                  .backgroundColor(Color.Gray)
+              }
+            });
+          }.width('100%').height('80%').scrollBar(BarState.Off)
+          .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
+
+          ForEach(this.arr, (item: int, index: int) => {
+            ListItem() {
+              Text('' + item)
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .width('90%')
+                .margin({ top: '5%' })
+                .borderRadius(10)
+                .backgroundColor(Color.Pink)
+            }
+          });
+        }
+      }
+      .width('100%')
+      .scrollBar(BarState.Off)
+      .scrollable(ScrollDirection.Vertical)
+      .edgeEffect(EdgeEffect.Spring)
+    }
+    .title('PageOne', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
+    .toolbarConfiguration([
+      {
+        // $r('sys.symbol.phone_badge_star')需要替换为开发者所需的资源文件
+        value: 'item1',
+        symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
+      } as ToolbarItem
+    ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK } as NavigationToolbarOptions)
+    // 绑定有父子关系的可滚动容器组件
+    .bindToNestedScrollable([{ parent: this.scrollScroller, child: this.listScroller }])
+  }
+}
+
+@Component
+struct MyPageTwo {
+  private listScroller: Scroller = new Scroller();
+  private arr: int[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 30; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    NavDestination() {
+      List({ scroller: this.listScroller }) {
+        ForEach(this.arr, (item: int, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .width('90%')
+              .margin({ left: '5%' })
+              .borderRadius(10)
+              .backgroundColor(Color.Gray)
+          }
+        });
+      }.width('100%')
+    }
+    .title('PageTwo', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
+    .toolbarConfiguration([
+      {
+        // $r('sys.symbol.phone_badge_star')需要替换为开发者所需的资源文件
+        value: 'item1',
+        symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
+      } as ToolbarItem
+    ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK } as NavigationToolbarOptions)
+    // 绑定可滚动容器组件
+    .bindToScrollable([this.listScroller])
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyPageMap(name: string): void {
+    if (name === 'myPageOne') {
+      MyPageOne();
+    } else {
+      MyPageTwo();
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+      Column(undefined) {
+        Button('push PageOne').onClick(() => {
+          this.stack.pushPath(new NavPathInfo('myPageOne', undefined));
+        })
+        Button('push PageTwo').onClick(() => {
+          this.stack.pushPath(new NavPathInfo('myPageTwo', undefined));
+        })
+      }.height('40%').justifyContent(FlexAlign.SpaceAround)
+    }.width('100%')
+    .height('100%')
+    .title({ main: 'MainTitle', sub: 'subTitle' })
+    .navDestination(this.MyPageMap)
+  }
+}
+```
+
 ![navdestination_bind_scrollable](figures/navdestination_bind_scrollable.gif)
 
 ### 示例2（设置NavDestination自定义转场）
 
 以下示例主要演示NavDestination设置自定义转场动画属性[customTransition](#customtransition15)的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -1466,7 +1836,6 @@ declare type voidFunc = () => void;
 @Component
 struct NavDest {
   @State name: string = 'NA';
-  @State destWidth: string = '100%';
   stack: NavPathStack = new NavPathStack();
   @State translateY: string = '0';
 
@@ -1568,6 +1937,194 @@ struct NavDest {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  Scroller,
+  Scroll,
+  List,
+  ForEach,
+  ListItem,
+  TextAlign,
+  BarState,
+  NestedScrollMode,
+  ScrollDirection,
+  EdgeEffect,
+  BarStyle,
+  ToolbarItem,
+  NavigationToolbarOptions,
+  FlexAlign,
+  $r,
+  NavigationTitleMode,
+  FontWeight,
+  NavigationOperation,
+  NavDestinationTransition,
+  Curve,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavDestinationCustomTransition {
+  stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  pageMap(name: string) {
+    if (name) {
+      NavDest();
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath(new NavPathInfo("dest0", undefined));
+  }
+
+  build() {
+    Navigation(this.stack) {
+      // empty
+    }
+    .navDestination(this.pageMap)
+    .hideNavBar(true)
+    .title('Main Page')
+    .titleMode(NavigationTitleMode.Mini)
+  }
+}
+
+declare type voidFunc = () => void;
+
+@Component
+struct NavDest {
+  @State name: string = 'NA';
+  @State destWidth: string = '100%';
+  stack: NavPathStack = new NavPathStack();
+  @State translateY: string = '0';
+
+  @Builder
+  titleBuilder(): void {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Button('push next page', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack.pushPath(new NavPathInfo(this.name == 'PageOne' ? "PageTwo" : "PageOne", undefined));
+          })
+      }
+      .size({ width: '100%', height: '100%' })
+    }
+    .title(this.titleBuilder)
+    .translate({ y: this.translateY })
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+      this.stack = context.pathStack;
+    })
+    .backgroundColor(this.name == 'PageOne' ? '#F1F3F5' : '#ff11dee5')
+    .customTransition(
+      (op: NavigationOperation, isEnter: boolean): Array<NavDestinationTransition> | undefined => {
+        console.info('[NavDestinationTransition]', 'reached delegate in frontend, op: ' + op + ', isEnter: ' + isEnter);
+
+        let transitionOneEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionOne, empty now!');
+        }
+        let transitionOneFinishEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionOneFinish, empty now!');
+        }
+        let transitionOneDuration: int = 500;
+        if (op === NavigationOperation.PUSH) {
+          if (isEnter) {
+            // ENTER_PUSH
+            this.translateY = '100%';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, push & isEnter');
+              this.translateY = '0';
+            }
+          } else {
+            // EXIT_PUSH
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
+              this.translateY = '0';
+            }
+            transitionOneDuration = 450;
+          }
+        } else if (op === NavigationOperation.POP) {
+          if (isEnter) {
+            // ENTER_POP
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
+              this.translateY = '0';
+            }
+          } else {
+            // EXIT_POP
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
+              this.translateY = '100%';
+            }
+          }
+        }
+
+        let transitionOne: NavDestinationTransition = {
+          duration: transitionOneDuration,
+          delay: 0,
+          curve: Curve.Friction,
+          event: transitionOneEvent,
+          onTransitionEnd: transitionOneFinishEvent
+        };
+
+        let transitionTwoEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionTwo, empty now!');
+        }
+        let transitionTwo: NavDestinationTransition = {
+          duration: 1000,
+          delay: 0,
+          curve: Curve.EaseInOut,
+          event: transitionTwoEvent,
+          onTransitionEnd: () => {
+            console.info('[NavDestinationTransition]', 'reached Two\'s finish');
+          }
+        };
+
+        return [
+          transitionOne,
+          transitionTwo,
+        ];
+      })
+  }
+}
+```
+
 ![navdestination_custom_transition](figures/navdestination_custom_transition.gif)
 
 ### 示例3（设置指定的NavDestination系统转场）
@@ -1815,6 +2372,7 @@ struct HomeBody {
   }
 }
 ```
+
 ![navdestination_fade](figures/navdestination_fade_transition.gif)
 
 ![navdestination_explode](figures/navdestination_explode_transition.gif)
@@ -1911,6 +2469,7 @@ struct ExamplePage {
   }
 }
 ```
+
 ![navdestination_orientation](figures/navdestination_orientation.gif)
 
 ### 示例5（NavDestination的onActive与onInActive生命周期）

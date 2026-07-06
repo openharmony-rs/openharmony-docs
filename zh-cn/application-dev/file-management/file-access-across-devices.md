@@ -29,8 +29,8 @@
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
-
+   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)--> 
+   
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
@@ -51,17 +51,19 @@
    ```ts
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-
+   ```
+   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/DistributedFileSample-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
      // 以动态弹窗的方式向用户申请授权
      atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
        console.info(`request permission result: ${JSON.stringify(result)}`);
-     }).catch((err: BusinessError): void => {
+     }).catch((err: Error): void => {
        console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
      })
-   } catch (error) {
-     let err: BusinessError = error as BusinessError;
+   } catch (err) {
      console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
    }
    ```
@@ -80,12 +82,12 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let pathDir: string = context.distributedFilesDir;
    // 获取分布式目录的文件路径
    let filePath: string = pathDir + '/test.txt';
-
+   
    try {
      // 在分布式目录下创建文件
      let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
@@ -106,29 +108,29 @@
    import { fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-
+   ```
+   <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/DistributedFileSample-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let pathDir: string = context.distributedFilesDir;
    // 获取分布式目录的文件路径
    let filePath: string = pathDir + '/test.txt';
-
+   
+   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    try {
-     // 在分布式目录下创建文件
-     let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      console.info('Succeeded in creating.');
-     // 向文件中写入内容
      fileIo.writeSync(file.fd, 'content');
-     // 关闭文件
+   } catch (err) {
+     console.error(`Failed to openSync / writeSync. Code: ${err.code}, message: ${err.message}`);
+   } finally {
      fileIo.closeSync(file.fd);
-   } catch (error) {
-     let err: BusinessError = error as BusinessError;
-     console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
    设备B主动向设备A发起建链，建链成功后设备B可在分布式目录下读取测试文件。
    > **说明：**
    >
-   > 这里通过分布式设备管理的接口获取设备networkId，详见[设备管理接口](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md)。
+   > 这里通过分布式设备管理的接口获取设备networkId，详见[@ohos.distributedDeviceManager (设备管理)](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md)。
 
    ArkTS-Dyn示例：
 
@@ -139,53 +141,57 @@
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
-
+   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)--> 
+   
    ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
-   // ···
-   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-   if (deviceInfoList && deviceInfoList.length > 0) {
-     console.info('Succeeded in getting available device list');
-     let networkId = deviceInfoList[0].networkId;
-     // 定义访问公共文件目录的回调
-     let listeners : fileIo.DfsListeners = {
-       onStatus: (networkId: string, status: number): void => {
-         console.info('Failed to access public directory');
-       }
-     };
-     // 开始跨设备文件访问
-     fileIo.connectDfs(networkId, listeners).then(() => {
-       console.info('Succeeded in connecting dfs');
-       let pathDir: string = context.distributedFilesDir;
-       // 获取分布式目录的文件路径
-       let filePath: string = pathDir + '/test.txt';
-       try {
-         // 打开分布式目录下的文件
-         let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-         // 定义接收读取数据的缓存
-         let arrayBuffer = new ArrayBuffer(4096);
-         // 读取文件的内容，返回值是读取到的字节个数
-         class Option {
-           public offset: number = 0;
-           public length: number = 0;
-         };
-         let option = new Option();
-         option.length = arrayBuffer.byteLength;
-         let num = fileIo.readSync(file.fd, arrayBuffer, option);
-         // 打印读取到的文件数据
-         let buf = buffer.from(arrayBuffer, 0, num);
-         console.info('read result: ' + buf.toString());
-         fileIo.closeSync(file);
-       } catch (error) {
+   // ...
+   try {
+     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+     let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+     if (deviceInfoList && deviceInfoList.length > 0) {
+       console.info(`Success to get available device list`);
+       let networkId = deviceInfoList[0].networkId;
+       // 定义访问公共文件目录的回调
+       let listeners : fileIo.DfsListeners = {
+         onStatus: (networkId: string, status: number): void => {
+           console.info('Failed to access public directory');
+         }
+       };
+       // 开始跨设备文件访问
+       fileIo.connectDfs(networkId, listeners).then(() => {
+         console.info('Success to connect dfs');
+         let pathDir: string = context.distributedFilesDir;
+         // 获取分布式目录的文件路径
+         let filePath: string = pathDir + '/test.txt';
+         try {
+           // 打开分布式目录下的文件
+           let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+           // 定义接收读取数据的缓存
+           let arrayBuffer = new ArrayBuffer(4096);
+           // 读取文件的内容，返回值是读取到的字节个数
+           class Option {
+             public offset: number = 0;
+             public length: number = 0;
+           };
+           let option = new Option();
+           option.length = arrayBuffer.byteLength;
+           let num = fileIo.readSync(file.fd, arrayBuffer, option);
+           // 打印读取到的文件数据
+           let buf = buffer.from(arrayBuffer, 0, num);
+           console.info('read result: ' + buf.toString());
+           fileIo.closeSync(file);
+         } catch (error) {
+           let err: BusinessError = error as BusinessError;
+           console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
+         }
+       }).catch((error: BusinessError) => {
          let err: BusinessError = error as BusinessError;
-         console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
-       }
-     }).catch((error: BusinessError) => {
-       let err: BusinessError = error as BusinessError;
-       console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
-     });
+         console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
+       });
+     }
+   } catch (error) {
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
 
@@ -197,14 +203,17 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-
+   ```
+   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/DistributedFileSample-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
-   console.info(`connectDfs start`);
+   // ...
    try {
      let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
      let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
      if (deviceInfoList && deviceInfoList.length > 0) {
-       console.info('Succeeded in getting available device list');
+       console.info(`Success to get available device list`);
        let networkId = deviceInfoList[0].networkId!;
        // 定义访问公共文件目录的回调
        let listeners : fileIo.DfsListeners = {
@@ -214,35 +223,30 @@
        };
        // 开始跨设备文件访问
        fileIo.connectDfs(networkId!, listeners).then(() => {
-         console.info('Succeeded in connecting dfs');
+         console.info('Success to connect dfs');
          let pathDir: string = context.distributedFilesDir;
          // 获取分布式目录的文件路径
          let filePath: string = pathDir + '/test.txt';
+         let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
          try {
-           // 打开分布式目录下的文件
-           let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-           // 定义接收读取数据的缓存
            let arrayBuffer = new ArrayBuffer(4096);
-           // 读取文件的内容，返回值是读取到的字节个数
            let num: long = fileIo.readSync(file.fd, arrayBuffer, {
              offset: 0,
              length: arrayBuffer.byteLength
            });
-           // 打印读取到的文件数据
            let buf = buffer.from(arrayBuffer);
            console.info('read result: ' + buf.toString());
-           fileIo.closeSync(file);
-         } catch (error) {
-           let err: BusinessError = error as BusinessError;
+         } catch (err) {
            console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
+         } finally {
+           fileIo.closeSync(file);
          }
-       }).catch((error: BusinessError): void => {
-         let err: BusinessError = error as BusinessError;
+       }).catch((err: Error): void => {
          console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
        });
      }
-   } catch (error) {
-     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+   } catch (err) {
+     console.error(`Catch err. Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -255,22 +259,26 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { fileIo } from '@kit.CoreFileKit';
    ```
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
-
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->  
+   
    ``` TypeScript
    // 获取设备A的networkId
-   // ···
-   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-   if (deviceInfoList && deviceInfoList.length > 0) {
-     console.info('Succeeded in getting available device list');
-     let networkId = deviceInfoList[0].networkId;
-     // 关闭跨设备文件访问
-     fileIo.disconnectDfs(networkId).then(() => {
-       console.info('Success to disconnect dfs');
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
-     })
+   // ...
+   try {
+     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+     let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+     if (deviceInfoList && deviceInfoList.length > 0) {
+       console.info(`Success to get available device list`);
+       let networkId = deviceInfoList[0].networkId;
+       // 关闭跨设备文件访问
+       fileIo.disconnectDfs(networkId).then(() => {
+         console.info(`Success to disconnect dfs`);
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+       })
+     }
+   } catch (error) {
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
 
@@ -280,23 +288,20 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { fileIo } from '@kit.CoreFileKit';
-
-   // 获取设备A的networkId
-   console.info(`disconnectDfs start`);
-   try {
-     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-     let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-     if (deviceInfoList && deviceInfoList.length > 0) {
-       console.info('Succeeded in getting available device list');
-       let networkId = deviceInfoList[0].networkId!;
-       // 关闭跨设备文件访问
-       fileIo.disconnectDfs(networkId!).then(() => {
-         console.info('Succeeded in disconnecting dfs');
-       }).catch((err: BusinessError): void => {
-         console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
-       })
-     }
-   } catch (error) {
-     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+   ```
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/DistributedFileSample-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
+   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+   if (deviceInfoList && deviceInfoList.length > 0) {
+     console.info(`Success to get available device list`);
+     let networkId = deviceInfoList[0].networkId!;
+     // 关闭跨设备文件访问
+     fileIo.disconnectDfs(networkId!).then(() => {
+       console.info(`Success to disconnect dfs`);
+     }).catch((err: Error): void => {
+       console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+     })
    }
    ```

@@ -22,6 +22,7 @@
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## inputDevice.getDeviceList<sup>9+</sup>
@@ -42,7 +43,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
 | 参数名     | 类型                                     | 必填 | 说明                                     |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: AsyncCallback&lt;Array&lt;int&gt;&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为所有输入设备的ID列表（ID是输入设备的唯一标识）；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: AsyncCallback&lt;Array&lt;int&gt;&gt; | 是   | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表（ID是输入设备的唯一标识）；否则为错误对象。 |
 
 **错误码**：
 
@@ -50,7 +51,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -79,7 +80,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -186,7 +187,7 @@ struct Index {
             // 获取输入设备列表
             inputDevice.getDeviceList().then((ids: Array<int>) => {
               console.info(`Succeeded in getting device id list: ${JSON.stringify(ids)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -217,7 +218,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为输入设备信息（包括输入设备ID、名称、支持的输入能力等）；否则为错误对象。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功，err为undefined，data为输入设备信息（包括输入设备ID、名称、支持的输入能力等）；否则为错误对象。 |
 
 **错误码**：
 
@@ -225,7 +226,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -326,7 +327,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -379,7 +380,7 @@ struct Index {
             // 获取输入设备信息
             inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
               console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -423,7 +424,7 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -431,6 +432,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -481,7 +483,7 @@ struct Index {
 
 ## inputDevice.on('change')<sup>9+</sup>
 
-on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
+on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
 注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
@@ -498,7 +500,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 | 参数名       | 类型                                       | 必填   | 说明          |
 | -------- | ---------------------------------------- | ---- | ----------- |
 | type     | string                                   | 是    | 输入设备的事件类型，固定值为'change'。  |
-| listener | Callback&lt;[DeviceListener](#devicelistener9)&gt; | 是    | 回调函数，异步上报输入设备热插拔事件。 |
+| listener | Callback&lt;[DeviceListener](#devicelistener9)&gt; | 是    | 回调函数，返回输入设备热插拔事件。 |
 
 **错误码**：
 
@@ -506,13 +508,14 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 
@@ -520,7 +523,7 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
-  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  @State message: string = 'Click to obtain the device list and monitor device hot-plug events';
   keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   build() {
@@ -540,14 +543,14 @@ struct Index {
                       this.keyboards.set(data[i], type);
                     }
                   }).catch((error: BusinessError) => {
-                    console.error(`Failed to connect KeyBoard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                    console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                   });
                 }
               }).catch((error: BusinessError) => {
                 console.error(`Failed to get Device List, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
               // 2.监听设备热插拔
-              inputDevice.on("change", (data) => {
+              inputDevice.on('change', (data) => {
                 // 打印日志
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 // 获取键盘类型
@@ -560,7 +563,7 @@ struct Index {
                     this.keyboards.set(data.deviceId, type);
                   }
                 }).catch((error: BusinessError) => {
-                  console.error(`Failed to get DeviceId, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 });
                 if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
@@ -569,11 +572,11 @@ struct Index {
                   this.keyboards.delete(data.deviceId);
                 }
               });
-              this.message = "Device monitoring enabled successfully"
+              this.message = 'Device monitoring enabled successfully'
             } catch (error) {
               // 打印错误日志
               hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
-                JSON.stringify(error, ["code", "message"]));
+                JSON.stringify(error, ['code', 'message']));
               this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
                 ["code", "message"])}`
             }
@@ -610,7 +613,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -642,7 +645,7 @@ struct Index {
 
 ## inputDevice.off('change')<sup>9+</sup>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
 取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
@@ -667,12 +670,13 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -687,23 +691,23 @@ struct Index {
 
           try {
             // 监听设备热插拔事件
-            inputDevice.on("change", callback);
+            inputDevice.on('change', callback);
           } catch (error) {
-            console.error(`Failed to listen device event , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to listen to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // 取消指定的监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change", callback);
+            inputDevice.off('change', callback);
           } catch (error) {
-            console.error(`Failed to cancel listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to cancel listening to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // 取消所有监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change");
+            inputDevice.off('change');
           } catch (error) {
             console.error(`Failed to cancel all listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -739,7 +743,7 @@ offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -800,7 +804,7 @@ getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 | 参数名     | 类型                                     | 必填 | 说明                                     |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为所有输入设备的ID列表；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表；否则为错误对象。 |
 
 **示例**：
 
@@ -889,7 +893,7 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 | 参数名     | 类型                                                     | 必填 | 说明                             |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
 | deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                     |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为输入设备信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功，err为undefined，data为输入设备信息；否则为错误对象。 |
 
 **示例**：
 
@@ -973,7 +977,7 @@ ArkTS-Dyn: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: A
 
 ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
 
-查询指定输入设备是否支持指定按键，使用Callback异步回调。
+查询指定输入设备是否支持指定按键，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -987,7 +991,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 | keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | 是   | 需要查询的键值，最多支持5个按键查询。                |
-| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数。当查询成功时，err为undefined，data为按键支持查询结果（数组元素与keys参数一一对应，true表示支持，false表示不支持）；否则为错误对象。                           |
+| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数。当查询成功，err为undefined，data为按键支持查询结果（数组元素与keys参数一一对应，true表示支持，false表示不支持）；否则为错误对象。                           |
 
 **错误码**：
 
@@ -995,7 +999,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1016,6 +1020,10 @@ struct Index {
           try {
             // 查询按键支持情况
             inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
+              if (error) {
+                console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in querying support keys, supportResult: ${JSON.stringify(supportResult)}.`);
             });
           } catch (error) {
@@ -1082,7 +1090,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Ar
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象，返回查询结果。true 表示支持，false表示不支持。 |
+| Promise&lt;Array&lt;boolean&gt;&gt; | Promise对象，返回查询结果。true表示支持，false表示不支持。 |
 
 **错误码**：
 
@@ -1090,7 +1098,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Ar
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1144,7 +1152,7 @@ struct Index {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
             inputDevice.supportKeys(1, keys).then((supportResult: Array<Boolean>) => {
               console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to query support Keys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1189,7 +1197,7 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1197,6 +1205,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1207,10 +1216,10 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
           try {
-            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
-            console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`)
+            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055]);
+            console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
           } catch (error) {
-            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
+            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1252,7 +1261,7 @@ ArkTS-Dyn: getKeyboardType(deviceId: number, callback: AsyncCallback&lt;Keyboard
 
 ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardType&gt;): void
 
-获取输入设备的键盘类型，如全键盘、小键盘等，使用callback异步回调。输入设备的键盘类型以接口返回结果为准。
+获取输入设备的键盘类型，如全键盘、小键盘等。输入设备的键盘类型以接口返回结果为准。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1265,7 +1274,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 | 参数名     | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | 是   | 回调函数。当查询成功时，err为undefined，data为输入设备的键盘类型；否则为错误对象。|
+| callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。|
 
 **错误码**：
 
@@ -1273,7 +1282,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1368,7 +1377,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 
 | 类型                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
-| Promise&lt;[KeyboardType](#keyboardtype9)&gt; | Promise对象，异步返回输入设备的键盘类型。 |
+| Promise&lt;[KeyboardType](#keyboardtype9)&gt; | Promise对象，返回输入设备的键盘类型。 |
 
 **错误码**：
 
@@ -1376,7 +1385,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1473,7 +1482,7 @@ ArkTS-Sta: getKeyboardTypeSync(deviceId: int): KeyboardType
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1481,6 +1490,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1491,10 +1501,10 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
-            console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`)
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1);
+            console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
           } catch (error) {
-            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
+            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1559,7 +1569,7 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 
 **示例**：
@@ -1611,7 +1621,7 @@ struct Index {
             // 查询功能键是否使能
             inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
               console.info(`Succeeded in getting capslock state: ${JSON.stringify(state)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get capslock state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1648,7 +1658,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1658,7 +1668,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
 
@@ -1711,7 +1721,7 @@ struct Index {
             // 设置功能键使能状态
             inputDevice.setFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK, true).then(() => {
               console.info(`Succeeded in setting capslock state.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set capslock state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1741,7 +1751,7 @@ ArkTS-Sta: getIntervalSinceLastInput(): Promise&lt;long&gt;
 
 | 类型                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位：μs。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。|
 
 **示例**：
 
@@ -1792,7 +1802,7 @@ struct Index {
             // 获取距上次输入的时间间隔
             inputDevice.getIntervalSinceLastInput().then((timeInterval: long) => {
               console.info(`Succeeded in getting interval since last input: ${JSON.stringify(timeInterval)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get interval since last input, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -1842,8 +1852,8 @@ struct Index {
 | version<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 输入设备的版本信息。                                         |
 | phys<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的物理地址。                                         |
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
-| isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。                                      |
-| isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。                                       |
+| isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。                                      |
+| isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。                                       |
 
 ## AxisType<sup>9+</sup>
 

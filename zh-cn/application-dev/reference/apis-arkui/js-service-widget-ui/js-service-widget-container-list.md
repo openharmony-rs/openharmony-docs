@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
@@ -124,4 +124,4 @@
 ```
 **4*4卡片**
 
-![zh-cn_image_0000001231370803](figures/zh-cn_image_0000001231370803.png)
+![zh-cn_image_0000001231370803](figures/list-example.png)

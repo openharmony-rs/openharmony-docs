@@ -12,17 +12,18 @@
 
 ## 接口说明
 
-[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate)是查询模板是否支持接口，目前仅支持进度条模板。
+[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate)是查询是否支持对应的通知模板，目前仅支持进度条模板。
 
 | **接口名** | **描述** |
 | -------- | -------- |
-| isSupportTemplate(templateName: string): Promise\<boolean\> | 查询模板是否存在。 |
+| isSupportTemplate(templateName: string): Promise\<boolean\> | 查询是否支持对应的通知模板。|
 
 
 ## 开发步骤
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
@@ -34,8 +35,21 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 查询系统是否支持进度条模板，查询结果为支持downloadTemplate模板类通知。
 
+   ArkTS-Dyn示例：
    <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
@@ -49,11 +63,26 @@
    });
    ```
    
+   ArkTS-Sta示例：
+   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+   
+   ``` TypeScript
+   notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
+     let isSupportTemplate: boolean = data; // isSupportTemplate的值为true表示支持downloadTemplate模板类通知，false表示不支持
+     hilog.info(DOMAIN_NUMBER, TAG,
+       `Succeeded in supporting download template notification. data is ${isSupportTemplate}`);
+   }).catch((err) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+   
    > **说明：**
    > 查询系统支持进度条模板后，再进行后续的步骤操作。
    
 3. 构造进度条模板对象，并发布通知。
 
+   ArkTS-Dyn示例：
    <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
@@ -77,6 +106,39 @@
    // 发布通知
    notificationManager.publish(notificationRequest, (err: BusinessError) => {
      if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+   
+   ``` TypeScript
+   let templateData : Record<string, RecordData> = { 'title': 'File Title', 'fileName': 'music.mp4', 'progressValue': 45 }
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 5,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     // 构造进度条模板，name字段当前需要固定配置为downloadTemplate
+     template: {
+       name: 'downloadTemplate',
+       data: templateData
+     }
+   };
+   
+   // 发布通知
+   notificationManager.publish(notificationRequest, (err) => {
+     if (err && err.code !== 0) {
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
        return;

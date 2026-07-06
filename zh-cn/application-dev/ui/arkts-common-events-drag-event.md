@@ -27,7 +27,7 @@
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
-![zh-cn_image_0000001562820825](figures/zh-cn_image_0000001562820825.png)
+![drag-gesture](figures/drag-gesture.png)
 
 ### ​鼠标拖拽
 
@@ -45,7 +45,7 @@
 | [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | 当拖拽点移出组件范围时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在以下两种情况下，系统默认不会触发onDragLeave事件：<br>1. 父组件移动到子组件。<br>2. 目标组件与当前组件布局有重叠。<br>API version 12开始可通过[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法严格触发onDragLeave事件。|
 | [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) | 当用户在组件范围内释放拖拽操作时，此回调会被触发。开发者需在此回调中通过DragEvent的setResult方法来设置拖拽结果，否则在拖出方组件的onDragEnd方法中，通过getResult方法获取的将只是默认的处理结果DragResult.DRAG\_FAILED。<br>此回调是开发者干预系统默认拖入处理行为的关键点，系统会优先执行开发者定义的onDrop回调。通过在onDrop回调中调用setResult方法，开发者可以告知系统如何处理被拖拽的数据。<br>1. 设置 DragResult.DRAG\_SUCCESSFUL，数据完全由开发者自己处理，系统不进行处理。<br>2. 设置DragResult.DRAG\_FAILED，数据不再由系统继续处理。<br>3. 设置DragResult.DRAG\_CANCELED，系统也不需要进行数据处理。<br>4. 设置DragResult.DROP\_ENABLED或DragResult.DROP\_DISABLED会被忽略，等同于设置DragResult.DRAG\_SUCCESSFUL。|
 | [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | 当用户释放拖拽时，拖拽活动终止，发起拖出动作的组件将触发该回调函数。|
-| [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | 当触发拖拽事件的不同阶段时，绑定此事件的组件会触发该回调函数。<br>开发者可利用此方法，在拖拽开始前的不同阶段，根据[PreDragStatus](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12枚举说明)枚举准备相应数据。<br>1. ACTION\_DETECTING\_STATUS：拖拽手势启动阶段。按下50ms时触发。<br>2. READY\_TO\_TRIGGER\_DRAG\_ACTION：拖拽准备完成，可发起拖拽阶段。按下500ms时触发。<br>3. PREVIEW\_LIFT\_STARTED：拖拽浮起动效发起阶段。按下800ms时触发。<br>4. PREVIEW\_LIFT\_FINISHED：拖拽浮起动效结束阶段。浮起动效完全结束时触发。<br>5. PREVIEW\_LANDING\_STARTED：拖拽落回动效发起阶段。落回动效发起时触发。<br>6. PREVIEW\_LANDING\_FINISHED：拖拽落回动效结束阶段。落回动效结束时触发。<br>7. ACTION\_CANCELED\_BEFORE\_DRAG：拖拽浮起落位动效中断。已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬起时触发。<br>8. PREPARING\_FOR_DRAG\_DETECTION<sup>18+</sup>：拖拽准备完成，可发起拖拽阶段。按下350ms时触发。|
+| [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | 当触发拖拽事件的不同阶段时，绑定此事件的组件会触发该回调函数。<br>开发者可利用此方法，在拖拽开始前的不同阶段，根据[PreDragStatus](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12枚举说明)枚举准备相应数据。<br>1. ACTION\_DETECTING\_STATUS：拖拽手势启动阶段。按下50ms时触发。<br>2. READY\_TO\_TRIGGER\_DRAG\_ACTION：拖拽准备完成，可发起拖拽阶段。按下500ms时触发。<br>3. PREVIEW\_LIFT\_STARTED：拖拽浮起动效发起阶段。按下800ms时触发。<br>4. PREVIEW\_LIFT\_FINISHED：拖拽浮起动效结束阶段。浮起动效完全结束时触发。<br>5. PREVIEW\_LANDING\_STARTED：拖拽落回动效发起阶段。落回动效发起时触发。<br>6. PREVIEW\_LANDING\_FINISHED：拖拽落回动效结束阶段。落回动效结束时触发。<br>7. ACTION\_CANCELED\_BEFORE\_DRAG：拖拽浮起落位动效中断。已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬起时触发。<br>8. PREPARING\_FOR_DRAG\_DETECTION<sup>18+</sup>：拖拽准备阶段，正在为拖拽检测做准备。按下350ms时触发。|
 | [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) | 当拖拽对象悬停在绑定此事件的组件上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。<br>开发者可以通过[SpringLoadingContext](../reference/apis-arkui/js-apis-arkui-dragController.md#springloadingcontext20)配置回调的上下文信息，包括当前悬停检测的状态、一次悬停检测中的回调通知次数、拖拽信息和配置信息等。<br>从API version 20开始，支持调用该接口。|
 
 ## 拖拽事件
@@ -103,11 +103,23 @@
 
    设置draggable属性为true，并配置onDragStart回调函数。在回调函数中，可通过UDMF（用户数据管理框架）设置拖拽的数据，并返回自定义的拖拽背景图像。
 
+   ArkTS-Dyn示例：
+
    <!-- @[module_draggable_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[module_draggable_head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+   ```
+
+   ArkTS-Dyn示例：
 
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -134,9 +146,50 @@
      })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   // 请将$r('app.media.app_icon')替换为实际资源文件
+   Image($r('app.media.app_icon'))
+     .width(100)
+     .height(100)
+     .draggable(true)
+     // ...
+     .onDragStart((event: DragEvent) => {
+       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+       // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
+       data.imageUri = 'resources/base/media/app_icon.png';
+       let unifiedData = new unifiedDataChannel.UnifiedData(data);
+       event.setData(unifiedData);
+   
+       let dragItemInfo: DragItemInfo = {
+         pixelMap: this.pixmap,
+         extraInfo: 'this is extraInfo',
+       };
+       // onDragStart回调函数中返回自定义拖拽背板图
+       return dragItemInfo;
+     })
+   ```
+
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
 
+   ArkTS-Dyn示例：
+
    <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .parallelGesture(LongPressGesture().onAction(() => {
+     this.getUIContext()
+       .getPromptAction()
+       .showToast({ duration: 100, message: 'Long press gesture trigger' });
+   }))
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
    .parallelGesture(LongPressGesture().onAction(() => {
@@ -149,8 +202,22 @@
 2. 自定义拖拽背板图。
    
    可以通过在长按50ms时触发的回调中设置[onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)回调函数，来提前准备自定义拖拽背板图的pixmap。
-   
+
+   ArkTS-Dyn示例：
+
    <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .onPreDrag((preDragStatus: PreDragStatus) => {
+     if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+       this.getComponentSnapshot();
+     }
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
    .onPreDrag((preDragStatus: PreDragStatus) => {
@@ -162,6 +229,8 @@
 
    pixmap的生成可以调用[this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)来实现。
 
+   ArkTS-Dyn示例：
+
    <!-- @[drag_hilog_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
@@ -170,6 +239,19 @@
    const DOMAIN = 0x0000;
    const TAG = 'DefaultDragError: ';
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[drag_hilog_const](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const DOMAIN: int = 0x0000;
+   const TAG: string = 'DefaultDragError: ';
+   ```
+
+   ArkTS-Dyn示例：
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -201,7 +283,42 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   pixelMapBuilder(): void {
+     Column() {
+       // 请将$r('app.media.startIcon')替换为实际资源文件
+       Image($r('app.media.startIcon'))
+         .width(120)
+         .height(120)
+         // ...
+     }
+   }
+   
+   // ...
+   
+   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+   private getComponentSnapshot(): void {
+     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+       this.pixelMapBuilder();
+     },
+       (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+         if (error) {
+           hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+           return;
+         }
+         this.pixmap = pixmap;
+       });
+   }
+   ```
+
 3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
+
+   ArkTS-Dyn示例：
 
    <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
@@ -230,9 +347,32 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window, UIContext } from '@kit.ArkUI';
+   import { BusinessError } from '@ohos.base'
+   
+   export default class EntryAbility extends UIAbility {
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       windowStage.loadContent('pages/Index');
+       const windowClass: window.Window = windowStage.getMainWindowSync();
+       const uiContext: UIContext = windowClass.getUIContext();
+       uiContext.getDragController().setDragEventStrictReportingEnabled(true);
+       // ...
+     }
+     // ...
+   }
+   ```
+
 4. 拖拽过程显示角标样式。
 
    通过设置[allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)来定义接收的数据类型，这将影响角标显示。当拖拽的数据符合定义的允许落入的数据类型时，角标会显示加号。当拖拽的数据类型不在允许范围内时，可强制设置为显示禁用角标。若未设置allowDrop，则角标不会显示加号。以下代码示例表示仅接收UnifiedData中定义的HYPERLINK和PLAIN\_TEXT类型数据，其他类型数据将被禁止落入。
+
+   ArkTS-Dyn示例：
 
    <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -241,14 +381,36 @@
      uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+     uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+   ```
+
    在实现onDrop回调的情况下，还可以在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
-   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDragMove((event) => {
-     event.setResult(DragResult.DROP_ENABLED)
-     event.dragBehavior = DragBehavior.COPY
+     event.setResult(DragResult.DROP_ENABLED);
+     event.dragBehavior = DragBehavior.COPY;
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .onDragMove((event: DragEvent) => {
+     event.setResult(DragResult.DROP_ENABLED);
+     event.dragBehavior = DragBehavior.COPY;
    })
    ```
 
@@ -256,7 +418,9 @@
 
    需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显式设置拖拽结果。
 
-   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDrop((dragEvent?: DragEvent) => {
@@ -270,11 +434,33 @@
        this.imgState = Visibility.None;
        // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
        event.setResult(DragResult.DRAG_SUCCESSFUL);
-     })
+     });
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .onDrop((dragEvent?: DragEvent) => {
+     // 获取拖拽数据
+     this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+       let records: unifiedDataChannel.UnifiedRecord[] = event.getData()!.getRecords();
+       let rect: Rectangle = event.getPreviewRect();
+       this.imageWidth = rect.width as double;
+       this.imageHeight = rect.height as double;
+       this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+       this.imgState = Visibility.None;
+       // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+       event.setResult(DragResult.DRAG_SUCCESSFUL);
+     });
    })
    ```
 
    数据的传递是通过UDMF实现的，在数据较大时可能存在时延，因此在首次获取数据失败时建议加1500ms的延迟重试机制。
+
+   ArkTS-Dyn示例：
 
    <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -307,7 +493,43 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void): boolean {
+     try {
+       let data: unifiedDataChannel.UnifiedData = event.getData() as unifiedDataChannel.UnifiedData;
+       if (!data) {
+         return false;
+       }
+       let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+       if (!records || records.length <= 0) {
+         return false;
+       }
+       callback(event);
+       return true;
+     } catch (e) {
+       hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
+       (e as BusinessError).message);
+       return false;
+     }
+   }
+   
+   getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void): void {
+     if (this.getDataFromUdmfRetry(event, callback)) {
+       return;
+     }
+     setTimeout(() => {
+       this.getDataFromUdmfRetry(event, callback);
+     }, 1500);
+   }
+   ```
+
 6. 拖拽发起方可以通过设置onDragEnd回调感知拖拽结果。
+
+   ArkTS-Dyn示例：
 
    <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -322,11 +544,26 @@
    })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   .onDragEnd((event: DragEvent) => {
+     // onDragEnd里取到的result值在接收方onDrop设置
+     if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+       this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+     } else if (event.getResult() === DragResult.DRAG_FAILED) {
+       this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+     }
+   })
+   ```
+
 **完整示例：**
 
 ArkTS-Dyn示例：
 
-<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
 
 ``` TypeScript
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -464,7 +701,7 @@ export struct DefaultDrag {
                 .height(this.imageHeight)
                 .draggable(true)
                 .margin({ left: 15 })
-                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为COPY，即显示加号角标
                 .onDragMove((event) => {
                   event.setResult(DragResult.DROP_ENABLED);
                   event.dragBehavior = DragBehavior.COPY;
@@ -499,31 +736,47 @@ export struct DefaultDrag {
 
 ArkTS-Sta示例：
 
+<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+
 ``` TypeScript
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, Component, State, Builder, $r } from '@kit.ArkUI';
 import {
-  Row,
-  Column,
-  Text,
-  Image,
+  $r,
+  Entry,
+  Component,
+  State,
+  Builder,
   Visibility,
+  Column,
+  Row,
+  RowOptions,
+  Image,
+  Text,
+  NavDestination,
+  ColumnOptions,
   DragEvent,
   DragItemInfo,
   PreDragStatus,
   DragResult,
   DragBehavior,
   Rectangle,
+  Color,
   LongPressGesture,
   Margin,
-  Color
+  ForEach,
+  Button,
+  Flex,
+  FlexAlign,
+  FlexOptions,
+  TextAlign
 } from '@kit.ArkUI';
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'DefaultDragError: ';
+
 
 @Entry
 @Component
@@ -541,13 +794,13 @@ export struct DefaultDrag {
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
-      // ...
+        // ...
     }
   }
 
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void): boolean {
     try {
-      let data: unifiedDataChannel.UnifiedData = event.getData()!;
+      let data: unifiedDataChannel.UnifiedData = event.getData() as unifiedDataChannel.UnifiedData;
       if (!data) {
         return false;
       }
@@ -558,7 +811,8 @@ export struct DefaultDrag {
       callback(event);
       return true;
     } catch (e) {
-      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
+      hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
+      (e as BusinessError).message);
       return false;
     }
   }
@@ -572,115 +826,127 @@ export struct DefaultDrag {
     }, 1500);
   }
 
+
   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
   private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(
-      this.pixelMapBuilder,
+    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+      this.pixelMapBuilder();
+    },
       (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
-        if (pixmap) {
-          this.pixmap = pixmap;
-        } else {
+        if (error) {
           hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+          return;
         }
+        this.pixmap = pixmap;
       });
   }
 
-  build() {
+
+  build(): void {
     // ...
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
         Row() {
-          // 请将$r('app.media.app_icon')替换为实际资源文件
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 } as Margin)
-            .visibility(this.imgState)
-            // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction(() => {
-              this.getUIContext()
-                .getPromptAction()
-                .showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event: DragEvent) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
-              data.imageUri = 'resources/base/media/app_icon.png';
-              let unifiedData: unifiedDataChannel.UnifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin({
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10
+              })
+              .backgroundColor('#008888' as string)
+            Row() {
+              // 请将$r('app.media.app_icon')替换为实际资源文件
+              Image($r('app.media.app_icon'))
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 })
+                .visibility(this.imgState)
+                // 绑定平行手势，可同时触发应用自定义长按手势
+                .parallelGesture(LongPressGesture().onAction(() => {
+                  this.getUIContext()
+                    .getPromptAction()
+                    .showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event: DragEvent) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
+                  data.imageUri = 'resources/base/media/app_icon.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
 
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: 'this is extraInfo',
-              } as DragItemInfo;
-              // onDragStart回调函数中返回自定义拖拽背板图
-              return dragItemInfo;
-            })
-            // 提前准备拖拽自定义背板图
-            .onPreDrag((preDragStatus: PreDragStatus) => {
-              if (preDragStatus === PreDragStatus.ACTION_DETECTING_STATUS) {
-                this.getComponentSnapshot();
-              }
-            })
-            .onDragEnd((event: DragEvent) => {
-              // onDragEnd里取到的result值在接收方onDrop设置
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: 'this is extraInfo',
+                  };
+                  // onDragStart回调函数中返回自定义拖拽背板图
+                  return dragItemInfo;
+                })
+                // 提前准备拖拽自定义背板图
+                .onPreDrag((preDragStatus: PreDragStatus) => {
+                  if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+                    this.getComponentSnapshot();
+                  }
+                })
+                .onDragEnd((event: DragEvent) => {
+                  // onDragEnd里取到的result值在接收方onDrop设置
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
 
-        Text('Drag Target Area')
-          .fontSize(20)
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin({
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10
+              })
+              .backgroundColor('#008888' as string)
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 })
+                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+                .onDragMove((event: DragEvent) => {
+                  event.setResult(DragResult.DROP_ENABLED);
+                  event.dragBehavior = DragBehavior.COPY;
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent?: DragEvent) => {
+                  // 获取拖拽数据
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: unifiedDataChannel.UnifiedRecord[] = event.getData()!.getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = rect.width as double;
+                    this.imageHeight = rect.height as double;
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  });
+                })
+            }
+          }
           .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 } as Margin)
-            .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
-            .onDragMove((event: DragEvent) => {
-              event.setResult(DragResult.DROP_ENABLED);
-              event.dragBehavior = DragBehavior.COPY;
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-              uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // 获取拖拽数据
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: unifiedDataChannel.UnifiedRecord[] = event.getData()!.getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = rect.width as double;
-                this.imageHeight = rect.height as double;
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              });
-            })
+          .height('100%')
         }
+        .height('100%')
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-
-  // ...
+      // ...
 }
 ```
 
@@ -695,6 +961,8 @@ export struct DefaultDrag {
 1. 组件多选拖拽使能。
 
    创建GridItem子组件并绑定onDragStart回调函数。同时设置GridItem组件的状态为可选中。
+
+   ArkTS-Dyn示例：
 
    <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -718,7 +986,34 @@ export struct DefaultDrag {
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   Grid() {
+     ForEach(this.numbers, (idx: int, index: int) => {
+       GridItem() {
+         Column()
+           .backgroundColor(Color.Blue)
+           .width(50)
+           .height(50)
+           .opacity(1.0)
+           .id('grid' + idx)
+       }
+       // ...
+       .onDragStart(() => {
+         return {} as DragItemInfo;
+       })
+       .selectable(true)
+       // ...
+     }, (idx: int, index: int) => idx.toString())
+   }
+   ```
+
    多选拖拽功能默认处于关闭状态。若要启用此功能，需在[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)接口的options参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，options还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
+
+   ArkTS-Dyn示例：
 
    <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -727,7 +1022,18 @@ export struct DefaultDrag {
      { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
+     { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
+   ```
+
    为了确保选中状态，应将GridItem子组件的[selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)属性设置为true。例如，可以通过调用[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)来设置特定组件为选中状态。
+
+   ArkTS-Dyn示例：
 
    <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -740,26 +1046,68 @@ export struct DefaultDrag {
    })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   .selected(this.isSelectedGrid[idx])
+   // ...
+   .onClick(() => {
+     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+     // ...
+   })
+   ```
+   
 2. 优化多选拖拽性能。
 
    在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从[dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
 
+   ArkTS-Dyn示例：
+
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-   
+
    ``` TypeScript
    .dragPreview({
      pixelMap: this.pixmap
    })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   .dragPreview({
+     pixelMap: this.pixmap
+   } as DragItemInfo)
+   ```
+
    截图的获取可以在选中组件时通过调用[this.getUIContext().getComponentSnapshot().get()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)方法获取。以下示例通过获取组件对应id的方法进行截图。
 
-   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
    
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -776,13 +1124,71 @@ export struct DefaultDrag {
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   @State previewData: Array<DragItemInfo> = new Array<DragItemInfo>();
+   @State isSelectedGrid: Array<boolean> = new Array<boolean>();
+   // ...
+   build(): void {
+     NavDestination() {
+       Column({ space: 5 } as ColumnOptions) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
+             .onClick(() => {
+               this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+               if (this.isSelectedGrid[idx]) {
+                 // ...
+                 let gridItemName = 'grid' + idx;
+                 // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                 this.getUIContext().getComponentSnapshot()!.get(gridItemName,
+                   (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+                     this.pixmap = pixmap;
+                     this.previewData[idx] = {
+                       pixelMap: this.pixmap
+                     };
+                   });
+               } else {
+                 // ...
+               }
+             })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 } as Margin).height('100%')
+     }
+     // ...
+   }
    ```
 
 3. 多选显示效果。
 
     通过[stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
 
-    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    ArkTS-Dyn示例：
+
+    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
     ``` TypeScript
     @Styles
@@ -796,21 +1202,101 @@ export struct DefaultDrag {
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    
+    ``` TypeScript
+    normalStyles: CustomStyles = (instance: CommonMethod): void => {
+      instance.opacity(1.0);
+    }
+    selectStyles: CustomStyles = (instance: CommonMethod): void => {
+      instance.opacity(0.4);
+    }
+    
+    // ...
+    build(): void {
+      NavDestination() {
+        Column({ space: 5 } as ColumnOptions) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
+              .stateStyles({
+                normal: this.normalStyles,
+                selected: this.selectStyles
+              })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 } as Margin).height('100%')
+      }
+      // ...
+    }
     ```
 
 4. 适配数量角标。
 
     多选拖拽的数量角标当前需要应用使用[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
 
-    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    ArkTS-Dyn示例：
+
+    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -824,13 +1310,64 @@ export struct DefaultDrag {
               })
               // 多选场景右上角数量角标需要应用设置numberBadge参数
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    
+    ``` TypeScript
+    @State numberBadge: int = 0;
+    // ...
+    build(): void {
+      NavDestination() {
+        Column({ space: 5 } as ColumnOptions) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
+              .onClick(() => {
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                if (this.isSelectedGrid[idx]) {
+                  // ...
+                  this.numberBadge++;
+                  // ...
+                } else {
+                  this.numberBadge--;
+                  // ...
+                }
+              })
+              // 多选场景右上角数量角标需要应用设置numberBadge参数
+              .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions)
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 } as Margin).height('100%')
+      }
+      // ...
+    }
     ```
 
 **完整示例：**
 
 ArkTS-Dyn示例：
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) -->
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -846,12 +1383,12 @@ struct GridEts {
 
   @Styles
   normalStyles(): void {
-    .opacity(1.0)
+    .opacity(1.0);
   }
 
   @Styles
   selectStyles(): void {
-    .opacity(0.4)
+    .opacity(0.4);
   }
 
   onPageShow(): void {
@@ -893,7 +1430,7 @@ build() {
             selected: this.selectStyles
           })
           .onClick(() => {
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
+            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
             if (this.isSelectedGrid[idx]) {
               this.numberBadge++;
               let gridItemName = 'grid' + idx;
@@ -902,8 +1439,8 @@ build() {
                 this.pixmap = pixmap;
                 this.previewData[idx] = {
                   pixelMap: this.pixmap
-                }
-              })
+                };
+              });
             } else {
               this.numberBadge--;
             }
@@ -926,8 +1463,10 @@ build() {
 
 ArkTS-Sta示例：
 
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExample.ets) -->
+
 ``` TypeScript
-import { Builder, Color, Column, ColumnOptions, CommonMethod, Component, CustomStyles, DragItemInfo, Entry, ForEach, Grid, GridItem, Margin, State } from '@kit.ArkUI';
+import { Color, Column, ColumnOptions, CommonMethod, Component, CustomStyles, DragItemInfo, Entry, ForEach, Grid, GridItem, Margin, State } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1028,6 +1567,9 @@ struct GridEts {
 1. 组件拖拽设置。
 
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
+
+   ArkTS-Dyn示例：
+
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
@@ -1045,11 +1587,33 @@ struct GridEts {
      })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   
+   ``` TypeScript
+   // 请将$r('app.media.app_icon')替换为实际资源文件
+   Image($r('app.media.app_icon'))
+     .width(100)
+     .height(100)
+     .draggable(true)
+     .margin({ left: 15, top: 40 } as Margin)
+     .visibility(this.imgState)
+     .onDragStart((event: DragEvent) => {
+       return {} as DragItemInfo;
+     })
+     .onDragEnd((event: DragEvent) => {
+       // ...
+     })
+   ```
+
 2. 设置自定义动效。
 
    自定义落位动效通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口设置动画相关的参数来实现。例如，可以改变组件的大小。
 
-   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    customDropAnimation =
@@ -1058,16 +1622,32 @@ struct GridEts {
          this.imageWidth = 200;
          this.imageHeight = 200;
          this.imgState = Visibility.None;
-       })
-     }
+       });
+     };
    ```
-    
+
+   ArkTS-Sta示例：
+
+   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   
+   ``` TypeScript
+   customDropAnimation: () => void =
+     () => {
+       this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal } as AnimateParam, () => {
+         this.imageWidth = 200;
+         this.imageHeight = 200;
+         this.imgState = Visibility.None;
+       });
+     };
+   ```
 
 3. 拖拽落位适配动效。
 
    设置onDrop回调函数，接收拖拽数据。拖拽落位动效通过[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)函数执行，设置[useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#属性)为true禁用系统默认动效。
 
-   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    Column() {
@@ -1086,7 +1666,32 @@ struct GridEts {
      this.imageHeight = Number(rect.height);
      this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
      dragEvent.useCustomDropAnimation = true;
-     dragEvent.executeDropAnimation(this.customDropAnimation)
+     dragEvent.executeDropAnimation(this.customDropAnimation);
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   
+   ``` TypeScript
+   Column() {
+     Image(this.targetImage)
+       .width(this.imageWidth)
+       .height(this.imageHeight)
+   }
+   .draggable(true)
+   .margin({ left: 15 } as Margin)
+   .border({ color: Color.Black, width: 1 })
+   .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+   .onDrop((dragEvent: DragEvent) => {
+     let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData()!.getRecords();
+     let rect: Rectangle = dragEvent.getPreviewRect();
+     this.imageWidth = rect.width as double;
+     this.imageHeight = rect.height as double;
+     this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+     dragEvent.useCustomDropAnimation = true;
+     dragEvent.executeDropAnimation(this.customDropAnimation);
    })
    ```
     
@@ -1186,15 +1791,16 @@ export struct DropAnimationExample {
 
 ArkTS-Sta示例：
 
+<!-- @[dropAnimationExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+
 ``` TypeScript
+import { $r, AnimateParam, Builder, Color, Column, ColumnOptions, Component, Consume, Curve, Entry, FlexAlign, Image, NavDestination, NavPathStack, PlayMode, State, Text, Visibility, Row, RowOptions, Margin, DragEvent, DragItemInfo, DragResult, Rectangle, Padding, TextAlign, BlurStyle, BarStyle } from '@kit.ArkUI';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, Component, State, $r } from '@kit.ArkUI';
-import { Row, Column, Text, Image, Visibility, DragEvent, DragResult, DragItemInfo, Rectangle, Curve, PlayMode, Margin, Color, TextAlign } from '@kit.ArkUI';
 
 // ...
-const DOMAIN: int = 0x0000;
-const TAG: string = 'DropAnimationExampleTag';
+const DOMAIN = 0x0000;
+const TAG = 'DropAnimationExampleTag';
 
 @Entry
 @Component
@@ -1204,73 +1810,74 @@ export struct DropAnimationExample {
   @State imageWidth: double = 100;
   @State imageHeight: double = 100;
   @State imgState: Visibility = Visibility.Visible;
-  customDropAnimation: () => void = () => {
-    this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
-      this.imageWidth = 200;
-      this.imageHeight = 200;
-      this.imgState = Visibility.None;
-    });
-  };
+  customDropAnimation: () => void =
+    () => {
+      this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal } as AnimateParam, () => {
+        this.imageWidth = 200;
+        this.imageHeight = 200;
+        this.imgState = Visibility.None;
+      });
+    };
 
-  build() {
+  build(): void {
     // ...
-    Row() {
-      Column() {
-        // 请将$r('app.media.app_icon')替换为实际资源文件
-        Image($r('app.media.app_icon'))
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15, top: 40 } as Margin)
-          .visibility(this.imgState)
-          .onDragStart((event: DragEvent) => {
-            return {} as DragItemInfo;
-          })
-          .onDragEnd((event: DragEvent) => {
-            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
-            } else if (event.getResult() === DragResult.DRAG_FAILED) {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
-            }
-          })
-
-      }.width('45%')
-      .height('100%')
-
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width(180)
-          .height(40)
-          .textAlign(TextAlign.Center)
-          .margin(10)
-          .backgroundColor('rgb(240,250,255)')
+      Row() {
         Column() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-        }
-        .draggable(true)
-        .margin({ left: 15 } as Margin)
-        .border({ color: Color.Black, width: 1 })
-        .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-        .onDrop((dragEvent: DragEvent) => {
-          let records: unifiedDataChannel.UnifiedRecord[] = dragEvent.getData()!.getRecords();
-          let rect: Rectangle = dragEvent.getPreviewRect();
-          this.imageWidth = rect.width as double;
-          this.imageHeight = rect.height as double;
-          this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-          dragEvent.useCustomDropAnimation = true;
-          dragEvent.executeDropAnimation(this.customDropAnimation);
-        })
-        .width(this.imageWidth)
-        .height(this.imageHeight)
-      }.width('45%')
+          // 请将$r('app.media.app_icon')替换为实际资源文件
+          Image($r('app.media.app_icon'))
+            .width(100)
+            .height(100)
+            .draggable(true)
+            .margin({ left: 15, top: 40 } as Margin)
+            .visibility(this.imgState)
+            .onDragStart((event: DragEvent) => {
+              return {} as DragItemInfo;
+            })
+            .onDragEnd((event: DragEvent) => {
+              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
+              } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
+              }
+            })
+
+        }.width('45%')
+        .height('100%')
+
+        Column() {
+          Text('Drag Target Area')
+            .fontSize(20)
+            .width(180)
+            .height(40)
+            .textAlign(TextAlign.Center)
+            .margin(10)
+            .backgroundColor('rgb(240,250,255)')
+          Column() {
+            Image(this.targetImage)
+              .width(this.imageWidth)
+              .height(this.imageHeight)
+          }
+          .draggable(true)
+          .margin({ left: 15 } as Margin)
+          .border({ color: Color.Black, width: 1 })
+          .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+          .onDrop((dragEvent: DragEvent) => {
+            let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData()!.getRecords();
+            let rect: Rectangle = dragEvent.getPreviewRect();
+            this.imageWidth = rect.width as double;
+            this.imageHeight = rect.height as double;
+            this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+            dragEvent.useCustomDropAnimation = true;
+            dragEvent.executeDropAnimation(this.customDropAnimation);
+          })
+          .width(this.imageWidth)
+          .height(this.imageHeight)
+        }.width('45%')
+        .height('100%')
+        .margin({ left: '5%' } as Margin)
+      }
       .height('100%')
-      .margin({ left: '5%' } as Margin)
-    }
-    .height('100%')
-    // ...
+      // ...
   }
 }
 ```
@@ -1284,6 +1891,8 @@ export struct DropAnimationExample {
 1. 组件多选拖拽设置。
 
    创建GridItem子组件，并设置其状态为可选中。再设置多选拖拽功能isMultiSelectionEnabled为true，最后设置选中状态用作区分是否选中。
+
+   ArkTS-Dyn示例：
 
    <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -1314,7 +1923,39 @@ export struct DropAnimationExample {
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   Grid() {
+     ForEach(this.numbers, (idx: int, index: int) => {
+       GridItem() {
+         Column()
+           .backgroundColor(Color.Blue)
+           .width(50)
+           .height(50)
+           .opacity(1.0)
+           .id('grid' + idx)
+       }
+       .dragPreview(this.previewData[idx])
+       .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
+         { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
+       .selectable(true)
+       .selected(this.isSelectedGrid[idx])
+       .stateStyles({
+         normal: this.normalStyles,
+         selected: this.selectStyles
+       })
+       .onClick(() => {
+         this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+       })
+     }, (idx: int, index: int) => idx.toString())
+   }
+   ```
+
    多选拖拽的数据数量过多可能影响拖拽的体验，推荐多选拖拽最大多选数量为500。
+
+   ArkTS-Dyn示例：
 
    <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
@@ -1328,12 +1969,31 @@ export struct DropAnimationExample {
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   
+   ``` TypeScript
+   onPageShow(): void {
+     if (this.gridItemInfoList.length > 0) {
+       return;
+     }
+     let gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
+     for (let i: int = 0; i < 500; i++) {
+       gridItemInfoList.push(new GridItemInfo(i, false, {} as DragItemInfo));
+     }
+     this.gridItemInfoList = gridItemInfoList;
+   }
+   ```
     
 2. 多选拖拽选中时添加数据。
 
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
-   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
    
    ``` TypeScript
    .onClick(() => {
@@ -1353,8 +2013,8 @@ export struct DropAnimationExample {
          this.pixmap = pixmap;
          this.previewData[idx] = {
            pixelMap: this.pixmap
-         }
-       })
+         };
+       });
      } else {
        this.numberBadge--;
        for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1372,11 +2032,68 @@ export struct DropAnimationExample {
    })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   
+   ``` TypeScript
+   .onClick(() => {
+     this.gridItemInfoList[index].isSelected = !this.gridItemInfoList[index].isSelected;
+     if (this.gridItemInfoList[index].isSelected) {
+       let data: UDC.Image = new UDC.Image();
+       // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
+       data.uri = '/resource/image.jpeg';
+       if (!this.unifiedData) {
+         this.unifiedData = new UDC.UnifiedData(data);
+       }
+       this.unifiedData!.addRecord(data);
+       this.numberBadge++;
+       let gridItemName = 'grid' + gridItemInfo.id;
+       // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+       this.getUIContext()
+         .getComponentSnapshot()
+         .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+           this.pixmap = pixmap;
+           this.gridItemInfoList[index].previewData = {
+             pixelMap: this.pixmap
+           };
+         });
+     } else {
+       this.numberBadge--;
+       for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+         if (this.gridItemInfoList[i].isSelected === true) {
+           let data: UDC.Image = new UDC.Image();
+           // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
+           data.uri = '/resource/image.jpeg';
+           if (!this.unifiedData) {
+             this.unifiedData = new UDC.UnifiedData(data);
+           }
+           this.unifiedData!.addRecord(data);
+         }
+       }
+     }
+   })
+   ```
+
 3. 拖拽数据提前准备。
 
    在onPreDrag中可以提前接收到准备发起拖拽的信号。若数据量较大，此时可以事先准备数据。
 
+   ArkTS-Dyn示例：
+
    <!-- @[gridExample_onPreDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   
+   ``` TypeScript
+   .onPreDrag((status: PreDragStatus) => {
+     if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+       this.loadData();
+     }
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[gridExample_onPreDrag](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
    ``` TypeScript
    .onPreDrag((status: PreDragStatus) => {
@@ -1389,6 +2106,8 @@ export struct DropAnimationExample {
 4. 数据准备未完成时设置主动阻塞拖拽。
 
    在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出[WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18)信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到[dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
+
+   ArkTS-Dyn示例：
 
    <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
@@ -1405,11 +2124,29 @@ export struct DropAnimationExample {
    })
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   
+   ``` TypeScript
+   .onDragStart((event: DragEvent) => {
+     this.dragEvent = event;
+     if (this.finished == false) {
+       this.getUIContext()
+         .getDragController()
+         .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+     } else {
+       event.setData(this.unifiedData as UDC.UnifiedData);
+     }
+     return {} as DragItemInfo;
+   })
+   ```
+
 **完整示例：**
 
 ArkTS-Dyn示例：
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -1427,7 +2164,7 @@ struct GridEts {
   unifiedData: UnifiedData | undefined = undefined;
   timeout: number = 1;
   finished: boolean = false;
-  dragEvent: DragEvent | undefined;
+  dragEvent: DragEvent | undefined = undefined;
 
   @Styles
   normalStyles(): void{
@@ -1589,43 +2326,78 @@ struct GridEts {
 
 ArkTS-Sta示例：
 
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+
 ``` TypeScript
+import {
+  $r,
+  Builder,
+  Button,
+  Color,
+  Column,
+  ColumnOptions,
+  CommonMethod,
+  Component,
+  CustomStyles,
+  DragEvent,
+  DragItemInfo,
+  Entry,
+  ForEach,
+  Grid,
+  GridItem,
+  Image,
+  Margin,
+  PreDragStatus,
+  State,
+  Observed,
+  UnifiedData,
+  dragController,
+  DragPreviewOptions,
+  DragInteractionOptions
+} from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel as UDC } from '@kit.ArkData';
-import { Entry, Component, State, Builder, $r, ForEach } from '@kit.ArkUI';
-import { Column, ColumnOptions, Grid, GridItem, Button, Color, DragItemInfo, PreDragStatus, DragEvent, Margin, CommonMethod, CustomStyles } from '@kit.ArkUI';
-import dragController from '@ohos.arkui.dragController';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+
+@Observed
+export class GridItemInfo {
+  id: int;
+  isSelected: boolean;
+  previewData: DragItemInfo;
+
+  constructor(id: int, isSelected: boolean, previewData: DragItemInfo) {
+    this.id = id;
+    this.isSelected = isSelected;
+    this.previewData = previewData;
+  }
+}
 
 @Entry
 @Component
 struct GridEts {
   @State pixmap: image.PixelMap | undefined = undefined;
-  @State numbers: int[] = new Array<int>();
-  @State isSelectedGrid: boolean[] = new Array<boolean>();
-  @State previewData: DragItemInfo[] = new Array<DragItemInfo>();
+  @State gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
   @State numberBadge: int = 0;
-  unifiedData: UDC.UnifiedData | undefined = undefined;
+  unifiedData: UnifiedData | undefined = undefined;
   timeout: int = 1;
   finished: boolean = false;
-  dragEvent: DragEvent | undefined = undefined;
-
-  // 定义正常状态的样式
+  dragEvent: DragEvent | undefined;
   normalStyles: CustomStyles = (instance: CommonMethod): void => {
     instance.opacity(1.0);
   }
-
-  // 定义选中状态的样式
   selectStyles: CustomStyles = (instance: CommonMethod): void => {
     instance.opacity(0.4);
   }
 
   onPageShow(): void {
-    for (let i: int = 0; i < 500; i++) {
-      this.numbers.push(i);
-      this.isSelectedGrid.push(false);
-      this.previewData.push({} as DragItemInfo);
+    if (this.gridItemInfoList.length > 0) {
+      return;
     }
+    let gridItemInfoList: Array<GridItemInfo> = new Array<GridItemInfo>();
+    for (let i: int = 0; i < 500; i++) {
+      gridItemInfoList.push(new GridItemInfo(i, false, {} as DragItemInfo));
+    }
+    this.gridItemInfoList = gridItemInfoList;
   }
 
   loadData(): void {
@@ -1640,7 +2412,7 @@ struct GridEts {
   }
 
   @Builder
-  RandomBuilder(idx: int): void {
+  RandomBuilder(idx: int) {
     Column()
       .backgroundColor(Color.Blue)
       .width(50)
@@ -1653,10 +2425,10 @@ struct GridEts {
       // 请将$r('app.string.Select_All')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.Select_All'))
         .onClick(() => {
-          for (let i: int = 0; i < this.isSelectedGrid.length; i++) {
-            if (this.isSelectedGrid[i] === false) {
+          for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+            if (this.gridItemInfoList[i].isSelected === false) {
               this.numberBadge++;
-              this.isSelectedGrid[i] = true;
+              this.gridItemInfoList[i].isSelected = true;
               let data: UDC.Image = new UDC.Image();
               // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
               data.uri = '/resource/image.jpeg';
@@ -1664,40 +2436,42 @@ struct GridEts {
                 this.unifiedData = new UDC.UnifiedData(data);
               }
               this.unifiedData!.addRecord(data);
-              let gridItemName: string = 'grid' + i;
+              let gridItemName = 'grid' + this.gridItemInfoList[i].id;
               // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-              this.getUIContext().getComponentSnapshot().get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
-                this.pixmap = pixmap;
-                this.previewData[i] = {
-                  pixelMap: this.pixmap
-                } as DragItemInfo;
-              });
+              this.getUIContext()
+                .getComponentSnapshot()
+                .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+                  this.pixmap = pixmap;
+                  this.gridItemInfoList[i].previewData = {
+                    pixelMap: this.pixmap
+                  };
+                });
             }
           }
         })
       Grid() {
-        ForEach(this.numbers, (idx: int) => {
+        ForEach(this.gridItemInfoList, (gridItemInfo: GridItemInfo, index: int) => {
           GridItem() {
             Column()
               .backgroundColor(Color.Blue)
               .width(50)
               .height(50)
               .opacity(1.0)
-              .id('grid' + idx)
+              .id('grid' + gridItemInfo.id)
           }
-          .dragPreview(this.previewData[idx])
-          .dragPreviewOptions({ numberBadge: this.numberBadge },
-            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
+          .dragPreview(gridItemInfo.previewData)
+          .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
+            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
           .selectable(true)
-          .selected(this.isSelectedGrid[idx])
+          .selected(gridItemInfo.isSelected)
           // 设置多选显示效果
           .stateStyles({
             normal: this.normalStyles,
             selected: this.selectStyles
           })
           .onClick(() => {
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-            if (this.isSelectedGrid[idx]) {
+            this.gridItemInfoList[index].isSelected = !this.gridItemInfoList[index].isSelected;
+            if (this.gridItemInfoList[index].isSelected) {
               let data: UDC.Image = new UDC.Image();
               // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
               data.uri = '/resource/image.jpeg';
@@ -1706,18 +2480,20 @@ struct GridEts {
               }
               this.unifiedData!.addRecord(data);
               this.numberBadge++;
-              let gridItemName = 'grid' + idx;
+              let gridItemName = 'grid' + gridItemInfo.id;
               // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-              this.getUIContext().getComponentSnapshot().get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
-                this.pixmap = pixmap;
-                this.previewData[idx] = {
-                  pixelMap: this.pixmap
-                };
-              });
+              this.getUIContext()
+                .getComponentSnapshot()
+                .get(gridItemName, (error: BusinessError | null, pixmap: image.PixelMap | undefined) => {
+                  this.pixmap = pixmap;
+                  this.gridItemInfoList[index].previewData = {
+                    pixelMap: this.pixmap
+                  };
+                });
             } else {
               this.numberBadge--;
-              for (let i = 0; i < this.isSelectedGrid.length; i++) {
-                if (this.isSelectedGrid[i] === true) {
+              for (let i: int = 0; i < this.gridItemInfoList.length; i++) {
+                if (this.gridItemInfoList[i].isSelected === true) {
                   let data: UDC.Image = new UDC.Image();
                   // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
                   data.uri = '/resource/image.jpeg';
@@ -1732,10 +2508,10 @@ struct GridEts {
           // ...
           .onPreDrag((status: PreDragStatus) => {
             // 1.长按时通知，350ms回调
-            if (status === PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+            if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
               // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
               this.loadData();
-            } else if (status === PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+            } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
               // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
               clearTimeout(this.timeout);
             }
@@ -1744,7 +2520,9 @@ struct GridEts {
           .onDragStart((event: DragEvent) => {
             this.dragEvent = event;
             if (this.finished == false) {
-              this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+              this.getUIContext()
+                .getDragController()
+                .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
             } else {
               event.setData(this.unifiedData as UDC.UnifiedData);
             }
@@ -1753,9 +2531,9 @@ struct GridEts {
           .onDragEnd(() => {
             this.finished = false;
           })
-          .dragPreviewOptions({ numberBadge: this.numberBadge },
-            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
-        }, (item: int, index: int) => item.toString())
+          .dragPreviewOptions({ numberBadge: this.numberBadge } as DragPreviewOptions,
+            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true } as DragInteractionOptions)
+        }, (gridItemInfo: GridItemInfo, index: int) => gridItemInfo.id.toString())
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(5)
@@ -1765,7 +2543,6 @@ struct GridEts {
   }
 }
 ```
-
 ![patchDataProcess](figures/patchDataProcess.gif)
 
 
@@ -1814,7 +2591,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
   
-  configuration参数必须在检测开始前准备就绪。系统一旦启动Spring Loading检测过程，将不再从该参数读取配置。然而，可以通过回调中传入的context对象中的updateCon  figuration方法动态更新配置。此动态更新仅对当前触发有效，不会影响通过configuration的配置。
+  configuration参数必须在检测开始前准备就绪。系统一旦启动Spring Loading检测过程，将不再从该参数读取配置。然而，可以通过回调中传入的context对象中的updateConfiguration方法动态更新配置。此动态更新仅对当前触发有效，不会影响通过configuration的配置。
   
   推荐使用默认配置，或通过onDragSpringLoading接口的configuration配置固定参数。在绝大多数情况下，无需在Spring   Loading过程中动态修改这些检测参数。但若需针对不同的拖拽数据类型提供不同的用户提示效果，则可考虑使用此功能。
 
@@ -1827,6 +2604,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   当系统检测到用户悬停足够时长，回调onDragSpringLoading接口设置到回调函数时，有机会决定即将出现的Spring Loading通知是否继续，这发生在需要观察用户拖拽的数据类型并与自身业务逻辑结合的情况下。
 
   以下是一段伪代码示例：
+
   ```typescript
     .onDragSpringLoading((context: DragSpringLoadingContext)=>{
       // 检查当前的状态
@@ -1855,7 +2633,17 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   如果不再需要该组件上响应任何Spring Loading事件，则可以通过传递null给onDragSpringLoading来明确关闭响应。
 
+  ArkTS-Dyn示例：
+
   <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  .onDragSpringLoading(null)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
   ``` TypeScript
   .onDragSpringLoading(null)
@@ -1869,6 +2657,8 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 1.准备一些组件
 
   为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
+
+  ArkTS-Dyn示例：
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
@@ -1900,9 +2690,44 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  build(): void {
+    Column() {
+      // ...
+        Column() {
+          // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
+          Text($r('app.string.DoubleClick_Text'))
+            .fontSize(30)
+            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
+        }.padding({ bottom: 30 } as Padding)
+  
+        // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
+        Button($r('app.string.Search_Device'))
+          .width('80%')
+          .height('80vp')
+          .fontSize(30)
+          .bindSheet(this.isShowSheet, this.SheetBuilder, {
+            detents: [SheetSize.MEDIUM, SheetSize.LARGE,
+              600.0] as [SheetSize | String | Double | Resource, SheetSize | String | Double | Resource | undefined, SheetSize | String | Double | Resource | undefined],
+            preferType: SheetType.BOTTOM,
+            // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
+            title: { title: $r('app.string.Search_Device') },
+          } as SheetOptions)
+          // ...
+    }.width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+  ```
+
 2.实现SheetBuilder
 
   实现半模态弹框的UI界面。
+
+  ArkTS-Dyn示例：
 
   <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
@@ -1932,29 +2757,77 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
     }.width('100%').height('100%')
   }
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
+  ``` TypeScript
+  @Builder
+  SheetBuilder(): void {
+    Column() {
+      // 输入框
+      // 请将$r('app.string.Push_Here')替换为实际资源文件，在本示例中该资源文件的value值为"拖入此处"
+      TextInput({ placeholder: $r('app.string.Push_Here') })
+        .width('80%')
+        .borderWidth(1)
+        .borderColor(Color.Black)
+        // ...
+        .onChange((value: string) => {
+          if (value.length === 0) {
+            this.isSearchDone = false;
+            return;
+          }
+          // 此处简化处理，直接显示固定搜索结果
+          this.isSearchDone = true;
+        })
+      if (this.isSearchDone) {
+        Text(this.searchResult).fontSize(20)
+          // ...
+      }
+    }.width('100%').height('100%')
+  }
+  ```
 
 3.为Button控件添加进入和离开的响应
 
   为了达到提醒效果，为目标组件也增加`onDragEnter`和`onDragLeave`的处理。当用户拖拽文字进入到组件范围时，变化背景色，以提醒用户在此处停留。
 
-  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
   
   ``` TypeScript
   .onDragEnter(() => {
     // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-    this.buttonBackgroundColor = this.reminderColor
+    this.buttonBackgroundColor = this.reminderColor;
   })
   .onDragLeave(() => {
     // 当用户拖拽离开按钮范围，恢复UI
-    this.buttonBackgroundColor = this.normalColor
+    this.buttonBackgroundColor = this.normalColor;
   })
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
+  ``` TypeScript
+  .onDragEnter(() => {
+    // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
+    this.buttonBackgroundColor = this.reminderColor;
+  })
+  .onDragLeave(() => {
+    // 当用户拖拽离开按钮范围，恢复UI
+    this.buttonBackgroundColor = this.normalColor;
+  })
+  ```
 
 4.实现Spring Loading响应
 
   实现一个Spring Loading的响应函数，处理所有状态，如下：
+
+  ArkTS-Dyn示例：
 
   <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
@@ -1980,6 +2853,38 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
     // 处理CANCEL状态，复原UI
     if (context.state == dragController.DragSpringLoadingState.CANCEL) {
       // ···
+      // 恢复状态与UI
+      return;
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  handleSpringLoading(context: dragController.SpringLoadingContext): void {
+    // BEGIN 状态时检查拖拽数据类型
+    if (context.state == dragController.DragSpringLoadingState.BEGIN) {
+      // ...
+      // 进行必要判断，决定是否要终止触发
+      return;
+    }
+    if (context.state == dragController.DragSpringLoadingState.UPDATE) {
+      // ...
+      // 刷新提醒
+      return;
+    }
+    // 处理Spring Loading结束，触发视图切换
+    if (context.state == dragController.DragSpringLoadingState.END) {
+      // ...
+      // 视图激活或跳转
+      return;
+    }
+    // 处理CANCEL状态，复原UI
+    if (context.state == dragController.DragSpringLoadingState.CANCEL) {
+      // ...
       // 恢复状态与UI
       return;
     }
@@ -2145,31 +3050,16 @@ export struct SpringLoadingPage {
 
 ArkTS-Sta示例：
 
-``` TypeScript
-import { dragController, ComponentV2, Local, Entry, Builder, $r } from '@kit.ArkUI';
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import {
-  Column,
-  Text,
-  Button,
-  TextInput,
-  Color,
-  FlexAlign,
-  CopyOptions,
-  SheetSize,
-  SheetType,
-  Padding,
-  TextAlign,
-  UIContext,
-  SheetOptions,
-  Resource
-} from '@kit.ArkUI';
+<!-- @[SpringLoading_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
 
+``` TypeScript
+import { dragController, ComponentV2, Local, Entry, Builder, $r, Column, Text, Button, TextInput, Color, FlexAlign, CopyOptions, SheetSize, SheetType, Padding, TextAlign, UIContext, SheetOptions, NavDestination, BlurStyle, BarStyle, Resource } from '@kit.ArkUI';
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 // ...
 
 @Entry
 @ComponentV2
-struct SpringLoadingPage {
+export struct SpringLoadingPage {
   private uiContext: UIContext = this.getUIContext();
   @Local isShowSheet: boolean = false;
   // 请将$r('app.string.Select_Result')替换为实际资源文件，在本示例中该资源文件的value值为"搜索结果：\n  设备 1\n  设备 2\n  设备 3\n  ... ..."
@@ -2233,7 +3123,7 @@ struct SpringLoadingPage {
   // Spring Loading处理入口
   handleSpringLoading(context: dragController.SpringLoadingContext): void {
     // BEGIN 状态时检查拖拽数据类型
-    if (context.state === dragController.DragSpringLoadingState.BEGIN) {
+    if (context.state == dragController.DragSpringLoadingState.BEGIN) {
       if (this.handleBeginState(context)) {
         // 我们已经在onDragEnter时刷新了提醒色，进入Spring Loading状态时，恢复UI，提醒用户继续保持不动
         this.buttonBackgroundColor = this.normalColor;
@@ -2241,9 +3131,9 @@ struct SpringLoadingPage {
       // ...
       return;
     }
-    if (context.state === dragController.DragSpringLoadingState.UPDATE) {
+    if (context.state == dragController.DragSpringLoadingState.UPDATE) {
       // 奇数次UPDATE通知刷新提醒UI，偶数次复原UI
-      if (context.currentNotifySequence % 2 !== 0) {
+      if (context.currentNotifySequence % 2 != 0) {
         this.buttonBackgroundColor = this.reminderColor;
       } else {
         this.buttonBackgroundColor = this.normalColor;
@@ -2252,59 +3142,60 @@ struct SpringLoadingPage {
       return;
     }
     // 处理Spring Loading结束，触发视图切换
-    if (context.state === dragController.DragSpringLoadingState.END) {
+    if (context.state == dragController.DragSpringLoadingState.END) {
       this.isShowSheet = true;
       // ...
       return;
     }
     // 处理CANCEL状态，复原UI
-    if (context.state === dragController.DragSpringLoadingState.CANCEL) {
+    if (context.state == dragController.DragSpringLoadingState.CANCEL) {
       this.buttonBackgroundColor = this.normalColor;
       // ...
       return;
     }
   }
 
-  build() {
+  build(): void {
     Column() {
       // ...
-      Column() {
-        // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
-        Text($r('app.string.DoubleClick_Text'))
-          .fontSize(30)
-          .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
-      }.padding({ bottom: 30 } as Padding)
+        Column() {
+          // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
+          Text($r('app.string.DoubleClick_Text'))
+            .fontSize(30)
+            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
+        }.padding({ bottom: 30 } as Padding)
 
-      // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
-      Button($r('app.string.Search_Device'))
-        .width('80%')
-        .height('80vp')
-        .fontSize(30)
-        .bindSheet(this.isShowSheet, this.SheetBuilder, {
-          detents: [SheetSize.MEDIUM, SheetSize.LARGE,
-            600.0] as [SheetSize | String | Double | Resource, SheetSize | String | Double | Resource | undefined, SheetSize | String | Double | Resource | undefined],
-          preferType: SheetType.BOTTOM,
-          // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
-          title: { title: $r('app.string.Search_Device') },
-        } as SheetOptions)
-        .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-        .backgroundColor(this.buttonBackgroundColor)
-        .onDragEnter(() => {
-          // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-          this.buttonBackgroundColor = this.reminderColor;
-        })
-        .onDragLeave(() => {
-          // 当用户拖拽离开按钮范围，恢复UI
-          this.buttonBackgroundColor = this.normalColor;
-        })
-        .onDragSpringLoading(null)
-        .onDragSpringLoading((context: dragController.SpringLoadingContext) => {
-          this.handleSpringLoading(context);
-        })
-      // ...
+        // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
+        Button($r('app.string.Search_Device'))
+          .width('80%')
+          .height('80vp')
+          .fontSize(30)
+          .bindSheet(this.isShowSheet, this.SheetBuilder, {
+            detents: [SheetSize.MEDIUM, SheetSize.LARGE,
+              600.0] as [SheetSize | String | Double | Resource, SheetSize | String | Double | Resource | undefined, SheetSize | String | Double | Resource | undefined],
+            preferType: SheetType.BOTTOM,
+            // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
+            title: { title: $r('app.string.Search_Device') },
+          } as SheetOptions)
+          .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+          .backgroundColor(this.buttonBackgroundColor)
+          .onDragEnter(() => {
+            // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
+            this.buttonBackgroundColor = this.reminderColor;
+          })
+          .onDragLeave(() => {
+            // 当用户拖拽离开按钮范围，恢复UI
+            this.buttonBackgroundColor = this.normalColor;
+          })
+          .onDragSpringLoading(null)
+          .onDragSpringLoading((context: dragController.SpringLoadingContext) => {
+            this.handleSpringLoading(context);
+          })
+        // ...
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
+
 }
 ```
 

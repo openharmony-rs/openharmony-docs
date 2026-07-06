@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+ArkWeb Enums模块是ArkWeb（Web子系统）的枚举类型定义集合，为WebView组件及其关联的API类提供统一的类型约束和状态描述能力。本模块定义了覆盖Web 页面交互、安全状态、DNS配置、下载任务、媒体播控、内核版本、进程模式、内存管理、离线资源、无白屏加载、站点隔离、软键盘行为、Cookie策略、滚动控制、设备形态等多领域的枚举类型，是整个WebView API体系的基础类型支撑层。
+
+开发者在使用[模块描述](arkts-apis-webview.md)中的WebviewController、WebMessagePort、WebDownloadItem、NativeMediaPlayerHandler、NativeMediaPlayerBridge、WebSchemeHandlerRequest等核心类时，均需依赖本模块中的枚举类型来配置行为参数或解析返回结果。当开发者需要精细控制Web组件的运行模式、查询页面状态、处理下载任务、接入原生媒体播控或优化加载体验时，应查阅本模块中对应的枚举定义。
+
 > **说明：**
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -26,8 +30,8 @@
 | ------------- | -- |----------------------------------------- |
 | ArkTS-Dyn: EditText <br>ArkTS-Sta: EDIT_TEXT     | 0 |可编辑的区域。                            |
 | ArkTS-Dyn: Email <br>ArkTS-Sta: EMAIL         | 1 |电子邮件地址。                            |
-| ArkTS-Dyn: HttpAnchor <br>ArkTS-Sta: HTTP_ANCHOR    | 2 |超链接，其中src为http。                     |
-| ArkTS-Dyn: HttpAnchorImg <br>ArkTS-Sta: HTTP_ANCHOR_IMG | 3 |带有超链接的图片，其中src为http + HTML::img。 |
+| ArkTS-Dyn: HttpAnchor <br>ArkTS-Sta: HTTP_ANCHOR    | 2 |超链接，其中链接地址为http。                     |
+| ArkTS-Dyn: HttpAnchorImg <br>ArkTS-Sta: HTTP_ANCHOR_IMG | 3 |带有超链接的图片，其中链接地址为http + HTML::img。 |
 | ArkTS-Dyn: Img <br>ArkTS-Sta: IMG          | 4 |HTML::img标签。                           |
 | ArkTS-Dyn: Map <br>ArkTS-Sta: MAP          | 5 |地理地址。                                |
 | ArkTS-Dyn: Phone <br>ArkTS-Sta: PHONE         | 6 |电话号码。                                |
@@ -68,7 +72,7 @@ Web组件使用HTTPDNS的模式。
 
 ## MediaPlaybackState<sup>12+</sup>
 
-当前网页的播控状态。
+当前网页的播放控制状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -496,10 +500,10 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
-| M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
-| M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
-| M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
+| SYSTEM_DEFAULT   | 0     | 系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效，使用系统默认内核。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效，使用系统默认内核。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束（仅ArkTS-Dyn）：** 此接口仅可在Stage模型下使用。 |
 | ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件（基于API 23）及之后所有系统版本都生效。 <br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 
 **表1** 常青内核与遗留内核含义说明

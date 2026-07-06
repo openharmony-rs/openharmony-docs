@@ -16,63 +16,159 @@
 
 ## 开发步骤
 
-位图操作相关API的详细介绍请参见[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
+位图操作相关API的详细介绍请参见[Interface (PixelMap)](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
 1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。
 
 2. 从PixelMap位图对象中获取信息。
 
-   ```ts
-   import { image } from '@kit.ImageKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   ArkTS-Dyn示例：
+
+   <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 获取图像像素的总字节数。
-   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
-   // 获取图像像素每行字节数。
-   let rowBytes: number = pixelMap.getBytesNumberPerRow();
-   // 获取当前图像像素密度。像素密度是指每英寸图片所拥有的像素数量。像素密度越大，图片越精细。
-   let density: number = pixelMap.getDensity();
+   const totalPixelBytes: number = this.pixelMap.getPixelBytesNumber();
+   Logger.info('Total bytes: ', totalPixelBytes.toString());
+   // 获取图像像素的每行字节数。
+   const rowBytes: number = this.pixelMap.getBytesNumberPerRow();
+   Logger.info('Row bytes: ', rowBytes.toString());
+   // 获取当前图像的像素密度。像素密度是指每英寸图片所拥有的像素数量，像素密度越大，图片越精细。
+   const density: number = this.pixelMap.getDensity();
+   Logger.info('Density: ', density.toString());
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取图像像素的总字节数。
+   let pixelBytesNumber: int = this.pixelMap!.getPixelBytesNumber();
+   Logger.info('Total bytes: ', pixelBytesNumber.toString());
+   // 获取图像像素的每行字节数。
+   let rowBytes: int = this.pixelMap!.getBytesNumberPerRow();
+   Logger.info('Row bytes: ', rowBytes.toString());
+   // 获取当前图像的像素密度。像素密度是指每英寸图片所拥有的像素数量，像素密度越大，图片越精细。
+   let getDensity: int = this.pixelMap!.getDensity();
+   Logger.info('Density: ', getDensity.toString());
    ```
 
 3. 读取并修改目标区域像素数据，写回原图。
+
    > **说明：**
+   >
    > 建议readPixelsToBuffer和writeBufferToPixels成对使用，readPixels和writePixels成对使用，避免因图像像素格式不一致，造成PixelMap图像出现异常。
 
-   ```ts
-   import { image } from '@kit.ImageKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   // 场景一：读取并修改整张图片数据。
-   // 按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。
-   const buffer = new ArrayBuffer(pixelBytesNumber);
-   pixelMap.readPixelsToBuffer(buffer).then(() => {
-     console.info('Succeeded in reading image pixel data.');
-   }).catch((error : BusinessError) => {
-     console.error('Failed to read image pixel data. The error is: ' + error);
-   })
-   // 按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。
-   pixelMap.writeBufferToPixels(buffer).then(() => {
-     console.info('Succeeded in writing image pixel data.');
-   }).catch((error : BusinessError) => {
-     console.error('Failed to write image pixel data. The error is: ' + error);
-   })
+   ArkTS-Dyn示例：
+   
+   <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景一：读取并修改整张图像数据。
+   // 读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。
+   const buffer = new ArrayBuffer(totalPixelBytes);
+   await this.pixelMap.readPixelsToBuffer(buffer).then(() => {
+     Logger.info('Succeeded in reading image pixel data.');
+   }).catch((error: BusinessError) => {
+     Logger.error('Failed to read image pixel data. The error is: ' + String(error));
+   });
+   // ...
+   // 按照PixelMap的像素格式，读取缓冲区内的图像像素数据，并将其写入整个PixelMap。
+   this.pixelMap!.writeBufferToPixels(buffer).then(() => {
+     Logger.info('Succeeded in writing image pixel data.');
+     this.updateImageInfo();
+   }).catch((error: BusinessError) => {
+     Logger.error('Failed to write image pixel data. The error is: ' + String(error));
+   });
+   ```
 
-   // 场景二：读取并修改指定区域内的图片数据。
-   // 固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入PositionArea.pixels缓冲区中，该区域由PositionArea.region指定。
-   const area : image.PositionArea = {
-     pixels: new ArrayBuffer(8),
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景二：读取并修改指定区域内的图像数据。
+   // 读取PixelMap指定区域内的像素数据，并按照RGBA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
+   const regionWidth: number = 200;
+   const regionHeight: number = 100;
+   const area: image.PositionArea = {
+     pixels: new ArrayBuffer(regionWidth * regionHeight * 4), // BGRA_8888格式的每个像素占4字节。
      offset: 0,
-     stride: 8,
-     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
-   }
-   pixelMap.readPixels(area).then(() => {
-     console.info('Succeeded in reading the image data in the area.');
-   }).catch((error : BusinessError) => {
-     console.error('Failed to read the image data in the area. The error is: ' + error);
+     stride: regionWidth * 4, // 指定区域的行跨距。
+     region: {
+       x: 0,
+       y: 0,
+       size: { width: regionWidth, height: regionHeight }
+     }
+   };
+   
+   await this.pixelMap.readPixels(area).then(() => {
+     Logger.info('Succeeded in reading the image data in the area.');
+     // ...
+   }).catch((error: BusinessError) => {
+     Logger.error('Failed to read the image data in the area. The error is: ' + String(error));
+   });
+   // 读取PositionArea.pixels缓冲区内的图像像素数据，并按照BGRA_8888像素格式将其写入PixelMap的指定区域，该区域由PositionArea.region指定。
+   await this.pixelMap.writePixels(area).then(() => {
+     this.updateImageInfo();
+     Logger.info('Succeeded in writing pixelMap into the specified area.');
+   }).catch((error: BusinessError) => {
+     Logger.error('Failed to write pixelMap into the specified area. The error is: ' + String(error));
+   });
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景一：读取并修改整张图像数据。
+   // 读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。
+   const buffer = new ArrayBuffer(pixelBytesNumber);
+   await this.pixelMap!.readPixelsToBuffer(buffer).then(() => {
+     Logger.info('Succeeded in reading image pixel data.');
+   }).catch((error) => {
+     Logger.error('Failed to read image pixel data. The error is: ' + String(error));
    })
-   // 固定按照BGRA_8888格式，读取PositionArea.pixels缓冲区中的图像像素数据，并写入PixelMap指定区域内，该区域由PositionArea.region指定。
-   pixelMap.writePixels(area).then(() => {
-     console.info('Succeeded in writing the image data in the area.');
-   }).catch((error : BusinessError) => {
-     console.error('Failed to write the image data in the area. The error is: ' + error);
+   // ...
+   // 按照PixelMap的像素格式，读取缓冲区内的图像像素数据，并将其写入整个PixelMap。
+   this.pixelMap!.writeBufferToPixels(buffer).then(() => {
+     Logger.info('Succeeded in writing image pixel data.');
+     this.updateImageInfo();
+   }).catch((error) => {
+     Logger.error('Failed to write image pixel data. The error is: ' + String(error));
+   })
+   ```
+
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景二：读取并修改指定区域内的图像数据。
+   // 读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
+   const regionWidth: int = 200;
+   const regionHeight: int = 100;
+   const area: image.PositionArea = {
+     pixels: new ArrayBuffer(regionWidth * regionHeight * 4), // BGRA_8888格式的每个像素占4字节。
+     offset: 0,
+     stride: regionWidth * 4, // 指定区域的行跨距。
+     region: {
+       x: 0,
+       y: 0,
+       size: { width: regionWidth, height: regionHeight }
+     }
+   }
+   
+   await this.pixelMap!.readPixels(area).then(() => {
+     Logger.info('Succeeded in reading the image data from the area.');
+     // ...
+   }).catch((error) => {
+     Logger.error('Failed to read the image data in the area. The error is: ' + String(error));
+   })
+   // 读取PositionArea.pixels缓冲区内的图像像素数据，并按照BGRA_8888像素格式将其写入PixelMap的指定区域，该区域由PositionArea.region指定。
+   await this.pixelMap!.writePixels(area).then(() => {
+     this.updateImageInfo();
+     Logger.info('Succeeded in writing image data into the specified area.');
+   }).catch((error) => {
+     Logger.error('Failed to write image data into the specified area. The error is: ' + String(error));
    })
    ```
 
@@ -89,7 +185,11 @@
 
 2. 参考以下代码对PixelMap进行深拷贝。
 
-   ```ts
+   ArkTS-Dyn示例：
+   
+   <!-- @[pixelmap_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    /**
     * 复制（深拷贝）PixelMap并改变像素格式。
     *
@@ -103,7 +203,7 @@
      // 读取原PixelMap的像素数据，并按照原PixelMap的像素格式写入缓冲区。
      const buffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
      await pixelMap.readPixelsToBuffer(buffer);
-
+   
      // 根据原PixelMap的图片信息，生成初始化选项。
      const options: image.InitializationOptions = {
        // 数据源的像素格式：必须匹配原PixelMap的像素格式，否则新PixelMap的图像会出现异常。
@@ -115,7 +215,44 @@
        // 新PixelMap的尺寸：必须匹配原PixelMap的尺寸，不支持传入其他尺寸以进行缩放。
        size: imageInfo.size
      };
+   
+     // 根据像素数据和初始化选项，创建新PixelMap。
+     return await image.createPixelMap(buffer, options);
+   }
+   ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_clone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   /**
+    * 复制（深拷贝）PixelMap并改变像素格式。
+    *
+    * @param pixelMap - 被复制的原PixelMap。
+    * @param desiredPixelFormat - 新PixelMap的像素格式。如果不指定，则仍使用原PixelMap的像素格式。
+    * @returns 新PixelMap的Promise。
+    */
+   async clonePixelMap(pixelMap: image.PixelMap, desiredPixelFormat?: image.PixelMapFormat): Promise<image.PixelMap> {
+     // 获取原PixelMap的图片信息。
+     const imageInfo = pixelMap.getImageInfoSync();
+     // 读取原PixelMap的像素数据，并按照原PixelMap的像素格式写入缓冲区。
+     const buffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+     await pixelMap.readPixelsToBuffer(buffer);
+   
+     // 根据原PixelMap的图片信息，生成初始化选项。
+     const options: image.InitializationOptions = {
+       // 数据源的像素格式：必须匹配原PixelMap的像素格式，否则新PixelMap的图像会出现异常。
+       srcPixelFormat: imageInfo.pixelFormat,
+       // 新PixelMap的像素格式。
+       pixelFormat: desiredPixelFormat || imageInfo.pixelFormat,
+       // 新PixelMap的透明度类型。
+       alphaType: imageInfo.alphaType,
+       // 新PixelMap的尺寸：必须匹配原PixelMap的尺寸，不支持传入其他尺寸以进行缩放。
+       size: imageInfo.size,
+       editable: pixelMap.isEditable
+     };
+   
      // 根据像素数据和初始化选项，创建新PixelMap。
      return await image.createPixelMap(buffer, options);
    }
@@ -131,7 +268,16 @@
 
 2. 参考以下代码对两张PixelMap进行拼接。
 
-   ```ts
+   <!-- @[pixelmap_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   /**
+    * 将两张宽度相同的PixelMap纵向拼接成一张长图。
+    *
+    * @param pixelMap1 - 第一张PixelMap。
+    * @param pixelMap2 - 第二张PixelMap。宽度必须与第一张相同，高度可以不同。
+    * @returns 拼接后的新PixelMap的Promise。
+    */
    async function concatPixelMap(pixelMap1: PixelMap, pixelMap2: PixelMap): Promise<PixelMap> {
      // 将pixelMap1的像素数据读取至area1.pixels中。
      const imageInfo1 = pixelMap1.getImageInfoSync();
@@ -146,7 +292,7 @@
        }
      };
      await pixelMap1.readPixels(area1);
-
+   
      // 将pixelMap2的像素数据读取至area2.pixels中。
      const imageInfo2 = pixelMap2.getImageInfoSync();
      const area2: image.PositionArea = {
@@ -160,7 +306,7 @@
        }
      };
      await pixelMap2.readPixels(area2);
-
+   
      // 创建一个新的空白PixelMap，其宽度与pixelMap1和pixelMap2相等，高度为pixelMap1和pixelMap2相加。
      const options: image.InitializationOptions = {
        srcPixelFormat: imageInfo1.pixelFormat,
@@ -171,12 +317,12 @@
        }
      };
      const newPixelMap = image.createPixelMapSync(options);
-
+   
      // 将之前获取的pixelMap1和pixelMap2的像素数据按顺序写入新PixelMap。
      await newPixelMap.writePixels(area1);
      area2.region.y = imageInfo1.size.height; // pixelMap2像素的写入位置应该从pixelMap1末行像素的下一行开始。
      await newPixelMap.writePixels(area2);
-
+   
      return newPixelMap;
    }
    ```

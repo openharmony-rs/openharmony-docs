@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.deviceInfo](js-apis-enterprise-deviceInfo.md)。
 
@@ -24,11 +24,15 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
-## deviceInfo.getDeviceSerial
+## deviceInfo.getDeviceSerial<sup>(deprecated)</sup>
 
 getDeviceSerial(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 获取设备序列号，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -78,11 +82,15 @@ deviceInfo.getDeviceSerial(wantTemp, (err, result) => {
 });
 ```
 
-## deviceInfo.getDeviceSerial
+## deviceInfo.getDeviceSerial<sup>(deprecated)</sup>
 
 getDeviceSerial(admin: Want): Promise&lt;string&gt;
 
 获取设备序列号，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -136,11 +144,15 @@ deviceInfo.getDeviceSerial(wantTemp).then((result) => {
 });
 ```
 
-## deviceInfo.getDisplayVersion
+## deviceInfo.getDisplayVersion<sup>(deprecated)</sup>
 
 getDisplayVersion(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 获取设备版本号，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -190,11 +202,15 @@ deviceInfo.getDisplayVersion(wantTemp, (err, result) => {
 });
 ```
 
-## deviceInfo.getDisplayVersion
+## deviceInfo.getDisplayVersion<sup>(deprecated)</sup>
 
 getDisplayVersion(admin: Want): Promise&lt;string&gt;
 
 获取设备版本号，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -248,11 +264,15 @@ deviceInfo.getDisplayVersion(wantTemp).then((result) => {
 });
 ```
 
-## deviceInfo.getDeviceName
+## deviceInfo.getDeviceName<sup>(deprecated)</sup>
 
 getDeviceName(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 获取设备名称，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -302,11 +322,15 @@ deviceInfo.getDeviceName(wantTemp, (err, result) => {
 });
 ```
 
-## deviceInfo.getDeviceName
+## deviceInfo.getDeviceName<sup>(deprecated)</sup>
 
 getDeviceName(admin: Want): Promise&lt;string&gt;
 
 获取设备名称，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDeviceInfo](./js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 

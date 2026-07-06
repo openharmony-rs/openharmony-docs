@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -24,15 +24,15 @@
 |-------------------------------------| ------ |----------------------------------------------------------------------------------------|
 | TYPE_APP                            | 0      | 表示应用子窗口。<br>**模型约束：** 此接口仅可在FA模型下使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 7                                                   |
 | TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | 表示系统告警窗口。<br> **说明：** 从API version 11开始废弃。<br> 从API version 7开始支持。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 7                          |
-| TYPE_FLOAT<sup>9+</sup>             | 8      | 表示全局悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
-| TYPE_DIALOG<sup>10+</sup>           | 16      | 表示模态窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。                                                 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| TYPE_FLOAT<sup>9+</sup>             | 8      | 表示全局悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| TYPE_DIALOG<sup>10+</sup>           | 16      | 表示模态窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。                                                 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
 | TYPE_MAIN<sup>18+</sup>             | 32      | 表示应用主窗口。<br>此窗口类型不支持在创建窗口时使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
 
 ## AvoidAreaType<sup>7+</sup>
 
 窗口内容的避让区域的类型枚举。
 
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
+窗口内容做[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -40,8 +40,10 @@
 | TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23|
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23|
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23|
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。当三键导航显示时，底部导航避让区域始终存在。<!--Del-->OpenHarmony各设备不支持此能力。<!--DelEnd--> <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域<!--Del-->或工具栏区域。当前工具栏仅Car设备支持<!--DelEnd-->。当三键导航显示时，底部导航避让区域始终存在。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_FLOAT_NAVIGATION | 5    | 表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**系统能力：** SystemCapability.Window.SessionManager<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版本：** 26.0.0|
+
+<!--RP13--><!--RP13End-->
 
 ## SplitRatioPreference
 
@@ -64,10 +66,6 @@
 | EQUAL                            | 0    | 表示系统为主分屏和次分屏窗口分配同样大小的窗口比例。<br>未指定字段值时该字段为默认值。 |
 | PRIMARY_DOMINANT                 | 1    | 表示系统为主分屏窗口分配当前设备所允许的较大可用比例。 |
 | SECONDARY_DOMINANT               | 2    | 表示系统为次分屏窗口分配当前设备所允许的较大可用比例。 |
-
-<!--RP13-->
-
-<!--RP13End-->
 
 ## Orientation<sup>9+</sup>
 
@@ -137,7 +135,7 @@
 
 窗口生命周期。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 | 名称       | 值 | 说明       |
 | ---------- | ------ | ---------- |
@@ -162,8 +160,8 @@
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | 表示APP未定义窗口模式。       |
-| FULL_SCREEN | 1    | 表示APP全屏模式。<br>[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。|
-| MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，不存在该状态。|
+| FULL_SCREEN | 1    | 表示APP全屏模式。<br>[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。|
+| MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，不存在该状态。|
 | MINIMIZE    | 3    | 表示APP窗口最小化模式。   |
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
@@ -336,7 +334,7 @@
 | ------ | --- | ------------------------ |
 | FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。  |
 | SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
-| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
+| FLOAT   | 1 << 2  | 自由悬浮窗口，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。  |
 
 ## OcclusionState<sup>22+</sup>
@@ -363,7 +361,7 @@ WindowStage生命周期状态枚举。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 | 名称       | 值 | 说明       |
 | ---------- | ------ | ---------- |
@@ -408,7 +406,7 @@ WindowStage生命周期的状态类型枚举。
 | 名称                 | 值      | 说明       |
 | -------------------- | ------ | ---------- |
 | WINDOW_MODALITY      | 0      | 当仅需要其父级窗口不响应用户操作时，可选此参数。 |
-| APPLICATION_MODALITY | 1      |  除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。 |
+| APPLICATION_MODALITY | 1      |  除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。 |
 
 ## ScreenshotEventType<sup>20+</sup>
 

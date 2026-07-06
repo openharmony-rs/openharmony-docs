@@ -1,14 +1,14 @@
 # @ohos.buffer (Buffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Buffer对象用于表示固定长度的字节序列，是专门存放二进制数据的缓存区。
+Buffer对象用于表示固定长度的字节序列，是专门存放二进制数据的缓冲区。
 
-**推荐使用场景：** 适用于处理大量二进制数据，如图片处理和文件接收上传等。
+**推荐使用场景：** 适用于处理大量二进制数据，如图片处理、文件接收上传、网络通信数据传输、二进制协议解析和编解码转换等。
 
 > **说明：**
 >
@@ -130,7 +130,7 @@ ArkTS-Dyn: alloc(size: number, fill?: string | Buffer | number, encoding?: Buffe
 
 ArkTS-Sta: alloc(size: int, fill?: string | Buffer | int | double | long, encoding?: BufferEncoding): Buffer
 
-创建指定字节长度的Buffer对象并初始化。
+创建指定字节长度的Buffer对象，并使用指定值进行初始化填充（默认填充0）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -144,23 +144,15 @@ ArkTS-Sta: alloc(size: int, fill?: string | Buffer | int | double | long, encodi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定的Buffer对象长度，单位：字节。 |
-| fill | ArkTS-Dyn: string \| [Buffer](#buffer) \| number <br> ArkTS-Sta: string \| [Buffer](#buffer) \| int \| double \| long | 否 | 填充至新缓存区的值，默认值：0。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`fill`为string时，才有意义）。默认值：'utf8'。 |
+| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为4294967295。 |
+| fill | ArkTS-Dyn: string \| [Buffer](#buffer) \| number <br> ArkTS-Sta: string \| [Buffer](#buffer) \| int \| double \| long | 否 | 填充至新缓冲区的值，默认值：0。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`fill`参数为string时，才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 返回一个Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -200,7 +192,7 @@ ArkTS-Dyn: allocUninitializedFromPool(size: number): Buffer
 
 ArkTS-Sta: allocUninitializedFromPool(size: int): Buffer
 
-创建指定大小未初始化的Buffer对象。内存从缓冲池分配。
+创建指定大小未初始化的Buffer对象。内存从缓冲池分配，缓冲池为预分配的内存区域，适用于创建较小Buffer时减少频繁内存分配的开销，提升性能。对于需要独立内存的场景，建议使用[allocUninitialized](#bufferallocuninitialized)。
 
 创建的Buffer内容未知，需要使用[fill](#fill)函数来初始化Buffer对象。
 
@@ -223,14 +215,6 @@ ArkTS-Sta: allocUninitializedFromPool(size: int): Buffer
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 未初始化的Buffer实例。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -260,7 +244,7 @@ ArkTS-Dyn: allocUninitialized(size: number): Buffer
 
 ArkTS-Sta: allocUninitialized(size: int): Buffer
 
-创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。
+创建指定大小未初始化的Buffer对象。内存不从缓冲池分配，适用于需要创建较大Buffer或希望精确控制内存分配的场景，如一次性分配较大内存区域，避免缓冲池的内存碎片和缓存占用。
 
 创建的Buffer的内容未知，需要使用[fill](#fill)函数来初始化Buffer对象。
 
@@ -283,14 +267,6 @@ ArkTS-Sta: allocUninitialized(size: int): Buffer
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 未初始化的Buffer实例。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -318,7 +294,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 
 byteLength(string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer, encoding?: BufferEncoding): number
 
-根据不同的编码格式，返回指定字符串的字节数。
+根据不同的编码格式，返回指定数据的字节数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -332,22 +308,14 @@ byteLength(string: string | Buffer | TypedArray | DataView | ArrayBuffer | Share
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| string | string \| [Buffer](#buffer) \| TypedArray \| DataView \| ArrayBuffer \| SharedArrayBuffer | 是 | 指定字符串。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式。默认值：'utf8'。 |
+| string | string \| [Buffer](#buffer) \| TypedArray \| DataView \| ArrayBuffer \| SharedArrayBuffer | 是 | 要计算字节长度的字符串或其他数据对象。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（`string`参数为string类型时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | number | 返回指定字符串的字节数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -398,7 +366,7 @@ console.info(`${str}: ${str.length} characters, ${buffer.byteLength(str, 'utf-8'
 
 compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): -1 | 0 | 1
 
-返回两个Buffer对象的比较结果，通常用于对Buffer对象数组进行排序。
+返回两个Buffer或Uint8Array对象的比较结果，通常用于对Buffer或Uint8Array对象数组进行排序。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -412,22 +380,14 @@ compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): -1 | 0 | 1
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| buf1 | [Buffer](#buffer) \| Uint8Array | 是 | 待比较数组。 |
-| buf2 | [Buffer](#buffer) \| Uint8Array | 是 | 待比较数组。 |
+| buf1 | [Buffer](#buffer) \| Uint8Array | 是 | 待比较的第一个Buffer或Uint8Array实例。 |
+| buf2 | [Buffer](#buffer) \| Uint8Array | 是 | 待比较的第二个Buffer或Uint8Array实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | -1&nbsp;\|&nbsp;0&nbsp;\|&nbsp;1 | 如果buf1与buf2相同，则返回0。<br/>如果排序时buf1位于buf2之后，则返回1。<br/>如果排序时buf1位于buf2之前，则返回-1。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -500,8 +460,8 @@ ArkTS-Sta: concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
-| totalLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 需要复制的总字节长度，默认值为0。 |
+| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | 是 | Buffer或Uint8Array实例数组，用于拼接合并创建新的Buffer对象。 |
+| totalLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 需要复制的总字节长度，默认值：0。 |
 
 **返回值：**
 
@@ -511,11 +471,10 @@ ArkTS-Sta: concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "length" is out of range. It must be >= 0 and <= uint32 max. Received value is: [length] |
 
 **示例：**
@@ -536,7 +495,7 @@ ArkTS-Dyn: from(array: number[]): Buffer
 
 ArkTS-Sta: from(array: double[]): Buffer
 
-根据指定数组创建新的Buffer对象。
+根据指定数组创建新的Buffer对象，数组中的每个元素作为对应位置的字节存储。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -550,21 +509,13 @@ ArkTS-Sta: from(array: double[]): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| array | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[] | 是 | 指定数组。 |
+| array | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[] | 是 | 由0~255范围内的整数组成的数组，用于根据数组内容创建新的Buffer对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 新的Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -580,7 +531,7 @@ console.info(buf.toString('hex'));
 
 from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer
 
-创建与`arrayBuffer`共享内存的指定长度的Buffer对象。
+创建与`arrayBuffer`共享内存的指定长度的Buffer对象。共享内存意味着Buffer与arrayBuffer引用同一块内存区域，对Buffer数据的修改将同步反映到arrayBuffer中，反之亦然。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -594,7 +545,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
+| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 用于创建Buffer的ArrayBuffer或SharedArrayBuffer对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
 | length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。在传入null时字节长度为0。 |
 
@@ -606,11 +557,10 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[byteOffset/length]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [byteOffset/length] |
 
 **示例：**
@@ -673,7 +623,7 @@ from(buffer: Buffer | Uint8Array): Buffer
 
 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。
 
-当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。
+基于Uint8Array对象的内存创建新的Buffer对象并返回，新Buffer与原Uint8Array共享同一底层ArrayBuffer内存区域。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -687,21 +637,13 @@ from(buffer: Buffer | Uint8Array): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| buffer | [Buffer](#buffer) \| Uint8Array | 是 | 对象数据。 |
+| buffer | [Buffer](#buffer) \| Uint8Array | 是 | 用于创建新Buffer的Buffer或Uint8Array对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 新的Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -726,7 +668,7 @@ ArkTS-Dyn: from(object: Object, offsetOrEncoding: number | string, length: numbe
 
 ArkTS-Sta: from(object: Object, offsetOrEncoding: int | string, length: int): Buffer
 
-根据指定的`object`类型数据，创建新的Buffer对象。
+根据指定的`object`类型数据，创建新的Buffer对象。当object的valueOf()返回ArrayBuffer时，按字节偏移量和长度创建Buffer；其他类型则根据编码格式将对象值转换为Buffer。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -740,8 +682,8 @@ ArkTS-Sta: from(object: Object, offsetOrEncoding: int | string, length: int): Bu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象。 |
-| offsetOrEncoding | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: int&nbsp;\|&nbsp;string | 是 | 字节偏移量或编码格式。 |
+| object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象，valueOf()或Symbol.toPrimitive的返回值支持string和ArrayBuffer等类型。 |
+| offsetOrEncoding | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: int&nbsp;\|&nbsp;string | 是 | 字节偏移量或编码格式。当object的valueOf()返回值为ArrayBuffer时，作为字节偏移量；其他情况下作为编码格式。 |
 | length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | ArkTS-Dyn: 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 <= length <= ArrayBuffer.byteLength，超出范围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。<br> ArkTS-Sta: 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 <= length <= ArrayBuffer.byteLength，超出范围时报错: 10200001）。其他情况下可填任意int类型值，该参数不会对结果产生影响。 |
 
 **返回值：**
@@ -749,14 +691,6 @@ ArkTS-Sta: from(object: Object, offsetOrEncoding: int | string, length: int): Bu
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 返回新的Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -771,7 +705,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[116,104,105,115,3
 
 from(string: String, encoding?: BufferEncoding): Buffer
 
-根据指定编码格式的字符串，创建新的Buffer对象。
+根据指定编码格式的字符串，创建新的Buffer对象，字符串按编码格式转换为字节序列存入Buffer。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -785,7 +719,7 @@ from(string: String, encoding?: BufferEncoding): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| string | String | 是 | 字符串。 |
+| string | String | 是 | 要编码创建Buffer对象的字符串内容。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式。默认值：'utf8'。 |
 
 **返回值：**
@@ -793,14 +727,6 @@ from(string: String, encoding?: BufferEncoding): Buffer
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 返回新的Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -835,7 +761,7 @@ isBuffer(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | Object | 是 | 判断对象。 |
+| obj | Object | 是 | 要判断是否为Buffer的对象。 |
 
 **返回值：**
 
@@ -883,7 +809,7 @@ isEncoding(encoding: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 是 | 编码格式。 |
+| encoding | string | 是 | 编码格式，支持的格式范围为[BufferEncoding](#bufferencoding)。 |
 
 **返回值：**
 
@@ -910,7 +836,7 @@ console.info(buffer.isEncoding('').toString());
 
 transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string): Buffer
 
-将Buffer或Uint8Array对象从一种字符编码重新编码为另一种。
+将Buffer或Uint8Array对象从一种字符编码重新编码为另一种。适用于需要在不同编码格式之间转换已有Buffer数据的场景。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -924,7 +850,7 @@ transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| source | [Buffer](#buffer) \| Uint8Array | 是 | 实例对象。 |
+| source | [Buffer](#buffer) \| Uint8Array | 是 | 待转码的Buffer或Uint8Array实例，提供需要重新编码的源数据。 |
 | fromEnc | string | 是 | 当前编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
 | toEnc | string | 是 | 目标编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
 
@@ -933,14 +859,6 @@ transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string): Buffer
 | 类型 | 说明 |
 | -------- | -------- |
 | [Buffer](#buffer) | 将当前编码转换成目标编码，并返回一个新的Buffer对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1000,7 +918,7 @@ console.info(JSON.stringify(buf1.byteOffset));
 
 compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, sourceStart?: number, sourceEnd?: number): -1 | 0 | 1
 
-比较当前Buffer对象与目标Buffer对象，并返回Buffer在排序中的结果。
+比较当前Buffer对象与目标Buffer或Uint8Array对象，并返回在排序中的结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1015,7 +933,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | target | [Buffer](#buffer) \| Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | number | 否 | `target`实例中开始的偏移量。默认值：0。 |
+| targetStart | number | 否 | `target`实例中开始的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
 | targetEnd | number | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
 | sourceStart | number | 否 | `this`实例中开始的偏移量。默认值：0。 |
 | sourceEnd | number | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
@@ -1028,11 +946,10 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
@@ -1081,11 +998,10 @@ compare(target: Buffer | Uint8Array, targetStart?: int, targetEnd?: int, sourceS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
@@ -1125,7 +1041,7 @@ ArkTS-Sta: copy(target: Buffer| Uint8Array, targetStart?: int, sourceStart?: int
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | target | [Buffer](#buffer) \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
-| targetStart | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | `target`实例中开始写入的偏移量。默认值：0。 |
+| targetStart | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | `target`实例中开始写入的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
 | sourceStart | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | `this`实例中开始复制的偏移量。默认值: 0。 |
 | sourceEnd | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
@@ -1137,11 +1053,10 @@ ArkTS-Sta: copy(target: Buffer| Uint8Array, targetStart?: int, sourceStart?: int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
@@ -1167,7 +1082,7 @@ ArkTS-Dyn: entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 
 ArkTS-Sta: entries(): IterableIterator&lt;[int,&nbsp;long]&gt;
 
-返回一个包含key和value的迭代器。
+返回一个包含字节索引（key）和字节值（value）的迭代器。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1231,14 +1146,6 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 | -------- | -------- |
 | boolean | 相等则返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
-
 **示例：**
 
 ```ts
@@ -1260,7 +1167,7 @@ ArkTS-Dyn: fill(value: string | Buffer | Uint8Array | number, offset?: number, e
 
 ArkTS-Sta: fill(value: string | Buffer | Uint8Array | int | double | long, offset?: int, end?: int, encoding?: BufferEncoding): Buffer
 
-使用`value`填充当前对象指定位置的数据，默认为循环填充，并返回填充后的Buffer对象。
+使用`value`填充当前对象指定位置的数据，当`value`的长度小于需要填充的范围时会重复`value`进行填充，并返回填充后的Buffer对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1275,9 +1182,9 @@ ArkTS-Sta: fill(value: string | Buffer | Uint8Array | int | double | long, offse
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | ArkTS-Dyn: string \| [Buffer](#buffer) \| Uint8Array \| number <br> ArkTS-Sta: string \| [Buffer](#buffer) \| Uint8Array \| int \| double \| long | 是 | 用于填充的值。 |
-| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 起始偏移量。默认值：0。 |
+| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 起始偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
 | end | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 结束偏移量（不包含结束位置）。 默认值：当前对象的字节长度。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`为string才有意义）。默认值：'utf8'。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`参数为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -1287,11 +1194,10 @@ ArkTS-Sta: fill(value: string | Buffer | Uint8Array | int | double | long, offse
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **示例：**
@@ -1327,21 +1233,13 @@ ArkTS-Sta: includes(value: string | int | double | long | Buffer | Uint8Array, b
 | -------- | -------- | -------- | -------- |
 | value | ArkTS-Dyn: string \| number \| [Buffer](#buffer) \| Uint8Array <br> ArkTS-Sta: string \| int \| double \| long \| [Buffer](#buffer) \| Uint8Array | 是 | 要搜索的内容。 |
 | byteOffset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 存在为true，否则为false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -1377,21 +1275,13 @@ ArkTS-Sta: indexOf(value: string | int | double | long | Buffer | Uint8Array, by
 | -------- | -------- | -------- | -------- |
 | value | string \| ArkTS-Dyn: number <br> ArkTS-Sta: int \| double \| long \| [Buffer](#buffer) \| Uint8Array | 是 | 要查找的内容。 |
 | byteOffset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | ArkTS-Dyn: number <br> ArkTS-Sta: int | 第一次出现位置。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -1469,21 +1359,13 @@ ArkTS-Sta: lastIndexOf(value: string | int | double | long | Buffer | Uint8Array
 | -------- | -------- | -------- | -------- |
 | value | ArkTS-Dyn: string \| number \| [Buffer](#buffer) \| Uint8Array <br> ArkTS-Sta: string \| int \| double \| long \| [Buffer](#buffer) \| Uint8Array | 是 | 要搜索的内容。 |
 | byteOffset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | ArkTS-Dyn: number <br> ArkTS-Sta: int | 最后一次出现`value`值的索引。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -1524,15 +1406,14 @@ ArkTS-Sta: readBigInt64BE(offset?: int): bigint
 
 | 类型 | 说明 |
 | -------- | -------- |
-| bigint | 读取出的内容。 |
+| bigint | 读取的有符号大端序64位整数值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1581,11 +1462,10 @@ ArkTS-Sta: readBigInt64LE(offset?: int): bigint
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1634,11 +1514,10 @@ ArkTS-Sta: readBigUInt64BE(offset?: int): bigint
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1686,11 +1565,10 @@ ArkTS-Sta: readBigUInt64LE(offset?: int): bigint
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1739,11 +1617,10 @@ ArkTS-Sta: readDoubleBE(offset?: int): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1790,11 +1667,10 @@ ArkTS-Sta: readDoubleLE(offset?: int): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **示例：**
@@ -1841,11 +1717,10 @@ ArkTS-Sta: readFloatBE(offset?: int): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -1892,11 +1767,10 @@ ArkTS-Sta: readFloatLE(offset?: int): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -1943,11 +1817,10 @@ ArkTS-Sta: readInt8(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset]. |
 
 **示例：**
@@ -1996,11 +1869,10 @@ ArkTS-Sta: readInt16BE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **示例：**
@@ -2047,11 +1919,10 @@ ArkTS-Sta: readInt16LE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **示例：**
@@ -2098,11 +1969,10 @@ ArkTS-Sta: readInt32BE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -2149,11 +2019,10 @@ ArkTS-Sta: readInt32LE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 |  The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -2190,7 +2059,7 @@ ArkTS-Sta: readIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
+| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength。 |
 | byteLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
@@ -2202,11 +2071,10 @@ ArkTS-Sta: readIntBE(offset: int, byteLength: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -2257,11 +2125,10 @@ ArkTS-Sta: readIntLE(offset: int, byteLength: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -2284,7 +2151,7 @@ ArkTS-Dyn: readUInt8(offset?: number): number
 
 ArkTS-Sta: readUInt8(offset?: int): long
 
-从`offset`处读取8位无符号整型数。
+从指定的`offset`处读取8位无符号整型数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2309,11 +2176,10 @@ ArkTS-Sta: readUInt8(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset]. |
 
 **示例：**
@@ -2363,11 +2229,10 @@ ArkTS-Sta: readUInt16BE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **示例：**
@@ -2392,7 +2257,7 @@ ArkTS-Dyn: readUInt16LE(offset?: number): number
 
 ArkTS-Sta: readUInt16LE(offset?: int): long
 
-从指定的`offset`处的buf读取无符号的小端序16位整数。
+从指定的`offset`处读取无符号的小端序16位整数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2417,11 +2282,10 @@ ArkTS-Sta: readUInt16LE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **示例：**
@@ -2471,11 +2335,10 @@ ArkTS-Sta: readUInt32BE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -2523,11 +2386,10 @@ ArkTS-Sta: readUInt32LE(offset?: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
@@ -2565,7 +2427,7 @@ ArkTS-Sta: readUIntBE(offset: int, byteLength: int): long
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 要读取的字节数。读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| byteLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 要读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -2576,11 +2438,10 @@ ArkTS-Sta: readUIntBE(offset: int, byteLength: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -2629,11 +2490,10 @@ ArkTS-Sta: readUIntLE(offset: int, byteLength: int): long
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -2656,7 +2516,7 @@ ArkTS-Dyn: subarray(start?: number, end?: number): Buffer
 
 ArkTS-Sta: subarray(start?: int, end?: int): Buffer
 
-截取当前对象指定位置的数据并返回。
+截取当前对象指定位置的数据并返回。返回的Buffer与原Buffer共享同一块内存区域，修改任一对象的数据会同步影响另一对象。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2698,7 +2558,7 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 
 swap16(): Buffer
 
-将当前对象转换为无符号的16位整数数组，并交换字节顺序。
+将当前对象转换为无符号的16位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换16位数据的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2740,7 +2600,7 @@ console.info(buf1.toString('hex'));
 
 swap32(): Buffer
 
-将当前对象转换为无符号的32位整数数组，并交换字节顺序。
+将当前对象转换为无符号的32位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换32位数据的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2781,7 +2641,7 @@ console.info(buf1.toString('hex'));
 
 swap64(): Buffer
 
-将当前对象转换为无符号的64位整数数组，并交换字节顺序。
+将当前对象转换为无符号的64位整数数组，并交换字节顺序。适用于需要在大端序和小端序之间转换64位数据的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2822,7 +2682,7 @@ console.info(buf1.toString('hex'));
 
 toJSON(): Object
 
-将Buffer转为JSON并返回。
+将Buffer转为JSON对象并返回，该对象包含type属性（值为'Buffer'）和data属性（值为按字节顺序排列的数组）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2896,7 +2756,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码格式，支持的格式范围为[BufferEncoding](#bufferencoding)。默认值：'utf8'。 |
 | start  | number | 否 |  开始位置。默认值：0。 |
 | end  | number | 否 |  结束位置。默认值：Buffer.length。 |
 
@@ -2905,14 +2765,6 @@ toString(encoding?: string, start?: number, end?: number): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 字符串。当start >= Buffer.length或start > end时返回空字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -2986,7 +2838,7 @@ ArkTS-Sta: values(): IterableIterator&lt;long&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: IterableIterator&lt;number&gt; <br> ArkTS-Sta: IterableIterator&lt;long&gt; | 迭代器。 |
+| ArkTS-Dyn: IterableIterator&lt;number&gt; <br> ArkTS-Sta: IterableIterator&lt;long&gt; | 返回包含Buffer中每个字节值的迭代器。 |
 
 **示例：**
 
@@ -3031,9 +2883,9 @@ ArkTS-Sta: write(str: string, offset?: int, length?: int, encoding?: string): in
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | str | string | 是 | 要写入Buffer的字符串。 |
-| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。默认值：0。 |
+| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
 | length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 最大字节长度。默认值：(Buffer.length - offset)。|
-| encoding | string | 否 | 字符编码。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码，支持的格式范围为[BufferEncoding](#bufferencoding)。默认值：'utf8'。 |
 
 
 **返回值：**
@@ -3044,11 +2896,10 @@ ArkTS-Sta: write(str: string, offset?: int, length?: int, encoding?: string): in
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[offset/length]" is out of range. It must be >= 0 and <= buf.length. Received value is: [offset/length]. |
 
 **示例：**
@@ -3099,11 +2950,10 @@ ArkTS-Sta: writeBigInt64BE(value: bigint, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3149,11 +2999,10 @@ ArkTS-Sta: writeBigInt64LE(value: bigint, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3199,11 +3048,10 @@ ArkTS-Sta: writeBigUInt64BE(value: bigint, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3249,11 +3097,10 @@ ArkTS-Sta: writeBigUInt64LE(value: bigint, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3299,11 +3146,10 @@ ArkTS-Sta: writeDoubleBE(value: double, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
@@ -3349,11 +3195,10 @@ ArkTS-Sta: writeDoubleLE(value: double, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **示例：**
@@ -3399,11 +3244,10 @@ ArkTS-Sta: writeFloatBE(value: double, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
@@ -3450,11 +3294,10 @@ ArkTS-Sta: writeFloatLE(value: double, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **示例：**
@@ -3488,7 +3331,7 @@ ArkTS-Sta: writeInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 写入Buffer的数据。 |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 写入Buffer的数据。取值范围：-128 <= value <= 127（8位有符号整数）。 |
 | offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 
@@ -3500,11 +3343,10 @@ ArkTS-Sta: writeInt8(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3554,11 +3396,10 @@ ArkTS-Sta: writeInt16BE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3605,11 +3446,10 @@ ArkTS-Sta: writeInt16LE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3655,11 +3495,10 @@ ArkTS-Sta: writeInt32BE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3706,11 +3545,10 @@ ArkTS-Sta: writeInt32LE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3746,7 +3584,7 @@ ArkTS-Sta: writeIntBE(value: long, offset: int, byteLength: int): int
 | -------- | -------- | -------- | -------- |
 | value | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 写入Buffer的数据。 |
 | offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength。 |
-| byteLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 要写入的字节数。 |
+| byteLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 要写入的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -3757,11 +3595,10 @@ ArkTS-Sta: writeIntBE(value: long, offset: int, byteLength: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3809,11 +3646,10 @@ ArkTS-Sta: writeIntLE(value: long, offset: int, byteLength: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3847,7 +3683,7 @@ ArkTS-Sta: writeUInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 写入Buffer的数据。 |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 写入Buffer的数据。取值范围：0 <= value <= 255（8位无符号整数）。 |
 | offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
 
 
@@ -3859,11 +3695,10 @@ ArkTS-Sta: writeUInt8(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3918,11 +3753,10 @@ ArkTS-Sta: writeUInt16BE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -3971,11 +3805,10 @@ ArkTS-Sta: writeUInt16LE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -4024,11 +3857,10 @@ ArkTS-Sta: writeUInt32BE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -4074,11 +3906,10 @@ ArkTS-Sta: writeUInt32LE(value: long, offset?: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -4125,11 +3956,10 @@ ArkTS-Sta: writeUIntBE(value: long, offset: int, byteLength: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -4176,11 +4006,10 @@ ArkTS-Sta: writeUIntLE(value: long, offset: int, byteLength: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **示例：**
@@ -4245,6 +4074,8 @@ console.info("result2 = " + result2);
 
 ## Blob
 
+Blob（Binary Large Object，二进制大对象）用于表示不可变的原始数据类文件对象，适合处理大量二进制数据的封装与操作。
+
 ### 属性
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -4264,7 +4095,7 @@ console.info("result2 = " + result2);
 
 constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[] , options?: Object)
 
-Blob的构造函数。
+根据传入的数据源和可选配置项创建Blob对象，Blob实例将包含数据源中的内容。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4278,16 +4109,8 @@ Blob的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| sources | string[]&nbsp;\|&nbsp;ArrayBuffer[]&nbsp;\|&nbsp;TypedArray[]&nbsp;\|&nbsp;DataView[]&nbsp;\|&nbsp;Blob[] | 是 | Blob实例的数据源。 |
+| sources | string[]&nbsp;\|&nbsp;ArrayBuffer[]&nbsp;\|&nbsp;TypedArray[]&nbsp;\|&nbsp;DataView[]&nbsp;\|&nbsp;[Blob](#blob)[] | 是 | Blob实例的数据源。 |
 | options | Object | 否 | options:<br/>- endings：含义为结束符'\n'的字符串如何被输出，为'transparent'或'native'。native代表行结束符会跟随系统。'transparent'代表会保持Blob中保存的结束符不变。此参数非必填，默认值为'transparent'。<br/>- type：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格式的验证。此参数非必填，默认参数为''。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 ```ts

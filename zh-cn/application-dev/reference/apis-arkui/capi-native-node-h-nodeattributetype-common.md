@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（通用属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @wangyang2022; @CCFFWW-->
-<!--Designer: @piggyguy; @wangyang2022; @CCFFWW-->
+<!--Owner: @piggyguy; @wangyang2022; @hehongyang3-->
+<!--Designer: @piggyguy; @wangyang2022; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -96,7 +96,7 @@ NODE_BACKGROUND_COLOR = 2
 NODE_BACKGROUND_IMAGE = 3
 ```
 
-背景色图片属性，支持属性设置，属性重置和属性获取接口。<br>
+背景图片属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem]格式如下。<br>
 
 **起始版本：** 12

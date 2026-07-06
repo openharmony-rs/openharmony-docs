@@ -15,7 +15,7 @@
 
 > **说明：**
 > 
-> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 ### 使用场景
 
@@ -51,11 +51,11 @@
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
-- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并挂起，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
@@ -64,6 +64,7 @@
 1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
+4. 从API版本26.0.0开始，[BR](../connectivity/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
@@ -75,13 +76,13 @@
 
 ### 约束与限制
 
-**申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
+**申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：
+**数量限制：**
 - 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
-**运行限制**：
+**运行限制：**
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 
@@ -98,6 +99,8 @@
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
+>
+> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用[setWillMuteWhenInterrupted](../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#setwillmutewheninterrupted20)接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 
@@ -114,9 +117,9 @@
 
 ## 开发步骤
 
-本文以申请一个录制长时任务为例，实现如下功能：
+本文以申请一个音视频播放类型长时任务为例，实现如下功能：
 
-- 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
+- 点击“申请长时任务”按钮，应用申请音视频播放类型长时任务成功，通知栏显示相关通知。
 
 - 点击“取消长时任务”按钮，取消长时任务，通知栏撤销相关通知。
 
@@ -127,20 +130,25 @@
 2. 声明后台模式类型。
 
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
+
+   <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
    
-   ``` json5
+   ``` JSON5
    "module": {
-       "abilities": [
-           {
-              "backgroundModes": [
-              // 长时任务类型的配置项
-              "audioRecording",
-              "bluetoothInteraction",
-              "audioPlayback"
-              ]
-           }
-       ],
-       // ...
+     // ...
+     "abilities": [
+       {
+         // ...
+         "backgroundModes": [
+           // 长时任务类型的配置项
+           "audioRecording",
+           "bluetoothInteraction",
+           "audioPlayback"
+         ],
+         // ...
+       }
+     ],
+     // ...
    }
    ```
 
@@ -148,8 +156,10 @@
    
    长时任务相关的模块为@ohos.resourceschedule.backgroundTaskManager和@ohos.app.ability.wantAgent，其余模块按实际需要导入。
     <!--RP1-->
+
+    <!-- @[continuous_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
     
-    ```ts
+    ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
@@ -168,7 +178,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
    
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -180,7 +190,7 @@
    
    @Entry
    @Component
-   struct Index {
+   struct AudioPlaybackIndex {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
@@ -344,7 +354,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets) -->
    
    ``` TypeScript
    @Entry

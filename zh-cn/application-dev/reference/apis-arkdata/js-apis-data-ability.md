@@ -1,9 +1,9 @@
-# @ohos.data.dataAbility (DataAbility谓词)
+# @ohos.data.dataAbility（DataAbility谓词）
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 DataAbility谓词用于构造关系型数据库的谓词，提供用于实现不同查询方法的谓词。
@@ -31,7 +31,7 @@ createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| name | string | 是 | 数据库表中的表名。 |
+| name | string | 是 | 数据库表中的表名，不能为空字符串。 |
 | dataAbilityPredicates | [DataAbilityPredicates](#dataabilitypredicates) | 是 | DataAbility谓词。 |
 
 **返回值：**
@@ -73,7 +73,7 @@ equalTo(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -102,7 +102,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -225,7 +225,7 @@ contains(field: string, value: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -254,7 +254,7 @@ beginsWith(field: string, value: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -283,7 +283,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -310,7 +310,7 @@ isNull(field: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
 **返回值：**
 
@@ -336,7 +336,7 @@ isNotNull(field: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
 **返回值：**
 
@@ -364,7 +364,7 @@ like(field: string, value: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -391,7 +391,7 @@ glob(field: string, value: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | string | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -424,7 +424,7 @@ between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
 | high | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最大值。 |
 
@@ -452,7 +452,7 @@ notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicate
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
 | high | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最大值。 |
 
@@ -480,7 +480,7 @@ greaterThan(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -499,7 +499,7 @@ greaterThan(field: string, value: ValueType): DataAbilityPredicates
 
 lessThan(field: string, value: ValueType): DataAbilityPredicates
 
-配置谓词以匹配数据类型为valueType且value小于指定值的字段。
+配置谓词以匹配数据类型为ValueType且value小于指定值的字段。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -507,7 +507,7 @@ lessThan(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -534,7 +534,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -561,7 +561,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
@@ -588,7 +588,7 @@ orderByAsc(field: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
 **返回值：**
 
@@ -615,7 +615,7 @@ orderByDesc(field: string): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 
 **返回值：**
 
@@ -807,7 +807,7 @@ in(field: string, value: Array&lt;ValueType&gt;): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 
@@ -835,7 +835,7 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataAbilityPredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| field | string | 是 | 数据库表中的列名。 |
+| field | string | 是 | 数据库表中的列名，不能为空字符串。 |
 | value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
@@ -861,5 +861,5 @@ type ValueType = number | string | boolean
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | number  | 表示值类型为数字。   |
-| string  | 表示值类型为字符。   |
+| string  | 表示值类型为字符串。   |
 | boolean | 表示值类型为布尔值。 |

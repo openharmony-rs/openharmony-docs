@@ -156,9 +156,9 @@ UIContext.getFocusedUIContext().getHostContext();
 
 ### TouchObject.screenX/Y
 
-ArkTS-Dyn接口声明：[TouchObject.screenX/Y](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchobject)
+ArkTS-Dyn接口声明：[screenX](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#属性-1)，[screenY](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#属性-1)
 
-替代的ArkTS-Sta接口声明：[TouchObject.windowX/Y](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchobject)
+替代的ArkTS-Sta接口声明：[windowX](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#属性-1)，[windowY](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#属性-1)
 
 ArkTS-Dyn示例：
 
@@ -204,9 +204,9 @@ struct TouchExample {
 
 ### MouseEvent.screenX/Y
 
-ArkTS-Dyn接口声明：[MouseEvent.screenX/Y](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)
+ArkTS-Dyn接口声明：[screenX](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#属性)，[screenY](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#属性)
 
-替代的ArkTS-Sta接口声明：[MouseEvent.windowX/Y](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)
+替代的ArkTS-Sta接口声明：[windowX](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#属性)，[windowY](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#属性)
 
 ArkTS-Dyn示例：
 
@@ -253,9 +253,9 @@ struct MouseExample {
 
 ### ClickEvent.screenX/Y
 
-ArkTS-Dyn接口声明：[ClickEvent.screenX/Y](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent)
+ArkTS-Dyn接口声明：[screenX](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#属性)，[screenY](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#属性)
 
-替代的ArkTS-Sta接口声明：[ClickEvent.windowX/Y](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent)
+替代的ArkTS-Sta接口声明：[windowX](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#属性)，[windowY](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#属性)
 
 ArkTS-Dyn示例：
 
@@ -302,9 +302,9 @@ struct ClickExample {
 
 ### DragEvent.getX/Y
 
-ArkTS-Dyn接口声明：[DragEvent.getX](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getxdeprecated), [DragEvent.getY](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getydeprecated)
+ArkTS-Dyn接口声明：[getX](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getxdeprecated), [getY](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getydeprecated)
 
-替代的ArkTS-Sta接口声明：[DragEvent.getWindowX](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getwindowx10), [DragEvent.getWindowY](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getwindowy10)
+替代的ArkTS-Sta接口声明：[getWindowX](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getwindowx10), [getWindowY](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#getwindowy10)
 
 ArkTS-Dyn示例：
 
@@ -386,7 +386,7 @@ struct DragControllerPage {
 
 ArkTS-Dyn接口声明：[touchable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)
 
-替代的ArkTS-Sta接口声明：[hitbehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
+替代的ArkTS-Sta接口声明：[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
 
 ArkTS-Dyn示例：
 

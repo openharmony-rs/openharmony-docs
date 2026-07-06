@@ -6,9 +6,15 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-实现长按页面元素或鼠标右键弹出来的菜单信息。示例代码参考[onContextMenuShow事件](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+WebContextMenuParam是ArkWeb组件中用于承载长按页面元素或鼠标右键弹出的上下文菜单信息的参数类，作为`onContextMenuShow`事件回调的数据载体，封装了菜单弹出位置、链接地址、媒体类型、选中文本、编辑状态等关键信息。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+开发者在自定义Web组件的上下文菜单时，通过WebContextMenuParam获取用户长按/右击位置处的网页元素详细信息（如链接URL、图片内容、媒体类型、输入框类型、编辑状态等），据此判断用户操作场景，进而决定是否拦截默认菜单并构建自定义菜单项。
+
+当需要在Web组件中自定义长按或右键弹出菜单的行为时（如替换默认菜单、根据不同元素类型提供差异化菜单项、预览图片等），在`onContextMenuShow`事件回调中使用WebContextMenuParam获取上下文信息。
+
+示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >
@@ -38,7 +44,7 @@ ArkTS-Dyn: x(): number
 
 ArkTS-Sta: x(): int
 
-弹出菜单的x坐标。
+弹出菜单的x坐标，相对于Web组件左上角的水平距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -58,7 +64,7 @@ ArkTS-Dyn: y(): number
 
 ArkTS-Sta: y(): int
 
-弹出菜单的y坐标。
+弹出菜单的y坐标，相对于Web组件左上角的垂直距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -112,7 +118,7 @@ getUnfilteredLinkUrl(): string
 
 getSourceUrl(): string
 
-获取sourceUrl链接。
+获取元素的src属性对应的URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -220,7 +226,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 isEditable(): boolean
 
-获取网页元素是否可编辑状态。
+判断网页元素是否可编辑。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -93,7 +93,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -158,7 +159,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -215,7 +217,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -275,7 +278,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -363,7 +367,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 // 取消订阅后会收到onDisconnect回调
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
@@ -425,7 +430,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -536,7 +542,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -600,7 +607,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -660,7 +668,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -724,7 +733,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 
 ```
@@ -779,7 +789,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -833,7 +844,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -852,6 +864,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 | onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知静默提醒的使能状态变化。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否 | 是 | 返回应用角标的使能状态变化。 <br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23|
+| onNotificationSwitchChanged | [NotificationSwitchChangedCallback](#notificationswitchchangedcallback) | 否 | 是 | 返回由[notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch)接口设置的通知开关状态变化。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## SubscribeCallbackData
 
@@ -869,8 +882,9 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | 通知排序信息。 |
 | reason          | ArkTS-Dyn:number <br/>ArkTS-Sta:int                                                             | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
-| vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>      | 是  | 是  | 通知震动。 |
-| voiceContent | [VoiceContent](#voicecontent)                                              | 是  | 是  | 通知语音播报内容。 <br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0|
+| vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>      | 是  | 是  | 通知振动。 |
+| voiceContent | [VoiceContent](#voicecontent)                                              | 是  | 是  | 通知语音播报内容。 <br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| notificationClassification | [NotificationClassification](#notificationclassification) | 是  | 是  | 通知分类信息。仅在[NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo)中的enableClassification为true时存在。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
@@ -943,6 +957,41 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。  |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
+## NotificationSwitchChangedCallbackData
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称        | 类型   | 只读 | 可选 | 说明         |
+| ----------- | ------ | ---- | ---- | ------------ |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是 | 否 | 用户ID。 |
+| switchName | string | 是 | 否 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| enableStatus | [notificationManager.SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是 | 否 | 通知开关状态。 |
+
+## NotificationClassification
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称            | 类型   | 只读 | 可选 | 说明     |
+| --------------- | ------ | ---- | --- | -------- |
+| classification | string | 是  | 是  | 系统识别的通知分类。 |
+| subClassification | string | 是  | 是  | 系统识别的通知子分类。 |
+
 ## VoiceContent
   
 **系统能力**：SystemCapability.Notification.Notification
@@ -1013,7 +1062,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1065,7 +1115,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1131,6 +1182,66 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## NotificationSwitchChangedCallback
+
+type NotificationSwitchChangedCallback = (callbackData: NotificationSwitchChangedCallbackData) => void
+
+注册由[notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch)接口设置的通知开关状态变化的回调函数类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数**：
+
+| 参数名        | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | ------------ |
+| callbackData | [NotificationSwitchChangedCallbackData](#notificationswitchchangedcallbackdata) | 是 | 回调返回由[notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch)接口设置的通知开关状态变化信息。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onNotificationSwitchChanged: (callbackData: notificationSubscribe.NotificationSwitchChangedCallbackData) => {
+    console.info(`onNotificationSwitchChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info('subscribeNotification success');
+}).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onNotificationSwitchChanged: (callbackData: notificationSubscribe.NotificationSwitchChangedCallbackData) => {
+    console.info(`onNotificationSwitchChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info('subscribeNotification success');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```

@@ -13,6 +13,7 @@
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 子组件
@@ -24,7 +25,7 @@
 
 ImageSpan(value: ResourceStr | PixelMap)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +52,7 @@ ArkTS-Sta: verticalAlign(value: ImageSpanAlignment | undefined)
 
 设置图片基于行高的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +74,7 @@ ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 设置图片的缩放类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +96,7 @@ ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 
 设置图片加载过程中显示的占位图。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,6 +110,26 @@ ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null。<br/>设置undefined时按默认值处理。 |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ImageSpanAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ImageSpanAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ImageSpan组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### colorFilter<sup>14+</sup>
 
 ArkTS-Dyn: colorFilter(filter: ColorFilter | DrawingColorFilter)
@@ -117,7 +138,7 @@ ArkTS-Sta: colorFilter(filter: ColorFilter | DrawingColorFilter | undefined)
 
 为图像设置颜色滤镜效果。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +162,7 @@ ArkTS-Sta: supportSvg2(enable: boolean | undefined)
 
 ImageSpan组件创建后，不支持动态修改该属性的值。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +178,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 ## 事件
 
-通用事件仅支持[点击事件](ts-universal-attributes-click.md)。还支持以下事件：
+通用事件仅支持[点击控制事件](ts-universal-attributes-click.md)。还支持以下事件：
 
 ### onComplete<sup>12+</sup>
 
@@ -167,7 +188,7 @@ ArkTS-Sta: onComplete(callback: ImageCompleteCallback | undefined)
 
 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,7 +210,7 @@ ArkTS-Sta: onError(callback: ImageErrorCallback | undefined)
 
 图片加载异常时触发该回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,7 +230,7 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 图片加载成功和解码成功时触发的回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,7 +248,7 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 图片数据加载成功和解码成功触发回调时返回的对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,15 +258,15 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width                        | number | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| height                       | number | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentWidth               | number | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentHeight              | number | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| loadingStatus                | number | 否   | 否   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth   | number | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight  | number | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX | number | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY | number | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| width                        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| height                       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentWidth               | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentHeight              | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| loadingStatus                | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
+| contentWidth   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 
 
@@ -376,7 +397,7 @@ struct SpanExample {
   build() {
     Row() {
       Column({ space: 10 }) {
-        //创建ColorFilter对象的方式为图片设置颜色滤镜
+        // 创建ColorFilter对象的方式为图片设置颜色滤镜
         Text() {
           // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.sky'))
@@ -385,7 +406,7 @@ struct SpanExample {
             .colorFilter(this.DrawingColorFilterFirst)
         }
 
-        //通过drawing.ColorFilter的方式为图片设置颜色滤镜
+        // 通过drawing.ColorFilter的方式为图片设置颜色滤镜
         Text() {
           // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.sky'))
@@ -408,6 +429,8 @@ struct SpanExample {
 ### 示例5（设置加载占位图）
 
 从API version 12开始，该示例[alt](#alt12)属性展示了ImageSpan设置加载网络图片时占位图的效果。
+
+使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 ```ts
 // xxx.ets
@@ -442,9 +465,13 @@ struct SpanExample {
           'scaleMode': 1, // 缩略值
           'size': { height: 100, width: 100 }
         };
-        // 创建图片大小
+        // 通过ImageSource创建PixelMap
         imageSource.createPixelMap(option).then((pixelMap: PixelMap) => {
+          console.error('image createPixelMap success');
           this.imageAlt = pixelMap;
+          imageSource.release();
+        }).catch(() => {
+          imageSource.release();
         })
       }
     })
@@ -473,7 +500,7 @@ struct SpanExample {
 ![imagespan](figures/image_span_alt.gif)
 ### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';

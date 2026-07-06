@@ -1,9 +1,9 @@
 # ArkTS卡片主动刷新
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 本文主要提供主动刷新的开发指导，刷新流程请参考[主动刷新概述](./arkts-ui-widget-interaction-overview.md#主动刷新)。
@@ -17,6 +17,7 @@
 
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
 
+    ArkTS-Dyn示例：
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
@@ -78,8 +79,71 @@
     }
     ```
 
+    ArkTS-Sta示例：
+   <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/widget/pages/UpdateByMessageCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/widget/pages/UpdateByMessageCard.ets
+   let storageUpdateByMsg = new LocalStorage();
+   
+   @Entry(storageUpdateByMsg)
+   @Component
+   struct UpdateByMessageCard {
+     // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontColor('#FFFFFF')
+             .opacity(0.6)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           // ...
+           Button() {
+             // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update'))
+               .fontColor('#45A6F4')
+               .fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message',
+               params: { msgTest: 'messageEvent' }
+             });
+           })
+         }.width('100%').height('40%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
+
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
+    ArkTS-Dyn示例：
    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
    
    ``` TypeScript
@@ -169,6 +233,107 @@
    
    ```
 
+    ArkTS-Sta示例：
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/entryformability/UpdateByMessageFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/UpdateByMessageFormAbility.ets
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { Configuration, Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const TAG: string = 'UpdateByMessageFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   
+   function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+     let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('abilityContext');
+     hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+     return formInfo.FormState.READY;
+   }
+   
+   export default class UpdateByMessageFormAbility extends FormExtensionAbility {
+     constructor() {
+       hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+       try {
+         this.onStop = () => {
+           hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+       }
+   
+       this.onAcquireFormState = onAcquireFormStateCallback;
+     }
+   
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onAddForm');
+       hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+       // 卡片使用方创建卡片时触发，卡片提供方需要返回卡片数据绑定类
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       return formData;
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onCastToNormalForm');
+     }
+   
+     onUpdateForm(formId: string, wantParams?: Record<string, Object>): void {
+       // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onUpdateForm');
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((err) => {
+         hilog.info(DOMAIN_NUMBER, TAG,
+           `[UpdateByMessageFormAbility] updateForm, code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, int>): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onChangeFormVisibility');
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+       // 请根据业务替换为实际刷新的卡片数据
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((err) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     onRemoveForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onRemoveForm');
+       // ...
+     }
+   
+     onConfigurationUpdate(config: Configuration): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onConfigurationUpdate');
+     }
+   }
+   ```
+
 4. 资源文件如下。
    ```ts
    // entry/src/main/resources/zh_CN/element/string.json
@@ -202,6 +367,7 @@
 
 2. 实现卡片布局，在卡片上创建两个待刷新的Text。
 
+    ArkTS-Dyn示例：
    <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
    
    ``` TypeScript
@@ -234,8 +400,43 @@
    }
    ```
 
+    ArkTS-Sta示例：
+   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/widget/pages/WidgetCard.ets
+   let storageReloadForm = new LocalStorage();
+   
+   @Entry(storageReloadForm)
+   @Component
+   struct WidgetCard {
+     // 创建两个待刷新的Text，Text初始内容分别为'Title default'、'Description default'。资源文件定义请参见下方步骤5
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+     }
+   }
+   ```
+
 3. 在FormExtensionAbility中实现onUpdateForm回调，通过updateForm接口定义卡片刷新逻辑。
 
+
+    ArkTS-Dyn示例：
    <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
    
    ``` TypeScript
@@ -289,8 +490,86 @@
    }
    ```
 
+    ArkTS-Sta示例：
+   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
+   import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+   import { Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { formProvider, formHost } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   
+   function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+     let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('abilityContext');
+     hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+     return formInfo.FormState.READY;
+   }
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     constructor() {
+       hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+       try {
+         this.onStop = () => {
+           hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+       } catch (err) {
+         hilog.info(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+       }
+   
+       this.onAcquireFormState = onAcquireFormStateCallback;
+     }
+   
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       // Called to return a FormBindingData object.
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       const formData = '';
+       return formBindingData.createFormBindingData(formData);
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       // Called when the form provider is notified that a temporary form is successfully
+       // converted to a normal form.
+     }
+   
+     onUpdateForm(formId: string, wantParams?: Record<string, Object>): void {
+       // Called to notify the form provider to update a specified form.
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       // 更新卡片数据
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((error) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. code: ${error.code}, message: ${error.message}`);
+       });
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // Called when a specified message event defined by the form provider is triggered.
+     }
+   
+     onRemoveForm(formId: string): void {
+       // Called to notify the form provider that a specified form has been destroyed.
+     }
+   }
+   ```
+
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
 
+    ArkTS-Dyn示例：
    <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
@@ -341,6 +620,88 @@
    }
    ```
 
+    ArkTS-Sta示例：
+   <!-- @[update_by_formprovider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/pages/Index.ets
+   
+   import { Entry, Text, Column, ColumnOptions, Component, Button, ClickEvent } from '@ohos.arkui.component';
+   import { Tabs, TabContent, Color, FlexAlign } from '@ohos.arkui.component';
+   import { FormComponent, FormInfo, FormDimension, FormCallbackInfo, $r } from '@ohos.arkui.component';
+   import { formProvider, formHost } from '@kit.FormKit';
+   import { State } from '@ohos.arkui.stateManagement'
+   import hilog from '@ohos.hilog'
+   import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   
+   @Entry
+   @Component
+   struct Index {
+     // ...
+   
+     @Builder
+     buildFormProviderUpdate() {
+       Column({ space: 20 } as ColumnOptions) {
+         Text('FormProviderUpdate')
+         Button('reloadForms')
+           .onClick((e: ClickEvent) => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               let moduleName: string = 'entry';
+               let abilityName: string = 'EntryFormAbility';
+               let formName: string = 'WidgetCard' //'ReloadByUIAbility';
+               formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
+                 console.info(`reloadForms success, reload number: ${reloadNum}`);
+               }).catch((error) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+         Button('reloadAllForms')
+           .onClick((e: ClickEvent) => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               formProvider.reloadAllForms(context).then((reloadNum: int) => {
+                 console.info(`reloadAllForms success, reload number: ${reloadNum}`);
+               }).catch((error) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+       }
+       .width('100%')
+       .justifyContent(FlexAlign.Center)
+     }
+   
+   
+     build() {
+       Column() {
+         Tabs() {
+           TabContent() {
+             this.buildFormProviderUpdate()
+           }.tabBar('formProvider').id('formProvider')
+   
+           TabContent() {
+             this.buildFormHostUpdate()
+           }.tabBar('formHost').id('formHost')
+         }
+         .width(360)
+         .height(400)
+         .backgroundColor('#F1F3F5')
+         .id('tabsId')
+       }.width('100%')
+     }
+   }
+   ```
+
 5. 资源文件如下。
 
    ```json5
@@ -367,75 +728,175 @@
 
 由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
-   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   import { formHost } from '@kit.FormKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   
-   const TAG: string = 'EntryFormAbility';
-   const DOMAIN_NUMBER: number = 0xFF00;
-   let storage = new LocalStorage();
-   
-   @Entry(storage)
-   @Component
-   struct Index {
-     @State formId: string = '0';
-   
-     build() {
-       Column() {
-         Column() {
-           FormComponent({
-             id: 0,
-             name: 'widget',
-             bundle: 'com.samples.formupdatedemo', // 请开发者替换为实际的bundlename
-             ability: 'EntryFormAbility',
-             module: 'entry',
-             dimension: 2,
-             temporary: false,
-           })
-             .size({
-               width:200,
-               height:200,
-             })
-             .borderColor(Color.Black)
-             .borderRadius(10)
-             .borderWidth(1)
-             .onAcquired((form: FormCallbackInfo) => {
-               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`)
-               this.formId = form.id.toString();
-             })
-             .onRouter(() => {
-               hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
-             })
-             .onError((error) => {
-               hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
-             })
-           // ...
-           Button($r('app.string.button_update'))
-             .onClick(() => {
-               hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
-               // formId需要为实际需要刷新的卡片ID
-               if (this.formId != null) {
-                 formHost.requestForm(this.formId).then(() => {
-                   hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
-                 }).catch((error: BusinessError) => {
-                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
-                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
-                 })
-               }
-             })
-             .margin(5)
-             .width('50%')
-         }
-         .width('100%')
-         .height('100%')
-       }
-       .width('100%')
-       .height('100%')
-     }
-   }
-   ```
+ArkTS-Dyn示例：
+<!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = 'EntryFormAbility';
+const DOMAIN_NUMBER: number = 0xFF00;
+let storage = new LocalStorage();
+
+@Entry(storage)
+@Component
+struct Index {
+  @State formId: string = '0';
+
+  build() {
+    Column() {
+      Column() {
+        FormComponent({
+          id: 0,
+          name: 'widget',
+          bundle: 'com.samples.formupdatedemo', // 请开发者替换为实际的bundlename
+          ability: 'EntryFormAbility',
+          module: 'entry',
+          dimension: 2,
+          temporary: false,
+        })
+          .size({
+            width: 200,
+            height: 200,
+          })
+          .borderColor(Color.Black)
+          .borderRadius(10)
+          .borderWidth(1)
+          .onAcquired((form: FormCallbackInfo) => {
+            hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`)
+            this.formId = form.id.toString();
+          })
+          .onRouter(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
+          })
+          .onError((error) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
+          })
+        // ...
+        Button($r('app.string.button_update'))
+          .onClick(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
+            // formId需要为实际需要刷新的卡片ID
+            if (this.formId != null) {
+              formHost.requestForm(this.formId).then(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
+              }).catch((error: BusinessError) => {
+                hilog.error(DOMAIN_NUMBER, TAG,
+                  `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+                hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
+              })
+            }
+          })
+          .margin(5)
+          .width('50%')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[update_by_formhost](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// entry/src/main/ets/pages/Index.ets
+
+import { Entry, Text, Column, ColumnOptions, Component, Button, ClickEvent } from '@ohos.arkui.component';
+import { Tabs, TabContent, Color, FlexAlign } from '@ohos.arkui.component';
+import { FormComponent, FormInfo, FormDimension, FormCallbackInfo, $r } from '@ohos.arkui.component';
+import { formProvider, formHost } from '@kit.FormKit';
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = 'EntryFormAbility';
+const DOMAIN_NUMBER: int = 0xFF00;
+
+@Entry
+@Component
+struct Index {
+  @State formId: string = '0';
+
+  @Builder
+  buildFormHostUpdate() {
+    Column() {
+      Text('FormHostUpdate')
+      FormComponent({
+        id: 0,
+        name: 'WidgetCard',
+        bundle: 'com.samples.formstaticrefresh', // 请开发者替换为实际的bundlename
+        ability: 'EntryFormAbility',
+        module: 'entry',
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      } as FormInfo)
+        .size({
+          width: 200,
+          height: 200,
+        })
+        .borderColor(Color.Black)
+        .borderRadius(10)
+        .borderWidth(1)
+        .onAcquired((form: FormCallbackInfo) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`)
+          this.formId = form.id.toString();
+        })
+        .onRouter(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
+        })
+        .onError((error) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
+        })
+      // ...
+      Button($r('app.string.button_update'))
+        .onClick((e: ClickEvent) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
+          // formId需要为实际需要刷新的卡片ID
+          if (this.formId != null) {
+            formHost.requestForm(this.formId).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
+            }).catch((error) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+              hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
+            })
+          }
+        })
+        .margin(5)
+        .width('50%')
+    }
+    .width('100%')
+  }
+
+
+  // ...
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          this.buildFormProviderUpdate()
+        }.tabBar('formProvider').id('formProvider')
+
+        TabContent() {
+          this.buildFormHostUpdate()
+        }.tabBar('formHost').id('formHost')
+      }
+      .width(360)
+      .height(400)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+    }.width('100%')
+  }
+}
+
+```
 
 <!--DelEnd-->

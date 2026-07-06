@@ -1,8 +1,8 @@
 # 显式动画 (animateTo)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -23,15 +23,15 @@
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型          | 只读 | 可选 |    说明                                       |
 | ---------- | ---------------|---------- | -------------- | ---------------------------------------- |
-| duration   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 是 | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明**：1. API版本26.0.0之前，在ArkTS卡片上最大动画持续时间为1000毫秒，若超出则固定为1000毫秒。从API版本26.0.0开始，在ArkTS卡片上最大动画持续时间调整为2000毫秒。<br/>2. 可以通过在持续时间为0的动画闭包函数中改变属性，以实现停止该属性动画的效果。<br/>3. 设置小于0的值时按0处理。<br/>4. 设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>5. curve配置[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)曲线时，duration不生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| tempo      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 动画播放速度，值越大动画播放越快，值越小播放越慢，为0时无动画效果。<br/>当设置为+∞时，动画会在当帧结束，动画结束回调会立即执行。<br/>默认值：1.0<br/>取值范围：[0, +∞)<br/>**说明**：当设置小于0的值时按1处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| curve      | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve<sup>9+</sup>](#icurve9)| 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，仅支持以下可选值：<br/>"linear"：动画线性变化。<br/>"ease"：动画开始和结束时的速度较慢，cubic-bezier(0.25、0.1、0.25、1.0)。<br/>"ease-in"：动画播放速度先慢后快，cubic-bezier(0.42, 0.0, 1.0, 1.0)。<br/>"ease-out"：动画播放速度先快后慢，cubic-bezier(0.0, 0.0, 0.58, 1.0)。<br/>"ease-in-out"：动画播放速度先加速后减速，cubic-bezier(0.42, 0.0, 0.58, 1.0)。<br/>"fast-out-slow-in"：标准曲线，cubic-bezier(0.4, 0.0, 0.2, 1.0)。<br/>"linear-out-slow-in"：减速曲线，cubic-bezier(0.0, 0.0, 0.2, 1.0)。<br>"fast-out-linear-in"：加速曲线，cubic-bezier(0.4, 0.0, 1.0, 1.0)。<br/>"friction"：阻尼曲线，cubic-bezier(0.2, 0.0, 0.2, 1.0)。<br/>"extreme-deceleration"：急缓曲线，cubic-bezier(0.0, 0.0, 0.0, 1.0)。<br/>"rhythm"：节奏曲线，cubic-bezier(0.7, 0.0, 0.2, 1.0)。<br/>"sharp"：锐利曲线，cubic-bezier(0.33, 0.0, 0.67, 1.0)。<br/>"smooth"：平滑曲线，cubic-bezier(0.4, 0.0, 0.4, 1.0)。<br/>"cubic-bezier(x1, y1, x2, y2)"：三次贝塞尔曲线，x1、x2的值必须处于0-1之间。例如"cubic-bezier(0.42, 0.0, 0.58, 1.0)"。<br/>"steps(number,step-position)"：阶梯曲线，number必须设置，为正整数，step-position参数可选，支持设置start或end，默认值为end。例如"steps(3,start)"。<br/>"interpolating-spring(velocity,mass,stiffness,damping)"：具体参数含义参考[插值弹簧曲线](../js-apis-curve.md#curvesinterpolatingspring10)。<br/>"responsive-spring-motion(response,dampingFraction,overlapDuration)"：具体参数含义参考[弹性跟手动画曲线](../js-apis-curve.md#curvesresponsivespringmotion9)。<br/>"spring(velocity,mass,stiffness,damping)"：具体参数含义参考[弹簧曲线](../js-apis-curve.md#curvesspringcurve9)。<br/>"spring-motion(response,dampingFraction,overlapDuration)"：具体参数含义参考[弹性动画曲线](../js-apis-curve.md#curvesspringmotion9)。<br/>默认值：Curve.EaseInOut<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| delay      | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 动画延迟播放时间，单位为ms(毫秒)，默认不延时播放。<br/>默认值：0<br/>取值范围：(-∞, +∞)<br/>**说明**：1.delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。<br/>2.&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| iterations | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。<br/>默认值：1 <br/>取值范围：[-1, +∞)<br/>**说明**：设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| playMode   | [PlayMode](ts-appendix-enums.md#playmode)|否 | 是 | 动画播放模式，默认播放完成后重头开始播放。<br/>默认值：PlayMode.Normal<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>相关使用约束请参考PlayMode说明。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| onFinish   | ()&nbsp;=&gt;&nbsp;void      | 否 | 是 | 动画播放完成回调。UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，触发播放完成回调。<br/>在设置的开发者选项中关闭过渡动画，以及tempo设置为+∞时，动画播放完成回调会立即执行。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| finishCallbackType<sup>11+</sup>   | [FinishCallbackType](#finishcallbacktype11)| 否 | 是| 在动画中定义onFinish回调的类型。<br/>默认值：FinishCallbackType.REMOVED<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| expectedFrameRateRange<sup>11+</sup>   | [ExpectedFrameRateRange](#expectedframeraterange11) | 否 | 是 | 设置动画的期望帧率。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| duration   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 是 | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明**：1. API版本26.0.0之前，在ArkTS卡片上最大动画持续时间为1000毫秒，若超出则固定为1000毫秒。从API版本26.0.0开始，在ArkTS卡片上最大动画持续时间调整为2000毫秒。<br/>2. 可以通过在持续时间为0的动画闭包函数中改变属性，以实现停止该属性动画的效果。<br/>3. 设置小于0的值时按0处理。<br/>4. 设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>5. curve配置[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)曲线时，duration不生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| tempo      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 动画播放速度，值越大动画播放越快，值越小播放越慢，为0时无动画效果。<br/>当设置为+∞时，动画会在当帧结束，动画结束回调会立即执行。<br/>默认值：1.0<br/>取值范围：[0, +∞)<br/>**说明**：当设置小于0的值时按1处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| curve      | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve<sup>9+</sup>](#icurve9)| 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，仅支持以下可选值：<br/>"linear"：动画线性变化。<br/>"ease"：动画开始和结束时的速度较慢，cubic-bezier(0.25、0.1、0.25、1.0)。<br/>"ease-in"：动画播放速度先慢后快，cubic-bezier(0.42, 0.0, 1.0, 1.0)。<br/>"ease-out"：动画播放速度先快后慢，cubic-bezier(0.0, 0.0, 0.58, 1.0)。<br/>"ease-in-out"：动画播放速度先加速后减速，cubic-bezier(0.42, 0.0, 0.58, 1.0)。<br/>"fast-out-slow-in"：标准曲线，cubic-bezier(0.4, 0.0, 0.2, 1.0)。<br/>"linear-out-slow-in"：减速曲线，cubic-bezier(0.0, 0.0, 0.2, 1.0)。<br>"fast-out-linear-in"：加速曲线，cubic-bezier(0.4, 0.0, 1.0, 1.0)。<br/>"friction"：阻尼曲线，cubic-bezier(0.2, 0.0, 0.2, 1.0)。<br/>"extreme-deceleration"：急缓曲线，cubic-bezier(0.0, 0.0, 0.0, 1.0)。<br/>"rhythm"：节奏曲线，cubic-bezier(0.7, 0.0, 0.2, 1.0)。<br/>"sharp"：锐利曲线，cubic-bezier(0.33, 0.0, 0.67, 1.0)。<br/>"smooth"：平滑曲线，cubic-bezier(0.4, 0.0, 0.4, 1.0)。<br/>"cubic-bezier(x1, y1, x2, y2)"：三次贝塞尔曲线，x1、x2的值必须处于0-1之间。例如"cubic-bezier(0.42, 0.0, 0.58, 1.0)"。<br/>"steps(number,step-position)"：阶梯曲线，number必须设置，为正整数，step-position参数可选，支持设置start或end，默认值为end。例如"steps(3,start)"。<br/>"interpolating-spring(velocity,mass,stiffness,damping)"：具体参数含义参考插值弹簧曲线[curves.interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)。<br/>"responsive-spring-motion(response,dampingFraction,overlapDuration)"：具体参数含义参考弹性跟手动画曲线[curves.responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)。<br/>"spring(velocity,mass,stiffness,damping)"：具体参数含义参考弹簧曲线[curves.springCurve](../js-apis-curve.md#curvesspringcurve9)。<br/>"spring-motion(response,dampingFraction,overlapDuration)"：具体参数含义参考弹性动画曲线[curves.springMotion](../js-apis-curve.md#curvesspringmotion9)。<br/>默认值：Curve.EaseInOut<br/>**说明：** 当curve传入的string值不在上述可选值范围内时，使用默认值Curve.EaseInOut。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| delay      | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 动画延迟播放时间，单位为ms(毫秒)，默认不延时播放。<br/>默认值：0<br/>取值范围：(-∞, +∞)<br/>**说明**：1.delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。<br/>2.&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| iterations | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。<br/>默认值：1 <br/>取值范围：[-1, +∞)<br/>**说明**：设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| playMode   | [PlayMode](ts-appendix-enums.md#playmode)|否 | 是 | 动画播放模式，默认播放完成后从头开始播放。<br/>默认值：PlayMode.Normal<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>相关使用约束请参考PlayMode说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| onFinish   | ()&nbsp;=&gt;&nbsp;void      | 否 | 是 | 动画播放完成回调。UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，触发播放完成回调。<br/>在设置的开发者选项中关闭过渡动画，以及tempo设置为+∞时，动画播放完成回调会立即执行。 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
+| finishCallbackType<sup>11+</sup>   | [FinishCallbackType](#finishcallbacktype11)| 否 | 是| 在动画中定义onFinish回调的类型。<br/>默认值：FinishCallbackType.REMOVED<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| expectedFrameRateRange<sup>11+</sup>   | [ExpectedFrameRateRange](#expectedframeraterange11) | 否 | 是 | 设置动画的期望帧率。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
 
 > **PlayMode说明：**
 >
@@ -45,35 +45,43 @@
 
 ### interpolate<sup>9+</sup>
 
-interpolate(fraction:&nbsp;number): number
+ArkTS-Dyn: interpolate(fraction: number): number
+
+ArkTS-Sta: interpolate(fraction: double): double
 
 插值曲线的插值计算函数，可以通过传入的归一化时间参数返回当前的插值
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| fraction | number | 是   | 当前的归一化时间参数。<br/>取值范围：[0,1]<br/>**说明：** <br/>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
+| fraction | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 当前的归一化时间参数。<br/>取值范围：[0,1]<br/>**说明：** <br/>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
 
 **返回值：**
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回归一化time时间点对应的曲线插值。 |
 
 ## FinishCallbackType<sup>11+</sup>
 
 动画中定义onFinish回调的类型。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,14 +91,16 @@ interpolate(fraction:&nbsp;number): number
 
 | 名称       | 值         | 说明                                                         |
 | --------- | ---------------|------------------------------------------------------------ |
-| REMOVED   | 0  | 当整个动画结束并立即删除时，将触发回调。                         |
-| LOGICALLY | 1  | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
+| REMOVED   | 0  | 当整个动画结束并被移除时，将触发回调。  |
+| LOGICALLY | 1  | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。即动画的主要运动逻辑已完成时触发onFinish回调，但动画可能仍有长尾效果（如弹簧曲线的余震衰减）继续运行，此回调在逻辑完成时即触发，而非等待长尾效果完全消失。 |
 
 ## ExpectedFrameRateRange<sup>11+</sup>
 
 设置动画期望的帧率。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,7 +111,7 @@ interpolate(fraction:&nbsp;number): number
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|--------|---------|---------|---------|
 | min | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 期望的最小帧率，单位为帧/秒（fps）。<br/>取值范围为[0, 设备最大帧率]。 |
-| max | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br/>取值范围为[min, 设备最大帧率]。 |
+| max | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br/>取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。 |
 | expected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 期望的最优帧率，单位为帧/秒（fps）。<br/>取值范围为[min, max]。设置为0时，将跟随应用的帧率。 |
 
 ## animateTo<sup>(deprecated)</sup>
@@ -120,9 +130,9 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 组件内转场不支持的属性，可以参考[示例2](#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

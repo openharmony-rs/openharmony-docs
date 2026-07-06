@@ -1,8 +1,8 @@
 #  OffscreenCanvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,13 +14,13 @@ OffscreenCanvas组件用于绘制自定义图形。
 >
 > 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[Drawing模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 
 ## 子组件
 
 不支持。
 
-## 构造函数
+## 接口
 
 ### constructor
 
@@ -51,6 +51,8 @@ constructor(width: number, height: number, unit: LengthMetricsUnit)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -77,6 +79,8 @@ OffscreenCanvas支持以下属性：
 | height | number | 否  |  否  | OffscreenCanvas组件的高度。<br>默认单位为vp。 |
 
 ### width
+
+**示例：**
 
 ```ts
 // xxx.ets
@@ -113,6 +117,8 @@ struct OffscreenCanvasPage {
 ![zh-cn_image_0000001194032666](figures/offscreen_canvas_width.png)
 
 ### height
+
+**示例：**
 
 ```ts
 // xxx.ets
@@ -213,6 +219,8 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 返回OffscreenCanvas组件的绘图上下文。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

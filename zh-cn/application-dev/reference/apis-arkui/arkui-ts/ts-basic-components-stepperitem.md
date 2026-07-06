@@ -1,7 +1,7 @@
 # StepperItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@ StepperItem()
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md#属性)替代。
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

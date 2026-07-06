@@ -340,11 +340,11 @@
 如果应用页面底部是固定高度的功能按钮，在计算底部功能按钮位置时，若只用窗口高度减去底部功能按钮高度，则会导致底部功能按钮向下偏移一个标题栏高度的位置，从而出现显示不全的情况。
 
 有以下三种方式解决以上问题：
-- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorheight11)获取，单位为vp。
+- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
 
 - 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](window-terminology.md#沉浸式布局)。
+- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
 **窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
 
@@ -407,7 +407,7 @@
         this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
         this.mainWindow.on("windowSizeChange", (data) => {
           this.windowSize = data;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
         })
       }
 
@@ -420,7 +420,7 @@
           this.windowSize.width = WindowProperties.drawableRect.width;
           this.titleButtonRect = this.mainWindow.getTitleButtonRect();
           this.topAreaHeight = this.titleButtonRect.height;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
           console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
         } catch (exception) {
           console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -490,7 +490,7 @@
 
 ## 自由窗口状态下窗口进入全屏显示
 
-在2in1设备或开启电脑模式的Tablet设备上，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
+在PC/2in1设备或开启电脑模式的Tablet设备上，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
 
 典型场景及对应方案如下：
 

@@ -48,15 +48,9 @@ setConfigurationString(configName: string, value: string): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  mediaKeySystem.setConfigurationString("stringConfigName", "stringConfigValue"); // 确保stringConfigName是可配置的。
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`setConfigurationString ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+mediaKeySystem.setConfigurationString('stringConfigName', 'stringConfigValue'); // 确保stringConfigName是可配置的。
 ```
 
 ## getConfigurationString
@@ -73,7 +67,7 @@ getConfigurationString(configName: string): string
 
 | 参数名     | 类型                                             | 必填 | 说明                           |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| configName  | string     | 是   | 配置属性名，不能为空，属性名参考[PreDefinedConfigName](arkts-apis-drm-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。                   |
+| configName  | string     | 是   | 配置属性名，不能为空，长度不能超过4096字节。<br>如果参数长度超过4096字节，会抛出错误码401。<br>属性名参考[PreDefinedConfigName](arkts-apis-drm-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。                   |
 
 **返回值：**
 
@@ -95,15 +89,9 @@ getConfigurationString(configName: string): string
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let configValue: string = mediaKeySystem.getConfigurationString("vendor");
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationString ERROR: ${error}`);  
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: string = mediaKeySystem.getConfigurationString('vendor');
 ```
 
 ## setConfigurationByteArray
@@ -137,18 +125,12 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // 按实际需求填写configValue属性值，请按实际值传入。
 let configValue: Uint8Array = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  // 需确认当前DRM解决方案的byteArrayConfigName属性是可配置的。
-  mediaKeySystem.setConfigurationByteArray("byteArrayConfigName", configValue);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`setConfigurationByteArray ERROR: ${error}`);  
-}
+// 需确认当前DRM解决方案的byteArrayConfigName属性是可配置的。
+mediaKeySystem.setConfigurationByteArray('byteArrayConfigName', configValue);
 ```
 
 ## getConfigurationByteArray
@@ -187,15 +169,9 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray("deviceUniqueId"); // 确保deviceUniqueId属性是存在的。
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);  
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray('deviceUniqueId'); // 确保deviceUniqueId属性是存在的。
 ```
 
 ## getStatistics
@@ -227,15 +203,9 @@ getStatistics(): StatisticKeyValue[]
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
 ```
 
 ## getMaxContentProtectionLevel
@@ -267,15 +237,9 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
 ```
 
 ## generateKeySystemRequest
@@ -283,6 +247,8 @@ try {
 generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 生成获取mediaKeySystem设备证书的请求。使用Promise异步回调。
+
+如果设备上已存在设备证书，调用此接口会返回失败。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -307,14 +273,12 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // 设备上已有设备证书的情况下不需要调用。
-mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
-  console.info("generateKeySystemRequest");
-}).catch((err: BusinessError) => {
-  console.error(`generateKeySystemRequest: ERROR: ${err}`);
+mediaKeySystem.generateKeySystemRequest().then((provisionRequest: drm.ProvisionRequest) => {
+  // provisionRequest为接口返回的设备证书请求对象，包含请求数据和默认URL。
+  console.info("generateKeySystemRequest, defaultURL: " + provisionRequest.defaultURL);
 });
 ```
 
@@ -324,6 +288,8 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 处理获得的设备证书请求的响应。使用Promise异步回调。
 
+如果设备上已存在设备证书，调用此接口会返回失败。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -332,13 +298,13 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 | 参数名     | 类型                                             | 必填 | 说明                           |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| response  | Uint8Array     | 是   | 设备证书响应。                   |
+| response  | Uint8Array     | 是   | 从DRM服务获取的设备证书响应。                   |
 
 **返回值：**
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise对象。                   |
+| Promise<void\>          | Promise对象，无返回结果。                   |
 
 **错误码：**
 
@@ -354,21 +320,18 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入；
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+// keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入。
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
   console.info("processKeySystemResponse");
-}).catch((err: BusinessError) => {
-  console.error(`processKeySystemResponse: ERROR: ${err}`);
 });
 ```
 
 ## getCertificateStatus
 
-getCertificateStatus():CertificateStatus
+getCertificateStatus(): CertificateStatus
 
 获取设备证书状态值。
 
@@ -395,15 +358,9 @@ getCertificateStatus():CertificateStatus
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getCertificateStatus ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
 ```
 
 ## on('keySystemRequired')
@@ -421,7 +378,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 事件类型，通过[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)成功创建MediaKeySystem实例后可监听，需要设备证书时触发该事件。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，返回事件信息。当收到该事件时，表示需要请求设备证书。                 |
 
 **错误码：**
 
@@ -437,7 +394,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
   console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
@@ -458,7 +415,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，通过[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)成功创建MediaKeySystem实例后可监听。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
@@ -473,7 +430,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
 
@@ -514,15 +471,9 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`createMediaKeySession ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 ```
 
 ## createMediaKeySession
@@ -555,15 +506,9 @@ createMediaKeySession(): MediaKeySession
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`createMediaKeySession ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 ```
 
 ## getOfflineMediaKeyIds
@@ -595,15 +540,9 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOfflineMediaKeyIds ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
 ```
 
 ## getOfflineMediaKeyStatus
@@ -642,17 +581,11 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOfflineMediaKeyStatus ERROR: ${error}`);
-}
+let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
 ```
 
 ## clearOfflineMediaKeys
@@ -677,7 +610,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
 | 24700101                |  All unknown errors                  |
 | 24700201                |  Fatal service error, for example, service died                  |
 
@@ -685,17 +618,11 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearOfflineMediaKeys ERROR: ${error}`);
-}
+mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
 ```
 
 ## destroy
@@ -721,13 +648,7 @@ destroy(): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  mediaKeySystem.destroy();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`mediaKeySystem destroy ERROR: ${error}`);
-}
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+mediaKeySystem.destroy();
 ```

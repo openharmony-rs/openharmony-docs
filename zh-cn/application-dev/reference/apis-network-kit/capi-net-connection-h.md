@@ -40,6 +40,8 @@
 | [int32_t OHOS_NetConn_UnregisterDnsResolver(void)](#ohos_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | 注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_UnregisterDnsResolver(void)](#oh_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | 注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_UnregisterCustomDnsResolver(void)](#oh_netconn_unregistercustomdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)](#oh_netconn_bindsocket) | 将套接字绑定到特定的网络。 |
 | [int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)](#oh_netconn_setapphttpproxy) | 为当前应用设置http代理配置信息。 |
 | [int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)](#oh_netconn_registerapphttpproxycallback) | 注册监听应用http代理变化的回调。 |
@@ -383,7 +385,9 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **描述**
 
-注册自定义DNS解析器。
+注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。
+
+建议使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -421,6 +425,60 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+
+### OH_NetConn_RegisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
+```
+
+**描述**
+
+注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该处理器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。
+
+同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。
+
+作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          401 - 参数错误。<br>         2101008 - 解析器已存在。 |
+
+### OH_NetConn_UnregisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
+```
+
+**描述**
+
+取消注册自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 

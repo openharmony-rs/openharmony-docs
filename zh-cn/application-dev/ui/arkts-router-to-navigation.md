@@ -1,7 +1,7 @@
 # Router切换Navigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -24,6 +24,8 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 ```
 
 以下为Router页面的示例。
+
+ArkTS-Dyn示例：
 
 <!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
 
@@ -59,9 +61,9 @@ struct Index {
                 return;
               }
               hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
-            })
+            });
           })
-        // ···
+        // ...
       }
       .width('100%')
     }
@@ -99,9 +101,129 @@ struct pageOne {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
+
+``` TypeScript
+// Index.ets
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  Alignment,
+  $r,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State router: string = 'Examples of Router, Navigation, and NavPathStack';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button('router to pageOne', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().getRouter().pushUrl({
+              url: 'pages/routerToNavigation/router/PageOne' // 目标url
+            }, router.RouterMode.Standard, (err) => {
+              if (err) {
+                hilog.error(DOMAIN, TAG, 'page ON_SHOWN:' + `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
+            });
+          })
+        // ...
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+@Entry
+@Component
+struct pageOne {
+  @State message: string = 'This is pageOne';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button('router back to Index', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().getRouter().back();
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)，是Navigation包含的子组件，子页是[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)包含的子组件。
 
 以下为Navigation导航页的示例。
+
+ArkTS-Dyn示例：
 
 <!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->
 
@@ -129,7 +251,60 @@ struct Index1 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+// Index.ets
+@Entry
+@Component
+struct Index1 {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pathStack) {
+      Column() {
+        Button('Push PageOne', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pathStack.pushPathByName('navigation_pageOne', null);
+          })
+      }.width('100%').height('100%')
+    }
+    .title('Navigation')
+    .mode(NavigationMode.Stack)
+  }
+}
+```
+
 以下为Navigation子页的示例。
+
+ArkTS-Dyn示例：
 
 <!-- @[nav_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/PageOne.ets) -->
 
@@ -145,6 +320,65 @@ export struct PageOne {
   pathStack: NavPathStack = new NavPathStack();
 
   build() {
+    NavDestination() {
+      Column() {
+        // 请将$r('app.string.routerToNavigation_nav_text1_backHome')替换为实际资源文件，在本示例中该资源文件的value值为"回到首页"
+        Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pathStack.clear();
+          })
+      }.width('100%').height('100%')
+    }.title('PageOne')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[nav_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/navigation/PageOne.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavDestination,
+  NavDestinationContext,
+  $r,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+@Builder
+export function PageOneBuilder(): void {
+  PageOne();
+}
+
+@Entry
+@Component
+export struct PageOne {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build(): void {
     NavDestination() {
       Column() {
         // 请将$r('app.string.routerToNavigation_nav_text1_backHome')替换为实际资源文件，在本示例中该资源文件的value值为"回到首页"
@@ -187,6 +421,8 @@ export struct PageOne {
 
 Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](../reference/apis-arkui/arkts-apis-uicontext-router.md)对象。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->
 
 ``` TypeScript
@@ -209,7 +445,33 @@ let size = this.getUIContext().getRouter().getLength();
 let pageState = this.getUIContext().getRouter().getState();
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->
+
+``` TypeScript
+// push page
+this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: undefined } as router.RouterOptions);
+
+// pop page
+this.getUIContext().getRouter().back({ url: 'pages/pageOne' } as router.RouterOptions);
+
+// replace page
+this.getUIContext().getRouter().replaceUrl({ url: 'pages/pageOne' } as router.RouterOptions);
+
+// clear all page
+this.getUIContext().getRouter().clear();
+
+// 获取页面栈大小
+let size = this.getUIContext().getRouter().getLength();
+
+// 获取页面状态
+let pageState = this.getUIContext().getRouter().getState();
+```
+
 Navigation通过导航控制器对象[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
+
+ArkTS-Dyn示例：
 
 <!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
 
@@ -250,6 +512,89 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
+// 删除栈中name为pageOne的所有页面
+this.pathStack.removeByName('pageOne');
+
+// 删除指定索引的页面
+this.pathStack.removeByIndexes([1, 3, 5]);
+
+// 获取栈中所有页面name集合
+this.pathStack.getAllPathName();
+
+// 获取索引为1的页面参数
+this.pathStack.getParamByIndex(1);
+
+// 获取pageOne页面的参数
+this.pathStack.getParamByName('pageOne');
+
+// 获取pageOne页面的索引集合
+this.pathStack.getIndexByName('pageOne');
+// ...
+```
+
+ArkTS-Sta示例：
+
+<!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+@Entry
+@Component
+struct Index {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    // 设置NavPathStack并传入Navigation
+    Navigation(this.pathStack) {
+      // ...
+    }.width('100%').height('100%')
+    .title('Navigation, Navigation')
+    .mode(NavigationMode.Stack)
+  }
+}
+```
+
+<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) -->
+
+``` TypeScript
+this.pathStack.pop();
+// push page
+this.pathStack.pushPath(new NavPathInfo('pageOne', undefined));
+
+// pop page
+this.pathStack.pop();
+this.pathStack.popToIndex(1);
+this.pathStack.popToName('pageOne');
+
+// replace page
+this.pathStack.replacePath(new NavPathInfo('pageOne', undefined));
+
+// clear all page
+this.pathStack.clear();
+
+// 获取路由栈大小
+let size: number = this.pathStack.size();
+
 // 删除栈中name为PageOne的所有页面
 this.pathStack.removeByName('pageOne');
 
@@ -273,6 +618,8 @@ this.pathStack.getIndexByName('pageOne');
 Router作为全局通用模块，可以在任意页面中调用，Navigation作为组件，子页面想要做路由需要拿到Navigation持有的导航控制器对象NavPathStack，可以通过如下几种方式获取：
 
 **方式一**：通过`@Provide`和`@Consume`传递给子页面（有耦合，不推荐）。
+
+ArkTS-Dyn示例：
 
 <!-- @[router_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router1.ets) -->
 
@@ -308,7 +655,69 @@ export struct PageOne {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[router_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Router1.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavDestination,
+  State,
+  Provide,
+  Consume,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+// Navigation根容器
+@Entry
+@Component
+struct Index {
+  // Navigation创建一个Provide修饰的NavPathStack
+  @Provide pathStack: NavPathStack = new NavPathStack();
+
+  build(): void {
+    Navigation(this.pathStack) {
+      // ...
+    }
+    .title('Method 1: Navigation')
+    .mode(NavigationMode.Stack)
+  }
+}
+
+// Navigation子页面
+@Component
+export struct PageOne {
+  // NavDestination通过Consume获取到
+  @Consume pathStack: NavPathStack;
+
+  build(): void {
+    NavDestination() {
+      // ...
+    }
+    .title('PageOne')
+  }
+}
+```
+
 **方式二**：子页面通过[OnReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取。
+
+ArkTS-Dyn示例：
 
 <!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
 
@@ -329,7 +738,53 @@ export struct PageOne {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavDestination,
+  NavDestinationContext,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+@Entry
+@Component
+export struct PageOne {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build(): void {
+    NavDestination() {
+      // ...
+    }.title('Method 2: PageOne')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
+
 **方式三**： 通过全局的`AppStorage`接口设置获取。
+
+ArkTS-Dyn示例：
 
 <!-- @[router_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router3.ets) -->
 
@@ -367,11 +822,127 @@ export struct PageOne {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[router_3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Router3.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavDestination,
+  State,
+  AppStorage,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
+@Entry
+@Component
+struct Index {
+  pathStack: NavPathStack = new NavPathStack();
+
+  // 全局设置一个NavPathStack
+  aboutToAppear(): void {
+    AppStorage.setOrCreate('PathStack', this.pathStack);
+  }
+
+  build(): void {
+    Navigation(this.pathStack) {
+      // ...
+    }.title('Method 3: AppStorage')
+    .mode(NavigationMode.Stack)
+  }
+}
+
+// Navigation子页面
+@Component
+export struct PageOne {
+  // 子页面中获取全局的NavPathStack
+  pathStack: NavPathStack = AppStorage.get<NavPathStack>('PathStack') as NavPathStack;
+
+  build(): void {
+    NavDestination() {
+      // ...
+    }
+    .title('PageOne')
+  }
+}
+```
+
 **方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)。
+
+ArkTS-Dyn示例：
 
 <!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
 
 ``` TypeScript
+// 子页面中的自定义组件
+@Entry
+@Component
+struct CustomNode {
+  pathStack: NavPathStack = new NavPathStack();
+
+  aboutToAppear() {
+    // query navigation info
+    let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
+    if (navigationInfo !== undefined) {
+      this.pathStack = navigationInfo.pathStack ;
+    }
+  }
+
+  build() {
+    Row() {
+      Button('Method 4: queryNavigationInfo')
+        .onClick(() => {
+          this.pathStack.pushPath({ name: 'pageTwo' });
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavPathInfo,
+  NavigationInfo,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
 // 子页面中的自定义组件
 @Entry
 @Component
@@ -390,7 +961,7 @@ struct CustomNode {
     Row() {
       Button('Method 4: queryNavigationInfo')
         .onClick(() => {
-          this.pathStack.pushPath({ name: 'pageTwo' });
+          this.pathStack.pushPath(new NavPathInfo('pageTwo', undefined));
         })
     }
   }
@@ -411,7 +982,31 @@ struct CustomNode {
 
 Router页面[生命周期](arkts-routing.md#生命周期)为`@Entry`页面中的通用方法，主要有如下四个生命周期：
 
+ArkTS-Dyn示例：
+
 <!-- @[life_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Comm.ets) -->
+
+``` TypeScript
+// 页面创建后挂树的回调
+aboutToAppear(): void {
+}
+
+// 页面销毁前下树的回调
+aboutToDisappear(): void {
+}
+
+// 页面显示时的回调
+onPageShow(): void {
+}
+
+// 页面隐藏时的回调
+onPageHide(): void {
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[life_comm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Comm.ets) -->
 
 ``` TypeScript
 // 页面创建后挂树的回调
@@ -439,9 +1034,68 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
 
 具体生命周期描述请参考Navigation[页面生命周期](./arkts-navigation-navdestination.md#页面生命周期)。
 
+ArkTS-Dyn示例：
+
 <!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
 
 ``` TypeScript
+@Entry
+@Component
+struct PageOne {
+  aboutToDisappear() {
+  }
+
+  aboutToAppear() {
+  }
+
+  build() {
+    NavDestination() {
+      // ...
+    }
+    .onWillAppear(() => {
+    })
+    .onAppear(() => {
+    })
+    .onWillShow(() => {
+    })
+    .onShown(() => {
+    })
+    .onWillHide(() => {
+    })
+    .onHidden(() => {
+    })
+    .onWillDisappear(() => {
+    })
+    .onDisAppear(() => {
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavDestination,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+
 @Entry
 @Component
 struct PageOne {
@@ -487,7 +1141,7 @@ Navigation作为路由容器组件，其内部的页面切换动画本质上属�
 
 页面和页面之间跳转的时候需要进行共享元素过渡动画，Router可以通过通用属性`sharedTransition`来实现共享元素转场，具体可以参考如下链接：
 
-[Router共享元素转场动画](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
+[共享元素转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
 
 Navigation也提供了共享元素一镜到底的转场能力，需要配合`geometryTransition`属性，在子页面（NavDestination）之间切换时，可以实现共享元素转场，具体可参考[Navigation共享元素转场动画](./arkts-navigation-animation.md#共享元素转场)。
 
@@ -496,6 +1150,8 @@ Navigation也提供了共享元素一镜到底的转场能力，需要配合`geo
 Router可以通过命名路由的方式实现跨包跳转。
 
 1. 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给@Entry修饰的自定义组件[EntryOptions](../ui/state-management/arkts-create-custom-components.md#entry)命名。
+
+   ArkTS-Dyn示例：
 
    <!-- @[router_hsp11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp11.ets) -->
    
@@ -519,6 +1175,51 @@ Router可以通过命名路由的方式实现跨包跳转。
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[router_hsp11](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp11.ets) -->
+   
+   ``` TypeScript
+   // library/src/main/ets/pages/Index.ets
+   // library为新建共享包自定义的名字
+   import {
+     Entry,
+     Component,
+     Flex,
+     FlexOptions,
+     FlexDirection,
+     ItemAlign,
+     FlexAlign,
+     Text,
+     FontWeight,
+     Row,
+     Button,
+     Column,
+     ButtonType,
+     NavPathStack,
+     Navigation,
+     NavigationMode,
+     State,
+   } from '@kit.ArkUI';
+   import router from '@ohos.router';
+   
+   @Entry({ routeName: 'myPage' })
+   @Component
+   export struct MyComponent {
+     build(): void {
+       Row() {
+         Column() {
+           Text('Library Page')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
+
 2. 使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
 
    ```ts
@@ -529,6 +1230,8 @@ Router可以通过命名路由的方式实现跨包跳转。
    ```
 
 3. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
+
+   ArkTS-Dyn示例：
 
    <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
    
@@ -575,9 +1278,94 @@ Router可以通过命名路由的方式实现跨包跳转。
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
+   
+   ``` TypeScript
+   import {
+     Entry,
+     Component,
+     Flex,
+     FlexOptions,
+     FlexDirection,
+     ItemAlign,
+     FlexAlign,
+     Text,
+     FontWeight,
+     Row,
+     Button,
+     Column,
+     ButtonType,
+     NavPathStack,
+     Navigation,
+     NavigationMode,
+     State,
+   } from '@kit.ArkUI';
+   import router from '@ohos.router';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   // import('library/src/main/ets/pages/routerToNavigation/router/Index'); // 引入共享包中的命名路由页面
+   const DOMAIN = 0xF811;
+   const TAG = '[Sample_ArkTSRouter]';
+   
+   interface SubRouterParam {
+     data3: Array<number>;
+   }
+   
+   interface RouterParam {
+     data1: string;
+     data2: SubRouterParam;
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Flex({
+         direction: FlexDirection.Column,
+         alignItems: ItemAlign.Center,
+         justifyContent: FlexAlign.Center
+       } as FlexOptions) {
+         Text('Hello World')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .margin({ top: 20 })
+           .backgroundColor('#ccc')
+           .onClick(() => { // 点击跳转到其他共享包中的页面
+             this.getUIContext()
+               .getRouter()
+               .pushNamedRoute({
+                 name: 'myPage',
+                 params: {
+                   data1: 'message',
+                   data2: {
+                     data3: [123, 456, 789]
+                   }
+                 } as RouterParam
+               } as router.NamedRouterOptions)
+               .then(() => {
+                 hilog.info(DOMAIN, TAG, 'pushNamedRoute succeeded.');
+               })
+               .catch((err) => {
+                 let code = err.code;
+                 let message = err.message;
+                 hilog.error(DOMAIN, TAG, `pushNamedRoute failed, code is ${code}, message is ${message}`);
+               });
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
+
 Navigation作为路由组件，默认支持跨包跳转。
 
 1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件申明为export。
+
+   ArkTS-Dyn示例：
 
    <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
    
@@ -592,12 +1380,40 @@ Navigation作为路由组件，默认支持跨包跳转。
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
+   
+   ``` TypeScript
+   import { Component, NavDestination, State } from '@kit.ArkUI';
+   import router from '@ohos.router';
+   
+   @Component
+   export struct PageInHSP {
+     build(): void {
+       NavDestination() {
+         // ...
+       }
+     }
+   }
+   ```
+
 2. 在HSP（HAR）的Index.ets中导出组件。
+
+   ArkTS-Dyn示例：
 
    <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
    
    ``` TypeScript
-   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP';
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
+   
+   ``` TypeScript
+   // export { PageInHSP } from './src/main/ets/pages/PageInHSP';
    ```
 
 3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
@@ -610,6 +1426,8 @@ Navigation作为路由组件，默认支持跨包跳转。
    ```
 
 4. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
+
+   ArkTS-Dyn示例：
 
    <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
    
@@ -635,6 +1453,61 @@ Navigation作为路由组件，默认支持跨包跳转。
            .onClick(() => {
              // 3.跳转到Hsp中的页面
              this.pageStack.pushPath({ name: 'PageInHSP' });
+           })
+       }
+       .mode(NavigationMode.Stack)
+       .navDestination(this.pageMap)
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
+   
+   ``` TypeScript
+   // 1.导入跨包的路由页面
+   import { PageInHSP } from 'library';
+   import {
+     Entry,
+     Component,
+     Flex,
+     FlexOptions,
+     FlexDirection,
+     ItemAlign,
+     FlexAlign,
+     Text,
+     FontWeight,
+     Row,
+     Button,
+     Column,
+     ButtonType,
+     NavPathStack,
+     Navigation,
+     NavigationMode,
+     NavPathInfo,
+     State,
+   } from '@kit.ArkUI';
+   import router from '@ohos.router';
+   
+   @Entry
+   @Component
+   struct mainPage {
+     pageStack: NavPathStack = new NavPathStack();
+   
+     @Builder pageMap(name: string) {
+       if (name === 'PageInHSP') {
+         // 2.定义路由映射表
+         PageInHSP();
+       }
+     }
+   
+     build() {
+       Navigation(this.pageStack) {
+         Button('Push HSP Page')
+           .onClick(() => {
+             // 3.跳转到Hsp中的页面
+             this.pageStack.pushPath(new NavPathInfo('PageInHSP', undefined));
            })
        }
        .mode(NavigationMode.Stack)
@@ -670,11 +1543,11 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供@build封装的构建函数，并再通过WrappedBuilder封装后，实现全局封装；
-4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册如路由模块；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)封装后，实现全局封装；
+4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 
-具体的构建过程，可以参考Navigation[自动生成动态路由](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md)示例。
+具体的构建过程，可以参考Navigation[自动生成动态路由](https://gitcode.com/HarmonyOS-Cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md)示例。
 
 **方案二：** 系统路由表
 
@@ -686,6 +1559,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
 
+ArkTS-Dyn示例：
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
 
@@ -706,9 +1580,53 @@ uiObserver.on('routerPageUpdate', this.context, callbackFunc);
 uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  State,
+} from '@kit.ArkUI';
+import router from '@ohos.router';
+import uiObserver from '@ohos.arkui.observer';
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+function callbackFunc(info: uiObserver.RouterPageInfo) {
+  hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
+}
+
+// used in ability context.
+// uiObserver.onRouterPageUpdate(this.context, callbackFunc);
+
+// used in UIContext.
+// uiObserver.onRouterPageUpdate(this.getUIContext(), callbackFunc);
+```
+
 在页面状态发生变化时，注册的回调将会触发，开发者可以通过回调中传入的入参拿到页面的相关信息，如：页面的名字，索引，路径，生命周期状态等。
 
 Navigation同样可以通过在observer中实现注册监听。
+
+ArkTS-Dyn示例：
 
 <!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
 
@@ -728,19 +1646,82 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       // ...
       let windowClass = data;
-      // 获取UIContext实例。
+      // 获取UIContext实例
       let uiContext: UIContext = windowClass.getUIContext();
-      // 获取UIObserver实例。
+      // 获取UIObserver实例
       let uiObserver : UIObserver = uiContext.getUIObserver();
-      // 注册DevNavigation的状态监听.
+      // 注册NavDestination的状态监听
       uiObserver.on('navDestinationUpdate',(info) => {
+        // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
+        if (info.state === 0) {
+          // NavDestination组件显示时操作
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
+        }
+      });
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
+
+``` TypeScript
+// EntryAbility.ets
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  State,
+} from '@kit.ArkUI';
+import {
+  UIContext, UIObserver
+} from '@ohos.arkui.UIContext';
+import router from '@ohos.router';
+import uiObserver from '@ohos.arkui.observer';
+import window from '@ohos.window';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ...
+    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
+      // ...
+      let windowClass = data;
+      // 获取UIContext实例。
+      let uiContext: UIContext | undefined = windowClass?.getUIContext();
+      // 获取UIObserver实例。
+      let uiObserver: UIObserver | undefined = uiContext?.getUIObserver();
+      // 注册DevNavigation的状态监听.
+      uiObserver?.onNavDestinationUpdate((info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state == 0) {
           // NavDestination组件显示时操作
-          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
-      })
-    })
+      });
+    });
   }
 }
 ```
@@ -760,10 +1741,34 @@ Router可以通过[queryRouterPageInfo](../reference/apis-arkui/arkui-ts/ts-cust
 | state                | RouterPageState             | 是   | routerPage页面的状态。           |
 | pageId<sup>12+</sup> | string                      | 是   | routerPage页面的唯一标识。       |
 
+ArkTS-Dyn示例：
+
 <!-- @[observer_pageinfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/PageInfo.ets) -->
 
 ``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
+
+// 页面内的自定义组件
+@Component
+struct MyComponent {
+  aboutToAppear() {
+    let info: uiObserver.RouterPageInfo | undefined = this.queryRouterPageInfo();
+  }
+
+  build() {
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[observer_pageinfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/observer/PageInfo.ets) -->
+
+``` TypeScript
+import { Component } from '@kit.ArkUI';
+import router from '@ohos.router';
+import uiObserver from '@ohos.arkui.observer';
 
 // 页面内的自定义组件
 @Component
@@ -789,6 +1794,8 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | param<sup>12+</sup>            | Object              | 否   | NavDestination组件的参数。                   |
 | navDestinationId<sup>12+</sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
+ArkTS-Dyn示例：
+
 <!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
 
 ``` TypeScript
@@ -808,11 +1815,11 @@ export struct NavDestinationExample {
 
 @Component
 struct MyComponent {
-  navDesInfo: uiObserver.NavDestinationInfo | undefined
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
@@ -821,6 +1828,59 @@ struct MyComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  Row,
+  Button,
+  Column,
+  ButtonType,
+  NavPathStack,
+  Navigation,
+  NavigationMode,
+  NavDestination,
+  State,
+} from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+@Component
+export struct NavDestinationExample {
+  build(): void {
+    NavDestination() {
+      MyComponent();
+    }
+  }
+}
+
+@Component
+struct MyComponent {
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
+
+  aboutToAppear() {
+    this.navDesInfo = this.queryNavDestinationInfo();
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
+  }
+
+  build() {
+    // ...
+  }
+}
+```
 
 ## 路由拦截
 

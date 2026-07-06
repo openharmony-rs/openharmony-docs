@@ -14,6 +14,8 @@ NodeController用于实现自定义节点的创建、显示、更新等操作的
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - NodeController对象不支持使用JSON序列化。
 
 ## 导入模块
@@ -26,9 +28,15 @@ import {  NodeController  } from '@kit.ArkUI';
 
 通常搭配[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行使用。用于创建控制器管理绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件。一个NodeController只允许与一个[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行绑定。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### makeNode
 
@@ -42,7 +50,9 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 >
 > [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)不支持跨实例复用。如果出现跨实例复用[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)，传入[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的[NodeController](#nodecontroller-1)触发[makeNode](#makenode)回调方法时，入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象可能为undefined，此时需要开发者判断入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,9 +74,9 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 ### aboutToAppear
 
-ArkTs-Dyn: aboutToAppear?(): void
+ArkTS-Dyn: aboutToAppear?(): void
 
-ArkTs-Sta: aboutToAppear(): void
+ArkTS-Sta: aboutToAppear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载显示后触发此回调。
 
@@ -74,7 +84,9 @@ ArkTs-Sta: aboutToAppear(): void
 >
 > 回调时机参考[onAppear](arkui-ts/ts-universal-events-show-hide.md#onappear)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,9 +96,9 @@ ArkTs-Sta: aboutToAppear(): void
 
 ### aboutToDisappear
 
-ArkTs-Dyn: aboutToDisappear?(): void
+ArkTS-Dyn: aboutToDisappear?(): void
 
-ArkTs-Sta: aboutToDisappear(): void
+ArkTS-Sta: aboutToDisappear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)销毁时触发此回调。
 
@@ -94,7 +106,9 @@ ArkTs-Sta: aboutToDisappear(): void
 >
 > 回调时机参考[onDisAppear](arkui-ts/ts-universal-events-show-hide.md#ondisappear)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,9 +118,9 @@ ArkTs-Sta: aboutToDisappear(): void
 
 ### onAttach<sup>18+</sup>
 
-ArkTs-Dyn: onAttach?(): void
+ArkTS-Dyn: onAttach?(): void
 
-ArkTs-Sta: onAttach(): void
+ArkTS-Sta: onAttach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载至主节点树时触发此回调。
 
@@ -114,7 +128,9 @@ ArkTs-Sta: onAttach(): void
 >
 > 回调时机参考[onAttach](arkui-ts/ts-universal-events-show-hide.md#onattach12)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,9 +140,9 @@ ArkTs-Sta: onAttach(): void
 
 ### onDetach<sup>18+</sup>
 
-ArkTs-Dyn: onDetach?(): void
+ArkTS-Dyn: onDetach?(): void
 
-ArkTs-Sta: onDetach(): void
+ArkTS-Sta: onDetach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)从主节点树卸载时触发此回调。
 
@@ -134,7 +150,9 @@ ArkTs-Sta: onDetach(): void
 >
 > 回调时机参考[onDetach](arkui-ts/ts-universal-events-show-hide.md#ondetach12)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,7 +168,9 @@ ArkTS-Sta: onWillBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定前触发此回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,7 +192,9 @@ ArkTS-Sta: onWillUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑前触发此回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +216,9 @@ ArkTS-Sta: onBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定后触发此回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -216,7 +240,9 @@ ArkTS-Sta: onUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑后触发此回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,13 +258,15 @@ ArkTS-Sta: onUnbind(containerId: long): void
 
 ### aboutToResize
 
-ArkTs-Dyn: aboutToResize?(size: Size): void
+ArkTS-Dyn: aboutToResize?(size: Size): void
 
-ArkTs-Sta: aboutToResize(size: Size): void
+ArkTS-Sta: aboutToResize(size: Size): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)布局的时候触发此回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,13 +282,15 @@ ArkTs-Sta: aboutToResize(size: Size): void
 
 ### onTouchEvent
 
-ArkTs-Dyn: onTouchEvent?(event: TouchEvent): void
+ArkTS-Dyn: onTouchEvent?(event: TouchEvent): void
 
-ArkTs-Sta: onTouchEvent(event: TouchEvent): void
+ArkTS-Sta: onTouchEvent(event: TouchEvent): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)收到Touch事件时触发此回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,7 +310,9 @@ rebuild(): void
 
 调用此接口通知[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件重新回调[makeNode](#makenode)方法，更改子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

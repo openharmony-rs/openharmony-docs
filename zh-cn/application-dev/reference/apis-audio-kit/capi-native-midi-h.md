@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -116,7 +116,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 
 **描述**
 
-获取连接的MIDI设备数量。此函数用于确定存储设备信息所需的缓冲区大小。<br> 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在设备数量中。
+获取连接的MIDI设备数量。此函数用于确定存储设备信息所需的缓冲区大小。<br> 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不计入设备数量。
 
 **起始版本：** 24
 
@@ -124,7 +124,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | size_t *count | 输出参数，用于接收设备数量。 |
 
 **返回：**
@@ -153,7 +153,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) *infos | 用户分配的该缓冲区，用于存储设备信息。 |
 | size_t capacity | 缓冲区可容纳的最大元素数量。 |
 | size_t *actualDeviceCount | 输出参数，用于接收实际写入的设备数量。 |
@@ -206,7 +206,7 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char 
 
 > **说明：**
 > 
-> 如果蓝牙权限被拒绝，[OH_MIDIClient_OnDeviceOpened](capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调将以opened参数为false、device参数为null被调用。应用应检查opened参数后再尝试使用设备句柄。
+> 如果蓝牙权限被拒绝，[OH_MIDIClient_OnDeviceOpened](capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调将以opened参数为false、device参数为nullptr被调用。应用应检查opened参数后再尝试使用设备句柄。
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -272,7 +272,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID。 |
 | size_t *count | 输出参数，用于接收端口数量。 |
 
@@ -302,7 +302,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID。 |
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) *infos | 用户分配的缓冲区，用于存储端口信息。 |
 | size_t capacity | infos缓冲区可容纳的最大元素数量。 |
@@ -474,7 +474,7 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 **描述**
 
-发送超过标准MIDI消息长度的SysEx（System Exclusive，系统专用）消息，自动处理拆包和阻塞等待。这是一个实用函数，适用于将SysEx作为原始字节流（MIDI 1.0风格，F0...F7）处理的应用。<br> 同时适用于[OH_MIDI_PROTOCOL_1_0](capi-native-midi-base-h.md#oh_midiprotocol)和[OH_MIDI_PROTOCOL_2_0](capi-native-midi-base-h.md#oh_midiprotocol)会话。<br> 操作系统MIDI服务会自动将数据转换为设备端口所需的格式。
+发送超过标准MIDI消息长度的SysEx（System Exclusive，系统独占消息），自动处理分包和阻塞等待。这是一个实用函数，适用于将SysEx作为原始字节流（MIDI 1.0风格，F0...F7）处理的应用。<br> 同时适用于[OH_MIDI_PROTOCOL_1_0](capi-native-midi-base-h.md#oh_midiprotocol)和[OH_MIDI_PROTOCOL_2_0](capi-native-midi-base-h.md#oh_midiprotocol)会话。<br> 操作系统MIDI服务会自动将数据转换为设备端口所需的格式。
 
 > **说明：** 
 > 

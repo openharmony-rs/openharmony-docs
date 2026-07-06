@@ -3,13 +3,13 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-文件中定义了与画布相关的功能函数。<br>画布自带一个黑色，开启抗锯齿，不具备其他任何样式的默认画刷，当且仅当画布中主动设置的画刷和画笔都不存在时生效。
+文件中定义了与画布相关的功能函数。<br>画布自带一个黑色，开启抗锯齿，不具备其他任何样式的默认画刷，当且仅当画布中主动设置的画刷和画笔都不存在时生效。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 <!--RP1-->
 **相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->

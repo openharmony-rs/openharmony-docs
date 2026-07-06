@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器中单项内容容器。
@@ -28,7 +28,7 @@ GridItem(value?: GridItemOptions)
 
 创建网格容器中单项内容容器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ GridItem(value?: GridItemOptions)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value<sup>11+</sup>  | [GridItemOptions](#griditemoptions11对象说明) | 否   | 为GridItem提供可选参数，该对象内含有[GridItemStyle](#griditemstyle11枚举说明)枚举类型的style参数。 |
+| value<sup>11+</sup>  | [GridItemOptions](#griditemoptions11对象说明) | 否   | 为GridItem提供可选参数，该对象内含有[GridItemStyle](#griditemstyle11枚举说明)枚举类型的style参数。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 属性
 
@@ -52,7 +52,7 @@ ArkTS-Sta: rowStart(value: int | undefined)
 
 设置当前元素起始行号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +64,7 @@ ArkTS-Sta: rowStart(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
 
 ### rowEnd
 
@@ -74,7 +74,7 @@ ArkTS-Sta: rowEnd(value: int | undefined)
 
 设置当前元素终点行号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +86,7 @@ ArkTS-Sta: rowEnd(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
 
 ### columnStart
 
@@ -96,7 +96,7 @@ ArkTS-Sta: columnStart(value: int | undefined)
 
 设置当前元素起始列号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +108,7 @@ ArkTS-Sta: columnStart(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1]<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1]<br/>取值为undefined时，按默认值处理。 |
 
 ### columnEnd
 
@@ -118,7 +118,7 @@ ArkTS-Sta: columnEnd(value: int | undefined)
 
 设置当前元素终点列号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,10 +130,10 @@ ArkTS-Sta: columnEnd(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1]<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1]<br/>取值为undefined时，按默认值处理。 |
 
 
-需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
 起始行号、终点行号、起始列号、终点列号生效规则如下：
 
@@ -194,7 +194,7 @@ ArkTS-Sta: selectable(value: boolean | undefined)
 
 该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,7 +222,9 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +242,9 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 GridItem样式对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,7 +260,9 @@ GridItem样式对象。
 
 GridItem样式枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -283,7 +289,7 @@ ArkTS-Sta: onSelect(event:&nbsp;((isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void
 
 GridItem元素被鼠标框选的状态改变时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,12 +319,12 @@ attributeModifier(modifier: AttributeModifier\<GridItemAttribute> | AttributeMod
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<GridItemAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridItemAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>GridItemAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## 示例
 
 ### 示例1（GridItem设置自身位置）
-GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
 ```ts
 // xxx.ets
@@ -367,7 +373,7 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_0000001174582870](figures/zh-cn_image_0000001174582870.gif)
+![gridItem](figures/gridItem.gif)
 
 ### 示例2（设置GridItem样式）
 
@@ -434,4 +440,4 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_griditem_griditemoptions](figures/zh-cn_image_griditem_griditemoptions.png)
+![zh-cn_image_griditem_griditemoptions](figures/griditem-griditemoptions.png)

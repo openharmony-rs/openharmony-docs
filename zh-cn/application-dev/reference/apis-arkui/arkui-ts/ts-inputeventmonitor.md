@@ -22,7 +22,7 @@
 > - 开发者无法主动构造此对象，只能通过[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)接口注册获取。
 > - 用于后续解除注册时验证身份。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +46,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 > - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。
 > - 监听器在UI线程中同步执行会直接阻塞事件处理流程。建议只进行简单的判断和计算。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,9 +70,9 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 ## InputEventInterceptResult
 
-输入事件拦截结果接口，用于监听器回调[InputEventListener](#inputeventlistener)返回是否拦截的决策。
+输入事件拦截结果接口，用于监听器回调[InputEventListener](#inputeventlistener)返回是否阻止事件传递的决策。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +98,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 > **说明：**
 >
-> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标[(x,y)](ts-universal-mouse-key.md#mouseevent对象说明)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#touchevent对象说明)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
+> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标([x](ts-universal-mouse-key.md#属性),[y](ts-universal-mouse-key.md#属性))、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#stoppropagation23)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#preventdefault23)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#属性)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
 
 **示例：**
 
@@ -130,7 +130,7 @@ isMouseEvent(): boolean
 
 判断是否为鼠标事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +152,7 @@ isTouchEvent(): boolean
 
 判断是否为触摸事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,7 +174,7 @@ isKeyEvent(): boolean
 
 判断是否为按键事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +196,7 @@ asMouseEvent(): MouseEvent | null
 
 获取鼠标事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,7 +218,7 @@ asTouchEvent(): TouchEvent | null
 
 获取触摸事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +240,7 @@ asKeyEvent(): KeyEvent | null
 
 获取按键事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,9 +1,9 @@
 # 记忆链接开发指导
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
-<!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
-<!--Tester: @judan-->
+<!--Owner: @codexu62-->
+<!--Designer: @yuxiaoyang-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
@@ -33,7 +33,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
   
 ## 约束与限制
 
-  - 鸿蒙App Linking链接的最大字节数为128。
+  - 鸿蒙App Linking链接超过128字节时会编码失败，截图保存原始图像
 
 ## 开发步骤
 
@@ -58,44 +58,49 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 3. 订阅记忆服务。
 
-   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
-      console.info("on succeeded");
+     metadataBinding.on('operationSubmitMetadata', bundleName, callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Register event error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Register event error and err code is ' + error.code);
+     // ...
    }
    ```
 
 4. 提供鸿蒙App Linking链接。
 
-   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   // 应用先开通applink服务，然后获取applink，最后提供给记忆链接服务接口，submitMetadata接口applink长度限制为非空且小于128字符.
-   let applink: string = "https://example.com/product/12345";
+   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let metadata: string = '';
    try {
-      metadataBinding.submitMetadata(applink);
+     metadataBinding.submitMetadata(metadata);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Submit metadata error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Submit metadata error and err code is ' + error.code);
+     // ...
    }
    ```
 
 5. 取消订阅记忆服务。
 
-   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```ts
+   ``` TypeScript
    try {
      metadataBinding.off('operationSubmitMetadata', bundleName, callback);
-     console.info("off succeeded");
+     console.info('off succeeded');
+     // ...
    } catch (err) {
      let error = err as BusinessError;
-     console.error("Unregister event error and err code is " + error.code);
+     console.error('Unregister event error and err code is ' + error.code);
+     // ...
    }
    ```
    

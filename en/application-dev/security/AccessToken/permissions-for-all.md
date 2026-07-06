@@ -162,6 +162,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 
 Allows an application to access the Internet.
 
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
@@ -422,11 +424,13 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
-Currently, this permission is available only to 2-in-1 device applications.
+This permission allows starting a UIAbility within the same application from the native layer, suitable for scenarios where C/C++ APIs are called to launch a UIAbility.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | Phones
 
 **Valid since**: 15
 

@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 ## 简介
@@ -140,6 +140,10 @@
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[AppLinkEntryAbility]';
 
 export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -152,7 +156,7 @@ export default class AppLinkEntryAbility extends UIAbility {
       let action = urlObject.params.get('action');
       // 例如，当action为showall时，展示所有的节目。
       if (action === 'showall') {
-        // ...
+        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'AppLinkEntryAbility onCreate');
       }
     }
   }

@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
@@ -28,8 +28,8 @@ Memory operation failed.
 
 **处理步骤**
 
-1. 内存不足，请释放内存。
-2. 请检查是否内存泄漏。
+1. 请检查应用代码是否存在内存泄漏问题，如未释放的对象、循环引用等。
+2. 检查应用内存使用情况，释放不必要的内存资源。
 
 ## 9800002 Parcel读写操作失败
 
@@ -60,7 +60,7 @@ Internal transaction failed.
 
 **错误描述**
 
-进程间通信，IPC通信失败。
+进程间通信失败。
 
 **可能原因**
 
@@ -78,7 +78,7 @@ System service operation failed.
 
 **错误描述**
 
-调用长时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
+调用长时任务相关接口时，客户端进程请求系统服务时操作失败。
 
 **可能原因**
 
@@ -104,7 +104,7 @@ Continuous task verification failed.
 1. 应用重复申请长时任务。
 2. 应用重复取消长时任务。
 3. bgMode无效，应用配置文件属性backgroundModes没有配置任何长时任务类型。
-4. 只有<!--RP1-->特定设备<!--RP1End-->才能申请长时任务TASK_KEEPING。
+4. API version 20及之前版本，只有PC/2in1设备才能申请长时任务[TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)。
 5. 未配置长时任务主类型或者长时任务子类型。
 6. 长时任务主类型和长时任务子类型的长度不一致或者类型不匹配。
 7. 长时任务主类型或者长时任务子类型未定义。
@@ -113,16 +113,17 @@ Continuous task verification failed.
 10. 长时任务通知不存在，无法合并。
 11. 当前长时任务或者被合并的长时任务不支持通知合并。
 12. 合并通知的长时任务类型不一致。
-13. 应用申请TASK_KEEPING长时任务时，未申请ACL授权。
+13. 应用申请[TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)长时任务时，未申请ACL授权。
 14. 数据传输类型不支持通过更新接口更新长时任务类型。
 15. 在后台申请除播音外新的长时任务类型。
+16. 应用申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，未申请ACL授权。
 
 **处理步骤**
 
 1. 请检查应用代码。
 2. 请检查应用是否拥有系统权限。
-3. 请检查应用所在设备类型。
-4. 请检查应用配置属性backgroundModes。
+3. 请检查应用配置属性backgroundModes。
+4. 请检查应用所在设备类型。
 5. 请检查长时任务主类型和子类型是否已配置。
 6. 请检查长时任务主类型和子类型的长度是否一致或者类型是否匹配。
 7. 请检查长时任务主类型和子类型是否超出范围。
@@ -131,9 +132,10 @@ Continuous task verification failed.
 10. 请检查合并通知时，长时任务通知是否存在。
 11. 请检查合并通知时，当前长时任务或者被合并的长时任务是否支持合并。
 12. 请检查合并通知时，长时任务类型是否一致。
-13. 请检查申请TASK_KEEPING长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
+13. 请检查申请[TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 14. 请检查更新长时任务时，原类型或者新增类型是否包含了数据传输类型。
 15. 请检查除了播音和已经在前台申请过的长时任务类型，是否在后台申请了其他长时任务类型。
+16. 请检查申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)或者[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 
 ## 9800006 长时任务通知信息校验失败
 
@@ -210,16 +212,19 @@ Transient task verification failed.
 
 **可能原因**
 
-1. requestSuspendDelay()方法传递的callback对象已存在。
-2. cancelSuspendDelay()方法传递的callback对象不存在。
-3. 应用退入后台后5s内允许申请短时任务。
+1. 调用[requestSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay)方法传递的callback对象已存在。
+2. 调用[cancelSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagercancelsuspenddelay)方法传递的callback对象不存在。
+3. 应用退入后台后5s内允许申请短时任务，超过此时间限制会导致校验失败。
 4. 应用申请短时任务数量不能超过3个。
 5. 应用申请短时任务每日剩余配额不足。
 
 **处理步骤**
 
-1. 请检查应用自身代码逻辑。
-2. 应用运行短时任务完毕及时释放。
+1. 请检查调用[requestSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay)时，是否传递了已存在的callback对象。
+2. 请检查调用[cancelSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagercancelsuspenddelay)时，是否传递了不存在的callback对象。
+3. 请检查应用是否在退入后台5s后申请短时任务。
+4. 请检查应用申请的短时任务数量是否超过3个。
+5. 请检查应用每日短时任务剩余配额是否充足。
 
 ## 9900003 Parcel读写操作失败
 
@@ -250,7 +255,7 @@ System service operation failed.
 
 **错误描述**
 
-调用短时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
+调用短时任务相关接口时，客户端进程请求系统服务时操作失败。
 
 **可能原因**
 
@@ -278,7 +283,8 @@ Caller information verification failed for an energy resource request.
 
 **处理步骤**
 
-请检查输入的参数。
+1. 请检查应用的uid或pid是否正确。
+2. 请检查申请资源的resourceTypes是否超过上限。
 
 ## 18700002 Parcel读写操作失败
 

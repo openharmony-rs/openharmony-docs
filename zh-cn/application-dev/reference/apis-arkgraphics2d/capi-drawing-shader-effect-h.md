@@ -2,13 +2,13 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-声明与绘图模块中的着色器对象相关的函数。
+声明与绘图模块中的着色器对象相关的函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **引用文件：** <native_drawing/drawing_shader_effect.h>
 

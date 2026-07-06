@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -23,12 +25,16 @@ import { bundleManager } from '@kit.AbilityKit';
 ## PermissionDef
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
- 
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型   | 只读 | 可选 | 说明           |
 | -------------- | ------ | ---- | ---- | -------------- |
 | permissionName | string | 是   | 否   | 用户权限名称。   |
-| grantMode      | number | 是   | 否   | [权限的授予方式](../../security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。 |
-| labelId        | number | 是   | 否   | 权限的标签ID。   |
-| descriptionId  | number | 是   | 否   | 描述权限的ID。   |
+| grantMode      | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 否   | [权限的授予方式](../../security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。 |
+| labelId        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 权限的标签ID。   |
+| descriptionId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 描述权限的ID。   |

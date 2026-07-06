@@ -17,7 +17,7 @@
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -981,7 +981,7 @@ setTime(date: Date): void
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间、日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **示例：**
   ```ts
@@ -1044,11 +1044,11 @@ ArkTS-Sta: set(year: int, month: int, date:int, hour?: int, minute?: int, second
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
 | year   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的年。  |
-| month  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的月。说明：月份从0开始计数，例如0表示一月。  |
+| month  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的月。<br>**说明：** <br>月份从0开始计数，0表示一月。  |
 | date   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的日。  |
-| hour   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的小时。默认值：系统当前时间。 |
-| minute | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的分钟。默认值：系统当前时间。 |
-| second | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的秒。默认值：系统当前时间。 |
+| hour   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的小时。默认值：系统时间。 |
+| minute | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的分钟。默认值：系统时间。 |
+| second | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的秒。默认值：系统时间。 |
 
 **示例：**
   ```ts
@@ -1269,7 +1269,7 @@ ArkTS-Sta: get(field: string): int
 | ----- | ---------------------------------------- |
 | era | 纪元，例如公历中的公元前或者公元后。 |
 | year | 年。 |
-| month | 月。说明：月份从0开始计数，例如0表示一月。 |
+| month | 月。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 | date | 日。 |
 | hour | 挂钟小时数。 |
 | hour_of_day | 一天中的第几小时。 |
@@ -1359,7 +1359,7 @@ isWeekend(date?: Date): boolean
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 否    | 时间、日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：日历对象的当前日期。 |
+| date | Date | 否    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。<br>默认值：日历对象的当前日期。 |
 
 **返回值：**
 
@@ -1480,7 +1480,7 @@ ArkTS-Sta: compareDays(date: Date): int
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -1532,7 +1532,7 @@ getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 
 | 参数名    | 类型     | 必填   | 说明                                       |
 | ------ | ------ | ---- | ---------------------------------------- |
-| locale | Intl.Locale | 否   | 区域对象，默认值：系统区域对象。 |
+| locale | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否   | 区域对象，默认值：系统区域对象。 |
 
 **返回值：**
 
@@ -1554,7 +1554,7 @@ let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
 
 setChineseCalendarTime(chineseCalendarTime: ChineseCalendarTime): void
 
-设置农历对象的时间、日期。
+设置农历对象的时间日期。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1606,15 +1606,23 @@ ArkTS-Sta: static checkLeapMonth(gregorianYear: int, cyclicalYear: int, month: i
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| gregorianYear   | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  公历的年。   |
-| cyclicalYear    | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  农历的干支年。   |
-| month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  农历的月。   |
+| gregorianYear   | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  公历的年。<br>取值范围：[1900, 2100]。   |
+| cyclicalYear    | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  农历的干支年。<br>取值范围：[1, 60]。   |
+| month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   是   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 
 **返回值：**
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
 | boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **示例：**
 ```ts
@@ -1637,9 +1645,9 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| gregorianYear   | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  公历的年。   |
-| cyclicalYear    | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的干支年。   |
-| month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的月。月份从0开始计数，例如0表示一月。   |
+| gregorianYear   | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  公历的年。<br>取值范围：[1900, 2100]。   |
+| cyclicalYear    | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
+| month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   否   |  农历的日。   |
 | isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
 | hour            | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否   |   是   |  农历的时。默认值：0。   |
@@ -2464,7 +2472,7 @@ ArkTS-Sta: getRawOffset(): int
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的原始偏移量，单位是毫秒。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的原始偏移量，单位为毫秒（ms）。 |
 
 **示例：**
   ```ts
@@ -2495,13 +2503,13 @@ ArkTS-Sta: getOffset(date?: double): int
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 待计算时区偏移量的时刻，单位是毫秒。默认值：系统时间。 |
+| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 待计算时区偏移量的时刻，单位为毫秒（ms）。默认值：系统时间。 |
 
 **返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的偏移量，单位是毫秒。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的偏移量，单位为毫秒（ms）。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
 
 **示例：**
   ```ts
@@ -2741,7 +2749,7 @@ let dateFormat: string =
 
 isDaylightSavingTime(date: Date): boolean
 
-判断指定的时间、日期是否处于夏令时。
+判断指定的时间日期是否处于夏令时。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -2757,7 +2765,7 @@ isDaylightSavingTime(date: Date): boolean
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| date   | Date   | 是   | 时间、日期。月份从0开始计数，例如0表示一月。|
+| date   | Date   | 是   | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。|
 
 **返回值：**
 
@@ -2891,7 +2899,7 @@ ArkTS-Sta: nextTransition(date?: double): ZoneOffsetTransition
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数，默认到当前系统时间之间的毫秒数，单位：毫秒。 |
+| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -2940,7 +2948,7 @@ ArkTS-Sta: getMilliseconds(): double
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位：毫秒。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位为毫秒（ms）。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
 
 **示例：**
 ```ts
@@ -2974,7 +2982,7 @@ ArkTS-Sta: getOffsetAfter(): int
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。<br>例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位为毫秒（ms）。例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
 
 **示例：**
 ```ts
@@ -3008,7 +3016,7 @@ ArkTS-Sta: getOffsetBefore(): int
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。<br>例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位为毫秒（ms）。例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
 
 **示例：**
 ```ts
@@ -3544,7 +3552,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 名称  | 类型   | 只读   | 可选   | 说明                |
 | ---- | ---- | ---- | ---- | ----------------- |
-| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| encodingName | string | 否    | 否    | 编码名称，取值包括：UTF-8，UTF-16BE，UTF-16LE，UTF-32BE，UTF-32LE，Shift_JIS，ISO-2022-JP，ISO-2022-CN，ISO-2022-KR，GB18030，Big5，EUC-JP，EUC-KR，ISO-8859-1，ISO-8859-2，ISO-8859-5，ISO-8859-6，ISO-8859-7，ISO-8859-8，ISO-8859-9，windows-1250，windows-1251，windows-1252，windows-1253，windows-1254，windows-1255，windows-1256，KOI8-R，IBM420，IBM424。 |
 | confidence | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
 
 ## I18NUtil<sup>9+</sup>
@@ -3938,7 +3946,7 @@ try {
 
 static convertCanonicalLocaleIdentifier(locale: string): string
 
-将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准的格式。
+将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47/)标准的格式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -3960,7 +3968,7 @@ static convertCanonicalLocaleIdentifier(locale: string): string
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准格式的区域ID。无效的区域ID会返回空字符串。 |
+| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47/)标准格式的区域ID。无效的区域ID会返回空字符串。 |
 
 **示例：**
 
@@ -4217,7 +4225,7 @@ isHoliday(date?: Date): boolean
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ---------------| ---- | ------------- |
-| date      | Date           | 否   | 时间、日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：当前日期。|
+| date      | Date           | 否   | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。<br>默认值：当前日期。|
 
 **返回值：**
 
@@ -4552,7 +4560,7 @@ try {
 
 format(date: Date): string
 
-对时间、日期进行格式化。
+对时间日期进行格式化。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4566,13 +4574,13 @@ format(date: Date): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| string | 格式化后的时间、日期字符串。 |
+| string | 格式化后的时间日期字符串。 |
 
 **示例：**
   ```ts
@@ -4666,7 +4674,7 @@ ArkTS-Sta: format(date?: Date | double): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -4708,7 +4716,7 @@ ArkTS-Sta: formatToParts(date?: Date | double): Intl.DateTimeFormatPart[]
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    |  时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -4750,8 +4758,8 @@ ArkTS-Sta: formatRange(startDate: Date | double, endDate: Date | double): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
-| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
+| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -4795,8 +4803,8 @@ ArkTS-Sta: formatRangeToParts(startDate: Date | double, endDate: Date | double):
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
-| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
+| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -4816,6 +4824,57 @@ let formatter = new i18n.SymbolDateTimeFormat(locale, {
 let startDate = new Date(2026, 3, 27, 14, 20, 0);
 let endDate = new Date(2026, 3, 27, 18, 20, 0);
 let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
+```
+
+
+### parse
+
+ArkTS-Dyn: parse(text: string, lenientMode: boolean): number
+
+ArkTS-Sta: parse(text: string, lenientMode: boolean): long
+
+解析本地化时间日期字符串，返回对应的时间戳。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化时间日期字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够处理不符合常规逻辑的时间日期值，如"5月32日"会自动转换成"6月1日"进行解析。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 时间日期字符串解析后对应的时间戳，单位为毫秒（ms）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  dateStyle: 'full'
+});
+let result = formatter.parse('2026年5月10日星期日', false); // result = 1778342400000
 ```
 
 ### resolvedOptions
@@ -4868,7 +4927,7 @@ let options = formatter.resolvedOptions(); // options.timeStyle = 'short', optio
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| amPMSymbol     | string[] |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+| amPMSymbol     | string[] \| undefined |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolDateTimeFormatOptions
 
@@ -4957,7 +5016,7 @@ try {
 
 format(date: Date): StyledString
 
-使对时间日期进行格式化，返回富文本对象。
+对时间日期进行格式化，返回富文本对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -4971,7 +5030,7 @@ format(date: Date): StyledString
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
-| date | Date | 是 | 需要格式化的时间日期。  |
+| date | Date | 是 | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。  |
 
 **返回值：**
 
@@ -5054,7 +5113,7 @@ constructor(options?: ISO8601DateTimeFormatOptions)
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的选项。默认值：所有属性均使用默认值的ISO8601DateTimeFormatOptions对象。 |
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的配置项。默认值：所有属性都取默认值时的配置项。 |
 
 **示例：**
 ```ts
@@ -5069,7 +5128,7 @@ let formatter = new i18n.ISO8601DateTimeFormat({
 
 format(date: Date): string
 
-对时间、日期进行格式化，返回符合ISO 8601标准的时间、日期字符串。
+对时间日期进行格式化，返回符合ISO 8601标准的时间日期字符串。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -5085,13 +5144,13 @@ format(date: Date): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间、日期。月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| string | 格式化后的时间、日期字符串。 |
+| string | 符合ISO8601标准的时间日期字符串。 |
 
 **示例：**
 ```ts
@@ -5105,7 +5164,7 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 ## ISO8601DateTimeFormatOptions
 
-符合ISO 8601标准的日期格式化对象创建时的选项。
+符合ISO 8601标准的日期格式化对象创建时的配置项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -5119,9 +5178,9 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| dateFormat   | string |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
-| timePrecision   | string |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
-| separatorStyle  | string |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
+| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| timePrecision   | 'dateOnly' \| 'hours' \| 'minutes' \| 'seconds' \| 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
 | timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
 | displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
 
@@ -5489,6 +5548,54 @@ let formatter = new i18n.SymbolNumberFormat(locale, {
 let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
 ```
 
+### parse
+
+ArkTS-Dyn: parse(text: string, lenientMode: boolean): number
+
+ArkTS-Sta: parse(text: string, lenientMode: boolean): double
+
+解析本地化数字字符串，返回对应的数字。无法正确解析使用自定义符号的本地化数字字符串。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化数字字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够识别错误的千分符，如"1,23,456"可以正确解析为"123456"。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 本地化数字字符串解析后的数字。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale);
+let result = formatter.parse('125 米', false); // result = 125
+```
+
 ### resolvedOptions
 
 resolvedOptions(): ResolvedSymbolNumberFormatOptions
@@ -5540,12 +5647,12 @@ let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit 
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
-| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
-| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
-| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
-| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
-| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+| zero     | string \| undefined  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string \| undefined  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string \| undefined  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string \| undefined  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string \| undefined  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string \| undefined |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolNumberFormatOptions
 
@@ -5781,7 +5888,7 @@ ArkTS-Sta: format(value: double): StyledString
 
 ## AdvancedMeasureFormat<sup>23+</sup>
 
-提供数字格式化能力。
+提供数字格式化能力，支持根据单位使用场景自动转换合适的单位。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 

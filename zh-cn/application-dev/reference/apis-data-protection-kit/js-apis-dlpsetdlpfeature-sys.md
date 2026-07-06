@@ -6,13 +6,26 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-本模块提供数据防泄漏（Data Loss Prevention，简称为DLP）特性开关的控制能力，包括开启和关闭DLP特性开关、返回特性开关状态设置是否成功等。
+本模块提供数据防泄漏（Data Loss Prevention，简称为DLP）特性开关的控制能力，包括开启和关闭DLP特性开关、返回特性开关设置结果等。
 
-**起始版本：** 26.0.0
+**使用场景**： 
+- 需要满足数据安全合规要求的场景。
+- 对机密文件进行访问控制和加密保护。
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> - 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口为系统接口。
+
+## 关键Class/Interface介绍
+
+### 核心枚举类型
+
+- **DlpFeatureStatus**：DLP特性开关状态枚举，用于控制DLP功能的启用状态。
+
+### 核心接口类型
+
+- **StatusInfoResult**：DLP特性开关状态设置的结果信息接口，包含DLP特性开关状态。
 
 ## 导入模块
 
@@ -24,9 +37,11 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
-设置DLP特性开关状态。使用Promise异步回调。
+设置DLP特性开关状态。使用Promise异步回调。调用成功后，DLP特性开关将设置为指定状态，系统将根据该状态启用或禁用DLP保护功能。
 
-当特性开关处于开启状态时，右键单击可加密文件，菜单中会显示“加密保护”选项。
+当特性开关处于开启状态时，右键单击支持加密的文件，右键菜单中会显示“加密保护”选项。可加密类型包括：.txt，.pdf，.xls，.xlsx，.ppt，.pptx，.doc，.docx。
+
+企业策略开启或关闭数据防泄漏功能时使用此接口。
 
 **起始版本：** 26.0.0
 
@@ -40,13 +55,13 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。 |
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性，菜单中显示"加密保护"选项；NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。 |
+| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象。设置DLP特性开关状态，返回DLP特性开关状态设置的结果信息。  |
 
 **错误码：**
 
@@ -62,17 +77,14 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 ```ts
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-async exampleFunction() {
-  try {
-    let res: dlpSetDlpFeature.StatusInfoResult =
-      await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE);
-    console.info('setDlpFeature result: ', JSON.stringify(res));
-  } catch (err) {
-    console.error('setDlpFeature failed', (err as BusinessError).code, (err as BusinessError).message);
-  }
-}
+async function exampleFunction() {
+  let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
+    await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
+  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
+} // 设置DLP特性开关状态。
+
+exampleFunction();
 ```
 
 ## StatusInfoResult
@@ -105,7 +117,7 @@ DLP特性开关的状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| dlpFeatureStatus | [DlpFeatureStatus](#dlpfeaturestatus) | 否 | 否 | DLP特性开关的状态。 |
+| dlpFeatureStatus | [DlpFeatureStatus](#dlpfeaturestatus) | 否 | 否 | DLP特性开关的状态，包含NOT_ENABLED_FEATURE和ENABLED_FEATURE。 |
 
 ## DlpFeatureStatus
 

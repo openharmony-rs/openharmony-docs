@@ -14,6 +14,12 @@
 >
 > - 示例效果请以真机运行为准。
 
+## 概述
+
+本页面汇总了ArkWeb Webview模块（`@kit.ArkWeb`）中的辅助接口与数据结构类型。这些类型主要作为Web组件各能力的方法入参、回调出参或状态枚举使用，配合[WebviewController](./arkts-apis-webview-WebviewController.md)、[WebCookieManager](./arkts-apis-webview-WebCookieManager.md)、[WebStorage](./arkts-apis-webview-WebStorage.md)等核心类共同完成Web网页的加载、渲染、交互、媒体接管及性能优化等控制能力。
+
+本模块提供Web控制能力，网页显示的能力请参考[组件描述](arkts-basic-components-web.md)；Web控制能力的完整说明及核心控制器类请参考[模块描述](./arkts-apis-webview.md)。
+
 ## WebStorageOrigin
 
 提供Web SQL数据库的使用信息。
@@ -319,10 +325,10 @@ WebViewController与Web组件的绑定状态。
 
 | 名称           | 类型       | 只读 | 可选 | 说明                         |
 | -------------- | --------- | ---- | ---- | ---------------------------- |
-| x | number | 否 | 否 | 矩形区域左上角x坐标。 <br>单位：px。 |
-| y | number | 否 | 否 | 矩形区域左上角y坐标。 <br>单位：px。 |
-| width | number | 否 | 否 | 矩形的宽度。 <br>单位：px。 |
-| height| number | 否 | 否 | 矩形的高度。 <br>单位：px。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形区域左上角x坐标。 <br>单位：px。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形区域左上角y坐标。 <br>单位：px。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形的宽度。 <br>单位：px。 |
+| height| ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形的高度。 <br>单位：px。 |
 
 ## WebHttpCookie<sup>23+</sup>
 

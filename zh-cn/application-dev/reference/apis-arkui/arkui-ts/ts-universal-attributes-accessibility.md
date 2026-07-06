@@ -1,7 +1,7 @@
 # 无障碍属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,15 +10,14 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+
 > - 从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## accessibilityGroup
 
-ArkTS-Dyn: accessibilityGroup(value: boolean): T
-
-ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
+accessibilityGroup(value: boolean): T
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -26,33 +25,70 @@ ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| value  | boolean | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| T | 返回当前对象。 |
 
 ## accessibilityGroup<sup>14+</sup>
 
-ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
+accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
 
-ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
+设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
+
+若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置无障碍文本[accessibilityText](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接。
+
+当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
+
+通过[accessibilityPreferred](ts-types.md#accessibilityoptions14对象说明)启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**参数：**
+
+| 参数名               | 类型                                                    | 必填 | 说明                                                         |
+| -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isGroup              | boolean | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 否   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityGroup<sup>23+</sup>
+
+accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -68,13 +104,13 @@ ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
 
@@ -82,50 +118,46 @@ ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions
 
 | 参数名               | 类型                                                    | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isGroup              | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| isGroup              | boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
 | accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 否   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| this | 返回当前对象。 |
 
 ## accessibilityText
 
-ArkTS-Dyn: accessibilityText(value: string): T
-
-ArkTS-Sta: accessibilityText(text: string | undefined): this
+accessibilityText(value: string): T
 
 设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：“”<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置[accessibilityGroup](#accessibilitygroup14)的accessibilityPreferred。 |
+| value  | string | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：""<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置[accessibilityGroup](#accessibilitygroup14)的accessibilityPreferred。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| T | 返回当前对象。 |
 
 ## accessibilityText<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityText(text: Resource): T
-
-ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
+accessibilityText(text: Resource): T
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -133,13 +165,45 @@ ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                   |
+| ------ | ------ | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| text  | [Resource](ts-types.md#resource) | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityText<sup>23+</sup>
+
+accessibilityText(text: Resource | string | undefined): this
+
+设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
 
@@ -147,50 +211,45 @@ ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                   |
 | ------ | ------ | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| text  | ArkTS-Dyn: [Resource](ts-types.md#resource) <br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| string \| undefined | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
+| text  | string \| undefined | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
-
+| this | 返回当前对象。 |
 
 ## accessibilityDescription
 
-ArkTS-Dyn: accessibilityDescription(value: string): T
-
-ArkTS-Sta: accessibilityDescription(description: string | undefined): this
+accessibilityDescription(value: string): T
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| description  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：“” |
+| description  | string | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值："" |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| T | 返回当前对象。 |
 
 ## accessibilityDescription<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityDescription(description: Resource): T
-
-ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined): this
+accessibilityDescription(description: Resource): T
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -198,13 +257,45 @@ ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined):
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                    |
+| ------ | ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| description  | [Resource](ts-types.md#resource) | 是   | 无障碍说明引用资源，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityDescription<sup>23+</sup>
+
+accessibilityDescription(description: Resource | string | undefined): this
+
+设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
 
@@ -212,13 +303,13 @@ ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined):
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                    |
 | ------ | ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| description  | ArkTS-Dyn: [Resource](ts-types.md#resource) <br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| string \| undefined | 是   | 无障碍说明引用资源，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。 |
+| description  | [Resource](ts-types.md#resource) \| string \| undefined | 是   | 无障碍说明引用资源，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| this | 返回当前对象。 |
 
 ## accessibilityLevel
 
@@ -228,9 +319,9 @@ ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
 设置无障碍重要性。该属性用于控制某个组件是否可被无障碍辅助服务所识别。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +334,7 @@ ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 **返回值：**
 
@@ -263,9 +354,9 @@ ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,9 +388,9 @@ ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,9 +423,9 @@ ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -363,9 +454,9 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -389,9 +480,9 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 定义组件的屏幕朗读功能角色类型。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -535,9 +626,9 @@ ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
 指定屏幕朗读扫动走焦过程中组件的下一个焦点。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -557,6 +648,39 @@ ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 | -------- | -------- |
 | ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
+## accessibilityNextFocusId
+
+ArkTS-Dyn: accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocusParams | undefined): T
+
+ArkTS-Sta: accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocusParams | undefined): this
+
+指定屏幕朗读扫动走焦过程中组件的下一个焦点，并支持配置详细参数。
+
+通过[AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams)参数，可以配置是否在无障碍下一个焦点处理过程中查找后代节点中的焦点。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | 是   | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br/>取值为undefined时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+
 ## accessibilityDefaultFocus<sup>18+</sup>
 
 ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean): T
@@ -565,9 +689,9 @@ ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
 为页面设置屏幕朗读初始焦点。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -597,9 +721,9 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 
 针对跨进程嵌入式显示的组件，例如[EmbeddedComponent](ts-container-embedded-component.md)，其子树场景中出现的跳焦问题，可通过设置accessibilityUseSamePage属性解决。因跨进程嵌入式显示的组件启动进程的页面变化事件与宿主页面变化事件发送时序不一致，可能导致焦点从当前组件移至另一组件，此现象称为“跳焦”。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,9 +747,9 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 
 当前跨进程嵌入式显示的组件和宿主应用的同page模式。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -646,9 +770,9 @@ ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): t
 
 设置无障碍节点是否支持屏幕朗读滚动操作。当屏幕朗读在扫动走焦时，若容器内当前页面无可聚焦的组件，会发起一次自动滚动操作。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -681,9 +805,9 @@ ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。该接口为组件通用属性设置，通过该属性接口进行配置的文本内容仅会被车机的无障碍服务所监听并响应，因此该接口仅在与车机交互的场景下生效<!--RP1--><!--RP1End-->。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -718,9 +842,9 @@ ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): t
 > 2. 在[Z序控制](./ts-universal-attributes-z-order.md)顶层绘制绿框情况下，可以避免由于组件遮挡[overlay](./ts-universal-attributes-overlay.md#overlay)、裁切[clip](./ts-universal-attributes-sharp-clipping.md#clip12)导致无障碍绿框被裁切遮挡。但由于具备较高的绘制层级，如果需要交互过程中，需要遮挡当前获焦的组件，并且不希望显示无障碍绿框则不适合使用这种配置。
 
 
-**卡片能力：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -748,9 +872,9 @@ ArkTS-Sta: accessibilityStateDescription(description: string | Resource | undefi
 
 设置组件的状态播报文本，用于屏幕朗读场景下清晰说明组件当前的实时状态。屏幕朗读时会优先播报该状态文本。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -778,9 +902,9 @@ ArkTS-Sta: accessibilityActionOptions(option: AccessibilityActionOptions | undef
 
 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -793,6 +917,36 @@ ArkTS-Sta: accessibilityActionOptions(option: AccessibilityActionOptions | undef
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时scrollStep按1处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+
+## accessibilityCustomActions
+
+ArkTS-Dyn: accessibilityCustomActions(actions: Array&lt;AccessibilityCustomAction&gt; | undefined): T
+
+ArkTS-Sta: accessibilityCustomActions(actions: Array&lt;AccessibilityCustomAction&gt; | undefined): this
+
+设置组件的自定义无障碍操作，支持开发者设置一个自定义actions的数组，用于给组件按操作名进行自定义操作的回调绑定。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| actions  | Array&lt;[AccessibilityCustomAction](ts-types.md#accessibilitycustomaction)&gt; \| undefined | 是   | 自定义无障碍操作数组，每个操作包含操作名称和回调，用于给组件按操作名进行自定义操作的回调绑定。<br/>**说明：**<br/>数组长度最大支持16个，超出部分将不生效。<br/>取值为undefined时，不设置自定义操作。 |
 
 **返回值：**
 
@@ -1162,6 +1316,56 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### 示例9（设置自定义无障碍操作）
+
+本示例主要演示如何使用[accessibilityCustomActions](#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以通过操作名为组件进行自定义操作的回调绑定。
+
+从API版本26.0.0开始，新增accessibilityCustomActions。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State listData: Array<string> = ['列表项1', '列表项2', '列表项3', '列表项4'];
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ForEach(this.listData, (item: string, index: number) => {
+          ListItem() {
+            Row() {
+              Text(item)
+                .fontSize(16)
+              Blank()
+              Text('删除')
+                .fontSize(14)
+                .fontColor(Color.Red)
+            }
+            .width('100%')
+            .padding(10)
+            .onClick(() => {
+              console.info('[TestTag] click success!')
+            })
+            .accessibilityLevel('yes')
+            .accessibilityCustomActions([
+              {
+                name: 'deleteItem',
+                onAction: () => {
+                  this.listData.splice(index, 1);
+                }
+              }
+            ])
+          }
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
 }
 ```

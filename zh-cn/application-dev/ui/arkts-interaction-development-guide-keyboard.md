@@ -14,7 +14,7 @@
 
 ## 按键事件数据流
 
-![zh-cn_image_0000001511580944](figures/zh-cn_image_0000001511580944.png)
+![zh-cn_image_0000001511580944](figures/Key-Event.png)
 
 
 按键事件由外设键盘等设备触发，经驱动和多模处理转换后发送给当前获焦的窗口，窗口获取到事件后，会尝试分发三次事件。三次分发的优先顺序如下，一旦事件被消费，则跳过后续分发流程。
@@ -102,10 +102,10 @@ struct KeyEventExample {
 
 ArkTS-Sta示例：
 
-``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Button, Divider, Text, Color, KeyEvent, KeyType, FlexAlign } from '@kit.ArkUI';
+<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKey.ets) -->
 
+``` TypeScript
+import { $r, Builder, Button, Color, Column, ColumnOptions, Component, Divider, Entry, FlexAlign, KeyEvent, KeyType, NavDestination, Padding, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct KeyEventExample {
@@ -119,8 +119,8 @@ struct KeyEventExample {
       Button('onKeyEvent')
         .defaultFocus(true)
         .width(140).height(70)
-        .onKeyEvent((event?: KeyEvent) => { // 给Button设置onKeyEvent事件
-          if (event) {
+        .onKeyEvent((event?: KeyEvent): boolean => { // 给Button设置onKeyEvent事件
+          if(event){
             if (event.type === KeyType.Down) {
               this.buttonType = 'Down';
             }
@@ -128,9 +128,9 @@ struct KeyEventExample {
               this.buttonType = 'Up';
             }
             this.buttonText = 'Button: \n' +
-              'KeyType:' + this.buttonType + '\n' +
-              'KeyCode:' + event.keyCode + '\n' +
-              'KeyText:' + event.keyText;
+            'KeyType:' + this.buttonType + '\n' +
+            'KeyCode:' + event.keyCode + '\n' +
+            'KeyText:' + event.keyText;
           }
           return false;
         })
@@ -141,8 +141,8 @@ struct KeyEventExample {
       Divider()
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if (event) {
+    .onKeyEvent((event?: KeyEvent): boolean => { // 给父组件Column设置onKeyEvent事件
+      if(event){
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -150,9 +150,9 @@ struct KeyEventExample {
           this.columnType = 'Up';
         }
         this.columnText = 'Column: \n' +
-          'KeyType:' + this.columnType + '\n' +
-          'KeyCode:' + event.keyCode + '\n' +
-          'KeyText:' + event.keyText;
+        'KeyType:' + this.columnType + '\n' +
+        'KeyCode:' + event.keyCode + '\n' +
+        'KeyText:' + event.keyText;
       }
       return false;
     })
@@ -163,7 +163,7 @@ struct KeyEventExample {
 上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[支持焦点处理](arkts-common-events-focus-event.md)。
 
 
-![zh-cn_image_0000001511421324](figures/zh-cn_image_0000001511421324.gif)
+![zh-cn_image_0000001511421324](figures/onKeyEvent.gif)
 
 
 打开应用后，依次在键盘上按这些按键：空格、回车、左Ctrl、左Shift、字母A、字母Z。
@@ -239,10 +239,10 @@ struct KeyEventPreventBubble {
 
 ArkTS-Sta示例：
 
-``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Button, Divider, Text, Color, KeyEvent, KeyType, FlexAlign } from '@kit.ArkUI';
+<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets) -->
 
+``` TypeScript
+import { $r, Builder, Button, Color, Column, ColumnOptions, Component, Divider, Entry, FlexAlign, KeyEvent, KeyType, NavDestination, Padding, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct KeyEventPreventBubble {
@@ -256,10 +256,12 @@ struct KeyEventPreventBubble {
       Button('onKeyEvent')
         .defaultFocus(true)
         .width(140).height(70)
-        .onKeyEvent((event?: KeyEvent) => {
+        .onKeyEvent((event?: KeyEvent): boolean => {
           // 通过stopPropagation阻止事件冒泡
-          if (event) {
-            event.stopPropagation();
+          if(event){
+            if(event.stopPropagation){
+              event.stopPropagation();
+            }
             if (event.type === KeyType.Down) {
               this.buttonType = 'Down';
             }
@@ -280,8 +282,8 @@ struct KeyEventPreventBubble {
       Divider()
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if (event) {
+    .onKeyEvent((event?: KeyEvent): boolean => { // 给父组件Column设置onKeyEvent事件
+      if(event){
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -299,9 +301,9 @@ struct KeyEventPreventBubble {
 }
 ```
 
-![zh-cn_image_0000001511900508](figures/zh-cn_image_0000001511900508.gif)
+![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
 
-使用OnKeyPreIme屏蔽在输入框中使用方向左键。
+使用onKeyPreIme屏蔽在输入框中使用方向左键。
 
 ArkTS-Dyn示例：
 
@@ -339,9 +341,10 @@ struct PreImeEventExample {
 
 ArkTS-Sta示例：
 
+<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Search, KeyEvent } from '@kit.ArkUI';
+import { $r, Builder, Column, ColumnOptions, Component, Entry, KeyEvent, NavDestination, Padding, Search, State } from '@kit.ArkUI';
 import { KeyCode } from '@kit.InputKit';
 
 @Entry
@@ -359,9 +362,9 @@ struct PreImeEventExample {
       })
         .width('80%')
         .height('40vp')
-        .border({ radius: '20vp' })
-        .onKeyPreIme((event: KeyEvent) => {
-          if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
+        .border({ radius:'20vp' })
+        .onKeyPreIme((event:KeyEvent) => {
+          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }
           return false;
@@ -371,7 +374,7 @@ struct PreImeEventExample {
 }
 ```
 
-![zh-cn_image_00012427222](figures/zh-cn_image_00012427222.gif)
+![zh-cn_image_00012427222](figures/onKeyEvent04.gif)
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
@@ -381,6 +384,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyCode } from '@kit.InputKit';
 
 const TAG = '[Sample_Eventproject]';
 const DOMAIN = 0xF811;
@@ -432,14 +436,15 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
+
 ``` TypeScript
+import { $r, Builder, Button, Column, ColumnOptions, Component, Entry, KeyEvent, KeyType, Margin, NavDestination, Padding, Row, RowOptions } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, Component } from '@kit.ArkUI';
-import { Row, Button, KeyEvent, KeyType, Margin } from '@kit.ArkUI';
 
 const TAG = '[Sample_Eventproject]';
-const DOMAIN: int = 0xF811;
-const BUNDLE: string = 'Eventproject_';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Eventproject_';
 
 @Entry
 @Component
@@ -450,13 +455,13 @@ struct Index {
         Button('button1')
           .id('button1')
           .margin({ left: 70, right: 30 } as Margin)
-          .onKeyEvent((event: KeyEvent) => {
+          .onKeyEvent((event: KeyEvent): boolean => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
             return true;
           })
         Button('button2')
           .id('button2')
-          .onKeyEvent((event: KeyEvent) => {
+          .onKeyEvent((event: KeyEvent): boolean => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
             return true;
           })
@@ -464,20 +469,18 @@ struct Index {
       .width('100%')
       .height('100%')
       .id('Row1')
-      .onKeyEventDispatch((event: KeyEvent) => {
-        let context = this.getUIContext();
-        context.getFocusController().requestFocus('button1');
-        return context.dispatchKeyEvent('button1', event);
+      .onKeyEventDispatch((event: KeyEvent): boolean => {
+        this.getUIContext().getFocusController().requestFocus('button1');
+        return this.getUIContext().dispatchKeyEvent('button1', event);
       })
 
     }
     .height('100%')
     .width('100%')
-    .onKeyEventDispatch((event: KeyEvent) => {
-      if (event.type === KeyType.Down) {
-        let context = this.getUIContext();
-        context.getFocusController().requestFocus('Row1');
-        return context.dispatchKeyEvent('Row1', event);
+    .onKeyEventDispatch((event: KeyEvent): boolean => {
+      if (event.type == KeyType.Down) {
+        this.getUIContext().getFocusController().requestFocus('Row1');
+        return this.getUIContext().dispatchKeyEvent('Row1', event);
       }
       return true;
     })
@@ -485,9 +488,9 @@ struct Index {
 }
 ```
 
-![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.PNG)
+![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
 
-使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+使用onKeyPreIme实现回车提交（建议使用物理键盘）。
 
 ArkTS-Dyn示例：
 
@@ -513,7 +516,7 @@ struct TextAreaDemo {
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
           hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
-          if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+          if (event.keyCode === KeyCode.KEYCODE_ENTER && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
               hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
@@ -537,14 +540,15 @@ struct TextAreaDemo {
 
 ArkTS-Sta示例：
 
+<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
+
 ``` TypeScript
+import { $r, Builder, Column, ColumnOptions, Component, Entry, KeyEvent, KeyType, Line, NavDestination, Padding, State, Text, TextArea, TextAreaController } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Text, TextArea, TextAreaController, KeyEvent, KeyType } from '@kit.ArkUI';
 
 const TAG = '[Sample_Eventproject]';
-const DOMAIN: int = 0xF811;
-const BUNDLE: string = 'Eventproject_';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Eventproject_';
 
 @Entry
 @Component
@@ -560,7 +564,7 @@ struct TextAreaDemo {
         .onKeyPreIme((event: KeyEvent) => {
           hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
           if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
-            const hasCtrl: boolean = event.getModifierKeyState!(['Ctrl']);
+            const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
               hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
             } else {

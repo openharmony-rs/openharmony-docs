@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -23,25 +24,31 @@ import { audio } from '@kit.AudioKit';
 
 ## getVolumeGroupManager<sup>9+</sup>
 
-getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupManager\>\): void
+ArkTS-Dyn: getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupManager\>): void
+
+ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolumeGroupManager\>): void
 
 获取音频组音量管理器实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- |-----------------------------------------------------------|
-| groupId    | number                                    | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。                         |
-| callback   | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。当获取音频组音量管理器实例成功，err为undefined，data为获取到的音频组音量管理器实例；否则为错误对象。 |
+| groupId    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                    | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。                         |
+| callback   | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频组音量管理器实例成功，err为undefined，data为获取到的音频组音量管理器实例；否则为错误对象。<br>ArkTS-Sta：当获取音频组音量管理器实例成功，err为null，data为获取到的音频组音量管理器实例；否则为错误对象。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let groupId = audio.DEFAULT_VOLUME_GROUP_ID;
 let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
@@ -57,17 +64,23 @@ audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: au
 
 ## getVolumeGroupManager<sup>9+</sup>
 
-getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
+ArkTS-Dyn: getVolumeGroupManager(groupId: number): Promise<AudioVolumeGroupManager\>
+
+ArkTS-Sta: getVolumeGroupManager(groupId: int): Promise<AudioVolumeGroupManager\>
 
 获取音频组音量管理器实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
+| groupId    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
 
 **返回值：**
 
@@ -81,7 +94,7 @@ getVolumeGroupManager(groupId: number\): Promise<AudioVolumeGroupManager\>
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let groupId = audio.DEFAULT_VOLUME_GROUP_ID;
 let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolumeGroupManager) => {
@@ -94,19 +107,25 @@ audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolume
 
 ## getVolumeGroupManagerSync<sup>10+</sup>
 
-getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
+ArkTS-Dyn: getVolumeGroupManagerSync(groupId: number): AudioVolumeGroupManager
+
+ArkTS-Sta: getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager
 
 获取音频组音量管理器实例。同步返回结果。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
+| groupId    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 音量组id，默认使用DEFAULT_VOLUME_GROUP_ID。|
 
 **返回值：**
 
@@ -139,45 +158,57 @@ try {
 
 ## getAppVolumePercentage<sup>19+</sup>
 
-getAppVolumePercentage(): Promise<number\>
+ArkTS-Dyn: getAppVolumePercentage(): Promise&lt;number&gt;
+
+ArkTS-Sta: getAppVolumePercentage(): Promise&lt;int&gt;
 
 获取应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                | 说明                 |
 | ------------------- |--------------------|
-| Promise&lt;number&gt; | Promise对象，返回应用的音量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回应用的音量。 |
 
 **示例：**
 
 ```ts
 import { audio } from '@kit.AudioKit';
 
-audioVolumeManager.getAppVolumePercentage().then((value: number) => {
+audioVolumeManager.getAppVolumePercentage().then((value) => {
   console.info(`app volume is ${value}.`);
 });
 ```
 
 ## setAppVolumePercentage<sup>19+</sup>
 
-setAppVolumePercentage(volume: number\): Promise<void\>
+ArkTS-Dyn: setAppVolumePercentage(volume: number): Promise<void\>
+
+ArkTS-Sta: setAppVolumePercentage(volume: int): Promise<void\>
 
 设置应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| volume    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 要设置的音量值。 |
 
 **返回值：**
 
@@ -213,7 +244,11 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 > **说明：**
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -250,7 +285,11 @@ off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 > **说明：**
 > 从API version 12开始支持，从API version 20开始废弃，建议使用[off('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#offstreamvolumechange20)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -292,7 +331,13 @@ on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
 监听当前应用的应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAppVolumeChange](#onappvolumechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -319,13 +364,57 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
+## onAppVolumeChange<sup>23+</sup>
+
+onAppVolumeChange(callback: Callback\<VolumeEvent>): void
+
+监听当前应用的应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('appVolumeChange')](#onappvolumechange19)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onAppVolumeChange((volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ## off('appVolumeChange')<sup>19+</sup>
 
 off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
 取消监听当前应用的应用级音量变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAppVolumeChange](#offappvolumechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -360,15 +449,67 @@ audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
 audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 ```
 
+## offAppVolumeChange<sup>23+</sup>
+
+offAppVolumeChange(callback?: Callback\<VolumeEvent>): void
+
+取消监听当前应用的应用级音量变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('appVolumeChange')](#offappvolumechange19)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offAppVolumeChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onAppVolumeChange(appVolumeChangeCallback);
+
+audioVolumeManager.offAppVolumeChange(appVolumeChangeCallback);
+```
+
 ## getVolumeByStream<sup>20+</sup>
 
-getVolumeByStream(streamUsage: StreamUsage): number
+ArkTS-Dyn: getVolumeByStream(streamUsage: StreamUsage): number
+
+ArkTS-Sta: getVolumeByStream(streamUsage: StreamUsage): int
 
 获取指定音频流的音量。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -380,7 +521,7 @@ getVolumeByStream(streamUsage: StreamUsage): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音量值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 音量值。 |
 
 **错误码：**
 
@@ -398,7 +539,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let volume = audio.getAudioManager().getVolumeManager().getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
   console.info(`Obtains the volume of a stream success.`);
 } catch (err) {
   let error = err as BusinessError;
@@ -408,13 +549,19 @@ try {
 
 ## getMinVolumeByStream<sup>20+</sup>
 
-getMinVolumeByStream(streamUsage: StreamUsage): number
+ArkTS-Dyn: getMinVolumeByStream(streamUsage: StreamUsage): number
+
+ArkTS-Sta: getMinVolumeByStream(streamUsage: StreamUsage): int
 
 获取指定音频流的最小音量。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -426,7 +573,7 @@ getMinVolumeByStream(streamUsage: StreamUsage): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音量值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 音量值。 |
 
 **错误码：**
 
@@ -444,7 +591,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let volume = audio.getAudioManager().getVolumeManager().getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
   console.info(`Obtains the minimum volume allowed for a stream success.`);
 } catch (err) {
   let error = err as BusinessError;
@@ -454,13 +601,19 @@ try {
 
 ## getMaxVolumeByStream<sup>20+</sup>
 
-getMaxVolumeByStream(streamUsage: StreamUsage): number
+ArkTS-Dyn: getMaxVolumeByStream(streamUsage: StreamUsage): number
+
+ArkTS-Sta: getMaxVolumeByStream(streamUsage: StreamUsage): int
 
 获取指定音频流的最大音量。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -472,7 +625,7 @@ getMaxVolumeByStream(streamUsage: StreamUsage): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音量值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 音量值。 |
 
 **错误码：**
 
@@ -490,7 +643,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let volume = audio.getAudioManager().getVolumeManager().getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
   console.info(`Obtains the maximum volume allowed for a stream success.`);
 } catch (err) {
   let error = err as BusinessError;
@@ -505,6 +658,10 @@ isSystemMutedForStream(streamUsage: StreamUsage): boolean
 检查指定音频流是否静音。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -544,25 +701,31 @@ try {
 ```
 ## getVolumeInUnitOfDbByStream<sup>20+</sup>
 
-getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, device: DeviceType): number
+ArkTS-Dyn: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, device: DeviceType): number
+
+ArkTS-Sta: getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: int, device: DeviceType): double
 
 获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | 是   | 音频流。 |
-| volumeLevel     | number                                 | 是   | 音量等级。 |
+| volumeLevel     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                 | 是   | 音量等级。 |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)                                 | 是   | 设备类型。 |
 
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音频流的音量dB值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 音频流的音量dB值。 |
 
 **错误码：**
 
@@ -580,7 +743,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 
 try {
-  let volumeInDb : number = audio.getAudioManager().getVolumeManager().getVolumeInUnitOfDbByStream(audio.StreamUsage.STREAM_USAGE_MUSIC, 5, audio.DeviceType.SPEAKER);
+  let volumeInDb = audio.getAudioManager().getVolumeManager().getVolumeInUnitOfDbByStream(audio.StreamUsage.STREAM_USAGE_MUSIC, 5, audio.DeviceType.SPEAKER);
   console.info(`Gets the volume db value that system calculate by volume stream, volume level and device type.
  success.`);
 } catch (err) {
@@ -595,7 +758,13 @@ try {
 
 监听系统音频流音量变化事件（当系统音频流音量发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStreamVolumeChange](#onstreamvolumechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -623,13 +792,58 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 });
 ```
 
+## onStreamVolumeChange<sup>23+</sup>
+
+onStreamVolumeChange(streamUsage: StreamUsage, callback: Callback\<StreamVolumeEvent>): void
+
+监听系统音频流音量变化事件（当系统音频流音量发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('streamVolumeChange')](#onstreamvolumechange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | 是   | 音频流使用类型。 |
+| callback | Callback<[StreamVolumeEvent](arkts-apis-audio-i.md#streamvolumeevent20)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onStreamVolumeChange(audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
+  console.info(`StreamUsage of stream: ${streamVolumeEvent.streamUsage} `);
+  console.info(`Volume level: ${streamVolumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+});
+```
+
 ## off('streamVolumeChange')<sup>20+</sup>
 
 off(type: 'streamVolumeChange', callback?: Callback\<StreamVolumeEvent>): void
 
 取消监听系统音频流音量变化事件（当系统音频流音量发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStreamVolumeChange](#offstreamvolumechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -654,4 +868,42 @@ let streamVolumeChangeCallback = (streamVolumeEvent: audio.StreamVolumeEvent) =>
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, streamVolumeChangeCallback);
 
 audioVolumeManager.off('streamVolumeChange', streamVolumeChangeCallback);
+```
+
+## offStreamVolumeChange<sup>23+</sup>
+
+offStreamVolumeChange(callback?: Callback\<StreamVolumeEvent>): void
+
+取消监听系统音频流音量变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('streamVolumeChange')](#offstreamvolumechange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[StreamVolumeEvent](arkts-apis-audio-i.md#streamvolumeevent20)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offStreamVolumeChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let streamVolumeChangeCallback = (streamVolumeEvent: audio.StreamVolumeEvent) => {
+  console.info(`StreamUsage of stream: ${streamVolumeEvent.streamUsage} `);
+  console.info(`Volume level: ${streamVolumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onStreamVolumeChange(audio.StreamUsage.STREAM_USAGE_MUSIC, streamVolumeChangeCallback);
+
+audioVolumeManager.offStreamVolumeChange(streamVolumeChangeCallback);
 ```

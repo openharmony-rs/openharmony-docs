@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_IntOffset
 
 ## 概述
 
-位置，用于描述组件的位置。
+偏移量，用于描述当前组件相对于父组件的偏移量。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ typedef struct {...} ArkUI_IntOffset
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t x | 水平方向横坐标，单位为px。 |
-| int32_t y | 竖直方向纵坐标，单位为px。 |
+| int32_t x | 水平方向的偏移量，单位为px。 |
+| int32_t y | 竖直方向的偏移量，单位为px。 |
 
 

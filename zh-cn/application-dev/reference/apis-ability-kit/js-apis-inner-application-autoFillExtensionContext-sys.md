@@ -4,16 +4,20 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
-> 本模块接口仅可在Stage模型下使用。  
-> 本模块接口为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+>
+> - 本模块接口仅可在Stage模型下使用。  
+>
+> - 本模块接口为系统接口。
 
 ## 使用说明
 
@@ -39,6 +43,10 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                      | 必填 | 说明                         |
@@ -63,6 +71,8 @@ reloadInModal(customData: CustomData): Promise\<void>
 | 16000050 | Internal error.                                              |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 通过点击账号密码输入框触发自动填充服务时，在[AutoFillExtensionAbility](js-apis-app-ability-autoFillExtensionAbility-sys.md)的onFillRequest生命周期中拉起账号选择界面。
 
@@ -151,4 +161,100 @@ struct AccountPage {
     .shadow(ShadowStyle.OUTER_FLOATING_SM)
   }
 }
+```
+
+ArkTS-Sta示例：
+
+通过点击账号密码输入框触发自动填充服务时，在[AutoFillExtensionAbility](js-apis-app-ability-autoFillExtensionAbility-sys.md)的onFillRequest生命周期中拉起账号选择界面。
+
+当点击账号选择界面选择任意账号时，调用reloadInModal接口再次触发自动填充服务，在AutoFillExtensionAbility的onFillRequest生命周期中拉起模态页面。
+
+```ts
+'use static'
+// AutoFillAbility.ts
+import { autoFillManager, UIExtensionContentSession } from '@kit.AbilityKit';
+import AutoFillExtensionAbility from '@ohos.app.ability.AutoFillExtensionAbility';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  // ...
+  onFillRequest(session: UIExtensionContentSession,
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    try {
+      let storage_fill: LocalStorage = new LocalStorage();
+      storage_fill.setOrCreate('session', session);
+      storage_fill.setOrCreate('message', "AutoFill Page");
+      storage_fill.setOrCreate('fillCallback', callback);
+      storage_fill.setOrCreate('viewData', request.viewData);
+      storage_fill.setOrCreate('autoFillExtensionContext', this.context);
+      storage_fill.setOrCreate('customData', request.customData);
+      if (request.customData == undefined) {
+        // 加载自动填充处理界面
+        session.loadContent('pages/AccountPage', storage_fill);
+      } else {
+        // 拉起模态页面
+        session.loadContent('pages/ReloadInModal', storage_fill);
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'autofill failed to load content');
+    }
+  }
+}
+```
+
+当点击账号选择界面选择任意账号时，调用reloadInModal接口。
+
+```ts
+// AccountPage.ets
+import { autoFillManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Text, Column, Row, Component, List, ListItem, LocalStorage } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AccountPage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  viewData: autoFillManager.ViewData | undefined = this.storage?.get<autoFillManager.ViewData>('viewData');
+  context: common.AutoFillExtensionContext | undefined =
+    this.storage?.get<common.AutoFillExtensionContext>('autoFillExtensionContext');
+
+  build() {
+    Row() {
+      Column() {
+        List({ space: 10, initialIndex: 0 }) {
+          ListItem() {
+            Text('HelloWorld789456')
+              .width('100%')
+              .height(40)
+              .fontSize(16)
+              .borderRadius(5)
+          }
+          .onClick(() => {
+            this.clickFun();
+          })
+        }
+
+        // ...
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private clickFun(): void {
+    if (this.context) {
+      if (this.viewData) {
+        this.context?.reloadInModal({}).then(() => {
+          console.info('reloadInModal successfully.')
+        }).catch((err) => {
+          console.error('reloadInModal failed.')
+        })
+      }
+    }
+  }
+}
+
 ```

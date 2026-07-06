@@ -1,12 +1,12 @@
 # SoundPool (音频池)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
+音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。SoundPool适用于游戏音效、UI交互音效、通知音等需要快速响应和低延迟播放的场景。
 
 SoundPool需要和@ohos.multimedia.media配合使用，需要先通过[media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10)完成音频池实例的创建。
 
@@ -41,6 +41,7 @@ import { audio } from '@kit.AudioKit';
 | leftVolume  | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否  | 是  | 设置左声道音量，设置范围[0.0, 1.0]。默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。                                      |
 | rightVolume | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否  | 是  | 设置右声道音量，设置范围[0.0, 1.0]。（当前不支持左右分别设置，将以左声道音量为准）。默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。 |
 | priority  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否  | 是  | 音频流播放的优先级。0为最低优先级，数值越大优先级越高。<br> 通过相互比较数值大小确定播放优先级，设置范围为大于等于0的整数。默认值为0。 <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
+| pitch  | number  | 否 | 是  | 设置音频流播放的音调。设置范围为[0.25, 4.0]，默认值为1.0。<br>当音调超过边界值时自动设置为边界值。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。      |
 
 ## ErrorType<sup>20+</sup>
 
@@ -543,11 +544,12 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // 循环3次。
+      loop: 3, // 实际播放4次（loop≥0时实际播放次数为loop+1）。
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // 正常倍速。
       leftVolume: 0.5, // range = 0.0-1.0
       rightVolume: 0.5, // range = 0.0-1.0
       priority: 0, // 最低优先级。
+      pitch:1, // 原音调（API版本26.0.0之后可以使用）。
     }
     soundPool.play(soundID, playParameters, (error: BusinessError, streamId: number) => {
       if (error) {
@@ -687,11 +689,12 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // 循环4次。
+      loop: 3, // 实际播放4次（loop≥0时实际播放次数为loop+1）。
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // 正常倍速。
       leftVolume: 0.5, // range = 0.0-1.0。
       rightVolume: 0.5, // range = 0.0-1.0。
       priority: 0, // 最低优先级。
+      pitch:1, // 原音调（API版本26.0.0之后可以使用）。
     }
 
     soundPool.play(soundID, playParameters).then((streamId: number) => {
@@ -855,7 +858,7 @@ ArkTS-Sta: setLoop(streamID: int, loop: int, callback: AsyncCallback\<void>): vo
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
-| loop | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
+| loop | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>当loop为浮点数时只截取整数部分。 |
 | callback | AsyncCallback\<void> | 是   | 异步setLoop的回调方法。当setLoop的回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1391,7 +1394,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1921,7 +1924,7 @@ onPlayFinishedWithStreamId(callback: Callback\<int>): void
 
 当仅单独注册[onPlayFinished](#onplayfinished23)事件回调或者[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[onPlayFinished](#onplayfinished23)事件回调和[onPlayFinishedWithStreamId)](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[onPlayFinished](#onplayfinished23)事件回调和[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

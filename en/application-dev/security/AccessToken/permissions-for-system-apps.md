@@ -1262,6 +1262,8 @@ Allows a system application or system service to start the DLP credential manage
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1433,8 @@ Allows configuration and management of the permissions on .dlp files.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Valid since**: 9
 
@@ -4595,20 +4599,6 @@ Allows an application to access the list of applications that can be started in 
 
 **Valid since**: 18
 
-## ohos.permission.GET_NETWORK_STATS
-
-Allows a system application to obtain historical network traffic.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Valid since**: 10
-
-**Changelog**: **Certificate-based authorization** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
-
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
 Allows a system application to read data from the Peep Protect database.
@@ -5726,3 +5716,45 @@ Allows an application to call the API of storage manager for managing optical di
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.cli.START_ABILITY
+
+Allows an agent application to start specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+Allows an agent application to stop specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0

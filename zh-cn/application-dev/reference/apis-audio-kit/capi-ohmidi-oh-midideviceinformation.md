@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct {...} OH_MIDIDeviceInformation
 
 ## 概述
 
-设备信息结构体。储存设备ID等相关信息。
+设备信息结构体。存储设备ID等相关信息。
 
 **起始版本：** 24
 

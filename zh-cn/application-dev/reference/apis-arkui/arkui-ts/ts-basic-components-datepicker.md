@@ -20,7 +20,7 @@
 
 ## 子组件
 
-无
+该组件为基础组件，不建议包含子组件。
 
 
 ## 接口
@@ -29,7 +29,7 @@ DatePicker(options?: DatePickerOptions)
 
 根据指定日期范围创建日期选择器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,16 +47,14 @@ DatePicker(options?: DatePickerOptions)
 
 日期选择器组件的参数说明。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型 | 只读 | 可选 |说明                                                         |
 | -------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| start    | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的起始日期。<!--RP1--><!--RP1End--><br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
-| end      | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的结束日期。<!--RP2--><!--RP2End--><br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
-| selected | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) \| [Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<[Date](ts-basic-components-timepicker.md#date对象说明)> | 否   | 是   | 设置选中项的日期。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br/>ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否   | 是   | 设置日期展示模式。<br/>默认值：DatePickerMode.DATE，显示年、月、日三列。<br/>在[DatePickerDialog](ts-methods-datepicker-dialog.md)中，当[DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| start    | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的起始日期。<!--RP1--><!--RP1End--><br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| end      | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的结束日期。<!--RP2--><!--RP2End--><br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| selected | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) \| [Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<[Date](ts-basic-components-timepicker.md#date对象说明)> | 否   | 是   | 设置选中项的日期。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br/>ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否   | 是   | 设置日期展示模式。<br/>默认值：DatePickerMode.DATE，显示年、月、日三列。<br/>在[DatePickerDialog](ts-methods-datepicker-dialog.md)中，当[DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 >  **说明：**
 >
@@ -90,9 +88,9 @@ DatePicker(options?: DatePickerOptions)
 
 设置日期展示模式。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该类型支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该类型支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,9 +110,7 @@ DatePicker(options?: DatePickerOptions)
 
 ### lunar
 
-ArkTS-Dyn: lunar(value: boolean)
-
-ArkTS-Sta: lunar(value: boolean | undefined)
+lunar(value: boolean)
 
 设置日期是否显示为农历。
 
@@ -122,35 +118,35 @@ ArkTS-Sta: lunar(value: boolean | undefined)
 >
 > 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
+| value  | boolean | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
 
 ### lunar<sup>18+</sup>
 
 lunar(isLunar: Optional\<boolean>)
 
-设置弹窗的日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
+设置日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
 
-> **说明：**
->
-> 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[lunar<sup>23+</sup>](#lunar23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -164,15 +160,19 @@ lunar(isLunar: Optional\<boolean>)
 
 lunar(value: boolean | undefined)
 
-设置弹窗的日期是否显示农历。
+设置日期是否显示为农历。
 
 > **说明：**
 >
 > 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[lunar](#lunar)、[lunar<sup>18+</sup>](#lunar18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -180,29 +180,29 @@ lunar(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value | boolean \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>当value的值为undefined时，使用默认值。 |
+| value  | boolean \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>当value的值为undefined时，使用默认值。 |
  
 ### disappearTextStyle<sup>10+</sup>
 
-ArkTS-Dyn: disappearTextStyle(value: PickerTextStyle)
-
-ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | undefined)
+disappearTextStyle(value: PickerTextStyle)
 
 设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -214,11 +214,15 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[disappearTextStyle<sup>23+</sup>](#disappeartextstyle23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -232,11 +236,15 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 disappearTextStyle(value: PickerTextStyle | undefined)
 
-设置过渡项的文本样式。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[disappearTextStyle<sup>10+</sup>](#disappeartextstyle10)、[disappearTextStyle<sup>18+</sup>](#disappeartextstyle18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -252,25 +260,25 @@ disappearTextStyle(value: PickerTextStyle | undefined)
 
 ### textStyle<sup>10+</sup>
 
-ArkTS-Dyn: textStyle(value: PickerTextStyle)
-
-ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
+textStyle(value: PickerTextStyle)
 
 设置待选项（以选中项为基准向上或向下的第一项）的文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -282,11 +290,15 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 设置待选项（以选中项为基准向上或向下的第一项）的文本样式。与[textStyle<sup>10+</sup>](#textstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -300,11 +312,15 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 textStyle(value: PickerTextStyle | undefined)
 
-设置一般项的文本样式。
+设置待选项（以选中项为基准向上或向下的第一项）的文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[textStyle<sup>10+</sup>](#textstyle10)、[textStyle<sup>18+</sup>](#textstyle18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -320,25 +336,25 @@ textStyle(value: PickerTextStyle | undefined)
 
 ### selectedTextStyle<sup>10+</sup>
 
-ArkTS-Dyn: selectedTextStyle(value: PickerTextStyle)
-
-ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | undefined)
+selectedTextStyle(value: PickerTextStyle)
 
 设置选中项的文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
 
 ### selectedTextStyle<sup>18+</sup>
 
@@ -346,11 +362,15 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 
 设置选中项的文本样式。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedTextStyle<sup>23+</sup>](#selectedtextstyle23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -366,9 +386,13 @@ selectedTextStyle(value: PickerTextStyle | undefined)
 
 设置选中项的文本样式。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)、[selectedTextStyle<sup>18+</sup>](#selectedtextstyle18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -384,11 +408,15 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 设置是否开启触控反馈。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback<sup>23+</sup>](#enablehapticfeedback23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -414,9 +442,13 @@ enableHapticFeedback(enable: boolean | undefined)
 
 设置是否开启触控反馈。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[enableHapticFeedback<sup>18+</sup>](#enablehapticfeedback18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -446,11 +478,15 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 >
 >  用于穿戴设备圆形屏幕使用。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[digitalCrownSensitivity<sup>23+</sup>](#digitalcrownsensitivity23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -470,9 +506,13 @@ digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 >
 >  用于穿戴设备圆形屏幕使用。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[digitalCrownSensitivity<sup>18+</sup>](#digitalcrownsensitivity18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -488,11 +528,15 @@ canLoop(isLoop: Optional\<boolean>)
 
 设置是否可循环滚动。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[canLoop<sup>23+</sup>](#canloop23)。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -508,9 +552,13 @@ canLoop(isLoop: boolean | undefined)
 
 设置是否可循环滚动。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[canLoop<sup>20+</sup>](#canloop20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -526,6 +574,8 @@ attributeModifier(modifier: AttributeModifier\<DatePickerAttribute> | AttributeM
 
 设置属性修改器。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -536,13 +586,13 @@ attributeModifier(modifier: AttributeModifier\<DatePickerAttribute> | AttributeM
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[DatePickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<DatePickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>DatePickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。  |
 
 ## PickerTextStyle<sup>10+</sup>类型说明
 
 选择器组件的文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,35 +615,37 @@ onChange(callback: (value: DatePickerResult) => void)
 
 从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange10)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明             |
 | ------ | --------------------------------------------- | ---- | ---------------- |
-| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的时间。 |
+| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的日期。 |
 
 ### onDateChange<sup>10+</sup>
 
-ArkTS-Dyn: onDateChange(callback: Callback\<Date>)
-
-ArkTS-Sta: onDateChange(callback: Callback\<Date> \| undefined)
+onDateChange(callback: Callback\<Date>)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | ---- | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: [Callback](ts-types.md#callback12)\<Date><br/>ArkTS-Sta: [Callback](ts-types.md#callback12)\<Date>  \| undefined | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
+| callback  | [Callback](ts-types.md#callback12)\<Date> | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
  
 ### onDateChange<sup>18+</sup>
 
@@ -605,11 +657,15 @@ onDateChange(callback: Optional\<Callback\<Date>>)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDateChange<sup>23+</sup>](#ondatechange23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -623,11 +679,15 @@ onDateChange(callback: Optional\<Callback\<Date>>)
 
 onDateChange(callback: Callback\<Date> | undefined)
 
-选择日期时触发该事件。
+滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onDateChange<sup>10+</sup>](#ondatechange10)、[onDateChange<sup>18+</sup>](#ondatechange18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -643,9 +703,7 @@ onDateChange(callback: Callback\<Date> | undefined)
 
 从API version 8开始支持，从API version 10开始废弃，建议使用[Date](#ondatechange10)替代。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,7 +817,7 @@ struct DatePickerExample {
 @Component
 struct DatePickerExample {
   @State isLunar: boolean = false;
-  private selectedDate: Date = new Date('2025-01-15');
+  private selectedDate: Date = new Date('2025-01-25');
   @State datePickerModeList: (DatePickerMode)[] = [
     DatePickerMode.DATE,
     DatePickerMode.YEAR_AND_MONTH,
@@ -778,7 +836,7 @@ struct DatePickerExample {
         start: new Date('1970-1-1'),
         end: new Date('2100-1-1'),
         selected: this.selectedDate,
-        mode:this.datePickerModeList[this.datePickerModeIndex]
+        mode: this.datePickerModeList[this.datePickerModeIndex]
       })
         .lunar(this.isLunar)
         .onDateChange((value: Date) => {
@@ -789,7 +847,7 @@ struct DatePickerExample {
       Button('mode :' + this.datePickerModeIndex).margin({ top: 20 })
         .onClick(() => {
           this.datePickerModeIndex++;
-          if(this.datePickerModeIndex >= this.datePickerModeList.length){
+          if (this.datePickerModeIndex >= this.datePickerModeList.length) {
             this.datePickerModeIndex = 0;
           }
         })

@@ -1,5 +1,12 @@
 # \@Require装饰器：校验构造传参
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 \@Require是校验[\@Prop](../../../ui/state-management/arkts-prop.md)、[\@State](../../../ui/state-management/arkts-state.md)、[\@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、[\@BuilderParam](../../../ui/state-management/arkts-builderparam.md)、[\@Param](../../../ui/state-management/arkts-new-param.md)和普通变量(无状态装饰器修饰的变量)是否需要构造传参的一个装饰器。开发指南见[\@Require装饰器：校验构造传参](../../../ui/state-management/arkts-require.md)。
 
 > **说明：**
@@ -12,9 +19,15 @@
 >
 > - 本装饰器首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+## @Require
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+const Require: PropertyDecorator
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

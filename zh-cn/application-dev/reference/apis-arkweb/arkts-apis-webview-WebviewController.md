@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebviewController可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
+WebviewController是Web组件各种行为的核心控制器，提供网页加载与导航控制、JavaScript交互、生命周期、滚动控制、页面缩放与内容查找、消息端口通信、缓存与证书管理等广泛功能。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
 
 > **说明：**
 >
@@ -604,7 +604,7 @@ struct WebComponent {
 
 2.resources协议。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 
 ArkTS-Dyn示例：
 ```ts
@@ -751,6 +751,7 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. <br/>适用版本：9-10 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -1147,7 +1148,7 @@ struct WebComponent {
 
 forward(): void
 
-按照历史栈，前进一个页面。一般结合accessForward一起使用。
+按照历史栈，前进一个页面。一般结合[accessForward](#accessforward)一起使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1399,6 +1400,8 @@ onActive(): void
 调用此接口通知Web组件进入前台激活状态。
 
 激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
+
+若页面此前处于未激活状态，H5页面中通过document.addEventListener('visibilitychange',...)注册的事件监听器将被触发，document.visibilityState 从"hidden"变为"visible"。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2216,7 +2219,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2362,7 +2365,7 @@ runJavaScript(script: string): Promise\<string>
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2496,7 +2499,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 
 > **说明：**
 >
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2907,11 +2910,11 @@ function test() {
 
 runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 
-异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如onPageEnd中调用。
+异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如[onPageEnd](arkts-basic-components-web-events.md#onpageend)中调用。
 
 > **说明：**
 >
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6375,7 +6378,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除应用中的资源缓存文件，此方法将会清除同一应用中所有Webview的缓存文件。
+清除与当前WebView上下文相关的资源缓存。
 
 > **说明：**
 >
@@ -6464,7 +6467,7 @@ struct WebComponent {
 
 static removeAllCache(clearRom: boolean): void
 
-清除应用中的资源缓存文件，此方法将会清除同一应用中所有Webview的缓存文件。
+清除应用内所有Webview(含隐私模式)产生的资源缓存。
 
 > **说明：**
 >
@@ -6790,7 +6793,7 @@ struct WebComponent {
 
 getBackForwardEntries(): BackForwardList
 
-获取当前Webview的历史信息列表。
+获取当前WebView的历史信息列表。
 
 > **说明：**
 >
@@ -6806,7 +6809,7 @@ getBackForwardEntries(): BackForwardList
 
 | 类型                                | 说明                        |
 | ----------------------------------- | --------------------------- |
-| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前Webview的历史信息列表。 |
+| [BackForwardList](./arkts-apis-webview-BackForwardList.md) | 当前WebView的历史信息列表。 |
 
 **错误码：**
 
@@ -6877,7 +6880,7 @@ struct WebComponent {
 
 serializeWebState(): Uint8Array
 
-将当前Webview的页面状态历史记录信息序列化。
+将当前WebView的页面状态历史记录信息序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6890,7 +6893,7 @@ serializeWebState(): Uint8Array
 
 | 类型       | 说明                                          |
 | ---------- | --------------------------------------------- |
-| Uint8Array | 当前Webview的页面状态历史记录序列化后的数据。 |
+| Uint8Array | 当前WebView的页面状态历史记录序列化后的数据。 |
 
 **错误码：**
 
@@ -7014,7 +7017,7 @@ export default class EntryAbility extends UIAbility {
 
 restoreWebState(state: Uint8Array): void
 
-当前Webview从序列化数据中恢复页面状态历史记录。
+当前WebView从序列化数据中恢复页面状态历史记录。
 
 如果state过大，可能会导致异常。建议state大于512k时，放弃恢复页面状态历史记录。
 
@@ -7690,7 +7693,7 @@ struct Index {
 
 getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
-获取当前网站的证书信息。使用Web组件加载https网站，会进行SSL证书校验，该接口会通过AsyncCallback异步返回当前网站的X509格式证书（X509Cert证书类型定义见[X509Cert定义](../apis-device-certificate-kit/js-apis-cert.md)），便于开发者展示网站证书信息。
+获取当前网站的证书信息。使用Web组件加载https网站，会进行SSL证书校验，该接口会通过AsyncCallback异步返回当前网站的X509格式证书（X509Cert证书类型定义见[X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert)），便于开发者展示网站证书信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8295,7 +8298,9 @@ ArkTS-Dyn: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: int): void
 
-根据指定的请求信息和附加的http请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的post请求。最多可以预获取6个post请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的post请求缓存，否则会自动清除最早预获取的post缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的post请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
+根据指定的请求信息和附加的HTTP请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的POST请求。最多可以预获取6个POST请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的POST请求缓存，否则会自动清除最早预获取的POST缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的POST请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
+
+内存缓存中的资源由内核自动管理。当注入的资源过多，导致内存压力过大时，内核会自动释放未使用的资源，但仍应避免向内存缓存中注入大量资源。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -8318,7 +8323,8 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+ |
 
 **示例：**
 
@@ -9438,7 +9444,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9528,7 +9534,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9617,7 +9623,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9706,7 +9712,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9795,7 +9801,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常使用。从API version 18开始，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet、TV设备中可正常使用。从API version 18开始，在Wearable设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -12908,7 +12914,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    }
    ```
 
-   JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[数据请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过数据请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
@@ -13128,7 +13134,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
-注册回调函数，开启[应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)后，当网页中有播放媒体时，触发注册的回调函数。
+注册回调函数，使用[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)开启应用接管网页媒体播放功能后，当网页中有播放媒体时，触发注册的回调函数。
 
 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
@@ -13769,8 +13775,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+  |
 
 **示例：**
 
@@ -17545,7 +17553,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
 
 **遗留内核适配：**
 
@@ -19018,7 +19026,7 @@ static enableAdvancedSecurityMode(securityParams: SecurityParams): void
 
 | 参数名   | 类型    | 必填 | 说明        |
 | -------- | ------- | ---- | -------- |
-| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 否 | 安全特性选项配置。 |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 是 | 安全特性选项配置。 |
 
 **示例：**
 
@@ -19081,6 +19089,118 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: "https://www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
+## executeAIPageCommand
+
+executeAIPageCommand(command: string): Promise\<string\>
+
+异步执行`AIPageCommand`。该接口通过JSON字符串形式的`command`参数指定命令类型和命令参数，使用Promise异步回调。
+
+> **说明：**
+>
+> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明 |
+| ------- | ------ | ---- | ---- |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)，交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。 |
+
+**返回值：**
+
+| 类型             | 说明 |
+| ---------------- | ---- |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100024 | Command format error. The command parameter does not conform to the JSON format requirements. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface AIPageCommand {
+  method: string;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface AIPageCommand {
+  method: string;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
   }
 }

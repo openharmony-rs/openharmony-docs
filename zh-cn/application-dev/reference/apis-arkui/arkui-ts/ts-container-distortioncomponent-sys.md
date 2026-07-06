@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-空间形变组件，提供空间扭曲感的形变视效能力。
+DistortionComponent（空间形变组件）是一种容器型视效组件，可对其子组件施加二维平面上的空间形变，模拟透视投影、镜头桶形/枕形畸变以及边角拉伸等视觉效果。通过改变四个角点的归一化坐标与四条边的桶形扭曲系数，组件内容能够产生贴近三维空间的扭曲、凸起、凹陷或错切感。
 
 >  **说明：**
 >
@@ -81,8 +81,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 | topRight       | [Vector2](#vector2) | 否  | 否   | 右上角的坐标。<br/>默认值：[1, 0]                                                                                     |
 | bottomLeft     | [Vector2](#vector2) | 否  | 否   | 左下角的坐标。<br/>默认值：[0, 1]                                                                                     |
 | bottomRight    | [Vector2](#vector2) | 否  | 否   | 右下角的坐标。<br/>默认值：[1, 1]                                                                                   |
-| barrelDistortion | [Vector4](#vector4) | 否   | 否   | 四条边的桶形扭曲程度参数。<br/>Vector4中四个值分别控制：x是左边，y是右边，z是上边，w是下边。<br/>默认值：[0, 0, 0, 0] <br/>正数表示边向外凸出的扭曲，负数表示边向内凹陷的扭曲。扭曲参数绝对值达到1时，扭曲程度为极端扭曲。<br/> x、y、z、w 各值建议设置范围：[-1, 1]|
-
+| barrelDistortion | [Vector4](#vector4) | 否   | 否   | 四条边的桶形扭曲程度参数。<br/>Vector4中四个值分别控制：x是左边，y是右边，z是上边，w是下边。<br/>默认值：[0, 0, 0, 0] <br/>正数表示边向外凸出的扭曲，负数表示边向内凹陷的扭曲。扭曲参数绝对值达到1时，扭曲程度为极端扭曲。<br/> x、y、z、w 各值建议设置范围：[-1, 1] <br/>**说明：**<br/>barrelDistortion的四个分量共同决定四条边的桶形扭曲强度，可与四个角点坐标组合使用，构建更丰富的空间形变。<br/>从几何意义上看，x、y决定左右两条竖直边的弯曲方向与幅度，z、w决定上下两条水平边的弯曲方向与幅度。当某一分量为正值时，对应边向组件外侧凸出，呈现“桶形外凸”效果；为负值时，对应边向组件内侧凹陷，呈现“枕形内凹”效果。四个分量取值相近时，整体呈现类似广角镜头的均匀桶形畸变；x、y与z、w取值差异较大时，则会产生横向拉伸或纵向拉伸的非对称形变。<br/>由于极端值可能导致画面折叠或采样异常，建议将x、y、z、w保持在[-1, 1]范围内使用。|
 
 ## Vector2
 
@@ -128,59 +127,213 @@ type Vector4 = Vector4
 
 ## 示例
 
-### 示例1（动态改变扭曲形变视效）
+### 示例1（动态改变角点形变）
 
-该示例主要演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变distortion参数的空间扭曲形变值，产生不同的扭曲形变效果。
+该示例演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变四个角点的坐标，产生由角点拉伸带来的空间扭曲效果。点击按钮后，使用animateTo播放形变动画。
 
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：动态更新扭曲效果，自定义组件的前景内容会发生形变
 @Entry
 @Component
-struct DistortionExample {
+struct DistortionCornerExample {
   @State distortionParam: DistortionParam = {
-    topLeft: { x: 0.8, y: 0.8 },
-    topRight: { x: 1, y: 0.8 },
-    bottomLeft: { x: 0.8, y: 1 },
+    topLeft: { x: 0, y: 0 },
+    topRight: { x: 1, y: 0 },
+    bottomLeft: { x: 0, y: 1 },
     bottomRight: { x: 1, y: 1 },
-    barrelDistortion: {
-      x: 0,
-      y: 0,
-      z: 0,
-      w: 0
-    },
+    barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
   }
 
   build() {
-    Column() {
+    Column({ space: 40 }) {
+      // 动态更新角点形变，组件前景内容会跟随角点位置发生形变。
       DistortionComponent({
         distortion: this.distortionParam
       }) {
         Column() {
+          Text('Distortion')
+            .fontSize(20)
+            .fontColor(Color.White)
+          Text('Component')
+            .fontSize(16)
+            .fontColor(Color.White)
         }
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Pink)
+        .width(150)
+        .height(150)
+        .backgroundColor(0xFF6750A4)
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
       }
 
-      Button('Change Distortion')
+      Button('切换角点形变')
         .onClick(() => {
-          this.distortionParam = {
-            topLeft: { x: 0, y: 0 },
-            topRight: { x: 1, y: 0 },
-            bottomLeft: { x: 0.8, y: 1 },
-            bottomRight: { x: 1, y: 1 },
-            barrelDistortion: {
-              x: 0,
-              y: 0,
-              z: 0,
-              w: 0
-            },
-          }
+          this.getUIContext()?.animateTo({ duration: 800, curve: Curve.EaseInOut }, () => {
+            this.distortionParam = {
+              topLeft: { x: 0.2, y: 0.2 },
+              topRight: { x: 0.9, y: 0.1 },
+              bottomLeft: { x: 0.1, y: 0.9 },
+              bottomRight: { x: 0.8, y: 1.1 },
+              barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+            }
+          })
         })
     }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-![distortionComponent](figures/distortionComponent.gif)
+![distortionComponent](figures/distortionComponent1.gif)
+
+### 示例2（四边桶形扭曲）
+
+该示例演示barrelDistortion参数中z和w对上下两条水平边的影响，同时设置x和y控制左右竖边，展示整体桶形扭曲效果。
+
+从API版本26.0.0开始，新增[DistortionParam](#distortionparam)的barrelDistortion属性。
+
+```ts
+@Entry
+@Component
+struct DistortionBarrelExample {
+  @State barrelValue: number = 0.5
+
+  build() {
+    Column({ space: 40 }) {
+      // 单独控制四条边的桶形扭曲，突出z/w对上下边的作用
+      DistortionComponent({
+        distortion: {
+          topLeft: { x: 0, y: 0 },
+          topRight: { x: 1, y: 0 },
+          bottomLeft: { x: 0, y: 1 },
+          bottomRight: { x: 1, y: 1 },
+          barrelDistortion: {
+            x: this.barrelValue,
+            y: this.barrelValue,
+            z: this.barrelValue,
+            w: this.barrelValue
+          }
+        }
+      }) {
+        Column() {
+          Text('Barrel')
+            .fontSize(24)
+            .fontColor(Color.White)
+          Text('Distortion')
+            .fontSize(18)
+            .fontColor(Color.White)
+        }
+        .width(180)
+        .height(180)
+        .backgroundColor(0xFF4CAF50)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+      }
+
+      Row({ space: 20 }) {
+        Button('外凸')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = 0.6
+            })
+          })
+        Button('内凹')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = -0.6
+            })
+          })
+        Button('恢复')
+          .onClick(() => {
+            this.getUIContext()?.animateTo({ duration: 600 }, () => {
+              this.barrelValue = 0
+            })
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+![distortionComponent](figures/distortionComponent2.gif)
+
+### 示例3（角点与桶形扭曲组合动画）
+
+该示例演示[DistortionComponent](#distortioncomponent)组件将角点坐标形变与四条边的桶形扭曲结合，并通过animateTo实现从正常状态到空间扭曲状态的过渡动画。
+
+从API版本26.0.0开始，新增系统组件DistortionComponent。
+
+```ts
+@Entry
+@Component
+struct DistortionCombinedExample {
+  @State isDistorted: boolean = false
+  @State distortionParam: DistortionParam = {
+    topLeft: { x: 0, y: 0 },
+    topRight: { x: 1, y: 0 },
+    bottomLeft: { x: 0, y: 1 },
+    bottomRight: { x: 1, y: 1 },
+    barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+  }
+
+  handleToggle() {
+    this.isDistorted = !this.isDistorted
+    this.getUIContext()?.animateTo({ duration: 1000, curve: Curve.EaseInOut }, () => {
+      if (this.isDistorted) {
+        this.distortionParam = {
+          topLeft: { x: 0.1, y: 0.15 },
+          topRight: { x: 0.85, y: 0.05 },
+          bottomLeft: { x: 0.05, y: 0.9 },
+          bottomRight: { x: 0.95, y: 0.85 },
+          barrelDistortion: { x: 0.3, y: 0.3, z: 0.5, w: 0.5 }
+        }
+      } else {
+        this.distortionParam = {
+          topLeft: { x: 0, y: 0 },
+          topRight: { x: 1, y: 0 },
+          bottomLeft: { x: 0, y: 1 },
+          bottomRight: { x: 1, y: 1 },
+          barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+        }
+      }
+    })
+  }
+
+  build() {
+    Column({ space: 40 }) {
+      // 组合角点形变与桶形扭曲，产生更强烈的空间透视感
+      DistortionComponent({
+        distortion: this.distortionParam
+      }) {
+        Stack() {
+          Column()
+            .width(200)
+            .height(200)
+            // 'app.media.icon'需要替换为开发者所需的图像资源文件
+            .backgroundImage($r('app.media.icon'))
+            .backgroundImageSize(ImageSize.Cover)
+            .opacity(0.8)
+          Text('3D Feel')
+            .fontSize(28)
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Bold)
+        }
+        .width(200)
+        .height(200)
+        .borderRadius(20)
+        .clip(true)
+      }
+
+      Button(this.isDistorted ? '恢复原始状态' : '播放组合形变')
+        .onClick(() => this.handleToggle())
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+![distortionComponent](figures/distortionComponent3.gif)

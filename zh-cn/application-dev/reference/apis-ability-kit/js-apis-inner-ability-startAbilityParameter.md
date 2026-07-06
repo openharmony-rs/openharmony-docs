@@ -4,15 +4,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 定义启动Ability参数，可以作为入参，调用[startAbility](js-apis-ability-featureAbility.md#featureabilitystartability)启动指定的Ability。
 
 > **说明：**
-> 
+>
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
 > 此接口仅可在FA模型下使用。
 
 ## 导入模块
@@ -27,13 +29,14 @@ import ability from '@ohos.ability.ability';
 
 | 名称               |   类型   | 只读  | 可选   | 说明                                 |
 | ----------------- | -------- | ---- | ---- | -------------------------------------- |
-| want                | [Want](js-apis-app-ability-want.md)| 否  | 否  | 启动Ability的want信息。                     |
-| abilityStartSetting | { [key: string]: any } | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。 |
-| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。推荐使用该属性替代abilityStartSetting，设置该属性后，abilityStartSetting不再生效。 |
+| want                | [Want](js-apis-app-ability-want.md)| 否  | 否  | 启动Ability的want信息。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 6 |
+| abilityStartSetting | { [key: string]: any } | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
+| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。推荐使用该属性替代abilityStartSetting，设置该属性后，abilityStartSetting不再生效。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
 
 **示例：**
 
 <!--code_no_check_fa-->
+
 ```ts
 import ability from '@ohos.ability.ability';
 import featureAbility from '@ohos.ability.featureAbility';

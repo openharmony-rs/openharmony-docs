@@ -23,9 +23,9 @@ ArkTS-Sta: border(value: BorderOptions | undefined): this
 
 设置边框样式。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,9 +58,9 @@ ArkTS-Sta: borderStyle(value: BorderStyle | EdgeStyles | undefined): this
 
 设置元素的边框线条样式。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,9 +88,9 @@ ArkTS-Sta: borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths | undefi
 
 设置边框的宽度。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,9 +118,9 @@ ArkTS-Sta: borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors |
 
 设置边框的颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,9 +146,9 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 设置边框的圆角半径。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,9 +176,11 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 
 设置边框的圆角半径和绘制圆角的模式。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,7 +193,7 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) \| undefined | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>取值为undefined时，与不设置表现一致。|
-| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
+| type  | ArkTS-Dyn: [RenderStrategy](ts-appendix-enums.md#renderstrategy22)<br/>ArkTS-Sta: [RenderStrategy](ts-appendix-enums.md#renderstrategy22) \| undefined | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST<br/>取值为undefined时，按默认值处理。|
 
 **返回值：**
 
@@ -215,7 +217,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -316,11 +318,52 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, Flex, ColumnOptions, FlexAlign, ItemAlign, TextAlign, Color, BorderStyle } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // 线段
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
+        // 点线
+        Text('dotted')
+          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        .border({
+          width: { left: 3, right: 6, top: 10, bottom: 15 },
+          color: { left: '#e3bbbb', right: Color.Blue, top: Color.Red, bottom: Color.Green },
+          radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        }).textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+![borderRadius](figures/borderRadius.gif)
 
 ### 示例2（边框宽度类型和边框颜色）
 
-border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
+border属性的width使用LocalizedEdgeWidths类型，radius使用LocalizedBorderRadiuses类型，color使用LocalizedEdgeColors类型。
 
 **ArkTS-Dyn示例：**
 
@@ -334,7 +377,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -457,11 +500,11 @@ struct BorderExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_border_ltr](figures/zh-cn_image_border_ltr.png)
+![zh-cn_image_border_ltr](figures/image-border-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+![zh-cn_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 

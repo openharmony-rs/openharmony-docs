@@ -25,9 +25,9 @@
 
 ### 约束与限制
 
-- **数量限制**：一个应用同一时刻最多申请10个延迟任务。
+- **数量限制：** 一个应用同一时刻最多申请10个延迟任务。
 
-- **执行频率限制**：系统会根据<!--RP1-->[设备使用信息统计](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)应用的活跃分组<!--RP1End-->，对延迟任务做分级管控，限制延迟任务调度的执行频率。<!--Del-->通过能效资源接口申请了WORK_SCHEDULER资源的应用，会被放在能效资源豁免分组中。<!--DelEnd-->
+- **执行频率限制：** 系统会根据<!--RP1-->[设备使用信息统计](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)应用的活跃分组<!--RP1End-->，对延迟任务做分级管控，限制延迟任务调度的执行频率。<!--Del-->通过能效资源接口申请了WORK_SCHEDULER资源的应用，会被放在能效资源豁免分组中。<!--DelEnd-->
 
   **表1** 应用活跃程度分组   
   | 应用活跃分组 | 延迟任务执行频率 |
@@ -40,11 +40,11 @@
   | 从未使用分组 | 禁止 |
   | <!--DelRow-->能效资源豁免分组 | 不受限制 |
   
-- **超时**：WorkSchedulerExtensionAbility单次回调最长运行2分钟。如果超时不取消，系统会终止对应的Extension进程。<!--Del-->对于系统特权应用，可以通过能效资源接口申请WORK_SCHEDULER资源，扩展单次回调运行时长，扩展后在充电状态下为20分钟，非充电状态下为10分钟。<!--DelEnd-->
+- **超时：** WorkSchedulerExtensionAbility单次回调最长运行2分钟。如果超时不取消，系统会终止对应的Extension进程。<!--Del-->对于系统特权应用，可以通过能效资源接口申请WORK_SCHEDULER资源，扩展单次回调运行时长，扩展后在充电状态下为20分钟，非充电状态下为10分钟。<!--DelEnd-->
 
-- **调度延迟**：系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
+- **调度延迟：** 系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
-- **WorkSchedulerExtensionAbility接口调用限制**：为保障系统安全性和稳定性，防止延迟任务滥用系统资源，对WorkSchedulerExtensionAbility能力进行管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
+- **WorkSchedulerExtensionAbility接口调用限制：** 为保障系统安全性和稳定性，防止延迟任务滥用系统资源，对WorkSchedulerExtensionAbility能力进行管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
 
   [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
 
@@ -68,7 +68,7 @@
 | [stopWork(work: WorkInfo, needCancel?: boolean): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopwork) | 取消延迟任务。 |
 | [getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus) | 获取延迟任务状态（Callback形式）。 |
 | [getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulergetworkstatus-1) | 获取延迟任务状态（Promise形式）。 |
-| [obtainAllWorks(callback: AsyncCallback\<Array\<WorkInfo>>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks10) | 获取所有延迟任务（Callback形式）。 |
+| [obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks10) | 获取所有延迟任务（Callback形式）。 |
 | [obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerobtainallworks)  | 获取所有延迟任务（Promise形式）。 |
 | [stopAndClearWorks(): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopandclearworks) | 停止并清除任务。 |
 | [isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout10) | 获取上次任务是否超时（针对RepeatWork，Callback形式）。 |
@@ -87,29 +87,32 @@
 
 延迟任务调度开发步骤分为两步：实现延迟任务调度扩展能力、实现延迟任务调度。
 
-1. **延迟任务调度扩展能力**：实现WorkSchedulerExtensionAbility开始和结束的回调接口。
+1. **延迟任务调度扩展能力：** 实现WorkSchedulerExtensionAbility开始和结束的回调接口。
 
-2. **延迟任务调度**：调用延迟任务接口，实现延迟任务申请、取消等功能。
+2. **延迟任务调度：** 调用延迟任务接口，实现延迟任务申请、取消等功能。
 
 ### 实现延迟任务回调扩展能力
 
 1. 新建工程目录。
 
-   在工程entry Module对应的ets目录(./entry/src/main/ets)下，新建目录及ArkTS文件，例如新建一个目录并命名为WorkSchedulerExtension。在WorkSchedulerExtension目录下，新建一个ArkTS文件并命名为WorkSchedulerExtension.ets，用以实现延迟任务回调接口。
+   在工程entry Module对应的ets目录(./entry/src/main/ets)下，新建目录及ArkTS文件，例如新建一个目录并命名为WorkSchedulerAbility。在WorkSchedulerAbility目录下，新建一个ArkTS文件并命名为WorkSchedulerAbility.ets，用以实现延迟任务回调接口。
 
 2. 导入模块。
+
+   <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
-   ```ts
-   import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
+   import {workScheduler, WorkSchedulerExtensionAbility} from '@kit.BackgroundTasksKit';
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
    
-   ```ts
+   ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // 延迟任务开始回调
      onWorkStart(workInfo: workScheduler.WorkInfo) {
+       // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // 打印 parameters中的参数，如：参数key1
        console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
@@ -128,16 +131,20 @@
 
    - srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
 
-   ```json
+   <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
+   
+   ``` JSON5
    {
      "module": {
-         "extensionAbilities": [
-           {
-             "name": "MyWorkSchedulerExtensionAbility",
-             "srcEntry": "./ets/WorkSchedulerExtension/WorkSchedulerExtension.ets",
-             "type": "workScheduler"
-           }
-         ]
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "WorkSchedulerAbility",
+           "srcEntry": "./ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
+           "type": "workScheduler",
+           // ...
+         }
+       ]
      }
    }
    ```
@@ -146,10 +153,12 @@
 ### 实现延迟任务调度
 
 1. 导入模块。
+
+   <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   import { workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { workScheduler } from '@kit.BackgroundTasksKit';
    ```
 
 2. 申请延迟任务。
@@ -174,17 +183,17 @@
    ```
 
 3. 取消延迟任务。
-   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
-
-   ```ts
-   // 创建workinfo
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) --> 
+   
+   ``` TypeScript
+   // 创建workInfo
    let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
      bundleName: 'ohos.samples.workschedulerextensionability',
      abilityName: 'WorkSchedulerAbility',
+     // ...
    }
-   
    try {
      workScheduler.stopWork(workInfo);
      console.info(`stopWork success`);

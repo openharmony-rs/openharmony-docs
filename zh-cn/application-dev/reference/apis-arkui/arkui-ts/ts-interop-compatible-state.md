@@ -20,9 +20,11 @@ function getCompatibleState\<T\>(state: IDecoratedV1Variable\<T\>): ESValue;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -35,6 +37,6 @@ function getCompatibleState\<T\>(state: IDecoratedV1Variable\<T\>): ESValue;
 
 |类型   | 说明             |
 |------------|--------------|
-|ESValue   |ArkTS-Dyn的@State对象。    |
+|[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)   |ArkTS-Dyn的@State对象。    |
 
 

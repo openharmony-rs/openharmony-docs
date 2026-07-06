@@ -74,17 +74,18 @@ struct PreventBubbling {
 
 ArkTS-Sta示例：
 
+<!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
+
 ``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Text, $r, Color, TouchEvent, ItemAlign, FlexAlign } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, ComponentV2 } from '@kit.ArkUI';
-import { Text, Column, RelativeContainer, Color, ItemAlign, FlexAlign, TouchEvent, $r } from '@kit.ArkUI';
 
 const TAG = '[Sample_PreventBubbling]';
 const DOMAIN = 0xF811;
 const BUNDLE = 'MyApp_PreventBubbling';
 
 @Entry
-@ComponentV2
+@Component
 struct PreventBubbling {
   build() {
     RelativeContainer() {
@@ -176,17 +177,18 @@ struct Sampling {
 
 ArkTS-Sta示例：
 
+<!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/sampling/Sampling.ets) -->
+
 ``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Color, TouchEvent } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, ComponentV2 } from '@kit.ArkUI';
-import { RelativeContainer, Column, Color, TouchEvent } from '@kit.ArkUI';
 
 const TAG = '[Sample_Sampling]';
-const DOMAIN: int = 0xF811;
-const BUNDLE: string = 'MyApp_Sampling';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_Sampling';
 
 @Entry
-@ComponentV2
+@Component
 struct Sampling {
   build() {
     RelativeContainer() {
@@ -272,17 +274,18 @@ struct MultipleFingerInformation {
 
 ArkTS-Sta示例：
 
+<!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
+
 ``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Color, TouchEvent, SourceType, TouchType } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, ComponentV2 } from '@kit.ArkUI';
-import { RelativeContainer, Column, Color, TouchEvent, SourceType, TouchType } from '@kit.ArkUI';
 
 const TAG = '[Sample_MultipleFingerInformation]';
-const DOMAIN: int = 0xF811;
-const BUNDLE: string = 'MyApp_MultipleFingerInformation';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_MultipleFingerInformation';
 
 @Entry
-@ComponentV2
+@Component
 struct MultipleFingerInformation {
   private currentFingerCount: int = 0;
   private allFingerIds: int[] = [];
@@ -331,7 +334,7 @@ struct MultipleFingerInformation {
 
 ![finger ids](figures/finger_ids.png)
 
-按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指② -> 抬起手指① -> 抬起手指③
+按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指③ -> 抬起手指① -> 抬起手指③
 
 ```text
   fingers start to press down   // 按下手指①

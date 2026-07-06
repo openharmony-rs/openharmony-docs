@@ -367,19 +367,44 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
+<!-- @[frameNodeTree_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTree.ets) -->  
 
 ``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
-  Position, Row, Text, FontWeight, SizeOptions, Flex, FlexDirection, ItemAlign, FlexAlign, List, ListItem,
-  TextAlign, Padding, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  Flex,
+  FlexAlign,
+  FlexDirection,
+  FrameNode,
+  ItemAlign,
+  NodeContainer,
+  NodeController,
+  Padding,
+  Position,
+  Row,
+  SizeOptions,
+  State,
+  Text,
+  TextAlign,
+  UIContext,
+  WrappedBuilder,
+  wrapBuilder,
+  List,
+  ListItem,
+} from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
 
-class Params {
+export class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -404,9 +429,10 @@ function buttonBuilder(params: Params) {
   }
 }
 
-type paramsbuilder = @Builder (a: Params) => void;
+type paramsbuilder = @Builder
+(a: Params) => void;
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   public buttonNode: BuilderNode<Params> | null = null;
   public frameNode: FrameNode | null = null;
   public childList: Array<FrameNode> = new Array<FrameNode>();
@@ -443,7 +469,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  operationFrameNodeWithFrameNode(frameNode: FrameNode | undefined | null) {
+  operationFrameNodeWithFrameNode(frameNode: FrameNode | undefined | null): void {
     if (frameNode) {
       console.info(TEST_TAG + ' get ArkTSNode success.')
       console.info(TEST_TAG + ' check rootNode whether is modifiable ' + frameNode.isModifiable());
@@ -462,14 +488,14 @@ class MyNodeController extends NodeController {
         console.info(TEST_TAG + ' appendChild success ');
       } catch (err) {
         console.info(TEST_TAG + ' appendChild fail :' + (err as BusinessError).code + ' : ' +
-        (err as BusinessError).message);
+          (err as BusinessError).message);
       }
       try {
         frameNode?.insertChildAfter(frameNode2, null);
         console.info(TEST_TAG + ' insertChildAfter success ');
       } catch (err) {
         console.info(TEST_TAG + ' insertChildAfter fail : ' + (err as BusinessError).code + ' : ' +
-        (err as BusinessError).message);
+          (err as BusinessError).message);
       }
       setTimeout(() => {
         try {
@@ -479,7 +505,7 @@ class MyNodeController extends NodeController {
           console.info(TEST_TAG + ' removeChild success ');
         } catch (err) {
           console.info(TEST_TAG + ' removeChild fail : ' + (err as BusinessError).code + ' : ' +
-          (err as BusinessError).message);
+            (err as BusinessError).message);
         }
       }, 2000)
       setTimeout(() => {
@@ -488,7 +514,7 @@ class MyNodeController extends NodeController {
           console.info(TEST_TAG + ' clearChildren success ');
         } catch (err) {
           console.info(TEST_TAG + ' clearChildren fail : ' + (err as BusinessError).code + ' : ' +
-          (err as BusinessError).message);
+            (err as BusinessError).message);
         }
       }, 4000)
     }
@@ -508,7 +534,7 @@ class MyNodeController extends NodeController {
     return result;
   }
 
-  checkAppendChild(parent: FrameNode | undefined | null, child: FrameNode | undefined | null) {
+  checkAppendChild(parent: FrameNode | undefined | null, child: FrameNode | undefined | null): void {
     try {
       if (parent && child) {
         parent.appendChild(child);
@@ -516,7 +542,7 @@ class MyNodeController extends NodeController {
       }
     } catch (err) {
       console.info(TEST_TAG + ' appendChild fail : ' + (err as BusinessError).code + ' : ' +
-      (err as BusinessError).message);
+        (err as BusinessError).message);
     }
   }
 }
@@ -528,105 +554,117 @@ struct Index {
   @State result: string = ''
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build() {
+  build(): void {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      List({ space: 20, initialIndex: 0 }) {
-        ListItem() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode子节点的增、删、改功能')
-            Button('对自定义FrameNode进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对FrameNode节点进行增、删、改操作，正常实现。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
-              })
-            Button('对BuilderNode中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对BuilderNode代理节点进行增、删、改操作，捕获异常信息。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.buttonNode?.getFrameNode());
-              })
-            Button('对系统组件中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对代理节点进行增、删、改操作，捕获异常信息。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.rootNode?.getParent());
-              })
+      Column() {
+        List() {
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode子节点的增、删、改功能')
+                Button('对自定义FrameNode进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对FrameNode节点进行增、删、改操作，正常实现。
+                    this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
+                  })
+                Button('对BuilderNode中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对BuilderNode代理节点进行增、删、改操作，捕获异常信息。
+                    this.myNodeController.operationFrameNodeWithFrameNode(
+                      this.myNodeController?.buttonNode?.getFrameNode());
+                  })
+                Button('对系统组件中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对代理节点进行增、删、改操作，捕获异常信息。
+                    this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.rootNode?.getParent());
+                  })
+              }
+            }
+
+          }
+
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode添加子节点的特殊场景')
+                Button('新增BuilderNode的代理节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    let buttonNode = new BuilderNode<Params>(this.getUIContext());
+                    let wrapBuilder1: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
+                    buttonNode.build(wrapBuilder1, new Params('BUTTON'))
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      buttonNode?.getFrameNode());
+                  })
+                Button('新增系统组件代理节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      this.myNodeController?.rootNode?.getParent());
+                  })
+                Button('新增已有父节点的自定义节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      this.myNodeController?.rootNode);
+                  })
+              }
+            }
+          }
+
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode节点的查询功能')
+                Button('对自定义FrameNode进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对FrameNode节点进行查询。当前节点为NodeContainer的子节点。
+                    this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode);
+                    setTimeout((event: ClickEvent) => {
+                      // 对FrameNode节点进行查询。rootNode下的第一个子节点。
+                      this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
+                    }, 2000)
+                  })
+                Button('对BuilderNode中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对BuilderNode代理节点进行查询。当前节点为BuilderNode中的Column节点。
+                    this.result =
+                      this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
+                  })
+                Button('对系统组件中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对代理节点进行查询。当前节点为NodeContainer。
+                    this.result =
+                      this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode?.getParent());
+                  })
+              }
+            }
+
           }
         }
 
-        ListItem() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode添加子节点的特殊场景')
-            Button('新增BuilderNode的代理节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                let buttonNode = new BuilderNode<Params>(this.getUIContext());
-                let wrapBuilder1: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
-                buttonNode.build(wrapBuilder1, new Params('BUTTON'))
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
-              })
-            Button('新增系统组件代理节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
-                  this.myNodeController?.rootNode?.getParent());
-              })
-            Button('新增已有父节点的自定义节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
-                  this.myNodeController?.rootNode);
-              })
-          }
-        }
-
-        ListItem() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode节点的查询功能')
-            Button('对自定义FrameNode进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对FrameNode节点进行查询。当前节点为NodeContainer的子节点。
-                this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode);
-                setTimeout((event: ClickEvent) => {
-                  // 对FrameNode节点进行查询。rootNode下的第一个子节点。
-                  this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
-                }, 2000)
-              })
-            Button('对BuilderNode中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对BuilderNode代理节点进行查询。当前节点为BuilderNode中的Column节点。
-                this.result =
-                  this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
-              })
-            Button('对系统组件中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对代理节点进行查询。当前节点为NodeContainer。
-                this.result =
-                  this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode?.getParent());
-              })
-          }
-        }
       }.height('50%')
 
       Text(`Result：\n${this.result}`)
         .fontSize(16)
         .width(400)
-        .height(200)
-        .padding(30)
         .borderWidth(1)
+        .height(200)
       Column() {
         Text('This is a NodeContainer.')
           .textAlign(TextAlign.Center)
@@ -652,6 +690,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode01](figures/ArkTSNode-FrameNode01.gif)
+
 ## 使用moveTo移动命令式节点
 
 使用[moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18)接口可以将FrameNode节点移动到新的父节点下，从而按需改变节点树结构。
@@ -660,11 +700,11 @@ struct Index {
 >
 > 当前FrameNode如果不可修改，抛出异常信息。
 >
-> 目标父节点为[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)描述。
+> 目标父节点为 [typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)描述。
 >
 > 当前不支持对无组件类型的命令式节点进行移动。
 >
-> 当前仅支持以下类型的[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)进行移动操作：[Stack](../reference/apis-arkui/js-apis-arkui-frameNode.md#stack12)、[XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#xcomponent12)。对于其他类型的节点，移动操作不会生效。
+> 当前仅支持以下类型的[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)进行移动操作：[Stack](../reference/apis-arkui/js-apis-arkui-typeNode.md#stack)、[XComponent](../reference/apis-arkui/js-apis-arkui-typeNode.md#xcomponent)。对于其他类型的节点，移动操作不会生效。
 >
 > 当前仅支持根节点为以下类型组件的[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)进行移动操作：[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)、[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。对于其他类型的组件，移动操作不会生效。
 
@@ -731,14 +771,27 @@ struct Index {
 ``` 
 
 ArkTS-Sta示例：
+<!-- @[frameNodeMoveTo_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeMoveTo.ets) --> 
 
 ``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { BuilderNode, FrameNode, NodeController, typeNode } from '@ohos.arkui.node';
-import { Entry, Column, ColumnOptions, Button, Component, NodeContainer, ClickEvent, RowOptions, Color } from '@ohos.arkui.component';
+import {
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FrameNode,
+  NodeContainer,
+  NodeController,
+  RowOptions,
+  UIContext,
+  typeNode
+} from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   uiContext: UIContext | null = null;
   rootNode: FrameNode | null = null;
   rowNode: FrameNode | null = null;
@@ -778,7 +831,7 @@ struct Index {
   private myNodeController1: MyNodeController = new MyNodeController()
   private myNodeController2: MyNodeController = new MyNodeController()
 
-  build() {
+  build(): void {
     Column({ space: 20 } as ColumnOptions) {
       NodeContainer(this.myNodeController1)
       NodeContainer(this.myNodeController2)
@@ -998,16 +1051,38 @@ struct Index {
 
 ArkTS-Sta示例：
 
-``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
-  Position, Row, Text, FontWeight, SizeOptions, Flex, FlexDirection, ItemAlign, FlexAlign, List, ListItem,
-  TextAlign, Padding, ClickEvent, Length, LayoutPolicy, ResourceColor } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+<!-- @[frameNodeCommon_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets) -->  
 
-class Params {
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  Flex,
+  FlexAlign,
+  FlexDirection,
+  FrameNode,
+  ItemAlign,
+  LayoutPolicy,
+  Length,
+  NodeContainer,
+  NodeController,
+  Padding,
+  Position,
+  ResourceColor,
+  Text,
+  UIContext,
+  WrappedBuilder,
+  wrapBuilder
+} from '@kit.ArkUI';
+
+export class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -1023,18 +1098,13 @@ function buttonBuilder(params: Params) {
       .borderRadius(8)
       .borderWidth(2)
       .backgroundColor(Color.Orange)
-
-    Button(params.text)
-      .fontSize(12)
-      .borderRadius(8)
-      .borderWidth(2)
-      .backgroundColor(Color.Pink)
   }
 }
 
-type paramsbuilder = @Builder (a: Params) => void;
+type paramsbuilder = @Builder
+(a: Params) => void;
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   public buttonNode: BuilderNode<Params> | null = null;
   public frameNode: FrameNode | null = null;
   public rootNode: FrameNode | null = null;
@@ -1071,7 +1141,8 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  modifyNode(frameNode: FrameNode | null | undefined, widthValue: Length | LayoutPolicy | undefined, backgroundColorValue: ResourceColor | undefined) {
+  modifyNode(frameNode: FrameNode | null | undefined, widthValue: Length | LayoutPolicy | undefined,
+    backgroundColorValue: ResourceColor | undefined): void {
     if (frameNode) {
       frameNode.commonAttribute
         .width(widthValue)
@@ -1079,7 +1150,17 @@ class MyNodeController extends NodeController {
     }
   }
 
-  addClickEvent(frameNode: FrameNode | null | undefined) {
+  modifyNodeSize(frameNode: FrameNode | null | undefined, heightValue: Length | LayoutPolicy | undefined,
+    widthValue: Length | LayoutPolicy | undefined, positionValue: Position): void {
+    if (frameNode) {
+      frameNode.commonAttribute
+        .height(heightValue)
+        .width(widthValue)
+        .position(positionValue);
+    }
+  }
+
+  addClickEvent(frameNode: FrameNode | null | undefined): void {
     if (frameNode) {
       frameNode.commonEvent.setOnClick((event: ClickEvent) => {
         console.info(`FrameNode ${JSON.stringify(event)}`);
@@ -1093,7 +1174,7 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build() {
+  build(): void {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column({ space: 10 } as ColumnOptions) {
         Text('修改节点通用属性-宽高')
@@ -1102,14 +1183,14 @@ struct Index {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可修改。即节点宽与背景色。
             console.info('Check the weather the node can be modified ' + this.myNodeController?.frameNode
             ?.isModifiable());
-            this.myNodeController.modifyNode(this.myNodeController?.frameNode, 50, Color.Gray)
+            this.myNodeController.modifyNodeSize(this.myNodeController?.frameNode, 100, 150, { x: 100, y: 0 })
           })
         Button('modify FrameNode get by BuilderNode')
           .onClick((event: ClickEvent) => {
             // 获取到的是当前页面中的BuilderNode的根节点，该节点不可修改。即节点宽与背景色未发生改变。
             console.info('Check the weather the node can be modified ' +
-            this.myNodeController?.buttonNode?.getFrameNode()
-            ?.isModifiable());
+              this.myNodeController?.buttonNode?.getFrameNode()
+              ?.isModifiable());
             this.myNodeController.modifyNode(this.myNodeController?.buttonNode?.getFrameNode(), 150, Color.Gray)
           })
         Button('modify proxyFrameNode get by search')
@@ -1142,8 +1223,8 @@ struct Index {
             // 获取到的是当前页面中的BuilderNode的根节点，该类节点可增加点击事件。
             // 点击的时候优先回调通过系统组件接口设置的click事件回调，然后回调通过commonEvent增加的click监听。
             console.info('Check the weather the node can be modified ' +
-            this.myNodeController?.buttonNode?.getFrameNode()
-            ?.isModifiable());
+              this.myNodeController?.buttonNode?.getFrameNode()
+              ?.isModifiable());
             this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode())
           })
         Button('add click event to proxyFrameNode get by search')
@@ -1180,6 +1261,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode02](figures/ArkTSNode-FrameNode02.gif)
 
 ## 自定义测量布局与绘制
 
@@ -1354,13 +1437,31 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[frameNodeDraw_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets) -->  
+
 ``` TypeScript
-import drawing from '@ohos.graphics.drawing';
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode, NodeController, LayoutConstraint, DrawContext } from '@ohos.arkui.node';
-import { Entry, Column, ColumnOptions, Button, Component, NodeContainer, Color,
-  SizeOptions, Padding, ClickEvent, Row } from '@ohos.arkui.component';
-import { Size, Position } from '@kit.ArkUI'
+import {
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  DrawContext,
+  Entry,
+  FrameNode,
+  LayoutConstraint,
+  NodeContainer,
+  NodeController,
+  Padding,
+  Position,
+  Row,
+  Size,
+  UIContext
+} from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { Vector2 } from 'arkui.Graphics';
+
 
 function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
   const size = child.getUserConfigSize();
@@ -1382,7 +1483,44 @@ function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode
   return res;
 }
 
-class MyFrameNode extends FrameNode {
+export class MyFrameNode extends FrameNode {
+  public width: number = 100;
+  public offsetY: number = 0;
+  private space: number = 1;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super(uiContext);
+    this.uiContext = uiContext;
+  }
+
+  onDraw(context: DrawContext): void {
+    const size = context.size;
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(15)
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    canvas.attachPen(pen);
+    canvas.drawRect({
+      left: 50,
+      right: this.width + 50,
+      top: 50,
+      bottom: this.width + 50
+    })
+    canvas.detachPen();
+  }
+
+  addWidth(): void {
+    this.width = (this.width + 10) % 50 + 100;
+  }
+}
+
+export class MyFrameNode2 extends FrameNode {
   public width: number = 100;
   public offsetY: number = 0;
   private space: number = 1;
@@ -1405,16 +1543,15 @@ class MyFrameNode extends FrameNode {
         sizeRes.width = Math.max(sizeRes.width, size.width);
       }
     }
-    this.setMeasuredSize(sizeRes);
   }
 
-  onLayout(position: Position): void {
+  onLayout(position: Vector2): void {
     let layoutPosition = this.getChild(0)!.getLayoutPosition();
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
       if (child) {
         child.layout({
-          x: this.uiContext.vp2px(100),
+          x: this.uiContext.vp2px(0),
           y: this.uiContext.vp2px(this.offsetY)
         });
         layoutPosition = child.getLayoutPosition();
@@ -1424,27 +1561,26 @@ class MyFrameNode extends FrameNode {
     this.setLayoutPosition(layoutPosition);
   }
 
-  onDraw(context: DrawContext) {
-    const size = context.size;
-    const canvas = context.canvas;
-    canvas.drawRect({
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0
-    })
-  }
-
-  addWidth() {
-    this.width = (this.width + 10) % 50 + 100;
+  addWidth(): void {
+    this.width = (this.width + 150) % 200 + 100;
   }
 }
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   public rootNode: MyFrameNode | null = null;
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new MyFrameNode(context);
+    this.rootNode?.commonAttribute?.size({ width: '100%', height: 200 }).backgroundColor(Color.Green);
+    return this.rootNode;
+  }
+}
+
+export class MyNodeController2 extends NodeController {
+  public rootNode: MyFrameNode2 | null = null;
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new MyFrameNode2(context);
     this.rootNode?.commonAttribute?.size({ width: 100, height: 100 }).backgroundColor(Color.Green);
     let frameNode: FrameNode = new FrameNode(context);
     this.rootNode!.appendChild(frameNode);
@@ -1457,14 +1593,22 @@ class MyNodeController extends NodeController {
 @Component
 struct Index {
   private nodeController: MyNodeController = new MyNodeController();
+  private nodeController2: MyNodeController2 = new MyNodeController2();
 
-  build() {
+  build(): void {
     Row() {
       Column() {
-        NodeContainer(this.nodeController)
-          .width('100%')
-          .height(200)
-          .backgroundColor('#FFF0F0F0')
+        Row() {
+          NodeContainer(this.nodeController)
+            .width('30%')
+            .height(200)
+            .backgroundColor('#FFF0F0F0')
+          NodeContainer(this.nodeController2)
+            .width('70%')
+            .height(200)
+            .backgroundColor('#FFF0F0F0')
+        }
+
         Button('Invalidate')
           .margin(10)
           .onClick((event: ClickEvent) => {
@@ -1473,9 +1617,9 @@ struct Index {
           })
         Button('UpdateLayout')
           .onClick((event: ClickEvent) => {
-            let node = this.nodeController.rootNode;
+            let node = this.nodeController2.rootNode;
             node!.offsetY = (node!.offsetY + 10) % 110;
-            this.nodeController?.rootNode?.setNeedsLayout();
+            this.nodeController2?.rootNode?.setNeedsLayout();
           })
       }
       .width('100%')
@@ -1485,6 +1629,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode03](figures/ArkTSNode-FrameNode03.jpg)
 
 ## 查找节点及获取基础信息
 
@@ -1647,15 +1793,31 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[frameNodePosition_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodePosition.ets) --> 
+
 ``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode, NodeController } from '@ohos.arkui.node';
-import { Entry, Column, Button, Component, NodeContainer, Flex, FlexDirection, ItemAlign, FlexAlign,
-  Text, Padding, ClickEvent, TextAlign } from '@ohos.arkui.component';
+import {
+  Button,
+  ClickEvent,
+  Column,
+  Component,
+  Entry,
+  Flex,
+  FlexAlign,
+  FlexDirection,
+  FrameNode,
+  ItemAlign,
+  NodeContainer,
+  NodeController,
+  Padding,
+  Text,
+  TextAlign,
+  UIContext
+} from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   public frameNode: FrameNode | null = null;
   private rootNode: FrameNode | null = null;
 
@@ -1666,37 +1828,37 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  getPositionToWindow() {
+  getPositionToWindow(): void {
     let positionToWindow = this.rootNode?.getPositionToWindow(); // 获取FrameNode相对于窗口的位置偏移。
-    console.info('FrameNode:x:'+positionToWindow?.x+',y:'+positionToWindow?.y)
+    console.info('FrameNode:x:' + positionToWindow?.x + ',y:' + positionToWindow?.y)
   }
 
-  getPositionToParent() {
+  getPositionToParent(): void {
     let positionToParent = this.rootNode?.getPositionToParent(); // 获取FrameNode相对于父组件的位置偏移。
-    console.info('FrameNode:x:'+positionToParent?.x+',y:'+positionToParent?.y)
+    console.info('FrameNode:x:' + positionToParent?.x + ',y:' + positionToParent?.y)
   }
 
-  getPositionToScreen() {
+  getPositionToScreen(): void {
     let positionToScreen = this.rootNode?.getPositionToScreen(); // 获取FrameNode相对于屏幕的位置偏移。
-    console.info('FrameNode:x:'+positionToScreen?.x+',y:'+positionToScreen?.y)
+    console.info('FrameNode:x:' + positionToScreen?.x + ',y:' + positionToScreen?.y)
   }
 
-  getPositionToWindowWithTransform() {
+  getPositionToWindowWithTransform(): void {
     let positionToWindowWithTransform =
       this.rootNode?.getPositionToWindowWithTransform(); // 获取FrameNode相对于窗口带有绘制属性的位置偏移。
-    console.info('FrameNode:x:'+positionToWindowWithTransform?.x+',y:'+positionToWindowWithTransform?.y)
+    console.info('FrameNode:x:' + positionToWindowWithTransform?.x + ',y:' + positionToWindowWithTransform?.y)
   }
 
-  getPositionToParentWithTransform() {
+  getPositionToParentWithTransform(): void {
     let positionToParentWithTransform =
       this.rootNode?.getPositionToParentWithTransform(); // 获取FrameNode相对于父组件带有绘制属性的位置偏移。
-    console.info('FrameNode:x:'+positionToParentWithTransform?.x+',y:'+positionToParentWithTransform?.y)
+    console.info('FrameNode:x:' + positionToParentWithTransform?.x + ',y:' + positionToParentWithTransform?.y)
   }
 
-  getPositionToScreenWithTransform() {
+  getPositionToScreenWithTransform(): void {
     let positionToScreenWithTransform =
       this.rootNode?.getPositionToScreenWithTransform(); // 获取FrameNode相对于屏幕带有绘制属性的位置偏移。
-    console.info('FrameNode:x:'+positionToScreenWithTransform?.x+',y:'+positionToScreenWithTransform?.y)
+    console.info('FrameNode:x:' + positionToScreenWithTransform?.x + ',y:' + positionToScreenWithTransform?.y)
   }
 }
 
@@ -1705,7 +1867,7 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build() {
+  build(): void {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Button('getPositionToWindow')
         .width(300)
@@ -1762,9 +1924,11 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode04](figures/ArkTSNode-FrameNode04.jpg)
+
 ## 通过typeNode创建具体类型的FrameNode节点
 
-通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
+通过[typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
 ArkTS-Dyn示例：
 
@@ -1917,164 +2081,168 @@ struct Index {
           .borderWidth(1)
           .width(300)
           .height(100)
-      }
+      }.height(200)
 
-      Button('getUserConfigBorderWidth')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigBorderWidth(node);
-            }
-          }
-        })
-      Button('getUserConfigPadding')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigPadding(node);
-            }
-          }
-        })
-      Button('getUserConfigMargin')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigMargin(node);
-            }
-          }
-        })
-      Button('getUserConfigSize')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigSize(node);
-            }
-          }
-        })
-      Button('getId')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getId(node);
-            }
-          }
-        })
-      Button('getUniqueId')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUniqueId(node);
-            }
-          }
-        })
-      Button('getNodeType')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getNodeType(node);
-            }
-          }
-        })
-      Button('getOpacity')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getOpacity(node);
-            }
-          }
-        })
-      Button('isVisible')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isVisible(node);
-            }
-          }
-        })
-      Button('isClipToFrame')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isClipToFrame(node);
-            }
-          }
-        })
-      Button('isAttached')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isAttached(node);
-            }
-          }
-        })
-      Button('remove Text')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('textTypeNode') || null;
-            if (node) {
-              this.myNodeController.removeChild(node);
-              this.myNodeController.isAttached(node);
-            }
-          }
-        })
-      Button('getInspectorInfo')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getInspectorInfo(node);
-            }
-          }
-        })
-      Button('getCustomProperty')
-        .width(300)
-        .onClick(() => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              const property = node.getCustomProperty('key1');
-              hilog.info(0x0000, TEST_TAG, JSON.stringify(property));
-            }
-          }
-        })
+      Scroll() {
+        Column({ space: 20 }) {
+          Button('getUserConfigBorderWidth')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigBorderWidth(node);
+                }
+              }
+            })
+          Button('getUserConfigPadding')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigPadding(node);
+                }
+              }
+            })
+          Button('getUserConfigMargin')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigMargin(node);
+                }
+              }
+            })
+          Button('getUserConfigSize')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigSize(node);
+                }
+              }
+            })
+          Button('getId')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getId(node);
+                }
+              }
+            })
+          Button('getUniqueId')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUniqueId(node);
+                }
+              }
+            })
+          Button('getNodeType')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getNodeType(node);
+                }
+              }
+            })
+          Button('getOpacity')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getOpacity(node);
+                }
+              }
+            })
+          Button('isVisible')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isVisible(node);
+                }
+              }
+            })
+          Button('isClipToFrame')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isClipToFrame(node);
+                }
+              }
+            })
+          Button('isAttached')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isAttached(node);
+                }
+              }
+            })
+          Button('remove Text')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('textTypeNode') || null;
+                if (node) {
+                  this.myNodeController.removeChild(node);
+                  this.myNodeController.isAttached(node);
+                }
+              }
+            })
+          Button('getInspectorInfo')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getInspectorInfo(node);
+                }
+              }
+            })
+          Button('getCustomProperty')
+            .width(300)
+            .onClick(() => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  const property = node.getCustomProperty('key1');
+                  hilog.info(0x0000, TEST_TAG, JSON.stringify(property));
+                }
+              }
+            })
+        }
+      }
     }
     .padding({
       left: 35,
@@ -2090,105 +2258,158 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[frameNodeTypeNode_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets) -->  
+
 ``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode, NodeController, BuilderNode, typeNode } from '@ohos.arkui.node';
-import { Entry, Column, Button, Component, NodeContainer, Builder, Flex, FlexDirection, ItemAlign, FlexAlign,
-  Text, FontWeight, Padding, ClickEvent, Margin, Visibility, Color, TextAlign } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import {
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  Component,
+  Entry,
+  Flex,
+  FlexAlign,
+  FlexDirection,
+  FrameNode,
+  ItemAlign,
+  NodeContainer,
+  NodeController,
+  Padding,
+  Text,
+  TextAlign,
+  UIContext,
+  Visibility,
+  State,
+  typeNode,
+  BuilderNode,
+  wrapBuilder,
+  FontWeight,
+  Scroll,
+  ColumnOptions
+} from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
 
-class MyNodeController extends NodeController {
+class Params {
+  text: string = '';
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column(){
+    Text('DEFAULT')
+      .id('buildText')
+      .border({ width: 1 })
+      .padding(1)
+      .fontSize(25)
+      .fontWeight(FontWeight.Bold)
+      .margin({ top: 10 })
+      .visibility(Visibility.Visible)
+      .opacity(0.7)
+      .customProperty('key1', 'value1')
+      .width(300)
+  }
+}
+export class MyNodeController extends NodeController {
   public frameNode: typeNode.Column | null = null;
   public uiContext: UIContext | undefined = undefined;
   private rootNode: FrameNode | null = null;
   private message: string = 'DEFAULT';
+  private textNode: BuilderNode<Params> | null = null;
+  public textTypeNode: typeNode.Text | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.uiContext = uiContext;
     this.frameNode = typeNode.createColumnNode(uiContext);
-    this.frameNode!.attribute
-      .width('100%')
-      .height('100%')
-      .customProperty('key1', 'value1')
-      .visibility(Visibility.Visible)
-      .opacity(0.7)
-      .id('buildText');
-    this.frameNode!.commonAttribute.width(50).height(50).backgroundColor(Color.Yellow);
     this.rootNode!.appendChild(this.frameNode!);
+    this.textNode = new BuilderNode<Params>(uiContext);
+    this.textNode!.build(wrapBuilder(buildText), new Params(''));
+    this.frameNode?.appendChild(this.textNode!.getFrameNode()!);
+    this.textTypeNode = typeNode.createTextNode(uiContext);
+    this.textTypeNode!.initialize('textTypeNode')
+      .fontSize(25)
+      .visibility(Visibility.Visible)
+      .id('textTypeNode')
+    this.frameNode?.appendChild(this.textTypeNode!);
     return this.rootNode;
   }
 
-  removeChild(frameNode: FrameNode) {
+  removeChild(frameNode: FrameNode): void {
     let parent = frameNode.getParent();
     if (parent) {
       parent.removeChild(frameNode);
     }
   }
 
-  getUserConfigBorderWidth(frameNode: FrameNode) {
+  getUserConfigBorderWidth(frameNode: FrameNode): void {
     let userConfigBorderWidth = frameNode?.getUserConfigBorderWidth(); // 获取用户设置的边框宽度。
-    console.info('FrameNode:left.unit:' +userConfigBorderWidth?.left?.unit + ',left.value:'+userConfigBorderWidth?.left?.value
-      + 'right.unit:'+userConfigBorderWidth?.right?.unit + ',right.value:'+userConfigBorderWidth?.right?.value
-      + 'top.unit:'+userConfigBorderWidth?.top?.unit + ',top.value:'+userConfigBorderWidth?.top?.value
-      + 'bottom.unit:'+userConfigBorderWidth?.bottom?.unit + ',bottom.value:'+userConfigBorderWidth?.bottom?.value);
+    console.info('FrameNode:left.unit:' + userConfigBorderWidth?.left?.unit + ',left.value:' +
+      userConfigBorderWidth?.left?.value
+      + 'right.unit:' + userConfigBorderWidth?.right?.unit + ',right.value:' + userConfigBorderWidth?.right?.value
+      + 'top.unit:' + userConfigBorderWidth?.top?.unit + ',top.value:' + userConfigBorderWidth?.top?.value
+      + 'bottom.unit:' + userConfigBorderWidth?.bottom?.unit + ',bottom.value:' + userConfigBorderWidth?.bottom?.value);
   }
 
-  getUserConfigPadding(frameNode: FrameNode) {
+  getUserConfigPadding(frameNode: FrameNode): void {
     let userConfigPadding = frameNode?.getUserConfigPadding(); // 获取用户设置的内边距。
-    console.info('FrameNode:left.unit:' +userConfigPadding?.left?.unit + ',left.value:'+userConfigPadding?.left?.value
-      + 'right.unit:'+userConfigPadding?.right?.unit + ',right.value:'+userConfigPadding?.right?.value
-      + 'top.unit:'+userConfigPadding?.top?.unit + ',top.value:'+userConfigPadding?.top?.value
-      + 'bottom.unit:'+userConfigPadding?.bottom?.unit + ',bottom.value:'+userConfigPadding?.bottom?.value);
+    console.info('FrameNode:left.unit:' + userConfigPadding?.left?.unit + ',left.value:' +
+      userConfigPadding?.left?.value
+      + 'right.unit:' + userConfigPadding?.right?.unit + ',right.value:' + userConfigPadding?.right?.value
+      + 'top.unit:' + userConfigPadding?.top?.unit + ',top.value:' + userConfigPadding?.top?.value
+      + 'bottom.unit:' + userConfigPadding?.bottom?.unit + ',bottom.value:' + userConfigPadding?.bottom?.value);
   }
 
-  getUserConfigMargin(frameNode: FrameNode) {
+  getUserConfigMargin(frameNode: FrameNode): void {
     let userConfigMargin = frameNode?.getUserConfigMargin(); // 获取用户设置的外边距。
-    console.info('FrameNode:left.unit:' +userConfigMargin?.left?.unit + ',left.value:'+userConfigMargin?.left?.value
-      + 'right.unit:'+userConfigMargin?.right?.unit + ',right.value:'+userConfigMargin?.right?.value
-      + 'top.unit:'+userConfigMargin?.top?.unit + ',top.value:'+userConfigMargin?.top?.value
-      + 'bottom.unit:'+userConfigMargin?.bottom?.unit + ',bottom.value:'+userConfigMargin?.bottom?.value);
+    console.info('FrameNode:left.unit:' + userConfigMargin?.left?.unit + ',left.value:' + userConfigMargin?.left?.value
+      + 'right.unit:' + userConfigMargin?.right?.unit + ',right.value:' + userConfigMargin?.right?.value
+      + 'top.unit:' + userConfigMargin?.top?.unit + ',top.value:' + userConfigMargin?.top?.value
+      + 'bottom.unit:' + userConfigMargin?.bottom?.unit + ',bottom.value:' + userConfigMargin?.bottom?.value);
   }
 
-  getUserConfigSize(frameNode: FrameNode) {
+  getUserConfigSize(frameNode: FrameNode): void {
     let userConfigSize = frameNode?.getUserConfigSize(); // 获取用户设置的宽高。
-    console.info('FrameNode:width.unit:' +userConfigSize?.width?.unit + ',width.value:'+userConfigSize?.width?.value
-      + 'height.unit:'+userConfigSize?.height?.unit + ',height.value:'+userConfigSize?.height?.value);
+    console.info('FrameNode:width.unit:' + userConfigSize?.width?.unit + ',width.value:' + userConfigSize?.width?.value
+      + 'height.unit:' + userConfigSize?.height?.unit + ',height.value:' + userConfigSize?.height?.value);
   }
 
-  getId(frameNode: FrameNode) {
+  getId(frameNode: FrameNode): void {
     let id = frameNode?.getId(); // 获取用户设置的节点ID。
     console.info(`${TEST_TAG} ${id}`);
   }
 
-  getUniqueId(frameNode: FrameNode) {
+  getUniqueId(frameNode: FrameNode): void {
     let uniqueId = frameNode?.getUniqueId(); // 获取系统分配的唯一标识的节点UniqueID。
     console.info(`${TEST_TAG} ${uniqueId}`);
   }
 
-  getNodeType(frameNode: FrameNode) {
+  getNodeType(frameNode: FrameNode): void {
     let nodeType = frameNode?.getNodeType(); // 获取节点的类型。
     console.info(`${TEST_TAG} ${nodeType}`);
   }
 
-  getOpacity(frameNode: FrameNode) {
+  getOpacity(frameNode: FrameNode): void {
     let opacity = frameNode?.getOpacity(); // 获取节点的不透明度。
     console.info(`${TEST_TAG} ${opacity}`);
   }
 
-  isVisible(frameNode: FrameNode) {
+  isVisible(frameNode: FrameNode): void {
     let visible = frameNode?.isVisible(); // 获取节点是否可见。
-    console.info('FrameNode:'+visible);
+    console.info('FrameNode:' + visible);
   }
 
-  isClipToFrame(frameNode: FrameNode) {
+  isClipToFrame(frameNode: FrameNode): void {
     let clipToFrame = frameNode?.isClipToFrame(); // 获取节点是否是剪裁到组件区域。
     console.info(`${TEST_TAG} ${clipToFrame}`);
   }
 
-  isAttached(frameNode: FrameNode) {
+  isAttached(frameNode: FrameNode): void {
     let attached = frameNode?.isAttached(); // 获取节点是否被挂载到主节点树上。
     console.info(`${TEST_TAG} ${attached}`);
   }
@@ -2200,7 +2421,7 @@ struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   @State index: number = 0;
 
-  build() {
+  build(): void {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column() {
         Text('This is a NodeContainer.')
@@ -2214,152 +2435,157 @@ struct Index {
           .width(300)
           .height(100)
       }
+      .height(200)
 
-      Button('getUserConfigBorderWidth')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigBorderWidth(node);
-            }
-          }
-        })
-      Button('getUserConfigPadding')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigPadding(node);
-            }
-          }
-        })
-      Button('getUserConfigMargin')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigMargin(node);
-            }
-          }
-        })
-      Button('getUserConfigSize')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUserConfigSize(node);
-            }
-          }
-        })
-      Button('getId')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getId(node);
-            }
-          }
-        })
-      Button('getUniqueId')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getUniqueId(node);
-            }
-          }
-        })
-      Button('getNodeType')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getNodeType(node);
-            }
-          }
-        })
-      Button('getOpacity')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.getOpacity(node);
-            }
-          }
-        })
-      Button('isVisible')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isVisible(node);
-            }
-          }
-        })
-      Button('isClipToFrame')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isClipToFrame(node);
-            }
-          }
-        })
-      Button('isAttached')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              this.myNodeController.isAttached(node);
-            }
-          }
-        })
-      Button('remove Text')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('textTypeNode') || null;
-            if (node) {
-              this.myNodeController.removeChild(node);
-              this.myNodeController.isAttached(node);
-            }
-          }
-        })
-      Button('getCustomProperty')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          const uiContext: UIContext = this.getUIContext();
-          if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
-            if (node) {
-              const property = node.getCustomProperty('key1');
-              console.info(TEST_TAG, property);
-            }
-          }
-        })
+      Scroll() {
+        Column({ space: 20 } as ColumnOptions) {
+          Button('getUserConfigBorderWidth')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigBorderWidth(node);
+                }
+              }
+            })
+          Button('getUserConfigPadding')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigPadding(node);
+                }
+              }
+            })
+          Button('getUserConfigMargin')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigMargin(node);
+                }
+              }
+            })
+          Button('getUserConfigSize')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUserConfigSize(node);
+                }
+              }
+            })
+          Button('getId')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getId(node);
+                }
+              }
+            })
+          Button('getUniqueId')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getUniqueId(node);
+                }
+              }
+            })
+          Button('getNodeType')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getNodeType(node);
+                }
+              }
+            })
+          Button('getOpacity')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.getOpacity(node);
+                }
+              }
+            })
+          Button('isVisible')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isVisible(node);
+                }
+              }
+            })
+          Button('isClipToFrame')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isClipToFrame(node);
+                }
+              }
+            })
+          Button('isAttached')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  this.myNodeController.isAttached(node);
+                }
+              }
+            })
+          Button('remove Text')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('textTypeNode') || null;
+                if (node) {
+                  this.myNodeController.removeChild(node);
+                  this.myNodeController.isAttached(node);
+                }
+              }
+            })
+          Button('getCustomProperty')
+            .width(300)
+            .onClick((event: ClickEvent) => {
+              const uiContext: UIContext = this.getUIContext();
+              if (uiContext) {
+                const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
+                if (node) {
+                  const property = node.getCustomProperty('key1');
+                  console.info(TEST_TAG, property);
+                }
+              }
+            })
+        }
+      }
     }
     .padding({
       left: 35,
@@ -2372,6 +2598,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode05](figures/ArkTSNode-FrameNode05.jpg)
 
 ## 解除当前FrameNode对象对实体FrameNode节点的引用关系
 
@@ -2494,15 +2722,33 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
+
+<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDisposed.ets) --> 
+
 ``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
-import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
-  Text, FontWeight, ClickEvent } from '@ohos.arkui.component';
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  ClickEvent,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FontWeight,
+  FrameNode,
+  NodeContainer,
+  NodeController,
+  Text,
+  UIContext,
+  WrappedBuilder,
+  wrapBuilder
+} from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
 
-class Params {
+export class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -2534,16 +2780,14 @@ struct TestComponent {
 @Builder
 function buttonBuilder(params: Params) {
   Column({ space: 10 } as ColumnOptions) {
-    Text(params.text)
-      .fontSize(10)
-      .fontWeight(FontWeight.Bold)
     TestComponent()
   }
 }
 
-type paramsbuilder = @Builder (a: Params) => void;
+type paramsbuilder = @Builder
+(a: Params) => void;
 
-class MyNodeController extends NodeController {
+export class MyNodeController extends NodeController {
   public builderNode: BuilderNode<Params> | null = null;
   public rootNode: FrameNode | null = null;
   private wrapBuilder: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
@@ -2553,9 +2797,9 @@ class MyNodeController extends NodeController {
       this.rootNode = new FrameNode(uiContext);
       this.rootNode!.commonAttribute
         .width('50%')
-        .height(100)
+        .height(150)
         .borderWidth(1)
-        .backgroundColor(Color.Gray)
+        .backgroundColor(0xff33ff33.toInt());
     }
 
     if (this.builderNode == null) {
@@ -2579,7 +2823,7 @@ class MyNodeController extends NodeController {
   }
 
   disposeFrameNode(): void {
-    if (this.rootNode !== null && this.builderNode !== null) {
+    if (this.rootNode !== null && this.builderNode !== null && this.builderNode!.getFrameNode()) {
       console.info(`${TEST_TAG} disposeFrameNode`);
       this.rootNode!.removeChild(this.builderNode!.getFrameNode()!);
       this.builderNode?.dispose();
@@ -2594,7 +2838,7 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build() {
+  build(): void {
     Column({ space: 4 } as ColumnOptions) {
       NodeContainer(this.myNodeController)
       Button('FrameNode dispose')
@@ -2608,6 +2852,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode06](figures/ArkTSNode-FrameNode06.gif)
 
 ## 查询当前FrameNode是否解除引用
 
@@ -2685,14 +2931,25 @@ struct Index {
 
 ArkTS-Sta示例：
 
-``` TypeScript
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode, NodeController, BuilderNode, typeNode } from '@ohos.arkui.node';
-import { Entry, Column, Button, Component, NodeContainer, Builder, Flex, FlexDirection, ItemAlign, FlexAlign,
-  Text, FontWeight, Padding, ClickEvent, Margin, Visibility, Color, TextAlign } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+<!-- @[frameNodeIsDisposed_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeIsDisposed.ets) --> 
 
-class MyNodeController extends NodeController {
+``` TypeScript
+import {
+  Button,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FrameNode,
+  NodeContainer,
+  NodeController,
+  State,
+  Text,
+  UIContext
+} from '@kit.ArkUI';
+
+export class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -2704,7 +2961,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  disposeFrameNode() {
+  disposeFrameNode(): void {
     // 解除当前FrameNode对象对实体FrameNode节点的引用关系
     this.rootNode?.dispose();
   }
@@ -2728,8 +2985,8 @@ struct Index {
   @State text: string = ''
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build() {
-    Column() {
+  build(): void {
+    Column({ space: 4 } as ColumnOptions) {
       NodeContainer(this.myNodeController)
       Button('FrameNode dispose')
         .onClick(() => {
@@ -2752,6 +3009,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode07](figures/ArkTSNode-FrameNode07.gif)
 
 ## FrameNode的数据懒加载能力
 
@@ -2934,12 +3193,12 @@ struct Index {
     this.adapterController.nodeAdapter?.dispose();
   }
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black)
-      Row() {
+      Row({ space: 5 }) {
         Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
@@ -2954,7 +3213,7 @@ struct Index {
           })
       }
 
-      Row() {
+      Row({ space: 5 }) {
         Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
@@ -2980,13 +3239,27 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[frameNodeLazyForEach_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEach.ets) --> 
+
 ``` TypeScript
-import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier, ButtonAttribute, Size, TouchEvent, ContentSlot } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-import { AnimatorResult } from '@ohos.animator'
+import {
+  Button,
+  Color,
+  Column,
+  Component,
+  Entry,
+  FrameNode,
+  NodeAdapter,
+  NodeContainer,
+  NodeController,
+  Row,
+  Text,
+  UIContext,
+  typeNode,
+  ColumnOptions,
+  RowOptions
+} from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AttributeUpdater } from '@ohos.arkui.modifier'
-import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter } from '@ohos.arkui.node';
 
 const TEST_TAG: string = 'FrameNode';
 
@@ -3030,8 +3303,9 @@ class MyNodeAdapter extends NodeAdapter {
 
   // 根据当前节点总数和重载次数生成列表项的文本数据
   loadData(): void {
+    this.data = new Array<string>();
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
+      this.data.push('Adapter ListItem ' + i + ' r:' + this.reloadTimes);
     }
   }
 
@@ -3149,16 +3423,18 @@ class MyNodeAdapterController extends NodeController {
 @Component
 struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
+
   aboutToDisappear(): void {
     this.adapterController.nodeAdapter?.dispose();
   }
+
   build() {
-    Column() {
+    Column({ space: 10 } as ColumnOptions) {
       Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black)
-      Row() {
+      Row({ space: 5 } as RowOptions) {
         Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
@@ -3173,7 +3449,7 @@ struct Index {
           })
       }
 
-      Row() {
+      Row({ space: 5 } as RowOptions) {
         Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
@@ -3196,6 +3472,9 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode08](figures/ArkTSNode-FrameNode08.jpg)
+
 ## 查询LazyForEach中的FrameNode节点信息
 
 如果FrameNode子节点中包含[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)节点，[getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild15)接口支持指定子节点展开模式[ExpandMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15)，以不同展开模式获取子节点。
@@ -3477,14 +3756,40 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!-- @[frameNodeLazyForEachSelect_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets) -->  
+
 ``` TypeScript
-import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
-  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-import { AnimatorResult } from '@ohos.animator'
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  DataChangeListener,
+  DataOperation,
+  Entry,
+  ExpandMode,
+  FrameNode,
+  IDataSource,
+  LazyForEach,
+  List,
+  ListItem,
+  NodeContainer,
+  NodeController,
+  Scroll,
+  ScrollAlign,
+  ScrollDirection,
+  ScrollToIndexOptions,
+  Scroller,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  Axis,
+  ColumnOptions
+} from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AttributeUpdater } from '@ohos.arkui.modifier'
-import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
 
 const TEST_TAG: string = 'FrameNode ';
 
@@ -3588,6 +3893,7 @@ class MyDataSource extends BasicDataSource<StringData> {
 
 class StringData {
   message: string;
+
   constructor(message: string) {
     this.message = message;
   }
@@ -3605,7 +3911,7 @@ class Params {
 
 @Builder
 function buildData(params: Params) {
-  List() {
+  List({ scroller: params.scroller! }) {
     LazyForEach(params.data!, (item: StringData, index: int) => {
       ListItem() {
         Column() {
@@ -3627,6 +3933,7 @@ function buildData(params: Params) {
     })
   }
   .cachedCount(5)
+  .listDirection(Axis.Horizontal)
 }
 
 class MyNodeController extends NodeController {
@@ -3663,8 +3970,8 @@ class MyNodeController extends NodeController {
 
   getChildWithNotExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.NOT_EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode!.getId()}`, 'getId');
-    if (childNode!.getId() === 'N9') {
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode?.getId()}`, 'getId');
+    if (childNode?.getId() === 'N9') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND)  result: fail.`, 'fail');
@@ -3674,7 +3981,7 @@ class MyNodeController extends NodeController {
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
     hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): childNode!.getId()`, 'getId');
-    if (childNode!.getId() === 'N3') {
+    if (childNode?.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: fail.`, 'fail');
@@ -3684,7 +3991,7 @@ class MyNodeController extends NodeController {
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
     hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): childNode!.getId()`, 'getId');
-    if (childNode!.getId() === 'N3') {
+    if (childNode?.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND)  result: fail.`, 'fail');
@@ -3700,7 +4007,7 @@ struct Index {
 
   build() {
     Scroll(this.scroller) {
-      Column() {
+      Column({ space: 8 } as ColumnOptions) {
         Column() {
           Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
@@ -3746,6 +4053,9 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode09](figures/ArkTSNode-FrameNode09.jpg)
+
 ## 调整自定义绘制Canvas的变换矩阵
 
 从API version 12开始，通过重写FrameNode的[onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12)方法，可以重写默认绘制方法。
@@ -3759,6 +4069,8 @@ struct Index {
 > - 如果开发者希望对画布进行预期的变换，应使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
 **ArkTS接口调用示例：**
+
+ArkTS-Dyn示例：
 
 <!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
 
@@ -3895,19 +4207,181 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[frameNodeCanvas_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCanvas.ets) --> 
+
+``` TypeScript
+import {
+  Column,
+  Component,
+  DrawContext,
+  DrawingCanvas,
+  Entry,
+  FrameNode,
+  NodeContainer,
+  NodeController,
+  Row,
+  UIContext
+} from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+
+  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
+  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+export class MyFrameNode extends FrameNode {
+  constructor(ctx: UIContext) {
+    super(ctx)
+  }
+
+  onDraw(context: DrawContext): void {
+    drawImage(context.canvas);
+  }
+}
+
+export class MyFrameNode1 extends FrameNode {
+  constructor(ctx: UIContext) {
+    super(ctx)
+  }
+
+  onDraw(context: DrawContext): void {
+    drawImage1(context.canvas);
+  }
+}
+
+export class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const rootNode: FrameNode = new FrameNode(uiContext);
+    rootNode.commonAttribute.width(300).height(300);
+    const theFrameNode: MyFrameNode = new MyFrameNode(uiContext)
+    theFrameNode.commonAttribute.width(100)
+      .height(50)
+      .position({ x: 10, y: 20 })
+      .backgroundColor(Long.toInt(0xFF2787D9));
+    rootNode.appendChild(theFrameNode);
+    return rootNode;
+  }
+}
+
+export class MyNodeController1 extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const rootNode: FrameNode = new FrameNode(uiContext);
+    rootNode.commonAttribute.width(300).height(300);
+    const theFrameNode: MyFrameNode1 = new MyFrameNode1(uiContext);
+    theFrameNode.commonAttribute.width(100)
+      .height(50)
+      .position({ x: 10, y: 20 })
+      .backgroundColor(Long.toInt(0xFF2787D9));
+    rootNode.appendChild(theFrameNode);
+    return rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myNodeController: MyNodeController = new MyNodeController();
+  myNodeController1: MyNodeController1 = new MyNodeController1();
+
+  build(): void {
+    Row() {
+      Column() {
+        NodeContainer(this.myNodeController);
+      }
+      .height('100%')
+      .width('45%')
+
+      Column() {
+        NodeContainer(this.myNodeController1);
+      }
+      .height('100%')
+      .width('45%')
+    }.height('100%')
+    .width('100%')
+
+  }
+}
+```
+
 ![FrameNode-canvas](./figures/frameNode-canvas.png)
 
 ## 更新当前帧节点
 
 从API version 21开始，通过使用frameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
+ArkTS-Dyn示例：
+
+<!-- @[frameNodeInvalidateAttributes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeInvalidateAttributes.ets) --> 
+
 ``` TypeScript
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义NodeAdapter控制器
 class MyNodeAdapterController extends NodeController {
-  rootNode: FrameNode | null = null;
-  imageUrl: string = "";
+  public rootNode: FrameNode | null = null;
+  public imageUrl: string = '';
 
   constructor(imageUrl: string) {
     super();
@@ -3915,7 +4389,7 @@ class MyNodeAdapterController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r(this.imageUrl))
     imageNode.commonAttribute.margin({ left: 100 })
     imageNode.attribute.syncLoad(true).width(100).height(100);
@@ -3932,7 +4406,7 @@ struct NodeComponent3 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -3951,7 +4425,128 @@ struct NodeComponent4 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  @State flag: boolean = true;
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
+  build() {
+    Column() {
+      Text('NodeComponent')
+      if (this.flag) {
+        NodeComponent3()
+      } else {
+        NodeComponent4()
+      }
+      Text('NodeContainer').margin({ top: 20 })
+      if (this.flag) {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      } else {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      }
+      // 点击后图片正常切换不闪烁
+      Button('change').onClick(() => {
+        this.flag = !this.flag;
+      }).margin({ top: 20 })
+    }
+    .width('100%')
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+
+<!-- @[frameNodeInvalidateAttributes_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeInvalidateAttributes.ets) --> 
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  State,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 继承NodeController实现自定义NodeAdapter控制器
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  imageUrl: string = "";
+
+  constructor(imageUrl: string) {
+    super();
+    this.imageUrl = imageUrl;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let imageNode = typeNode.createImageNode(uiContext);
+    imageNode.initialize($r(this.imageUrl))
+    imageNode.commonAttribute.margin({ left: 100 })
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    // 强制当前帧内即时节点更新，避免出现切换闪烁
+    imageNode.invalidateAttributes();
+    return imageNode;
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent3 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createImageNode(uiContext);
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent4 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createImageNode(uiContext);
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -3993,12 +4588,17 @@ struct ListNodeTest {
     .width("100%")
   }
 }
- ```
- ![invalidateAttributes](./figures/invalidateAttributes.png)
+```
+
+![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## 判断节点是否处于渲染状态
 
 从API version 23开始，通过使用FrameNode的[isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23)方法，判断FrameNode节点是否处于渲染状态。
+
+ArkTS-Dyn示例：
+
+<!-- @[frameNodeIsInRenderState_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsInRenderState.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -4012,7 +4612,7 @@ struct Index {
 
   // 监听状态变化后打印是否处于渲染状态
   change() {
-    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    let buttonNode = this.getUIContext().getFrameNodeById('testButton');
     if (buttonNode == null) {
       return;
     }
@@ -4044,6 +4644,102 @@ struct Index {
       }
       .width('30%')
       .alignSelf(ItemAlign.Center)
+      .height('10%')
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById('hello8');
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById('hello1');
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : this.message = 'is not on render tree';
+          hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[frameNodeIsInRenderState_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeIsInRenderState.ets) -->  
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  State,
+  $r,
+  Watch,
+  ForEach,
+  Visibility,
+  ListItem,
+  ItemAlign
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印是否处于渲染状态
+  change(str: string) {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      hilog.info(1, 'frameNode', 'is on render tree');
+    } else {
+      hilog.info(1, 'frameNode', 'is not on render tree');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin(20).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: int) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
       .height("10%")
       .onReachEnd(() => {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
@@ -4054,7 +4750,7 @@ struct Index {
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          isOnRenderTree ? this.message = 'is on render tree' : this.message = 'is not on render tree'
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
@@ -4063,5 +4759,5 @@ struct Index {
     .width('100%')
   }
 }
- ```
- ![isInRenderState](./figures/isInRenderState.png)
+```
+![isInRenderState](./figures/isInRenderState.png)

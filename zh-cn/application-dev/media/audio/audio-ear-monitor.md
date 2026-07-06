@@ -1,8 +1,8 @@
-# 实现音频耳返
+# 实现自定义耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,13 +18,17 @@
 
 - 当前仅支持通过有线耳机实现耳返功能。音频由有线耳机采集并播放。
 
+## 使用场景
+
+通过组合系统播放和录制的能力，在应用内实现耳返，适用于应用需要自己处理录制数据的场景。比如，应用可以对录制上来的数据使用自定义的音效算法进行处理，再进行播放，以实现特定的音效。由于数据需要经过应用处理，时延相对于系统耳返会更高。
+
 ## 开发指导
 
-  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
 
 ### 创建音频录制
 
-通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建录制音频流。指定对应的[OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type), 设置为AUDIOSTREAM_TYPE_CAPTURER。
+通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建录制音频流。指定对应的[OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type)，设置为AUDIOSTREAM_TYPE_CAPTURER。
 
 <!-- @[Create_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
@@ -35,7 +39,7 @@ OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
 
 ### 创建音频播放
 
-通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建播放音频流。指定对应的[OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type), AUDIOSTREAM_TYPE_RENDERER。
+通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建播放音频流。指定对应的[OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type)，设置为AUDIOSTREAM_TYPE_RENDERER。
 
 <!-- @[Create_Renderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
@@ -57,9 +61,9 @@ OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
-为实现实时耳返功能，需创建一个公共缓存区用于存储录制的数据，并及时从该缓存区获取数据写入播放构造器。
+为实现实时耳返功能，需创建一个公共缓冲区用于存储录制的数据，并及时从该缓冲区获取数据写入播放构造器。
 
-### 定义公共缓存和录制、播放函数
+### 定义公共缓冲区和录制、播放函数
 
 <!-- @[public_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
@@ -80,14 +84,14 @@ int32_t MyOnWriteData(
     void* buffer,
     int32_t length)
 {
-    // 从公共缓存buffer中读取数据，并按length长度写入buffer。
+    // 从公共缓冲区buffer中读取数据，并按length长度写入buffer。
     return 0;
 }
 ```
 
 > **注意：**
 >
-> 应用的公共缓存大小不应设置过大，以避免增加耳返时延，影响用户体验。开发者应根据时延要求和抗抖动要求，选择合适的缓存大小，确保用户体验。
+> 应用的公共缓冲区大小不应设置过大，以避免增加耳返时延，影响用户体验。开发者应根据时延要求和抗抖动要求，选择合适的缓冲区大小，确保用户体验。
 
 ### 设置音频流参数
 
@@ -183,7 +187,7 @@ int32_t MyOnWriteData(
     void* buffer,
     int32_t length)
 {
-    // 从公共缓存BUFFER中读取数据，并按length长度写入buffer。
+    // 从公共缓冲区BUFFER中读取数据，并按length长度写入buffer。
     return 0;
 }
 int32_t MyOnStreamEvent_Renderer(
@@ -246,7 +250,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 
 ### 使用音频流
 
-以录制为例，开发者可以使用以下接口控制音频流的开始、暂停、停止和释放。
+以播放为例，开发者可以使用以下接口控制音频流的开始、暂停、停止和释放。
 
 > **注意:**
 > 

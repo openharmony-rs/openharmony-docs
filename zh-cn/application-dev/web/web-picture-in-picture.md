@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @gzweioh-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。  
@@ -52,12 +52,12 @@ togglePipButton.addEventListener("click", async () => {
 请求退出画中画模式，请使用Document接口的exitPictureInPicture()方法，视频将重新在原始标签页中显示。
 
 ```js
-// ...
+// 示例：先获取video元素
+const video = document.getElementById('video');
+
 try {
-  if (videoElement !== document.pictureInPictureElement) {
-    await videoElement.requestPictureInPicture();
-  } else {
-    await document.exitPictureInPicture();
+  if (video !== document.pictureInPictureElement) {
+    await video.requestPictureInPicture();
   }
 }
 // ...

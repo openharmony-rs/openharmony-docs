@@ -24,9 +24,11 @@ getTopOrder(): LevelOrder
 
 获取最顶层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -102,9 +104,11 @@ getBottomOrder(): LevelOrder
 
 获取最底层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -180,9 +184,11 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
 显示即时反馈。使用Promise异步回调返回即时反馈的id，可供closeToast使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -257,9 +263,11 @@ closeToast(toastId: number): void
 
 关闭即时反馈。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数**
 
@@ -287,9 +295,11 @@ showToast(options: promptAction.ShowToastOptions): void
 
 创建并显示即时反馈。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -345,9 +355,11 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback&lt;p
 
 创建并显示对话框，对话框响应结果使用callback异步回调返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -420,9 +432,11 @@ showDialog(options: promptAction.ShowDialogOptions): Promise&lt;promptAction.Sho
 
 创建并显示对话框，使用Promise异步回调获取对话框的响应结果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -493,9 +507,11 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback&
 
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -565,9 +581,11 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise&lt;promptAction
 
 创建并显示操作菜单，通过Promise异步回调获取菜单的响应结果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -636,9 +654,11 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -665,7 +685,7 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 **示例：**
 
-该示例通过监听[系统环境信息](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -766,9 +786,11 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 创建并弹出自定义弹窗。使用Promise异步回调返回对话框的id，可供closeCustomDialog使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -874,9 +896,11 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -974,9 +998,11 @@ updateCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, optio
 
 更新已弹出的dialogContent对应的自定义弹窗的样式，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1056,7 +1082,7 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(`updateCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
-            }, 2000); //2秒后自动更新弹窗位置
+            }, 2000); // 2秒后自动更新弹窗位置
           })
       }
       .width('100%')
@@ -1073,9 +1099,11 @@ closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promi
 
 关闭已弹出的dialogContent对应的自定义弹窗，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1153,7 +1181,7 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
-            }, 2000); //2秒后自动关闭
+            }, 2000); // 2秒后自动关闭
           })
       }
       .width('100%')
@@ -1172,9 +1200,11 @@ closeCustomDialog(dialogId: number): void
 
 关闭自定义弹窗。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1257,9 +1287,11 @@ presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: 
 
 支持在自定义弹窗内容中持有弹窗ID进行对应操作。支持传入弹窗控制器与自定义弹窗绑定，后续可以通过控制器控制自定义弹窗。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1376,9 +1408,11 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 >
 > - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](./js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1502,9 +1536,11 @@ updatePopup\<T extends Object>(content: ComponentContent\<T>, options: PopupComm
 >
 > 不支持更新showInSubWindow、focusable、onStateChange、onWillDismiss、transition。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1540,9 +1576,11 @@ closePopup\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt
 
 关闭content对应的Popup弹窗，使用Promise异步回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1586,9 +1624,11 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 >
 > - 子窗弹窗里不能再弹出子窗弹窗，例如[openMenu](#openmenu18)设置了showInSubWindow为true时，则不能再弹出另一个设置了showInSubWindow为true的弹窗。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1681,9 +1721,11 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 >
 > - 支持mask通过设置[MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20类型说明)实现更新蒙层样式，不支持mask通过设置boolean实现蒙层从无到有或者从有到无的更新。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1773,9 +1815,11 @@ closeMenu\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt;
 
 关闭content对应的Menu弹窗。使用Promise异步回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1867,6 +1911,8 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[showActionMenu](#showactionmenu11)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 

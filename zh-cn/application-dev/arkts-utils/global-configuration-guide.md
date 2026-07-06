@@ -21,7 +21,7 @@
    
    @Sendable
    class Config {
-     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      public isLogin: boolean = false;
      public loginUser?: string;
      public wifiOn: boolean = false;
@@ -70,7 +70,7 @@
 
 2. UI主线程及子线程访问全局配置项。
 
-   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) -->
+   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) --> 
    
    ``` TypeScript
    import { config } from './Config';
@@ -128,9 +128,9 @@
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = 'login: ' + this.input;
                  try {
-                   config.login(this.input);
+                   await config.login(this.input);
+                   this.message = 'login: ' + this.input;
                  } catch (e) {
                    console.error('login failed');
                  }
@@ -146,9 +146,9 @@
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = 'not login';
                  try {
-                   config.logout();
+                   await config.logout();
+                   this.message = 'not login';
                  } catch (e) {
                    console.error('logout failed');
                  }

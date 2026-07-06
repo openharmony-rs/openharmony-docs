@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -23,7 +25,9 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.addDesktopShortcutInfo
 
-addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+ArkTS-Dyn: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>
+
+ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 增加指定用户的快捷方式信息。使用Promise异步回调。
 
@@ -33,12 +37,16 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -63,6 +71,7 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -105,10 +114,44 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta示例:
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的shortcutInfo、useId需为应用实际设置的快捷方式信息、用户ID。
+let data: shortcutManager.ShortcutInfo = {
+  id: "test1",
+  bundleName: "com.example.myapplication",
+  moduleName: "hello",
+  hostAbility: "hello",
+  icon: "hello",
+  iconId: 1,
+  label: "hello",
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+}
+try {
+  shortcutManager.addDesktopShortcutInfo(data, 100)
+    .then(() => {
+      console.info("addDesktopShortcutInfo success");
+    }).catch((err: Error) => {
+      console.error(`addDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+    });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`addDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```
 
 ## shortcutManager.deleteDesktopShortcutInfo
 
-deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+ArkTS-Dyn: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>
+
+ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 删除指定用户的快捷方式信息。使用Promise异步回调。
 
@@ -118,12 +161,16 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -144,6 +191,7 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -186,10 +234,46 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的shortcutInfo、useId需为应用实际设置的快捷方式信息、用户ID。
+let data: shortcutManager.ShortcutInfo = {
+  id: "test1",
+  bundleName: "com.example.myapplication",
+  moduleName: "",
+  hostAbility: "",
+  icon: "",
+  iconId: 1,
+  label: "hello",
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+}
+try {
+  shortcutManager.deleteDesktopShortcutInfo(data, 100)
+    .then(() => {
+      console.info("deleteDesktopShortcutInfo success");
+    }).catch((err: Error) => {
+    console.error(`deleteDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`deleteDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```
 
 ## shortcutManager.getAllDesktopShortcutInfo
 
-getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>
+ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number): Promise<Array\<ShortcutInfo>>
+
+ArkTS-Sta: getAllDesktopShortcutInfo(userId: int): Promise<Array\<ShortcutInfo>>
 
 查询指定用户的所有快捷方式信息。
 
@@ -199,11 +283,15 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| userId     | number | 是   | 被查询的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -224,6 +312,7 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -253,10 +342,33 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+  shortcutManager.getAllDesktopShortcutInfo(100);
+    .then((data: shortcutManager.ShortcutInfo[]) => {
+      console.info("getAllDesktopShortcutInfo Shortcut data is " + JSON.stringify(data));
+    }).catch((err: Error) => {
+      console.error(`getAllDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+    });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getAllDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```
 
 ## shortcutManager.addDynamicShortcutInfos<sup>23+</sup>
 
-addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void>
+ArkTS-Dyn: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void>
+
+ArkTS-Sta: addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: int): Promise\<void>
 
 添加指定用户的动态快捷方式。
 
@@ -270,12 +382,16 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 |  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
-| userId     | number | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 
 **返回值：**
 
@@ -341,7 +457,9 @@ try {
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
 
-deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array\<string>): Promise\<void>
+ArkTS-Dyn: deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array\<string>): Promise\<void>
+
+ArkTS-Sta: deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?: Array\<string>): Promise\<void>
 
 删除指定的动态快捷方式。
 
@@ -355,13 +473,17 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName   |   string    |   是  |   要删除的动态快捷方式所属的包名。    |
-| appIndex     | number | 是   | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
-| userId     | number | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户，取值范围：大于等于0。|
 | ids     |  Array\<string> | 否   | 要删除的动态快捷方式id列表。缺省或传入列表为空时，表示删除所有符合条件的动态快捷方式。|
 
 **返回值：**
@@ -480,7 +602,9 @@ try {
 
 ## shortcutManager.getShortcutInfoByAbility<sup>24+</sup>
 
-getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: number, appIndex?: number): Array\<ShortcutInfo>
+ArkTS-Dyn: getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: number, appIndex?: number): Array\<ShortcutInfo>
+
+ArkTS-Sta: getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: string, userId?: int, appIndex?: int): Array\<ShortcutInfo>
 
 查询指定用户下指定UIAbility的快捷方式信息。
 
@@ -500,6 +624,10 @@ getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: st
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明         |
@@ -507,8 +635,8 @@ getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: st
 | bundleName  | string | 是   | 表示应用程序的包名。  |
 | moduleName  | string | 是   | 表示模块的名称。  |
 | abilityName | string | 是   | 表示UIAbility组件的名称。 |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。  |
-| appIndex    | number | 否   | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。<br/>默认值：0 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。  |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。<br/>默认值：0 |
 
 **返回值：**
 

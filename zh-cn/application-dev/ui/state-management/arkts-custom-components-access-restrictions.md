@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -98,7 +98,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[LlinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateCorrectCase.ets) -->
+    <!-- @[LlinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateCorrectCase.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -125,6 +125,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct LinkComponentChild {
+      // 正确用法
       @State stateValue: string = 'Hello';
       @Prop propValue: string = 'Hello';
       @Provide provideValue: string = 'Hello';
@@ -146,7 +147,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
@@ -200,7 +201,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PublicWithStorageProp_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets) -->
+    <!-- @[PublicWithStorageProp_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -218,6 +219,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct PublicCorrectComponentChild {
+      // 正确用法
       @LocalStorageProp('sessionLocalProp') localPropValue: string = 'Hello';
       @LocalStorageLink('sessionLocalLink') localLinkValue: string = 'Hello';
       @StorageProp('sessionProp') storagePropValue: string = 'Hello';
@@ -234,7 +236,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
@@ -284,12 +286,13 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) -->
+    <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) --> 
     
     ``` TypeScript
     @Entry
     @Component
     struct PrivateWithLinkAccessRestrictions {
+      // 正确用法
       @State linkValue: string = 'Hello';
       @State objectLinkValue: PrivateComponentObj = new PrivateComponentObj();
     
@@ -321,7 +324,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-4. 当成员变量被protected访问限定符修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+4. 当成员变量被protected访问限定符修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
@@ -361,7 +364,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) -->
+    <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -377,6 +380,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct ProtectedCorrectComponentChild {
+      // 正确用法
       regularValue: string = 'Hello';
     
       build() {
@@ -390,7 +394,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
 
-5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰，并且通过父组件初始化赋值时，ArkTS会进行校验并产生告警日志。
+5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
@@ -431,7 +435,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PrivateWithRequire_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireCorrectCase.ets) -->
+    <!-- @[PrivateWithRequire_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireCorrectCase.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -447,6 +451,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct PrivateCorrectComponentChild {
+      // 正确用法
       @Require @Prop propValue: string = 'Hello';
     
       build() {

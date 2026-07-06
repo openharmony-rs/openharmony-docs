@@ -30,7 +30,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 应用范围
 
-  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 - 属性限制
 
@@ -54,9 +54,8 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个完整的加载项首页实现示例：
 
-<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
-
 ArkTS-Dyn示例：
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -68,12 +67,19 @@ export struct Embedded {
     bundleName: 'com.samples.uiextensionandaccessibility',
     abilityName: 'ExampleEmbeddedAbility',
   };
+  @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
+  @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+
   build() {
     // ...
       Row() {
         Column() {
           Text(this.message).fontSize(30)
-          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+          // 可以在构造时传递options参数以设置相关策略
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION, {
+            windowModeFollowStrategy: this.windowStrategy,
+            dpiFollowStrategy: this.dpiFollowStrategy
+          })
             .width('100%')
             .height('90%')
             .onTerminated((info) => {
@@ -83,6 +89,9 @@ export struct Embedded {
             .onError((error) => {
               // 失败或异常触发onError回调，文本框显示如下报错内容
               this.message = `Error: code = ${error.code}`;
+            })
+            .onDrawReady(() => {
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调
             })
         }
         .width('100%')
@@ -94,37 +103,52 @@ export struct Embedded {
 ```
 
 ArkTS-Sta示例：
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
 ``` TypeScript
-'use static'
-
-import { Want } from '@kit.AbilityKit';
 import { State } from '@ohos.arkui.stateManagement'
-import { Entry, Component, Column, Row, Text, EmbeddedType, EmbeddedComponent } from '@ohos.arkui.component';
+import { Entry, wrapBuilder, Component, ComponentContent, Column, Color, Row, Text, EmbeddedType, LoadingProgress, EmbeddedComponent, EmbeddedDpiFollowStrategy, EmbeddedWindowModeFollowStrategy, TerminationInfo} from '@ohos.arkui.component';
+import { Callback, ErrorCallback, BusinessError, RecordData } from '@ohos.base';
 
+@Builder
+function LoadingBuilder() {
+  Column(undefined) {
+    LoadingProgress()
+      .color(Color.Blue)
+  }
+}
 @Entry
 @Component
-export struct Embedded {
+struct Embedded {
   @State message: string = 'Message: ';
-  private want: Want = {
-    bundleName: 'com.samples.uiextensionandaccessibility',
-    abilityName: 'ExampleEmbeddedAbility',
-  };
+  private initPlaceholder : ComponentContent = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder));
   build() {
     Row() {
-      Column(undefined) {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info) => {
-            this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
-          })
-          .onError((error) => {
-            this.message = `Error: code = ${error.code}`;
-          })
-      }
-      .width('100%')
+      Text(this.message).fontSize(30)
+      EmbeddedComponent({
+          bundleName: 'com.samples.uiextensionandaccessibility',
+          abilityName: 'ExampleEmbeddedAbility',
+        }, EmbeddedType.EMBEDDED_UI_EXTENSION,
+        {
+          placeholder: this.initPlaceholder,
+          areaChangePlaceholder: {
+            "FOLD_TO_EXPAND" : this.initPlaceholder,
+          },
+          windowModeFollowStrategy: EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE,
+          dpiFollowStrategy: EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI
+        })
+        .width('100%')
+        .height('90%')
+        .onTerminated((info: TerminationInfo) => {
+          this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+        } as Callback<TerminationInfo>)
+        .onError((error: BusinessError) => {
+          this.message = `Error: code = ${error.code}`;
+        } as ErrorCallback<BusinessError>)
+        .onDrawReady(() => {
+          // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+          this.message = `onDrawReady`;
+        })
     }
     .height('100%')
   }
@@ -155,9 +179,9 @@ export struct Embedded {
 
 提供方应用是指提供嵌入式UI扩展能力的应用。以下是提供方应用生命周期实现的代码示例：
 
+ArkTS-Dyn示例：
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
 
-ArkTS-Dyn示例：
 
 ``` TypeScript
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -198,48 +222,51 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-
 ArkTS-Sta示例：
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
 
 ``` TypeScript
-'use static'
-import type { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import Want from '@ohos.app.ability.Want';
 import hilog from '@ohos.hilog';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 const TAG: string = '[ExampleEmbeddedAbility]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
-  onCreate() {
-    hilog.info(0x0000, TAG, 'onCreate');
+  onCreate(): void {
+    hilog.info(0x0000, TAG, '%{public}s', `onCreate`);
   }
 
-  onForeground() {
-    hilog.info(0x0000, TAG, 'onForeground');
+  onForeground(): void {
+    hilog.info(0x0000, TAG, '%{public}s', `onForeground`);
   }
 
-  onBackground() {
-    hilog.info(0x0000, TAG, 'onBackground');
+  onBackground(): void {
+    hilog.info(0x0000, TAG, '%{public}s', `onBackground`);
   }
 
-  onDestroy() {
-    hilog.info(0x0000, TAG, 'onDestroy');
+  async onDestroy(): Promise<void> {
+    hilog.info(0x0000, TAG, '%{public}s', `onDestroy`);
   }
 
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG, 'onSessionCreate, want: %{public}s', JSON.stringify(want));
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    // 加载 Extension.ets 页面内容
+    // 加载Extension.ets页面内容
     session.loadContent('pages/EmbeddedComponent/Extension', storage);
   }
 
-  onSessionDestroy(session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG, 'onSessionDestroy');
+  onSessionDestroy(session: UIExtensionContentSession): void {
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionDestroy`);
   }
 }
 ```
+
 关键实现说明：
 
 - 生命周期阶段
@@ -266,9 +293,8 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
-<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
-
 ArkTS-Dyn示例：
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
 
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
@@ -299,39 +325,43 @@ struct Extension {
   }
 }
 ```
+
 ArkTS-Sta示例：
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
 
 ``` TypeScript
-'use static'
-import type { UIExtensionContentSession } from '@kit.AbilityKit';
-import { Column, Text, Button, Component, Entry, FontWeight } from '@ohos.arkui.component';
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import { Entry, Component, Column, Text, FontWeight, Button, ClickEvent } from '@ohos.arkui.component';
+import { LocalStorage, State } from '@ohos.arkui.stateManagement';
 
-@Entry
+@Entry()
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
   private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
-  build() {
+  build(): void {
     Column() {
       Text(this.message)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
-        // 点击按钮后调用terminateSelfWithResult退出
-        this.session?.terminateSelfWithResult({
-          resultCode: 1,
-          want: {
-            bundleName: 'com.samples.uiextensionandaccessibility',
-            abilityName: 'ExampleEmbeddedAbility',
-          }
-        });
+      Button('terminateSelfWithResult').fontSize(20).onClick((event: ClickEvent) => {
+        if (this.session != undefined) {
+          this.session?.terminateSelfWithResult({
+            resultCode: 1,
+            want: {
+              bundleName: 'com.samples.uiextensionandaccessibility',
+              abilityName: 'ExampleEmbeddedAbility',
+            }
+          });
+        }
       })
     }.width('100%').height('100%')
   }
 }
 ```
+
 
 在实现入口页面时，开发者需要注意以下几点：
 
@@ -375,6 +405,6 @@ struct Extension {
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
 
-   ![zh-cn_image_0000001502261065](figures/zh-cn_image_0000001502261065.jpg)
+   ![zh-cn_image_0000001502261065](figures/Scenario-Example.jpg)
 
 2. 点击terminateSelfWithResult按钮，提供方内容消失，页面显示onTerminated信息。

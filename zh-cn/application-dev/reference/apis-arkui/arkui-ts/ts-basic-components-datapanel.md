@@ -28,9 +28,9 @@ DataPanel(options: DataPanelOptions)
 
 创建数据面板组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,26 +48,25 @@ DataPanel(options: DataPanelOptions)
 
 数据面板选项。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
 | values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 否   | 否  | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于values数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
-
 
 ## DataPanelType<sup>8+</sup>枚举说明
 
 数据面板的类型。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +84,26 @@ DataPanel(options: DataPanelOptions)
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<DataPanelAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<DataPanelAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置DataPanel组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### closeEffect
 
 ArkTS-Dyn: closeEffect(value: boolean)
@@ -93,9 +112,9 @@ ArkTS-Sta: closeEffect(value: boolean | undefined)
 
 设置是否关闭数据占比图表旋转动效和投影效果。若未设置[trackShadow](#trackshadow10)属性，则由该属性控制投影效果的开关，开启投影的效果为投影的默认效果。若设置了trackShadow属性，则由trackShadow属性值控制投影效果的开关。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +136,9 @@ ArkTS-Sta: valueColors(value: Array<ResourceColor | LinearGradient> | undefined)
 
 设置各数据段颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +160,9 @@ ArkTS-Sta: trackBackgroundColor(value: ResourceColor | undefined)
 
 设置底板颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,7 +184,9 @@ ArkTS-Sta: strokeWidth(value: Length | undefined)
 
 设置圆环粗细。数据面板的类型为DataPanelType.Line时该属性不生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +208,9 @@ ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined | null)
 
 设置投影样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,7 +232,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | 
 
 定制DataPanel内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,7 +253,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | 
 
 DataPanelShadowOptions继承自[MultiShadowOptions](ts-information-display-common.md#multishadowoptions)，具有MultiShadowOptions的全部属性。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -244,7 +275,9 @@ constructor(colorStops: ColorStop[])
 
 线性渐变颜色描述。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,9 +294,11 @@ constructor(colorStops: ColorStop[])
 
 ## ColorStop<sup>10+</sup>
 
-颜色断点类型，用于描述渐进色颜色断点。
+颜色断点类型，用于描述渐变色颜色断点。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,7 +315,9 @@ constructor(colorStops: ColorStop[])
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,16 +402,6 @@ struct LinearGradientDataPanelExample {
     new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
   public color2: LinearGradient =
     new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
-  public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
-  public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
-  public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
-  public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
-  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
   @State color3: string = '#00FF00'
   @State color4: string = '#20FF0000'
   @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
@@ -547,4 +574,4 @@ struct ChildItem {
   }
 }
 ```
-![LinearGradientDataPanel](figures/ContentModifierDataPanel.jpg)
+![ContentModifierDataPanel](figures/ContentModifierDataPanel.jpg)

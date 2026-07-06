@@ -2,14 +2,14 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 应用可通过以下两种方式管理全局音频输出设备：
 - 通常情况下，可以[通过AudioRoutingManager查询和监听音频输出设备](#通过audioroutingmanager查询和监听音频输出设备)。
 - 从API version 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持[通过AudioSession查询和监听音频输出设备](#通过audiosession查询和监听音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
 
 ## 通过AudioRoutingManager查询和监听音频输出设备
 
@@ -19,6 +19,8 @@
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
+ArkTS-Dyn示例：
+
 <!-- @[getRoutingManager_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
 
 ``` TypeScript
@@ -26,6 +28,18 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 // ...
 let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
 let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioManager的方法创建AudioRoutingManager实例。
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
 ```
 
 ### 支持的音频输出设备类型
@@ -47,6 +61,8 @@ let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioMa
 
 使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输出设备的信息。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_OutputDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
 
 ``` TypeScript
@@ -54,6 +70,23 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 // ...
   audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
     console.info('Promise returned to indicate that the device list is obtained.');
+    // ...
+  });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+  audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting devices. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
 ```
@@ -66,7 +99,9 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 >
 > 监听设备连接状态变化可以监听到全部的设备连接状态变化，不建议作为应用处理自动暂停的依据。应用如需处理自动暂停相关业务，可参考[音频流输出设备变更原因](audio-output-device-change.md#音频流输出设备变更原因)。
 
-<!-- @[deviceChange_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[deviceChange_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -82,7 +117,23 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
   });
   // ...
   // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange');
+  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
+    console.info('Should be no callback.');
+  });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+  audioRoutingManager.onDeviceChange(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChanged: audio.DeviceChangeAction) => {
+    console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
+    // ...
+  });
 ```
 
 <!--Del-->
@@ -131,7 +182,9 @@ async function selectOutputDevice() {
 >
 > 最高优先级输出设备表示声音将在此设备输出的设备。
 
-<!-- @[get_PreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[get_PreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -144,8 +197,8 @@ let rendererInfo: audio.AudioRendererInfo = {
 // ...
 async function getPreferOutputDeviceForRendererInfo() {
   // ...
-  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
-    console.info(`device descriptor: ${desc}`);
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data: audio.AudioDeviceDescriptors) => {
+    console.info(`device descriptor: ${data}`);
 
     // ...
   }).catch((err: BusinessError) => {
@@ -156,9 +209,34 @@ async function getPreferOutputDeviceForRendererInfo() {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[getPreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：VoIP通话。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+// ...
+
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(audioRendererInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting prefer output device for renderer info. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 ### 监听最高优先级输出设备变化
 
-<!-- @[listen_OutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[listen_OutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -177,7 +255,29 @@ let rendererInfo: audio.AudioRendererInfo = {
   });
   // ...
   // 取消监听最高优先级输出设备变化。
-  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
+  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', (desc: audio.AudioDeviceDescriptors) => {
+    console.info('Should be no callback.');
+  });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[onPreferOutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：VoIP通话。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+// ...
+
+  audioRoutingManager.onPreferOutputDeviceChangeForRendererInfo(audioRendererInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  });
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
@@ -188,6 +288,8 @@ let rendererInfo: audio.AudioRendererInfo = {
 ### 创建AudioSession实例
 在使用AudioSessionManager管理音频设备前，需要先导入模块并创建实例。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_SessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
 
 ``` TypeScript
@@ -195,6 +297,19 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
 
 let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioManager的方法创建AudioSessionManager实例。
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getSessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioManager = audio.getAudioManager();
+// ...
+let audioSessionManager = audioManager.getSessionManager();
 ```
 
 ### 设置本机默认音频输出设备
@@ -205,11 +320,17 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
 > - 由于AudioSession是应用级设置，调用本接口设置默认音频输出设备会覆盖AudioRenderer的`setDefaultOutputDevice`接口设置的音频输出设备信息。
 > - 调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频设备选择权交还给系统。否则，每次调用`activateAudioSession`时，应用选择的默认输出设备将生效。
 
-<!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为本机扬声器。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
     console.info('setDefaultOutputDevice Success!');
@@ -219,6 +340,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
     // ...
   });
   // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
     console.info('setDefaultOutputDevice Success!');
@@ -232,6 +357,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
   });
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+// 设置默认输出设备为本机扬声器。
+audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('Succeeded in setting default output device.');
+  // ...
+}).catch((err) => {
+  console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+  // ...
+});
+// ...
+
+// 设置默认输出设备为本机听筒。
+audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+  console.info('Succeeded in setting default output device.');
+  // ...
+}).catch((err) => {
+  console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+  // ...
+});
+```
+
 ### 查询本机默认音频输出设备
 
 应用可以通过[getDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#getdefaultoutputdevice20)查询本机默认输出设备类型。
@@ -239,11 +389,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 >
 > 本接口用于查询通过[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)接口设置的输出设备。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
 
 ``` TypeScript
 let deviceType = audioSessionManager.getDefaultOutputDevice();
 console.info(`getDefaultOutputDevice Success, deviceType: ${deviceType}`);
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+  try {
+    let deviceType = audioSessionManager.getDefaultOutputDevice();
+    console.info(`Succeeded in getting default output device. DeviceType: ${deviceType}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get default output device. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
 ```
 
 ### 监听输出设备变化
@@ -253,6 +424,8 @@ console.info(`getDefaultOutputDevice Success, deviceType: ${deviceType}`);
 > **说明：**
 > 
 > `currentOutputDeviceChangedCallback`包含设备变更的原因及推荐的后续操作。应用应根据不同的变更原因进行处理，并按系统推荐的操作继续或停止当前播放。
+
+ArkTS-Dyn示例：
 
 <!-- @[listen_CurrentOutputDeviceChangedEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
 
@@ -297,6 +470,44 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
   // ...
   // 取消该事件的所有监听。
   audioSessionManager.off('currentOutputDeviceChanged');
+```
+
+ArkTS-Sta示例：
+
+<!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`Succeeded in using on or off function. CurrentOutputDeviceChangedEvent: ${JSON.stringify(currentOutputDeviceChangedEvent)}`);
+  // ...
+
+  switch (currentOutputDeviceChangedEvent.changeReason) {
+    case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+      // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+      // 应用根据业务情况响应设备可用事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+      // 应用根据业务情况响应设备强选事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_SESSION_ACTIVATED:
+      // 应用根据业务情况响应audioSession激活时的输出设备信息。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_STREAM_PRIORITY_CHANGED:
+      // 应用根据业务情况响应其它更高优先级的音频流触发的设备变更事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+      // 应用根据业务情况响应未知原因事件。
+      break;
+  }
+};
+// ...
+
+  audioSessionManager.onCurrentOutputDeviceChanged(currentOutputDeviceChangedCallback);
 ```
 
 <!--Del-->

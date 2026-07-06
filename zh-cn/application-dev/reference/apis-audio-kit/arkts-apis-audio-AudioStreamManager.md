@@ -1,8 +1,8 @@
 # Interface (AudioStreamManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -33,11 +34,15 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                 | 必填     | 说明                         |
 | -------- | ----------------------------------- | -------- | --------------------------- |
-| callback | AsyncCallback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 是     | 回调函数。当获取当前音频渲染器的信息成功，err为undefined，data为获取到的当前音频渲染器的信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 是     | 回调函数。<br>ArkTS-Dyn：当获取当前音频渲染器的信息成功，err为undefined，data为获取到的当前音频渲染器的信息；否则为错误对象。<br>ArkTS-Sta：当获取当前音频渲染器的信息成功，err为null，data为获取到的当前音频渲染器的信息；否则为错误对象。 |
 
 **示例：**
 
@@ -64,6 +69,10 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -93,6 +102,10 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -126,11 +139,15 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                 | 必填      | 说明                                                      |
 | ---------- | ----------------------------------- | --------- | -------------------------------------------------------- |
-| callback   | AsyncCallback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 是    | 回调函数。当获取当前音频采集器的信息成功，err为undefined，data为获取到的当前音频采集器的信息；否则为错误对象。 |
+| callback   | AsyncCallback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 是    | 回调函数。<br>ArkTS-Dyn：当获取当前音频采集器的信息成功，err为undefined，data为获取到的当前音频采集器的信息；否则为错误对象。<br>ArkTS-Sta：当获取当前音频采集器的信息成功，err为null，data为获取到的当前音频采集器的信息；否则为错误对象。 |
 
 **示例：**
 
@@ -157,6 +174,10 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -188,6 +209,10 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                                         | 说明                                 |
@@ -218,7 +243,13 @@ on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArr
 >
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioRendererChange](#onaudiorendererchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -244,6 +275,46 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 });
 ```
 
+## onAudioRendererChange<sup>23+</sup>
+
+onAudioRendererChange(callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
+
+监听音频渲染器变化事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioRendererChange')](#onaudiorendererchange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Stream
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型        | 必填      | 说明                                                                     |
+| -------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| callback | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 是  |  回调函数，返回当前音频渲染器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioStreamManager.onAudioRendererChange((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+  console.info(`Succeeded in using onAudioRendererChange function, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+});
+```
+
 ## off('audioRendererChange')<sup>9+</sup>
 
 off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
@@ -254,7 +325,13 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 >
 > 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioRendererChange](#offaudiorendererchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -285,6 +362,50 @@ audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
 audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
 ```
 
+## offAudioRendererChange<sup>23+</sup>
+
+offAudioRendererChange(callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
+
+取消监听音频渲染器变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioRendererChange')](#offaudiorendererchange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Stream
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型        | 必填      | 说明                                                                     |
+| -------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| callback | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | 否  |  回调函数，返回当前音频渲染器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+  console.info(`Succeeded in using onAudioRendererChange or offAudioRendererChange function, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+};
+
+audioStreamManager.onAudioRendererChange(audioRendererChangeCallback);
+
+audioStreamManager.offAudioRendererChange(audioRendererChangeCallback);
+```
+
 ## on('audioCapturerChange')<sup>9+</sup>
 
 on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
@@ -295,7 +416,13 @@ on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArr
 >
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioCapturerChange](#onaudiocapturerchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -321,6 +448,46 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 });
 ```
 
+## onAudioCapturerChange<sup>23+</sup>
+
+onAudioCapturerChange(callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
+
+监听音频采集器变化事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioCapturerChange')](#onaudiocapturerchange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Stream
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型        | 必填      | 说明                                                                     |
+| -------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| callback | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 是  |  回调函数，返回当前音频采集器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioStreamManager.onAudioCapturerChange((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+  console.info(`Succeeded in using onAudioCapturerChange function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+});
+```
+
 ## off('audioCapturerChange')<sup>9+</sup>
 
 off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
@@ -331,7 +498,13 @@ off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoA
 >
 > 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioCapturerChange](#offaudiocapturerchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -362,6 +535,50 @@ audioStreamManager.on('audioCapturerChange', audioCapturerChangeCallback);
 audioStreamManager.off('audioCapturerChange', audioCapturerChangeCallback);
 ```
 
+## offAudioCapturerChange<sup>23+</sup>
+
+offAudioCapturerChange(callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
+
+取消监听音频采集器变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioCapturerChange')](#offaudiocapturerchange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Stream
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型        | 必填      | 说明                                                                     |
+| -------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| callback | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | 否  |  回调函数，返回当前音频采集器信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let audioCapturerChangeCallback = (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+  console.info(`Succeeded in using onAudioCapturerChange or offAudioCapturerChange function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+};
+
+audioStreamManager.onAudioCapturerChange(audioCapturerChangeCallback);
+
+audioStreamManager.offAudioCapturerChange(audioCapturerChangeCallback);
+```
+
 ## isActive<sup>(deprecated)</sup>
 
 isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): void
@@ -373,12 +590,16 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                              |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流类型。                                      |
-| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。当获取指定音频流活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
+| callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定音频流活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。<br>ArkTS-Sta：当获取指定音频流活跃状态成功，err为null，data为true表示活跃，false表示不活跃；否则为错误对象。 |
 
 **示例：**
 
@@ -404,6 +625,10 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -435,6 +660,10 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -479,6 +708,10 @@ isStreamActive(streamUsage: StreamUsage): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明         |
@@ -521,12 +754,16 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback&lt;AudioEffe
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                    | 是     |  音频流使用类型。                |
-| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)> | 是     | 回调函数。当获取当前音效模式的信息成功，err为undefined，data为获取到的当前音效模式的信息；否则为错误对象。|
+| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)> | 是     | 回调函数。当获取当前音效模式的信息成功，err为undefined，data为获取到的当前音效模式的信息；否则为错误对象。|
 
 **错误码：**
 
@@ -559,6 +796,10 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -569,7 +810,7 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 | 类型                                                                      | 说明                                    |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| Promise<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)>                  | Promise对象，返回当前音效模式的信息。      |
+| Promise<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)>                  | Promise对象，返回当前音效模式的信息。      |
 
 **错误码：**
 
@@ -600,6 +841,10 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -610,7 +855,7 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 | 类型                                                                      | 说明                                    |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| [AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)                  | 返回当前音效模式的信息。      |
+| [AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)                  | 返回当前音效模式的信息。      |
 
 **错误码：**
 
@@ -639,9 +884,13 @@ try {
 
 isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
-查询指定的source type是否支持回声消除。
+查询指定的音源类型是否支持回声消除。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -685,6 +934,10 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -726,6 +979,10 @@ isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 检查传入的音频采集器信息中音源类型的录制是否可以启动成功。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -792,6 +1049,10 @@ isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): bool
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名    | 类型                                | 必填     | 说明                         |
@@ -823,5 +1084,245 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isIntelligentNoiseReductionEnabledForCurrentDevice ERROR: ${error}`);
+}
+```
+
+## isFastPlaybackSupported
+
+isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持低时延播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低时延播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isFastPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isFastPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isOffloadPlaybackSupported
+
+isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持低功耗通路播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低功耗通路播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isOffloadPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isOffloadPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isOffloadPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isDirectPlaybackSupported
+
+isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持直通播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持直通播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isDirectPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isDirectPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isDirectPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isFastRecordingSupported
+
+isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean
+
+查询指定音频流信息和音源类型下是否支持低时延录制。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| source | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 是 | 音源类型，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低时延录制。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastRecordingSupported(streamInfo, audio.SourceType.SOURCE_TYPE_MIC);
+  console.info(`isFastRecordingSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isFastRecordingSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isMultichannelPlaybackSupported
+
+isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持多声道播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持多声道播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_3,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_2POINT1
+};
+
+try {
+  let isSupported = audioStreamManager.isMultichannelPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isMultichannelPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isMultichannelPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
 }
 ```

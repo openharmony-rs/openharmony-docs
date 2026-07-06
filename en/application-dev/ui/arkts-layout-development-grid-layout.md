@@ -120,7 +120,7 @@ You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/ar
   }
   ```
 
-  ![en-us_image_0000001511421272](figures/en-us_image_0000001511421272.gif)
+  ![breakpoints2](figures/breakpoints2.gif)
 
 
 ### Columns
@@ -158,11 +158,11 @@ The **columns** attribute defines the total number of columns in the **GridRow**
 
     Below shows the layout display before API version 20.
 
-    ![en-us_image_0000001563060709](figures/en-us_image_0000001563060709.png)
+    ![columns3](figures/columns3.png)
     
     Below shows the layout display since API version 20, using the sm device as an example where the default number of columns is 4.
     
-    ![en-us_image_0000001563060710](figures/en-us_image_0000001563060710.png)
+    ![columns4](figures/columns4.png)
 
 
 The **columns** attribute supports two data types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can configure the total number of responsive grid columns using either approach:
@@ -238,7 +238,7 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
   }
   ```
 
-    ![en-us_image_0000001511421268](figures/en-us_image_0000001511421268.png)
+    ![columns](figures/columns.png)
 
 - When **columns** is set to [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption), you can configure the number of grid columns for each of the six device sizes (xs, sm, md, lg, xl, and xxl).
 
@@ -275,11 +275,11 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
 
     Layout behavior before API version 20: If the number of grid columns is not configured for xs devices, the default value of 12 columns is used.
 
-    ![en-us_image_0000001563060689](figures/en-us_image_0000001563060689.gif)
+    ![gridLayoutColumnOption](figures/gridLayoutColumnOption.gif)
 
     Layout behavior since API version 20: xs devices inherit the number of grid columns from sm devices.
 
-    ![en-us_image_0000001563060689](figures/en-us_image_0000001563060690.gif)
+    ![gridLayoutColumnOption2](figures/gridLayoutColumnOption2.gif)
 
   If only the grid column numbers for sm and md devices are configured, the xs, lg, xl, and xxl devices will use default values based on the [grid column number completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
 
@@ -297,7 +297,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
     GridRow({ direction: GridRowDirection.Row }) { /* ... */ }
     ```
 
-    ![en-us_image_0000001511740488](figures/en-us_image_0000001511740488.png)
+    ![gridLayoutDirectionRow](figures/gridLayoutDirectionRow.png)
 
 - When child components are arranged from right to left (default):
 
@@ -308,7 +308,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
     GridRow({ direction: GridRowDirection.RowReverse }) { /* ... */ }
     ```
 
-    ![en-us_image_0000001562940517](figures/en-us_image_0000001562940517.png)
+    ![gridLayoutDirectionRowReverse](figures/gridLayoutDirectionRowReverse.png)
 
 
 ### Gutters
@@ -324,7 +324,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
     GridRow({ gutter: 10 }) { /* ... */ }
     ```
 
-    ![en-us_image_0000001511740476](figures/en-us_image_0000001511740476.png)
+    ![gridLayoutGutterToNumber](figures/gridLayoutGutterToNumber.png)
 
 - When **gutter** is of type [GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption), horizontal and vertical spacing can be set independently: the **x** property defines horizontal spacing, and the **y** property defines vertical spacing.
 
@@ -335,7 +335,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
     GridRow({ gutter: { x: 20, y: 50 } }) { /* ... */ }
     ```
 
-    ![en-us_image_0000001511900456](figures/en-us_image_0000001511900456.png)
+    ![gridLayoutGutterOption](figures/gridLayoutGutterOption.png)
 
 
 ## GridCol
@@ -432,7 +432,7 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
     }
     ```
 
-    ![en-us_image_0000001511421264](figures/en-us_image_0000001511421264.png)
+    ![span](figures/span.png)
 
 - When **span** is set to the **GridColColumnOption** type, you can configure different column spans for the six device sizes (xs, sm, md, lg, xl, and xxl). If column spans are only specified for certain breakpoints (for example, sm and md), the remaining breakpoints (xs, lg, xl, and xxl) will use default values based on the [GridColColumnOption completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption).
 
@@ -479,7 +479,7 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
     }
     ```
 
-    ![en-us_image_0000001511740492](figures/en-us_image_0000001511740492.gif)
+    ![gridColSpanToOption](figures/gridColSpanToOption.gif)
 
 
 ### offset
@@ -518,7 +518,7 @@ Sets the column offset of a child component relative to the previous child compo
     }
     ```
 
-    ![en-us_image_0000001563060705](figures/en-us_image_0000001563060705.png)
+    ![offset](figures/offset.png)
 
   On devices with lg and larger breakpoints, the grid is divided into 12 columns. Each child component occupies one column with a two-column offset, resulting in each component and its spacing occupying three columns in total. Four child components fit within a single row.
 
@@ -568,7 +568,7 @@ Sets the column offset of a child component relative to the previous child compo
     }
     ```
 
-    ![en-us_image_0000001562700433](figures/en-us_image_0000001562700433.gif)
+    ![offset3](figures/offset3.gif)
 
 
 ### order
@@ -610,7 +610,7 @@ If **order** is set for only some child components, those with explicit **order*
     }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp')
     ```
 
-    ![en-us_image_0000001511580892](figures/en-us_image_0000001511580892.png)
+    ![gridColOrderToNumber](figures/gridColOrderToNumber.png)
 
 - When **order** is set to the **GridColColumnOption** type, you can configure different display sequences for specific screen size breakpoints (xs, sm, md, lg, xl, xxl). For example, you can define sequence 1234 for xs devices, 2341 for sm devices, 3412 for md devices, and 2431 for lg devices.
 
@@ -661,7 +661,7 @@ If **order** is set for only some child components, those with explicit **order*
     }
     ```
 
-    ![en-us_image_0000001511900444](figures/en-us_image_0000001511900444.gif)
+    ![order](figures/order.gif)
 
 
 ## Nesting of Responsive Grid Components
@@ -710,7 +710,7 @@ struct GridRowExample {
 ```
 
 
-![en-us_image_0000001563060697](figures/en-us_image_0000001563060697.png)
+![gridRowExample](figures/gridRowExample.png)
 
 
 To sum up, the responsive grid components are powerful tools with a wide range of customization capabilities. With the required attributes set at different breakpoints, such as **Columns**, **Margin**, **Gutter**, and **span**, the layout is created automatically. You do not need to pay attention to the specific device type and device state (such as landscape and portrait).

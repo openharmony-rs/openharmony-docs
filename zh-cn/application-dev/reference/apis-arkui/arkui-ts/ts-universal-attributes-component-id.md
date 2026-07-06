@@ -25,9 +25,9 @@ ArkTS-Sta: id(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。当未设置id时，组件默认id为空。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +57,9 @@ ArkTS-Sta: key(value: string | undefined): this
 
 此接口仅用于对应用的测试。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +91,7 @@ getInspectorByKey(id: string): string
 
 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议测试之外的场景使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +143,7 @@ getInspectorTree(): Object
 
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,13 +183,15 @@ struct ComponentPage {
 
 ### sendEventByKey<sup>9+</sup>
 
-sendEventByKey(id: string, action: number, params: string): boolean
+ArkTS-Dyn: sendEventByKey(id: string, action: number, params: string): boolean
+
+ArkTS-Sta: sendEventByKey(id: string, action: int, params: string): boolean
 
 给指定id的组件发送事件。
 
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,7 +204,7 @@ sendEventByKey(id: string, action: number, params: string): boolean
 | 参数名       | 类型      | 必填       | 说明                         |
 | ------ | -------| ---- | -------------------------- |
 | id     | string | 是    | 要触发事件的组件的id。                      |
-| action | number | 是    | 要触发的事件类型，目前支持取值：<br/>-&nbsp;点击事件Click:&nbsp;10。<br/>-&nbsp;长按事件LongClick:&nbsp;11。 |
+| action | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 要触发的事件类型，目前支持取值：<br/>-&nbsp;点击事件Click:&nbsp;10。<br/>-&nbsp;长按事件LongClick:&nbsp;11。 |
 | params | string | 是    | 事件参数，无参数传空字符串&nbsp;""。            |
 
 **返回值:**
@@ -240,7 +244,7 @@ sendTouchEvent(event: TouchObject): boolean
 
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +256,7 @@ sendTouchEvent(event: TouchObject): boolean
 
 | 参数名      | 类型            | 必填  | 说明                                                         |
 | ----- | ----------- | ---- | ------------------------------------------------------------ |
-| event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触发触摸事件的位置，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
+| event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触摸事件，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
 
 **返回值:**
 
@@ -268,7 +272,7 @@ sendKeyEvent(event: KeyEvent): boolean
 
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,7 +300,7 @@ sendMouseEvent(event: MouseEvent): boolean
 
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,10 +342,10 @@ class Utils {
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]; // 相对于组件左上角的水平方向坐标
-    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]; // 相对于组件左上角的垂直方向坐标
-    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]; // 相对于组件右下角的水平方向坐标
-    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 相对于组件右下角的垂直方向坐标
+    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]; // 相对于窗口左上角的水平方向坐标
+    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]; // 相对于窗口左上角的垂直方向坐标
+    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]; // 相对于窗口左上角的水平方向坐标
+    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 相对于窗口左上角的垂直方向坐标
     return Utils.rect_value = {
       "left": Utils.rect_left,
       "top": Utils.rect_top,
@@ -395,7 +399,7 @@ struct IdExample {
               screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
               screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
               windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-              windowY: rect.top + (rect.bottom - rect.top), // 相对于应用窗口左上角的垂直方向坐标
+              windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
               displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
               displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
             };
@@ -419,11 +423,11 @@ struct IdExample {
             x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
             y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
             screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
-            screenY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
             windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-            windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+            windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
             displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-            displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+            displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
             stopPropagation: () => {
             },
             timestamp: 1,

@@ -63,7 +63,7 @@ The specified account was not found.
 
 **错误信息**
 
-Internal program error.
+Internal program errors.
 
 **错误描述**
 
@@ -79,7 +79,7 @@ Internal program error.
 
 **处理步骤**
 
-内部异常，请稍后重试
+内部异常，请稍后重试。
 
 ## 23900005 该日程不支持编辑
 

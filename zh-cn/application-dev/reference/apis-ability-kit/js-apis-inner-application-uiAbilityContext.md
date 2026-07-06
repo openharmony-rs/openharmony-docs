@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 UIAbilityContext是[UIAbility](./js-apis-app-ability-uiAbility.md)组件的上下文，继承自[Context](./js-apis-inner-application-context.md)。各类Context之间的关联与差异详见[应用上下文Context](../../application-models/application-context-stage.md)。
@@ -13,6 +13,7 @@ UIAbilityContext是[UIAbility](./js-apis-app-ability-uiAbility.md)组件的上�
 
 > **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >  - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >  - 本模块接口仅可在Stage模型下使用。
 >  - 在本文档的示例中，通过`this.context`来获取`UIAbilityContext`，其中`this`代表继承自`UIAbility`的实例。
@@ -31,10 +32,10 @@ import { common } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| abilityInfo | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 否 | 否 | UIAbility的相关信息。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 当前UIAbility所属HAP的信息。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 应用运行时的环境变量，如语言、颜色模式等。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 否 | 否 | 当前WindowStage对象。仅支持在主线程调用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| abilityInfo | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 否 | 否 | UIAbility的相关信息。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 当前UIAbility所属HAP的信息。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 应用运行时的环境变量，如语言、颜色模式等。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 否 | 否 | 当前WindowStage对象。仅支持在主线程调用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### startAbility
 
@@ -46,9 +47,13 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -63,7 +68,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -74,21 +79,21 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -105,10 +110,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbility(want, (err: BusinessError) => {
-        if (err.code) {
+      this.context.startAbility(want, (err: BusinessError<void> | null) => {
+        if (err?.code) {
           // 处理业务逻辑错误
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
           return;
         }
         // 执行正常业务
@@ -134,9 +139,13 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -152,34 +161,36 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>适用版本：12+ |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000055 | Installation-free timed out. <br>适用版本：12+ |
+| 16000067 | The StartOptions check failed. <br>适用版本：12+ |
+| 16000068 | The ability is already running. <br>适用版本：12+ |
+| 16300003 | The target application is not the current application. <br>适用版本：12+ |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -200,10 +211,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbility(want, options, (err: BusinessError) => {
-        if (err.code) {
+      this.context.startAbility(want, options, (err: BusinessError<void> | null) => {
+        if (err?.code) {
           // 处理业务逻辑错误
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
           return;
         }
         // 执行正常业务
@@ -229,9 +240,13 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -252,9 +267,9 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>适用版本：12+ |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -264,24 +279,24 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.  |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>适用版本：12+ |
+| 16000068 | The ability is already running. <br>适用版本：12+ |
+| 16300003 | The target application is not the current application. <br>适用版本：12+ |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -306,7 +321,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -335,9 +350,13 @@ UIAbility被启动后，有如下情况：
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -352,7 +371,7 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -363,21 +382,21 @@ UIAbility被启动后，有如下情况：
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -395,15 +414,16 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResult succeed');
-      });
+      this.context.startAbilityForResult(want,
+        (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (err?.code) {
+            // 处理业务逻辑错误
+            console.error(`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbilityForResult succeed');
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -429,9 +449,13 @@ UIAbility被启动后，有如下情况：
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -447,30 +471,32 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -491,15 +517,16 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResult succeed');
-      });
+      this.context.startAbilityForResult(want, options,
+        (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (err?.code) {
+            // 处理业务逻辑错误
+            console.error(`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbilityForResult succeed');
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -526,9 +553,13 @@ UIAbility被启动后，有如下情况：
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -550,7 +581,7 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -561,21 +592,21 @@ UIAbility被启动后，有如下情况：
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -600,7 +631,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startAbilityForResult succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -624,9 +655,13 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 >
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -641,6 +676,9 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -656,10 +694,10 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
     export default class EntryAbility extends UIAbility {
       onForeground() {
         try {
-          this.context.terminateSelf((err: BusinessError) => {
-            if (err.code) {
+          this.context.terminateSelf((err: BusinessError<void> | null) => {
+            if (err?.code) {
               // 处理业务逻辑错误
-              console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
+              console.error(`terminateSelf failed, code is ${err?.code}, message is ${err?.message}`);
               return;
             }
             // 执行正常业务
@@ -701,9 +739,13 @@ terminateSelf(): Promise&lt;void&gt;
 >
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -717,6 +759,9 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -738,7 +783,7 @@ terminateSelf(): Promise&lt;void&gt;
               // 执行正常业务
               console.info('terminateSelf succeed');
             })
-            .catch((err: BusinessError) => {
+            .catch((err: BusinessError<void>): void => {
               // 处理业务逻辑错误
               console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
             });
@@ -780,9 +825,13 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 >
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -798,6 +847,9 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -823,10 +875,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
-        if (err.code) {
+      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError | null) => {
+        if (err?.code) {
           // 处理业务逻辑错误
-          console.error(`terminateSelfWithResult failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`terminateSelfWithResult failed, code is ${err?.code}, message is ${err?.message}`);
           return;
         }
         // 执行正常业务
@@ -855,9 +907,13 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 >
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -878,6 +934,9 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -908,7 +967,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('terminateSelfWithResult succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`terminateSelfWithResult failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -924,7 +983,9 @@ export default class EntryAbility extends UIAbility {
 
 ### connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 将当前UIAbility连接到一个[ServiceExtensionAbility](../../application-models/extensionability-overview.md)，通过返回的proxy与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。仅支持在主线程调用。
 
@@ -933,6 +994,10 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -945,7 +1010,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，调用方可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回连接id，调用方可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -956,19 +1021,21 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want, common } from '@kit.AbilityKit';
@@ -1009,19 +1076,74 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Want, common, bundleManager } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+type OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => void
+type OnDisconnectFn = (elementName: bundleManager.ElementName) => void
+type OnFailedFn = (code: int) => void
+
+let commRemote: rpc.IRemoteObject;
+
+class ConnectOptions implements common.ConnectOptions {
+  onConnect: OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => {
+    commRemote = remote;
+    console.info('onConnect...');
+  };
+  onDisconnect: OnDisconnectFn = (elementName: bundleManager.ElementName) => {
+    console.info('onDisconnect...');
+  };
+  onFailed: OnFailedFn = (code: int) => {
+    console.info('onFailed...');
+  };
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ServiceExtensionAbility'
+    };
+    let options: common.ConnectOptions = new ConnectOptions();
+    let connection: long;
+
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number): Promise\<void>
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise\<void>
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise\<void>
 
 断开与[ServiceExtensionAbility](../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用Promise异步回调。仅支持在主线程调用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
 
 **返回值：**
 
@@ -1040,6 +1162,8 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void>
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1072,19 +1196,59 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // connection为connectServiceExtensionAbility中的返回值
+    let connection = 1;
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection).then(() => {
+        commRemote = null;
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      }).catch((err: BusinessError<void>): void => {
+        // 处理业务逻辑错误
+        console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback\<void>): void
 
 断开与[ServiceExtensionAbility](../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用callback异步回调。仅支持在主线程调用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数。当断开与ServiceExtensionAbility的连接成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -1098,6 +1262,8 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<v
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1116,6 +1282,42 @@ export default class EntryAbility extends UIAbility {
         if (err.code) {
           // 处理业务逻辑错误
           console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // connection为connectServiceExtensionAbility中的返回值
+    let connection = 1;
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError | null) => {
+        commRemote = null;
+        if (err?.code) {
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, code is ${err?.code}, message is ${err?.message}`);
           return;
         }
         // 执行正常业务
@@ -1158,6 +1360,10 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1181,23 +1387,27 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16200001 | The caller has been released. <br>适用版本：9 |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 下面代码展示的是，调用方启动目标方到后台，获取Caller成功后发消息到目标方，然后释放Caller对象。
 
@@ -1322,15 +1532,99 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+后台启动：
+
+```ts
+'use static'
+import { UIAbility, Caller, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let caller: Caller;
+    // 后台启动Ability，不配置parameters
+    let wantBackground: Want = {
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      deviceId: ''
+    };
+
+    try {
+      this.context.startAbilityByCall(wantBackground)
+        .then((obj: Caller) => {
+          // 执行正常业务
+          caller = obj;
+          console.info('startAbilityByCall succeed');
+        }).catch((err: BusinessError<void>): void => {
+        // 处理业务逻辑错误
+        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+前台启动：
+
+```ts
+import { UIAbility, Caller, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let caller: Caller;
+    // 前台启动Ability，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
+    let wantForeground: Want = {
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      deviceId: '',
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true
+      } as Record<string, RecordData>
+    };
+
+    try {
+      this.context.startAbilityByCall(wantForeground)
+        .then((obj: Caller) => {
+          // 执行正常业务
+          caller = obj;
+          console.info('startAbilityByCall succeed');
+        }).catch((err: BusinessError<void>): void => {
+        // 处理业务逻辑错误
+        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### setMissionLabel
 
 setMissionLabel(label: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置UIAbility在多任务界面中显示的名称。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1357,7 +1651,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.setMissionLabel('test', (result: BusinessError) => {
+    this.context.setMissionLabel('test', (result: BusinessError | null) => {
       console.info(`setMissionLabel: ${JSON.stringify(result)}`);
     });
   }
@@ -1370,9 +1664,13 @@ setMissionLabel(label: string): Promise&lt;void&gt;
 
 设置UIAbility在多任务界面中显示的名称。使用Promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1406,7 +1704,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.setMissionLabel('test').then(() => {
       console.info('success');
-    }).catch((err: BusinessError) => {
+    }).catch((err: BusinessError<void>): void => {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       console.error(`setMissionLabel failed, code is ${code}, message is ${message}`);
@@ -1421,9 +1719,11 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 设置UIAbility任务的流转状态。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用不生效。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1464,6 +1764,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
@@ -1484,9 +1785,11 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise&lt;void&g
 
 设置UIAbility任务的流转状态。使用Promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用不生效。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1535,6 +1838,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
@@ -1557,9 +1861,13 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 恢复UIAbility中的WindowStage数据。仅支持在主线程调用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1579,8 +1887,25 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let storage = new LocalStorage();
+    this.context.restoreWindowStage(storage);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
@@ -1596,9 +1921,13 @@ isTerminating(): boolean
 
 查询UIAbility是否处于消亡中状态。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1639,6 +1968,10 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1652,7 +1985,7 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1663,8 +1996,8 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1685,15 +2018,16 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.requestDialogService(want, (err: BusinessError, result: dialogRequest.RequestResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`requestDialogService failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info(`requestDialogService succeed, result = ${JSON.stringify(result)}`);
-      });
+      this.context.requestDialogService(want,
+        (err: BusinessError | null, result: dialogRequest.RequestResult | undefined): void => {
+          if (err) {
+            // 处理业务逻辑错误
+            console.error(`requestDialogService failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info(`requestDialogService succeed, result = ${JSON.stringify(result)}`);
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -1716,6 +2050,10 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1735,7 +2073,7 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1746,8 +2084,8 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1772,8 +2110,9 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info(`requestDialogService succeed, result = ${JSON.stringify(result)}`);
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error) => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`requestDialogService failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -1792,9 +2131,13 @@ reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
 用于通知系统UIAbility对应的窗口内容已经绘制完成。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1821,15 +2164,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
+      if (err?.code) {
         return;
       }
 
       try {
         this.context.reportDrawnCompleted((err) => {
-          if (err.code) {
+          if (err?.code) {
             // 处理业务逻辑错误
-            console.error(`reportDrawnCompleted failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`reportDrawnCompleted failed, code is ${err?.code}, message is ${err?.message}`);
             return;
           }
           // 执行正常业务
@@ -1844,7 +2187,7 @@ export default class EntryAbility extends UIAbility {
     });
     console.info("MainAbility onWindowStageCreate");
   }
-};
+}
 ```
 
 ### startAbilityByType<sup>11+</sup>
@@ -1853,9 +2196,13 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1872,6 +2219,11 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11  |
+| 16200001 | The caller has been released. <br>适用版本：11  |
+| 16000002 | Incorrect ability type. <br>适用版本：11  |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1905,15 +2257,85 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### startAbilityByType<sup>23+</sup>
+
+startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
+
+通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名               | 类型                                                         | 必填 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type                 | string                                                       | 是   | 启动的UIExtensionAbility类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam            | Record&lt;string,&nbsp;RecordData&gt;                        | 是   | 表示扩展参数。                                               |
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | 是   | 回调函数，返回启动失败后的详细错误信息。                     |
+| callback             | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数，当接口调用成功，err为undefined；否则为错误对象。   |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息        |
+| -------- | --------------- |
+| 16000050 | Internal error. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, common } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+class MyAbilityStartCallback implements common.AbilityStartCallback {
+  onError(code: int, name: string, message: string): void {
+    console.info(`startAbilityByType Error:` + "code:" + code + "name:" + name + "message:" + message);
+  }
+
+  onResult?: (abilityResult: common.AbilityResult) => void = (parameter: common.AbilityResult) => {
+    console.info(`startAbilityByType resultCode:` + parameter.resultCode + `bundleName:` + parameter.want?.bundleName);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let wantParam: Record<string, RecordData> = {
+      'time': '2023-10-23 20:45'
+    };
+    let abilityStartCallback = new MyAbilityStartCallback();
+
+    this.context.startAbilityByType("photoEditor", wantParam, abilityStartCallback, (err) => {
+      if (err) {
+        console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`success`);
+      }
+    });
+  }
+}
+```
+
 ### startAbilityByType<sup>11+</sup>
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
 通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1935,6 +2357,11 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
+| 16200001 | The caller has been released. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1967,6 +2394,76 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### startAbilityByType<sup>23+</sup>
+
+startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
+
+通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名               | 类型                                                         | 必填 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type                 | string                                                       | 是   | 启动的UIExtensionAbility类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam            | Record\<string, RecordData>                                  | 是   | 表示扩展参数。                                               |
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | 是   | 回调函数，返回启动失败后的详细错误信息。                     |
+
+**返回值：**
+
+| 类型           | 说明                            |
+| -------------- | ------------------------------- |
+| Promise\<void> | Promise对象，包含接口执行结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息        |
+| -------- | --------------- |
+| 16000050 | Internal error. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, common } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+class MyAbilityStartCallback implements common.AbilityStartCallback {
+  onError(code: int, name: string, message: string): void {
+    console.info(`startAbilityByType Error:` + "code:" + code + "name:" + name + "message:" + message);
+  }
+
+  onResult?: (abilityResult: common.AbilityResult) => void = (parameter: common.AbilityResult) => {
+    console.info(`startAbilityByType resultCode:` + parameter.resultCode + `bundleName:` + parameter.want?.bundleName);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let wantParam: Record<string, RecordData> = {
+      'time': '2023-10-23 20:45'
+    };
+    let abilityStartCallback = new MyAbilityStartCallback();
+
+    this.context.startAbilityByType("photoEditor", wantParam, abilityStartCallback).then(() => {
+      console.info(`startAbilityByType success`);
+    }).catch((error) => {
+      let err = error as BusinessError;
+      console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+    });
+  }
+}
+```
+
 ### showAbility<sup>12+</sup>
 
 showAbility(): Promise\<void>
@@ -1978,6 +2475,10 @@ showAbility(): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1996,6 +2497,8 @@ showAbility(): Promise\<void>
 | 16000067 | The StartOptions check failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
@@ -2067,6 +2570,80 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State moveAbilityToBackground: string = 'Move To Background'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.moveAbilityToBackground)
+          .fontSize(30)
+          .fontWeight(700)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+            context.moveAbilityToBackground().then(() => {
+              console.info(`moveAbilityToBackground success.`);
+            }).catch((err: BusinessError<void>): void => {
+              console.info(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```ts
+// EntryAbility.ts
+import { UIAbility, Want, StartOptions, contextConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0,
+      processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
+      startupVisibility: contextConstant.StartupVisibility.STARTUP_SHOW
+    };
+
+    try {
+      this.context.startAbility(want, options, (err: BusinessError | null) => {
+        if (err?.code) {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('startAbility succeed');
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### hideAbility<sup>12+</sup>
 
 hideAbility(): Promise\<void>
@@ -2078,6 +2655,10 @@ hideAbility(): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2096,6 +2677,8 @@ hideAbility(): Promise\<void>
 | 16000067 | The StartOptions check failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
@@ -2167,19 +2750,100 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### moveAbilityToBackground<sup>12+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// Index.ets
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State hideAbility: string = 'hideAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.hideAbility)
+          .fontSize(30)
+          .fontWeight(700)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+            context.hideAbility().then(() => {
+              console.info(`hideAbility success`);
+            }).catch((err: BusinessError): void => {
+              console.error(`hideAbility fail, err: ${JSON.stringify(err)}`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```ts
+// EntryAbility.ts
+import { UIAbility, Want, StartOptions, contextConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0,
+      processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
+      startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
+    };
+
+    try {
+      this.context.startAbility(want, options, (err: BusinessError | null) => {
+        if (err?.code) {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('startAbility succeed');
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### moveAbilityToBackground<sup>12+</sup>
 
 moveAbilityToBackground(): Promise\<void>
 
 将处于前台的UIAbility移动到后台。使用Promise异步回调。仅支持在主线程调用。<br/><!--RP1--><!--RP1End-->
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 12开始，该接口仅在Phone、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
-- 从API version 13开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 12开始，该接口仅在Phone设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 13开始，该接口仅在Phone和Tablet设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 18开始，该接口仅在Phone、Tablet和Wearable设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 19开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2200,6 +2864,8 @@ moveAbilityToBackground(): Promise\<void>
 | 16000066 | An ability cannot switch to the foreground or background in Wukong mode. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -2233,7 +2899,43 @@ struct Index {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State moveAbilityToBackground: string = 'Move To Background'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.moveAbilityToBackground)
+          .fontSize(30)
+          .fontWeight(700)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+            context.moveAbilityToBackground().then(() => {
+              console.info(`moveAbilityToBackground success.`);
+            }).catch((err: BusinessError<void>): void => {
+              console.info(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
@@ -2248,9 +2950,13 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;Abi
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2302,8 +3008,9 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('openAtomicService succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error): void => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -2316,7 +3023,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -2335,9 +3042,13 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2375,9 +3086,11 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>适用版本：23+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -2427,22 +3140,77 @@ struct Index {
 }
 ```
 
-### backToCallerAbilityWithResult<sup>12+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, OpenLinkOptions } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Component, Button, RelativeContainer } from '@kit.ArkUI';
+
+const DOMAIN = 0xeeee;
+const TAG: string = '[openLinkDemo]';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("Call StartAbilityForResult")
+        .onClick(() => {
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          let link: string = 'https://www.example.com';
+          let openLinkOptions: OpenLinkOptions = {
+            appLinkingOnly: true,
+            parameters: { 'demo_key': 'demo_value' } as Record<string, RecordData>
+          };
+
+          try {
+            context.openLink(
+              link,
+              openLinkOptions,
+              (err: BusinessError | null, result: common.AbilityResult | undefined) => {
+                hilog.error(DOMAIN, TAG, `openLink callback error.code: ${err}`);
+                hilog.info(DOMAIN, TAG, `openLink callback result: ${result?.resultCode}`);
+                hilog.info(DOMAIN, TAG, `openLink callback result data: ${result?.want}`);
+              }
+            ).then(() => {
+              hilog.info(DOMAIN, TAG, `open link success.`);
+            }).catch((err: BusinessError): void => {
+              hilog.error(DOMAIN, TAG, `open link failed, errCode ${JSON.stringify(err.code)}`);
+            });
+          } catch (e: BusinessError) {
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### backToCallerAbilityWithResult<sup>12+</sup>
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
 当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | abilityResult | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 包含目标方返回给拉起方的结果。 |
-| requestCode  |  string | 是 | 通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过want中的[CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md)字段获取。|
+| requestCode  |  string | 是 | 通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过[wantConstant](js-apis-app-ability-wantConstant.md)中的CALLER_REQUEST_CODE字段获取。 |
 
 **返回值：**
 
@@ -2465,6 +3233,9 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 | 16000075 | BackToCaller is not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 调用方通过startAbilityForResult接口拉起目标方, 目标方再调用backToCallerAbilityWithResult接口返回到调用方。
 
 ```ts
@@ -2574,6 +3345,124 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+调用方通过startAbilityForResult接口拉起目标方，目标方再调用backToCallerAbilityWithResult接口返回到调用方。
+
+```ts
+'use static'
+// 调用方
+// index.ets
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Text, Column, Row, Component, Button, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(30)
+          .fontWeight(700)
+
+        Button("Call StartAbilityForResult")
+          .onClick(() => {
+            let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let want: Want = {
+              bundleName: 'com.example.demo2',
+              abilityName: 'EntryAbility'
+            };
+
+            try {
+              // 通过startAbilityForResult拉起目标应用
+              context.startAbilityForResult(want,
+                (err: BusinessError | null, result: common.AbilityResult | undefined) => {
+                  if (err?.code) {
+                    // 处理业务逻辑错误
+                    hilog.error(0x0000, 'testTag',
+                      `startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
+                    this.message = `startAbilityForResult failed: code is ${err?.code}, message is ${err?.message}`
+                    return;
+                  }
+                  // 执行正常业务
+                  hilog.info(0x0000, 'testTag', `startAbilityForResult succeed`);
+                  hilog.info(0x0000, 'testTag', `AbilityResult is ${result}`);
+                  this.message = `AbilityResult.resultCode: ${result?.resultCode}`
+                });
+            } catch (err) {
+              // 处理入参错误异常
+              let code = (err as BusinessError).code;
+              let message = (err as BusinessError).message;
+              hilog.error(0x0000, 'testTag', `startAbilityForResult failed, code is ${code}, message is ${message}`);
+              this.message = `startAbilityForResult failed, code is ${code}, message is ${message}`;
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```ts
+// 目标方
+// EntryAbility.ets
+import { AbilityConstant, common, UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 从want中获取调用方的CALLER_REQUEST_CODE，并保存
+    let callerRequestCode: string = want?.parameters?.[wantConstant.Params.CALLER_REQUEST_CODE] as string;
+    AppStorage.setOrCreate<string>("callerRequestCode", callerRequestCode)
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let callerRequestCode: string = want?.parameters?.[wantConstant.Params.CALLER_REQUEST_CODE] as string;
+    AppStorage.setOrCreate<string>("callerRequestCode", callerRequestCode)
+  }
+
+  onForeground(): void {
+    // 获取保存的CALLER_REQUEST_CODE
+    let callerRequestCode: string = AppStorage.get<string>("callerRequestCode") as string;
+    hilog.info(0x0000, 'testTag', `callerRequestCode is ${callerRequestCode}`);
+    let want: Want = {};
+    let resultCode = 100;
+    let abilityResult: common.AbilityResult = {
+      want,
+      resultCode
+    };
+    try {
+      // 将结果信息返回给调用方
+      this.context.backToCallerAbilityWithResult(abilityResult, callerRequestCode)
+        .then(() => {
+          // 执行正常业务
+          hilog.info(0x0000, 'testTag', 'backToCallerAbilityWithResult succeed');
+        })
+        .catch((error) => {
+          let err = error as BusinessError;
+          // 处理业务逻辑错误
+          hilog.error(0x0000, 'testTag',
+            `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 捕获同步的参数错误
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', `backToCallerAbilityWithResult failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### setRestoreEnabled<sup>14+</sup>
 
 setRestoreEnabled(enabled: boolean): void
@@ -2584,11 +3473,15 @@ setRestoreEnabled(enabled: boolean): void
 >
 > 如果应用设置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true，备份恢复功能不生效。
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：UIAbility备份恢复功能仅在Phone、Tablet、Wearable和TV设备中生效，PC/2in1设备不支持备份恢复功能，Tablet设备开启自由多窗后备份恢复功能也不生效。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2625,7 +3518,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -2635,11 +3528,15 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 >
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2675,6 +3572,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 16200001 | The caller has been released.                                                                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, Want } from '@kit.AbilityKit';
@@ -2712,7 +3611,52 @@ struct Index {
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Row, Button, Component } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        // 创建启动按钮
+        Button('start ability')
+          .enabled(true)
+          .onClick(() => {
+            this.clickFun();
+          })
+      }
+    }
+  }
+
+  private clickFun() {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let startWant: Want = {
+      bundleName: 'com.acts.uiserviceextensionability',
+      abilityName: 'UiServiceExtAbility',
+    };
+    try {
+      // 启动UIServiceExtensionAbility
+      context.startUIServiceExtensionAbility(startWant).then(() => {
+        console.info('startUIServiceExtensionAbility success');
+      }).catch((err) => {
+        let error = err as BusinessError;
+        console.info('startUIServiceExtensionAbility error', JSON.stringify(error));
+      })
+    } catch (err) {
+      console.info('startUIServiceExtensionAbility failed', JSON.stringify(err));
+    }
+  }
+}
+```
+
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
@@ -2723,11 +3667,15 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 >
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2762,6 +3710,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 | 16000055 | Installation-free timed out.                                                        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, Want } from '@kit.AbilityKit';
@@ -2827,7 +3777,73 @@ struct UIServiceExtensionAbility {
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, RelativeContainer, Button, Component } from '@kit.ArkUI';
+
+const TAG: string = '[Extension] ';
+
+class MyDataCallBack implements common.UIServiceExtensionConnectCallback {
+  // 接收数据
+  onData(data: Record<string, RecordData>) {
+    console.info(`dataCallBack received data`, JSON.stringify(data));
+  }
+
+  // 连接断开
+  onDisconnect() {
+    console.info(`dataCallBack onDisconnect`);
+  }
+}
+
+@Entry
+@Component
+struct UIServiceExtensionAbility {
+  async myConnect() {
+    // 获取上下文
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let startWant: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UiServiceExtAbility'
+    };
+
+    try {
+      // 连接服务
+      let dataCallBack = new MyDataCallBack();
+      context.connectUIServiceExtensionAbility(startWant, dataCallBack)
+        .then((proxy: common.UIServiceProxy) => {
+          console.info(TAG + `try to connectUIServiceExtensionAbility`, JSON.stringify(proxy));
+        }).catch((err: Error) => {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      // 创建连接按钮
+      Button('connectServiceExtensionAbility')
+        .onClick(() => {
+          this.myConnect();
+        });
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
@@ -2838,9 +3854,13 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 >
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2865,6 +3885,8 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 | 16000050 | Internal error.                                                                                 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -2923,7 +3945,70 @@ struct UIServiceExtensionAbility {
 }
 ```
 
-### setAbilityInstanceInfo<sup>15+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Column, Button, Component, Scroll } from '@kit.ArkUI';
+
+const TAG: string = '[Extension] ';
+
+class MyComProxy implements common.UIServiceProxy {
+  sendData(data: Record<string, RecordData>) {
+    console.info(TAG + `MyComProxy data ${data}}`);
+  }
+}
+
+@Entry
+@Component
+struct UIServiceExtensionAbility {
+  build() {
+    Scroll() {
+      Column() {
+        // 创建断开连接的按钮
+        Button('disconnectUIServiceExtensionAbility')
+          .margin({
+            top: 5,
+            left: 10,
+            right: 10,
+            bottom: 5
+          })
+          .onClick(() => {
+            this.myDisconnectUIServiceExtensionAbility();
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private myDisconnectUIServiceExtensionAbility(): void {
+
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+    try {
+      // 断开UIServiceExtension连接
+      let comProxy = new MyComProxy();
+      context.disconnectUIServiceExtensionAbility(comProxy)
+        .then(() => {
+          console.info(TAG + `disconnectUIServiceExtensionAbility succeed ${this.comProxy}}`);
+        }).catch((err: Error) => {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### setAbilityInstanceInfo<sup>15+</sup>
 
 setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
@@ -2934,6 +4019,10 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -2961,6 +4050,8 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 | 16000050 | Internal error.                                                                     |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -3000,6 +4091,42 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', async (err, data): void => {
+      if (err) {
+        console.error(`loadContent failed, code is ${err.code}`);
+      }
+
+      let newLabel: string = 'instance label';
+      let color = new ArrayBuffer(0);
+      let imagePixelMap: image.PixelMap = await image.createPixelMap(color, {
+        size: {
+          height: 100,
+          width: 100
+        }
+      });
+      this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+        .then(() => {
+          console.info('setAbilityInstanceInfo success');
+        }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+      });
+    });
+  }
+}
+```
+
 ### revokeDelegator<sup>17+</sup>
 
 revokeDelegator(): Promise&lt;void&gt;
@@ -3013,6 +4140,10 @@ revokeDelegator(): Promise&lt;void&gt;
 > 当接口调用成功后，DelegatorAbility中的[Window](../apis-arkui/arkts-apis-window.md)方法会失效。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -3064,7 +4195,7 @@ revokeDelegator(): Promise&lt;void&gt;
         // DelegatorAbility完成特定操作后，调用revokeDelegator回到首个UIAbility
         this.context.revokeDelegator().then(() => {
           console.info('revokeDelegator success');
-        }).catch((err: BusinessError) => {
+        }).catch((err: BusinessError<void>): void => {
           console.error(`revokeDelegator failed, code is ${err.code}, message is ${err.message}`);
         });
       }
@@ -3082,15 +4213,19 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 > - 调用该接口后会创建新的资源管理器对象，如果此前有缓存资源管理器，需要进行更新。
 > - 深浅色模式生效的优先级：UIAbility的深浅色模式 > 应用的深浅色模式（[ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)）> 系统的深浅色模式。
 
-**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
 | 参数名 | 类型          | 必填 | 说明                 |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md) | 是   | 设置颜色模式，包括: <br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）|
+| colorMode | [ConfigurationConstant](js-apis-app-ability-configurationConstant.md).ColorMode | 是   | 设置颜色模式，包括: <br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）|
 
 **错误码**：
 
@@ -3110,7 +4245,7 @@ import { window } from '@kit.ArkUI';
 export default class MyAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
+      if (err?.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content.');
         return;
       }
@@ -3134,6 +4269,10 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3187,8 +4326,9 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startAppServiceExtensionAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error) => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`startAppServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -3214,6 +4354,10 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3263,8 +4407,9 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('stopAppServiceExtensionAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error) => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`stopAppServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -3279,7 +4424,9 @@ export default class EntryAbility extends UIAbility {
 
 ### connectAppServiceExtensionAbility<sup>20+</sup>
 
-connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
+ArkTS-Dyn: connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
+
+ArkTS-Sta: connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): long
 
 将当前UIAbility连接到[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)。通过返回的proxy与AppServiceExtensionAbility进行通信，以使用AppServiceExtensionAbility对外提供的能力。仅支持在主线程调用。
 
@@ -3302,7 +4449,7 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，[disconnectAppServiceExtensionAbility](#disconnectappserviceextensionability20)根据该连接id断开连接。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回连接id，[disconnectAppServiceExtensionAbility](#disconnectappserviceextensionability20)根据该连接id断开连接。 |
 
 **错误码：**
 
@@ -3322,6 +4469,8 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 | 16000201 | The target service has not been started yet. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want, common } from '@kit.AbilityKit';
@@ -3362,9 +4511,53 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Want, common, bundleManager } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'AppServiceExtensionAbility'
+    };
+    let commRemote: rpc.IRemoteObject;
+    let callback: common.ConnectOptions = {
+      onConnect: (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject): void => {
+        console.info(`onConnect elementName: ${JSON.stringify(elementName)}`);
+      },
+      onDisconnect: (elementName: bundleManager.ElementName): void => {
+        console.info(`onDisconnect elementName: ${JSON.stringify(elementName)}`);
+      },
+      onFailed: (code: int): void => {
+        console.error(`onFailed code: ${code}`);
+      }
+    };
+
+    let connection: long;
+
+    try {
+      connection = this.context.connectAppServiceExtensionAbility(want, callback);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectAppServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### disconnectAppServiceExtensionAbility<sup>20+</sup>
 
-disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
+ArkTS-Dyn: disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
+
+ArkTS-Sta: disconnectAppServiceExtensionAbility(connection: long): Promise\<void>
 
 断开与[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)的连接。仅支持在主线程调用。使用Promise异步回调。
 
@@ -3374,11 +4567,15 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在[connectAppServiceExtensionAbility](#connectappserviceextensionability20)返回的连接id。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 在[connectAppServiceExtensionAbility](#connectappserviceextensionability20)返回的连接id。 |
 
 **返回值：**
 
@@ -3397,6 +4594,8 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -3429,9 +4628,46 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // connection为connectAppServiceExtensionAbility中的返回值
+    let connection = 1;
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      this.context.disconnectAppServiceExtensionAbility(connection).then(() => {
+        commRemote = null;
+        // 执行正常业务
+        console.info('disconnectAppServiceExtensionAbility succeed');
+      }).catch((error) => {
+        // 处理业务逻辑错误
+        let err = error as BusinessError;
+        console.error(`disconnectAppServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectAppServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### setOnNewWantSkipScenarios<sup>20+</sup>
 
-setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
+ArkTS-Dyn: setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
+
+ArkTS-Sta: setOnNewWantSkipScenarios(scenarios: int): Promise\<void>
 
 在特定场景下拉起UIAbility时，如果不需要触发[onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调，可以通过该接口设置。仅支持在主线程调用。使用Promise异步回调。
 
@@ -3439,15 +4675,19 @@ setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
 >
 > 该接口通常用于[onCreate](./js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中。入参取值建议包含所有的[Scenarios](js-apis-app-ability-contextConstant.md#scenarios20)枚举值。详见下方示例代码。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| scenarios | number | 是 | 取值范围请参考[Scenarios](./js-apis-app-ability-contextConstant.md#scenarios20)。 |
+| scenarios | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 取值范围请参考[Scenarios](./js-apis-app-ability-contextConstant.md#scenarios20)。 |
 
 **返回值：**
 
@@ -3464,6 +4704,8 @@ setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
 | 16000050 | Internal error. Possible causes: Connection to service failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AbilityConstant, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3493,6 +4735,38 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AbilityConstant, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let scenarios: int = contextConstant.Scenarios.SCENARIO_MOVE_MISSION_TO_FRONT |
+    contextConstant.Scenarios.SCENARIO_SHOW_ABILITY |
+    contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
+
+    try {
+      this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
+        // 执行正常业务
+        console.info('setOnNewWantSkipScenarios succeed');
+      }).catch((error: Error) => {
+        // 处理业务逻辑错误
+        let err = error as BusinessError;
+        console.error(`setOnNewWantSkipScenarios failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`setOnNewWantSkipScenarios failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### startSelfUIAbilityInCurrentProcess<sup>22+</sup>
 
 startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
@@ -3508,6 +4782,10 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 **设备行为差异**：
 - 从API version 23开始，该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 - 从API version 22开始，该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3591,11 +4869,15 @@ restartApp(want: Want): Promise\<void>
 > 在应用调用本接口成功后的3秒内，若再次调用本接口或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
 
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3623,6 +4905,8 @@ restartApp(want: Want): Promise\<void>
 | 16000065 | The API can be called only when the ability is focused. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3662,6 +4946,49 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, RelativeContainer, FontWeight, Text, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp with window';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontWeight(FontWeight.Bold)
+        .onClick(async () => {
+          this.restartFun();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+
+  private restartFun() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    try {
+      await context.restartApp(want);
+    } catch (error) {
+      let err = error as BusinessError;
+      hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+    }
+  }
+}
+```
+
 ### setMissionWindowIcon<sup>22+</sup>
 
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
@@ -3675,6 +5002,10 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3730,6 +5061,152 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
+  }
+}
+```
+
+### startSelf
+
+startSelf(): Promise\<void>
+
+启动当前UIAbility实例，将UIAbility切换至前台，用于将停留在中间阶段的Native UIAbility拉到前台。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对于配置了Native模块的UIAbility，其启动可能因startupPhase配置停留在特定阶段：PRE_WINDOW、PRE_FOREGROUND。
+> - 如果UIAbility未配置Native模块，调用该接口会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current devive or current UIAbility is a non-native UIAbility. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
+
+**示例：**
+
+```ts
+'use static'
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      setTimeout(() => {
+        this.context.startSelf()
+          .then((): void => {
+            console.info('startSelf succeed');
+          })
+          .catch((err: Error): void => {
+            console.error(`startSelf failed, code is ${err.code}, message is ${err.message}`);
+          });
+      }, 100);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelf failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### startSelfUIAbilityInChildProcess
+
+startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
+
+在子进程中启动当前应用的UIAbility。使用Promise异步回调。子进程中的UIAbility支持加载Native模块。
+
+> **说明：**
+>
+> 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。只支持[显式启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
+| specifiedFlag | string  | 是 | 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：**<br>当通过该接口拉起启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant)回调。 |
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**示例：**
+
+```ts
+'use static'
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground(): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ChildProcessAbility'
+    };
+    let instanceFlag = 'instance1';
+    try {
+      this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
+        .then(() => {
+          console.info('startSelfUIAbilityInChildProcess succeed');
+        })
+        .catch((err: Error) => {
+          console.error(`startSelfUIAbilityInChildProcess failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInChildProcess failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```

@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -27,9 +28,13 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 
 激活音频会话。使用Promise异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -51,7 +56,7 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 | ------- | ---------------------------------------------|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed.|
-| 6800301 | System error. Returned by promise. |
+| 6800301 | System error. Possible causes: 1.Focus preemption failure. 2.Audio server process died. |
 
 **示例：**
 
@@ -75,9 +80,13 @@ deactivateAudioSession(): Promise\<void>
 
 停用音频会话。使用Promise异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -91,7 +100,7 @@ deactivateAudioSession(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------|
-| 6800301 | System error. Returned by promise. |
+| 6800301 | System error. Possible causes: 1.The audio session is not existed or has been released. 2.Audio server process died. |
 
 **示例：**
 
@@ -111,9 +120,13 @@ isAudioSessionActivated(): boolean
 
 检查音频会话是否已激活。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -135,7 +148,13 @@ on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedE
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioSessionDeactivated](#onaudiosessiondeactivated23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -162,6 +181,45 @@ audioSessionManager.on('audioSessionDeactivated',
 });
 ```
 
+## onAudioSessionDeactivated<sup>23+</sup>
+
+onAudioSessionDeactivated(callback: Callback&lt;AudioSessionDeactivatedEvent&gt;): void
+
+监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioSessionDeactivated')](#onaudiosessiondeactivated12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                                         |
+| -------- |--------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | 是   | 回调函数，返回音频会话停用原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioSessionManager.onAudioSessionDeactivated(
+  (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+});
+```
+
 ## off('audioSessionDeactivated')<sup>12+</sup>
 
 off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivatedEvent>): void
@@ -170,7 +228,13 @@ off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivate
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioSessionDeactivated](#offaudiosessiondeactivated23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -204,6 +268,52 @@ audioSessionManager.on('audioSessionDeactivated', audioSessionDeactivatedCallbac
 audioSessionManager.off('audioSessionDeactivated', audioSessionDeactivatedCallback);
 ```
 
+## offAudioSessionDeactivated<sup>23+</sup>
+
+offAudioSessionDeactivated(callback?: Callback&lt;AudioSessionDeactivatedEvent&gt;): void
+
+取消监听音频会话停用事件。使用callback异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioSessionDeactivated')](#offaudiosessiondeactivated12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | 否   | 回调函数，返回音频会话停用原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offAudioSessionDeactivated();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioSessionDeactivatedCallback = (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+};
+
+audioSessionManager.onAudioSessionDeactivated(audioSessionDeactivatedCallback);
+
+audioSessionManager.offAudioSessionDeactivated(audioSessionDeactivatedCallback);
+```
+
 ## setAudioSessionScene<sup>20+</sup>
 
 setAudioSessionScene(scene: AudioSessionScene): void
@@ -211,6 +321,10 @@ setAudioSessionScene(scene: AudioSessionScene): void
 设置音频会话场景参数。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -240,7 +354,13 @@ on(type: 'audioSessionStateChanged', callback: Callback\<AudioSessionStateChange
 
 监听音频会话状态变更事件（当音频会话焦点变更时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioSessionStateChanged](#onaudiosessionstatechanged23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -267,13 +387,57 @@ audioSessionManager.on('audioSessionStateChanged', (audioSessionStateChangedEven
 });
 ```
 
+## onAudioSessionStateChanged<sup>23+</sup>
+
+onAudioSessionStateChanged(callback: Callback&lt;AudioSessionStateChangedEvent&gt;): void
+
+监听音频会话状态变更事件（当音频会话焦点变更时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioSessionStateChanged')](#onaudiosessionstatechanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                                         |
+| -------- |--------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | 是   | 回调函数，返回音频会话变更提示信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800102 | Allocate memory failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+audioSessionManager.onAudioSessionStateChanged((audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+});
+```
+
 ## off('audioSessionStateChanged')<sup>20+</sup>
 
 off(type: 'audioSessionStateChanged', callback?: Callback\<AudioSessionStateChangedEvent>): void
 
 取消监听音频会话状态变更事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioSessionStateChanged](#offaudiosessionstatechanged23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -307,6 +471,51 @@ audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallb
 audioSessionManager.off('audioSessionStateChanged', audioSessionStateChangedCallback);
 ```
 
+## offAudioSessionStateChanged<sup>23+</sup>
+
+offAudioSessionStateChanged(callback?: Callback&lt;AudioSessionStateChangedEvent&gt;): void
+
+取消监听音频会话状态变更事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioSessionStateChanged')](#offaudiosessionstatechanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                                         |
+| -------- |--------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | 否 | 回调函数，返回音频会话变更提示信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offAudioSessionStateChanged();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+};
+
+audioSessionManager.onAudioSessionStateChanged(audioSessionStateChangedCallback);
+
+audioSessionManager.offAudioSessionStateChanged(audioSessionStateChangedCallback);
+```
+
 ## setDefaultOutputDevice<sup>20+</sup>
 
 setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
@@ -319,6 +528,10 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
 
@@ -364,6 +577,10 @@ getDefaultOutputDevice(): DeviceType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                              | 说明                                    |
@@ -397,11 +614,13 @@ setMediaOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > - 若存在更高优先级的并发播放流或用户手动选择输出设备，则应用程序实际使用的输出设备将与本接口设置的设备不同。应用程序可通过监听[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)事件获取当前活跃的输出设备。
 > - 当应用程序需要清除之前通过接口设置的扬声器输出配置时，可通过调用接口将媒体输出设备设置为DEFAULT（系统默认设备）来实现。该设置仅在应用程序运行期间有效，当应用程序退出时，此接口的设置将自动清除。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **设备行为差异：** 当该接口在无扬声器的设备上设置输出设备为扬声器时，该设置不会生效。
 
@@ -424,7 +643,7 @@ setMediaOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 6800101 | Parameter verification failed, for example, the selected device type is not supported. |
-| 6800301 | Audio client call audio service error, System error. |
+| 6800301 | System error. Possible causes: 1.Internal variable memory allocation failed. 2.Audio server process died. 3.Speaker device is not available. |
 
 **示例：**
 
@@ -444,7 +663,13 @@ on(type: 'currentOutputDeviceChanged', callback: Callback\<CurrentOutputDeviceCh
 
 监听当前输出设备变化事件（当前输出设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCurrentOutputDeviceChanged](#oncurrentoutputdevicechanged23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -475,13 +700,59 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
 ```
 
+## onCurrentOutputDeviceChanged<sup>23+</sup>
+
+onCurrentOutputDeviceChanged(callback: Callback&lt;CurrentOutputDeviceChangedEvent&gt;): void
+
+监听当前输出设备变化事件（当前输出设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('currentOutputDeviceChanged')](#oncurrentoutputdevicechanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | 是   | 回调函数，返回当前输出设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800102 | Allocate memory failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentOutputDeviceChanged(currentOutputDeviceChangedCallback);
+```
+
 ## off('currentOutputDeviceChanged')<sup>20+</sup>
 
 off(type: 'currentOutputDeviceChanged', callback?: Callback\<CurrentOutputDeviceChangedEvent>): void
 
 取消监听当前输出设备的变化事件，并使用callback进行异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCurrentOutputDeviceChanged](#offcurrentoutputdevicechanged23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -515,6 +786,51 @@ audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedC
 audioSessionManager.off('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
 ```
 
+## offCurrentOutputDeviceChanged<sup>23+</sup>
+
+offCurrentOutputDeviceChanged(callback?: Callback&lt;CurrentOutputDeviceChangedEvent&gt;): void
+
+取消监听当前输出设备的变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('currentOutputDeviceChanged')](#offcurrentoutputdevicechanged20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | 否 | 回调函数，用于返回当前输出设备变化的信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offCurrentOutputDeviceChanged();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentOutputDeviceChanged(currentOutputDeviceChangedCallback);
+
+audioSessionManager.offCurrentOutputDeviceChanged(currentOutputDeviceChangedCallback);
+```
+
 ## getAvailableDevices<sup>21+</sup>
 
 getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
@@ -522,6 +838,10 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 获取音频可选设备列表。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -564,7 +884,13 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback\<
 
 监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvailableDeviceChange](#onavailabledevicechange24)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -594,13 +920,60 @@ audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DE
 });
 ```
 
+## onAvailableDeviceChange<sup>24+</sup>
+
+onAvailableDeviceChange(deviceUsage: DeviceUsage, callback: Callback&lt;DeviceChangeAction&gt;): void
+
+监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('availableDeviceChange')](#onavailabledevicechange21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| deviceUsage | [DeviceUsage](arkts-apis-audio-e.md#deviceusage12)                       | 是   | 音频设备类型（根据用途分类）。     |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 是   | 回调函数，返回设备更新详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+audioSessionManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+});
+```
+
 ## off('availableDeviceChange')<sup>21+</sup>
 
 off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): void
 
 取消监听音频可选设备连接状态变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableDeviceChange](#offavailabledevicechange24)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -636,6 +1009,53 @@ audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DE
 audioSessionManager.off('availableDeviceChange', availableDeviceChangeCallback);
 ```
 
+## offAvailableDeviceChange<sup>24+</sup>
+
+offAvailableDeviceChange(callback?: Callback&lt;DeviceChangeAction&gt;): void
+
+取消监听音频可选设备连接状态变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('availableDeviceChange')](#offavailabledevicechange21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数，返回可选设备更新详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offAvailableDeviceChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+};
+
+audioSessionManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_INPUT_DEVICES, availableDeviceChangeCallback);
+
+audioSessionManager.offAvailableDeviceChange(availableDeviceChangeCallback);
+```
+
 ## selectMediaInputDevice<sup>21+</sup>
 
 selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
@@ -650,6 +1070,10 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 > - 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -678,7 +1102,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {
@@ -701,6 +1125,10 @@ getSelectedMediaInputDevice(): AudioDeviceDescriptor
 获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -737,6 +1165,10 @@ clearSelectedMediaInputDevice(): Promise<void\>
 清空通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -777,6 +1209,10 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 > - 应用程序可以监听[currentInputDeviceChanged](#oncurrentinputdevicechanged21)事件来获得实际的输入设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -820,6 +1256,10 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -854,7 +1294,13 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 
 监听当前输入设备变化事件（当前输入设备发生变化时触发）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCurrentInputDeviceChanged](#oncurrentinputdevicechanged24)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -884,13 +1330,58 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 ```
 
+## onCurrentInputDeviceChanged<sup>24+</sup>
+
+onCurrentInputDeviceChanged(callback: Callback&lt;CurrentInputDeviceChangedEvent&gt;): void
+
+监听当前输入设备变化事件（当前输入设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('currentInputDeviceChanged')](#oncurrentinputdevicechanged21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 是   | 回调函数，返回当前输入设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
+```
+
 ## off('currentInputDeviceChanged')<sup>21+</sup>
 
 off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceChangedEvent\>): void
 
 取消监听当前输入设备的变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCurrentInputDeviceChanged](#offcurrentinputdevicechanged24)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -923,6 +1414,50 @@ audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCal
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 ```
 
+## offCurrentInputDeviceChanged<sup>24+</sup>
+
+offCurrentInputDeviceChanged(callback?: Callback&lt;CurrentInputDeviceChangedEvent&gt;): void
+
+取消监听当前输入设备的变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('currentInputDeviceChanged')](#offcurrentinputdevicechanged21)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | 否 | 回调函数，用于返回当前输入设备变化的信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSessionManager.offCurrentInputDeviceChanged();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.onCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
+
+audioSessionManager.offCurrentInputDeviceChanged(currentInputDeviceChangedCallback);
+```
+
 ## enableMuteSuggestionWhenMixWithOthers<sup>23+</sup>
 
 enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
@@ -933,13 +1468,17 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 
 如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)回调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。
 
-此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
+此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
 
 详细说明请参考[启用混音播放下静音建议通知](../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -962,6 +1501,58 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
+## setCapturerMuteHint<sup>24+</sup>
+
+setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。
+> - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| mute   | boolean           | 是   | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Operation not permit at current state, there is no audio capturer running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Successfully set capturer mute hint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isOtherMediaPlaying<sup>23+</sup>
 
 isOtherMediaPlaying(): boolean
@@ -971,6 +1562,10 @@ isOtherMediaPlaying(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -986,7 +1581,9 @@ let isExistence = audioSessionManager.isOtherMediaPlaying();
 
 ## setAudioSessionBehavior<sup>24+</sup>
 
-setAudioSessionBehavior(behavior: number): void
+ArkTS-Dyn: setAudioSessionBehavior(behavior: number): void
+
+ArkTS-Sta: setAudioSessionBehavior(behavior: int): void
 
 设置音频会话行为参数，支持多种标志位的组合使用。
 
@@ -998,11 +1595,15 @@ setAudioSessionBehavior(behavior: number): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名   | 类型               | 必填 | 说明      |
 | -------- | ----------------- | ---- | --------- |
-| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+| behavior   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
 
 **错误码：**
 
@@ -1016,6 +1617,6 @@ setAudioSessionBehavior(behavior: number): void
 **示例：**
 
 ```ts
-let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioSessionManager.setAudioSessionBehavior(behavior);
 ```

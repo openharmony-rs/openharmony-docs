@@ -27,6 +27,7 @@
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
@@ -39,11 +40,26 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { wantAgent, WantAgent, Want } from '@kit.AbilityKit';
+   import type { WantAgent } from '@kit.AbilityKit';
+   import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 创建WantAgentInfo信息。
 
    场景一：创建拉起UIAbility的WantAgent的[WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md)信息。
 
-   <!-- @[create_launch_uiability_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
@@ -67,8 +83,34 @@
    };
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
+   
+   // 通过WantAgentInfo的operationType设置动作类型
+   let wantAgentInfo: wantAgent.WantAgentInfo = {
+     wants: [
+       {
+         deviceId: '',
+         bundleName: 'com.sample.eventnotification', // 需要替换为对应的bundleName。
+         abilityName: 'EntryAbility', // 需要替换为对应的abilityName。
+         action: '',
+         entities: [],
+         uri: '',
+         parameters: {} as Record<string, RecordData>
+       } as Want
+     ],
+     actionType: wantAgent.OperationType.START_ABILITY,
+     requestCode: 0,
+     actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
+   };
+   ```
+
    场景二：创建发布[公共事件](../basic-services/common-event/common-event-overview.md)的WantAgent的[WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md)信息。
 
+   ArkTS-Dyn示例：
    <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
@@ -88,8 +130,29 @@
    };
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
+   
+   // 通过WantAgentInfo的operationType设置动作类型
+   let wantAgentInfo: wantAgent.WantAgentInfo = {
+     wants: [
+       {
+         action: 'event_name', // 设置事件名
+         parameters: {} as Record<string, RecordData>
+       } as Want
+     ],
+     actionType: wantAgent.OperationType.SEND_COMMON_EVENT,
+     requestCode: 0,
+     actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG],
+   };
+   ```
+
 3. 调用[getWantAgent()](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)方法进行创建WantAgent。
 
+   ArkTS-Dyn示例：
    <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
@@ -107,6 +170,27 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   // 创建WantAgent
+   wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+     if (err && err.code !== 0) {
+       hilog.error(DOMAIN_NUMBER, TAG, `getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+       return;
+     }
+     if (!data) {
+       hilog.error(DOMAIN_NUMBER, TAG, 'getWantAgent failed: data is undefined');
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in getting want agent.');
+     wantAgentObj = data;
+   
+     // ...
+   });
+   ```
+
 4. 构造NotificationRequest对象，并发布携带WantAgent的通知。
 
    > **说明：**
@@ -115,6 +199,7 @@
    >
    > - 如果封装WantAgent至通知按钮中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
 
+   ArkTS-Dyn示例：
    <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
@@ -153,9 +238,50 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   // 构造NotificationActionButton对象
+   let actionButton: notificationManager.NotificationActionButton = {
+     title: 'open_the_app',
+     // wantAgentObj使用前需要保证已被赋值（即步骤3执行完成）
+     // 通知按钮的WantAgent
+     wantAgent: wantAgentObj!
+   };
+   
+   // 构造NotificationRequest对象
+   let notificationRequest: notificationManager.NotificationRequest = {
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'one_button_notify',
+         text: 'Click on this notification twice to open the app',
+         additionalText: 'Test_AdditionalText',
+       },
+     },
+     id: 6,
+     // 通知消息的WantAgent
+     wantAgent: wantAgentObj!,
+     // 通知按钮
+     actionButtons: [actionButton],
+   };
+   
+   notificationManager.publish(notificationRequest, (err) => {
+     if (err && err.code !== 0) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+   });
+   ```
+
 <!--RP1-->
 
 ## 示例代码
 
-  - [自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
+  - ArkTS-Dyn示例：[自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
+
+  - ArkTS-Sta示例：[自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Notification/CustomNotification/README_zh.md)
 <!--RP1End-->

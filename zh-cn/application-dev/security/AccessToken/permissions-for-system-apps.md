@@ -1262,6 +1262,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1433,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：9
 
@@ -4595,20 +4599,6 @@
 
 **起始版本**：18
 
-## ohos.permission.GET_NETWORK_STATS
-
-允许系统应用获取历史流量。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：10
-
-**变更信息**：API 10-11，是否支持证书授权为false；从API 12开始，变更为true。
-
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
 允许系统应用从窥屏提示数据库读取数据。
@@ -5738,5 +5728,47 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.START_ABILITY
+ 
+允许智能体应用通过CLI命令启动指定应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+允许智能体应用通过CLI命令停止指定应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+允许系统应用与其他应用共享访问一台相机。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：26.0.0

@@ -33,7 +33,7 @@
 ```
 
 
-![zh-cn_image_0000001181511962](figures/zh-cn_image_0000001181511962.png)
+![Path-Drawing](figures/Path-Drawing.png)
 
 
 > **说明：**
@@ -41,7 +41,7 @@
 >
 > - L/l = lineto   参数x和y表示一个点的x轴和y轴坐标，L命令将会在当前位置和新位置（L前面画笔所在的点）之间画一条线段。
 >
-> - H/h = horizontal lineto    绘制平行线。
+> - H/h = horizontal lineto    绘制水平线。
 >
 > - V/v = vertical lineto   绘制垂直线。
 >

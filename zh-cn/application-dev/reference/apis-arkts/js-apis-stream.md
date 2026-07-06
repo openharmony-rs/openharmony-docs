@@ -1,8 +1,8 @@
 # @ohos.util.stream (数据流基类stream)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { stream  } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
 ```
 
 ## Writable
@@ -39,7 +39,7 @@ import { stream  } from '@kit.ArkTS';
 | 名称    | 类型      | 只读 | 可选  | 说明        |
 | ------- | -------- | ------ | ------ | ----------- |
 | writableObjectMode  | boolean   | 是   | 否 | 指定可写流是否以对象模式工作。true表示流被配置为对象模式，false表示流处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。 |
-| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义可写流缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
+| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义可写流缓冲区数据量的水位线大小，单位：字节。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
 | writable | boolean | 是 | 否  | 表示可写流是否处于可写状态。true表示流当前是可写的，false表示流当前不再接受写入操作。|
 | writableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示可写流缓冲区中待写入的字节数。|
 | writableCorked | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是  | 否 | 表示可写流cork状态计数。值大于0时，可写流处于强制写入缓冲区状态；值为0时，该状态解除。使用[cork()](#cork)方法时计数加一，使用[uncork()](#uncork)方法时计数减一，使用[end()](#end)方法时计数清零。|
@@ -84,7 +84,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串，会抛出异常。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -96,11 +96,10 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
@@ -121,7 +120,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -138,7 +137,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 ```
 
 ### end
@@ -171,11 +170,10 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 
 **示例：**
@@ -196,8 +194,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // Writable is end
 });
 ```
@@ -218,8 +216,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // 期望结果: Writable is end
 });
 ```
@@ -250,14 +248,6 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示成功，false表示失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -273,7 +263,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // Writable is result true
 ```
 
@@ -290,7 +280,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // 期望结果: Writable is result true
 ```
 
@@ -386,11 +376,11 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // all Data is End
 });
 ```
@@ -409,10 +399,10 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // 期望结果: all Data is End
 });
 writableStream.end();
@@ -441,14 +431,6 @@ ArkTS-Sta: on(event: string, callback: Function): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件传输的数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -468,7 +450,7 @@ let writable = new TestWritable();
 writable.on('error', () => {
   console.info("Writable event test", callbackCalled.toString()); // Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 ```
 
@@ -489,7 +471,7 @@ let writable = new TestWritable();
 writable.on('error', (): void => {
   console.info("Writable event test", callbackCalled.toString()); // 期望结果: Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 ```
 
@@ -516,14 +498,6 @@ ArkTS-Sta: off(event: string, callback?: Function): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -531,7 +505,7 @@ ArkTS-Dyn示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback();
@@ -543,9 +517,9 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
-writableStream.write('test');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // Writable off test false
@@ -557,7 +531,7 @@ ArkTS-Sta示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback.unsafeCall();
@@ -569,9 +543,9 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
-writableStream.write('test');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // 期望结果: Writable off test false
@@ -597,14 +571,6 @@ doInitialize(callback: Function): void
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -645,14 +611,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -669,7 +627,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -686,14 +644,14 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 ```
 
 ### doWritev
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
-提供一个数据批量写出接口供使用者实现，该接口函数会在数据被成功写出时自动调用，无需用户手动触发。使用callback异步回调。
+提供一个数据批量写出接口供开发者实现，该接口函数会在数据被成功写出时自动调用，无需开发者手动触发。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -709,14 +667,6 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | -------- | -------- | -------- | -------- |
 | chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -736,8 +686,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 ```
@@ -758,8 +708,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 ```
@@ -798,7 +748,7 @@ Readable构造函数的选项信息。
 | ------- | -------- | ------ | ------ | ----------- |
 | readableObjectMode  | boolean   | 是   | 否 | 用于指定可读流是否以对象模式工作。true表示流被配置为对象模式，false表示流处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。|
 | readable | boolean | 是 | 否  | 表示可读流是否处于可读状态。true表示流处于可读状态，false表示流中没有更多数据可供读取。 |
-| readableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义缓冲区的最大数据量。默认值为16 * 1024字节。|
+| readableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义缓冲区的最大数据量，单位：字节。默认值为16 * 1024字节。|
 | readableFlowing | boolean \| null | 是 | 否  | 表示当前可读流的状态。true表示流处于流动模式，false表示流处于非流动模式。默认值是true。|
 | readableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示缓冲区的当前字节数。|
 | readableEncoding | string \| null | 是 | 否  | 被解码成字符串时所使用的字符编码。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
@@ -844,19 +794,11 @@ Readable的构造函数。
 | ------ | -------- | -------- | -------- |
 | options   | [ReadableOptions](#readableoptions)   | 是 | Readable构造函数的选项信息。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
 let option : stream.ReadableOptions = {
-  encoding : 'utf-8'
+  encoding : "utf-8"
 };
 let readableStream = new stream.Readable(option);
 ```
@@ -891,11 +833,10 @@ ArkTS-Sta: read(size?: int): buffer.Buffer | string | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200038 | The doRead method has not been implemented. |
 
 **示例：**
@@ -912,10 +853,10 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-readableStream.push('test');
+readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // Readable data is test
+console.info("Readable data is", dataChunk); // Readable data is test
 ```
 
 ArkTS-Sta示例：
@@ -930,10 +871,10 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-readableStream.push('test');
+readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // 期望结果: Readable data is test
+console.info("Readable data is", dataChunk); // 期望结果: Readable data is test
 ```
 
 ### resume
@@ -1072,14 +1013,6 @@ setEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1094,7 +1027,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-let result = readableStream.setEncoding('utf8');
+let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // Readable result true
 ```
 
@@ -1110,7 +1043,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-let result = readableStream.setEncoding('utf8');
+let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // 期望结果: Readable result true
 ```
 
@@ -1197,14 +1130,6 @@ pipe(destination: Writable, options?: Object): Writable
 | -------- | -------- |
 | [Writable](#writable) | 返回当前可写流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1215,7 +1140,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1244,7 +1169,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1291,14 +1216,6 @@ unpipe(destination?: Writable): Readable
 | -------- | -------- |
 | [Readable](#readable) | 返回当前可读流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1309,7 +1226,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1328,7 +1245,7 @@ let readable = new TestReadable();
 let writable = new TestWritable();
 readable.pipe(writable);
 readable.unpipe(writable);
-readable.on('data', () => {
+readable.on("data", () => {
   console.info("Readable test unpipe data event triggered");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event triggered"
@@ -1342,7 +1259,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1361,7 +1278,7 @@ let readable = new TestReadable();
 let writable = new TestWritable();
 readable.pipe(writable);
 readable.unpipe(writable);
-readable.on('data', () => {
+readable.on("data", () => {
   console.info("Readable test unpipe data event called");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event called"
@@ -1387,16 +1304,8 @@ ArkTS-Sta: on(event: string, callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1413,8 +1322,8 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.push('test');
-readable.on('error', () => {
+readable.push("test");
+readable.on("error", () => {
   console.info("error event called"); // error event called
 });
 ```
@@ -1432,8 +1341,8 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.push('test');
-readable.on('error', (): void => {
+readable.push("test");
+readable.on("error", (): void => {
   console.info("error event called"); // 期望结果: error event called
 });
 ```
@@ -1461,14 +1370,6 @@ ArkTS-Sta: off(event: string, callback?: Function): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1488,10 +1389,10 @@ function read() {
   console.info("read() called");
 }
 
-readable.setEncoding('utf8');
-readable.on('readable', read);
-readable.off('readable');
-readable.push('test');
+readable.setEncoding("utf8");
+readable.on("readable", read);
+readable.off("readable");
+readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1512,10 +1413,10 @@ function read() {
   console.info("read() called");
 }
 
-readable.setEncoding('utf8');
-readable.on('readable', read);
-readable.off('readable');
-readable.push('test');
+readable.setEncoding("utf8");
+readable.on("readable", read);
+readable.off("readable");
+readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1523,7 +1424,7 @@ readable.push('test');
 
 doInitialize(callback: Function): void
 
-使用者实现这个函数，这个函数在可读流第一次使用[on](#on-1)监听时被调用。使用callback异步回调。
+开发者实现这个函数，这个函数在可读流第一次使用[on](#on-1)监听时被调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1539,14 +1440,6 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1555,14 +1448,14 @@ class MyReadable extends stream.Readable {
   doInitialize(callback: Function) {
     super.doInitialize(callback);
     console.info("Readable doInitialize"); // Readable doInitialize
-}
+  }
 
   doRead(size: number) {
   }
 }
 
 let myReadable = new MyReadable();
-myReadable.on('data', () => {
+myReadable.on("data", () => {
 });
 ```
 
@@ -1572,14 +1465,14 @@ class MyReadable extends stream.Readable {
   doInitialize(callback: Function) {
     super.doInitialize(callback);
     console.info("Readable doInitialize"); // 期望结果: Readable doInitialize
-}
+  }
 
   doRead(size: int) {
   }
 }
 
 let myReadable = new MyReadable();
-myReadable.on('data', () => {
+myReadable.on("data", () => {
 });
 ```
 
@@ -1605,14 +1498,6 @@ ArkTS-Sta: doRead(size: int): void
 | -------- | -------- | -------- | -------- |
 | size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 读取数据的字节数。取值范围：0 <= size <= Number.MAX_VALUE。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1628,7 +1513,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.on('data', () => {
+readable.on("data", () => {
 });
 ```
 
@@ -1645,7 +1530,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.on('data', () => {
+readable.on("data", () => {
 });
 ```
 
@@ -1690,7 +1575,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-let testData = 'Hello world';
+let testData = "Hello world";
 readable.push(testData);
 console.info("Readable push test", readable.readableLength); // Readable push test 11
 ```
@@ -1707,7 +1592,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-let testData = 'Hello world';
+let testData = "Hello world";
 readable.push(testData);
 console.info("Readable push test", readable.readableLength); // 期望结果: Readable push test 11
 ```
@@ -1788,11 +1673,10 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
@@ -1816,7 +1700,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // duplexStream result true
 ```
 
@@ -1837,7 +1721,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // 期望结果: duplexStream result true
 ```
 
@@ -1871,11 +1755,10 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
@@ -1897,7 +1780,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // Duplex is end
 });
 ```
@@ -1919,7 +1802,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // 期望结果: Duplex is end
 });
 ```
@@ -1950,14 +1833,6 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1976,7 +1851,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.setDefaultEncoding('utf8');
+let result = duplexStream.setDefaultEncoding("utf8");
 console.info("duplexStream is result", result); // duplexStream is result true
 ```
 
@@ -1996,7 +1871,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.setDefaultEncoding('utf8');
+let result = duplexStream.setDefaultEncoding("utf8");
 console.info("duplexStream is result", result); // 期望结果: duplexStream is result true
 ```
 
@@ -2052,7 +1927,7 @@ uncork(): boolean
 
 ArkTS-Dyn示例：
 ```ts
-let dataWritten = '';
+let dataWritten = "";
 class TestDuplex extends stream.Duplex {
   constructor() {
     super();
@@ -2069,15 +1944,15 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('a');
-duplexStream.write('b');
+duplexStream.write("a");
+duplexStream.write("b");
 duplexStream.uncork();
 console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 ```
 
 ArkTS-Sta示例：
 ```ts
-let dataWritten = '';
+let dataWritten = "";
 class TestDuplex extends stream.Duplex {
   constructor() {
     super();
@@ -2094,8 +1969,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('a');
-duplexStream.write('b');
+duplexStream.write("a");
+duplexStream.write("b");
 duplexStream.uncork();
 console.info("Duplex test uncork", dataWritten); // 期望结果: Duplex test uncork
 ```
@@ -2104,7 +1979,7 @@ console.info("Duplex test uncork", dataWritten); // 期望结果: Duplex test un
 
 doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
-数据写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
+数据写出接口是一个由开发者实现的函数，在数据被写出时自动调用，而不需要开发者手动调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2121,14 +1996,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | chunk  | string \| Uint8Array | 是 | 要写出的数据。 |
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2149,7 +2016,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.write('data', 'utf8');
+duplexStream.write("data", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -2169,14 +2036,14 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.write('data', 'utf8');
+duplexStream.write("data", "utf8");
 ```
 
 ### doWritev
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
-数据分批写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
+数据分批写出接口是一个由开发者实现的函数，在数据被写出时自动调用，而不需要开发者手动调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2192,14 +2059,6 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | -------- | -------- | -------- | -------- |
 | chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2225,8 +2084,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('data1', 'utf8');
-duplexStream.write('data2', 'utf8');
+duplexStream.write("data1", "utf8");
+duplexStream.write("data2", "utf8");
 duplexStream.uncork();
 duplexStream.end();
 ```
@@ -2253,8 +2112,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('data1', 'utf8');
-duplexStream.write('data2', 'utf8');
+duplexStream.write("data1", "utf8");
+duplexStream.write("data2", "utf8");
 duplexStream.uncork();
 duplexStream.end();
 ```
@@ -2304,14 +2163,6 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 | chunk  | string | 是 | 需要写入的数据。 |
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback  | Function | 是   | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2373,14 +2224,6 @@ doFlush(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -2395,13 +2238,13 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback(null, 'test');
+    callback(null, "test");
   }
 }
 
 let transform = new TestTransform();
-transform.end('my test');
-transform.on('data', (data) => {
+transform.end("my test");
+transform.on("data", (data) => {
   console.info("data is", data.data); // data is test
 });
 ```
@@ -2418,13 +2261,13 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback.unsafeCall('test');
+    callback.unsafeCall("test");
   }
 }
 
 let transform = new TestTransform();
-transform.on('data', (data: Object) => {
+transform.on("data", (data: Object) => {
   console.info("StreamTest data is", data); // 期望结果: data is test
 });
-transform.end('my test');
+transform.end("my test");
 ```

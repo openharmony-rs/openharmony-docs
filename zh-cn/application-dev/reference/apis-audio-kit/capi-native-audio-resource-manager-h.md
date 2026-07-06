@@ -1,8 +1,8 @@
 # native_audio_resource_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -60,7 +60,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) **resourceManager | 指向OH_AudioResourceManager用于接收创建的音频资源管理器实例。 |
+| [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) **resourceManager | 指向OH_AudioResourceManager指针的地址，用于接收创建的音频资源管理器实例。 |
 
 **返回：**
 
@@ -87,7 +87,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 | -- | -- |
 | [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) *resourceManager | 指向[OH_AudioManager_GetAudioResourceManager](capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager)创建的音频资源管理器实例OH_AudioResourceManager。 |
 | const char *name | 要创建的音频工作组的名称。 |
-| [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) **group | 指向OH_AudioWorkgroup用于接收返回的音频工作组实例的指针。 |
+| [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) **group | 指向OH_AudioWorkgroup指针的地址，用于接收返回的音频工作组实例的指针。 |
 
 **返回：**
 
@@ -191,8 +191,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) *group | 指向[OH_AudioResourceManager_CreateWorkgroup](capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup)创建的音频工作组实例OH_AudioWorkgroup。 |
-| uint64_t startTime | 当前音频工作组启动的时间点。 |
-| uint64_t deadlineTime | 当前音频工作组预期完成的时间。 |
+| uint64_t startTime | 当前音频工作组启动的时间点，单位为毫秒（ms）。 |
+| uint64_t deadlineTime | 当前音频工作组预期完成的时间，单位为毫秒（ms）。 |
 
 **返回：**
 

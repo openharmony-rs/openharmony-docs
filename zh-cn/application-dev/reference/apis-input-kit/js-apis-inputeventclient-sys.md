@@ -51,14 +51,15 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201  | Permission denied.<br/>适用版本：12+ |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -73,7 +74,7 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }
+            };
             // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
@@ -124,7 +125,7 @@ injectEvent(keyEvent: KeyEventInfo): void
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Permission denied, non-system app called system api. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -187,9 +188,9 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>适用版本：12+ |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -197,6 +198,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -305,9 +307,9 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>适用版本：12+ |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -316,6 +318,7 @@ ArkTS-Dyn示例：
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -351,10 +354,10 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
-            }
+            };
             // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
@@ -384,15 +387,13 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
             // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonDown);
-          }
-
-          catch (error) {
+          } catch (error) {
             console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
@@ -455,17 +456,17 @@ struct Index {
               actionTime: 2,
               screenId: 1,
               windowId: 0,
-              action: 2,
+              action: MouseAction.BUTTON_DOWN,
               screenX: 100,
               screenY: 200,
               windowX: 100,
               windowY: 200,
               rawDeltaX: 200,
               rawDeltaY: 200,
-              button: 2,
-              pressedButtons: [2],
+              button: Button.RIGHT,
+              pressedButtons: [Button.RIGHT],
               axes: [],
-              pressedKeys: [0],
+              pressedKeys: [],
               ctrlKey: false,
               altKey: false,
               shiftKey: false,
@@ -474,7 +475,7 @@ struct Index {
               capsLock: false,
               numLock: false,
               scrollLock: false,
-              toolType: 1,
+              toolType: MouseToolType.MOUSE,
             }
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
@@ -516,9 +517,9 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>适用版本：12+ |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -527,6 +528,7 @@ ArkTS-Dyn示例：
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { Touch, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -555,7 +557,7 @@ struct Index {
               rawX: 0,
               rawY: 0,
               toolType: 0,
-            }
+            };
 
             let touchEventUpData: TouchEvent = {
               action: 3,
@@ -567,11 +569,11 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
-            }
+            };
             // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventUp);
 
@@ -585,7 +587,7 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
@@ -657,8 +659,8 @@ struct Index {
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
-              action: 1,
-              sourceType: 0,
+              action: KeyAction.DOWN,
+              sourceType: SourceType.TOUCH_SCREEN,
               touch: touchEvent,
               touches: [],
               id: 0,
@@ -710,7 +712,7 @@ permitInjection(result: boolean): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -718,6 +720,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -731,7 +734,7 @@ struct Index {
             // 授权事件注入
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to permit injection, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -781,7 +784,7 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
 | keyCode         | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键按下持续时间，单位：μs。           |
+| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -796,7 +799,7 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| keyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |
+| KeyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |
 
 ## MouseEventData<sup>11+</sup>
 

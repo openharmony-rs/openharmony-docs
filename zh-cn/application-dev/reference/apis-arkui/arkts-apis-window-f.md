@@ -1,8 +1,8 @@
 # Functions
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,7 +26,7 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -55,11 +55,12 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -135,7 +136,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -169,11 +170,12 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -303,9 +305,9 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+自由窗口状态下，[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)不在接口的计算范围内。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -428,9 +430,9 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+自由窗口状态下，[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)不在接口的计算范围内。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -556,7 +558,7 @@ ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promis
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 > **说明：**
 >
@@ -716,7 +718,7 @@ ArkTS-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int):
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -833,7 +835,7 @@ ArkTS-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -1078,7 +1080,8 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.<br/>适用版本：15-18 |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -1525,7 +1528,7 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -1605,7 +1608,7 @@ ArkTS-Sta: getMainWindowSnapshot(windowId: Array&lt;int&gt;, config: WindowSnaps
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 21
 
@@ -1776,7 +1779,9 @@ onApplicationFocusStateChange(callback: Callback\<boolean\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1805,11 +1810,13 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 关闭应用进程获焦状态变化的监听。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1841,7 +1848,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 创建子窗口，使用callback异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 > **说明：**
 >
@@ -1887,7 +1894,7 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 创建子窗口，使用Promise异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 > **说明：**
 >

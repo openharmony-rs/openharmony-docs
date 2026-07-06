@@ -111,12 +111,12 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | SSL客户端证书没有私钥。 |
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | HTTPS代理提供的证书无效。 |
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | 在尝试进行域名解析（DNS）时发生错误。 |
-| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ERR_ACCESS_DENIED。 |
+| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ARKWEB_ERR_ACCESS_DENIED。 |
 | ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDOS攻击。 |
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | 消息对于传输来说太大了。（例如，UDP消息超过了大小阈值）。 |
-| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | Websocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
+| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | WebSocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
 | ARKWEB_ERR_ADDRESS_IN_USE = -147 | 当尝试绑定已使用的地址时返回。 |
 | ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | 由于SSL握手尚未完成，操作失败。 |
 | ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | SSL对等方的公钥无效。 |
@@ -128,7 +128,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159 | SSL服务器向我们发送了一个致命的unrecognized_name警告。 |
 | ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160 | 无法按照请求设置套接字的接收缓冲区大小。 |
 | ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161 | 无法按照请求设置套接字的发送缓冲区大小。 |
-| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 |尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
+| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 | 尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163 | 尽管setsockopt返回成功代码，但无法将套接字的发送缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164 | 无法将客户端证书从平台存储导入到SSL库中。 |
 | ARKWEB_ERR_ICANN_NAME_COLLISION = -166 | 将主机名解析为IP地址列表时，包含了IPv4地址“127.0.53.53”。这是ICANN推荐的一个特殊IP地址，用于指示存在名称冲突，并提醒管理员注意潜在问题。 |
@@ -164,7 +164,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213 | 证书的有效期太长。 |
 | ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214 | 此连接需要证书透明度，但服务器未提供符合策略的CT信息。 |
 | ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215 | 证书链接到不再受信任的旧版Symantec根证书。 |
-| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 |已知该证书被除设备所有者之外的其他实体拦截。 |
+| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 | 已知该证书被除设备所有者之外的其他实体拦截。 |
 | ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218 | 连接使用了SSL/TLS或加密算法的过时版本。 |
 | ARKWEB_ERR_CERT_END = -219 | 紧接在最后一个证书错误代码之后的值。 |
 | ARKWEB_ERR_INVALID_URL = -300 | URL无效。 |
@@ -203,7 +203,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | 无法从DHCP检索PAC URL配置。这可能表明检索DHCP配置失败，或者在DHCP中没有配置PAC URL。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | HTTP响应包含多个Content-Disposition响应头。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | HTTP响应包含了多个Location响应头。 |
-| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧， |
+| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧。 |
 | ARKWEB_ERR_HTTP2_PING_FAILED = -352 | HTTP/2服务器未响应PING消息。 |
 | ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | 当连接关闭时，HTTP响应主体传输的字节数少于Content-Length头中公布的字节数。 |
 | ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | HTTP响应体使用分块编码传输，但在连接关闭时，终止的零长度区块从未被发送。 |
@@ -283,7 +283,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | 后缀搜索列表规则阻止了给定主机名的解析。 |
 | ARKWEB_ERR_DNS_SORT_ERROR = -806 | 未能根据RFC3484对地址进行排序。 |
 | ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | 未能解析DNS-over-HTTPS服务器的主机名。 |
-| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的https或wss。 |
+| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的HTTPS或WSS。 |
 | ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | 与此任务相关的所有DNS请求已被取消。 |
 | ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | HTTPS记录的主机名解析预期未能使用受支持协议的ALPN值进行解析。 |
 

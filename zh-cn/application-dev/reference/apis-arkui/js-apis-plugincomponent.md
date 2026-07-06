@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,7 +24,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 Plugin组件模板参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +49,7 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 以键值对形式存储信息，符合json格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,9 +64,9 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 ### PushParameters
 
-使用PluginManager.Push方法时需要传递的参数。
+使用pluginComponentManager.push方法时需要传递的参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,9 +84,9 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 ### RequestParameters
 
-使用PluginManager.Request方法时需要传递的参数。
+使用pluginComponentManager.request方法时需要传递的参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,9 +103,9 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 ### RequestCallbackParameters
 
-PluginManager.Request方法接收到的回调结果。
+pluginComponentManager.request方法接收到的回调结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,7 +123,7 @@ PluginManager.Request方法接收到的回调结果。
 
 注册Request监听方法后，接收到请求事件时回应请求的数据类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +143,7 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 
 对应Push事件的监听回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +156,7 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 | 参数名        | 类型                                       | 必填   | 说明                     |
 | --------- | ---------------------------------------- | ---- | ---------------------- |
 | source    | [Want](../apis-ability-kit/js-apis-application-want.md)      | 是    | Push请求发送方相关信息。         |
-| template  | [PluginComponentTemplate](#plugincomponenttemplate) | 是    | 请求组件模板名称。 |
+| template  | [PluginComponentTemplate](#plugincomponenttemplate) | 是    | 组件模板。 |
 | data      | [KVObject](#kvobject)                    | 是    | 数据。                    |
 | extraData | [KVObject](#kvobject)                    | 是    | 附加数据。                  |
 
@@ -180,7 +182,7 @@ type OnRequestEventCallback = (source: Want, name: string, data: KVObject) => Re
 
 对应request事件的监听回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,7 +229,7 @@ push(param: PushParameters , callback: AsyncCallback&lt;void&gt;): void
 
 组件提供方向组件使用方主动发送组件和数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,7 +276,7 @@ request(param: RequestParameters, callback: AsyncCallback&lt;RequestCallbackPara
 
 组件使用方向组件提供方主动请求组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,7 +324,7 @@ on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback): v
 
 提供方监听"request"类型的事件，给使用方返回通过request接口主动请求的数据；使用方监听"push"类型的事件，接收提供方通过push接口主动推送的数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

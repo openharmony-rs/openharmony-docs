@@ -34,7 +34,7 @@
 }
 ```
 
-![zh-cn_image_0000001229155403](figures/zh-cn_image_0000001229155403.png)
+![qrcode-Component](figures/qrcode-Component.png)
 
 > **说明：** 
 >
@@ -87,7 +87,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218439850](figures/zh-cn_image_0000001218439850.gif)
+![Component-Type](figures/Component-Type.gif)
 
 
 ## 设置样式
@@ -120,7 +120,7 @@ qrcode{
 }
 ```
 
-![zh-cn_image_0000001183595750](figures/zh-cn_image_0000001183595750.png)
+![Setting-Styles](figures/Setting-Styles.png)
 
 > **说明：**
 > - width和height不一致时，取二者较小值作为二维码的边长，且最终生成的二维码居中显示。
@@ -162,7 +162,7 @@ qrcode{
 
 ```js
 // index.js
-export default{
+export default {
   data: {
     textVal: ''
   },
@@ -172,4 +172,4 @@ export default{
 }
 ```
 
-![zh-cn_image_0000001183431656](figures/zh-cn_image_0000001183431656.gif)
+![Example-Scenarios](figures/Example-Scenarios.gif)

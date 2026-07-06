@@ -14,6 +14,8 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 该组件支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的全部属性。
 >
 > - SymbolSpan拖拽不会置灰显示。
@@ -26,9 +28,9 @@
 
 SymbolSpan(value: Resource)
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,9 +64,9 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,9 +92,9 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +106,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                          |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md) <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值为undefined时，按默认值处理。|
 
 ### fontWeight
 
@@ -112,7 +114,7 @@ ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
 
 ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
-设置SymbolSpan组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
+设置SymbolSpan组件字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular" 、"medium"分别对应FontWeight中相应的枚举值。
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
@@ -120,9 +122,9 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +136,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件字体粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -148,9 +150,9 @@ ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,13 +182,13 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -204,7 +206,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute> |
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,6 +257,25 @@ id(value: string | undefined)
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+
+### debugLine
+
+debugLine(sourceLine: string, moduleName?: string)
+
+设置组件源码重定向信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sourceLine | string | 是 | 源码行号。 |
+| moduleName | string | 否 | 组件所属模块名。 |
 
 ## 事件
 

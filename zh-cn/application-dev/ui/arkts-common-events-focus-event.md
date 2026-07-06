@@ -41,6 +41,8 @@
   - 调用FocusController的activate(false)方法。
   - 发生点击事件时（包括触屏点击或鼠标左键点击）。
 
+ArkTS-Dyn示例：
+
 <!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusActive.ets) -->
 
 ``` TypeScript
@@ -54,6 +56,31 @@ export struct FocusActiveExample {
           this.getUIContext().getFocusController().activate(true, true);
         })
         Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
+          this.getUIContext().getFocusController().activate(false, true);
+        })
+      }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusActive.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, Margin, NavDestination } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusActiveExample {
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        Button('Set Active').width(140).height(45).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).onClick(() => {
+          this.getUIContext().getFocusController().activate(true, true);
+        })
+        Button('Set Not Active').width(140).height(45).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).onClick(() => {
           this.getUIContext().getFocusController().activate(false, true);
         })
       }.width('100%')
@@ -79,7 +106,7 @@ export struct FocusActiveExample {
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖Page、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[SheetPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[ModalPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、[全屏模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)页面、[半模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)页面、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -107,10 +134,13 @@ export struct FocusActiveExample {
 
 在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
+ArkTS-Dyn示例：
+
 <!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
 
 ``` TypeScript
 @Entry
+@Component
 export struct FocusTransferExample {
   @State logText: string = '\n';
   context = this.getUIContext().getHostContext();
@@ -128,8 +158,12 @@ export struct FocusTransferExample {
               .margin(20)
               .onClick(() => {
                 // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
-                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
-                this.getUIContext().getFocusController().requestFocus('Row 2');
+                try {
+                  this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                  this.getUIContext().getFocusController().requestFocus('Row 2');
+                } catch (error) {
+                  console.error('Row 2 request focus failed!');
+                }
               })
           }
         }
@@ -140,24 +174,40 @@ export struct FocusTransferExample {
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
-            Button('button 3')
+            Button('Button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
           }
           .id('Row 2')
           .onFocus(() => {
             // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            try {
+              this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            } catch (error) {
+              console.error('Get string failed!');
+            }
           })
         }
         .onFocus(() => {
           // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          try {
+            this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          } catch (error) {
+            console.error('Get string failed!');
+          }
         })
 
         Scroll() {
@@ -173,6 +223,81 @@ export struct FocusTransferExample {
       }
       .height('100%')
       .padding(20)
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, Component, Entry, Margin, NavDestination, Padding, Row, Scroll, State, Text, TextAlign } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusTransferExample {
+  @State logText: string = '\n';
+
+  addText(message: string): void {
+    this.logText = (this.logText + `${message}\n`) as string;
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Row() {
+          Column() {
+            Button('Button 1')
+              .margin(20)
+              .onClick(() => {
+                // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
+                this.logText = this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                this.getUIContext().getFocusController().requestFocus('Row 2');
+              })
+          }
+        }
+
+        Column() {
+          Row() {
+            Button('Button 2')
+              .margin(20)
+              .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+                this.addText(('Button 2' + this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.Get_Focus').id)) as string);
+              })
+            Button('button 3')
+              .margin(20)
+              .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+                this.addText(('Button 3' + this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.Get_Focus').id)) as string);
+              })
+          }
+          .id('Row 2')
+          .onFocus(() => {
+            // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+            this.addText(('Row 2' + this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.Get_Focus').id)) as string);
+          })
+        }
+        .onFocus(() => {
+          // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+          this.addText(('Column 2' + this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.Get_Focus').id)) as string);
+        })
+
+        Scroll() {
+          Text(this.logText)
+            .fontSize(14)
+            .textAlign(TextAlign.Start)
+            .padding(10)
+        }
+        .height('40%')
+        .width('100%')
+        .border({ width: 1, color: '#ccc' })
+        .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+      }
+      .height('100%')
+      .padding({ top: 20, bottom: 20, left: 20, right: 20 } as Padding)
     }
     // ...
   }
@@ -251,6 +376,8 @@ export struct FocusTransferExample {
 - 方向键走焦：当使用与容器定义方向垂直的方向键时，容器不接受该方向的走焦请求。例如，在横向的Row容器中，无法使用方向键进行上下移动。
 - 边界处理：当焦点位于容器的首尾子节点时，容器将拒绝与当前焦点方向相反的方向键走焦请求。例如，焦点在一个横向的Row容器的第一个子节点上时，该容器无法处理方向键左的走焦请求。
 
+ArkTS-Dyn示例：
+
 <!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
 
 ``` TypeScript
@@ -292,27 +419,73 @@ export struct FocusLinerExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
+
+``` TypeScript
+import { $r, Button, Color, Column, Component, Entry, Margin, NavDestination, Row } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusLinerExample {
+  build(): void {
+    NavDestination() {
+      Column() {
+        Column() {
+          Button('Column Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+          Button('Column Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+        }
+        .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+        Row() {
+          Button('Row Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+          Button('Row Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
+        }
+      }
+    }
+    // ...
+  }
+}
+```
+
 Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 ![Liner_Focus_1](figures/Liner_Focus_1.gif)
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_2.gif)
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_3.gif)
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
 
-投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持配置了wrap属性的Flex组件。运行规则如下：
+投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持RelativeContainer组件、配置了wrap属性的Flex组件。运行规则如下：
 
 
 - 方向键走焦时，判断投影与子组件区域的重叠面积，在所有面积不为0的子组件中，计算它们与当前获焦组件的中心点直线距离，选择距离最短的子组件。若存在多个备选子组件，则选择节点树上更靠前的子组件。若无任何子组件与投影有重叠，说明该容器无法处理该方向键的走焦请求。
 - Tab键走焦时，先使用规格1，按照方向键右进行判定，若找到则成功退出，若无法找到，则将当前获焦子组件的位置模拟往下移动该获焦子组件的高度，然后再按照方向键左进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次Tab键走焦请求。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
+
+ ArkTS-Dyn示例：
 
  <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
  
@@ -343,6 +516,39 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
  }
  ```
 
+ ArkTS-Sta示例：
+
+ <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
+ 
+ ``` TypeScript
+ import { $r, Column, ColumnOptions, Component, Entry, FlexWrap, NavDestination, Text, Button, Flex, FlexAlign, FlexOptions, Margin, ForEach } from '@kit.ArkUI';
+ 
+ @Entry
+ @Component
+ export struct ProjectAreaFocusExample {
+   build(): void {
+     NavDestination() {
+       Column() {
+         Column({ space: 5 } as ColumnOptions) {
+           Text('Wrap').fontSize(12).width('90%')
+           // 子组件多行布局
+           Flex({ wrap: FlexWrap.Wrap } as FlexOptions) {
+             Button('1').width(140).height(50).margin(5)
+             Button('2').width(140).height(50).margin(5)
+             Button('3').width(140).height(50).margin(5)
+             Button('4').width(140).height(50).margin(5)
+             Button('5').width(140).height(50).margin(5)
+           }
+           .width('90%')
+           .padding(10)
+         }.width('100%').margin({ top: 5 } as Margin)
+       }.width('100%')
+     }
+     // ...
+   }
+ }
+ ```
+
 > **说明：**
 >
 > - 这种投影走焦算法计算的走焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致走焦顺序与开发者预期不符。
@@ -352,6 +558,8 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 Flex多行组件布局，组件大小一致，走焦正常。
 
 ![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
+
+ArkTS-Dyn示例：
 
 <!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
 
@@ -382,6 +590,39 @@ export struct ProjectAreaFocusFlexExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
+
+``` TypeScript
+import { $r, Column, ColumnOptions, Component, Entry, FlexWrap, NavDestination, Text, Button, Flex, FlexAlign, FlexOptions, Margin, ForEach } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct ProjectAreaFocusFlexExample {
+  build(): void {
+    NavDestination() {
+    Column() {
+      Column({ space: 5 } as ColumnOptions) {
+        Text('Wrap').fontSize(12).width('90%')
+        // 子组件多行布局
+        Flex({ wrap: FlexWrap.Wrap } as FlexOptions) {
+          Button('1').width(145).height(50).margin(5)
+          Button('2').width(145).height(50).margin(5)
+          Button('3').width(150).height(50).margin(5)
+          Button('4').width(160).height(50).margin(5)
+          Button('5').width(170).height(50).margin(5)
+        }
+        .width('90%')
+        .padding(5)
+      }.width('100%').margin({ top: 5 } as Margin)
+    }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
 Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
@@ -401,12 +642,14 @@ onFocus(event: () => void)
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
 
 ```ts
-onBlur(event:() => void)
+onBlur(event: () => void)
 ```
 
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
+
+ArkTS-Dyn示例：
 
 <!-- @[focus_dynamic_reflect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/onFocusBlur.ets) -->
 
@@ -470,8 +713,74 @@ export struct OnFocusBlur {
 }
 ```
 
+ArkTS-Sta示例：
 
-![zh-cn_image_0000001511740584](figures/zh-cn_image_0000001511740584.gif)
+<!-- @[focus_dynamic_reflect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/onFocusBlur.ets) -->
+
+``` TypeScript
+import { $r, Button, Color, Column, ColumnOptions, Component, Entry, Margin, NavDestination, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct OnFocusBlur {
+  @State oneButtonColor: Color = Color.Gray;
+  @State twoButtonColor: Color = Color.Gray;
+  @State threeButtonColor: Color = Color.Gray;
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+        Button('First Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.oneButtonColor)
+          .fontColor(Color.Black)
+          // 监听第一个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.oneButtonColor = Color.Green;
+          })
+          // 监听第一个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.oneButtonColor = Color.Gray;
+          })
+
+        Button('Second Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.twoButtonColor)
+          .fontColor(Color.Black)
+          // 监听第二个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.twoButtonColor = Color.Green;
+          })
+          // 监听第二个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.twoButtonColor = Color.Gray;
+          })
+
+        Button('Third Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.threeButtonColor)
+          .fontColor(Color.Black)
+          // 监听第三个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.threeButtonColor = Color.Green;
+          })
+          // 监听第三个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.threeButtonColor = Color.Gray;
+          })
+      }.width('100%').margin({ top: 20 } as Margin)
+    }
+    // ...
+  }
+}
+```
+
+
+![focus-event](figures/focus-event.gif)
 
 
 上述示例包含以下3步：
@@ -484,7 +793,9 @@ export struct OnFocusBlur {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -513,7 +824,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
@@ -532,13 +843,78 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
           })
         }.width('100%').margin({ top: 5 })
       }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+
+``` TypeScript
+import { $r, Button, Color, Column, ColumnOptions, Component, Entry, Margin, NavDestination, State, Row, RowOptions, Padding } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_FocusAndBlurExample]';
+const DOMAIN: int = 0xF811;
+const BUNDLE: string = 'MyApp_FocusAndBlurExample';
+
+@Entry
+@Component
+export struct FocusAndBlurExample {
+  build(): void {
+    NavDestination() {
+      Column() {
+        Column({ space: 5 } as ColumnOptions) {
+          Row({} as RowOptions) { // 父节点Row1
+            Button('Button1') // 子节点Button1
+              .width(140)
+              .height(45)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, (BUNDLE + 'Button1 onFocus') as string);
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, (BUNDLE + 'Button1 onBlur') as string);
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, (BUNDLE + 'Row1 onFocus') as string);
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, (BUNDLE + 'Row1 onBlur') as string);
+          })
+
+          Row({} as RowOptions) { // 父节点Row2
+            Button('Button2') // 子节点Button2
+              .width(140)
+              .height(45)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, (BUNDLE + 'Button2 onFocus') as string);
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, (BUNDLE + 'Button2 onBlur') as string);
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, (BUNDLE + 'Row2 onFocus') as string);
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, (BUNDLE + 'Row2 onBlur') as string);
+          })
+        }.width('100%').margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+      }.width('100%')
+      .padding({ top: 12, bottom: 12, left: 12, right: 12 } as Padding)
     }
     // ...
   }
@@ -601,8 +977,9 @@ focusOnTouch(value: boolean)
 >
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
+ ArkTS-Dyn示例：
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -635,7 +1012,7 @@ focusOnTouch(value: boolean)
              })
            Divider()
  
-           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusOnTouch为true
              .borderColor(this.color2)
              .borderWidth(2)
              .width(300)
@@ -666,11 +1043,11 @@ focusOnTouch(value: boolean)
  
            Divider()
  
-           Row() {
+           Row({ space: 20 }) {
              Button('Button1')
                .width(140).height(70)
              Button('Button2')
-               .width(160).height(70)
+               .width(140).height(70)
            }
  
            Divider()
@@ -699,6 +1076,114 @@ focusOnTouch(value: boolean)
  }
  ```
 
+ ArkTS-Sta示例：
+
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ 
+ ``` TypeScript
+ import { $r, Button, Color, Column, ColumnOptions, Component, Divider, Entry, FlexAlign, KeyEvent, KeyType, Margin, NavDestination, Padding, Row, RowOptions, State, Text } from '@kit.ArkUI';
+ import { KeyCode } from '@kit.InputKit';
+ 
+ @Entry
+ @Component
+ export struct FocusableExample {
+   @State textFocusable: boolean = true;
+   @State textEnabled: boolean = true;
+   @State color1: Color = Color.Yellow;
+   @State color2: Color = Color.Yellow;
+   @State color3: Color = Color.Yellow;
+ 
+   build(): void {
+     NavDestination() {
+       Column({ space: 12 } as ColumnOptions) {
+         // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
+         Text($r('app.string.Focus_Focusable_text'))
+           .fontSize(14)
+           .fontColor('#666')
+         Column({ space: 5 } as ColumnOptions) {
+           Text('Default Text')    // 第一个Text组件未设置focusable属性，默认不可获焦
+             .borderColor(this.color1)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .margin(5)
+             .onFocus(() => {
+               this.color1 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color1 = Color.Yellow;
+             })
+           Divider()
+ 
+           Text('focusable: ' + this.textFocusable as string)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+             .borderColor(this.color2)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .margin(5)
+             .focusable(this.textFocusable)
+             .focusOnTouch(true)
+             .onFocus(() => {
+               this.color2 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color2 = Color.Yellow;
+             })
+ 
+           Text('enabled: ' + this.textEnabled as string)    // 第三个Text设置了focusable为true，enabled初始为true
+             .borderColor(this.color3)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .margin(5)
+             .focusable(true)
+             .enabled(this.textEnabled)
+             .focusOnTouch(true)
+             .onFocus(() => {
+               this.color3 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color3 = Color.Yellow;
+             })
+ 
+           Divider()
+ 
+           Row() {
+             Button('Button1')
+               .width(140).height(70).margin(5)
+             Button('Button2')
+               .width(160).height(70).margin(5)
+           }
+ 
+           Divider()
+           Button('Button3')
+             .width(300).height(70).margin(5)
+ 
+           Divider()
+         }.width('100%').justifyContent(FlexAlign.Center)
+         .onKeyEvent((e: KeyEvent): boolean => {
+           // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
+           if (e.keyCode === 2022 && e.type === KeyType.Down) {
+             this.textFocusable = !this.textFocusable;
+             return true;
+           }
+           // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
+           if (e.keyCode === 2023 && e.type === KeyType.Down) {
+             this.textEnabled = !this.textEnabled;
+             return true;
+           }
+           return false;
+         })
+       }
+       .width('100%')
+       .height('100%')
+       .padding({ left: 12, right: 12 } as Padding)
+     }
+     // ...
+   }
+ }
+ ```
+
 
 运行效果：
 
@@ -721,6 +1206,8 @@ focusOnTouch(value: boolean)
 > - 容器内部没有可获焦子节点。
 > - 容器配置有onClick或是单指单击的Tap手势。
 > - 容器本身未设置focusable属性，或设置在onClick或是单指单击的Tap手势之后。
+
+ArkTS-Dyn示例：
 
 <!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
 
@@ -771,6 +1258,57 @@ export struct ScopeFocusExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
+
+``` TypeScript
+import { $r, Button, Color, Column, ColumnOptions, Component, Entry, Margin, NavDestination, State, Text, TextAlign, FlexAlign, Padding } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_FocusAndBlurExample]';
+const DOMAIN: int = 0xF811;
+const BUNDLE: string = 'MyApp_FocusAndBlurExample';
+
+@Entry
+@Component
+export struct ScopeFocusExample {
+  @State scopeFocusState: boolean = true;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Column({ space: 5 } as ColumnOptions) {
+          // 请将$r('app.string.Container_Coking')替换为实际资源文件，在本示例中该资源文件的value值为"容器获焦"
+          Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('80%')
+        .height(50)
+        .margin({ top: 5, bottom: 5 } as Margin)
+        .onClick(() => {
+        })
+        .focusable(this.scopeFocusState)
+
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin(5)
+          .onClick(() => {
+            this.scopeFocusState = !this.scopeFocusState;
+            hilog.info(DOMAIN, TAG, (BUNDLE + 'Button1 onFocus') as string);
+          })
+        Button('Button2')
+          .width(140)
+          .height(45)
+          .margin(5)
+      }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
 
 ![Scope_Focus_1.gif](figures/Scope_Focus_1.gif)
 
@@ -785,6 +1323,8 @@ export struct ScopeFocusExample {
 tabStop(isTabStop: boolean) 
 ```
 设置当前容器组件的[tabStop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabstop14)属性，可决定在走焦时焦点是否会停留在当前容器。
+
+ArkTS-Dyn示例：
 
 <!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets) -->
 
@@ -816,6 +1356,40 @@ export struct TabStopExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/TabStop.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, Margin, NavDestination } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct TabStopExample {
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+        }.tabStop(true)
+      }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
 ![TabStop_Focus_1.gif](figures/TabStop_Focus_1.gif)
 
 上述示例包含以下2步：
@@ -832,6 +1406,8 @@ defaultFocus(value: boolean)
 ```
 
 设置当前组件是否为当前[层级页面](#基础概念)上的默认焦点。
+
+ArkTS-Dyn示例：
 
 <!-- @[focus_visualization_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/DefaultFocus.ets) -->
 
@@ -897,6 +1473,73 @@ export struct DefaultFocus {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[focus_visualization_manage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/DefaultFocus.ets) -->
+
+``` TypeScript
+import { $r, Button, Color, Column, ColumnOptions, Component, Entry, Margin, NavDestination, Padding, State } from '@kit.ArkUI';
+@Entry
+@Component
+export struct DefaultFocus {
+  @State oneButtonColor: Color = Color.Gray;
+  @State twoButtonColor: Color = Color.Gray;
+  @State threeButtonColor: Color = Color.Gray;
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+        Button('First Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.oneButtonColor)
+          .fontColor(Color.Black)
+          // 监听第一个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.oneButtonColor = Color.Green;
+          })
+          // 监听第一个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.oneButtonColor = Color.Gray;
+          })
+
+        Button('Second Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.twoButtonColor)
+          .fontColor(Color.Black)
+          // 监听第二个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.twoButtonColor = Color.Green;
+          })
+          // 监听第二个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.twoButtonColor = Color.Gray;
+          })
+
+        Button('Third Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.threeButtonColor)
+          .fontColor(Color.Black)
+          // 设置默认焦点
+          .defaultFocus(true)
+          // 监听第三个组件的获焦事件，获焦后改变颜色
+          .onFocus(() => {
+            this.threeButtonColor = Color.Green;
+          })
+          // 监听第三个组件的失焦事件，失焦后改变颜色
+          .onBlur(() => {
+            this.threeButtonColor = Color.Gray;
+          })
+      }.width('100%').margin({ top: 20 } as Margin)
+    }
+    // ...
+  }
+}
+```
+
 ![defaultFocus.gif](figures/defaultFocus.gif)
 
 上述示例包含以下2步：
@@ -914,6 +1557,8 @@ export struct DefaultFocus {
 
 示例
 
+ArkTS-Dyn示例：
+
 <!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
 
 ``` TypeScript
@@ -930,6 +1575,31 @@ export struct FocusScopePriorityPrevious {
       }.focusScopeId('RowScope')
     }
     // ···
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, FocusPriority, NavDestination, Row, RowOptions } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusScopePriorityPrevious {
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        Row({ space: 12 } as RowOptions) {
+          Button('Button1')
+            .defaultFocus(true)
+          Button('Button2')
+            .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
+        }.focusScopeId('RowScope')
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -972,6 +1642,8 @@ focusBox(style: FocusBoxStyle)
 
 设置当前组件系统焦点框样式。
 
+ArkTS-Dyn示例：
+
 <!-- @[dynamic_focus_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/RequestFocus.ets) -->
 
 ``` TypeScript
@@ -983,6 +1655,39 @@ export struct RequestFocusExample {
   build() {
     NavDestination() {
       Column({ space: 30 }) {
+        Button('small black focus box')
+          .focusBox({
+            margin: new LengthMetrics(0),
+            strokeColor: ColorMetrics.rgba(0, 0, 0),
+          })
+        Button('large red focus box')
+          .focusBox({
+            margin: LengthMetrics.px(20),
+            strokeColor: ColorMetrics.rgba(255, 0, 0),
+            strokeWidth: LengthMetrics.px(10)
+          })
+      }
+      .alignItems(HorizontalAlign.Center)
+      .width('100%')
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_request](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/RequestFocus.ets) -->
+
+``` TypeScript
+import { $r, Button, ColorMetrics, Column, ColumnOptions, Component, Entry, LengthMetrics, NavDestination, State, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct RequestFocusExample {
+  build(): void {
+    NavDestination() {
+      Column({ space: 30 } as ColumnOptions) {
         Button('small black focus box')
           .focusBox({
             margin: new LengthMetrics(0),
@@ -1039,7 +1744,9 @@ export struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1089,7 +1796,11 @@ export struct RequestFocusExample {
               Button('FocusController.requestFocus')
                 .width(200).height(70).fontColor(Color.White)
                 .onClick(() => {
-                  this.getUIContext().getFocusController().requestFocus('testButton');
+                  try {
+                    this.getUIContext().getFocusController().requestFocus('testButton');
+                  } catch (error) {
+                    console.error('Request focus failed!');
+                  }
                 })
                 .backgroundColor('#ff2787d9')
   
@@ -1116,6 +1827,87 @@ export struct RequestFocusExample {
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  
+  ``` TypeScript
+  import { $r, Button, Color, Column, ColumnOptions, Component, Divider, Entry, Margin, NavDestination, Padding, State, focusControl } from '@kit.ArkUI';
+  @Entry
+  @Component
+  export struct FocusControl {
+    @State btColor: string = '#ff2787d9';
+    @State btColor2: string = '#ff2787d9';
+  
+    build(): void {
+      NavDestination() {
+          Column({ space: 20 } as ColumnOptions) {
+            Column({ space: 5 } as ColumnOptions) {
+              Button('Button')
+                .width(200)
+                .height(70)
+                .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor)
+                .onFocus(() => {
+                  this.btColor = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor = '#ff2787d9';
+                })
+                .id('testButton')
+  
+              Button('Button')
+                .width(200)
+                .height(70)
+                .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor2)
+                .onFocus(() => {
+                  this.btColor2 = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor2 = '#ff2787d9';
+                })
+                .id('testButton2')
+  
+              Divider()
+                .vertical(false)
+                .width('80%')
+                .backgroundColor('#ff707070')
+                .height(10)
+  
+              Button('FocusController.requestFocus')
+                .width(200).height(70).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().requestFocus('testButton');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('focusControl.requestFocus')
+                .width(200).height(70).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).fontColor(Color.White)
+                .onClick(() => {
+                  focusControl.requestFocus('testButton2');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('clearFocus')
+                .width(200).height(70).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().clearFocus();
+                })
+                .backgroundColor('#ff2787d9')
+            }
+          }
+          .width('100%')
+          .height('100%')
+      }
+      // ...
+    }
+  }
+  ```
 ![focus-2](figures/focus-2.gif)
 
 上述示例包含以下3步：
@@ -1137,6 +1929,8 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 >  **说明：**
 >
 >  - 该能力从API version 18开始支持。
+
+  ArkTS-Dyn示例：
 
   <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
   
@@ -1184,6 +1978,55 @@ nextFocus(nextStep: Optional<FocusMovement>): T
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/NextFocus.ets) -->
+  
+  ``` TypeScript
+  import { $r, Button, Column, ColumnOptions, Component, Entry, NavDestination, Row, RowOptions } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  export struct NextFocusExample {
+    build(): void {
+      NavDestination() {
+        Column({ space: 30 } as ColumnOptions) {
+          Row().height('30%')
+          Row({ space: 10 } as RowOptions) {
+            Button('A')
+              .id('A')
+              .nextFocus({ forward: 'F', backward: 'C', down: 'B' })
+            Button('B')
+              .id('B')
+              .nextFocus({ down: 'C' })
+            Button('C')
+              .id('C')
+          }
+  
+          Column({ space: 10 } as ColumnOptions) {
+            Button('D')
+              .id('D')
+            Button('E')
+              .id('E')
+              .nextFocus({
+                forward: 'A',
+                backward: 'M',
+                up: 'E',
+                right: 'F'
+              })
+          }
+  
+          Row({ space: 10 } as RowOptions) {
+            Button('F')
+              .id('F')
+              .nextFocus({ forward: 'B', down: 'A' })
+          }
+        }.width('100%')
+      }
+      // ...
+    }
+  }
+  ```
 Tab键走焦：未配置nextFocus时，Tab键走焦顺序为A->B->C->D->E->F。配置nextFocus之后，Tab键走焦顺序为A->F->B->C->D->E->A。
 
 ![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
@@ -1208,7 +2051,9 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
+
+  ArkTS-Dyn示例：
 
   <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
   
@@ -1242,11 +2087,47 @@ tabIndex自定义组件Tab键走焦顺序。
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/TabIndex.ets) -->
+  
+  ``` TypeScript
+  import { $r, Button, Column, Component, Entry, Margin, NavDestination } from '@kit.ArkUI';
+  @Entry
+  @Component
+  export struct TabIndexExample {
+    build(): void {
+      NavDestination() {
+        Column() {
+          Button('Button1')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+          Button('Focus Button1')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).tabIndex(1)
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+          Button('Focus Button2')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).tabIndex(2)
+        }.width('100%')
+      }
+      // ...
+    }
+  }
+  ```
 Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
 ![TabIndex_Focus_1.gif](figures/TabIndex_Focus_1.gif)
 
 tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过，则走到第一个可获焦组件上，否则会走到上次获焦的节点。
+
+ArkTS-Dyn示例：
 
 <!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
 
@@ -1270,6 +2151,40 @@ export struct TabIndexFocusExample {
             .width(140)
             .height(45)
             .margin(5)
+        }.tabIndex(2)
+      }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, Component, Entry, Margin, NavDestination } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct TabIndexFocusExample {
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).tabIndex(1)
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
         }.tabIndex(2)
       }.width('100%')
     }
@@ -1302,6 +2217,8 @@ focusScopeId(id: string, isGroup?: boolean)
 ```
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
+
+ArkTS-Dyn示例：
 
 <!-- @[focus_scope_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriority.ets) -->
 
@@ -1437,6 +2354,156 @@ export struct FocusScopePriority {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[focus_scope_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusScopePriority.ets) -->
+
+``` TypeScript
+import { $r, BorderStyle, Button, Color, Column, ColumnOptions, Component, Entry, FocusPriority, Margin, NavDestination, Padding, Row, RowOptions, Scroll, State, TextInput, VerticalAlign } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusScopePriority {
+  @State inputValue: string = '';
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+
+        Scroll() {
+          Row({ space: 20 } as RowOptions) {
+            Column({ space: 20 } as ColumnOptions) {  // 标记为Column1
+              Column({ space: 5 } as ColumnOptions) {
+                Button('Group1')
+                  .width(165)
+                  .height(40)
+                  .fontColor(Color.White)
+                Row({ space: 5 } as RowOptions) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                }
+                Row({ space: 5 } as RowOptions) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                }
+              }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+              Column({ space: 5 } as ColumnOptions) {
+                Button('Group2')
+                  .width(165)
+                  .height(40)
+                  .fontColor(Color.White)
+                Row({ space: 5 } as RowOptions) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                    .fontColor(Color.White)
+                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Column1首次获焦时获焦
+                }
+                Row({ space: 5 } as RowOptions) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                    .fontColor(Color.White)
+                }
+              }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+            }
+            .focusScopeId('ColumnScope1')
+            Column({ space: 5 } as ColumnOptions) {  // 标记为Column2
+              TextInput({placeholder: 'input', text: this.inputValue})
+                .onChange((value: string) => {
+                  this.inputValue = value;
+                })
+                .width(156)
+              Button('Group3')
+                .width(165)
+                .height(40)
+                .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                .fontColor(Color.White)
+              Row({ space: 5 } as RowOptions) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+              }
+              Button()
+                .width(165)
+                .height(40)
+                .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                .fontColor(Color.White)
+                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Column2获焦时获焦
+              Row({ space: 5 } as RowOptions) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+              }
+              Button()
+                .width(165)
+                .height(40)
+                .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                .fontColor(Color.White)
+              Row({ space: 5 } as RowOptions) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+                  .fontColor(Color.White)
+              }
+            }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
+            .focusScopeId('ColumnScope2', true)  // Column2为焦点组
+          }.alignItems(VerticalAlign.Top)
+        }
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 } as Padding)
+    }
+    // ...
+  }
+}
+```
+
 
 ![focus-3](figures/focus-3.gif)
 
@@ -1452,6 +2519,8 @@ export struct FocusScopePriority {
 ```ts
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 ```
+
+ArkTS-Dyn示例：
 
 <!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
 
@@ -1513,6 +2582,69 @@ export struct FocusScopeIdExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
+
+``` TypeScript
+import { $r, BorderStyle, Button, Color, Column, ColumnOptions, Component, Entry, Margin, NavDestination, Row, RowOptions, TextInput } from '@kit.ArkUI';
+@Entry
+@Component
+export struct FocusScopeIdExample {
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        Column() {
+          Button('Group1')
+            .width(165)
+            .height(40)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+            .fontColor(Color.White)
+          Row({ space: 5 } as RowOptions) {
+            Button('Button1')
+              .width(80)
+              .height(40)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .fontColor(Color.White)
+            Button('Button2')
+              .width(80)
+              .height(40)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('1', true, true)
+        .borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
+        TextInput()
+        Column() {
+          Button('Group2')
+            .width(165)
+            .height(40)
+            .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+            .fontColor(Color.White)
+          Row({ space: 5 } as RowOptions) {
+            Button('Button3')
+              .width(80)
+              .height(40)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .fontColor(Color.White)
+            Button('Button4')
+              .width(80)
+              .height(40)
+              .margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('2', true, false)
+        .borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+
+        TextInput()
+      }.width('100%')
+    }
+    // ...
+  }
+}
+```
+
 
 ![FocusScopeId_1](figures/FocusScopeId_1.gif)
 
@@ -1539,6 +2671,8 @@ export struct FocusScopeIdExample {
 >
 > - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）。
 
+   ArkTS-Dyn示例：
+
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    
    ``` TypeScript
@@ -1561,6 +2695,39 @@ export struct FocusScopeIdExample {
                  this.name = 'count is odd number';
                }
              }).height(60)
+         }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+       }
+       // ...
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
+   
+   ``` TypeScript
+   import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, Margin, NavDestination, State } from '@kit.ArkUI';
+   @Entry
+   @Component
+   export struct FocusOnclickExample {
+     @State count: int = 0;
+     @State name: string = 'Button';
+   
+     build(): void {
+       NavDestination() {
+         Column({ space: 12 } as ColumnOptions) {
+           Button(this.name)
+             .fontSize(30)
+             .onClick(() => {
+               this.count++;
+               if (this.count % 2 === 0) {
+                 this.name = 'count is even number';
+               } else {
+                 this.name = 'count is odd number';
+               }
+             }).height(60)
+             .margin({ top: 10, bottom: 10, left: 10, right: 10 } as Margin)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
        // ...

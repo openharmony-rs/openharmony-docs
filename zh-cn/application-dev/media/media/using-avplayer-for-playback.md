@@ -1,7 +1,7 @@
 # 使用AVPlayer播放音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -35,11 +35,20 @@
 
 1. 创建实例createAVPlayer()，AVPlayer初始化idle状态。
 
+    ArkTS-Dyn:
     ```ts
     import { media } from '@kit.MediaKit';
 
     // 创建avPlayer实例对象。
     let avPlayer = await media.createAVPlayer();
+    ```
+
+    ArkTS-Sta:
+    <!-- @[create_AVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建avPlayer实例对象
+    this.avPlayer = await media.createAVPlayer();
     ```
 
 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括：
@@ -56,6 +65,7 @@
    | bufferingUpdate | 用于网络播放，监听网络播放缓冲信息，用于上报缓冲百分比以及缓存播放进度。 |
    | audioInterrupt | 监听音频焦点切换信息，搭配属性audioInterruptMode使用。<br/>如果当前设备存在多个音频正在播放，音频焦点被切换（即播放其他媒体如通话等）时将上报该事件，应用可以及时处理。 |
 
+    ArkTS-Dyn:
     ```ts
     // 此处仅为示例，开发者根据需要设置合适的监听事件。
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,6 +97,144 @@
     });
     avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
         // 开发者根据需要写入业务逻辑。
+    });
+    ```
+    
+    ArkTS-Sta:
+    <!-- @[registration_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.avPlayer?.onSeekDone((seekDoneTime: int) => {
+      console.info(`${this.tag}: setAVPlayerCallback AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
+    });
+    this.avPlayer?.onSpeedDone((speed) => {
+      console.info(`${this.tag}: setAVPlayerCallback AVPlayer speedDone, speed is ${speed}`);
+    });
+    // error回调监听函数,当avPlayer在操作过程中出现错误时调用reset接口触发重置流程
+    this.avPlayer?.onError((err: BusinessError) => {
+      console.error(`${this.tag}: setAVPlayerCallback Invoke avPlayer failed ${JSON.stringify(err)}`);
+      if (this.avPlayer == null) {
+        console.error(`${this.tag}: avPlayer has not init on error`);
+        return;
+      }
+      this.avPlayer!.reset();
+    });
+    // 状态机变化回调函数
+    this.avPlayer?.onStateChange((state, reason) => {
+      if (this.avPlayer == null) {
+        console.info(`${this.tag}: avPlayer has not init on state change`);
+        return;
+      }
+      switch (state) {
+        case 'idle': // 成功调用reset接口后触发该状态机上报
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state idle called.`);
+          break;
+        case 'initialized': // avplayer 设置播放源后触发该状态上报
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state initialized called.`);
+          if (this.surfaceId) {
+            this.avPlayer!.surfaceId = this.surfaceId; // 设置显示画面，当播放的资源为纯音频时无需设置
+            console.info(`${this.tag}: setAVPlayerCallback this.avPlayer.surfaceId = ${this.avPlayer?.surfaceId}`);
+            this.avPlayer?.prepare();
+          }
+          break;
+        case 'prepared': // prepare调用成功后上报该状态机
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state prepared called.`);
+          this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int) => {
+            console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+          })
+          this.durationTime = this.avPlayer!!.duration;
+          this.currentTime = this.avPlayer!!.currentTime;
+          this.avPlayer?.play(); // 调用播放接口开始播放
+          console.info(`${this.tag}:
+            setAVPlayerCallback speedSelect: ${this.speedSelect}, duration: ${this.durationTime}`);
+          if (this.speedSelect != -1) {
+            switch (this.speedSelect) {
+              case SPEED_ZERO:
+                this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
+                break;
+              case SPEED_ONE:
+                this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_25_X);
+                break;
+              case SPEED_TWO:
+                this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_75_X);
+                break;
+              case SPEED_THREE:
+                this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
+                break;
+            }
+          }
+          callback(this.avPlayer!);
+          break;
+        case 'playing': // play成功调用后触发该状态机上报
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state playing called.`);
+          if (this.count !== 0) {
+            if (this.intervalID != -1) {
+              clearInterval(this.intervalID)
+            }
+            this.intervalID = setInterval(() => { // 更新当前时间
+              AppStorage.setOrCreate('durationTime', this.durationTime);
+              AppStorage.setOrCreate('currentTime', this.currentTime);
+            }, 100);
+            let eventDataTrue: emitter.EventData = {
+              data: {
+                'flag': true
+              }
+            };
+            let innerEventTrue: emitter.InnerEvent = {
+              eventId: 2,
+              priority: emitter.EventPriority.HIGH
+            };
+            emitter.emit(innerEventTrue, eventDataTrue);
+          } else {
+            setTimeout(() => {
+              console.info('AVPlayer playing wait to pause');
+              this.avPlayer?.pause(); // 播放3s后调用暂停接口暂停播放。
+            }, 3000);
+          }
+          this.count++;
+          break;
+        case 'completed': // 播放结束后触发该状态机上报
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state completed called.`);
+          let eventDataFalse: emitter.EventData = {
+            data: {
+              'flag': false
+            }
+          };
+          let innerEvent: emitter.InnerEvent = {
+            eventId: 1,
+            priority: emitter.EventPriority.HIGH
+          };
+          emitter.emit(innerEvent, eventDataFalse);
+          if (this.intervalID != -1) {
+            clearInterval(this.intervalID)
+          }
+          this.avPlayer!!.offBufferingUpdate();
+          AppStorage.setOrCreate('currentTime', this.durationTime);
+          break;
+        case 'released':
+          console.info(`${this.tag}: setAVPlayerCallback released called.`);
+          break
+        case 'stopped':
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state stopped called.`);
+          break
+        case 'error':
+          console.error(`${this.tag}: setAVPlayerCallback AVPlayer state error called.`);
+          break
+        case 'paused':
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state paused called.`);
+          setTimeout(() => {
+            console.info('AVPlayer paused wait to play again');
+            this.avPlayer?.play(); // 暂停3s后再次调用播放接口开始播放。
+          }, 3000);
+          break
+        default:
+          console.info(`${this.tag}: setAVPlayerCallback AVPlayer state unknown called.`);
+          break;
+      }
+    });
+    // 时间上报监听函数
+    this.avPlayer!.onTimeUpdate((time: int) => {
+      this.currentTime = time;
     });
     ```
 
@@ -199,8 +347,8 @@
             console.info('Succeeded in resetting');
         }
     });
-    // 更换url。
-    let url = 'https://xxx.xxx.xxx.mp3';
+    // 更换URL。
+    let url = 'https://example.com/audio.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
     if (avPlayer == null) {
         return;
     }

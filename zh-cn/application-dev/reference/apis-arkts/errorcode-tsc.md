@@ -1,23 +1,23 @@
-# Typescript Compiler错误码介绍
+# TypeScript Compiler错误码介绍
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @liyancheng-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 
-TSC(Typescript Compiler)的错误码以'105'开头，是TSC编译流程中的报错提示，会在编辑器、控制台或日志文件中显示输出错误码和相对应的报错描述。
+TSC（TypeScript Compiler）的错误码以`105`开头，是TSC编译流程中的报错提示，会在编辑器、控制台或日志文件中显示输出错误码和相对应的报错描述。
 
 ## 10505001 TSC原生报错
 
-TSC原生报错：以'001'结尾，是Typescript Compiler检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、赋值类型与接收类型不一致、类型或变量未定义等。这些问题通常是未按照[语言规范](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/introduction-to-arkts)编写代码导致的，开发者可以根据报错描述修改代码。
+TSC原生报错：以`001`结尾，是TypeScript Compiler检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、多个默认导出、赋值类型与接收类型不一致、js文件接口声明缺失等。这些问题通常是未按照[语言规范](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/introduction-to-arkts)编写代码导致的，开发者可以根据报错描述修改代码。
 
 ### 关键字或符号的缺失
 
 **错误示例场景：**
 
 ```typescript
-declare type AAA = 'BBB;
+declare type Color = 'red;
 ```
 
 **错误信息**
@@ -34,10 +34,10 @@ Unterminated string literal.
 
 **处理步骤**
 
-根据报错描述，补全代码块的引号，修改后代码如下：
+为修复字符串字面量未终止的错误，补全代码块中缺失的结束引号，修改后代码如下：
 
 ```typescript
-declare type AAA = 'BBB';
+declare type Color = 'red';
 ```
 
 ### 多个默认导出
@@ -45,8 +45,8 @@ declare type AAA = 'BBB';
 **错误示例场景：**
 
 ```typescript
-export default A;
-export default B;
+export default config;
+export default logger;
 ```
 
 **错误信息**
@@ -63,10 +63,10 @@ A module cannot have multiple default exports.
 
 **处理步骤**
 
-根据报错描述，删除多余的默认导出，修改后代码如下：
+为修复模块存在多个默认导出的错误，删除多余的默认导出，修改后代码如下：
 
 ```typescript
-export default A;
+export default config;
 ```
 
 ### 赋值类型与接收类型不一致
@@ -74,9 +74,9 @@ export default A;
 **错误示例场景：**
 
 ```typescript
-let a: number = 1;
-let b: string = '2';
-a = b;
+let count: number = 1;
+let amount: string = '2';
+count = amount;
 ```
 
 **错误信息**
@@ -93,25 +93,25 @@ Type 'string' is not assignable to type 'number'.
 
 **处理步骤**
 
-根据报错描述，确保类型一致性，进行相应的类型赋值修改，修改后代码如下：
+为修复类型不一致的错误，确保赋值类型与接收类型一致，进行相应的类型赋值修改，修改后代码如下：
 
 ```typescript
-let a: number = 1;
-let b: number = 2;
-a = b;
+let count: number = 1;
+let amount: number = 2;
+count = amount;
 ```
 
-### js文件中接口导出异常
+### js文件接口声明缺失
 
 **错误示例场景：**
 
 har1包中有js文件，存在导出接口：
-```
+```javascript
 // har1's src/main/ets/FileJs.js
 export let fileJs = 1;
 ```
 har2包引用har1包中该接口：
-```
+```typescript
 import { fileJs } from 'har1/src/main/ets/FileJs';
 ```
 
@@ -121,26 +121,26 @@ Cannot find module XXX or its corresponding type declarations.
 
 **错误描述**
 
-当字节码har中有js文件时，编译无法生成声明文件，导致其余模块无法导入。
+找不到模块或其对应的类型声明文件，导致该模块无法被正常导入。
 
 **可能原因**
 
-js文件在编译时tsc不会生成对应的声明文件，导致其余模块无法导入。
+字节码HAR中包含js文件，而js文件在编译时TSC不会为其生成对应的.d.ts声明文件，因此依赖该模块的外部模块无法解析其类型声明，从而触发导入失败。
 
 **处理步骤**
 
-若har包中的js文件需要提供对外导出功能，开发者需要：
+若HAR包中的js文件需要提供对外导出功能，开发者需要：
 
-1.在js文件同级目录中手动编写对应的.d.ts声明文件，并随har包一起编译发布，示例如下：
-```
+1.在js文件同级目录中手动编写对应的.d.ts声明文件，并随HAR包一起编译发布，示例如下：
+```typescript
 // har1's src/main/ets/FileJs.d.ts
 export declare let fileJs: number;
 ```
 2.在har1包顶层的Index.ets文件中增加export导出语句，示例如下：
-```
+```typescript
 export { fileJs } from './src/main/ets/FileJs';
 ```
-3.在har2包引用har1包中该接口，示例如下：
-```
+3.在har2包中引用har1包中该接口，示例如下：
+```typescript
 import { fileJs } from 'har1/src/main/ets/FileJs';
 ```

@@ -109,17 +109,14 @@ Timestamp:2025-05-17 19:17:07.000
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | --- | --- | --- | --- |
 | 宏: OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING<br/>字符串：extend_pc_lr_printing | const char* | 否 | 是否打印PC和LR寄存器扩展字节范围的内存内容。<br/>"true"：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>"false"：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为"false"。 |
-| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 是否截断CPP_CRASH日志，单位为Byte，取值范围为[0, 5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 是否截断崩溃日志（CPP_CRASH日志、minidump)，单位为Byte，取值范围为[0, 5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
 | 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | 是否打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，虚拟内存空间）映射信息。<br/>"true"：只打印崩溃日志中出现的地址所属的VMA映射信息，即崩溃日志中Maps，以减小日志大小。<br/>"false"：打印所有VMA映射信息。<br/>缺省时默认为"false"。 |
-| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。|
+| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。<br/>**注意**：沙箱路径下必须有应用生成的拼接日志。|
+| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP<br/>collect_minidump | const char* | 否 | 是否使能minidump，默认值为"false"。 <br/>"true"：在Native Crash场景同时生成minidump。<br/>"false"：在Native Crash场景不生成minidump。 <br/>生成minidump日志文件以.dmp结尾，跟随APP_CRASH事件一起返回，保存在external_log字段中。<br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。|
 
 参数设置示例如下：
 
-OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
-
-> **注意：**
->
-> 沙箱路径下必须有应用生成的拼接日志。
+OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取崩溃日志文件路径。
 
 ### configEventPolicy接口说明
 
@@ -150,7 +147,8 @@ let policy: hiAppEvent.EventPolicy = {
       pageSwitchLogEnable: true // 启用页面切换日志。ArkTS-Dyn起始版本：24；ArkTS-Sta起始版本：24
       extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
       logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      simplifyVmaPrinting: true // 使能精简打印maps。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
+      simplifyVmaPrinting: true, // 使能精简打印maps。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
+      collectMinidump: true // native崩溃场景，使能minidump。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -189,7 +187,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。<br>**说明**：从API version 22开始支持。 |
 | threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。仅在NativeCrash类型的崩溃事件提供。 |
 | external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
-| log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_name | string | 故障进程名。<br>**说明**：从API version 21开始支持。 |
 | page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
@@ -242,7 +240,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | -------- | -------- | -------- |
 | file | string | 文件名称。 |
 | symbol | string | 函数名称。symbol为空可能是由于以下两种原因：<br/>**1. 二进制文件中没有保存该函数名信息。**<br/>**2. 函数名称长度超过256字节时将被全部删除，以防止超长字符串引起未知问题。** |
-| buildId | string | 文件唯一标识。**文件可能没有buildId**。|
+| buildId | string | 来源于elf中.note.gnu.build-id。|
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
@@ -278,4 +276,3 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | 接口名 | 描述 |
 | -------- | -------- |
 | setEventParam(params: Record&lt;string, ParamType>, domain: string, name?: string): Promise&lt;void> | 事件自定义参数设置方法。 |
-

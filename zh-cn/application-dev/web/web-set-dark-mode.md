@@ -1,8 +1,8 @@
 # Web深色模式适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @ohxianzhi-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 

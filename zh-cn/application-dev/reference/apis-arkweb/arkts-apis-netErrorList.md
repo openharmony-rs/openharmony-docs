@@ -57,7 +57,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_BLOCKED_BY_RESPONSE | -27 | 请求失败，因为响应不满足要求（例如“X-Frame-Options”和“Content Security Policy”检查以及“Cross Origin Resource Policy”）。|
 |ERR_CLEARTEXT_NOT_PERMITTED | -29 | 该请求被系统策略阻止，不允许部分或全部明文请求。|
 |ERR_BLOCKED_BY_CSP | -30 | 请求被内容安全策略阻止。 |
-|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有H/2或QUIC会话，请求被阻止。|
+|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有HTTP/2或QUIC会话，请求被阻止。|
 |ERR_BLOCKED_BY_ORB | -32 | 请求被 CORB 或 ORB 阻止。 |
 |ERR_CONNECTION_CLOSED | -100 |  连接已关闭（对应于TCP FIN）。|
 |ERR_CONNECTION_RESET | -101 |  连接被重置（对应于TCP RST）。|
@@ -98,7 +98,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT | -140 |  通过HTTPS代理创建SSL隧道连接的请求收到302（响应正文可能包括请求失败原因的描述）。|
 |ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED | -141 | 无法使用客户端证书的私钥对SSL客户端身份验证握手的CertificateVerify数据进行签名。|
 |ERR_MSG_TOO_BIG | -142 | 消息太大，无法传输。（例如，超过大小阈值的UDP消息）。|
-|ERR_WS_PROTOCOL_ERROR | -145 | Websocket协议错误。表示由于帧格式错误或其他协议冲突，正在终止连接。|
+|ERR_WS_PROTOCOL_ERROR | -145 | WebSocket协议错误。表示由于帧格式错误或其他协议冲突，正在终止连接。|
 |ERR_ADDRESS_IN_USE | -147 | 尝试绑定已在使用的地址时返回。|
 |ERR_SSL_HANDSHAKE_NOT_COMPLETED | -148 | 由于SSL握手尚未完成，操作失败。|
 |ERR_SSL_BAD_PEER_PUBLIC_KEY | -149 | SSL 公钥错误。|
@@ -178,7 +178,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | 缺少身份验证凭据。 |
 |ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | 意外的安全库状态。 |
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | 配置错误的身份验证环境。 |
-|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 取消文档安全库状态。 |
+|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 未记录的SSPI或GSSAPI状态码。 |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | 响应体太大。|
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | 响应 headers 多个内容长度。 |
 |ERR_INCOMPLETE_HTTP2_HEADERS | -347 | 不完整的 HTTP/2 headers。 |
@@ -265,6 +265,6 @@ ArkWeb的网络协议栈错误列表
 |ERR_DNS_SEARCH_EMPTY | -805 | 后缀搜索列表规则阻止了给定主机名的解析。|
 |ERR_DNS_SORT_ERROR | -806 | 未能根据RFC3484对地址进行排序。|
 |ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED | -808 | 未能解析DNS-over-HTTPS服务器的主机名。|
-|ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的https或wss。|
+|ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的HTTPS或WSS。|
 |ERR_DNS_REQUEST_CANCELED | -810 | 与此任务相关的所有 DNS 请求已被取消。|
 |ERR_DNS_NO_MATCHING_SUPPORTED_ALPN | -811 | HTTPS记录的主机名解析预期未能使用受支持协议的ALPN值进行解析。|

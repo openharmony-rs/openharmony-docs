@@ -6,9 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的弹窗确认或取消功能对象。示例代码参考[onAlert事件](./arkts-basic-components-web-events.md#onalert)。
+JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对象，适用于开发者拦截并自定义处理`window.alert`、`window.confirm`、`window.prompt`等弹窗场景。开发者可在[onAlert](./arkts-basic-components-web-events.md#onalert)、[onConfirm](./arkts-basic-components-web-events.md#onconfirm)或[onPrompt](./arkts-basic-components-web-events.md#onprompt9)等事件回调中，通过该对象向Web组件反馈用户的确认、取消或输入内容等操作结果，从而控制弹窗的后续行为。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >

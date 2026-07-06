@@ -8,6 +8,8 @@
 
 应用可以在布局中嵌入最近图片组件，通过此组件，应用无需申请权限，即可指定配置访问公共目录中最近的一个图片或视频文件。授予的权限仅包含只读权限。
 
+请注意AlbumPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
+
 > **说明：**
 >
 > - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -70,7 +72,7 @@ RecentPhotoComponent，是最近图片组件，可用于访问按创建时间排
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否 | 是    | 最近图片/视频的拍摄时间，单位为毫秒。（距1970年1月1日的毫秒数值）。                     |
+| dateTaken  | number | 否 | 是    | 最近图片/视频的拍摄时间，单位为毫秒（ms）。（距1970年1月1日的毫秒数值）。                     |
 | identifier | string | 否 | 是    | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
 
 ## RecentPhotoCheckResultCallback
@@ -93,7 +95,7 @@ type RecentPhotoCheckResultCallback = (recentPhotoExists: boolean) => void
 
 type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
-选择最近图片触发的回调事件。
+选择最近图片触发的回调事件，不对返回值做特殊处理。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -146,7 +148,11 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 
 ```ts
 // xxx.ets
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.RecentPhotoComponent'的导入方式。
+// 从API version 23开始，推荐使用统一导入方式，从'@kit.MediaLibraryKit'导入所需模块。
+// 在API version 23之前的版本中，需要使用分别导入方式。
+// import { RecentPhotoComponent, RecentPhotoOptions, PhotoSource, RecentPhotoInfo, RecentPhotoCheckResultCallback, RecentPhotoClickCallback, RecentPhotoCheckInfoCallback } from '@ohos.file.RecentPhotoComponent';
+// import { BaseItemInfo } from '@ohos.file.PhotoPickerComponent';
+// import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
   photoAccessHelper,
   RecentPhotoComponent, 

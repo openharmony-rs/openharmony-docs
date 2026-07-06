@@ -4,7 +4,7 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预加载能力，提升用户浏览体验。
 
@@ -13,6 +13,8 @@
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>  - 本模块接口仅可在Stage模型下使用。
 >
 >  - 本模块内的接口不支持在预览器中使用。
 
@@ -31,7 +33,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@ohos.arku
 ## IPrefetcher
 实现此接口以提供预取能力。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +48,7 @@ ArkTs-Sta: setDataSource(dataSource: IDataSourcePrefetching\<T>): void
 
 设置支持预取的数据源以绑定到Prefetcher。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +102,7 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 当可见区域边界发生改变时调用此方法。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +154,7 @@ BasicPrefetcher是IPrefetcher的基础实现。它提供了一种智能数据预
 
 BasicPrefetcher对象不支持使用JSON序列化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +170,7 @@ ArkTs-Sta: constructor(dataSource?: IDataSourcePrefetching\<T>)
 
 传入支持预取的DataSource以绑定到Prefetcher。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,7 +192,7 @@ ArkTs-Sta: setDataSource(dataSource: IDataSourcePrefetching\<T>): void
 
 设置支持预取的DataSource以绑定到Prefetcher。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,7 +214,7 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 当可见区域边界发生改变时调用此方法。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,7 +233,7 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 继承自[IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)。实现该接口，提供具备预取能力的DataSource。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,7 +249,7 @@ ArkTs-Sta: prefetch(index: int): Promise\<void> | undefined
 
 从数据集中预取指定的元素。该方法可以为同步，也可为异步。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,7 +277,7 @@ ArkTs-Sta: cancel(index: int): Promise\<void> | undefined
 
 取消从数据集中预取指定的元素。该方法可以为同步，也可为异步。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

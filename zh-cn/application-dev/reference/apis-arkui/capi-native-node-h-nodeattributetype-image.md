@@ -137,7 +137,7 @@ NODE_IMAGE_COLOR_FILTER = 4004
 | -- | -- |
 | .value[0].f32 ~ .value[19].f32 | 表示滤镜矩阵数组。 |
 | .size | 表示滤镜数组大小 5x4。 |
-| .object | 颜色滤波器指针，参数类型为OH_Drawing_ColorFilter。<br>.object和.size参数只能二选一，不可同时设置。 |
+| .object | 颜色滤镜指针，参数类型为OH_Drawing_ColorFilter。<br>.object和.size参数只能二选一，不可同时设置。 |
 
 **返回：**
 
@@ -145,7 +145,7 @@ NODE_IMAGE_COLOR_FILTER = 4004
 | -- | -- |
 | .value[0].f32 ~ .value[19].f32 | 表示滤镜矩阵数组。 |
 | .size | 表示滤镜数组大小 5x4。 |
-| .object | 颜色滤波器指针，参数类型为OH_Drawing_ColorFilter。 |
+| .object | 颜色滤镜指针，参数类型为OH_Drawing_ColorFilter。 |
 
 ## NODE_IMAGE_AUTO_RESIZE
 
@@ -203,7 +203,7 @@ NODE_IMAGE_ALT = 4006
 NODE_IMAGE_DRAGGABLE = 4007
 ```
 
-图片拖拽效果属性，支持属性设置，属性重置，属性获取接口。<br>
+图片是否可拖拽属性，支持属性设置，属性重置，属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -237,13 +237,13 @@ NODE_IMAGE_RENDER_MODE = 4008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)。 |
+| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)。 |
+| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)枚举值。 |
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 
@@ -381,7 +381,7 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 NODE_IMAGE_IMAGE_MATRIX = 4014
 ```
 
-设置图片的变换矩阵属性。支持属性设置，属性重置和属性获取接口。支持使用浮点数或矩阵对象实现仿射图像变换。<br>
+设置图片的变换矩阵属性。支持属性设置，属性重置和属性获取接口。支持使用浮点数实现仿射图像变换。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 21
@@ -392,14 +392,12 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
-| .object | 参数类型为[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。 |
-| .object | 参数类型为[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)。 |
 
 ## NODE_IMAGE_MATCH_TEXT_DIRECTION
 
@@ -537,13 +535,13 @@ NODE_IMAGE_ORIENTATION = 4020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-native-type-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-native-type-h.md#arkui_imagerotateorientation)。 |
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -596,7 +594,7 @@ NODE_IMAGE_CONTENT_TRANSITION = 4022
 ## NODE_IMAGE_ALT_PLACEHOLDER
 
 ```c
-NODE_IMAGE_ALT_PLACEHOLDER  = 4023
+NODE_IMAGE_ALT_PLACEHOLDER = 4023
 ```
 
 支持加载过程中的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>
@@ -622,7 +620,7 @@ NODE_IMAGE_ALT_PLACEHOLDER  = 4023
 ## NODE_IMAGE_ALT_ERROR
 
 ```c
-NODE_IMAGE_ALT_ERROR  = 4024
+NODE_IMAGE_ALT_ERROR = 4024
 ```
 
 支持加载失败时的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>

@@ -28,9 +28,9 @@ QRCode(value: ResourceStr)
 
 创建二维码组件，通过扫描组件显示的二维码图案可以获取二维码中包含的字符串信息。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +48,24 @@ QRCode(value: ResourceStr)
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<QRCodeAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<QRCodeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置QRCode组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### color
 
 ArkTS-Dyn: color(value: ResourceColor)
@@ -56,9 +74,9 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置二维码颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,9 +98,9 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 设置二维码背景颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +122,9 @@ ArkTS-Sta: contentOpacity(value: double | Resource | undefined)
 
 设置二维码内容颜色的不透明度。不透明度最小值为0，最大值为1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,19 +158,19 @@ struct QRCodeExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('normal').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('normal').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140)
 
       // 设置二维码颜色
-      Text('color').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('color').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).color(0xF7CE00).width(140).height(140)
 
       // 设置二维码背景色
-      Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('backgroundColor').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).backgroundColor(Color.Orange)
 
       // 设置二维码不透明度
-      Text('contentOpacity').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('contentOpacity').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.1)
     }.width('100%').margin({ top: 5 })
   }

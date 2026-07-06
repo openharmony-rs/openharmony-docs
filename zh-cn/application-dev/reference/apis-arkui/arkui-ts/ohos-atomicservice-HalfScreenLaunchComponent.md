@@ -30,9 +30,11 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 
 ## HalfScreenLaunchComponent
 
-HalfScreenLaunchComponent({&emsp;content: Callback\<void>,&emsp;appId: string,&emsp;options?: AtomicServiceOptions,&emsp;onError?: ErrorCallback,&emsp;onTerminated?: Callback&lt;TerminationInfo&gt; })
+HalfScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo>, onReceive?: Callback<Record<string, Object>> })
 
-**装饰器类型：**\@Component
+**装饰器类型：**[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,16 +42,23 @@ HalfScreenLaunchComponent({&emsp;content: Callback\<void>,&emsp;appId: string,&e
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| content | Callback\<void> | 是 | \@BuilderParam | 组件显示内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| appId | string | 是 | - | 原子化服务appId。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数，默认为空。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| onError |[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的原子化服务扩展在运行过程中发生异常时触发本回调。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| onTerminated | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - |  回调函数，入参用于接收原子化服务的返回结果，类型为TerminationInfo。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| content | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 组件显示内容。 |
+| appId | string | 是 | - | 原子化服务appId。 |
+| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数，默认为空。 |
+| onError |[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的原子化服务扩展在运行过程中发生异常时触发本回调。 |
+| onTerminated | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。 |
+| onReceive<sup>20+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[@ohos.window (窗口)](../arkts-apis-window.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## 示例
 
 该示例展示如何嵌入式拉起手机充值服务。
+
+> **说明：**
+>
+>由于嵌入式原子化服务运行在独立进程，其崩溃异常不会直接暴露在宿主的日志中。本地调试时可通过以下方式查看真实报错栈：  
+>1. 打开DevEco Studio的HiLog面板。  
+>2. 将左上角的模式切换为User logs of selected app。  
+>3. 在右侧进程列表中，选择被拉起的原子化服务进程（被拉起原子化服务的包名，且后缀带有embeddable字样）。
 
 ```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';

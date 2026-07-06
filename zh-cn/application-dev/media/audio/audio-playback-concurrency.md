@@ -1,8 +1,8 @@
 # 音频焦点介绍
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -32,7 +32,7 @@
 
 若音频焦点请求成功，音频流将正常启动；反之，若音频焦点请求被拒绝，音频流将无法开始播放或录制。
 
-建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到[音频焦点事件（InterruptEvent）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）。
 
 如果应用希望只申请一次焦点，连续播放多条音频流不被中断，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
 
@@ -80,7 +80,7 @@
 
 ### 焦点模式
 
-针对同一应用创建的多个音频流，应用可通过设置[焦点模式（InterruptMode）](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)，选择由应用自主管控，或由系统统一管理。
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
 
 系统预设了两种焦点模式：
 
@@ -102,7 +102,7 @@
 
 ### 处理音频焦点变化
 
-在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过[音频焦点事件（InterruptEvent）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)通知应用。
+在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
 
 因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)做出必要的响应。
 
@@ -169,14 +169,14 @@
 
 在监听音频播放焦点变化事件之前，需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
 
-<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-let isPlay: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
+let isPlaying: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
 let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
@@ -197,12 +197,12 @@ async function onAudioInterrupt(): Promise<void> {
         case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
           // 此分支表示系统已将音频流暂停（临时失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 临时失去焦点：待其他音频流释放音频焦点后，本音频流会收到resume对应的音频焦点事件，到时可自行继续播放。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_STOP:
           // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
           // 永久失去焦点：后续不会再收到任何音频焦点事件，若想恢复播放，需要用户主动触发。
-          isPlay = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
+          isPlaying = false; // 此句为简化处理，代表应用切换至音频暂停状态的若干操作。
           break;
         case audio.InterruptHint.INTERRUPT_HINT_DUCK:
           // 此分支表示系统已将音频音量降低（默认降到正常音量的20%）。
@@ -225,14 +225,17 @@ async function onAudioInterrupt(): Promise<void> {
           if (audioRenderer == undefined) {
             return;
           }
-          await audioRenderer.start().then(() => {
-            started = true; // start()执行成功。
-          }).catch((err: BusinessError) => {
-            started = false; // start()执行失败。
-          });
+          try {
+            await audioRenderer.start();
+            started = true;
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to start audio renderer. Code: ${error.code}, message: ${error.message}`);
+            started = false;
+          }
           // 若start()执行成功，则切换至音频播放状态。
           if (started) {
-            isPlay = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
+            isPlaying = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
           } else {
             // 音频继续播放的操作执行失败。
           }

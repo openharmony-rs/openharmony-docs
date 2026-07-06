@@ -187,7 +187,7 @@ isBatteryConfigSupported(sceneName: string): boolean
 
 描述电池信息。
 
-**系统能力：**SystemCapability.PowerManager.BatteryManager.Core
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|
@@ -230,6 +230,7 @@ estimatedRemainingChargeTime(): long
 **示例：**
 
   ```ts
+  // ArkTS-Sta示例
   let result = batteryInfo.estimatedRemainingChargeTime();
   console.info("The result is: " + result);
   ```
@@ -257,6 +258,7 @@ totalEnergy(): int
 **示例：**
 
   ```ts
+  // ArkTS-Sta示例
   let result = batteryInfo.totalEnergy();
   console.info("The result is: " + result);
   ```
@@ -284,6 +286,7 @@ remainingEnergy(): int
 **示例：**
 
   ```ts
+  // ArkTS-Sta示例
   let result = batteryInfo.remainingEnergy();
   console.info("The result is: " + result);
   ```

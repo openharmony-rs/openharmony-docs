@@ -36,22 +36,32 @@ import { Param } from '@kit.ArkUI';
 
 - 当装饰boolean、string、number类型时，可观察数据源同步变化。
 
-  ```ts
-  'use static'
+  <!-- @[ParamBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamBasicTypes.ets) --> 
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change Local')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 数据源变量修改，会同步给@Param
             this.count++;
@@ -64,6 +74,7 @@ import { Param } from '@kit.ArkUI';
           flag: this.flag
         })
       }
+      .width('100%')
     }
   }
   @ComponentV2
@@ -71,96 +82,156 @@ import { Param } from '@kit.ArkUI';
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
 
+![Param_1](../figures/param_1.gif)
+
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
-  ```ts
-  'use static'
+  <!-- @[ParamClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamClassObject.ets) --> 
   
-  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+  ``` TypeScript
+  import {
+    Button,
+    ClickEvent,
+    Column,
+    ComponentV2,
+    Entry,
+    Local,
+    ObservedV2,
+    Param,
+    Require,
+    Text,
+    Trace
+  } from '@kit.ArkUI';
+  
   class RawObject {
     name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @ObservedV2
   class ObservedObject {
     @Trace name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Button('change object')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
             // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
             this.observedObject.name = 'new observedObject name';
-        })
+          })
         Child({
           rawObject: this.rawObject,
           observedObject: this.observedObject
         })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
+          .fontSize(20)
+          .margin(10)
       }
-    }  
+      .width('100%')
+    }
   }
   ```
 
+![Param_2](../figures/param_2.gif)
+
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
 
-  ```ts
-  'use static'
+  <!-- @[ParamArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamArray.ets) --> 
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local numArr: number[] = [1, 2, 3, 4, 5];
     @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
         Button('change array item')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 修改数组项的值，变化可观察到
             this.numArr[0]++;
@@ -169,6 +240,8 @@ import { Param } from '@kit.ArkUI';
             this.dimensionTwo[1][1] = 0;
           })
         Button('change whole array')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对数组整体赋值，变化可观察到
             this.numArr = [5, 4, 3, 2, 1];
@@ -179,24 +252,39 @@ import { Param } from '@kit.ArkUI';
           dimensionTwo: this.dimensionTwo
         })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param numArr: number[];
     @Require @Param dimensionTwo: number[][];
-    
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
+
+![Param_3](../figures/param_3.gif)
 
 - 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
@@ -210,50 +298,73 @@ import { Param } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-  ```ts
-  'use static'
+  <!-- @[ParamInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamInterface.ets) --> 
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+  
   interface Info {
     name: string;
     age: number;
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     // 装饰字面量
     @Local info: Info = { name: 'Jack', age: 25 } as Info;
+  
     build() {
       Column() {
         Text(`Local info.name: ${this.info.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Local info.age: ${this.info.age}`)
+          .fontSize(20)
+          .margin(10)
         Button('Local change info')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
           })
         Button('Local change info.name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info.name = 'Lucy'; // 变化无法观察
           })
-        Child({info: this.info})
+        Child({ info: this.info })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param info: Info;
+  
     build() {
       Column() {
         Text(`Param info.name: ${this.info.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param info.age: ${this.info.age}`)
+          .fontSize(20)
+          .margin(10)
         Button('Param change info.name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info.name = 'Mary'; // 变化无法观察
           })
       }
+      .width('100%')
     }
   }
   ```
+
+![Param_4](../figures/param_4.gif)
 
 ## 限制条件
 
@@ -365,40 +476,61 @@ import { Param } from '@kit.ArkUI';
 
 \@Param能够接受父组件\@Local或\@Param传递的数据并与之变化同步。
 
-```ts
-'use static'
+<!-- @[ParamFromParentToChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamFromParentToChild.ets) --> 
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+``` TypeScript
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Entry,
+  ForEach,
+  Local,
+  ObservedV2,
+  Param,
+  Require,
+  Text,
+  Trace
+} from '@kit.ArkUI';
+
 @ObservedV2
 class Region {
   @Trace x: number;
   @Trace y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @ObservedV2
 class Info {
   @Trace name: string;
   @Trace age: number;
   @Trace region: Region;
+
   constructor(name: string, age: number, x: number, y: number) {
     this.name = name;
     this.age = age;
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
+
   build() {
     Column() {
       ForEach(this.infoList, (info: Info, index: int) => {
         MiddleComponent({ info: info })
       })
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 对数组项整体赋值，变化同步给子组件的@Param
           this.infoList[0] = new Info('Atom', 40, 27, 90);
@@ -408,38 +540,54 @@ struct Index {
           this.infoList[2].region = new Region(7, 9);
         })
     }
+    .width('100%')
   }
 }
+
 @ComponentV2
 struct MiddleComponent {
   @Require @Param info: Info;
+
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`age: ${this.info.age}`)
+        .fontSize(20)
+        .margin(10)
       SubComponent({ region: this.info.region })
     }
+    .width('100%')
   }
 }
+
 @ComponentV2
 struct SubComponent {
   @Require @Param region: Region;
+
   build() {
     Column() {
       Text(`region: ${this.region.x}-${this.region.y}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_5](../figures/param_5.gif)
 
 ### 装饰Array类型变量
 
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
-```ts
-'use static'
+<!-- @[ParamArrayVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamArrayVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
@@ -447,26 +595,44 @@ struct Index {
   build() {
     Column() {
       Text(`Local ${this.arr}`)
-      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change arr[0]: ${this.arr[0]}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 修改数组元素，变化可观察到
         this.arr[0]++;
       })
-      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+      Button(`push item: ${this.arr.length}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 通过push API修改数组，变化可观察到
         this.arr.push(Double.toInt(this.arr.length));
       })
-      Button(`pop item`).onClick((e: ClickEvent) => {
+      Button(`pop item`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         this.arr.pop();
       })
-      Button(`reverse`).onClick((e: ClickEvent) => {
+      Button(`reverse`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         this.arr.reverse();
       })
-      Button(`reset`).onClick((e: ClickEvent) => {
+      Button(`reset`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 对数组整体赋值，变化可观察到
         this.arr = [0, 1, 2];
       })
       Child({ arr: this.arr })
     }
+    .width('100%')
   }
 }
 @ComponentV2
@@ -475,19 +641,25 @@ struct Child {
   build() {
     Column() {
     Text(`Param ${this.arr}`)
+      .fontSize(20)
+      .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_6](../figures/param_6.gif)
 
 ### 装饰Date类型变量
 
 当装饰Date类型时，可以观察到数据源对Date整体的赋值及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[ParamDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamDateVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -495,7 +667,10 @@ struct DateComponent {
   build() {
     Column() {
       Text(`${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -507,41 +682,51 @@ struct ParentComponent {
   build() {
     Column() {
       Button('parent update the new date')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           // 对Date整体赋值，变化可观察到
           this.parentSelectedDate = new Date('2023-07-07');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           // 通过setFullYear API修改Date，变化可观察到
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过setMonth API修改Date，变化可观察到
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
       Button('parent increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过setDate API修改Date，变化可观察到
           this.parentSelectedDate.setDate(this.parentSelectedDate.getDate() + 1);
         })
       DateComponent({ selectedDate: this.parentSelectedDate })
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_7](../figures/param_7.gif)
 
 ### 装饰Map类型变量
 
 当装饰Map类型时，可以观察到数据源对Map整体的赋值及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[ParamMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamMapVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map<number, string>();
@@ -549,11 +734,16 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -565,22 +755,40 @@ struct MapSample {
     Row() {
       Column() {
         Child({ value: this.message })
-        Button('init map').onClick((e: ClickEvent) => {
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
           // 对Map整体赋值，变化可观察到
           this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          // 通过set API修改Map，变化可观察到
-          this.message.set(4, 'd');
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过set API修改Map，变化可观察到
+            this.message.set(4, 'd');
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过clear API清空Map，变化可观察到
+            this.message.clear();
         })
-        Button('replace the first one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa');
+        Button('replace the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过set API修改Map，变化可观察到
+            this.message.set(0, 'aa');
         })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过delete API删除Map中元素，变化可观察到
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -590,14 +798,17 @@ struct MapSample {
 }
 ```
 
+![Param_8](../figures/param_8.gif)
+
 ### 装饰Set类型变量
 
 当装饰Set类型时，可以观察到数据源对Set整体的赋值及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[ParamSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamSetVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set<number>();
@@ -605,7 +816,9 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
     }
@@ -621,19 +834,33 @@ struct SetSample {
     Row() {
       Column() {
         Child({ message: this.message })
-        Button('init set').onClick((e: ClickEvent) => {
-          // 对Set整体赋值，变化可观察到
-          this.message = new Set<number>([0, 1, 2, 3, 4]);
+        Button('init set')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 对Set整体赋值，变化可观察到
+            this.message = new Set<number>([0, 1, 2, 3, 4]);
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          // 通过add API修改Set，变化可观察到
-          this.message.add(5);
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过add API修改Set，变化可观察到
+            this.message.add(5);
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过clear API清空Set，变化可观察到
+            this.message.clear();
         })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过delete API删除Set中元素，变化可观察到
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -643,14 +870,17 @@ struct SetSample {
 }
 ```
 
+![Param_9](../figures/param_9.gif)
+
 ### 联合类型
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | null，点击改变count的类型时，UI会自动刷新。
 
-```ts
-'use static'
+<!-- @[ParamUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamUnionType.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
@@ -660,11 +890,14 @@ struct Index {
     Column() {
       MyComponent({ count: this.count })
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 将count从number变为null，类型变化可观察到，UI会刷新
           this.count = null;
         })
     }
+    .width('100%')
   }
 }
 
@@ -675,7 +908,12 @@ struct MyComponent {
   build() {
     Column() {
       Text(`count(${this.count})`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_10](../figures/param_10.gif)

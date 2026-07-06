@@ -22,7 +22,9 @@ createComponentObserver(id: string): inspector.ComponentObserver
 
 注册组件布局和组件绘制送显完成回调通知。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,20 +90,19 @@ struct UIInspectorExample {
 
 ## createComponentObserver<sup>23+</sup>
 
-createComponentObserver(id: string | number): inspector.ComponentObserver
+createComponentObserver(id: string | int): inspector.ComponentObserver
 
 注册组件布局和组件绘制送显完成回调通知。送显指节点的绘制命令发送到图形服务并完成显示。
 
 相比[createComponentObserver](#createcomponentobserver)，新增支持传入UniqueID（系统给节点分配的唯一id）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -109,7 +110,7 @@ createComponentObserver(id: string | number): inspector.ComponentObserver
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| id   | string \| number | 是    | 类型为string时，为指定的组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)或者[key](./arkui-ts/ts-universal-attributes-component-id.md#key12)设置。类型为number时，为系统分配的唯一标识的节点UniqueID，UniqueID通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。使用UniqueID创建监听句柄时，请确保UniqueID对应的节点已经存在，否则后续监听无法生效。number的范围为1~2147483647的整数。|
+| id   | string \| int | 是    | 类型为string时，为指定的组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)或者[key](./arkui-ts/ts-universal-attributes-component-id.md#key12)设置。类型为int时，为系统分配的节点唯一标识UniqueID，UniqueID通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。使用UniqueID创建监听句柄时，请确保UniqueID对应的节点已经存在，否则后续监听无法生效。int的范围为1~2147483647的整数。|
 
 **返回值：** 
 

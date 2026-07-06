@@ -78,12 +78,18 @@
   - [使用HiChecker检测问题（ArkTS）](hichecker-guidelines-arkts.md)
 - 系统调试信息获取<!--hidebug-->
   - [HiDebug能力概述](hidebug-guidelines.md)
-  - [HiDebug接口使用示例(ArkTS)](hidebug-guidelines-arkts.md)
-  - [HiDebug接口使用示例(C/C++)](hidebug-guidelines-ndk.md)
+  - [HiDebug接口使用示例（ArkTS）](hidebug-guidelines-arkts.md)
+  - [HiDebug接口使用示例（C/C++）](hidebug-guidelines-ndk.md)
 - 业务线程超时检测<!--hicollie-->
   - [使用HiCollie检测业务线程卡死卡顿问题（C/C++）](hicollie-guidelines-ndk.md)
   - [使用HiCollie监控函数执行时间超长问题（C/C++）](hicollie-settimer-guidelines-ndk.md)
 - 错误管理及应用恢复<!--error-manager-->
   - [错误管理开发指导](errormanager-guidelines.md)
   - [应用恢复开发指导](apprecovery-guidelines.md)
-- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)
+- 应用灰度采集<!--hiretrieval-->
+  - [HiRetrieval介绍](hiretrieval-intro.md)
+  - [使用HiRetrieval进行应用灰度采集（ArkTS）](hiretrieval-guidelines-arkts.md)
+  <!--Del-->
+  - [HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)
+  <!--DelEnd-->
+- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->

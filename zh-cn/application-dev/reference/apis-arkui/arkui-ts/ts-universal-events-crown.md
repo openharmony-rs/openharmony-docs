@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 手动旋转表冠以触发其存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
 >
 > - 组件收到表冠事件的前提是该组件获焦，焦点控制可以通过[focusable](ts-universal-attributes-focus.md#focusable)、[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)进行管理。
@@ -26,7 +28,7 @@
 
 ArkTS-Dyn: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
-ArkTS-Sta: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt; | undefined): this
+ArkTS-Sta: onDigitalCrown(handler: Callback&lt;CrownEvent&gt; | undefined): this
 
 组件获焦以后旋转表冠时触发该回调。
 
@@ -34,7 +36,7 @@ ArkTS-Sta: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt; | 
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,21 +60,31 @@ ArkTS-Sta: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt; | 
 
 组件接收表冠事件的数据结构。内容包括时间戳、旋转角速度、旋转角度、表冠动作和阻止事件冒泡。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+### 属性
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                   | 类型       | 只读    |  可选   |  说明                                                       |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp         | ArkTS-Dyn: number<br/>ArkTS-Sta: long   |  否     | 否    |时间戳。                                  |
-| angularVelocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
-| degree          | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
-| action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。  |
-| stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。                         |
+| timestamp         | ArkTS-Dyn: number<br/>ArkTS-Sta: long   |  否     | 否    |时间戳。触发事件时距离系统启动的时间间隔。<br>单位：ns <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                                  |
+| angularVelocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |旋转角速度。<br>单位：deg/s <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                   |
+| degree          | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |相对旋转角度。<br>单位：deg <br>取值范围:[-360, 360]。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
+| action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23  |
+| stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 18                         |
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 该示例实现了组件注册表冠事件，接收表冠事件数据上报内容。

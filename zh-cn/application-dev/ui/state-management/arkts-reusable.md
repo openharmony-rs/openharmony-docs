@@ -24,7 +24,8 @@
 > - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用缓存池中的节点，从而节约组件重新创建的时间。
 > - \@Reusable提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
 > - \@Reusable装饰的自定义组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被@Reusable标记无关），直到遍历完所有子组件。
-> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)来区分不同结构的复用组件。
+> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)来区分不同结构的复用组件。
+> - 当\@Reusable装饰的自定义组件无子组件时，不会触发回收和复用。
 
 ## 限制条件
 
@@ -99,7 +100,7 @@ struct Index {
 
 在子组件的aboutToReuse中，直接修改父组件的状态变量。
 
-<!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+<!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) --> 
 
 ``` TypeScript
 class IncorrectBasicDataSource implements IDataSource {
@@ -160,6 +161,7 @@ struct IncorrectReuseComponent {
       IncorrectReuseComponentChild({ num: this.num })
       Button('plus')
         .onClick(() => {
+          // 每次点击增加10
           this.num += 10;
         })
     }
@@ -302,6 +304,7 @@ struct Index {
           this.showBranchA = !this.showBranchA;
         })
       if (this.showBranchA) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: true })
       }
       Button('show/hide branch B')
@@ -309,6 +312,7 @@ struct Index {
           this.showBranchB = !this.showBranchB;
         })
       if (this.showBranchB) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: false })
       }
     }
@@ -876,7 +880,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i <= 80; i++) { // 循环50次
+    for (let i = 30; i < 80; i++) { // 循环50次
       this.data02.pushData(i.toString());
     }
   }
@@ -1220,7 +1224,7 @@ struct ReusableChildComponent {
 
 - 在Swiper滑动场景中，条目中的子组件频繁创建和销毁。可以将这些子组件封装成自定义组件，并使用\@Reusable装饰器修饰，以实现组件复用。
 
-  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) -->
+  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1285,7 +1289,6 @@ struct ReusableChildComponent {
           })
           
         Image(this.itemData?.image)
-          .width('100%')
           .borderRadius(12)
           .objectFit(ImageFit.Contain)
           .margin({

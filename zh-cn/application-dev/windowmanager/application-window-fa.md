@@ -1,16 +1,16 @@
-# 管理应用窗口（FA模型）
+# FA模型的应用窗口管理
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## 基本概念
 
-窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。
+窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏、导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。
 
-沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口（弹窗、悬浮窗口等辅助窗口）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
+沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口、全局悬浮窗、模态窗口等辅助窗口和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
 > **说明：**
 >
@@ -29,19 +29,19 @@
 
 ## 接口说明
 
-上述场景涉及的常用接口如下表所示。更多API说明请参见[API参考](../reference/apis-arkui/arkts-apis-window.md)。
+上述场景涉及的常用接口如下表所示。更多API说明请参见[@ohos.window (窗口)](../reference/apis-arkui/arkts-apis-window.md)。
 
 | 实例名         | 接口名                                                       | 描述                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| window静态方法 | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口。<br/>-`config`：创建窗口时的参数。               |
+| window静态方法 | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口。<br>-`config`：创建窗口时的参数。               |
 | window静态方法 | findWindow(name: string): Window                             | 查找`name`所对应的窗口。                                     |
 | Window         | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | 根据当前工程中某个页面的路径为窗口加载具体的页面内容。<br>其中path为要加载到窗口中的页面内容的路径，在FA模型下该路径需添加到工程的config.json文件中。                                 |
 | Window         | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口位置。                                               |
 | Window         | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | 设置屏幕亮度值。                                             |
 | Window         | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
 | Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | 设置主窗口或子窗口的布局是否为沉浸式布局。true表示沉浸式布局；false表示非沉浸式布局。|
-| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP1-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP1End-->。<br>例如，该参数设置为['status',&nbsp;'navigation']，则全部显示；设置为[]，则不显示。|
-| Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | 设置窗口内导航栏、状态栏属性。<br/>`systemBarProperties`：导航栏、状态栏的属性集合。 |
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | 设置主窗口状态栏、<!--RP1-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP1End-->使用Promise异步回调。<br>例如，该参数设置为['status',&nbsp;'navigation']，则全部显示；设置为[]，则不显示。|
+| Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | 设置主窗口状态栏<!--Del-->、工具栏或三键导航栏<!--DelEnd-->的属性。<!--Del-->当前工具栏的属性设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。<br>systemBarProperties：状态栏<!--Del-->、工具栏或三键导航栏<!--DelEnd-->的属性集合。 |
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | 显示当前窗口。                                               |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | 开启本窗口区域外的点击事件的监听。                           |
 | Window         | destroyWindow(callback: AsyncCallback&lt;void&gt;): void     | 销毁当前窗口。                                               |
@@ -52,8 +52,8 @@
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
 
 > **说明：**  
-> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
-> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗口不能超出处于悬浮窗、分屏状态的主窗口范围，与控件一致。  
+> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[浮层](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于智慧多窗悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗口。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -63,7 +63,7 @@
 
    - 可以通过`window.createWindow`接口创建子窗口。
 
-     非[自由窗口](../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../windowmanager/window-terminology.md#沉浸式布局)。
+     非[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
      自由窗口状态下，子窗口参数[decorEnabled](../reference/apis-arkui/arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
      
@@ -156,7 +156,7 @@
    当不再需要某些子窗口时，可根据场景的具体实现逻辑，使用`destroyWindow`接口销毁子窗口。
 
    ```ts
-   // 销毁子窗口。当不再需要某些子窗口时，可根据场景的具体实现逻辑，使用destroy接口销毁子窗口。
+   // 当不再需要某些子窗口时，可根据场景的具体实现逻辑，使用destroyWindow接口销毁子窗口。
    windowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {

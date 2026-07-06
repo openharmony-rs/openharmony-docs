@@ -6,15 +6,15 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供应用信息查询能力，支持[包信息](js-apis-bundle-BundleInfo.md)、[应用信息](js-apis-bundle-ApplicationInfo.md)、[Ability组件信息](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
+本模块提供应用信息查询能力，支持[BundleInfo](js-apis-bundle-BundleInfo.md)、[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)、[AbilityInfo](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
 
 > **说明：**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API version 9开始，该模块不再维护，系统接口建议使用[`@ohos.bundle.bundleManager`](js-apis-bundleManager-sys.md)替代。
+> 从API version 9开始，该模块不再维护，系统接口建议使用[应用程序包管理模块](js-apis-bundleManager-sys.md)替代。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle`](js-apis-Bundle.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[Bundle模块](js-apis-Bundle.md)。
 
 ## 导入模块
 
@@ -38,7 +38,7 @@ import bundle from '@ohos.bundle';
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#installergetbundleinstaller)替代。
 
 getBundleInstaller(): Promise&lt;BundleInstaller&gt;
 
@@ -79,7 +79,7 @@ bundle.getBundleInstaller().then((data) => {
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 getBundleInstaller(callback: AsyncCallback&lt;BundleInstaller&gt;): void
 
@@ -120,7 +120,7 @@ bundle.getBundleInstaller((err, data) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -165,7 +165,7 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 cleanBundleCacheFiles(bundleName: string): Promise&lt;void&gt;
 
@@ -214,7 +214,7 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -260,7 +260,7 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean): Promise&lt;void&gt;
 
@@ -310,7 +310,7 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -340,7 +340,7 @@ SystemCapability.BundleManager.BundleFramework
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise&lt;void&gt;
 
@@ -396,7 +396,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getPermissionDef(permissionName: string, callback: AsyncCallback&lt;PermissionDef&gt;): void
 
@@ -440,7 +440,7 @@ bundle.getPermissionDef(permission, (err, data) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getPermissionDef(permissionName: string): Promise&lt;PermissionDef&gt;
 
@@ -483,3 +483,366 @@ bundle.getPermissionDef(permissionName).then((data) => {
   console.error('getPermissionDef failed. Cause: ' + error.message);
 });
 ```
+
+## bundle.getBundleInfos<sup>(deprecated)</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
+
+获取指定用户所有的[BundleInfo](js-apis-bundle-BundleInfo.md)，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名     | 类型       | 必填 | 说明                                                         |
+| ---------- | ---------- | ---- | ------------------------------------------------------------ |
+| bundleFlag | BundleFlag | 是   | 用于指定返回的包信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中包信息相关flag。 |
+| userId     | number     | 否   | 用户ID。<br/>默认值：调用方所在用户，取值范围：大于等于0。        |
+
+**返回值：**
+
+| 类型                          | 说明                         |
+| --------------------------- | -------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Promise对象，返回所有可用的[BundleInfo](js-apis-bundle-BundleInfo.md)。 |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+let userId: number = 100;
+
+bundle.getBundleInfos(bundleFlag, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
+
+## bundle.getBundleInfos<sup>(deprecated)</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
+
+获取当前用户所有的[BundleInfo](js-apis-bundle-BundleInfo.md)，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlag | BundleFlag                                                   | 是   | 用于指定返回的包信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中包信息相关flag。 |
+| callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | 是   | 回调函数，返回所有可用的[BundleInfo](js-apis-bundle-BundleInfo.md)，作为程序启动时的入参。      |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+
+bundle.getBundleInfos(bundleFlag, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getBundleInfos<sup>(deprecated)</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
+
+获取系统中指定用户下所有的[BundleInfo](js-apis-bundle-BundleInfo.md)，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名        | 类型                                                                | 必填  | 说明                                                                  |
+|------------|-------------------------------------------------------------------|-----|---------------------------------------------------------------------|
+| bundleFlag | BundleFlag                                                        | 是   | 用于指定返回的包信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中包信息相关flag。 |
+| userId     | number                                                            | 是   | 用户ID。<br/>取值范围：大于等于0。                           |
+| callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | 是   | 回调函数，返回指定用户下所有包的[BundleInfo](js-apis-bundle-BundleInfo.md)，作为程序启动时的入参。                  |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+let userId: number = 100;
+
+bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
+
+getApplicationInfos(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
+
+获取指定用户下所有已安装的应用信息，使用promise异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                                                         |
+| ----------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number | 是   | 用于指定返回的应用信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中应用信息相关flag。 |
+| userId      | number | 否   | 用户ID。<br/>默认值：调用方所在用户，取值范围：大于等于0。        |
+
+**返回值：**
+
+| 类型                               | 说明                              |
+| -------------------------------- | ------------------------------- |
+| Promise<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Promise对象，获取成功时返回应用信息列表。 |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId: number = 100;
+
+bundle.getApplicationInfos(bundleFlags, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
+
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
+
+getApplicationInfos(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
+
+获取指定用户下所有已安装的应用信息，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number                                                       | 是   | 用于指定返回的应用信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中应用信息相关flag。 |
+| userId      | number                                                       | 是   | 用户ID。<br/>取值范围：大于等于0。        |
+| callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | 是   | 回调函数，返回应用信息列表，作为程序启动时的入参。               |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId: number = 100;
+
+bundle.getApplicationInfos(bundleFlags, userId, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
+
+getApplicationInfos(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
+
+获取调用方所在用户下已安装的应用信息，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1)替代。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名      | 类型                                                         | 必填 | 说明                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number                                                       | 是   | 用于指定返回的应用信息对象中包含信息的标记。取值范围：参考[BundleFlag](js-apis-Bundle.md#bundleflagdeprecated)中应用信息相关flag。 |
+| callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | 是   | 回调函数，返回应用信息列表，作为程序启动时的入参。               |
+
+**示例：**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+
+bundle.getApplicationInfos(bundleFlags, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## ModuleRemoveFlag<sup>(deprecated)</sup>
+
+模块移除时与卡片、快捷方式是否有关联的标志。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，暂无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称 | 值 | 说明 |
+| ---------- | ---- | -------- |
+| FLAG_MODULE_NOT_USED_BY_FORM | 0 | 未被卡片使用。 |
+| FLAG_MODULE_USED_BY_FORM | 1 | 已被卡片使用。 |
+| FLAG_MODULE_NOT_USED_BY_SHORTCUT | 2 | 未被快捷方式使用。 |
+| FLAG_MODULE_USED_BY_SHORTCUT | 3 | 已被快捷方式使用。 |
+
+## SignatureCompareResult<sup>(deprecated)</sup>
+
+签名校验结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，暂无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称 | 值 | 说明 |
+| ---------- | ---- | -------- |
+| SIGNATURE_MATCHED | 0 | 签名一致。 |
+| SIGNATURE_NOT_MATCHED | 1 | 签名不一致。 |
+| SIGNATURE_UNKNOWN_BUNDLE | 2 | 签名对应的包未知。 |
+
+## ShortcutExistence<sup>(deprecated)</sup>
+
+查询快捷方式是否存在时返回的结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，暂无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称 | 值 | 说明 |
+| ---------- | ---- | -------- |
+| SHORTCUT_EXISTENCE_EXISTS | 0 | 存在。 |
+| SHORTCUT_EXISTENCE_NOT_EXISTS | 1 | 不存在。 |
+| SHORTCUT_EXISTENCE_UNKNOW | 2 | 未知。 |
+
+## QueryShortCutFlag<sup>(deprecated)</sup>
+
+用于指定快捷方式查询范围的标志。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，暂无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称 | 值 | 说明 |
+| ---------- | ---- | -------- |
+| QUERY_SHORTCUT_HOME | 0 | 查询桌面快捷方式。|

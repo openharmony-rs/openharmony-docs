@@ -6,13 +6,15 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
+用户界面外观提供管理系统外观的基础能力，包括深浅色模式配置、字体大小缩放比例和字体粗细缩放比例设置。
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
 
 
 ## 导入模块
@@ -39,7 +41,7 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
 | mode | [DarkMode](js-apis-uiappearance.md#darkmode) | 是 | 指定系统的深色模式配置。 |
-| callback | AsyncCallback\<void>| 是 | 配置深色模式的异步回调。 |
+| callback | AsyncCallback\<void>| 是 | 设置深色模式结果的回调。调用成功时，error为undefined；调用失败时，error为错误对象。 |
 
 **错误码：**
 
@@ -60,14 +62,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
     if (error) {
-      console.error('Set dark-mode failed, ' + error.message);
-    } else {
-      console.info('Set dark-mode successfully.');
+      console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
+      return;
     }
-  })
+    console.info('Set dark-mode successfully.');
+  });
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Set dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -94,7 +96,7 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -115,12 +117,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
     console.info('Set dark-mode successfully.');
-  }).catch((error: Error) => {
-    console.error('Set dark-mode failed, ' + error.message);
+  }).catch((error: BusinessError) => {
+    console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Set dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -129,7 +131,7 @@ try {
 
 setFontScale(fontScale: number): Promise\<void>
 
-设置系统字体大小。
+设置系统字体大小缩放比例。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -141,13 +143,13 @@ setFontScale(fontScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | number | 是 | 需要设置的字体大小。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
+| fontScale | number | 是 | 需要设置的字体大小缩放比例。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -170,17 +172,17 @@ setFontScale(fontScale: number): Promise\<void>
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let fontScale = 10;
+let fontScale = 1.5;
 
 try {
-    uiAppearance.setFontScale(fontScale).then(() => {
-      console.info('Set fontScale successfully.');
-    }).catch((error:Error) => {
-      console.error('Set fontScale failed, ' + error.message);
-    });
+  uiAppearance.setFontScale(fontScale).then(() => {
+    console.info('Set fontScale successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set fontScale failed. Code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set fontScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set fontScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -189,7 +191,7 @@ try {
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
-设置系统字体粗细。
+设置系统字体粗细缩放比例。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -201,13 +203,13 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | number | 是 | 需要设置的字体粗细。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
+| fontWeightScale | number | 是 | 需要设置的字体粗细缩放比例。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -233,13 +235,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fontWeightScale = 1;
 
 try {
-    uiAppearance.setFontWeightScale(fontWeightScale).then(() => {
-      console.info('Set fontWeightScale successfully.');
-    }).catch((error:Error) => {
-      console.error('Set fontWeightScale failed, ' + error.message);
-    });
+  uiAppearance.setFontWeightScale(fontWeightScale).then(() => {
+    console.info('Set fontWeightScale successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set fontWeightScale failed. Code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set fontWeightScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

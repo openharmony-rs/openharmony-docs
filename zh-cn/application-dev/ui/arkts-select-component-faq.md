@@ -67,6 +67,8 @@ struct Index {
 
 为避免不同设置方式导致的显示差异，建议在通过AttributeModifier接口设置LabelStyle时，显式指定weight的值，以确保文本样式符合预期，具体示例如下。
 
+ArkTS-Dyn示例：
+
 <!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
 
 ```ts
@@ -117,6 +119,71 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
+
+``` TypeScript
+
+// pages/ButtonModifierFAQ.ets
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Button,
+  Divider,
+  AttributeModifier,
+  ButtonAttribute,
+  FontWeight
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyButtonModifier1 implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.labelStyle({});
+  }
+}
+
+class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.labelStyle({
+      font: {
+        weight: FontWeight.Medium
+      }
+    });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State modifier1: MyButtonModifier1 = new MyButtonModifier1();
+  @State modifier2: MyButtonModifier2 = new MyButtonModifier2();
+
+  build(): void {
+    Column() {
+      Text('normal')
+      // Button直接设置labelStyle，font属性中的weight默认值为500
+      Button('DemoButtonTest')
+        .width(100)
+        .labelStyle({})
+      Divider()
+      // 通过AttributeModifier接口设置labelStyle，font属性中的weight默认值为400
+      Text('modifier1')
+      Button('DemoButtonTest')
+        .width(100)
+        .attributeModifier(this.modifier1)
+
+      Text('modifier2')
+      Button('DemoButtonTest')
+        .width(100)
+        .attributeModifier(this.modifier2)
+    }.height('100%')
+  }
+}
+```
+
 ![ButtonModifier差异示意图](figures/ButtonModifier.png)
 
 ## Button组件设置type时，ButtonType枚举值与数字值不一致
@@ -143,6 +210,8 @@ Button组件的type属性支持使用[ButtonType](../../application-dev/referenc
 建议使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
 
 **示例**
+
+ArkTS-Dyn示例：
 
 <!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
 
@@ -179,6 +248,64 @@ struct ButtonTypeDemo {
       Text('错误示例（使用SDK枚举值）：')
       Button('type(3)')
         .type(3) // 不对应任何类型，使用默认样式
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.White)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
+
+``` TypeScript
+// pages/ButtonTypeFAQ.ets
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Button,
+  ButtonType,
+  Color,
+  FlexAlign
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ButtonTypeDemo {
+  build(): void {
+    Column({ space: 20 } as ColumnOptions) {
+      // 使用枚举设置（推荐）
+      Text('使用枚举设置：')
+      Button('Capsule')
+        .type(ButtonType.Capsule)
+      Button('Circle')
+        .type(ButtonType.Circle)
+      Button('Normal')
+        .type(ButtonType.Normal)
+      Button('ROUNDED_RECTANGLE')
+        .type(ButtonType.ROUNDED_RECTANGLE)
+
+      // 使用数字设置（需使用type实际数值）
+      Text('使用数字设置：')
+      Button('type(1)')
+        .type(1 as ButtonType) // 等同于 ButtonType.Capsule
+      Button('type(2)')
+        .type(2 as ButtonType) // 等同于 ButtonType.Circle
+      Button('type(0)')
+        .type(0 as ButtonType) // 等同于 ButtonType.Normal
+      // Button('type(8)')
+      //   .type(8 as ButtonType) // 等同于 ButtonType.ROUNDED_RECTANGLE
+
+      // 错误示例：使用SDK枚举值作为type数字
+      Text('错误示例（使用SDK枚举值）：')
+      Button('type(3)')
+        .type(3 as ButtonType) // 不对应任何类型，使用默认样式
     }
     .width('100%')
     .height('100%')

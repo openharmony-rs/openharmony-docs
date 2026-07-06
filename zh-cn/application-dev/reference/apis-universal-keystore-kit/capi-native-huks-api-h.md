@@ -9,15 +9,13 @@
 
 ## 概述
 
-声明用于访问HUKS的API。
+声明用于访问通用密钥库（HUKS）的API。
 
 **引用文件：** <huks/native_huks_api.h>
 
 **库：** libhuks_ndk.z.so
 
 **系统能力：** SystemCapability.Security.Huks.Core
-
-在API version 9-19，系统能力为SystemCapability.Security.Huks；从API version 20起，系统能力变更为SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -29,7 +27,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)](#oh_huks_getsdkversion) | 获取当前Huks sdk版本号。 |
+| [struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)](#oh_huks_getsdkversion) | 获取当前HUKS SDK版本号。 |
 | [struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)](#oh_huks_generatekeyitem) | 生成密钥。 |
 | [struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *key)](#oh_huks_importkeyitem) | 导入明文密钥。 |
 | [struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *wrappedKeyData)](#oh_huks_importwrappedkeyitem) | 导入密文密钥。 |
@@ -57,7 +55,7 @@ struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 
 **描述**
 
-获取当前Huks sdk版本号。
+获取当前HUKS SDK版本号。
 
 **起始版本：** 9
 
@@ -71,7 +69,7 @@ struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：sdkVersion或者sdkVersion->data是null，或者sdkVersion->size太小。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：sdkVersion或者sdkVersion->data是null，或者sdkVersion->size太小。 |
 
 ### OH_Huks_GenerateKeyItem()
 
@@ -91,13 +89,13 @@ struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlia
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | 给要生成的密钥的别名，需要保证业务所在进程内唯一，否则会发生覆盖。 |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSetIn | 生成密钥的属性信息的参数集。 |
-| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSetOut | 生成密钥为临时类型时，存放着密钥数据；非临时类型可为空。 |
+| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSetOut | 若生成的是临时密钥，此参数存放密钥数据；若生成的是非临时密钥，此参数可为空。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSetIn、paramSetOut有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004 ：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：基础密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015 ：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 ：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 ：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSetIn、paramSetOut存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：基础密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_ImportKeyItem()
 
@@ -123,7 +121,7 @@ struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet、key有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004 ：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015 ：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 ：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet、key存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_ImportWrappedKeyItem()
 
@@ -142,7 +140,7 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | 待导入密钥的别名，需要保证业务所在进程内唯一，否则会发生覆盖。 |
-| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | 密钥别名，该对应密钥用于密钥协商出密钥解密待导入密钥。 |
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | 密钥别名，该别名对应的密钥用于执行密钥协商或解密数字信封，协商或解密出的密钥进而用于解密待导入密钥。 |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 待导入加密密钥的属性参数。 |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKeyData | 需要导入的加密的密钥数据，需要符合Huks定义的格式，具体见[OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite)。 |
 
@@ -150,7 +148,7 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、wrappingKeyAlias、paramSet、wrappedKeyData有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004 ：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015 ：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 ：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、wrappingKeyAlias、paramSet、wrappedKeyData存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_ExportPublicKeyItem()
 
@@ -176,7 +174,7 @@ struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *key
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet、key有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet、key存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_DeleteKeyItem()
 
@@ -201,7 +199,7 @@ struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet存在无效参数。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_GetKeyItemParamSet()
 
@@ -227,7 +225,7 @@ struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyA
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSetIn、paramSetOut有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSetIn、paramSetOut存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_IsKeyItemExist()
 
@@ -252,7 +250,7 @@ struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet存在无效参数。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_AttestKeyItem()
 
@@ -286,7 +284,7 @@ struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet、certChain有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_PERMISSION_FAIL = 201 ：权限检查失败，请先申请请求权限。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_PERMISSION_FAIL 201：权限检查失败，请先申请请求权限。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet、certChain存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_AnonAttestKeyItem()
 
@@ -312,7 +310,7 @@ struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAl
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数keyAlias、paramSet、certChain有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_PERMISSION_FAIL = 201 ：权限检查失败，请先申请请求权限。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet、certChain存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_InitSession()
 
@@ -339,7 +337,7 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数 keyAlias、paramSet、handle、token有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_SESSION_LIMIT = 12000010 ：已达最大会话限制。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 22新增）指定的aead长度无效或者通过访问群组标签指定的群组名无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 ：（API 22新增）提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 ：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 ：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY = 12000024 ：（API 22新增）提供者或Ukey中的资源正在被使用。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数 keyAlias、paramSet、handle、token存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_SESSION_LIMIT 12000010：已达最大会话限制。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 22新增）指定的aead长度无效或者通过访问群组标签指定的群组名无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020：（API 22新增）提供者或UKey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY 12000024：（API 22新增）提供者或UKey中的资源正在被使用。 |
 
 **参考：**
 
@@ -375,7 +373,7 @@ struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数handle、paramSet、inData、outData有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013 ：证书不存在。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008 ：认证令牌校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007 ：认证令牌信息校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009 ：认证令牌超时。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 ：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 ：（API 22新增）提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 ：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 ：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY = 12000024 ：（API 22新增）提供者或Ukey中的资源正在被使用。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数handle、paramSet、inData、outData存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007：认证令牌信息校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008：认证令牌校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009：认证令牌超时。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013：证书不存在。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020：（API 22新增）提供者或UKey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY 12000024：（API 22新增）提供者或UKey中的资源正在被使用。 |
 
 **参考：**
 
@@ -411,12 +409,14 @@ struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数handle、paramSet、inData、outData有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013 ：证书不存在。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000006 ：加密引擎失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008 ：认证令牌校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007 ：认证令牌信息校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009 ：认证令牌超时。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 ：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001 ：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 ：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 ：（API 22新增）提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 ：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 ：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY = 12000024 ：（API 22新增）提供者或Ukey中的资源正在被使用。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数handle、paramSet、inData、outData存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007：认证令牌信息校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008：认证令牌校验失败。<br>         OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009：认证令牌超时。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013：证书不存在。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016：需要设备密码但没有设置。<br>         OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017：（API 20新增）同名密钥已存在。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020：（API 22新增）提供者或UKey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021：（API 22新增）PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023：（API 22新增）PIN码未认证通过。<br>         OH_HUKS_ERR_CODE_BUSY 12000024：（API 22新增）提供者或UKey中的资源正在被使用。 |
 
 **参考：**
 
 [OH_Huks_InitSession](capi-native-huks-api-h.md#oh_huks_initsession)
+
 [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession)
+
 [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession)
 
 
@@ -443,7 +443,7 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数handle、paramSet、inData、outData有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003 ：密钥参数无效。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011 ：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002 ：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013 ：证书不存在。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 ：（API 22新增）提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_BUSY = 12000024 ：（API 22新增）提供者或Ukey中的资源正在被使用。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数handle、paramSet存在无效参数。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在，或handle不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013：证书不存在。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020：（API 22新增）提供者或UKey内部执行失败。<br>         OH_HUKS_ERR_CODE_BUSY 12000024：（API 22新增）提供者或UKey中的资源正在被使用。 |
 
 **参考：**
 
@@ -452,6 +452,7 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, co
 [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession)
 
 [OH_Huks_FinishSession](capi-native-huks-api-h.md#oh_huks_finishsession)
+
 
 
 ### OH_Huks_ListAliases()
@@ -471,13 +472,13 @@ struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSe
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 获取密钥别名集需要的输入参数集（默认传空）。 |
-| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) **outData | 经过对应的密钥操作后输出的数据。 |
+| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) **outData | 获取的密钥别名集，使用之后需要使用[OH_Huks_FreeKeyAliasSet](capi-native-huks-param-h.md#oh_huks_freekeyaliasset)释放系统分配的内存。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401 ：参数paramSet、outData有一个无效。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：（API 23新增）通过访问群组标签指定的群组名无效。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数paramSet、outData存在无效参数。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
 
 ### OH_Huks_WrapKey()
 
@@ -503,7 +504,7 @@ struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API = 801 ：接口不支持。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004 ：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL = 12000011 ：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：密钥别名、参数集或者封装密钥不合法。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801：接口不支持。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：密钥别名、参数集或者封装密钥不合法。 |
 
 ### OH_Huks_UnwrapKey()
 
@@ -529,6 +530,6 @@ struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS = 0 ：操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API = 801 ：接口不支持。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004 ：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005 ：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR = 12000012 ：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014 ：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015 ：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 ：密钥别名、参数集或者封装密钥不合法。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801：接口不支持。<br>         OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004：删除或者写文件失败。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015：连接用户IAM失败。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：密钥别名、参数集或者封装密钥不合法。 |
 
 

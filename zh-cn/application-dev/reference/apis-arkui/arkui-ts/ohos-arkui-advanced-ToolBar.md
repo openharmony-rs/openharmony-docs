@@ -50,7 +50,7 @@ ArkTS-Sta: Toolbar({toolBarList: ToolBarOptions, activateIndex?: int, controller
 | ----------------------------- | ------------------------------------------------------------ | ---- | ----------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | toolBarList                   | [ToolBarOptions](#toolbaroptions)                            | 是   | @ObjectLink | 工具栏列表。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23   |
 | activateIndex                 | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否   | ArkTS-Dyn: @Prop<br/>ArkTS-Sta: @PropRef       | 激活态的子项。<br/>取值范围：大于等于-1。<br/>默认值：-1，没有激活态的子项。若设置数值小于-1，按没有激活项处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
+| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**说明：** <br/>根据自定义组件成员属性访问限定符[使用限制](../../../ui/state-management/arkts-custom-components-access-restrictions.md#使用限制)，该接口属于常规成员变量，可以传参进行初始化；也可以不传。不传时，使用组件内预设值进行初始化，组件内预设值为：new TabsController()。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
 | dividerModifier<sup>13+</sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | ArkTS-Dyn: @Prop<br/>ArkTS-Sta: @PropRef       | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br/>默认值：系统默认值。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23  |
 | toolBarModifier<sup>13+</sup> | [ToolBarModifier](#toolbarmodifier13)                        | 否   | ArkTS-Dyn: @Prop<br/>ArkTS-Sta: @PropRef       | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br/>默认值：<br/>工具栏高度：56vp<br/>背景色：ohos_id_toolbar_bg<br/>内边距：24vp<br/>显示按压态。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -66,9 +66,25 @@ ArkTS-Sta: Toolbar({toolBarList: ToolBarOptions, activateIndex?: int, controller
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
 
+## ToolBarOptions<sup>23+</sup>
+
+type ToolBarOptions = Array\<ToolBarOption>
+
+定义工具栏列表。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明   |
+| ------ | ------ |
+| Array\<[ToolBarOption](#toolbaroption)> | 表示工具栏列表。 |
 
 ## ToolBarOption
 
@@ -402,7 +418,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 从API version 13开始，该示例通过设置属性ToolBarModifier自定义工具栏高度、背景色、按压效果等样式。
@@ -601,8 +617,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example02](figures/zh-cn_image_toolbar_example02.png)
-
+![zh-cn_image_toolbar_example02](figures/image-toolbar-example02.png)
 
 ### 示例3（设置工具栏自定义播报）
 从API version 18开始，该示例通过设置工具栏子项属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -759,4 +774,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)

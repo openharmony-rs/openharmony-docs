@@ -1,15 +1,21 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta自定义组件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-从API version 23开始，支持在ArkTS-Dyn中使用ArkTS-Sta自定义组件。
+从API version 23开始，支持在ArkTS-Dyn中使用[ArkTS-Sta](../quick-start/arkts-interop-overview.md)自定义组件。
 
 
 ## 使用限制
 
 - 在ArkTS-Dyn中，不能对ArkTS-Sta的自定义组件设置通用样式，否则会导致编译错误；
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'static_module'; // 从ArkTS-Sta模块中导入
 
@@ -33,7 +39,7 @@ struct Index {
 }
 ```
 
-```TypeScript
+``` TypeScript
 'use static'
 
 // static_module/src/main/ets/components/MainPage.ets
@@ -45,7 +51,7 @@ export struct MainPage { // 从ArkTS-Sta模块中导出
 
   build() {
     Text(this.message)
-      .fontSize(30)
+      .fontSize(20)
   }
 }
 ```
@@ -61,41 +67,42 @@ ArkUI互操作能力支持在ArkTS-Dyn中使用ArkTS-Sta的自定义组件，包
 
 ```text
 project/
-├── entry/                            # ArkTS-Dyn主模块
+├── entry/                                 # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets      # 在ArkTS-Dyn中引入并使用ArkTS-Sta自定义组件
+│                   └── Component.ets      # 在ArkTS-Dyn中引入并使用ArkTS-Sta自定义组件
 │
-└── static_module/                     # ArkTS-Sta子模块
+└── static_module/                         # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets   # 定义ArkTS-Sta自定义组件并导出
+                    └── StaComponent.ets   # 定义ArkTS-Sta自定义组件并导出
 ```
 
 示例如下：
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaComponentStaComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/src/main/ets/components/StaComponent.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaComponent.ets
 import { Text, Column, Component, ComponentV2, Color } from '@ohos.arkui.component';
 
 @Component
 export struct ChildComponentV1 {
   message: string = 'Hello World V1!';
 
-  build() {
+  build(): void {
     Column() {
       Text(this.message)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
     }
-    .padding(20)
+    .width('100%')
   }
 }
 
@@ -103,21 +110,22 @@ export struct ChildComponentV1 {
 export struct ChildComponentV2 {
   message: string = 'Hello World V2!';
 
-  build() {
+  build(): void {
     Column() {
       Text(this.message)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
     }
-    .padding(20)
+    .width('100%')
   }
 }
 ```
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaComponentIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/Index.ets) -->
 
+``` TypeScript
 // static_module/Index.ets
-export { ChildComponentV1, ChildComponentV2 } from './src/main/ets/components/MainPage';
+export { ChildComponentV1, ChildComponentV2 } from './src/main/ets/components/StaComponent';
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -132,8 +140,10 @@ export { ChildComponentV1, ChildComponentV2 } from './src/main/ets/components/Ma
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
+<!-- @[DynInteropStaComponentComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/entry/src/main/ets/pages/Component.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/Component.ets
 import { ChildComponentV1, ChildComponentV2 } from 'static_module';
 
 @Entry
@@ -167,7 +177,7 @@ struct MainPage {
 
 @ComponentV2
 struct IndexV2 {
-  build() {
+  build(): void {
     Column() {
       // 直接使用ArkTS-Sta自定义组件
       ChildComponentV2()
@@ -182,7 +192,7 @@ struct IndexV2 {
 
 @ComponentV2
 struct MainPageV2 {
-  build() {
+  build(): void {
     Column() {
       // 使用ArkTS-Sta自定义组件
       ChildComponentV2()
@@ -191,3 +201,7 @@ struct MainPageV2 {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-component-demo1](figures/arkts-dyn-interop-sta-component-demo1.png)

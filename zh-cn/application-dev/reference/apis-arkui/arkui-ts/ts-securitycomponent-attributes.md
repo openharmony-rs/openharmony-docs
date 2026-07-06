@@ -230,7 +230,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined): 
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。<br/>ArkTS-Sta：设定为undefined时使用FontWeight.Medium进行设置。|
+| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。<br/>ArkTS-Sta：设定为undefined时使用FontWeight.Medium进行设置。如果value入参为''，文字粗细将被设置为FontWeight.Medium。|
 
 **返回值：**
 
@@ -1094,6 +1094,128 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 | -------- | -------- |
 | ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
+## fallbackLineSpacing
+
+ArkTS-Dyn: fallbackLineSpacing(enabled: boolean): T
+
+ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined): this
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。
+
+fallbackLineSpacing属性和[RichEditorTextStyle](ts-basic-components-richeditor.md#richeditortextstyle)的lineHeight属性强相关。当设置的 lineHeight 值小于文本在当前字号下的实际渲染高度时，将根据fallbackLineSpacing 属性值来确定行高是否要基于文字实际高度自适应。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined <br> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>ArkTS-Sta：设定为undefined时，保存控件保持默认样式。 |
+
+## accessibilityRole
+
+ArkTS-Dyn: accessibilityRole(role: SecurityComponentRoleType): T
+
+ArkTS-Sta: accessibilityRole(role: SecurityComponentRoleType | undefined): this
+
+设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                         |
+| -------- | ------- | ---- | ------------------------------------------------------------ |
+| role | ArkTS-Dyn: [SecurityComponentRoleType](#securitycomponentroletype) <br> ArkTS-Sta: [SecurityComponentRoleType](#securitycomponentroletype) \| undefined | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者自定义。<br/>ArkTS-Sta：设定为undefined时，保存控件保持默认样式。 |
+
+## accessibilityDefaultFocus
+
+ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean): T
+
+ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
+
+设置页面的屏幕朗读初始焦点，用于指定页面加载后屏幕朗读首次播报的焦点组件。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| focus  | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined <br> | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false或其他值无效。<br/>ArkTS-Sta：设定为undefined时，保存控件保持默认样式。 |
+
+## accessibilityNextFocusId
+
+ArkTS-Dyn: accessibilityNextFocusId(nextId: string): T
+
+ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
+
+支持在屏幕朗读过程中，指定朗读的下一个焦点组件。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置无效。<br/>ArkTS-Sta：设定为undefined时，保存控件保持默认样式。 |
+
+## accessibilityDescription
+
+ArkTS-Dyn: accessibilityDescription(description: string | Resource): T
+
+ArkTS-Sta: accessibilityDescription(description: string | Resource | undefined): this
+
+该属性用于为控件提供无障碍描述。开发人员可通过设置详细的文字说明，帮助用户理解组件的功能及即将执行的操作。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| description  | ArkTS-Dyn: string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| undefined | 是   | 控件的无障碍说明。用于补充组件的详细操作解释，帮助用户理解当前操作的具体内容及其潜在后果。控件被选中时，若组件同时包含文本属性和无障碍说明，优先播报文本内容，再播报无障碍说明。该参数的默认值为空字符串。 <br/>ArkTS-Sta：设定为undefined时，保存控件保持默认样式。|
+
 ## SecurityComponentLayoutDirection
 
 安全控件上图标和文字的排列方向。
@@ -1139,6 +1261,25 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 | Capsule | 1 | 胶囊型按钮（圆角半径默认为高度的一半）。 |
 | Circle  | 2 | 圆形按钮。              |
 | ROUNDED_RECTANGLE<sup>16+</sup> | 8 | 圆角矩形按钮（默认值：圆角半径大小20vp）。 |
+
+## SecurityComponentRoleType
+
+定义组件的屏幕朗读功能角色类型。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值  | 说明             |
+| ---- | ---- | ------------------ |
+| ROLE_NONE | 0 | NULL。 |
+| BUTTON | 1 | 按钮。 |
 
 ## 示例
 
@@ -1268,7 +1409,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001643038221](figures/zh-cn_image_0000001643038221.png)
+![SaveButton-Basic-demo](figures/SaveButton-Basic-demo.png)
 
 ### 示例2
 
@@ -2283,3 +2424,116 @@ struct Index {
 ```
 
 ![security_component_focus_box.gif](figures/security_component_focus_box.gif)
+
+### 示例5
+
+设置安全控件是否支持文字实际高度自适应及屏幕朗读模式下的相关表现。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 } as ColumnOptions) {
+        // 设置保存控件的fallbackLineSpacing为true。
+        SaveButton()
+          .fallbackLineSpacing(true)
+          .id('btn1')
+
+        // 将该保存控件设置为页面的屏幕朗读初始焦点。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn2')
+
+        // 指定屏幕朗读扫动走焦过程中该保存控件的下一个焦点为btn1。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn3')
+          .accessibilityNextFocusId('btn1')
+
+        // 指定该保存控件的无障碍组件类型为null。
+        SaveButton()
+          .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
+          .id('btn4')
+
+        // 指定该保存控件的无障碍组件描述为测试文本。
+        SaveButton()
+          .accessibilityDescription("test text for description")
+          .id('btn5')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  SaveButton,
+  SaveIconStyle,
+  SaveDescription,
+  ButtonType,
+  $r,
+  Row,
+  Color,
+  Scroll,
+  Flex,
+  FlexWrap,
+  FontWeight,
+  TextHeightAdaptivePolicy,
+  ColorMetrics,
+  LengthMetrics,
+  ColumnOptions,
+  SecurityComponentRoleType,
+} from '@ohos.arkui.component'
+import hilog from '@ohos.hilog'
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 } as ColumnOptions) {
+        // 设置保存控件的fallbackLineSpacing为true。
+        SaveButton()
+          .fallbackLineSpacing(true)
+          .id('btn1')
+
+        // 将该保存控件设置为页面的屏幕朗读初始焦点。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn2')
+
+        // 指定屏幕朗读扫动走焦过程中该保存控件的下一个焦点为btn1。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn3')
+          .accessibilityNextFocusId('btn1')
+
+        // 指定该保存控件的无障碍组件类型为null。
+        SaveButton()
+          .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
+          .id('btn4')
+
+        // 指定该保存控件的无障碍组件描述为测试文本。
+        SaveButton()
+          .accessibilityDescription("test text for description")
+          .id('btn5')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

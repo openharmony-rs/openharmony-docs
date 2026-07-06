@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -411,7 +411,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
+![Main-Color.png](figures/Main-Color.png)
 
 ### getMainColorSync
 
@@ -462,7 +462,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
+![Main-Color.png](figures/Main-Color.png)
 
 ### getLargestProportionColor<sup>10+</sup>
 
@@ -513,7 +513,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Largest_Proportion_Color.png](figures/zh-ch_image_Largest_Proportion_Color.png)
+![Largest-Proportion-Color.png](figures/Largest-Proportion-Color.png)
 
 ### getTopProportionColors<sup>12+</sup>
 
@@ -575,7 +575,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Top_Proportion_Colors.png](figures/zh-ch_image_Top_Proportion_Colors.png)
+![Top-Proportion-Colors.png](figures/Top-Proportion-Colors.png)
 
 ### getHighestSaturationColor<sup>10+</sup>
 
@@ -626,7 +626,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Highest_Saturation_Color.png](figures/zh-ch_image_Highest_Saturation_Color.png)
+![Highest-Saturation-Color.png](figures/Highest-Saturation-Color.png)
 
 ### getAverageColor<sup>10+</sup>
 
@@ -677,7 +677,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Average_Color.png](figures/zh-ch_image_Average_Color.png)
+![Average-Color.png](figures/Average-Color.png)
 
 ### isBlackOrWhiteOrGrayColor<sup>10+</sup>
 
@@ -837,7 +837,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Blur.png](figures/zh-ch_image_Add_Blur.png)
+![Add-Blur.png](figures/Add-Blur.png)
 
 ### blur<sup>14+</sup>
 
@@ -932,7 +932,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Blur_With_TileMode.png](figures/zh-ch_image_Add_Blur_With_TileMode.png)
+![Add-Blur-With-TileMode.png](figures/Add-Blur-With-TileMode.png)
 
 ### invert<sup>12+</sup>
 
@@ -1013,7 +1013,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Invert.png](figures/zh-ch_image_Add_Invert.png)
+![Add-Invert.png](figures/Add-Invert.png)
 
 ### setColorMatrix<sup>12+</sup>
 
@@ -1116,7 +1116,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
+![Set-ColorMatrix.png](figures/Set-ColorMatrix.png)
 
 ### brightness
 
@@ -1210,7 +1210,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Brightness.png](figures/zh-ch_image_Add_Brightness.png)
+![Add-Brightness.png](figures/Add-Brightness.png)
 
 ### grayscale
 
@@ -1295,7 +1295,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Grayscale.png](figures/zh-ch_image_Add_Grayscale.png)
+![Add-Grayscale.png](figures/Add-Grayscale.png)
 
 ### getEffectPixelMap<sup>11+</sup>
 

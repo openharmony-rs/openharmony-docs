@@ -1,9 +1,9 @@
 # FormEditExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md)的上下文，继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)。
@@ -25,7 +25,7 @@ FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资�
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
+startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
 
 拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
 
@@ -125,7 +125,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 }
 ```
 
-### startUIAbility<sup>23+<sup>
+### startUIAbility<sup>23+</sup>
 
 startUIAbility(want: Want): Promise&lt;void&gt;
 

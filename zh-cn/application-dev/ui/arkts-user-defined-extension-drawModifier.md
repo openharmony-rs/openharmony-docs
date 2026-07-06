@@ -1,9 +1,9 @@
 # 自定义绘制修改器 (DrawModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -28,6 +28,7 @@ declare class DrawModifier {
 }
 ```
 ArkTS-Sta：
+<!-- @[drawmodifier_interface_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawModifierInterface.ets) -->
 ```ts
 declare class DrawModifier {
 
@@ -271,20 +272,31 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
+<!-- @[drawFront_drawContent_drawBehind_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawFrontDrawContentDrawBehind.ets) -->
 
 ``` TypeScript
-import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
-import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
+import {
+  $r,
+  Button,
+  Color,
+  Column,
+  Component,
+  DrawContext,
+  DrawModifier,
+  Entry,
+  Row,
+  Text,
+  UIContext,
+  State
+} from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { DrawContext, DrawModifier } from '@kit.ArkUI';
 import { AnimatorResult } from '@ohos.animator'
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
 
-const LOG_PRINT_DOMAIN: number = 0xFF00;
+const LOG_PRINT_DOMAIN: int = 0xFF00;
 const PREFIX: string = '[Sample]'
 
-class MyFullDrawModifier extends DrawModifier {
+export class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
   public uiContext: UIContext;
@@ -352,7 +364,7 @@ class MyFullDrawModifier extends DrawModifier {
   }
 }
 
-class MyFrontDrawModifier extends DrawModifier {
+export class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
   public uiContext: UIContext;
@@ -390,7 +402,7 @@ struct DrawModifierExample {
   @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
   private count: int = 0;
 
-  create() {
+  create(): void {
     // 设置绘制动画
     let self = this;
     this.drawAnimator = this.getUIContext().createAnimator({
@@ -412,11 +424,11 @@ struct DrawModifierExample {
     };
   }
 
-  build() {
+  build(): void {
     Column() {
       Row() {
-        // $r('app.string.Modifier')需要替换为开发者所需的资源文件
-        Text($r('app.string.Modifier'))
+        // $r('app.string.app_name')需要替换为开发者所需的资源文件
+        Text($r('app.string.app_name'))
           .width(100)
           .height(100)
           .margin(10)
@@ -547,20 +559,16 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
+<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawForeground.ets) -->
 
 ``` TypeScript
-import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
-import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
+import { $r, Column, Component, DrawContext, DrawModifier, Entry, Text, TextAlign, UIContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { DrawContext, DrawModifier } from '@kit.ArkUI';
-import { AnimatorResult } from '@ohos.animator'
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN: number = 0xFF00;
+const LOG_PRINT_DOMAIN: int = 0xFF00;
 const PREFIX: string = '[Sample]'
 
-class MyForegroundDrawModifier extends DrawModifier {
+export class MyForegroundDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
   public uiContext: UIContext;
@@ -597,10 +605,10 @@ struct DrawModifierExample {
   // 将自定义绘制前景的类实例化，传入UIContext实例。
   private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
 
-  build() {
+  build(): void {
     Column() {
-      // $r('app.string.TestNode')需要替换为开发者所需的资源文件。
-      Text($r('app.string.TestNode'))
+      // $r('app.string.app_name')需要替换为开发者所需的资源文件。
+      Text($r('app.string.app_name'))
         .fontSize(36)
         .width('100%')
         .height('100%')
@@ -630,7 +638,7 @@ struct DrawModifierExample {
 > 
 > - 如果开发者希望这个画布进行一个预期的变换，应该使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
-**ArkTS接口调用示例：**
+ArkTS-Dyn示例：
 
 <!-- @[Canvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets) -->
 
@@ -719,6 +727,141 @@ class MyDrawModifier extends DrawModifier {
 struct Index {
   myDrawModifier: MyDrawModifier = new MyDrawModifier();
   myDrawModifier1: MyDrawModifier = new MyDrawModifier1();
+
+  build() {
+    Row() {
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+    }.height('100%')
+    .width('100%').position({ x: 10, y: 10 })
+
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/Canvas.ets) --> 
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  DrawingCanvas,
+  DrawModifier,
+  Row,
+  Stack,
+  DrawContext
+} from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+
+  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
+  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+class MyDrawModifier1 extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage1(drawContext.canvas)
+  }
+}
+
+class MyDrawModifier extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage(drawContext.canvas)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myDrawModifier: MyDrawModifier = new MyDrawModifier();
+  myDrawModifier1: MyDrawModifier1 = new MyDrawModifier1();
 
   build() {
     Row() {

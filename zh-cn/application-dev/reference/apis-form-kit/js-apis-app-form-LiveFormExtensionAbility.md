@@ -1,9 +1,9 @@
 # @ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁互动卡片等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
@@ -42,7 +42,7 @@ import { LiveFormExtensionAbility } from '@kit.FormKit';
 | ------ | ------ | ---- | ---- | ---- |
 | context |  [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md) | 否   | 否 |LiveFormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
 
-### onLiveFormCreate
+## onLiveFormCreate
 
 onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void
 
@@ -171,7 +171,7 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
 | ------ | ------ | ---- | ---- | -------- |
 | formId | string | 否 | 否 | 卡片id。 |
 | rect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | 否 | 否 | 卡片位置和大小信息。 |
-| borderRadius | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否 | 否 | 卡片圆角半径信息。取值大于0，单位vp。 |
+| borderRadius | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否 | 否 | 卡片圆角半径信息。取值大于等于0，单位vp。 |
 
 ## 附录
 

@@ -27,7 +27,9 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 >
 >  在Text组件中使用该接口时，不支持对点击事件进行自定义手势判定。 
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,38 +59,38 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称    | 类型                                       | 只读 | 可选 | 说明         |
 | ---------| ---------------------------------------- | ---- | ---- | -----------|
-| target   | [EventTarget](ts-universal-events-click.md#eventtarget8) | 否 | 否 | 触发手势事件的元素对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
-| timestamp| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| source   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8) | 否 | 否 | 事件输入设备的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
-| pressure<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 按压的压力大小。<br/>默认值：0<br/>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| tiltX<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| tiltY<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 |手写笔在设备平面上的投影与设备平面Y轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| rollAngle<sup>17+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 手写笔与设备平面的夹角。<br/>**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
-| sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9) | 否 | 否 | 事件输入源的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| axisHorizontal<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 水平轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| axisVertical<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 垂直轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| axisPinch<sup>21+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 |  双指缩放比例。<br/>默认值：0<br/>**说明：**<br/>仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。<br/>缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。<br/>取值范围：[0, +∞)<br/>**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 21<br/>**ArkTS-Sta起始版本：** 23 |
-| deviceId<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发当前事件的输入设备ID。<br/>默认值：0<br />取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| targetDisplayId<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 事件发生的屏幕ID。  <br/>默认值：0<br />取值范围：[0, +∞)<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| getModifierKeyState<sup>23+</sup> | [ModifierKeyStateGetter](./ts-types.md#modifierkeystategetter23) | 否 | 是 | 获取功能键按压状态。支持功能键'Ctrl'\|'Alt'\|'Shift'。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getModifierKeyState](#getmodifierkeystate12)。<br/>**ArkTS-Sta起始版本：** 23<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。|
+| target   | [EventTarget](ts-universal-events-click.md#eventtarget8) | 否 | 否 | 触发手势事件的元素对象。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| timestamp| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| source   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8) | 否 | 否 | 事件输入设备的类型。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| pressure<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 按压的压力大小。<br/>默认值：0<br/>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| tiltX<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br/>单位：deg <br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| tiltY<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 |手写笔在设备平面上的投影与设备平面Y轴的夹角。<br/>单位：deg <br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| rollAngle<sup>17+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 手写笔与设备平面的夹角。<br/>单位：deg <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9) | 否 | 否 | 事件输入源的类型。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| axisHorizontal<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 水平轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| axisVertical<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 垂直轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| axisPinch<sup>21+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 |  双指缩放比例。<br/>默认值：0<br/>**说明：**<br/>仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。<br/>缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。<br/>取值范围：[0, +∞)<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 21<br/>**ArkTS-Sta起始版本：** 23 |
+| deviceId<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发当前事件的输入设备ID。<br/>默认值：0<br />取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| targetDisplayId<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 事件发生的屏幕ID。  <br/>默认值：0<br />取值范围：[0, +∞)<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| getModifierKeyState<sup>23+</sup> | [ModifierKeyStateGetter](./ts-types.md#modifierkeystategetter23) | 否 | 是 | 获取功能键按压状态。支持功能键'Ctrl'\|'Alt'\|'Shift'。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。|
 
 ### getModifierKeyState<sup>12+</sup>
 
 getModifierKeyState?(keys: Array\<string>): boolean
 
-获取功能键按压状态。报错信息请参考以下错误码。支持功能键'Ctrl'\|'Alt'\|'Shift'。
+获取修饰键按压状态。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
 
 >  **说明：**
 >
 > 此接口不支持在手写笔场景下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[getModifierKeyState](#baseevent8)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -96,13 +98,13 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| keys  | Array&lt;string&gt; | 是   | 功能键列表。 |
+| keys  | Array&lt;string&gt; | 是   | 修饰键列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回功能键按压状态。当功能键均处于按压状态时返回true，否则返回false。 |
+| boolean | 返回修饰键按压状态。当修饰键均处于按压状态时返回true，否则返回false。 |
 
 **错误码：**
 
@@ -116,7 +118,7 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑和滑动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
 
 ```ts
 // xxx.ets
@@ -230,7 +232,7 @@ struct Index {
         Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
           .width('100%')
           .fontSize(20)
-          .fontColor('0xffdd00')
+          .fontColor('#ffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {
@@ -260,7 +262,7 @@ struct Index {
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
             console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
-              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
+              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {

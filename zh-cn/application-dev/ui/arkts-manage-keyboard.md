@@ -63,7 +63,7 @@ struct demo {
 
 外接物理键盘时，按下物理键盘的Tab键、Shift+Tab键、方向键可以转移焦点。按键走焦到输入框时，显示物理键盘悬浮栏。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md#走焦规范)。
 
-以下示例展示了外接键盘时，多次按下Tab键，焦点转移到TextInput并弹出软键盘的场景。当按下Tab键时，焦点在页面中的三个组件之间转移，可以从Text的蓝色边框或者TextInput中闪烁的光标观察到焦点转移。当TextInput获焦时，显示光标，同时显示物理键盘悬浮栏。
+以下示例展示了外接键盘时，多次按下Tab键，焦点转移到TextInput并显示物理键盘悬浮栏的场景。当按下Tab键时，焦点在页面中的三个组件之间转移，可以从Text的蓝色边框或者TextInput中闪烁的光标观察到焦点转移。当TextInput获焦时，显示光标，同时显示物理键盘悬浮栏。
 
 ```ts
 @Entry
@@ -85,6 +85,7 @@ struct Index {
   }
 }
 ```
+
 ![keyboard_textInput_tab](figures/keyboard_textInput_tab.gif)
 
 ## 收起软键盘
@@ -270,6 +271,8 @@ struct demo_text_1 {
 
 以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
 
+ArkTS-Dyn示例：
+
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 
 ``` TypeScript
@@ -294,6 +297,41 @@ struct textInputControllerCloseKeyboard {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct textInputControllerCloseKeyboard {
+  controller: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 30 } as ColumnOptions) {
+        // 请将$r('app.string.close_keyboard')替换为实际资源文件，在本示例中该资源文件的value值为"close keyboard"
+        Button($r('app.string.close_keyboard')).onClick(() => {
+          this.controller.stopEditing()
+        })
+        TextInput({ controller: this.controller, text: this.inputValue })
+      }
+      .width('80%')
+      .height('100%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
+
+    }
+
+  }
+}
+```
+
 ![stopEditing](figures/stopEditing.gif)
 
 ### 焦点转移到不需要软键盘的组件
@@ -305,6 +343,8 @@ struct textInputControllerCloseKeyboard {
 与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
 
 以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
+
+ArkTS-Dyn示例：
 
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
@@ -327,6 +367,40 @@ struct requestFocusCloseKeyBoard {
     .width('80%')
     .margin('10%')
   }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
+
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct requestFocusCloseKeyBoard {
+  controller: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        // 请将$r('app.string.button_get_focus')替换为实际资源文件，在本示例中该资源文件的value值为"按钮获得焦点"
+        Button($r('app.string.button_get_focus')).onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('button')
+        }).id('button')
+        TextInput({ controller: this.controller, text: this.inputValue })
+      }
+      .justifyContent(FlexAlign.Center)
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+
+    }
+
   }
 }
 ```

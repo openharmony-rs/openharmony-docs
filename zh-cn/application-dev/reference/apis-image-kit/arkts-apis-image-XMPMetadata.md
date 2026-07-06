@@ -1,4 +1,4 @@
-# class (XMPMetadata)
+# Class (XMPMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -69,7 +69,7 @@ async function RegisterNamespacePrefix() {
   try {
     let xmpMetadata = new image.XMPMetadata();
     // 注册自定义命名空间，注册后方可使用该前缀创建标签。
-    let xmpNamespace: image.XMPNamespace = {uri: "http://mybook.com/story/1.0/", prefix: "book"};
+    let xmpNamespace: image.XMPNamespace = {uri: "urn:example:book:1.0", prefix: "book"};
     await xmpMetadata.registerXMPNamespace(xmpNamespace);
     console.info('Succeeded in registering namespace prefix.');
   } catch (error) {
@@ -175,10 +175,10 @@ async function GetTag() {
     await xmpMetadata.setValue(`${image.XMP_BASIC.prefix}:title`, image.XMPTagType.STRING, 'My Title');
     // 获取xmp:title路径的标签。
     let tag: image.XMPTag | null = await xmpMetadata.getTag(`${image.XMP_BASIC.prefix}:title`);
-    console.info(`${image.XMP_BASIC.prefix}:title: ${tag?.value}`);
+    console.info(`Succeeded in getting an XMP tag. ${image.XMP_BASIC.prefix}:title: ${tag?.value}.`);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
-    console.error(`Failed to get XMP tag! code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to get an XMP tag. Code: ${err.code}, message: ${err.message}.`);
   }
 }
 ```
@@ -227,10 +227,10 @@ async function RemoveTag() {
     await xmpMetadata.removeTag(`${image.XMP_BASIC.prefix}:title`);
     // 再次获取验证是否已移除，如果节点不存在则返回null。
     let tag: image.XMPTag | null = await xmpMetadata.getTag(`${image.XMP_BASIC.prefix}:title`);
-    console.info(`${image.XMP_BASIC.prefix}:title exists after remove: ${tag !== null}`);
+    console.info(`Succeeded in removing an XMP tag. ${image.XMP_BASIC.prefix}:title exists after remove: ${tag !== null}.`);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
-    console.error(`Failed to remove XMP tag! code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to remove an XMP tag. Code: ${err.code}, message: ${err.message}.`);
   }
 }
 ```
@@ -277,16 +277,16 @@ async function EnumerateTags(imageSourceObj: image.ImageSource) {
         // 获取所有XMP标签（递归模式、包含普通节点和限定符）。
         metaData.xmpMetadata.enumerateTags((path: string, tag: image.XMPTag): boolean => {
           // 打印标签路径、名称和值。
-          console.info(`path: ${path}, name: ${tag.name}, value: ${tag.value}`);
+          console.info(`Succeeded in enumerating an XMP tag. Path: ${path}, name: ${tag.name}, value: ${tag.value}.`);
           return true;  // 返回true继续遍历。
         }, undefined, { isRecursive: true, onlyQualifier: false });
       } catch (error) {
         let err: BusinessError = error as BusinessError;
-        console.error(`EnumerateTags failed! error.code is ${err.code}, error.message is ${err.message}`);
+        console.error(`Failed to enumerate XMP tags. Code: ${err.code}, message: ${err.message}.`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadataByType failed! error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata by type. Code: ${error.code}, message: ${error.message}.`);
   })
 }
 ```
@@ -338,15 +338,14 @@ async function GetTags(imageSourceObj: image.ImageSource) {
         // 获取所有XMP标签（递归模式、包含普通节点和限定符）。
         let tags: Record<string, image.XMPTag> =
           await metaData.xmpMetadata.getTags(undefined, { isRecursive: true, onlyQualifier: false });
-        console.info(`tagCount: ${Object.keys(tags).length}`);
-        console.info(JSON.stringify(tags));
+        console.info(`Succeeded in getting XMP tags. Count: ${Object.keys(tags).length}, data: ${JSON.stringify(tags)}.`);
       } catch (error) {
         let err: BusinessError = error as BusinessError;
-        console.error(`Failed to get XMP tags! code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to get XMP tags. Code: ${err.code}, message: ${err.message}.`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadataByType failed! error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata by type. Code: ${error.code}, message: ${error.message}.`);
   })
 }
 ```
@@ -390,14 +389,14 @@ async function GetBlob(imageSourceObj: image.ImageSource) {
     if (metaData != undefined && metaData.xmpMetadata != undefined) {
       try {
         let blob: ArrayBuffer = await metaData.xmpMetadata.getBlob();
-        console.info(`blobLength: ${blob.byteLength}`);
+        console.info(`Succeeded in getting an XMP blob. Length: ${blob.byteLength}.`);
       } catch (error) {
         let err: BusinessError = error as BusinessError;
-        console.error(`Failed to get XMP blob! code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to get an XMP blob. Code: ${err.code}, message: ${err.message}.`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadataByType failed! error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata by type. Code: ${error.code}, message: ${error.message}.`);
   })
 }
 ```
@@ -449,14 +448,14 @@ async function SetBlob(imageSourceObj: image.ImageSource) {
         // 以原始二进制数据回填，验证setBlob接口可用性。
         await metaData.xmpMetadata.setBlob(blob);
         let newBlob: ArrayBuffer = await metaData.xmpMetadata.getBlob();
-        console.info(`newBlobLength: ${newBlob.byteLength}`);
+        console.info(`Succeeded in setting an XMP blob. New length: ${newBlob.byteLength}.`);
       } catch (error) {
         let err: BusinessError = error as BusinessError;
-        console.error(`Failed to set XMP blob! code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to set an XMP blob. Code: ${err.code}, message: ${err.message}.`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadataByType failed! error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata by type. Code: ${error.code}, message: ${error.message}.`);
   })
 }
 ```

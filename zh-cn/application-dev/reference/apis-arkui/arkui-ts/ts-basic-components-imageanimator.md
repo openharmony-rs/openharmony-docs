@@ -27,9 +27,9 @@
 
 ImageAnimator()
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,11 +49,11 @@ ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,9 +75,9 @@ ArkTS-Sta: state(value: AnimationStatus | undefined)
 
 控制播放状态。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,11 +97,11 @@ ArkTS-Dyn: duration(value: number)
 
 ArkTS-Sta: duration(value: int | undefined)
 
-设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
+设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,9 +123,9 @@ ArkTS-Sta: reverse(value: boolean | undefined)
 
 设置播放方向。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,9 +147,9 @@ ArkTS-Sta: fixedSize(value: boolean | undefined)
 
 设置图片大小是否固定为组件大小。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +183,7 @@ preDecode(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前页时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
+| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
 
 ### fillMode
 
@@ -193,9 +193,9 @@ ArkTS-Sta: fillMode(value: FillMode | undefined)
 
 设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,7 +217,7 @@ ArkTS-Sta: iterations(value: int | undefined)
 
 设置播放次数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,7 +239,9 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 设置组件是否通过系统[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +254,7 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 <!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>当设置为false时，组件的暂停和播放不受到onVisibleAreaChange影响。<br/> 设置undefined时，按默认值处理。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
+| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>当设置为false时，组件的暂停和播放不受到onVisibleAreaChange影响。<br/> 设置undefined时，按默认值处理。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
 
 ### attributeModifier<sup>23+</sup>
 
@@ -278,7 +280,7 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 图片帧信息集合。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,11 +290,11 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | -------------- | -------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。<br/>**string格式说明：**<br/>- 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。resources目录下的文件不支持通过相对路径访问，需使用[Resource](ts-types.md#resource)类型（如\$r或$rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>- 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。<br/>- 支持`file://`路径前缀的字符串，应用沙箱URI为`file://\<bundleName>/\<sandboxPath>`。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>- 支持`Base64`字符串。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
-| width    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
-| height   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
-| top      | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
-| left     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。<br/>**string格式说明：**<br/>- 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。resources目录下的文件不支持通过相对路径访问，需使用[Resource](ts-types.md#resource)类型（如\$r或$rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>- 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。<br/>- 支持`file://`路径前缀的字符串，应用沙箱URI为`file://\<bundleName>/\<sandboxPath>`。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>- 支持`Base64`字符串。 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
+| width    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
+| height   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
+| top      | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
+| left     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
 | duration | ArkTS-Dyn: number <br> ArkTS-Sta: int          | 否    | 是    | 每帧图片的播放时长，单位毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
 
 ## 事件
@@ -301,15 +303,15 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 ### onStart
 
-ArkTS-Sta: onStart(event: (() => void) | undefined)
-
 ArkTS-Dyn: onStart(event: () => void)
+
+ArkTS-Sta: onStart(event: (() => void) | undefined)
 
 状态回调，动画开始播放时触发。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,19 +323,19 @@ ArkTS-Dyn: onStart(event: () => void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画开始播放时触发。 |
+| event | ArkTS-Dyn: () =&gt; void<br/>ArkTS-Sta: (() =&gt; void) \| undefined | 是    | 状态回调，动画开始播放时触发。 |
 
 ### onPause
 
-ArkTS-Sta: onPause(event: (() => void) | undefined)
-
 ArkTS-Dyn: onPause(event: () => void)
+
+ArkTS-Sta: onPause(event: (() => void) | undefined)
 
 状态回调，动画暂停播放时触发。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,17 +347,17 @@ ArkTS-Dyn: onPause(event: () => void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画暂停播放时触发。 |
+| event | ArkTS-Dyn: () =&gt; void<br/>ArkTS-Sta: (() =&gt; void) \| undefined | 是    | 状态回调，动画暂停播放时触发。 |
 
 ### onRepeat
 
-ArkTS-Sta: onRepeat(event: (() => void) | undefined)
-
 ArkTS-Dyn: onRepeat(event: () => void)
+
+ArkTS-Sta: onRepeat(event: (() => void) | undefined)
 
 状态回调，动画重复播放时触发。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -367,19 +369,19 @@ ArkTS-Dyn: onRepeat(event: () => void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画重复播放时触发。 |
+| event | ArkTS-Dyn: () =&gt; void<br/>ArkTS-Sta: (() =&gt; void) \| undefined | 是    | 状态回调，动画重复播放时触发。 |
 
 ### onCancel
 
-ArkTS-Sta: onCancel(event: (() => void) | undefined)
-
 ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: (() => void) | undefined)
 
 状态回调，动画返回最初状态时触发。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,19 +393,19 @@ ArkTS-Dyn: onCancel(event: () => void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画返回最初状态时触发。 |
+| event | ArkTS-Dyn: () =&gt; void<br/>ArkTS-Sta: (() =&gt; void) \| undefined | 是    | 状态回调，动画返回最初状态时触发。 |
 
 ### onFinish
 
-ArkTS-Sta: onFinish(event: (() => void) | undefined)
-
 ArkTS-Dyn: onFinish(event: () => void)
+
+ArkTS-Sta: onFinish(event: (() => void) | undefined)
 
 状态回调，动画播放完成时或者停止播放时触发。 
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -415,7 +417,7 @@ ArkTS-Dyn: onFinish(event: () => void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画播放完成时或者停止播放时触发。 |
+| event | ArkTS-Dyn: () =&gt; void<br/>ArkTS-Sta: (() =&gt; void) \| undefined | 是    | 状态回调，动画播放完成时或者停止播放时触发。 |
 
 ## 示例
 
@@ -594,8 +596,8 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    let imageSource = image.createImageSource(uint8Array?.buffer.slice(0, uint8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
     });
@@ -682,7 +684,7 @@ struct ImageAnimatorAutoPauseTest {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向

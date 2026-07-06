@@ -1,8 +1,8 @@
 # Types
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -31,7 +31,7 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
-| 'navigation'   | <!--RP13--><!--RP13End-->三键导航栏。   |
+| 'navigation'   | 三键导航栏<!--RP13-->或工具栏。当前工具栏仅Car设备支持。<!--RP13End-->   |
 | 'navigationIndicator'   | 底部导航。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
@@ -112,7 +112,7 @@ type RotationChangeCallback<T, U> = (info: T) => U
 | -------------------------------- | ------------------------------------ |
 | U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined类型的返回值。 |
 
-## WindowEventListener<sup>24+</sup>
+## WindowEventListener
 
 ArkTS-Dyn: type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
 
@@ -124,9 +124,9 @@ ArkTS-Sta: type WindowEventListener = (windowId: int, event: window.WindowEventT
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 

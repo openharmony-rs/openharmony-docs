@@ -25,7 +25,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -39,7 +39,7 @@ constructor(asset: PhotoAsset)
 
 构造函数，用于初始化资产变更请求。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -86,7 +86,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 指定待创建资产的数据来源，可参考[@ohos.file.fileuri (文件URI)](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -190,7 +190,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 
 指定文件类型和扩展名，创建资产变更请求。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -247,7 +247,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
+通过PhotoAsset对象删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -305,7 +305,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
+通过uri删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -370,7 +370,7 @@ getAsset(): PhotoAsset
 >
 > 对于创建资产的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -415,7 +415,7 @@ setTitle(title: string): void
 
 修改媒体资产的标题。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -532,7 +532,7 @@ addResource(type: ResourceType, fileUri: string): void
 >
 > 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -586,7 +586,7 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 >
 > 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -667,7 +667,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-保存相机拍摄的照片。
+保存相机拍摄的照片。需要指定保存的类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

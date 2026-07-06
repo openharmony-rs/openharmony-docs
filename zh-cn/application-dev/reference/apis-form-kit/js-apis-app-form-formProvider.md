@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -71,13 +71,13 @@ let formId: string = '12400633174999288'; // 表示卡片formId，根据实际fo
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -161,10 +161,10 @@ try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -246,13 +246,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider updateForm success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -273,12 +273,12 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error,data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     }
     console.info(`formProvider updateForm success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -344,10 +344,10 @@ try {
   formProvider.updateForm(formId, obj).then(() => {
     console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -369,10 +369,10 @@ try {
   formProvider.updateForm(formId, obj).then(() => {
     console.info(`formProvider updateForm success`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -418,13 +418,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getFormsInfo((error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -440,14 +440,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
     if (error?.code != 0) {
-      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   }
   formProvider.getFormsInfo(callback);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## formProvider.getFormsInfo
@@ -497,13 +497,13 @@ const filter: formInfo.FormInfoFilter = {
 try {
   formProvider.getFormsInfo(filter, (error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -522,14 +522,14 @@ const filter: formInfo.FormInfoFilter = {
 try {
   let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
     if (error?.code != 0) {
-      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   };
   formProvider.getFormsInfo(filter, callback);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -586,10 +586,10 @@ try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -608,10 +608,10 @@ try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -785,7 +785,7 @@ struct Page {
             formProvider.closeFormEditAbility();
             console.info(`${TAG} close FormEditAbility success.`);
           } catch (error) {
-            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+            console.error(`${TAG} close FormEditAbility failed, code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -848,6 +848,8 @@ openFormManager(want: Want): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -892,7 +894,7 @@ const want: Want = {
 try {
   formProvider.openFormManager(want);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -917,7 +919,7 @@ const want: Want = {
 try {
   formProvider.openFormManager(want);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -972,10 +974,10 @@ try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
     console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1023,10 +1025,10 @@ try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1040,8 +1042,9 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 > 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
 > 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
 
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -1101,10 +1104,10 @@ try {
   formProvider.requestOverflow(formId, overflowInfo).then(() => {
     console.info('requestOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1148,6 +1151,8 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 卡片提供方发起取消互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -1196,10 +1201,10 @@ try {
   formProvider.cancelOverflow(formId).then(() => {
     console.info('cancelOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1279,9 +1284,11 @@ let formId: string = '12400633174999288'; // 表示卡片formId，根据实际fo
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
     console.info(`getFormRect succeed, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1430,10 +1437,10 @@ try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1449,10 +1456,10 @@ try {
   formProvider.getPublishedRunningFormInfos().then((data: Array<formInfo.RunningFormInfo>) => {
     console.info(`formProvider getPublishedRunningFormInfos`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1516,10 +1523,10 @@ try {
   formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
     console.info(`reloadForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1542,10 +1549,10 @@ try {
   formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
     console.info(`reloadForms success, reload number: ${reloadNum}`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## formProvider.reloadAllForms<sup>22+</sup>
@@ -1601,10 +1608,10 @@ try {
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1623,9 +1630,9 @@ try {
   formProvider.reloadAllForms(context).then((reloadNum: int) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
