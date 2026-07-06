@@ -132,7 +132,7 @@ Enumerates the Gewu error codes.
 | OH_QOS_GEWU_INVAL = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.|
 | OH_QOS_GEWU_EXIST = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.|
 | OH_QOS_GEWU_NOENT = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.|
-| OH_QOS_GEWU_NOSYS = 801 | Symbol not found. Possible cause: The dependent library or module is not correctly loaded. Solution: Ensure that the dependent library is correctly installed.|
+| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The dependent library or module is not correctly loaded. Solution: Ensure that the dependent library is correctly installed.|
 | OH_QOS_GEWU_FAULT = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.|
 
 
@@ -260,7 +260,7 @@ Creates a Gewu session. Before calling this API, ensure that the system supports
 
 | Type| Description|
 |--| -- |
-| [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md) | Gewu session creation result.<br>         - If the session is created successfully, the value of `error` in the return value `OH_QoS_GewuCreateSessionResult` is `OH_QOS_GEWU_OK`, and the value of `session` is the session handle.<br>         - If the session fails to be created, `error` in the return value `OH_QoS_GewuCreateSessionResult` indicates the error cause. The value `OH_QOS_GEWU_NOMEM` indicates that the memory is insufficient for creating a session, the value `OH_QOS_GEWU_INVAL` indicates a parameter error, the value `OH_QOS_GEWU_NOPERM` indicates insufficient permission, the value `OH_QOS_GEWU_EXIST` indicates that the session already exists, and the value `OH_QOS_GEWU_NOSYS` indicates that the symbol cannot be found.|
+| [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md) | Gewu session creation result.<br>         - If the session is created successfully, the value of `error` in the return value `OH_QoS_GewuCreateSessionResult` is `OH_QOS_GEWU_OK`, and the value of `session` is the session handle.<br>         - If the session fails to be created, `error` in the return value `OH_QoS_GewuCreateSessionResult` indicates the error cause. The value `OH_QOS_GEWU_NOMEM` indicates that the memory is insufficient for creating a session, the value `OH_QOS_GEWU_INVAL` indicates a parameter error, the value `OH_QOS_GEWU_NOPERM` indicates insufficient permission, the value `OH_QOS_GEWU_EXIST` indicates that the session already exists, and the value `OH_QOS_GEWU_NOSYS` indicates that the subsystem cannot be found.|
 
 ### OH_QoS_GewuDestroySession()
 
@@ -284,7 +284,7 @@ Destroys a Gewu session. This function releases session-related resources and cl
 
 | Type| Description|
 | -- | -- |
-| [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) | Error code.<br>         - If the session is destroyed successfully, `OH_QOS_GEWU_OK` is returned.<br>         - If the session is not found, `OH_QOS_GEWU_NOENT` is returned.<br>         - If the parameter is invalid, `OH_QOS_GEWU_INVAL` is returned.<br>         - If the symbol is not found, `OH_QOS_GEWU_NOSYS` is returned.<br>         - If another internal error occurs, `OH_QOS_GEWU_FAULT` is returned.|
+| [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) | Error code.<br>         - If the session is destroyed successfully, `OH_QOS_GEWU_OK` is returned.<br>         - If the session is not found, `OH_QOS_GEWU_NOENT` is returned.<br>         - If the parameter is invalid, `OH_QOS_GEWU_INVAL` is returned.<br>         - If the subsystem is not found, `OH_QOS_GEWU_NOSYS` is returned.<br>         - If another internal error occurs, `OH_QOS_GEWU_FAULT` is returned.|
 
 ### OH_QoS_GewuAbortRequest()
 
@@ -309,7 +309,7 @@ Stops a specified request. This function requests the Gewu service to abort the 
 
 | Type| Description|
 | -- | -- |
-| [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) | Error code.<br>         - If the request is successfully stopped, `OH_QOS_GEWU_OK` is returned.<br>         - If the request is not found, `OH_QOS_GEWU_NOENT` is returned.<br>         - If the parameter is invalid, <idp:inline displayname="code" id="code516885512497">OH_QOS_GEWU_INVAL</idp:inline> is returned.<br>         - If the symbol is not found, `OH_QOS_GEWU_NOSYS` is returned.|
+| [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) | Error code.<br>         - If the request is successfully stopped, `OH_QOS_GEWU_OK` is returned.<br>         - If the request is not found, `OH_QOS_GEWU_NOENT` is returned.<br>         - If the parameter is invalid, <idp:inline displayname="code" id="code516885512497">OH_QOS_GEWU_INVAL</idp:inline> is returned.<br>         - If the subsystem is not found, `OH_QOS_GEWU_NOSYS` is returned.|
 
 ### OH_QoS_GewuSubmitRequest()
 
@@ -336,4 +336,4 @@ Submits a request. This function submits an inference request to a specified ses
 
 | Type| Description|
 | -- | -- |
-| [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | Result of submitting a Gewu request. The **error** field is of the [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) type. For the mapping between the enumerated values and numeric codes, see the enum description of [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode).<br>         - If the request is submitted successfully, `error` in `OH_QoS_GewuSubmitRequestResult` is `OH_QOS_GEWU_OK` (**0**), and **request** is the request handle.<br>         - If the request fails to be submitted, `error` in the return value `OH_QoS_GewuSubmitRequestResult` indicates the error cause. The value `OH_QOS_GEWU_NOMEM` (**203**) indicates that there is no sufficient memory to process this request, the value `OH_QOS_GEWU_INVAL` (**401**) indicates a parameter error, the value `OH_QOS_GEWU_NOENT` (**502**) indicates that the session is not found, the value `OH_QOS_GEWU_NOPERM` (**201**) indicates insufficient permission, and the value `OH_QOS_GEWU_NOSYS` (**801**) indicates that the symbol is not found.|
+| [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | Result of submitting a Gewu request. The **error** field is of the [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) type. For the mapping between the enumerated values and numeric codes, see the enum description of [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode).<br>         - If the request is submitted successfully, `error` in `OH_QoS_GewuSubmitRequestResult` is `OH_QOS_GEWU_OK` (**0**), and **request** is the request handle.<br>         - If the request fails to be submitted, `error` in the return value `OH_QoS_GewuSubmitRequestResult` indicates the error cause. The value `OH_QOS_GEWU_NOMEM` (**203**) indicates that there is no sufficient memory to process this request, the value `OH_QOS_GEWU_INVAL` (**401**) indicates a parameter error, the value `OH_QOS_GEWU_NOENT` (**502**) indicates that the session is not found, the value `OH_QOS_GEWU_NOPERM` (**201**) indicates insufficient permission, and the value `OH_QOS_GEWU_NOSYS` (**801**) indicates that the subsystem is not found.|
