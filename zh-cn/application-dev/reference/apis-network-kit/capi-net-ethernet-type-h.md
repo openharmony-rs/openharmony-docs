@@ -1,5 +1,13 @@
 # net_ethernet_type.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+
 ## 概述
 
 为以太网网卡模块C接口定义数据结构。
