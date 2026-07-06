@@ -107,7 +107,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 | 参数项 | 描述 |
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针，表示需要持久化授权的文件或目录URI策略信息。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为[1, 500]。 |
 | [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
 | unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
@@ -136,7 +136,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 | 参数项 | 描述 |
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针，表示需要取消持久化授权的文件或目录URI策略信息。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为[1, 500]。 |
 | [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
 | unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
@@ -165,7 +165,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 | 参数项 | 描述 |
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针，表示需要激活权限的文件或目录URI策略信息。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为[1, 500]。 |
 | [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
 | unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
@@ -194,7 +194,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 | 参数项 | 描述 |
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针，表示需要取消激活权限的文件或目录URI策略信息。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为[1, 500]。 |
 | [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | 输出参数，指向FileShare_PolicyErrorResult数组指针。请使用OH_FileShare_ReleasePolicyErrorResult()进行资源释放。 |
 | unsigned int *resultNum | 输出参数，表示FileShare_PolicyErrorResult数组的元素个数。 |
 
@@ -223,7 +223,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 | 参数项 | 描述 |
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 指向FileShare_PolicyInfo实例数组的指针，表示需要校验持久化授权的文件或目录URI策略信息。 |
-| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为1到500。 |
+| unsigned int policyNum | FileShare_PolicyInfo实例数组的元素个数，取值范围为[1, 500]。 |
 | bool **result | 输出参数，指向授权校验结果数组。数组元素与policies数组元素一一对应，true表示有持久化授权；false表示不具有持久化授权。接口调用成功后，请引用头文件stdlib.h并使用free()释放该数组。 |
 | unsigned int *resultNum | 输出参数，表示校验结果数组的元素个数。 |
 
