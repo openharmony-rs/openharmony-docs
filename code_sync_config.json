@@ -1064,6 +1064,11 @@
 						"end_line":58,
 						"name":"vector_TS_getStore",
 						"start_line":23
+					},
+					{
+						"end_line":169,
+						"name":"vector_TS_query",
+						"start_line":95
 					}
 				]
 			},
@@ -33403,6 +33408,61 @@
 						"end_line":87,
 						"name":"request_media_assets",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-backup-and-restore.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets",
+				"functions":[
+					{
+						"end_line":208,
+						"name":"invokeTheRestoreInterfaceToRestoreData",
+						"start_line":173
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-data-encryption.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"CustomizedConfigRdbStore",
+						"start_line":54
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-relational-store-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":234,
+						"name":"rdb_OH_Rdb_Query_by_like_and_notLike",
+						"start_line":179
+					},
+					{
+						"end_line":364,
+						"name":"rdb_trans_insert",
+						"start_line":299
+					},
+					{
+						"end_line":595,
+						"name":"rdb_OH_Rdb_Attach_and_Detach",
+						"start_line":485
 					}
 				]
 			}
