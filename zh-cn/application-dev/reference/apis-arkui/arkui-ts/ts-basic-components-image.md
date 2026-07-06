@@ -269,6 +269,8 @@ objectRepeat(value: ImageRepeat)
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
+设置合法的[resizable](#resizable11)时，该属性不生效。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -423,7 +425,7 @@ fillColor(color: ResourceColor|ColorContent)
 
 | 参数名 | 类型                                       | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
 
 ### fillColor<sup>20+</sup>
 
@@ -443,7 +445,7 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 | 参数名 | 类型                                       | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
 
 ### autoResize
 
@@ -475,7 +477,7 @@ autoResize(value: boolean)
 
 syncLoad(value: boolean)
 
-设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。
+设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。不建议对网络图片使用同步加载，应使用异步加载，或将网络下载与Image的显示剥离，避免阻塞UI线程导致AppFreeze。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
@@ -520,6 +522,10 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 为图像设置颜色滤镜效果。
 
 设置该属性时，[renderMode](#rendermode)属性设置不生效。
+
+> **说明：**
+>
+> API version 11及之前，SVG类型图源不支持该属性。从API version 12开始，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -665,6 +671,8 @@ dynamicRangeMode(value: DynamicRangeMode)
 
 设置期望展示的图像动态范围。SVG类型图源不支持该属性。
 
+该属性与[hdrBrightness](#hdrbrightness19)属性同时设置时，该属性不生效。
+
 **设备行为差异：** 该接口在Phone、PC/2in1和Tablet设备中可正常生效，在其他设备类型中无效果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -686,6 +694,8 @@ orientation(orientation: ImageRotateOrientation)
 设置图像内容的显示方向。
 
 该属性对[alt](#alt)占位图不生效。
+
+设置合法的[resizable](#resizable11)时，该属性不生效。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -721,7 +731,7 @@ SVG类型图源不支持该属性。
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1.0。0表示图片按照SDR亮度显示，1.0表示图片按照当前允许的最高HDR亮度显示。  |
+| brightness | number | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0, 1.0]，小于0和大于1.0时取1.0。0表示图片按照SDR亮度显示，1.0表示图片按照当前允许的最高HDR亮度显示。  |
 
 ### supportSvg2<sup>21+</sup>
 
@@ -1135,31 +1145,31 @@ type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
-| 错误码ID  | 错误信息                       | 错误信息发生阶段 | 图片加载类型 |
-| --------  | ----------------------------   | --------- | ------- |
-| 101000    | unknown source type.           | 数据加载 | 未知类型 |
-| 102010    | sync http task of uri cancelled. | 数据加载 | 网络文件 |
-| 102011    | sync http task of uri failed.  | 数据加载 | 网络文件 |
-| 102012    | async http task of uri cancelled. | 数据加载 | 网络文件 |
-| 102013    | async http task of uri failed. | 数据加载 | 网络文件 |
-| 102030    | wrong code format.             | 数据加载 | base64字符串文件 |
-| 102031    | decode base64 image failed.    | 数据加载 | base64字符串文件 |
-| 102050    | path is too long.              | 数据加载 | 沙箱文件 |
-| 102051    | read data failed.              | 数据加载 | 沙箱文件 |
-| 102070    | get image data by name failed. | 数据加载 | 资源文件 |
-| 102071    | get image data by id failed.   | 数据加载 | 资源文件 |
-| 102072    | uri is invalid.                | 数据加载 | 资源文件 |
-| 102090    | uri is invalid.                | 数据加载 | 包内文件 |
-| 102091    | get asset failed.              | 数据加载 | 包内文件 |
-| 102110    | open file failed.              | 数据加载 | 媒体库文件 |
-| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 |
-| 102112    | read file failed.              | 数据加载 | 媒体库文件 |
-| 102130    | decoded data is empty.         | 数据加载 | 媒体库缩略图文件 |
-| 102131    | load shared memory image data timeout. | 数据加载 | 共享内存文件 |
-| 103100    | make svg dom failed.           | 数据加载 | 矢量图文件 |
-| 103200    | image data size is invalid.    | 数据加载 | 位图文件 |
-| 111000    | image source create failed.    | 数据解码 | 位图文件 |
-| 111001    | pixelmap create failed.        | 数据解码 | 位图文件 |
+| 错误码ID  | 错误信息                       | 错误信息发生阶段 | 图片加载类型 | 可能原因 | 处理步骤 |
+| --------  | ----------------------------   | --------- | ------- | ------- | ------- |
+| 101000    | unknown source type.           | 数据加载 | 未知类型 | 传入的图片源类型无法识别，可能为URI格式错误或不支持的数据类型。 | 请检查Image组件的src参数，确保传入支持的类型（[PixelMap](ts-image-common.md#pixelmap)、[ResourceStr](ts-types.md#resourcestr)、[DrawableDescriptor](#drawabledescriptor10)或合法的URI字符串）。 |
+| 102010    | sync http task of uri cancelled. | 数据加载 | 网络文件 | 同步网络请求被取消，例如加载过程中组件被销毁或网络中断。 | 请确认网络可用，并避免在加载过程中频繁切换组件；建议改用异步加载。 |
+| 102011    | sync http task of uri failed.  | 数据加载 | 网络文件 | 同步加载网络图片失败，常见于网络异常、地址不可达或未申请ohos.permission.INTERNET权限。 | 请检查网络连接与图片地址，确认已申请ohos.permission.INTERNET权限；建议改用异步加载或预下载。 |
+| 102012    | async http task of uri cancelled. | 数据加载 | 网络文件 | 异步网络请求被取消，例如组件被销毁或加载任务被主动取消。 | 请确认网络稳定，必要时重试加载。 |
+| 102013    | async http task of uri failed. | 数据加载 | 网络文件 | 异步加载网络图片失败，常见于网络异常、地址不可达或未申请ohos.permission.INTERNET权限。 | 请检查网络连接与图片地址，确认已申请ohos.permission.INTERNET权限。 |
+| 102030    | wrong code format.             | 数据加载 | base64字符串文件 | 传入的Base64字符串格式不正确，缺少前缀或编码内容不合法。 | 请检查Base64字符串是否符合`data:image/subtype;base64,Base64EncodedData`格式。 |
+| 102031    | decode base64 image failed.    | 数据加载 | base64字符串文件 | Base64字符串解码失败，可能是数据损坏或编码内容并非有效图片。 | 请核对Base64编码数据是否完整、是否对应真实图片格式。 |
+| 102050    | path is too long.              | 数据加载 | 沙箱文件 | 应用沙箱文件路径长度超出限制。 | 请缩短文件路径，使用相对或更短的应用沙箱路径。 |
+| 102051    | read data failed.              | 数据加载 | 沙箱文件 | 沙箱文件读取失败，可能为文件不存在或没有可读权限。 | 请确认文件存在，并保证目录包路径下的文件有可读权限。 |
+| 102070    | get image data by name failed. | 数据加载 | 资源文件 | 通过资源名获取图片数据失败，可能为资源名不存在或未正确配置。 | 请确认资源名拼写正确，并已打包到resources目录。 |
+| 102071    | get image data by id failed.   | 数据加载 | 资源文件 | 通过资源ID获取图片数据失败，可能为资源ID不存在或模块未打包。 | 请确认资源ID正确，并确认对应模块/资源已正确打包。 |
+| 102072    | uri is invalid.                | 数据加载 | 资源文件 | 传入的资源URI无效或格式错误。 | 请检查资源URI格式，确保为合法的资源引用。 |
+| 102090    | uri is invalid.                | 数据加载 | 包内文件 | 传入的包内文件URI无效或格式错误。 | 请检查包内文件URI格式，确认文件存在于对应HAP/HSP包内。 |
+| 102091    | get asset failed.              | 数据加载 | 包内文件 | 获取包内资源失败，可能为资源缺失或包未正确安装。 | 请确认包内资源存在，并确认对应包已正确安装。 |
+| 102110    | open file failed.              | 数据加载 | 媒体库文件 | 打开媒体库文件失败，可能为文件不存在、被占用或缺少权限。 | 请确认文件存在，并确认已申请所需媒体库读取权限。 |
+| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 | 获取媒体库文件[stat](../../apis-core-file-kit/js-apis-file-fs.md#fileiostat)信息（文件大小、修改时间、访问权限等元数据）失败，可能为文件不可访问或已损坏。 | 请确认文件可被正常访问，必要时重新选择文件。 |
+| 102112    | read file failed.              | 数据加载 | 媒体库文件 | 读取媒体库文件数据失败，可能为I/O异常或文件损坏。 | 请确认文件完整可读，必要时重新获取或拷贝文件。 |
+| 102130    | decoded data is empty.         | 数据加载 | 媒体库缩略图文件 | 解码后得到的图片数据为空，可能为缩略图不存在或生成失败。 | 请确认原文件可正常生成缩略图，必要时更换图源。 |
+| 102131    | load shared memory image data timeout. | 数据加载 | 共享内存文件 | 从共享内存加载图片数据超时，可能为数据未及时写入或消费方处理过慢。 | 请确认共享内存数据写入与读取节奏匹配，必要时增大超时或检查数据流。 |
+| 103100    | make svg dom failed.           | 数据加载 | 矢量图文件 | 构造SVG DOM失败，可能为SVG文件格式不合法或存在不支持的标签。 | 请检查SVG文件是否符合规范，参考[SVG标签说明](./ts-basic-svg.md)。 |
+| 103200    | image data size is invalid.    | 数据加载 | 位图文件 | 图片数据尺寸非法，可能为宽高为0或超过解码限制。 | 请确认图片尺寸在合法范围内，必要时调整图片分辨率。 |
+| 111000    | image source create failed.    | 数据解码 | 位图文件 | 创建图片源失败，可能为数据格式不支持或数据损坏。 | 请确认图片格式受支持（png、jpg、bmp、svg、gif、heif、webp、tiff等），并核实数据完整性。 |
+| 111001    | pixelmap create failed.        | 数据解码 | 位图文件 | 创建PixelMap失败，可能为内存不足或解码参数不合法。 | 请确认设备内存充足，并检查解码参数（如尺寸、格式）是否合法。 |
 
 ## RequestDownloadInfo<sup>23+</sup>
 
@@ -1267,7 +1277,8 @@ struct ImageExample2 {
           console.error('image createPixelMap success');
           this.pixelMapImg = pixelMap;
           imgSource.release();
-        }).catch(() => {
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to create pixel map. Code: ${err.code}, message: ${err.message}`);
           imgSource.release();
         })
       }
