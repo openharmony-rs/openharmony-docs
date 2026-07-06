@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
    config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
    
-   // 设置为false，代表录屏启动后不弹出屏幕捕获Picker，弹出隐私提示弹窗。
+   // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
