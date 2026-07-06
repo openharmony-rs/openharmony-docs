@@ -64,7 +64,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     return wantParams;
   }
-};
+}
 ```
 
 ## onAcquireFormData<sup>10+</sup>
@@ -107,7 +107,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     return wantParams;
   }
-};
+}
 ```
 ## OnShareFormFn<sup>23+</sup>
 

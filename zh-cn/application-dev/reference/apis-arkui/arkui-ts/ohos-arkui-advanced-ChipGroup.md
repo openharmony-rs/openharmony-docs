@@ -1,9 +1,9 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Cuecuexiaoyu-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroup组件提供操作块群组，用于文件或资源内容的分类等场景。
@@ -332,7 +332,7 @@ IconOptions定义图标的共通属性。
 
 ## LabelOptions
 
-Label定义图标属性。
+LabelOptions定义文本属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

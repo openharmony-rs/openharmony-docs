@@ -93,7 +93,7 @@ ArkTS-Sta: getCaretOffset(): CaretOffset | undefined
 > - 在Search组件中，返回的位置信息是相对Search组件中搜索图标的偏移值。
 > - 在Search组件中，不输入文本时，返回值中有相对Search组件的位置信息。
 > - 返回值中的位置信息是光标相对于可编辑组件的位置。
-> - 当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
+> - 当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回undefined。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

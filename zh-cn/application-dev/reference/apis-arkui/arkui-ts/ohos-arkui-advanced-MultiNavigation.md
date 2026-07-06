@@ -312,7 +312,7 @@ ArkTS-Sta: removeByName(name: string): int
 
 |  参数名   | 类型   | 必填 | 说明           |
 |-------| ------- | ---- | --------------------- |
-|  name   | string  | 是    | 待删除NavDestination页面的名字。 |
+|  name   | string  | 是    | 待删除NavDestination页面的名称。 |
 
 **返回值：**
 
@@ -577,7 +577,7 @@ ArkTS-Sta: moveIndexToTop(index: int, animated?: boolean): void
 
 > **说明：**
 >
-> 根据指定的index页面的不同，MultiNavigation会进行不同的处理：
+> 根据指定的index找到的页面不同，MultiNavigation会进行不同的处理：
 > 
 > 1)当指定的是最上层主页或者全屏页的index，此时不做任何处理；
 > 

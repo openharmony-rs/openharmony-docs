@@ -20,7 +20,7 @@
 
   返回页面顶部。
 
-  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
+  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) --> 
   
   ``` TypeScript
   this.webController.scrollTo(0, 0);
@@ -45,7 +45,7 @@
   ```
 + scrollTo：将页面滚动到绝对坐标位置。
   ```javascript
-  window.scrollTo(x, y);// X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
+  window.scrollTo(x, y);// x是滚动后窗口左上角的水平坐标（像素），y是滚动后窗口左上角的垂直坐标（像素）。
   ```
   (1) 返回页面顶部。
   ```javascript
@@ -64,9 +64,9 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) --> 
+<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -85,9 +85,9 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 
-<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) --> 
+<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) -->
 
-```TypeScript
+``` TypeScript
 import {
   $rawfile,
   Column,

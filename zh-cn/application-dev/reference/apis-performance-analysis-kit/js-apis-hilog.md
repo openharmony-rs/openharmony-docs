@@ -17,7 +17,7 @@ hilog模块提供以下核心功能：
 
 **日志可打印判断**：通过isLoggable在打印日志前判断指定domain、tag和级别的日志是否可输出，避免无效日志打印的性能开销。
  
-**日志输出管理**：通过setOutputType设置日志输出到控制台、私有沙箱或共享沙箱，通过setOutputTypeByDomain按域ID列表精细化控制不同域的输出方式，并提供沙箱日志目录查询、沙箱日志文件获取、沙箱日志刷新与清理等管理能力。
+**日志输出管理**：通过setOutputType设置日志输出到控制台、私有沙箱或公有沙箱，通过setOutputTypeByDomain按域ID列表精细化控制不同域的输出方式，并提供沙箱日志目录查询、沙箱日志文件获取、沙箱日志刷新与清理等管理能力。
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ ArkTS-Sta: isLoggable(domain: int, tag: string, level: LogLevel): boolean
 
 | 参数名 | 类型                  | 必填 | 说明                                                         |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int    | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int    | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string                | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | level  | [LogLevel](#loglevel) | 是   | 日志级别。                                                   |
 
@@ -81,8 +81,8 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 | 名称  |   值   | 说明                                                         |
 | ----- | ------ | ------------------------------------------------------------ |
-| DEBUG | 3      | 详细的流程记录，通过该级别的日志可以更详细地分析业务流程和定位分析问题。 |
-| INFO  | 4      | 用于记录业务关键流程节点，可以还原业务的主要运行过程；<br/>用于记录可预料的非正常情况信息，如无网络信号、登录失败等。<br/>这些日志都应该由该业务内处于支配地位的模块来记录，避免在多个被调用的模块或低级函数中重复记录。 |
+| DEBUG | 3      | 详细的流程记录，通过该级别的日志可以更详细地分析业务流程和定位问题。 |
+| INFO  | 4      | 用于记录业务关键流程节点，可以还原业务的主要运行过程；<br>用于记录可预料的非正常情况信息，如无网络信号、登录失败等。<br>这些日志都应该由该业务内处于支配地位的模块来记录，避免在多个被调用的模块或低级函数中重复记录。 |
 | WARN  | 5      | 用于记录较为严重的非预期情况，但是对用户影响不大，应用可以自动恢复或通过简单的操作就可以恢复的问题。 |
 | ERROR | 6      | 应用发生了错误，该错误会影响功能的正常运行或用户的正常使用，可以恢复但恢复代价较高，如重置数据等。 |
 | FATAL | 7      | 重大致命异常，表明应用即将崩溃，故障无法恢复。               |
@@ -109,9 +109,9 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护隐私敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -150,10 +150,10 @@ ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[])
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护隐私敏感数据。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
 
@@ -191,9 +191,9 @@ ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[])
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护隐私敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -232,9 +232,9 @@ ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。 tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。|
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护隐私敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -273,9 +273,9 @@ ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护隐私敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -328,7 +328,7 @@ setMinLogLevel(level: LogLevel): void
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
 hilog.setMinLogLevel(hilog.LogLevel.WARN);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
-hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
 hilog.setMinLogLevel(hilog.LogLevel.DEBUG);
 hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
@@ -402,7 +402,7 @@ setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
 hilog.setLogLevel(hilog.LogLevel.WARN, hilog.PreferStrategy.PREFER_OPEN_LOG);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
-hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
 hilog.setLogLevel(hilog.LogLevel.DEBUG, hilog.PreferStrategy.PREFER_CLOSE_LOG);
 hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
@@ -449,7 +449,7 @@ let testObj: Record<string, string | number> = {
     'name': "Jack",
     'age': 22
 }
-let isBol = true;
+let isBool = true;
 let bigNum = BigInt(1234567890123456789);
 hilog.info(0x0001, "jsHilogTest", "print object: %{public}s", JSON.stringify(testObj));
 hilog.info(0x0001, "jsHilogTest", "print object: %{public}o", testObj);
@@ -457,7 +457,7 @@ hilog.info(0x0001, "jsHilogTest", "private flag: %{private}s %s, print null: %{p
 hilog.info(0x0001, "jsHilogTest", "print undefined: %{public}s", undefined);
 hilog.info(0x0001, "jsHilogTest", "print number: %{public}d %{public}i", 123, 456);
 hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum, bigNum);
-hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
+hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBool);
 ```
 
 **打印结果：**

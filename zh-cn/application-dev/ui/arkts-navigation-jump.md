@@ -865,9 +865,9 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
    this.pageStack.getAllPathName();
    // 获取索引为1的页面参数
    this.pageStack.getParamByIndex(1);
-   // 获取PageOne页面的参数
-   this.pageStack.getParamByName('PageOne');
-   // 获取PageOne页面的索引集合
+   // 获取pageOne页面的参数
+   this.pageStack.getParamByName('pageOne');
+   // 获取pageOne页面的索引集合
    this.pageStack.getIndexByName('pageOne');
    ```
 
@@ -910,7 +910,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
          hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
          return;
        }
-       // 将跳转到PageTwo的路由重定向到PageOne
+       // 将跳转到PageTwo的路由重定向到pageOne
        let target: NavDestinationContext = to as NavDestinationContext;
        if (target.pathInfo.name === 'pageTwo') {
          target.pathStack.pop();
@@ -1036,7 +1036,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -1209,7 +1209,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -1228,7 +1228,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -1416,7 +1416,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“页面设置参数”
               this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })

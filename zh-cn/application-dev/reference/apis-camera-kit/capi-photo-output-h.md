@@ -74,6 +74,8 @@
 | [Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)](#oh_photooutput_enablemovingphoto) | - | 是否启用动态照片。 |
 | [Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)](#oh_photooutput_isphotoqualityprioritizationsupported) | - | 检查是否支持指定的拍照画质优先策略。 |
 | [Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)](#oh_photooutput_setphotoqualityprioritization) | - | 设置拍照画质优先策略。 |
+| [bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)](#oh_photooutput_isautoextendedgainmapdeliverysupported) | - | 检查是否支持自动扩展增益图（Gainmap）的输出。 |
+| [Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)](#oh_photooutput_enableautoextendedgainmapdelivery) | - | 是否启用自动扩展增益图（Gainmap）的输出。 |
 
 ## 函数说明
 
@@ -1012,5 +1014,54 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported()
+
+```c
+bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)
+```
+
+**描述**
+
+检查是否支持自动扩展增益图（Gainmap）的输出。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于检查是否支持自动扩展增益图（Gainmap）的输出的拍照输出实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 是否支持自动扩展增益图（Gainmap）的输出的结果。true表示支持，false表示不支持。 |
+
+### OH_PhotoOutput_EnableAutoExtendedGainmapDelivery()
+
+```c
+Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)
+```
+
+**描述**
+
+是否启用自动扩展增益图（Gainmap）的输出。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于启用或禁用自动扩展增益图（Gainmap）的输出的拍照输出实例。 |
+| bool enabled | 是否启用自动扩展增益图（Gainmap）的输出的结果。true表示启用，false表示不启用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul><br>         <li>CAMERA_OK：方法调用成功。</li><br>         <li>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。</li><br>         <li>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。</li><br>         <li>CAMERA_SESSION_NOT_CONFIG：会话未配置。</li><br>         <li>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。</li><br>         </ul>|
 
 

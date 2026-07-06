@@ -197,7 +197,7 @@ ArkTS-Sta: horizontalScrolling(enabled: boolean | undefined)
 
 > **说明：**
 >
-> 以下场景不支持水平滚动：设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)<!--Del-->；启用[voiceButton](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
+> 以下<!--Del-->任一<!--DelEnd-->场景不支持水平滚动：[TextContentStyle](ts-appendix-enums.md#textcontentstyle10)为INLINE，即文本框多态样式为内联模式<!--Del-->；启用[voiceButton](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -1339,9 +1339,9 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
@@ -2264,8 +2264,6 @@ TextAreaController的构造函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
@@ -2723,7 +2721,6 @@ struct TextAreaExample {
   controller: TextAreaController = new TextAreaController();
   @State inputValue: string = "";
   @State height1: string | number = '80%';
-  @State height2: number = 100;
   @State supportAvoidance: boolean = true;
 
   // 自定义键盘组件
@@ -3643,6 +3640,9 @@ struct Index {
 ### 示例25（设置placeholder富文本样式）
 
 从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+
+原始文本支持多种语言，不同语言内容时样式起始索引下标start和length会有差异，以下仅以中文设置富文本样式为例。
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

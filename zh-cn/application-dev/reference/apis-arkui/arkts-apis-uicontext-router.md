@@ -200,7 +200,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。|
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。|
 
 **错误码：**
 
@@ -372,7 +372,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。  |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -541,7 +541,7 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -601,7 +601,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceUrl](#replaceurl)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceUrl](#replaceurl)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -616,7 +616,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 **返回值：**
 
@@ -687,7 +687,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceUrl](#replaceurl-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceUrl](#replaceurl-1)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -702,8 +702,8 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -868,7 +868,7 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。  |
 
 **错误码：**
 
@@ -1036,7 +1036,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。  |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -1201,7 +1201,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -1261,7 +1261,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1276,7 +1276,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 
 **返回值：**
@@ -1348,7 +1348,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1363,8 +1363,8 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -1485,7 +1485,7 @@ ArkTS-Sta: back(index: int, params?: Object): void
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 跳转目标页面的索引值，从0开始计数（注意：与[getStateByIndex](#getstatebyindex12)的index参数不同，后者从1开始计数）。 <br/> 取值范围：[0, +∞)。如果index超出页面栈范围或不存在对应页面，则不响应用户操作。 |
+| index | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 返回目标页面的索引值，从0开始计数（注意：与[getStateByIndex](#getstatebyindex12)的index参数不同，后者从1开始计数）。 <br/> 取值范围：[0, +∞)。如果index超出页面栈范围或不存在对应页面，则不响应用户操作。 |
 | params    | Object      | 否    | 页面返回时携带的参数。不传入时不携带参数。 |
 
 **示例：**
@@ -1714,7 +1714,7 @@ if (options != undefined) {
 ```
 ## getStateByUrl<sup>12+</sup>
 
-getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routerstate)>
+getStateByUrl(url: string): Array\<router.RouterState>
 
 通过url获取匹配指定url的页面的状态信息。
 

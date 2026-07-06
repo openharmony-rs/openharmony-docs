@@ -360,7 +360,7 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 ## TemplateProperty
 
-切换悬浮窗模板并修改窗口尺寸时需要提供的参数配置。
+切换闪控窗模板并修改窗口尺寸时需要提供的参数配置。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

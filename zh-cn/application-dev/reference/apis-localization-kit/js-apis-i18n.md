@@ -3552,7 +3552,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 名称  | 类型   | 只读   | 可选   | 说明                |
 | ---- | ---- | ---- | ---- | ----------------- |
-| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| encodingName | string | 否    | 否    | 编码名称，取值包括：UTF-8，UTF-16BE，UTF-16LE，UTF-32BE，UTF-32LE，Shift_JIS，ISO-2022-JP，ISO-2022-CN，ISO-2022-KR，GB18030，Big5，EUC-JP，EUC-KR，ISO-8859-1，ISO-8859-2，ISO-8859-5，ISO-8859-6，ISO-8859-7，ISO-8859-8，ISO-8859-9，windows-1250，windows-1251，windows-1252，windows-1253，windows-1254，windows-1255，windows-1256，KOI8-R，IBM420，IBM424。 |
 | confidence | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
 
 ## I18NUtil<sup>9+</sup>
@@ -5150,7 +5150,7 @@ format(date: Date): string
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| string | 格式化后的时间日期字符串。 |
+| string | 符合ISO8601标准的时间日期字符串。 |
 
 **示例：**
 ```ts
@@ -5888,7 +5888,7 @@ ArkTS-Sta: format(value: double): StyledString
 
 ## AdvancedMeasureFormat<sup>23+</sup>
 
-提供数字格式化能力。
+提供数字格式化能力，支持根据单位使用场景自动转换合适的单位。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 

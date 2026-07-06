@@ -23,9 +23,9 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 1. 直接通过import得到的AVSessionManager来调用，例如接口`AVSessionManager.createController(sessionId)`。
 2. 通过AVSessionController对象来调用，例如接口`controller.getAVPlaybackState()`。
 
-异步的JavaScript接口返回值有两种返回形式：callback和promise，本说明仅提供callback形式接口，promise和callback只是返回值方式不一样，功能相同。
+ 异步的JavaScript接口返回值有callback和promise两种返回形式。promise和callback只是返回值方式不一样，功能相同。
 
-更多API说明请参见[API文档](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
+ 更多API说明请参见@ohos.multimedia.avsession (媒体会话管理)的[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
 
 ### 直接通过AVSessionManager调用的接口
 
@@ -35,7 +35,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 | createController(sessionId: string, callback: AsyncCallback&lt;AVSessionController&gt;): void | 创建媒体会话控制器。 | 
 | sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void | 向置顶会话发送按键命令。 |  
 | sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void | 向置顶会话发送播控命令。 | 
-| getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void<sup>10+</sup> | 获取历史会话的描述符。 |
+| getHistoricalSessionDescriptors(maxSize?: number): Promise&lt;Array&lt;Readonly&lt;AVSessionDescriptor&gt;&gt;&gt; | 获取历史会话的描述符（Promise形式）。 |
 
 ### 通过AVSessionController对象调用的接口
 
@@ -53,7 +53,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 | sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 通过会话控制器发送自定义命令到其对应的会话。 |
 | getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+</sup> | 获取当前播放列表相关信息。 |
 | getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+</sup> | 获取当前播放列表的名称。 |
-| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置指定播放列表单项的ID，发送给session端处理，session端可以选择对这个单项歌曲进行播放。 |
+| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置指定播放列表单项的ID，发送给会话提供方处理。会话提供方可以选择对这个单项歌曲进行播放。 |
 | getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+</sup> | 获取媒体提供方设置的自定义媒体数据包。 |
 | getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | 使用同步方法获取当前输出设备信息。 |
 | getAVPlaybackStateSync(): AVPlaybackState<sup>10+</sup> | 使用同步方法获取当前会话播放状态相关信息。 |
@@ -62,6 +62,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 | getAVQueueItemsSync(): Array&lt;AVQueueItem&gt;<sup>10+</sup> | 使用同步方法获取当前播放列表相关信息。 |
 | isActiveSync(): boolean<sup>10+</sup> | 使用同步方法判断会话是否被激活。 |
 | getValidCommandsSync(): Array&lt;AVControlCommandType&gt;<sup>10+</sup> | 使用同步方法获取会话支持的有效命令。 |
+| getRealPlaybackPositionSync(): number<sup>10+</sup> | 使用同步方法获取当前播放位置。 |
 
 ## 开发步骤
 
@@ -353,7 +354,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
      // 假设我们已经有了一个对应session的controller，如何创建controller可以参考之前的案例。
      let controller = await AVSessionManager.createController("");
      
-     // 销毁当前的controller，销毁后这个controller将不在可用。
+     // 销毁当前的controller，销毁后这个controller将不再可用。
      controller.destroy((err: BusinessError) => {
        if (err) {
          console.error(`Failed to destroy controller. Code: ${err.code}, message: ${err.message}`);

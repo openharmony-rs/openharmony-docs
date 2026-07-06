@@ -1,13 +1,13 @@
-# @StorageLink：应用全局的UI状态存储
+# @StorageLink：AppStorage双向数据同步
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhangboren-->
+<!--Owner: @zhushilin0206-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@StorageLink用于状态管理V1中，与AppStorage中对应的属性建立双向数据同步。
+@StorageLink是状态管理V1的装饰器，用于与AppStorage中指定键名的属性建立双向数据同步：当@StorageLink装饰的变量发生变化时，变更会同步到AppStorage中该键名对应的属性；当AppStorage中该键名对应的属性发生变化时，变更也会同步回@StorageLink装饰的变量。
 
 在ArkTS-Dyn中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-Dyn）](../../../ui/state-management/arkts-appstorage.md)。
 
@@ -27,16 +27,28 @@ const StorageLink: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| value  | string | 是   | 用于标识AppStorage的属性。 |
+| value  | string | 是   | AppStorage中的属性键名，用于建立与该键名对应属性的双向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageLink装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则以@StorageLink装饰变量的本地初始值在AppStorage中创建对应属性。 |
+
+**返回值：**
+
+| 类型              | 说明                                 |
+| ----------------- | ------------------------------------ |
+| PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 
 ```ts
+// 创建AppStorage的初始数据，键为'LinkA'，值为47
+AppStorage.setOrCreate('LinkA', 47);
+// 创建AppStorage的初始数据，键为'LinkB'，值为undefined
+AppStorage.setOrCreate('LinkB', undefined);
+
 @Entry
 @Component
 struct StorageLinkComponent {
-  // 使用@StorageLink装饰器与AppStorage中'LinkA'属性建立双向绑定
+  // 使用@StorageLink装饰器与AppStorage中'LinkA'对应属性建立双向数据同步
   @StorageLink('LinkA') linkA: number | null = null;
+  // 使用@StorageLink装饰器与AppStorage中'LinkB'对应属性建立双向数据同步
   @StorageLink('LinkB') linkB: number | undefined = undefined;
 
   build() {
@@ -45,11 +57,13 @@ struct StorageLinkComponent {
       Text(`${this.linkA}`)
         .fontSize(20)
         .onClick(() => {
+          // 点击切换linkA的值，变更会同步到AppStorage
           this.linkA = this.linkA ? null : 1;
         })
       Text(`${this.linkB}`)
         .fontSize(20)
         .onClick(() => {
+          // 点击切换linkB的值，变更会同步到AppStorage
           this.linkB = this.linkB ? undefined : 1;
         })
     }

@@ -208,7 +208,7 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_STOP                     |  2616 | 停止键。                         |
 | KEYCODE_AGAIN                    |  2617 | 重复键。                         |
 | KEYCODE_PROPS                    |  2618 | 道具键。                         |
-| KEYCODE_UNDO                     |  2619 | 撤消键。                         |
+| KEYCODE_UNDO                     |  2619 | 撤销键。                         |
 | KEYCODE_COPY                     |  2620 | 复制键。                         |
 | KEYCODE_OPEN                     |  2621 | 打开键。                         |
 | KEYCODE_PASTE                    |  2622 | 粘贴键。                         |

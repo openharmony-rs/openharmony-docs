@@ -37,7 +37,7 @@ onMouse(event: (event?: MouseEvent) => void)
 
 ArkTS-Dyn示例：
 
-<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -77,7 +77,7 @@ struct MouseMove {
     .justifyContent(FlexAlign.Center)
     .borderWidth(2)
     .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
       if (event) {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
@@ -759,7 +759,7 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) --> 
 
 ``` TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -776,9 +776,9 @@ struct MouseWheel {
         .margin(20)
         .onClick(() => {
           if (this.dir1 === Axis.Vertical) {
-            this.dir1 = Axis.Horizontal
+            this.dir1 = Axis.Horizontal;
           } else {
-            this.dir1 = Axis.Vertical
+            this.dir1 = Axis.Vertical;
           }
         })
       List({ space: 20, initialIndex: 0 }) {
@@ -889,7 +889,7 @@ export class ListDataSource implements IDataSource<number> {
 <!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
 
 ``` TypeScript
-import { Entry, Component, State, Column, Button, Text, List, ListItem, LazyForEach, Axis, BarState, EdgeEffect, Padding, PanGesture, PanDirection, TextAlign, Margin } from '@kit.ArkUI';
+import { Entry, Component, State, Column, Button, Text, List, ListItem, LazyForEach, MouseEvent, MouseAction, Axis, BarState, EdgeEffect, Padding, PanGesture, PanDirection, TextAlign, Margin } from '@kit.ArkUI';
 import { ListDataSource } from './ListDataSource';
 
 @Entry
@@ -902,11 +902,13 @@ struct MouseWheel {
     Column() {
       Button('Click to Change ListDirection')
         .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
-        .onClick(() => {
-          if (this.dir1 === Axis.Vertical) {
-            this.dir1 = Axis.Horizontal;
-          } else {
-            this.dir1 = Axis.Vertical;
+        .onMouse((event: MouseEvent) => {
+          if (event && event.action === MouseAction.Press) {
+            if (this.dir1 === Axis.Vertical) {
+              this.dir1 = Axis.Horizontal
+            } else {
+              this.dir1 = Axis.Vertical
+            }
           }
         })
       List({ space: 20, initialIndex: 0 }) {
@@ -921,12 +923,6 @@ struct MouseWheel {
               .backgroundColor(0xFFFFFF)
           }
           .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
-          // 为ListItem绑定滑动手势，当在ListItem上滚动鼠标滚轮时，会优先触发ListItem的滑动手势
-          .gesture(PanGesture({ direction: PanDirection.Vertical })
-            .onActionStart(() => {
-            })
-            .onActionUpdate(() => {
-            }))
         }, (item: number) => item.toString())
       }
       .borderWidth(1)

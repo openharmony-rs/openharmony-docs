@@ -176,13 +176,13 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions对象说明) | 否 | 水平方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
+| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions) | 否 | 水平方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## RowLayoutAlgorithmOptions对象说明
+## RowLayoutAlgorithmOptions
 
 设置水平方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
 
@@ -262,13 +262,13 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions对象说明) | 否 | 垂直方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
+| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions) | 否 | 垂直方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## ColumnLayoutAlgorithmOptions对象说明
+## ColumnLayoutAlgorithmOptions
 
 设置垂直方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
 
@@ -345,13 +345,13 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions对象说明) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。|
+| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## StackLayoutAlgorithmOptions对象说明
+## StackLayoutAlgorithmOptions
 
 设置堆叠布局算法的对齐方式。
 
@@ -423,13 +423,13 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions对象说明) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。|
+| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## GridLayoutAlgorithmOptions对象说明
+## GridLayoutAlgorithmOptions
 
 设置网格布局算法的列数模板、列间距、行间距。
 

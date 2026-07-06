@@ -36,7 +36,7 @@
     - [HAR转HSP指导](har-to-hsp.md)
     - [HSP转HAR指导](hsp-to-har.md)
     - [HAP转HAR指导](hap-to-har.md)
-    - [集成态HSP](integrated-hsp.md)
+    - [集成态HSP](integrated-hsp.md)<!--RP3--><!--RP3End-->
   - [应用程序包常见问题](common-problem-of-application.md)
   - [应用程序包术语](application-package-glossary.md)
 - [资源分类与访问](resource-categories-and-access.md)
@@ -48,6 +48,7 @@
     - [ArkTS语法适配背景](arkts-migration-background.md)
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
+  - [ArkTS静态背景](arkts-sta-background.md)
   - [ArkTS静态语言介绍](introduction-to-arkts-sta.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
     - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)

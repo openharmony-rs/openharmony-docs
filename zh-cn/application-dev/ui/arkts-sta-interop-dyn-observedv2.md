@@ -9,7 +9,7 @@
 
 ## 概述
 
-从API version 23开始，支持从ArkTS-Sta的自定义组件中调用或修改ArkTS-Dyn的[ObservedV2与@Trace](../ui/state-management/arkts-new-observedV2-and-trace.md)修饰类，数据变更实现UI刷新，在ArkTS-Sta互操作场景下，通过调用[enableCompatibleObservedV2ForStatic](../reference/apis-arkui/arkui-ts/ts-interop-compatible-ObservedV2.md#enablecompatibleobservedv2forstatict)方法即可。
+从API version 23开始，支持从ArkTS-Sta的自定义组件中调用或修改ArkTS-Dyn的[ObservedV2与@Trace](../ui/state-management/arkts-new-observedV2-and-trace.md)修饰类，数据变更实现UI刷新，在[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)场景下，通过调用[enableCompatibleObservedV2ForStatic](../reference/apis-arkui/arkui-ts/ts-interop-compatible-ObservedV2.md#enablecompatibleobservedv2forstatict)方法即可。
 
 
 ## 使用限制
@@ -20,7 +20,7 @@
 
 - 不能在非UI线程中直接修改ArkTS-Sta组件中使用的ArkTS-Dyn @ObservedV2装饰的数据成员的值，否则会运行异常；
 
-- 遵循ArkTS-Sta互操作规范，如不支持ArkTS-Dyn对象继承ArkTS-Sta对象。
+- 遵循[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)规范，如不支持ArkTS-Dyn对象继承ArkTS-Sta对象。
 
 
 ## 使用场景

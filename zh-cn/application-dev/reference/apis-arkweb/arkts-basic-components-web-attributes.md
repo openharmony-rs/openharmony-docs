@@ -417,7 +417,7 @@ ArkTS-Dyn: overScrollMode(mode: OverScrollMode)
 
 ArkTS-Sta: overScrollMode(mode: OverScrollMode | undefined)
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
+设置Web过滚动模式。开启时，用户在Web根页面滑动到边缘会触发弹性动画弹回界面，但根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1001,27 +1001,27 @@ ArkTS-Dyn示例：
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button('refresh')
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .horizontalScrollBarAccess(this.isShow)
       }
     }
@@ -1041,7 +1041,7 @@ ArkTS-Sta示例：
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
     @State isShow: boolean = true;
-    @State btnMsg: string = "隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
 
     build() {
       Column() {
@@ -1050,18 +1050,18 @@ ArkTS-Sta示例：
           .onClick(() => {
             if (this.isShow) {
               this.isShow = false;
-              this.btnMsg = "隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             } else {
               this.isShow = true;
-              this.btnMsg = "显示滚动条";
+              this.btnMsg = '显示滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .horizontalScrollBarAccess(this.isShow)
       }
     }
@@ -1130,27 +1130,27 @@ ArkTS-Dyn示例：
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变纵向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button(this.btnMsg)
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .verticalScrollBarAccess(this.isShow)
       }
     }
@@ -1171,7 +1171,7 @@ ArkTS-Sta示例：
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
     @State isShow: boolean = true;
-    @State btnMsg: string = "隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
 
     build() {
       Column() {
@@ -1180,18 +1180,18 @@ ArkTS-Sta示例：
           .onClick((): void => {
             if (this.isShow) {
               this.isShow = false;
-              this.btnMsg = "隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             } else {
               this.isShow = true;
-              this.btnMsg = "显示滚动条";
+              this.btnMsg = '显示滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .verticalScrollBarAccess(this.isShow)
       }
     }
@@ -3255,7 +3255,7 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined)
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置web布局模式，跟随系统或自适应布局。<br>ArkTS-Dyn：传入null或undefined时为`WebLayoutMode.NONE`。 <br>ArkTS-Sta：传入undefined时为`WebLayoutMode.NONE`。|
+| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置Web布局模式，跟随系统或自适应布局。<br>ArkTS-Dyn：传入null或undefined时为`WebLayoutMode.NONE`。 <br>ArkTS-Sta：传入undefined时为`WebLayoutMode.NONE`。|
 
 **示例：**
 
@@ -4169,7 +4169,7 @@ ArkTS-Sta: metaViewport(enabled: boolean | undefined)
 
 > **说明：**
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置metaViewport属性为true来覆盖关闭状态。
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

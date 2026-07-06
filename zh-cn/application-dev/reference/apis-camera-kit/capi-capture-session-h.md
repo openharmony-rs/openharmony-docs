@@ -132,7 +132,7 @@
 | [Camera_ErrorCode OH_CaptureSession_SetWhiteBalance(Camera_CaptureSession* session, int32_t colorTemperature)](#oh_capturesession_setwhitebalance) | - | 设置白平衡的色温。<br> 设置前，建议通过[OH_CaptureSession_GetWhiteBalanceRange](capi-capture-session-h.md#oh_capturesession_getwhitebalancerange)获取支持配置的白平衡色温范围。 |
 | [Camera_ErrorCode OH_CaptureSession_GetColorTintRange(const Camera_CaptureSession* session, int32_t *minColorTint, int32_t *maxColorTint)](#oh_capturesession_getcolortintrange) | - | 获取支持配置的白平衡色调调节范围。 |
 | [Camera_ErrorCode OH_CaptureSession_GetColorTint(const Camera_CaptureSession* session, int32_t *colorTint)](#oh_capturesession_getcolortint) | - | 获取当前白平衡的色调调节值。 |
-| [Camera_ErrorCode OH_CaptureSession_SetColorTint(const Camera_CaptureSession* session, int32_t colorTint)](#oh_capturesession_setcolortint) | - | 设置白平衡的色调调节值。设置前，建议通过[OH_CaptureSession_GetColorTintRange](capi-capture-session-h.md#oh_capturesession_getcolortintrange)获取支持配置的白平衡色调调节范围。 |
+| [Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, int32_t colorTint)](#oh_capturesession_setcolortint) | - | 设置白平衡的色调调节值。设置前，建议通过[OH_CaptureSession_GetColorTintRange](capi-capture-session-h.md#oh_capturesession_getcolortintrange)获取支持配置的白平衡色调调节范围。 |
 | [Camera_ErrorCode OH_CaptureSession_GetWhiteBalance(Camera_CaptureSession* session, int32_t *colorTemperature)](#oh_capturesession_getwhitebalance) | - | 获取当前白平衡色温值。 |
 | [Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* session, Camera_WhiteBalanceMode* whiteBalanceMode)](#oh_capturesession_getwhitebalancemode) | - | 获取当前的白平衡模式。 |
 | [Camera_ErrorCode OH_CaptureSession_IsWhiteBalanceModeSupported(Camera_CaptureSession* session, Camera_WhiteBalanceMode whiteBalanceMode, bool* isSupported)](#oh_capturesession_iswhitebalancemodesupported) | - | 检查是否支持指定的白平衡模式。 |
@@ -162,6 +162,12 @@
 | [Camera_ErrorCode OH_CaptureSession_UnregisterExposureStateChangeCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange callback)](#oh_capturesession_unregisterexposurestatechangecallback) | - | 注销曝光状态变更时的回调函数。 |
 | [Camera_ErrorCode OH_CaptureSession_GetZoomPointInfos(const Camera_CaptureSession* session, uint32_t* size, OH_Camera_ZoomPointInfo** zoomPointInfo)](#oh_capturesession_getzoompointinfos) | - | 获取变焦点信息。<br> 需要通过调用[OH_CaptureSession_DeleteZoomPointInfos](capi-capture-session-h.md#oh_capturesession_deletezoompointinfos)来释放变焦点信息的内存。 |
 | [Camera_ErrorCode OH_CaptureSession_DeleteZoomPointInfos(const Camera_CaptureSession* session, OH_Camera_ZoomPointInfo* zoomPointInfo)](#oh_capturesession_deletezoompointinfos) | - | 删除变焦点信息。 |
+| [bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)](#oh_capturesession_islockfocustrackingsupported) | - |查询是否支持锁定焦点跟踪。 |
+| [Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_lockfocustracking) | - | 锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking)解锁。 |
+| [Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)](#oh_capturesession_unlockfocustracking) | - | 解锁焦点追踪。 |
+| [typedef void (*OH_CaptureSession_OnNotificationReceive)(void* context, OH_Camera_NotificationInfo* notificationInfo)](#oh_capturesession_onnotificationreceive) | OH_CaptureSession_OnNotificationReceive | 定义相机通知信息事件的回调函数。 |
+| [Camera_ErrorCode OH_CaptureSession_RegisterNotificationReceivedCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnNotificationReceive callback)](#oh_capturesession_registernotificationreceivedcallback) | - | 注册回调函数以监听接收到的相机通知信息事件。可以通过[OH_CaptureSession_UnregisterNotificationReceivedCallback](#oh_capturesession_unregisternotificationreceivedcallback)进行注销。 |
+| [Camera_ErrorCode OH_CaptureSession_UnregisterNotificationReceivedCallback(const Camera_CaptureSession* session,void* context, OH_CaptureSession_OnNotificationReceive callback)](#oh_capturesession_unregisternotificationreceivedcallback) | - | 注销监听相机通知信息接收事件的回调。 |
 
 ## 函数说明
 
@@ -2618,7 +2624,7 @@ Camera_ErrorCode OH_CaptureSession_GetColorTint(const Camera_CaptureSession* ses
 ### OH_CaptureSession_SetColorTint()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_SetColorTint(const Camera_CaptureSession* session, int32_t colorTint)
+Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, int32_t colorTint)
 ```
 
 **描述**
@@ -3361,4 +3367,147 @@ Camera_ErrorCode OH_CaptureSession_DeleteZoomPointInfos(const Camera_CaptureSess
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 
+### OH_CaptureSession_IsLockFocusTrackingSupported()
+
+```c
+bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)
+```
+
+**描述**
+
+查询是否支持锁定焦点跟踪。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 是否支持追焦跟踪功能，返回true表示支持，返回false表示不支持。 |
+
+### OH_CaptureSession_LockFocusTracking()
+
+```c
+Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)
+```
+
+**描述**
+
+锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking)解锁。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+| [Camera_Point](capi-oh-camera-camera-point.md) focusPoint | 锁定焦点跟踪的追踪点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>   CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br> CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CaptureSession_UnlockFocusTracking()
+
+```c
+Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)
+```
+
+**描述**
+
+ 解锁焦点跟踪。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>   CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br> CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CaptureSession_OnNotificationReceive()
+
+```c
+typedef void (*OH_CaptureSession_OnNotificationReceive)(void* context, OH_Camera_NotificationInfo* notificationInfo)
+```
+
+**描述**
+
+定义相机通知信息事件的回调函数。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | 指向注册回调时传入的用户自定义上下文的指针。 |
+| [OH_Camera_NotificationInfo](capi-oh-camera-oh-camera-notificationinfo.md)* notificationInfo | 指向OH_Camera_NotificationInfo实例的指针。 |
+
+### OH_CaptureSession_RegisterNotificationReceivedCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_RegisterNotificationReceivedCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnNotificationReceive callback)
+```
+
+**描述**
+
+注册回调函数以监听接收到的相机通知信息事件。可以通过[OH_CaptureSession_UnregisterNotificationReceivedCallback](#oh_capturesession_unregisternotificationreceivedcallback)进行注销。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+| void* context | 指向注册回调时传入的用户自定义上下文的指针。 |
+| [OH_CaptureSession_OnNotificationReceive](#oh_capturesession_onnotificationreceive) callback | 回调函数，用于接收相机通知信息，类型为OH_CaptureSession_OnNotificationReceive实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
+
+### OH_CaptureSession_UnregisterNotificationReceivedCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_UnregisterNotificationReceivedCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnNotificationReceive callback)
+```
+
+**描述**
+
+注销监听相机通知信息接收事件的回调。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+| void* context | 指向注册回调时传入的用户自定义上下文的指针。 |
+| [OH_CaptureSession_OnNotificationReceive](#oh_capturesession_onnotificationreceive) callback | 表示相机通知信息事件的回调函数，该回调是一个OH_CaptureSession_OnNotificationReceive实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 

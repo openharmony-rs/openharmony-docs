@@ -6,9 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-WebCookieManager是Web组件的Cookie管理器，提供对Web组件中Cookie的全局管理能力。开发者通过该类可以实现Cookie的获取、设置、保存、清除以及权限控制等操作。该类的所有方法均为静态方法，应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。
+WebCookieManager是Web组件的cookie管理器，提供对Web组件中cookie的全局管理能力。开发者通过该类可以实现cookie的获取、设置、保存、清除以及权限控制等操作。该类的所有方法均为静态方法，应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。
 
-使用隐私模式浏览网页时，Cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。当前WebCookieManager的获取cookie接口不支持partitioned cookie。
+使用隐私模式浏览网页时，cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。当前WebCookieManager的获取cookie接口不支持partitioned cookie。
 
 > **说明：**
 >
@@ -351,8 +351,6 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 >
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> - 同步cookie的时机建议在Web组件加载之前完成。
->
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
@@ -424,8 +422,6 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 >
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> - 同步cookie的时机建议在Web组件加载之前完成。
->
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
@@ -492,6 +488,22 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 
 异步callback方式为指定url设置单个cookie的值。
 
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -548,7 +560,23 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-指定url设置单个cookie的值。使用Promise异步回调。
+为指定url设置单个cookie的值。使用Promise异步回调。
+
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -613,7 +641,21 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-指定url设置单个cookie的值。使用Promise异步回调。
+为指定url设置单个cookie的值。使用Promise异步回调。
+
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

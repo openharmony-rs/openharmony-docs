@@ -18,17 +18,23 @@
 
 ## 基本概念
 
-* 智慧手势：用户通过设备上的“敲一敲”，“划一划”和“翻腕”的隔空手势，实现对界面组件的选中、点击、滚动、翻页和返回等交互动作的能力。
+* 智慧手势：用户通过设备上的“敲一敲”，“划一划”和“翻腕”的隔空手势，实现对界面组件的选中、点击、滚动、翻页和返回等交互动作的能力。翻腕手势默认开启，敲一敲和划一划需通过[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)接口显式启用。
 
-* 操作意图（OperateIntention）：用户底层操作的语义分类，取值范围参考[OperateIntention](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#operateintention)。
+* 操作意图（OperateIntention）：用户底层操作的语义分类，即用户做了什么动作。取值范围为TAP（敲一敲）、SLIDE_FORWARD（划一划）、BACK_PRESS（翻腕），详见[OperateIntention](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#operateintention)。操作意图是系统推断执行动作的输入依据。
 
-* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，取值范围参考[SmartGestureAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#smartgestureaction)。
+* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，即系统打算做什么。取值范围为CLICK（点击）、SELECT（选中）、SCROLL_FORWARD（滚动）、PAGE_FORWARD（翻页）、BACK_PRESS（返回）、NONE（无动作），详见[SmartGestureAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#smartgestureaction)。同一操作意图可对应不同执行动作，例如敲一敲（TAP）仅对应点击（CLICK），而划一划（SLIDE_FORWARD）可对应选中（SELECT）、滚动（SCROLL_FORWARD）或翻页（PAGE_FORWARD），系统会根据当前页面结构和目标组件自动推断最合适的执行动作。
 
-* 动作处理（ActionProposal）：开发者通过监听回调返回的具体操作类型，包括[ClickActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clickactionproposal)、[SelectActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#selectactionproposal)、[ScrollActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#scrollactionproposal)、[PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#pageswitchactionproposal)、[BackPressActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#backpressactionproposal)、[NoneActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#noneactionproposal)类型。
+* 动作处理（ActionProposal）：开发者通过监听回调返回的具体操作方案，用于覆写系统默认动作。每种执行动作对应一个动作处理类，具体如下：
+  - [ClickActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clickactionproposal)：点击动作处理，触发目标组件的onClick事件。遵循"先选中再点击"语义，若目标组件尚未被选中，敲一敲会先建立选中态，下次敲一敲才触发点击。
+  - [SelectActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#selectactionproposal)：选中动作处理，使目标组件进入选中态，适用于按钮、文本、列表项等可选中组件。
+  - [ScrollActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#scrollactionproposal)：滚动动作处理，使滚动容器（Scroll、List、Grid等）向前滚动指定距离，默认方向包括向下和向右。构造参数distance取值范围[0,+∞)，小于0时按0处理，单位为vp。
+  - [PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#pageswitchactionproposal)：翻页动作处理，使Swiper容器向前翻页，默认方向包括向右和向下。构造参数pageCount取值范围[0,+∞)，小于0时按0处理，单位为页。
+  - [BackPressActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#backpressactionproposal)：返回动作处理，模拟返回键触发页面返回。
+  - [NoneActionProposal](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#noneactionproposal)：空动作处理，不触发任何操作，可用于拒绝本次手势。
 
-* 手势处理结果（[GestureHandlingResolution](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#gesturehandlingresolution)）：监听回调的返回值，声明是否消费本次手势以及选择何种动作处理。当isConsumed为true时消费手势，若同时设置了selectedProposal则以自定义动作处理替代系统默认动作；当isConsumed为false时不消费手势，系统将本次手势视为未处理。
+* 手势处理结果（[GestureHandlingResolution](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#gesturehandlingresolution)）：监听回调的返回值，声明是否消费本次手势以及选择何种动作处理。isConsumed为true时消费手势，若同时设置了selectedProposal则以自定义动作处理替代系统默认动作；isConsumed为false时不消费手势，系统将本次手势视为未处理，此时selectedProposal设置不生效。
 
-* 选中态：组件成功进入选中态后会显示选中提示框，选中框样式根据设备有所不同。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#requestselected)主动请求组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearselected)清空选中态。
+* 选中态：组件成功进入选中态后会显示选中提示框，选中框样式根据设备有所不同。开发者可通过[requestSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#requestselected)主动请求组件进入选中态，通过[clearSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearselected)清空选中态。requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
 ## 交互流程
 
@@ -38,11 +44,11 @@
 
 2. 标记组件：为需要响应智慧手势的组件设置[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)和[smartGestureShortcut](../reference/apis-arkui/arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)属性，声明其响应优先级和可选中能力。
 
-3. 注册监听：调用[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册监听回调，在系统处理手势前接收手势意图并进行自定义决策。
+3. 注册监听：调用[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册监听回调，在系统处理手势前接收手势意图并进行自定义决策。如需取消单个已注册的回调，可调用[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)注销指定回调。
 
 4. 动态决策：在监听回调中，根据回调返回的具体操作类型ActionProposal和用户实际的操作意图，构造合适的ActionProposal，通过GestureHandlingResolution返回处理结果。
 
-5. 关闭手势：页面消失时调用[clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)清空监听回调，并调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)关闭手势使能。
+5. 关闭手势：页面消失时调用[clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)清空所有监听回调（也可通过[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)逐个注销指定回调），并调用[enableSmartTapAndSlideGestures](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures)关闭手势使能。
 
 ## 智慧手势开发指导
 
@@ -56,38 +62,52 @@
 
    在组件的[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期中获取[SmartGestureController](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md)实例，并启用敲一敲和划一划手势。在[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中清空监听回调并关闭手势。
 
+   > **说明：**
+   >
+   > [clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)会清空所有已注册的监听回调。如需仅取消某个特定回调而保留其他回调，可使用[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)注销指定回调，传入的参数必须与[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册时传入的回调引用一致。
+
    ArkTS-Dyn示例：
 
-   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
+   // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
    private controller = this.getUIContext().getSmartGestureController();
    // ...
    aboutToAppear(): void {
+     // 开启敲一敲和划一划智慧手势识别
      this.controller.enableSmartTapAndSlideGestures(true);
+     // 注册Monitor监听回调，回调按后注册先执行的顺序触发
      this.controller.registerMonitor(this.callback);
    }
    
    aboutToDisappear(): void {
+     // 清空所有已注册的Monitor回调
      this.controller.clearMonitors();
+     // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
      this.controller.enableSmartTapAndSlideGestures(false);
    }
    ```
 
    ArkTS-Sta示例：
 
-   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
+   // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
    private controller: SmartGestureController = this.getUIContext().getSmartGestureController();
    // ...
    aboutToAppear(): void {
+     // 开启敲一敲和划一划智慧手势识别
      this.controller.enableSmartTapAndSlideGestures(true);
+     // 注册Monitor监听回调，回调类型为Callback<BaseGestureHandlingProposal, GestureHandlingResolution>，按后注册先执行的顺序触发
      this.controller.registerMonitor(this.callback);
    }
    
    aboutToDisappear(): void {
+     // 清空所有已注册的Monitor回调
      this.controller.clearMonitors();
+     // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
      this.controller.enableSmartTapAndSlideGestures(false);
    }
    ```
@@ -98,12 +118,13 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
    Button(`按钮A / 点击=${this.btn0Count}`)
      .id('btn_a')
      .width('100%')
+     // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
      .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
      .onClick(() => {
        this.btn0Count += 1;
@@ -113,12 +134,13 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
    Button(`按钮A / 点击=${this.btn0Count}`)
      .id('btn_a')
      .width('100%')
+     // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
      .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
      .onClick((e: ClickEvent) => {
        this.btn0Count += 1;
@@ -138,7 +160,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
    import {
@@ -150,29 +172,43 @@
      TargetedGestureProposal,
    } from '@kit.ArkUI';
    // ...
+     // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+     // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+     // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
      private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+       // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
        let targetProposal = proposal as TargetedGestureProposal;
+       // 获取目标组件的id标识，用于后续通过id查找FrameNode
        let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
        this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+       // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
        const resolution = new GestureHandlingResolution(true);
    
+       // 敲一敲手势意图，需执行点击操作
        if (proposal.action === SmartGestureAction.CLICK) {
          if (nodeId) {
+           // 通过组件id获取对应的FrameNode，用于构造点击动作提案
            const node = this.getUIContext().getFrameNodeById(nodeId);
            if (node) {
+             // 构造点击动作提案，指定目标节点执行点击
              resolution.selectedProposal = new ClickActionProposal(node);
            }
          }
+       // 划一划手势意图，需切换选中组件
        } else if (proposal.action === SmartGestureAction.SELECT) {
          if (nodeId) {
            const node = this.getUIContext().getFrameNodeById(nodeId);
            if (node) {
+             // 构造选中动作提案，指定目标节点切换选中态
              resolution.selectedProposal = new SelectActionProposal(node);
            }
          }
+       // 划一划手势意图，需滚动容器内容，滚动距离200px
        } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+         // ScrollActionProposal的目标节点为滚动容器而非按钮，此处通过容器id获取Scroll的FrameNode
          const node = this.getUIContext().getFrameNodeById('long_scroll');
          if (node) {
+           // 构造滚动动作提案，指定目标容器节点和滚动距离(200px)
            resolution.selectedProposal = new ScrollActionProposal(node, 200);
          }
        }
@@ -183,7 +219,7 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
    
    ``` TypeScript
    import {
@@ -212,30 +248,44 @@
      ScrollActionProposal,
    } from '@ohos.arkui.UIContext'
    // ...
+     // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+     // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+     // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
      private callback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution> =
        (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+         // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
          let targetProposal = proposal as TargetedGestureProposal;
+         // 获取目标组件的id标识，用于后续通过id查找FrameNode
          let nodeId: string = targetProposal.node ? targetProposal.node.getId() : '';
          this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+         // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
          let resolution = new GestureHandlingResolution(true);
    
+         // 敲一敲手势意图，需执行点击操作
          if (proposal.action === SmartGestureAction.CLICK) {
            if (nodeId) {
+             // 通过组件id获取对应的FrameNode，用于构造点击动作提案
              let node = this.getUIContext().getFrameNodeById(nodeId);
              if (node) {
+               // 构造点击动作提案，指定目标节点执行点击
                resolution.selectedProposal = new ClickActionProposal(node);
              }
            }
+         // 划一划手势意图，需切换选中组件
          } else if (proposal.action === SmartGestureAction.SELECT) {
            if (nodeId) {
              let node = this.getUIContext().getFrameNodeById(nodeId);
              if (node) {
+               // 构造选中动作提案，指定目标节点切换选中态
                resolution.selectedProposal = new SelectActionProposal(node);
              }
            }
+         // 划一划手势意图，需滚动容器内容，滚动距离200px
          } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+           // ScrollActionProposal的目标节点为滚动容器而非按钮，此处通过容器id获取Scroll的FrameNode
            let node = this.getUIContext().getFrameNodeById('long_scroll');
            if (node) {
+             // 构造滚动动作提案，指定目标容器节点和滚动距离(200px)
              resolution.selectedProposal = new ScrollActionProposal(node, 200);
            }
          }
@@ -257,7 +307,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) --> 
 
 ``` TypeScript
 import {
@@ -272,36 +322,51 @@ import {
 @Entry
 @Component
 struct Demo1 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo1: 长页面Scroll + Button\n划一划滚动至按钮区域 → 划一划切换选中按钮 → 敲一敲触发点击';
-  @State btn0Count: number = 0;
-  @State btn1Count: number = 0;
-  @State btn2Count: number = 0;
-  @State btn3Count: number = 0;
+  @State btn0Count: number = 0; // 按钮A点击计数
+  @State btn1Count: number = 0; // 按钮B点击计数
+  @State btn2Count: number = 0; // 按钮C点击计数
+  @State btn3Count: number = 0; // 按钮D点击计数
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
     let targetProposal = proposal as TargetedGestureProposal;
+    // 获取目标组件的id标识，用于后续通过id查找FrameNode
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+    // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
     const resolution = new GestureHandlingResolution(true);
 
+    // 敲一敲手势意图，需执行点击操作
     if (proposal.action === SmartGestureAction.CLICK) {
       if (nodeId) {
+        // 通过组件id获取对应的FrameNode，用于构造点击动作提案
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造点击动作提案，指定目标节点执行点击
           resolution.selectedProposal = new ClickActionProposal(node);
         }
       }
+    // 划一划手势意图，需切换选中组件
     } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造选中动作提案，指定目标节点切换选中态
           resolution.selectedProposal = new SelectActionProposal(node);
         }
       }
+    // 划一划手势意图，需滚动容器内容，滚动距离200px
     } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+      // ScrollActionProposal的目标节点为滚动容器而非按钮，此处通过容器id获取Scroll的FrameNode
       const node = this.getUIContext().getFrameNodeById('long_scroll');
       if (node) {
+        // 构造滚动动作提案，指定目标容器节点和滚动距离(200px)
         resolution.selectedProposal = new ScrollActionProposal(node, 200);
       }
     }
@@ -310,12 +375,16 @@ struct Demo1 {
   };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -358,6 +427,7 @@ struct Demo1 {
         Button(`按钮A / 点击=${this.btn0Count}`)
           .id('btn_a')
           .width('100%')
+          // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
             this.btn0Count += 1;
@@ -404,7 +474,7 @@ struct Demo1 {
 
 ArkTS-Sta示例：
 
-<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
+<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->  
 
 ``` TypeScript
 import {
@@ -436,38 +506,53 @@ import {
 @Entry
 @Component
 struct Demo1 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller: SmartGestureController = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo1: 长页面Scroll + Button\n划一划滚动至按钮区域 → 划一划切换选中按钮 → 敲一敲触发点击';
-  @State btn0Count: int = 0;
-  @State btn1Count: int = 0;
-  @State btn2Count: int = 0;
-  @State btn3Count: int = 0;
+  @State btn0Count: int = 0; // 按钮A点击计数
+  @State btn1Count: int = 0; // 按钮B点击计数
+  @State btn2Count: int = 0; // 按钮C点击计数
+  @State btn3Count: int = 0; // 按钮D点击计数
   private contentItems: Array<int> = [0, 1, 2, 3, 4, 5, 6];
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution> =
     (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+      // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
       let targetProposal = proposal as TargetedGestureProposal;
+      // 获取目标组件的id标识，用于后续通过id查找FrameNode
       let nodeId: string = targetProposal.node ? targetProposal.node.getId() : '';
       this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+      // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
       let resolution = new GestureHandlingResolution(true);
 
+      // 敲一敲手势意图，需执行点击操作
       if (proposal.action === SmartGestureAction.CLICK) {
         if (nodeId) {
+          // 通过组件id获取对应的FrameNode，用于构造点击动作提案
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造点击动作提案，指定目标节点执行点击
             resolution.selectedProposal = new ClickActionProposal(node);
           }
         }
+      // 划一划手势意图，需切换选中组件
       } else if (proposal.action === SmartGestureAction.SELECT) {
         if (nodeId) {
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造选中动作提案，指定目标节点切换选中态
             resolution.selectedProposal = new SelectActionProposal(node);
           }
         }
+      // 划一划手势意图，需滚动容器内容，滚动距离200px
       } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+        // ScrollActionProposal的目标节点为滚动容器而非按钮，此处通过容器id获取Scroll的FrameNode
         let node = this.getUIContext().getFrameNodeById('long_scroll');
         if (node) {
+          // 构造滚动动作提案，指定目标容器节点和滚动距离(200px)
           resolution.selectedProposal = new ScrollActionProposal(node, 200);
         }
       }
@@ -476,12 +561,16 @@ struct Demo1 {
     };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调类型为Callback<BaseGestureHandlingProposal, GestureHandlingResolution>，按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -524,6 +613,7 @@ struct Demo1 {
         Button(`按钮A / 点击=${this.btn0Count}`)
           .id('btn_a')
           .width('100%')
+          // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick((e: ClickEvent) => {
             this.btn0Count += 1;
@@ -574,7 +664,7 @@ struct Demo1 {
 
 ArkTS-Dyn示例：
 
-<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case2.ets) -->
+<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case2.ets) -->  
 
 ``` TypeScript
 import {
@@ -589,35 +679,50 @@ import {
 @Entry
 @Component
 struct Demo2 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo2: 长列表List\n划一划切换选中ListItem → 敲一敲触发点击';
-  @State clickCounts: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  @State clickCounts: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 各ListItem点击计数
   private items: string[] = ['按钮A', '按钮B', '按钮C', '按钮D', '按钮E', '按钮F',
     '按钮G', '按钮H', '按钮I', '按钮J', '按钮K', '按钮L'];
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
     let targetProposal = proposal as TargetedGestureProposal;
+    // 获取目标组件的id标识，用于后续通过id查找FrameNode
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+    // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
     const resolution = new GestureHandlingResolution(true);
 
+    // 敲一敲手势意图，需执行点击操作
     if (proposal.action === SmartGestureAction.CLICK) {
       if (nodeId) {
+        // 通过组件id获取对应的FrameNode，用于构造点击动作提案
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造点击动作提案，指定目标节点执行点击
           resolution.selectedProposal = new ClickActionProposal(node);
         }
       }
+    // 划一划手势意图，需切换选中组件
     } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造选中动作提案，指定目标节点切换选中态
           resolution.selectedProposal = new SelectActionProposal(node);
         }
       }
+    // 划一划手势意图，需滚动容器内容，滚动距离100px
     } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+      // ScrollActionProposal的目标节点为滚动容器而非列表项，此处通过容器id获取List的FrameNode
       const node = this.getUIContext().getFrameNodeById('long_list');
       if (node) {
+        // 构造滚动动作提案，指定目标容器节点和滚动距离(100px)
         resolution.selectedProposal = new ScrollActionProposal(node, 100);
       }
     }
@@ -626,12 +731,16 @@ struct Demo2 {
   };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -669,6 +778,7 @@ struct Demo2 {
             .borderWidth(1)
             .backgroundColor(index! % 2 === 0 ? '#f6f8fa' : '#ffffff')
             .id(`list_item_${index}`)
+            // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick(() => {
               const idx = index ?? 0;
@@ -694,7 +804,7 @@ struct Demo2 {
 
 ArkTS-Sta示例：
 
-<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case2.ets) -->
+<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case2.ets) --> 
 
 ``` TypeScript
 import {
@@ -729,36 +839,51 @@ import {
 @Entry
 @Component
 struct Demo2 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller: SmartGestureController = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo2: 长列表List\n划一划切换选中ListItem → 敲一敲触发点击';
-  @State clickCounts: Array<int> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  @State clickCounts: Array<int> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 各ListItem点击计数
   private items: Array<string> = ['项目A', '项目B', '项目C', '项目D', '项目E', '项目F',
     '项目G', '项目H', '项目I', '项目J', '项目K', '项目L'];
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution> =
     (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+      // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
       let targetProposal = proposal as TargetedGestureProposal;
+      // 获取目标组件的id标识，用于后续通过id查找FrameNode
       let nodeId: string = targetProposal.node ? targetProposal.node.getId() : '';
       this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+      // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
       let resolution = new GestureHandlingResolution(true);
 
+      // 敲一敲手势意图，需执行点击操作
       if (proposal.action === SmartGestureAction.CLICK) {
         if (nodeId) {
+          // 通过组件id获取对应的FrameNode，用于构造点击动作提案
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造点击动作提案，指定目标节点执行点击
             resolution.selectedProposal = new ClickActionProposal(node);
           }
         }
+      // 划一划手势意图，需切换选中组件
       } else if (proposal.action === SmartGestureAction.SELECT) {
         if (nodeId) {
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造选中动作提案，指定目标节点切换选中态
             resolution.selectedProposal = new SelectActionProposal(node);
           }
         }
+      // 划一划手势意图，需滚动容器内容，滚动距离100px
       } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+        // ScrollActionProposal的目标节点为滚动容器而非列表项，此处通过容器id获取List的FrameNode
         let node = this.getUIContext().getFrameNodeById('long_list');
         if (node) {
+          // 构造滚动动作提案，指定目标容器节点和滚动距离(100px)
           resolution.selectedProposal = new ScrollActionProposal(node, 100);
         }
       }
@@ -767,12 +892,16 @@ struct Demo2 {
     };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调类型为Callback<BaseGestureHandlingProposal, GestureHandlingResolution>，按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -809,6 +938,7 @@ struct Demo2 {
               .borderWidth(1)
               .backgroundColor(index % 2 === 0 ? '#f6f8fa' : '#ffffff')
               .id(`list_item_${index}`)
+              // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
               .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
               .onClick((e: ClickEvent) => {
                 this.clickCounts[index] += 1;
@@ -843,7 +973,7 @@ struct Demo2 {
 
 ArkTS-Dyn示例：
 
-<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets) -->
+<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets) --> 
 
 ``` TypeScript
 import {
@@ -857,30 +987,42 @@ import {
 @Entry
 @Component
 struct Demo3 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo3: 单页面+多组件\n划一划切换选中组件 → 敲一敲触发点击';
-  @State btnCount: number = 0;
-  @State textClickCount: number = 0;
-  @State toggleOn: boolean = false;
-  @State sliderVal: number = 30;
+  @State btnCount: number = 0; // 按钮点击计数
+  @State textClickCount: number = 0; // 文本点击计数
+  @State toggleOn: boolean = false; // Toggle开关状态
+  @State sliderVal: number = 30; // Slider滑块值
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
     let targetProposal = proposal as TargetedGestureProposal;
+    // 获取目标组件的id标识，用于后续通过id查找FrameNode
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+    // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
     const resolution = new GestureHandlingResolution(true);
 
+    // 敲一敲手势意图，需执行点击操作
     if (proposal.action === SmartGestureAction.CLICK) {
       if (nodeId) {
+        // 通过组件id获取对应的FrameNode，用于构造点击动作提案
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造点击动作提案，指定目标节点执行点击
           resolution.selectedProposal = new ClickActionProposal(node);
         }
       }
+    // 划一划手势意图，需切换选中组件
     } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造选中动作提案，指定目标节点切换选中态
           resolution.selectedProposal = new SelectActionProposal(node);
         }
       }
@@ -890,12 +1032,16 @@ struct Demo3 {
   };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -926,6 +1072,7 @@ struct Demo3 {
           .borderWidth(1)
           .textAlign(TextAlign.Center)
           .backgroundColor('#e3f2fd')
+          // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
             this.textClickCount += 1;
@@ -942,6 +1089,7 @@ struct Demo3 {
           .id('comp_button')
           .width('100%')
           .backgroundColor('#1976d2')
+          // 标记组件为智慧手势目标
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
             this.btnCount += 1;
@@ -952,6 +1100,7 @@ struct Demo3 {
           Toggle({ type: ToggleType.Switch, isOn: this.toggleOn })
             .id('comp_toggle')
             .selectedColor('#4caf50')
+            // 标记Toggle为智慧手势目标，敲一敲可触发onChange切换开关状态
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onChange((isOn: boolean) => {
               this.toggleOn = isOn;
@@ -967,6 +1116,7 @@ struct Demo3 {
         .borderWidth(1)
         .justifyContent(FlexAlign.Start)
 
+        // 通过requestSelected手动请求选中指定组件，组件需满足可见、可响应智慧手势、绑定onClick三个条件
         Row({ space: 8 }) {
           Button('选中按钮').layoutWeight(1)
             .onClick(() => this.controller.requestSelected('comp_button'))
@@ -976,6 +1126,7 @@ struct Demo3 {
             .onClick(() => this.controller.requestSelected('comp_toggle'))
         }.width('100%')
 
+        // 通过clearSelected清空当前选中态
         Button('清空选中')
           .width('100%')
           .onClick(() => {
@@ -995,7 +1146,7 @@ struct Demo3 {
 
 ArkTS-Sta示例：
 
-<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case3.ets) -->
+<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case3.ets) --> 
 
 ``` TypeScript
 import {
@@ -1034,30 +1185,42 @@ import {
 @Entry
 @Component
 struct Demo3 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller: SmartGestureController = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo3: 单页面+多组件\n划一划切换选中组件 → 敲一敲触发点击';
-  @State btnCount: int = 0;
-  @State textClickCount: int = 0;
-  @State toggleOn: boolean = false;
+  @State btnCount: int = 0; // 按钮点击计数
+  @State textClickCount: int = 0; // 文本点击计数
+  @State toggleOn: boolean = false; // Toggle开关状态
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution> =
     (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+      // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
       let targetProposal = proposal as TargetedGestureProposal;
+      // 获取目标组件的id标识，用于后续通过id查找FrameNode
       let nodeId: string = targetProposal.node ? targetProposal.node.getId() : '';
       this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+      // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
       let resolution = new GestureHandlingResolution(true);
 
+      // 敲一敲手势意图，需执行点击操作
       if (proposal.action === SmartGestureAction.CLICK) {
         if (nodeId) {
+          // 通过组件id获取对应的FrameNode，用于构造点击动作提案
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造点击动作提案，指定目标节点执行点击
             resolution.selectedProposal = new ClickActionProposal(node);
           }
         }
+      // 划一划手势意图，需切换选中组件
       } else if (proposal.action === SmartGestureAction.SELECT) {
         if (nodeId) {
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造选中动作提案，指定目标节点切换选中态
             resolution.selectedProposal = new SelectActionProposal(node);
           }
         }
@@ -1067,12 +1230,16 @@ struct Demo3 {
     };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调类型为Callback<BaseGestureHandlingProposal, GestureHandlingResolution>，按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -1103,6 +1270,7 @@ struct Demo3 {
           .borderWidth(1)
           .textAlign(TextAlign.Center)
           .backgroundColor('#e3f2fd')
+          // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick((e: ClickEvent) => {
             this.textClickCount += 1;
@@ -1119,6 +1287,7 @@ struct Demo3 {
           .id('comp_button')
           .width('100%')
           .backgroundColor('#1976d2')
+          // 标记组件为智慧手势目标
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick((e: ClickEvent) => {
             this.btnCount += 1;
@@ -1129,6 +1298,7 @@ struct Demo3 {
           Toggle({ type: ToggleType.Switch, isOn: this.toggleOn })
             .id('comp_toggle')
             .selectedColor('#4caf50')
+            // 标记Toggle为智慧手势目标，敲一敲可触发onChange切换开关状态
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onChange((isOn: boolean) => {
               this.toggleOn = isOn;
@@ -1139,6 +1309,7 @@ struct Demo3 {
             .margin({ left: 12 })
         }.width('100%').padding(12).borderRadius(10).borderWidth(1).justifyContent(FlexAlign.Start)
 
+        // 通过requestSelected手动请求选中指定组件，组件需满足可见、可响应智慧手势、绑定onClick三个条件
         Row({ space: 8 } as RowOptions) {
           Button('选中按钮').layoutWeight(1)
             .onClick((e: ClickEvent) => this.controller.requestSelected('comp_button'))
@@ -1148,6 +1319,7 @@ struct Demo3 {
             .onClick((e: ClickEvent) => this.controller.requestSelected('comp_toggle'))
         }.width('100%')
 
+        // 通过clearSelected清空当前选中态
         Button('清空选中')
           .width('100%')
           .onClick((e: ClickEvent) => {
@@ -1177,7 +1349,7 @@ struct Demo3 {
 
 ArkTS-Dyn示例：
 
-<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case4.ets) -->
+<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case4.ets) --> 
 
 ``` TypeScript
 import {
@@ -1192,36 +1364,51 @@ import {
 @Entry
 @Component
 struct Demo4 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo4: Swiper + Button\n划一划翻页 → 敲一敲触发按钮点击';
-  @State page0Btn: number = 0;
-  @State page1Btn: number = 0;
-  @State page2Btn: number = 0;
-  @State swiperIndex: number = 0;
+  @State page0Btn: number = 0; // 首页按钮点击计数
+  @State page1Btn: number = 0; // 设置页按钮点击计数
+  @State page2Btn: number = 0; // 关于页按钮点击计数
+  @State swiperIndex: number = 0; // 当前Swiper页面索引
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
     let targetProposal = proposal as TargetedGestureProposal;
+    // 获取目标组件的id标识，用于后续通过id查找FrameNode
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+    // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
     const resolution = new GestureHandlingResolution(true);
 
+    // 敲一敲手势意图，需执行点击操作
     if (proposal.action === SmartGestureAction.CLICK) {
       if (nodeId) {
+        // 通过组件id获取对应的FrameNode，用于构造点击动作提案
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造点击动作提案，指定目标节点执行点击
           resolution.selectedProposal = new ClickActionProposal(node);
         }
       }
+    // 划一划手势意图，需切换选中组件
     } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
         const node = this.getUIContext().getFrameNodeById(nodeId);
         if (node) {
+          // 构造选中动作提案，指定目标节点切换选中态
           resolution.selectedProposal = new SelectActionProposal(node);
         }
       }
+    // 划一划手势意图，需翻页切换Swiper页面，步长为1表示翻到下一页
     } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+      // PageSwitchActionProposal的目标节点为Swiper容器而非按钮，此处通过容器id获取Swiper的FrameNode
       const node = this.getUIContext().getFrameNodeById('demo_swiper');
       if (node) {
+        // 构造翻页动作提案，指定Swiper节点和翻页步长(1表示向前翻一页)
         resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
       }
     }
@@ -1230,12 +1417,16 @@ struct Demo4 {
   };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -1265,6 +1456,7 @@ struct Demo4 {
             .id('page0_btn')
             .width('80%')
             .backgroundColor('#4caf50')
+            // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick(() => {
               this.page0Btn += 1;
@@ -1287,6 +1479,7 @@ struct Demo4 {
             .id('page1_btn')
             .width('80%')
             .backgroundColor('#ff9800')
+            // 标记组件为智慧手势目标
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick(() => {
               this.page1Btn += 1;
@@ -1309,6 +1502,7 @@ struct Demo4 {
             .id('page2_btn')
             .width('80%')
             .backgroundColor('#2196f3')
+            // 标记组件为智慧手势目标
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick(() => {
               this.page2Btn += 1;
@@ -1345,7 +1539,7 @@ struct Demo4 {
 
 ArkTS-Sta示例：
 
-<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case4.ets) -->
+<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case4.ets) --> 
 
 ``` TypeScript
 import {
@@ -1380,37 +1574,52 @@ import {
 @Entry
 @Component
 struct Demo4 {
+  // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
   private controller: SmartGestureController = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo4: Swiper + Button\n划一划翻页 → 敲一敲触发按钮点击';
-  @State page0Btn: int = 0;
-  @State page1Btn: int = 0;
-  @State page2Btn: int = 0;
-  @State swiperIndex: int = 0;
+  @State page0Btn: int = 0; // 首页按钮点击计数
+  @State page1Btn: int = 0; // 设置页按钮点击计数
+  @State page2Btn: int = 0; // 关于页按钮点击计数
+  @State swiperIndex: int = 0; // 当前Swiper页面索引
 
+  // Monitor回调接收BaseGestureHandlingProposal参数，根据手势动作类型动态决策处理方案
+  // BaseGestureHandlingProposal是基类，包含action(动作类型)和operateIntention(操作意图)
+  // TargetedGestureProposal是子类，额外携带node属性指向目标组件节点，构造ActionProposal时需要该节点
   private callback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution> =
     (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+      // 将BaseGestureHandlingProposal转为TargetedGestureProposal，以获取目标组件节点信息
       let targetProposal = proposal as TargetedGestureProposal;
+      // 获取目标组件的id标识，用于后续通过id查找FrameNode
       let nodeId: string = targetProposal.node ? targetProposal.node.getId() : '';
       this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}, 目标=${nodeId}`;
+      // 构造手势处理结果，参数true表示消费本次手势，后续回调不再执行
       let resolution = new GestureHandlingResolution(true);
 
+      // 敲一敲手势意图，需执行点击操作
       if (proposal.action === SmartGestureAction.CLICK) {
         if (nodeId) {
+          // 通过组件id获取对应的FrameNode，用于构造点击动作提案
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造点击动作提案，指定目标节点执行点击
             resolution.selectedProposal = new ClickActionProposal(node);
           }
         }
+      // 划一划手势意图，需切换选中组件
       } else if (proposal.action === SmartGestureAction.SELECT) {
         if (nodeId) {
           let node = this.getUIContext().getFrameNodeById(nodeId);
           if (node) {
+            // 构造选中动作提案，指定目标节点切换选中态
             resolution.selectedProposal = new SelectActionProposal(node);
           }
         }
+      // 划一划手势意图，需翻页切换Swiper页面，步长为1表示翻到下一页
       } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+        // PageSwitchActionProposal的目标节点为Swiper容器而非按钮，此处通过容器id获取Swiper的FrameNode
         let node = this.getUIContext().getFrameNodeById('demo_swiper');
         if (node) {
+          // 构造翻页动作提案，指定Swiper节点和翻页步长(1表示向前翻一页)
           resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
         }
       }
@@ -1419,12 +1628,16 @@ struct Demo4 {
     };
 
   aboutToAppear(): void {
+    // 开启敲一敲和划一划智慧手势识别
     this.controller.enableSmartTapAndSlideGestures(true);
+    // 注册Monitor监听回调，回调类型为Callback<BaseGestureHandlingProposal, GestureHandlingResolution>，按后注册先执行的顺序触发
     this.controller.registerMonitor(this.callback);
   }
 
   aboutToDisappear(): void {
+    // 清空所有已注册的Monitor回调
     this.controller.clearMonitors();
+    // 关闭智慧手势识别，组件侧smartGestureShortcut配置仍保留但不响应
     this.controller.enableSmartTapAndSlideGestures(false);
   }
 
@@ -1460,6 +1673,7 @@ struct Demo4 {
             .id('page0_btn')
             .width('80%')
             .backgroundColor('#4caf50')
+            // 标记组件为智慧手势目标：action指定手势动作类型，enabled控制是否响应，selectable控制是否可被选中
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick((e: ClickEvent) => {
               this.page0Btn += 1;
@@ -1479,6 +1693,7 @@ struct Demo4 {
             .id('page1_btn')
             .width('80%')
             .backgroundColor('#ff9800')
+            // 标记组件为智慧手势目标
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick((e: ClickEvent) => {
               this.page1Btn += 1;
@@ -1498,6 +1713,7 @@ struct Demo4 {
             .id('page2_btn')
             .width('80%')
             .backgroundColor('#2196f3')
+            // 标记组件为智慧手势目标
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onClick((e: ClickEvent) => {
               this.page2Btn += 1;
@@ -1512,28 +1728,12 @@ struct Demo4 {
         .layoutWeight(1)
         .loop(false)
         .index(0)
-        .onChange((index: number) => {
-          this.swiperIndex = index as int;
+        .onChange((index: int) => {
+          this.swiperIndex = index;
           this.hint = `Swiper onChange → 第${index}页`;
         })
         .borderRadius(12)
         .borderWidth(1)
-
-      Row({ space: 8 } as RowOptions).width('100%') {
-        Button('选中首页按钮').layoutWeight(1)
-          .onClick((e: ClickEvent) => this.controller.requestSelected('page0_btn'))
-        Button('选中设置按钮').layoutWeight(1)
-          .onClick((e: ClickEvent) => this.controller.requestSelected('page1_btn'))
-        Button('选中关于按钮').layoutWeight(1)
-          .onClick((e: ClickEvent) => this.controller.requestSelected('page2_btn'))
-      }
-
-      Button('清空选中')
-        .width('100%')
-        .onClick((e: ClickEvent) => {
-          this.controller.clearSelected();
-          this.hint = '选中已清空';
-        })
     }.width('100%').height('100%').padding(16).backgroundColor('#f1f3f5')
   }
 }

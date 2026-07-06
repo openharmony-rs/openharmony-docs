@@ -48,7 +48,7 @@ SideBarContainer( type?: SideBarContainerType )
 
 ## SideBarContainerType枚举说明
 
-容器内侧边栏样式枚举。
+容器内侧边栏类型枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -642,6 +642,8 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 该示例主要演示如何使用侧边栏组件及页面布局效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -667,7 +669,7 @@ struct SideBarContainerExample {
           .onClick(() => {
             this.selectedItemId = item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       .backgroundColor('#19000000')
@@ -694,6 +696,89 @@ struct SideBarContainerExample {
       console.info('status:' + value);
     })
     .divider({ strokeWidth: '1vp', color: Color.Gray, startMargin: '4vp', endMargin: '4vp' })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  $r,
+  Resource,
+  SideBarContainer,
+  SideBarContainerType,
+  ForEach,
+  ColumnOptions,
+  Image,
+  FlexAlign,
+  DividerStyle,
+  Color,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct SideBarContainerExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  normalIcon: Resource = $r('app.media.icon');
+  selectedIcon: Resource = $r('app.media.icon');
+  @State arr: int[] = [1, 2, 3];
+  @State current: int = 1;
+
+  build() {
+    SideBarContainer(SideBarContainerType.Embed) {
+      Column(undefined) {
+        ForEach(this.arr, (item: int) => {
+          Column({ space: 5 } as ColumnOptions) {
+            Image(this.current === item ? this.selectedIcon : this.normalIcon).width(64).height(64)
+            Text('Index0' + item)
+              .fontSize(25)
+              .fontColor(this.current === item ? '#0A59F7' : '#999')
+              .fontFamily('source-sans-pro,cursive,sans-serif')
+          }
+          .onClick(() => {
+            this.current = item;
+          })
+        })
+      }.width('100%')
+      .justifyContent(FlexAlign.SpaceEvenly)
+      .backgroundColor('#19000000')
+
+      Column() {
+        Text('SideBarContainer content text1').fontSize(25)
+        Text('SideBarContainer content text2').fontSize(25)
+      }
+      .margin({ top: 50, left: 20, right: 30 })
+    }
+    .controlButton({
+      icons: {
+        // $r('app.media.drawer')需要替换为开发者所需的图像资源文件。
+        hidden: $r('app.media.drawer'),
+        shown: $r('app.media.drawer'),
+        switching: $r('app.media.drawer')
+      }
+    })
+    .sideBarWidth(150)
+    .minSideBarWidth(50)
+    .maxSideBarWidth(300)
+    .minContentWidth(0)
+    .onChange((value: boolean) => {
+      console.info('status:' + value);
+    })
+    .divider({
+      strokeWidth: '1vp',
+      color: Color.Gray,
+      startMargin: '4vp',
+      endMargin: '4vp'
+    } as DividerStyle)
   }
 }
 ```

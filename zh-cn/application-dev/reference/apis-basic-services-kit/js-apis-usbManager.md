@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主设备上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；从设备上端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。
 
 >  **说明：**
 > 
@@ -41,7 +41,7 @@ import usbManager from '@ohos.usbManager';
 
 getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
-获取接入主设备的USB设备列表。如果没有设备接入，那么将会返回一个空的列表。
+获取接入主设备的USB设备列表。如果没有设备接入，那么将会返回一个空的列表。调用成功后返回已连接设备的详细信息列表包括设备名称、厂商产品信息等。
 
 > **说明：**
 >
@@ -131,9 +131,9 @@ if (devicesList) {
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-根据getDevices()返回的设备信息打开USB设备。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
+根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. 需要调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -146,7 +146,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性（如name、vendorId等）不参与设备匹配。 |
 
 **返回值：**
 
@@ -180,6 +180,7 @@ function connectDevice() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -346,7 +347,7 @@ ArkTS-Dyn: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): int
 
-声明对USB设备某个接口的控制权。
+声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用[releaseInterface](#usbmanagerreleaseinterface)释放该接口的控制权。
 
 > **说明：**
 >
@@ -364,14 +365,14 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取，用户按需选择。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。用户按需选择。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。 |
 
 **错误码：**
 
@@ -398,6 +399,9 @@ function claimInterface() {
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -423,13 +427,13 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -457,6 +461,7 @@ function releaseInterface() {
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -479,13 +484,13 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id用于确定唯一设置。|
+| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一配置。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -512,6 +517,7 @@ function setConfiguration() {
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: int = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -540,13 +546,13 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口。|
+| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过接口的id和alternateSetting共同确定唯一接口，其中id为接口的唯一标识符，alternateSetting用于在同一接口的多个可选模式间切换，为0时表示不支持可选模式。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常 。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -574,6 +580,7 @@ function setInterface() {
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -624,7 +631,8 @@ function getRawDescriptor() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.getRawDescriptor(devicepipe);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -634,7 +642,7 @@ ArkTS-Dyn: getFileDescriptor(pipe: USBDevicePipe): number
 
 ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
-获取文件描述符。
+获取文件描述符。如果USB服务异常，可能返回错误码，注意需要对接口返回值做判空或错误码检查处理。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -652,7 +660,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -699,15 +707,15 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
+| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -715,7 +723,7 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -743,6 +751,7 @@ function usbControlTransfer() {
   usbManager.usbControlTransfer(devicepipe, param).then((ret: int) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -752,7 +761,8 @@ ArkTS-Dyn: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 
 ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
-批量传输。使用Promise异步回调。
+批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。
+
 > **说明：** 
 >
 > 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
@@ -769,16 +779,16 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -817,7 +827,7 @@ function bulkTransfer() {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      let ret: int = usbManager.claimInterface(devicepipe, interfaces);
+      usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: int) => {
         console.info(`bulkTransfer = ${ret}`);
@@ -826,6 +836,7 @@ function bulkTransfer() {
       });
     }
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -833,7 +844,7 @@ function bulkTransfer() {
 
 usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
-提交异步传输请求。
+提交异步传输请求。可通过调用[usbCancelTransfer](#usbmanagerusbcanceltransfer18)接口取消异步传输请求。
 
 > **说明：**
 >
@@ -896,7 +907,7 @@ function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -920,6 +931,7 @@ function usbSubmitTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -944,7 +956,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，该参数同[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的入参对象。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 被取消传输的参数，该参数与[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的transfer参数相同。|
 
 **错误码：**
 
@@ -991,7 +1003,7 @@ function usbCancelTransfer() {
     return;
   }
   // 获取设备的第一个id。
-  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1015,6 +1027,7 @@ function usbCancelTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1026,7 +1039,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 关闭设备消息控制通道。
 
-1. 需要调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限；
 3. 调用[usbManager.connectDevice](#usbmanagerconnectdevice)得到devicepipe作为参数。
 
@@ -1210,11 +1223,15 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   usbManager.cancelAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
@@ -1265,7 +1282,7 @@ try {
 
 openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
-获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。
+获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](#usbmanagercloseaccessory14)接口关闭文件描述符。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1303,12 +1320,16 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   let handle = usbManager.openAccessory(accList?.[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
@@ -1325,7 +1346,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 关闭配件文件描述符。
 
-需要调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件列表，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1351,11 +1372,15 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   let handle = usbManager.openAccessory(accList?.[0])
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
@@ -1423,6 +1448,7 @@ function resetUsbDevice() {
   } catch (err) {
     console.error(`resetUsbDevice failed: ` + err);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1434,7 +1460,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用[usbControlTransfer](#usbmanagerusbcontroltransfer12)替代。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1442,9 +1468,9 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
-| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备消息传输通道对象，用于确定设备，需要调用connectDevice获取。|
+| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -1463,16 +1489,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 **示例：**
 
 ```ts
-class PARA {
-  request: number = 0
-  reqType: usbManager.USBControlRequestType = 0
-  target: usbManager.USBRequestTargetType = 0
-  value: number = 0
-  index: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
+let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
   target:0,
@@ -1493,6 +1510,7 @@ function controlTransfer() {
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1502,9 +1520,9 @@ function controlTransfer() {
 
 >**说明：**
 >
-> 主机控制器按照Endpoint类型调度。
+> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isoc)采用宽带预留调度，适合音视频等实时数据流。
 >
-> 协议层打包时依赖type决定传输特性。
+> 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1540,7 +1558,7 @@ function controlTransfer() {
 | protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的协议。                |
 | clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备类型。                 |
 | subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备子类。                 |
-| alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。值的大小表示支持可选模式个数，其中0表示不支持可选模式。 |
+| alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。alternateSetting的值表示支持可选模式个数，其中0表示不支持可选模式。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
 
@@ -1559,10 +1577,10 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的唯一标识。        |
 | attributes     | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的属性。          |
 | maxPower       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否 |最大功耗，（单位：毫安）。    |
-| name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
+| name           | string                                           | 否 | 否 |配置的名称，可以为空字符串。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
-| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 否 | 否 |配置支持的接口属性。      |
+| interfaces     | Array<[USBInterface](#usbinterface)>             | 否 | 否 |配置支持的接口列表。      |
 
 ## USBDevice
 
@@ -1580,14 +1598,14 @@ USB设备信息。
 | devAddress       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备地址。      |
 | serial           | string                               | 否 | 否 |序列号。       |
 | name             | string                               | 否 | 否 |设备名字。      |
-| manufacturerName | string                               | 否 | 否 | 产商信息。      |
-| productName      | string                               | 否 | 否 |产品信息。      |
-| version          | string                               | 否 | 否 |版本。        |
+| manufacturerName | string                               | 否 | 否 |设备厂商名称。      |
+| productName      | string                               | 否 | 否 |设备产品名称。      |
+| version          | string                               | 否 | 否 |设备版本号。        |
 | vendorId         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |厂商ID。      |
 | productId        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |产品ID。      |
-| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备类。       |
-| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备子类。      |
-| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备协议码。     |
+| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备类型代码。       |
+| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备子类型代码。      |
+| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备协议代码。     |
 | configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 否 |设备配置描述符信息。 |
 
 ## USBDevicePipe
@@ -1618,11 +1636,11 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| bmRequestType | ArkTS-Dyn: number<br> ArkTS-Sta: int                                    | 否 | 否   |请求控制类型。            |
-| bRequest  | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求类型。          |
-| wValue | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否   |请求参数。          |
-| wIndex   | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否 | 否   |请求参数value对应的索引值。            |
-| wLength   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求数据的长度。 |
+| bmRequestType | ArkTS-Dyn: number<br> ArkTS-Sta: int                                    | 否 | 否   |请求控制类型，用于指定控制传输的方向和类型，取值需遵循USB协议规范，常见取值包括：0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)。|
+| bRequest  | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求类型，用于指定具体的USB控制请求命令（如获取描述符，设置地址等）。|
+| wValue | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。|
+| wIndex   | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点索引。|
+| wLength   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求数据的长度，用于指定控制传输中期望接收或发送的数据字节数。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
 
 ## USBRequestTargetType
@@ -1654,9 +1672,9 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称                      | 值   | 说明   |
 | ------------------------- | ---- | ------ |
-| USB_REQUEST_TYPE_STANDARD | 0    | 标准。 |
-| USB_REQUEST_TYPE_CLASS    | 1    | 类。   |
-| USB_REQUEST_TYPE_VENDOR   | 2    | 厂商。 |
+| USB_REQUEST_TYPE_STANDARD | 0    | 标准请求类型，用于发送USB协议定义的标准控制请求（如设备描述符、设置地址、设置配置等）。 |
+| USB_REQUEST_TYPE_CLASS    | 1    | 类请求类型，用于发送特定设备类定义的控制请求（如HID类、Mass Storage类等特定请求）。   |
+| USB_REQUEST_TYPE_VENDOR   | 2    | 厂商请求类型，用于发送厂商自定义的控制请求，具体请求内容由设备厂商定义。 |
 
 ## USBRequestDirection
 
@@ -1670,8 +1688,8 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称                        | 值   | 说明                     |
 | --------------------------- | ---- | ------------------------ |
-| USB_REQUEST_DIR_TO_DEVICE   | 0    | 写数据，主设备往从设备。 |
-| USB_REQUEST_DIR_FROM_DEVICE | 0x80 | 读数据，从设备往主设备。 |
+| USB_REQUEST_DIR_TO_DEVICE   | 0    | 写数据，主机向设备。 |
+| USB_REQUEST_DIR_FROM_DEVICE | 0x80 | 读数据，设备向主机。 |
 
 ## USBAccessory<sup>14+</sup>
 
@@ -1719,14 +1737,14 @@ USB配件句柄。
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
-| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，正整数。 |
+| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。  |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间，（单位：毫秒）。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间，（单位：毫秒），指定时间内等待传输完成若在指定时间内传输完成则正常返回否则返回超时，设置为0时无限等待直到传输完成。 |
 | length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
-| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
+| callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
+| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1819,7 +1837,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbdevicerequestparams12)替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 

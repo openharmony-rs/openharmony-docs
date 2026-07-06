@@ -275,7 +275,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
 }).catch((err: Error): void => {
-  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribe failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -351,7 +352,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -434,7 +436,8 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -509,7 +512,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: Error): void => {
-  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeSelf failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1534,7 +1538,7 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: Error): void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err.code)}`);
+  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });
 ```
 

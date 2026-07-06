@@ -1090,7 +1090,7 @@ id(value: string): BottomTabBarStyle
 
 iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
-设置底部页签的图标样式。
+设置底部页签图标的样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1106,7 +1106,7 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| style | [TabBarIconStyle](#tabbariconstyle12对象说明) | 是   | 底部页签的label图标的样式。 |
+| style | [TabBarIconStyle](#tabbariconstyle12对象说明) | 是   | 底部页签图标的样式。 |
 
 **返回值：**
 
@@ -1231,7 +1231,7 @@ set selected(selected: SymbolGlyphModifier | undefined)
 
 ## TabBarIconStyle<sup>12+</sup>对象说明
 
-Label图标样式对象。
+页签图标样式对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1245,8 +1245,8 @@ Label图标样式对象。
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 
 ## 事件
 
@@ -1317,6 +1317,8 @@ ArkTS-Sta: onWillHide(event: VoidCallback | undefined)
 > **说明**
 >
 > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1420,6 +1422,146 @@ struct TabContentExample {
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
         // 当前页签索引与目标索引一致时，无需更新状态
+        if (index === targetIndex) {
+          return;
+        }
+        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        this.selectedIndex = targetIndex;
+      })
+      .width(360)
+      .height(190)
+      .backgroundColor('#F1F3F5')
+      .margin({ top: 38 })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Alignment,
+  Color,
+  BarMode,
+  Row,
+  Tabs,
+  TabContent,
+  BarPosition,
+  ButtonOptions,
+  SubTabBarStyle,
+  TabsController,
+  ImageFit,
+  Image,
+  Divider,
+  TabsAnimationEvent,
+  Text,
+  TabsOptions,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabContentExample {
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: int = 0;
+  @State selectedIndex: int = 0;
+  private controller: TabsController = new TabsController();
+
+  @Builder
+  tabBuilder(index: int): void {
+    Column(undefined) {
+      // common目录与pages同级
+      Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
+        .width(24)
+        .height(24)
+        .margin({ bottom: 4 })
+        .objectFit(ImageFit.Contain)
+      Text(`Tab${index + 1}`)
+        .fontColor(this.selectedIndex === index ? this.selectedFontColor : this.fontColor)
+        .fontSize(10)
+        .fontWeight(500)
+        .lineHeight(14)
+    }.width('100%')
+  }
+
+  build() {
+    Column(undefined) {
+      Tabs({ barPosition: BarPosition.End, controller: this.controller } as TabsOptions) {
+        TabContent() {
+          Column(undefined) {
+            Text('Tab1')
+              .fontSize(36)
+              .fontColor('#182431')
+              .fontWeight(500)
+              .opacity(0.4)
+              .margin({ top: 30, bottom: 56.5 })
+            Divider()
+              .strokeWidth(0.5)
+              .color('#182431')
+              .opacity(0.05)
+          }.width('100%')
+        }.tabBar(this.tabBuilder(0))
+
+        TabContent() {
+          Column(undefined) {
+            Text('Tab2')
+              .fontSize(36)
+              .fontColor('#182431')
+              .fontWeight(500)
+              .opacity(0.4)
+              .margin({ top: 30, bottom: 56.5 })
+            Divider()
+              .strokeWidth(0.5)
+              .color('#182431')
+              .opacity(0.05)
+          }.width('100%')
+        }.tabBar(this.tabBuilder(1))
+
+        TabContent() {
+          Column(undefined) {
+            Text('Tab3')
+              .fontSize(36)
+              .fontColor('#182431')
+              .fontWeight(500)
+              .opacity(0.4)
+              .margin({ top: 30, bottom: 56.5 })
+            Divider()
+              .strokeWidth(0.5)
+              .color('#182431')
+              .opacity(0.05)
+          }.width('100%')
+        }.tabBar(this.tabBuilder(2))
+
+        TabContent() {
+          Column(undefined) {
+            Text('Tab4')
+              .fontSize(36)
+              .fontColor('#182431')
+              .fontWeight(500)
+              .opacity(0.4)
+              .margin({ top: 30, bottom: 56.5 })
+            Divider()
+              .strokeWidth(0.5)
+              .color('#182431')
+              .opacity(0.05)
+          }.width('100%')
+        }.tabBar(this.tabBuilder(3))
+      }
+      .vertical(false)
+      .barHeight(56)
+      .onChange((index: int) => {
+        // currentIndex控制TabContent显示页签
+        this.currentIndex = index;
+        this.selectedIndex = index;
+      })
+      .onAnimationStart((index: int, targetIndex: int, event: TabsAnimationEvent) => {
         if (index === targetIndex) {
           return;
         }

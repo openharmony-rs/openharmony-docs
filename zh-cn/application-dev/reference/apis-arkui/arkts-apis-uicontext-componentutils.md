@@ -48,7 +48,7 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 
 | 类型                                                         | 说明                                             |
 | ------------------------------------------------------------ | ------------------------------------------------ |
-| [componentUtils.ComponentInfo](js-apis-arkui-componentUtils.md#componentinfo) | 组件大小、位置、平移缩放旋转及仿射矩阵属性信息。 |
+| [componentUtils.ComponentInfo](js-apis-arkui-componentUtils.md#componentinfo) | 组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。 |
 
 **错误码：** 
 

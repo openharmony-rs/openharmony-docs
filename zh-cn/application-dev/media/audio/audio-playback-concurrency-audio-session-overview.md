@@ -43,7 +43,7 @@
 
 焦点特点：后台应用被动接收中断事件，根据`InterruptHint`响应（暂停/停止/压低音量），应用无法主动声明策略，适用于传统应用或简单播放场景。
 
-### 场景3：通话时保持音乐播放状态
+### 场景3：音乐播放与系统来电处理
 
 用户听音乐时接到来电，希望通话结束后音乐自动恢复播放。
 
@@ -69,6 +69,7 @@
 | 方案四 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
 | 方案五 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
 | 方案六 | 使用音频会话接口[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用提供设置开关，用户手动开启生效，B播放后与A同时播放 | 开关参考系统音乐设置 |
+| 方案七 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | A音量压低，B停止后A音量自动恢复 | 音量自动恢复，无需额外适配 |
 
 ### 场景2：录音被通话应用打断后，无法恢复
 

@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云盘管理应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件，全量下载等。
+该模块向云盘管理应用提供端云同步管理能力，包括使能/去使能端云协同能力、修改应用同步开关、云端数据变化通知、账号退出时清理或保留云相关文件，以及全量下载等。开发者可在云盘管理应用中使用该模块管理应用端云协同开关、同步云端数据变更、处理账号退出后的本地云数据，并执行云文件全量下载和搬迁。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-异步方法修改应用的端云文件同步开关。使用Promise异步回调。
+异步方法修改应用的端云文件同步开关。适用于需要为指定应用打开或关闭云同步能力的场景。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -38,7 +38,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。 |
+| accountId | string | 是   | 账号ID。 |
 | bundleName | string | 是   | 应用包名。|
 | status | boolean | 是   | 修改的应用云同步开关状态。true为打开；false为关闭。|
 
@@ -70,7 +70,7 @@ let bundleName: string = "com.example.bundle";
 cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
   console.info("changeAppCloudSwitch successfully");
 }).catch((err: BusinessError) => {
-  console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`changeAppCloudSwitch failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -92,7 +92,7 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then<void>(()
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法修改应用的端云文件同步开关。使用callback异步回调。
+异步方法修改应用的端云文件同步开关。适用于需要为指定应用打开或关闭云同步能力的场景。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -106,10 +106,10 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
-| bundleName | string | 是   | 应用包名|
+| accountId | string | 是   | 账号ID。|
+| bundleName | string | 是   | 应用包名。|
 | status | boolean | 是   | 修改的应用云同步开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步修改应用的端云文件同步开关之后。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步修改应用的端云文件同步开关后的结果回调。 |
 
 **错误码：**
 
@@ -132,7 +132,7 @@ let accountId: string = "testAccount";
 let bundleName: string = "com.example.bundle";
 cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
   if (err) {
-    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`changeAppCloudSwitch failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("changeAppCloudSwitch successfully");
   }
@@ -159,7 +159,7 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: Busines
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。
+通知端云服务指定账号下的特定应用云数据已发生变更。适用于应用云端数据发生变化后，需要主动通知端云服务同步变更的场景。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -173,7 +173,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
+| accountId | string | 是   | 账号ID。|
 | bundleName | string | 是   | 应用包名。|
 
 **返回值：**
@@ -204,7 +204,7 @@ let bundleName: string = "com.example.bundle";
 cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
   console.info("notifyDataChange successfully");
 }).catch((err: BusinessError) => {
-  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`notifyDataChange failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -226,7 +226,7 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then<void>((): void => 
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。
+通知端云服务指定账号下的特定应用云数据已发生变更。适用于应用云端数据发生变化后，需要主动通知端云服务同步变更的场景。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -240,9 +240,9 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
+| accountId | string | 是   | 账号ID。|
 | bundleName | string | 是   | 应用包名。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后的。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更后的结果回调。 |
 
 **错误码：**
 
@@ -265,7 +265,7 @@ let accountId: string = "testAccount";
 let bundleName: string = "com.example.bundle";
 cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
   if (err) {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`notifyDataChange failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("notifyDataChange successfully");
   }
@@ -302,7 +302,7 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError<voi
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| eventId | string | 否   | 否   | 变更事件id。|
+| eventId | string | 否   | 否   | 变更事件ID。|
 | extraData | string | 否   | 否   | 云端数据变更信息。|
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
@@ -345,7 +345,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -359,7 +359,7 @@ let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "dat
 cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
   console.info("notifyDataChange successfully");
 }).catch((err: BusinessError) => {
-  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`notifyDataChange failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -412,7 +412,7 @@ ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCa
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -425,7 +425,7 @@ let userId: number = 100;
 let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
 cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
   if (err) {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`notifyDataChange failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("notifyDataChange successfully");
   }
@@ -452,7 +452,7 @@ cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError<void> |
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-异步方法使能端云协同能力。使用Promise异步回调。
+异步方法使能端云协同能力。适用于需要开启指定账号下应用端云协同能力的场景，可与[disableCloud](#cloudsyncmanagerdisablecloud)配合使用。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -468,7 +468,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
+| accountId | string | 是   | 账号ID。|
 | switches | Record<string, boolean> | 是   | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。|
 
 **返回值：**
@@ -479,7 +479,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -502,7 +502,7 @@ let switches: Record<string, boolean> = {
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
   console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -527,7 +527,7 @@ cloudSyncManager.enableCloud(accountId, switches).then<void>((): void => {
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法使能端云协同能力。使用callback异步回调。
+异步方法使能端云协同能力。适用于需要开启指定账号下应用端云协同能力的场景，可与[disableCloud](#cloudsyncmanagerdisablecloud)配合使用。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -543,13 +543,13 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
+| accountId | string | 是   | 账号ID。|
 | switches | Record<string, boolean> | 是   | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步使能端云协同能力之后。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步使能端云协同能力后的结果回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -571,7 +571,7 @@ let switches: Record<string, boolean> = {
 }
 cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
   if (err) {
-    console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("enableCloud successfully");
   }
@@ -601,7 +601,7 @@ cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError<void> | nu
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-异步方法去使能端云协同能力。使用Promise异步回调。
+异步方法去使能端云协同能力。适用于需要关闭指定账号下应用端云协同能力的场景，可与[enableCloud](#cloudsyncmanagerenablecloud)配合使用。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -617,7 +617,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
+| accountId | string | 是   | 账号ID。|
 
 **返回值：**
 
@@ -627,7 +627,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -646,7 +646,7 @@ let accountId: string = "testAccount";
 cloudSyncManager.disableCloud(accountId).then(() => {
   console.info("disableCloud successfully");
 }).catch((err: BusinessError) => {
-  console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`disableCloud failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -667,7 +667,7 @@ cloudSyncManager.disableCloud(accountId).then<void>((): void => {
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法去使能端云协同能力。使用callback异步回调。
+异步方法去使能端云协同能力。适用于需要关闭指定账号下应用端云协同能力的场景，可与[enableCloud](#cloudsyncmanagerenablecloud)配合使用。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -683,12 +683,12 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步去使能端云协同能力之后。|
+| accountId | string | 是   | 账号ID。|
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步去使能端云协同能力后的结果回调。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -706,7 +706,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let accountId: string = "testAccount";
 cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
   if (err) {
-    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`disableCloud failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("disableCloud successfully");
   }
@@ -730,7 +730,7 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void
 
 ## Action
 
-清理本地云相关数据时的Action，为枚举类型。
+清理本地云相关数据时的枚举。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -749,7 +749,7 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-异步方法清理本地云相关数据。使用Promise异步回调。
+异步方法清理本地云相关数据。适用于账号退出或应用云数据清理时，需要按应用配置保留或删除本地云相关数据的场景。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -765,8 +765,8 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
-| appActions | Record<string, Action> | 是   | 清理动作类型，string类型为待清理应用包名， [Action](#action)为清理动作类型。|
+| accountId | string | 是   | 账号ID。|
+| appActions | Record<string, [Action](#action)> | 是   | string类型为待清理应用包名，[Action](#action)为清理动作类型。|
 
 **返回值：**
 
@@ -776,7 +776,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -799,7 +799,7 @@ let appActions: Record<string, cloudSyncManager.Action> = {
 cloudSyncManager.clean(accountId, appActions).then(() => {
   console.info("clean successfully");
 }).catch((err: BusinessError) => {
-  console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`clean failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -823,7 +823,7 @@ cloudSyncManager.clean(accountId, appActions).then<void>((): void => {
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法清理本地云相关数据。使用callback异步回调。
+异步方法清理本地云相关数据。适用于账号退出或应用云数据清理时，需要按应用配置保留或删除本地云相关数据的场景。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -839,13 +839,13 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| accountId | string | 是   | 账号Id。|
-| appActions | Record<string, Action> | 是   | 清理动作类型，string类型为待清理应用包名， [Action](#action)为清理动作类型。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步方法清理本地云相关数据。 |
+| accountId | string | 是   | 账号ID。|
+| appActions | Record<string, [Action](#action)> | 是   | string类型为待清理应用包名，[Action](#action)为清理动作类型。|
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步清理本地云相关数据后的结果回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -861,13 +861,13 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountId: string = "testAccount";
-  let appActions: Record<string, cloudSyncManager.Action> = {
+let appActions: Record<string, cloudSyncManager.Action> = {
   'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
   'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
 };
 cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
   if (err) {
-    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`clean failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("clean successfully");
   }
@@ -973,7 +973,7 @@ try {
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
-获取需要全量下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
+获取需要全量下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件个数和大小信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -1037,7 +1037,7 @@ downgradeMgr.getCloudFileInfo().then<void>((fileInfo: cloudSyncManager.CloudFile
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-启动指定应用的云文件的全量下载，使用Promise异步回调。使用callback异步回调。
+启动指定应用的云文件全量下载，适用于云盘管理应用需要集中下载指定应用云端数据的场景。使用Promise异步回调，并通过callback参数返回下载进度。
 
 同一应用存在正在执行的全量下载任务的情况下，重复触发会返回错误信息（22400006）。
 
@@ -1055,7 +1055,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。在全量下载过程中返回下载进度，参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
@@ -1169,18 +1169,17 @@ downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
   console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
 }).then(() => {
   console.info("Downgrade started successfully.");
+  let needStop = true;
+  if (needStop) {
+    downgradeMgr.stopDownload().then(() => {
+      console.info("Downgrade stopped successfully.");
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
 });
-
-let needStop = true;
-if (needStop) {
-  downgradeMgr.stopDownload().then(() => {
-    console.info("Downgrade stopped successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
-  });
-}
 ```
 
 ArkTS-Sta示例：
@@ -1211,7 +1210,7 @@ if (needStop) {
 
 startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): void
 
-将云盘目录下已完成本地下载的文件搬迁至指定目录，过程中通过回调上报搬迁进度。使用callback异步回调。
+将云盘目录下已完成本地下载的文件搬迁至指定目录，适用于需要将云盘文件导出到本地其他目录进行管理的场景。过程中通过回调上报搬迁进度。使用callback异步回调。
 
 同一应用存在正在执行的搬迁任务的情况下，重复触发会返回错误信息（22400006）。
 
@@ -1232,7 +1231,7 @@ startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): vo
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
 | targetUri | string | 是  | 用于存放搬迁后的文件路径URI，必须以“file://docs/storage/Users/currentUser/”为前缀。 |
-| callback | Callback&lt;[TransferProgress](js-apis-file-cloudsyncmanager-sys.md#transferprogress)&gt; | 是   | 回调函数，返回搬迁进度。 |
+| callback | Callback&lt;[TransferProgress](#transferprogress)&gt; | 是   | 回调函数。在文件搬迁过程中返回搬迁进度，参数为TransferProgress，返回值为void。 |
 
 **错误码：**
 
@@ -1263,7 +1262,7 @@ try {
     });
 } catch (err) {
     let e = err as BusinessError;
-    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+    console.error(`transfer files failed with error message: ${e.message}, error code: ${e.code}`);
 }
 ```
 
@@ -1457,11 +1456,11 @@ getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Arra
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| bundleNames | Array&lt;string&gt; | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
+| bundleNames | Array&lt;string&gt; | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。超过上限时返回错误码13900020。 |
 
 **返回值**：
 
@@ -1478,7 +1477,7 @@ getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Arra
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
 
 **示例**：
 

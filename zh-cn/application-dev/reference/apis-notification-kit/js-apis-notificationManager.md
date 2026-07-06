@@ -209,7 +209,8 @@ let notificationRequest: notificationManager.NotificationRequest = {
 notificationManager.publish(notificationRequest).then(() => {
   console.info(`Succeeded in publishing notification.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to publish notification. Code is ${error.code}, message is ${error.message}`);
 });
 
 ```
@@ -338,7 +339,8 @@ ArkTS-Sta示例：
 notificationManager.cancel(0).then(() => {
   console.info(`Succeeded in canceling notification.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to cancel notification. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -515,7 +517,8 @@ ArkTS-Sta示例：
 notificationManager.cancelAll().then(() => {
   console.info(`Succeeded in canceling all notification.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to cancel all notification. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -637,7 +640,8 @@ ArkTS-Sta示例：
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
   console.info(`Succeeded in adding slot.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to add slot. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -768,7 +772,8 @@ let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL
 notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot | null) => {
     console.info(`Succeeded in getting slot, data is ${JSON.stringify(data)}`);
   }).catch((err: Error): void => {
-    console.error(`Failed to get slot. Code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to get slot. Code is ${error.code}, message is ${error.message}`);
   });
 ```
 
@@ -1005,7 +1010,8 @@ let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL
 notificationManager.removeSlot(slotType).then(() => {
   console.info(`Succeeded in removing slot.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to remove slot. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1115,7 +1121,8 @@ ArkTS-Sta示例：
 notificationManager.removeAllSlots().then(() => {
   console.info(`Succeeded in removing all slots.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to remove all slots. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1231,7 +1238,8 @@ ArkTS-Sta示例：
 notificationManager.isNotificationEnabled().then((data: boolean) => {
   console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isNotificationEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1332,7 +1340,8 @@ let badgeNumber: int = 10;
 notificationManager.setBadgeNumber(badgeNumber).then(() => {
   console.info(`Succeeded in setting badge number.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set badge number. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1453,7 +1462,8 @@ ArkTS-Sta示例：
 notificationManager.getBadgeNumber().then((badgeNumber: long) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: Error): void => {
-  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.info(`Failed to get badge number. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1569,7 +1579,8 @@ ArkTS-Sta示例：
 notificationManager.getActiveNotificationCount().then((data: long) => {
   console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`Failed to get active notification count. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get active notification count. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1679,7 +1690,8 @@ ArkTS-Sta示例：
 notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
   console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get active notifications. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1746,7 +1758,8 @@ let label: string = "";
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters | null) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`Failed to get notification parameters. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get notification parameters. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1868,7 +1881,8 @@ let groupName: string = "GroupName";
 notificationManager.cancelGroup(groupName).then(() => {
   console.info(`Succeeded in canceling group.`);
 }).catch((err: Error): void => {
-  console.error(`Failed to cancel group. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to cancel group. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1990,7 +2004,8 @@ let templateName: string = 'downloadTemplate';
 notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
   console.info(`isSupportTemplate success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`isSupportTemplate failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isSupportTemplate failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2166,7 +2181,8 @@ let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilit
     await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
       console.info(`requestEnableNotification Promise success!`)
     }).catch((err: Error): void => {
-      console.info(`requestEnableNotification Promise err: ${err.code}, errMes: ${err.message}`)
+      let error: BusinessError = err as BusinessError;
+      console.info(`requestEnableNotification Promise err: ${error.code}, errMes: ${error.message}`)
     })
 ```
 
@@ -2379,7 +2395,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationManager.isDistributedEnabled().then((data: boolean) => {
   console.info(`isDistributedEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void  => {
-  console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isDistributedEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2450,7 +2467,9 @@ class MyAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbility extends UIAbility {
@@ -2465,7 +2484,8 @@ class MyAbility extends UIAbility {
       notificationManager.openNotificationSettings(this.context).then(() => {
         hilog.info(0x0000, 'testTag', `[ANS] openNotificationSettings success`);
       }).catch((err: Error) : void => {
-        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
+        let error: BusinessError = err as BusinessError;
+        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettings failed, code is ${error.code}, message is ${error.message}`);
       });
     });
   }
@@ -2541,6 +2561,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbility extends UIAbility {
@@ -2555,7 +2576,8 @@ class MyAbility extends UIAbility {
       notificationManager.openNotificationSettingsWithResult(this.context).then((data) => {
         hilog.info(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult success, data: ${JSON.stringify(data)}`);
       }).catch((err: Error) : void => {
-        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
+        let error: BusinessError = err as BusinessError;
+        hilog.error(0x0000, 'testTag', `[ANS] openNotificationSettingsWithResult failed, code is ${error.code}, message is ${error.message}`);
       });
     });
   }
@@ -2609,7 +2631,8 @@ ArkTS-Sta示例：
 notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getNotificationSetting failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2664,7 +2687,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 notificationManager.isGeofenceEnabled().then((data: boolean) => {
   hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
 }).catch((err: Error) => {
-hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
