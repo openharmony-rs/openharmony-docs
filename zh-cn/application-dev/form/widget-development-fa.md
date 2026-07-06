@@ -83,7 +83,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
     
     const DATA_STORAGE_PATH: string = 'form_store';
     let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-      // 此处仅对卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+      // 此处仅对卡片名：formName， 是否为临时卡片：tempFlag进行了持久化
       let formInfo: Record<string, string | number | boolean> = {
         'formName': formName,
         'tempFlag': tempFlag,
@@ -308,7 +308,7 @@ const domain: number = 0xFF00;
 
 const DATA_STORAGE_PATH: string = 'form_store';
 let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-  // 此处仅对卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+  // 此处仅对卡片名：formName，是否为临时卡片：tempFlag进行了持久化
   let formInfo: Record<string, string | number | boolean> = {
     'formName': formName,
     'tempFlag': tempFlag,
