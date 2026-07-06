@@ -60,7 +60,7 @@
 
 1. 导入所需的模块。
 
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -99,7 +99,7 @@
 
 3. 定义会话监听器回调函数。
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
@@ -107,16 +107,16 @@
      hilog.info(DOMAIN, TAG, 'Message length: %{public}d', msg.byteLength);
      let bufferView = new Uint8Array(msg);
      let messageStr = '';
-      for (let i = 0; i < bufferView.length; i++) {
-        messageStr += String.fromCharCode(bufferView[i]);
-      }
+     for (let i = 0; i < bufferView.length; i++) {
+       messageStr += String.fromCharCode(bufferView[i]);
+     }
      hilog.info(DOMAIN, TAG, 'Message content: %{public}s', messageStr);
    }
    ```
 
 4. 注册会话监听器，接收来自可信设备的数据。
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    registerListener(): void {
@@ -125,15 +125,15 @@
        conversation.registerConversationListener(bundleName, abilityName, messageCallback);
        hilog.info(DOMAIN, TAG, 'Listener registered for %{public}s/%{public}s', bundleName, abilityName);
      } catch (err) {
-      let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'registerConversationListener error: %{public}s - %{public}s', error.code, error.message);
-      }
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'registerConversationListener error: %{public}s - %{public}s', error.code, error.message);
+     }
    }
    ```
 
 5. 注销会话监听器。
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    unregisterListener(): void {
@@ -142,9 +142,9 @@
        conversation.unregisterConversationListener(bundleName, abilityName);
        hilog.info(DOMAIN, TAG, 'Listener unregistered');
      } catch (err) {
-      let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'unregisterConversationListener error: %{public}s - %{public}s', error.code, error.message);
-      }
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'unregisterConversationListener error: %{public}s - %{public}s', error.code, error.message);
+     }
    }
    ```
 
@@ -152,10 +152,10 @@
 
 1. 导入所需的模块。
 
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-   import { conversation } from '@kit.DistributedServiceKit';
+   import { conversation } from '@kit.DistributedServiceKit'
    ```
 
 2. 在module.json5配置文件中配置分布式数据同步权限和UDID访问权限。
@@ -191,53 +191,53 @@
 
 3. 获取可信设备列表，选择目标设备。
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-    getTrustedDevices(): void {
-      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
-      try {
-        let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
-        if (devices && devices.length > 0) {
-          let deviceInfo = devices.map((d, idx) =>
-            `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
-          ).join('\n');
-          hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
-            hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
-          } else {
-            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
-        }
-      } catch (err) {
-        let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'getTrustedDevices error: %{public}s - %{public}s', error.code, error.message);
-      }
-    }
+   getTrustedDevices(): void {
+     hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
+     try {
+       let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
+       if (devices && devices.length > 0) {
+         let deviceInfo = devices.map((d, idx) =>
+           `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
+         ).join('\n');
+         hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+           hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
+         } else {
+           hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'getTrustedDevices error: %{public}s - %{public}s', error.code, error.message);
+     }
+   }
    ```
 
 4. 向指定设备发送会话数据。
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-    sendMessage(): void {
-      hilog.info(DOMAIN, TAG, 'sendMessage called');
-      try {
-        let arrayBuffer = new ArrayBuffer(messageToSend.length);
-        let bufferView = new Uint8Array(arrayBuffer);
-        for (let i = 0; i < messageToSend.length; i++) {
-          bufferView[i] = messageToSend.charCodeAt(i);
-        }
+   sendMessage(): void {
+     hilog.info(DOMAIN, TAG, 'sendMessage called');
+     try {
+       let arrayBuffer = new ArrayBuffer(messageToSend.length);
+       let bufferView = new Uint8Array(arrayBuffer);
+       for (let i = 0; i < messageToSend.length; i++) {
+         bufferView[i] = messageToSend.charCodeAt(i);
+       }
 
-        conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
-          .then(() => {
-            hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
-          })
-          .catch((err : BusinessError) => {
-            hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', err.code, err.message);
-          });
-      } catch (err) {
-        let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', error.code, error.message);
-      }
-    }
+       conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
+         .then(() => {
+           hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
+         })
+         .catch((err : BusinessError) => {
+           hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', err.code, err.message);
+         });
+     } catch (err) {
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', error.code, error.message);
+     }
+   }
    ```
