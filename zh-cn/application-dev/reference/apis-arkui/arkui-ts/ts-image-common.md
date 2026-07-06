@@ -98,7 +98,7 @@ ArkTS-Sta: type PixelMap = image.PixelMap
 
 ## ImageAnalyzerController<sup>12+</sup>
 
-图像AI分析控制器。可以将此对象绑定至支持的组件，通过控制器来调用支持的方法。
+图像AI分析控制器。可以将此对象绑定至支持的组件，并通过该控制器调用其提供的方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -151,6 +151,8 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 ## ContentTransitionEffect<sup>21+</sup>对象说明
 
 定义内容切换时的过渡效果。
+
+### 属性
 
 **原子化服务API（仅ArkTS-Dyn）：** 从 API version 21开始，该接口支持在原子化服务中使用。
 
