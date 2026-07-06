@@ -3418,13 +3418,15 @@ refreshGlobalHttpProxy(): Promise\<HttpProxy\>
 >
 >若当前未配置全局代理或代理配置信息有误（例如未正确配置username和password），则会抛出2100003错误码。可通过[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)接口查询当前代理配置信息。
 
-**起始版本**：26.0.0
-
 **需要权限**：ohos.permission.INTERNET
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
