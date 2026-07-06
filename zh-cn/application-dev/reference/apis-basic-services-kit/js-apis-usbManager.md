@@ -39,12 +39,12 @@ import usbManager from '@ohos.usbManager';
 
 ```mermaid
 graph LR
- 	  A[开始] --> B[调用getDevices获取设备列表]
- 	  B --> C[调用requestRight获取权限]
- 	  C --> D[调用connectDevice获取USBDevicePipe]
- 	  D --> E[调用相关接口进行操作]
- 	  E --> F[调用closePipe关闭通道]
- 	  F --> G[结束]
+    A[开始] --> B[调用getDevices获取设备列表]
+    B --> C[调用requestRight获取权限]
+    C --> D[调用connectDevice获取USBDevicePipe]
+    D --> E[调用相关接口进行操作]
+    E --> F[调用closePipe关闭通道]
+    F --> G[结束]
 ```
 
 ## usbManager.getDevices
@@ -769,10 +769,10 @@ async function usbControlTransfer() {
   usbManager.usbControlTransfer(devicepipe, param).then((ret: int) => {
     console.info(`usbControlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
- 	  console.error(`usbControlTransfer failed: ${error.code}, message: ${error.message}`);
- 	}).finally(() => {
- 	  usbManager.closePipe(devicepipe);
- 	});
+    console.error(`usbControlTransfer failed: ${error.code}, message: ${error.message}`);
+  }).finally(() => {
+    usbManager.closePipe(devicepipe);
+  });
 }
 ```
 
@@ -853,8 +853,8 @@ async function bulkTransfer() {
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: int) => {
         console.info(`bulkTransfer = ${ret}`);
         if (i === device.configs?.[0]?.interfaces.length - 1) {
- 	        usbManager.closePipe(devicepipe);
- 	      }
+          usbManager.closePipe(devicepipe);
+        }
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
@@ -1551,15 +1551,15 @@ async function controlTransfer() {
 
 ```mermaid
 graph LR
- 	  A[端点类型] --> B[批量端点 bulk]
- 	  A --> C[中断端点 interrupt]
- 	  A --> D[实时端点 isoc]
- 	  B --> B1[宽带共享调度]
- 	  B1 --> B2[适合大量数据非实时传输]
- 	  C --> C1[固定轮询调度]
- 	  C1 --> C2[适合小数据量实时传输]
- 	  D --> D1[宽带预留调度]
- 	  D1 --> D2[适合音视频等实时数据流]
+    A[端点类型] --> B[批量端点 bulk]
+    A --> C[中断端点 interrupt]
+    A --> D[实时端点 isoc]
+    B --> B1[宽带共享调度]
+    B1 --> B2[适合大量数据非实时传输]
+    C --> C1[固定轮询调度]
+    C1 --> C2[适合小数据量实时传输]
+    D --> D1[宽带预留调度]
+    D1 --> D2[适合音视频等实时数据流]
 ```
 
 **系统能力：** SystemCapability.USB.USBManager

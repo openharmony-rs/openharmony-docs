@@ -821,9 +821,9 @@ async function addAccessoryRightExample() {
     // 获取USB配件列表
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
     if (accList.length === 0) {
- 	    console.error('No USB accessory found');
- 	    return;
- 	  }
+      console.error('No USB accessory found');
+      return;
+    }
     // 设置bundle信息标志
     let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
     bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
