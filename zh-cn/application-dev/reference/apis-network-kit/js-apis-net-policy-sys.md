@@ -2227,8 +2227,8 @@ try {
 | limitBytes        | number                        | 否   |否 |流量设置的配额。                                            |
 | metered           | boolean                       | 否   |否 |是否为计量网络。true表示是，false表示不是。                                         |
 | limitAction       | [LimitAction](#limitaction) | 否   | 否|到达流量限制后的动作。                                         |
-| lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1。                                  |
-| lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1。                                      |
+| lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。如果值大于0，值为时间戳（单位：s），否则表示警告从未发出。默认值：-1。                                  |
+| lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。如果值大于0，值为时间戳（单位：s），否则表示警告从未耗尽。默认值：-1。                                      |
 
 ## LimitAction
 
