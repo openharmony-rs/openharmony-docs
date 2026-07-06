@@ -55,7 +55,7 @@
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系挂起。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
 - 建议应用设置监听音频暂停事件[on('pause')](../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)，如果收到音频暂停事件上报且后续不再需要继续音频播放时，推荐取消已经申请的音视频播放长时任务。
 
