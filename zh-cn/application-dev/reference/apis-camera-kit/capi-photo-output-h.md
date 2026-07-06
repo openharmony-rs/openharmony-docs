@@ -1188,7 +1188,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 | 参数项 | 描述 | 
 | -- | -- | 
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
-| bool mirror | 镜像效果开关。**true**表示启用，**false**表示禁用。 | 
+| bool mirror | 镜像效果开关。true表示启用，false表示禁用。 | 
 
 **返回：** 
 
