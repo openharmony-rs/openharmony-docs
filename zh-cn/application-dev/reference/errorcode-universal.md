@@ -1,5 +1,12 @@
 # 通用错误码
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zengyawen-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zengyawen-->
+
 ## 201 权限校验失败
 
 **错误信息**
