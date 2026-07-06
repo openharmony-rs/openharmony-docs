@@ -19,6 +19,7 @@ target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 ```
 
 开发者通过引入[media_asset_manager_capi.h](../../reference/apis-media-library-kit/capi-media-asset-manager-capi-h.md)和[media_asset_base_capi.h](../../reference/apis-media-library-kit/capi-media-asset-base-capi-h.md)头文件，使用MediaAssetManager相关API。
+
 详细的API说明请参考[MediaAssetManager API](../../reference/apis-media-library-kit/capi-mediaassetmanager.md)。
 
 > **说明：**
