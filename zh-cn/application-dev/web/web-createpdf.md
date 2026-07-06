@@ -209,8 +209,6 @@ ArkTS-Sta示例：
 <!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) --> 
 
 ``` TypeScript
-// xxx.ets
-'use static'
 import fileIo from '@ohos.file.fs';
 import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
