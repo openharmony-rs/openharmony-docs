@@ -10,7 +10,7 @@
 
 Defines **ImageAnimator** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/image_animator.h>
+**File to include:** <arkui/node_attributes/image_animator.h>
 
 **Library:** libace_ndk.z.so
 

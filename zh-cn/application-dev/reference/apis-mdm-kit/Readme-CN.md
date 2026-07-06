@@ -1,4 +1,4 @@
-# Mdm Kit（企业设备管理服务）<!--mdm-api-->
+# MDM Kit（企业设备管理服务）<!--mdm-api-->
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -25,7 +25,7 @@
   - [@ohos.enterprise.usbManager（USB管理）](js-apis-enterprise-usbManager.md)
   - [@ohos.enterprise.wifiManager（Wi-Fi管理）](js-apis-enterprise-wifiManager.md)
   - [@ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）](js-apis-EnterpriseAdminExtensionAbility.md)
-  - [@ohos.enterprise.telephony（通话管理）](js-apis-enterprise-telephonyManager.md)
+  - [@ohos.enterprise.telephonyManager（通话管理）](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager（账号管理）(系统接口)](js-apis-enterprise-accountManager-sys.md)
   - [@ohos.enterprise.adminManager（admin权限管理）(系统接口)](js-apis-enterprise-adminManager-sys.md)

@@ -347,11 +347,11 @@ The self-activation credential of the enterprise device administrator is invalid
 
 **可能原因**
 
-1、企业ID不匹配。
+1. 企业ID不匹配。
 
-2、应用appIdentifier配置失败。
+2. 应用appIdentifier配置失败。
 
-3、激活凭证缺少必需字段或者证书链校验失败。
+3. 激活凭证缺少必需字段或者证书链校验失败。
 
 **处理步骤**
 
@@ -1220,7 +1220,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **处理步骤**
 
-先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
 
 ## 9201044 指定权限未被禁用
 

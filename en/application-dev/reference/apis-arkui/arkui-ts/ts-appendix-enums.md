@@ -413,7 +413,7 @@ Sets the button style for dialog boxes.
 
 | Name     | Value  | Description                             |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | Blue text on white background (black background under the dark theme).|
+| DEFAULT   | 0    | Blue text on white background (blue text on black background in dark theme).|
 | HIGHLIGHT | 1    | White text on blue background.                       |
 
 ## DialogDisplayMode
@@ -1619,7 +1619,7 @@ Sets the polymorphic style of the text box.
 | Name   | Value| Description                                                        |
 | ------- | ----------- | ------------------------------------------------------------ |
 | DEFAULT | - | Default style. The caret width is fixed at 1.5 vp, and the caret height is subject to the background height and font size of the selected text.|
-| INLINE  | - | Inline input style. The background height of the selected text is the same as the height of the text box.<br>This style is used in scenarios where editing and non-editing states are obvious, for example, renaming in the file list view.<br>The **showError** attribute is not supported for this style.<br>This style does not allow for text dragging and dropping.|
+| INLINE  | - | Inline style, also known as inline mode. The background height of the selected text is the same as the height of the text box.<br>This style is used in scenarios where editing and non-editing states are obvious, for example, renaming in the file list view.<br>The **showError** attribute is not supported for this style.<br>This style does not allow for text dragging and dropping.|
 
 ## TextSelectableMode<sup>12+</sup>
 

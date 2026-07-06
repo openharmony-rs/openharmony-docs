@@ -5847,7 +5847,7 @@ Allows a system application to read directory logs of the vehicle log service, B
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -5875,7 +5875,7 @@ Allows a system application to send commands to collect logs.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 

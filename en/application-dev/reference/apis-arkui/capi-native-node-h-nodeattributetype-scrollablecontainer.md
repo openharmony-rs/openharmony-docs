@@ -36,13 +36,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode). The default value is [ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-native-type-h.md#arkui_scrollbardisplaymode) for **List** and **Grid**, and [ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF](capi-native-type-h.md#arkui_scrollbardisplaymode) for **WaterFlow**.|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode). The default value is [ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-scroll-h.md#arkui_scrollbardisplaymode) for the **List**, **Grid**, and **Scroll** components, and [ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF](capi-scroll-h.md#arkui_scrollbardisplaymode) for the **WaterFlow** component.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode).|
 
 ## NODE_SCROLL_BAR_WIDTH
 
@@ -60,7 +60,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width of the scrollbar, in vp. The default value is **4**.<br>Value range: If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 5 vp. The value **0** means not to show the scrollbar.|
+| .value[0].f32 | Width of the scrollbar, in vp. The default value is **4**.<br>Value range: [0, +∞). If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 5 vp. The value **0** means not to show the scrollbar.|
 
 **Returns**
 
@@ -108,13 +108,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-native-type-h.md#arkui_scrolldirection). The default value is [ARKUI_SCROLL_DIRECTION_VERTICAL](capi-native-type-h.md#arkui_scrolldirection).|
+| .value[0].i32 | Scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-scroll-h.md#arkui_scrolldirection). The default value is [ARKUI_SCROLL_DIRECTION_VERTICAL](capi-scroll-h.md#arkui_scrolldirection).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-native-type-h.md#arkui_scrolldirection).|
+| .value[0].i32 | Scroll direction. The parameter type is [ArkUI_ScrollDirection](capi-scroll-h.md#arkui_scrolldirection).|
 
 ## NODE_SCROLL_EDGE_EFFECT
 
@@ -132,17 +132,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect). The default value is [ARKUI_EDGE_EFFECT_NONE](capi-native-type-h.md#arkui_edgeeffect) for **Grid**, **Scroll** and **WaterFlow**, and [ARKUI_EDGE_EFFECT_SPRING](capi-native-type-h.md#arkui_edgeeffect) for **List**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). The default value is [ARKUI_EDGE_EFFECT_NONE](capi-scroll-h.md#arkui_edgeeffect) for the **Grid**, **Scroll**, and **WaterFlow** components, and [ARKUI_EDGE_EFFECT_SPRING](capi-scroll-h.md#arkui_edgeeffect) for the **List** component.|
 | .value[1]?.i32 | Whether to enable the scroll effect when the component content size is smaller than the component itself. This parameter is optional. The value **1** means to enable the scroll effect, and **0** means the opposite. The default value is **0** for **List**, **Grid**, and **WaterFlow**, and **1** for **Scroll**.|
-| .value[2]?.i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). The default value is [ARKUI_EFFECT_EDGE_START](capi-native-type-h.md#arkui_effectedge)  \| [ARKUI_EFFECT_EDGE_END](capi-native-type-h.md#arkui_effectedge).<br> This parameter is supported since API version 18.|
+| .value[2]?.i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). The default value is [ARKUI_EFFECT_EDGE_START](capi-scroll-h.md#arkui_effectedge)  \| [ARKUI_EFFECT_EDGE_END](capi-scroll-h.md#arkui_effectedge).<br> This parameter is supported since API version 18.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 | .value[1].i32 | Whether the scroll effect is enabled when the component content size is smaller than the component itself. The value **1** indicates that the scroll effect is enabled, and **0** indicates the opposite.|
-| .value[2].i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-native-type-h.md#arkui_effectedge). This parameter is supported since API version 18.|
+| .value[2].i32 | Direction where the edge effect takes effect. The parameter type is [ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge). This parameter is supported since API version 18.|
 
 ## NODE_SCROLL_ENABLE_SCROLL_INTERACTION
 
@@ -208,7 +208,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign). The default value is [ARKUI_SCROLL_SNAP_ALIGN_NONE](capi-native-type-h.md#arkui_scrollsnapalign).|
+| .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign). The default value is [ARKUI_SCROLL_SNAP_ALIGN_NONE](capi-scroll-h.md#arkui_scrollsnapalign).|
 | .value[1].i32 | Whether to enable the snap to start feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the start edge and the first snap point. The default value is **true**. It is valid only when there are multiple snap points.|
 | .value[2].i32 | Whether to enable the snap to end feature. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the end edge and the last snap point. The default value is **true**. It is valid only when there are multiple snap points.|
 | .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll. One or more snap points are supported.|
@@ -217,7 +217,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign).|
+| .value[0].i32 | Alignment mode for scroll snapping in the **Scroll** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign).|
 | .value[1].i32 | Whether the snap to start feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the start edge and the first snap point. The default value is **true**. It is valid only when there are multiple snap points.|
 | .value[2].i32 | Whether the snap to end feature is enabled. When scroll snapping is defined for the **Scroll** component, setting this attribute to **false** enables the component to scroll between the end edge and the last snap point. The default value is **true**. It is valid only when there are multiple snap points.|
 | .value[3...].f32 | Snap points for the **Scroll** component. Each snap point defines the offset from an edge to which the **Scroll** component can scroll.|
@@ -238,15 +238,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Nested scrolling behavior when the scrollable component scrolls toward the end edge. The parameter type is [ArkUI_ScrollNestedMode](capi-native-type-h.md#arkui_scrollnestedmode).|
-| .value[1].i32 | Nested scrolling behavior when the scrollable component scrolls toward the start edge. The parameter type is [ArkUI_ScrollNestedMode](capi-native-type-h.md#arkui_scrollnestedmode).|
+| .value[0].i32 | Nested scrolling behavior when the scrollable component scrolls toward the end edge. The parameter type is [ArkUI_ScrollNestedMode](capi-scroll-h.md#arkui_scrollnestedmode).|
+| .value[1].i32 | Nested scrolling behavior when the scrollable component scrolls toward the start edge. The parameter type is [ArkUI_ScrollNestedMode](capi-scroll-h.md#arkui_scrollnestedmode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Nested scrolling behavior when the scrollable component scrolls toward the end edge. The parameter type is [ArkUI_ScrollNestedMode](capi-native-type-h.md#arkui_scrollnestedmode).|
-| .value[1].i32 | Nested scrolling behavior when the scrollable component scrolls toward the start edge. The parameter type is [ArkUI_ScrollNestedMode](capi-native-type-h.md#arkui_scrollnestedmode).|
+| .value[0].i32 | Nested scrolling behavior when the scrollable component scrolls toward the end edge. The parameter type is [ArkUI_ScrollNestedMode](capi-scroll-h.md#arkui_scrollnestedmode).|
+| .value[1].i32 | Nested scrolling behavior when the scrollable component scrolls toward the start edge. The parameter type is [ArkUI_ScrollNestedMode](capi-scroll-h.md#arkui_scrollnestedmode).|
 
 ## NODE_SCROLL_OFFSET
 
@@ -295,13 +295,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Edge position to scroll to. The parameter type is [ArkUI_ScrollEdge](capi-native-type-h.md#arkui_scrolledge).|
+| .value[0].i32 | Edge position to scroll to. The parameter type is [ArkUI_ScrollEdge](capi-scroll-h.md#arkui_scrolledge).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the container is at the edge. The value **-1** indicates that the container is not at the edge. If the container is at the edge, the parameter type is [ArkUI_ScrollEdge](capi-native-type-h.md#arkui_scrolledge).|
+| .value[0].i32 | Whether the container is at the edge. The value **-1** indicates that the container is not at the edge. If the container is at the edge, the parameter type is [ArkUI_ScrollEdge](capi-scroll-h.md#arkui_scrolledge).|
 
 ## NODE_SCROLL_ENABLE_PAGING
 
@@ -516,13 +516,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Content clipping mode. The parameter type is [ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode). The default value is [ARKUI_CONTENT_CLIP_MODE_BOUNDARY](capi-native-type-h.md#arkui_contentclipmode) for [Grid](arkui-ts/ts-container-grid.md) and [Scroll](arkui-ts/ts-container-scroll.md), and [ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY](capi-native-type-h.md#arkui_contentclipmode) for [List](arkui-ts/ts-container-list.md) and [WaterFlow](arkui-ts/ts-container-waterflow.md).|
+| .value[0].i32 | Content clipping mode. The parameter type is [ArkUI_ContentClipMode](capi-scroll-h.md#arkui_contentclipmode). The default value is [ARKUI_CONTENT_CLIP_MODE_BOUNDARY](capi-scroll-h.md#arkui_contentclipmode) for [Grid](arkui-ts/ts-container-grid.md) and [Scroll](arkui-ts/ts-container-scroll.md), and [ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY](capi-scroll-h.md#arkui_contentclipmode) for [List](arkui-ts/ts-container-list.md) and [WaterFlow](arkui-ts/ts-container-waterflow.md).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Content clipping mode. The parameter type is [ArkUI_ContentClipMode](capi-native-type-h.md#arkui_contentclipmode).|
+| .value[0].i32 | Content clipping mode. The parameter type is [ArkUI_ContentClipMode](capi-scroll-h.md#arkui_contentclipmode).|
 
 ## NODE_SCROLL_BACK_TO_TOP
 
@@ -782,13 +782,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to pin the header to the top or the footer to the bottom in the **ListItemGroup** component. It is used together with the **ListItemGroup** component. The parameter type is [ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle). The default value is **ARKUI_STICKY_STYLE_NONE**.|
+| .value[0].i32 | Whether to pin the header to the top or the footer to the bottom in the **ListItemGroup** component. It is used together with the **ListItemGroup** component. The parameter type is [ArkUI_StickyStyle](capi-list-h.md#arkui_stickystyle). The default value is **ARKUI_STICKY_STYLE_NONE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the header is pinned to the top or the footer to the bottom in the **ListItemGroup** component. It is used together with the **ListItemGroup** component. The parameter type is [ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle).|
+| .value[0].i32 | Whether the header is pinned to the top or the footer to the bottom in the **ListItemGroup** component. It is used together with the **ListItemGroup** component. The parameter type is [ArkUI_StickyStyle](capi-list-h.md#arkui_stickystyle).|
 
 ## NODE_LIST_SPACE
 
@@ -884,7 +884,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
-| .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
+| .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset, in vp. The default value is **0**. This parameter is supported since API version 15.|
 
 ## NODE_LIST_ALIGN_LIST_ITEM
@@ -903,13 +903,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of list items along the cross axis. The parameter type is [ArkUI_ListItemAlign](capi-native-type-h.md#arkui_listitemalignment). The default value is **ARKUI_LIST_ITEM_ALIGNMENT_START**.|
+| .value[0].i32 | Alignment mode of list items along the cross axis. The parameter type is [ArkUI_ListItemAlign](capi-list-h.md#arkui_listitemalignment). The default value is **ARKUI_LIST_ITEM_ALIGNMENT_START**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of list items along the cross axis. The parameter type is [ArkUI_ListItemAlign](capi-native-type-h.md#arkui_listitemalignment).|
+| .value[0].i32 | Alignment mode of list items along the cross axis. The parameter type is [ArkUI_ListItemAlign](capi-list-h.md#arkui_listitemalignment).|
 
 ## NODE_LIST_CHILDREN_MAIN_SIZE
 
@@ -1008,7 +1008,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Index of the target [list item group](./arkui-ts/ts-container-listitemgroup.md) in the current [list](./arkui-ts/ts-container-list.md).|
 | .value[1].i32 | Index of the target [list item](./arkui-ts/ts-container-listitem.md) in the [list item group](./arkui-ts/ts-container-listitemgroup.md).|
 | .value[2]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
-| .value[3]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
+| .value[3]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 
 ## NODE_LIST_LANES
 
@@ -1056,13 +1056,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode for scroll snapping in the **List** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign). The default value is [ARKUI_SCROLL_SNAP_ALIGN_NONE](capi-native-type-h.md#arkui_scrollsnapalign).|
+| .value[0].i32 | Alignment mode for scroll snapping in the **List** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign). The default value is [ARKUI_SCROLL_SNAP_ALIGN_NONE](capi-scroll-h.md#arkui_scrollsnapalign).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode for scroll snapping in the **List** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign).|
+| .value[0].i32 | Alignment mode for scroll snapping in the **List** component. The parameter type is [ArkUI_ScrollSnapAlign](capi-scroll-h.md#arkui_scrollsnapalign).|
 
 ## NODE_LIST_MAINTAIN_VISIBLE_CONTENT_POSITION
 
@@ -1176,13 +1176,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll snap animation speed for the **List** component. The parameter type is [ArkUI_ScrollSnapAnimationSpeed](capi-native-type-h.md#arkui_scrollsnapanimationspeed). The default value is **ARKUI_SCROLL_SNAP_ANIMATION_NORMAL**.|
+| .value[0].i32 | Scroll snap animation speed for the **List** component. The parameter type is [ArkUI_ScrollSnapAnimationSpeed](capi-scroll-h.md#arkui_scrollsnapanimationspeed). The default value is **ARKUI_SCROLL_SNAP_ANIMATION_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scroll snap animation speed for the **List** component. The parameter type is [ArkUI_ScrollSnapAnimationSpeed](capi-native-type-h.md#arkui_scrollsnapanimationspeed).|
+| .value[0].i32 | Scroll snap animation speed for the **List** component. The parameter type is [ArkUI_ScrollSnapAnimationSpeed](capi-scroll-h.md#arkui_scrollsnapanimationspeed).|
 
 ## NODE_LIST_LANES_ITEMFILLPOLICY
 
@@ -1801,7 +1801,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Index of the item to be scrolled to in the container.|
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
-| .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
+| .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset after the target item is scrolled to, in vp. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start). This parameter is supported since API version 23.|
 
 ## NODE_WATER_FLOW_ITEM_CONSTRAINT_SIZE
@@ -1850,13 +1850,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Layout mode. The parameter type is [ArkUI_WaterFlowLayoutMode](capi-native-type-h.md#arkui_waterflowlayoutmode). The default value is [ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN](capi-native-type-h.md#arkui_waterflowlayoutmode).|
+| .value[0].i32 | Layout mode. The parameter type is [ArkUI_WaterFlowLayoutMode](capi-water-flow-h.md#arkui_waterflowlayoutmode). The default value is [ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN](capi-water-flow-h.md#arkui_waterflowlayoutmode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Layout mode. The parameter type is [ArkUI_WaterFlowLayoutMode](capi-native-type-h.md#arkui_waterflowlayoutmode).|
+| .value[0].i32 | Layout mode. The parameter type is [ArkUI_WaterFlowLayoutMode](capi-water-flow-h.md#arkui_waterflowlayoutmode).|
 
 ## NODE_WATER_FLOW_SYNC_LOAD
 
@@ -1917,7 +1917,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 > **NOTE**
 >
-> If the [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) section is set through [NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_section_option) or the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode) layout mode is set through [NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_layout_mode), setting this parameter to **0** or **1** will display all **FlowItem**s after the empty branches.
+> If the [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) section is set through [NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_section_option) or the [ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) layout mode is set through [NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_layout_mode), setting this parameter to **0** or **1** will display all **FlowItem**s after the empty branches.
 
 **Since**: 26.0.0
 
@@ -2144,13 +2144,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of **GridItem** in **Grid**. The parameter type is [ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment). The default value is [GRID_ITEM_ALIGNMENT_DEFAULT](capi-native-type-h.md#arkui_griditemalignment).|
+| .value[0].i32 | Alignment mode of **GridItem** in **Grid**. The parameter type is [ArkUI_GridItemAlignment](capi-grid-h.md#arkui_griditemalignment). The default value is [GRID_ITEM_ALIGNMENT_DEFAULT](capi-grid-h.md#arkui_griditemalignment).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of **GridItem** in **Grid**. The parameter type is [ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment).|
+| .value[0].i32 | Alignment mode of **GridItem** in **Grid**. The parameter type is [ArkUI_GridItemAlignment](capi-grid-h.md#arkui_griditemalignment).|
 
 ## NODE_GRID_LAYOUT_OPTIONS
 
@@ -2294,7 +2294,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Index of the item to be scrolled to in the container.|
 | .value[1]?.i32 | Whether to enable the animation for scrolling to the target item. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
-| .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is **ARKUI_SCROLL_ALIGNMENT_AUTO**.|
+| .value[2]?.i32 | How the target item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is **ARKUI_SCROLL_ALIGNMENT_AUTO**.|
 | .value[3]?.f32 | Extra offset after the target item is scrolled to, in vp. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start).|
 
 ## NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING
@@ -2337,13 +2337,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Style for **GridItem**. The parameter type is [ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle). The default value is [GRID_ITEM_STYLE_NONE](capi-native-type-h.md#arkui_griditemstyle).|
+| .value[0].i32 | Grid item style. The parameter type is [ArkUI_GridItemStyle](capi-grid-h.md#arkui_griditemstyle). The default value is [GRID_ITEM_STYLE_NONE](capi-grid-h.md#arkui_griditemstyle).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Style for **GridItem**. The parameter type is [ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle).|
+| .value[0].i32 | Grid item style. The parameter type is [ArkUI_GridItemStyle](capi-grid-h.md#arkui_griditemstyle).|
 
 ## NODE_GRID_ITEM_SELECTABLE
 
@@ -2479,7 +2479,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
 | .value[1]?.i32 | Whether there is an animation effect when the list item corresponding to the specified index value is scrolled to. The value **1** indicates there is an animation effect, and **0** indicates the opposite. The default value is **0**.|
-| .value[2]?.i32 | How the list item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
+| .value[2]?.i32 | How the list item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset, in vp. The default value is **0**.|
 
 ## NODE_ARC_LIST_CHAIN_ANIMATION
@@ -2561,13 +2561,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode). The default value is [ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode). The default value is [ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-scroll-h.md#arkui_scrollbardisplaymode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode).|
 
 ## NODE_ARC_LIST_SCROLL_BAR_COLOR
 
@@ -2792,10 +2792,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode). The default value is **ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO**.|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode). The default value is **ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-scroll-h.md#arkui_scrollbardisplaymode).|

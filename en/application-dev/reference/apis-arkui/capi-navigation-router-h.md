@@ -10,7 +10,7 @@
 
 Defines the enumerations and APIs of the **Navigation** or **Router** component.
 
-**File to include:** <arkui/navigation_router.h>
+**File to include:** <arkui/node_attributes/navigation_router.h>
 
 **Library:** libace_ndk.z.so
 

@@ -66,9 +66,9 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStart(workInfo: workScheduler.WorkInfo) {
-    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
-      bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStart(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 ```
@@ -95,9 +95,9 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStop(workInfo: workScheduler.WorkInfo) {
-    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
-      bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStop(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 ```

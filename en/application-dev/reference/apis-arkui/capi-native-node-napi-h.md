@@ -653,7 +653,7 @@ Registers a callback function that will be executed after the rendering of the n
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | **UIContext** object used to bind the instance.|
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | **UIContext** object handle, which is used to bind an instance.|
 | void* userData | Pointer to the custom event parameter, which is passed in the callback when the custom callback is triggered.|
 | callback | Custom callback function, which is executed when the remaining time until the next frame event exceeds 1 ms.|
 | uint64_t nanoTimeLeft | Remaining time after the next frame is rendered.|
