@@ -1,5 +1,12 @@
 # Ethernet_MacAddressInfo
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ```c
 typedef struct Ethernet_MacAddressInfo {...} Ethernet_MacAddressInfo
 ```
@@ -20,7 +27,7 @@ typedef struct Ethernet_MacAddressInfo {...} Ethernet_MacAddressInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] |  |
-| char macAddr[ETHERNET_MAX_STR_LEN] |  |
+| char ifaceName[ETHERNET_MAX_STR_LEN] |  以太网网卡名称。 |
+| char macAddr[ETHERNET_MAX_STR_LEN] | 以太网网卡MAC地址。 |
 
 
