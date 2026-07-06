@@ -359,9 +359,11 @@
 | EFFECT_NONE        | 0      | 关闭音效。 |
 | EFFECT_DEFAULT     | 1      | 默认音效。 |
 
-## NoiseReductionMode<sup>26.0.0+</sup>
+## NoiseReductionMode
 
 表示录音降噪模式的枚举。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1617,17 +1617,19 @@ let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
 
-## setNoiseReductionMode<sup>26.0.0+</sup>
+## setNoiseReductionMode
 
 setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
 
-设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes2600)获取当前录音流支持的降噪模式，再设置其中的模式。
+设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes)获取当前录音流支持的降噪模式，再设置其中的模式。
 
 > **说明：**
 >
-> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode2600)。
+> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
 > - 降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
 > - 该接口仅可在录音流创建后未开始录音，或停止录音后调用；录音流处于运行态或已释放时调用将抛出异常。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1637,7 +1639,7 @@ setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| noiseReductionMode | [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode2600) | 是 | 要设置的降噪模式。 |
+| noiseReductionMode | [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 是 | 要设置的降噪模式。 |
 
 **错误码：**
 
@@ -1670,11 +1672,13 @@ try {
 }
 ```
 
-## getNoiseReductionMode<sup>26.0.0+</sup>
+## getNoiseReductionMode
 
 getNoiseReductionMode(): NoiseReductionMode
 
-获取当前录音流的降噪模式。返回结果仅反映默认值或应用设置值，不考虑当前输入设备和录音并发情况。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode2600)。
+获取当前录音流的降噪模式。返回结果仅反映默认值或应用设置值，不考虑当前输入设备和录音并发情况。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1684,7 +1688,7 @@ getNoiseReductionMode(): NoiseReductionMode
 
 | 类型 | 说明 |
 | :--- | :--- |
-| [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode2600) | 当前录音流的降噪模式。 |
+| [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 当前录音流的降噪模式。 |
 
 **示例：**
 
@@ -1693,7 +1697,7 @@ let noiseReductionMode: audio.NoiseReductionMode = audioCapturer.getNoiseReducti
 console.info(`getNoiseReductionMode success: ${noiseReductionMode}`);
 ```
 
-## getSupportedNoiseReductionModes<sup>26.0.0+</sup>
+## getSupportedNoiseReductionModes
 
 getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
 
@@ -1701,8 +1705,10 @@ getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
 
 > **说明：**
 >
-> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅返回[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode2600)。
+> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅返回[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
 > - 返回结果仅考虑音频格式和设备平台，不考虑当前输入设备和录音并发情况。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1712,7 +1718,7 @@ getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode2600)&gt; | 支持的录音降噪模式数组，至少支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode2600)。 |
+| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode)&gt; | 支持的录音降噪模式数组，至少支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。 |
 
 **错误码：**
 
