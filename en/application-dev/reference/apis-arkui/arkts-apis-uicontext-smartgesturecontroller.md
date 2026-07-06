@@ -41,7 +41,7 @@ Sets whether to enable tap and slide gestures in smart gestures.
 
 **Example**
 
-This example shows how to enable and disable smart gestures using the **enableSmartTapAndSlideGestures** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to enable and disable smart gestures using the **enableSmartTapAndSlideGestures** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 @Entry
