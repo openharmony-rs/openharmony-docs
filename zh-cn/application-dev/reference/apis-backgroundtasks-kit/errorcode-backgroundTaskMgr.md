@@ -283,7 +283,8 @@ Caller information verification failed for an energy resource request.
 
 **处理步骤**
 
-请检查输入的参数。
+1. 请检查应用的uid或pid是否正确。
+2. 请检查申请资源的resourceTypes是否超过上限。
 
 ## 18700002 Parcel读写操作失败
 
