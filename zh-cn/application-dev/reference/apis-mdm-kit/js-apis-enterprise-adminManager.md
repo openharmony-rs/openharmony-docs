@@ -577,7 +577,7 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 ## adminManager.enableSelfDeviceAdmin
 
-enableSelfDeviceAdmin(admin: Want, credential: string): Promise&lt;void&gt;
+enableSelfDeviceAdmin(admin: Want, credential: string): void
 
 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。
 
@@ -599,12 +599,6 @@ enableSelfDeviceAdmin(admin: Want, credential: string): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | credential | string                   | 是   | 激活凭证。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当激活MDM应用自身失败时，会抛出错误对象。 |
 
 **错误码**：
 
