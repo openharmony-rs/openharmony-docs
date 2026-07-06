@@ -27,11 +27,11 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
-申请或释放能效资源。
+申请或释放能效资源。释放操作仅对本次申请的资源生效。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -89,7 +89,7 @@ resetAllEfficiencyResources(): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -131,7 +131,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -202,7 +202,7 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -258,7 +258,7 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -319,7 +319,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -390,7 +390,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -451,7 +451,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -512,7 +512,7 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统API：** 此接口为系统接口。 |
+| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统接口：** 此接口为系统接口。 |
 
 ## EfficiencyResourcesRequest
 
@@ -520,7 +520,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -538,7 +538,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -558,7 +558,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
@@ -577,7 +577,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -595,7 +595,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 21
 
@@ -613,7 +613,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -634,7 +634,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -650,7 +650,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -690,7 +690,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -730,7 +730,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 

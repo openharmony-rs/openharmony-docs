@@ -33,8 +33,8 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | 申请或释放能效资源 |
-| resetAllEfficiencyResources(): void | 释放全部能效资源 |
+| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | 申请或释放能效资源。释放操作仅对本次申请的资源生效。 |
+| resetAllEfficiencyResources(): void | 释放全部能效资源。 |
 
 **表2** 能效资源申请参数
 | 名称 | 类型 | 必填 | 说明 |
@@ -50,15 +50,15 @@
 **表3** 能效资源类型
 | 参数名 | 值 | 描述 |
 | -------- | -------- | -------- |
-| CPU | 1 | CPU资源，申请后应用进程不被挂起 |
-| COMMON_EVENT | 2 | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件 |
-| TIMER | 4 | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用 |
-| WORK_SCHEDULER | 8 | 延迟任务资源，申请后延迟任务管控变宽松 |
-| BLUETOOTH | 16 | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用 |
-| GPS | 32 | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用 |
-| AUDIO | 64 | 音频资源，有音频播放时对应的应用进程不被挂起 |
-| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会临时释放RUNNING_BACKGROUND锁 |
-| SENSOR<sup>10+</sup> | 256 | SENSOR资源，申请后挂起状态不拦截Sensor回调 |
+| CPU | 1 | CPU资源，申请后应用进程不被挂起。 |
+| COMMON_EVENT | 2 | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。 |
+| TIMER | 4 | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。 |
+| WORK_SCHEDULER | 8 | 延迟任务资源，申请后延迟任务管控变宽松。 |
+| BLUETOOTH | 16 | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。 |
+| GPS | 32 | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。 |
+| AUDIO | 64 | 音频资源，有音频播放时对应的应用进程不被挂起。 |
+| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会临时释放RUNNING_BACKGROUND锁。 |
+| SENSOR<sup>10+</sup> | 256 | SENSOR资源，申请后挂起状态不拦截Sensor回调。 |
 
 ## 开发步骤
 
