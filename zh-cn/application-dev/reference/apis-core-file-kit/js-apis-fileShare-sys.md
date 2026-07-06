@@ -66,7 +66,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 | ------ | ------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 14300001 | IPC error. |
 
 **示例：**

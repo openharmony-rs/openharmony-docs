@@ -60,7 +60,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数path为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的path长度与length不一致。<br>         ERR_UNKNOWN 13900042 - 未知错误。转换后的URI长度为0会返回此错误。<br>         ERR_ENOMEM  13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数path为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的path长度与length不一致。<br>         ERR_UNKNOWN 13900042 - 未知错误。转换后的URI长度为0会返回此错误。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -88,7 +88,7 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致。<br>         ERR_UNKNOWN 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。<br>         ERR_ENOMEM  13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致。<br>         ERR_UNKNOWN 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -171,4 +171,4 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致；<br>                  4. uri格式不正确。<br>         ERR_ENOMEM  13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致；<br>                  4. uri格式不正确。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_OK 0 - 接口调用成功。 |
