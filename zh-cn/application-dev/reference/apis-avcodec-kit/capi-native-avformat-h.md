@@ -659,7 +659,7 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 如果创建成功，返回一个由key-value组成的字符串，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.  传入的format为NULL。<br> 2. 系统资源不足。 |
+| const char * | 如果创建成功，返回一个由key-value组成的字符串，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1. 传入的format为NULL。<br> 2. 系统资源不足。 |
 
 ### OH_AVFormat_SetIntBuffer()
 
