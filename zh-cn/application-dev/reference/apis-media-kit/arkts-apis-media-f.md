@@ -263,7 +263,7 @@ createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 5400101  | No memory. Return by callback. |
+| 5400101  | No memory. Returned by callback. |
 
 **示例：**
 
@@ -490,7 +490,7 @@ createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 5400101  | No memory. Return by callback. |
+| 5400101  | No memory. Returned by callback. |
 
 **示例：**
 
