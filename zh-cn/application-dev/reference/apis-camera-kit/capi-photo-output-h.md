@@ -77,7 +77,7 @@
 | [Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)](#oh_photooutput_setphotoqualityprioritization) | - | 设置拍照画质优先策略。 |
 | [bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)](#oh_photooutput_isautoextendedgainmapdeliverysupported) | - | 检查是否支持自动扩展增益图（Gainmap）的输出。 |
 | [Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)](#oh_photooutput_enableautoextendedgainmapdelivery) | - | 是否启用自动扩展增益图（Gainmap）的输出。 |
-| [Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)](#oh_photooutput_createphotocapturesettingext) | - | 创建拍照扩展设置的实例。 |
+| [Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)](#oh_photooutput_createphotocapturesettingext) | - | 创建拍照扩展设置实例。 |
 | [Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_destroyphotocapturesettingext) | - | 销毁扩展拍照设置实例。 |
 | [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)](#oh_photocapturesettingext_setimagerotation) | - | 拍照扩展设置中的的图像旋转角度。 |
 | [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)](#oh_photocapturesettingext_setlocation) | - | 拍照扩展设置中的图片位置信息。 |
@@ -1080,7 +1080,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 **描述** 
 
-创建拍照扩展设置的实例。 
+创建拍照扩展设置实例。 
 
 **起始版本：** 26.0.0 
 
