@@ -247,7 +247,7 @@ let ipRule: netFirewall.NetFirewallRule = {
       endPort: 443
     }],
   userId: 100,
-  interface:"wlan0" // 从API version 26.0.0 开始支持
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -272,7 +272,7 @@ let domainRule: netFirewall.NetFirewallRule = {
       domain: "*.example.cn"
     }],
   userId: 100,
-  interface:"wlan0" // 从API version 26.0.0 开始支持
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -293,7 +293,7 @@ let dnsRule: netFirewall.NetFirewallRule = {
    standbyDns: "8.8.8.8",
   },
   userId: 100,
-  interface:"wlan0" // 从API version 26.0.0 开始支持
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -420,7 +420,7 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       endIp: "10.20.1.10"
     }],
   userId: 100,
-  interface:"wlan0" // 从API version 26.0.0 开始支持
+  interface:"wlan0" // 从API版本26.0.0开始支持
 };
 netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
   console.info('update firewall rule success.');
