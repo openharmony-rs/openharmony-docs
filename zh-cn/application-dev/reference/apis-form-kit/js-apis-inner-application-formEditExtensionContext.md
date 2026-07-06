@@ -18,6 +18,7 @@ FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEdi
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
+
 ## FormEditExtensionContext
 FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资源的能力。
 
