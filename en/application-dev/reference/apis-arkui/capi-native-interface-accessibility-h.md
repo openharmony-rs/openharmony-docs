@@ -1477,7 +1477,7 @@ Sets the scroll offset for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibi
 
 > **NOTE**
 > 
-> - **offset** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Grid](arkui-ts/ts-container-grid.md), and [Scroll](arkui-ts/ts-container-scroll.md, and it indicates the scrolling pixel offset of the content area relative to the top coordinates of the element.
+> - **offset** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Grid](arkui-ts/ts-container-grid.md), and [Scroll](arkui-ts/ts-container-scroll.md), and it indicates the scrolling pixel offset of the content area relative to the top coordinates of the element.
 > - The accessibility service uses **offset** to determine the scrolling position, and auxiliary applications use it to announce the scrolling progress.
 > - After a user performs an [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype) or [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype) action, a third-party framework should update the **offset** value in the updated node information.
 > - If the value of **offset** is **0**, the content area is not scrolled (at the initial position). A positive value indicates the pixel distance for scrolling down or right.
@@ -2047,4 +2047,4 @@ Multi-thread concurrency is not supported. The third-party framework ensures thr
 
 | Type| Description|
 | -- | -- |
-| int32_t | Status code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The input parameter **node** or **provider** is a null pointer.<br>2. The **ArkUI_NodeHandle** type corresponding to **node** is not **ARKUI_NODE_CUSTOM**.|
+| int32_t | Status code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The input parameter **node** or **provider** is a null pointer.<br>2. The **ArkUI_NodeHandle** type corresponding to **node** is not **ARKUI_NODE_CUSTOM**.|
