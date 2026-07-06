@@ -40,7 +40,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间（单位：ms），传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -3786,8 +3786,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| linkUpBandwidthKbps   | number                             |  否 | 是  |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| linkDownBandwidthKbps | number                             |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| linkUpBandwidthKbps   | number                             |  否 | 是  |  上行（设备到网络）带宽，单位(Kbps，千比特每秒)。0表示无法评估当前网络带宽。|
+| linkDownBandwidthKbps | number                             |  否 | 是 |  下行（网络到设备）带宽，单位(Kbps，千比特每秒)。0表示无法评估当前网络带宽。|
 | networkCap            | Array\<[NetCap](#netcap)>           |  否 | 是 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
 | bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 

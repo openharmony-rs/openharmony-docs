@@ -2284,7 +2284,7 @@ try {
 
 addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据。
+为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据。
 
 当前支持的分布式业务类型有：[协同业务](#servicetype)。
 > **说明：**
@@ -2362,7 +2362,7 @@ try {
 
 removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。
+为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。
 
 **起始版本：** 26.0.0
 
