@@ -79,7 +79,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 For details about the error codes, see [deviceInfo Error Codes](./errorcode-device-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 14700103 | Permission verification failed. System permission operation permission denied |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |

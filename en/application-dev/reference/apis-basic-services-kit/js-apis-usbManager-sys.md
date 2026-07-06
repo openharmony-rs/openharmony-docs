@@ -53,7 +53,7 @@ Adds the device access permission for the application. System applications are g
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
@@ -98,7 +98,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
@@ -140,7 +140,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
@@ -182,7 +182,7 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 14400002 | Permission denied. The HDC is disabled by the system.                                                   |
@@ -223,7 +223,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                       |
+| ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. No parameters are required.                                    |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
@@ -258,7 +258,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                       |
+| ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. No parameters are required.                                    |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
@@ -299,7 +299,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
@@ -342,7 +342,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
@@ -393,7 +393,7 @@ Adds the device access permission for the application. System applications are g
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -457,7 +457,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                       |
+| ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -503,7 +503,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -549,7 +549,7 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -596,7 +596,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                       |
+| ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
@@ -634,7 +634,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
@@ -674,7 +674,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -721,7 +721,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                                                               |
+| ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -767,7 +767,7 @@ Adds the permission to applications for accessing USB accessories.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | The permission check failed.                                 |
 | 202      | Permission denied. Normal application do not have permission to use system api. |

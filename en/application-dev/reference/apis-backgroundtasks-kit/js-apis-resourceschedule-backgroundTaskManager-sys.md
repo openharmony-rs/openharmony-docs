@@ -43,7 +43,7 @@ Requests efficiency resources.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -91,7 +91,7 @@ Releases all efficiency resources.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -135,7 +135,7 @@ Obtains all information about the requested efficiency resources, including the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 202 | Not System App. |
 | 18700001 | Caller information verification failed for an energy resource request. |
@@ -183,7 +183,7 @@ Sets the authorization information of a continuous task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -241,7 +241,7 @@ Obtains the authorization information of a continuous task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -292,7 +292,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -340,7 +340,7 @@ Registers a callback to listen for the continuous task change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 |---------| ------- |
 | 201     | Permission denied. |
 | 202     | Not System App. |
@@ -397,7 +397,7 @@ Unregisters the callback for continuous task changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 |---------| ------- |
 | 201     | Permission denied. |
 | 202     | Not System App. |

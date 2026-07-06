@@ -48,9 +48,9 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event IDs](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 1500003  | The common event sending frequency too high. |
@@ -105,7 +105,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 1500003  | The common event sending frequency too high. |
@@ -165,7 +165,7 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | The application does not have permission to call the interface.    |  
 | 202      | not system app.                     |  
@@ -216,7 +216,7 @@ Removes a sticky common event. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | The application does not have permission to call the interface.    |  
 | 202      | not system app.                     |  
@@ -260,7 +260,7 @@ Enables or disables static subscription for an application. This API uses an asy
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
@@ -309,7 +309,7 @@ Enables or disables static subscription for an application. This API uses a prom
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
@@ -357,7 +357,7 @@ Enables or disables the static subscription event for the current application an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                                              |
+| ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 

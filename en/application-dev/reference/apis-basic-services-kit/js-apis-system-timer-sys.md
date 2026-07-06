@@ -73,7 +73,7 @@ Creates a timer. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                                                        |
+| ID| Error Message                                                                                                                                        |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                                                 |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
@@ -129,7 +129,7 @@ Creates a timer. This API uses a promise to return the timer ID.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
@@ -175,7 +175,7 @@ Starts a timer. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -236,7 +236,7 @@ Starts a timer. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -289,7 +289,7 @@ Stops the timer. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -350,7 +350,7 @@ Stops a timer. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -404,7 +404,7 @@ Destroys a timer. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -466,7 +466,7 @@ Destroys a timer. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 | 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |

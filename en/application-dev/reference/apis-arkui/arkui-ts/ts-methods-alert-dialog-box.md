@@ -419,6 +419,8 @@ struct AlertDialogExample {
 }
 ```
 
+![en-us_image_alert](figures/en-us_image_alert.gif)
+
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
 This example demonstrates how to configure a dialog box to display outside the main window on a 2-in-1 device by setting **showInSubWindow** in [AlertDialogParam](#alertdialogparam) to **true**.

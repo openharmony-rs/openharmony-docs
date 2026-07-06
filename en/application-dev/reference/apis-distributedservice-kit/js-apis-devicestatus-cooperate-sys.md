@@ -39,7 +39,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -85,7 +85,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -131,7 +131,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -177,7 +177,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -224,7 +224,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -278,7 +278,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API.|
@@ -326,7 +326,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -376,7 +376,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -420,7 +420,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -471,7 +471,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -517,7 +517,7 @@ Enables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -561,7 +561,7 @@ Disables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -628,7 +628,7 @@ Registers a listener for the mouse cursor position of a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -674,7 +674,7 @@ Unregisters the listener for the mouse cursor position of a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -746,7 +746,7 @@ Starts screen hopping based on the specified options. This API uses a promise to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -847,7 +847,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -892,7 +892,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -937,7 +937,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -982,7 +982,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1029,7 +1029,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 | 202 | Permission verification failed. A non-system application calls a system API.|
@@ -1086,7 +1086,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -1135,7 +1135,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 |Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1188,7 +1188,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
@@ -1233,7 +1233,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1279,7 +1279,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1334,7 +1334,7 @@ Enables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1382,7 +1382,7 @@ Disables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |

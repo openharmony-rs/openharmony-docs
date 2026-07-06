@@ -43,7 +43,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -150,7 +150,7 @@ Adds a contact. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -248,7 +248,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -348,7 +348,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -444,7 +444,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -554,7 +554,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -672,7 +672,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -789,7 +789,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
@@ -877,7 +877,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -963,7 +963,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -1051,7 +1051,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -1136,7 +1136,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -1218,7 +1218,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1310,7 +1310,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1461,7 +1461,7 @@ Selects a contact. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
@@ -1530,7 +1530,7 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
@@ -1576,7 +1576,7 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
@@ -1615,7 +1615,7 @@ Queries a contact based on the specified key. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1699,7 +1699,7 @@ Queries a contact based on the specified key and holder. This API uses an asynch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1792,7 +1792,7 @@ Queries a contact based on the specified key and attributes. This API uses an as
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1882,7 +1882,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1986,7 +1986,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2085,7 +2085,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2167,7 +2167,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2258,7 +2258,7 @@ Queries all contacts based on the specified attributes. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2346,7 +2346,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2448,7 +2448,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2547,7 +2547,7 @@ Queries a contact based on the specified phone number. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2631,7 +2631,7 @@ Queries a contact based on the specified phone number and holder. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2724,7 +2724,7 @@ Queries a contact based on the specified phone number and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2814,7 +2814,7 @@ Queries a contact based on the specified phone number, holder, and attributes. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2918,7 +2918,7 @@ Queries a contact based on the specified phone number, holder, and attributes. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3018,7 +3018,7 @@ Queries a contact based on the specified email. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3102,7 +3102,7 @@ Queries a contact based on the specified email and holder. This API uses an asyn
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3195,7 +3195,7 @@ Queries a contact based on the specified email and attributes. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3285,7 +3285,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3389,7 +3389,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3486,7 +3486,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3568,7 +3568,7 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3664,7 +3664,7 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3757,7 +3757,7 @@ Queries all applications that have created contacts. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3843,7 +3843,7 @@ Queries all applications that have created contacts. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3923,7 +3923,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -4007,7 +4007,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -4105,7 +4105,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -4206,7 +4206,7 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
@@ -4254,7 +4254,7 @@ Opens the **Add contact** page to add a contact. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code                | Error Message                                      |
+| ID                | Error Message                                      |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 801       | The specified SystemCapability name was not found. |
@@ -4317,7 +4317,7 @@ Opens the **Save to existing** page to save a contact to an existing one. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code                | Error Message                                      |
+| ID                | Error Message                                      |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 801       | The specified SystemCapability name was not found. |
@@ -4384,7 +4384,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
@@ -4450,7 +4450,7 @@ Checks whether there are call records that meet the specified conditions. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
@@ -4511,7 +4511,7 @@ Checks whether there are call records that meet the specified conditions. By def
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
