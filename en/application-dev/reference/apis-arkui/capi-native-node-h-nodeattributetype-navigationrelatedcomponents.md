@@ -332,13 +332,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 
 ## NODE_SWIPER_NODE_ADAPTER
 
@@ -519,7 +519,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 ```
 
-Whether the navigation indicator is interactive.<br>
+Whether the navigation indicator of a component is interactive.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -529,13 +529,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the navigation indicator is interactive. The value **true** means that the navigation indicator is interactive, and **false** means the opposite. The default value is true.|
+| .value[0].i32 | Whether the navigation indicator of a component is interactive. The value **1** indicates that the navigation indicator is interactive, and **0** indicates the opposite. The default value is **1**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the navigation indicator is interactive.|
+| .value[0].i32 | Whether the navigation indicator of a component is interactive. The value **1** indicates that the navigation indicator is interactive, and **0** indicates the opposite.|
 
 ## NODE_SWIPER_PAGE_FLIP_MODE
 

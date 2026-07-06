@@ -200,7 +200,7 @@ struct FlexExample2 {
 // xxx.ets
 @Component
 struct JustifyContentFlex {
-  justifyContent : number = 0;
+  justifyContent: number = 0;
 
   build() {
     Flex({ justifyContent: this.justifyContent }) {
@@ -251,7 +251,7 @@ struct FlexExample3 {
 // xxx.ets
 @Component
 struct AlignItemsFlex {
-  alignItems : number = 0;
+  alignItems: number = 0;
 
   build() {
     Flex({ alignItems: this.alignItems }) {
@@ -366,7 +366,7 @@ import {LengthMetrics} from '@kit.ArkUI';
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 }) {
@@ -412,7 +412,7 @@ struct FlexExample2 {
 该示例实现了Flex在宽度设置auto后可以自适应子组件布局的能力。
 ```ts
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @Prop text: string
 
   build() {

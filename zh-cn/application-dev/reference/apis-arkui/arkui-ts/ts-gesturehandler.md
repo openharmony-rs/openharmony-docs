@@ -393,7 +393,7 @@ onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
 | fingers | number | 否| 是 | 用于指定触发拖动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | direction | [PanDirection](./ts-basic-gestures-pangesture.md#pandirection枚举说明) | 否| 是 | 用于指定触发拖动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>使用[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)配置该字段时，单位为px。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | distanceMap<sup>19+</sup> |  Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 否| 是 | 用于指定不同输入源触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 ## SwipeGestureHandler
@@ -450,8 +450,8 @@ onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
 | ------------ | -------------------------------------- | ---- | -----|--------------- |
 | fingers | number | 否 | 是 | 触发快滑的最少手指数，默认为1，最小为1指，最大为10指。<br/>默认值：1 <br/>取值范围：[1, 10]<br/> |
 | direction | [SwipeDirection](./ts-basic-gestures-swipegesture.md#swipedirection枚举说明) | 否 | 是 | 触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All |
-| speed | number | 否 | 是 | 识别快滑的最小速度。<br/>默认值：100VP/s <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
-| isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发滑动的最少手指数（即上述fingers参数），手势识别将失败。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| speed | number | 否 | 是 | 识别快滑的最小速度。<br/>默认值：100vp/s <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
+| isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发快滑的最少手指数（即上述fingers参数），手势识别将失败。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## PinchGestureHandler
 

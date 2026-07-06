@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The state management module provides data storage, persistent data management, UIAbility data storage, and environment state and tools required by applications.
+Provides application data storage, persistent data management, UIAbility (application component that contains a UI) data storage, and environment and tools required by applications.
 
 >**NOTE**
 >
@@ -32,7 +32,7 @@ import { AppStorageV2, PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 ## AppStorageV2
 
-For details about how to use AppStorageV2, see [AppStorageV2: Storing Application-wide UI State](../../ui/state-management/arkts-new-appstoragev2.md).
+AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities. For details about the UI usage, see [AppStorageV2: Storing Application-wide UI State](../../ui/state-management/arkts-new-appstoragev2.md).
 
 ### connect
 
@@ -54,7 +54,7 @@ Stores key-value pair data in the application memory. If the given key already e
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | Yes  | Type. If no key is specified, the name of the type is used as the key.|
 | keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Key, or constructor for obtaining the default value. The default value is **undefined**.|
-| defaultCreator | StorageDefaultCreator\<T\> | No  | Constructor for obtaining the default value. The default value is **undefined**.|
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Constructor for obtaining the default value. The default value is **undefined**.|
 
 >**NOTE**
 >
@@ -158,7 +158,7 @@ const keys: Array<string> = AppStorageV2.keys();
 
 ## PersistenceV2
 
-Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Persisting Application State](../../ui/state-management/arkts-new-persistencev2.md).
+Provides persistent storage for UI states. This API is inherited from [AppStorageV2](#appstoragev2). For details about the UI usage, see [PersistenceV2: Persisting UI States](../../ui/state-management/arkts-new-persistencev2.md).
 
 ### globalConnect<sup>18+</sup>
 
@@ -174,7 +174,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 | Name  |Type  |Mandatory  | Description                                                     |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptionst18)    |Yes |Connection settings.|
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |Yes |**globalConnect** parameters passed. For details, see the description of **ConnectOptions**.|
 
 **Return value**
 
@@ -184,7 +184,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 > **NOTE**
 >
-> 1. The second parameter is used when **key** is not specified, and the third parameter is used otherwise (including when the second parameter is invalid).
+> 1. If no key is specified, the class name of the data returned by the default constructor **defaultCreator** is used as the key and stored in PersistenceV2.
 >
 > 2. If the data has been stored in **PersistenceV2**, you can obtain the stored data without using the default constructor. Otherwise, you must specify a default constructor to avoid application exceptions.
 >
@@ -300,7 +300,7 @@ struct Page1 {
 
 The following is the sample code for **globalConnect** to persist data of the Map type:
 ```typescript
-import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -380,7 +380,7 @@ PersistenceV2.save('key_as1');
 
 static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
-Called when persistence fails.
+Registers a callback invoked when persistence fails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -414,7 +414,7 @@ Defines the parameter type for **globalConnect**.
 |type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |No  |No  |Specified type.        |
 |key         | string   |No  |Yes  |Input key. If no value is passed in, the type name is used as the key.            |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
-|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs. If the same key uses different encryption levels, the encryption level in the first **globalConnect** call is used.|
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -500,7 +500,7 @@ struct Comp {
             Text(`report?.() '${ri.item.report?.()}'`)
           }
         })
-      // Step 1: Click "add item". The message `propA 'a' propB 'b'report?.'a' - 'b'` is displayed.
+      // Step 1: Click 'add item'. The message `propA 'a' propB 'b' report?.() 'a - b'` is displayed.
       // Step 2: Close the application.
       Button('add item')
         .onClick(() => {
@@ -567,7 +567,7 @@ Defines the decorator and component information associated with the observable o
 | decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
 | owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br> For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br> For a V2 object, the object name is returned.|
-| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br> For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
+| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br> If a V1 object has a property that uses [@Track](./../../ui/state-management/arkts-track.md), no component ID is available, and **-1** is returned. In the same case, no component ID is available for a V2 object, and **-1** is returned.|
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | No| No  | Information about the component that uses the observable object. If the object is not used in any UI, an empty array is returned.|
 
 ## ElementInfo<sup>23+</sup>
@@ -757,8 +757,8 @@ class Student {
         // ID of the component associated with the decorator.
         const eleId = elementInfo.elementId;
         hilog.info(0x00, TAG, `elementId: ${eleId}`);
-      })
-    })
+      });
+    });
   }
 }
 
@@ -853,6 +853,7 @@ class NonObservedClass {
 @Entry
 @ComponentV2
 struct Index {
+  // Use makeObserved to make the NonObservedClass instance observable.
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
 
@@ -979,6 +980,7 @@ class Inner {
 @Entry
 @Component
 struct Index {
+  // Use makeV1Observed to wrap the Inner instance as a V1 observable object and pass it to the Outer constructor.
   @State outer: Outer = new Outer(UIUtils.makeV1Observed(new Inner()));
 
   build() {
@@ -1028,7 +1030,7 @@ Creates a read-only one-way data binding instance, which is used to construct th
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1264,7 +1266,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // Add the synchronous listener callback this.onChange for the age attribute to this ObservedClass instance.
+    // Add the listener callback this.onChange for the age attribute to the ObservedClass instance this.
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }
@@ -1473,6 +1475,7 @@ struct Index {
           this.w = 100;
           this.h = 100;
           this.message = 'Hello World';
+          // Immediately process the preceding state variable modifications and synchronize the dirty UI nodes.
           UIUtils.flushUIUpdates();
           // The size of the column box gradually changes from (100 × 100) to (200 × 200) within 1s, and the text in the box changes to "Hello ArkUI".
           this.getUIContext().animateTo({
@@ -1499,7 +1502,7 @@ struct Index {
 
 ### getCustomComponentContext
 
-getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
+static getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
 
 Obtains [CustomComponentContext](#customcomponentcontext) of the given @Component(V1) or @ComponentV2. **CustomComponentContext** can be used to access the reuse pool of the component. For details about the reuse pool, see [Global Reuse: Centralized Component Recycling and Reuse](../../ui/state-management/arkts-global-reuse-pool.md).
 
@@ -1623,7 +1626,7 @@ Listener callback function of the [IMonitor](./arkui-ts/ts-state-management-watc
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| monitorValue | IMonitor | Yes  | Change information passed by the callback.|
+| monitorValue | [IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12) | Yes  | Change information passed by the callback.|
 
 ## StorageDefaultCreator\<T\>
 
@@ -1657,7 +1660,7 @@ class FatherSampleClass {
   @Trace sampleClass: SampleClass = new SampleClass();
 }
 
-// Persist the key-value pair whose key is SampleClass and value is new SampleClass(), and assign it to source.
+// Persist the key-value pair whose key is FatherSampleClass and value is new FatherSampleClass(), and assign it to source.
 // StorageDefaultCreator refers to () => new FatherSampleClass().
 const source: FatherSampleClass | undefined = PersistenceV2.connect(FatherSampleClass, () => new FatherSampleClass());
 
@@ -1748,7 +1751,7 @@ Defines a callback used to return the cause of the persistence failure.
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
 | key | string    | Yes  | Key of the error.  |
-|reason| 'quota' \| 'serialization' \| 'unknown'    | Yes  | Reason of the error.  |
+|reason| 'quota' \| 'serialization' \| 'unknown'    | Yes  | Reason of the error. The value can be **'quota'** (indicating that the storage quota exceeds the limit), **'serialization'** (indicating that serialization or deserialization fails), or **'unknown'** (indicating an unknown error).|
 | message | string    | Yes  | Extra information about the error.  |
 | oldValue | string    | No  | Old serialized data stored on the disk when deserialization fails.<br> **Since**: 26.0.0  |
 
@@ -1995,7 +1998,7 @@ Defines a callback used to set a value.
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| newValue | T    | Yes  | Parameter of the T type.  |
+| newValue | T    | Yes  | New value to be set. This parameter is passed when the bound value is changed.  |
 
 **Example**
 
@@ -2124,7 +2127,7 @@ Provides a **get** accessor to obtain the current bound value.
 
 | Type            | Description                                                        |
 | -------------------- | ------------------------------------------------------------ |
-| T |Returns a value whose type is the generic parameter T, which is the same as the type defined by **Binding\<T\>**.|
+| T |Value whose type is the generic parameter T, which is the same as the type defined by **MutableBinding\<T\>**.|
 
 **Example**
 
@@ -2264,7 +2267,7 @@ Obtains the information about the recycling instance of a given reusable compone
 
 | Name       | Type                                | Mandatory|  Description           |
 | ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
-| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | Yes  | Name of the reusable custom component to be queried.|
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | Yes  | Constructor of the reusable custom component to be queried.|
 | reuseId      | string   | No  | Reuse ID for filtering. If specified, only the information about the reuse pool with the reuse ID is returned. The default value is **undefined**, indicating that information about all reuse pools is returned.  |
 
 **Return value**
@@ -2359,13 +2362,13 @@ Invokes an idle task to pre-create a reusable component and put it into the reus
 | Name | Type                | Mandatory|  Description                           |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | builder | [WrappedBuilder](././arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *times* times. One or more [@Reusable](../../ui/state-management/arkts-create-custom-components.md#reusable)/[@ReusableV2](../../ui/state-management/arkts-create-custom-components.md#reusablev2) components should be created for each execution.|
-| times   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
+| times   | number               | Yes  | Number of times the @Builder decorated function is executed. The value is a positive integer. If 0 or a negative number is passed, the value does not take effect. If a decimal is passed, it is rounded up.|
 
 **Return value**
 
 | Type| Description |
 | --------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Promise\<void\> | Promise parsed when the idle task is successfully completed. This promise returns no value.|
+| Promise\<void\> | Promise parsed when the idle task is successfully completed. This promise returns no value. If the pre-rendering task fails to be executed, the promise will be rejected.|
 
 > **NOTE**
 >
@@ -2413,7 +2416,7 @@ struct Index {
     // Obtain the pool and schedule pre-rendering.
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     // Preload the reusable components in preRenderBuilder to this global reuse pool and execute preRenderBuilder once.
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });
@@ -2474,7 +2477,7 @@ The **IReusableInfo** API provides information about the current number and maxi
 | Parameter    | Type  | Read-Only| Optional|  Description                              |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | count    | number | Yes  | No  | Number of components currently recycled in the pool. If **reuseId** is specified, **count** indicates the number of components with the reuse ID.                                  |
-| maxCount | number | No  | No  | Maximum number of components that can be recycled in the pool. If **reuseId** is specified, **maxCount** indicates the number of components with the reuse ID. Setting **maxCount** to a value smaller than that of **count** will cause the framework to asynchronously clear redundant components. During a delay, the value of **count** may temporarily exceed that of **maxCount**. The default value is **100**, and the maximum value is **200**.|
+| maxCount | number | No  | No  | Maximum number of components that can be recycled in the pool. If **reuseId** is specified, **maxCount** indicates the number of components with the reuse ID. Setting **maxCount** to a value smaller than that of **count** will cause the framework to asynchronously clear redundant components. During a delay, the value of **count** may temporarily exceed that of **maxCount**. Default value: **100**; maximum value: **200**; minimum value: **0**. If the assigned value is out of range, the value close to the maximum or minimum value is used. If the assigned value is a decimal, it is rounded down.|
 | reuseId  | string | Yes  | Yes  | Reuse ID specified when a component is recycled. If the component is not recycled using **reuseId**, **undefined** is used.                                |
 
 **Example**
@@ -2569,5 +2572,3 @@ Function for initializing the reusable custom component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction**: This API can be used only in the stage model.
-
-<!--no_check-->

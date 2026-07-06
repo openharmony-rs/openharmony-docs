@@ -43,7 +43,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- | 
 | 1500003  | The common event sending frequency too high.<br> Applicable version: 20|
 | 1500007  | Failed to send the message to the common event service. |
@@ -92,7 +92,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 1500003  | The common event sending frequency too high.<br> Applicable version: 20|
 | 1500007  | Failed to send the message to the common event service. |
@@ -147,7 +147,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.    | 
 
@@ -205,7 +205,7 @@ Creates a subscriber. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
@@ -254,7 +254,7 @@ Creates a subscriber. The API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
@@ -299,7 +299,7 @@ Subscribes to a common event. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
@@ -369,7 +369,7 @@ Unsubscribes from a common event. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 801  | capability not supported.               |
@@ -463,7 +463,7 @@ Subscribes to a common event. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |

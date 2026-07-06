@@ -253,11 +253,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明               | 动效参数                          | 默认缩放比                     |
-| ------ | --------------------------------- | --------------------------------- | --------------------------------- |
-| LIGHT  | 小面积（轻盈） | 弹簧动效， 刚性：410，阻尼：38，初始速度：1 | 90% |
-| MIDDLE | 中面积（稳定） | 弹簧动效， 刚性：350，阻尼：35，初始速度：0.5 | 95% |
-| HEAVY  | 大面积（厚重） | 弹簧动效， 刚性：240，阻尼：28，初始速度：0 | 95% |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| LIGHT  | 0 | 小面积（轻盈），弹簧动效，刚性：410，阻尼：38，初始速度：1，默认缩放比90%。 |
+| MIDDLE | 1 | 中面积（稳定），弹簧动效，刚性：350，阻尼：35，初始速度：0.5，默认缩放比95%。 |
+| HEAVY  | 2 | 大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。 |
 
 ## Color
 
@@ -413,7 +413,7 @@
 
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
+| DEFAULT   | 0    | 白底蓝字（深色主题下为黑底蓝字）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
 ## DialogDisplayMode
@@ -617,8 +617,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -741,17 +741,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureCollectIntervention
 
@@ -1252,20 +1252,20 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| Left                     | 气泡提示位于组件左侧，与组件左侧中心对齐。                   |
-| Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
-| Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
-| Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
-| LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
-| LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
-| RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
-| RightBottom<sup>9+</sup> | 气泡提示位于组件右侧，与组件下侧边缘对齐。                   |
+| 名称                    | 值 | 说明                                                         |
+| ------------------------ | ----- | ------------------------------------------------------------ |
+| Left                     | 0 | 气泡提示位于组件左侧，与组件左侧中心对齐。                   |
+| Right                    | 1 | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
+| Top                      | 2 | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
+| Bottom                   | 3 | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
+| TopLeft                  | 4 | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
+| TopRight                 | 5 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
+| BottomLeft               | 6 | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
+| BottomRight              | 7 | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
+| LeftTop<sup>9+</sup>     | 8 | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
+| LeftBottom<sup>9+</sup>  | 9 | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
+| RightTop<sup>9+</sup>    | 10 | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
+| RightBottom<sup>9+</sup> | 11 | 气泡提示位于组件右侧，与组件下侧边缘对齐。                   |
 
 ## PixelRoundCalcPolicy<sup>11+</sup>
 
@@ -1331,7 +1331,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid、WaterFlow和LazyVWaterFlowLayout组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -1619,7 +1619,7 @@ type Nullable\<T> = T | undefined
 | 名称    | 值 | 说明                                                         |
 | ------- | ----------- | ------------------------------------------------------------ |
 | DEFAULT | - | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | - | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| INLINE  | - | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
 
@@ -1708,15 +1708,15 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明   |
-| ---- | ---- |
-| Mon  | 星期一。  |
-| Tue  | 星期二。  |
-| Wed  | 星期三。  |
-| Thur | 星期四。  |
-| Fri  | 星期五。  |
-| Sat  | 星期六。  |
-| Sun  | 星期日。  |
+| 名称   | 值 | 说明   |
+| ---- | - | ---- |
+| Mon  | 0 | 星期一。  |
+| Tue  | 1 | 星期二。  |
+| Wed  | 2 | 星期三。  |
+| Thur | 3 | 星期四。  |
+| Fri  | 4 | 星期五。  |
+| Sat  | 5 | 星期六。  |
+| Sun  | 6 | 星期日。  |
 
 ## WidthBreakpoint<sup>13+</sup>
 
@@ -1759,12 +1759,12 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                             | 说明                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称                             | 值 | 说明                                                         |
+| -------------------------------- | - | ------------------------------------------------------------ |
+| SURFACE                          | 0 | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 1 | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TEXTURE                          | 2 | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NODE<sup>(deprecated)</sup>      | 3 | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## InputEventSubTypeMask
 

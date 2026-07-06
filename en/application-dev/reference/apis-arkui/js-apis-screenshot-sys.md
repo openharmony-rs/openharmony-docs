@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The **Screenshot** module provides APIs for you to set information such as the region to capture and the size of the screen region when capturing a screen.
+The **Screenshot** module provides APIs for you to set information such as the region to capture and the size of the screen region when capturing a screen. It serves scenarios such as screen content sharing, feedback, and test verification. Supporting common and HDR screenshot capture modes, this module provides features such as region selection, rotation, multi-screen, and screenshot capture notifications, helping you flexibly obtain screen content.
 
 >  **NOTE**
 >
@@ -31,8 +31,8 @@ Describes the screenshot options.
 | ---------------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
 | screenRect             | [Rect](js-apis-screenshot.md#rect) | No | Yes| Region of the screen to capture. If no value is passed, the region of the logical screen associated with the specified display ID is returned.                      |
 | imageSize              | [Size](#size) | No| Yes | Size of the captured image. If no value is passed, the size of the logical screen associated with the specified display ID is returned. If **screenRect** is smaller than **imageSize**, the image is stretched to **imageSize**; otherwise, it is compressed to **imageSize**.                      |
-| rotation               | number        | No | Yes| Angle by which the captured image should be rotated. Currently, the value can be **0** only. The default value is **0**.    |
-| displayId<sup>8+</sup> | number        | No| Yes | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer.|
+| rotation               | number        | No | Yes| Rotation angle of the captured image. Currently, only the value **0** is supported. The default value is **0**. If other values are passed, the default value is used.    |
+| displayId<sup>8+</sup> | number        | No| Yes | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer. The default value is **0**.|
 | isNotificationNeeded<sup>14+</sup>| boolean        | No | Yes| Whether to send a notification after a snapshot is captured. **true** to send, **false** otherwise. The default value is **true**. Such a notification can be listened for through [captureStatusChange](js-apis-display.md#displayoncapturestatuschange12).  |
 | isCaptureFullOfScreen<sup>20+</sup> | boolean        | No | Yes| Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured.|
 
@@ -45,7 +45,7 @@ Describes the HDR screenshot options.
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name                | Type         |  Read-Only|  Optional| Description                                                        |
-| ---------------------- | ------------- |---| ---- | ------------------------------------------------------------ |
+| ---------------------- | ------------- | --- | ---- | ------------------------------------------------------------ |
 | displayId | number        | No| Yes  | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer. The default value is **0**.|
 | isNotificationNeeded| boolean        | No| Yes  | Whether to send a notification after a snapshot is captured. **true** to send, **false** otherwise. The default value is **true**. Such a notification can be listened for through [captureStatusChange](js-apis-display.md#displayoncapturestatuschange12).  |
 | isCaptureFullOfScreen | boolean        | No| Yes  | Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured. The default value is **false**.|
@@ -64,7 +64,7 @@ Enumerates the rendering modes of the captured HDR image.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | CANONICAL | 0 | The specified screenshot is rendered based on the standard HDR display attribute to optimize the display effect of the screenshot on different HDR displays.|
-| LOCAL | 1 |The specified screenshot is rendered based on the current HDR display attribute to ensure that the display effect of the screenshot is consistent with that of the current display from which the screenshot is captured.|
+| LOCAL | 1 | The specified screenshot is rendered based on the current HDR display attribute to ensure that the display effect of the screenshot is consistent with that of the current display from which the screenshot is captured.|
 
 ## Size
 
@@ -85,11 +85,15 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
+**Required permissions**:
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -104,36 +108,37 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 1400001 | Invalid display or screen. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 11+|
+| 1400001 | Invalid display or screen.<br>Applicable versions: 11+|
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import  { image } from '@kit.ImageKit';
+import { image } from '@kit.ImageKit';
 
 let screenshotOptions: screenshot.ScreenshotOptions = {
-  "screenRect": {
-    "left": 200,
-    "top": 100,
-    "width": 200,
-    "height": 200 },
-  "imageSize": {
-    "width": 300,
-    "height": 300 },
-  "rotation": 0,
-  "displayId": 0,
-  "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  screenRect: {
+    left: 200,
+    top: 100,
+    width: 200,
+    height: 200 },
+  imageSize: {
+    width: 300,
+    height: 300 },
+  rotation: 0,
+  displayId: 0,
+  isNotificationNeeded: true,
+  isCaptureFullOfScreen: true
 };
+// Call the save method to obtain the screenshot.
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+  console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
   pixelMap.release(); // Release the memory in time after the PixelMap is used.
 });
 ```
@@ -144,11 +149,15 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 Obtains a screenshot. This API uses an asynchronous callback to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
+**Required permissions**:
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -163,8 +172,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -172,12 +181,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// Call the save method to obtain the screenshot.
 screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+  console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
   pixelMap.release(); // Release the memory in time after the PixelMap is used.
 });
 ```
@@ -188,11 +198,15 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 Obtains a screenshot. This API uses a promise to return the result.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
+**Required permissions**:
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 7-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
@@ -204,7 +218,7 @@ Obtains a screenshot. This API uses a promise to return the result.
 
 | Type                         | Description                                           |
 | ----------------------------- | ----------------------------------------------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return a PixelMap object.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return a PixelMap object. The size is specified by **imageSize**. If **imageSize** is not specified, the size of the logical screen associated with the specified display ID is used by default.|
 
 
 **Error codes**
@@ -213,8 +227,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400001 | Invalid display or screen. |
 
 **Example**
@@ -224,31 +238,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 let screenshotOptions: screenshot.ScreenshotOptions = {
-  "screenRect": {
-    "left": 200,
-    "top": 100,
-    "width": 200,
-    "height": 200 },
-  "imageSize": {
-    "width": 300,
-    "height": 300 },
-  "rotation": 0,
-  "displayId": 0,
-  "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  screenRect: {
+    left: 200,
+    top: 100,
+    width: 200,
+    height: 200 },
+  imageSize: {
+    width: 300,
+    height: 300 },
+  rotation: 0,
+  displayId: 0,
+  isNotificationNeeded: true,
+  isCaptureFullOfScreen: true
 };
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    let pixelNumber = pixelMap.getPixelBytesNumber();
-    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
+    let pixelBytesNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelBytesNumber}`);
     pixelMap.release(); // Release the memory in time after the PixelMap is used.
   }).catch((err: BusinessError) => {
-    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to save screenshot. Code: ${exception.code} , message : ${exception.message}`);
-};
+  console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## screenshot.saveHdrPicture<sup>20+</sup>
@@ -258,19 +272,22 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range.
 - If the screen contains HDR resources (even if they are partially obscured), this API returns an array with both SDR and HDR PixelMaps, regardless of whether HDR is enabled.
 - If there are no HDR resources, it returns an array with a single SDR PixelMap. Unlike the [save](#screenshotsave) API, which returns a single SDR PixelMap, this API always returns an array. Additionally, this API does not support cropping, stretching, or rotating features available in the [save](#screenshotsave) API.
-<br><br>
+
+Each **PixelMap** object in the returned object array must be manually released. After using the objects, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
+**Required permissions**:
+- API versions 22+: **ohos.permission.CAPTURE_SCREEN** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 20-21: **ohos.permission.CAPTURE_SCREEN**
 
 **Parameters**
 
 | Name | Type                                   | Mandatory| Description                                                        |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [HdrScreenshotOptions](#hdrscreenshotoptions20) | No  | Information about the HDR snapshot. This parameter is left unspecified by default.|
+| options | [HdrScreenshotOptions](#hdrscreenshotoptions20) | No  | Information about the HDR snapshot. If this parameter is not passed, the default values of the fields are used.|
 
 **Return value**
 
@@ -284,12 +301,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------- |
-| 201     | Permission verification failed.The application does not have the permission required to call the API.|
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities.|
-| 1400001  | Invalid display or screen.|
-| 1400003  | This display manager service works abnormally.|
-| 1400004  | Parameter error. Possible cause: 1.Invalid parameter range.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
@@ -298,23 +315,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
-  "displayId": 0,
-  "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true,
-  "displayIntent": screenshot.DisplayIntentType.CANONICAL
+  displayId: 0,
+  isNotificationNeeded: true,
+  isCaptureFullOfScreen: true,
+  displayIntent: screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info('succeeded in saving screenshot ${i}. Pixel bytes number' + pixelMap.getPixelBytesNumber());
+      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to save SDR and HDR screenshot. Code: ${err.code} , message : ${err.message}`);
+    console.error(`Failed to save SDR and HDR screenshot. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code} , message : ${exception.message}`);
-};
+  console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code}, message: ${exception.message}`);
+}
 ```

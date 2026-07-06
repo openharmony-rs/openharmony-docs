@@ -3,29 +3,35 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供组件效果的一些基础能力，包括模糊、边缘像素扩展、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
+本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
 
 - [Filter](#filter)：用于添加指定Filter效果到组件上。
 - [VisualEffect](#visualeffect)：用于添加指定VisualEffect效果到组件上。
+
+**Filter与VisualEffect的选择：** 两者分别属于不同的效果大类，支持的视觉效果类型不同，根据实际需求的效果类型选择对应的效果类。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 页面仅包含本模块的系统接口，其他公开接口参见[ohos.graphics.uiEffect (效果级联)](js-apis-uiEffect.md)。
+> - 本模块的接口均依赖画布上已有的内容进行绘制，如果与具有离屏功能的接口（如[blendMode<sup>11+</sup>](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blendmode11)的离屏模式）联合使用，可能会产生非预期效果。
 
 ## 导入模块
 
 ```ts
 import { uiEffect } from "@kit.ArkGraphics2D";
 ```
+
 ## uiEffect.createBrightnessBlender
 createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -34,17 +40,18 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项。 |
 
 **返回值：**
 
 | 类型                                     | 说明                     |
 | ---------------------------------------- | ----------------------- |
-| [BrightnessBlender](#brightnessblender) | 返回设置了提亮效果参数的BrightnessBlender。 |
+| [BrightnessBlender](#brightnessblender) | 返回提亮效果的BrightnessBlender混合器。 |
 
 **示例：**
 
 ```ts
+// 创建BrightnessBlender实例用于给组件添加提亮效果
 let blender : uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
     positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
@@ -62,7 +69,7 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项，用于配置提亮效果。 |
 
 **返回值：**
 
@@ -72,7 +79,7 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -81,15 +88,16 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
+// 创建支持HDR的BrightnessBlender实例
 let blender : uiEffect.HdrBrightnessBlender =
   uiEffect.createHdrBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
     positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
 
 @Entry
 @Component
-struct example {
+struct Example {
   build() {
     RelativeContainer() {
       Image($r("app.media.screenshot"))
@@ -106,7 +114,7 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
 
-**起始版本：**  26.0.0
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,8 +126,8 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 | 参数名               | 类型                        | 必填  | 说明                                                              |
 | ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
-| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default                       |
-| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。   |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 **返回值：**
 
@@ -129,7 +137,7 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -137,11 +145,15 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 **示例：**
 ```ts
+import { uiEffect } from '@kit.ArkGraphics2D'
+
+// 创建HDR压暗混合器实例
 let blender : uiEffect.HdrDarkenBlender = 
-  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]) 
-@Entry 
-@Component 
-struct example { 
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114])
+
+@Entry
+@Component
+struct Example {
   build() { 
     RelativeContainer() { 
       Stack(){ 
@@ -155,8 +167,10 @@ struct example {
   } 
 }
 ```
+
 ## Filter
-Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
+
+Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
 ### pixelStretch
 pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
@@ -170,7 +184,7 @@ pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| stretchSizes  | Array\<number\>         | 是   | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。<br/>正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。<br/>注意四个方向对应的参数需统一为非正值或非负值。|
+| stretchSizes  | Array\<number\>         | 是   | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。<br>正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。<br>注意四个方向对应的参数需统一为非正值或非负值，否则效果无效。|
 | tileMode      | [TileMode](#tilemode) | 是   | 边缘像素扩展的像素填充模式。 |
 
 
@@ -183,6 +197,8 @@ pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
 **示例：**
 
 ```ts
+// 将边缘像素扩展效果添加至组件上
+let filter = uiEffect.createFilter()
 filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
 ```
 
@@ -198,10 +214,10 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| progress  | number         | 是   | 表示水波纹的进度，取值范围为[0, 1]。<br/>水波纹进度越趋向于1，水波纹展示越完全。<br/>超出取值范围水波纹不会出现效果。|
-| waveCount      | number | 是   | 水波纹波动时波纹的个数，取值范围为[1, 3]。<br/>水波纹的个数只能取整数，如果为浮点数或超出取值范围，水波纹不会出现效果。 |
-| x      | number | 是   | 水波纹中心在屏幕中第一次出现的x轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），右上角坐标为（1, 0）。<br/>当x取值为负值时，代表在屏幕左侧。|
-| y      | number | 是   | 水波纹中心在屏幕中第一次出现的y轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），左下角坐标为（0, 1）。<br/>当y取值为负值时，代表在屏幕上方。 |
+| progress  | number         | 是   | 表示水波纹的进度，取值范围为[0, 1]。<br>水波纹进度越趋向于1，水波纹展示越完全。<br>超出取值范围水波纹不会出现效果。|
+| waveCount      | number | 是   | 水波纹波动时波纹的个数，取值范围为[1, 3]。<br>水波纹的个数只能取整数，如果为浮点数或超出取值范围，水波纹不会出现效果。 |
+| x      | number | 是   | 水波纹中心在屏幕中第一次出现的x轴位置。<br>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），右上角坐标为（1, 0）。<br>当x取值为负值时，代表在屏幕左侧。|
+| y      | number | 是   | 水波纹中心在屏幕中第一次出现的y轴位置。<br>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），左下角坐标为（0, 1）。<br>当y取值为负值时，代表在屏幕上方。 |
 | rippleMode      | [WaterRippleMode](#waterripplemode) | 是   | 水波纹的场景模式。|
 
 
@@ -213,7 +229,7 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -222,13 +238,15 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 **示例：**
 
 ```ts
+// 将水波纹效果添加至组件上
+let filter = uiEffect.createFilter()
 filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL)
 ```
 
 ### flyInFlyOutEffect
 flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 
-将飞入飞出形变效果添加至组件上。
+将飞入飞出形变效果添加至组件上。典型应用场景包括页面切换动画、窗口进出动画、对话框弹出动画、列表项进出动画等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -237,8 +255,8 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| degree  | number         | 是   | 表示控制飞入飞出形变的程度，取值范围为[0, 1]。<br/>越靠近1，变形程度越明显。<br/>超出取值范围形变不会出现效果。|
-| flyMode      | [FlyMode](#flymode) | 是   | 飞入飞出的场景模式。<br/>BOTTOM表示从设备底部飞入飞出形变场景。<br/>TOP表示从设备顶部飞入飞出形变场景。 |
+| degree  | number         | 是   | 表示控制飞入飞出形变的程度，取值范围为[0, 1]。<br>越靠近1，变形程度越明显。<br>超出取值范围形变不会出现效果。|
+| flyMode      | [FlyMode](#flymode) | 是   | 飞入飞出的场景模式。<br>BOTTOM表示从设备底部飞入飞出形变场景。<br>TOP表示从设备顶部飞入飞出形变场景。 |
 
 
 **返回值：**
@@ -249,7 +267,7 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -258,6 +276,8 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 **示例：**
 
 ```ts
+// 将飞入飞出形变效果添加至组件上
+let filter = uiEffect.createFilter()
 filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
 ```
 
@@ -296,6 +316,8 @@ distort(distortionK: number): Filter
 **示例：**
 
 ```ts
+// 将透镜畸变效果添加至组件上
+let filter = uiEffect.createFilter()
 filter.distort(-0.5)
 ```
 
@@ -332,7 +354,7 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -344,6 +366,7 @@ struct RadiusGradientBlurExample {
   build() {
     Column() {
       Image($rawfile('test.png'))
+        // 为组件内容添加半径线性渐变模糊效果
         .compositingFilter(uiEffect.createFilter().radiusGradientBlur(this.blurRadiusExample,
           this.linearGradientBlurOptionsExample))
     }
@@ -354,7 +377,7 @@ struct RadiusGradientBlurExample {
 ### bezierWarp<sup>20+</sup>
 bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
-将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。
+将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。典型应用场景包括人脸形变特效、卡片透视变形等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -363,7 +386,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| 是   | 12个贝塞尔形变控制点，更改控制点的位置可改变形成边缘的曲线的形状，从而扭曲图像。控制点坐标为0-1坐标系，且坐标值可大于1或小于0。|
+| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| 是   | 12个贝塞尔形变控制点，数组长度必须为12，更改控制点的位置可改变形成边缘的曲线形状，从而扭曲图像。控制点坐标使用归一化坐标系（默认范围为[0, 1]），且坐标值可大于1或小于0。数组长度不为12时效果不生效。|
 
 **返回值：**
 
@@ -396,6 +419,7 @@ struct BezierWarpExample {
   build() {
     Column() {
       Image($rawfile('test.jpg'))
+        // 将贝塞尔曲线变形的效果添加至组件上
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -414,10 +438,10 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，多个颜色的渐变。数组长度取值范围[0, 12], 每一个颜色值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的分布位置。数组长度取值范围[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| strengths  | Array\<number>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12], 每一个强度值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha显示遮罩。不设置时，默认组件内容全部有颜色渐变效果。|
+| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，多个颜色的渐变。数组长度取值范围为[0, 12]，每个颜色值取值范围需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的分布位置。数组长度取值范围为[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| strengths  | Array\<number>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围为[0, 12]，每一个强度值需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| alphaMask  | [Mask](#mask20)         | 否   | 控制渐变效果透明度分布的遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制颜色渐变效果的透明度分布（如局部透明或动态透明效果）时传入此参数。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
 
 **返回值：**
 
@@ -436,28 +460,29 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **示例：**
 
 ```ts
-import { common2D, uiEffect } from "@kit.ArkGraphics2D"
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
 struct ColorGradientExample {
-  @State colorsExample: Array<uiEffect.Color> = [
+  @State gradientColors: Array<uiEffect.Color> = [
     {red: 1.0, green: 0.8, blue: 0.5, alpha: 0.8},
     {red: 1.0, green: 1.5, blue: 0.5, alpha: 1.0}
   ]
 
-  @State positionsExample: Array<common2D.Point> = [
+  @State gradientPositions: Array<common2D.Point> = [
     {x: 0.2, y: 0.2},
     {x: 0.8, y: 0.6}]
 
-  @State strengthsExample: Array<number> = [0.3, 0.3]
+  @State gradientStrengths: Array<number> = [0.3, 0.3]
 
   build() {
     Column() {
       Row()
         .width("100%")
         .height("100%")
-        .backgroundFilter(uiEffect.createFilter().colorGradient(this.colorsExample, this.positionsExample, this.strengthsExample))
+        // 为组件内容添加颜色渐变效果
+        .backgroundFilter(uiEffect.createFilter().colorGradient(this.gradientColors, this.gradientPositions, this.gradientStrengths))
     }
   }
 }
@@ -475,16 +500,16 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大光源离组件平面越远，可照射区域越大。<br/> x分量取值范围[-10, 10]，y分量取值范围[-10, 10]，z分量取值范围[0, 10]，超出范围会自动截断。 |
-| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，各元素取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
-| displacementMap | [Mask](#mask20) | 否 | 该参数暂不生效。 |
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大光源离组件平面越远，可照射区域越大。<br> x分量取值范围为[-10, 10]，y分量取值范围为[-10, 10]，z分量取值范围为[0, 10]，超出范围会自动截断。 |
+| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，RGBA各分量取值范围为[0, 1]，超出范围会自动截断。 |
+| lightIntensity | number | 是 | 光源强度，取值范围为[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| displacementMap | [Mask](#mask20) | 否 | 置换贴图参数，该参数暂不生效，不建议传入。不设置时对功能无影响。 |
 
 **返回值：**
 
 | 类型              | 说明                               |
 | ----------------- | --------------------------------- |
-| [filter](#filter) | 返回了具有内容光照效果的filter。 |
+| [Filter](#filter) | 返回了具有内容光照效果的Filter。 |
 
 **错误码：**
 
@@ -502,16 +527,16 @@ import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 @Entry
 @Component
 struct Index {
-  @State point2: common2D.Point3d = {
+  @State contentLightPosition: common2D.Point3d = {
     x: 0, y: 0, z: 2
   }
-  @State color2: common2D.Color = {
+  @State contentLightColor: common2D.Color = {
     red: 1,
     green: 1,
     blue: 1,
     alpha: 1
   }
-  @State lightIntensity2: number = 1
+  @State lightIntensity: number = 1
 
   build() {
     Column() {
@@ -520,7 +545,8 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntensity2))
+          // 为组件内容添加3D光照效果
+          .foregroundFilter(uiEffect.createFilter().contentLight(this.contentLightPosition, this.contentLightColor, this.lightIntensity))
       }
       .width('100%')
       .height('55%')
@@ -536,7 +562,7 @@ struct Index {
 ### edgeLight<sup>20+</sup>
 edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 
-为组件内容检测边缘，并添加边缘高亮效果。
+为组件内容检测边缘，并添加边缘高亮效果。该效果自动检测组件内容的边缘轮廓并叠加高亮描边。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -546,9 +572,9 @@ edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | alpha  | number         | 是   | 指定描边高光透明度，越大描边越明显。取值范围为[0, 1]。设置为0时无描边；设置小于0的值时，按值为0处理；设置大于1的值时，按值为1处理。|
-| color  | [Color](#color20) | 否   | 指定描边高光颜色，不设置时，将默认使用组件内容的原始颜色。如果有值，使用指定颜色。设置不为null时，Color中的alpha不发挥作用，仅使用rgb。|
-| mask  | [Mask](#mask20) | 否   | 指定描边高光强度。不设置时，默认组件内容全部有描边高光效果。|
-| bloom  | boolean | 否   | 指定描边是否发光。设置为true时，有描边和发光效果；设置为false时，只有描边效果无发光效果；不设置时，默认为true。小于16*16的图片默认只有描边效果，无发光效果，此参数失去作用。 |
+| color  | [Color](#color20) | 否   | 指定描边高光颜色，RGB各分量取值范围为[0, +∞)。当需要自定义描边高光颜色（如强调特定颜色效果）时传入此参数。不设置时，默认使用组件内容的原始颜色。设置了color参数时，Color中的alpha不发挥作用，仅使用rgb。|
+| mask  | [Mask](#mask20) | 否   | 指定描边高光强度遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制描边高光效果的作用区域（如局部高光而非全局高光）时传入此参数。不设置时，默认组件内容全部有描边高光效果。|
+| bloom  | boolean | 否   | 指定描边是否发光。当需要增强视觉效果时设置为true；当需要简洁描边效果时设置为false。不设置时默认为true（带发光效果）。小于16*16的图片默认只有描边效果，无发光效果，此参数失去作用。 |
 
 **返回值：**
 
@@ -567,14 +593,14 @@ edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
 struct EdgeLightExample {
-  @State colorExample: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0}
+  @State edgeLightColor: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0}
   
-  @State maskExample: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5)
+  @State edgeLightMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5)
   
   build() {
     Stack() {
@@ -582,7 +608,8 @@ struct EdgeLightExample {
       Row()  
         .width("100%")
         .height("100%")
-        .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, this.colorExample, this.maskExample, false))
+        // 为组件内容检测边缘，并添加边缘高亮效果
+        .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, this.edgeLightColor, this.edgeLightMask, false))
     }
   }
 }
@@ -600,8 +627,8 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| displacementMap | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
-| factor  | [number, number] | 否   | 指定水平、竖直方向扭曲程度系数，系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时，默认值为1.0。设置为0时，无扭曲效果。与mask相乘后共同决定扭曲程度。 |
+| displacementMap | [Mask](#mask20) | 是   | 置换贴图，用于控制扭曲的方向和强度。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createPixelMapMask](#createpixelmapmask20)等）创建Mask实例。与factor相乘后共同决定扭曲程度。|
+| factor  | [number, number] | 否   | 指定水平、竖直方向扭曲程度系数。当需要控制扭曲的方向和强度（如单向扭曲或差异扭曲）时传入此参数。系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时默认值为[1.0, 1.0]，表示水平和竖直方向均应用默认扭曲强度。设置为[0.0, 0.0]时，无扭曲效果。Mask的灰度值控制扭曲的方向和强度，factor与Mask灰度值相乘后共同决定最终的扭曲程度，即实际扭曲值 = Mask灰度值 × factor值。 |
 
 **返回值：**
 
@@ -620,12 +647,12 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
 struct DisplacementDistortExample {
-  @State maskExample: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0)
+  @State distortMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0)
   
   build() {
     Stack() {
@@ -633,7 +660,8 @@ struct DisplacementDistortExample {
       Row()  
         .width("100%")
         .height("100%")
-        .backgroundFilter(uiEffect.createFilter().displacementDistort(this.maskExample, [5.0, 5.0]))
+        // 为组件内容添加扭曲效果
+        .backgroundFilter(uiEffect.createFilter().displacementDistort(this.distortMask, [5.0, 5.0]))
     }
   }
 }
@@ -642,7 +670,7 @@ struct DisplacementDistortExample {
 ### maskDispersion<sup>20+</sup>
 maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
-为组件内容添加由置换贴图控制的色散效果。
+为组件内容添加由置换贴图控制的色散效果，模拟光线通过棱镜时的色散现象。典型应用场景包括炫彩特效、棱镜折射模拟等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -651,11 +679,11 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
+| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图，可通过自定义图片纹理实现对色散区域和强度的精细控制。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。|
 | alpha  | number         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
-| rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
-| gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
-| bFactor  | [number, number]         | 否   | X/Y方向上B通道的色散基础偏移，偏移越大蓝色色散效果越明显。取值范围同rFactor。|
+| rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移。当需要自定义红色通道的色散强度和方向时传入此参数，偏移越大红色色散效果越明显。不传入时默认值为[0.0, 0.0]，无R通道色散偏移。每个方向上的取值范围为[-1.0, 1.0]，超出范围自动截断。|
+| gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移。当需要自定义绿色通道的色散强度和方向时传入此参数。不传入时默认值为[0.0, 0.0]，无G通道色散偏移。取值范围同rFactor，为[-1.0, 1.0]，超出范围自动截断。|
+| bFactor  | [number, number]         | 否   | X/Y方向上B通道的色散基础偏移。当需要自定义蓝色通道的色散强度和方向时传入此参数。不传入时默认值为[0.0, 0.0]，无B通道色散偏移。取值范围同rFactor，为[-1.0, 1.0]，超出范围自动截断。|
 
 **返回值：**
 
@@ -681,7 +709,7 @@ import {common} from '@kit.AbilityKit'
 @Entry
 @Component
 struct MaskDispersion {
-  @State pixelMap_: PixelMap | null = null
+  @State pixelMap: PixelMap | null = null
   @State src: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
   @State dst: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
   @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 }
@@ -692,23 +720,30 @@ struct MaskDispersion {
       let buffer = val.buffer.slice(0, val.buffer.byteLength)
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
-        this.pixelMap_ = pixelMap
+        this.pixelMap = pixelMap
       })
     })
   }
   
   build() {
-    Stack() {
-      Image($rawfile('test.png'))
-      Row()  
-        .width("100%")
-        .height("100%")
-        .backgroundFilter(uiEffect.createFilter().maskDispersion(
-          uiEffect.Mask.createPixelMapMask(this.pixelMap_, this.src, this.dst, this.fillColor),
-          1.0,
-          [0.5, -0.5],
-          [0.0, 0.0],
-          [-0.5, 0.5]))
+    if (this.pixelMap) {
+      Stack() {
+        Image($rawfile('test.png'))
+        Row()  
+          .width('100%')
+          .height('100%')
+          // 为组件内容添加由置换贴图控制的色散效果
+          .backgroundFilter(uiEffect.createFilter().maskDispersion(
+            uiEffect.Mask.createPixelMapMask(this.pixelMap!, this.src, this.dst, this.fillColor),
+            1.0,
+            [0.5, -0.5],
+            [0.0, 0.0],
+            [-0.5, 0.5]))
+      }
+    } else {
+      Stack() {
+        Image($rawfile('test.png'))
+      }
     }
   }
 }
@@ -717,7 +752,7 @@ struct MaskDispersion {
 ### maskTransition<sup>20+</sup>
 maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
-为组件内容提供基于[Mask](#mask20)的转场效果。
+为组件内容提供基于[Mask](#mask20)的转场效果，可用于页面切换动画、场景过渡效果等场景。
 
 不建议在屏幕尺寸发生改变的过程中使用此效果，如：旋转屏幕，折叠屏开合屏幕等。
 
@@ -728,10 +763,10 @@ maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alphaMask     | [Mask](#mask20)       | 是   | 通过遮罩指定转场效果的作用区域。|
-| factor        | number                | 否   | 转场过渡系数，取值范围为[0.0, 1.0]，默认值为1.0。factor值越大画面越接近转场后页面，超出范围自动截断到[0.0, 1.0]。 |
-| inverse       | boolean               | 否   | 是否启用反向转场，true表示启用，false表示不启用，默认值为false。 |
- 
+| alphaMask     | [Mask](#mask20)       | 是   | 通过遮罩指定转场效果的作用区域。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。Mask的灰度值决定转场效果的作用程度，灰度值越大的区域转场效果越明显。|
+| factor        | number                | 否   | 转场过渡系数。当需要控制转场进度（如动画中途或动态调整）时传入此参数，值越大画面越接近转场后页面。不设置时默认值为1.0（转场完成状态）。取值范围为[0.0, 1.0]，超出范围自动截断到[0.0, 1.0]。 |
+| inverse       | boolean               | 否   | 是否启用反向转场。当需要反向转场效果（如从后页面向前页面过渡）时设置为true；当需要正向转场效果（从前页面向后页面过渡）时设置为false。默认值为false（正向转场）。 |
+
 **返回值：**
 
 | 类型              | 说明                               |
@@ -763,9 +798,10 @@ struct Index {
     Stack() {
       // 转场前页面
       Image($r("app.media.before")).width("100%").height("100%")
-        if (this.enterNewPage){
+        if (this.enterNewPage) {
           // 转场后页面
           Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
+            // 为组件内容提供基于Mask的转场效果
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
                 uiEffect.Mask.createRadialGradientMask(this.rippleMaskCenter, this.rippleMaskRadius,this.rippleMaskRadius, [[1, 0], [1, 1]]),
@@ -794,7 +830,7 @@ struct Index {
 ### directionLight<sup>20+</sup>
 directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
 
-为组件内容提供基于[Mask](#mask20)和平行光的光照效果。
+为组件内容提供基于[Mask](#mask20)和平行光的光照效果。平行光从统一方向照射组件平面，所有光线方向一致，不因距离衰减，光照强度在组件各处均匀分布，适合模拟太阳光等远距离光源场景。与contentLight的点光源不同，平行光无需指定光源具体位置。通过Mask可控制光照细节，通过factor可结合高度图增强浮雕效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -803,11 +839,11 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| direction  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12)         | 是   | 方向光的入射方向。|
+| direction  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12)         | 是   | 入射光的方向，通过三维坐标表示光线的入射方向。|
 | color  | [Color](#color20)         | 是   | 光照颜色。|
-| intensity  | number         | 是   | 光照强度，非负数。|
-| mask  | [Mask](#mask20)         | 否   | 置换贴图，用于描述二维图像表面的三维细节，通过法线或高度图增强局部细节和光照反射效果，若输入为高度图，须与factor参数配合使用。默认为空，表现为全局无细节的平面光照效果。|
-| factor  | number         | 否   | 采样缩放系数。默认值为null，mask作为法线图采样；非默认值时，mask作为高度图采样，实际高度值为mask的采样值与factor的乘积。|
+| intensity  | number         | 是   | 光照强度，取值范围为[0, +∞)，数值越大光源亮度越大。|
+| mask  | [Mask](#mask20)         | 否   | 置换贴图，用于描述二维图像表面的三维细节。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要增强局部细节和光照反射效果（如浮雕、凹凸纹理）时传入此参数。通过法线或高度图实现，若输入为高度图需与factor参数配合使用。不设置时默认为空，表现为全局无细节的平面光照效果。|
+| factor  | number         | 否   | 采样缩放系数。当使用高度图作为mask且需要控制高度缩放时传入此参数。不设置时mask作为法线图采样直接使用；设置了值时mask作为高度图采样，实际高度值为mask采样值与factor的乘积。|
 
 **返回值：**
 
@@ -844,6 +880,7 @@ struct Index {
           .width("100%")
           .height("100%")
           .backgroundColor(this.color)
+          // 为组件内容提供基于Mask和平行光的光照效果
           .backgroundFilter(uiEffect.createFilter()
             .directionLight(
               {x:0, y:0, z:-1}, {red:2.0, green:2.0, blue:2.0, alpha:1.0}, 0.5,
@@ -873,7 +910,7 @@ variableRadiusBlur(radius: number, radiusMap: Mask): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | radius  | number         | 是   | 最大模糊半径，单位为px，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| radiusMap  |  [Mask](#mask20)    | 是   | 代表模糊程度的Mask对象。|
+| radiusMap  |  [Mask](#mask20)    | 是   | 代表模糊程度的Mask对象。Mask的灰度值代表对应位置的模糊程度，灰度值越大越模糊。|
 
 **返回值：**
 
@@ -892,20 +929,21 @@ variableRadiusBlur(radius: number, radiusMap: Mask): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct VariableRadiusBlurExample {
-  @State maskExample: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
+  @State blurMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
 
   build() {
     Stack() {
       Image($rawfile('test.png'))
       Row()
-        .width("100%")
-        .height("100%")
-        .backgroundFilter(uiEffect.createFilter().variableRadiusBlur(64, this.maskExample))
+        .width('100%')
+        .height('100%')
+        // 为组件内容提供基于Mask的渐变模糊效果
+        .backgroundFilter(uiEffect.createFilter().variableRadiusBlur(64, this.blurMask))
     }
   }
 }
@@ -915,7 +953,7 @@ struct VariableRadiusBlurExample {
 
 heatDistortion(param: HeatDistortionEffectParam): Filter
 
-应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲。
+应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲效果。
 
 **起始版本：** 26.0.0
 
@@ -955,6 +993,7 @@ struct HeatDistortionExample {
       Image($r('app.media.test'))
         .width('100%')
         .height('100%')
+        // 应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲
         .foregroundFilter(uiEffect.createFilter().heatDistortion({
           intensity: this.intensity,
           noiseScale: this.noiseScale,
@@ -1032,6 +1071,7 @@ struct BlurBubblesRiseExample {
       Image($r('app.media.test'))
         .width('100%')
         .height('100%')
+        // 应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果
         .foregroundFilter(uiEffect.createFilter().blurBubblesRise({
           blurIntensity: this.blurIntensity,
           mixStrength: this.mixStrength,
@@ -1086,12 +1126,12 @@ struct BlurBubblesRiseExample {
 | TOP  | 1 | 从顶部进行飞入飞出形变。 |
 
 ## VisualEffect
-VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](js-apis-uiEffect.md#uieffectcreateeffect)创建一个VisualEffect实例。
+VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。在调用VisualEffect的方法前，需要先通过[createEffect](js-apis-uiEffect.md#uieffectcreateeffect)创建一个VisualEffect实例。
 
 ### backgroundColorBlender
 backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
-将混合器添加至组件上以改变组件背景颜色，具体的更改效果由输入决定，目前仅支持提亮混合器。
+用于改变组件背景颜色的blender，目前仅支持提亮混合器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1111,9 +1151,12 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 **示例：**
 
 ```ts
+import { uiEffect } from '@kit.ArkGraphics2D'
 let blender : uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
     positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+let visualEffect = uiEffect.createEffect();
+// 将混合器添加至组件上以改变组件背景颜色
 visualEffect.backgroundColorBlender(blender)
 ```
 
@@ -1129,9 +1172,9 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的3D位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大，光源离组件平面越远，可照射区域越大。<br/> x轴分量取值范围[-10, 10]，y轴分量取值范围[-10, 10]，z轴分量取值范围[0, 10]，超出范围会自动截断。 |
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的3D位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大，光源离组件平面越远，可照射区域越大。<br> x轴分量取值范围为[-10, 10]，y轴分量取值范围为[-10, 10]，z轴分量取值范围为[0, 10]，超出范围会自动截断。 |
 | lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，各元素取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| lightIntensity | number | 是 | 光源强度，取值范围为[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
 | borderWidth | number | 是 | 组件边框的受光宽度，取值范围为[0.0, 30.0]，超出范围会自动截断。设置为0.0时，组件边框无光照效果，数值越大，光可照亮的区域越宽。 |
 
 **返回值：**
@@ -1155,14 +1198,14 @@ import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 @Entry
 @Component
 struct Index {
-  @State point1:common2D.Point3d = {
-    x:0,y:0,z:2
+  @State borderLightPosition: common2D.Point3d = {
+    x: 0, y: 0, z: 2
   }
-  @State color1:common2D.Color = {
-    red:1,green:1,blue:1,alpha:1
+  @State borderLightColor: common2D.Color = {
+    red: 1, green: 1, blue: 1, alpha: 1
   }
-  @State lightIntensity1:number = 1
-  @State borderWidth:number = 20
+  @State lightIntensity: number = 1
+  @State borderWidth_: number = 20
 
   build() {
     Column() {
@@ -1175,8 +1218,9 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntensity1,
-            this.borderWidth))
+          // 为圆角矩形组件边框添加3D光照效果
+          .visualEffect(uiEffect.createEffect().borderLight(this.borderLightPosition, this.borderLightColor, this.lightIntensity,
+            this.borderWidth_))
       }
       .width('100%')
       .height('55%')
@@ -1201,10 +1245,10 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围0到12，每个颜色值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
+| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围为0到12，每个颜色值取值范围需大于等于0，无上限限制。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
 | positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的位置。数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
-| strengths  | Array\<number>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
-| alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha遮罩。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
+| strengths  | Array\<number>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值需大于等于0，无上限限制。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
+| alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制颜色渐变效果的透明度分布（如局部透明或动态透明效果）时传入此参数。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
 
 **返回值：**
 
@@ -1222,7 +1266,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 
 **示例：**
 ```ts
-import { common2D, uiEffect } from "@kit.ArkGraphics2D"
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -1230,6 +1274,7 @@ struct ColorGradientExample {
   build() {
     Stack() {
       Stack() {}
+      // 此方法为组件添加颜色渐变效果
       .visualEffect(uiEffect.createEffect()
         .colorGradient(
           [
@@ -1261,7 +1306,7 @@ struct ColorGradientExample {
 
 liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask, brightnessParam?: BrightnessParam): VisualEffect
 
-此方法为组件添加材质效果。
+此方法为组件添加材质效果。材质效果通过模拟物理材质的光学特性（折射、反射）和动态扰动效果，实现玻璃、金属等材质的视觉呈现。可用于模拟玻璃质感UI、流体材质动画、磨砂玻璃效果等场景。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1272,9 +1317,9 @@ liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMas
 | 参数名          | 类型                                                      | 必填 | 说明                                                         |
 | --------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | param           | [LiquidMaterialEffectParam](#liquidmaterialeffectparam22) | 是   | 材质所需相关变量，用于控制材质显示，包含材质开关、折射系数、反射系数和扰动系数。 |
-| useEffectMask   | [Mask](#mask20)                                           | 是   | 声明是否使用模糊缓存。使用createUseEffectMask(true)创建的Mask实例使用模糊缓存；使用createUseEffectMask(false)创建的Mask实例不使用模糊缓存。 |
-| distortMask     | [Mask](#mask20)                                           | 否   | 材质扰动效果需要的扰动纹理，由使用pixelMap创建Mask实例时的图片纹理决定。<br>当材质的扰动系数不为0时，需要为材质扰动预先设置一张纹理，否则无扰动效果。<br>当材质的扰动系数为0或者此参数不填时，无扰动效果。 |
-| brightnessParam | [BrightnessParam](#brightnessparam22)                     | 否   | 为材质增加提亮效果。默认不添加提亮效果。                     |
+| useEffectMask   | [Mask](#mask20)                                           | 是   | 声明是否使用模糊缓存。使用createUseEffectMask(true)创建的Mask实例使用模糊缓存，适用于需要复用模糊结果的场景以提升性能；使用createUseEffectMask(false)创建的Mask实例不使用模糊缓存，适用于模糊效果频繁变化的场景。 |
+| distortMask     | [Mask](#mask20)                                           | 否   | 材质扰动效果需要的扰动纹理，由pixelMap创建的Mask实例的图片纹理决定扰动效果的图案和方向。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。当材质的扰动系数（distortFactor）不为0时，需要设置此参数否则无扰动效果；当材质的扰动系数为0或此参数不设置时，无扰动效果。默认不设置。 |
+| brightnessParam | [BrightnessParam](#brightnessparam22)                     | 否   | 为材质增加提亮效果。当需要增强材质的视觉亮度（如高亮显示、发光效果）时传入此参数。不设置时默认不添加提亮效果，材质保持原始亮度。                     |
 
 **返回值：**
 
@@ -1308,7 +1353,7 @@ struct Index {
   @State tintColorB: number = 1.;
   @State tintColorA: number = 1.;
 
-  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+  private getMaterialVisualEffect(): uiEffect.VisualEffect {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
       enable: true,
@@ -1334,7 +1379,7 @@ struct Index {
           .height(553 + 'px')
           .width(553 + 'px')
           .borderRadius(12)
-          .visualEffect(this.GetMaterialVisualEffect())
+          .visualEffect(this.getMaterialVisualEffect())
       }
       .backgroundEffect({
         radius: 15,
@@ -1351,14 +1396,14 @@ struct Index {
 
 distortionCollapse(distortionParam: DistortionParam): VisualEffect
 
-为组件添加非线性形变效果。
+为组件添加非线性形变效果。典型应用场景包括页面坍塌动画、窗口关闭特效、卡片翻转动画、场景过渡效果等。
 
 > **说明：**
 >
 > - 该视效支持控件范围外的绘制，但仍会受到父控件Clip的影响。
 > - 因包含前景Filter，未与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时不兼容组件自身及子组件的部分视效（如[BrightnessBlender](#brightnessblender)或[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)）。
 > - 支持对系统材质进行扭曲，但是与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时，会导致系统材质的背景扭曲。
-> - 调用该接口时，会创建与形变后区域等大的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再对画布上的已有内容进行形变绘制。使用该实现方式时，如果不与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用，将导致[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)或[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)等需要截屏的接口无法截取到正确的画面。
+> - 调用该接口时，会创建与形变后区域等大的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再对画布上绘制的组件内容进行形变绘制。使用该实现方式时，如果不与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用，将导致[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)或[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)等需要截屏的接口无法截取到正确的画面。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1432,14 +1477,14 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | number                     | 否   | 否   | 灰度调整的比例。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HdrBrightnessBlender<sup>20+</sup>
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
@@ -1454,7 +1499,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)创建一个HdrDarkenBlender实例。
 
-**起始版本：**  26.0.0
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1464,8 +1509,8 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default |
-| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。|
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
+| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 
 ## Color<sup>20+</sup>
@@ -1476,28 +1521,28 @@ RGBA格式的颜色描述。
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| red   | number | 是   | 是   | 颜色的R分量（红色）。值大于等于0，当值小于0时无效。 |
-| green | number | 是   | 是   | 颜色的G分量（绿色）。值大于等于0，当值小于0时无效。|
-| blue  | number | 是   | 是   | 颜色的B分量（蓝色）。值大于等于0，当值小于0时无效。 |
-| alpha | number | 是   | 是   | 颜色的A分量（透明度）。值大于等于0，当值小于0时无效。 |
+| red   | number | 是   | 是   | 颜色的R分量（红色）。 |
+| green | number | 是   | 是   | 颜色的G分量（绿色）。|
+| blue  | number | 是   | 是   | 颜色的B分量（蓝色）。 |
+| alpha | number | 是   | 是   | 颜色的A分量（透明度）。 |
 
 ## LiquidMaterialEffectParam<sup>22+</sup>
 
-材质的各项参数及其用途的详细说明。
+材质效果参数，用于控制材质的折射、反射、扰动和叠加颜色等显示属性。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称             | 类型                             | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enable           | boolean                          | 否   | 否   | 是否开启材质效果。 true表示开启材质效果，false表示关闭材质效果。 |
-| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
+| enable           | boolean                          | 否   | 否   | 是否开启材质效果。true表示开启，false表示关闭。 |
+| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
 | distortFactor    | number                           | 否   | 否   | 扰动效果系数。值大于等于0，值小于0时表示无扰动效果。         |
 | rippleProgress   | number                           | 否   | 否   | 水波效果进度。值大于等于0，值小于0时表示无水波效果。         |
-| ripplePosition   | Array<[number, number]>          | 否   | 是   | 水波效果作用的位置。数组中每个位置包含x和y两个维度，最多支持10个位置坐标传入。传入超出10个位置坐标则整体无效。 |
-| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
-| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
-| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
-| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。 |
+| ripplePosition   | Array<[number, number]>          | 否   | 是   | 水波效果作用的位置。当需要在多个指定位置同时触发水波效果时传入此参数。不传入时默认无水波位置，水波效果不生效。数组中每个位置包含x和y两个维度，坐标为归一化坐标，[0, 0]表示左上角，[1, 1]表示右下角。最多支持10个位置坐标，超出则整体无效。 |
+| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围为[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
+| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围为[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
+| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
+| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。 |
 
 ## BrightnessParam<sup>22+</sup>
 
@@ -1507,23 +1552,23 @@ RGBA格式的颜色描述。
 
 | 名称          | 类型                     | 只读 | 可选 | 说明                                                         |
 | ------------- | ------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
-| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
-| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
-| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
+| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
+| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
+| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
+| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
 
 
 ## Mask<sup>20+</sup>
-Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。
+Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。不同类型的Mask提供不同的灰度分布模式，如波环遮罩、径向渐变、像素图遮罩等。
 
 ### createRippleMask<sup>20+</sup>
 static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
 
-通过输入波环圆心的位置、半径和宽度创建波环遮罩效果Mask实例，具体的效果由输入的参数决定。
+通过输入波环圆心的位置、半径和宽度创建波环遮罩效果Mask实例。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1532,10 +1577,10 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是 | 设置波环圆心在组件上的位置，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，超出边界会在实现时自动截断。 |
-| radius | number | 是 | 设置波环的半径，半径为1等于组件的高度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| width | number | 是 | 设置波环的宽度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| offset | number | 否 | 设置波峰位置的偏移。<br/>默认值为0，表示波峰在波环的正中心；<br/>-1.0表示波峰在波环的最内侧；<br/>1.0表示波峰在波环的最外侧。<br/>取值范围[-1, 1]，超出边界会在实现时自动截断。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是 | 设置波环圆心在组件上的位置，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，超出边界会在实现时自动截断。 |
+| radius | number | 是 | 设置波环的半径，使用归一化值。半径为1时，波环半径等于组件高度。<br>取值范围为[0, 10]，超出边界会在实现时自动截断。 |
+| width | number | 是 | 设置波环的宽度，使用归一化值。宽度为1时，波环宽度等于组件高度。。<br>取值范围为[0, 10]，超出边界会在实现时自动截断。 |
+| offset | number | 否 | 设置波峰位置的偏移。<br>默认值为0，表示波峰在波环的正中心；<br>-1.0表示波峰在波环的最内侧；<br>1.0表示波峰在波环的最外侧。<br>取值范围为[-1, 1]，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1554,13 +1599,13 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 **示例：**
 
 ```ts
-  let mask = uiEffect.Mask.createRippleMask({x:0.5, y:1.0}, 0.5, 0.3, 0.0);
+  let mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 1.0}, 0.5, 0.3, 0.0);
 ```
 
 ### createPixelMapMask<sup>20+</sup>
 static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect, fillColor?: Color): Mask
 
-通过输入的[pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)pixelMap的待绘制区域、挂载节点的绘制区域和绘制区域外填充的颜色创建具有缩放效果的Mask实例，具体的效果由输入的参数决定。
+通过输入的[pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)，以及pixelMap的待绘制区域、挂载节点的绘制区域和绘制区域外填充的颜色创建具有缩放效果的Mask实例。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1570,15 +1615,15 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
 | pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[图片开发指导](../../media/image/image-overview.md)。   |
-| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | pixelMap的待绘制区域。图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。right需大于left，bottom需大于top。 |
-| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | pixelMap在mask挂载的节点上的绘制区域。节点最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。right需大于left，bottom需大于top。 |
+| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | pixelMap的待绘制区域。图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。right需大于left，bottom需大于top，违反约束时效果不生效。 |
+| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | pixelMap在mask挂载的节点上的绘制区域。节点最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。right需大于left，bottom需大于top，违反约束时效果不生效。 |
 | fillColor | [Color](#color20) | 否   |  节点上在pixelMap绘制区域之外的区域填充的颜色，各元素取值范围为[0, 1]，默认透明色，小于0的转为0，大于1的转为1。 |
 
 **返回值：**
 
 | 类型                          | 说明                                               |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | 返回具有pixelMap缩放效果的Mask。 |
+| [Mask](#mask20) | 返回基于pixelMap创建的Mask实例。 |
 
 **错误码：**
 
@@ -1591,11 +1636,11 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { uiEffect, common2D } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit'
 
-const color = new ArrayBuffer(96);
+const colorBuffer = new ArrayBuffer(96);
 let opts : image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
@@ -1604,7 +1649,7 @@ let opts : image.InitializationOptions = {
     width: 6
   }
 }
-image.createPixelMap(color, opts).then((pixelMap) => {
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   let srcRect : common2D.Rect = {
     left: 0,
     top: 0,
@@ -1679,7 +1724,11 @@ struct Index {
   @State tintColorG: number = 1.;
   @State tintColorB: number = 1.;
   @State tintColorA: number = 1.;
-  @State pixelMapDistort: image.PixelMap | undefined = this.getPixelMap();
+  @State pixelMapDistort: image.PixelMap | undefined = undefined;
+
+  aboutToAppear(): void {
+    this.pixelMapDistort = this.getPixelMap();
+  }
 
   private getPixelMap(): image.PixelMap | undefined {
     try {
@@ -1690,7 +1739,11 @@ struct Index {
       if (!imageSource) {
         return undefined;
       }
-      const pixelMap: image.PixelMap = imageSource.createPixelMapSync();
+      const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      if (!pixelMap) {
+        imageSource.release();
+        return undefined;
+      }
       imageSource.release();
       return pixelMap;
     } catch (err) {
@@ -1698,8 +1751,12 @@ struct Index {
     }
   }
 
-  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+  private getMaterialVisualEffect(): uiEffect.VisualEffect {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    let distortMask: uiEffect.Mask | undefined = undefined;
+    if (this.pixelMapDistort) {
+      distortMask = uiEffect.Mask.createPixelMapMask(this.pixelMapDistort);
+    }
     effect.liquidMaterial({
       enable: true,
       distortProgress : this.distortProgress,
@@ -1712,7 +1769,7 @@ struct Index {
       ripplePosition: undefined,
     },
       uiEffect.Mask.createUseEffectMask(true),
-      uiEffect.Mask.createPixelMapMask(this.pixelMapDistort), // createImageMask使用示例
+      distortMask
       );
     return effect;
   }
@@ -1725,7 +1782,7 @@ struct Index {
           .height(553 + 'px')
           .width(553 + 'px')
           .borderRadius(12)
-          .visualEffect(this.GetMaterialVisualEffect())
+          .visualEffect(this.getMaterialVisualEffect())
       }
       .backgroundEffect({
         radius: 15,
@@ -1741,7 +1798,7 @@ struct Index {
 ### createRadialGradientMask<sup>20+</sup>
 static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
 
-通过输入椭圆中心点的位置、长短轴和形状参数创建椭圆遮罩效果[Mask](#mask20)实例，具体的效果由输入的参数决定。
+通过输入椭圆中心点的位置、长短轴和形状参数创建椭圆遮罩效果[Mask](#mask20)实例。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1750,10 +1807,10 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusX | number  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusY | number  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br/>位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| radiusX | number  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| radiusY | number  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
@@ -1802,11 +1859,11 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置单波波源的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| width | number  | 是 | 设置单波圆环的宽度。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| propagationRadius | number  | 是 | 设置单波圆环的扩散外径。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| blurRadius | number  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| turbulenceStrength | number  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br/>取值范围[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置单波波源的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| width | number  | 是 | 设置单波圆环的宽度。<br>取值范围为[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| propagationRadius | number  | 是 | 设置单波圆环的扩散外径。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| blurRadius | number  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br>取值范围为[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| turbulenceStrength | number  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br>取值范围为[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1847,7 +1904,7 @@ struct WaveGradientMaskExample {
 
 static createUseEffectMask(useEffect: boolean): Mask
 
-创建并设置[Mask](#mask20)实例是否使用模糊缓存。
+创建并设置[Mask](#mask20)实例是否使用模糊缓存。此Mask实例专为[liquidMaterial](#liquidmaterial22)方法的useEffectMask参数设计，用于声明材质效果是否使用模糊缓存以提升性能。将此Mask实例用于其他Filter或VisualEffect方法时，useEffect属性可能不生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1863,7 +1920,7 @@ static createUseEffectMask(useEffect: boolean): Mask
 
 | 类型            | 说明                             |
 | --------------- | -------------------------------- |
-| [Mask](#mask20) | 返回是否使用模糊缓存标记的Mask。 |
+| [Mask](#mask20) | 返回标记是否使用模糊缓存的Mask实例。 |
 
 **错误码：**
 
@@ -1892,7 +1949,7 @@ struct Index {
   @State tintColorB: number = 1.;
   @State tintColorA: number = 1.;
 
-  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+  private getMaterialVisualEffect(): uiEffect.VisualEffect {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
         enable: true,
@@ -1918,7 +1975,7 @@ struct Index {
           .height(553 + 'px')
           .width(553 + 'px')
           .borderRadius(12)
-          .visualEffect(this.GetMaterialVisualEffect())
+          .visualEffect(this.getMaterialVisualEffect())
       }
       .backgroundEffect({
         radius: 15,
@@ -1932,7 +1989,7 @@ struct Index {
 ```
 
 ## BrightnessBlenderParam
-BrightnessBlender参数列表。
+BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1940,14 +1997,14 @@ BrightnessBlender参数列表。
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | number                     | 否   | 否   | 灰度调整的比例。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HeatDistortionEffectParam
 
@@ -1963,10 +2020,10 @@ BrightnessBlender参数列表。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| intensity | number | 否 | 否 | 热浪扭曲的强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无扭曲，1表示最大扭曲程度。 |
-| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br/>取值范围[0.1, 5.0]，超出边界会在实现时自动截断。<br/>值越大，噪声纹理越细腻。 |
-| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>值越大，向上运动越明显。 |
-| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+| intensity | number | 否 | 否 | 热浪扭曲的强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0表示无扭曲，1表示最大扭曲程度。 |
+| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br>取值范围为[0.1, 5.0]，超出边界会在实现时自动截断。<br>值越大，噪声纹理越细腻。 |
+| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>值越大，向上运动越明显。 |
+| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
 
 ## BlurBubblesRiseEffectParam
 
@@ -1982,7 +2039,7 @@ BrightnessBlender参数列表。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无模糊，1表示最大模糊程度。 |
-| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应原图，1对应模糊后的图像。 |
-| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
-| maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br/>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |
+| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0表示无模糊，1表示最大模糊程度。 |
+| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应原图，1对应模糊后的图像。 |
+| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
+| maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |

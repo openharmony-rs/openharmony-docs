@@ -18,9 +18,9 @@ A float view is applicable to scenarios where application content needs to be co
 
 **Comparison between the float view and floating ball**:
 
-- Similarities: Both the float view and [floating ball](js-apis-floatingBall.md) are special types of application auxiliary windows that can remain displayed on the foreground even after the application's main window and corresponding UIAbility transition to the background. They can be used to continue displaying the UI after the application transitions to the background.
+- Similarities: Both the float view and [floating ball](js-apis-floatingBall.md) are special types of application auxiliary windows that can remain displayed on the foreground even after the application's main window and corresponding UIAbility (application component) transition to the background. They can be used to continue displaying the UI after the application transitions to the background.
 - Differences:
-  - They have different display forms: A floating ball is displayed as a small rounded-corner bar and is suitable for displaying key information. A float view is displayed as a small window with a relatively large display area, which can continuously display application content or provide shortcut operations.
+  - They have different display forms: A floating ball is displayed as a small capsule-type bar and is suitable for displaying key information. A float view is displayed as a small window with a relatively large display area, which can continuously display application content or provide shortcut operations.
   - The floating ball can only be displayed on the edge, while the float view does not have this restriction.
   - The floating ball template is fixed, and the UI cannot be customized for applications. The float view also has a template, and the float view is managed by the system and its UI is drawn in a unified manner. However, it provides a drawing area for applications to load specified page content.
 
@@ -71,6 +71,7 @@ Checks whether the current device supports the float view feature.
 **Example**
 
 ```ts
+// Check whether the current device supports the float view feature.
 let enable: boolean = floatView.isFloatViewEnabled();
 console.info('Float view enabled is: ' + enable);
 ```
@@ -91,7 +92,7 @@ Creates a float view controller. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| config | [FloatViewConfiguration](#floatviewconfiguration) | Yes| Parameter for creating a float view controller. This parameter and the context for constructing this parameter cannot be null or undefined. Otherwise, error code 401 is thrown. Error code 1300016 is thrown for other parameter exceptions.|
+| config | [FloatViewConfiguration](#floatviewconfiguration) | Yes| Parameter for creating a float view controller. This parameter and its **context** field cannot be **null** or **undefined**. Otherwise, error code 401 is thrown. Error code 1300016 is thrown for other parameter exceptions.|
 
 **Return value**
 
@@ -114,6 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import { floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -122,18 +124,20 @@ struct Index {
   aboutToAppear(): void {
     // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // Create a float view configuration object.
     let config: floatView.FloatViewConfiguration = {
       context: ctx,
       templateType: floatView.FloatViewTemplateType.ROUNDED_RECTANGLE
     };
     try {
+      // Create a float view controller.
       floatView.create(config).then((data: floatView.FloatViewController) => {
         this.floatViewController = data;
         console.info(`Succeeded in creating float view controller. Data: ${data}`);
       }).catch((err: BusinessError): void => {
         console.error(`Failed to create float view controller. Cause:${err.code}, message:${err.message}`);
       });
-    } catch(e) {
+    } catch (e) {
       console.error(`Failed to create float view controller. Cause:${e.code}, message:${e.message}`);
     }
   }
@@ -164,8 +168,8 @@ Binds the float view and the floating ball. You need to create the [float view c
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | Yes| Float view controller.|
-| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | Yes| Floating ball controller.|
+| floatViewController | [FloatViewController](#floatviewcontroller) | Yes| Float view controller, which is used to manage operations such as starting and stopping the float view and listening the status of the float view.|
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | Yes| Floating ball controller, which is used to manage operations such as starting and stopping the floating ball and listening the status of the floating ball.|
 | floatingBallParams | [floatingBall.FloatingBallParams](js-apis-floatingBall.md#floatingballparams) | Yes| Floating ball parameters. The parameters set during binding will overwrite the parameters saved when the floating ball controller is started.|
 
 **Return value**
@@ -191,7 +195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Entry.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { floatingBall } from '@kit.ArkUI';
+import { floatingBall, floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -209,13 +213,14 @@ struct Index {
 
     try {
       if (this.floatViewController && this.floatingBallController) {
+        // Bind the float view and the floating ball.
         floatView.bind(this.floatViewController!, this.floatingBallController!, floatingBallParams).then(() => {
           console.info('Succeeded in binding float view and floating ball.');
         }).catch((err: BusinessError): void => {
           console.error(`Failed to bind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
-    } catch(e) {
+    } catch (e) {
       console.error(`Failed to bind float view and floating ball. Cause:${e.code}, message:${e.message}`);
     }
   }
@@ -238,8 +243,8 @@ Unbinds the float view and the floating ball. The unbinding can be performed onl
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | Yes| Float view controller.|
-| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | Yes| Floating ball controller.|
+| floatViewController | [FloatViewController](#floatviewcontroller) | Yes| Float view controller, which is used to manage operations such as starting and stopping the float view and listening the status of the float view.|
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | Yes| Floating ball controller, which is used to manage operations such as starting and stopping the floating ball and listening the status of the floating ball.|
 
 **Return value**
 
@@ -262,7 +267,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Entry.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { floatingBall } from '@kit.ArkUI';
+import { floatingBall, floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -275,13 +280,14 @@ struct Index {
     try {
       // Use the float view controller and floating ball controller passed during the binding.
       if (this.floatViewController && this.floatingBallController) {
+        // Unbind the float view and the floating ball.
         floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
         }).catch((err: BusinessError): void => {
           console.error(`Failed to unbind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
-    } catch(e) {
+    } catch (e) {
       console.error(`Failed to unbind float view and floating ball. Cause:${e.code}, message:${e.message}`);
     }
   }
@@ -326,6 +332,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Obtain the float view limit of the rounded rectangle template.
 let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits(floatView.FloatViewTemplateType.ROUNDED_RECTANGLE);
 console.info('Float view limits: ' + JSON.stringify(limits));
 ```
@@ -342,8 +349,9 @@ Provides parameter configuration required for creating a float view controller.
 
 | Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| No| Context environment.|
+| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| No| Context, which is used to associate the main window of the application when creating a float view controller. A valid **UIAbilityContext** instance must be passed.|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | No| No| Template type of the float view.|
+| isConfirmOnClose | boolean | No| Yes| Whether to require user confirmation when the close button is clicked. The value **true** indicates that user confirmation is required when the close button is clicked. Otherwise, user confirmation is not required. The default value is **false**.|
 
 ## TemplateProperty
 
@@ -374,6 +382,10 @@ setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 Loads the content of a page, with its path specified in the current project, for the float view, and transfers the state attribute to the page through **LocalStorage**. This API uses a promise to return the result.
 
+You are advised to call this API before the float view is started. If called repeatedly, this API will destroy the existing page content (**UIContent**) before loading new content. Exercise caution when using it.
+
+This API does not support loading cross-package pages. If needed, use the [setUIContextByName()](#setuicontextbyname) API instead.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -384,7 +396,7 @@ Loads the content of a page, with its path specified in the current project, for
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| path | string | Yes| Path of the page content which needs to be loaded to the window. The path needs to be configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
+| path | string | Yes| Path of the page content which needs to be loaded to the window. The path needs to be configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file. If the path is invalid or does not meet the preceding requirements, error code 1300016 will be thrown.|
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No| Page-level UI state storage unit, which is used to transfer the state attribute for the page. By default, the value is empty.|
 
 **Return value**
@@ -406,14 +418,17 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // Obtain floatViewController using floatView.create(). For details, see the floatView.create() sample.
+  // Set the page content path of the float view.
   this.floatViewController?.setUIContext('pages/Index').then(() => {
     console.info('Succeeded in setting UI context.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set UI context. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -423,6 +438,8 @@ try {
 setUIContextByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this window, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API before the float view is started. If called repeatedly, this API will destroy the existing page content (**UIContent**) before loading new content. Exercise caution when using it.
 
 **Since**: 26.0.0
 
@@ -434,7 +451,7 @@ Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| name | string | Yes| Name of the named route page.|
+| name | string | Yes| Name of the named route page, which is used to load the content of the specified named route page. The value must be the same as the name specified by the **routeName** parameter in the **@Entry** decorator.|
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No| Page-level UI state storage unit, which is used to transfer the state attribute for the page. By default, the value is empty.|
 
 **Return value**
@@ -459,6 +476,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 // Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { entryName } from './Hello'; // Import the named route page.
+import { floatView } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -468,6 +486,7 @@ struct Index {
   // ...
   public setUIContextByName(): void {
     try {
+      // Set the page content of the float view based on the named route page.
       this.floatViewController?.setUIContextByName(entryName).then(() => {
         console.info('Succeeded in loading the content.');
       }).catch((err: BusinessError): void => {
@@ -515,7 +534,7 @@ Sets the size of the float view. You are advised to call the [getFloatViewLimits
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| size | [window.Size](arkts-apis-window-i.md#size7) | Yes| Window size. It is recommended that the size meet the limits returned by the [getFloatViewLimits](#floatviewgetfloatviewlimits) API.|
+| size | [window.Size](arkts-apis-window-i.md#size7) | Yes| Window size, in px. The width and height must be greater than 0. If the value is not within the valid range, error code 1300016 will be thrown. It is recommended that the size meet the limits returned by the [getFloatViewLimits](#floatviewgetfloatviewlimits) API.|
 
 **Return value**
 
@@ -537,19 +556,21 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
+import { floatView, window } from '@kit.ArkUI';
 
+// Set the window size.
 let size: window.Size = {
   width: 400,
   height: 600
 };
 try {
+  // Set the size of the float view.
   this.floatViewController?.setWindowSize(size).then(() => {
     console.info('Succeeded in setting window size.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set window size. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -570,7 +591,7 @@ Switches the template of the flow view and changes the window size. You are advi
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| templateProperty | [TemplateProperty](#templateproperty) | Yes| Target flow view template and window size. It is recommended that the size meet the limits returned by the [getFloatViewLimits](#floatviewgetfloatviewlimits) API.|
+| templateProperty | [TemplateProperty](#templateproperty) | Yes| Target flow view template and window size. The width and height in **size** must be greater than 0. If the value is not within the valid range, error code 1300016 will be thrown. It is recommended that the size meet the limits returned by the [getFloatViewLimits](#floatviewgetfloatviewlimits) API.|
 
 **Return value**
 
@@ -592,23 +613,26 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
+import { floatView, window } from '@kit.ArkUI';
 
+// Set the size of the new window.
 let newSize: window.Size = {
   width: 800,
   height: 100
 };
+// Set the template property.
 let templateProperty: floatView.TemplateProperty = {
   templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
-  size: newSize,
+  size: newSize
 }
 try {
+  // Switch the template of the float view and change the window size.
   this.floatViewController?.switchTemplate(templateProperty).then(() => {
     console.info('Succeeded in switching window type and size.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to switch window type and size. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to switch window type and size. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -651,14 +675,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // Start the float view.
   this.floatViewController?.start().then(() => {
     console.info('Succeeded in starting float view.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to start float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -696,14 +722,16 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // Stop the float view.
   this.floatViewController?.stop().then(() => {
     console.info('Succeeded in stopping float view.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to stop float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -747,14 +775,16 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
 try {
+  // Set whether the float view is visible when the application is running in the foreground.
   this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
     console.info('Succeeded in setting float view visibility in app.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to set float view visibility in app. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -763,7 +793,7 @@ try {
 
 restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;void&gt;
 
-Restores the main window of the float view to display in the foreground. If this API is called when the main window is already in the foreground, the main window level will be raised. This API can be used only after the float view is clicked. If the main window is in the **PAUSED** state or in the multitasking state, error code 1300032 will be returned if this API is called. This API uses a promise to return the result.
+Restores the main window of the float view to display in the foreground. If this API is called when the main window is already in the foreground, the main window level will be raised. This API can be called only when the float view is in the **STARTED** state and after the user taps the float view. If the main window is in the **PAUSED** state or in the multitasking state, error code 1300032 will be returned if this API is called. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -798,18 +828,21 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatView } from '@kit.ArkUI';
 
+// Define the parameter for restoring the main window.
 let param: Record<string, Object> = {
-  "info": "helloworld",
+  'info': 'helloworld',
 };
 // The float view must be in the STARTED state.
 try {
+  // Restore the main window of the float view to display in the foreground.
   this.floatViewController?.restoreMainWindow(param).then(() => {
     console.info('Succeeded in restoring main window.');
   }).catch((err: BusinessError): void => {
     console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to restore main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -845,9 +878,10 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // Obtain the properties of the float view.
   let properties: floatView.FloatViewProperties | undefined = this.floatViewController?.getWindowProperties();
   console.info('Float view properties: ' + JSON.stringify(properties));
-} catch(e) {
+} catch (e) {
   console.error(`Failed to get window properties. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -882,12 +916,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for status changes.
 let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
   console.info('Float view stateChange: ' + JSON.stringify(info));
 };
 try {
+  // Register the callback for listening to float view state changes.
   this.floatViewController?.onStateChange(onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -921,12 +957,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for status changes.
 let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
   console.info('Float view stateChange: ' + JSON.stringify(info));
 };
 try {
+  // Unregister the callback for listening to float view state changes.
   this.floatViewController?.offStateChange(onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -961,12 +999,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for rectangular area changes.
 let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
   console.info('Float view rectChange: ' + JSON.stringify(info));
 };
 try {
+  // Register the callback for listening to changes in the rectangle area of the float view.
   this.floatViewController?.onRectChange(onRectChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -1000,12 +1040,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for rectangular area changes.
 let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
   console.info('Float view rectChange: ' + JSON.stringify(info));
 };
 try {
+  // Unregister the callback for listening to changes in the rectangle area of the float view.
   this.floatViewController?.offRectChange(onRectChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -1040,12 +1082,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for limit changes.
 let onLimitsChange = (limits: floatView.FloatViewLimits) => {
   console.info('Float view limitsChange: ' + JSON.stringify(limits));
 };
 try {
+  // Register the callback for listening to limit changes of the float view.
   this.floatViewController?.onLimitsChange(onLimitsChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -1079,12 +1123,14 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// Define the callback function for limit changes.
 let onLimitsChange = (limits: floatView.FloatViewLimits) => {
   console.info('Float view limitsChange: ' + JSON.stringify(limits));
 };
 try {
+  // Unregister the callback for listening to limit changes of the float view.
   this.floatViewController?.offLimitsChange(onLimitsChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -1153,7 +1199,7 @@ Provides the limits of the float view.
 |------------|------------|------------|------------|------------|
 | minSize | [window.Size](arkts-apis-window-i.md#size7) | No| No| Minimum size of the float view.|
 | maxSize | [window.Size](arkts-apis-window-i.md#size7) | No| No| Maximum size of the float view.|
-| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | No| No| Aspect ratio range of the float view.|
+| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | No| No| Aspect ratio range of the float view. Each element in the array contains **minRatio** (minimum aspect ratio) and **maxRatio** (maximum aspect ratio).|
 
 ## FloatViewStateChangeInfo
 
@@ -1183,7 +1229,7 @@ Enumerates the states of the float view.
 | Name| Value| Description|
 |------------|------------|------------|
 | STARTED | 1 | The float view has been started and displayed.|
-| HIDDEN | 2 | The float view has been hidden. This event is triggered when the user swipes up to enter the multitasking screen or when the [setFloatViewVisibilityInApp](#setfloatviewvisibilityinapp) API is called to hide the float view when the application is in the foreground and the application is in the foreground.|
+| HIDDEN | 2 | The float view has been hidden. This state is triggered when the user swipes up to enter the multitasking screen or when the [setFloatViewVisibilityInApp](#setfloatviewvisibilityinapp) API is called to hide the float view when the application is in the foreground and the application now is in the foreground.|
 | STOPPED | 3 | The float view has been stopped.|
 | IN_SIDEBAR | 4 | The float view is in the sidebar.|
 | IN_FLOATING_BALL | 5 | The float view is switched to the floating ball.|

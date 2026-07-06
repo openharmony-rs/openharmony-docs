@@ -20,7 +20,7 @@ Declares the APIs of **NativeDrag**.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Sample**: <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
+**Sample**: <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
 
 ## Summary
 
@@ -321,7 +321,7 @@ Sets the data processing mode.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object.|
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | Type of the suggested drop operation.|
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | Data processing mode.|
 
 **Return value**
 
@@ -539,7 +539,7 @@ Obtains the data handling method from the drag event.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object.|
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | Data handling method.|
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | Pointer to the data processing mode.|
 
 **Return value**
 
@@ -842,7 +842,7 @@ int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t
 **Description**
 
 
-Obtains the pressed status of modifier keys.
+Obtains the pressed state of the modifier key.
 
 **Since**: 12
 
@@ -1570,7 +1570,7 @@ Sets the drag data.
 ### OH_ArkUI_DragAction_SetDataLoadParams()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction,OH_UdmfDataLoadParams* dataLoadParams)
+ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction, OH_UdmfDataLoadParams* dataLoadParams)
 ```
 
 **Description**
@@ -1624,7 +1624,7 @@ Sets an **ArkUI_DragPreviewOption** object for the specified drag action object.
 ### OH_ArkUI_DragAction_RegisterStatusListener()
 
 ```c
-int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))
+int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData, void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))
 ```
 
 **Description**

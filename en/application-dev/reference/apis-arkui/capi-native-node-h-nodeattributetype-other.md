@@ -35,7 +35,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component can interact with users. The value **true** indicates that the component can interact with users, and **false** indicates the opposite.|
+| .value[0].i32 | Whether the component can interact with users. The value **1** indicates that the component can interact with users, and **0** indicates the opposite.|
 
 **Returns**
 

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:15.337Z pushedAt=2026-06-26T03:00:41.286Z -->
 
 > **NOTE**
 >
@@ -41,11 +42,11 @@ This error code is reported if a service connection failure occurs.
 
 **Possible Causes**
 
-The service is abnormal.
+A service exception occurred. This includes but is not limited to: database service connection exception and application state management service connection exception.
 
 **Solution**
 
-Check whether system services are running properly.
+Check the running status of system services and try again. If the problem persists, collect complete logs and contact technical support for assistance.
 
 ## 2200003 System Internal Error
 
@@ -67,7 +68,7 @@ This error code is reported if a system internal error occurs.
 
 1. Check whether the memory space is sufficient. If not, clear the memory and try again.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. System exception. Please try again later or restart the device. If the problem persists, collect complete logs and contact technical support for assistance.
 
 ## 2203001 Failed to Create a VPN
 
@@ -87,7 +88,6 @@ The login user does not have the operation permission. Specifically, the GUEST u
 
 Check the type of the login user.
 
-
 ## 2203002 VPN Already Exists
 
 **Error Information**
@@ -105,7 +105,6 @@ The VPN has been created.
 **Solution**
 
 Call the **destroy** API to destroy the existing VPN, and then call the **setUp** API.
-
 
 ## 2203004 Invalid Descriptor
 

@@ -375,11 +375,12 @@ export function setFirstErrorHandler() {
 ```
 
  定义第二个错误处理器及注册方法，形成链式调用。
-<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let secondHandler: errorManager.ErrorHandler;
 const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -394,7 +395,13 @@ const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setSecondErrorHandler() {
-    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    try {
+        secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setSecondErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered Second Error Handler');
 }
 ```

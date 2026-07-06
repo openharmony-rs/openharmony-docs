@@ -10,7 +10,7 @@
 
 Defines **ImageAnimator** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/image_animator.h>
+**File to include:** <arkui/node_attributes/image_animator.h>
 
 **Library:** libace_ndk.z.so
 
@@ -28,7 +28,7 @@ Defines **ImageAnimator** node types for **NativeNode** APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image frame information.|
+| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image animation frame information.|
 
 ### Enums
 

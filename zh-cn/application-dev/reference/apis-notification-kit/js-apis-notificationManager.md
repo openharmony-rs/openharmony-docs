@@ -497,7 +497,7 @@ getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
 
 | 参数名     | 类型                              | 必填 | 说明                                                        |
 | -------- | --------------------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)                          | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。 |
+| slotType | [SlotType](#slottype)                          | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 |
 | callback | AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | 是   | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的`NotificationSlot`，否则为错误对象。                                        |
 
 **错误码：**
@@ -542,7 +542,7 @@ getSlot(slotType: SlotType): Promise\<NotificationSlot\>
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 |
 
 **返回值：**
 
@@ -670,7 +670,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
+| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。                                        |
 
 **错误码：**
@@ -715,7 +715,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
 
 **返回值：**
 
@@ -849,8 +849,6 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> 适用版本：9-10                                     |
-| 202      | Not system application to call the interface.<br> 适用版本：9-10                                     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -896,8 +894,6 @@ isNotificationEnabled(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> 适用版本：9-10                                     |
-| 202      | Not system application to call the interface.<br> 适用版本：9-10                                     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
@@ -1696,9 +1692,9 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1742,9 +1738,9 @@ isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2026,7 +2022,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
 | UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
-| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。 |
+| SOCIAL_COMMUNICATION | 1 | 社交通讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。 |
 | SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。|
 | CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
 | LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容<!--RP1--><!--RP1End-->。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 |

@@ -45,7 +45,7 @@ Obtains the exposure mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -87,7 +87,7 @@ Sets an exposure mode. Before the setting, call [isExposureModeSupported](arkts-
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                | Operation not allowed.<br>Applicable versions: 19 and later                                |
 | 7400103                |  Session not config.                                   |
@@ -128,7 +128,7 @@ Obtains the metering point of the camera device.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message       |
+| ID  | Error Message       |
 |---------| --------------- |
 | 7400103 |  Session not config.                                   |
 
@@ -172,7 +172,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -215,7 +215,7 @@ Before the setting, you are advised to use [getExposureBiasRange](arkts-apis-cam
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.<br>Applicable versions: 12 and later                |
 | 7400103                |  Session not config.                                   |
@@ -259,7 +259,7 @@ Obtains the exposure value in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -302,7 +302,7 @@ Obtains the exposure metering mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config, only throw in session usage.                                   |
@@ -345,7 +345,7 @@ Sets exposure metering mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config, only throw in session usage.                                   |

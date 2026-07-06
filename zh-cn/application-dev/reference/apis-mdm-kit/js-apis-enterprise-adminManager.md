@@ -24,7 +24,7 @@ import { adminManager } from '@kit.MDMKit';
 
 disableAdmin(admin: Want, userId?: number): Promise\<void>
 
-解除激活指定用户的设备管理应用。使用Promise异步回调。
+解除激活指定用户的设备管理应用。使用Promise异步回调。调用成功后，指定的设备管理应用将被解除激活，不再具备设备管理能力。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）或ohos.permission.START_PROVISIONING_MESSAGE或ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
 <br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN权限。仅当[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)或[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)设备管理应用解除激活自身时，可以申请该权限。<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当[BYOD](../../mdm/mdm-kit-term.md#bring-your-own-device-byod自带设备办公)设备管理应用解除激活自身时，可以申请该权限。<br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
@@ -83,8 +83,6 @@ isByodAdmin(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
@@ -132,7 +130,7 @@ try {
 
 subscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): void
 
-订阅系统管理事件。
+订阅系统管理事件。调用成功后，当已订阅的系统管理事件发生时，设备管理应用将收到相应的通知。
 
 从API版本26.0.0开始，非超级设备管理应用调用该接口订阅[MANAGED_EVENT_POLICIES_CHANGED](#managedevent)事件时返回9200002错误码。
 
@@ -147,7 +145,7 @@ subscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): voi
 | 参数名        | 类型                                                    | 必填 | 说明                   |
 | ------------- | ------------------------------------------------------- | ---- | ---------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | 是   | 订阅事件数组。         |
+| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | 是   | 订阅事件数组，用于指定需要订阅的系统管理事件。数组元素为[ManagedEvent](#managedevent)枚举值，可订阅多个事件类型，如应用安装/卸载/启动/停止事件、系统更新事件等。         |
 
 **错误码**：
 
@@ -156,7 +154,7 @@ subscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): voi
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200002  | The administrator application does not have permission to manage the device. <br>适用版本：26.0.0+ |
 | 9200008  | The specified system event is invalid.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -186,7 +184,7 @@ try {
 
 unsubscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): void
 
-取消订阅系统管理事件。
+取消订阅系统管理事件。调用成功后，将不再收到已取消订阅的系统管理事件通知。
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -199,7 +197,7 @@ unsubscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): v
 | 参数名        | 类型                                                    | 必填 | 说明                   |
 | ------------- | ------------------------------------------------------- | ---- | ---------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | 是   | 取消订阅事件数组。     |
+| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | 是   | 取消订阅事件数组，用于指定需要取消订阅的系统管理事件。数组元素为[ManagedEvent](#managedevent)枚举值，应与订阅时传入的事件类型一致。     |
 
 **错误码**：
 
@@ -468,7 +466,7 @@ try {
 
 enableDeviceAdmin(admin: Want): Promise&lt;void&gt;
 
-[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。调用成功后，指定的DA应用将被激活并具备设备管理能力。该接口仅支持超级设备管理应用调用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
@@ -525,7 +523,7 @@ adminManager.enableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 disableDeviceAdmin(admin: Want): Promise&lt;void&gt;
 
-[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以解除激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以解除激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。调用成功后，指定的DA应用将被解除激活，不再具备设备管理能力。该接口仅支持超级设备管理应用调用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
@@ -579,7 +577,7 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 ## adminManager.enableSelfDeviceAdmin
 
-enableSelfDeviceAdmin(admin: Want, credential: string): void
+enableSelfDeviceAdmin(admin: Want, credential: string): Promise&lt;void&gt;
 
 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。
 
@@ -602,6 +600,11 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | credential | string                   | 是   | 激活凭证。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当激活MDM应用自身失败时，会抛出错误对象。 |
 
 **错误码**：
 
@@ -611,6 +614,7 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | -------- | ------------------------------------------------------------ |
 | 9200003  | The administrator ability component is invalid.              |
 | 9200004  | Failed to activate the administrator application of the device. |
+| 9200012  | Parameter verification failed. |
 | 9200017  | The self-activation credential of the enterprise device administrator is invalid. |
 | 9200018  | This device is not an enterprise device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |

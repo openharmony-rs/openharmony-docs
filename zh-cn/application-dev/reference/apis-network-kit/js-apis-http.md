@@ -1964,7 +1964,7 @@ TLS配置。
 
 ## RemoteValidation<sup>18+</sup>
 
-type RemoteValidation = 'system' | 'skip'
+type RemoteValidation = 'system' | 'skip' | ValidationCallback
 
 验证远程服务器身份的方式。
 
@@ -1976,6 +1976,64 @@ type RemoteValidation = 'system' | 'skip'
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | 表示使用系统CA验证远端服务器身份，值固定为'system'字符串，是未配置时的默认值。 |
 | 'skip'   | 表示跳过验证远端服务器身份流程，值固定为'skip'字符串。 |
+| [ValidationCallback](#validationcallback) | 表示使用自定义验证方式验证远端服务器身份。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## X509Cert
+
+type X509Cert = cert.X509Cert
+
+X509证书对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [cert.X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert) | X509证书对象。     |
+
+## ValidationContext
+
+验证远端服务器身份时的证书上下文信息，作为[ValidationCallback](#validationcallback)的参数传入。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 名称   | 类型                                           | 只读 | 可选 |说明                    |
+| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
+| pemCerts        | string[] | 否   | 否  | PEM格式的证书原始数据。   |
+| x509Certs | [X509Cert](#x509cert)[] | 否   | 否 | X509证书链。 |
+| host        | string | 否   | 否  | 本次请求的目标主机名。   |
+| ip | string | 否   | 否 | 本次请求实际连接的IP地址。 |
+
+## ValidationCallback
+
+type ValidationCallback = (context: ValidationContext) => boolean | Promise\<boolean\>
+
+自定义远端服务器身份验证回调函数。开发者可通过此回调实现自定义的证书验证逻辑，支持同步或异步返回验证结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                            |
+| ---------------- | -------------------  | ------ | --------------------------------------------- |
+| context | [ValidationContext](#validationcontext) | 是 | 证书验证上下文，包含证书链、主机名和IP地址等信息。             |
+
+**返回值：**
+
+| 类型 | 说明                                   |
+| ------ | -------------------------------------- |
+| boolean \| Promise\<boolean\> | 返回布尔值表示验证是否通过。true表示验证通过，false表示验证不通过。支持返回Promise对象，用于异步验证场景。   |
 
 ## AuthenticationType<sup>18+</sup>
 

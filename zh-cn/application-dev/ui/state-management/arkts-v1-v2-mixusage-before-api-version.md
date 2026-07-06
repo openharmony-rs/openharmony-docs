@@ -144,8 +144,8 @@ class InfoTwo {
 @ComponentV2
 struct ChildTwo {
   // V2对数据输入有严格的管理，从父组件传入数据时，必须使用@Param装饰器进行数据接收
-  @Param @Once message: string = 'hello'; // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
-  @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
+  @Param @Once message: string = 'hello'; // 使用了@Once可以修改@Param装饰的变量
+  @Param @Once undefinedVal: string | undefined = undefined;
   @Param info: InfoTwo = new InfoTwo(); // 观测不到类属性变化
   @Require @Param set: Set<number>;
 
@@ -798,7 +798,7 @@ struct IndexFive {
 
 
 
-**定义\@ObserveV2修饰的class**
+**定义\@ObservedV2修饰的class**
 
 V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 

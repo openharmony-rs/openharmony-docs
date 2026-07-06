@@ -1,7 +1,7 @@
 # @system.router (Page Routing)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,7 @@ The **Router** module provides APIs to access pages through URIs.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.router`](js-apis-router.md) instead.
+> - The APIs of this module are no longer maintained since API version 8. You are advised to use [@ohos.router](js-apis-router.md) instead.
 >
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -380,7 +380,7 @@ Defines the parameters for routing back.
 | Name  | Type| Mandatory| Description                                                        |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | uri<sup>7+</sup> | string   | No  | URI of the page to return to. If the specified page does not exist in the page stack, the application does not respond. If this parameter is not set, the application returns to the previous page.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full|
-| params<sup>7+</sup> | object   | No  | Data that needs to be passed to the target page during redirection.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
+| params<sup>7+</sup> | Object   | No  | Data to be passed to the target page when the page is returned.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
 
 ## RouterState
 

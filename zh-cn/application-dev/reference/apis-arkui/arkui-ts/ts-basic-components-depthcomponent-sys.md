@@ -58,7 +58,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。 |
-| render3DScale | number | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效，使用默认值。默认值：1.0。 |
+| render3DScale | number | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
 
 ## DepthSpaceType
 

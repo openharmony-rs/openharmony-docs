@@ -35,6 +35,7 @@
 | sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| automotiveCameraPosition | [AutomotiveCameraPosition](arkts-apis-camera-e.md#automotivecameraposition) | 是 | 是 | Car设备摄像头位置。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatusInfo
 
@@ -194,11 +195,11 @@
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
-| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量。<br>当quality未下发时，默认按CompressionQuality下发生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。                                                           |
+| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量。<br>当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。                                                           |
 | rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 否   | 是   | 图片旋转角度（默认0度，顺时针旋转）。                                                  |
 | location | [Location](#location)           | 否   | 是   | 图片地理位置信息（默认以设备硬件信息为准）。                                               |
 | mirror   | boolean                         | 否   | 是   | 镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported)进行判断是否支持。true表示使能，false表示不使能。 |
-| CompressionQuality   | number                         | 否   | 是   | 图片压缩质量值，取值范围为(1, 100)。<br>当CompressionQuality未下发时，默认按quality生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
+| compressionQuality   | number                         | 否   | 是   | 图片压缩质量值，取值范围为(1, 100)。<br>当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
 ## FrameShutterInfo
 
@@ -296,6 +297,7 @@
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  是  |  否  | metadata 类型。    |
 | timestamp   | number                                      |  是  |  否  | 当前时间戳。单位为纳秒（ns）。|
 | boundingBox | [Rect](#rect)                               |  是  |  否  | metadata 区域框。  |
+| isLockFocusTracked | boolean                              |  是  |  是  | 是否已锁定焦点跟踪。true表示已锁定，false表示未锁定。  |
 
 ## MetadataBasicFaceObject
 
@@ -517,3 +519,20 @@
 | -------- | ---------- | -------- |-----| ---------- |
 | zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
 | equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
+
+## DefocusFromProximityNotificationInfo
+
+对焦物体和镜头距离过近导致失焦事件的通知对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称      | 类型                                                           | 只读 | 可选 | 说明            |
+| -------- | -------------------------------------------------------------- |----- |---| --------------|
+| name      | [NotificationName](arkts-apis-camera-e.md#notificationname)   |  是  | 否 | 通知事件名称。      |
+| value     | [ProximityStateForFocus](arkts-apis-camera-e.md#proximitystateforfocus)  |  是  | 否 | 通知事件状态。     |

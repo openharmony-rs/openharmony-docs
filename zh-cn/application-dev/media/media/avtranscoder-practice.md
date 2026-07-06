@@ -1,8 +1,8 @@
 # 创建异步线程执行AVTranscoder视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -196,7 +196,7 @@
    }
    ```
 
-4. 监听转码的Complete回调，在转码结束的时候向主线程发送消息。
+4. 监听转码的complete回调，在转码结束的时候向主线程发送消息。
 
    ```ts
    // 转码完成回调函数。

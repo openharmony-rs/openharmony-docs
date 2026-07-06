@@ -156,15 +156,16 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 在亮度设置界面，进度条显示当前亮度为30%。点击重置后，亮度值将被重置为默认的50%。
 
 运行该示例推荐在Wearable设备上以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，在src/main目录下的工程配置文件[module.json5](../quick-start/module-configuration-file.md)中[deviceTypes标签](../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
-<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
+<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "module": {
-  // ···
+  // ...
   "deviceTypes": [
+    "default",
     "wearable"
   ],
-  // ···
+  // ...
 }
 ```
 

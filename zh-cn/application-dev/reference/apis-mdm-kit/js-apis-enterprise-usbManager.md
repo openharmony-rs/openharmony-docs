@@ -30,9 +30,14 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 添加USB设备可用名单。
 
+**使用场景**：
+- 企业安全管理场景，需要限制只有特定的USB设备可以接入设备
+- 设备管理员需要精确控制哪些USB设备能够被识别和使用
+- 配合[removeAllowedUsbDevices](#usbmanagerremoveallowedusbdevices)接口实现USB设备的动态管理
+
 以下情况下，调用本接口会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB或者USB转串口能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB或者USB转串口能力。
 2. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
 3. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
 4. 已经通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口添加了禁止使用的USB设备类型。
@@ -94,6 +99,11 @@ removeAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 移除USB设备可用名单。
 
+**使用场景**：
+- 企业安全管理场景，需要撤销某些USB设备的访问权限
+- 设备管理员需要动态调整允许使用的USB设备列表
+- 当USB设备不再需要或存在安全风险时，从允许名单中移除
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -149,6 +159,10 @@ getAllowedUsbDevices(admin: Want | null): Array\<UsbDeviceId>
 
 获取USB设备可用名单。
 
+**使用场景**：
+- 在修改策略前，需要先获取现有策略进行评估
+- 管理界面需要展示当前的USB存储设备访问控制状态
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -202,22 +216,22 @@ try {
 
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
-设置USB存储设备访问策略。
+设置USB存储设备（baseClass = 0x08）访问策略。
 
 > **说明**：
 > 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
 
 以下情况下，通过本接口设置USB存储设备访问策略为可读可写/只读，会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
 2. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口将存储类型的USB设备添加为禁止使用的USB设备类型。
-3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
+3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
 
 以下情况下，通过本接口设置USB存储设备访问策略为禁用，会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
 2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
-3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
+3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
 
@@ -276,7 +290,7 @@ try {
 
 getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
-获取USB存储设备访问策略。
+获取USB存储设备（baseClass = 0x08）访问策略。
 
 **需要权限：**
 
@@ -298,7 +312,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
 | 类型                    | 说明                  |
 | ----------------------- | --------------------- |
-| [UsbPolicy](#usbpolicy) | USB存储设备访问策略。 |
+| [UsbPolicy](#usbpolicy) | USB存储设备访问策略。设置为READ_WRITE表示允许读写USB存储设备；设置为READ_ONLY表示仅允许读取USB存储设备，禁止写入；设置为DISABLED表示完全禁止访问USB存储设备。 |
 
 **错误码**：
 
@@ -336,15 +350,21 @@ addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 添加禁止使用的USB设备类型。
 
+**使用场景**：
+- 企业安全管理场景，需要禁用特定类型的USB设备
+- 防止数据泄露：禁用USB存储设备类型
+- 设备管理员需要根据安全策略，禁止使用某些类型的USB设备
+- 配合[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口实现USB设备类型的动态管理
+
 > **说明**：
 >
 > 推荐使用[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口。
 
 以下情况下，调用本接口会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
 2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
-3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
+3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
 4. 已经通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口添加了禁止使用的USB设备类型。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
@@ -405,6 +425,11 @@ removeDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 移除禁止使用的USB设备类型。
 
+**使用场景**：
+- 企业安全管理场景，需要解除对某些USB设备类型的禁用
+- 设备管理员需要动态调整禁止使用的USB设备类型列表
+- 当某些USB设备类型不再存在安全风险时，从禁用名单中移除
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -461,6 +486,11 @@ try {
 getDisallowedUsbDevices(admin: Want | null): Array\<UsbDeviceType>
 
 获取禁止使用的USB设备类型。
+
+**使用场景**：
+- 设备管理员需要查看当前禁止使用的USB设备类型列表
+- 在修改禁用名单前，需要先获取现有名单进行比对
+- 管理界面需要展示当前的USB设备类型禁用策略配置
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -520,9 +550,9 @@ addDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbD
 以下情况下，调用本接口会报策略冲突：
 
 1. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
-2. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+2. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
 3. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
-4. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
+4. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
 
 **起始版本：** 26.0.0
 
