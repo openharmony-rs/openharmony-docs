@@ -368,7 +368,7 @@ export class AVScreenCaptureDemo {
     // 调用release()方法销毁实例，释放资源。
     await this.screenCapture?.release();
 
-    // 最后需要关闭创建的录屏文件。
+    // 最后需要关闭创建的录屏文件;
     this.closeFile();
   }
 }
