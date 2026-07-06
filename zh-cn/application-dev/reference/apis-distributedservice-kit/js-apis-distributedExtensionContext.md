@@ -162,7 +162,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 **起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在`Stage`模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
