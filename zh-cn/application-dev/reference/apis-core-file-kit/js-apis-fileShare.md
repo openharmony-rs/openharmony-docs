@@ -337,12 +337,12 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法，用于取消激活多个已激活的文件或目录权限，使用Promise异步回调。取消激活后，持久化授权仍保留，可再次通过activatePermission激活。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法，用于取消激活授权过的多个文件或目录，使用Promise异步回调。取消激活后，持久化授权仍保留，可再次通过activatePermission激活。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
 >
-> 可以组合取消激活多个权限。只能对已激活的权限进行取消激活，需要先调用activatePermission激活权限，否则会报错。
+> 可以组合取消激活多个权限。只能对已持久化的权限进行取消激活，需要先调用activatePermission激活权限，否则会报错。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -352,7 +352,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- | -------- | -------- |---------|
-| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已激活的权限进行取消激活，不支持远端URI。|
+| policies| Array&lt;[PolicyInfo](#policyinfo11)> | 是 | 需要取消激活权限的URI策略信息数组，policies数组大小上限为500。仅支持对已持久化的权限进行取消激活，不支持远端URI。|
 
 **返回值：**
 
