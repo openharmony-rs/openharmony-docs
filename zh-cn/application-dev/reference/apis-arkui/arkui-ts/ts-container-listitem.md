@@ -49,7 +49,7 @@ ListItem(value?: string)
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 10开始废弃。建议使用[ListItem<sup>10+</sup>](#listitem10)替代。
+> 从API version 7开始支持，从API version 10开始废弃。建议使用[ListItem<sup>10+</sup>](#listitem10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -73,7 +73,7 @@ sticky(value: Sticky)
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃。建议使用[sticky](ts-container-list.md#sticky9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[sticky](ts-container-list.md#sticky9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +91,7 @@ editable(value: boolean | EditMode)
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃。无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,7 +161,7 @@ ListItem吸顶效果枚举。
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃。建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,7 +177,7 @@ ListItem元素编辑模式枚举。
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃。无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +311,10 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 展开指定ListItem的划出菜单。
 
+> **说明：**
+>
+> - 如果List组件cachedCount属性show参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
+
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -324,12 +328,6 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
 | direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem划出菜单的展开方向。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，操作失败时抛出异常，错误码参见错误码表。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[自定义节点错误码](../errorcode-node.md)。
@@ -338,10 +336,6 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
 | 106203   | The node not mounted to component tree. |
-
-> **说明：**
->
-> - 如果List组件cachedCount属性show参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 ### collapse<sup>21+</sup>
 collapse(node: FrameNode): void
@@ -359,12 +353,6 @@ collapse(node: FrameNode): void
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值，操作失败时抛出异常，错误码参见错误码表。 |
 
 **错误码：**
 
