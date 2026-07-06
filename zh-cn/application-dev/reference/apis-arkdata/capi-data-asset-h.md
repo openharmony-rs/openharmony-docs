@@ -471,7 +471,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone)接口释放内存。 |
+| [Data_Asset](capi-rdb-data-asset.md) * | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone)接口释放内存。 |
 
 ### OH_Data_Asset_DestroyOne()
 
@@ -520,7 +520,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple)接口释放内存。 |
+| [Data_Asset](capi-rdb-data-asset.md) ** | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple)接口释放内存。 |
 
 ### OH_Data_Asset_DestroyMultiple()
 
@@ -539,7 +539,7 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) **assets | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
+| [Data_Asset](capi-rdb-data-asset.md) **assets | 表示指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针。 |
 | uint32_t count | 代表需要销毁的[Data_Asset](capi-rdb-data-asset.md)类型对象的数量。 |
 
 **返回：**
@@ -547,6 +547,3 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 | 类型 | 说明 |
 | -- | -- |
 | int | 返回操作是否成功，成功时返回RDB_OK，出错时返回对应的错误码。详细信息可以查看[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
-
-
-
