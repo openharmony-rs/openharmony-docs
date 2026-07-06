@@ -395,7 +395,7 @@ let testObj: Record<string, string | number> = {
     'name': "Jack",
     'age': 22
 }
-let isBol = true;
+let isBool = true;
 let bigNum = BigInt(1234567890123456789);
 hilog.info(0x0001, "jsHilogTest", "print object: %{public}s", JSON.stringify(testObj));
 hilog.info(0x0001, "jsHilogTest", "print object: %{public}o", testObj);
@@ -403,7 +403,7 @@ hilog.info(0x0001, "jsHilogTest", "private flag: %{private}s %s, print null: %{p
 hilog.info(0x0001, "jsHilogTest", "print undefined: %{public}s", undefined);
 hilog.info(0x0001, "jsHilogTest", "print number: %{public}d %{public}i", 123, 456);
 hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum, bigNum);
-hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
+hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBool);
 ```
 
 **打印结果：**
