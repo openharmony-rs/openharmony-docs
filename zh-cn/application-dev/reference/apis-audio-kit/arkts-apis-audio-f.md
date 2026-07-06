@@ -259,10 +259,11 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 
 在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20)查询系统返听能力。
 
-
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **需要权限：** ohos.permission.MICROPHONE
+- API version 20-24，需要申请权限才可以使用本接口。
+- 从API版本26.0.0开始，无需申请权限可以直接使用本接口。
 
 **参数：**
 
@@ -282,8 +283,8 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------|
-|     201 | Permission denied.             |
-|     801 | Unsupported API.               |
+|     201 | Permission denied.<br>适用版本：20-24 |
+|     801 | Unsupported API.<br>适用版本：20-24 |
 | 6800101 | Parameter verification failed. |
 | 6800104 | Loopback mode is unsupported.  |
 
