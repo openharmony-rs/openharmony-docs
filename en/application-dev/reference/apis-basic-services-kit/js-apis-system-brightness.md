@@ -38,8 +38,6 @@ getValue(options?: GetBrightnessOptions): void
 
 Obtains the current screen brightness.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters**
@@ -116,8 +114,6 @@ export default {
 setValue(options?: SetBrightnessOptions): void
 
 Sets the screen brightness.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -197,8 +193,6 @@ getMode(options?: GetBrightnessModeOptions): void
 
 Obtains the screen brightness adjustment mode.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters**
@@ -275,8 +269,6 @@ export default {
 setMode(options?: SetBrightnessModeOptions): void
 
 Sets the screen brightness mode.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -360,8 +352,6 @@ Sets whether to always keep the screen on. Call this API in **onShow()**.
 > - This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
 > - On lite wearables, this API can only prevent the screen from turning off (automatically) due to inactivity. It cannot prevent the screen from turning off due to user actions (such as covering the screen) or the end of screen-on time.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters**
@@ -438,8 +428,6 @@ export default {
 
 Options for obtaining the screen brightness.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | Name    | Type                                                     | Mandatory| Description                                                        |
@@ -451,8 +439,6 @@ Options for obtaining the screen brightness.
 ## SetBrightnessOptions<sup>(deprecated)</sup>
 
 Options for setting the screen brightness.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -467,8 +453,6 @@ Options for setting the screen brightness.
 
 Defines a response that returns the screen brightness.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | Name| Type| Readable| Writable| Description|
@@ -478,8 +462,6 @@ Defines a response that returns the screen brightness.
 ## GetBrightnessModeOptions<sup>(deprecated)</sup>
 
 Options for obtaining the screen brightness mode.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -492,8 +474,6 @@ Options for obtaining the screen brightness mode.
 ## SetBrightnessModeOptions<sup>(deprecated)</sup>
 
 Options for setting the screen brightness mode.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -508,8 +488,6 @@ Options for setting the screen brightness mode.
 
 Defines a response that returns the screen brightness mode.
 
-**Model restriction**: This API can be used in both the FA and Stage models.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | Name| Type| Readable| Writable| Description|
@@ -519,8 +497,6 @@ Defines a response that returns the screen brightness mode.
 ## SetKeepScreenOnOptions<sup>(deprecated)</sup>
 
 Options for setting the screen to be steady on.
-
-**Model restriction**: This API can be used in both the FA and Stage models.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
