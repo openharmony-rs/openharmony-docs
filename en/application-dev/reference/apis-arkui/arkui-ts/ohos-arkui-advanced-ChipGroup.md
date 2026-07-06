@@ -176,7 +176,7 @@ Defines trailing symbol item options of **ChipGroup**.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | ---- |
-| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| **SymbolGlyphModifier** configuration object of the tailing symbol item, used to set the display style and rendering mode.|
+| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| **SymbolGlyphModifier** configuration object of the trailing symbol item, used to set the display style and rendering mode.|
 | action | [VoidCallback](ts-types.md#voidcallback12) | No| No| Action of the trailing symbol item.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
@@ -198,7 +198,7 @@ IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItem
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Array of custom items displayed in the tailing area. It supports the following types: IconItemOptions (image icons), SymbolGlyphModifier (symbol icons), and SymbolItemOptions (symbol icon configuration).|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Array of custom items displayed in the trailing area. It supports the following types: IconItemOptions (image icons), SymbolGlyphModifier (symbol icons), and SymbolItemOptions (symbol icon configuration).|
 
 > **NOTE**
 >
