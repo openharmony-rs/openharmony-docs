@@ -326,93 +326,93 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 1. Rectangle<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_RECTANGLE**.|
-| .value[1].f32 | Width of the rectangle, in vp.|
-| .value[2].f32 | Height of the rectangle, in vp.|
-| .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
-| .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
-| .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
-| .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
-| .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
-| .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
-| .object | Coordinate offset of the rectangle. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_RECTANGLE**.|
+   | .value[1].f32 | Width of the rectangle, in vp.|
+   | .value[2].f32 | Height of the rectangle, in vp.|
+   | .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
+   | .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
+   | .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
+   | .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
+   | .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
+   | .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
+   | .object | Coordinate offset of the rectangle. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
 
 2. Circle<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_CIRCLE**.|
-| .value[1].f32 | Width of the circle, in vp.|
-| .value[2].f32 | Height of the circle, in vp.|
-| .object | Coordinate offset of the circle. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_CIRCLE**.|
+   | .value[1].f32 | Width of the circle, in vp.|
+   | .value[2].f32 | Height of the circle, in vp.|
+   | .object | Coordinate offset of the circle. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
 
 3. Ellipse<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_ELLIPSE**.|
-| .value[1].f32 | Width of the ellipse, in vp.|
-| .value[2].f32 | Height of the ellipse, in vp.|
-| .object | Coordinate offset of the ellipse. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_ELLIPSE**.|
+   | .value[1].f32 | Width of the ellipse, in vp.|
+   | .value[2].f32 | Height of the ellipse, in vp.|
+   | .object | Coordinate offset of the ellipse. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
 
 4. Path<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_PATH**.|
-| .value[1].f32 | Width of the path, in vp.|
-| .value[2].f32 | Height of the path, in vp.|
-| .string | Command string for drawing the path.|
-| .object | Command for drawing the path. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_PATH**.|
+   | .value[1].f32 | Width of the path, in vp.|
+   | .value[2].f32 | Height of the path, in vp.|
+   | .string | Command string for drawing the path.|
+   | .object | Command for drawing the path. The parameter type is **ArkUI_RenderNodeClipOption**. It takes effect only when the **.object** parameter is passed.|
 
 **Returns**
 
 1. Rectangle<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_RECTANGLE**.|
-| .value[1].f32 | Width of the rectangle, in vp.|
-| .value[2].f32 | Height of the rectangle, in vp.|
-| .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
-| .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
-| .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
-| .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
-| .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
-| .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
-| .value[9]?.f32 | Horizontal coordinate offset of the rectangle, in vp.|
-| .value[10]?.f32 | Vertical coordinate offset of the rectangle, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_RECTANGLE**.|
+   | .value[1].f32 | Width of the rectangle, in vp.|
+   | .value[2].f32 | Height of the rectangle, in vp.|
+   | .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
+   | .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
+   | .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
+   | .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
+   | .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
+   | .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
+   | .value[9]?.f32 | Horizontal coordinate offset of the rectangle, in vp.|
+   | .value[10]?.f32 | Vertical coordinate offset of the rectangle, in vp.|
 
 2. Circle<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_CIRCLE**.|
-| .value[1].f32 | Width of the circle, in vp.|
-| .value[2].f32 | Height of the circle, in vp.|
-| .value[3]?.f32 | Horizontal coordinate offset of the circle, in vp.|
-| .value[4]?.f32 | Vertical coordinate offset of the circle, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_CIRCLE**.|
+   | .value[1].f32 | Width of the circle, in vp.|
+   | .value[2].f32 | Height of the circle, in vp.|
+   | .value[3]?.f32 | Horizontal coordinate offset of the circle, in vp.|
+   | .value[4]?.f32 | Vertical coordinate offset of the circle, in vp.|
 
 3. Ellipse<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_ELLIPSE**.|
-| .value[1].f32 | Width of the ellipse, in vp.|
-| .value[2].f32 | Height of the ellipse, in vp.|
-| .value[3]?.f32 | Horizontal coordinate offset of the ellipse, in vp.|
-| .value[4]?.f32 | Vertical coordinate offset of the ellipse, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_ELLIPSE**.|
+   | .value[1].f32 | Width of the ellipse, in vp.|
+   | .value[2].f32 | Height of the ellipse, in vp.|
+   | .value[3]?.f32 | Horizontal coordinate offset of the ellipse, in vp.|
+   | .value[4]?.f32 | Vertical coordinate offset of the ellipse, in vp.|
 
 4. Path<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_PATH**.|
-| .value[1].f32 | Width of the path, in vp.|
-| .value[2].f32 | Height of the path, in vp.|
-| .string | Command string for drawing the path.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Shape type. The parameter type is **ArkUI_ClipType**. The value is **ARKUI_CLIP_TYPE_PATH**.|
+   | .value[1].f32 | Width of the path, in vp.|
+   | .value[2].f32 | Height of the path, in vp.|
+   | .string | Command string for drawing the path.|
 
 
 ## NODE_TRANSFORM
