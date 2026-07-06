@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-`wrapBuilder`用于封装全局[`@Builder`](./ts-universal-builder-dynamic.md#@Builder)函数，并返回可传递的`WrappedBuilder`对象，适用于需要在组件之间复用或传递全局`@Builder`函数的场景。开发指南见[wrapBuilder：封装全局`@Builder`](../../../ui/state-management/arkts-wrapBuilder.md)。
+`wrapBuilder`用于封装全局[`@Builder`](./ts-universal-builder-dynamic.md#builder)函数，并返回可传递的`WrappedBuilder`对象，适用于需要在组件之间复用或传递全局`@Builder`函数的场景。开发指南见[wrapBuilder：封装全局`@Builder`](../../../ui/state-management/arkts-wrapBuilder.md)。
 
 > **说明：**
 >
