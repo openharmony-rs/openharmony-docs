@@ -37,6 +37,7 @@
   - 模块<!--network-module-->
     - [NetConnection](capi-netconnection.md)
     - [Netstack](capi-netstack.md)
+    - [NetEthernet](capi-netethernet.md)
   - 头文件<!--network-headerfile-->
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
@@ -48,6 +49,8 @@
     - [net_http_type.h](capi-net-http-type-h.md)
     - [http_interceptor.h](capi-net-http-interceptor-h.md)
     - [http_interceptor_type.h](capi-net-http-interceptor-type-h.md)
+    - [net_ethernet.h](capi-net-ethernet-h.md)
+    - [net_ethernet_type.h](capi-net-ethernet-type-h.md)
   - 结构体<!--network-struct-->
     - [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md)
     - [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)
@@ -87,6 +90,11 @@
     - [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md)
     - [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md)
     - [OH_Http_Interceptor](capi-netstack-http-interceptor.md)
+    - [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md)
+    - [Ethernet_MacAddrInfoList](capi-netethernet-ethernet-macaddrinfolist.md)
+    - [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md)
+    - [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md)
+    - [Ethernet_NetAddrList](capi-netethernet-ethernet-netaddrlist.md)
 - 已停止维护的接口<!--network-arkts-dep-->
   - [@system.network (网络状态)](js-apis-system-network.md)
   - [@system.fetch (数据请求)](js-apis-system-fetch.md)
