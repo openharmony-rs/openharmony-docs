@@ -1,3 +1,5 @@
+# Network Kit C API（网络服务）
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
@@ -8,21 +10,16 @@
 - 头文件
     - [net_trafficfilter.h](capi-net-trafficfilter-h.md)
     - [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
-    - [net_ethernet.h](capi-net-ethernet-h.md)
-    - [net_ethernet_type.h](capi-net-ethernet-type-h.md)
     - [net_http_type.h](capi-net-http-type-h.md)
     - [net_http.h](capi-net-http-h.md)
     - [net_websocket_type.h](capi-net-websocket-type-h.md)
     - [net_websocket.h](capi-net-websocket-h.md)
-    - [http_interceptor_type.h](capi-http-interceptor-type-h.md)
-    - [http_interceptor.h](capi-http-interceptor-h.md)
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
     - [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
     - [net_ssl_c.h](capi-net-ssl-c-h.md)
 - 模块
     - [TrafficFilter](capi-trafficfilter.md)
-    - [NetEthernet](capi-netethernet.md)
     - [netstack](capi-netstack.md)
     - [NetConnection](capi-netconnection.md)
 - 结构体
@@ -39,11 +36,6 @@
     - [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md)
     - [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md)
     - [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md)
-    - [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md)
-    - [Ethernet_MacAddrInfoList](capi-netethernet-ethernet-macaddrinfolist.md)
-    - [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md)
-    - [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md)
-    - [Ethernet_NetAddrList](capi-netethernet-ethernet-netaddrlist.md)
     - [Http_Buffer](capi-netstack-http-buffer.md)
     - [Http_ClientCert](capi-netstack-http-clientcert.md)
     - [Http_CustomProxy](capi-netstack-http-customproxy.md)
@@ -54,7 +46,6 @@
     - [Http_Request](capi-netstack-http-request.md)
     - [Http_EventsHandler](capi-netstack-http-eventshandler.md)
     - [Http_Headers](capi-netstack-http-headers.md)
-    - [*next](capi-netstack-8hnext.md)
     - [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md)
     - [WebSocket_CloseOption](capi-netstack-websocket-closeoption.md)
     - [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md)
@@ -62,10 +53,6 @@
     - [WebSocket_Header](capi-netstack-websocket-header.md)
     - [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md)
     - [WebSocket](capi-netstack-websocket.md)
-    - [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md)
-    - [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md)
-    - [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md)
-    - [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md)
     - [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md)
     - [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)
     - [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md)

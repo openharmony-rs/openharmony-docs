@@ -37,8 +37,8 @@ typedef struct OH_TrafficFilter_RedirectRule {...} OH_TrafficFilter_RedirectRule
 | [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md) dstPort | 目的端口匹配条件。<br>**起始版本：** 26.0.0 |
 | [OH_TrafficFilter_InterfaceMatch](capi-trafficfilter-oh-trafficfilter-interfacematch.md) inInterface | 入接口匹配条件。<br>**起始版本：** 26.0.0 |
 | [OH_TrafficFilter_InterfaceMatch](capi-trafficfilter-oh-trafficfilter-interfacematch.md) outInterface | 出接口匹配条件。<br>**起始版本：** 26.0.0 |
-| uint32_t uidStart | 应用UID范围起始值，取值范围为[0，UINT32_MAX]（UINT32_MAX表示任意）。<br>**起始版本：** 26.0.0 |
-| uint32_t uidEnd | 应用UID范围结束值，取值范围为[0，UINT32_MAX]（UINT32_MAX表示任意），通常需大于等于uidStart（应用UID范围起始值）。<br>**起始版本：** 26.0.0 |
+| uint32_t uidStart | 应用UID范围起始值，取值范围为[0，UINT32_MAX]（UINT32_MAX表示任意UID）。<br>**起始版本：** 26.0.0 |
+| uint32_t uidEnd | 应用UID范围结束值，取值范围为[0，UINT32_MAX]（UINT32_MAX表示任意UID），通常需大于等于uidStart（应用UID范围起始值）。<br>**起始版本：** 26.0.0 |
 | [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) proxyIp | 代理服务器IP地址（支持IPv4和IPv6）。<br>**起始版本：** 26.0.0 |
 | uint16_t proxyPort | 代理服务器端口。<br>**起始版本：** 26.0.0 |
 
