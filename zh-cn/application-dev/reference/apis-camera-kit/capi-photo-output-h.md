@@ -1163,7 +1163,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 | 参数项 | 描述 | 
 | -- | -- | 
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
-| [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，在Camera_Location枚举中定义。 | 
+| [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，定义在[Camera_Location](capi-oh-camera-camera-location.md)。 | 
 
 **返回：** 
 
