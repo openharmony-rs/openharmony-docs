@@ -13,7 +13,7 @@
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
-**装饰器类型：**[\@Sendable](..\..\arkts-utils\arkts-sendable.md#sendable装饰器)
+**装饰器类型：**[\@Sendable](../../arkts-utils/arkts-sendable.md#sendable装饰器)
 
 ## 导入模块
 
