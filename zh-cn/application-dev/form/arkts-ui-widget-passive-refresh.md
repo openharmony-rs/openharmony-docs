@@ -95,7 +95,6 @@
   }
   ```
 
-<<<<<<< ours
    ArkTS-Sta示例：
   <!-- @[set_form_next_refreshtimeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormPassiveRefreshSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
   
@@ -215,7 +214,8 @@
     onAcquireFormStateFn(want: Want): formInfo.FormState {
       // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
       return formInfo.FormState.READY;
-}
+    }
+  }
   ```
 
 在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
