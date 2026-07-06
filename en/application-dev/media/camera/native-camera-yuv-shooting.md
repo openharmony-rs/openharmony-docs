@@ -325,9 +325,9 @@ For detailed camera function API descriptions, see the Camera module [OH_Camera]
      }
      ```
 
-6. Create a photo session (for details, see [Camera Session Management (C/C++)](./native-camera-session-management.md)), start the session, and prepare for photo capture.
+7. Create a photo session (for details, see [Camera Session Management (C/C++)](./native-camera-session-management.md)), start the session, and prepare for photo capture.
 
-7. Trigger photo capture.
+8. Trigger photo capture.
 
    Execute the photo capture task through the [OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) method.
 

@@ -225,6 +225,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 8. Query FA usage records. The maximum number of returned records cannot exceed **maxNum**. If **maxNum** is not specified, the default value is 1000. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
 
+    ```ts
     // Promise mode
     usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
         console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');

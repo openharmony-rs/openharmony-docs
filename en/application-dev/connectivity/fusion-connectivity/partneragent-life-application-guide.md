@@ -184,7 +184,7 @@ if (isBound == true) {
 
 1. **PartnerAgentAbility.ets** file.
 
-In the **PartnerAgentAbility.ets** file, import the dependency package of **PartnerAgentExtensionAbility**, define a custom class that inherits from **PartnerAgentExtensionAbility**, and add the required lifecycle callbacks.
+    In the **PartnerAgentAbility.ets** file, import the dependency package of **PartnerAgentExtensionAbility**, define a custom class that inherits from **PartnerAgentExtensionAbility**, and add the required lifecycle callbacks.
 
     ``` TypeScript
     import { partnerAgent } from '@kit.ConnectivityKit';
@@ -203,9 +203,9 @@ In the **PartnerAgentAbility.ets** file, import the dependency package of **Part
 
 2. **EntryAbility.ets** file.
 
-The **EntryAbility** loads the page drawn in **ets/pages/Index.ets** and requests the user to grant Bluetooth access permission.
+    The **EntryAbility** loads the page drawn in **ets/pages/Index.ets** and requests the user to grant Bluetooth access permission.
 
-![Requesting user authorization for Bluetooth access](./figures/harmony-request-bluetooth-permission.jpg)
+    ![Requesting user authorization for Bluetooth access](./figures/harmony-request-bluetooth-permission.jpg)
 
     ``` TypeScript
     import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -394,7 +394,7 @@ The **EntryAbility** loads the page drawn in **ets/pages/Index.ets** and request
     }
     ```
 
- 4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
+4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
 
     ``` JSON
     {
@@ -404,7 +404,7 @@ The **EntryAbility** loads the page drawn in **ets/pages/Index.ets** and request
     }
     ```
 
- 5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
+5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
 
     ``` JSON5
     "extensionAbilities": [

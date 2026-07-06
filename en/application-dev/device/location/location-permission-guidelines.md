@@ -28,10 +28,10 @@ For the permission requirements of Location Kit APIs, see [@ohos.geoLocationMana
 
 2. If your application needs to access the device location when running in the foreground, declare the location permission as described in the following table.
 
-| Permission| Declarable or Not| Location Accuracy|
-| -------- | -------- | -------- |
-| ohos.permission.APPROXIMATELY_LOCATION| Yes| Location accurate to 5 kilometers.|
-| ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION| Yes| Location accurate to meters.|
+    | Permission| Declarable or Not| Location Accuracy|
+    | -------- | -------- | -------- |
+    | ohos.permission.APPROXIMATELY_LOCATION| Yes| Location accurate to 5 kilometers.|
+    | ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION| Yes| Location accurate to meters.|
 
 3. If your application needs to access the device location when running in the background, declare the location permission as follows:
 

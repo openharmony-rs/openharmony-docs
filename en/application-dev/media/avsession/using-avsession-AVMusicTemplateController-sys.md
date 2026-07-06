@@ -267,7 +267,7 @@ The basic steps for developing the audio template system are as follows:
 
 3. Send media operation commands. The audio template system sends commands to the media application based on operations. For details about the command APIs, see [AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md).
 
-For example, search-and-play needs to call the [playForSearch](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#playforsearch) API to send a search-and-play command to the media application (this API supports both audio and video, but the example uses audio only). For video, replace the member variable of the parameter entity class SearchPlayInfo with videoInfo of the SearchPlayVideoInfo type.
+    For example, search-and-play needs to call the [playForSearch](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#playforsearch) API to send a search-and-play command to the media application (this API supports both audio and video, but the example uses audio only). For video, replace the member variable of the parameter entity class SearchPlayInfo with videoInfo of the SearchPlayVideoInfo type.
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';

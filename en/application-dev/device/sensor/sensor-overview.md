@@ -58,8 +58,8 @@ The following modules work cooperatively to implement sensors: Sensor API, Senso
 
 1. To obtain data of the following sensors, you must request the required permissions.
 
-| Sensor                                            | Permission                          | Sensitivity    | Permission Description                                                    |
-| -------------------------------------------------- | -------------------------------- | ------------ | ------------------------------------------------------------ |
+    | Sensor                                            | Permission                          | Sensitivity    | Permission Description                                                    |
+    | -------------------------------------------------- | -------------------------------- | ------------ | ------------------------------------------------------------ |
     | Acceleration sensor, uncalibrated acceleration sensor, and linear acceleration sensor| ohos.permission.ACCELEROMETER    | system_grant | The permission allows an application to read data from acceleration sensors, uncalibrated acceleration sensors, and linear acceleration sensors.|
     | Gyroscope sensor and uncalibrated gyroscope sensor                  | ohos.permission.GYROSCOPE        | system_grant | The permission allows an application to read data from gyroscope sensors and uncalibrated gyroscope sensors.|
     | Pedometer sensor                                            | ohos.permission.ACTIVITY_MOTION  | user_grant   | The permission allows an application to read an end user's motion status, for example, to determine whether the user is in motion or to record the number of steps that the user has walked. |

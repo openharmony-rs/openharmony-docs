@@ -55,7 +55,7 @@ The following table lists the APIs used in geofencing. For details, see [@ohos.g
    ];
    ```
 
-4. Create a notification object for **GEOFENCE_TRANSITION_EVENT_ENTER** and **GEOFENCE_TRANSITION_EVENT_EXIT**.
+5. Create a notification object for **GEOFENCE_TRANSITION_EVENT_ENTER** and **GEOFENCE_TRANSITION_EVENT_EXIT**.
 
    ```ts
    // GEOFENCE_TRANSITION_EVENT_ENTER event
@@ -84,7 +84,7 @@ The following table lists the APIs used in geofencing. For details, see [@ohos.g
    };
    ```
 
-5. Add a geofence.
+6. Add a geofence.
 
    ```ts
    // Save the created notification objects to Array in the same sequence as in transitionStatusList.
@@ -123,7 +123,7 @@ The following table lists the APIs used in geofencing. For details, see [@ohos.g
    }
    ```
 
-6. Delete a geofence.
+7. Delete a geofence.
 
    ```ts
    // fenceId is obtained after geoLocationManager.addGnssGeofence is successfully executed.

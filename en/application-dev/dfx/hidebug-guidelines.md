@@ -82,72 +82,72 @@ The HiView process obtains and caches the running data of the current CPU every 
 
 The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
 
-``` text
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+    ``` text
+    cat  /proc/stat
+    cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+    ...
+    ```
 
 Fields in the CPU indicator:
 
 The CPU statistics from left to right are as follows (**cpu** indicates the total running data of all CPUs, in jiffies):
 
-- **user**: user-mode time occupied by non-low-priority processes (**nice** ≤ 0).
+    - **user**: user-mode time occupied by non-low-priority processes (**nice** <= 0).
 
-- **nice**: user-mode time occupied by low-priority processes (**nice** > 0).
+    - **nice**: user-mode time occupied by low-priority processes (**nice** > 0).
 
-- **system**: kernel-mode time.
+    - **system**: kernel-mode time.
 
-- **idle**: idle time (excluding the I/O waiting time).
+    - **idle**: idle time (excluding the I/O waiting time).
 
-- **iowait**: I/O waiting time.
+    - **iowait**: I/O waiting time.
 
-- **irq**: hard interrupt time.
+    - **irq**: hard interrupt time.
 
-- **softirq**: soft interrupt time.
+    - **softirq**: soft interrupt time.
 
-- **steal**: time when a process that is not running on the VM is running in the virtualization environment.
+    - **steal**: time when a process that is not running on the VM is running in the virtualization environment.
 
-- **guest**: time when non-low-priority processes (**nice** ≤ 0) are running on the VM (included in the **user** field).
+    - **guest**: time when non-low-priority processes (**nice** <= 0) are running on the VM (included in the **user** field).
 
-- **guest_nice**: time when low-priority processes (**nice** > 0) are running on the VM (included in the **nice** field).
+    - **guest_nice**: time when low-priority processes (**nice** > 0) are running on the VM (included in the **nice** field).
 
 2. Process/Thread CPU usage data
 
-``` text
-// Process CPU running data collected by the kernel
-struct ucollection_process_cpu_item {
-    int pid;
-    unsigned int thread_total;
-    unsigned long long min_flt;
-    unsigned long long maj_flt;
-    unsigned long long cpu_usage_utime; // User-mode CPU running duration
-    unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
-    unsigned long long cpu_load_time;
-};
-// Thread CPU running data collected by the kernel
-struct ucollection_thread_cpu_item {
-    int tid;
-    char name[16]; // 16 : max length of thread name
-    unsigned long long cpu_usage_utime;// User-mode CPU running duration
-    unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
-    unsigned long long cpu_load_time;
-};
-```
+    ``` text
+    // Process CPU running data collected by the kernel
+    struct ucollection_process_cpu_item {
+        int pid;
+        unsigned int thread_total;
+        unsigned long long min_flt;
+        unsigned long long maj_flt;
+        unsigned long long cpu_usage_utime; // User-mode CPU running duration
+        unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
+        unsigned long long cpu_load_time;
+    };
+    // Thread CPU running data collected by the kernel
+    struct ucollection_thread_cpu_item {
+        int tid;
+        char name[16]; // 16 : max length of thread name
+        unsigned long long cpu_usage_utime;// User-mode CPU running duration
+       unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
+        unsigned long long cpu_load_time;
+    };
+    ```
 
 You can call the API to obtain the current data, calculate the increments based on the baseline data, and use the following formulas to obtain the CPU usages:
 
 System CPU usage:
 
-``` text
-(**systemUsage** increment + **niceUsage** increment + **userUsage** increment)/(**userTime** increment + **niceTime** increment + **systemTime** increment + **idleTime** increment + **ioWaitTime** increment + **irqTime** increment + **softIrqTime** increment)
-```
+    ``` text
+    (**systemUsage** increment + **niceUsage** increment + **userUsage** increment)/(**userTime** increment + **niceTime** increment + **systemTime** increment + **idleTime** increment + **ioWaitTime** increment + **irqTime** increment + **softIrqTime** increment)
+    ```
 
 Process/Thread CPU usage:
 
-``` text
-(**cpu_usage_utime** increment + **cpu_usage_stime** increment)/(ms-level timestamp increment)
-```
+    ``` text
+    (**cpu_usage_utime** increment + **cpu_usage_stime** increment)/(ms-level timestamp increment)
+    ```
 
 ### APIs (ArkTS)
 
