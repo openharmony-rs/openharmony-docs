@@ -229,7 +229,7 @@ let result = vector.getLastIndexOf(2);
 
 removeByIndex(index: number): T
 
-根据下标值找到对应元素并删除，同时将该位置后续元素向左移动，返回被删除的元素。
+根据下标值找到对应元素并删除，同时将该位置后续元素向左移动，返回被删除的元素。index取值范围为[0, length-1]。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -320,7 +320,7 @@ vector.removeByRange(2,4);
 
 replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => T, thisArg?: Object): void
 
-用户通过回调函数操作Vector中的元素，用回调函数返回的元素替换原元素。
+通过回调函数操作Vector中的元素，用回调函数返回的元素替换原元素。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -367,10 +367,10 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | 是 | 回调函数。 |
+| callbackFn | function | 是 | 回调函数，用于遍历Vector中的每个元素。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
-callbackfn的参数说明：
+callbackFn的参数说明：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -397,7 +397,7 @@ vector.forEach((value : number, index?: number) : void => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-对Vector中的元素进行一个排序操作。排序后元素的索引位置会发生改变，之前通过getIndexOf、getLastIndexOf等方法获取的索引值将不再有效，需重新查询索引。
+对Vector中的元素进行一个排序操作。排序后元素的索引位置会发生改变，排序前通过getIndexOf、getLastIndexOf等方法获取的索引值将不再有效，需重新查询索引。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -463,7 +463,7 @@ vector.add(5);
 vector.add(4);
 vector.add(6);
 vector.add(8);
-// 截取索引0到4之间的元素（包含起始索引0，不包含终止索引4）
+// 截取索引0到4之间的元素（包含起始索引0，不包含终止索引4，且toIndex大于fromIndex）
 let result = vector.subVector(0,4);
 // 截取索引2到4之间的元素（包含起始索引2，不包含终止索引4）
 let result1 = vector.subVector(2,4);
@@ -593,7 +593,7 @@ let result = vector.isEmpty();
 
 increaseCapacityTo(newCapacity: number): void
 
-如果传入的新容量大于或等于Vector中的元素个数，将容量变更为新容量；如果传入的新容量小于Vector中的元素个数，不做变更。
+如果传入的新容量大于或等于当前Vector实例的元素个数，将容量变更为新容量；如果传入的新容量小于当前Vector实例的元素个数，不做变更。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -771,7 +771,7 @@ getIndexFrom(element: T, index: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | element | T | 是 | 要查找的元素。 |
-| index | number | 是 | 从指定索引向前搜索的起始位置。 |
+| index | number | 是 | 从指定索引向前搜索的起始位置，取值范围为[0, length-1]。 |
 
 **返回值：**
 
@@ -794,7 +794,7 @@ let result = vector.getIndexFrom(4, 3);
 
 setLength(newSize: number): void
 
-设置Vector实例的元素个数。若newSize大于当前元素个数则进行扩容，若newSize小于当前元素个数则截断删除超出部分的元素。
+设置Vector实例的元素个数。若newSize大于当前元素个数则进行扩容，若newSize小于当前元素个数则截断删除超出部分的元素。newSize=0时清空所有元素，length置为0。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -820,7 +820,7 @@ vector.setLength(2);
 
 get(index: number): T 
 
-根据下标值获取Vector实例中的元素。数组为空时返回undefined。
+根据下标值获取Vector实例中的元素，index取值范围为[0, length-1]。Vector为空或下标越界时返回undefined。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -859,7 +859,7 @@ set(index: number, element: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 查找的下标值。 |
+| index | number | 是 | 查找的下标值，取值范围为[0, length-1]。 |
 | element | T | 是 | 用来替换的元素。 |
 
 **返回值：**
