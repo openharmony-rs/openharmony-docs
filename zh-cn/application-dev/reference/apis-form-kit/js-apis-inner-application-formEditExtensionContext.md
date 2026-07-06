@@ -20,15 +20,8 @@ FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEdi
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
-## FormExtensionContext
-
-FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
-
-**系统能力：** SystemCapability.Ability.Form
-
-**模型约束：** 本模块接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+## FormEditExtensionContext
+FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资源的能力。
 
 ### startSecondPage
 
