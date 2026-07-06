@@ -19,7 +19,7 @@ The rendering process is as follows:
 2. Execute the **build** method of **Index** as follows:
 
    - Create a **Column** component.
-   - Create a Text component. **This.count++** is triggered when the **Text** component is created.
+   - Create a Text component. **this.count++** is triggered when the **Text** component is created.
    - The value change of **count** triggers the re-render of the **Text** component.
    - During the refresh, the component does not mark itself as dirty.
    - Return value of **Text** is 2.
