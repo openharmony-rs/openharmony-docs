@@ -32,7 +32,7 @@ import { SwipeRefresherV2 } from '@kit.ArkUI';
 
 ## SwipeRefresherV2
 
-SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
+SwipeRefresherV2({content?: ResourceStr, isLoading: boolean})
 
 实现下拉刷新功能。当用户下拉页面时，会触发内容加载操作，即从数据源获取新内容并动态展示在界面中。
 

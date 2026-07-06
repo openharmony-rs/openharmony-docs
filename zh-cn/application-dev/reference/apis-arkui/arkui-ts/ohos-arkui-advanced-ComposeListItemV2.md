@@ -99,7 +99,7 @@ ContentItemV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [ContentItemV2Options](#contentitemv2options) | 是 | 列表左侧属性配置。 |
+| options | [ContentItemV2Options](#contentitemv2options) | 否 | 列表左侧属性配置。 |
 
 
 ## ContentItemV2Options
@@ -199,7 +199,7 @@ OperateItemV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateItemV2Options](#operateitemv2options) | 是 | 列表项右侧属性配置。 |
+| options | [OperateItemV2Options](#operateitemv2options) | 否 | 列表项右侧属性配置。 |
 
 
 ## OperateItemV2Options
@@ -247,7 +247,7 @@ OperateItemV2构造函数的参数选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明               |
 | -------- | -------- |---|---|------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头资源。<br>**装饰器类型：** @Trace    |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 列表项右侧图标/箭头资源。<br>**装饰器类型：** @Trace    |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 列表项右侧Symbol图标/箭头资源，优先级大于value。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br>**装饰器类型：** @Trace      |
 | action | [OnActionCallback](#onactioncallback) | 否 | 是 | 列表项右侧图标/箭头点击事件。<br>**装饰器类型：** @Trace       |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧图标/箭头的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:""<br>**装饰器类型：** @Trace   |
@@ -274,7 +274,7 @@ OperateIconV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateIconV2Options](#operateiconv2options) | 是 | 列表项右侧图标属性配置。 |
+| options | [OperateIconV2Options](#operateiconv2options) | 否 | 列表项右侧图标属性配置。 |
 
 
 ## OperateIconV2Options
@@ -343,7 +343,7 @@ OperateButtonV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateButtonV2Options](#operatebuttonv2options) | 是 | 列表项右侧按钮属性配置。 |
+| options | [OperateButtonV2Options](#operatebuttonv2options) | 否 | 列表项右侧按钮属性配置。 |
 
 
 ## OperateButtonV2Options
@@ -411,7 +411,7 @@ OperateCheckV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [OperateCheckV2Options](#operatecheckv2options) | 是 | 列表项右侧元素为Switch、CheckBox、Radio属性配置。 |
+| options | [OperateCheckV2Options](#operatecheckv2options) | 否 | 列表项右侧元素为Switch、CheckBox、Radio属性配置。 |
 
 ## OperateCheckV2Options
 
@@ -427,7 +427,7 @@ OperateCheckV2构造函数的参数选项。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
-| 名称 | 只读 | 类型 | 可选 | 说明 |
+| 名称 | 类型 | 只读 |  可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isCheck | boolean | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态。 |
 | onChange | [OnChangeCallback](#onchangecallback) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时触发回调。 |
@@ -470,6 +470,8 @@ type OnChangeCallback = (value: boolean) => void
 **原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
+**参数：**
 
 | 类型 | 说明 |
 | -------- | -------- |
