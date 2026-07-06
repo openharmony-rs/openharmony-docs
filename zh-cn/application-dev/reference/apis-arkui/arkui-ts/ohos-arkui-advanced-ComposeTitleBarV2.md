@@ -60,7 +60,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 ## ComposeTitleBarV2MenuItem
 
-菜单项类，用于定义标题栏左侧头像或右侧菜单项。该类使用\@ObservedV2装饰器，支持响应式状态管理。
+菜单项类，用于定义标题栏左侧头像或右侧菜单项。
 
 ### 属性
 
