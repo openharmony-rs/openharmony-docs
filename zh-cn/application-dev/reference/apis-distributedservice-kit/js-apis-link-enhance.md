@@ -1,4 +1,4 @@
-﻿# @ohos.distributedsched.linkEnhance (增强连接)
+# @ohos.distributedsched.linkEnhance (增强连接)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
