@@ -550,7 +550,7 @@ try {
 | workDir    | string | 否 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
 | env        | Record\<string, string\> | 否 | 命令执行的环境变量。 |
 | background | boolean | 否 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
-| yieldMs    | number | 否 | 命令前台执行时长，单位为毫秒。默认值：0。 |
+| yieldMs    | number | 否 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。 |
 | timeout    | number | 否 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。 |
 | policy     | string | 否 | 安全策略，参数格式为JSON字符串。 |
 | callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
