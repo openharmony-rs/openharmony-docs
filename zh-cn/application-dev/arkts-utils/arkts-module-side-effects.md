@@ -461,52 +461,64 @@ data is  data from module
 
 下文将通过示例说明import路径展开优化性能的原理。
 
-```typescript
-// main.ets
-import * as har from "har"
-console.info("har.One is ", har.One); // 这里的One变量是har/src/main/ets/NumberString.ets导出的
-
-// har/Index.ets
-export * from "./src/main/ets/OtherModule1"
-export * from "./src/main/ets/OtherModule2"
-export * from "./src/main/ets/Utils"
-console.info("har Index.ets execute.");
-
-// har/src/main/ets/Utils.ets
-export * from "./OtherModule3"
-export * from "./OtherModule4"
-export * from "./NumberString"
-console.info("har Utils.ets execute.");
-```
-
-<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
+<!-- @[unOptIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// staticLibrary/src/main/ets/NumberString.ets
+// src/main/ets/pages/Index.ets
+import * as har from 'expandPathHar';
+
+console.info('har.One is ', har.One); // 这里的One变量是har/src/main/ets/NumberString.ets导出的
+```
+
+<!-- @[expandPathHarIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/Index.ets) -->
+
+``` TypeScript
+// expandPath/expandPathHar/Index.ets
+export * from './src/main/ets/OtherModule1'
+export * from './src/main/ets/OtherModule2'
+export * from './src/main/ets/Utils'
+console.info('har Index.ets execute.');
+```
+
+<!-- @[Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/Utils.ets) -->
+
+``` TypeScript
+// expandPathHar/src/main/ets/Utils.ets
+export * from './OtherModule3'
+export * from './OtherModule4'
+export * from './NumberString'
+console.info('har Utils.ets execute.');
+```
+
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets) -->
+
+``` TypeScript
+// expandPathHar/src/main/ets/NumberString.ets
 export const One: string = '1';
 console.info('har NumberString.ets execute.');
 ```
 
-1. 如果main.ets只需要依赖har中的NumberString模块，import xxx from "har"的写法会导致har整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的har/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
+1. 如果Index.ets只需要依赖har中的NumberString模块，import xxx from "har"的写法会导致har整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的har/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
 
-2. 在模块解析阶段会通过深度优先遍历的方式建立变量的绑定关系，main.ets中使用的har.One变量是由har/src/main/ets/NumberString.ets导出的，由于使用了export *的写法，建立变量的绑定关系时需要递归去进行变量名的匹配，从而**导致模块解析耗时增加**。
+2. 在模块解析阶段会通过深度优先遍历的方式建立变量的绑定关系，Index.ets中使用的har.One变量是由har/src/main/ets/NumberString.ets导出的，由于使用了export *的写法，建立变量的绑定关系时需要递归去进行变量名的匹配，从而**导致模块解析耗时增加**。
 
 在上述例子中，会先查找 `har/Index.ets` 文件。该文件中有多个 `export *` 语句，因此会依次检查 `OtherModule1` 和 `OtherModule2` 是否导出 `One` 变量。接着，找到 `Utils` 模块，该模块也有 `export *` 语句，因此会继续检查 `OtherModule3` 和 `OtherModule4`，最终确定 `One` 变量是从 `NumberString` 模块导出的。
 
 优化方式：改为如下的代码写法，跳过中间的依赖路径，直接依赖变量对应的模块。
 
-<!-- @[import_modulePartEleven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEleven.ets) -->
+<!-- @[OptIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/index2.ets) -->
 
 ``` TypeScript
-// PageEleven.ets
-import { One } from 'staticlibrary/src/main/ets/components/NumberString';
+// src/main/ets/pages/Index2.ets
+import { One } from 'expandPathHar/src/main/ets/NumberString';
+
 console.info('One is ', One);
 ```
 
-<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets) -->
 
 ``` TypeScript
-// staticLibrary/src/main/ets/NumberString.ets
+// expandPathHar/src/main/ets/NumberString.ets
 export const One: string = '1';
 console.info('har NumberString.ets execute.');
 ```
@@ -517,28 +529,29 @@ console.info('har NumberString.ets execute.');
 
 由于import路径展开会跳过中间模块的执行，若业务依赖模块的执行顺序，修改后可能会导致业务异常。
 
-<!-- @[import_modulePartTwelve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwelve.ets) -->
+<!-- @[opServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/opIndex.ets) -->
 
 ``` TypeScript
-// PageTwelve.ets
-import { serviceManager } from 'staticlibrary';
+// src/main/ets/pages/opIndex.ets
+import { serviceManager } from 'servicemanagerhar'
 
 serviceManager.print();
 ```
 
-<!-- @[import_serviceManagerOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/Index.ets) -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/Index.ets) -->
 
 ``` TypeScript
-import { serviceManager } from './src/main/ets/ServiceManagerPartOne';
+// serviceManagerHar/Index.ets
+import { serviceManager } from './src/main/ets/ServiceManager';
 
 serviceManager.init();
 export { serviceManager }
 ```
 
-<!-- @[export_serviceManagerPartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets) -->
+<!-- @[ServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/ServiceManager.ets) -->
 
 ``` TypeScript
-// staticLibrary/src/main/ets/ServiceManagerPartOne.ets
+// serviceManagerHar/src/main/ets/ServiceManager.ets
 class ServiceManager {
   public inited: boolean = false;
 
@@ -564,19 +577,19 @@ ServiceManager is inited.
 
 如果进行import路径展开，展开后的代码为：
 
-<!-- @[import_modulePartThirteen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThirteen.ets) -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// PageThirteen.ets
-import { serviceManager } from 'staticlibrary/src/main/ets/ServiceManagerPartTwo';
+// src/main/ets/pages/Index.ets
+import { serviceManager } from 'servicemanagerhar/src/main/ets/OpServiceManager'
 
 serviceManager.print();
 ```
 
-<!-- @[export_serviceManagerPartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartTwo.ets) -->
+<!-- @[ServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/ServiceManager.ets) -->
 
 ``` TypeScript
-// staticLibrary/src/main/ets/ServiceManagerPartTwo.ets
+// serviceManagerHar/src/main/ets/ServiceManager.ets
 class ServiceManager {
   public inited: boolean = false;
 
@@ -602,7 +615,7 @@ ServiceManager is not inited.
 
 **产生的副作用**
 
-由于har/Index模块中存在顶层代码进行ServiceManager的初始化，如果在main模块中进行import路径展开，将不会执行har/Index模块，从而导致ServiceManager未初始化，可能引起业务异常。
+由于har/Index模块中存在顶层代码进行ServiceManager的初始化，如果在Index模块中进行import路径展开，将不会执行har/Index模块，从而导致ServiceManager未初始化，可能引起业务异常。
 
 **优化方式**
 
@@ -610,19 +623,19 @@ ServiceManager is not inited.
 
 对于上文的示例，可以进行如下修改：
 
-<!-- @[import_modulePartFourteen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFourteen.ets) -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// PageFourteen.ets
-import { serviceManager } from 'staticlibrary/src/main/ets/ServiceManagerPartThree';
+// src/main/ets/pages/Index.ets
+import { serviceManager } from 'servicemanagerhar/src/main/ets/OpServiceManager'
 
 serviceManager.print();
 ```
 
-<!-- @[export_serviceManagerPartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets) -->
+<!-- @[OpServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/OpServiceManager.ets) -->
 
 ``` TypeScript
-// staticLibrary/src/main/ets/ServiceManagerPartThree.ets
+// serviceManagerHar/src/main/ets/OpServiceManager.ets
 class ServiceManager {
   public inited: boolean = false;
 
