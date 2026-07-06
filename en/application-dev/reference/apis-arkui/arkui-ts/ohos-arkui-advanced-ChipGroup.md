@@ -198,7 +198,7 @@ IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItem
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Array of custom items displayed in the tailing area. It supports the following types: IconItemOptions (image icons), SymbolGlyphModifier (symbol icons), and SymbolItemOptions (symbol icon configuration).|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Array of custom items displayed in the trailing area. It supports the following types: IconItemOptions (image icons), SymbolGlyphModifier (symbol icons), and SymbolItemOptions (symbol icon configuration).|
 
 > **NOTE**
 >
