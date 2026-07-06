@@ -76,7 +76,7 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
@@ -147,7 +147,7 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
@@ -212,7 +212,7 @@ let outputSize: media.OutputSize = {
   height: 300,
 };
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
