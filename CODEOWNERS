@@ -2094,9 +2094,9 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gesture
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gesturerecognizer.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md @guozejun @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemsize.md @guozejun @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md @guozejun @zcdqs @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemsize.md @guozejun @zcdqs @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-guidelineoption.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-hostwindowinfo.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
@@ -2195,7 +2195,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-transla
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-visibleareaeventoptions.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-customspan.md @carnivore233 @Brilliantry_Rui
@@ -2339,7 +2339,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-nodeadapter.md @kangshihui 
 zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-rendering-control.md @wangjunman1 @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md @huangxiaolinabc @jiangdayuan @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md @yylong @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md @yylong @rongShao-Z @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-snapshot.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md @liwenzhen3 @s10021109 @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/errorcode-styled-string.md @hddgzw @xiangyuan6 @Brilliantry_Rui
@@ -2698,14 +2698,14 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-effectcomponent
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex-sys.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex.md @camlostshi @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flowitem.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flowitem.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-folderstack.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-formlink.md @Qian-Win @cx983299475 @Brilliantry_Rui @mahailong123456
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-grid-sys.md @guozejun @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-grid.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-grid-sys.md @guozejun @zcdqs @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-grid.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-gridcol.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-gridcontainer.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-griditem.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-griditem.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-gridrow.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-hyperlink.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md @dutie123 @Brilliantry_Rui
@@ -5210,11 +5210,11 @@ zh-cn/application-dev/ui/arkts-layout-debug.md 无
 zh-cn/application-dev/ui/arkts-layout-development-arcswiper.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-container-reader.md @song-song-song @fenglinbailu @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-arclist.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-layout-development-create-grid.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-layout-development-create-grid.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-lazy-layout.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-list.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-looping.md @Hu_ZeQi @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-layout-development-create-waterflow.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-layout-development-create-waterflow.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-dynamiclayout.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-flex-layout.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-grid-layout.md @zju_ljz @lanshouren @Brilliantry_Rui
@@ -5314,7 +5314,7 @@ zh-cn/application-dev/ui/ndk-drag-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-embed-arkts-components.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-embed-render-components.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-embedded-component.md @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/ui/ndk-grid.md @guozejun @Brilliantry_Rui
+zh-cn/application-dev/ui/ndk-grid.md @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-image-component.md @wu-yinxiao @liyujie43 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-layout-container.md @camlostshi @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-loading-long-list.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
@@ -5328,7 +5328,7 @@ zh-cn/application-dev/ui/ndk-textarea-event.md @kangshihui @xiangyuan6 @Brillian
 zh-cn/application-dev/ui/ndk-use-animation-scene.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-use-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-use-text-component.md @hddgzw @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/ui/ndk-waterflow.md @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/ui/ndk-waterflow.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/ui/theme_skinning.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-ide-previewer.md @xin11112 @zhangboren @zhang_yixin13

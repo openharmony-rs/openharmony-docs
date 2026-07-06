@@ -221,7 +221,7 @@ scrollBarWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | ArcList滚动条在按压态下的宽度。<br>默认值：LengthMetrics.vp(24)<br>非按压态宽度：LengthMetrics.vp(4)<br>设置为负值、undefined等异常值时，按滚动条主题中的普通态宽度处理。<br>单位：vp |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | ArcList滚动条在按压态下的宽度。<br>默认值：LengthMetrics.vp(24)<br>非按压态宽度：LengthMetrics.vp(4)<br>设置为负值、undefined等异常值时，按滚动条的普通态宽度处理。<br>单位：vp |
 
 ### scrollBarColor
 

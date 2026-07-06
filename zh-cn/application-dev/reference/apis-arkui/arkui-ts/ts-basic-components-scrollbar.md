@@ -44,7 +44,7 @@ ScrollBar(value: ScrollBarOptions)
 
 enableNestedScroll(enabled: Optional\<boolean>)
 
-设置滚动条是否嵌套滚动。用于双层滚动容器、嵌套列表等需要通过滚动条拖动内层可滚动组件并联动父级滚动的场景，仅当ScrollBar通过Scroller与可滚动组件绑定时生效。
+设置滚动条是否嵌套滚动。用于多层滚动容器、嵌套列表等需要通过滚动条拖动内层可滚动组件并联动父级滚动的场景，仅当ScrollBar通过Scroller与可滚动组件绑定时生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -91,7 +91,7 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 >  **说明：**
 >
 >  - ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
->  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动，ScrollBar与可滚动组件仅支持一对一绑定。
+>  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动。一个可滚动组件可以绑定多个ScrollBar组件，一个ScrollBar组件只能绑定一个可滚动组件。
 >  - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
 >  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。
 
@@ -101,7 +101,7 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定，且仅当ScrollBar与可滚动组件方向相同时才能联动，ScrollBar与可滚动组件仅支持一对一绑定。 |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定，且仅当ScrollBar与可滚动组件方向相同时才能联动。一个可滚动组件可以绑定多个ScrollBar组件，一个ScrollBar组件只能绑定一个可滚动组件。 |
 | direction | [ScrollBarDirection](#scrollbardirection枚举说明) | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。可滚动内容为纵向布局时设置为ScrollBarDirection.Vertical；可滚动内容为横向布局时设置为ScrollBarDirection.Horizontal。<br/>默认值：ScrollBarDirection.Vertical |
 | state | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 滚动条状态。BarState.Auto表示按需显示，BarState.On表示常驻显示，BarState.Off表示不显示。<br/>默认值：BarState.Auto |
 

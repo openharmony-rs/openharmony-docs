@@ -27,7 +27,7 @@
 >  **说明：**
 >
 >  WaterFlow子组件的visibility属性设置为None时不显示，但该子组件周围的columnsGap、rowsGap、margin仍会生效。
->  在涉及大量子组件的情况下，建议采用懒加载、缓存数据、组件复用、固定宽高以及布局优化等方法，以提升性能和减少内存占用。最佳实践请参考[优化瀑布流加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-waterflow-performance-optimization)。
+>  在涉及大量子组件的情况下，建议采用懒加载、缓存数据、组件复用、固定宽高以及布局优化等方法，以提升性能和减少内存占用。
 >
 > 纵向布局时，WaterFlow会计算每一列中已放置子组件的累计高度，并将新子组件放入累计高度最小的那一列，以保持整体布局紧凑。
 >
@@ -699,6 +699,10 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 设置[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)事件的回调。
 
+> **说明：**
+>
+> setOnWillScroll用于设置每帧滚动开始前的回调，setOnDidScroll用于设置每帧滚动完成后的回调。两者可同时使用，setOnWillScroll的回调先于setOnDidScroll触发。
+
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
@@ -712,10 +716,6 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [OnScrollCallback](ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onDidScroll事件的回调函数。 |
-
-> **说明：**
->
-> setOnWillScroll用于设置每帧滚动开始前的回调，setOnDidScroll用于设置每帧滚动完成后的回调。两者可同时使用，setOnWillScroll的回调先于setOnDidScroll触发。
 
 ### setOnScrollIndex<sup>19+</sup>
 
