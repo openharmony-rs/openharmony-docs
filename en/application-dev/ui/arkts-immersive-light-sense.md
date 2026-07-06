@@ -493,9 +493,9 @@ The following uses the **Column** component as an example to describe how to ena
      @Builder
      MyMenu() {
        Menu() {
-         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
-         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
-         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu item' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu option' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu option' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: 'Menu option' })
        }
      }
    
