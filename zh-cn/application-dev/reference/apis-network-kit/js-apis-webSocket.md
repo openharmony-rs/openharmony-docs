@@ -2643,6 +2643,7 @@ localServer.offWebSocketServerError();
 | pingInterval<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。<br>**ArkTS-Dyn起始版本：** 21  <br>**ArkTS-Sta起始版本：** 26.0.0 |
 | pongTimeout<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。<br>**ArkTS-Dyn起始版本：** 21  <br>**ArkTS-Sta起始版本：** 26.0.0|
 | minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| supportOriginPort | boolean | 否 | 是 | Origin是WebSocket握手请求中的HTTP请求头字段，用于标识请求来源，服务端可据此进行来源校验。该参数用于控制Origin字段是否携带自定义端口号。默认值为false。设置为true时：<br/>- 调用[connect](#connect)接口后，若其第一个参数url中指定的协议为ws，且显式指定的端口号不是80，则Origin字段中会携带对应的端口；其他情况不携带端口号。<br/>- 调用[connect](#connect)接口后，若其第一个参数url中指定的协议为wss，且显式指定的端口号不是443，则Origin字段中会携带对应的端口号；其他情况不携带端口号。<br/>设置为false时，Origin字段不会携带端口号。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ClientCert<sup>11+</sup>
 
