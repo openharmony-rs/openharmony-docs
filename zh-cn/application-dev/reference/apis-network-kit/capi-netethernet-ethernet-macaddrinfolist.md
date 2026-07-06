@@ -1,5 +1,12 @@
 # Ethernet_MacAddrInfoList
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ```c
 typedef struct Ethernet_MacAddrInfoList {...} Ethernet_MacAddrInfoList
 ```
@@ -20,7 +27,7 @@ typedef struct Ethernet_MacAddrInfoList {...} Ethernet_MacAddrInfoList
 
 | 名称 | 描述 |
 | -- | -- |
-| [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md) macInfoList[ETHERNET_MAX_NET_SIZE] |  |
-| int32_t macInfoListSize |  |
+| [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md) macInfoList[ETHERNET_MAX_NET_SIZE] | 以太网网卡MAC地址列表。 |
+| int32_t macInfoListSize | macInfoList数组的实际大小。 |
 
 
