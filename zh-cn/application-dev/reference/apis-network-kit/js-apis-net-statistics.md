@@ -1201,7 +1201,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1273,7 +1273,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| 名称   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | -------------------|----------------------------------------- |
 | type      | [NetBearType](#netbeartype12) | 否  |否 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
 | startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 | 开始时间戳(单位：秒)。 |
@@ -1291,7 +1291,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| 名称   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | --------|---------------------------------------------------- |
 | rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量下行数据(单位：字节)。 |
 | txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行数据(单位：字节)。 |
