@@ -73,22 +73,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    Column() {
-      Button('constructor')
-      .onClick(async() => {
-          try {
-            let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-          } catch (err) {
-            let error: BusinessError = err as BusinessError;
-            console.error(`SyncFolderAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
-          }
-      });
+    build() {
+        Column() {
+            Button('constructor')
+                .onClick(async() => {
+                    try {
+                        let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+                    } catch (err) {
+                        let error: BusinessError = err as BusinessError;
+                        console.error(`SyncFolderAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
+                    }
+                });
+        }
     }
-  }
 }
 ```
-  
+
 ### getAllSyncFolders
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
@@ -167,30 +167,30 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  console.info(TAG + `getAllSyncFolders start`);
-  let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-  syncFolderAccessor.getAllSyncFolders().then((syncFolders: cloudDiskManager.SyncFolder[]) => {
-    if (syncFolders) {
-      console.info(TAG + `getAllSyncFolders success, length: ${syncFolders.length}`);
-      for (let i = 0; i < syncFolders.length; ++i) {
-        console.info(TAG + `syncFolders[${i}].path: ${syncFolders[i].path}`);
-        console.info(TAG + `syncFolders[${i}].bundleName: ${syncFolders[i].bundleName}`);
-        console.info(TAG + `syncFolders[${i}].state: ${syncFolders[i].state}`);
-        if (syncFolders[i].displayNameResId) {
-          console.info(TAG + `syncFolders[${i}].displayNameResId: ${syncFolders[i].displayNameResId}`);
+    console.info(TAG + `getAllSyncFolders start`);
+    let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+    syncFolderAccessor.getAllSyncFolders().then((syncFolders: cloudDiskManager.SyncFolder[]) => {
+        if (syncFolders) {
+            console.info(TAG + `getAllSyncFolders success, length: ${syncFolders.length}`);
+            for (let i = 0; i < syncFolders.length; ++i) {
+                console.info(TAG + `syncFolders[${i}].path: ${syncFolders[i].path}`);
+                console.info(TAG + `syncFolders[${i}].bundleName: ${syncFolders[i].bundleName}`);
+                console.info(TAG + `syncFolders[${i}].state: ${syncFolders[i].state}`);
+                if (syncFolders[i].displayNameResId) {
+                    console.info(TAG + `syncFolders[${i}].displayNameResId: ${syncFolders[i].displayNameResId}`);
+                }
+                if (syncFolders[i].customAlias) {
+                    console.info(TAG + `syncFolders[${i}].customAlias: ${syncFolders[i].customAlias}`);
+                }
+            }
+        } else {
+            console.info(TAG + `getAllSyncFolders failed`);
         }
-        if (syncFolders[i].customAlias) {
-          console.info(TAG + `syncFolders[${i}].customAlias: ${syncFolders[i].customAlias}`);
-        }
-      }
-    } else {
-      console.info(TAG + `getAllSyncFolders failed`);
-    }
-  }).catch((err: BusinessError): void => {
-    console.error(TAG + `getAllSyncFolders then catch err, code: ${err.code}, message: ${err.message}`);
-  })
+    }).catch((err: BusinessError): void => {
+        console.error(TAG + `getAllSyncFolders then catch err, code: ${err.code}, message: ${err.message}`);
+    })
 } catch (err) {
-  console.error(TAG + `getAllSyncFolders catch err, code: ${err.code}, message: ${err.message}`);
+    console.error(TAG + `getAllSyncFolders catch err, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
