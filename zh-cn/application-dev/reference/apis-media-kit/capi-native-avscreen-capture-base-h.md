@@ -77,8 +77,8 @@
 | [typedef void (\*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData)](#oh_avscreencapture_onbufferavailable) | OH_AVScreenCapture_OnBufferAvailable | 当OH_AVScreenCapture实例操作期间音频或视频缓存区可用时，将调用该函数指针。 |
 | [typedef void (\*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture, uint64_t displayId, void *userData)](#oh_avscreencapture_ondisplayselected) | OH_AVScreenCapture_OnDisplaySelected | 当录屏事件开始时，将调用函数指针。 |
 | [typedef void (\*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* capture, OH_AVScreenCaptureContentChangedEvent event, OH_Rect* area, void *userData)](#oh_avscreencapture_oncapturecontentchanged) | OH_AVScreenCapture_OnCaptureContentChanged | 当OH_AVScreenCapture实例操作期间录屏内容变化时，将调用函数指针。 |
-| [typedef void (\*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)](#oh_avscreencapture_onuserselected) | OH_AVScreenCapture_OnUserSelected | 当用户在授权界面（选择界面）选择参数时，功能接口将参数返回给应用程序。 |
-| [typedef void (\*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)](#oh_avscreencapture_onprivacyprotect) | OH_AVScreenCapture_OnPrivacyProtect | 当OH_AVScreenCapture实例在运行过程中发生隐私保护事件时，函数指针将被调用。 |
+| [typedef void (\*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)](#oh_avscreencapture_onuserselected) | OH_AVScreenCapture_OnUserSelected | 当用户在授权界面（选择界面）选择参数时，函数指针将参数返回给应用程序。 |
+| [typedef void (\*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)](#oh_avscreencapture_onprivacyprotect) | OH_AVScreenCapture_OnPrivacyProtect | 当OH_AVScreenCapture实例在运行过程中发生隐私保护事件时，将调用函数指针。 |
 
 ### 变量
 
@@ -192,7 +192,7 @@ enum OH_DataType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ORIGINAL_STREAM = 0 | 原始流格式，如YUV/RGBA/PCM等。 |
-| OH_ENCODED_STREAM = 1 | 编码格式，如H264/AAC等。当前版本暂不支持。 |
+| OH_ENCODED_STREAM = 1 | 编码流格式，如H.264/AAC等。当前版本暂不支持。 |
 | OH_CAPTURE_FILE = 2 | 保存文件格式，支持mp4。 |
 | OH_INVAILD = -1 | 无效格式。 |
 
@@ -515,7 +515,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer缓存区实例的指针，该回调方法执行结束返回后，数据缓存区不再有效。 |
 | [OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | 可用缓存区的数据类型。 |
-|  int64_t timestamp | 时间戳，单位纳秒。 |
+|  int64_t timestamp | 时间戳，单位：纳秒（ns）。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnDisplaySelected()
@@ -571,7 +571,7 @@ typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, O
 
 **描述**
 
-当用户在授权界面（选择界面）选择参数时，功能接口将参数返回给应用程序。
+当用户在授权界面（选择界面）选择参数时，函数指针将参数返回给应用程序。
 
 **起始版本：** 20
 
@@ -581,7 +581,7 @@ typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, O
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)* selections | 用户在授权界面选择的录制参数信息。 |
-|  void *userData | 指向用户数据的指针。 |
+|  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnPrivacyProtect()
 
@@ -591,7 +591,7 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
  
 **描述**
 
-当[OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)实例在运行过程中发生隐私保护事件时，函数指针将被调用。
+当[OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)实例在运行过程中发生隐私保护事件时，将调用函数指针。
   
 **起始版本：** 24
 
@@ -601,4 +601,4 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | 隐私保护信息指针。 |
-| void *userData | 指向用户数据的指针。 |
+| void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
