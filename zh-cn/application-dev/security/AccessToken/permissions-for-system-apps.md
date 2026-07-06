@@ -6615,7 +6615,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
@@ -6629,7 +6629,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
@@ -6643,7 +6643,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -6657,7 +6657,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -6671,7 +6671,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
@@ -6685,7 +6685,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
 
