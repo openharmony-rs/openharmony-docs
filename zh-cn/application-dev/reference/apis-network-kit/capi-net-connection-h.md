@@ -49,7 +49,7 @@
 | [int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback,uint32_t timeout, uint32_t *callbackId)](#oh_netconn_registernetconncallback) | 注册监听网络状态变化的回调。 |
 | [int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)](#oh_netconn_registerdefaultnetconncallback) | 注册监听默认网络状态变化的回调。 |
 | [int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)](#oh_netconn_unregisternetconncallback) | 注销监听网络状态变化的回调。 |
-| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | 请求重新认证全局HTTP代理。调用本接口会触发一个异步重新认证请求，在认证完成后触发一次回调用于通知认证结果。<br> 接口返回值为0表示请求已被接受，并不表示重新认证已成功，最终通过回调通知认证结果。若返回非零值，则不会触发回调。<br> |
+| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | 请求重新认证全局HTTP代理。调用本接口会触发一个异步重新认证请求，在认证完成后触发一次回调用于通知认证结果。<br> 接口返回值为0表示请求已被接受，并不表示重新认证已成功，最终通过回调通知认证结果。若返回非零值，则不会触发回调。 |
 | [NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)](#oh_netconn_setpacurl) | 设置系统级代理自动配置（PAC）脚本地址。 |
 | [NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)](#oh_netconn_getpacurl) | 获取系统级代理自动配置（PAC）脚本地址。 |
 | [int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)](#oh_netconn_queryproberesult) | 查询网络探测结果。 |
