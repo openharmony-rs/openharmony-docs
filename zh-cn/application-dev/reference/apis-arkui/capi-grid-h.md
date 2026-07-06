@@ -10,7 +10,7 @@
 
 定义Grid组件相关的枚举和接口。
 
-**引用文件：** <arkui/grid.h>
+**引用文件：** <arkui/node_attributes/grid.h>
 
 **库：** libace_ndk.z.so
 
