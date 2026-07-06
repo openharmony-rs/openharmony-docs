@@ -20,7 +20,7 @@
 <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 // ···
 
@@ -171,7 +171,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 获取UIAbility拉起方的信息
 
-拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过[parameters](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
+拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过[@ohos.app.ability.Want (Want)](../reference/apis-ability-kit/js-apis-app-ability-want.md)中parameters参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
 
 
 1. 通过点击UIAbilityA中的"拉起UIAbilityB"按钮，拉起UIAbilityB。
