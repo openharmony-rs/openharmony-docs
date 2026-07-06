@@ -55,6 +55,9 @@ DatePicker(options?: DatePickerOptions)
 > - Date的使用请参考[TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions对象说明)。
 >
 > - 在DatePicker组件滑动过程中修改DatePickerOptions中的属性，会导致这些属性无法生效。
+>
+> - 如果需要设置的起止日期范围在\[Date('1900-01-31'), Date('2100-12-31')]之外，推荐使用[DatePickerComponent](ohos-arkui-advanced-DatePickerComponent.md)。
+
 
 **起始日期、结束日期和选中日期的异常情形说明：**
 
