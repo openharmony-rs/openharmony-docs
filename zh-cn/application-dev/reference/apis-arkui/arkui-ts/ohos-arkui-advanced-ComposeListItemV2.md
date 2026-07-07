@@ -451,10 +451,6 @@ type OnActionCallback = () => void
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
-| 类型 | 说明 |
-| -------- | -------- |
-| () => void | 列表项右侧图标/箭头点击时的回调函数。 |
-
 ## OnChangeCallback
 
 type OnChangeCallback = (value: boolean) => void
@@ -473,9 +469,9 @@ type OnChangeCallback = (value: boolean) => void
 
 **参数：**
 
-| 类型 | 说明 |
-| -------- | -------- |
-| (value: boolean) => void | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |
+| 参数名  | 类型      | 必填 | 说明                                                         |
+| ------- | --------- | ---- | ------------------------------------------------------------ |
+| value | boolean   | 是   | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
