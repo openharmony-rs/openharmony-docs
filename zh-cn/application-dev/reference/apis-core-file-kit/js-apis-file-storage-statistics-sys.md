@@ -268,7 +268,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
   | 参数名      | 类型   | 必填 | 说明     |
   | ----------- | ------ | ---- | -------- |
   | packageName | string | 是   | 应用包名。 |
-  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，取值需为大于等于0的整数，默认值为0（表示未分身的主应用）。传入小于0的值时返回错误码401。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，取值需为大于等于0的整数，默认值为0（表示未分身的主应用）。传入不满足范围的值时返回错误码401。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **返回值：**
 
@@ -406,7 +406,7 @@ getSystemSize(): Promise&lt;number&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. |
+| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
