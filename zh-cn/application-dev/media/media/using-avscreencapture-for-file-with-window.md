@@ -134,7 +134,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
-   方式二：需传入期望录屏的窗口ID进行录屏。
+   方式二：需传入期望录制的窗口ID进行录屏。
    
    <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
