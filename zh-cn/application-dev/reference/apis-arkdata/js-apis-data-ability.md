@@ -408,8 +408,8 @@ glob(field: string, value: string): DataAbilityPredicates
   // 仅可匹配到"NAME"字段值为"Lisa"
   dataAbilityPredicates.glob("NAME", "Lisa")
 
-  // 仅可以匹配到"name"字段值为"lisa"
-  dataAbilityPredicates.glob("name", "lisa")
+  // 仅可以匹配到"NAME"字段值为"lisa"
+  dataAbilityPredicates.glob("NAME", "lisa")
   ```
 
 ### between

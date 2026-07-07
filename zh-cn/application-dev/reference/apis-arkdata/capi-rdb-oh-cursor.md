@@ -58,7 +58,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 **描述**
 
-函数指针，获取结果集中的列数。
+函数指针，获取结果集中的行数。
 
 **起始版本：** 10
 

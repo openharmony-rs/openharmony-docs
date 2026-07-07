@@ -32,5 +32,5 @@
 
 | 名称                             | typedef关键字 | 描述               |
 | -------------------------------- | ------------- | ------------------ |
-| [OH_VObject](#oh_vobject) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
 

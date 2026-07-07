@@ -457,7 +457,7 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 | ------------------------------------- | ---------------------------------------------- |
 | OH_Predicates *predicates             | 表示指向OH_Predicates实例的指针。              |
 | const char *field                     | 数据库表中的列名，不能为空。                             |
-| [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | 表示排序类型[OH_OrderType](capi-oh-predicates-h.md#oh_ordertype)。 |
+| [OH_OrderType](capi-oh-predicates-h.md#oh_ordertype) type | 排序类型。 |
 
 **返回：**
 

@@ -98,8 +98,8 @@
 | [OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)](#oh_rdb_executequery) | - | 根据指定SQL语句查询数据库中的数据，支持向量数据库。 |
 | [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | 根据指定SQL语句查询数据库中的数据，支持向量数据库。 |
 | [int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)](#oh_rdb_begintransaction) | - | 在开始执行SQL语句之前，开始事务。 |
-| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | 回滚已经执行的SQL语句。使用前需先调用OH_Rdb_BeginTransaction开始事务。 |
-| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | 提交已执行的SQL语句。使用前需先调用OH_Rdb_BeginTransaction开始事务。 |
+| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | 回滚已经执行的SQL语句。使用前需先调用[OH_Rdb_BeginTransaction](#oh_rdb_begintransaction)开始事务。 |
+| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | 提交已执行的SQL语句。使用前需先调用[OH_Rdb_BeginTransaction](#oh_rdb_begintransaction)开始事务。 |
 | [int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)](#oh_rdb_begintranswithtrxid) | - | 在开始执行SQL语句之前，开始事务，并获得该事务的ID，仅支持向量数据库。 |
 | [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | 使用指定的事务ID，回滚已经执行的SQL语句，仅支持向量数据库。 |
 | [int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_commitbytrxid) | - | 使用指定的事务ID，提交已经执行的SQL语句，仅支持向量数据库。 |
@@ -824,7 +824,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回一个指向支持数据库类型的数组的指针。调用者不应释放或修改返回的指针。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_CreateValueObject()
 
