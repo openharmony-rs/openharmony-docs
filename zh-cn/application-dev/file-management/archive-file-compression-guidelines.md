@@ -7,14 +7,12 @@
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
 
-从API版本26.0.0开始支持文件归档类压缩解压缩。
-
 ## 场景介绍
 
-文件归档类压缩解压缩适用于将多个文件和目录打包为一个归档文件，或者从归档文件中提取文件到指定目录的场景。主要应用场景包括：
+从API版本26.0.0开始支持文件归档类压缩解压缩，适用于将多个文件和目录打包为一个归档文件，或者从归档文件中提取文件到指定目录的场景。主要应用场景包括：
 
 - 将多个文件或目录打包压缩为一个归档文件，便于存储和传输。
-- 解压归档文件，将压缩包中的文件提取到指定目录。
+- 解压缩归档文件，将压缩包中的文件提取到指定目录。
 
 ## 约束限制
 
@@ -35,13 +33,13 @@
 | OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum) | 向归档文件中添加文件或目录。 |
 | OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc) | 关闭归档写入器。 |
 
-### 归档文件解压接口
+### 归档文件解压缩接口
 
 | 接口名称 | 描述 |
 | -------- | ---- |
 | OH_Archive_Reader_OpenFile(const char *inFile) | 打开归档文件并创建读取器。 |
-| OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData) | 设置归档解压进度回调。 |
-| OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir) | 解压归档文件中的所有文件到指定目录。 |
+| OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData) | 设置归档解压缩进度回调。 |
+| OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir) | 解压缩归档文件中的所有文件到指定目录。 |
 | OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc) | 关闭归档读取器。 |
 
 ## 开发准备
@@ -60,7 +58,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 #include <filemanagement/archive/oh_archive.h>
 ```
 
-## 开发流程
+## 开发步骤
 
 ### 归档文件压缩
 
@@ -110,12 +108,12 @@ static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
 }
 ```
 
-### 归档文件解压
+### 归档文件解压缩
 
 1. 调用OH_Archive_Reader_OpenFile打开归档文件并创建读取器。需指定ZIP文件路径。
-2. （可选）调用OH_Archive_Reader_SetProgressHandlerWithData设置解压进度回调。
-3. 调用OH_Archive_Reader_ExtractAllFile将归档文件解压到指定目录。解压后的文件将保持原有的目录结构。
-4. 调用OH_Archive_Reader_Close关闭归档读取器。解压完成后必须调用此接口释放资源。
+2. （可选）调用OH_Archive_Reader_SetProgressHandlerWithData设置解压缩进度回调。
+3. 调用OH_Archive_Reader_ExtractAllFile将归档文件解压缩到指定目录。解压缩后的文件将保持原有的目录结构。
+4. 调用OH_Archive_Reader_Close关闭归档读取器。解压缩完成后必须调用此接口释放资源。
 
 <!--@[zip_file_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -151,5 +149,5 @@ static napi_value ZipFileDecompress(napi_env env, napi_callback_info info)
 
 ## 调测验证关键点
 
-- 归档文件压缩：验证生成的ZIP文件可以使用标准解压工具打开，文件内容完整，目录结构正确。
-- 归档文件解压：验证解压后的文件和目录结构与压缩前一致，文件内容无损坏。
+- 归档文件压缩：验证生成的ZIP文件可以使用标准解压缩工具打开，文件内容完整，目录结构正确。
+- 归档文件解压缩：验证解压缩后的文件和目录结构与压缩前一致，文件内容无损坏。

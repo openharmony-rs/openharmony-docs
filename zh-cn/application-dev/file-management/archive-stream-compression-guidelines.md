@@ -7,21 +7,19 @@
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
 
-从API版本26.0.0开始支持流式压缩解压缩。
-
 ## 场景介绍
 
-流式压缩解压缩适用于对连续数据流进行实时压缩或解压的场景。主要应用场景包括：
+从API版本26.0.0开始支持流式压缩解压缩，适用于对连续数据流进行实时压缩或解压缩的场景。主要应用场景包括：
 
 - 对实时产生的日志数据进行流式压缩，边生成边压缩。
-- 对网络数据流进行实时压缩或解压，减少传输数据量。
+- 对网络数据流进行实时压缩或解压缩，减少传输数据量。
 - 对大量数据进行分段处理，避免一次性将全部数据加载到内存中。
 
 ## 接口说明
 
 接口的详细说明，请参考[oh_archive.h](../reference/apis-core-file-kit/capi-oh-archive-h.md)。
 
-### 流式压缩解压接口
+### 流式压缩解压缩接口
 
 | 接口名称 | 描述 |
 | -------- | ---- |
@@ -32,12 +30,12 @@
 | OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo) | 结束流式压缩并获取压缩结果信息。 |
 | OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx) | 取消流式压缩。 |
 | OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx) | 销毁流式压缩写入器。 |
-| OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config) | 创建流式解压读取器。 |
-| OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void *userData) | 启动流式解压。 |
-| OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t *data, uint64_t size) | 向流式解压器输入数据进行解压。 |
-| OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo) | 结束流式解压并获取解压结果信息。 |
-| OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx) | 取消流式解压。 |
-| OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx) | 销毁流式解压读取器。 |
+| OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config) | 创建流式解压缩读取器。 |
+| OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void *userData) | 启动流式解压缩。 |
+| OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t *data, uint64_t size) | 向流式解压缩器输入数据进行解压缩。 |
+| OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo) | 结束流式解压缩并获取解压缩结果信息。 |
+| OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx) | 取消流式解压缩。 |
+| OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx) | 销毁流式解压缩读取器。 |
 
 ## 开发准备
 
@@ -55,7 +53,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 #include <filemanagement/archive/oh_archive.h>
 ```
 
-## 开发流程
+## 开发步骤
 
 ### 流式压缩
 
@@ -201,13 +199,13 @@ static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
 }
 ```
 
-### 流式解压
+### 流式解压缩
 
-1. 创建流式解压配置并调用OH_Archive_StreamRead_Create创建流式解压读取器。需指定配置信息，需与压缩时的配置一致。
-2. 调用OH_Archive_StreamRead_Start启动流式解压。解压过程中通过输出回调函数处理解压后的原始数据。
-3. 多次调用OH_Archive_StreamRead_Update输入压缩数据进行解压。
-4. 调用OH_Archive_StreamRead_End结束流式解压并获取结果信息。
-5. 调用OH_Archive_StreamRead_Destroy销毁流式解压读取器，释放资源。
+1. 创建流式解压缩配置并调用OH_Archive_StreamRead_Create创建流式解压缩读取器。需指定配置信息，需与压缩时的配置一致。
+2. 调用OH_Archive_StreamRead_Start启动流式解压缩。解压缩过程中通过输出回调函数处理解压缩后的原始数据。
+3. 多次调用OH_Archive_StreamRead_Update输入压缩数据进行解压缩。
+4. 调用OH_Archive_StreamRead_End结束流式解压缩并获取结果信息。
+5. 调用OH_Archive_StreamRead_Destroy销毁流式解压缩读取器，释放资源。
 
 <!--@[stream_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -258,14 +256,14 @@ static napi_value StreamDecompress(napi_env env, napi_callback_info info)
 }
 ```
 
-### 取消流式解压
+### 取消流式解压缩
 
-1. 调用OH_Archive_StreamRead_Create创建流式解压读取器。
-2. 调用OH_Archive_StreamRead_Start启动流式解压。
+1. 调用OH_Archive_StreamRead_Create创建流式解压缩读取器。
+2. 调用OH_Archive_StreamRead_Start启动流式解压缩。
 3. 多次调用OH_Archive_StreamRead_Update输入压缩数据。
-4. 调用OH_Archive_StreamRead_Cancel取消流式解压。
-5. 调用OH_Archive_StreamRead_End结束流式解压。
-6. 调用OH_Archive_StreamRead_Destroy销毁流式解压读取器，释放资源。
+4. 调用OH_Archive_StreamRead_Cancel取消流式解压缩。
+5. 调用OH_Archive_StreamRead_End结束流式解压缩。
+6. 调用OH_Archive_StreamRead_Destroy销毁流式解压缩读取器，释放资源。
 
 <!--@[stream_decompress_cancel_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -321,6 +319,6 @@ static napi_value StreamDecompressCancel(napi_env env, napi_callback_info info)
 
 ## 调测验证关键点
 
-- 流式压缩解压：验证分段输入的数据经过压缩后再解压，最终结果与原始数据完全一致。
+- 流式压缩解压缩：验证分段输入的数据经过压缩后再解压缩，最终结果与原始数据完全一致。
 - 取消流式压缩：验证取消操作后，压缩过程正常终止，无资源泄漏。
-- 取消流式解压：验证取消操作后，解压过程正常终止，无资源泄漏。
+- 取消流式解压缩：验证取消操作后，解压缩过程正常终止，无资源泄漏。
