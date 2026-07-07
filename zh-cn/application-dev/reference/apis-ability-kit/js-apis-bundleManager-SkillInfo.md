@@ -42,7 +42,7 @@ import { skillManager } from '@kit.AbilityKit';
 | permissions   | Array\<string\> | 是   | 是   | 调用该技能所需要的权限列表。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_PERMISSIONS时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。  |
 | requestPermissions   | Array\<string\> | 是   | 是   | 技能所在的模块申请的权限。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_REQUEST_PERMISSIONS时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。|
 | version   | string | 是   | 是   | 技能的版本号，格式为`主版本号.次版本号.补丁版本号`。   |
-| visibility   | string | 是   | 是   | 技能的可见性，支持的取值如下：<br/>-&nbsp;private：私有，仅当前应用可见。<br/>-&nbsp;system：系统级，系统应用和当前应用可见。<br/>-&nbsp;public：公开，所有应用都可见。   |
+| visibility   | string | 是   | 是   | 技能的可见性，支持的取值如下：<br/>-&nbsp;"private"：私有，仅当前应用可见。<br/>-&nbsp;"system"：系统级，系统应用和当前应用可见。<br/>-&nbsp;"public"：公开，所有应用都可见。   |
 
 ## SkillType
 
