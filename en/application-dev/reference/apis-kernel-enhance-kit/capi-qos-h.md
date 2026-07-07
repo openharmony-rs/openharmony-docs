@@ -132,7 +132,7 @@ Enumerates the Gewu error codes.
 | OH_QOS_GEWU_INVAL = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.|
 | OH_QOS_GEWU_EXIST = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.|
 | OH_QOS_GEWU_NOENT = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.|
-| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The dependent library or module is not correctly loaded. Solution: Ensure that the dependent library is correctly installed.|
+| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.|
 | OH_QOS_GEWU_FAULT = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.|
 
 
