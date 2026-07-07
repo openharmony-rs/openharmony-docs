@@ -253,7 +253,7 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - 成功。<br>         11400104 - 系统内部错误。<br>         11400105 - 当前没有trace正在运行 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - 成功。<br>         11400104 - 系统内部错误。<br>         11400105 - 当前没有trace正在运行。 |
 
 ### OH_HiDebug_RequestTrace()
 
@@ -498,7 +498,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t interval | 当显存数据缓存值存在时间超过设定间隔interval（单位：秒）时，接口会获取最新的显存数据并更新缓存；否则，接口将直接返回缓存值。<br> interval的取值范围为[2，3600]，若传入的interval超出取值范围时，将使用300作为默认值。 |
+| uint32_t interval | 当显存数据缓存值存在时间超过设定间隔interval（单位：秒）时，接口会获取最新的显存数据并更新缓存；否则，接口将直接返回缓存值。<br> interval的取值范围为[2, 3600]，若传入的interval超出取值范围时，将使用300作为默认值。 |
 | [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) *summary | 表示指向[HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md)的指针。 |
 
 **返回：**
