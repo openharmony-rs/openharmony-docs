@@ -139,6 +139,16 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
    
+   ``` C
+   // 设置为均衡器节点类型。
+   OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
+   // 创建均衡器节点。
+   OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
+   // ...
+   // 设置均衡器节点效果。
+   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
+   ```
+   
    <!-- @[audioSuite_CreateBaseNodeTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
