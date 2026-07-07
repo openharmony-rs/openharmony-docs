@@ -63,11 +63,11 @@
 | [bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)](#oh_drawing_matrixisequal) | 判断两个矩阵是否相等。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix或other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | 判断矩阵是否是单位矩阵。单位矩阵为：`[1 0 0; 0 1 0; 0 0 1]`。<br>如需判断两个矩阵是否相等，请使用[OH_Drawing_MatrixIsEqual](#oh_drawing_matrixisequal)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | 用于销毁矩阵对象并回收该对象占用的内存。 |
-| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | 对矩阵a左乘矩阵b。与[OH_Drawing_MatrixConcat](#oh_drawing_matrixconcat)功能类似，区别在于Concat将结果存入单独的total矩阵，而本方法直接修改矩阵a。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | 对矩阵a左乘矩阵b。与[OH_Drawing_MatrixConcat](#oh_drawing_matrixconcat)功能类似，区别在于OH_Drawing_MatrixConcat将结果存入单独的total矩阵，而本方法直接修改矩阵a。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)](#oh_drawing_matrixisaffine) | 判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转或缩放等变换的矩阵。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float kx, float ky, float px, float py)](#oh_drawing_matrixpreskew) | 将当前矩阵左乘一个以(px, py)为中心按(kx, ky)倾斜构造的矩阵。与[OH_Drawing_MatrixPreRotate](#oh_drawing_matrixprerotate)、[OH_Drawing_MatrixPreScale](#oh_drawing_matrixprescale)、[OH_Drawing_MatrixPreTranslate](#oh_drawing_matrixpretranslate)同属Pre系列方法。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* matrix, bool* isRectStaysRect)](#oh_drawing_matrixrectstaysrect) | 判断矩形经过当前矩阵映射后是否仍保持矩形形状。当矩阵是单位矩阵或仅包含平移、缩放、旋转90度倍数这类仿射变换时满足该条件。 |
-| [OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)](#oh_drawing_matrixsetsincos) | 设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。与[OH_Drawing_MatrixRotate](#oh_drawing_matrixrotate)功能类似，区别在于Rotate直接传入角度值，而本方法传入正弦值和余弦值。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)](#oh_drawing_matrixsetsincos) | 设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。与[OH_Drawing_MatrixRotate](#oh_drawing_matrixrotate)功能类似，区别在于OH_Drawing_MatrixRotate直接传入角度值，而本方法传入正弦值和余弦值。 |
 
 ## 枚举类型说明
 
@@ -807,7 +807,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing
 
 **描述**
 
-对矩阵a左乘矩阵b。与[OH_Drawing_MatrixConcat](#oh_drawing_matrixconcat)功能类似，区别在于Concat将结果存入单独的total矩阵，而本方法直接修改矩阵a。
+对矩阵a左乘矩阵b。与[OH_Drawing_MatrixConcat](#oh_drawing_matrixconcat)功能类似，区别在于OH_Drawing_MatrixConcat将结果存入单独的total矩阵，而本方法直接修改矩阵a。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -912,7 +912,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float
 
 **描述**
 
-设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。与[OH_Drawing_MatrixRotate](#oh_drawing_matrixrotate)功能类似，区别在于Rotate直接传入角度值，而本方法传入正弦值和余弦值。
+设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。与[OH_Drawing_MatrixRotate](#oh_drawing_matrixrotate)功能类似，区别在于OH_Drawing_MatrixRotate直接传入角度值，而本方法传入正弦值和余弦值。
 
 **起始版本：** 23
 

@@ -29,7 +29,7 @@
 | [OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext* gpuContext, bool flag, OH_Drawing_Image_Info imageInfo)](#oh_drawing_surfacecreatefromgpucontext) | 使用图形处理器上下文创建离屏surface对象，用于管理画布绘制的内容。若需将绘制内容上屏显示（配合[OH_Drawing_SurfaceFlush](#oh_drawing_surfaceflush)使用），请改用[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建与屏幕窗口绑定的surface对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window)](#oh_drawing_surfacecreateonscreen) | 使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。若不需要上屏显示，请改用[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建离屏surface对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致，否则对象创建失败。 |
 | [OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)](#oh_drawing_surfacegetcanvas) | 通过surface对象获取画布对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>surface为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)](#oh_drawing_surfaceflush) | 将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。该接口仅对通过[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建的surface对象有效，对由[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建的离屏surface对象调用本接口时，会提交画布绘制内容给图形处理器处理，但不会执行窗口缓冲区交换，不能用于上屏显示。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)](#oh_drawing_surfaceflush) | 将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。 |
 | [void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)](#oh_drawing_surfacedestroy) | 销毁surface对象并回收该对象占用的内存。调用本接口销毁surface对象后，通过[OH_Drawing_SurfaceGetCanvas](#oh_drawing_surfacegetcanvas)获取的画布对象不应再使用，其生命周期由surface对象管理。 |
 
 ## 函数说明
@@ -61,7 +61,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md)* | 返回指向创建的surface对象[OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md)的指针。创建失败时返回nullptr。gpuContext为NULL时，返回nullptr并设置错误码OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md)* | 返回指向创建的surface对象[OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md)的指针。 |
 
 ### OH_Drawing_SurfaceCreateOnScreen()
 
@@ -127,7 +127,7 @@ OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 
 **描述**
 
-将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。该接口仅对通过[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建的surface对象有效，对由[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建的离屏surface对象调用本接口时，会提交画布绘制内容给图形处理器处理，但不会执行窗口缓冲区交换，不能用于上屏显示。
+将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -144,7 +144,7 @@ OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数surface为NULL。<br> 枚举值与数字的对应关系请参见[OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode)枚举定义。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数surface为NULL。 |
 
 ### OH_Drawing_SurfaceDestroy()
 
