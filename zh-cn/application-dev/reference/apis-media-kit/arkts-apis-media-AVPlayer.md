@@ -302,7 +302,7 @@ getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -348,7 +348,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -411,8 +411,8 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The media source ID does not exist in the playlist. Returned by promise.|
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 媒体源ID在播放列表中不存在。可能原因：指定的媒体源ID未添加到播放列表或已被移除。处理建议：检查媒体源ID是否正确，确认媒体源已添加到播放列表中。 |
 
 **示例：**
 
