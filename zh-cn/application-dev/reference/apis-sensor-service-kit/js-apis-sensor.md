@@ -2182,7 +2182,7 @@ on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).PROXIMITY                        | 是   | 传感器类型，该值固定为SensorId.PROXIMITY。                   |
 | callback | Callback&lt;[ProximityResponse](#proximityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为ProximityResponse。      |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
 
 **错误码**：
 
@@ -2590,7 +2590,7 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange', 状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
 
 **错误码**：
@@ -7353,7 +7353,7 @@ off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerome
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELERATION。         |
+| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELEROMETER。         |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -9167,7 +9167,7 @@ off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callba
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offSignificantMotionChange](#sensoroffsignificantmotionchange23)
 
-**系统能力**:SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -10952,7 +10952,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 
 | 类型                               | 说明         |
 | ---------------------------------- | ------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise，使用异步方式对象返归一化回四元数。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise对象，使用异步方式返回归一化四元数。 |
 
 **错误码**：
 
@@ -12353,7 +12353,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -13572,7 +13572,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 import { sensor } from '@kit.SensorServiceKit';
 
 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightResponse) => {
-  console.info('Succeeded in invoking once. invoking once. Illumination: ' + data.intensity);
+  console.info('Succeeded in invoking once. Illumination: ' + data.intensity);
 });
 ```
 
@@ -15090,7 +15090,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const promise = sensor.getDirection([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting sensor_getAltitude_Promise', data);
+  console.info('Succeeded in getting sensor_getDirection_Promise', data);
   for (let i = 1; i < data.length; i++) {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }

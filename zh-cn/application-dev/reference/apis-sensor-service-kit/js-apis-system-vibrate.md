@@ -63,7 +63,7 @@ import { Vibrator } from '@kit.SensorServiceKit';
 
 当开发者需要在Lite Wearable设备上实现闹钟振动、来电振动、开关机振动、按键触觉反馈等场景时，使用此接口触发设备振动。调用后，设备将按照指定的振动模式（短振动或长振动）执行振动效果。若未指定mode参数，设备将执行长振动（mode默认值为'long'）。
 
-除Lite Wearable外，从API Version8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
+除Lite Wearable外，从API version 8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -123,7 +123,7 @@ export default {
       };
       vibrator.vibrate(vibrateOptions);
     } catch (e) {
-      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e)) 
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e));
     }
   }
 };
