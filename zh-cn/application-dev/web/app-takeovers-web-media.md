@@ -1002,7 +1002,7 @@ ArkTS-Dyn示例：
                 event.result?.setGestureEventResult(false);
                 return;
               }
-              // 将触摸事件传递给NodeContrloller
+              // 将触摸事件传递给NodeController
               let ret = native_player_info.node_controller.postTouchEvent(event.touchEvent);
               console.info(`WebComponent.postTouchEvent, ret[${ret}], touchEvent[${JSON.stringify(event.touchEvent)}]`);
               event.result?.setGestureEventResult(ret);
