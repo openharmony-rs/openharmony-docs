@@ -510,6 +510,8 @@ try {
 
 ## BundleStats<sup>9+</sup>
 
+应用所占用的存储空间信息。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **ArkTS-Dyn起始版本**：9
@@ -528,7 +530,7 @@ ArkTS-Dyn: getTotalInodes(): Promise&lt;number&gt;
 
 ArkTS-Sta: getTotalInodes(): Promise&lt;long&gt;
 
-获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
+获取文件系统的inode资源总量，仅支持查询系统数据分区，使用Promise异步回调。
 
 inode是文件系统中用于标识和管理文件的数据结构，每个文件或目录占用一个inode。当应用创建大量小文件（如日志文件、缓存文件等）时，可能因inode资源耗尽导致无法创建新文件（即使存储空间仍有剩余）。
 
@@ -589,7 +591,7 @@ ArkTS-Dyn: getFreeInodes(): Promise&lt;number&gt;
 
 ArkTS-Sta: getFreeInodes(): Promise&lt;long&gt;
 
-获取文件系统的inode资源剩余量，仅支持查询系统数据分区。使用Promise异步回调。
+获取文件系统的inode资源剩余量，仅支持查询系统数据分区，使用Promise异步回调。
 
 inode是文件系统中用于标识和管理文件的数据结构，每个文件或目录占用一个inode。
 

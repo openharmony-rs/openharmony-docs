@@ -26,7 +26,7 @@ ArkTS-Dyn: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
-异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte）。使用Promise异步回调。
+异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -189,7 +189,7 @@ ArkTS-Dyn: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
-异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte）。使用Promise异步回调。
+异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -352,7 +352,7 @@ ArkTS-Dyn: getBundleStats(packageName: string, index?: number): Promise&lt;Bundl
 
 ArkTS-Sta: getBundleStats(packageName: string, index?: int): Promise&lt;BundleStats&gt;
 
-异步获取应用存储数据的空间大小（单位为Byte）。使用Promise异步回调。
+异步获取应用存储数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -548,7 +548,7 @@ ArkTS-Dyn: getSystemSize(): Promise&lt;number&gt;
 
 ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 
-异步获取系统数据的空间大小（单位为Byte）。使用Promise异步回调。
+异步获取系统数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -676,7 +676,7 @@ storageStatistics.getSystemSize((error: BusinessError, systemSize: long): void =
 
 getUserStorageStats(): Promise&lt;StorageStats&gt;
 
-异步获取当前用户各类别存储空间大小（单位为Byte）。使用Promise异步回调。
+异步获取当前用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -804,7 +804,7 @@ ArkTS-Dyn: getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 
-异步获取指定用户各类别存储空间大小（单位为Byte）。使用Promise异步回调。
+异步获取指定用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -988,7 +988,7 @@ ArkTS-Dyn: setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;
 
 ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
-系统应用或系统服务上报自身的空间占用信息，以便在"设置-存储"界面中单独展示或归并到指定应用。使用Promise异步回调。
+系统应用或系统服务上报自身的空间占用信息，以便在"设置-存储"界面中单独展示或归并到指定应用，使用Promise异步回调。
 
 > **说明**：
 >
@@ -1075,7 +1075,7 @@ ArkTS-Dyn: getExtBundleStats(userId: number, businessName: string): Promise&lt;E
 
 ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-获取指定用户、指定系统应用包名或系统服务名称的空间占用详情。使用Promise异步回调。
+获取指定用户、指定系统应用包名或系统服务名称的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1150,7 +1150,7 @@ ArkTS-Dyn: getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleSt
 
 ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。
+获取指定用户下所有系统应用或系统服务的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1240,7 +1240,7 @@ storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageSta
 
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
-查询用户设备中/data目录下的空间占用详情。使用Promise异步回调。
+查询用户设备中/data目录下的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1303,7 +1303,7 @@ ArkTS-Dyn: getSystemDataSize(): Promise&lt;number&gt;
 
 ArkTS-Sta: getSystemDataSize(): Promise&lt;long&gt;
 
-获取系统数据的总空间大小（单位为Byte）。使用Promise异步回调。
+获取系统数据的总空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
