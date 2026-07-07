@@ -504,7 +504,7 @@ clearPlaybackList(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | operation not allowed . Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作或播放列表中没有下一个媒体源。处理建议：检查播放器当前状态和播放列表内容。 |
 
 **示例：**
 
@@ -546,7 +546,7 @@ getCurrentMediaSource(): MediaSource | undefined;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -586,7 +586,7 @@ getMediaSources(): Array<MediaSource | undefined>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -628,8 +628,8 @@ advanceToNextMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 上一个媒体源在播放列表中不存在。可能原因：播放列表中没有上一个媒体源。处理建议：检查播放列表中是否有上一个媒体源。 |
 
 **示例：**
 
@@ -675,8 +675,8 @@ advanceToPrevMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 下一个媒体源在播放列表中不存在。可能原因：播放列表中没有下一个媒体源。处理建议：检查播放列表中是否有下一个媒体源。 |
 
 **示例：**
 
@@ -731,8 +731,8 @@ advanceToMediaSource(id: string): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 媒体源在播放列表中不存在。可能原因：指定的媒体源ID未添加到播放列表或已被移除。处理建议：检查媒体源ID是否正确，确认媒体源已添加到播放列表中。 |
 
 **示例：**
 
