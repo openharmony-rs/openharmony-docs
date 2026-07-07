@@ -107,7 +107,7 @@
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 启动音乐播放 | 播放提示音（TTS，媒体类流） | TTS抢占焦点，音乐停止且不恢复 | TTS与音乐同为媒体类流，默认策略为STOP |
-使用STREAM_USAGE_NOTIFICATION流类型播放提示音 | NOTIFICATION正常播放，音乐降低音量；提示音结束后音乐音量自动恢复 | - |
+| 方案一 | 启动音乐播放 | 使用STREAM_USAGE_NOTIFICATION流类型播放提示音 | NOTIFICATION正常播放，音乐降低音量；提示音结束后音乐音量自动恢复 | - |
 | 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成提示播报后A恢复 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
 | 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
 
