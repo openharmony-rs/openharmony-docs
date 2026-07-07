@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
+import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, RenderingPipelineType, GeometryType, GeometryDefinition, PrimitiveTopology, ShadowAlgorithmType, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Mat4x4, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
 ```
 
 ## Vec2
