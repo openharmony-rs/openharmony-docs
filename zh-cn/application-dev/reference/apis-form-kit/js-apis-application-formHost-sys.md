@@ -338,8 +338,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyVisibleForms(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
   }
@@ -373,8 +373,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyVisibleForms(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds).then(() => {
   console.info('formHost notifyVisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
@@ -403,8 +403,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyInvisibleForms(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
   }
@@ -438,8 +438,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyInvisibleForms(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds).then(() => {
   console.info('formHost notifyInvisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
@@ -468,8 +468,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.enableFormsUpdate(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.enableFormsUpdate(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
   }
@@ -503,8 +503,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.enableFormsUpdate(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.enableFormsUpdate(formIds).then(() => {
   console.info('formHost enableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
@@ -533,8 +533,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.disableFormsUpdate(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.disableFormsUpdate(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost disableFormsUpdate, error: ${JSON.stringify(error)}`);
   }
@@ -568,8 +568,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.disableFormsUpdate(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.disableFormsUpdate(formIds).then(() => {
   console.info('formHost disableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost disableFormsUpdate, error: ${JSON.stringify(error)}`);
@@ -892,7 +892,7 @@ let want: Want = {
     'ohos.extra.param.key.form_dimension': 2
   }
 };
-formHost.acquireFormState(want, (error:Base.BusinessError, data: formInfo.FormStateInfo) => {
+formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormStateInfo) => {
   if (error.code) {
     console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
   } else {
@@ -1115,16 +1115,16 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 
 **参数：**
 
-  | 参数名 | 类型    | 必填 | 说明    |
-  | ------ | ------ | ---- | ------- |
-  | formIds | Array&lt;string&gt; | 是   | 卡片标识列表。 |
-  | isEnableUpdate | boolean | 是   | 是否使能更新。 |
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| formIds | Array&lt;string&gt; | 是   | 卡片标识列表。 |
+| isEnableUpdate | boolean | 是   | 是否使能更新。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
