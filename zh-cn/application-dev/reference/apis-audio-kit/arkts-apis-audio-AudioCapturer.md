@@ -1676,7 +1676,7 @@ try {
 
 getNoiseReductionMode(): NoiseReductionMode
 
-获取当前录音流的降噪模式。返回结果仅反映默认值或应用设置值，不考虑当前输入设备和录音并发情况。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+获取当前录音流的降噪模式。返回结果仅反映默认值或应用设置值。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
 
 **起始版本：** 26.0.0
 
