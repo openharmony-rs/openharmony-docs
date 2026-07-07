@@ -2424,7 +2424,7 @@ try {
 ```
 ## WifiCapability
 
-Wi-Fi支持的能力。
+wifi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2446,7 +2446,7 @@ Wi-Fi支持的能力。
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-设置Wi-Fi能力。
+设置wifi能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2491,7 +2491,7 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-获取Wi-Fi支持的能力。
+获取wifi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
