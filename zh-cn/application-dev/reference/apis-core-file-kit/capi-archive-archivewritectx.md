@@ -12,7 +12,7 @@ typedef struct ArchiveWriteCtx *OH_Archive_Writer_Ctx
 
 ## 概述
 
-文件压缩器的上下文结构体。
+文件压缩器的上下文结构体指针。
 
 **起始版本：** 26.0.0
 
