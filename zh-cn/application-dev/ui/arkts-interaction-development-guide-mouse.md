@@ -324,7 +324,7 @@ struct ListExample {
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index);
+                this.allSelectedItems = this.allSelectedItems.filter(item => item !== index);
                 this.isSelected[index] = false;
               } else {
                 this.allSelectedItems.push(index);
