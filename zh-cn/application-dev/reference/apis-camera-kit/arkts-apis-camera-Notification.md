@@ -32,7 +32,7 @@ onNotificationReceive(callback: Callback\<NotificationInfo\>): void;
 
 | 参数名     | 类型                   | 必填 | 说明               |
 | -------- | -------------------- | ---- | -------------------- |
-| callback | [NotificationInfo](arkts-apis-camera-t.md#notificationinfo) | 是 | 回调函数，返回当前通知信息。 |
+| callback | Callback\<[NotificationInfo](arkts-apis-camera-t.md#notificationinfo)\> | 是 | 回调函数，返回当前通知信息。 |
 
 **示例：**
 
@@ -63,7 +63,7 @@ offNotificationReceive(callback?: Callback\<NotificationInfo\>): void;
 
 | 参数名     | 类型                   | 必填 | 说明               |
 | -------- | -------------------- | ---- | -------------------- |
-| callback | [NotificationInfo](arkts-apis-camera-t.md#notificationinfo) | 否 | 回调函数，返回当前通知信息。如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。 |
+| callback | Callback\<[NotificationInfo](arkts-apis-camera-t.md#notificationinfo)\> | 否 | 回调函数，返回当前通知信息。如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。 |
 
 **示例：**
 
