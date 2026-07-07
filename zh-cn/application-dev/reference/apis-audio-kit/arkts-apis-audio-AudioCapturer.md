@@ -1621,7 +1621,7 @@ audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
 
 setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
 
-设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes)获取当前录音流支持的降噪模式，再设置其中的模式。
+设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes)获取当前录音流支持的降噪模式后，再通过本接口进行设置。
 
 > **说明：**
 >
