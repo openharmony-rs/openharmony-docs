@@ -133,10 +133,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    audioHapticPlayer.stop().then(() => {
-     console.info(`Promise returned to indicate that stop playing successfully.`);
+     console.info('Succeeded in stopping audio haptic player.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to stop playing. ${err}`);
+     console.error(`Failed to stop audio haptic player. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
@@ -147,10 +147,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    audioHapticPlayer.release().then(() => {
-     console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
+     console.info('Succeeded in releasing audio haptic player.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to release the audio haptic player. ${err}`);
+     console.error(`Failed to release audio haptic player. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
