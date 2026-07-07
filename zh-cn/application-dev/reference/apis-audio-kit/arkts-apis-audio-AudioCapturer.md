@@ -1625,7 +1625,7 @@ setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
 
 > **说明：**
 >
-> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+> - 当前仅支持使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流进行降噪模式设置，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
 > - 降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
 > - 该接口仅可在录音流创建后未开始录音，或停止录音后调用；录音流处于运行态或已释放时调用将抛出异常。
 
@@ -1718,7 +1718,7 @@ getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode)&gt; | 支持的录音降噪模式数组，至少支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。 |
+| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode)&gt; | 支持的录音降噪模式数组，默认支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。 |
 
 **错误码：**
 
