@@ -42,6 +42,7 @@ Defines the types of common attributes and events of **NativeModule**.
 | [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | Enumerates the UI states of a component, used for handling state-specific styles.              |
 | [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | Enumerates the focus movement directions.                    |
 | [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool)                         | ArkUI_ResponseRegionSupportedTool             | Enumerates the input tool types supported for response region configuration.                        |
+| [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | Enumerates the types of raw input events.|
 
 ### Functions
 
@@ -205,6 +206,23 @@ Enumerates the input tool types supported for response region configuration.
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER  = 1  | Finger.|
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN  = 2  | Stylus.|
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE  = 3  | Mouse.|
+
+### ArkUI_RawInputEventType
+
+```c
+enum ArkUI_RawInputEventType
+```
+
+**Description**
+
+Enumerates the types of raw input events.
+
+**Since:** 26.0.0
+
+| Value| Description|
+| -- | -- |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | Touch event.|
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | Mouse event.|
 
 ## Function Description
 
