@@ -55,7 +55,6 @@
       <!--DelEnd-->
   <!--RP5--><!--RP5End-->
   - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
-  <!--RP5--><!--RP5End-->
 - JS卡片开发<!--form-js-ui-->
   - [JS卡片概述](js-ui-widget-overview.md)
   - [JS卡片开发指导（Stage模型）](js-ui-widget-development.md)
