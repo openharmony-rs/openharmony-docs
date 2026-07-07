@@ -2491,7 +2491,7 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-获取wifi支持的能力。
+获取Wi-Fi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
