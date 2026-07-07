@@ -58,8 +58,8 @@ static void GetLastErrorAndClean(JSVM_Env env)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetAndClearLastException(env, &result);
     // 打印错误信息
-    JSVM_Value message;
-    JSVM_Value errorCode;
+    JSVM_Value message = nullptr;
+    JSVM_Value errorCode = nullptr;
     OH_JSVM_GetNamedProperty((env), result, "message", &message);
     OH_JSVM_GetNamedProperty((env), result, "code", &errorCode);
     const int maxMessageLength = 256;
@@ -89,12 +89,12 @@ static JSVM_Value JsVmCreateThrowError(JSVM_Env env, JSVM_CallbackInfo info)
     return nullptr;
 }
 
-// JsVmThrow注册回调
+// JsVmCreateThrowError注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = JsVmCreateThrowError},
 };
 static JSVM_CallbackStruct *method = param;
-// JsVmThrow方法别名，供JS调用
+// JsVmCreateThrowError方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"jsVmCreateThrowError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -126,7 +126,7 @@ static JSVM_Value JsVmThrowError(JSVM_Env env, JSVM_CallbackInfo info)
         // 如果没有传递参数，直接抛出错误
         OH_JSVM_ThrowError(env, "-1", "has Error");
     } else if (argc == 1) {
-        size_t length;
+        size_t length = 0;
         // 通过入参获取到JavaScript侧传入的字符串长度。
         OH_JSVM_GetValueStringUtf8(env, argv[0], nullptr, 0, &length);
         char *buffer = new char[length + 1];
@@ -183,7 +183,7 @@ static JSVM_Value JsVmThrowTypeError(JSVM_Env env, JSVM_CallbackInfo info)
         char *buffer = new char[length + 1];
         // 获取入参的字符串内容
         OH_JSVM_GetValueStringUtf8(env, argv[0], buffer, length + 1, nullptr);
-        // 作为error信息填入到OH_JSVM_ThrowError接口中
+        // 作为error信息填入到OH_JSVM_ThrowTypeError接口中
         OH_JSVM_ThrowTypeError(env, "self defined error code", buffer);
         delete[] buffer;
     }
@@ -473,7 +473,7 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = JsVmCreateSyntaxError},
 };
 static JSVM_CallbackStruct *method = param;
-// JsVmThrow方法别名，供JS调用
+// JsVmCreateSyntaxError方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"jsVmCreateSyntaxError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -537,7 +537,7 @@ cpp部分代码：
 <!-- @[oh_jsvm_is_exception_pending](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/isexceptionpending/src/main/cpp/hello.cpp) -->
 
 ``` C++
-// OH_JSVM_GetAndClearLastException的样例方法
+// OH_JSVM_IsExceptionPending的样例方法
 static JSVM_Value JsVmIsExceptionPending(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status;

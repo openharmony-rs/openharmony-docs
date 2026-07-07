@@ -30,6 +30,7 @@ static map<int, JSVM_CallbackStruct *> g_callBackStructMap;
 static uint32_t g_envtagNumber = 0;
 static std::mutex g_envMapLock;
 // ...
+
 #define CHECK_COND(cond)                                                                                          \
     do {                                                                                                          \
         if (!(cond)) {                                                                                            \
@@ -283,7 +284,7 @@ static int EvaluateJS(uint32_t envId, const char *source, std::string &res)
             CHECK_RET(OH_JSVM_GetValueBool(env, result, &ret));
             ret ? res = "true" : res = "false";
         } else if (type == JSVM_NUMBER) {
-            int32_t num;
+            int32_t num = 0;
             CHECK_RET(OH_JSVM_GetValueInt32(env, result, &num));
             res = std::to_string(num);
         } else if (type == JSVM_OBJECT) {

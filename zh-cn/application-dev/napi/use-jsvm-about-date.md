@@ -44,6 +44,7 @@ cpp部分代码：
 #include "ark_runtime/jsvm.h"
 #include <ctime>
 // ...
+
 // OH_JSVM_CreateDate的样例方法
 static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -54,7 +55,7 @@ static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info)
 
     JSVM_CALL(OH_JSVM_CreateDate(env, value, &returnValue));
 
-    bool isDate;
+    bool isDate = false;
     JSVM_CALL(OH_JSVM_IsDate(env, returnValue, &isDate));
     if (!isDate) {
         OH_LOG_ERROR(LOG_APP, "JSVM IsDate fail");
