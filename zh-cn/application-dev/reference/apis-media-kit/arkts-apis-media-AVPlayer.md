@@ -3150,7 +3150,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
 | fd | number   | 是   | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取。 |
 | offset | number | 否   | 资源偏移量。取值范围[0, +∞)。需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。默认值为0。单位为字节。|
-| length | number | 否   | 资源长度。取值范围[0, +∞)。默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误，默认值为0。|
+| length | number | 否   | 资源长度。取值范围[0, +∞)。如果不传递该参数，默认使用文件中从偏移量开始的剩余字节；如果传递该参数，默认值为0，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。|
 
 **返回值：**
 
@@ -3711,7 +3711,7 @@ onPlaybackContentChanged(callback: Callback\<string>):void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<string> | 是 | 事件触发时调用的回调函数。 |
+| callback | Callback\<string> | 是 | 事件触发时调用的回调函数，接收媒体源ID作为参数。 |
 
 **示例：**
 
@@ -3742,7 +3742,7 @@ offPlaybackContentChanged(callback?: Callback\<string>):void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<string> | 否 | 当事件触发时调用的回调函数。若未指定此参数，则取消订阅该事件的所有回调函数。 |
+| callback | Callback\<string> | 否 | 指定要取消注册的回调方法。若未指定此参数，则取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
@@ -3809,7 +3809,7 @@ onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报的指标事件信息的方法。使用callback异步回调。|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报指标事件信息的回调方法，接收AVMetricsEvent数组作为参数。使用callback异步回调。|
 
 **示例：**
 
@@ -3840,7 +3840,7 @@ offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 上报的指标事件信息的方法。使用callback异步回调。|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 指定要取消注册的回调方法。若未填写该参数，则取消订阅该事件的所有回调方法。|
 
 **示例：**
 
@@ -3899,7 +3899,7 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。如果未填写该参数，则取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
