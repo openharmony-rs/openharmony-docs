@@ -123,9 +123,9 @@ enum OH_AudioStream_SampleFormat
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOSTREAM_SAMPLE_U8 = 0 | Unsigned 8位。 |
-| AUDIOSTREAM_SAMPLE_S16LE = 1 | Short 16位小端。 |
-| AUDIOSTREAM_SAMPLE_S24LE = 2 | Short 24位小端。 |
-| AUDIOSTREAM_SAMPLE_S32LE = 3 | Short 32位小端。 |
+| AUDIOSTREAM_SAMPLE_S16LE = 1 | Signed 16位小端。 |
+| AUDIOSTREAM_SAMPLE_S24LE = 2 | Signed 24位小端。 |
+| AUDIOSTREAM_SAMPLE_S32LE = 3 | Signed 32位小端。 |
 | AUDIOSTREAM_SAMPLE_F32LE = 4 | Float 32位小端。<br>**起始版本：** 17 |
 
 ### OH_AudioStream_EncodingType
