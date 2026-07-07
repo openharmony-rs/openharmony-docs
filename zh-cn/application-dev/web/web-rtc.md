@@ -56,10 +56,10 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于打开摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
 
 ### 系统侧授权
-在下面的完整示例代码中，调用requestPermissionsFromUser，使得进入应用后会弹出是否允许该应用访问摄像头和麦克风的授权框，需点击"始终允许"或"每次使用时询问"按钮，授权应用访问摄像头和麦克风。
+参考[完整示例代码](../web/web-rtc.md#完整示例代码)中，调用requestPermissionsFromUser，使得进入应用后会弹出是否允许该应用访问摄像头和麦克风的授权框，需点击"始终允许"或"每次使用时询问"按钮，授权应用访问摄像头和麦克风。
 
 ### 应用侧授权
-在下面的完整示例代码中，点击前端界面中的"开启摄像头"按钮后会通过onPermissionRequest触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
+参考[完整示例代码](../web/web-rtc.md#完整示例代码)中，点击前端界面中的"开启摄像头"按钮后会通过onPermissionRequest触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
 
 ## 完整示例代码
 
