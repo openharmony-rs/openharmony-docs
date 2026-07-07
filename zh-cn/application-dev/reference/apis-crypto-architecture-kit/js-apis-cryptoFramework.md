@@ -148,7 +148,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 加解密参数[ParamsSpec](#paramsspec)的子类，封装使用ChaCha20-Poly1305 AEAD模式进行加密或解密的参数，需要nonce、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
-适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)Poly1305模式。
+适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20)Poly1305模式。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -170,7 +170,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 用于AEAD（带附加数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
 
-适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
+适用于[AES算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
 
 > **说明：**
 >
@@ -300,7 +300,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 表示加解密参数的枚举。这些参数支持通过[setCipherSpec](#setcipherspec10)接口设置，通过[getCipherSpec](#getcipherspec10)接口获取。
 
-当前只支持RSA算法和SM2算法，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
+当前只支持RSA算法和SM2算法，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1988,7 +1988,7 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 创建对应算法的对称密钥生成器实例。
 
-支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)。
+支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2000,7 +2000,7 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。 |
+| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)一节中的“字符串参数”。 |
 
 **返回值：**
 
@@ -2352,7 +2352,7 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 创建对应算法的非对称密钥生成器实例。
 
-支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。
+支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2364,7 +2364,7 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)中的字符串参数。 |
+| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)中的字符串参数。 |
 
 **返回值：**
 
@@ -3037,7 +3037,7 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。|
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。|
 
 **返回值：**
 
@@ -3775,7 +3775,7 @@ function testGeneratePubKeySync() {
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#sm2)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3936,7 +3936,7 @@ async function doTest() {
 
 static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
 
-根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh)。
+根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#dh)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4110,7 +4110,7 @@ createCipher(transformation: string): Cipher
 
 | 参数名         | 类型   | 必填 | 说明                                                         |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。 |
+| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。 |
 
 > **说明：**
 >
@@ -4153,7 +4153,7 @@ try {
 
 加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](#cryptoframeworkcreatecipher)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init-1)、[update()](#update)、[doFinal()](#dofinal)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
-完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
+完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -7304,7 +7304,7 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
   > **说明：**
   >
-  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
+  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

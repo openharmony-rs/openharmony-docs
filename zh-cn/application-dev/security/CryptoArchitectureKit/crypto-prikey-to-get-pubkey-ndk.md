@@ -16,7 +16,7 @@
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
-对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-asym-key-generation-conversion-spec.md#rsa)。
+对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 
 ## 开发步骤
 
