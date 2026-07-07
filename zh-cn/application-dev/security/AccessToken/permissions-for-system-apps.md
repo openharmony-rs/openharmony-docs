@@ -6749,7 +6749,7 @@
  	 
 允许应用有网络邻居客户端权限
 
- **权限级别**：system_basic
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -6757,31 +6757,31 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
- **起始版本**：26.0.0
+**起始版本**：26.0.0
 
- ## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
 
 允许应用操作文件管理文件
 
- **权限级别**：system_basic
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
- **是否支持证书授权**：true
+**是否支持证书授权**：true
 
- **支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 
- ## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
 
- 允许应用获取和管理文件管理智能文件
+允许应用获取和管理文件管理智能文件
 
- **权限级别**：system_basic
+**权限级别**：system_basic
 
- **授权方式**：系统授权（system_grant）
+**授权方式**：系统授权（system_grant）
 
- **是否支持证书授权**：true
+**是否支持证书授权**：true
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -6791,12 +6791,12 @@
 
 允许应用获取和管理文件
 
- **权限级别**：system_basic
+**权限级别**：system_basic
 
- **授权方式**：系统授权（system_grant）
+**授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
- **起始版本**：26.0.0
+**起始版本**：26.0.0
