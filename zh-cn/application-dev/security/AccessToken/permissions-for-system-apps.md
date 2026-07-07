@@ -6687,6 +6687,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+允许系统应用发送OTA相关的车辆控制及域控制命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
 
 允许应用管理分身偏好设置。

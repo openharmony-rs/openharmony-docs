@@ -6656,6 +6656,20 @@ Allows the triggering of network self-check and self-healing.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+Allows a system application to send OTA-related vehicle control and domain control commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
