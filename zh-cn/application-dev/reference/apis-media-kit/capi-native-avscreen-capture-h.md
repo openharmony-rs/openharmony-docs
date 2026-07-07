@@ -47,7 +47,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnStateChange callback, void *userData)](#oh_avscreencapture_setstatecallback) | 设置状态变更处理回调方法，在开始录制前调用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDataCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnBufferAvailable callback, void *userData)](#oh_avscreencapture_setdatacallback) | 设置数据处理回调方法，在开始录制前调用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetErrorCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnError callback, void *userData)](#oh_avscreencapture_seterrorcallback) | 设置错误处理回调方法，在开始录制前调用。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(struct OH_AVScreenCapture *capture, OHNativeWindow *window)](#oh_avscreencapture_startscreencapturewithsurface) | 使用Surface模式录屏。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(struct OH_AVScreenCapture *capture, OHNativeWindow *window)](#oh_avscreencapture_startscreencapturewithsurface) | 使用Surface模式录屏。与[OH_AVScreenCapture_StartScreenCapture](#oh_avscreencapture_startscreencapture)不同，本接口通过传入OHNativeWindow将视频数据直接输出到指定的Surface窗口，适用于需要将录屏数据渲染到特定窗口的场景；而OH_AVScreenCapture_StartScreenCapture通过回调获取原始码流数据，适用于需要自行处理音视频数据的场景。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScreenCapture *capture, bool canvasRotation)](#oh_avscreencapture_setcanvasrotation) | 设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。 |
 | [struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(void)](#oh_avscreencapture_createcontentfilter) | 创建ContentFilter。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseContentFilter(struct OH_AVScreenCapture_ContentFilter *filter)](#oh_avscreencapture_releasecontentfilter) | 释放ContentFilter。 |
@@ -64,18 +64,18 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureStrategy(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_CaptureStrategy *strategy)](#oh_avscreencapture_setcapturestrategy) | 给指定的OH_AVScreenCapture实例设置捕获策略。<br> 该接口应在录屏启动之前被调用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForCanvasFollowRotation(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforcanvasfollowrotation) | 设置屏幕录屏自动跟随旋转配置。设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。<br> 设置是否自动跟随旋转配置后，在旋转通知后，无需再手动调用[OH_AVScreenCapture_ResizeCanvas](#oh_avscreencapture_resizecanvas)接口。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforkeepcaptureduringcall) | 向CaptureStrategy实例设置蜂窝通话时是否保持录屏。<br> value设置为true时并且录屏时接听蜂窝通话的过程中，出于隐私要求，双方通话的声音（本地麦克风和对方说话声音）不会被录制，其他系统音录制正常。电话挂断之后，录屏框架恢复麦克风录制。注意，如果挂断电话时录屏应用在后台运行，麦克风录制会启动失败，原因是音频模块不允许后台应用启动麦克风录制。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnCaptureContentChanged callback, void *userData)](#oh_avscreencapture_setcapturecontentchangedcallback) | 设置录屏内容变更回调事件，需在录屏启动前被调用。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnCaptureContentChanged callback, void *userData)](#oh_avscreencapture_setcapturecontentchangedcallback) | 设置录屏内容变更回调事件，需在录屏启动前被调用。当录屏捕获区域内的内容发生变化（如窗口内容更新、窗口切换等）时，将通过该回调通知应用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreenCapture \*capture, uint64_t displayId, OH_Rect\* area)](#oh_avscreencapture_setcapturearea) | 设置或更新捕获区域。<br> 接口在开始录屏前后都可以设置，设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPrivacyMaskMode(OH_AVScreenCapture_CaptureStrategy *strategy, int32_t value)](#oh_avscreencapture_strategyforprivacymaskmode) | 设置隐私窗口屏蔽模式。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnUserSelected callback, void *userData)](#oh_avscreencapture_setselectioncallback) | 注册手工确认界面用户选择结果的回调，需在录屏启动前被调用。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnUserSelected callback, void *userData)](#oh_avscreencapture_setselectioncallback) | 注册手工确认界面用户选择结果的回调，需在录屏启动前被调用。当录屏启动时，系统会弹出确认界面供用户选择录屏对象（屏幕、窗口或应用），用户选择结果通过该回调返回给应用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(OH_AVScreenCapture_UserSelectionInfo \*selection, int32_t\* type)](#oh_avscreencapture_getcapturetypeselected) | 获取用户在确认界面选择的屏幕捕获对象类型。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenCapture_UserSelectionInfo \*selection, uint64_t\* displayId)](#oh_avscreencapture_getdisplayidselected) | 获取确认页面，用户选择录制的屏幕ID。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenCapture_UserSelectionInfo \*selection, uint64_t\* displayId)](#oh_avscreencapture_getdisplayidselected) | 获取用户在确认界面选择录制的屏幕ID。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForBFramesEncoding(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforbframesencoding) | 向CaptureStrategy实例设置是否使能B帧编码，用于减小录制文件的大小。<br> B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，则正常录制不含B帧的视频，不会返回错误。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPickerPopUp(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforpickerpopup) | 设置是否弹出屏幕捕获Picker。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_FillMode mode)](#oh_avscreencapture_strategyforfillmode) | 设置捕获图像在目标区域的填充模式。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PresentPicker(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_presentpicker) | 录屏开始后，调用该接口再次弹出picker，可动态更新录制源（窗口、屏幕）。更新录制源过程中，原录制流程不中断。<br> 通过picker动态更新录制源后，可以按照新的录制源进行录制。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureHighlightConfig config)](#oh_avscreencapture_setcaptureareahighlight) | 设置屏幕捕获区域高亮模式。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenCapture *capture, OH_CapturePickerMode pickerMode)](#oh_avscreencapture_setpickermode) | 设置Picker显示模式。定义picker中显示的内容类型，模式更改会在下一次调用[OH_AVScreenCapture_PresentPicker](#oh_avscreencapture_presentpicker) 函数时生效。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureHighlightConfig config)](#oh_avscreencapture_setcaptureareahighlight) | 设置屏幕捕获区域高亮模式。在录屏过程中，可对指定的捕获区域进行高亮显示，以区分捕获区域与非捕获区域的视觉效果，帮助用户识别当前录屏范围。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenCapture *capture, OH_CapturePickerMode pickerMode)](#oh_avscreencapture_setpickermode) | 设置Picker显示模式。定义picker中显示的内容类型，适用于需要控制Picker界面展示内容的场景，如仅允许用户选择屏幕、仅允许用户选择屏幕、仅允许选择窗口、或同时显示屏幕和窗口供用户选择。模式更改会在下一次调用[OH_AVScreenCapture_PresentPicker](#oh_avscreencapture_presentpicker) 函数时生效。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludePickerWindows(struct OH_AVScreenCapture *capture, const int32_t *excludedWindowIDs, uint32_t windowCount)](#oh_avscreencapture_excludepickerwindows) | 在Picker界面中隐藏指定的窗口。在picker界面显示前调用本接口，可对指定窗口进行过滤和隐藏。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t** displayIds, size_t *count)](#oh_avscreencapture_getmultidisplayidsselected) | 获取picker页面上用户选择录制的DisplayID列表。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)](#oh_avscreencapture_getmultidisplaycapturecapability) | 获取多屏幕录制能力信息，判断用户选择的多个屏幕是否支持联合录制。 |
@@ -143,6 +143,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVSc
 
 开始录屏，采集原始码流。<br> 调用后可以通过回调的监听（[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)）来监听当前是否有码流的产生，通过回调的监听（[OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)）来监听启动状态。<br> 通过调用获取音频buffer（[OH_AVScreenCapture_AcquireAudioBuffer](#oh_avscreencapture_acquireaudiobuffer)）和视频buffer（[OH_AVScreenCapture_AcquireVideoBuffer](#oh_avscreencapture_acquirevideobuffer)）的接口来获取录屏的原始码流。
 
+与[OH_AVScreenCapture_StartScreenRecording](#oh_avscreencapture_startscreenrecording)不同，本接口用于获取实时音视频原始码流数据，适用于需要对码流进行二次处理的场景；而OH_AVScreenCapture_StartScreenRecording用于将录屏内容直接保存为文件，适用于仅需保存录屏的场景。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
@@ -194,6 +196,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AV
 **描述**
 
 启动录屏，调用此接口，可保存录屏文件。
+
+录屏存文件场景需要再初始化时配置合法的视频编码参数、音频编码参数等，详见[OH_AVScreenCapture_Init](#oh_avscreencapture_init)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -521,6 +525,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(str
 
 使用Surface模式录屏。
 
+与[OH_AVScreenCapture_StartScreenCapture](#oh_avscreencapture_startscreencapture)不同，本接口通过传入OHNativeWindow将视频数据直接输出到指定的Surface窗口，适用于需要将录屏数据渲染到特定窗口的场景；而OH_AVScreenCapture_StartScreenCapture通过回调获取原始码流数据，适用于需要自行处理音视频数据的场景。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -547,6 +553,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 **描述**
 
 设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。
+
+与[OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation)不同，本接口是静态旋转设置，仅在canvasRotation为true时将录屏数据保持正向；而StrategyForCanvasFollowRotation是自动跟随旋转策略，会在屏幕旋转时自动调换虚拟屏尺寸以保持画面正向。建议仅在需要固定正向输出时使用本接口，在需要动态跟随旋转时使用StrategyForCanvasFollowRotation。
 
 > **说明：**
 >
@@ -625,6 +633,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddAudioContent(str
 
 向ContentFilter实例添加可过滤的声音类型。
 
+适用于需要从录屏音频中排除特定声音的场景，如录制教程时过滤系统通知音、录制会议时排除其他应用音频等。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -652,6 +662,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludeContent(struct OH_AVScreen
 
 设置OH_AVScreenCapture实例的内容过滤器ContentFilter。
 
+适用于需要在录屏中排除特定音频或窗口内容的场景，如隐私保护时排除敏感窗口、避免录制无关系统通知音等。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -678,6 +690,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(st
 **描述**
 
 向ContentFilter实例添加可被过滤的窗口ID列表。
+
+适用于需要从录屏画面中排除特定窗口的场景，如录制教程时排除聊天窗口、录制演示时排除通知面板等。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -821,6 +835,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVSc
 **描述**
 
 设置获取录屏屏幕ID的回调。
+
+当系统存在多个屏幕时，录屏启动过程中将通过该回调通知应用用户选择录制的屏幕ID，以便应用确定录屏目标屏幕。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -975,6 +991,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(
 
 设置录屏内容变更回调事件，需在录屏启动前被调用。
 
+当录屏捕获区域内的内容发生变化（如窗口内容更新、窗口切换等）时，将通过该回调通知应用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 20
@@ -1028,6 +1046,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPrivacyMaskMode(OH_AVS
 **描述**
 
 设置隐私窗口屏蔽模式。
+
+全屏屏蔽模式（value=0）适用于对隐私保护要求严格的场景，如金融类应用录制时一旦出现隐私窗口则整个画面屏蔽；隐私窗口屏蔽模式（value=1）适用于仅需屏蔽隐私窗口区域、其余内容仍可正常录制的场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1107,7 +1127,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenC
 
 **描述**
 
-获取确认页面，用户选择录制的屏幕ID。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。
+获取用户在确认界面选择录制的屏幕ID。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。
 
 **起始版本：** 20
 
@@ -1186,7 +1206,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCa
 
 设置捕获图像在目标区域的填充模式。
 
-当捕获的图像尺寸与目标输出区域不一致时，通过填充模式决定图像在目标区域中的显示方式。详见[OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode)。
+当捕获的图像尺寸与目标输出区域不一致时，通过填充模式决定图像在目标区域中的显示方式。适用于录屏画面与输出尺寸不匹配时需要指定画面适配方式的场景，如视频会议中保持画面比例不拉伸、游戏录制中拉伸填充全屏等。详见[OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode)。
 
 **起始版本：** 20
 
@@ -1237,7 +1257,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 
 设置屏幕捕获区域高亮模式。
 
-在录屏过程中，可对指定的捕获区域进行高亮显示，以区分捕获区域与非捕获区域的视觉效果，帮助用户识别当前录屏范围。
+在录屏过程中，可对指定的捕获区域进行高亮显示，以区分捕获区域与非捕获区域的视觉效果，帮助用户识别当前录屏范围。适用于需要在录屏过程中突出显示捕获区域边界的场景，如多区域录制时帮助用户识别当前录制范围，或教学演示中标识重点操作区域。
 
 **起始版本：** 22
 
@@ -1262,7 +1282,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenC
 
 **描述**
 
-设置Picker显示模式。定义Picker中显示的内容类型，模式更改会在下一次调用[OH_AVScreenCapture_PresentPicker](#oh_avscreencapture_presentpicker) 函数时生效。
+设置Picker显示模式。定义Picker中显示的内容类型，适用于需要控制Picker界面展示内容的场景，如仅允许用户选择屏幕、仅允许用户选择屏幕、仅允许选择窗口、或同时显示屏幕和窗口供用户选择。模式更改会在下一次调用[OH_AVScreenCapture_PresentPicker](#oh_avscreencapture_presentpicker) 函数时生效。
 
 **起始版本：** 22
 
@@ -1395,6 +1415,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCaptu
 **描述**
 
 允许暂停屏幕捕获。
+
+适用于录屏过程中可能需要临时暂停的场景，如用户切换应用、接听电话等需要中断录制但不想结束录屏会话的情况。设置为true时允许暂停，设置为false时录屏过程不可暂停。
 
 **起始版本：** 26.0.0
 

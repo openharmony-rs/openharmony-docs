@@ -179,6 +179,8 @@ pauseRecording(): Promise\<void>
 
 暂停录屏。使用Promise异步回调。
 
+在使用前需要先调用[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口且录屏需处于录制状态。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -226,6 +228,8 @@ async function testPauseRecording() {
 resumeRecording(): Promise\<void>
 
 恢复录屏。使用Promise异步回调。
+
+在使用前需要先调用[pauseRecording](arkts-apis-media-AVScreenCaptureRecorder.md#pauserecording)接口且录屏需处于暂停状态。
 
 **起始版本：** 26.0.0
 
@@ -291,8 +295,8 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。 |
-| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像，取值原则：PixelMap对象不能为空。 |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。 |
 
 **返回值：**
 
@@ -392,6 +396,10 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 设置麦克风开关。使用Promise异步回调。
 
+> **说明：**
+>
+> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **参数：**
@@ -440,6 +448,8 @@ async function testSetMicEnable() {
 setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 设置Picker显示模式，在下一次显示Picker时生效。使用Promise异步回调。
+
+可根据录制需求选择不同模式，如仅录制指定窗口或录制整屏内容。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -604,7 +614,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false。true表示启用自动旋转，输出帧中的图像内容将保持直立。 |
+| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false。true表示启用自动旋转，输出帧中的图像内容将保持直立。false表示不启用自动旋转，输出帧中的图像内容将不保持直立。 |
 
 **返回值：**
 
