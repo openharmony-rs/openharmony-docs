@@ -1,4 +1,4 @@
-# node_attr_custom.h
+# custom_attributes.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -10,7 +10,7 @@
 
 Declares the custom node events for **NativeNode** APIs.
 
-**File to include:** <arkui/node_attributes/node_attr_custom.h>
+**File to include:** <arkui/node_attributes/custom_attributes.h>
 
 **Library:** libace_ndk.z.so
 
@@ -30,7 +30,7 @@ Declares the custom node events for **NativeNode** APIs.
 | -- | -- | -- |
 | [ArkUI_NodeCustomEventType](#arkui_nodecustomeventtype) | ArkUI_NodeCustomEventType | Enumerates custom component event types.|
 
-## Enumeration Description
+## Enum Description
 
 ### ArkUI_NodeCustomEventType
 

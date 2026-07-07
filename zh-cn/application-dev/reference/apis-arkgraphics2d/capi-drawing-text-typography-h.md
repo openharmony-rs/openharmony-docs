@@ -762,7 +762,7 @@ enum OH_Drawing_TypographyAttributeId
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TYPOGRAPH_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | 是否强制复用光栅化结果。设置后，在下次调用[OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint)绘制时生效。<br>true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
+| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | 是否强制复用光栅化结果。设置后，在下次调用[OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint)绘制时生效。<br>true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
 
 ## 函数说明
 

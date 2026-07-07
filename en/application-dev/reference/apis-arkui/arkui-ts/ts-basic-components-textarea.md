@@ -2627,7 +2627,7 @@ struct TextAreaExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        TextArea({text: '中文 Text'})
+        TextArea({text: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         TextArea({text: '中文Text'})

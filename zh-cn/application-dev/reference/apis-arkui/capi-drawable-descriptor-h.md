@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeDrawableDescriptor接口的类型定义。
+提供DrawableDescriptor接口的类型定义。
 
 **引用文件：** <arkui/drawable_descriptor.h>
 
@@ -40,7 +40,7 @@
 | 名称                                                                  | typedef关键字                      | 描述                                |
 |---------------------------------------------------------------------|---------------------------------|-----------------------------------|
 | [DrawableDescriptor_AnimationStatus](#drawabledescriptor_animationstatus) | DrawableDescriptor_AnimationStatus | 定义DrawableDescriptor动图的播放状态。           |
-| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | 定义[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。<br>**起始版本：** 24 |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | 定义[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。<br>**起始版本：** 24 |
 
 ### 函数
 
@@ -101,7 +101,7 @@ enum DrawableDescriptor_AnimationStopMode
 
 **描述：**
 
-定义[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。
+定义[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。
 
 **起始版本：** 24
 
@@ -130,7 +130,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | [OH_PixelmapNative](./capi-struct.md)对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)对象指针。 |
 
 **返回：**
 
@@ -209,7 +209,7 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | [OH_PixelmapNative](./capi-struct.md)对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)对象指针。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -282,7 +282,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| int32_t duration | 播放总时长，单位ms。取值范围：[0, +∞)。传入负数时按0处理。 |
+| int32_t duration | 播放总时长，单位ms。取值范围：[0, +∞)。传入负数时按0处理。该时长设置的优先级低于[OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations](#oh_arkui_drawabledescriptor_setanimationframedurations)，同时设置两者时本函数设置不生效。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
@@ -308,7 +308,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 播放总时长，单位ms。 |
+| int32_t | 播放总时长，单位ms。未设置时返回0。 |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
@@ -355,7 +355,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 播放次数。 |
+| int32_t | 播放次数。0表示无限循环播放。 |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations()
 
@@ -375,7 +375,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
 | uint32_t* durations | 动图中的单帧播放时间数组，单位ms。<br/>不设置则按照总时间播放。设置的优先级高于[OH_ArkUI_DrawableDescriptor_SetAnimationDuration](#oh_arkui_drawabledescriptor_setanimationduration)，即同时设置了OH_ArkUI_DrawableDescriptor_SetAnimationDuration和OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations时，OH_ArkUI_DrawableDescriptor_SetAnimationDuration不生效。<br/>数组大小必须与PixelMap图片数组大小相同。<br/>每帧播放时间取值范围：[0, +∞)。默认值：均匀分配总时长。 |
-| size_t size | 数组大小。 |
+| size_t size | 数组大小（元素个数），必须与PixelMap图片数组大小相同，否则返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 **返回：**
 
@@ -452,7 +452,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| uint32_t* autoPlay | 是否自动播放。 |
+| uint32_t* autoPlay | 是否自动播放。1表示自动播放，0表示不自动播放。 |
 
 **返回：**
 
@@ -476,7 +476,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescripto
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
 | [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) mode | 动图停止模式。<br/>取值为[DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)枚举值，默认值为[DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME](#drawabledescriptor_animationstopmode)。|
 
 **返回：**
@@ -501,7 +501,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
 | [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)* mode | 动图停止模式。 <br/>取值含义请参考[DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)。|
 
 **返回：**
@@ -527,9 +527,9 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 组件节点指针。 |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)** controller | DrawableDescriptor动图控制器对象指针。 |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。必须是通过[OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap](#oh_arkui_drawabledescriptor_createfromanimatedpixelmap)创建的动图对象。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 组件节点指针。必须是有效的ArkUI组件节点。 |
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)** controller | DrawableDescriptor动图控制器对象指针。输出参数，调用成功时返回控制器指针。 |
 
 **返回：**
 
@@ -587,7 +587,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 **描述：**
 
-停止动图播放并回到首帧。
+停止动图播放。停止后的位置由[OH_ArkUI_DrawableDescriptor_SetAnimationStopMode](#oh_arkui_drawabledescriptor_setanimationstopmode)设置的停止模式决定：DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME时回到首帧，DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME时停留在最后一帧。
 
 **起始版本：** 22
 

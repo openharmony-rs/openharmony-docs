@@ -66,6 +66,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 | 1600025  | Geofencing disabled.<br> 适用版本：23+ |
 | 1600026  | The location switch is off.<br> 适用版本：23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
@@ -149,6 +150,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 | 1600025  | Geofencing disabled.<br> 适用版本：23+ |
 | 1600026  | The location switch is off.<br> 适用版本：23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
@@ -2874,12 +2876,14 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> 适用版本：23+ |
 | 1600026  | The location switch is off.<br> 适用版本：23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -2960,12 +2964,14 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> 适用版本：23+ |
 | 1600026  | The location switch is off.<br> 适用版本：23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -3041,12 +3047,14 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled.<br> 适用版本：26.0.0+ |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled.<br> 适用版本：23+ |
 | 1600026  | The location switch is off.<br> 适用版本：23+ |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**

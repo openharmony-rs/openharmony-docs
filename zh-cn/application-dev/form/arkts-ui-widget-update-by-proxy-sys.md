@@ -82,7 +82,7 @@
 - 在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中配置订阅信息[proxyData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#proxydata10)，并通过[formBinding](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata)返回给卡片管理服务。示例中将key设置为"datashareproxy://com.samples.widgetupdatebyproxy/weather"，subscriberId设置为"11"。
   > **说明：**
   >
-  > key可以是uri也可以是简单字符串，subscriberId默认值为当前formId，实际取值都依赖于数据发布方的定义。
+  > key可以是uri也可以是简单字符串，subscriberId默认值为当前formId，实际取值都依赖于数据提供方的定义。
 
     <!-- @[process_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts) -->
     
@@ -178,56 +178,56 @@
   }
   ```
 
-- 在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中添加订阅模板<!--Del-->[<!--DelEnd-->addTemplate<!--Del-->](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#addtemplate10)<!--DelEnd-->，通过模板谓词告诉数据库订阅的数据条件。然后配置订阅信息[proxyData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#proxydata10)，并通过[FormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata)返回给卡片管理服务。示例中将谓词设置为`"list" : "select type from TBL00 where cityId = ${subscriberId}"`，表示从TBL00数据库中根据cityId查询type列的数据，数据将会以`{"list":[{"type":"value0"}]}`格式返回到卡片页面代码widgets.abc中。当订阅的持久化数据更新时，系统会自动更新卡片数据。
+ - 在[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)回调中添加订阅模板<!--Del-->[<!--DelEnd-->addTemplate<!--Del-->](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#addtemplate10)<!--DelEnd-->，通过模板谓词告诉数据库订阅的数据条件。然后配置订阅信息[proxyData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#proxydata10)，并通过[FormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata)返回给卡片管理服务。示例中将谓词设置为`"list" : "select type from TBL00 where cityId = ${subscriberId}"`，表示从TBL00数据库中获取符合cityId条件的type数据，数据将会以`{"list":[{"type":"value0"}]}`格式返回到卡片页面代码widgets.abc中。当订阅的持久化数据更新时，系统会自动更新卡片数据。
 
   > **说明：**
   >
   > - key的取值是uri，依赖于数据发布方定义。
   > - subscriberId可自定义，addTemplate中的subscriberId参数与proxies.subscriberId保持一致即可。
 
-    <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts
-    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
-    import { Want } from '@kit.AbilityKit';
-    import { dataShare } from '@kit.ArkData';
-    
-    export default class PersistentDataFormAbility extends FormExtensionAbility {
-      onAddForm(want: Want): formBindingData.FormBindingData {
-        let dataShareHelper;
-        let subscriberId = '111';
-        let template = {
-          predicates: {
-            'list': `select type from TBL00 where cityId = ${subscriberId}`
-          },
-          scheduler: ''
-        };
-        dataShare.createDataShareHelper(this.context, 'datashareproxy://com.samples.widgetupdatebyproxy', {
-          isProxy: true
-        }).then((data) => {
-          dataShareHelper = data;
-          dataShareHelper.addTemplate('datashareproxy://com.samples.widgetupdatebyproxy/test', subscriberId, template);
-        });
-        let formData = {};
-        let proxies = [
-          {
-            key: 'datashareproxy://com.samples.widgetupdatebyproxy/test',
-            subscriberId: subscriberId
-          }
-        ];
-    
-        let formBinding = formBindingData.createFormBindingData(formData);
-           formBinding.proxies = proxies;
-        return formBinding;
-      }
-    
-      onAcquireFormState(want: Want): formInfo.FormState {
-        // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
-        return formInfo.FormState.READY;
-      }
+  <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) --> 
+  
+  ``` TypeScript
+  // entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+  import { Want } from '@kit.AbilityKit';
+  import { dataShare } from '@kit.ArkData';
+  
+  export default class PersistentDataFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      let dataShareHelper;
+      let subscriberId = '111';
+      let template = {
+        predicates: {
+          'list': `select type from TBL00 where cityId = ${subscriberId}`
+        },
+        scheduler: ''
+      };
+      dataShare.createDataShareHelper(this.context, 'datashareproxy://com.samples.widgetupdatebyproxy', {
+        isProxy: true
+      }).then((data) => {
+        dataShareHelper = data;
+        dataShareHelper.addTemplate('datashareproxy://com.samples.widgetupdatebyproxy/test', subscriberId, template);
+      });
+      let formData = {};
+      let proxies = [
+        {
+          key: 'datashareproxy://com.samples.widgetupdatebyproxy/test',
+          subscriberId: subscriberId
+        }
+      ];
+  
+      let formBinding = formBindingData.createFormBindingData(formData);
+         formBinding.proxies = proxies;
+      return formBinding;
     }
-    ```
+  
+    onAcquireFormState(want: Want): formInfo.FormState {
+      // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+      return formInfo.FormState.READY;
+    }
+  }
+  ```
     
 
 - 在[卡片页面文件](arkts-ui-widget-creation.md)中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'list'获取订阅的数据，并把第一个元素的值显示在Text组件上。

@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
@@ -6656,6 +6644,20 @@ Allows the triggering of network self-check and self-healing.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+Allows a system application to send OTA-related vehicle control and domain control commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
@@ -6697,3 +6699,17 @@ Allows an application to configure the capability of unlocking devices via enter
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+Allows an application to access associated assistant service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
