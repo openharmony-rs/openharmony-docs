@@ -405,7 +405,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 

@@ -314,10 +314,10 @@
                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
                  console.info(`reloadForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
          Button('reloadAllForms')

@@ -182,7 +182,7 @@
 
   > **说明：**
   >
-  > - key的取值是uri，依赖于数据发布方定义。
+  > - key的取值是uri，依赖于数据提供方定义。
   > - subscriberId可自定义，addTemplate中的subscriberId参数与proxies.subscriberId保持一致即可。
 
   <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) --> 
