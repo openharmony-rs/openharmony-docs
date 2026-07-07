@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-使用`mutableBuilder`封装全局[`@Builder`](./ts-universal-builder-dynamic.md#builder)，以支持在运行时根据不同条件动态切换全局`@Builder`内容（如根据状态切换不同的UI构建逻辑）。开发指南见[mutableBuilder：实现全局`@Builder`动态更新](../../../ui/state-management/arkts-mutableBuilder.md)。
+使用`mutableBuilder`封装全局[`@Builder`](./ts-universal-builder-dynamic.md#builder)，以支持在运行时根据不同条件动态切换全局`@Builder`内容（如根据状态切换不同的UI构建逻辑）。开发指南参考：[mutableBuilder：实现全局`@Builder`动态更新](../../../ui/state-management/arkts-mutableBuilder.md)。
 
 > **说明：**
 >
