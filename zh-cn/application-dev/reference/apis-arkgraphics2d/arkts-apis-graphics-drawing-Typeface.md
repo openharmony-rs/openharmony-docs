@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-字体，如宋体、楷体等。
+Typeface类用于表示和管理字体对象。支持的字体操作包括：获取字体族名、从字体文件或rawfile资源构造字体、结合字体属性构造新字体，以及检查字体的加粗、斜体状态等。
 
 > **说明：**
 >
@@ -43,7 +43,7 @@ ArkTS-Sta: getFamilyName(): string | undefined
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 返回字体的族名。创建失败时返回undefined。 |
+| ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 返回字体的族名，表示当前Typeface对象对应的字体设计名称。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -84,13 +84,13 @@ ArkTS-Sta: makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | und
 **参数：**
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md)           | 是   | 字体属性。 |
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md)           | 是   | 字体属性参数。 |
 
 **返回值：**
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回基于当前字体结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
 
@@ -172,7 +172,7 @@ ArkTS-Sta: static makeFromFile(filePath: string): Typeface | undefined
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回Typeface对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回从指定字体文件加载的字体对象。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -232,7 +232,7 @@ ArkTS-Dyn: static makeFromRawFile(rawfile: Resource): Typeface
 
 ArkTS-Sta: static makeFromRawFile(rawfile: Resource): Typeface | undefined
 
-使用指定的字体文件构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
+使用指定的字体文件构造字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -252,7 +252,7 @@ ArkTS-Sta: static makeFromRawFile(rawfile: Resource): Typeface | undefined
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回Typeface对象（异常情况下会返回空指针）。创建失败时返回undefined。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回从rawfile资源加载的字体对象（异常情况下会返回空指针）。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -319,13 +319,13 @@ ArkTS-Sta: static makeFromFileWithArguments(filePath: string, typefaceArguments:
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | filePath | string           | 是   | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | 是  | 表示字体属性。 |
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | 是  | 字体属性参数。 |
 
 **返回值：**
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| underfined | undefined返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回从指定字体文件加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
 
@@ -381,7 +381,7 @@ ArkTS-Dyn: static makeFromRawFileWithArguments(rawfile: Resource, typefaceArgume
 
 ArkTS-Sta: static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined
 
-使用指定的字体文件和字体属性构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
+使用指定的字体文件和字体属性构造新的字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -395,14 +395,14 @@ ArkTS-Sta: static makeFromRawFileWithArguments(rawfile: Resource, typefaceArgume
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | 是   | 指定字体文件对应的资源对象。当前只支持``$rawfile``格式引用的资源对象，对应格式写为``$rawfile('filePath')``，其中filePath为指定字体文件相对于工程中resources/rawfile目录的相对路径。 |
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | 是 | 表示字体属性。 |
+| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | 是   | 指定字体文件对应的资源对象。当前只支持``$rawfile``格式引用的资源对象，传入非``$rawfile``格式的资源对象时返回空指针。对应格式写为``$rawfile('filePath')``，其中filePath为指定字体文件相对于工程中resources/rawfile目录的相对路径。 |
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | 是 | 字体属性参数。 |
 
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | ------------------- |
-| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回从rawfile资源加载并结合字体属性构造的字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
 
@@ -484,7 +484,7 @@ let result = typeface?.isBold();
 
 isItalic(): boolean
 
-检查字体是否是斜体。
+检查字体是否为斜体。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -496,7 +496,7 @@ isItalic(): boolean
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| boolean | 返回当前字体是否是斜体。true表示字体是斜体，false表示字体不是斜体。 |
+| boolean | 返回当前字体是否为斜体。true表示字体为斜体，false表示字体非斜体。 |
 
 **示例：**
 
