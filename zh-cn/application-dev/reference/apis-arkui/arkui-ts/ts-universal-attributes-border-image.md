@@ -79,9 +79,9 @@ borderImage(value: BorderImageOption): T
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ---- | ------------------------- |
-| angle  | number \| string | 否   | 是   |  线性渐变的起始角度。0点方向顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时仅支持类型'deg'，'grad'，'rad'，'turn'。 |
+| angle  | number \| string | 否   | 是   |  线性渐变的起始角度。以12点钟方向为0度，顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时支持'deg'、'grad'、'rad'、'turn'类型。 |
 | direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 是   | 线性渐变的方向，设置angle后不生效。<br/>默认值：GradientDirection.Bottom |
-| colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 |
+| colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组。数组元素为[颜色, 位置]对，位置取值范围为[0.0, 1.0]，建议按位置升序排列，设置非法颜色直接跳过。 |
 | repeating  | boolean | 否   | 是   | 是否允许渐变的颜色重复渲染。<br/>默认值：false<br>true：允许渐变的颜色重复渲染。<br>false：不允许渐变的颜色重复渲染。 |
 
 ## 示例
@@ -123,7 +123,7 @@ struct Index {
 
 ### 示例2（动态调整属性值）
 
-通过[slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](#borderimage)接口中属性值。
+通过[Slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](#borderimage)接口中属性值。
 
 ```ts
 // xxx.ets
