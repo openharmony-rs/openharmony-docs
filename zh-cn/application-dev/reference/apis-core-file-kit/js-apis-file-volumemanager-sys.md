@@ -1951,7 +1951,9 @@ isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
 查询指定卷当前是否正在被占用。使用Promise异步回调。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
 
