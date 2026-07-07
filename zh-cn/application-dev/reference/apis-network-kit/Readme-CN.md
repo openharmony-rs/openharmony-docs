@@ -37,6 +37,7 @@
   - 模块<!--network-module-->
     - [NetConnection](capi-netconnection.md)
     - [Netstack](capi-netstack.md)
+    - [TrafficFilter](capi-trafficfilter.md)
   - 头文件<!--network-headerfile-->
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
