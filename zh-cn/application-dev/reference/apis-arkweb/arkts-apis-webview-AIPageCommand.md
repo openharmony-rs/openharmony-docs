@@ -252,7 +252,6 @@
     "wants": [
       "id",
       "tag",
-      "text",
       "rect",
       "clickable",
       "xpath",
@@ -277,13 +276,13 @@
 | params | rules | clickable | boolean | 否 | 按节点是否可点击筛选。 |
 | params | rules | scrollable | boolean | 否 | 按节点是否可滚动筛选。 |
 | params | rules | isInViewport | boolean | 否 | 按节点是否在当前视口内筛选。 |
-| params | wants | - | Array\<string \| Object> | 否 | 指定需要在节点中追加返回的字段。`getLiteDom`会默认请求`tag`、`text`和`xpath`。 |
+| params | wants | - | Array\<string \| Object> | 否 | 指定需要在节点中追加返回的字段。`getLiteDom`会默认请求`tag`和`xpath`。 |
 | params | wants | - | string | 否 | 数组项为string时，表示需要追加返回的节点信息字段，取值请参见[getLiteDom的params.wants字段取值说明](#getlitedom的paramswants字段取值说明)。 |
 | params | wants | attributes | Array\<string> | 否 | 数组项为Object且包含`attributes`时，指定需要返回的HTML属性。 |
 
 > **说明：**
 >
-> - `getLiteDom`默认返回当前网页的`url`、`title`和`nodes`。`nodes`中的节点默认返回`tag`、`text`和`xpath`；其中`text`在字段值为空时不会返回。
+> - `getLiteDom`默认返回当前网页的`url`、`title`和`nodes`。`nodes`中的节点默认返回`tag`和`xpath`。
 > - `isInViewport`会与其他筛选规则叠加生效。
 > - `tags`、`attributes`、`roles`、`clickable`和`scrollable`之间满足任一规则即可匹配。
 > - 如果未设置`tags`、`attributes`、`roles`、`clickable`和`scrollable`，则所有未被跳过的元素节点均满足筛选条件。
@@ -294,7 +293,7 @@
 | ---- | ---- | ---- | ---- |
 | id | id | string | 请求返回ArkWeb生成的节点标识，不表示按HTML `id`属性筛选节点。该值由frame标识、文档作用域标识和DOM节点标识组合编码，用于区分返回结果中的节点；页面重新加载、frame重建或DOM重建后可能变化。仅在可生成节点标识时返回。如需读取HTML `id`属性，请在`wants`中通过`attributes`对象项请求`id`属性，并查看返回节点的`attributes.id`。 |
 | tag | tag | string | 节点标签名。返回小写HTML标签名。 |
-| text | text | string | 节点文本内容。字段值为空时不返回该字段。 |
+| text | text | string | 节点文本内容。`getLiteDom`只返回元素节点，当前元素节点文本为空时不返回该字段。 |
 | title | title | string | 节点`title`属性值。字段值为空时不返回该字段。 |
 | aria-label | aria-label | string | 节点`aria-label`属性值。字段值为空时不返回该字段。 |
 | role | role | string | 节点语义角色。字段值为空时不返回该字段。 |
@@ -335,7 +334,7 @@
 | nodes | - | - | Array\<Object> | 符合筛选规则的节点列表。 |
 | nodes | - | id | string | ArkWeb生成的节点标识，不是HTML `id`属性。仅在`wants`中包含`id`且可生成节点标识时返回。 |
 | nodes | - | tag | string | 节点标签名。 |
-| nodes | - | text | string | 节点文本内容。 |
+| nodes | - | text | string | 节点文本内容。`getLiteDom`只返回元素节点，当前元素节点文本为空时不返回该字段。 |
 | nodes | - | title | string | 节点`title`属性值。 |
 | nodes | - | aria-label | string | 节点`aria-label`属性值。 |
 | nodes | - | role | string | 节点语义角色。 |
@@ -404,7 +403,6 @@
     "wants": [
       "id",
       "tag",
-      "text",
       "rect",
       "clickable",
       "xpath",
