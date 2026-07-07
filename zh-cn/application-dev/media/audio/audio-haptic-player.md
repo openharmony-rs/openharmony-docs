@@ -50,11 +50,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      let idForUri = 0;
    
      audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-       console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
        idForUri = value;
        // ...
      }).catch((err: BusinessError) => {
-       console.error(`Failed to register source ${err}`);
+       console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
      // ...
@@ -74,11 +74,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        length: hapticFile.length,
      };
      audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-       console.info('Succeeded in doing registerSourceFromFd.');
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
        idForFd = value;
        // ...
      }).catch((err: BusinessError) => {
-       console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
    ```
@@ -103,14 +103,14 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
    // ...
-     audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
-       console.info(`Create the audio haptic player successfully.`);
-       audioHapticPlayer = value;
-       // ...
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to create player ${err}`);
-       // ...
-     });
+   audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
+     console.info('Succeeded in creating player.');
+     audioHapticPlayer = value;
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
+     // ...
+   });
    ```
 
 4. 调用[start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start)方法，开启音频播放并同步开启振动。
@@ -119,10 +119,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    audioHapticPlayer.start().then(() => {
-     console.info(`Promise returned to indicate that start playing successfully.`);
+     console.info('Succeeded in starting audio haptic player.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to start playing. ${err}`);
+     console.error(`Failed to start audio haptic player. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
@@ -162,10 +162,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    ``` TypeScript
    // 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
-     console.info(`Promise returned to indicate that unregister source successfully`);
+     console.info('Succeeded in unregistering source.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to unregister source ${err}`);
+     console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
