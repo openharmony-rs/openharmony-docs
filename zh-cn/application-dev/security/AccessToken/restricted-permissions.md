@@ -258,7 +258,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **权限级别**：system_basic
 
-**授权方式**：用户授权（user_grant）
+**授权方式**：系统授权（system_grant）
 
 **起始版本**：12
 
