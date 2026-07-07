@@ -560,7 +560,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
-| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.0.0 **<br>ArkTS-Sta起始版本：** 26.0.0                 |
+| interface   | string                                                      | 否 |是 |物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。<br> **ArkTS-Dyn起始版本：** 26.0.0 **<br>ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。                |
 ## RequestParam
 
 查询输入信息结构。
