@@ -27,13 +27,13 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef bool (\*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)](#oh_nativewindowmanager_keyeventfilter) | OH_NativeWindowManager_KeyEventFilter | 定义多模按键的过滤函数。 |
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)](#oh_nativewindowmanager_registerkeyeventfilter) | - | 注册按键事件的过滤函数。 |
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)](#oh_nativewindowmanager_registerkeyeventfilter) | - | 注册按键事件的过滤函数。 |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregisterkeyeventfilter) | - | 取消注册窗口的按键事件过滤函数。 |
 | [typedef bool (\*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)](#oh_nativewindowmanager_mouseeventfilter) | OH_NativeWindowManager_MouseEventFilter | 定义多模鼠标事件的过滤函数。 |
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)](#oh_nativewindowmanager_registermouseeventfilter) | - | 注册鼠标事件的过滤函数。 |
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter mouseEventFilter)](#oh_nativewindowmanager_registermouseeventfilter) | - | 注册鼠标事件的过滤函数。 |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregistermouseeventfilter) | - | 取消注册窗口的鼠标事件过滤函数。 |
 | [typedef bool (\*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)](#oh_nativewindowmanager_toucheventfilter) | OH_NativeWindowManager_TouchEventFilter | 定义多模触摸事件的过滤函数。 |
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)](#oh_nativewindowmanager_registertoucheventfilter) | - | 注册触摸事件的过滤函数。 |
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter touchEventFilter)](#oh_nativewindowmanager_registertoucheventfilter) | - | 注册触摸事件的过滤函数。 |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregistertoucheventfilter) | - | 取消注册窗口的触摸事件过滤函数。 |
 
 ## 函数说明
@@ -61,12 +61,12 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回是否过滤该事件。返回true窗口不再往下分发，返回false表示不拦截。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterKeyEventFilter()
 
 ```c
-WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)
+WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)
 ```
 
 **描述**
@@ -137,12 +137,12 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回是否过滤该事件。true表示过滤该事件，不会继续往下分发；false表示不过滤不拦截此事件，将会继续分发。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterMouseEventFilter()
 
 ```c
-WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)
+WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter mouseEventFilter)
 ```
 
 **描述**
@@ -213,12 +213,12 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回是否过滤该事件。true表示过滤该事件，不会继续往下分发；false表示不过滤不拦截此事件，将会继续分发。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterTouchEventFilter()
 
 ```c
-WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)
+WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter touchEventFilter)
 ```
 
 **描述**
