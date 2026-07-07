@@ -130,6 +130,7 @@
         slotType: notificationManager.SlotType.CONTENT_INFORMATION  // 指明提醒的Slot类型
       }
       ```
+      
 
    - 定义闹钟实例。
    
