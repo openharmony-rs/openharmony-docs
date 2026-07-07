@@ -1760,7 +1760,7 @@ ArkTS-Sta: minLogicalFontSize(size: int | undefined)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为18。<br>ArkTS-Sta：传入undefined时为18。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为8。<br>ArkTS-Sta：传入undefined时为8。 |
 
 **示例：**
 
