@@ -669,7 +669,7 @@ setNamespace(prefix: string, namespace: string): void
 >
 > 该接口应在[startElement<sup>20+</sup>](#startelement20)之前调用，为即将开启的元素设置命名空间前缀。调用顺序：先调用setNamespace设置命名空间，再调用startElement开启元素。
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的前缀以及对同一个元素设置多个命名空间。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的前缀以及为同一个元素设置多个命名空间。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
