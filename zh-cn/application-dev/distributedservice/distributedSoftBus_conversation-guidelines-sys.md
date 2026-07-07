@@ -61,7 +61,7 @@
 1. 导入所需的模块。
 
    <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
    ```
@@ -100,8 +100,9 @@
 3. 定义会话监听器回调函数。
 
    <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 定义消息回调
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
      hilog.info(DOMAIN, TAG, 'Received message from: %{public}s', deviceId);
      hilog.info(DOMAIN, TAG, 'Message length: %{public}d', msg.byteLength);
@@ -117,15 +118,16 @@
 4. 注册会话监听器，接收来自可信设备的数据。
 
    <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 注册监听器
    registerListener(): void {
      hilog.info(DOMAIN, TAG, 'registerListener called');
      try {
        conversation.registerConversationListener(bundleName, abilityName, messageCallback);
        hilog.info(DOMAIN, TAG, 'Listener registered for %{public}s/%{public}s', bundleName, abilityName);
      } catch (err) {
-       let error = err as BusinessError;
+     let error = err as BusinessError;
        hilog.error(DOMAIN, TAG, 'registerConversationListener error: %{public}s - %{public}s', error.code, error.message);
      }
    }
@@ -134,15 +136,16 @@
 5. 注销会话监听器。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 注销监听器
    unregisterListener(): void {
      hilog.info(DOMAIN, TAG, 'unregisterListener called');
      try {
        conversation.unregisterConversationListener(bundleName, abilityName);
        hilog.info(DOMAIN, TAG, 'Listener unregistered');
      } catch (err) {
-       let error = err as BusinessError;
+     let error = err as BusinessError;
        hilog.error(DOMAIN, TAG, 'unregisterConversationListener error: %{public}s - %{public}s', error.code, error.message);
      }
    }
@@ -153,7 +156,7 @@
 1. 导入所需的模块。
 
    <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
    ```
@@ -192,8 +195,9 @@
 3. 获取可信设备列表，选择目标设备。
 
    <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 获取受信任设备
    getTrustedDevices(): void {
      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
      try {
@@ -217,8 +221,9 @@
 4. 向指定设备发送会话数据。
 
    <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 发送消息
    sendMessage(): void {
      hilog.info(DOMAIN, TAG, 'sendMessage called');
      try {
@@ -227,7 +232,7 @@
        for (let i = 0; i < messageToSend.length; i++) {
          bufferView[i] = messageToSend.charCodeAt(i);
        }
-
+   
        conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
          .then(() => {
            hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
