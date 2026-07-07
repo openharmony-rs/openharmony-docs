@@ -154,7 +154,7 @@ enum AVPlayerSeekMode
 | AV_SEEK_NEXT_SYNC = 0 | 同步到时间点之后的关键帧。 |
 | AV_SEEK_PREVIOUS_SYNC | 同步到时间点之前的关键帧。 |
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
-| AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek）。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br/>**起始版本：** 23 |
+| AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek）。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br>**起始版本：** 23 |
 
 
 ### AVPlaybackSpeed
