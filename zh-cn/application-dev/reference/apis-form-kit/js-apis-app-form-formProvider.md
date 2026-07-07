@@ -937,7 +937,7 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -995,7 +995,7 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -1056,7 +1056,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 | 参数名 | 类型                                                                 | 必填 | 说明        |
 | ------ |--------------------------------------------------------------------| ---- |-----------|
-| formId | string                                                             | 是 | 卡片id标识。|
+| formId | string                                                             | 是 | 卡片标识。|
 | overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 是 | 动效请求参数信息。|
 
 **返回值：**
@@ -1164,7 +1164,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -1249,7 +1249,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 参数名 | 类型         | 必填 | 说明        |
 | ------ |-------------| ---- |-----------|
-| formId | string      | 是 | 卡片id标识。|
+| formId | string      | 是 | 卡片标识。|
 
 **返回值：**
 
