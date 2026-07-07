@@ -478,7 +478,7 @@ const char *OH_GetDistributionOSName(void)
 
 **描述**
 
-获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自己定义的系统名称。
+获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
 
 **起始版本：** 10
 
