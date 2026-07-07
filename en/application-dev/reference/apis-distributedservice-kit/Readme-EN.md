@@ -21,7 +21,7 @@
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (Screen Hopping) (system API)](js-apis-devicestatus-cooperate-sys.md)
   - [@ohos.distributedSoftbus.conversation (Cross-Device Wakeup and Message Transfer) (System API)](js-apis-conversation-sys.md)
-  - APIs No Longer Maintained<!--distributed-service-dep-->·
+  - APIs No Longer Maintained<!--distributed-service-dep-->
     - [@ohos.distributedHardware.deviceManager (Device Management) (System API)](js-apis-device-manager-sys.md)
   
   <!--DelEnd-->
