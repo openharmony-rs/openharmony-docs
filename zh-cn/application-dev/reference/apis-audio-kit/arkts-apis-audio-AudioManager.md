@@ -320,6 +320,32 @@ import { audio } from '@kit.AudioKit';
 let debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 ```
 
+## getRecordingManager
+
+getRecordingManager(): AudioRecordingManager
+
+获取录音策略管理器。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型                                       | 说明                          |
+|------------------------------------------| ----------------------------- |
+| [AudioRecordingManager](arkts-apis-audio-AudioRecordingManager.md) | AudioRecordingManager实例。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
+```
+
 ## setAudioParameter<sup>(deprecated)</sup>
 
 setAudioParameter(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
