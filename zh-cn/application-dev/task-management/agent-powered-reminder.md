@@ -104,7 +104,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) --> 
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
