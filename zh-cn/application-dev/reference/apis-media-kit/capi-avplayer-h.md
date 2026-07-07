@@ -1710,7 +1710,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredHeight(OH_AVPlaybackStrategy *str
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
-| int32_t height | avplayer启动时选择播放的首选高度。 |
+| int32_t height | avplayer启动时选择播放的首选高度，单位为像素。|
 
 **返回：**
 
