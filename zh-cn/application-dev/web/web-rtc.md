@@ -104,137 +104,134 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
 ## 完整示例代码
 
-  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
- 
- ArkTS-Dyn示例： 
-   	 
-   ``` TypeScript	 
-   import { webview } from '@kit.ArkWeb';	 
-   import { BusinessError } from '@kit.BasicServicesKit';	 
-   import { abilityAccessCtrl } from '@kit.AbilityKit';	 
-   	 
-   @Entry	 
-   @Component	 
-   struct WebComponent {	 
-     controller: webview.WebviewController = new webview.WebviewController();	 
-     uiContext: UIContext = this.getUIContext();	 
-   	 
-     aboutToAppear() {	 
-       // 配置Web开启调试模式	 
-       webview.WebviewController.setWebDebuggingAccess(true);	 
-       // 获取摄像头和麦克风权限，在组件创建时主动申请权限。	 
-       let atManager = abilityAccessCtrl.createAtManager();	 
-       atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])	 
-         .then((data) => {	 
-           console.info('data:' + JSON.stringify(data));	 
-           console.info('data permissions:' + data.permissions);	 
-           console.info('data authResults:' + data.authResults);	 
-         }).catch((error: BusinessError) => {	 
-         console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);	 
-       })	 
-     }	 
-   	 
-     build() {	 
-       Column() {	 
-         Web({ src: $rawfile('index.html'), controller: this.controller })	 
-           .onPermissionRequest((event) => {	 
-             if (event) {	 
-               this.uiContext.showAlertDialog({	 
-                 title: 'title',	 
-                 message: 'text',	 
-                 primaryButton: {	 
-                   value: 'deny',	 
-                   action: () => {	 
-                     event.request.deny();	 
-                   }	 
-                 },	 
-                 secondaryButton: {	 
-                   value: 'onConfirm',	 
-                   action: () => {	 
-                     event.request.grant(event.request.getAccessibleResource());	 
-                   }	 
-                 },	 
-                 cancel: () => {	 
-                   event.request.deny();	 
-                 }	 
-               })	 
-             }	 
-           })	 
-@@ -64,122 +111,56 @@	 
-   }	 
+ <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+
+
+ ArkTS-Dyn示例：
+
+   ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl } from '@kit.AbilityKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear() {
+      // 配置Web开启调试模式
+      webview.WebviewController.setWebDebuggingAccess(true);
+      // 获取摄像头和麦克风权限，在组件创建时主动申请权限。
+      let atManager = abilityAccessCtrl.createAtManager();
+      atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])
+        .then((data) => {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }).catch((error: BusinessError) => {
+        console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
+      })
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+      }
+    }
+  }
    ```	 
- 
- 
- ArkTS-Sta示例： 
+
+ ArkTS-Sta示例：
    <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebRTC/entry/src/main/ets/pages/Index.ets) --> 
-    
-   ``` TypeScript 
-   'use static' 
- 
- 
-   // xxx.ets 
-   import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI'; 
-   import { webview } from '@kit.ArkWeb'; 
-   import { UIContext } from "@kit.ArkUI"; 
-   import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI'; 
-   import { BusinessError } from '@kit.BasicServicesKit'; 
-   import { PermissionRequestResult, common } from '@kit.AbilityKit'; 
-   import abilityAccessCtrl from '@ohos.abilityAccessCtrl' 
- 
- 
-   @Entry 
-   @Component 
-   struct WebComponent { 
-     controller: webview.WebviewController = new webview.WebviewController(undefined); 
-     uiContext: UIContext = this.getUIContext(); 
- 
- 
-     aboutToAppear(): void { 
-       let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext; 
-       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager(); 
-       atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'], 
-         (err: BusinessError | null, data?: PermissionRequestResult) => { 
-           if (data) { 
-             console.info('data:' + JSON.stringify(data)); 
-             console.info('data permissions:' + data.permissions); 
-             console.info('data authResults:' + data.authResults); 
-           } 
-         }) 
-     } 
- 
- 
-     build() { 
-       Column() { 
-         Web({ src: $rawfile('index.html'), controller: this.controller }) 
-           .onPermissionRequest((event: OnPermissionRequestEvent): void => { 
-             if (event) { 
-               const dialogOptions: AlertDialogParamWithButtons = { 
-                 title: 'title', 
-                 message: 'text', 
-                 primaryButton: { 
-                   value: 'deny', 
-                   action: () => { 
-                     event.request.deny(); 
-                   }, 
-                 } as AlertDialogButtonBaseOptions, 
-                 secondaryButton: { 
-                   value: 'onConfirm', 
-                   action: () => { 
-                     event.request.grant(event.request.getAccessibleResource()); 
-                   }, 
-                 } as AlertDialogButtonBaseOptions, 
-                 cancel: () => { 
-                   event.request.deny(); 
-                 } 
-               }; 
-               this.uiContext.showAlertDialog(dialogOptions); 
-             } 
-           }) 
-       } 
-     } 
-   } 
-   ``` 
- 
+
+   ``` TypeScript
+   'use static'
+
+    // xxx.ets
+    import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    import { UIContext } from "@kit.ArkUI";
+    import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { PermissionRequestResult, common } from '@kit.AbilityKit';
+    import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController(undefined);
+      uiContext: UIContext = this.getUIContext();
+
+      aboutToAppear(): void {
+        let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+        let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+        atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'],
+          (err: BusinessError | null, data?: PermissionRequestResult) => {
+            if (data) {
+              console.info('data:' + JSON.stringify(data));
+              console.info('data permissions:' + data.permissions);
+              console.info('data authResults:' + data.authResults);
+            }
+          })
+      }
+
+      build() {
+        Column() {
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+            .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+              if (event) {
+                const dialogOptions: AlertDialogParamWithButtons = {
+                  title: 'title',
+                  message: 'text',
+                  primaryButton: {
+                    value: 'deny',
+                    action: () => {
+                      event.request.deny();
+                    },
+                  } as AlertDialogButtonBaseOptions,
+                  secondaryButton: {
+                    value: 'onConfirm',
+                    action: () => {
+                      event.request.grant(event.request.getAccessibleResource());
+                    },
+                  } as AlertDialogButtonBaseOptions,
+                  cancel: () => {
+                    event.request.deny();
+                  }
+                };
+                this.uiContext.showAlertDialog(dialogOptions);
+              }
+            })
+        }
+      }
+    }
+   ```
+  
 - 前端界面index.html代码。
 
   ```html
