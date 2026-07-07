@@ -28,7 +28,7 @@ typedef struct OH_AudioBuffer {...} OH_AudioBuffer
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t* buf | 音频缓冲区内存，用于存储录制的音频采样数据，数据格式为PCM原始字节流，需配合size字段确定数据长度。 |
+| uint8_t* buf | 指向音频缓冲区内存的指针，音频缓冲区用于存储录制的音频采样数据，数据格式为PCM原始字节流，需配合size字段确定数据长度。 |
 | int32_t size | 音频缓冲区内存大小，单位为字节（byte），表示buf指针所指音频数据的字节长度。取值范围大于等于0。 |
 | int64_t timestamp | 音频缓冲区时间戳。单位为纳秒（ns）。 |
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | 音频录制源类型。其值由OH_AudioCaptureInfo中配置的[OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype)决定。 |
