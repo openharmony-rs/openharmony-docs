@@ -279,7 +279,7 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 | 参数项                                             | 描述 |
 |-------------------------------------------------| -- |
 | const [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
-| uint8_t* buffer                                 | 接收数据的缓存区。 |
+| uint8_t* buffer                                 | 接收数据的缓冲区。 |
 | int bytesRead                                   | 标识异步读取操作执行结果的字节计数值。如果bytesRead大于0，则表示buffer已填充了bytesRead大小的数据。开发者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
 ### ArkWeb_HttpBodyStreamInitCallback()
@@ -749,7 +749,7 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
-| uint8_t* buffer | 接收数据的缓存区。 |
+| uint8_t* buffer | 接收数据的缓冲区。 |
 | int bufLen | 要读取的字节的大小。 |
 
 ### OH_ArkWebHttpBodyStream_GetSize()
