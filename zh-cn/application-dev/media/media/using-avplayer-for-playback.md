@@ -70,13 +70,13 @@
     avPlayer.on('durationUpdate', (duration: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('timeUpdate', (time:number) => {
+    avPlayer.on('timeUpdate', (time: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('speedDone', (speed:number) => {
+    avPlayer.on('speedDone', (speed: number) => {
         // 开发者根据需要写入业务逻辑。
     });
     avPlayer.on('volumeChange', (vol: number) => {
@@ -191,7 +191,7 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    await avPlayer.reset((err: BusinessError) => {
+    avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
             console.error('Failed to reset,error message is :' + err.message);
