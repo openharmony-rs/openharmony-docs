@@ -85,28 +85,38 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
   context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
+    hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
   onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
     this.testDisconnectServiceExtensionAbility();
   }
   
   connectId:long = -1;
   
   private testConnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testConnectServiceExtensionAbility');
     let deviceId1: string = '';
     try {
       let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
       deviceId1 = dmInstance.getLocalDeviceId();
+      const message: string = 'local device id: ' + deviceId1;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
+      console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
     }
     const targetWant:Want = {
       deviceId: deviceId1,
@@ -115,16 +125,26 @@ export default class DistributedExtAbility extends DistributedExtension {
     }
     const options: ConnectOptions = {
       onConnect: (name: ElementName, remote: rpc.IRemoteObject): void => {
+        const message: string = 'onConnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
       onDisconnect: (name: ElementName): void => {
+        const message: string = 'onDisconnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
       onFailed: (code: int): void => {
+        const message: string = 'onFailed: code=' + code;
+        hilog.info(DOMAIN, TAG, message);
       }
     };
     try {
       const id = this.context.connectServiceExtensionAbility(targetWant, options);
       this.connectId = id;
+      const message: string = 'connect called, id=' + id;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
+      const message: string = 'connect error: ' + err;
+      hilog.info(DOMAIN, TAG, message);
     }
   }
 ```
@@ -174,22 +194,29 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
   context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
+    hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
   onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
     this.testDisconnectServiceExtensionAbility();
   }
   
   connectId:long = -1;
   
   private testDisconnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testDisconnectServiceExtensionAbility');
     this.context.disconnectServiceExtensionAbility(this.connectId);
   }
 }

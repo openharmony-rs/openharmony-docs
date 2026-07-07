@@ -437,7 +437,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。 |
+| Promise&lt;ConnectResult&gt; | 以Promise形式返回[ConnectResult](#connectresult)。 |
 
 **错误码：**
 
@@ -1542,7 +1542,7 @@ let sessionId = 100;
 abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
   hilog.info(0x0000, 'testTag', "sendMessage success");
 }).catch(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage failed");
+  hilog.error(0x0000, 'testTag', "sendMessage failed");
 })
 ```
 
@@ -1561,7 +1561,7 @@ let sessionId = 100;
 abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
   hilog.info(0x0000, 'testTag', "sendMessage success");
 }).catch(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage failed");
+  hilog.error(0x0000, 'testTag', "sendMessage failed");
 })
 ```
 

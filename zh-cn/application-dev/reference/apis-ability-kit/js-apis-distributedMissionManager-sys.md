@@ -226,6 +226,7 @@ ArkTS-Sta示例：
 ```ts
 import distributedMissionManager from '@ohos.distributedMissionManager';
 import { BusinessError } from '@ohos.base';
+// 实现回调函数
 function NotifyMissionsChanged(deviceId: string): void {
   console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
 }

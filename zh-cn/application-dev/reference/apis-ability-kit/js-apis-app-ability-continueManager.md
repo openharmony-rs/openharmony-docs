@@ -159,6 +159,9 @@ export default class MigrationAbility extends UIAbility {
       } catch (e) {
         console.error('register failed, cause: ' + JSON.stringify(e));
       }
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
+      // ...
     }
   }
 }
@@ -294,7 +297,7 @@ export default class MigrationAbility extends UIAbility {
     hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
     // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      // 注册快速拉起结果通知的回调函数
+      // 注销快速拉起结果通知的回调函数
       try {
         continueManager.offPrepareContinue(this.context,
           (err: BusinessError|null, continueResultInfo: continueManager.ContinueResultInfo|undefined) => {
@@ -307,6 +310,9 @@ export default class MigrationAbility extends UIAbility {
       } catch (e) {
         console.error('unregister failed, cause: ' + JSON.stringify(e));
       }
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
+      // ...
     }
   }
 }
@@ -326,8 +332,8 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。 |
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## ContinueStateCode
 
@@ -343,6 +349,6 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 值  | 说明    |
 | -------- |----|-------|
-| SUCCESS  | 0  | 操作成功。 |
-| SYSTEM_ERROR | 1 | 操作失败。 |
+| SUCCESS  | 0  | 操作成功。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| SYSTEM_ERROR | 1 | 操作失败。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
