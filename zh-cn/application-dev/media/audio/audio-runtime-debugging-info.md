@@ -511,18 +511,28 @@ audioSession {
 <!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
 
 ``` C++
-// engine为已创建的OH_AudioSuiteEngine实例。
-// 打印编创快照到文件。
-const char *filePath = "/data/storage/el2/base/cache/audio_suite_snapshot.txt";
-int32_t fd = open(filePath, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
-    // pipeline为nullptr时输出所有管线，传入具体管线实例则仅输出该管线。
-    OH_AudioSuite_PrintInfo(engine, nullptr, fd);
-    close(fd);
+// engine为已创建的OH_AudioSuiteEngine实例，必须确保engine参数有效，否则输出内容为空。
+// pipeline为nullptr时输出所有管线，传入具体管线实例则仅输出该管线。
+OH_AudioSuiteEngine *engine = audioSuiteEngine;
+if (!engine) {
+    OH_AudioSuiteEngine_Create(&g_printInfoEngine);
+    engine = g_printInfoEngine;
 }
-
-// 也可将快照信息输出到日志（fd < 0时输出到日志）。
-OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+// 打印编创快照到文件。
+const char *filePath =
+    "/storage/Users/currentUser/Download/com.example.audiosuitesample/printfile/audio_snapshot.txt";
+int fd = open(filePath, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMISSION);
+if (fd < 0) {
+    // 文件打开失败，回退到日志输出。
+    // fd < 0表示输出到日志。
+    OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+    napi_get_boolean(env, true, &result);
+    return result;
+}
+// 输出所有管线信息到文件。
+// nullptr表示输出engine下所有pipeline，fd为文件描述符。
+OH_AudioSuite_Result ret = OH_AudioSuite_PrintInfo(engine, nullptr, fd);
+close(fd);
 ```
 
 **输出示例：**
