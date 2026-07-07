@@ -2424,7 +2424,7 @@ try {
 ```
 ## WifiCapability
 
-wifi支持的能力。
+Wi-Fi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
