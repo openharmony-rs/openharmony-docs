@@ -1701,7 +1701,7 @@ console.info(`getNoiseReductionMode success: ${noiseReductionMode}`);
 
 getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
 
-获取当前设备平台支持的录音降噪模式。
+获取当前设备支持的录音降噪模式。
 
 > **说明：**
 >
