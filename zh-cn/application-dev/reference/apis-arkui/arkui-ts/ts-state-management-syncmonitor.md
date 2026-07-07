@@ -27,7 +27,7 @@ const SyncMonitor: MonitorDecorator
 
 | 类型     | 说明                                         |
 | -------- | -------------------------------------------- |
-| [MonitorDecorator](./ts-state-management-watch-monitor.md#monitordecorator12) | @SyncMonitor装饰器类型。 |
+| [MonitorDecorator](./ts-state-management-monitor.md#monitordecorator) | @SyncMonitor装饰器类型。 |
 
 **错误码：**
 
