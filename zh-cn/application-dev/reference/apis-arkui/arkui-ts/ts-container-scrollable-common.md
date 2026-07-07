@@ -723,7 +723,7 @@ onDidScroll(handler: OnScrollCallback): T
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
 
-### onScroll<sup>11+(deprecated)</sup>
+### onScroll<sup>(deprecated)</sup>
 
 onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 

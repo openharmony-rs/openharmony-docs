@@ -449,7 +449,7 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | [OnScrollFrameBeginCallback](#onscrollframebegincallback18) | 是   | 每帧滚动开始回调函数。回调签名为(offset: number, state: ScrollState) => OnScrollFrameBeginHandlerResult，其中offset为即将发生的滑动量，单位为vp，state为当前滑动状态。 |
+| event   | [OnScrollFrameBeginCallback](#onscrollframebegincallback18) | 是   | 每帧滚动开始回调函数。 |
 
 ### onScroll<sup>(deprecated)</sup>
 
@@ -510,7 +510,7 @@ onWillScroll(handler: ScrollOnWillScrollCallback)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) | 是   | Scroll滚动前触发的回调。回调签名为(xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void \| OffsetResult，可通过返回值指定Scroll将要滚动的偏移量。 |
+| handler | [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) | 是   | Scroll滚动前触发的回调。 |
 
 ### onDidScroll<sup>12+</sup>
 
@@ -538,7 +538,7 @@ onDidScroll(handler: ScrollOnScrollCallback)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | [ScrollOnScrollCallback](#scrollonscrollcallback12) | 是   | Scroll滚动时触发的回调。回调签名为(xOffset: number, yOffset: number, scrollState: ScrollState) => void，其中xOffset和yOffset为相对于上一帧的偏移量，单位为vp。 |
+| handler | [ScrollOnScrollCallback](#scrollonscrollcallback12) | 是   | Scroll滚动时触发的回调。 |
 
 ### onScrollEdge
 
@@ -864,7 +864,7 @@ scrollTo(options: ScrollOptions)
 
 ### scrollEdge
 
-scrollEdge(value: Edge, options?: ScrollEdgeOptions<sup>12+</sup>)
+scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。可用于返回顶部、跳转到内容末尾等场景。
 

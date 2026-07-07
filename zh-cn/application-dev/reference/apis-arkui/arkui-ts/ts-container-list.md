@@ -199,6 +199,10 @@ cachedCount(count: number, show: boolean)
 
 List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
+> **说明：**
+>
+> 通常建议设置cachedCount=n/2（n代表一屏显示的列表项数量），同时需考虑其他因素以实现体验和内存使用的平衡。最佳实践请参考[优化长列表加载慢丢帧问题-缓存列表项](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list#section11667144010222)。
+
 **卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
@@ -227,6 +231,10 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
+
+> **说明：**
+>
+> 通常建议设置cachedCount=n/2（n代表一屏显示的列表项数量），同时需考虑其他因素以实现体验和内存使用的平衡。从API version 22开始，支持设置最大最小缓存数，可以将最大缓存数设置稍大，如设置为最小缓存数的两倍，利用UI线程空闲时间创建节点，减少滚动过程中预加载创建节点，提升滚动流畅性。最佳实践请参考[优化长列表加载慢丢帧问题-缓存列表项](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list#section11667144010222)。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
