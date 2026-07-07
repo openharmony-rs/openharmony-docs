@@ -92,7 +92,7 @@
 | 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
 
  ### 场景4：音乐播放过程中开启录制，打断音乐播放
- 	 
+
 场景描述：应用A正在播放音乐，应用B开始录音（语音识别、录音机等），音乐被暂停，录音结束后音乐可恢复播放。
 
 | - | 应用A | 应用B | 打断效果 | 备注 |
