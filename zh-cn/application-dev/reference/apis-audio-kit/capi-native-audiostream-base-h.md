@@ -91,7 +91,7 @@ enum OH_AudioStream_Result
 | AUDIOSTREAM_ERROR_SYSTEM = 3 | 系统通用错误。 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | 不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 19 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | 不支持的音频流能力，包括功能或配置。<br>**起始版本：** 26.0.0 |
-| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | 音频服务进程死亡。<br>**起始版本：** 26.0.0 |
+| AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | 音频服务进程异常消亡。<br>**起始版本：** 26.0.0 |
 
 ### OH_AudioStream_Type
 
