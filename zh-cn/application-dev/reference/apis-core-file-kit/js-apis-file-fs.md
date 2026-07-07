@@ -24,17 +24,17 @@ import { fileIo } from '@kit.CoreFileKit';
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 
-  export default class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
+        let context = this.context;
+        let pathDir = context.filesDir;
     }
-  }
+}
   ```
 
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -199,7 +199,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | mode | [AccessModeType](#accessmodetype12) | 是 | 文件或目录校验的权限。 |
 | flag | [AccessFlagType](#accessflagtype12) | 是 | 文件或目录校验的位置。 |
 
@@ -266,7 +266,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
@@ -389,7 +389,7 @@ ArkTS-Dyn: close(file: number | File): Promise&lt;void&gt;
 
 ArkTS-Sta: close(file: int | File): Promise&lt;void&gt;
 
-关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作，使用Promise异步回调。
+关闭文件或目录。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -450,7 +450,7 @@ fileIo.close(file).then(() => {
 
 close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
-关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。使用callback异步回调。
+关闭文件或目录。使用callback异步回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -460,7 +460,7 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当异步关闭文件或目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -498,7 +498,7 @@ console.info(`Succeeded in closing file.`);
 
 closeSync(file: number | File): void
 
-以同步方法关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。
+以同步方法关闭文件或目录。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -508,7 +508,7 @@ closeSync(file: number | File): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
 
 **错误码：**
 
@@ -526,7 +526,7 @@ fileIo.closeSync(file);
 
 copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
-拷贝文件或目录，使用Promise异步回调。
+拷贝文件或目录。使用Promise异步回调。
 
 支持跨设备拷贝。强制覆盖拷贝。入参支持文件或目录URI。<br/>
 跨端拷贝时，最多同时存在10个拷贝任务；单次拷贝的文件数量不得超过500个。
@@ -796,7 +796,7 @@ ArkTS-Dyn: copyFile(src: string | number, dest: string | number, mode?: number):
 
 ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode?: int): Promise&lt;void&gt;
 
-复制文件，使用Promise异步回调。
+复制文件。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -812,7 +812,7 @@ ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode?: int): Promise&
 | ---- | ---- | ---- | ---- |
 | src | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | number<br>，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
 
 **返回值：**
 
@@ -877,7 +877,7 @@ ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode: int, callback: 
 | ---- | ---- | ---- | ---- |
 | src | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | number<br>，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当复制文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -924,7 +924,7 @@ ArkTS-Dyn: copyFile(src: string | number, dest: string | number, callback: Async
 
 ArkTS-Sta: copyFile(src: string | int, dest: string | int, callback: AsyncCallback&lt;void&gt;): void
 
-复制文件，覆盖方式为完全覆盖目标文件，未覆盖部分将被裁切。使用callback异步回调。
+复制文件，覆盖方式为完全覆盖目标文件，未覆盖部分将被裁剪。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1000,7 +1000,7 @@ copyFileSync(src: string | number, dest: string | number, mode?: number): void
 | ---- | ---- | ---- | ---- |
 | src | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | number<br>，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
 
 **错误码：**
 
@@ -1020,7 +1020,7 @@ ArkTS-Dyn: copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
 ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 
-复制源目录及其内容至目标路径下，可设置冲突处理模式，使用Promise异步回调。
+复制源目录至目标路径下。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1034,7 +1034,7 @@ ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number<br>，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| mode | number<br>，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 
 **返回值：**
 
@@ -1086,7 +1086,7 @@ ArkTS-Dyn: copyDir(src: string, dest: string, mode: number, callback: AsyncCallb
 
 ArkTS-Sta: copyDir(src: string, dest: string, mode: int, callback: AsyncCallback\<void>): void
 
-复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
+复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1100,7 +1100,7 @@ ArkTS-Sta: copyDir(src: string, dest: string, mode: int, callback: AsyncCallback
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number<br>。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| mode | number<br>。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下未冲突文件将继续保留。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当复制目录成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -1147,7 +1147,7 @@ fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<void> | null) => {
 
 copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
+复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1196,7 +1196,7 @@ fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) 
 
 copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
+复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1212,7 +1212,7 @@ copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | int | 是 | 复制模式。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| mode | int | 是 | 复制模式。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部拷贝至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 回调函数。当复制目录成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -1246,7 +1246,7 @@ fileIo.copyDirWithConflictFiles(srcPath, destPath, 0, (err: BusinessError<Array<
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
-复制源目录及其内容至目标路径下。使用callback异步回调。
+复制源目录至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。
 
@@ -1308,7 +1308,7 @@ fileIo.copyDir(srcPath, destPath, (err: BusinessError<void> | null) => {
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录及其内容至目标路径下。使用callback异步回调。
+复制源目录至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
@@ -1358,7 +1358,7 @@ fileIo.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => 
 
 copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录及其内容至目标路径下。使用callback异步回调。
+复制源目录至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
@@ -1409,7 +1409,7 @@ fileIo.copyDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<Con
 
 copyDirSync(src: string, dest: string, mode?: number): void
 
-。
+以同步方法复制源目录至目标路径下。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1450,7 +1450,7 @@ try {
 
 dup(fd: number): File
 
-，并返回对应的File对象。
+复制文件描述符，并返回对应的File对象。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1504,7 +1504,10 @@ fileIo.closeSync(file2);
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](#onstatus12)通知应用。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
+业务调用connectDfs接口，触发建立连接。如果对端设备出现异常，系统将通过DfsListeners内的[onStatus](#onstatus12)回调通知应用。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
+
+**配对调用：**
+调用connectDfs()建立连接后，在不再需要跨设备文件访问时，应调用disconnectDfs()断开连接，释放分布式文件系统资源。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1584,7 +1587,7 @@ if (deviceInfoList && deviceInfoList.length > 0) {
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
-业务调用disconnectDfs接口，传入networkId参数，触发断链。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
+业务调用disconnectDfs接口，传入networkId参数，触发断开连接。该接口需在调用connectDfs()建立连接后使用。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1666,7 +1669,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | key | string | 是 | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。 |
 | value | string | 是 | 扩展属性的value。 |
 
@@ -1733,7 +1736,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | key | string | 是 | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。 |
 | value | string | 是 | 扩展属性的value。 |
 
@@ -1796,7 +1799,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | key | string | 是 | 扩展属性的key。 |
 
 **返回值：**
@@ -1860,7 +1863,7 @@ getxattrSync(path: string, key: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录的应用沙箱路径。 |
+| path | string | 是 | 文件或目录应用沙箱路径。 |
 | key | string | 是 | 扩展属性的key。 |
 
 **返回值：**
@@ -1914,7 +1917,7 @@ try {
 
 mkdir(path: string): Promise&lt;void&gt;
 
-创建单层目录，若父目录不存在则会报错，使用Promise异步回调。
+创建目录。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2031,7 +2034,7 @@ fileIo.mkdir(dirPath, true).then(() => {
 
 mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-创建单层目录，若父目录不存在则会报错。使用callback异步回调。
+创建目录。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2087,7 +2090,7 @@ fileIo.mkdir(dirPath, (err: BusinessError<void> | null) => {
 
 mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-创建目录，当recursion指定为true，可递归创建单层目录，若父目录不存在则会报错。使用callback异步回调。
+创建目录，当recursion指定为true，可递归创建目录。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2145,7 +2148,7 @@ fileIo.mkdir(dirPath, true, (err: BusinessError<void> | null) => {
 
 mkdirSync(path: string): void
 
-以同步方法创建单层目录，若父目录不存在则会报错。
+以同步方法创建目录。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2176,7 +2179,7 @@ fileIo.mkdirSync(dirPath);
 
 mkdirSync(path: string, recursion: boolean): void
 
-以同步方法创建单层目录，若父目录不存在则会报错。当recursion指定为true，可递归创建目录。
+以同步方法创建目录。当recursion指定为true，可递归创建目录。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2437,7 +2440,7 @@ ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise
 
 ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
-从文件读取数据，返回实际读取的字节数，使用Promise异步回调。
+读取文件数据。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2877,7 +2880,7 @@ unlink(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 
 **返回值：**
 
@@ -2936,7 +2939,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -2993,7 +2996,7 @@ unlinkSync(path: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 
 **错误码：**
 
@@ -3490,7 +3493,7 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [Options](#options11) | 否 | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
@@ -3560,7 +3563,7 @@ readLines(filePath: string, callback: AsyncCallback&lt;ReaderIterator&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是 | 回调函数，返回文件读取迭代器。 |
 
 **错误码：**
@@ -3619,7 +3622,7 @@ readLines(filePath: string, options: Options, callback: AsyncCallback&lt;ReaderI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [Options](#options11) | 是 | 读取选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是 | 回调函数，返回文件读取迭代器。 |
 
@@ -3687,7 +3690,7 @@ readLinesSync(filePath: string, options?: Options): ReaderIterator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [Options](#options11) | 否 | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
@@ -3823,7 +3826,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [ReadTextOptions](#readtextoptions11) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
@@ -3883,7 +3886,7 @@ readText(filePath: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
 
 **错误码：**
@@ -3942,7 +3945,7 @@ readText(filePath: string, options: ReadTextOptions, callback: AsyncCallback&lt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [ReadTextOptions](#readtextoptions11) | 是 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
 
@@ -4015,7 +4018,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| filePath | string | 是 | 文件的应用沙箱路径。 |
+| filePath | string | 是 | 文件应用沙箱路径。 |
 | options | [ReadTextOptions](#readtextoptions11) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
@@ -6271,7 +6274,7 @@ utimes(path: string, mtime: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 | mtime | number<br>。自1970年1月1日起至目标时间的毫秒数。仅支持更改上次修改该文件的时间属性。 |
 
 **错误码：**
@@ -6643,7 +6646,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 
 **返回值：**
@@ -6705,7 +6708,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 | callback | AsyncCallback&lt;[Stream](#stream)&gt; | 是 | 回调函数，返回Stream对象。 |
 
@@ -6765,7 +6768,7 @@ createStreamSync(path: string, mode: string): Stream
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径。 |
+| path | string | 是 | 文件应用沙箱路径。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 
 **返回值：**
@@ -10549,7 +10552,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&g
 
 ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
-从文件读取数据，返回实际读取的字节数，使用Promise异步回调。
+读取文件数据。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10587,17 +10590,17 @@ let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.RE
 let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let bufferLength: number = 4096;
 let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
+    offset: 1,
+    length: 5
 };
 let arrayBuffer = new ArrayBuffer(bufferLength);
 randomAccessFile.read(arrayBuffer, readOption).then((readLength: number) => {
-  console.info(`Succeeded in reading, read length: ${readLength}`);
+    console.info(`Succeeded in reading, read length: ${readLength}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
@@ -10612,18 +10615,18 @@ let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ
 let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let bufferLength: long = 4096;
 let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
+    offset: 1,
+    length: 5
 };
 let arrayBuffer = new ArrayBuffer(bufferLength);
 randomAccessFile.read(arrayBuffer, readOption).then((readLength: long) => {
-  console.info(`Succeeded in reading, read length: ${readLength}`);
+    console.info(`Succeeded in reading, read length: ${readLength}`);
 }).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
@@ -10666,15 +10669,15 @@ let length: number = 20;
 
 let arrayBuffer = new ArrayBuffer(length);
 randomAccessFile.read(arrayBuffer, (err: BusinessError, readLength: number) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
+    if (err) {
+        console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    } else {
+        if (readLength) {
+            console.info(`Succeeded in reading, size is: ${readLength}`);
+        }
     }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
@@ -10690,15 +10693,15 @@ let length: long = 20;
 
 let arrayBuffer = new ArrayBuffer(length);
 randomAccessFile.read(arrayBuffer, (err: BusinessError | null, readLength: long | undefined) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
+    if (err) {
+        console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    } else {
+        if (readLength) {
+            console.info(`Succeeded in reading, size is: ${readLength}`);
+        }
     }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
@@ -10741,20 +10744,20 @@ let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.RE
 let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let length: number = 20;
 let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
+    offset: 1,
+    length: 5
 };
 let arrayBuffer = new ArrayBuffer(length);
 randomAccessFile.read(arrayBuffer, readOption, (err: BusinessError, readLength: number) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
+    if (err) {
+        console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    } else {
+        if (readLength) {
+            console.info(`Succeeded in reading, size is: ${readLength}`);
+        }
     }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
@@ -10769,20 +10772,20 @@ let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ
 let randomAccessFile = fileIo.createRandomAccessFileSync(file);
 let length: long = 20;
 let readOption: ReadOptions = {
-  offset: 1,
-  length: 5
+    offset: 1,
+    length: 5
 };
 let arrayBuffer = new ArrayBuffer(length);
 randomAccessFile.read(arrayBuffer, readOption, (err: BusinessError | null, readLength: long | undefined) => {
-  if (err) {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    if (readLength) {
-      console.info(`Succeeded in reading, size is: ${readLength}`);
+    if (err) {
+        console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+    } else {
+        if (readLength) {
+            console.info(`Succeeded in reading, size is: ${readLength}`);
+        }
     }
-  }
-  randomAccessFile.close();
-  fileIo.closeSync(file);
+    randomAccessFile.close();
+    fileIo.closeSync(file);
 });
 ```
 
