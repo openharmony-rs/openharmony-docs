@@ -16,7 +16,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 
 ![Recording status change](figures/recording-status-change-ndk.png)
 
-状态的详细说明请参考[OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#ohavrecorderstate)。
+状态的详细说明请参考[OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#oh_avrecorder_state)。
 
 
 ## 申请权限
