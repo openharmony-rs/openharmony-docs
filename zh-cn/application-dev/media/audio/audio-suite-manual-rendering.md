@@ -110,6 +110,31 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
    <!-- @[audioSuite_CreateBaseNodeOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建节点构造器。
+   OH_AudioNodeBuilder *nodeBuilder = nullptr;
+   OH_AudioSuiteNodeBuilder_Create(&nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   // 配置音频数据格式，开发者根据要处理的音频数据格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatInput;
+   audioFormatInput.samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000;
+   audioFormatInput.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   audioFormatInput.channelCount = CHANNEL_COUNT;
+   audioFormatInput.sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE;
+   audioFormatInput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   // 设置音频流的回调。
+   void *userData = static_cast<void *>(audioInfo);
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   // 创建输入节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
+   
+   // 重置构造器配置，创建效果节点。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   // 可根据需要设置不同的效果节点类型。
+   ```
+   
    设置均衡器效果。
 
    <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
