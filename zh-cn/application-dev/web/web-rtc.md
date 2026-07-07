@@ -8,11 +8,11 @@
 
 WebRTC（Web Real-Time Communications）是一项实时通讯技术，它允许网络应用或站点在无需中间媒介的情况下建立浏览器之间的点对点（Peer-to-Peer）连接，实现视频流、音频流或其他任意数据的传输。WebRTC所包含的标准使得用户无需安装任何插件或第三方软件即可创建点对点（Peer-to-Peer）的数据共享与音视频会议。WebRTC技术适用于所有现代浏览器和主要平台的本机客户端，其背后的技术作为开放的Web标准实现，并在所有主要浏览器中作为常规JavaScript API提供。
 
-## 需要权限
+## 申请权限
 
-Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口接收权限请求通知，需在配置文件中声明相应的音视频权限。
+Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口接收权限请求通知，需在配置文件中声明相应的音视频权限并且进行系统侧授权与应用侧授权。
 
-### 配置权限
+### 在module.json5配置权限
 - 使用摄像头和麦克风功能前请在module.json5中添加音视频相关权限，权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
   ```json5
@@ -55,12 +55,56 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
 通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于打开摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
 
-在下面的示例中，点击前端界面中的"开启摄像头"按钮会触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
+### 系统侧授权
+在下面的示例中，调用requestPermissionsFromUser，使得进入应用后会弹出是否允许该应用访问摄像头和麦克风的授权框，需点击"始终允许"或"每次使用时询问"按钮，授权应用访问摄像头和麦克风。
 
-- 应用侧代码。
+- 示例代码。
+
+  ``` TypeScript
+     let atManager = abilityAccessCtrl.createAtManager();
+      atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])
+        .then((data) => {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }).catch((error: BusinessError) => {
+        console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
+  ```
+
+### 应用侧授权
+在下面的示例中，点击前端界面中的"开启摄像头"按钮后会通过onPermissionRequest触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
+
+- 示例代码。
+
+  ``` TypeScript
+        .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+  ```
+
+## 完整示例代码
+
   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
-
-ArkTS-Dyn示例：
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -119,72 +163,6 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
-  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebRTC/entry/src/main/ets/pages/Index.ets) -->
-  
-  ``` TypeScript
-  'use static'
-
-  // xxx.ets
-  import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-  import { UIContext } from "@kit.ArkUI";
-  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { PermissionRequestResult, common } from '@kit.AbilityKit';
-  import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
-    uiContext: UIContext = this.getUIContext();
-
-    aboutToAppear(): void {
-      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
-      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'],
-        (err: BusinessError | null, data?: PermissionRequestResult) => {
-          if (data) {
-            console.info('data:' + JSON.stringify(data));
-            console.info('data permissions:' + data.permissions);
-            console.info('data authResults:' + data.authResults);
-          }
-        })
-    }
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .onPermissionRequest((event: OnPermissionRequestEvent): void => {
-            if (event) {
-              const dialogOptions: AlertDialogParamWithButtons = {
-                title: 'title',
-                message: 'text',
-                primaryButton: {
-                  value: 'deny',
-                  action: () => {
-                    event.request.deny();
-                  },
-                } as AlertDialogButtonBaseOptions,
-                secondaryButton: {
-                  value: 'onConfirm',
-                  action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
-                  },
-                } as AlertDialogButtonBaseOptions,
-                cancel: () => {
-                  event.request.deny();
-                }
-              };
-              this.uiContext.showAlertDialog(dialogOptions);
-            }
-          })
-      }
-    }
-  }
-  ```
-
 - 前端界面index.html代码。
 
   ```html
@@ -222,12 +200,3 @@ ArkTS-Sta示例：
   </body>
   </html>
   ```
-
-## 常见问题
-
-进入应用后没有弹出系统侧与应用侧授权框，或只弹出应用侧授权框并授权后，无法开启摄像头和麦克风
-
-### 解决方法
-第一步：检查是否正确写了配置权限的json文档；
-
-第二步：进入设置，检查应用的摄像头和麦克风权限是否授权。
