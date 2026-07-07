@@ -105,7 +105,7 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待查询的系统参数key。 |
-| def | string | 是 | def为所要获取的系统参数的默认值。调用时必须传入此参数，但参数值可以传undefined或任意字符串类型的值。仅当系统参数不存在时，def参数值生效。 |
+| def | string | 是 | def为所要获取的系统参数的默认值。调用时必须传入此参数，但参数值可以传任意字符串类型的值。仅当系统参数不存在时，def参数值生效。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
 
 > **说明：**
