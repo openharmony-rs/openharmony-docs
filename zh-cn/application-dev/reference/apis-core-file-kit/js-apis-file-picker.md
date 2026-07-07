@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口，需要应用在界面UIAbility中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。
+Picker（选择器）是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。通过Picker拉起系统文件选择界面，用户可在安全可控的环境下选择或保存文件，应用无需申请权限即可使用该接口。应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口需要应用在UIAbility界面中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。
 
 调用本模块接口返回的URI数组，URI中的中文及非数字字母的特殊字符会被编码为对应的ASCII码并拼接到URI中。
 
@@ -64,27 +64,27 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
-@State message: string = 'hello World';
+  @State message: string = 'hello World';
 
-    build() {
-        Row() {
-            Column() {
-                Text(this.message)
-                    .fontSize(50)
-                    .fontWeight(FontWeight.Bold)
-                    .onClick(()=>{
-                        let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-                        let documentPicker = new picker.DocumentViewPicker(context);
-                    })
-            }
-        .width('100%')
-        }
-    .height('100%')
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+            let documentPicker = new picker.DocumentViewPicker(context);
+          })
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 ```
 
@@ -105,6 +105,7 @@ constructor()
 **示例：**
 
 ```ts
+import { picker } from '@kit.CoreFileKit';
 let documentPicker = new picker.DocumentViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -135,30 +136,30 @@ constructor(context: Context, window: window.Window)
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { picker } from '@kit.CoreFileKit';
 import { window } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct Index {
-@State message: string = 'hello World';
+  @State message: string = 'hello World';
 
-    build() {
-        Row() {
-            Column() {
-                Text(this.message)
-                    .fontSize(50)
-                    .fontWeight(FontWeight.Bold)
-                    .onClick(()=>{
-                        let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-                        let windowClass: window.Window | undefined = undefined;
-                        windowClass = window.findWindow('test'); // 请确保window已创建，此处的'test'为window创建时的name参数
-                        let documentPicker = new picker.DocumentViewPicker(context, windowClass);
-                    })
-            }
-        .width('100%')
-        }
-    .height('100%')
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+            let windowClass: window.Window | undefined = undefined;
+            windowClass = window.findWindow('test'); // 请确保window已创建，此处的'test'为window创建时的name参数
+            let documentPicker = new picker.DocumentViewPicker(context, windowClass);
+          })
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 ```
 
@@ -195,20 +196,20 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSelectOptions = new picker.DocumentSelectOptions();
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        }).catch((err: BusinessError) => {
-            console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSelectOptions = new picker.DocumentSelectOptions();
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    }).catch((err: BusinessError) => {
+      console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -217,21 +218,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSelectOptions: picker.DocumentSelectOptions = {
-            selectMode: picker.DocumentSelectMode.MIXED
-        };
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        }).catch((err: BusinessError): void => {
-            console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSelectOptions: picker.DocumentSelectOptions = {
+      selectMode: picker.DocumentSelectMode.MIXED
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -263,22 +264,22 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSelectOptions = new picker.DocumentSelectOptions();
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select(documentSelectOptions, (err: BusinessError, documentSelectResult: Array<string>) => {
-            if (err) {
-                console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSelectOptions = new picker.DocumentSelectOptions();
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions, (err: BusinessError, documentSelectResult: Array<string>) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -287,23 +288,23 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSelectOptions: picker.DocumentSelectOptions = {
-            selectMode: picker.DocumentSelectMode.MIXED
-        };
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select(documentSelectOptions, (err: BusinessError|null, documentSelectResult: Array<string>|undefined) => {
-            if (err) {
-                console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSelectOptions: picker.DocumentSelectOptions = {
+      selectMode: picker.DocumentSelectMode.MIXED
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions, (err: BusinessError|null, documentSelectResult: Array<string>|undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -334,21 +335,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select((err: BusinessError, documentSelectResult: Array<string>) => {
-            if (err) {
-                console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select((err: BusinessError, documentSelectResult: Array<string>) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -357,20 +358,20 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.select((err: BusinessError | null, documentSelectResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select((err: BusinessError | null, documentSelectResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -407,21 +408,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSaveOptions = new picker.DocumentSaveOptions();
-        documentSaveOptions.newFileNames = ['DocumentViewPicker01.txt'];
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        }).catch((err: BusinessError) => {
-            console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSaveOptions = new picker.DocumentSaveOptions();
+    documentSaveOptions.newFileNames = ['DocumentViewPicker01.txt'];
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError) => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -430,21 +431,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSaveOptions: picker.DocumentSaveOptions = {
-            newFileNames: ['DocumentViewPicker01.txt']
-        };
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        }).catch((err: BusinessError): void => {
-            console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: ['DocumentViewPicker01.txt']
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -476,23 +477,23 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSaveOptions = new picker.DocumentSaveOptions();
-        documentSaveOptions.newFileNames = ['DocumentViewPicker02.txt'];
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions, (err: BusinessError, documentSaveResult: Array<string>) => {
-            if (err) {
-                console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSaveOptions = new picker.DocumentSaveOptions();
+    documentSaveOptions.newFileNames = ['DocumentViewPicker02.txt'];
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions, (err: BusinessError, documentSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -501,27 +502,27 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        const documentSaveOptions: picker.DocumentSaveOptions = {
-            newFileNames: ['DocumentViewPicker02.txt'],
-            defaultFilePathUri: 'xxx',
-            fileSuffixChoices: ['txt|文本文件', 'doc|Word文档'],
-            pickerMode: picker.DocumentPickerMode.DEFAULT
-        };
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions, (err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    const documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: ['DocumentViewPicker02.txt'],
+      defaultFilePathUri: 'xxx',
+      fileSuffixChoices: ['txt|文本文件', 'doc|Word文档'],
+      pickerMode: picker.DocumentPickerMode.DEFAULT
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions, (err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -552,21 +553,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save((err: BusinessError, documentSaveResult: Array<string>) => {
-            if (err) {
-                console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save((err: BusinessError, documentSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -575,20 +576,20 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save((err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save((err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker.failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -627,31 +628,31 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSaveOptions = new picker.DocumentSaveOptions();
-        // 保存文件的名字
-        documentSaveOptions.newFileNames = ['DocumentViewPicker01'];
-        // 保存文件的后缀类型
-        documentSaveOptions.fileSuffixChoices = ['txt', 'mp4', 'pdf'];
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-            if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
-                // 获取保存文件的后缀类型的下标
-                let index = documentPicker.getSelectedIndex();
-                // 获取保存文件的后缀类型。
-                let selectedsuffix = documentSaveOptions.fileSuffixChoices[index];
-                console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        }).catch((err: BusinessError) => {
-            console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSaveOptions = new picker.DocumentSaveOptions();
+    // 保存文件的名字
+    documentSaveOptions.newFileNames = ['DocumentViewPicker01'];
+    // 保存文件的后缀类型
+    documentSaveOptions.fileSuffixChoices = ['txt', 'mp4', 'pdf'];
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
+        // 获取保存文件的后缀类型的下标
+        let index = documentPicker.getSelectedIndex();
+        // 获取保存文件的后缀类型。
+        let selectedsuffix = documentSaveOptions.fileSuffixChoices[index];
+        console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError) => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -660,31 +661,31 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let documentSaveOptions: picker.DocumentSaveOptions = {
-            // 保存文件的名字
-            newFileNames: ['DocumentViewPicker01.txt'],
-            // 保存文件的后缀类型
-            fileSuffixChoices: ['txt', 'mp4', 'pdf']
-        };
-        let documentPicker = new picker.DocumentViewPicker(context);
-        documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-            if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
-                // 获取保存文件的后缀类型的下标
-                let index = documentPicker.getSelectedIndex();
-                // 获取保存文件的后缀类型。
-                let selectedsuffix = documentSaveOptions.fileSuffixChoices![index];
-                console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
-            }
-            console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
-        }).catch((err: BusinessError): void => {
-            console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (err: BusinessError) {
-        console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let documentSaveOptions: picker.DocumentSaveOptions = {
+      // 保存文件的名字
+      newFileNames: ['DocumentViewPicker01.txt'],
+      // 保存文件的后缀类型
+      fileSuffixChoices: ['txt', 'mp4', 'pdf']
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
+        // 获取保存文件的后缀类型的下标
+        let index = documentPicker.getSelectedIndex();
+        // 获取保存文件的后缀类型。
+        let selectedsuffix = documentSaveOptions.fileSuffixChoices![index];
+        console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -722,27 +723,27 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
-@State message: string = 'hello World';
+  @State message: string = 'hello World';
 
-    build() {
-        Row() {
-            Column() {
-                Text(this.message)
-                    .fontSize(50)
-                    .fontWeight(FontWeight.Bold)
-                    .onClick(()=>{
-                        let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-                        let audioPicker = new picker.AudioViewPicker(context);
-                    })
-            }
-        .width('100%')
-        }
-    .height('100%')
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+            let audioPicker = new picker.AudioViewPicker(context);
+          })
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 ```
 
@@ -763,6 +764,7 @@ constructor()
 **示例：**
 
 ```ts
+import { picker } from '@kit.CoreFileKit';
 let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -790,7 +792,7 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -799,20 +801,20 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSelectOptions = new picker.AudioSelectOptions();
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        }).catch((err: BusinessError) => {
-            console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSelectOptions = new picker.AudioSelectOptions();
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    }).catch((err: BusinessError) => {
+      console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -821,21 +823,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSelectOptions: picker.AudioSelectOptions = {
-            maxSelectNumber: 5
-        };
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        }).catch((err: BusinessError): void => {
-            console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (err: BusinessError) {
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSelectOptions: picker.AudioSelectOptions = {
+      maxSelectNumber: 5
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -856,7 +858,7 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [AudioSelectOptions](#audioselectoptions) | 是   | audioPicker音频选择选项。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -865,22 +867,22 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSelectOptions = new picker.AudioSelectOptions();
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select(audioSelectOptions, (err: BusinessError, audioSelectResult: Array<string>) => {
-            if (err) {
-                console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSelectOptions = new picker.AudioSelectOptions();
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions, (err: BusinessError, audioSelectResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -889,23 +891,23 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSelectOptions: picker.AudioSelectOptions = {
-            maxSelectNumber: 5
-        };
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select(audioSelectOptions, (err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        });
-    } catch (err: BusinessError) {
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSelectOptions: picker.AudioSelectOptions = {
+      maxSelectNumber: 5
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions, (err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -925,7 +927,7 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体类uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | 是   | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
 **示例：**
 
@@ -934,21 +936,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select((err: BusinessError, audioSelectResult: Array<string>) => {
-            if (err) {
-                console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select((err: BusinessError, audioSelectResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -957,21 +959,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.select((err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select((err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker.failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1008,21 +1010,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSaveOptions = new picker.AudioSaveOptions();
-        audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save(audioSaveOptions).then((audioSaveResult: Array<string>) => {
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult))
-        }).catch((err: BusinessError) => {
-            console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSaveOptions = new picker.AudioSaveOptions();
+    audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions).then((audioSaveResult: Array<string>) => {
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult))
+    }).catch((err: BusinessError) => {
+      console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1031,21 +1033,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSaveOptions: picker.AudioSaveOptions = {
-            newFileNames: ['AudioViewPicker01.mp3']
-        };
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save(audioSaveOptions).then((audioSaveResult: Array<string>) => {
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult))
-        }).catch((err: BusinessError): void => {
-            console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-        });
-    } catch (err:BusinessError) {
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSaveOptions: picker.AudioSaveOptions = {
+      newFileNames: ['AudioViewPicker01.mp3']
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions).then((audioSaveResult: Array<string>) => {
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult))
+    }).catch((err: BusinessError): void => {
+      console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err:BusinessError) {
+    console.error(`AudioViewPicker.failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1075,23 +1077,23 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSaveOptions = new picker.AudioSaveOptions();
-        audioSaveOptions.newFileNames = ['AudioViewPicker02.mp3'];
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save(audioSaveOptions, (err: BusinessError, audioSaveResult: Array<string>) => {
-            if (err) {
-                console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSaveOptions = new picker.AudioSaveOptions();
+    audioSaveOptions.newFileNames = ['AudioViewPicker02.mp3'];
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions, (err: BusinessError, audioSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1100,23 +1102,23 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioSaveOptions: picker.AudioSaveOptions = {
-            newFileNames: ['AudioViewPicker01.mp3']
-        };
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save(audioSaveOptions, (err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
-        });
-    } catch (err: BusinessError) {
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioSaveOptions: picker.AudioSaveOptions = {
+      newFileNames: ['AudioViewPicker01.mp3']
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions, (err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1145,21 +1147,21 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save((err: BusinessError, audioSaveResult: Array<string>) => {
-            if (err) {
-                console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save((err: BusinessError, audioSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+        console.error(`AudioViewPicker.failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1168,21 +1170,21 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import picker from '@ohos.file.picker';
 function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let audioPicker = new picker.AudioViewPicker(context);
-        audioPicker.save((err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
-            if (err) {
-                console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
-                return;
-            }
-            console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
-    }
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save((err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+        console.error(`AudioViewPicker.failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
 }
 ```
 
@@ -1192,9 +1194,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：
-- API版本26.0.0+：SystemCapability.FileManagement.UserFileService
-- API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection
+**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
 
 **ArkTS-Dyn起始版本**：11
 
@@ -1219,9 +1219,9 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
 | maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**设备行为差异**：该参数在Phone设备上不支持目录多选。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10   |
-| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定所选文件或目录的URI，默认值为空（此时打开最近访问的页面）。PC的文件选择器为提升用户体验，会记住用户上次导航到的位置并优先选择此路径作为起始路径，而不会始终使用defaultFilePathUri指定的路径。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10          |
+| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定所选文件或目录的URI，默认值为空（此时打开最近访问的页面）。PC的文件选择器为提升用户体验，会记住用户上次导航到的位置并优先选择此路径作为起始路径，而不会始终使用defaultFilePathUri指定的路径。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10          |
 | fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10   |
-| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：<br>API版本26.0.0+：SystemCapability.FileManagement.UserFileService<br> API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：11  |
+| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：11  |
 | authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：12  |
 |multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：15 |
 |multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：15|
@@ -1242,7 +1242,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 | maxSelectNumber       | int               | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的设备开放，且目录选择的最大个数为1。<br>API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>**设备行为差异**：该参数在Phone设备上不支持目录多选。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23  |
 | defaultFilePathUri    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23 |
 | fileSuffixFilters     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23   |
-| selectMode       | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**系统能力**：<br>API版本26.0.0+：SystemCapability.FileManagement.UserFileService<br> API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Sta起始版本**：23   |
+| selectMode       | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Sta起始版本**：23   |
 | authMode   | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection <br> **ArkTS-Sta起始版本**：23|
 |multiAuthMode   | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br> **ArkTS-Sta起始版本**：23|
 |multiUriArray  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br> **ArkTS-Sta起始版本**：23|
@@ -1427,27 +1427,27 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
-@State message: string = 'hello World';
+  @State message: string = 'hello World';
 
-    build() {
-        Row() {
-            Column() {
-                Text(this.message)
-                    .fontSize(50)
-                    .fontWeight(FontWeight.Bold)
-                    .onClick(()=>{
-                        let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-                        let photoPicker = new picker.PhotoViewPicker(context);
-                    })
-            }
-        .width('100%')
-        }
-    .height('100%')
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // 请确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+            let photoPicker = new picker.PhotoViewPicker(context);
+          })
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 ```
 
@@ -1472,6 +1472,7 @@ constructor()
 **示例：**
 
 ```ts
+import { picker } from '@kit.CoreFileKit';
 let photoPicker = new picker.PhotoViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -1510,22 +1511,22 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example01(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoSelectOptions = new picker.PhotoSelectOptions();
-        photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
-        photoSelectOptions.maxSelectNumber = 5;
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.select(photoSelectOptions).then((photoSelectResult: picker.PhotoSelectResult) => {
-            console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
-        }).catch((err: BusinessError) => {
-            console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoSelectOptions = new picker.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.select(photoSelectOptions).then((photoSelectResult: picker.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    }).catch((err: BusinessError) => {
+      console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
@@ -1559,24 +1560,24 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example02(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoSelectOptions = new picker.PhotoSelectOptions();
-        photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
-        photoSelectOptions.maxSelectNumber = 5;
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.select(photoSelectOptions, (err: BusinessError, photoSelectResult: picker.PhotoSelectResult) => {
-            if (err) {
-                console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
-                return;
-            }
-            console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoSelectOptions = new picker.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.select(photoSelectOptions, (err: BusinessError, photoSelectResult: picker.PhotoSelectResult) => {
+      if (err) {
+        console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
+        return;
+      }
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
@@ -1609,21 +1610,21 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example03(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.select((err: BusinessError, photoSelectResult: picker.PhotoSelectResult) => {
-            if (err) {
-                console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
-                return;
-            }
-            console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.select((err: BusinessError, photoSelectResult: picker.PhotoSelectResult) => {
+      if (err) {
+        console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
+        return;
+      }
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
@@ -1660,21 +1661,21 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example04(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoSaveOptions = new picker.PhotoSaveOptions();
-        photoSaveOptions.newFileNames = ['PhotoViewPicker01.jpg', 'PhotoViewPicker01.mp4'];
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.save(photoSaveOptions).then((photoSaveResult: Array<string>) => {
-            console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
-        }).catch((err: BusinessError) => {
-            console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoSaveOptions = new picker.PhotoSaveOptions();
+    photoSaveOptions.newFileNames = ['PhotoViewPicker01.jpg', 'PhotoViewPicker01.mp4'];
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.save(photoSaveOptions).then((photoSaveResult: Array<string>) => {
+      console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
+    }).catch((err: BusinessError) => {
+      console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+      console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
@@ -1706,23 +1707,23 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example05(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoSaveOptions = new picker.PhotoSaveOptions();
-        photoSaveOptions.newFileNames = ['PhotoViewPicker02.jpg','PhotoViewPicker02.mp4'];
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.save(photoSaveOptions, (err: BusinessError, photoSaveResult: Array<string>) => {
-            if (err) {
-                console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
-                return;
-            }
-            console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoSaveOptions = new picker.PhotoSaveOptions();
+    photoSaveOptions.newFileNames = ['PhotoViewPicker02.jpg','PhotoViewPicker02.mp4'];
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.save(photoSaveOptions, (err: BusinessError, photoSaveResult: Array<string>) => {
+      if (err) {
+        console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
+        return;
+      }
+      console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
@@ -1753,21 +1754,21 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-
+import { picker } from '@kit.CoreFileKit';
 async function example06(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
-    try {
-        let photoPicker = new picker.PhotoViewPicker(context);
-        photoPicker.save((err: BusinessError, photoSaveResult: Array<string>) => {
-            if (err) {
-                console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
-                return;
-            }
-            console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
-        });
-    } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
-    }
+  try {
+    let photoPicker = new picker.PhotoViewPicker(context);
+    photoPicker.save((err: BusinessError, photoSaveResult: Array<string>) => {
+      if (err) {
+        console.error('PhotoViewPicker.save failed with err: ' + JSON.stringify(err));
+        return;
+      }
+      console.info('PhotoViewPicker.save successfully, photoSaveResult uri: ' + JSON.stringify(photoSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+  }
 }
 ```
 
