@@ -6742,3 +6742,17 @@
 **支持设备**：PC/2in1
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+允许应用接入互联互通助手服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
