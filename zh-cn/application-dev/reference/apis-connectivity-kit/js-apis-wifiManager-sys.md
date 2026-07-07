@@ -2446,7 +2446,7 @@ Wi-Fi支持的能力。
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-设置wifi能力。
+设置Wi-Fi能力。
 
 **系统接口：** 此接口为系统接口。
 
