@@ -203,6 +203,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
               native.unbindNode('XComponentSurfaceHolder');
               this.xcNode = null;
             })
+            // ...
         }
         // ...
       }
