@@ -61,7 +61,7 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回事件过滤的结果。true表示过滤该事件，不再向下分发；false表示不过滤该事件，继续向下分发。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterKeyEventFilter()
 
@@ -137,7 +137,7 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回事件过滤的结果。true表示过滤该事件，不再向下分发；false表示不过滤该事件，继续向下分发。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterMouseEventFilter()
 
@@ -213,7 +213,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回事件过滤的结果。true表示过滤该事件，不再向下分发；false表示不过滤该事件，继续向下分发。 |
+| bool | 返回事件过滤的结果。true表示拦截该事件，不再向下分发；false表示不拦截该事件，继续向下分发。 |
 
 ### OH_NativeWindowManager_RegisterTouchEventFilter()
 
