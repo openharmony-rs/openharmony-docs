@@ -16,7 +16,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 如果应用创建的AudioHapticPlayer需要触发振动，则需要校验应用是否拥有该权限：`ohos.permission.VIBRATE`。
 
-1. 参考[声明权限](../../security/AccessToken/declare-permissions.md)指导声明该振动权限。
+1. 参考[声明权限](../../security/AccessToken/declare-permissions.md)指导，声明该振动权限。
 2. 由于该权限为用户授予类权限，需要拉起用户授权弹窗，代码开发参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
 ### 开发步骤及注意事项
@@ -95,7 +95,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
-3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动，默认不静音音频，不禁止振动。
+3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动（默认不静音音频，不禁止振动）。
 
    <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
