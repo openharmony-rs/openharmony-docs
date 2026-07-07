@@ -528,7 +528,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t *currentTime | 播放位置。 |
+| int32_t *currentTime | 用于获取当前播放位置（输出参数），精确到毫秒。 |
 
 **返回：**
 
@@ -555,7 +555,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t *videoWidth | 视频宽度。 |
+| int32_t *videoWidth | 用于获取视频宽度（输出参数）。 |
 
 **返回：**
 
@@ -582,7 +582,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeigh
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t *videoHeight | 视频高度。 |
+| int32_t *videoHeight | 用于获取视频高度（输出参数）。 |
 
 **返回：**
 
@@ -877,7 +877,7 @@ OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t *duration | 媒体文件的总时长。 |
+| int32_t *duration | 用于获取媒体文件的总时长（输出参数），精确到毫秒。 |
 
 **返回：**
 
@@ -1041,7 +1041,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t index | 索引。 |
+| int32_t index | 索引。音频或字幕轨道的索引。 |
 
 **返回：**
 
@@ -1068,7 +1068,7 @@ OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t index | 索引。 |
+| int32_t index | 索引。音频或字幕轨道的索引。 |
 
 **返回：**
 
@@ -1096,7 +1096,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t trackType | 媒体类型。0：音频，1：视频。 |
-| int32_t *index | 索引。 |
+| int32_t *index | 索引。用于获取当前轨道索引（输出参数）。 |
 
 **返回：**
 
@@ -1366,7 +1366,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsS
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t mSecondsStart | 播放起始位置，应在[0, duration)范围内，-1 表示未设置起始位置，将从0开始播放。 |
 | int32_t mSecondsEnd | 播放结束位置，通常应在(startTimeMs, duration]范围内，-1 表示未设置结束位置，将在流末尾结束播放。 |
-| bool closestRange | 是否同步到距离指定时间点最近的帧。 |
+| bool closestRange | 是否同步到距离指定时间点最近的帧。true表示同步到最近的帧，false表示不同步到最近的帧。 |
 
 **返回：**
 
