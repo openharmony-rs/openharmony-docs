@@ -18365,7 +18365,9 @@ isInWindowPostureMode(mode: WindowPostureMode): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -18397,7 +18399,7 @@ isInWindowPostureMode(mode: WindowPostureMode): boolean
 try {
   let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
   console.info(`isInDesktopMode: ${isInDesktopMode}`);
-} catch (exception) {
+} catch (exception: Error) {
   console.error(`Failed to check window posture mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -18410,7 +18412,9 @@ onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback&lt;boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -18438,7 +18442,7 @@ try {
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
     console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
   });
-} catch (exception) {
+} catch (exception: Error) {
   console.error(`Failed to enable the listener for window posture mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -18451,7 +18455,9 @@ offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback&lt;boole
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -18485,7 +18491,7 @@ try {
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
-} catch (exception) {
+} catch (exception: Error) {
   console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
