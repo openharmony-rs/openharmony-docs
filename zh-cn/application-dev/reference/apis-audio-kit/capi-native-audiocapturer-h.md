@@ -810,7 +810,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetSupportedNoiseReductionModes(OH_AudioC
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
-| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode)* noiseReductionModeArray | 指向应用分配的数组，用于接收支持的录音降噪模式，至少支持[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。 |
+| [OH_AudioNoiseReductionMode](capi-native-audio-common-h.md#oh_audionoisereductionmode)* noiseReductionModeArray | 指向应用分配的数组，用于接收支持的录音降噪模式，默认支持[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。 |
 | uint32_t inModeArraySize | noiseReductionModeArray数组的元素个数。 |
 | uint32_t* outModeArraySize | 指向接收实际写入模式数量的变量。 |
 
