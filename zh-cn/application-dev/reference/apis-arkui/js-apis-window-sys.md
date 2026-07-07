@@ -1518,7 +1518,7 @@ try {
 
 hide (callback: AsyncCallback&lt;void&gt;): void
 
-隐藏当前窗口，使用callback异步回调，仅支持系统窗口与应用子窗口。
+隐藏当前窗口，使用callback异步回调，仅支持系统窗口、全局悬浮窗、模态窗口与应用子窗口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1558,7 +1558,7 @@ windowClass.hide((err: BusinessError) => {
 
 hide(): Promise&lt;void&gt;
 
-隐藏当前窗口，使用Promise异步回调，仅支持系统窗口与应用子窗口。
+隐藏当前窗口，使用Promise异步回调，仅支持系统窗口、全局悬浮窗、模态窗口与应用子窗口。
 
 **系统接口：** 此接口为系统接口。
 
