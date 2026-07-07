@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
