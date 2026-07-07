@@ -191,7 +191,7 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    await avPlayer.reset((err: BusinessError) => {
+    avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
             console.error('Failed to reset,error message is :' + err.message);
