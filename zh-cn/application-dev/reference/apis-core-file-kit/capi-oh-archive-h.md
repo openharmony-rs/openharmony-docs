@@ -8,7 +8,7 @@
 
 ## 概述
 
-压缩解压缩模块接口定义，提供文件压缩解压、数据的流式压缩及解压，缓冲区压缩及解压的native接口。
+压缩解压缩模块接口定义，提供文件压缩解压缩、数据的流式压缩解压缩，缓冲区压缩解压缩的native接口。
 
 **引用文件：** <filemanagement/archive/oh_archive.h>
 
@@ -26,22 +26,22 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md) | OH_Archive_StreamInfo | 流式压缩/解压信息结构体。 |
-| [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md) | OH_Archive_Stream_Config | 流压缩配置结构体。 |
-| [ArchiveWriteCtx*](capi-archive-archivewritectx.md) | OH_Archive_Writer_Ctx | 文件压缩器的上下文结构体。 |
-| [ArchiveReadCtx*](capi-archive-archivereadctx.md) | OH_Archive_Reader_Ctx | 文件解压器的上下文结构体。 |
-| [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md) | OH_Archive_StreamWrite_Ctx | 流式压缩器的上下文结构体。 |
-| [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md) | OH_Archive_StreamRead_Ctx | 流式解压器的上下文结构体。 |
+| [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md) | OH_Archive_StreamInfo | 流式压缩/解压缩信息结构体。 |
+| [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md) | OH_Archive_Stream_Config | 流式压缩配置结构体。 |
+| [ArchiveWriteCtx*](capi-archive-archivewritectx.md) | OH_Archive_Writer_Ctx | 文件压缩器的上下文结构体指针。 |
+| [ArchiveReadCtx*](capi-archive-archivereadctx.md) | OH_Archive_Reader_Ctx | 文件解压缩器的上下文结构体指针。 |
+| [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md) | OH_Archive_StreamWrite_Ctx | 流式压缩器的上下文结构体指针。 |
+| [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md) | OH_Archive_StreamRead_Ctx | 流式解压缩器的上下文结构体指针。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Archive_Format](#oh_archive_format) | OH_Archive_Format | 文件格式枚举。 |
-| [OH_Archive_CompressMethod](#oh_archive_compressmethod) | OH_Archive_CompressMethod | 压缩方法枚举。 |
+| [OH_Archive_CompressMethod](#oh_archive_compressmethod) | OH_Archive_CompressMethod | 压缩算法枚举。 |
 | [OH_Archive_OpenMode](#oh_archive_openmode) | OH_Archive_OpenMode | 文件打开模式枚举。 |
 | [OH_Archive_ProgressType](#oh_archive_progresstype) | OH_Archive_ProgressType | 文件进度控制类型枚举。 |
-| [OH_Archive_StreamChecksumAlg](#oh_archive_streamchecksumalg) | OH_Archive_StreamChecksumAlg | 用于校验和的哈希算法。 |
+| [OH_Archive_StreamChecksumAlg](#oh_archive_streamchecksumalg) | OH_Archive_StreamChecksumAlg | 用于计算校验和的哈希算法。 |
 
 ### 函数
 
@@ -50,27 +50,27 @@
 | [typedef OH_Archive_ProgressType (\*OH_Archive_ProgressHandlerWithData)(int32_t progress, void *userData)](#oh_archive_progresshandlerwithdata) | OH_Archive_ProgressHandlerWithData | 定义进度处理回调函数的类型。 |
 | [typedef uint64_t (\*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t size, void* userData)](#oh_archive_stream_outputhandler) | OH_Archive_Stream_OutputHandler | 用户自定义回调函数指针类型，用于处理压缩后的数据。 |
 | [OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)](#oh_archive_reader_openfile) | - | 打开文件进行读取。 |
-| [OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)](#oh_archive_reader_setprogresshandlerwithdata) | - | 设置文件解压器的进度回调函数及用户数据。 |
-| [OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir)](#oh_archive_reader_extractallfile) | - | 从归档中提取所有文件。 |
+| [OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)](#oh_archive_reader_setprogresshandlerwithdata) | - | 设置文件解压缩器的进度回调函数及用户数据。 |
+| [OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir)](#oh_archive_reader_extractallfile) | - | 从压缩包中提取所有文件。 |
 | [OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)](#oh_archive_reader_close) | - | 关闭已打开的压缩文件并释放相关资源。 |
 | [OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive_OpenMode openMode, OH_Archive_Format fmt)](#oh_archive_writer_openfile) | - | 创建并打开压缩文件。 |
-| [OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc, OH_Archive_CompressMethod method, int32_t compressLevel)](#oh_archive_writer_setcompressmethod) | - | 设置压缩文件的压缩方法。 |
+| [OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc, OH_Archive_CompressMethod method, int32_t compressLevel)](#oh_archive_writer_setcompressmethod) | - | 设置压缩文件的压缩算法。 |
 | [OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Writer_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)](#oh_archive_writer_setprogresshandlerwithdata) | - | 设置文件压缩器的进度回调函数及用户数据。 |
-| [OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum)](#oh_archive_writer_add) | - | 向归档中添加文件列表。 |
-| [OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)](#oh_archive_writer_close) | - | 关闭文件压缩器。该函数完成归档写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。 |
+| [OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum)](#oh_archive_writer_add) | - | 向压缩包中添加文件列表。 |
+| [OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)](#oh_archive_writer_close) | - | 关闭文件压缩器。该函数完成压缩包写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。 |
 | [uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, uint64_t sourceLen)](#oh_archive_bufferwritecompressbound) | - | 计算给定源数据长度的最大压缩后数据大小。 |
 | [OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method, int32_t compressLevel)](#oh_archive_bufferwrite) | - | 向缓冲区写入数据并进行压缩。 |
 | [OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method)](#oh_archive_bufferread) | - | 从缓冲区读取数据并进行解压缩。 |
 | [OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config)](#oh_archive_streamwrite_create) | - | 创建流式压缩的上下文结构体。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamwrite_start) | - | 启动压缩任务，初始化用户回调函数和用户数据。 |
-| [OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)](#oh_archive_streamwrite_setcompresslevel) | - | 设置流压缩的压缩级别。 |
+| [OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)](#oh_archive_streamwrite_setcompresslevel) | - | 设置流式压缩的压缩级别。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_cancel) | - | 强制取消当前压缩操作。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamwrite_update) | - | 提交压缩数据。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamwrite_end) | - | 结束压缩，刷新所有剩余数据。 |
 | [void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_destroy) | - | 销毁压缩实例并释放相关资源。 |
-| [OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)](#oh_archive_streamread_create) | - | 创建流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)](#oh_archive_streamread_create) | - | 创建流式解压缩的上下文结构体。 |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamread_start) | - | 启动解压缩任务，初始化用户回调函数和用户数据。 |
-| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | 强制取消当前解压操作。 |
+| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | 强制取消当前解压缩操作。 |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | 提交解压缩数据。 |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamread_end) | - | 结束解压缩，刷新所有剩余数据并清理内存。 |
 | [void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_destroy) | - | 销毁解压缩实例并释放相关资源。 |
@@ -101,14 +101,14 @@ enum OH_Archive_CompressMethod
 
 **描述**
 
-压缩方法枚举。
+压缩算法枚举。
 
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARCHIVE_NO_COMPRESSION = 0 | 不压缩。<br>**起始版本：** 26.0.0 |
-| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | DEFLATE压缩方法。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_COMPRESS_DEFLATE = 8 | DEFLATE压缩算法。<br>**起始版本：** 26.0.0 |
 
 ### OH_Archive_OpenMode
 
@@ -124,7 +124,7 @@ enum OH_Archive_OpenMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | 创建模式。<br>**起始版本：** 26.0.0 |
+| OH_ARCHIVE_OPEN_MODE_CREATE = 0 | 创建模式。新建一个文件，如果文件已存在，则覆盖。<br>**起始版本：** 26.0.0 |
 
 ### OH_Archive_ProgressType
 
@@ -151,7 +151,7 @@ enum OH_Archive_StreamChecksumAlg
 
 **描述**
 
-用于校验和的哈希算法。
+用于计算校验和的哈希算法。
 
 **起始版本：** 26.0.0
 
@@ -186,7 +186,7 @@ typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t pr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ProgressType](capi-oh-archive-h.md#oh_archive_progresstype) | <ul><br>         <li>OH_ARCHIVE_PROGRESS_CONTINUE - 继续当前压缩/解压缩操作。</li><br>         <li>OH_ARCHIVE_PROGRESS_CANCEL - 取消当前压缩/解压缩操作。</li><br>         </ul> |
+| [OH_Archive_ProgressType](capi-oh-archive-h.md#oh_archive_progresstype) | OH_ARCHIVE_PROGRESS_CONTINUE - 继续当前压缩/解压缩操作。<br>         OH_ARCHIVE_PROGRESS_CANCEL - 取消当前压缩/解压缩操作。 |
 
 ### OH_Archive_Stream_OutputHandler()
 
@@ -246,7 +246,7 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 
 **描述**
 
-设置文件解压器的进度回调函数及用户数据。
+设置文件解压缩器的进度回调函数及用户数据。
 
 **起始版本：** 26.0.0
 
@@ -254,7 +254,7 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压器上下文句柄。 |
+| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压缩器上下文句柄。 |
 | [OH_Archive_ProgressHandlerWithData](capi-oh-archive-h.md#oh_archive_progresshandlerwithdata) progressHandler | 用于处理进度更新的回调函数。 |
 | void *userData | 用户处理进度回调时自定义的上下文数据。 |
 
@@ -262,7 +262,7 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Reader_ExtractAllFile()
 
@@ -272,7 +272,7 @@ OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, c
 
 **描述**
 
-从归档中提取所有文件。
+从压缩包中提取所有文件。
 
 **起始版本：** 26.0.0
 
@@ -280,14 +280,14 @@ OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压器上下文句柄。 |
+| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压缩器上下文句柄。 |
 | const char *outDir | 输出目录路径，应用需要有写入权限。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Reader_Close()
 
@@ -305,13 +305,13 @@ OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压器上下文句柄。 |
+| [OH_Archive_Reader_Ctx](capi-archive-archivereadctx.md) arc | 文件解压缩器上下文句柄。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Writer_OpenFile()
 
@@ -331,7 +331,7 @@ OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive
 | -- | -- |
 | const char *outfile | 目标压缩文件的路径，应用需有写入权限，绝对路径长度需不超过4096bytes。 |
 | [OH_Archive_OpenMode](capi-oh-archive-h.md#oh_archive_openmode) openMode | 文件打开模式。 |
-| [OH_Archive_Format](capi-oh-archive-h.md#oh_archive_format) fmt | 归档格式。 |
+| [OH_Archive_Format](capi-oh-archive-h.md#oh_archive_format) fmt | 压缩包格式。 |
 
 **返回：**
 
@@ -347,7 +347,7 @@ OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc
 
 **描述**
 
-设置压缩文件的压缩方法。
+设置压缩文件的压缩算法。
 
 **起始版本：** 26.0.0
 
@@ -356,14 +356,14 @@ OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Archive_Writer_Ctx](capi-archive-archivewritectx.md) arc | 文件压缩器的上下文句柄。 |
-| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩方法。 |
+| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法。 |
 | int32_t compressLevel | 压缩等级。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，压缩等级越高，压缩率越高，速度越慢。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Writer_SetProgressHandlerWithData()
 
@@ -389,7 +389,7 @@ OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Write
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Writer_Add()
 
@@ -399,7 +399,7 @@ OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char *
 
 **描述**
 
-向归档中添加文件列表。
+向压缩包中添加文件列表。
 
 **起始版本：** 26.0.0
 
@@ -415,7 +415,7 @@ OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_Writer_Close()
 
@@ -425,7 +425,7 @@ OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)
 
 **描述**
 
-关闭文件压缩器。该函数完成归档写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。
+关闭文件压缩器。该函数完成压缩包写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。
 
 **起始版本：** 26.0.0
 
@@ -439,7 +439,7 @@ OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_BufferWriteCompressBound()
 
@@ -457,14 +457,14 @@ uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, u
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩方法类型。 |
-| uint64_t sourceLen | 待压缩源数据的长度。 |
+| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法类型。当前仅支持OH_ARCHIVE_COMPRESS_DEFLATE。 |
+| uint64_t sourceLen | 待压缩源数据的长度，单位为bytes。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint64_t | 返回压缩后数据大小的最大值。 |
+| uint64_t | 返回压缩后数据大小的最大值，单位为bytes。 |
 
 ### OH_Archive_BufferWrite()
 
@@ -483,17 +483,17 @@ OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize,
 | 参数项 | 描述 |
 | -- | -- |
 | uint8_t *dstBuffer | 指向目标缓冲区的指针，用于存储压缩后的数据。 |
-| uint64_t *dstSize | 指向目标缓冲区大小的指针，传入缓冲区大小，输出实际写入的大小。 |
+| uint64_t *dstSize | 指向目标缓冲区大小的指针，传入缓冲区大小，输出实际写入的大小，单位为bytes。 |
 | const uint8_t *srcBuffer | 指向包含待压缩数据的源缓冲区的指针。 |
-| uint64_t srcSize | 源缓冲区数据的大小。 |
-| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩方法类型。 |
+| uint64_t srcSize | 源缓冲区数据的大小，单位为bytes。 |
+| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法类型。当前仅支持OH_ARCHIVE_COMPRESS_DEFLATE。 |
 | int32_t compressLevel | 压缩等级。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，压缩等级越高，压缩率越高，速度越慢。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_BufferRead()
 
@@ -512,16 +512,16 @@ OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, 
 | 参数项 | 描述 |
 | -- | -- |
 | uint8_t *dstBuffer | 指向目标缓冲区的指针，用于存储解压缩后的数据。 |
-| uint64_t *dstSize | 指向目标缓冲区大小的指针，传入缓冲区大小，输出实际解压缩后的大小。 |
+| uint64_t *dstSize | 指向目标缓冲区大小的指针，传入缓冲区大小，输出实际解压缩后的大小，单位为bytes。 |
 | const uint8_t *srcBuffer | 指向包含待解压缩数据的源缓冲区的指针。 |
-| uint64_t srcSize | 源缓冲区数据的大小。 |
-| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 解压缩方法类型。 |
+| uint64_t srcSize | 源缓冲区数据的大小，单位为bytes。 |
+| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 解压缩算法类型。当前仅支持OH_ARCHIVE_COMPRESS_DEFLATE。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_Create()
 
@@ -571,7 +571,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_SetCompressLevel()
 
@@ -581,7 +581,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrit
 
 **描述**
 
-设置流压缩的压缩级别。
+设置流式压缩的压缩级别。
 
 **起始版本：** 26.0.0
 
@@ -596,7 +596,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrit
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_Cancel()
 
@@ -620,7 +620,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。取消成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。取消成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_Update()
 
@@ -640,13 +640,13 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx,
 | -- | -- |
 | [OH_Archive_StreamWrite_Ctx](capi-archive-archivestreamwritectx.md) ctx | 流式压缩的上下文结构体。 |
 | const uint8_t* data | 待压缩的原始数据。 |
-| uint64_t size | 待压缩数据的大小。 |
+| uint64_t size | 待压缩数据的大小，单位为bytes。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。压缩成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。压缩成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_End()
 
@@ -671,7 +671,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。压缩成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。压缩成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamWrite_Destroy()
 
@@ -699,7 +699,7 @@ OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config 
 
 **描述**
 
-创建流式解压的上下文结构体。
+创建流式解压缩的上下文结构体。
 
 **起始版本：** 26.0.0
 
@@ -713,7 +713,7 @@ OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) | 返回流式解压的上下文结构体。创建失败时返回NULL。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) | 返回流式解压缩的上下文结构体。创建失败时返回NULL。 |
 
 ### OH_Archive_StreamRead_Start()
 
@@ -731,7 +731,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压缩的上下文结构体。 |
 | [OH_Archive_Stream_OutputHandler](capi-oh-archive-h.md#oh_archive_stream_outputhandler) outputHandler | 用户自定义的解压缩数据回调函数。 |
 | void* userData | 用户自定义上下文数据，将在回调中传回。userData由调用方拥有，在[OH_Archive_StreamRead_End](capi-oh-archive-h.md#oh_archive_streamread_end)完成前必须保持有效。 |
 
@@ -739,7 +739,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamRead_Cancel()
 
@@ -749,7 +749,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 **描述**
 
-强制取消当前解压操作。
+强制取消当前解压缩操作。
 
 **起始版本：** 26.0.0
 
@@ -757,13 +757,13 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压缩的上下文结构体。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。取消成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。取消成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamRead_Update()
 
@@ -781,15 +781,15 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压缩的上下文结构体。 |
 | const uint8_t* data | 待解压缩的数据。 |
-| uint64_t size | 数据大小。 |
+| uint64_t size | 数据大小，单位为bytes。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamRead_End()
 
@@ -807,14 +807,14 @@ OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压缩的上下文结构体。 |
 | [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md) *streamInfo | 解压缩信息，包括原始数据大小、压缩后数据大小和CRC32值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
 
 ### OH_Archive_StreamRead_Destroy()
 
@@ -832,6 +832,6 @@ void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压的上下文结构体。 |
+| [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | 流式解压缩的上下文结构体。 |
 
 
