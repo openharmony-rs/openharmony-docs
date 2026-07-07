@@ -732,8 +732,8 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // 需要将 context 中的宽度和高度从vp转换为px
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
-      this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width),
+      this.uiContext.vp2px(context.size.height));
   }
 }
 
