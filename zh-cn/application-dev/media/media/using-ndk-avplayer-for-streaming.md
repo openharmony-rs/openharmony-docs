@@ -96,7 +96,7 @@
    
    ``` C++
    LOG("player %{public}s >> URL source", url);
-   LOG("call %{public}s", "OH_AVPlayer_SetUrlSource");
+   LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
    ret = OH_AVPlayer_SetURLSource(player, url);
    LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
    ```
