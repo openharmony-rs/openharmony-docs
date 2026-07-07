@@ -33582,5 +33582,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/distributedservice/distributedSoftBus_conversation-guidelines-sys.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"import_conversation",
+						"start_line":18
+					},
+					{
+						"end_line":42,
+						"name":"data_callback",
+						"start_line":30
+					},
+					{
+						"end_line":109,
+						"name":"register_listener",
+						"start_line":97
+					},
+					{
+						"end_line":123,
+						"name":"unregister_listener",
+						"start_line":111
+					},
+					{
+						"end_line":95,
+						"name":"get_trusted_devices",
+						"start_line":75
+					},
+					{
+						"end_line":148,
+						"name":"send_message",
+						"start_line":125
+					}
+				]
+			}
+		]
 	}
 ]
