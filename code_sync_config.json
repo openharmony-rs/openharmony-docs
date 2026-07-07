@@ -54814,11 +54814,6 @@
 						"start_line":55
 					},
 					{
-						"end_line":138,
-						"name":"audioSuite_CreateBaseNode",
-						"start_line":88
-					},
-					{
 						"end_line":183,
 						"name":"audioSuite_StartBasePipeline",
 						"start_line":140
@@ -54867,6 +54862,16 @@
 						"end_line":492,
 						"name":"audioSuite_DestroyMixing",
 						"start_line":478
+					},
+					{
+						"end_line":111,
+						"name":"audioSuite_CreateBaseNodeOne",
+						"start_line":88
+					},
+					{
+						"end_line":139,
+						"name":"audioSuite_CreateBaseNodeTwo",
+						"start_line":118
 					}
 				]
 			},
@@ -54877,6 +54882,16 @@
 						"end_line":28,
 						"name":"audioSuite_AudioDataInfo",
 						"start_line":21
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"audioSuite_SetEqualizerType",
+						"start_line":84
 					}
 				]
 			}
