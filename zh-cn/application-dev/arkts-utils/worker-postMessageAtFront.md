@@ -12,40 +12,26 @@
 
 针对上述场景，从API版本26.0.0开始，ArkTS提供了[postMessageAtFront](../reference/apis-arkts/js-apis-worker.md#postmessageatfront)接口，允许Worker线程向宿主线程发送插队消息，使消息插入到对应优先级消息队列的头部，从而被提前处理。
 
-> **说明：**
->
-> 该接口的优先级和插队机制依赖底层消息回调能力。接口确保消息插入到对应优先级消息队列的头部，不同优先级之间的消息仍按照优先级规则调度执行。
+## 插队机制
 
-## 接口说明
-
-postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
-
-该接口为可选接口，建议使用可选链操作符（`?.`）或非空断言（`!`）进行调用。
-
-**优先级机制：**
-
-Worker线程→主线程：消息既能插队，又支持按优先级（[Priority](../reference/apis-arkts/js-apis-worker.md#priority)）发送。消息被插入到对应优先级消息队列的头部，优先级越高的消息越早被处理。
-
-**Priority取值说明：**
-
-| 优先级 | 值 | 说明 |
-| --- | --- | --- |
-| IMMEDIATE | 1 | 立即执行优先级，优先于HIGH优先级处理。 |
-| HIGH | 2 | 高优先级，与普通postMessage消息优先级相同。 |
-| LOW | 3 | 低优先级，优先于IDLE优先级处理。 |
-| IDLE | 4 | 后台优先级，仅在没有其他优先级消息时才处理。 |
+- Worker线程向宿主线程发送消息时，支持插队操作，并支持按优先级[Priority](../reference/apis-arkts/js-apis-worker.md#priority)发送。
+- 可通过将消息插入到对应优先级消息队列的头部，实现插队操作。
+- 优先级越高的消息越早被宿主线程处理。处理顺序取决于优先级调度规则：IMMEDIATE > HIGH > LOW > IDLE。
+  | 优先级 | 值 | 说明 |
+  | --- | --- | --- |
+  | IMMEDIATE | 1 | 立即执行优先级，优先于HIGH优先级处理。 |
+  | HIGH | 2 | 高优先级，与普通postMessage消息优先级相同。 |
+  | LOW | 3 | 低优先级，优先于IDLE优先级处理。 |
+  | IDLE | 4 | 后台优先级，仅在没有其他优先级消息时才处理。 |
+- 相同优先级的消息，处于消息队列头部的消息会优先被宿主线程处理。
 
 ## 使用示例
 
-以下示例通过模拟宿主线程繁忙的场景，演示Worker线程如何通过postMessageAtFront接口向宿主线程发送插队消息。
+以下示例通过模拟宿主线程繁忙的场景，演示Worker线程如何通过postMessageAtFront()接口向宿主线程发送插队消息。
 
-当宿主线程中积压了多条待处理消息时，通过postMessageAtFront发送的插队消息会优先被宿主线程处理。
+1. 在宿主线程创建Worker对象，并发送、接收消息。
 
-如果同时发送多个不同优先级的插队消息，它们的处理顺序取决于优先级调度规则：IMMEDIATE > HIGH > LOW > IDLE。
-
-1. 在宿主线程创建Worker并接收消息。
-
-   在宿主线程中创建Worker对象，点击“触发消息发送”按钮，发送消息给Worker线程。
+   此例中，可通过点击“触发消息发送”按钮，发送消息给Worker线程。
 
    <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerPostAtFront/entry/src/main/ets/pages/Index.ets) -->
    
