@@ -24,7 +24,9 @@ onFrame(frameTimeInNano: number): void
 
 在下一帧进行渲染时，该方法将被执行。
 
-继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。本接口仅可在Stage模型下使用。
+继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -82,7 +84,9 @@ onIdle(timeLeftInNano: number): void
 
 在下一帧渲染任务结束后，如果距离该帧下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
 
-继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。本接口仅可在Stage模型下使用。
+继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
