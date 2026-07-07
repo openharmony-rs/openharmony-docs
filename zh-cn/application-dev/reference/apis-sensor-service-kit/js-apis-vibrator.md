@@ -229,7 +229,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
                if (rawFd != undefined) {
                  try {
                    vibrator.startVibration({
-                     type: "file",
+                     type: 'file',
                      hapticFd: { fd: rawFd.fd, offset: rawFd.offset, length: rawFd.length }
                    }, {
                      id: 0,
@@ -391,12 +391,10 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
                    }, {
                      id: 0,
                      usage: 'alarm' // 根据实际选择类型归属不同的开关管控
-                   }, (error: BusinessError) => {
-                     if (error) {
-                       console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-                       return;
-                     }
+                   }).then(() => {
                      console.info('Succeed in starting vibration');
+                   }).catch((error: BusinessError) => {
+                     console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
                    });
                  } catch (err) {
                    let e: BusinessError = err as BusinessError;
@@ -885,7 +883,7 @@ stopVibrationSync(): void
    // 使用try catch对可能出现的异常进行捕获
    try {
      // 停止任何形式的马达振动
-     vibrator.stopVibrationSync()
+     vibrator.stopVibrationSync();
      console.info('Succeed in stopping vibration');
    } catch (error) {
      let e: BusinessError = error as BusinessError;
@@ -1150,7 +1148,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 查询一个或所有设备的马达信息列表。适用于在触发振动前查询设备马达能力和多马达设备的马达ID，以便选择合适的马达触发振动。
 
-不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
+不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1588,7 +1586,7 @@ try {
   console.info(`addContinuousEvent builder is ${builder.build()}`);
 } catch(error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`Exception. Code ${e.code}`);
+  console.error(`Failed to add continuous event. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -1624,7 +1622,7 @@ try {
   console.info(`addContinuousEvent builder is ${builder.build()}`);
 } catch(error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`Exception. Code ${e.code}`);
+  console.error(`Failed to add continuous event. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -1725,7 +1723,7 @@ build(): VibratorPattern;
 
 | 类型                                  | 说明                               |
 | ------------------------------------- | ---------------------------------- |
-| [VibratorPattern](#vibratorpattern18) | 构造组合短振或长振的振动序列方法。返回的VibratorPattern对象可作为[VibrateFromPattern](#vibratefrompattern18)的pattern参数传入[startVibration](#vibratorstartvibration9)接口触发振动。 |
+| [VibratorPattern](#vibratorpattern18) | 振动序列对象。包含振动序列的起始时间和振动事件数组，可作为[VibrateFromPattern](#vibratefrompattern18)的pattern参数传入[startVibration](#vibratorstartvibration9)接口触发振动。 |
 
 **示例**：
 
@@ -1748,10 +1746,10 @@ build(): VibratorPattern;
    }
    try {
      vibrator.startVibration({
-       type: "pattern",
+       type: 'pattern',
        pattern: builder.build()
      }, {
-     usage: "alarm", // 根据实际选择类型归属不同的开关管控
+     usage: 'alarm', // 根据实际选择类型归属不同的开关管控
      }, (error) => {
      if (error) {
        let e: BusinessError = error as BusinessError;
@@ -2015,7 +2013,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| type       | 'pattern' | 否  | 否  | 值为“pattern”，根据组合模式触发电机振动。                     |
+| type       | 'pattern' | 否  | 否  | 值为'pattern'，根据组合模式触发电机振动。                     |
 | pattern       | VibratorPattern | 否  | 否  | 振动事件数组，build()方法返回的VibratorPattern对象。                     |
 
 ## VibrateAttribute<sup>9+</sup>
