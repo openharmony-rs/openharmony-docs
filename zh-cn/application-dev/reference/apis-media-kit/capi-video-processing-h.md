@@ -446,7 +446,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Call
 
 | 类型 | 说明 |
 | -- | -- |
-| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | 如果回调函数对象创建成功，返回VIDEO_PROCESSING_SUCCESS。<br> 如果callback为空或者callback不为空，返回VIDEO_PROCESSING_ERROR_INVALID_PARAMETER。<br> 如果内存不足，返回VIDEO_PROCESSING_ERROR_NO_MEMORY。 |
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | 如果回调函数对象创建成功，返回VIDEO_PROCESSING_SUCCESS。<br> 如果callback为空，返回VIDEO_PROCESSING_ERROR_INVALID_PARAMETER。<br> 如果内存不足，返回VIDEO_PROCESSING_ERROR_NO_MEMORY。 |
 
 ### OH_VideoProcessingCallback_Destroy()
 
