@@ -136,7 +136,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
    
    设置均衡器效果。
-
+   
    <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
    
    ``` C
