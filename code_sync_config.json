@@ -13506,7 +13506,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSXComponent/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":114,
 						"name":"xcomponent_index",
 						"start_line":15
 					}
@@ -13516,7 +13516,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":120,
 						"name":"surface_holder_declarative_ets",
 						"start_line":15
 					},
@@ -13586,7 +13586,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":103,
 						"name":"surface_holder_ndk_ets",
 						"start_line":15
 					}
