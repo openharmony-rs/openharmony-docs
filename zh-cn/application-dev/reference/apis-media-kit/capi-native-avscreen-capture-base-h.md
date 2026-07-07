@@ -185,6 +185,8 @@ enum OH_DataType
 
 枚举，表示屏幕录制流的数据格式。
 
+当前仅支持原始流格式和保存文件格式，编码流格式当前版本暂不支持。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
