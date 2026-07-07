@@ -57169,7 +57169,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":102,
+						"end_line":104,
 						"name":"oh_jsvm_get_array_length",
 						"start_line":16
 					}
@@ -57304,7 +57304,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":104,
 						"name":"oh_jsvm_create_arraybuffer",
 						"start_line":16
 					}
@@ -57409,7 +57409,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":139,
+						"end_line":142,
 						"name":"jsvm_code_cache",
 						"start_line":16
 					}
@@ -57614,7 +57614,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":106,
 						"name":"oh_jsvm_get_boolean",
 						"start_line":16
 					}
@@ -57624,7 +57624,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":94,
+						"end_line":98,
 						"name":"oh_jsvm_get_value_bool",
 						"start_line":16
 					}
@@ -57644,7 +57644,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":89,
 						"name":"oh_jsvm_get_null",
 						"start_line":16
 					}
@@ -57654,7 +57654,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":94,
 						"name":"oh_jsvm_get_undefined",
 						"start_line":16
 					}
