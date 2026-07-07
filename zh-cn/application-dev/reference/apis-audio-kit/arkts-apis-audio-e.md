@@ -119,6 +119,22 @@
 | PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
 | PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
 
+## NoiseReductionMode
+
+表示录音降噪模式的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| FIDELITY | 0 | 保真模式，不进行降噪。 |
+| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
+| STANDARD | 2 | 标准模式，弱降噪。 |
+
 ## CommunicationDeviceType<sup>9+</sup>
 
 表示用于通信的可用设备类型的枚举。
@@ -358,22 +374,6 @@
 | ------------------ | ------ | ---------- |
 | EFFECT_NONE        | 0      | 关闭音效。 |
 | EFFECT_DEFAULT     | 1      | 默认音效。 |
-
-## NoiseReductionMode
-
-表示录音降噪模式的枚举。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-| 名称 | 值 | 说明 |
-| :--- | :--- | :--- |
-| FIDELITY | 0 | 保真模式，不进行降噪。 |
-| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
-| STANDARD | 2 | 标准模式，弱降噪。 |
 
 ## AudioRendererRate<sup>8+</sup>
 
