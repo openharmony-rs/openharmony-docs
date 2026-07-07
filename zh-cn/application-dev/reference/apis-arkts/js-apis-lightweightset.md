@@ -8,11 +8,11 @@
 
 LightWeightSet可用于存储一系列值，存储元素中value唯一。
 
-LightWeightSet依据泛型定义，采用轻量级结构，初始默认容量大小为8，每次扩容大小为原始容量的两倍。
+LightWeightSet依据泛型定义，采用轻量级结构，初始默认容量大小为8，每次扩容为原始容量的两倍。
 
-集合中value值的查找依赖于hash算法，通过一个数组存储hash值，然后映射到对应数组中存储的value值。
+集合中value值的查找依赖于hash算法，通过一个数组存储hash值，然后根据hash值映射到对应的存储位置获取value。
 
-LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储元素的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](js-apis-hashset.md)都是用于存储元素的集合类型，但LightWeightSet的占用内存更小。
 
 **推荐使用场景：** 当需要存储一组唯一元素、对数据进行去重、或需要基于hash快速查找元素时，推荐使用LightWeightSet。相比HashSet，LightWeightSet占用内存更小，适合内存敏感场景下的小规模数据存储与查找。
 
@@ -224,7 +224,7 @@ hasAll(set: LightWeightSet&lt;T&gt;): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 包含所有元素时返回true，否则返回false。 |
+| boolean | true表示容器中包含目标集合中的所有元素，false表示容器中不包含目标集合中的全部元素。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ has(key: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 包含指定元素时返回true，否则返回false。 |
+| boolean | true表示容器中包含指定元素，false表示容器中不包含指定元素。 |
 
 **错误码：**
 
@@ -469,7 +469,7 @@ getValueAt(index: number): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回指定下标对应的元素。 |
+| T | 返回指定下标位置的元素值。 |
 
 **错误码：**
 
@@ -536,7 +536,7 @@ toString(): String
 
 | 类型 | 说明 |
 | -------- | -------- |
-| String | 返回包含容器中所有键和值的字符串。 |
+| String | 返回包含容器中所有元素的字符串。 |
 
 **示例：**
 
@@ -554,7 +554,7 @@ console.info("result:", result);  // result: sparrow,squirrel
 
 toArray(): Array&lt;T&gt;
 
-获取包含此容器中所有对象的数组。
+获取包含此容器中所有元素的数组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -564,7 +564,7 @@ toArray(): Array&lt;T&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array&lt;T&gt; | 返回包含此容器中所有对象的数组。 |
+| Array&lt;T&gt; | 返回包含此容器中所有元素的数组。 |
 
 **错误码：**
 
@@ -631,7 +631,7 @@ for (let value of values) {
 
 forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet&lt;T&gt;) => void, thisArg?: Object): void
 
-通过回调函数来遍历LightWeightSet实例对象上的元素以及元素对应的下标。
+通过回调函数来遍历LightWeightSet实例对象上的元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -676,10 +676,10 @@ lightWeightSet.forEach((value: string, key: string) => {
 ```ts
 // 不建议在forEach函数中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightSet = new LightWeightSet<string>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightSet.add(i + "123");
 }
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightSet.remove(i + "123");
 }
 ```
@@ -747,7 +747,7 @@ for(let i = 0; i < 10; i++) {
 
 | 类型 | 说明 |
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | 返回遍历LightWeightSet中所有元素的迭代器对象，每一项为容器中的value值。 |
+| IterableIterator&lt;T&gt; | 返回遍历LightWeightSet中所有元素的迭代器对象，每一项为容器中的元素值。 |
 
 **错误码：**
 
@@ -774,7 +774,7 @@ for (let value of lightWeightSet) {
 // 使用方法二：
 let symbolIterator = lightWeightSet[Symbol.iterator]();
 let iteratorResult: IteratorResult<string> = symbolIterator.next();
-while(!iteratorResult.done) {
+while (!iteratorResult.done) {
   console.info("value:", iteratorResult.value);
   iteratorResult = symbolIterator.next();
 }
@@ -785,10 +785,10 @@ while(!iteratorResult.done) {
 ```ts
 // 不建议在Symbol.iterator中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightSet = new LightWeightSet<string>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightSet.add(i + "123");
 }
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightSet.remove(i + "123");
 }
 ```
