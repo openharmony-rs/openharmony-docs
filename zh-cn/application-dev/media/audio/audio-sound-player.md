@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
-<!--Designer: @magekkkk-->
+<!--Designer: @huyue57-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
