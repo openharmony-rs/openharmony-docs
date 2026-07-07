@@ -10,7 +10,7 @@
 
 ## CommandResult
 
-[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)中的scroll、select、uploadFile、setZoomLevel等命令返回如下JSON格式；[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)中getZoomLevel的返回结果同样包含`code`和`message`字段，并追加`zoomLevel`字段。
+[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)中的scroll、select、uploadFile、setZoomLevel等命令返回如下JSON格式；[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)中的getZoomLevel、addPageAnnotation、removePageAnnotation命令同样包含`code`和`message`字段，并根据命令追加其他结果字段。
 
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
@@ -25,6 +25,7 @@
 | 11 | 执行失败。 |
 | 110 | JSON无效。 |
 | 115 | `xpath`字段取值无效。 |
+| 130 | 命令执行超时。 |
 | 131 | 元素不存在。 |
 | 132 | browser或host为空。 |
 | 160 | 页面未就绪。 |

@@ -21,6 +21,8 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [addPageAnnotation](#addpageannotation) | 添加页面标注 | [AddPageAnnotationCommand](#addpageannotationcommand) | [PageAnnotationResult](#pageannotationresult) | 根据节点标识在当前页面视口绘制标注框和数字标签。 |
+| [removePageAnnotation](#removepageannotation) | 取消页面标注 | [RemovePageAnnotationCommand](#removepageannotationcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 清理当前页面标注。 |
 | [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
 | [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
@@ -441,7 +443,184 @@
 }
 ```
 
+## addPageAnnotation
+
+根据节点标识在当前页面视口绘制标注框和数字标签。该命令会先清理已有页面标注，再根据`elementList`中的节点标识获取元素位置，并在top frame中绘制固定位置的overlay。
+
+> **说明：**
+>
+> - 节点标识可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取，格式为`frameToken|documentScopeToken|domNodeId`。
+> - 标注只反映调用时的当前视口位置。页面滚动后标注不会自动重新计算位置，如需更新位置，应重新获取节点标识并再次调用该命令。
+> - overlay使用固定定位，位于页面最上层，且不拦截页面输入事件。
+
+### AddPageAnnotationCommand
+
+```json
+{
+  "method": "addPageAnnotation",
+  "params": {
+    "elementList": ["frameToken|documentScopeToken|12"],
+    "style": {
+      "maxMarks": 350,
+      "border": {
+        "color": "#dc2626",
+        "width": 1
+      },
+      "label": {
+        "fontSize": 11,
+        "fontColor": "#ffffff",
+        "backgroundColor": "#dc2626",
+        "avoidCover": false
+      }
+    }
+  }
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`addPageAnnotation`。 |
+| params | - | - | Object | 是 | 命令参数。缺失或不是Object时返回`{"code":110,"message":"params is invalid"}`。 |
+| params | - | elementList | Array\<string> | 是 | 需要标注的节点标识列表，必须为非空字符串数组。缺失时返回`{"code":391,"message":"missing elementList"}`；不是数组、为空数组、数组项不是字符串或为空字符串时返回`{"code":392,"message":"invalid elementList"}`。 |
+| params | - | style | Object | 否 | 标注样式。未传入或字段无效时使用默认值。 |
+| style | - | maxMarks | number | 否 | 最大标注rect数量，默认值为`350`，上限为`1000`。取值小于或等于`0`或不是number时使用默认值；取值大于或等于`1000`时按`1000`生效；正数小数向下取整，取整后小于`1`时按`1`生效。 |
+| style | border | color | string | 否 | 标注框颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式，默认值为`#dc2626`。 |
+| style | border | width | number | 否 | 标注框线宽，默认值为`1`，取值范围为`1`到`8`。超出范围时裁剪到边界值，不是number时使用默认值。 |
+| style | label | fontSize | number | 否 | 数字标签字号，默认值为`11`，取值范围为`8`到`32`。超出范围时裁剪到边界值，不是number时使用默认值。 |
+| style | label | fontColor | string | 否 | 数字标签文字颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式，默认值为`#ffffff`。 |
+| style | label | backgroundColor | string | 否 | 数字标签背景颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式。未设置时跟随标注框颜色，默认标注框颜色为`#dc2626`。 |
+| style | label | avoidCover | boolean | 否 | 数字标签是否尽量避开标注框和已放置标签，默认值为`false`。 |
+
+### 执行规则
+
+- 标注时会获取元素在当前视口中的一个或多个布局矩形；当元素没有正面积布局矩形时，会尝试使用元素边界矩形。
+- 命中检测使用rect水平中心点和高度`3/5`处的采样点。采样点命中的元素必须是目标元素或其后代，否则该rect不绘制。
+- iframe内元素会折算到top frame视口坐标后绘制。
+- rect会裁剪到当前视口；完全不在视口内、裁剪后总可见面积小于`20px²`、被遮挡、找不到元素或无法折算坐标时，该元素不绘制，并计入`missingElementIds`。
+- 一个元素可能对应多个rect，标注框按rect绘制；数字标签按元素绘制，文本为实际绘制顺序，从`1`开始。
+- `maxMarks`限制的是rect数量，不是元素数量。达到上限后返回`truncated`为`true`，未继续处理的元素不保证计入`missingElementIds`。
+
+### PageAnnotationResult
+
+命令执行成功时返回如下JSON字符串：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 1,
+  "truncated": false,
+  "missingElementIds": [],
+  "invalidElementIds": []
+}
+```
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。`10`表示命令执行成功。其他取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`。 |
+| renderedCount | number | 实际绘制出至少一个有效rect的元素数量。 |
+| truncated | boolean | 是否因达到`maxMarks`限制而截断。 |
+| missingElementIds | Array\<string> | 格式正确但未绘制成功的节点标识列表。 |
+| invalidElementIds | Array\<string> | 格式非法的节点标识列表。 |
+
+> **说明：**
+>
+> `missingElementIds`和`invalidElementIds`为诊断字段。存在未绘制元素或非法节点标识时，命令整体仍可返回`{"code":10,"message":"success"}`。
+
+### 常见返回示例
+
+部分节点未绘制成功：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 2,
+  "truncated": false,
+  "missingElementIds": ["frameToken|documentScopeToken|404"],
+  "invalidElementIds": []
+}
+```
+
+节点标识格式非法：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 0,
+  "truncated": false,
+  "missingElementIds": [],
+  "invalidElementIds": ["invalidNodeId"]
+}
+```
+
+参数错误：
+
+```json
+{
+  "code": 392,
+  "message": "invalid elementList"
+}
+```
+
+常见失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | annotation command failed或具体失败原因 | 标注命令执行失败。无法获取具体原因时，`message`为`"annotation command failed"`。 |
+| 110 | params is invalid | `params`缺失或不是Object。 |
+| 130 | timed out | 标注命令执行超时。 |
+| 132 | browser or frame is null | browser、main frame或ArkWeb frame为空。 |
+| 391 | missing elementList | `elementList`缺失。 |
+| 392 | invalid elementList | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
+
+
+## removePageAnnotation
+
+
+清理当前页面标注overlay。
+
+### RemovePageAnnotationCommand
+
+```json
+{
+  "method": "removePageAnnotation"
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`removePageAnnotation`。 |
+
+### 返回说明
+
+命令执行成功时返回如下JSON字符串：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+常见失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | overlay not found | 当前页面不存在可清理的标注overlay。 |
+| 11 | annotation command failed或具体失败原因 | 取消标注命令执行失败。无法获取具体原因时，`message`为`"annotation command failed"`。 |
+| 130 | timed out | 取消标注命令执行超时。 |
+| 132 | browser or frame is null | browser、main frame或ArkWeb frame为空。 |
+
+
 ## screenCapture
+
 
 获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
 
