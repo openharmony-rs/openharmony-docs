@@ -33542,5 +33542,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-createpdf.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"web_createpdf_promise",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"web_createpdf_promise",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-print.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintAppAPI.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"create_web_print_document",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
