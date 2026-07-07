@@ -7,15 +7,12 @@
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
 
-从API版本26.0.0开始支持缓冲区压缩解压缩。
-
 ## 场景介绍
 
-缓冲区压缩解压缩适用于对内存中的整块数据进行一次性压缩或解压的场景。主要应用场景包括：
+从API版本26.0.0开始，提供了缓冲区压缩解压缩能力，可以对内存中的整块数据进行一次性压缩或解压缩。主要适用于数据量较小且完整的场景，接口简单，操作快捷。
 
-- 对内存中的数据进行快速压缩，节省存储空间。
-- 对已压缩的数据进行内存解压，还原原始数据。
-- 适用于数据量较小且完整的场景，接口简单，操作快捷。
+- 缓冲区压缩：对内存中的数据进行快速压缩，节省存储空间。
+- 缓冲区解压缩：对已压缩的数据进行内存解压缩，还原原始数据。
 
 ## 接口说明
 
@@ -25,7 +22,7 @@
 | -------- | ---- |
 | OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, uint64_t sourceLen) | 计算缓冲区压缩所需输出缓冲区大小。 |
 | OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method, int32_t compressLevel) | 对缓冲区数据进行压缩。 |
-| OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method) | 对缓冲区数据进行解压。 |
+| OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method) | 对缓冲区数据进行解压缩。 |
 
 ## 开发准备
 
@@ -43,7 +40,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 #include <filemanagement/archive/oh_archive.h>
 ```
 
-## 开发流程
+## 开发步骤
 
 ### 缓冲区压缩
 
@@ -96,9 +93,9 @@ static napi_value BufferCompress(napi_env env, napi_callback_info info)
 }
 ```
 
-### 缓冲区解压
+### 缓冲区解压缩
 
-准备输出缓冲区并调用OH_Archive_BufferRead解压数据。解压时需指定压缩数据缓冲区、输出缓冲区、数据长度和压缩算法，解压后的实际数据大小通过dstSize参数返回。建议压缩和解压使用相同的压缩算法参数。
+准备输出缓冲区并调用OH_Archive_BufferRead解压缩数据。解压缩时需指定压缩数据缓冲区、输出缓冲区、数据长度和压缩算法，解压缩后的实际数据大小通过dstSize参数返回。建议压缩和解压缩使用相同的压缩算法参数。
 
 <!--@[buffer_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -147,4 +144,4 @@ static napi_value BufferDecompress(napi_env env, napi_callback_info info)
 
 ## 调测验证关键点
 
-缓冲区压缩解压：验证压缩后再解压的数据与原始数据完全一致，无数据丢失。
+缓冲区压缩解压缩：验证压缩后再解压缩的数据与原始数据完全一致，无数据丢失。
