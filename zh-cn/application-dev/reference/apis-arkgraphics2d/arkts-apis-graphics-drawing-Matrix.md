@@ -369,7 +369,7 @@ matrix.setMatrix(value);
 
 preConcat(matrix: Matrix): void
 
-将当前矩阵左乘一个矩阵，即新的变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用新变换，使用postConcat方法。
+将一个矩阵乘在当前矩阵的右侧，即新的变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用新变换，使用postConcat方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -381,7 +381,7 @@ preConcat(matrix: Matrix): void
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 表示矩阵对象，位于乘法表达式右侧。 |
+| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 表示用于运算的矩阵，位于乘法表达式右侧。 |
 
 **错误码：**
 
@@ -469,7 +469,7 @@ matrix1.setConcat(matrix2, matrix1);
 
 postConcat(matrix: Matrix): void
 
-将当前矩阵右乘一个矩阵，即新的变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用新变换，使用preConcat方法。
+将一个矩阵乘在当前矩阵的左侧，即新的变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用新变换，使用preConcat方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -481,7 +481,7 @@ postConcat(matrix: Matrix): void
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 表示用于右乘的矩阵，位于乘法表达式左侧。 |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 表示用于运算的矩阵，位于乘法表达式左侧。 |
 
 **示例：**
 
@@ -679,7 +679,7 @@ ArkTS-Dyn: postRotate(degree: number, px: number, py: number): void
 
 ArkTS-Sta: postRotate(degree: double, px: double, py: double): void
 
-将当前矩阵右乘一个围绕旋转中心点旋转degree指定角度的矩阵，即新的旋转变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用旋转变换，使用preRotate方法。
+将矩阵设置为矩阵右乘围绕旋转中心点旋转degree角度的单位矩阵后得到的矩阵，即新的旋转变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用旋转变换，使用preRotate方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -737,7 +737,7 @@ ArkTS-Dyn: postScale(sx: number, sy: number, px: number, py: number): void
 
 ArkTS-Sta: postScale(sx: double, sy: double, px: double, py: double): void
 
-将当前矩阵右乘一个围绕缩放中心点按sx和sy指定缩放因子缩放的矩阵，即新的缩放变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用缩放变换，使用preScale方法。
+将矩阵设置为矩阵右乘围绕缩放中心点按sx和sy缩放系数缩放后的单位矩阵后得到的矩阵，即新的缩放变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用缩放变换，使用preScale方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -798,7 +798,7 @@ ArkTS-Dyn: postTranslate(dx: number, dy: number): void
 
 ArkTS-Sta: postTranslate(dx: double, dy: double): void
 
-将当前矩阵右乘一个平移dx和dy指定距离的矩阵，即新的平移变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用平移变换，使用preTranslate方法。
+将矩阵设置为矩阵右乘平移dx和dy距离后的单位矩阵后得到的矩阵，即新的平移变换在当前矩阵的变换之后应用。如果需要在当前矩阵的变换之前应用平移变换，使用preTranslate方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -853,7 +853,7 @@ ArkTS-Dyn: preRotate(degree: number, px: number, py: number): void
 
 ArkTS-Sta: preRotate(degree: double, px: double, py: double): void
 
-将当前矩阵左乘一个围绕旋转中心点旋转degree指定角度的矩阵，即新的旋转变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用旋转变换，使用postRotate方法。
+将矩阵设置为矩阵左乘围绕旋转中心点旋转degree角度的单位矩阵后得到的矩阵，即新的旋转变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用旋转变换，使用postRotate方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1011,7 +1011,7 @@ ArkTS-Dyn: preScale(sx: number, sy: number, px: number, py: number): void
 
 ArkTS-Sta: preScale(sx: double, sy: double, px: double, py: double): void
 
-将当前矩阵左乘一个围绕缩放中心点按sx和sy指定缩放因子缩放的矩阵，即新的缩放变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用缩放变换，使用postScale方法。
+将矩阵设置为矩阵左乘围绕缩放中心点按sx和sy缩放系数缩放后的单位矩阵后得到的矩阵，即新的缩放变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用缩放变换，使用postScale方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1072,7 +1072,7 @@ ArkTS-Dyn: preTranslate(dx: number, dy: number): void
 
 ArkTS-Sta: preTranslate(dx: double, dy: double): void
 
-将当前矩阵左乘一个平移dx和dy指定距离的矩阵，即新的平移变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用平移变换，使用postTranslate方法。
+将矩阵设置为矩阵左乘平移dx和dy距离后的单位矩阵后得到的矩阵，即新的平移变换在当前矩阵的变换之前应用。如果需要在当前矩阵的变换之后应用平移变换，使用postTranslate方法。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
