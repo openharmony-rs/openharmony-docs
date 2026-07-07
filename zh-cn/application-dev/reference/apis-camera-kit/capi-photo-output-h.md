@@ -29,7 +29,7 @@
 | -- | -- | -- |
 | [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | 拍照输出的回调。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | 拍照输出对象。<br> 可以使用[OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput)方法创建指针。 |
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 
 ### 函数
 
@@ -1089,7 +1089,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 | 参数项 | 描述 | 
 | -- | -- | 
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | photoOutput 拍照输出实例。 | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，setting指向创建OH_Camera_PhotoCaptureSettingExt实例指针的指针。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)** setting | 如果方法调用成功，setting指向创建OH_Camera_PhotoCaptureSettingExt实例指针的指针。 |
 
 **返回：** 
 
@@ -1113,7 +1113,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* setting | 指向扩展拍照设置实例的指针。 | 
 
 **返回：** 
 
@@ -1137,7 +1137,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
 | [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation) rotation | 图像旋转角度，定义在[Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)枚举中。 | 
 
 **返回：** 
@@ -1162,7 +1162,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
 | [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，在Camera_Location枚举中定义。 | 
 
 **返回：** 
@@ -1187,7 +1187,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
 | bool mirror | 镜像效果开关。true表示启用，false表示禁用。 | 
 
 **返回：** 
@@ -1212,7 +1212,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
 | uint8_t compressionQuality | 图片压缩质量，取值范围（1, 100），取值越大生成的图片质量越高，1 为最低质量，100 为最高质量。 | 
 
 **返回：** 
@@ -1238,7 +1238,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 | 参数项 | 描述 | 
 | -- | -- | 
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向扩展拍照设置实例的指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)* setting | 指向扩展拍照设置实例的指针。 | 
 
 **返回：** 
 

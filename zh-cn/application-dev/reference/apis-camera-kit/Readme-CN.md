@@ -90,6 +90,7 @@
     - [Camera_Point](capi-oh-camera-camera-point.md)
     - [Camera_Location](capi-oh-camera-camera-location.md)
     - [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md)
+    - [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md)
     - [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md)
     - [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md)
     - [Camera_Rect](capi-oh-camera-camera-rect.md)
