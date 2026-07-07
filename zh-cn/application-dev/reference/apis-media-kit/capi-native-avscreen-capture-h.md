@@ -104,7 +104,7 @@ struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) * | 返回一个指向OH_AVScreenCapture实例的指针。 |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) * | 返回一个指向OH_AVScreenCapture实例的指针，用于后续的录屏操作、参数配置和回调设置。 |
 
 ### OH_AVScreenCapture_Init()
 
@@ -250,6 +250,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_AcquireAudioBuffer(struct OH_AVSc
 **描述**
 
 获取音频buffer。应用调用时需分配audiobuffer对应结构体大小的内存，否则影响音频buffer的获取。<br> 从API version 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。
+
+音频buffer使用完成后，需调用[OH_AVScreenCapture_ReleaseAudioBuffer](#oh_avscreencapture_releaseaudiobuffer)释放对应的音频buffer。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -587,6 +589,8 @@ struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(
 
 创建ContentFilter。
 
+创建后需通过[OH_AVScreenCapture_ContentFilter_AddAudioContent](#oh_avscreencapture_contentfilter_addaudiocontent)或[OH_AVScreenCapture_ContentFilter_AddWindowContent](#oh_avscreencapture_contentfilter_addwindowcontent)添加过滤内容，再通过[OH_AVScreenCapture_ExcludeContent](#oh_avscreencapture_excludecontent)设置过滤器，使用完成后需调用[OH_AVScreenCapture_ReleaseContentFilter](#oh_avscreencapture_releasecontentfilter)释放。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -595,7 +599,7 @@ struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(
 
 | 类型 | 说明 |
 | -- | -- |
-| struct [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) * | 执行成功返回OH_AVScreenCapture_ContentFilter实例，否则返回空指针。 |
+| struct [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) * | 执行成功返回OH_AVScreenCapture_ContentFilter实例，用于配置需要过滤的声音类型和窗口内容，否则返回空指针。 |
 
 ### OH_AVScreenCapture_ReleaseContentFilter()
 
@@ -606,6 +610,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseContentFilter(struct OH_AV
 **描述**
 
 释放ContentFilter。
+
+与[OH_AVScreenCapture_CreateContentFilter](#oh_avscreencapture_createcontentfilter)配对使用，用于释放创建的ContentFilter实例。ContentFilter在通过[OH_AVScreenCapture_ExcludeContent](#oh_avscreencapture_excludecontent)设置到OH_AVScreenCapture实例后即可释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -644,7 +650,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddAudioContent(str
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) *filter | 指向OH_AVScreenCapture_ContentFilter实例的指针。 |
-| [OH_AVScreenCaptureFilterableAudioContent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturefilterableaudiocontent) content | OH_AVScreenCaptureFilterableAudioContent实例。 |
+| [OH_AVScreenCaptureFilterableAudioContent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturefilterableaudiocontent) content | OH_AVScreenCaptureFilterableAudioContent实例。用于指定需要从录屏中排除的音频内容类型。具体枚举值请参阅[OH_AVScreenCaptureFilterableAudioContent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturefilterableaudiocontent)。 |
 
 **返回：**
 
@@ -702,8 +708,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(st
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) *filter | 指向OH_AVScreenCapture_ContentFilter实例的指针。 |
-| int32_t *windowIDs | 指向窗口ID的指针。 |
-| int32_t windowCount | 窗口ID列表的长度。 |
+| int32_t *windowIDs | 指向需要过滤的窗口ID数组的指针。窗口ID可通过窗口管理接口获取。 |
+| int32_t windowCount | 窗口ID列表的长度。需为正整数，且与windowIDs数组实际长度一致。 |
 
 **返回：**
 
@@ -735,8 +741,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
-| int32_t height | 录屏屏幕的高度。单位为像素（px）。|
+| int32_t width | 录屏屏幕的宽度。单位为像素（px）。取值需为正整数，不支持在设置自动跟随旋转配置时调用。 |
+| int32_t height | 录屏屏幕的高度。单位为像素（px）。取值需为正整数，不支持在设置自动跟随旋转配置时调用。 |
 
 **返回：**
 
@@ -764,7 +770,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScree
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t *windowIDs | 指向隐私窗口ID的指针。 |
-| int32_t windowCount | 隐私窗口ID列表的长度。 |
+| int32_t windowCount | 隐私窗口ID列表的长度。需为正整数，且需与windowIDs数组实际长度一致。 |
 
 **返回：**
 
@@ -780,7 +786,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 
 **描述**
 
-设置录屏时的最大帧率。<br> 该接口应在录屏启动之后被调用。<br> 调用该方法可以设置录屏时的最大帧率，frameRate为想要设置的最大帧率。<br> 该接口设置最大帧率时，实际设置的帧率受限设备的能力，由底层的系统能力决定。<br> 调用该接口设置录屏最大帧率时，实际帧率将受限于设备能力。目前接口入参的最大值不设限制，但当前支持的最高帧率为60FPS，当入参设置超过60FPS，将以60FPS处理。不超过上限时，则按照实际入参值处理。
+设置录屏时的最大帧率。<br> 该接口应在录屏启动之后被调用。<br> 调用该方法可以设置录屏时的最大帧率，frameRate为想要设置的最大帧率。<br> 该接口设置最大帧率时，实际设置的帧率受限设备的能力，由底层的系统能力决定。<br> 目前接口入参的最大值不设限制，但当前支持的最高帧率为60FPS，当入参设置超过60FPS，将以60FPS处理。不超过上限时，则按照实际入参值处理。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -791,7 +797,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t frameRate | 录屏的最大帧率。单位为帧率（FPS）。 |
+| int32_t frameRate | 录屏的最大帧率。单位为帧/秒（FPS）。当前支持最高帧率为60FPS，入参超过60FPS时以60FPS处理。 |
 
 **返回：**
 
@@ -866,6 +872,8 @@ OH_AVScreenCapture_CaptureStrategy* OH_AVScreenCapture_CreateCaptureStrategy(voi
 
 创建录屏策略对象。
 
+使用完成后需调用[OH_AVScreenCapture_ReleaseCaptureStrategy](#oh_avscreencapture_releasecapturestrategy)释放。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 20
@@ -874,7 +882,7 @@ OH_AVScreenCapture_CaptureStrategy* OH_AVScreenCapture_CreateCaptureStrategy(voi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md)* | 执行成功返回OH_AVScreenCapture_CaptureStrategy实例，否则返回空指针。 |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md)* | 执行成功返回OH_AVScreenCapture_CaptureStrategy实例，用于配置录屏捕获策略（如自动跟随旋转、通话时保持录屏、B帧编码等），否则返回空指针。 |
 
 ### OH_AVScreenCapture_ReleaseCaptureStrategy()
 
@@ -885,6 +893,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseCaptureStrategy(OH_AVScree
 **描述**
 
 释放录屏策略对象。
+
+与[OH_AVScreenCapture_CreateCaptureStrategy](#oh_avscreencapture_createcapturestrategy)配对使用，用于释放创建的CaptureStrategy实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1027,8 +1037,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreen
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture的指针。 |
-| uint64_t displayId | 需要执行屏幕捕获的屏幕ID。 |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
+| uint64_t displayId | 需要执行屏幕捕获的屏幕ID。可通过OH_AVScreenCapture_OnDisplaySelected回调获取。 |
 | [OH_Rect](capi-avscreencapture-oh-rect.md)* area | 指定捕获的区域。 |
 
 **返回：**
@@ -1188,7 +1198,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPickerPopUp(OH_AVScree
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy对象的指针。 |
-| bool value | 设置为false，代表APP已经指定了录屏内容，录屏启动后无需弹出Picker；设置为true代表录屏启动后统一弹出Picker；不设置，代表使用系统推荐行为。 |
+| bool value | 设置为false，代表应用已经指定了录屏内容，录屏启动后无需弹出Picker；设置为true代表录屏启动后统一弹出Picker；不设置，代表录屏启动时根据当前录制配置自动决定是否弹出Picker。 |
 
 **返回：**
 
@@ -1215,7 +1225,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy对象的指针。 |
-| [OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode) mode | 捕获图像在输出图像上的填充模式。 |
+| [OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode) mode | 捕获图像在输出图像上的填充模式。各填充模式枚举值的效果请参阅[OH_AVScreenCapture_FillMode](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_fillmode)，不同模式决定捕获图像在输出区域中的缩放、裁剪或拉伸方式。 |
 
 **返回：**
 
@@ -1291,7 +1301,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenC
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_CapturePickerMode](capi-native-avscreen-capture-base-h.md#oh_capturepickermode) pickerMode | Picker显示模式（请参阅OH_CapturePickerMode枚举）。 |
+| [OH_CapturePickerMode](capi-native-avscreen-capture-base-h.md#oh_capturepickermode) pickerMode | Picker显示模式，定义Picker中显示的内容类型。各模式枚举值的效果请参阅[OH_CapturePickerMode](capi-native-avscreen-capture-base-h.md#oh_capturepickermode)，不同模式决定Picker中可供用户选择的屏幕捕获对象类型。 |
 
 **返回：**
 
@@ -1343,7 +1353,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVS
 | -- | -- |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md) *selection | 指向OH_AVScreenCapture_UserSelectionInfo实例的指针。 |
 | uint64_t** displayIds | 返回用户选择的DisplayID数组。参数displayIds的内存由OH_AVScreenCapture_UserSelectionInfo管理，无需手动释放。 |
-| size_t *count | 返回用户选择的DisplayID的数量。 |
+| size_t *count | 返回用户选择的DisplayID的数量。需大于等于1且与displayIds数组实际长度一致。 |
 
 **返回：**
 
@@ -1397,7 +1407,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct 
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_AVScreenCapture_OnPrivacyProtect](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onprivacyprotect) callback | 隐私保护回调函数。 |
+| [OH_AVScreenCapture_OnPrivacyProtect](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onprivacyprotect) callback | 隐私保护回调函数。当屏幕捕获过程中产生隐私保护事件时将被调用。 |
 | void *userData | 指向应用提供的自定义数据的指针，在隐私保护回调方法被调用时作为入参回传。 |
 
 **返回：**
@@ -1416,7 +1426,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCaptu
 
 允许暂停屏幕捕获。
 
-适用于录屏过程中可能需要临时暂停的场景，如用户切换应用、接听电话等需要中断录制但不想结束录屏会话的情况。设置为true时允许暂停，设置为false时录屏过程不可暂停。
+适用于录屏过程中可能需要临时暂停的场景，如用户切换应用、接听电话等需要中断录制但不想结束录屏会话的情况。设置为true时允许暂停，设置为false时录屏过程不可暂停。设置value为true后，可在录屏运行阶段调用OH_AVScreenCapture_PauseScreenCapture暂停录屏和OH_AVScreenCapture_ResumeScreenCapture恢复录屏。该策略需通过OH_AVScreenCapture_SetCaptureStrategy在录屏启动前完成配置。
 
 **起始版本：** 26.0.0
 
@@ -1443,7 +1453,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVSc
 
 暂停屏幕捕获。
 
-与[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)配合使用，调用后暂停录屏数据采集，已采集的数据保持有效。
+与[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)配合使用，调用后暂停录屏数据采集，已采集的数据保持有效。调用此接口前，需先通过[OH_AVScreenCapture_StrategyForPause](#oh_avscreencapture_strategyforpause)设置允许暂停策略（value设为true），并通过OH_AVScreenCapture_SetCaptureStrategy在录屏启动前完成策略配置。
 
 **起始版本：** 26.0.0
 
@@ -1469,7 +1479,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVS
 
 恢复屏幕捕获。
 
-与[OH_AVScreenCapture_PauseScreenCapture](#oh_avscreencapture_pausescreencapture)配合使用，调用后恢复录屏数据采集。
+与[OH_AVScreenCapture_PauseScreenCapture](#oh_avscreencapture_pausescreencapture)配合使用，调用后恢复录屏数据采集。调用此接口前，需先通过OH_AVScreenCapture_StrategyForPause设置允许暂停策略（value设为true），并通过OH_AVScreenCapture_SetCaptureStrategy在录屏启动前完成策略配置。
 
 **起始版本：** 26.0.0
 
