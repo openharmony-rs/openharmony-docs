@@ -113,7 +113,6 @@
 | 方案二 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | TTS播报期间音乐静音继续播放，播报结束后音乐恢复有声 | 需同步调用setAudioSessionScene；复播会跳过静音期内容 |
 | 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | TTS播报时音乐音量降低，播报结束后音量自动恢复 | 音量自动恢复，无需额外适配 |
 | 方案四 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
- 	 
 
 ## 同应用内不同音频流之间的焦点管理
 同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
