@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供HID DDK中的枚举变量与结构体定义，支持开发者在驱动开发中定义和操作HID设备，适用于需要与HID设备进行交互的场景，包括鼠标、键盘、触摸屏等输入设备，提供了设备特性、事件类型、键值编码、坐标轴等完整定义，帮助开发者快速实现HID设备的驱动开发。
+提供HID DDK中的枚举变量与结构体定义，支持开发者在驱动开发中定义和操作HID设备，适用于与鼠标、键盘、触摸屏等输入设备交互的场景，提供了设备特性、事件类型、键值编码、坐标轴等完整定义，帮助开发者快速实现HID设备的驱动开发。
 
 **引用文件：** <hid/hid_ddk_types.h>
 
@@ -26,16 +26,16 @@
 
 | 名称                                                        | typedef关键字 | 描述 |
 |-----------------------------------------------------------| -- | -- |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | 表示HID事件信息结构体，包含事件类型、事件编码和事件值，用于描述输入设备的上报事件。Hid_EmitItem用于描述HID事件的信息，包含事件类型、事件编码和事件值三个关键字段。在驱动开发场景中，该结构体用于传递和识别各类HID设备产生的事件。 |
-| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | 设备基本信息。 |
-| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | 事件类型编码数组。 |
-| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | 键值属性数组。 |
-| [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md)       | Hid_AbsAxesArray | 绝对坐标属性数组，用于存储HID设备的多个绝对坐标轴的属性信息，支持描述如触摸屏、游戏摇杆等输入设备的坐标特征，适用于需要精确读取和处理多维输入数据的驱动开发场景。用于存储设备的绝对坐标轴信息，例如在手柄、触摸板等输入设备中记录轴位数据。 |
-| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | 相对坐标属性数组。 |
-| [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | 其它特殊事件属性数组。 |
-| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | 设备事件属性。用于定义和配置HID设备的事件属性，包括事件类型、键值、绝对坐标、相对坐标等各类事件属性编码及取值范围，适用于需要精细化管理HID设备输入事件的场景。 |
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | 表示HID事件信息结构体，包含事件类型、事件编码和事件值，用于描述输入设备的上报事件。在驱动开发场景中，该结构体用于传递和识别各类HID设备产生的事件。 |
+| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | 设备基本信息，用于表示HID设备的名称、厂商ID、产品ID等基本属性，在创建和操作HID设备时作为设备标识使用。 |
+| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | 事件类型编码数组，用于存储HID设备支持的事件类型信息。 |
+| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | 键值属性数组，用于存储HID设备支持的键值编码信息。 |
+| [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md)       | Hid_AbsAxesArray | 绝对坐标属性数组，用于存储HID设备的多个绝对坐标轴的属性信息，支持描述如触摸屏、游戏摇杆等输入设备的坐标特征，适用于需要精确读取和处理多维输入数据的驱动开发场景，例如在手柄、触摸板等输入设备中记录轴位数据。 |
+| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | 相对坐标属性数组，用于存储HID设备支持的相对坐标属性信息。 |
+| [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | 其他特殊事件属性数组，用于存储HID设备支持的特殊事件信息。 |
+| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | 设备事件属性，包括事件类型、键值、绝对坐标、相对坐标等各类事件属性编码及取值范围。用于HID设备的属性配置，适用于需要精细化管理输入事件的场景。使用结构体前，需根据HID设备规范初始化所有成员变量。 |
 | [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标识信息。开发者可以通过此结构体识别和区分不同的HID设备，通常用于设备识别、设备匹配、设备过滤等场景。 |
-| [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md)       | Hid_DeviceHandle | 不透明的USB HID设备结构，用于标识和操作HID设备实例。开发者通过该句柄进行HID设备的打开、关闭、读写等操作。用于标识和操作USB HID设备。 |
+| [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md)       | Hid_DeviceHandle | 不透明的USB HID设备结构，用于标识和操作HID设备实例。开发者通过该句柄进行HID设备的打开、关闭、读写等操作。 |
 
 ### 枚举
 
@@ -331,7 +331,7 @@ enum Hid_MscEvent
 | HID_MSC_SERIAL = 0x00 | 序列号 |
 | HID_MSC_PULSE_LED = 0x01 | 脉冲 |
 | HID_MSC_GESTURE = 0x02 | 手势 |
-| HID_MSC_RAW = 0x03 | 开始事件 |
+| HID_MSC_RAW = 0x03 | 原始事件 |
 | HID_MSC_SCAN = 0x04 | 扫描 |
 | HID_MSC_TIMESTAMP = 0x05 | 时间戳 |
 
@@ -350,17 +350,17 @@ HID DDK错误码定义。
 | 枚举项 | 描述 |
 | -- | -- |
 | HID_DDK_SUCCESS = 0 | 操作成功。 |
-| HID_DDK_NO_PERM = 201 | 没有权限，从API 16起，取值由-6变更为201。 |
-| HID_DDK_INVALID_PARAMETER = 401 | 非法参数，从API 16起，取值由-2变更为401。 |
-| HID_DDK_FAILURE = 27300001 | 操作失败，从API 16起，取值由-1变更为27300001。请检查设备状态和参数设置。 |
+| HID_DDK_NO_PERM = 201 | 没有权限，从API 16起，取值由-6变更为201。请检查应用是否已正确获取所需的权限。 |
+| HID_DDK_INVALID_PARAMETER = 401 | 非法参数，从API 16起，取值由-2变更为401。请检查参数取值是否符合要求。 |
+| HID_DDK_FAILURE = 27300001 | DDK接口执行失败，从API 16起，取值由-1变更为27300001。可能原因：设备状态异常或通信异常。请检查设备状态和参数设置。 |
 | HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。 |
-| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确，请检查调用时机、以及是否初始化DDK。 |
-| HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。 |
-| HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。<br> **起始版本：** 18 |
-| HID_DDK_SERVICE_ERROR = 27300006 | 服务通信过程中错误。<br> **起始版本：** 18 |
-| HID_DDK_MEMORY_ERROR = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。<br> **起始版本：** 18 |
-| HID_DDK_IO_ERROR = 27300008 | I/O操作失败。<br> **起始版本：** 18 |
-| HID_DDK_DEVICE_NOT_FOUND = 27300009 | 设备未找到。<br> **起始版本：** 18 |
+| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确。请检查调用时机、以及是否初始化DDK。 |
+| HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。请检查设备状态和超时时间设置。 |
+| HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。请检查系统服务状态，确保在调用API前先初始化DDK。<br> **起始版本：** 18 |
+| HID_DDK_SERVICE_ERROR = 27300006 | 服务通信过程中错误。可能原因：服务内部错误。请检查当前操作和设备状态。<br> **起始版本：** 18 |
+| HID_DDK_MEMORY_ERROR = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。请检查内存使用情况和相关参数。<br> **起始版本：** 18 |
+| HID_DDK_IO_ERROR = 27300008 | I/O操作失败。请检查设备状态和传输参数。<br> **起始版本：** 18 |
+| HID_DDK_DEVICE_NOT_FOUND = 27300009 | 设备未找到。可能原因：设备未连接或设备ID错误。请检查设备是否连接、设备ID是否正确。<br> **起始版本：** 18 |
 
 ### Hid_ReportType
 

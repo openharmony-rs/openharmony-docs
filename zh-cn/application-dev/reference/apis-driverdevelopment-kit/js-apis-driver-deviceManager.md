@@ -81,7 +81,7 @@ bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&g
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId     | number                      | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 | onDisconnect | AsyncCallback&lt;number&gt; | 是   | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。  |
 
 **返回值：**
@@ -127,7 +127,7 @@ unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
 
 解除设备绑定。使用Promise异步回调。
 
-**需要权限**：ohos.permission.ACCESS_DDK_DRIVERS
+**需要权限：**ohos.permission.ACCESS_DDK_DRIVERS
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -190,7 +190,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback
 
 | 参数名       | 类型                                                                                                 | 必填 | 说明                                   |
 | ------------ | ---------------------------------------------------------------------------------------------------- | ---- | -------------------------------------- |
-| deviceId     | number                                                                                               | 是   | 设备ID，通过queryDevices获得。           |
+| deviceId     | number                                                                                               | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。           |
 | onDisconnect | AsyncCallback&lt;number&gt;  | 是   | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。                     |
 | callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | 是   | 回调函数。当绑定设备成功时，err为undefined，data包含设备ID和绑定设备驱动通信对象；否则为错误对象。 |
 
@@ -250,7 +250,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, ca
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId     | number                      | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 | onDisconnect | AsyncCallback&lt;number&gt; | 是   | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。     |
 | callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| 是 | 回调函数。当绑定设备驱动成功时，err为undefined，data为包括设备ID和远程对象的[RemoteDeviceDriver](#remotedevicedriver11)对象；否则为错误对象。 |
 
@@ -305,7 +305,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId     | number                      | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 | onDisconnect | AsyncCallback&lt;number&gt; | 是   | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。           |
 
 **返回值：**
@@ -363,7 +363,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): P
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId     | number                      | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 | onDisconnect | AsyncCallback&lt;number&gt; | 是   | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。           |
 
 **返回值：**
@@ -412,7 +412,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。
 
-**需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
+**需要权限：**ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -420,7 +420,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                           |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | number                      | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId | number                      | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。               |
 
 **错误码：**
@@ -461,7 +461,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。
 
-**需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
+**需要权限：**ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -469,7 +469,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 
 | 参数名   | 类型   | 必填 | 说明                           |
 | -------- | ------ | ---- | ------------------------------ |
-| deviceId | number | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId | number | 是   | 设备ID，通过[queryDevices](#devicemanagerquerydevices)获得。 |
 
 **错误码：**
 
