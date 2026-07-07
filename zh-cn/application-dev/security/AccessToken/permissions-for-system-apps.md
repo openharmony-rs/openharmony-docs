@@ -6746,7 +6746,7 @@
 **起始版本**：26.0.0
 
 ## ohos.permission.SAMBA_CLIENT_ACCESS
- 	 
+
 允许应用有网络邻居客户端权限
 
 **权限级别**：system_basic
