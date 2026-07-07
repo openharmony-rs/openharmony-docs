@@ -473,7 +473,7 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-4. After the provider is successfully connected using the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance) callback, the accessibility function can be enabled.
+After the provider is successfully connected using the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance) callback, the accessibility function can be enabled.
 
 ## Integrating Accessibility Through Custom Drawing Based on CustomNode
 

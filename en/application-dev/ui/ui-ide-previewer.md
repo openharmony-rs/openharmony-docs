@@ -72,7 +72,7 @@ Figure 3 shows the demonstration.
 ## Component Preview
 
 Both ArkTS applications and atomic services support component preview. Add the [@Preview](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#preview-decorator) decorator before a custom component to enable preview. A single source file can contain up to 10 @Preview decorators. Startup modes:
-- For components decorated with both \@Entry and \@Preview, clicking the Previewer button starts page preview. After loading, click [ide_previewer_003](figures/ide_previewer_003.png) to switch to component preview.
+- For components decorated with both \@Entry and \@Preview, clicking the Previewer button starts page preview. After loading, click ![ide_previewer_003](figures/ide_previewer_003.png) to switch to component preview.
 - For components decorated with only \@Preview, clicking the Previewer button directly starts component preview.
 
 During component preview, the default attributes of the @Preview decorator are used. For details, see [PreviewParams](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#previewparams9). You can configure @Preview parameters to specify device attributes, including device type and screen shape.

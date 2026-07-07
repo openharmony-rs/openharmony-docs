@@ -78,6 +78,10 @@ The render phase is a phase in the state management [triggering updates](./arkts
 
 ## S
 
+### State Data Source
+
+Original source of a state variable, which can be synchronized to multiple state data items. It is usually the data passed from a parent component to a child component.
+
 ### State Variables
 
 Variable decorated by the state decorator. The change of the state variable value causes the UI rendering update.

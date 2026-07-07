@@ -201,24 +201,24 @@ If a white screen issue persists after the network and permission configurations
 
     1. The application file directory and its subdirectories, which can be obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
 
-    * /data/storage/el2/base/files/example
-    * /data/storage/el2/base/haps/entry/files/example
+       * /data/storage/el2/base/files/example
+       * /data/storage/el2/base/haps/entry/files/example
 
     2. The application resource directory and its subdirectories, which can be obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
 
-    * /data/storage/el1/bundle/entry/resources/resfile
-    * /data/storage/el1/bundle/entry/resources/resfile/example
+       * /data/storage/el1/bundle/entry/resources/resfile
+       * /data/storage/el1/bundle/entry/resources/resfile/example
 
     3. Since API version 21, the application cache directory is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
 
-    * /data/storage/el2/base/cache
-    * /data/storage/el2/base/haps/entry/cache/example
-    * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
+       * /data/storage/el2/base/cache
+       * /data/storage/el2/base/haps/entry/cache/example
+       * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
 
     4. Since API version 21, the application temporary directory is obtained through [Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
 
-    * /data/storage/el2/base/temp
-    * /data/storage/el2/base/haps/entry/temp/example
+       * /data/storage/el2/base/temp
+       * /data/storage/el2/base/haps/entry/temp/example
 
     If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
