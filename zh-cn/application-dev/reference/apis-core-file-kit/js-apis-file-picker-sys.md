@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-选择器（Picker）是一个封装了PhotoViewPicker、DocumentViewPicker、AudioViewPicker等API的模块，具有选择与保存的能力。Picker为应用提供安全、统一的文件选择和保存界面，由用户主动选择需要访问的文件，从而保护用户隐私和数据安全。应用可以自行选择使用哪种API实现文件选择和文件保存的功能。该类接口需要应用在UIAbility中调用，否则无法拉起PhotoPicker应用或FilePicker应用。
+Picker（选择器）是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。通过Picker拉起系统文件选择界面，用户可在安全可控的环境下选择或保存文件，应用无需申请权限即可使用该接口。应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口需要应用在UIAbility界面中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。
 > **说明：**
 >
 > - 本模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
