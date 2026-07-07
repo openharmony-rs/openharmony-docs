@@ -6,6 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+
 ```c
 typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt;
 ```
