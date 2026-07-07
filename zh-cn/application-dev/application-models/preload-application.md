@@ -37,6 +37,37 @@
 
 ![preload-application-procedure](figures/preload-application-procedure.png)
 
+## 判断本次启动是否为预加载
+
+应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取当前进程的预加载类型，从而判断本次启动是否为预加载，以及预加载到的具体阶段。
+
+> **说明：**
+>
+> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)完成之前调用该接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
+
+[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)的返回值[AppPreloadType](../reference/apis-ability-kit/js-apis-app-ability-application.md#apppreloadtype22)枚举值如下：
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| UNSPECIFIED | 0 | 未发生预加载或预加载数据已被清除。 |
+| TYPE_CREATE_PROCESS | 1 | 进程最终预加载到进程创建完成阶段。 |
+| TYPE_CREATE_ABILITY_STAGE | 2 | 进程最终预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。 |
+| TYPE_CREATE_WINDOW_STAGE | 3 | 进程最终预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。 |
+
+```ts
+import { AbilityStage, application } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    let appPreloadType = application.getAppPreloadType();
+    // 根据 appPreloadType 的值判断当前进程的预加载类型，取值见上表
+  }
+}
+```
+
+除了通过上述接口在AbilityStage中判断进程级别的预加载类型外，当应用配置预加载到windowStageCreated阶段时，开发者也可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调中，通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)是否等于PRELOAD来判断当前UIAbility实例是否由预加载机制启动，详见[开发步骤](#开发步骤)中步骤3。
+
 ## 开发步骤
 
 1. 声明应用支持预加载到的阶段。
