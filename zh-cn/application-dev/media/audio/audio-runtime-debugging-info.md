@@ -48,6 +48,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 #include <ohaudio/native_audio_debugging_manager.h>
 #include <fcntl.h>
 #include <unistd.h>
+
 // 文件权限常量。
 constexpr mode_t FILE_PERMISSION = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; // 0644
 ```
@@ -135,7 +136,7 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 ``` TypeScript
 // 打印应用快照到文件。
 const path = this.context.filesDir + '/audio_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644); // O_WRONLY | O_CREAT
+const file = fileio.openSync(path, 0o102 | 0o200);
 debugManager.printAppInfo(file.fd);
 fileio.closeSync(file);
 
@@ -207,7 +208,7 @@ if (fd >= 0) {
 ``` TypeScript
 // 打印指定播放实例的快照。
 const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path, 0o102 | 0o200);
 debugManager.printRendererInfo(renderer, file.fd);
 fileio.closeSync(file);
 ```
@@ -304,7 +305,7 @@ if (fd >= 0) {
 ``` TypeScript
 // 打印指定录音实例的快照。
 const path = this.context.filesDir + '/capturer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path, 0o102 | 0o200);
 debugManager.printCapturerInfo(capturer, file.fd);
 fileio.closeSync(file);
 ```
