@@ -35,9 +35,9 @@
   <!--DelEnd-->
 - C API<!--network-c-->
   - 模块<!--network-module-->
+    - [TrafficFilter](capi-trafficfilter.md)
     - [NetConnection](capi-netconnection.md)
     - [Netstack](capi-netstack.md)
-    - [TrafficFilter](capi-trafficfilter.md)
   - 头文件<!--network-headerfile-->
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
@@ -121,4 +121,3 @@
   - [网络安全校验错误码](errorcode-net-networkSecurity.md)
   - [内核错误码](errorcode-kernel.md)
   - [防火墙错误码](errorcode-net-netfirewall.md)
-
