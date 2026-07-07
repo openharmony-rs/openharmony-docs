@@ -437,7 +437,7 @@ audioLoopback {
 
 **C/C++接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
 
 ``` C++
 // audioSessionManager为已创建并激活的OH_AudioSessionManager实例。
@@ -455,7 +455,7 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
