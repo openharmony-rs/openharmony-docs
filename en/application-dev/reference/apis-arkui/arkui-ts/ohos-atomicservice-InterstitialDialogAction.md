@@ -29,7 +29,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## InterstitialDialogAction
 
-Implements an **InterstitialDialogAction** instance. For details, see [Example](#example).
+Implements an **InterstitialDialogAction** instance. For details, see [Examples](#examples).
 
 ### constructor
 
@@ -85,8 +85,8 @@ Defines the attributes specific to the dialog box and custom click actions for t
 | subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box subtitle. <br>Default value: **$r('sys.color.ohos_id_color_text_secondary_contrary')**.|
 | backgroundImage | [Resource](ts-types.md#resource) | No| Yes| Background image of the dialog box. The default background color is a solid color background with the color value **#EBEEF5**.|
 | foregroundImage | [Resource](ts-types.md#resource) | No| Yes| Foreground image of the dialog box. The default value is empty, meaning no foreground image is displayed.|
-| iconStyle | [IconStyle](#iconstyle) | No| Yes| Style of the close button icon (light or dark).<br>Default value: **[IconStyle](#iconstyle).Light**|
-| titlePosition | [TitlePosition](#titleposition) | No| Yes| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: **[TitlePosition](#titleposition).Top**|
+| iconStyle | [IconStyle](#iconstyle) | No| Yes| Style of the close button icon (light or dark).<br>Default value: [IconStyle](#iconstyle).LIGHT|
+| titlePosition | [TitlePosition](#titleposition) | No| Yes| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: [TitlePosition](#titleposition).TOP|
 | onDialogClick | Callback\<void\> | No| Yes| Custom action triggered by clicking anywhere on the dialog box. The default value is to close the dialog box only.|
 | onDialogClose | Callback\<void\> | No| Yes| Custom action triggered by clicking the close button. The default value is to close the dialog box only.|
 
@@ -132,7 +132,7 @@ Defines the distance between the popup and the bottom in different scenario mode
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
 
-## Example
+## Examples
 
 ### Example 1
 
@@ -149,6 +149,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
   return dialogUIContext;
 }
 
@@ -273,8 +276,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
-  if (getDialogUIContext === null) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'getDialogUIContext is null');
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
   }
   return dialogUIContext;
 }

@@ -888,8 +888,6 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/hoverScale.gif)
-
 ### Example 11: Customizing the Background Blur Effect
 
 This example demonstrates how to customize the blur background effect of a menu by setting the **backgroundBlurStyleOptions** property in [ContextMenuOptions](#contextmenuoptions10) for **bindMenu**.
