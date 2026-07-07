@@ -317,7 +317,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
 
-在录制视频中添加自定义水印图像。使用Promise异步回调。
+在录制的视频中添加自定义水印图像。使用Promise异步回调。
 
 > **说明：**
 >

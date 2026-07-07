@@ -19,7 +19,7 @@
 在开发此功能前，开发者应根据实际需求申请相关权限：
 - 如果配置了采集麦克风音频数据，需[向用户申请授权](../../security/AccessToken/request-user-authorization.md)配置麦克风权限**ohos.permission.MICROPHONE**和申请[长时任务（ArkTS）](../../task-management/continuous-task.md)。
 - 从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录屏的效果。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
-- 从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录屏屏幕时不再弹出隐私警告弹窗。配置方式请参见[受限开放权限](../../security/AccessToken/restricted-permissions.md)。
+- 从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录屏时不再弹出隐私警告弹窗。配置方式请参见[受限开放权限](../../security/AccessToken/restricted-permissions.md)。
 
 ## 开发步骤及注意事项
 
