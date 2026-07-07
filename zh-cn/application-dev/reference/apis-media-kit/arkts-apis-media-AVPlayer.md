@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
+播放管理接口，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
 
@@ -35,18 +35,18 @@ import { media } from '@kit.MediaKit';
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 视频循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioEffectMode<sup>10+</sup>                       | [audio.AudioEffectMode](../apis-audio-kit/arkts-apis-audio-e.md#audioeffectmode10)  | 否   | 是   | 设置音频音效模式，默认值为EFFECT_DEFAULT，动态属性。audioRendererInfo的usage变动时会恢复为默认值，只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | state<sup>9+</sup>                                  | [AVPlayerState](arkts-apis-media-t.md#avplayerstate9)                             | 是   | 否   | 音视频播放的状态，全状态有效，可查询参数。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| currentTime<sup>9+</sup>                            | number                                                       | 是   | 否   | 视频的当前播放位置，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| duration<sup>9+</sup> | number                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| currentTime<sup>9+</sup>                            | number                                                       | 是   | 否   | 当前播放位置，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| duration<sup>9+</sup> | number                                                       | 是   | 否   | 音视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | playlistLoopMode                     | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| privacyType | [audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -160,28 +160,28 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 201      | Permission denied.     |
-| 401      | The parameter check failed. |
-| 801      | Capability not supported. |
-| 5400101  | No memory. |
-| 5400102  | Operation not allowed.|
-| 5400103  | I/O error. |
-| 5400104  | Time out.              |
-| 5400105  | Service died.         |
-| 5400106  | Unsupported format.     |
-| 5410002  | Seek continuous unsupported.  <br>适用版本：18+     |
-| 5411001  | IO can not find host.  <br>适用版本：14+    |
-| 5411002  | IO connection timeout.  <br>适用版本：14+  |
-| 5411003  | IO network abnormal.  <br>适用版本：14+     |
-| 5411004  | IO network unavailable.  <br>适用版本：14+  |
-| 5411005  | IO no permission.  <br>适用版本：14+        |
-| 5411006  | IO request denied.  <br>适用版本：14+  |
-| 5411007  | IO resource not found.  <br>适用版本：14+ |
-| 5411008  | IO SSL client cert needed.  <br>适用版本：14+    |
-| 5411009  | IO SSL connect fail.  <br>适用版本：14+     |
-| 5411010  | IO SSL server cert untrusted.  <br>适用版本：14+    |
-| 5411011  | IO unsupported request.  <br>适用版本：14+      |
-| 5411012  | Http cleartext traffic is not permitted.  <br>适用版本：23+     |
+| 201      | 权限被拒绝。可能原因：应用未申请必要权限。处理建议：检查应用是否已申请所需权限，参考权限申请说明进行申请。     |
+| 401      | 参数检查失败。可能原因：1. 必填参数未指定；2. 参数类型错误；3. 参数验证失败。处理建议：检查参数类型和取值范围是否符合要求。 |
+| 801      | 能力不支持。可能原因：当前设备或系统版本不支持该功能。处理建议：检查系统和设备版本要求。 |
+| 5400101  | 内存不足。可能原因：系统内存资源耗尽。处理建议：释放不必要的内存资源，检查是否存在内存泄漏。 |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。|
+| 5400103  | 文件IO错误。可能原因：文件格式、编码、大小等异常。处理建议：检查文件是否正常，在其他平台能否播放。|
+| 5400104  | 操作超时。可能原因：网络或系统响应超时。处理建议：检查网络连接状态，重试操作。|
+| 5400105  | 服务异常退出。可能原因：媒体服务进程异常终止。处理建议：重新创建AVPlayer实例。|
+| 5400106  | 不支持的格式。可能原因：媒体文件格式不支持。处理建议：检查媒体文件格式是否在支持范围内。     |
+| 5410002  | 不支持连续seek操作。可能原因：在短时间内连续调用seek接口。处理建议：避免连续频繁调用seek接口。  <br>适用版本：18+     |
+| 5411001  | 无法找到主机。可能原因：网络地址解析失败。处理建议：检查网络地址是否正确，确认网络连接正常。  <br>适用版本：14+    |
+| 5411002  | 连接超时。可能原因：网络连接建立超时。处理建议：检查网络状态，重试操作。  <br>适用版本：14+  |
+| 5411003  | 网络异常。可能原因：网络传输过程中出现错误。处理建议：检查网络连接稳定性。  <br>适用版本：14+     |
+| 5411004  | 网络不可用。可能原因：设备网络连接断开。处理建议：检查设备网络连接状态。 <br>适用版本：14+  |
+| 5411005  | 无权限。可能原因：访问资源需要特定权限。处理建议：检查并申请必要的访问权限。  <br>适用版本：14+        |
+| 5411006  | 请求被拒绝。可能原因：服务器拒绝该请求。处理建议：检查请求参数和权限配置。  <br>适用版本：14+  |
+| 5411007  | 资源未找到。可能原因：请求的资源不存在。处理建议：检查资源路径是否正确。  <br>适用版本：14+ |
+| 5411008  | 需要SSL客户端证书。可能原因：服务器要求客户端证书认证。处理建议：配置正确的客户端证书。  <br>适用版本：14+    |
+| 5411009  | SSL连接失败。可能原因：SSL握手过程失败。处理建议：检查证书配置和网络连接。  <br>适用版本：14+     |
+| 5411010  | SSL服务器证书不可信。可能原因：服务器证书未被信任。处理建议：检查服务器证书配置。  <br>适用版本：14+    |
+| 5411011  | 不支持的请求。可能原因：请求类型或参数不被支持。处理建议：检查请求格式和参数。  <br>适用版本：14+      |
+| 5411012  | 不允许HTTP明文传输。可能原因：应用配置禁止HTTP明文传输。处理建议：使用HTTPS或修改应用安全配置。  <br>适用版本：23+     |
 
 **示例：**
 
@@ -302,7 +302,7 @@ getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -348,7 +348,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -411,8 +411,8 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The media source ID does not exist in the playlist. Returned by promise.|
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 媒体源ID在播放列表中不存在。可能原因：指定的媒体源ID未添加到播放列表或已被移除。处理建议：检查媒体源ID是否正确，确认媒体源已添加到播放列表中。 |
 
 **示例：**
 
@@ -504,7 +504,7 @@ clearPlaybackList(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | operation not allowed . Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作或播放列表中没有下一个媒体源。处理建议：检查播放器当前状态和播放列表内容。 |
 
 **示例：**
 
@@ -546,7 +546,7 @@ getCurrentMediaSource(): MediaSource | undefined;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -586,7 +586,7 @@ getMediaSources(): Array<MediaSource | undefined>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
 
 **示例：**
 
@@ -628,8 +628,8 @@ advanceToNextMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 上一个媒体源在播放列表中不存在。可能原因：播放列表中没有上一个媒体源。处理建议：检查播放列表中是否有上一个媒体源。 |
 
 **示例：**
 
@@ -675,8 +675,8 @@ advanceToPrevMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 下一个媒体源在播放列表中不存在。可能原因：播放列表中没有下一个媒体源。处理建议：检查播放列表中是否有下一个媒体源。 |
 
 **示例：**
 
@@ -731,8 +731,8 @@ advanceToMediaSource(id: string): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
+| 5400102  | 操作不允许。可能原因：当前播放器状态不允许执行此操作。处理建议：检查播放器当前状态是否符合接口调用要求。 |
+| 5400108  | 媒体源在播放列表中不存在。可能原因：指定的媒体源ID未添加到播放列表或已被移除。处理建议：检查媒体源ID是否正确，确认媒体源已添加到播放列表中。 |
 
 **示例：**
 
@@ -1434,10 +1434,10 @@ async function  test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
   avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-    if ((arrList) != null) {
-      console.info('Succeeded in doing getTrackDescription');
-    } else {
+    if (error) {
       console.error(`Failed to do getTrackDescription, error:${error}`);
+    } else {
+      console.info('Succeeded in doing getTrackDescription');
     }
   });
 }
@@ -3149,8 +3149,8 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
 | fd | number   | 是   | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取。 |
-| offset | number | 否   | 资源偏移量。需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。默认值为0。单位为字节。|
-| length | number | 否   | 资源长度。默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误，默认值为0。|
+| offset | number | 否   | 资源偏移量。取值范围[0, +∞)。需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。默认值为0。单位为字节。|
+| length | number | 否   | 资源长度。取值范围[0, +∞)。如果不传递该参数，默认使用文件中从偏移量开始的剩余字节；如果传递该参数，默认值为0，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。|
 
 **返回值：**
 
@@ -3711,7 +3711,7 @@ onPlaybackContentChanged(callback: Callback\<string>):void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<string> | 是 | 事件触发时调用的回调函数。 |
+| callback | Callback\<string> | 是 | 事件触发时调用的回调函数，接收媒体源ID作为参数。 |
 
 **示例：**
 
@@ -3742,7 +3742,7 @@ offPlaybackContentChanged(callback?: Callback\<string>):void;
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<string> | 否 | 当事件触发时调用的回调函数。若未指定此参数，则取消订阅该事件的所有回调函数。 |
+| callback | Callback\<string> | 否 | 指定要取消注册的回调方法。若未指定此参数，则取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
@@ -3809,7 +3809,7 @@ onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报的指标事件信息的方法。使用callback异步回调。|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报指标事件信息的回调方法，接收AVMetricsEvent数组作为参数。使用callback异步回调。|
 
 **示例：**
 
@@ -3840,7 +3840,7 @@ offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 上报的指标事件信息的方法。使用callback异步回调。|
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 指定要取消注册的回调方法。若未填写该参数，则取消订阅该事件的所有回调方法。|
 
 **示例：**
 
@@ -3899,7 +3899,7 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。如果未填写该参数，则取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
