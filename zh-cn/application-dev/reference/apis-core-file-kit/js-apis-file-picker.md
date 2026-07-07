@@ -674,7 +674,7 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用Promise异步回调。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -975,7 +975,7 @@ async function example01(context: common.UIAbilityContext) { // 需确保 contex
 
 select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 
-通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
+通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，传入参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
 
 > **说明：**
 >
@@ -1022,7 +1022,7 @@ async function example02(context: common.UIAbilityContext) { // 需确保 contex
 
 select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 
-通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。使用callback异步回调。
+通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。
 
 > **说明：**
 >
@@ -1065,7 +1065,7 @@ async function example03(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。使用Promise异步回调。
+通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。接口采用Promise异步返回形式，传入可选参数PhotoSaveOptions对象，返回保存文件的uri数组。
 
 > **说明：**
 >
@@ -1112,7 +1112,7 @@ async function example04(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。使用callback异步回调。
+通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。接口采用callback异步返回形式，传入参数PhotoSaveOptions对象，返回保存文件的uri数组。
 
 > **说明：**
 >
@@ -1156,7 +1156,7 @@ async function example05(context: common.UIAbilityContext) { // 需确保 contex
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。使用callback异步回调。
+通过保存模式拉起photoPicker界面，用户可以保存一个或多个图片/视频。接口采用callback异步返回形式，返回保存文件的uri数组。
 
 > **说明：**
 >
@@ -1226,7 +1226,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
 | MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)  | 否  | 是   | 可选择的媒体文件类型。若无此参数，则默认为图片和视频类型。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
-| maxSelectNumber       | number  | 否 | 是   | 选择媒体文件数量的最大值，默认值为50，有效值范围1-500。超出该范围时，传入值不生效，使用默认值。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。      |
+| maxSelectNumber       | number  | 否 | 是   | 选择媒体文件数量的最大值，默认值为50，有效值范围[1, 500]。超出该范围时，传入值不生效，使用默认值。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。      |
 
 ## PhotoSelectResult<sup>(deprecated)</sup>
 
