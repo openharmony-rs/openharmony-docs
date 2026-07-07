@@ -105,7 +105,6 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 ## 完整示例代码
 
 ArkTS-Dyn示例：
-  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -121,7 +120,7 @@ ArkTS-Dyn示例：
     aboutToAppear() {
       // 配置Web开启调试模式
       webview.WebviewController.setWebDebuggingAccess(true);
-      // 获取权限请求通知，点击onConfirm按钮后，拉起摄像头和麦克风。
+      // 获取摄像头和麦克风权限，在组件创建时主动申请权限。
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])
         .then((data) => {
@@ -267,11 +266,3 @@ ArkTS-Sta示例：
   </body>
   </html>
   ```
-
-## 常见问题
-
-进入应用后没有弹出系统侧与应用侧授权框，或只弹出应用侧授权框并授权后，无法开启摄像头和麦克风
-
-### 解决方法
-第一步：检查是否正确写了配置权限的json文档；
-第二步：进入设置，检查应用的摄像头和麦克风权限是否授权。
