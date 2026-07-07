@@ -29,6 +29,7 @@
 | -- | -- | -- |
 | [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | 拍照输出的回调。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | 拍照输出对象。<br> 可以使用[OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput)方法创建指针。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 
 ### 函数
 
@@ -76,6 +77,13 @@
 | [Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)](#oh_photooutput_setphotoqualityprioritization) | - | 设置拍照画质优先策略。 |
 | [bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)](#oh_photooutput_isautoextendedgainmapdeliverysupported) | - | 检查是否支持自动扩展增益图（Gainmap）的输出。 |
 | [Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)](#oh_photooutput_enableautoextendedgainmapdelivery) | - | 是否启用自动扩展增益图（Gainmap）的输出。 |
+| [Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)](#oh_photooutput_createphotocapturesettingext) | - | 创建拍照扩展设置的实例。 |
+| [Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_destroyphotocapturesettingext) | - | 销毁扩展拍照设置实例。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)](#oh_photocapturesettingext_setimagerotation) | - | 拍照扩展设置中的图像旋转角度。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)](#oh_photocapturesettingext_setlocation) | - | 拍照扩展设置中的图片位置信息。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)](#oh_photocapturesettingext_setmirror) | - | 拍照扩展设置中的镜像效果。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)](#oh_photocapturesettingext_setcompressionquality) | - | 拍照扩展设置中的图片压缩质量。 |
+| [Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_capture_withcapturesettingext) | - | 使用扩展拍照设置执行拍照操作。 |
 
 ## 函数说明
 
@@ -1063,5 +1071,179 @@ Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOu
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul><br>         <li>CAMERA_OK：方法调用成功。</li><br>         <li>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。</li><br>         <li>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。</li><br>         <li>CAMERA_SESSION_NOT_CONFIG：会话未配置。</li><br>         <li>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。</li><br>         </ul>|
+
+### OH_PhotoOutput_CreatePhotoCaptureSettingExt() 
+
+```c 
+Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting) 
+``` 
+
+**描述** 
+
+创建拍照扩展设置的实例。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | photoOutput 拍照输出实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，setting指向创建OH_Camera_PhotoCaptureSettingExt实例指针的指针。 |
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 | 
+
+### OH_PhotoOutput_DestroyPhotoCaptureSettingExt() 
+
+```c 
+Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting) 
+``` 
+
+**描述** 
+
+销毁拍照扩展设置对象的实例。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向扩展拍照设置实例的指针。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 | 
+
+### OH_PhotoCaptureSettingExt_SetImageRotation() 
+
+```c 
+Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation) 
+``` 
+
+**描述** 
+
+拍照扩展设置中的图像旋转角度。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation) rotation | 图像旋转角度，定义在[Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)枚举中。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 | 
+
+### OH_PhotoCaptureSettingExt_SetLocation() 
+
+```c 
+Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location) 
+```
+
+**描述** 
+
+拍照扩展设置中的图片位置信息。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，在Camera_Location枚举中定义。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 | 
+
+### OH_PhotoCaptureSettingExt_SetMirror() 
+
+```c 
+Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror) 
+``` 
+
+**描述** 
+
+拍照扩展设置中的镜像效果。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| bool mirror | 镜像效果开关。true表示启用，false表示禁用。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 | 
+
+### OH_PhotoCaptureSettingExt_SetCompressionQuality() 
+
+```c 
+Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality) 
+``` 
+
+**描述** 
+
+拍照扩展设置中的图片压缩质量。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 | 
+| uint8_t compressionQuality | 图片压缩质量，取值范围（1, 100），取值越大生成的图片质量越高，1 为最低质量，100 为最高质量。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 | 
+
+### OH_PhotoOutput_Capture_WithCaptureSettingExt() 
+
+```c 
+Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting) 
+``` 
+
+**描述** 
+
+使用扩展拍照设置执行拍照操作。 
+
+**起始版本：** 26.0.0 
+
+**参数：** 
+
+| 参数项 | 描述 | 
+| -- | -- | 
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向扩展拍照设置实例的指针。 | 
+
+**返回：** 
+
+| 类型 | 说明 | 
+| -- | -- | 
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 
