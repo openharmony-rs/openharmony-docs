@@ -582,6 +582,9 @@
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
+    <!--Del-->
+    - [内置环境变量说明（系统接口）](arkui-ts/ts-state-management-environment-variables-sys.md)
+    <!--DelEnd-->
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
     - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
     - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
