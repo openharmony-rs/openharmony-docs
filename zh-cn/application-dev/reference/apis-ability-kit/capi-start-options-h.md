@@ -1990,7 +1990,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(A
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
 | [AbilityRuntime_SupportedWindowMode](capi-context-constant-h.md#abilityruntime_supportedwindowmode) **supportedWindowModes | 启动Ability时的组件所支持的窗口模式。取值范围参见AbilityRuntime_SupportedWindowMode。 |
-| size | 组件所支持的窗口模式大小。 |
+| size_t &size | 组件所支持的窗口模式大小。 |
 
 **返回：**
 
