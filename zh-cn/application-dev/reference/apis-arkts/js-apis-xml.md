@@ -475,7 +475,6 @@ setAttributes(name: string, value: string): void
 | ------ | ------ | ---- | --------------- |
 | name   | string | 是   | 属性名。所组成的XML长度不能超过100000，不可为空字符。|
 | value  | string | 是   | 属性值。所组成的XML长度不能超过100000字符。|
-| value  | string | 是   | 属性值。所组成的XML长度不能超过100000个字符。|
 
 **错误码：**
 
