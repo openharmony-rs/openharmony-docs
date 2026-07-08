@@ -434,6 +434,18 @@
    ArkTS-Dyn示例：
 
     <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    imageEmbedding.loadModel()
+      .then(() => {
+        console.info('Succeeded in loading Model');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to load Model and code is ' + err.code);
+        // ...
+      })
+    ```
    
 
    ArkTS-Sta示例：
