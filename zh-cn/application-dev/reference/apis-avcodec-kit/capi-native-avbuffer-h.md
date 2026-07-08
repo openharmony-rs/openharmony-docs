@@ -67,13 +67,13 @@ OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t capacity | 创建内存的大小，单位字节。取值必须大于0，否则创建失败。 |
+| int32_t capacity | 创建内存的大小，单位字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVBuffer](capi-core-oh-avbuffer.md) * | 如果创建成功，则返回用于承载媒体数据的OH_AVBuffer实例指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.capacity <= 0。<br> 2.出现内部错误，系统没有资源等。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) * | 如果创建成功，则返回OH_AVBuffer实例的指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.capacity <= 0。<br> 2.出现内部错误，系统没有资源等。 |
 
 ### OH_AVBuffer_Destroy()
 
@@ -100,7 +100,7 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK(0)：操作成功。<br> AV_ERR_INVALID_VAL(3)：输入的buffer为空指针或者buffer格式校验失败。<br> AV_ERR_OPERATE_NOT_PERMIT(2)：输入的buffer不是用户创建的。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：输入的buffer为空指针或者buffer格式校验失败。<br> AV_ERR_OPERATE_NOT_PERMIT(2)：输入的buffer不是用户创建的。 |
 
 ### OH_AVBuffer_GetBufferAttr()
 
@@ -122,13 +122,13 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer实例的指针。 |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 指向OH_AVCodecBufferAttr实例的指针，用于接收从buffer获取到的pts、size、offset、flags属性。调用前需传入有效的实例指针。 |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 指向OH_AVCodecBufferAttr实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK(0)：操作成功。<br> AV_ERR_INVALID_VAL(3)：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。 |
 
 ### OH_AVBuffer_SetBufferAttr()
 
@@ -150,13 +150,13 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer实例的指针。 |
-| [const OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 指向OH_AVCodecBufferAttr实例的指针，用于提供要设置到buffer中的pts、size、offset、flags属性。 |
+| [const OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 指向OH_AVCodecBufferAttr实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK(0)：操作成功。<br> AV_ERR_INVALID_VAL(3)：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。<br> 3. 输入buffer中内存的size或offset是无效值。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。<br> 3. 输入buffer中内存的size或offset是无效值。 |
 
 ### OH_AVBuffer_GetParameter()
 
@@ -205,13 +205,13 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer实例的指针。 |
-| [const OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针，用于提供要设置到buffer中的除基础属性外的其他参数信息。 |
+| [const OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK(0)：操作成功。<br> AV_ERR_INVALID_VAL(3)：可能的原因：<br> 1. 输入的buffer或format为空指针。<br> 2. 输入buffer的meta为空指针。<br> 3. buffer结构校验失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或format为空指针。<br> 2. 输入buffer的meta为空指针。<br> 3. buffer结构校验失败。 |
 
 ### OH_AVBuffer_GetAddr()
 
