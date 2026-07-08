@@ -140,7 +140,7 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
+uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕ID。
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 delete region;
 region = nullptr;
@@ -194,7 +194,7 @@ OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_
 OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
 // 添加过滤通知音。
 OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
-// 排除指定窗口id。
+// 排除指定窗口ID。
 std::vector<int> windowIdsExclude = {};
 OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, windowIdsExclude.empty() ?
     nullptr : &windowIdsExclude[0], static_cast<int32_t>(windowIdsExclude.size()));
