@@ -3755,6 +3755,8 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 function getColorSpace(pixelMap: image.PixelMap) {
   try {
     const csm = pixelMap.getColorSpace();
@@ -4054,7 +4056,6 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
 function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
   let staticMetadata: image.HdrStaticMetadata = {
@@ -4198,7 +4199,8 @@ class MySequence implements rpc.Parcelable {
     return true;
   }
 }
-async function Marshalling() {
+
+async function marshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -4289,7 +4291,8 @@ class MySequence implements rpc.Parcelable {
     return true;
   }
 }
-async function Unmarshalling() {
+
+async function unmarshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -4468,7 +4471,7 @@ setMemoryNameSync(name: string): void
 
 | 参数名        | 类型                             | 必填 | 说明             |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| name | string | 是   | PixelMap内存标识符，只允许DMA和SHARE_MEMORY内存类型的PixelMap设置。DMA内存设置名称长度取值范围为[1, 255]，SHARE_MEMORY内存设置名称长度取值范围为[1, 244]。单位：字节（Byte）。 |
+| name | string | 是   | PixelMap内存标识符，只允许DMA和SHARE_MEMORY内存类型的PixelMap设置。DMA内存设置名称长度取值范围为[1, 255]字节，SHARE_MEMORY内存设置名称长度取值范围为[1, 244]字节。 |
 
 **错误码：**
 
