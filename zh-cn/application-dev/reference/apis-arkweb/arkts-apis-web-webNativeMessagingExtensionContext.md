@@ -147,7 +147,7 @@ UIAbility被启动后，有如下情况:
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled by the AppGallery and cannot be started. |
+| 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by Enterprise Device Manager and cannot be started. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
