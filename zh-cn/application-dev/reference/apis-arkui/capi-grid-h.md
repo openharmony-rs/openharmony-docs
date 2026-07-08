@@ -10,7 +10,7 @@
 
 定义Grid组件相关的枚举和接口。
 
-**引用文件：** <arkui/grid.h>
+**引用文件：** <arkui/node_attributes/grid.h>
 
 **库：** libace_ndk.z.so
 
@@ -152,7 +152,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
@@ -179,7 +179,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数组大小不够。<br>         异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 数组大小不够。<br>         异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 

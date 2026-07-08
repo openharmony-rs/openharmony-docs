@@ -35,8 +35,6 @@ getStatus(options?: GetStatusOptions): void;
 
 获取设备当前的充电状态及剩余电量。
 
-**模型约束：** 此接口可在FA模型和Stage模型下使用。
-
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 **参数：**
@@ -116,8 +114,6 @@ export default {
 
 包含接口调用结果的对象。
 
-**模型约束：** 此接口可在FA模型和Stage模型下使用。
-
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
@@ -129,8 +125,6 @@ export default {
 ## BatteryResponse<sup>(deprecated)</sup>
 
 包含充电状态及剩余电量的对象。
-
-**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 

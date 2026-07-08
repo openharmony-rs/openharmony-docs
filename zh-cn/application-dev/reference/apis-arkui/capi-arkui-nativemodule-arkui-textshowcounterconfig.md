@@ -12,7 +12,7 @@ typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
 
 ## 概述
 
-定义文本输入框的计数显示器配置。
+定义文本输入框的计数器配置，用于管理字符计数，帮助用户实时了解输入进度，防止超出字符限制。
 
 **起始版本：** 22
 

@@ -1679,7 +1679,7 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("Select")
-        **
+        /**
          * Complete style customization for dividers between drop-down options
          * strokeWidth: width of the divider. The unit is vp, which is used for consistent adaptation across different screens.
          * color: light gray.
@@ -1831,6 +1831,7 @@ struct Index {
   }
 }
 ```
+
 
 ### Example 11: Setting System Material for the Select Component and Drop-down Menu
 

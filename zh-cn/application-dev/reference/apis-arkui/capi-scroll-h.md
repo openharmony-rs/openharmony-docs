@@ -10,7 +10,7 @@
 
 定义Scroll组件相关的枚举。
 
-**引用文件：** <arkui/scroll.h>
+**引用文件：** <arkui/node_attributes/scroll.h>
 
 **库：** libace_ndk.z.so
 

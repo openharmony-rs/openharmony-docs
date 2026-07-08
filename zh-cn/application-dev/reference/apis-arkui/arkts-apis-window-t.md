@@ -25,7 +25,7 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
-| 'navigation'   | <!--RP13--><!--RP13End-->三键导航栏。   |
+| 'navigation'   | 三键导航栏<!--RP13-->或工具栏。当前工具栏仅Car设备支持。<!--RP13End-->   |
 | 'navigationIndicator'   | 底部导航。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
@@ -112,5 +112,5 @@ type WindowEventListener = (windowId: number, event: window.WindowEventType) => 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ------------------ |
-| windowId | number  | 是  | 触发生命周期变更的窗口ID。|
+| windowId | number  | 是  | 触发生命周期变更的窗口ID，用于标识发生状态变化的特定窗口。|
 | event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

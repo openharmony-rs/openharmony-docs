@@ -582,7 +582,8 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture panGesture");
     }
     // 创建捏合手势
-    auto pinchGesture = gestureApi->createPinchGesture(0, 0);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(pinchGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",

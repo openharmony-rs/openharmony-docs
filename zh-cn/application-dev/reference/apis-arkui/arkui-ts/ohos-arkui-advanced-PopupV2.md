@@ -34,8 +34,6 @@ PopupV2(options: PopupV2InitInfo): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名  | 类型                          | 必填 | 说明                  |
@@ -52,13 +50,11 @@ PopupV2(options: PopupV2InitInfo): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 | 名称        | 类型       | 只读      | 可选      | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
 | icon      | [ResourceStr](ts-types.md#resourcestr)                 | 否   | 是 | 设置PopupV2图标。<br/>**说明：** 默认值：''，不显示图标。  |
 | title     | [ResourceStr](ts-types.md#resourcestr)                        | 否   | 是  | 设置PopupV2标题文本。<br/>**说明：** 默认值：''，不显示标题文本。 |
-| message   | [ResourceStr](ts-types.md#resourcestr)                       | 是  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
+| message   | [ResourceStr](ts-types.md#resourcestr)                       | 否  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
 | titleModifier      | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                | 否   | 是 | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，使用系统标题文本属性。|
 | iconModifier     | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                        | 否   | 是  | 设置图标属性，如图标颜色、大小、边框等。<br/>默认值：undefined，使用系统图标属性。|
 | messageModifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                       | 否  | 是  | 设置内容文本属性，如设置内容文本颜色、字体大小、字重等。<br/>默认值：undefined，使用系统内容文本属性。|
@@ -78,8 +74,6 @@ PopupV2Button定义按钮的相关属性和事件。
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                 |
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |

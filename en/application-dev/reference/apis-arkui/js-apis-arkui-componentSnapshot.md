@@ -244,7 +244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
-| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+|
 
 > **NOTE**
 > 
@@ -358,7 +358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------ | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
-| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>Applicable versions: 12+|
 
 > **NOTE**
 > 
@@ -462,7 +462,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+|
 
 > **NOTE**
 > 

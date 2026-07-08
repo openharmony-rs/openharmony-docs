@@ -107,7 +107,7 @@ export struct FocusActiveExample {
 
 在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
-<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) --> 
+<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
 
 ``` TypeScript
 @Entry
@@ -151,7 +151,7 @@ export struct FocusTransferExample {
                   console.error('Get string failed!');
                 }
               })
-            Button('button 3')
+            Button('Button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
@@ -505,7 +505,7 @@ export struct OnFocusBlur {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -534,7 +534,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
@@ -553,7 +553,7 @@ export struct FocusAndBlurExample {
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onFocus`);
           })
           .onBlur(() => {
             hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
@@ -623,7 +623,7 @@ focusOnTouch(value: boolean)
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -656,7 +656,7 @@ focusOnTouch(value: boolean)
              })
            Divider()
  
-           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusOnTouch为true
              .borderColor(this.color2)
              .borderWidth(2)
              .width(300)

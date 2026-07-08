@@ -75,7 +75,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | Name          | Type            | Read-Only   | Optional          | Description                        |
 | ---------------|------------| --------------- | -----------------------------| -----------------------------|
 | size           | [Size](#size) | No      | No    | Component size.                   |
-| localOffset    | [Offset](#offset) | No      | No   | Offset of the component relative to the parent component.        |
+| localOffset    | [Offset](#offset) | No      | No   | Offset of the component relative to its parent component.        |
 | windowOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the window.          |
 | screenOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the screen.          |
 | translate      | [TranslateResult](#translateresult)| No      | No    | Translation of the component.               |

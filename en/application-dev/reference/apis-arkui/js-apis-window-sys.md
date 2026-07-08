@@ -1,8 +1,8 @@
 # @ohos.window (Window) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -56,7 +56,7 @@ Enumerates the window types.
 | TYPE_WALLET_SWIPE_CARD<sup>15+</sup>| 22      | Wallet swipe card window.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
 | TYPE_SCREEN_CONTROL<sup>15+</sup>   | 23      | Top-level window used for locking touch input, which intercepts screen touch and click events.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
 | TYPE_FLOAT_NAVIGATION<sup>17+</sup> | 24      | Floating window with a three-button navigation bar.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
-| TYPE_DYNAMIC<sup>20+</sup> | 25      | System window that allows for adjustable z-levels.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
+| TYPE_DYNAMIC<sup>20+</sup> | 25      | System window that allows for adjustable z-levels.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets, but does not take effect or report errors when being called on other devices.|
 | TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26      | Window for multi-screen collaboration.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
 
 ## Configuration<sup>9+</sup>
@@ -198,7 +198,7 @@ The configuration does not take effect for inter-application transitions, where 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on tablets in non-[free windows mode](../../windowmanager/window-terminology.md#free-windows) and phones. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**: This API can be properly called on tablets in non-[free windows](../../windowmanager/window-terminology.md#free-multi-window-mode) mode and phones. If being called on other device types, this API does not take effect and does not report errors.
 
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -292,9 +292,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -353,9 +353,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -456,8 +456,8 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -496,8 +496,8 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -1213,6 +1213,8 @@ You are advised to set different **zIndex** values for different types of window
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets, but does not take effect or report errors when being called on other devices.
+
 **Parameters**
 
 | Name         | Type  | Mandatory | Description                   |
@@ -1331,12 +1333,12 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.moveMainWindowToTargetDisplay
-moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+moveMainWindowToTargetDisplay(displayId: number, windowId: number, userId?: number): Promise&lt;void&gt;
 
-Moves the specified main window to the specified display. This API uses a promise to return the result.
+Moves the specified main window of the current user or a specified user to a specified display. This API uses a promise to return the result.
 
-- For window movement between the displays of a [main screen](../../displaymanager/display-terminology.md#main-screen) or an [extended screen](../../displaymanager/display-terminology.md#extended-screen) and a [virtual screen](../../displaymanager/display-terminology.md#virtual-screen), or of virtual screens, only the main window and its child windows are moved to the corresponding display and raised. If there are child windows, the topmost child window that can obtain focus will obtain the focus; otherwise, the main window will obtain the focus.
-- For window movement between the displays of a main screen and an extended screen, only the main window is moved to the corresponding display, and is raised and obtains focus.
+- For window movement between the displays of a [main screen](../../displaymanager/display-terminology.md#main-screen) or an [extended screen](../../displaymanager/display-terminology.md#extended-screen) and a [virtual screen](../../displaymanager/display-terminology.md#virtual-screen), or of virtual screens, only the main window, child windows, and modal windows are moved to the corresponding display and raised. If there are child windows, the topmost child window that can obtain focus will obtain the focus; otherwise, the main window will obtain the focus.
+- For window movement between the displays of a main screen and an extended screen, only the main window is moved to the corresponding display and raised.
 
 <!--RP3--><!--RP3End-->
 
@@ -1354,6 +1356,7 @@ Moves the specified main window to the specified display. This API uses a promis
 | -------------- | ------ | ----- | ----------------------- |
 | displayId | number | Yes   | ID of the display to which the window is moved. The value must be a non-negative integer. You can obtain the value by calling [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain [properties](arkts-apis-window-i.md#windowproperties) and then using **properties.displayId**. You can also obtain the value by using [id](js-apis-display.md#attributes) of the [Display](js-apis-display.md#display) object.|
 | windowId | number | Yes   | ID of the window to be moved. The value must be an integer greater than 0. You can obtain the value by calling [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain [properties](arkts-apis-window-i.md#windowproperties) and then using **properties.id**.|
+| userId | number | No   | ID of the specified user. The value must be greater than or equal to 0. If this parameter is left empty or set to a value less than or equal to -1, the current user is used.|
 
 **Return value**
 
@@ -1373,6 +1376,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
 | 1300008 | The display device is abnormal.           |
+| 1300016 | Parameter error. Possible cause: 1. The userId is not exist.           |
 
 **Example**
 
@@ -1433,7 +1437,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1487,7 +1491,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1536,7 +1540,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. |
 
 **Example**
@@ -1576,7 +1580,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. |
 
 **Example**
@@ -1614,7 +1618,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1656,7 +1660,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1696,7 +1700,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1738,7 +1742,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1779,7 +1783,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -1849,7 +1853,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -1897,7 +1901,7 @@ Attaches a first-level child window to the main window to maintain a fixed relat
 
 The relative position is represented by the anchor point offset between the child window and the parent window. The child window and the parent window use the same window anchor point.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by [independent child windows](../../windowmanager/window-terminology.md#application-window), result code 1300004 will be returned.
+This API can be called by non-[independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). When this API is called by [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window), error code 1300004 will be returned.
 
 > **NOTE**
 >
@@ -1939,7 +1943,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
 
 **Example**
 
@@ -1995,7 +1999,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 Detach a first-level child window from the main window to cancel a fixed relative position. This API uses a promise to return the result.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by [independent child windows](../../windowmanager/window-terminology.md#application-window), result code 1300004 will be returned.
+This API can be called by non-[independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). When this API is called by [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window), error code 1300004 will be returned.
 
 > **NOTE**
 >
@@ -2089,7 +2093,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2177,7 +2181,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2258,7 +2262,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2401,7 +2405,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2440,7 +2444,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
@@ -2477,7 +2481,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2514,7 +2518,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2557,7 +2561,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2601,7 +2605,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2643,7 +2647,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
 
@@ -2675,7 +2679,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2716,7 +2720,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2754,7 +2758,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2794,7 +2798,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2831,7 +2835,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2854,7 +2858,7 @@ Raises the application child window to the top layer of the application. This AP
 
 Before calling this API, ensure that the child window has been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
+This API can be called by non-[independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window).
 
 **System API**: This is a system API.
 
@@ -2939,7 +2943,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
@@ -2986,7 +2990,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
@@ -3072,7 +3076,7 @@ Raises a child window above a target child window. This API uses an asynchronous
 
 Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed for each.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
+This API can be called by non-[independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window).
 
 **System API**: This is a system API.
 
@@ -3149,7 +3153,7 @@ Raises a child window above a target child window. This API uses a promise to re
 
 Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed for each.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
+This API can be called by non-[independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window).
 
 **System API**: This is a system API.
 
@@ -3239,7 +3243,7 @@ You need to pass the ID of the target main window. Both the calling window and t
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
 **Parameters**
 
@@ -3539,7 +3543,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in PCs/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3618,7 +3622,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in PCs/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3876,7 +3880,7 @@ Called by the main window to place the window above all the other windows. This 
 
 **Device behavior differences**
 
-In versions earlier than <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
+In versions earlier than <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
@@ -3987,7 +3991,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 Shows or hides the maximize, minimize, and split-screen buttons on the title bar.
 
-This API can be called only by the main window and [independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by other windows, result code 1300004 will be returned.
+This API can be called only by the main window and [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window). When this API is called by other windows, error code 1300004 will be returned.
 
 This API takes effect only for the title bar buttons (maximize, minimize, and split-screen) that are available in the current scenario.
 
@@ -3995,7 +3999,7 @@ This API takes effect only for the title bar buttons (maximize, minimize, and sp
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
 **Parameters**
 
@@ -4059,7 +4063,7 @@ export default class EntryAbility extends UIAbility {
 
 setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
-Allows a [system window](../../windowmanager/window-terminology.md#system-window) to lock or unlock its own screen-rotation behavior. When locked, the window's orientation remains unchanged. When unlocked, the window's orientation follows the main window's orientation, the system rotation-lock button, and the device's physical rotation sensor. If this API is called by a non-system window, error code 1300029 is thrown. This API uses a promise to return the result.
+Allows a [system window](../../windowmanager/window-type-overview.md#system-window) to lock or unlock its own screen-rotation behavior. When locked, the window's orientation remains unchanged. When unlocked, the window's orientation follows the main window's orientation, the system rotation-lock button, and the device's physical rotation sensor. If this API is called by a non-system window, error code 1300029 is thrown. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -4123,7 +4127,7 @@ promise.then(() => {
 
 getRotationLocked(): boolean
 
-Checks whether the [system window](../../windowmanager/window-terminology.md#system-window) has its screen rotation locked. If this API is called by a non-system window, error code 1300029 is thrown.
+Checks whether the [system window](../../windowmanager/window-type-overview.md#system-window) has its screen rotation locked. If this API is called by a non-system window, error code 1300029 is thrown.
 
 **System API**: This is a system API.
 
@@ -4430,13 +4434,107 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### startMovingWithOptions
+
+startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise&lt;void&gt;
+
+Starts moving a window. This API uses a promise to return the result.
+
+The window moves along with the cursor or touch point only when this API is called in the callback function of [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch), where the event type is **TouchType.Down**.
+
+In click-and-drag scenarios, if you do not want the drag to start as soon as you press down, you can call this API to start the moving effect when a [TouchType.Move](./arkui-ts/ts-appendix-enums.md#touchtype) event occurs (as long as **TouchType.Down** has already been triggered).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: On a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and in the freeform window state, this API takes effect for system windows, application main windows, application subwindows, global floating windows, and modal windows. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API takes effect only for system windows, application subwindows, global floating windows, and modal windows. If this API is called for an application main window, error code 801 or 1300004 is returned.
+
+**Parameters**
+
+| Name| Type | Mandatory| Description|
+| ----- | ---------------------------- | -- | --------------------------------- |
+| startMovingOptions  | [StartMovingOptions](#startmovingoptions) | No| Options for starting window movement.|
+
+**Return value**
+
+| Type                | Description                  |
+| ------------------- | ---------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300001 | Repeated operation. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**Example**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if (event.type == TouchType.Down) {
+              let options: window.StartMovingOptions = {
+                needFocused: true,
+                avoidRect: {
+                  left: 0,
+                  top: 0,
+                  width: 200,
+                  height: 200
+                }
+              };
+              try {
+                windowClass.startMovingWithOptions(options)
+                  .then(() => {
+                    console.info('Succeeded in starting moving window.');
+                  })
+                  .catch((err: BusinessError) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+              } catch (exception) {
+                console.error(`Failed to start moving. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## SubWindowOptions<sup>11+</sup>
 
 Describes the parameters used for creating a child window.
 
 | Name     | Type | Read-Only| Optional| Description        |
 | ---------- | ---- | ---- | ---- | ----------- |
-| isTopmost<sup>12+</sup>  | boolean | No| Yes| Whether the child window is topmost. **true** if topmost, **false** otherwise. The default value is **false**.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
+| isTopmost<sup>12+</sup>  | boolean | No| Yes| Whether the child window is topmost. **true** if topmost, **false** otherwise. The default value is **false**. This parameter must be used together with **isModal**. The setting of **isTopmost** takes effect only when **isModal** is set to **true**. If **isModal** is set to **false** and **isTopmost** is set to **true**, error code 401 is returned.<br>**System API**: This is a system API.<br>**System capability**: SystemCapability.Window.SessionManager|
 
 ## WindowStage<sup>9+</sup>
 
@@ -4464,7 +4562,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 12+|
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
 
@@ -4508,7 +4606,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
@@ -4634,7 +4732,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **Example**
@@ -4716,7 +4814,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **Example**
@@ -4799,7 +4897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **Example**
@@ -4906,5 +5004,22 @@ Describes the parameters for creating a window for a UI ServiceExtensionAbility.
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | No| No  | Rectangular area of the window.|
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | No| Yes| Parameters used for creating a child window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SUB_WINDOW**. Otherwise, the window fails to be created.|
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | No| Yes| Parameters for creating a system window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SYSTEM_WINDOW**. Otherwise, the window fails to be created.|
+
+## StartMovingOptions
+
+Defines the options for window movement.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name    | Type     | Read-Only| Optional| Description              |
+| -------- | -------- | ---- | ---- | ------------------ |
+| needFocused | boolean  | No  | Yes  | Whether a window can be moved only when it is focused. The default value is **true**.<br>- **true**: A window can be moved only when it is focused.<br>- **false**: A window can be moved even when it is not focused.|
+| avoidRect | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Avoid area when a window is moved. The upper left corner of the window is used as the origin, and it moves with the window. The system restricts the window position based on the minimum bounding rectangle area formed by the window area and the avoid area. If the minimum bounding rectangle area cannot be completely accommodated within the available area of the corresponding screen, the avoid area is considered invalid and avoidance correction is not performed. Otherwise, the system adjusts the window position based on the following rules:<br>- In single-screen movement scenarios, ensure that the avoid area is completely within the available area of the current screen.<br>- In cross-screen movement scenarios, ensure that the avoid area is completely within the available area of the current screen before the movement and that the window is displayed only on the current screen. After the movement, ensure that the avoid area is completely within the available area of the target screen and that the window is displayed only on the target screen. During the entire movement process, the window is displayed only on one screen and is not partially displayed on other screens.|
 
 <!--no_check-->
