@@ -64,7 +64,6 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
@@ -105,7 +104,6 @@ constructor()
 **示例：**
 
 ```ts
-import { picker } from '@kit.CoreFileKit';
 let documentPicker = new picker.DocumentViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -136,7 +134,6 @@ constructor(context: Context, window: window.Window)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 import { window } from '@kit.ArkUI';
 @Entry
 @Component
@@ -196,7 +193,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions = new picker.DocumentSelectOptions();
@@ -218,7 +214,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions: picker.DocumentSelectOptions = {
@@ -264,7 +259,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions = new picker.DocumentSelectOptions();
@@ -288,7 +282,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions: picker.DocumentSelectOptions = {
@@ -335,7 +328,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -358,7 +350,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -408,7 +399,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
@@ -431,7 +421,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions: picker.DocumentSaveOptions = {
@@ -477,7 +466,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
@@ -502,7 +490,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     const documentSaveOptions: picker.DocumentSaveOptions = {
@@ -553,7 +540,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -576,7 +562,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -628,7 +613,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
@@ -661,7 +645,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions: picker.DocumentSaveOptions = {
@@ -723,7 +706,6 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
@@ -764,7 +746,6 @@ constructor()
 **示例：**
 
 ```ts
-import { picker } from '@kit.CoreFileKit';
 let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -801,7 +782,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions = new picker.AudioSelectOptions();
@@ -823,7 +803,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions: picker.AudioSelectOptions = {
@@ -867,7 +846,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions = new picker.AudioSelectOptions();
@@ -891,7 +869,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions: picker.AudioSelectOptions = {
@@ -936,7 +913,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
@@ -959,7 +935,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
@@ -1010,7 +985,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions = new picker.AudioSaveOptions();
@@ -1033,7 +1007,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions: picker.AudioSaveOptions = {
@@ -1077,7 +1050,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions = new picker.AudioSaveOptions();
@@ -1102,7 +1074,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions: picker.AudioSaveOptions = {
@@ -1147,7 +1118,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
@@ -1170,7 +1140,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import picker from '@ohos.file.picker';
 function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
@@ -1427,7 +1396,6 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct Index {
@@ -1472,7 +1440,6 @@ constructor()
 **示例：**
 
 ```ts
-import { picker } from '@kit.CoreFileKit';
 let photoPicker = new picker.PhotoViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
@@ -1511,7 +1478,6 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example01(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSelectOptions = new picker.PhotoSelectOptions();
@@ -1560,7 +1526,6 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example02(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSelectOptions = new picker.PhotoSelectOptions();
@@ -1610,7 +1575,6 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example03(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoPicker = new picker.PhotoViewPicker(context);
@@ -1661,7 +1625,6 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example04(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSaveOptions = new picker.PhotoSaveOptions();
@@ -1707,7 +1670,6 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example05(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSaveOptions = new picker.PhotoSaveOptions();
@@ -1754,7 +1716,6 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 async function example06(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoPicker = new picker.PhotoViewPicker(context);
