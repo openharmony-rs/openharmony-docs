@@ -8,7 +8,7 @@
 
 自定义组件的生命周期回调函数用于通知开发者该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。该生命周期机制涵盖了自定义组件的初始化、出现、构建、回收与复用、激活与非激活、销毁等阶段，开发者可在相应阶段的回调中执行状态修改、数据埋点上报、监听注册等操作，还可借助CustomComponentLifecycle对生命周期状态进行监控与观察，适用于需要对组件生命周期进行精细化管理（如组件复用回收、状态埋点、激活控制等）的场景。
 
-开发者指南见：[自定义组件生命周期（推荐）](../../../ui/state-management/arkts-custom-components-new-lifecycle.md)。
+开发指南参考：[自定义组件生命周期（推荐）](../../../ui/state-management/arkts-custom-components-new-lifecycle.md)。
 
 >**说明：**
 >
@@ -52,7 +52,7 @@ ComponentAppear: MethodDecorator
 
 ComponentBuilt: MethodDecorator
 
-\@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
+\@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在此阶段实现埋点数据上报等不影响实际UI的功能。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -112,7 +112,7 @@ ComponentReuse: MethodDecorator
 
 ComponentRecycle: MethodDecorator
 
-当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用\@ComponentRecycle装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用\@ComponentRecycle装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -128,7 +128,7 @@ ComponentRecycle: MethodDecorator
 
 ComponentActive: MethodDecorator
 
-自定义组件由非激活状态转变为激活状态后，调用此装饰器装饰的函数。在组件回收复用场景下，当缓存的组件被重新复用（即从回收池重新添加到节点树）时，组件由非激活状态转为激活状态，触发此回调。
+自定义组件由非激活状态转变为激活状态后，调用@ComponentActive装饰的函数。在组件回收复用场景下，当缓存的组件被重新复用（即从复用池重新添加到节点树）时，组件由非激活状态转为激活状态，触发此回调。
 
 **起始版本：** 26.0.0
 
@@ -146,7 +146,7 @@ ComponentActive: MethodDecorator
 
 ComponentInactive: MethodDecorator
 
-自定义组件由激活状态转变为非激活状态后，调用此装饰器装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。
+自定义组件由激活状态转变为非激活状态后，调用@ComponentInactive装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。
 
 **起始版本：** 26.0.0
 
@@ -310,7 +310,7 @@ aboutToReuse?(params?: Record\<string, Object \| undefined \| null\>): void
 
 aboutToRecycle?(): void
 
-当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -507,17 +507,17 @@ struct Child {
   @ComponentAppear
   myAppear() {
     this.label = 'myAppear';
-    hilog.info(0x0000, 'testTag', 'Child myAppear');
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentBuilt
   myBuilt() {
     this.label = 'myBuilt';
-    hilog.info(0x0000, 'testTag', 'Child myBuilt');
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentRecycle
   myRecycle() {
     this.label = 'myRecycle';
-    hilog.info(0x0000, 'testTag', 'Child myRecycle');
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentDisappear
   myDisappear() {
@@ -526,14 +526,13 @@ struct Child {
   @ComponentReuse
   myReuse() {
     this.label = 'myReuse';
-    hilog.info(0x0000, 'testTag', 'Child myReuse');
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   build() {
     Column() {
       Text(this.message.value)
         .fontSize(30)
     }
-    .borderWidth(1)
     .height(100)
   }
 }
