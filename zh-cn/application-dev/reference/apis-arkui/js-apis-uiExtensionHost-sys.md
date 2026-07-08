@@ -745,8 +745,7 @@ export default class EntryAbility extends UIExtensionAbility {
     aboutToDisappear(): void {
       this.extensionHostWindow?.off('windowSizeChange');
       this.extensionHostWindow?.off('avoidAreaChange');
-      let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
-      promise?.then(()=> {
+      this.extensionHostWindow?.hideNonSecureWindows(false)?.then(()=> {
         console.info(`Succeeded in showing the non-secure windows.`);
       }).catch((err: BusinessError)=> {
         console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
