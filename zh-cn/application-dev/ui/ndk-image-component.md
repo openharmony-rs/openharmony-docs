@@ -409,6 +409,11 @@ nativeNodeApi->unregisterNodeEventReceiver();
     **接口声明**
 
     <!-- @[index_d_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
+    export const createNativeRoot: (content: Object) => void;
+    export const destroyNativeRoot: () => void;
+    ```
 
     **NAPI初始化**
 
