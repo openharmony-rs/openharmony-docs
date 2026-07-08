@@ -472,6 +472,19 @@
    ArkTS-Dyn示例：
 
     <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+    imageEmbedding.getEmbedding(image)
+      .then((data: Array<number>) => {
+        console.info('Succeeded in getting Embedding');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to get Embedding and code is ' + err.code);
+        // ...
+      })
+    ```
    
 
    ArkTS-Sta示例：
