@@ -63,20 +63,15 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
+
 
    ArkTS-Sta示例：
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
-   ```
+
 
 2. 获取文本嵌入模型。
 
@@ -84,30 +79,11 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   let textConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let textEmbedding:intelligence.TextEmbedding;
-   ```
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
@@ -121,7 +97,7 @@
    }
    let textEmbedding:intelligence.TextEmbedding;
    ```
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    intelligence.getTextEmbeddingModel(textConfig)
@@ -142,23 +118,13 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   textEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    textEmbedding?.loadModel()
@@ -178,29 +144,13 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   let splitConfig:intelligence.SplitConfig = {
-     size:10,
-     overlapRatio:0.1
-   }
-   let splitText = 'text';
-   
-   intelligence.splitText(splitText, splitConfig)
-     .then((data:Array<string>) => {
-       console.info('Succeeded in splitting Text');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to split Text and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
@@ -226,35 +176,12 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   let text = 'text';
-   textEmbedding.getEmbedding(text)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   
-   let batchTexts = ['text1','text2'];
-   textEmbedding.getEmbedding(batchTexts)
-     .then((data:Array<Array<number>>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let text = 'text';
@@ -286,19 +213,8 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   textEmbedding.releaseModel()
-     .then(() => {
-       console.info('Succeeded in releasing Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to release Model and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
@@ -322,12 +238,8 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
 
    ArkTS-Sta示例：
 
@@ -343,30 +255,11 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   let imageConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let imageEmbedding:intelligence.ImageEmbedding;
-   ```
-   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   intelligence.getImageEmbeddingModel(imageConfig)
-     .then((data:intelligence.ImageEmbedding) => {
-       console.info('Succeeded in getting ImageModel');
-       imageEmbedding = data;
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get ImageModel and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
@@ -401,19 +294,8 @@
 
    ArkTS-Dyn示例：
 
-    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   imageEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
@@ -437,20 +319,8 @@
 
    ArkTS-Dyn示例：
 
-    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-   imageEmbedding.getEmbedding(image)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
 
    ArkTS-Sta示例：
 
@@ -475,19 +345,9 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   imageEmbedding.releaseModel()
-     .then(() => {
-       console.info('Succeeded in releasing Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to release Model and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
    ArkTS-Sta示例：
 
