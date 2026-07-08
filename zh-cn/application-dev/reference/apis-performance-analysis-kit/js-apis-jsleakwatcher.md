@@ -281,7 +281,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 | ------- | ------- | ------- | ------- | ------- | 
 | monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
 | objectUniqueIDs | Array&lt;number&gt; | 否   | 是   | 被监测泄漏对象ID列表。<br>只作用于自定义组件，不会影响其他组件类型的监测。<br>例如：白名单中设置的对象类名ID与自定义ID列表存在相同值时，生效自定义ID列表参数。<br>默认为空数组。 |
-| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms，取值范围为[90000, +∞)。<br>默认为90000ms。<br>如果应用输入的自定义检测间隔时间小于默认值，JSLeakWatcher强制将间隔设置为默认值。<br>当前jsLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大该参数，减少卡顿频率。<br>传入不在取值范围内的值时将使用默认值。 |
+| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms，取值范围为[90000, +∞)。<br>默认为90000ms。<br>如果应用输入的自定义检测间隔时间小于默认值，jsLeakWatcher强制将间隔设置为默认值。<br>当前jsLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大该参数，减少卡顿频率。<br>传入不在取值范围内的值时将使用默认值。 |
 | fgLeakCountThreshold | number | 否 | 是 | 应用在前台泄漏个数达到设定值触发dump，取值范围为[0, +∞)。<br>GC/Dump阶段，大于等于5时触发Dump。<br>阈值默认为5。<br>传入不在取值范围内的值时将使用默认值。 |
 | bgLeakCountThreshold | number | 否 | 是 | 应用在后台泄漏个数达到设定值触发dump，取值范围为[0, +∞)。<br>GC/Dump阶段，大于等于1时触发Dump。<br>阈值默认为1。<br>传入不在取值范围内的值时将使用默认值。 |
 | maxStoredHeapDumps | number | 否 | 是 | 最大dump保存个数，取值范围为(0, 10]，避免磁盘空间占满，超过则删除时间戳最小的rawheap、jsleaklist文件。<br>默认保存10个rawheap、10个jsleaklist文件。<br>传入不在取值范围内的值时将使用默认值。 |
