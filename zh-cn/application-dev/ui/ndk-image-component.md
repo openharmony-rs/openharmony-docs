@@ -437,6 +437,165 @@ nativeNodeApi->unregisterNodeEventReceiver();
     **ImageExample.cpp**
 
     <!-- @[image_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    
+    ``` C++
+    
+    // 函数1：初始化 + Column + 第一张图
+    ArkUI_NodeHandle CreateImageColumnAndFirstImage()
+    {
+        auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
+        if (nativeNodeApi == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Get native node API failed");
+            return nullptr;
+        }
+    
+        // 注册全局事件接收器
+        nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
+        
+        // 创建Column容器
+        ArkUI_NodeHandle column = nativeNodeApi->createNode(ARKUI_NODE_COLUMN);
+        if (column == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Create Column failed");
+            return nullptr;
+        }
+        g_rootNode = column;
+    
+        // 设置Column padding属性
+        ArkUI_NumberValue paddingValue[] = {{.f32 = 20.0f}};
+        ArkUI_AttributeItem paddingItem = {paddingValue, 1};
+        nativeNodeApi->setAttribute(column, NODE_PADDING, &paddingItem);
+    
+        // 创建Image组件1 - 基础图片
+        ArkUI_NodeHandle image1 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
+        if (image1 != nullptr) {
+            g_image1 = image1;
+            // 设置图片源（使用rawfile资源）
+            ArkUI_AttributeItem srcItem = {nullptr, 0, "resources/rawfile/sky.png"};
+            nativeNodeApi->setAttribute(image1, NODE_IMAGE_SRC, &srcItem);
+    
+            // 设置宽高
+            ArkUI_NumberValue widthValue[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem widthItem = {widthValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_WIDTH, &widthItem);
+    
+            ArkUI_NumberValue heightValue[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem heightItem = {heightValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_HEIGHT, &heightItem);
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_BORDER_WIDTH, &borderWidthItem);
+    
+            // 设置缩放类型
+            ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
+            ArkUI_AttributeItem fitItem = {fitValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
+    
+            // 设置插值效果
+            ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
+            ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
+    
+            // 注册事件
+            nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
+            nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
+    
+            // 添加到Column
+            nativeNodeApi->addChild(column, image1);
+        }
+        return column;
+    }
+    
+    // 函数2：添加第二张图
+    void AddSecondImage(ArkUI_NodeHandle column)
+    {
+        auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
+        if (nativeNodeApi == nullptr || column == nullptr) {
+            return;
+        };
+    
+        // 创建Image组件2 - 带填充颜色的SVG
+        ArkUI_NodeHandle image2 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
+        if (image2 != nullptr) {
+            // 设置图片源（可以是SVG）
+            ArkUI_AttributeItem srcItem2 = {nullptr, 0, "resources/rawfile/cloud.svg"};
+            nativeNodeApi->setAttribute(image2, NODE_IMAGE_SRC, &srcItem2);
+    
+            // 设置宽高
+            ArkUI_NumberValue widthValue2[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem widthItem2 = {widthValue2, 1};
+            nativeNodeApi->setAttribute(image2, NODE_WIDTH, &widthItem2);
+    
+            ArkUI_NumberValue heightValue2[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem heightItem2 = {heightValue2, 1};
+            nativeNodeApi->setAttribute(image2, NODE_HEIGHT, &heightItem2);
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image2, NODE_BORDER_WIDTH, &borderWidthItem);
+    
+            // 设置填充颜色（蓝色）
+            ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
+            ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
+            nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
+    
+            // 设置边框宽度
+            ArkUI_NumberValue borderWidthValue2[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem2 = {borderWidthValue2, 1};
+            nativeNodeApi->setAttribute(image2, NODE_BORDER_WIDTH, &borderWidthItem2);
+    
+            // 添加到Column
+            nativeNodeApi->addChild(column, image2);
+        }
+    }
+    
+    // 函数3：添加第三张图
+    void AddThirdImage(ArkUI_NodeHandle column)
+    {
+        auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
+        if (nativeNodeApi == nullptr || column == nullptr) {
+            return;
+        };
+    
+        // 创建Image组件3 - 带占位图
+        ArkUI_NodeHandle image3 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
+        if (image3 != nullptr) {
+            // 设置网络图片源
+            ArkUI_AttributeItem srcItem3 = {nullptr, 0, "resources/rawfile/clouds.jpg"};
+            nativeNodeApi->setAttribute(image3, NODE_IMAGE_SRC, &srcItem3);
+    
+            // 设置宽高
+            ArkUI_NumberValue widthValue3[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem widthItem3 = {widthValue3, 1};
+            nativeNodeApi->setAttribute(image3, NODE_WIDTH, &widthItem3);
+    
+            ArkUI_NumberValue heightValue3[] = {{.f32 = 200.0f}};
+            ArkUI_AttributeItem heightItem3 = {heightValue3, 1};
+            nativeNodeApi->setAttribute(image3, NODE_HEIGHT, &heightItem3);
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image3, NODE_BORDER_WIDTH, &borderWidthItem);
+    
+            // 设置占位图
+            ArkUI_AttributeItem altItem = {nullptr, 0, "resources/rawfile/imageCapiExample.png"};
+            nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
+    
+            // 设置解码尺寸
+            ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
+            ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
+            nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
+    
+            // 设置边框宽度
+            ArkUI_NumberValue borderWidthValue3[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem3 = {borderWidthValue3, 1};
+            nativeNodeApi->setAttribute(image3, NODE_BORDER_WIDTH, &borderWidthItem3);
+    
+            // 添加到Column
+            nativeNodeApi->addChild(column, image3);
+        }
+    }
+    ```
 
 5. 效果预览
 
