@@ -1,7 +1,7 @@
 # 简单文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -91,4 +91,4 @@
 
 ## 效果展示
 
-![zh-cn_image_0000002211443916](figures/zh-cn_image_0000002211443916.png)
+![Simple-text-drawing](figures/Simple-text-drawing.png)

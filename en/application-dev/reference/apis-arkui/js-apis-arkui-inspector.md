@@ -261,7 +261,7 @@ struct ImageExample {
     }
 
     let uniqueId: number = this.getUniqueId();
-    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId.toString())
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
   }
 
@@ -334,7 +334,7 @@ offDrawChildren(callback?: Callback\<number[]\>): void
 
 Unregisters the callback used to listen for the **drawChildren** event. This API uses an asynchronous callback to return the result.
 
-To stop triggering a specific callback after the child component layout is complete, you only need to unregister the callback based on the corresponding query condition using its handle.
+To stop triggering a specific callback after the child component drawing is complete, you only need to unregister the callback based on the corresponding query condition using its handle.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 

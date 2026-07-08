@@ -1,7 +1,7 @@
 # @ohos.uiExtensionHost (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -28,6 +28,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 | Name| Type| Read-Only| Optional| Description|
@@ -41,6 +43,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 Obtains the area where the host application window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -88,6 +92,8 @@ Subscribes to the event of changes to the area where the host application window
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -131,6 +137,8 @@ Unsubscribes from the event of changes to the area where the host application wi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -171,6 +179,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 Subscribes to size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -214,6 +224,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 Unsubscribes from size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -263,6 +275,8 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -281,10 +295,10 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal. |
-| 1300003  | This window manager service works abnormally. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br>Applicable versions: 12+|
+| 1300003  | This window manager service works abnormally.<br>Applicable versions: 12+|
 
 **Example**
 
@@ -351,7 +365,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -436,7 +450,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -496,6 +510,8 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 > With the watermark flag added, the watermark is applied on the full screen when the window is in the foreground, regardless of whether the window is displayed in full screen, floating, and split screen mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -560,6 +576,8 @@ Sets whether to enable privacy protection for the UIExtension component during n
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -609,6 +627,8 @@ export default class EntryAbility extends UIExtensionAbility {
 Defines information about the host application window and **UIExtensionComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -745,7 +765,7 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
         })
         Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
+          console.info(`Avoid area: ${JSON.stringify(avoidArea)}`);
         })
         Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

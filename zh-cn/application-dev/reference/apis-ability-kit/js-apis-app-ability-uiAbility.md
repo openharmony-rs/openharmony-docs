@@ -62,7 +62,7 @@ import { UIAbility } from '@kit.AbilityKit';
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | 最近一次拉起UIAbility请求的Want参数。<br>- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。<br>- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | callee | [Callee](#callee) | 否 | 否 | 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。 |
 | specifiedId<sup>23+</sup> | string | 否 | 是 | 仅当UIAbility启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)时存在，取值为开发者自定义的UIAbility标识。 |
-
+| isDestroyed | boolean | 否 | 否 | 用于判断UIAbility是否已被销毁。默认值为false，表示UIAbility未销毁，当[onDestroy](#ondestroy)回调执行后，该属性会被设置为true，表示UIAbility已销毁。<br>**起始版本：** 26.0.0 |
 
 ### onCreate
 
@@ -276,7 +276,7 @@ onDestroy(): void | Promise&lt;void&gt;
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async onDestroy() {
       hilog.info(0x0000, 'testTag', `onDestroy`);
@@ -535,11 +535,11 @@ export default class MyUIAbility extends UIAbility {
 
 onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueResult | Promise&lt;AbilityConstant.OnContinueResult&gt;
 
-当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。
+当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。支持同步返回和使用Promise异步调用。
 
 > **说明：**
 >
-> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
+> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -577,7 +577,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
   ```ts
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async setWant(wantParams: Record<string, Object>) {
       console.info('setWant start');
@@ -586,7 +586,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
       }
       console.info('setWant end');
     }
-
+  
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
       return this.setWant(wantParams).then(() => {
@@ -792,7 +792,7 @@ onPrepareToTerminate(): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -856,8 +856,8 @@ onPrepareToTerminateAsync(): Promise\<boolean>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 

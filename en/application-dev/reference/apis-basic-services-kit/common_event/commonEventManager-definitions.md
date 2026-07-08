@@ -1,9 +1,8 @@
 # System Common Events
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -33,7 +32,7 @@ When the specified user restarts the application and kills all its processes, th
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_RESTARTED
+**Value**: "usual.event.PACKAGE_RESTARTED"
 
 
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
@@ -52,7 +51,7 @@ When the specified user clears the application package data on the device, the e
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_DATA_CLEARED
+**Value**: "usual.event.PACKAGE_DATA_CLEARED"
 
 
 ### COMMON_EVENT_QUICK_FIX_APPLY_RESULT
@@ -71,7 +70,7 @@ When the specified user applies a quick fix to the application on the device, th
 
 **Required permissions**: none
 
-**Value**: usual.event.QUICK_FIX_APPLY_RESULT
+**Value**: "usual.event.QUICK_FIX_APPLY_RESULT"
 
 
 ### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
@@ -84,7 +83,7 @@ When a quick fix to the application is revoked on the device, the event notifica
 
 **Required permissions**: none
 
-**Value**: usual.event.QUICK_FIX_REVOKE_RESULT
+**Value**: "usual.event.QUICK_FIX_REVOKE_RESULT"
 
 
 ### COMMON_EVENT_PACKAGE_ADDED
@@ -97,13 +96,13 @@ When a new application is installed by a specified user on the device, the event
 > 
 > <!--Del-->System applications can listen for the installation event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the installation event of themselves.
+> By default, third-party applications can only listen for the installation event of themselves. If a third-party application needs to listen for the installation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_ADDED
+**Value**: "usual.event.PACKAGE_ADDED"
 
 
 ### COMMON_EVENT_PACKAGE_REMOVED
@@ -116,13 +115,13 @@ When a specified application package is removed by a specified user on the devic
 > 
 > <!--Del-->System applications can listen for the uninstallation event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the uninstallation event of themselves.
+> By default, third-party applications can only listen for the uninstallation event of themselves. If a third-party application needs to listen for the uninstallation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_REMOVED
+**Value**: "usual.event.PACKAGE_REMOVED"
 
 
 ### COMMON_EVENT_BUNDLE_REMOVED
@@ -133,7 +132,7 @@ Indicates that an installed bundle has been uninstalled from the device.
 
 **Required permissions**: none
 
-**Value**: usual.event.BUNDLE_REMOVED
+**Value**: "usual.event.BUNDLE_REMOVED"
 
 
 ### COMMON_EVENT_PACKAGE_FULLY_REMOVED
@@ -144,7 +143,7 @@ Indicates that an installed application has been completely uninstalled from the
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_FULLY_REMOVED
+**Value**: "usual.event.PACKAGE_FULLY_REMOVED"
 
 
 ### COMMON_EVENT_PACKAGE_CHANGED
@@ -157,13 +156,13 @@ When an application package installed on the device is updated or an ability in 
 > 
 > <!--Del-->System applications can listen for the change event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the change event of themselves.
+> By default, third-party applications can only listen for the change event of themselves. If a third-party application needs to listen for the change event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_CHANGED
+**Value**: "usual.event.PACKAGE_CHANGED"
 
 
 ### COMMON_EVENT_PACKAGE_CACHE_CLEARED
@@ -176,13 +175,13 @@ When the cache of an application package installed on the device is cleared, the
 > 
 > <!--Del-->System applications can listen for the cache clearance event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the cache clearance event of themselves.
+> By default, third-party applications can only listen for the cache clearance event of themselves. If a third-party application needs to listen for the cache clearance event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_CACHE_CLEARED
+**Value**: "usual.event.PACKAGE_CACHE_CLEARED"
 
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
@@ -193,7 +192,7 @@ Indicates that application packages have been suspended.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGES_SUSPENDED
+**Value**: "usual.event.PACKAGES_SUSPENDED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
@@ -204,7 +203,7 @@ Indicates that application packages have been suspended by the system.
 
 **Required permissions**: none
 
-**Value**: usual.event.MY_PACKAGE_SUSPENDED
+**Value**: "usual.event.MY_PACKAGE_SUSPENDED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
@@ -215,7 +214,7 @@ Indicates that application packages have been unsuspended by the system.
 
 **Required permissions**: none
 
-**Value**: usual.event.MY_PACKAGE_UNSUSPENDED
+**Value**: "usual.event.MY_PACKAGE_UNSUSPENDED"
 
 
 ### COMMON_EVENT_MANAGE_PACKAGE_STORAGE
@@ -226,8 +225,25 @@ Notifies the low memory state and package management should be started.
 
 **Required permissions**: none
 
-**Value**: usual.event.MANAGE_PACKAGE_STORAGE
+**Value**: "usual.event.MANAGE_PACKAGE_STORAGE"
 
+### COMMON_EVENT_SKILL_CHANGED<sup>26+</sup>
+
+Indicates that the skill applied on the device has changed.
+
+When an application including skills is installed, updated, or uninstalled by a specified user on the device, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> By default, an application can only receive skill change events of itself.
+> 
+> After being granted with the ohos.permission.MANAGE_SKILL_PRIVILEGE permission, an application can receive skill change events of itself and other applications.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.SKILL_CHANGED"
 
 ## Account Kit
 
@@ -243,7 +259,7 @@ When the minor mode is enabled on the device, the event notification service is 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: usual.event.MINORSMODE_ON
+**Value**: "usual.event.MINORSMODE_ON"
 
 
 
@@ -259,7 +275,7 @@ When the minor mode is disabled on the device, the event notification service is
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: usual.event.MINORSMODE_OFF
+**Value**: "usual.event.MINORSMODE_OFF"
 
 
 ## ArkData
@@ -275,7 +291,9 @@ After the DataShare service is started, the event notification service is trigge
 
 **Required permissions**: none
 
-**Value**: usual.event.DATA_SHARE_READY
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Value**: "usual.event.DATA_SHARE_READY"
 
 
 ## ArkUI
@@ -292,7 +310,7 @@ When any of the following actions is performed, the event notification service i
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: common.event.SPLIT_SCREEN
+**Value**: "common.event.SPLIT_SCREEN"
 
 
 
@@ -308,7 +326,7 @@ When any of the following actions is performed, the event notification service i
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
-**Value**: usual.event.SLOT_CHANGE
+**Value**: "usual.event.SLOT_CHANGE"
 
 
 ## Background Tasks Kit
@@ -323,7 +341,7 @@ When the user does not use the device for the specified period of time and the s
 
 **Required permissions**: none
 
-**Value**: usual.event.DEVICE_IDLE_MODE_CHANGED
+**Value**: "usual.event.DEVICE_IDLE_MODE_CHANGED"
 
 
 ## Basic Services Kit
@@ -338,7 +356,7 @@ When a USB device is connected to or disconnected from the device, the event not
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_STATE
+**Value**: "usual.event.hardware.usb.action.USB_STATE"
 
 
 ### COMMON_EVENT_USB_PORT_CHANGED
@@ -351,7 +369,7 @@ When the USB port state changes, the event notification service is triggered to 
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_PORT_CHANGED
+**Value**: "usual.event.hardware.usb.action.USB_PORT_CHANGED"
 
 
 ### COMMON_EVENT_USB_DEVICE_ATTACHED
@@ -364,7 +382,7 @@ When a USB device is attached, the event notification service is triggered to pu
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_DEVICE_ATTACHED
+**Value**: "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
 
 
 ### COMMON_EVENT_USB_DEVICE_DETACHED
@@ -377,7 +395,7 @@ When a USB device is detached, the event notification service is triggered to pu
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_DEVICE_DETACHED
+**Value**: "usual.event.hardware.usb.action.USB_DEVICE_DETACHED"
 
 
 ### COMMON_EVENT_TIME_CHANGED
@@ -390,7 +408,7 @@ When the system time is set, the event notification service is triggered to publ
 
 **Required permissions**: none
 
-**Value**: usual.event.TIME_CHANGED
+**Value**: "usual.event.TIME_CHANGED"
 
 
 ### COMMON_EVENT_TIME_TICK
@@ -403,7 +421,7 @@ When the system time in the unit of minute changes, the event notification servi
 
 **Required permissions**: none
 
-**Value**: usual.event.TIME_TICK
+**Value**: "usual.event.TIME_TICK"
 
 
 ### COMMON_EVENT_TIMEZONE_CHANGED
@@ -416,7 +434,7 @@ When the system time zone changes, the event notification service is triggered t
 
 **Required permissions**: none
 
-**Value**: usual.event.TIMEZONE_CHANGED
+**Value**: "usual.event.TIMEZONE_CHANGED"
 
 
 
@@ -434,7 +452,7 @@ APIs related to this event: **setOsAccountName**, **setOsAccountProfilePhoto**, 
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_INFO_UPDATED
+**Value**: "usual.event.USER_INFO_UPDATED"
 
 
 ### COMMON_EVENT_USER_UNLOCKED
@@ -447,14 +465,14 @@ When the device is unlocked with the lock screen password the first time after u
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_UNLOCKED
+**Value**: "usual.event.USER_UNLOCKED"
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN
 
 Indicates a successful login from a distributed account.
 
-When a distributed account is successfully logged in, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged in, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -464,14 +482,14 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: common.event.DISTRIBUTED_ACCOUNT_LOGIN
+**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT
 
 Indicates a successful logout from a distributed account.
 
-When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -481,14 +499,14 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: common.event.DISTRIBUTED_ACCOUNT_LOGOUT
+**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
 
 
 ### COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID
 
 Indicates that the token of a distributed account is invalid.
 
-When the token of a distributed account is invalid, the event notification service is triggered to publish this event carrying the system account ID.
+When the token of a distributed account is invalid, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -498,7 +516,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID
+**Value**: "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 
 
 
@@ -506,7 +524,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 Indicates that a distributed account is deregistered.
 
-When a distributed account is deregistered, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -516,7 +534,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Value**: common.event.DISTRIBUTED_ACCOUNT_LOGOFF
+**Value**: "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 
 
 
@@ -531,7 +549,7 @@ When the screen is locked, the event notification service is triggered to publis
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.SCREEN_LOCKED
+**Value**: "usual.event.SCREEN_LOCKED"
 
 
 
@@ -546,7 +564,7 @@ When the screen is unlocked, the event notification service is triggered to publ
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.SCREEN_UNLOCKED
+**Value**: "usual.event.SCREEN_UNLOCKED"
 
 
 ### COMMON_EVENT_USER_PRESENT<sup>(deprecated)</sup>
@@ -560,7 +578,7 @@ Indicates the action of a common event that the user unlocks the device.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_PRESENT
+**Value**: "usual.event.USER_PRESENT"
 
 
 ### COMMON_EVENT_BATTERY_CHANGED
@@ -573,20 +591,20 @@ When any of the following information changes, the event notification service is
 
 **Required permissions**: none
 
-**Value**: usual.event.BATTERY_CHANGED
+**Value**: "usual.event.BATTERY_CHANGED"
 
 
 ### COMMON_EVENT_BATTERY_LOW
 
 Indicates that the battery level is low.
 
-When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
+When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.BATTERY_LOW
+**Value**: "usual.event.BATTERY_LOW"
 
 
 ### COMMON_EVENT_BATTERY_OKAY
@@ -600,7 +618,7 @@ When the battery level changes from the low level to normal level, the event not
 
 **Required permissions**: none
 
-**Value**: usual.event.BATTERY_OKAY
+**Value**: "usual.event.BATTERY_OKAY"
 
 
 ### COMMON_EVENT_POWER_CONNECTED
@@ -613,7 +631,7 @@ When the device connects to an external charger, the event notification service 
 
 **Required permissions**: none
 
-**Value**: usual.event.POWER_CONNECTED
+**Value**: "usual.event.POWER_CONNECTED"
 
 
 ### COMMON_EVENT_POWER_DISCONNECTED
@@ -626,7 +644,7 @@ When the device is disconnected from the external power supply, the event notifi
 
 **Required permissions**: none
 
-**Value**: usual.event.POWER_DISCONNECTED
+**Value**: "usual.event.POWER_DISCONNECTED"
 
 
 ### COMMON_EVENT_DISCHARGING
@@ -639,7 +657,7 @@ When the system stops charging the battery, the event notification service is tr
 
 **Required permissions**: none
 
-**Value**: usual.event.DISCHARGING
+**Value**: "usual.event.DISCHARGING"
 
 
 ### COMMON_EVENT_CHARGING
@@ -652,7 +670,7 @@ When the system starts charging the battery, the event notification service is t
 
 **Required permissions**: none
 
-**Value**: usual.event.CHARGING
+**Value**: "usual.event.CHARGING"
 
 
 
@@ -666,7 +684,7 @@ When the device starts charging in idle mode, and the temperature rise is accept
 
 **Required permissions**: none
 
-**Value**: usual.event.CHARGE_IDLE_MODE_CHANGED
+**Value**: "usual.event.CHARGE_IDLE_MODE_CHANGED"
 
 
 ### COMMON_EVENT_SHUTDOWN
@@ -679,7 +697,7 @@ When the device is being shut down until it is powered off, the event notificati
 
 **Required permissions**: none
 
-**Value**: usual.event.SHUTDOWN
+**Value**: "usual.event.SHUTDOWN"
 
 
 ### COMMON_EVENT_SCREEN_OFF
@@ -692,7 +710,7 @@ When the device screen-off initiated by the power service is complete, the event
 
 **Required permissions**: none
 
-**Value**: usual.event.SCREEN_OFF
+**Value**: "usual.event.SCREEN_OFF"
 
 
 ### COMMON_EVENT_SCREEN_ON
@@ -705,7 +723,7 @@ When the device screen-on initiated by the power service is complete, the event 
 
 **Required permissions**: none
 
-**Value**: usual.event.SCREEN_ON
+**Value**: "usual.event.SCREEN_ON"
 
 
 ### COMMON_EVENT_POWER_SAVE_MODE_CHANGED
@@ -718,20 +736,20 @@ When the system power saving mode changes, the event notification service is tri
 
 **Required permissions**: none
 
-**Value**: usual.event.POWER_SAVE_MODE_CHANGED
+**Value**: "usual.event.POWER_SAVE_MODE_CHANGED"
 
 
 ### COMMON_EVENT_THERMAL_LEVEL_CHANGED
 
 Indicates that the device's thermal level has changed.
 
-When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
+When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](../../../../device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
 
-**Value**: usual.event.THERMAL_LEVEL_CHANGED
+**Value**: "usual.event.THERMAL_LEVEL_CHANGED"
 
 
 ### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+</sup>
@@ -745,7 +763,7 @@ When the device is about to enter the forced sleep mode, the event notification 
 
 **Required permissions**: none
 
-**Value**: usual.event.ENTER_FORCE_SLEEP
+**Value**: "usual.event.ENTER_FORCE_SLEEP"
 
 ### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+</sup>
 
@@ -758,7 +776,7 @@ When the device exits the forced sleep mode, the event notification service is t
 
 **Required permissions**: none
 
-**Value**: usual.event.EXIT_FORCE_SLEEP
+**Value**: "usual.event.EXIT_FORCE_SLEEP"
 
 ### COMMON_EVENT_ENTER_HIBERNATE<sup>15+</sup>
 
@@ -770,7 +788,7 @@ When the device is about to enter the hibernation mode, the event notification s
 
 **Required permissions**: none
 
-**Value**: usual.event.ENTER_HIBERNATE
+**Value**: "usual.event.ENTER_HIBERNATE"
 
 ### COMMON_EVENT_EXIT_HIBERNATE<sup>15+</sup>
 
@@ -782,13 +800,13 @@ When the device exits the hibernation mode, the event notification service is tr
 
 **Required permissions**: none
 
-**Value**: usual.event.EXIT_HIBERNATE
+**Value**: "usual.event.EXIT_HIBERNATE"
 
 ### COMMON_EVENT_VOLUME_DECRYPTED
 
-Indicates that specific volumes on the device have been decrypted.
+Indicates that a specific volume on the device has been decrypted.
 
-When specific volumes on the device have been decrypted, the event notification service is triggered to publish this event.
+When a specific volume on the device is decrypted, the event notification service is triggered to publish this event.
 
 **Since**: 26.0.0
 
@@ -800,9 +818,9 @@ When specific volumes on the device have been decrypted, the event notification 
 
 ### COMMON_EVENT_VOLUME_ENCRYPTED
 
-Indicates that specific volumes on the device have been encrypted.
+Indicates that a specific volume on the device has been encrypted.
 
-When specific volumes on the device have been encrypted, the event notification service is triggered to publish this event.
+When a specific volume on the device is encrypted, the event notification service is triggered to publish this event.
 
 **Since**: 26.0.0
 
@@ -814,9 +832,9 @@ When specific volumes on the device have been encrypted, the event notification 
 
 ### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
 
-Indicates that specific volumes on the device have had their encryption policy set.
+Indicates that an encryption policy has been set for a specific volume on the device.
 
-When specific volumes on the device have had their encryption policy set, the event notification service is triggered to publish this event.
+When an encryption policy is set for a specific volume on the device, the event notification service is triggered to publish this event.
 
 **Since**: 26.0.0
 
@@ -839,7 +857,7 @@ When the Bluetooth HFP AG connection state changes, the event notification servi
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE
+**Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE<sup>20+</sup>
@@ -852,7 +870,7 @@ When the Bluetooth A2DP source connection state changes, the event notification 
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE
+**Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE<sup>20+</sup>
@@ -865,7 +883,7 @@ When the Bluetooth AVRCP connection state changes, the event notification servic
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE
+**Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE<sup>20+</sup>
@@ -878,7 +896,7 @@ When the Bluetooth media codec changes, the event notification service is trigge
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE
+**Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE<sup>24+</sup>
@@ -891,7 +909,7 @@ When the Bluetooth A2DP playback state changes, the event notification service i
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE
+**Value**: "usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE<sup>24+</sup>
@@ -904,7 +922,7 @@ When the Bluetooth SCO state changes, the event notification service is triggere
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE
+**Value**: "usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE<sup>20+</sup>
@@ -917,7 +935,7 @@ When the Bluetooth ACL connection state changes, the event notification service 
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE
+**Value**: "usual.event.bluetooth.remotedevice.ACL_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE<sup>20+</sup>
@@ -930,7 +948,7 @@ When the Bluetooth pairing state changes, the event notification service is trig
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE
+**Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE<sup>23+</sup>
@@ -943,7 +961,7 @@ When the Bluetooth scanning mode changes, the event notification service is trig
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.SCAN_MODE_CHANGE
+**Value**: "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
 
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
@@ -956,7 +974,7 @@ When the state of the device NFC adapter changes, the event notification service
 
 **Required permissions**: none
 
-**Value**: usual.event.nfc.action.ADAPTER_STATE_CHANGED
+**Value**: "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
 
 
 ### COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED
@@ -969,7 +987,7 @@ When the NFC RF field becomes available, the event notification service is trigg
 
 **Required permissions**: none
 
-**Value**: usual.event.nfc.action.RF_FIELD_ON_DETECTED
+**Value**: "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
 
 
 ### COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED
@@ -982,7 +1000,7 @@ When the NFC RF field becomes unavailable, the event notification service is tri
 
 **Required permissions**: none
 
-**Value**: usual.event.nfc.action.RF_FIELD_OFF_DETECTED
+**Value**: "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
 
 
 ### COMMON_EVENT_WIFI_POWER_STATE
@@ -997,7 +1015,7 @@ State values: **0** indicates that the Wi-Fi is being disabled; **1** indicates 
 
 **Required permissions**: none
 
-**Value**: usual.event.wifi.POWER_STATE
+**Value**: "usual.event.wifi.POWER_STATE"
 
 
 ### COMMON_EVENT_WIFI_SCAN_FINISHED
@@ -1010,21 +1028,7 @@ When a Wi-Fi access point is detected and proven to be available, the event noti
 
 **Required permissions**: ohos.permission.LOCATION
 
-**Value**: usual.event.wifi.SCAN_FINISHED
-
-
-### COMMON_EVENT_WIFI_SCAN_STATE
-
-Indicates that the Wi-Fi access point state has changed.
-
-When the Wi-Fi access point state changes, the event notification service is triggered to publish this event.
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: ohos.permission.LOCATION
-
-**Value**: usual.event.wifi.SCAN_STATE
-
+**Value**: "usual.event.wifi.SCAN_FINISHED"
 
 
 ### COMMON_EVENT_WIFI_RSSI_VALUE
@@ -1037,7 +1041,7 @@ When the Wi-Fi access point state changes, the event notification service is tri
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.RSSI_VALUE
+**Value**: "usual.event.wifi.RSSI_VALUE"
 
 
 
@@ -1052,7 +1056,7 @@ When the Wi-Fi access point state changes, the event notification service is tri
 
 **Required permissions**: none
 
-**Value**: usual.event.wifi.CONN_STATE
+**Value**: "usual.event.wifi.CONN_STATE"
 
 
 ### COMMON_EVENT_WIFI_HOTSPOT_STATE
@@ -1067,7 +1071,7 @@ State values: **2** indicates that the AP is being enabled, **3** indicates that
 
 **Required permissions**: none
 
-**Value**: usual.event.wifi.HOTSPOT_STATE
+**Value**: "usual.event.wifi.HOTSPOT_STATE"
 
 
 ### COMMON_EVENT_WIFI_AP_STA_JOIN
@@ -1080,7 +1084,7 @@ When a client joins the Wi-Fi hotspot of the current device, the event notificat
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.WIFI_HS_STA_JOIN
+**Value**: "usual.event.wifi.WIFI_HS_STA_JOIN"
 
 
 ### COMMON_EVENT_WIFI_AP_STA_LEAVE
@@ -1094,7 +1098,7 @@ When a client is disconnected from the Wi-Fi hotspot of the current device, the 
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.WIFI_HS_STA_LEAVE
+**Value**: "usual.event.wifi.WIFI_HS_STA_LEAVE"
 
 
 ### COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE
@@ -1108,7 +1112,7 @@ When the state of MPLINK changes, the event notification service is triggered to
 
 **Required permissions**: none
 
-**Value**: usual.event.wifi.mplink.STATE_CHANGE
+**Value**: "usual.event.wifi.mplink.STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_CONN_STATE
@@ -1122,7 +1126,7 @@ When the Wi-Fi P2P connection state changes, the event notification service is t
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
-**Value**: usual.event.wifi.p2p.CONN_STATE_CHANGE
+**Value**: "usual.event.wifi.p2p.CONN_STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_STATE_CHANGED
@@ -1137,7 +1141,7 @@ State values: **2** indicates that the P2P is being enabled, **3** indicates tha
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.p2p.STATE_CHANGE
+**Value**: "usual.event.wifi.p2p.STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED
@@ -1150,7 +1154,7 @@ When the state of the Wi-Fi P2P peer device changes, the event notification serv
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.p2p.DEVICES_CHANGE
+**Value**: "usual.event.wifi.p2p.DEVICES_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
@@ -1163,7 +1167,7 @@ When the Wi-Fi P2P discovery state changes, the event notification service is tr
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE
+**Value**: "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED
@@ -1176,7 +1180,7 @@ When the state of the Wi-Fi P2P local device changes, the event notification ser
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE
+**Value**: "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED
@@ -1189,7 +1193,7 @@ When the Wi-Fi P2P group information changes, the event notification service is 
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value**: usual.event.wifi.p2p.GROUP_STATE_CHANGED
+**Value**: "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
 
 
 ## MDM Kit
@@ -1204,7 +1208,7 @@ When the browser hosting policy changes, the event notification service is trigg
 
 **Required permissions**: none
 
-**Value**: usual.event.MANAGED_BROWSER_POLICY_CHANGED
+**Value**: "usual.event.MANAGED_BROWSER_POLICY_CHANGED"
 
 
 ## Localization Kit
@@ -1218,7 +1222,7 @@ When the system language is set, the event notification service is triggered to 
 
 **Required permissions**: none
 
-**Value**: usual.event.LOCALE_CHANGED
+**Value**: "usual.event.LOCALE_CHANGED"
 
 
 ## Network Kit
@@ -1243,7 +1247,7 @@ The following table lists the enum values and their corresponding connection sta
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.CONNECTIVITY_CHANGE
+**Value**: "usual.event.CONNECTIVITY_CHANGE"
 
 
 ### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
@@ -1256,7 +1260,7 @@ When the airplane mode is enabled or disabled, the event notification service is
 
 **Required permissions**: none
 
-**Value**: usual.event.AIRPLANE_MODE
+**Value**: "usual.event.AIRPLANE_MODE"
 
 
 ### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
@@ -1269,7 +1273,7 @@ When the configuration information of the system global proxy or HTTP proxy on v
 
 **Required permissions**: none
 
-**Value**: usual.event.HTTP_PROXY_CHANGE
+**Value**: "usual.event.HTTP_PROXY_CHANGE"
 
 
 ## Telephony Kit
@@ -1286,7 +1290,7 @@ When there is a change in the SIM card status of the device, the event notificat
 
 **Required permissions**: none
 
-**Value**: usual.event.SIM_STATE_CHANGED
+**Value**: "usual.event.SIM_STATE_CHANGED"
 
 
 ### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
@@ -1299,7 +1303,7 @@ When the call state of the device is updated, the event notification service is 
 
 **Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system apps only)
 
-**Value**: usual.event.CALL_STATE_CHANGED
+**Value**: "usual.event.CALL_STATE_CHANGED"
 
 
 ### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
@@ -1312,7 +1316,7 @@ When the network state of the device is updated, the event notification service 
 
 **Required permissions**: none
 
-**Value**: usual.event.NETWORK_STATE_CHANGED
+**Value**: "usual.event.NETWORK_STATE_CHANGED"
 
 
 ### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
@@ -1325,7 +1329,7 @@ When the signal information of the device is updated, the event notification ser
 
 **Required permissions**: none
 
-**Value**: usual.event.SIGNAL_INFO_CHANGED
+**Value**: "usual.event.SIGNAL_INFO_CHANGED"
 
 
 ## AppGallery Kit
@@ -1339,7 +1343,7 @@ When a user clicks **Agree** in a privacy dialog box, the event notification ser
 
 **Required permissions**: none
 
-**Value**: usual.event.PRIVACY_STATE_CHANGED
+**Value**: "usual.event.PRIVACY_STATE_CHANGED"
 
 ## Multimodalinput Kit
 This topic lists the common system events provided by the Multimodalinput Kit to applications.
@@ -1351,7 +1355,7 @@ When the tablet mode of a device has been changed, the event notification servic
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: usual.event.TABLET_MODE_CHANGED
+**Value**: "usual.event.TABLET_MODE_CHANGED "
 
 ### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
@@ -1360,7 +1364,7 @@ When the lid state of a device has been changed, the event notification service 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: usual.event.LID_STATE_CHANGED
+**Value**: "usual.event.LID_STATE_CHANGED"
 
 ## Reserved Common Event
 
@@ -1374,7 +1378,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.LOCKED_BOOT_COMPLETED
+**Value**: "usual.event.LOCKED_BOOT_COMPLETED"
 
 
 ### COMMON_EVENT_PACKAGE_FIRST_LAUNCH
@@ -1385,7 +1389,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_FIRST_LAUNCH
+**Value**: "usual.event.PACKAGE_FIRST_LAUNCH"
 
 
 ### COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION
@@ -1396,7 +1400,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_NEEDS_VERIFICATION
+**Value**: "usual.event.PACKAGE_NEEDS_VERIFICATION"
 
 
 ### COMMON_EVENT_PACKAGE_VERIFIED
@@ -1407,7 +1411,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_VERIFIED
+**Value**: "usual.event.PACKAGE_VERIFIED"
 
 ### COMMON_EVENT_PACKAGE_REPLACED
 
@@ -1417,7 +1421,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGE_REPLACED
+**Value**: "usual.event.PACKAGE_REPLACED"
 
 
 ### COMMON_EVENT_MY_PACKAGE_REPLACED
@@ -1428,7 +1432,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.MY_PACKAGE_REPLACED
+**Value**: "usual.event.MY_PACKAGE_REPLACED"
 
 
 ### COMMON_EVENT_PACKAGES_UNSUSPENDED
@@ -1439,7 +1443,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.PACKAGES_UNSUSPENDED
+**Value**: "usual.event.PACKAGES_UNSUSPENDED"
 
 
 ### COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
@@ -1450,7 +1454,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.CLOSE_SYSTEM_DIALOGS
+**Value**: "usual.event.CLOSE_SYSTEM_DIALOGS"
 
 
 
@@ -1462,7 +1466,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.UID_REMOVED
+**Value**: "usual.event.UID_REMOVED"
 
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
@@ -1473,7 +1477,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.EXTERNAL_APPLICATIONS_AVAILABLE
+**Value**: "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
 
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
@@ -1484,7 +1488,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE
+**Value**: "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
 
 
 ### COMMON_EVENT_CONFIGURATION_CHANGED
@@ -1495,7 +1499,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.CONFIGURATION_CHANGED
+**Value**: "usual.event.CONFIGURATION_CHANGED"
 
 
 
@@ -1506,7 +1510,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: common.event.DRIVE_MODE
+**Value**: "common.event.DRIVE_MODE"
 
 
 
@@ -1517,7 +1521,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: common.event.HOME_MODE
+**Value**: "common.event.HOME_MODE"
 
 
 
@@ -1528,7 +1532,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: common.event.OFFICE_MODE
+**Value**: "common.event.OFFICE_MODE"
 
 
 
@@ -1540,7 +1544,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_STARTED
+**Value**: "usual.event.USER_STARTED"
 
 
 ### COMMON_EVENT_USER_BACKGROUND
@@ -1551,7 +1555,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_BACKGROUND
+**Value**: "usual.event.USER_BACKGROUND"
 
 
 ### COMMON_EVENT_USER_STARTING
@@ -1561,7 +1565,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: usual.event.USER_STARTING
+**Value**: "usual.event.USER_STARTING"
 
 
 
@@ -1572,7 +1576,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: usual.event.USER_STOPPING
+**Value**: "usual.event.USER_STOPPING"
 
 
 ### COMMON_EVENT_USER_STOPPED
@@ -1582,7 +1586,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_STOPPED
+**Value**: "usual.event.USER_STOPPED"
 
 
 ### COMMON_EVENT_DISK_REMOVED
@@ -1593,7 +1597,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_REMOVED
+**Value**: "usual.event.data.DISK_REMOVED"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTED
@@ -1604,7 +1608,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_UNMOUNTED
+**Value**: "usual.event.data.DISK_UNMOUNTED"
 
 
 ### COMMON_EVENT_DISK_MOUNTED
@@ -1615,7 +1619,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_MOUNTED
+**Value**: "usual.event.data.DISK_MOUNTED"
 
 
 
@@ -1627,7 +1631,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_BAD_REMOVAL
+**Value**: "usual.event.data.DISK_BAD_REMOVAL"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
@@ -1638,7 +1642,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_UNMOUNTABLE
+**Value**: "usual.event.data.DISK_UNMOUNTABLE"
 
 
 ### COMMON_EVENT_DISK_EJECT
@@ -1649,7 +1653,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: usual.event.data.DISK_EJECT
+**Value**: "usual.event.data.DISK_EJECT"
 
 
 ### COMMON_EVENT_DATE_CHANGED
@@ -1660,7 +1664,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.DATE_CHANGED
+**Value**: "usual.event.DATE_CHANGED"
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
@@ -1670,7 +1674,7 @@ Indicates that a USB accessory has been attached.
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED
+**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
 
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
@@ -1681,7 +1685,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: none
 
-**Value**: usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED
+**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth handsfree communication.
@@ -1694,7 +1698,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE
+**Value**: "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
 
 
 
@@ -1709,7 +1713,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE
+**Value**: "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
@@ -1723,7 +1727,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE
+**Value**: "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
 
 
 
@@ -1739,7 +1743,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
 
 
 
@@ -1755,7 +1759,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
 
 
 
@@ -1770,7 +1774,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
 
 
 
@@ -1785,7 +1789,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
 
 
 
@@ -1800,7 +1804,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
 
 
 
@@ -1813,7 +1817,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_FOREGROUND
+**Value**: "usual.event.USER_FOREGROUND"
 
 
 
@@ -1829,7 +1833,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.DISCOVERED
+**Value**: "usual.event.bluetooth.remotedevice.DISCOVERED"
 
 
 
@@ -1845,7 +1849,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE
+**Value**: "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED<sup>(deprecated)</sup>
@@ -1859,7 +1863,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.ACL_CONNECTED
+**Value**: "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED<sup>(deprecated)</sup>
@@ -1873,7 +1877,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.ACL_DISCONNECTED
+**Value**: "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE<sup>(deprecated)</sup>
@@ -1888,7 +1892,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.NAME_UPDATE
+**Value**: "usual.event.bluetooth.remotedevice.NAME_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE<sup>(deprecated)</sup>
@@ -1902,7 +1906,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.PAIR_STATE
+**Value**: "usual.event.bluetooth.remotedevice.PAIR_STATE"
 
 
 
@@ -1917,7 +1921,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE
+**Value**: "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT<sup>(deprecated)</sup>
@@ -1931,7 +1935,7 @@ Indicates that a USB accessory has been detached.
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.SDP_RESULT
+**Value**: "usual.event.bluetooth.remotedevice.SDP_RESULT"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE<sup>(deprecated)</sup>
@@ -1945,7 +1949,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.UUID_VALUE
+**Value**: "usual.event.bluetooth.remotedevice.UUID_VALUE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ<sup>(deprecated)</sup>
@@ -1959,7 +1963,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: ohos.permission.DISCOVER_BLUETOOTH
 
-**Value**: usual.event.bluetooth.remotedevice.PAIRING_REQ
+**Value**: "usual.event.bluetooth.remotedevice.PAIRING_REQ"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL<sup>(deprecated)</sup>
@@ -1973,7 +1977,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.PAIRING_CANCEL
+**Value**: "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ<sup>(deprecated)</sup>
@@ -1987,7 +1991,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.CONNECT_REQ
+**Value**: "usual.event.bluetooth.remotedevice.CONNECT_REQ"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY<sup>(deprecated)</sup>
@@ -2001,7 +2005,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.CONNECT_REPLY
+**Value**: "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL<sup>(deprecated)</sup>
@@ -2015,7 +2019,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.remotedevice.CONNECT_CANCEL
+**Value**: "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2029,7 +2033,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE
+**Value**: "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2043,7 +2047,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE
+**Value**: "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT<sup>(deprecated)</sup>
@@ -2057,7 +2061,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT
+**Value**: "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2071,7 +2075,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE
+**Value**: "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2085,7 +2089,7 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.host.STATE_UPDATE
+**Value**: "usual.event.bluetooth.host.STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE<sup>(deprecated)</sup>
@@ -2100,7 +2104,7 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **Required permissions**: none
 
-**Value**: usual.event.bluetooth.host.REQ_DISCOVERABLE
+**Value**: "usual.event.bluetooth.host.REQ_DISCOVERABLE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE<sup>(deprecated)</sup>
@@ -2114,7 +2118,7 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.REQ_ENABLE
+**Value**: "usual.event.bluetooth.host.REQ_ENABLE"
 
 
 
@@ -2129,7 +2133,7 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.REQ_DISABLE
+**Value**: "usual.event.bluetooth.host.REQ_DISABLE"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE<sup>(deprecated)</sup>
@@ -2143,7 +2147,7 @@ Indicates that the state of a Bluetooth adapter has been changed, for example, B
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.SCAN_MODE_UPDATE
+**Value**: "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
 
 
 
@@ -2159,7 +2163,7 @@ Indicates that the Bluetooth scanning has been started on the device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.DISCOVERY_STARTED
+**Value**: "usual.event.bluetooth.host.DISCOVERY_STARTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED<sup>(deprecated)</sup>
@@ -2173,7 +2177,7 @@ Indicates that the Bluetooth scanning is finished on the device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.DISCOVERY_FINISHED
+**Value**: "usual.event.bluetooth.host.DISCOVERY_FINISHED"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
@@ -2187,7 +2191,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Value**: usual.event.bluetooth.host.NAME_UPDATE
+**Value**: "usual.event.bluetooth.host.NAME_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2201,7 +2205,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
 
 
 
@@ -2216,7 +2220,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
@@ -2230,7 +2234,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.USE_BLUETOOTH
 
-**Value**: usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE
+**Value**: "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
 
 
 ### COMMON_EVENT_ABILITY_ADDED
@@ -2240,7 +2244,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**Value**: usual.event.ABILITY_ADDED
+**Value**: "usual.event.ABILITY_ADDED"
 
 
 ### COMMON_EVENT_ABILITY_REMOVED
@@ -2250,7 +2254,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**Value**: usual.event.ABILITY_REMOVED
+**Value**: "usual.event.ABILITY_REMOVED"
 
 
 
@@ -2261,7 +2265,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**Value**: usual.event.ABILITY_UPDATED
+**Value**: "usual.event.ABILITY_UPDATED"
 
 
 ### COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
@@ -2271,7 +2275,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: usual.event.location.MODE_STATE_CHANGED
+**Value**: "usual.event.location.MODE_STATE_CHANGED"
 
 
 ### COMMON_EVENT_IVI_SLEEP
@@ -2281,7 +2285,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_SLEEP
+**Value**: "common.event.IVI_SLEEP"
 
 
 ### COMMON_EVENT_IVI_PAUSE
@@ -2292,7 +2296,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_PAUSE
+**Value**: "common.event.IVI_PAUSE"
 
 
 
@@ -2303,7 +2307,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_STANDBY
+**Value**: "common.event.IVI_STANDBY"
 
 
 ### COMMON_EVENT_IVI_LASTMODE_SAVE
@@ -2313,7 +2317,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_LASTMODE_SAVE
+**Value**: "common.event.IVI_LASTMODE_SAVE"
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
@@ -2323,7 +2327,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_VOLTAGE_ABNORMAL
+**Value**: "common.event.IVI_VOLTAGE_ABNORMAL"
 
 
 ### COMMON_EVENT_IVI_HIGH_TEMPERATURE
@@ -2334,7 +2338,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_HIGH_TEMPERATURE
+**Value**: "common.event.IVI_HIGH_TEMPERATURE"
 
 
 ### COMMON_EVENT_IVI_EXTREME_TEMPERATURE
@@ -2344,7 +2348,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_EXTREME_TEMPERATURE
+**Value**: "common.event.IVI_EXTREME_TEMPERATURE"
 
 
 
@@ -2356,7 +2360,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_TEMPERATURE_ABNORMAL
+**Value**: "common.event.IVI_TEMPERATURE_ABNORMAL"
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_RECOVERY
@@ -2366,7 +2370,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_VOLTAGE_RECOVERY
+**Value**: "common.event.IVI_VOLTAGE_RECOVERY"
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
@@ -2376,7 +2380,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_TEMPERATURE_RECOVERY
+**Value**: "common.event.IVI_TEMPERATURE_RECOVERY"
 
 
 ### COMMON_EVENT_IVI_ACTIVE
@@ -2386,7 +2390,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: none
 
-**Value**: common.event.IVI_ACTIVE
+**Value**: "common.event.IVI_ACTIVE"
 
 
 
@@ -2397,7 +2401,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.GET_APP_ACCOUNTS (for system applications only)
 
-**Value**: usual.event.data.VISIBLE_ACCOUNTS_UPDATED
+**Value**: "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
 
 
 ### COMMON_EVENT_ACCOUNT_DELETED
@@ -2407,7 +2411,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: usual.event.data.ACCOUNT_DELETED
+**Value**: "usual.event.data.ACCOUNT_DELETED"
 
 
 
@@ -2418,7 +2422,7 @@ Indicates that the Bluetooth adapter name of the device has changed.
 
 **Required permissions**: ohos.permission.RECEIVER_STARTUP_COMPLETED (for system applications only)
 
-**Value**: usual.event.data.FOUNDATION_READY
+**Value**: "usual.event.data.FOUNDATION_READY"
 
 
 
@@ -2429,5 +2433,5 @@ Indicates that the SPN information had changed.
 
 **Required permissions**: none
 
-**Value**: usual.event.SPN_INFO_CHANGED
+**Value**: "usual.event.SPN_INFO_CHANGED"
  

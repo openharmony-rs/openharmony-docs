@@ -154,4 +154,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125132](figures/zh-cn_image_0000001127125132.png)
+![Text-button](figures/Text-button.png)

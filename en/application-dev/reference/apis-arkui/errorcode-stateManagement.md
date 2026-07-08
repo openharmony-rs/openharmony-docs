@@ -52,7 +52,7 @@ Ensure that the path for **addMonitor** or **clearMonitor** is valid. For detail
 
 **Error Message**
 
-monitorCallback is not a function or an anonymous function.
+addMonitor/clearMonitor failed because the monitorFunc is illegal, monitorFunc must be function or but cannot be an anonymous function.
 
 **Description**
 
@@ -60,7 +60,7 @@ This error code is reported when the callback parameter for **addMonitor** or **
 
 **Possible Causes**
 
-The callback is not of function type, or is an anonymous function.
+The callback is not of the function type or is of an anonymous function type.
 
 **Solution**
 
@@ -110,7 +110,7 @@ Not supported type! The type should have function constructor signature.
 
 **Description**
 
-When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the **type** parameter is invalid.
+This error code is reported in the following scenario: When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the **type** parameter is invalid.
 
 **Possible Causes**
 
@@ -128,7 +128,7 @@ The default creator should be function when first connect.
 
 **Description**
 
-When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the default data constructor specified by **defaultCreator** is not [StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort).
+This error code is reported in the following scenario: When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used, the default data constructor specified by **defaultCreator** is not [StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort).
 
 **Possible Causes**
 
@@ -146,7 +146,7 @@ ERROR, Duplicate key used when connect
 
 **Description**
 
-[connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) use the same key.
+This error code is reported when [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) use the same key.
 
 **Possible Causes**
 
@@ -164,7 +164,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **Description**
 
-The encryption level set for [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) to store data is not within the range of EL1 to EL5.
+This error code is reported when the encryption level set for [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) to store data is not within the range of EL1 to EL5.
 
 **Possible Causes**
 
@@ -182,7 +182,7 @@ The type of target mismatches the type of source.
 
 **Description**
 
-A type mismatch error occurs when [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used.
+This error code is reported when [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used.
 
 **Possible Causes**
 
@@ -220,7 +220,7 @@ Ensure that the \@Type decorator is used to decorate the class name when the **g
 
 **Description**
 
-The input parameters are modified in the function decorated by [\@Builder](../../ui/state-management/arkts-builder.md).
+This error code is reported when the input parameters are modified in the function decorated by [\@Builder](../../ui/state-management/arkts-builder.md).
 
 **Possible Causes**
 
@@ -277,7 +277,7 @@ Old toolchain detected. Please upgrade to the latest.
 
 **Description**
 
-Since API version 23, [@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) (in the child component) can be created in [@Reusable](../../ui/state-management/arkts-reusable.md) (in the parent component). However, you need to use the SDK of API version 18 or later. For details, see the [@ReusableV2 usage constraints](../../ui/state-management/arkts-new-reusableV2.md#constraints).
+This error code is reported in the following scenarios: Since API version 18, [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) (child component) can be created in [\@Reusable](../../ui/state-management/arkts-reusable.md) (parent component). However, you need to use the SDK of API version 18 or later. Otherwise, a runtime error will be reported. Since API version 23, this error code will be returned. For details, see the [\@ReusableV2 usage constraints](../../ui/state-management/arkts-new-reusableV2.md#constraints).
 
 **Possible Causes**
 
@@ -295,7 +295,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **Description**
 
-The @Provide decorators with the duplicate key declared exist in the same component, parent component, or ancestor node. For details, see the [@Provide constraints](../../ui/state-management/arkts-provide-and-consume.md#constraints).
+This error code is reported when the @Provide decorators with the duplicate key declared exist in the same component, parent component, or ancestor node. For details, see the [@Provide constraints](../../ui/state-management/arkts-provide-and-consume.md#constraints).
 
 **Possible Causes**
 
@@ -313,7 +313,7 @@ Illegal variable value error with decorated variable
 
 **Description**
 
-An unsupported type is used when you create a state variable in state management V1.
+This error code is reported when an unsupported type is used when you create a state variable in state management V1.
 
 **Possible Causes**
 
@@ -323,7 +323,7 @@ The type decorated by the state variable decorator of state management V1 is inv
 
 Use the type supported by the state variable of state management V1. @State is used as an example. For details, see the [@State usage rules](../../ui/state-management/arkts-state.md#usage-rules).
 
-## 140116 Invalid Key Used by AppStorageV2
+## 140116 AppStorageV2 or PersistenceV2 Uses an Invalid Key
 
 **Error Message**
 
@@ -331,7 +331,7 @@ The key is invalid, key must be string or TypeConstructorWithArgs type.
 
 **Description**
 
-An invalid key is passed for using the [remove](./js-apis-stateManagement.md#remove) API of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) and [PersistenceV2](./js-apis-stateManagement.md#persistencev2) and the [save](./js-apis-stateManagement.md#save) API of **PersistenceV2**.
+This error code is reported when an invalid key is passed for using the [remove](./js-apis-stateManagement.md#remove) API of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) and [PersistenceV2](./js-apis-stateManagement.md#persistencev2) and the [save](./js-apis-stateManagement.md#save) API of **PersistenceV2**.
 
 **Possible Causes**
 
@@ -340,5 +340,3 @@ The key is not of the string or [TypeConstructorWithArgs\<T\>](./js-apis-stateMa
 **Solution**
 
 Ensure that the key passed for using the **remove** API of **AppStorageV2** and **PersistenceV2** and the **save** API of **PersistenceV2** is of the string or **TypeConstructorWithArgs\<T\>** type.
-
-<!--no_check-->

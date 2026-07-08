@@ -255,9 +255,9 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | Array<MenuE
 
 ## bindContextMenuByIsShow
 
-bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
+bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
 
-给组件绑定菜单，菜单的显隐通过控制绑定的isShown触发。
+给组件绑定菜单，菜单的显隐通过控制绑定的isShow触发。
 
 菜单项支持自定义和固定样式数组。
 
@@ -281,7 +281,7 @@ bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuEle
 
 | 参数名       | 类型                                               | 必填 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| isShown | boolean | 是   | 是否支持开发者通过状态变量控制菜单显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
+| isShow | boolean | 是   | 是否支持开发者通过状态变量控制菜单显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
 | content      | [CustomBuilder](ts-types.md#custombuilder8) \| Array<[MenuElement](#menuelement)&gt;       | 是   | 自定义菜单内容构造器或固定样式菜单。 |
 | options      | [ContextMenuOptions](#contextmenuoptions10)                      | 否   | 配置弹出菜单的参数。                         |
 
@@ -366,7 +366,7 @@ bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuEle
 | maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | colorMode | [AnchoredColorMode](ts-universal-attributes-popup.md#anchoredcolormode) | 否 | 是 | 设置菜单深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 | targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />默认值： undefined<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />默认值： undefined<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 | gridStyle | [MenuGridStyleOptions](#menugridstyleoptions) | 否 | 是 | 设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](#bindmenu)、[bindContextMenu](#bindcontextmenu8)、[bindContextMenuByResponseType](#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](#bindcontextmenubyisshow)、[bindContextMenuWithResponse](#bindcontextmenuwithresponse)中使用[MenuElement](#menuelement)或在[MenuItem](ts-basic-components-menuitem.md)中使用MenuItemOptions。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
@@ -623,7 +623,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001174582862](figures/zh-cn_image_0000001174582862.gif)
+![menu](figures/menu.gif)
 
 ### 示例2（弹出自定义菜单）
 
@@ -674,7 +674,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001186807708](figures/zh-cn_image_0000001186807708.gif)
+![menu3](figures/menu3.gif)
 
 ### 示例3（长按弹出菜单）
 
@@ -754,7 +754,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
@@ -1113,7 +1113,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundBlurStyleOptions.png)
+![preview-builder](figures/image-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1165,7 +1165,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### 示例13（设置一镜到底动效支持抬手打断）
 
@@ -1347,7 +1347,7 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
+![preview-builder](figures/image-bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 

@@ -58,7 +58,7 @@ HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatc
 
 - 订阅接口addWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
-- 目前鸿蒙应用有普通应用、[应用分身](../quick-start/app-clone.md)、原子化服务、[输入法应用](../inputmethod/inputmethod-application-guide.md)等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
+- 目前应用有普通应用、[应用分身](../quick-start/app-clone.md)、原子化服务、[输入法应用](../inputmethod/inputmethod-application-guide.md)等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
 
 |系统事件名称|是否支持应用分身订阅|是否支持原子化服务订阅|是否支持输入法应用订阅|
 |-----------|------------------|-----------------|-------------------|
@@ -76,3 +76,14 @@ HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatc
 |24h功耗器件分解统计事件|   不支持  |   不支持   |   支持   |
 |音频卡顿事件|   不支持  |   不支持   |   不支持   |
 |ArkWeb抛滑丢帧事件|   支持  |   支持   |   支持   |
+
+## 系统事件故障日志目录规格
+
+HiAppEvent支持订阅系统事件，部分事件信息中存在external_log、page_switch_log字段包含有日志路径信息。当前故障日志所在目录规格如下，需注意目录规格可能会随版本演进更新。
+
+|故障日志文件目录|目录包含内容|目录空间上限|
+|--------------|--------|-----------|
+|/data/storage/el2/log/hiappevent|崩溃事件日志、应用冻屏日志、地址越界事件日志、任务执行超时事件日志、CPU高负载事件日志。|默认5MB。<br>**说明**：启用minidump时，上限调整至35MB；关闭minidump时，上限恢复至5MB。|
+|/data/storage/el2/log/watchdog|主线程超时事件日志、滑动丢帧事件日志。|10MB|
+|/data/storage/el2/log/resourcelimit|资源泄漏事件日志。|2048MB|
+|/data/storage/el2/log/page_switch|页面切换日志。|18320KB。页面切换日志达到上限后由系统自动老化。|

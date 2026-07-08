@@ -1,4 +1,11 @@
 # Driver Development Kit<!--driver-development-kit-->
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:07.954Z pushedAt=2026-06-25T06:57:12.651Z -->
 
 - [About This Kit](driverdevelopment-overview.md)
 - [Environment Preparation](environmental-preparation.md)

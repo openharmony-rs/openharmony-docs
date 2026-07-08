@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeImage的相关函数。
+定义获取和使用NativeImage的相关函数。NativeImage模块提供了Surface和OpenGL ES纹理之间的桥接能力，支持生产端-消费端的buffer流转机制。开发者可以通过OH_NativeImage将Surface的内容绑定到OpenGL ES纹理进行渲染，或作为消费端获取buffer进行处理。
 
 <!--RP1-->
 相关示例：[NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
@@ -151,7 +151,7 @@ int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 
 **描述**
 
-将OH_NativeImage实例附加到当前OpenGL ES上下文，且该OpenGL ES纹理会绑定到GL_TEXTURE_EXTERNAL_OES, 并通过OH_NativeImage进行更新。<br>本接口为非线程安全类型接口。
+将OH_NativeImage实例附加到当前OpenGL ES上下文，且该OpenGL ES纹理会绑定到GL_TEXTURE_EXTERNAL_OES，并通过OH_NativeImage进行更新。<br>在需要切换纹理或释放资源时，应调用[OH_NativeImage_DetachContext](capi-native-image-h.md#oh_nativeimage_detachcontext)解除绑定。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
@@ -179,7 +179,7 @@ int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 
 **描述**
 
-将OH_NativeImage实例从当前OpenGL ES上下文分离。<br>本接口为非线程安全类型接口。
+将OH_NativeImage实例从当前OpenGL ES上下文分离。<br>本接口与[OH_NativeImage_AttachContext](capi-native-image-h.md#oh_nativeimage_attachcontext)配合使用，必须在调用[OH_NativeImage_AttachContext](capi-native-image-h.md#oh_nativeimage_attachcontext)之后才能调用本接口。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
@@ -276,7 +276,7 @@ int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
-| matrix |  用来存储要获取的4*4的变化矩阵。 |
+| float matrix[16] |  用来存储要获取的4*4的变化矩阵。 |
 
 **返回：**
 
@@ -408,7 +408,7 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
-| matrix |  用来存储要获取的4*4的变化矩阵。 |
+| float matrix[16] |  用来存储要获取的4*4的变化矩阵。 |
 
 **返回：**
 
@@ -436,7 +436,7 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例的指针。 |
-| matrix |  用于存储获取的4*4变换矩阵。 |
+| float matrix[16] |  用于存储获取的4*4变换矩阵。 |
 
 **返回：**
 

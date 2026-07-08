@@ -8,13 +8,13 @@
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Length Type
 
 | Name        | Type                      | Description                                      |
 | ---------- | -------------------------- | ---------------------------------------- |
-| length     | string \| number | Size unit. When the type is **number**, the unit is px. When the type is **string**, the pixel unit must be explicitly specified. Currently, the following pixel units are supported:<br>- **px**: logical size unit.<br>- **fp**: font pixel unit, which varies according to the system font size. This unit is only available for text components.|
+| length     | string&nbsp;\|&nbsp;number | Size unit. When the type is **number**, the unit is px. When the type is **string**, the pixel unit must be explicitly specified. Currently, the following pixel units are supported:<br>- **px**: logical size unit.<br>- **fp**: font pixel unit, which varies according to the system font size. This unit is only available for text components.|
 | percentage | string                     | Unit in percentage, for example, **'50%'**.                         |
 
 
@@ -22,7 +22,7 @@
 
 | Name   | Type              | Description                                      |
 | ----- | ------------------ | ---------------------------------------- |
-| color | string \|Color enumeration| Color information.<br>The string format is as follows:<br>- 'rgb(255, 255, 255)'<br>- 'rgba(255, 255, 255, 1.0)'<br>- HEX format: '\#rrggbb', '\#aarrggbb'<br>- Enumeration format: 'black','white'<br>The enumeration format is not supported in the JS script.|
+| color | string&nbsp;\|Color enumeration| Color information.<br>The string format is as follows:<br>- 'rgb(255,&nbsp;255,&nbsp;255)'<br>- 'rgba(255,&nbsp;255,&nbsp;255,&nbsp;1.0)'<br>- HEX format: '\#rrggbb', '\#aarrggbb'<br>- Enumeration format: 'black','white'<br>The enumeration format is not supported in the JS script.|
 
   **Table 1** Color enums
 

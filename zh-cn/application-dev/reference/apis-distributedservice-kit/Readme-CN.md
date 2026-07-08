@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao;@huangkai71-->
 <!--Designer: @gsxiaowen;@lee_jet520-->
 <!--Tester: @hanjiawei;@Ytt-test-->
-<!--Adviser: @hu-zhiqiong-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--distributed-service-arkts-->
   
@@ -12,7 +12,7 @@
   - [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)](js-apis-distributed-abilityConnectionManager.md)
   - [@ohos.application.DistributedExtensionAbility (协同Extension)](js-apis-distributedExtensionAbility.md)
   - [@ohos.distributedsched.linkEnhance (增强连接)](js-apis-link-enhance.md)
-  - [@ohos.distributedsched.proxyChannelManager(代理通道管理)](js-apis-proxyChannelManager.md)
+  - [@ohos.distributedsched.proxyChannelManager (代理通道管理)](js-apis-proxyChannelManager.md)
   
   <!--Del-->
   
@@ -20,8 +20,9 @@
   - [@ohos.distributedDeviceManager (设备管理)(系统接口)](js-apis-distributedDeviceManager-sys.md)
   - [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)(系统接口)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (键鼠穿越)（系统接口）](js-apis-devicestatus-cooperate-sys.md)
+  - [@ohos.distributedSoftbus.conversation (跨设备唤醒与消息传输)(系统接口)](js-apis-conversation-sys.md)
   - 已停止维护的接口<!--distributed-service-dep-->
-    - [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)(待删除)](js-apis-device-manager-sys.md)
+    - [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](js-apis-device-manager-sys.md)
   
   <!--DelEnd-->
 - C API<!--distributed-service-c-->
@@ -34,6 +35,7 @@
   - [设备管理错误码](errorcode-device-manager.md)
   <!--Del-->
   - [键鼠穿越管理错误码](errorcode-devicestatus.md)
+  - [跨设备唤醒与消息传输错误码](errorcode-conversation.md)
   <!--DelEnd-->
   - [增强连接错误码](errorcode-link-enhance.md)
   - [代理通道管理错误码](errorcode-proxyChannelManager.md)

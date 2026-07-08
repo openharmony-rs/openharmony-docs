@@ -49,7 +49,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -57,6 +57,16 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 并在CMake脚本中链接如下动态库。
 ```C++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
+```
+
+开发者通过引入[application_context.h](../../reference/apis-ability-kit/capi-application-context-h.md)头文件，使用程序框架服务相关API。
+```c++
+#include <AbilityKit/ability_runtime/application_context.h>
+```
+
+并在CMake脚本中链接如下动态库。
+```c++
+target_link_libraries(entry PUBLIC libability_runtime.so)
 ```
 
 开发者使用系统日志能力时，需引入如下头文件。
@@ -122,7 +132,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            // 处理状态变更。
        }
        if (state == OH_AVRecorder_State::ERROR) {
-           OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
+           OH_LOG_ERROR(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
    }
@@ -221,8 +231,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         
         SetConfig(*config);
     
+        // 获取沙箱路径
+        char *fileDirPath;
+        int32_t bufferSize = 1000;
+        int32_t writeLength = 0;
+        AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+        if (!fileDirPath) {
+           OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", errCode);
+           napi_value res;
+           napi_create_int32(env, -1, &res);
+           return res;
+        }
         // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
-        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        const std::string AVRECORDER_ROOT = fileDirPath;
         int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
@@ -244,7 +265,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         }
         
         // 3.调用prepare接口。
-        int result = OH_AVRecorder_Prepare(g_avRecorder, config);
+        OH_AVErrCode result = OH_AVRecorder_Prepare(g_avRecorder, config);
         if (result != AV_ERR_OK) {
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
@@ -269,7 +290,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    ```C++
    // 获取surfaceID。
    OHNativeWindow *window = nullptr;
-   int resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
+   OH_AVErrCode resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
    uint64_t surfaceId = 0;
    if (resultCode == AV_ERR_OK && window != nullptr) {
       OH_NativeWindow_GetSurfaceId(window, &surfaceId);
@@ -312,6 +333,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <unistd.h>
    #include <fcntl.h>
    #include "hilog/log.h"
+   #include <AbilityKit/ability_runtime/application_context.h>
    #include <multimedia/player_framework/avrecorder.h>
    #include <multimedia/player_framework/avrecorder_base.h>
    #include <multimedia/media_library/media_asset_change_request_capi.h>
@@ -444,8 +466,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
       SetConfig(*config);
 
+      // 获取沙箱路径
+      char *fileDirPath;
+      int32_t bufferSize = 1000;
+      int32_t writeLength = 0;
+      AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+      if (!fileDirPath) {
+         OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", errCode);
+         napi_value res;
+         napi_create_int32(env, -1, &res);
+         return res;
+      }
       // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
-      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      const std::string AVRECORDER_ROOT = fileDirPath;
       g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
@@ -466,7 +499,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       }
 
       // 1.3调用prepare接口。
-      int result = OH_AVRecorder_Prepare(g_avRecorder, config);
+      OH_AVErrCode result = OH_AVRecorder_Prepare(g_avRecorder, config);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
       }
@@ -488,7 +521,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       (void)info;
 
       OHNativeWindow *window = nullptr;
-      int resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
+      OH_AVErrCode resultCode = OH_AVRecorder_GetInputSurface(g_avRecorder, &window);
       if (resultCode != AV_ERR_OK || window == nullptr) {
           OH_LOG_INFO(LOG_APP, "==NDKDemo== AVRecorder OH_AVRecorder_GetInputSurface failed!");
           napi_value errorResult;
@@ -510,7 +543,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value StartAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Start(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Start(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Start failed %{public}d", result);
       }
@@ -523,7 +556,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value PauseAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Pause(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Pause(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Pause failed %{public}d", result);
       }
@@ -536,7 +569,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value ResumeAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Resume(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Resume(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Resume failed %{public}d", result);
       }
@@ -549,11 +582,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value StopAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Stop(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Stop(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
-      close(g_outputFd);
+      if (g_outputFd > 0) {
+         close(g_outputFd);
+      }
+      
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
@@ -571,7 +607,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          return res;
       }
 
-      int result = OH_AVRecorder_Reset(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Reset(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Reset failed %{public}d", result);
       }
@@ -591,8 +627,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          napi_create_int32(env, AV_ERR_INVALID_VAL, &res);
          return res;
       }
-      
-      int result = OH_AVRecorder_Release(g_avRecorder);
+      if (g_outputFd > 0) {
+         close(g_outputFd);
+         g_outputFd = -1;
+      }
+      OH_AVErrCode result = OH_AVRecorder_Release(g_avRecorder);
       g_avRecorder = nullptr;   // 释放录制资源后，需要显式地将g_avRecorder指针置空。
 
       if (result != AV_ERR_OK) {

@@ -10,7 +10,7 @@
 
 - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)：异步锁。
 - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)：ASON工具。
-- [SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)：SendableLruCache缓冲区。 
+- [ArkTSUtils.SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)：SendableLruCache缓冲区。 
 
 
 >
@@ -23,5 +23,5 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```

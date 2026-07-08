@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
 <!--Owner: @no86-->
-<!--Designer: @mmwwbb-->
+<!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 

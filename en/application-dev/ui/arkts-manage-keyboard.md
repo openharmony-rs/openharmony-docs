@@ -24,9 +24,9 @@ The system distinguishes between system soft keyboards and custom keyboards. The
 
 ### Interactive Focus
 
-The following demonstrates soft keyboard behavior during input field tapping, double-tapping, or long-pressing.
+Tapping, double-tapping, or long-pressing will trigger the display of soft keyboard.
 
-![click](figures/click.gif)
+
 
 ### Programmatic Focus
 
@@ -131,7 +131,7 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_user_close](figures/keyboard_textInput_user_close.gif)
+
 
 ### Text Dragging
 
@@ -165,9 +165,9 @@ struct Index {
 
 ### Swipe Gestures
 
-Swipe gestures hide the soft keyboard. The figure below demonstrates this dismissal scenario.
+While the soft keyboard remains displayed, users can swipe from the side to collapse it.
 
-![keyboard_textInput_gesture_return](figures/keyboard_textInput_gesture_return.gif)
+
 
 ### Page Navigation
 
@@ -291,7 +291,7 @@ struct demo {
   }
 }
 ```
-![stopEditing](figures/stopEditing.gif)
+
 
 ### Focus Transfer
 

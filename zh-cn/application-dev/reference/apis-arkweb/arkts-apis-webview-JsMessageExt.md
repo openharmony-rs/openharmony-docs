@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)接口执行脚本返回的数据对象。
+JsMessageExt是ArkWeb框架中用于封装[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)接口执行JavaScript脚本后返回结果的数据类。与常规的runJavaScript接口不同，runJavaScriptExt支持更丰富的返回值类型，JsMessageExt则为这些多样化的返回结果提供了类型安全的访问方式。开发者通过JsMessageExt的getType方法先获取数据类型，再调用对应的get方法获取具体值。
+
+JsMessageExt支持多种JavaScript返回值类型的解析：字符串（getString）、数值（getNumber）、布尔值（getBoolean）、原始二进制数据（getArrayBuffer）、数组（getArray）等。当获取的数据类型与实际存储类型不匹配时（例如对数值类型调用getString），会抛出错误码17100014。从API version 22开始，JsMessageExt还提供了getErrorDescription方法，用于获取JavaScript执行过程中的异常信息，如果返回值为object类型则统一格式化为描述字符串。
 
 > **说明：**
 >

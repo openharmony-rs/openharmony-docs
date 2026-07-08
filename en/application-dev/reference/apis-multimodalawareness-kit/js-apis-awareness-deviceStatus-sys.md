@@ -5,6 +5,7 @@
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:33.662Z pushedAt=2026-06-25T01:35:11.426Z -->
 
 The **deviceStatus** module provides the device status awareness functionality.
 

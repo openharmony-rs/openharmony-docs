@@ -124,9 +124,9 @@ Button('Change state variable')
 V2装饰变量赋值，对象属性或数组（Map、Set）项变化，会触发@Monitor的异步执行。如果状态变量被修改多次，则@Monitor函数只会执行一次。
 
 ```typescript
-@Local arr: Array<ObsObjC> = [new ObsObjC('propC1')];
+@Local obsObjA: ObsObjA = new ObsObjA('propANew');
 
-@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA发生变化时异步执行
+@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA.propA发生变化时异步执行
   console.info(`${mon.dirty[0]}`); // 执行顺序4（onClick相关逻辑执行完后，才执行onChange回调）
 }
 

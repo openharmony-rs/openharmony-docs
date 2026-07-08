@@ -54,13 +54,15 @@ Describes the layout and alignment of child components within the **Flex** compo
 | justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the main axis.<br>Default value: **FlexAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
 | alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the cross axis.<br>Default value: **ItemAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
 | alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of multiple lines when there is extra space along the cross axis. This parameter is valid only when **wrap** is set to **Wrap** or **WrapReverse**.<br>Default value: **FlexAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](ts-container-flex.md#flexspaceoptions12) | No| Yes  | Spacing between child components along the main axis or cross axis of the **Flex** component.<br>Default value: **{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)}**<br>Invalid values are treated as the default value.<br>This parameter does not take effect if the value specified is a negative number or percentage, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](ts-container-flex.md#flexspaceoptions12) | No| Yes  | Spacing between child components along the main axis or cross axis of the **Flex** component.<br>Default value: **{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)}**<br>Invalid values are treated as the default value.<br>This parameter does not take effect if the value specified is a negative number or percentage, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## FlexSpaceOptions<sup>12+</sup>
 
 Sets the spacing between child components along the main axis or cross axis of the **Flex** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +144,7 @@ struct FlexExample1 {
 }
 ```
 
-![en-us_image_0000001219744189](figures/en-us_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### Example 2: Implementing Single- and Multi-Line Layouts
 This example demonstrates single-line and multi-line layouts for child components by setting the **wrap** property.
@@ -190,7 +192,7 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174264366](figures/en-us_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### Example 3: Setting Alignment Along the Main Axis
 This example demonstrates different alignment effects for child components along the main axis by setting the **justifyContent** property.
@@ -198,7 +200,7 @@ This example demonstrates different alignment effects for child components along
 // xxx.ets
 @Component
 struct JustifyContentFlex {
-  justifyContent : number = 0;
+  justifyContent: number = 0;
 
   build() {
     Flex({ justifyContent: this.justifyContent }) {
@@ -241,7 +243,7 @@ struct FlexExample3 {
 }
 ```
 
-![en-us_image_0000001174582854](figures/en-us_image_0000001174582854.PNG)
+![flex3](figures/flex3.PNG)
 
 ### Example 4: Setting Alignment Along the Cross Axis
 This example demonstrates different alignment effects for child components along the cross axis by setting the **alignItems** property.
@@ -249,7 +251,7 @@ This example demonstrates different alignment effects for child components along
 // xxx.ets
 @Component
 struct AlignItemsFlex {
-  alignItems : number = 0;
+  alignItems: number = 0;
 
   build() {
     Flex({ alignItems: this.alignItems }) {
@@ -292,7 +294,7 @@ struct FlexExample4 {
 }
 ```
 
-![en-us_image_0000001174422904](figures/en-us_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### Example 5: Setting Alignment of Multiple Lines
 This example demonstrates different alignment effects for multiple lines of content by setting the **alignContent** property.
@@ -355,7 +357,7 @@ struct FlexExample5 {
 }
 ```
 
-![en-us_image_0000001174422906](figures/en-us_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### Example 6: Setting the Spacing Between Child Components Along the Main Axis or Cross Axis
 This example shows how to set the spacing between child components along the main axis or cross axis using the **space** property.
@@ -364,7 +366,7 @@ import {LengthMetrics} from '@kit.ArkUI';
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 }) {
@@ -404,13 +406,13 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174422907](figures/en-us_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### Example 7: Implementing a Flex Component with Adaptive Width
 This example shows how the **Flex** component can automatically adjust to fit the layout of child components when the width is set to **auto**.
 ```ts
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @Prop text: string
 
   build() {
@@ -458,4 +460,4 @@ struct Index {
 }
 ```
 
-![en-us_flexDemo_7](figures/en-us_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

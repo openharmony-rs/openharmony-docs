@@ -1,8 +1,8 @@
 # 动画帧
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -99,7 +99,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001174756860](figures/zh-cn_image_0000001174756860.gif)
+![requestAnimationFrame](figures/requestAnimationFrame.gif)
 
 > **说明：** 
 >
@@ -189,7 +189,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001220316655](figures/zh-cn_image_0000001220316655.gif)
+![cancelAnimationFrame](figures/cancelAnimationFrame.gif)
 
 > **说明：** 
 >

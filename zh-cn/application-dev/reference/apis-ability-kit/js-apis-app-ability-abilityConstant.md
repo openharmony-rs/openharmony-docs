@@ -360,6 +360,8 @@ export default class MyAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 | 名称           | 值       | 说明                                                         |
 | ------------- | --------- | ------------------------------------------------------------ |
 | ACTIVE        | 0         | 指示当前应用任务流转处于激活状态。                              |

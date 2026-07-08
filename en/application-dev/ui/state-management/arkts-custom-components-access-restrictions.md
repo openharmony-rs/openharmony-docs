@@ -26,7 +26,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
 
 - Because structs do not support inheritance, none of the preceding variables can be declared as **protected**.
 
-- Variables decorated by [\@Require](./arkts-require.md) must be initialized externally. Therefore, using \@Require and **private** together to decorate regular variables (which do not involve re-rendering) and variables decorated by [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), or [\@BuilderParam](./arkts-builderparam.md) is not allowed.
+- Variables decorated with [\@Require](./arkts-require.md) must be initialized externally. Therefore, using \@Require and **private** together to decorate regular variables (which do not involve re-rendering) and variables decorated by [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), or [\@BuilderParam](./arkts-builderparam.md) is not allowed.
 
 ## Use Scenarios
 
@@ -146,7 +146,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-2. If a member variable is decorated with both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, initializing it through the parent component will trigger a warning log.
+2. If a member variable is decorated with both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, a build error is reported.
 
    **Incorrect Usage**
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
@@ -234,7 +234,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-3. If a member variable is decorated by both the **private** access modifier and the \@Link or \@ObjectLink decorator, initializing it through the parent component will trigger a warning log.
+3. If a member variable is decorated with both the **private** access modifier and the \@Link or \@ObjectLink decorator, a build error is reported.
 
    **Incorrect Usage**
     <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
@@ -321,7 +321,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-4. If a member variable is decorated with the **protected** access modifier, initializing it through the parent component will trigger a warning log.
+4. If a member variable is decorated with the **protected** access modifier, a build error is reported.
 
    **Incorrect Usage**
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
@@ -390,7 +390,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
 
-5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and any of the \@State, \@Prop, \@Provide, and \@BuilderParam decorators, initializing it through the parent component will trigger a warning log.
+5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs.
 
    **Incorrect Usage**
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->

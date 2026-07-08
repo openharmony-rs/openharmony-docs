@@ -149,7 +149,7 @@ struct Index {
 }
 ```
 
-![en-us_image_composetitlebar_example01](figures/en-us_image_composetitlebar_example01.png)
+![image-composetitlebar-example-01](figures/image-composetitlebar-example-01.png)
 
 ### Example 2: Implementing Screen Reader Announcement for the Custom Button on the Right Side
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
@@ -242,7 +242,7 @@ struct Index {
 }
 ```
 
-![en-us_image_composetitlebar_example02](figures/en-us_image_composetitlebar_example02.png)
+![image-composetitlebar-example-02](figures/image-composetitlebar-example-02.png)
 
 ### Example 3: Setting the Symbol Icon
 
@@ -324,4 +324,4 @@ struct Index {
 }
 ```
 
-![Setting the symbol icon](figures/en-us_image_composetitlebar_demo_03.png)
+![Setting the symbol icon](figures/image-composetitlebar-demo-03.png)

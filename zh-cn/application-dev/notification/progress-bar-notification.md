@@ -12,11 +12,11 @@
 
 ## 接口说明
 
-[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate)是查询模板是否支持接口，目前仅支持进度条模板。
+[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate)是查询是否支持对应的通知模板，目前仅支持进度条模板。
 
 | **接口名** | **描述** |
 | -------- | -------- |
-| isSupportTemplate(templateName: string): Promise\<boolean\> | 查询模板是否存在。 |
+| isSupportTemplate(templateName: string): Promise\<boolean\> | 查询是否支持对应的通知模板。|
 
 
 ## 开发步骤

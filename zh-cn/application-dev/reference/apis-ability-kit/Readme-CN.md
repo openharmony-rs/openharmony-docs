@@ -110,13 +110,14 @@
     - [@ohos.app.ability.dataUriUtils (DataUriUtils模块)](js-apis-app-ability-dataUriUtils.md)
     - [@ohos.app.ability.dialogRequest (dialogRequest模块)](js-apis-app-ability-dialogRequest.md)
     - [@ohos.app.ability.errorManager (错误管理模块)](js-apis-app-ability-errorManager.md)
-    - [@ohos.app.ability.hyperSnapManager (应用快照管理)](js-apis-app-ability-hyperSnapManager.md)
+    - [@ohos.app.ability.hyperSnapManager (应用快启管理)](js-apis-app-ability-hyperSnapManager.md)
     - [@ohos.app.ability.kioskManager (Kiosk模式管理)](js-apis-app-ability-kioskManager.md)
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent模块)](js-apis-app-ability-wantAgent.md)
     - [@ohos.app.ability.wantConstant (Want常量)](js-apis-app-ability-wantConstant.md)
     <!--Del-->
     - [@ohos.abilityAccessCtrl (程序访问控制管理)(系统接口)](js-apis-abilityAccessCtrl-sys.md)
+    - [@ohos.abilityToolAccessCtrl (工具访问控制)(系统接口)](js-apis-abilityToolAccessCtrl-sys.md)
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](js-apis-screenLockFileManager-sys.md)
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
@@ -134,7 +135,8 @@
     - [@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)
     - [@ohos.bundle.defaultAppManager (默认应用管理)](js-apis-defaultAppManager.md)
     - [@ohos.bundle.launcherBundleManager (launcherBundleManager模块)](js-apis-launcherBundleManager.md)
-    - [@ohos.bundle.overlay (overlay模块)](js-apis-overlay.md)
+    - [@ohos.bundle.overlay (overlay特征模块)](js-apis-overlay.md)
+    - [@ohos.bundle.pluginBundleManager (pluginBundleManager模块)](js-apis-pluginBundleManager.md)
     - [@ohos.bundle.shortcutManager (shortcutManager模块)](js-apis-shortcutManager.md)
     - [@ohos.bundle.skillManager (skillManager模块)](js-apis-skillManager.md)
     <!--Del-->
@@ -230,7 +232,6 @@
       - [ViewData (系统接口)](js-apis-inner-application-viewData-sys.md)
       - [AgentExtensionConnectCallback (系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
-      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)
@@ -242,6 +243,7 @@
       - [launcherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)
       - [metadata](js-apis-bundleManager-metadata.md)
       - [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)
+      - [PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md)
       - [Skill](js-apis-bundleManager-skill.md)
       - [shortcutInfo](js-apis-bundleManager-shortcutInfo.md)
       - [skillInfo](js-apis-bundleManager-SkillInfo.md)
@@ -334,6 +336,7 @@
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [context.h](capi-abilityruntime-context-h.md)
     - [extension_ability.h](capi-extension-ability-h.md)
+    - [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
     - [modular_object_extension_ability.h](capi-modular-object-extension-ability-h.md)
     - [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
     - [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
@@ -356,6 +359,16 @@
     - [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-nativeabilitywrapper.md)
     - [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md)
     - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
+    - [OH_AbilityRuntime_ModObjDispatcher_InputParams](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-inputparams.md)
+    - [OH_AbilityRuntime_ModObjDispatcher_TypeInfo](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-typeinfo.md)
+    - [OH_AbilityRuntime_ModObjDispatcher_Variant](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_Array*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-array8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_Map*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-map8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_Set*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-set8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_Struct*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-struct8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_TypeDescriptor*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-typedescriptor8h.md)
+    - [OH_AbilityRuntime_ModularObjectDispatcher_Vector*](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-vector8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
     - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)
     - [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)
@@ -369,4 +382,6 @@
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
   <!--Del-->
   - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  - [工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)
+
   <!--DelEnd-->

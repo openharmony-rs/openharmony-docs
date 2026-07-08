@@ -43,7 +43,7 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 LongPressGesture(options?: LongPressGestureHandlerOptions)
 
-创建长按手势对象。与[LongPressGesture](#longpressgesture-1)相比，options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
+创建长按手势对象。与[LongPressGesture](#longpressgesture-1)相比，options参数新增了isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
 
 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 
 
@@ -177,4 +177,4 @@ struct LongPressGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174264380](figures/zh-cn_image_0000001174264380.gif)
+![longPressGesture](figures/longPressGesture.gif)

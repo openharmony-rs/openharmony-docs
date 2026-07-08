@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -40,6 +40,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | -- | -- | -- |
 | [HiAppEvent_ErrorCode](#hiappevent_errorcode) | HiAppEvent_ErrorCode | Enumerates the error codes used in the HiAppEvent module.|
 | [EventType](#eventtype) | - | Enumerates the event types. You are advised to select different event types based on application scenarios.|
+| [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | - | Application framework type. You are advised to select an application framework type based on the actual application scenario.|
 
 ### Functions
 
@@ -94,6 +95,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)](#oh_hiappevent_destroyconfig) | - | Destroys a configuration object. Note: If a configuration object is no longer used, destroy it to release memory to prevent memory leaks. After the object is destroyed, set its pointer to null.|
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | Sets the items in the configuration object.|
 | [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters.<br> Configuration items vary depending on events. Currently, only the following events are supported:<br> **MAIN_THREAD_JANK**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)<br> **MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)<br> **EVENT_APP_CRASH**. (For details about the parameter configuration, see [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md#parameters-of-oh_hiappevent_seteventconfig).) This event is supported since API version 24.|
+| [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | Reports information about abnormal memory usage of the application framework.<br> This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned.<br> When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called:<br> 1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework.<br> 2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework.|
 
 ## Enum Description
 
@@ -119,6 +121,7 @@ Enumerates the error codes used in the HiAppEvent module.
 | HIAPPEVENT_EVENT_CONFIG_IS_NULL = -10 | The event configuration is null.                |
 | HIAPPEVENT_OPERATE_FAILED = -100 | The operation failed.<br>**Since**: 18                       |
 | HIAPPEVENT_INVALID_UID = -200 | The user ID is invalid.<br>**Since**: 18                       |
+| HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED = -300 | The reporting frequency exceeds the limit.<br>**Since:** 26.0.0     |
 
 ### EventType
 
@@ -139,6 +142,23 @@ Enumerates the event types. You are advised to select different event types base
 | SECURITY = 3 | Security event.|
 | BEHAVIOR = 4 | Behavior event.|
 
+### OH_HiAppEvent_FrameworkType
+
+```c
+enum OH_HiAppEvent_FrameworkType
+```
+
+**Description**
+
+Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario.
+
+**Since:** 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_FLUTTER_DART | Flutter_dart type.|
+| OH_REACT_NATIVE_HERMES | React_native_hermes type.|
+| OH_KMP_KOTLIN | Kmp_kotlin type.|
 
 ## Function Description
 
@@ -683,7 +703,7 @@ Logs application events whose parameters are of the list type. Before applicatio
 | const char* domain | Event domain. You can customize event domains as required.<br> The value is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), and underscore (\_). It must start with a letter and cannot end with an underscore (\_).|
 | const char* name | Event name. You can customize event names as required.<br> The value is a string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z), underscore (\_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.|
 | enum EventType type | Event type. For details, see [EventType](capi-hiappevent-h.md#eventtype).|
-| [const ParamList](capi-hiappevent-paramlistnode8h.md) list | List of event parameters, each of which consists of a parameter name and a parameter value. The specifications are as follows:<br> 1.<br> The value is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.<br> 2. The parameter value can be a string, number, Boolean, or array. The length of a string must be less than 8 × 1024 characters. If this limit is exceeded, excess characters will be truncated.<br> The element type of an array parameter can only be a string, number, or Boolean, and the number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br> 3. The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
+| const [ParamList](capi-hiappevent-paramlistnode8h.md) list | List of event parameters, each of which consists of a parameter name and a parameter value. The specifications are as follows:<br> 1.<br> The value is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.<br> 2. The parameter value can be a string, number, Boolean, or array. The length of a string must be less than 8 × 1024 characters. If this limit is exceeded, excess characters will be truncated.<br> The element type of an array parameter can only be a string, number, or Boolean, and the number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br> 3. The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
 
 **Returns**
 
@@ -736,13 +756,13 @@ Creates a watcher for application events.
 
 | Name| Description|
 | -- | -- |
-| const char* name | Watcher name.|
+| const char* name | Pointer to the watcher name.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* | Pointer to the new watcher if the API is called successfully; **nullptr** if the **name** parameter is invalid.|
+| [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* | When the API is successfully called, a pointer to the created watcher is returned. If the **name** is a null pointer, **nullptr** is returned.|
 
 ### OH_HiAppEvent_DestroyWatcher()
 
@@ -781,7 +801,7 @@ Sets the trigger condition of the **OH_HiAppEvent_OnTrigger** callback.<br> You 
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* watcher | Pointer to the watcher (that is, the pointer returned by OH_HiAppEvent_CreateWatcher).|
 | int row | Row count. If the input value is greater than 0 and the number of newly received events is greater than or equal to the value of this parameter, the configured **onTrigger** callback is called.<br> If the input value is less than or equal to 0, the number of received events is not used as the condition to trigger the **onTrigger** callback.|
 | int size | Size value. If the input value is greater than 0 and the size of the newly received event is greater than or equal to the value of this parameter, the configured **onTrigger** callback is called. The size of a single event is the length of the JSON string converted from the event. <br> If the input value is less than or equal to 0, the size of received events is not used as the condition to trigger the **onTrigger** callback.|
-| int timeOut | Timeout value, in seconds. If the input value is greater than 0, the system checks the watcher for newly received events based on the timeout interval. If there are any newly received events, the configured onTrigger callback is triggered.<br> After the callback is complete, the system checks the watcher for newly received events when the timeout value expires.<br> If the input value is less than or equal to 0, the timeout interval is not used as the condition to trigger the onTrigger callback.|
+| int timeOut | Timeout interval, in seconds. The actual value is the value of **timeOut** multiplied by 30 seconds. If the value of **timeOut** is greater than 0, the system checks for new events every **timeOut** × 30 seconds. If a new event is detected, the **onTrigger** callback is triggered, and the timer restarts. If the value of **timeOut** is less than or equal to 0, the **onTrigger** callback is not enabled.|
 
 **Returns**
 
@@ -1030,8 +1050,8 @@ Sets the report policy for the processor.
 | Name| Description|
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
-| int periodReport | Period for reporting events, in seconds.|
-| int batchReport | Threshold for reporting events. When the number of events reaches the threshold, an event is reported.|
+| int periodReport | Period for reporting events, in seconds. The input value must be greater than or equal to 0.|
+| int batchReport | Threshold for reporting events. When the number of events reaches the threshold, an event is reported. The value range is [0, 1000].|
 | bool onStartReport | Whether to report events during startup. **true**: yes; **false**: no.|
 | bool onBackgroundReport | Whether to report events after an application switches to the background. **true**: yes; **false**: no.|
 
@@ -1353,4 +1373,30 @@ Sets event configuration parameters.<br> Configuration items vary depending on e
 | -- | -- |
 | int | [HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode): Operation successful.<br>         [HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode): Invalid parameter.<br>         For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode).|
 
+### OH_HiAppEvent_ReportFrameworkMemAnomaly()
+
+```c
+int OH_HiAppEvent_ReportFrameworkMemAnomaly(
+    enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)
+```
+
+**Description**
+
+Reports information about abnormal memory usage of the application framework.<br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned.<br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called:<br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework.<br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| enum [OH_HiAppEvent_FrameworkType](capi-hiappevent-h.md#oh_hiappevent_frameworktype) frameworkType | Application framework type.|
+| const char* frameworkVersion | Pointer to the application framework version.|
+| const char* description | Description of the abnormal memory usage of the application framework.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | **HIAPPEVENT_SUCCESS**: Operation succeeded.<br>         **HIAPPEVENT_INVALID_PARAM_VALUE**: Invalid parameter value.<br>         **HIAPPEVENT_OPERATE_FAILED**: Failed to write the system or application event, or obtain the timestamp.<br>**HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED**: The reporting frequency exceeds the limit.<br>         For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode).|
 <!--no_check-->

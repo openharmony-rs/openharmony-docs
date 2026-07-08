@@ -109,12 +109,12 @@ namespace Base64Utils {
 **【描述】**
 
 函数的命名通常是动词或动词短语，采用小驼峰命名。示例如下：
-1.   load + 属性名()
-2.   put + 属性名()
-3.   is + 布尔属性名()
-4.   has + 名词/形容词()
-5.   动词()
-6.   动词 + 宾语()
+1. load + 属性名()
+2. put + 属性名()
+3. is + 布尔属性名()
+4. has + 名词/形容词()
+5. 动词()
+6. 动词 + 宾语()
 
 变量名通常是名词或名词短语，采用小驼峰命名，便于理解。
 
@@ -150,12 +150,12 @@ function findUser(userName: string) {
 <!-- @[Uppercase_Underline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
+const MAX_USER_SIZE = 10000;
+
 enum UserType1 {
   TEACHER = 0,
   STUDENT = 1
 };
-
-const MAX_USER_SIZE = 10000;
 ```
 
 ### 避免使用否定的布尔变量名，布尔型的局部变量或方法需加上表达是非意义的前缀
@@ -378,19 +378,17 @@ let pointY = 0;
 **【描述】**
 
 空格应该突出关键字和重要信息。总体建议如下：
-1.   `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
-2.   在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
-3.   关键字`else`或`catch`与其之前的大括号`}`之间加空格。
-4.   任何打开大括号(`{`)之前加空格，有两个例外：
-
-a)   在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
-
-b)   在模板中，不用加空格，例如：`abc${name}`。
-5.   二元操作符(`+` `-` `*` `=` `<` `>` `<=` `>=` `===` `!==` `&&` `||`)前后加空格；三元操作符(`? :`)符号两侧均加空格。
-6.   数组初始化中的逗号和函数中多个参数之间的逗号后加空格。
-7.   在逗号(`,`)或分号(`;`)之前不加空格。
-8.   数组的中括号(`[]`)内侧不要加空格。
-9.   不要出现多个连续空格。在某行中，多个空格若不是用来作缩进的，通常是个错误。
+1. `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
+2. 在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
+3. 关键字`else`或`catch`与其之前的大括号`}`之间加空格。
+4. 任何打开大括号(`{`)之前加空格，有两个例外：
+    - 在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
+    - 在模板中，不用加空格，例如：`abc${name}`。
+5. 二元操作符(`+` `-` `*` `=` `<` `>` `<=` `>=` `===` `!==` `&&` `||`)前后加空格；三元操作符(`? :`)符号两侧均加空格。
+6. 数组初始化中的逗号和函数中多个参数之间的逗号后加空格。
+7. 在逗号(`,`)或分号(`;`)之前不加空格。
+8. 数组的中括号(`[]`)内侧不要加空格。
+9. 不要出现多个连续空格。在某行中，多个空格若不是用来作缩进的，通常是个错误。
 
 **【反例】**
 
@@ -456,11 +454,11 @@ if (flag) {
 function foo() { // 函数声明时，左大括号 { 之前加个空格
   // ...
 }
-// ...
-  bar('attr', { // 左大括号前加个空格
-    age: '1 year',
-    sbreed: 'Bernese Mountain Dog',
-  });
+
+bar('attr', { // 左大括号前加个空格
+  age: '1 year',
+  sbreed: 'Bernese Mountain Dog',
+});
 ```
 
 **【正例】**
@@ -882,7 +880,7 @@ export function getObject1(value: number): I {
 // Index.ets
 import { getObject1 } from './lib';
 // ...
-let obj1: I = getObject1(123);
+let obj1: ESObject = getObject1(123);
 ```
 
 **【正例】**
@@ -933,7 +931,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 <!-- @[use_T_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// 统一使用T[]语法
+// 统一使用T[]语法。
 let x: number[] = [1, 2, 3];
 let y: string[] = ['a', 'b', 'c'];
 ```

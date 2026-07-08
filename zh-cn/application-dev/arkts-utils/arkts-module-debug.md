@@ -11,7 +11,7 @@ ArkTS运行时提供了多种模块化调试工具，帮助开发者快速定位
 | 工具名称 | 主要功能 | 适用场景 | API版本 |
 |---------|---------|---------|---------|
 | [模块加载链路调试工具](#模块加载链路调试工具)| 检测循环依赖，记录模块加载路径 | 循环依赖问题、模块加载路径分析 |26.0.0|
-| [模块化trace打点开关](#模块化trace打点开关) | 分析模块性能，统计使用情况 | 性能分析、性能优化 |26.0.0|
+| [模块化trace打点工具](#模块化trace打点工具) | 分析模块性能，统计使用情况 | 性能分析、性能优化 |26.0.0|
 
 ## 模块加载链路调试工具
 当应用在模块加载阶段因异常发生崩溃，或开发者希望获取模块调用链路时，开发者可以通过该功能快速找到出问题的模块和它的调用路线，尤其适用于多层级嵌套import场景下的故障诊断。
@@ -32,11 +32,11 @@ hdc shell param set persist.ark.properties 0x0000105c
 
 ### 栈数据格式
 
-开启模块加载链路调试功能后，JsCrash和CppCrash 崩溃日志中将显示模块调用链路信息：
+开启模块加载链路调试功能后，JsCrash和CppCrash 崩溃日志中将显示模块调用链路信息。
 
 **JsCrash日志示例：**
 
-开启模块加载链路调试功能后，JsCrash崩溃日志中将新增 `ModuleImportStack` 字段：
+开启模块加载链路调试功能后，JsCrash崩溃日志中将新增 `ModuleImportStack` 字段。
 ```text
 ...
 Stacktrace:
@@ -68,7 +68,7 @@ Fault thread info:
 
 > **注意：**
 > 
-> 模块加载链路调试最多打印64KB内容，对于嵌套深度较大的场景，CppCrash和JsCrash会省略掉中间的栈：
+> 模块加载链路调试最多打印64KB内容，对于嵌套深度较大的场景，CppCrash和JsCrash会省略掉中间的栈。
 
 ```text
 ModuleImportStack:
@@ -80,13 +80,13 @@ ModuleImportStack:
 ### 使用JsCrash追踪模块加载路径
 开发者若需快速定位引发问题的模块导入链路，可在问题模块的顶层抛出一个JsError。例如，在B模块的顶层抛出异常后，开发者在打开工具并复现场景时，即可查看模块加载链路。
 ```js
-// entry\src\main\ets\pages\Index.ets
+// entry/src/main/ets/pages/Index.ets
 import  {A} from './A'
 
 A()
 ```
 ```js
-// entry\src\main\ets\pages\A.ets
+// entry/src/main/ets/pages/A.ets
 import {b} from "./B"
 
 export function A(){
@@ -94,7 +94,7 @@ export function A(){
 }
 ```
 ```js
-// entry\src\main\ets\pages\B.ets
+// entry/src/main/ets/pages/B.ets
 // 在顶层抛异常，不要在函数内。
 throw new Error("ModuleImportStack test")
 export const b = 1;
@@ -109,7 +109,7 @@ ModuleImportStack:
 ### 追踪so模块的ets导入来源
 开发者若想快速定位引发问题的so模块加载链路，可在引发问题的so的napi_init中抛出CppCrash。例如，在napi_init.cpp中对空指针进行操作以触发CppCrash，开发者打开工具后复现场景，即可看到libentry.so模块是从哪个ets文件导入。
 ```js
-// entry\src\main\ets\pages\Index.ets
+// entry/src/main/ets/pages/Index.ets
 import {a} from './A'
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -117,7 +117,7 @@ const DOMAIN = 0x0000;
 hilog.info(DOMAIN, 'testTag', 'ModuleImportStack test', a);
 ```
 ```js
-// entry\src\main\ets\pages\A.ets
+// entry/src/main/ets/pages/A.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
@@ -126,7 +126,7 @@ hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3)
 export const a = 1;
 ```
 ```cpp
-// entry\src\main\cpp\napi_init.cpp
+// entry/src/main/cpp/napi_init.cpp
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -147,7 +147,7 @@ LastFatalMessage:Failed to load &entry/src/main/ets/pages/A&, the dependency imp
 #0 &entry/src/main/ets/pages/A&
 #1 &entry/src/main/ets/pages/Index&
 ```  
-## 模块化trace打点开关  
+## 模块化trace打点工具
 
 当开发者需要分析文件加载场景的性能可以使用此开关。  
 

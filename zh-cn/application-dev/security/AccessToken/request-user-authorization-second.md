@@ -19,7 +19,7 @@
 效果展示：
 
 <!--RP2-->
-![zh-cn_image_location](figures/zh-cn_image_location_second.png)
+![image-location](figures/image-location-second.png)
 <!--RP2End-->
 
 以下示例代码展示了如何再次拉起弹框申请ohos.permission.APPROXIMATELY_LOCATION权限。

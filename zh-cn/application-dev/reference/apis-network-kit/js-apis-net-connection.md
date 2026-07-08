@@ -1679,7 +1679,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1730,7 +1731,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1784,6 +1786,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -1834,6 +1837,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -1885,6 +1889,11 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
 
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -1927,6 +1936,11 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
+
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2777,6 +2791,53 @@ connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultIn
     console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
     console.error(JSON.stringify(err));
+});
+```
+
+## connection.refreshGlobalHttpProxy
+
+refreshGlobalHttpProxy(): Promise\<HttpProxy\>
+
+通知系统重新认证全局代理。
+
+>**说明：**
+>
+>若当前未配置全局代理或代理配置信息有误（例如未正确配置username和password），则会抛出2100003错误码。可通过[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)接口查询当前代理配置信息。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<[HttpProxy](#httpproxy10)\> | Promise对象，返回全局代理配置信息。其中username和password字段固定为空字符串，不返回有效信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.refreshGlobalHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(`Succeeded to refresh global http proxy: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to refresh global http proxy. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3723,7 +3784,7 @@ SOCKS5代理配置信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是  |   网络标识符。<br/>- 蜂窝网络：标识符为simId，可通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取对应卡槽的simId（例如"simId1"，其中1表示当前SIM卡的索引）；<br/>- Wi-Fi网络：标识符固定为wlan0，但从API version 12开始，应用可通过传递已注册的WLAN热点信息来指定希望激活的WLAN网络；<br/>- 以太网：标识符为eth，可在hdc shell中执行ifconfig命令查看具体的网卡标识（例如"eth0"）。 |
 
 **示例：**
 

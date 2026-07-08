@@ -62,7 +62,7 @@
 | -------- | -------- | -------- |
 | thread_name | string | 线程名。 |
 | tid | number | 线程ID。 |
-| frames | object[] | 线程调用栈，详见[frame字段说明](#frame字段说明)。 |
+| frames | object[] | 线程调用栈，详见[frames字段说明](#frames字段说明)。 |
 | state | string | 线程运行状态。读取自/proc/pid/stat的state的值。 |
 | utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。 |
 | stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。 |
@@ -70,21 +70,21 @@
 | nice | number | 静态优先级。读取自/proc/pid/stat的nice的值。 |
 | clk | number | 每秒的时钟嘀嗒次数。使用sysconf(_SC_CLK_TCK)获取，获取失败时使用默认值100。通过嘀嗒数除以该值可以计算得到运行时间（单位：秒）。 |
 
-### frame字段说明
+### frames字段说明
 
-**Native帧frame字段说明**
+**Native帧frames字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| symbol | string | 函数名称。**名称长度超过256字节时超出部分将被删除，防止超长字符串引起未知问题。** |
+| symbol | string | 函数名称。<br/>**名称长度超过256字节时超出部分将被删除，防止超长字符串引起未知问题。** |
 | file | string | 文件名。 |
-| buildId | string | 文件唯一标识。**文件可能没有buildId**。 |
+| buildId | string | 来源于elf中.note.gnu.build-id。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
 详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
-**Js帧frame字段说明**
+**Js帧frames字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |

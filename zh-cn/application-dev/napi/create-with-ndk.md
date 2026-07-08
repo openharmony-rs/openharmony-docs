@@ -20,7 +20,7 @@
 
 2. 根据工程创建向导，选择Native C++工程模板，然后单击**Next**。
 
-   ![zh-cn_image_0000001782486161](figures/zh-cn_image_0000001782486161.png)
+   ![native-c-template](figures/native-c-template.png)
 
 3. 在工程配置页面，根据向导配置工程的基本信息后，单击**Finish**，工具会自动生成示例代码和相关资源，等待工程创建完成。
 

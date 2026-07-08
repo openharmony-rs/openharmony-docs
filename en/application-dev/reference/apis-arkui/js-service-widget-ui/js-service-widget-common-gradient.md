@@ -1,9 +1,8 @@
 # Gradient Styles
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,9 +10,9 @@ Gradient styles are commonly supported and can be set in the **style** attribute
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
-The development framework supports two gradient styles: linear gradient and repeating linear gradient.
+This framework supports two gradient styles: linear gradient and repeating linear gradient.
 
 
 ## Linear Gradient/Repeating Linear Gradient
@@ -23,7 +22,7 @@ To use the gradient style, you must specify the transition direction and transit
 
 ### Transition Direction
 
-  You can specify the transition direction through **direction** or **angle**.
+  The available values are as follows:
 
 - **direction**: gradient by direction.
 
@@ -44,9 +43,9 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
 | Name       | Type                                      | Default Value                         | Mandatory  | Description                                      |
 | --------- | ---------------------------------------- | ---------------------------- | ---- | ---------------------------------------- |
-| direction | to &lt;side-or-corner&gt;  &lt;side-or-corner&gt; = [left \| right] \|\| [top \| bottom] | to bottom (gradient from top to bottom)| No   | Transition direction. For example, **to left** (gradient from right to left) or **to bottom right** (gradient from upper left corner to lower right corner).|
+| direction | to&nbsp;&lt;side-or-corner&gt;&nbsp;&nbsp;&lt;side-or-corner&gt;&nbsp;=&nbsp;[left&nbsp;\|&nbsp;right]&nbsp;\|\|&nbsp;[top&nbsp;\|&nbsp;bottom] | to bottom (gradient from top to bottom)| No   | Transition direction. For example, **to left** (gradient from right to left) or **to bottom right** (gradient from upper left corner to lower right corner).|
 | angle     | &lt;deg&gt;                              | 180deg                       | No   | Transition direction, which is the angle between the gradient line and the y-axis (in the clockwise direction), with the geometric center of the element being the origin of coordinates and the horizontal axis being the x-axis.|
-| color     | &lt;color&gt; [&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
+| color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
 
 **Example**
 
@@ -84,11 +83,8 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 4. Repeating gradient
 
    ```css
-     /* Repeating gradient from left to right, the area of which is 30 px (60 – 30) and the opacity is 0.5 */
+   /* Repeating gradient from left to right, the area of which is 30 px (60 – 30) and the opacity is 0.5 */
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30vp,rgba(0, 0, 255, .5) 60vp);
    ```
 
    ![444](figures/444.PNG)
-
-
-

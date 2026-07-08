@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。
+WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色，适用于在应用内特定区域实现独立主题风格或局部换肤的场景。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ WithTheme(options: WithThemeOptions)
 
 | 参数名                            | 类型                                  | 必填  | 说明     |
 |--------------------------------|---------------------------------------|-----|---------------|
-| options | [WithThemeOptions](#withthemeoptions) | 是   | 设置作用域内组件配色。 |
+| options | [WithThemeOptions](#withthemeoptions) | 是   | 配置WithTheme作用域内组件的主题配色和深浅色模式，支持范围见上方说明中的组件列表。 |
 
 ## 属性
 
@@ -48,7 +48,7 @@ WithTheme(options: WithThemeOptions)
 
 ## WithThemeOptions
 
-设置WithTheme作用域内组件缺省样式及深浅色模式。
+设置WithTheme作用域内组件默认配色及深浅色模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -56,12 +56,12 @@ WithTheme(options: WithThemeOptions)
 
 | 名称        | 类型                               | 只读  | 可选 | 说明                |
 |------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于自定义WithTheme作用域内组件缺省配色。 <br/> 默认值：undefined，缺省样式跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM       |
+| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于设置WithTheme作用域内组件的自定义主题配色。<br/>默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色的深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM |
 
 ## CustomTheme
 
-type CustomTheme = CustomTheme
+type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
 自定义配色。
 
@@ -71,7 +71,7 @@ type CustomTheme = CustomTheme
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件缺省配色。 |
+| import('../api/@ohos.arkui.theme').[CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件默认配色。 |
 
 ## 示例
 
@@ -195,7 +195,7 @@ struct IndexPage {
   build() {
     Column() {
       Column({ space: '8vp' }) {
-        Text(`未使用WithTheme`)
+        Text('未使用WithTheme')
         // 点击按钮切换局部换肤
         Button(`切换theme配色：${this.themeNames[this.themeIndex]}`)
           .onClick(() => {
@@ -217,7 +217,7 @@ struct IndexPage {
       WithTheme({ theme: this.themeArray[this.themeIndex] }) {
         // WithTheme作用域
         Column({ space: '8vp' }) {
-          Text(`使用WithTheme`)
+          Text('使用WithTheme')
           Button('Button.style(NORMAL) with Custom Theme')
             .buttonStyle(ButtonStyleMode.NORMAL)
           Button('Button.style(EMP..ED) with Custom Theme')

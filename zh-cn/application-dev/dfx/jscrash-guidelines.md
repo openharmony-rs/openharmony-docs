@@ -69,6 +69,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
 | Process name | 故障进程名 | 26 | 是 | - |
+| App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |
@@ -82,6 +83,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
 | ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
+| NativeModuleErrorInfo | so加载失败信息，最多20个加载失败信息 | 26.0.0 | 是 | - |
 
 以下是JS Crash崩溃日志规格。
 ```text
@@ -99,6 +101,7 @@ IsSystemApp:No <- 应用是否为系统应用
 Pid:579 <- 故障进程号
 Uid:0 <- 用户ID
 Process name:com.example.myapplication <- 进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
@@ -369,6 +372,23 @@ HiLog:
 ...
 ```
 
+### NativeModuleErrorInfo 
+JS Crash日志中的NativeModuleErrorInfo可记录最早的20条so加载失败信息，如果总数超出20个，请在hilog根据'Load native module failed'关键字查找是否so加载失败。NativeModuleErrorInfo信息格式如下：
+
+```text
+...
+Stacktrace:
+...
+HybridStack:
+...
+NativeModuleErrorInfo:
+There are a total of 2 SO loading failure messages, and 2 of them are displayed here.
+#1 ModuleName:module1 Reason:dlopen failed: load module default/module1 failed.
+#2 ModuleName:module2 Reason:dlopen failed: load module default/module2 failed.
+...
+HiLog:
+...
+```
 ## JsCrash聚类
 
 Js Crash聚类信息以“Stacktrace:”字段开始，包含ARM 64系统的“HybridStack:”的调用栈。

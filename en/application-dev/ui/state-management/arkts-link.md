@@ -43,7 +43,7 @@ An \@Link decorated variable in a child component shares the same value with a v
 
  **Figure 1** Initialization rules
 
-![en-us_image_0000001502092556](figures/en-us_image_0000001502092556.png)
+![en-us_image_0000001502092556](figures/Initialization-rules.png)
 
 
 ## Observed Changes and Behavior

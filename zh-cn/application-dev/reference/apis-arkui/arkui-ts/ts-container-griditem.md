@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器中单项内容容器。
@@ -291,7 +291,7 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_0000001174582870](figures/zh-cn_image_0000001174582870.gif)
+![gridItem](figures/gridItem.gif)
 
 ### 示例2（设置GridItem样式）
 
@@ -358,4 +358,4 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_griditem_griditemoptions](figures/zh-cn_image_griditem_griditemoptions.png)
+![zh-cn_image_griditem_griditemoptions](figures/griditem-griditemoptions.png)

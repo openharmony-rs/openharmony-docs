@@ -14,6 +14,8 @@ typedef struct {...} JSVM_CodeCache
 
 表示当id为JSVM_COMPILE_CODE_CACHE时，content的类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

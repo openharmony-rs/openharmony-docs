@@ -127,8 +127,6 @@ onDisAppear(event: () => void): T
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {
@@ -164,4 +162,4 @@ struct AppearExample {
 }
 ```
 
-![zh-cn_image_0000001219864151](figures/zh-cn_image_0000001219864151.gif)
+![onDisAppear](figures/onDisAppear.gif)

@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-DatePickerComponent组件用于选择日期和时间。
+DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。
 
 **起始版本：** 26.0.0
 
@@ -138,9 +138,10 @@ CommonOptions定义日期时间选择器的通用选项。
 
 >  **说明：**
 >
-> - Date的使用请参考[TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions对象说明)。
-> - DatePickerComponent的字体字号在14vp至16vp范围内自适应变化，当组件宽度过窄时，可能出现文本显示截断的情况。
+> - Date的使用请参考[TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions对象说明)，需要注意的是，当需要设置1-99的年份日期时，不可使用new Date(1, 0, 1)写法，因为JavaScript的new Date(year, month, day)构造函数对1-99的年份有特殊处理，会自动加上1900，即变为1901年，因此此时推荐使用new Date('0001-01-01')写法。
+> - DatePickerComponent的文本字号根据显示的总列数变化，当列数大于等于6列时，字号为14vp，其他情况下为16vp，当组件宽度过窄时，可能出现文本显示截断的情况。
 > - 参数缺省或者设置为undefined时，均保持默认值。
+> - 在[DateOptions](#dateoptions)中设置start、end、selected时仅日期部分（年月日）设置生效，在[TimeOptions](#timeoptions)中设置start、end、selected时仅时间部分（时分秒）设置生效。
 
 **起始版本：** 26.0.0
 
@@ -152,13 +153,13 @@ CommonOptions定义日期时间选择器的通用选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| start | Date | 否 | 是 | 选择器的起始日期或时间。<br/>默认值：Date(1970, 0, 1, 0, 0, 0)<br/>取值范围：\[Date(0, 0, 1, 0, 0, 0), Date(10000, 11, 31,23, 59, 59)] |
-| end | Date | 否 | 是 | 选择器的结束日期或时间。<br/>默认值：Date(2100, 12, 31, 23, 59, 59)<br/>取值范围：\[Date(0, 0, 1, 0, 0, 0), Date(10000, 11, 31,23, 59, 59)] |
+| start | Date | 否 | 是 | 选择器的起始日期或时间。<br/>默认值：Date('1970-01-01T00:00:00')<br/>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br/>**说明：**<br/>设置了start且为有效值的场景下，loop不生效。|
+| end | Date | 否 | 是 | 选择器的结束日期或时间。<br/>默认值：Date('2100-12-31T23:59:59')<br/>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br/>**说明：**<br/>设置了end且为有效值的场景下，loop不生效。|
 | selected | Date | 否 | 是 | 选中的日期。<br/>默认值为当前系统日期或时间。 |
 | loop | boolean | 否 | 是 | 设置是否启用循环模式。<br/>- true：启用循环模式。<br/>- false：不启用循环模式。<br/>默认值：true |
 | onChange | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择日期或时间后触发该回调。 |
 | onScrollStop | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择器项被选中且滚动停止时触发该回调。 |
-| enableHapticFeedback | boolean | 否 | 是 | 启用或禁用音振反馈。<br/>默认值：true<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br />**说明**：<br/>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br/>2. 开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br />"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| enableHapticFeedback | boolean | 否 | 是 | 启用或禁用触控反馈。<br/>默认值：true<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br />**说明**：<br/>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br/>2. 开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br />"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 
 **起始日期、结束日期和选中日期的异常情形说明：**
@@ -207,7 +208,7 @@ DateOptions定义日期选择器的选项。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | mode | [DateMode](#datemode) | 否 | 是 | 定义日期选择器的模式。<br/>默认值：DateMode.DATE |
-| lunar | boolean | 否 | 是 | 指定是否显示农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br />**说明**：<br/>仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。 |
+| lunar | boolean | 否 | 是 | 指定是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br />**说明**：<br/>仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。 |
 
 ## TimeOptions
 
@@ -242,6 +243,10 @@ import { DatePickerComponent, DisplayMode, DateMode } from '@kit.ArkUI';
 @Entry
 @Component
 struct DatePickerExample {
+  @State selectedYear: number = 2026
+  @State selectedMonth: number = 0
+  @State selectedDay: number = 1
+
   build() {
     Column() {
       DatePickerComponent({
@@ -249,15 +254,24 @@ struct DatePickerExample {
           displayMode: DisplayMode.DATE,
           dateOptions: {
             mode: DateMode.DATE,
-            selected: new Date(),
-            start: new Date('2020-01-01'),
-            end: new Date('2030-12-31'),
+            selected: new Date(this.selectedYear, this.selectedMonth, this.selectedDay),
+            start: new Date('2020-03-01'),
+            end: new Date('2030-10-31'),
             enableHapticFeedback: true,
             onChange: (result) => {
-              console.info('Selected date: ' + result.year + '-' + (result.month! + 1) + '-' + result.day);
+              console.info('date onChange: ' + JSON.stringify(result));
+              if (result.year !== undefined) {
+                this.selectedYear = result.year
+              }
+              if (result.month !== undefined) {
+                this.selectedMonth = result.month
+              }
+              if (result.day !== undefined) {
+                this.selectedDay = result.day
+              }
             },
             onScrollStop: (result) => {
-              console.info('Scroll stop: ' + result.year + '-' + (result.month! + 1) + '-' + result.day);
+              console.info('date onScrollStop: ' + JSON.stringify(result));
             }
           }
         }
@@ -265,6 +279,7 @@ struct DatePickerExample {
     }
   }
 }
+
 ```
 
 ![date](figures/DatePickerComponent1.gif)

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -26,7 +26,7 @@ Failed to create the in-memory database.
 
 **处理步骤**
 
-使用[genSessionId](../../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid)生成随机的sessionId，避免和其他分布式数据对象使用相同的sessionId。
+使用[genSessionId](js-apis-data-distributedobject.md#distributeddataobjectgensessionid)生成随机的sessionId，避免和其他分布式数据对象使用相同的sessionId。
 
 ## 15400002 参数错误
 
@@ -40,7 +40,7 @@ Parameter error.
 
 2. uri无效。例如：""（空字符串）。
 
-3. uris无效。例如uris数组长度超过50。
+3. uris无效。例如uris数组为空或数组内元素数量大于50个。
 
 **可能原因**
 
@@ -58,7 +58,7 @@ Parameter error.
 
 2. 传入正确的分布式路径uri，例如："file://docs/storage/Users/username/tmp.txt"。
 
-3. 传入正确的分布式路径数组uris，数量为有效范围内的个数，例如：["file://docs/storage/Users/username/tmp.txt","file://com.example.demo/data/storage/el2/base/files/test.txt"]。
+3. 传入正确的分布式路径数组uris，有效个数为[1, 50]，例如：["file://docs/storage/Users/username/tmp.txt","file://com.example.demo/data/storage/el2/base/files/test.txt"]。
 
 4. 确保分布式路径数组uris内每个uri的路径为正确的分布式路径。
 

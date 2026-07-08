@@ -232,7 +232,7 @@ invalidate(): void
 
 ### DrawContext
 
-type DrawContext = DrawContext
+type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -240,7 +240,7 @@ type DrawContext = DrawContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+| import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
 
 ## 示例
 

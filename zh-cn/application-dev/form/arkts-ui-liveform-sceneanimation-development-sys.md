@@ -96,7 +96,7 @@
         let storage: LocalStorage = new LocalStorage();
         storage.setOrCreate(Constants.SESSION, session);
     
-        // 获取参卡片ID与激活态渲染区域
+        // 获取卡片ID与激活态渲染区域
         let formId: string = liveFormInfo.formId as string;
         storage.setOrCreate(Constants.FORM_ID, formId);
         let rect: formInfo.Rect = liveFormInfo.rect as formInfo.Rect
@@ -438,7 +438,7 @@
             "4*4"
           ],
           "sceneAnimationParams": {
-            "abilityName": "MySystemLiveFormExtensionAbility"，
+            "abilityName": "MySystemLiveFormExtensionAbility",
             "disabledDesktopBehaviors": [
               "SWIPE_DESKTOP",
               "PULL_DOWN_SEARCH",

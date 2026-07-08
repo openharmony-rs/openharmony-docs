@@ -1,8 +1,8 @@
 # 图形变换
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -262,7 +262,7 @@ transform3D(transform: Optional\<Matrix4Transit>): T
 
 ## Matrix4Transit<sup>20+</sup>
 
-type Matrix4Transit = Matrix4Transit
+type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -272,7 +272,7 @@ type Matrix4Transit = Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| import('../api/@ohos.matrix4').default.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
 
 ## RotateOptions对象说明
 

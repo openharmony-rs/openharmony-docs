@@ -1,10 +1,10 @@
 # UI调优
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
+<!--Owner: @lushi871202; @liwenzhen3-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @Brilliantry_Rui; @zhang_yixin13-->
 
 本章节主要介绍UI的dump和调优能力，用于提高开发效率和优化开发者体验。
 
@@ -13,14 +13,17 @@
 ### 状态管理hidumper能力
 状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，写出高性能应用代码。
 
-下面介绍dump状态变量每个参数的含义：
+下面介绍`-jsdump`每个参数的含义：
+- `-viewHierarchy`：打印自定义组件树信息，默认只打印根自定义组件。
+- `-stateVariable`：打印状态变量及关联的组件和同步对象的信息。不支持`-r`递归dump。
+- `-registeredElementIds`：打印当前自定义组件拥有的elementId。
+- `-inactiveComponents`：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
+- `-dumpAll`：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。
+- `-h`：打印帮助信息。
 
-- jsdump：请求状态管理中的dump信息。
-- viewHierarchy：打印自定义组件树信息，默认只打印根自定义组件。
-- r：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
-- viewId：打印指定viewId的自定义组件的信息。
-- stateVariable：打印状态变量及关联的组件和同步对象的信息。当前命令不支持`r`递归dump。
-- registeredElementIds：打印当前自定义组件拥有的elementId。
+除上述命令外，开发者可以额外输入以下命令选择递归打印或指定打印某一个组件id的信息，如果没有指定，则默认打印页面的根节点的信息。
+- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
+- `-viewId`：打印指定viewId的自定义组件的信息。
 
 具体例子如下：
 
@@ -92,7 +95,10 @@ hdc shell hidumper -s WindowManagerService -a '-a'
        - `Dependent elements`：当前状态变量和其同步对象的关联组件。
    - `Registered Element IDs`：自定义组件和`build()`方法下声明的组件。
    - `Dirty Registered Element IDs`：自定义组件下未更新的脏节点列表。状态变量变化后，会标记其关联节点为脏节点，并请求在下一帧更新。在下一帧中更新脏节点并清空脏节点列表。手动执行dump时，`Dirty Registered Element IDs`通常为空。因为以目前大多数设备的帧间隔，开发者难以在两帧之间dump出脏节点列表。
-  ```ts
+
+  输出结果：
+
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=4, isRecursive=true]
   
@@ -147,8 +153,10 @@ hdc shell hidumper -s WindowManagerService -a '-a'
   ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
-  输出信息如下。
-  ```ts
+
+  输出结果：
+
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=7, isRecursive=false]
   

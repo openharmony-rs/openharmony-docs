@@ -1,7 +1,7 @@
 # Registering and Using Custom Fonts (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -263,5 +263,5 @@ struct RenderTest {
 
 ## Effect
 
-![image_load](figures/image_load.png)
-![image_unload](figures/image_unload.png)
+![image-load](figures/image-load.png)
+![image-unload](figures/image-unload.png)

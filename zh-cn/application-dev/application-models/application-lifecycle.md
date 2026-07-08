@@ -1,4 +1,4 @@
-# 应用生命周期
+# 应用生命周期概述
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -78,6 +78,10 @@
 
 <!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
 
+> **说明：**
+>
+> 上述的回调事件均为异步回调，无严格的时序关系。
+
 ``` TypeScript
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -109,7 +113,3 @@ export default class LifecycleAbility extends UIAbility {
   }
 }
 ```
-
-> **说明：**
->
-> 上述的回调事件都是异步回调，并无严格的时序关系。

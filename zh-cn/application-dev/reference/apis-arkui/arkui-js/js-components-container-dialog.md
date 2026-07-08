@@ -166,4 +166,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167846062](figures/zh-cn_image_0000001167846062.gif)
+![dialog](figures/dialog.gif)

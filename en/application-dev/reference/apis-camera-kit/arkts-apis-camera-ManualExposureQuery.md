@@ -1,4 +1,4 @@
-# Interface (ManualExposureQuery)
+# APIs (ManualExposureQuery)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -25,11 +25,11 @@ getSupportedExposureDurationRange(): Array\<number\>
 
 Obtains the supported manual exposure durations, in microseconds.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
-**Returns**
+**Return value**
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
@@ -41,7 +41,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400102 | peration not allowed, session or inputdevice maybe abnormal. |
+| 7400102 | Operation not allowed, session or inputdevice maybe abnormal. |
 | 7400103 | Session not config, only throw in session usage. |
 
 **Example**
@@ -67,13 +67,13 @@ getExposureBiasStep(): number
 
 Obtains the exposure bias step.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
-**Returns**
+**Return value**
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |

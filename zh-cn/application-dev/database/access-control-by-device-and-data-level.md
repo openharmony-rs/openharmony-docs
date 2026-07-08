@@ -30,7 +30,7 @@
 在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-![zh-cn_image_0000001542496993](figures/zh-cn_image_0000001542496993.png)
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制

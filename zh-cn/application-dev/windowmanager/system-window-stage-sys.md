@@ -1,14 +1,14 @@
 # 管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## 管理系统窗口概述
 
-在`Stage`模型下， 允许系统应用创建和管理系统窗口，包括音量条、壁纸、通知栏、状态栏、导航栏等。具体支持的系统窗口类型见[API参考-WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)。
+在`Stage`模型下， 允许系统应用创建和管理系统窗口，包括音量条、壁纸、通知栏、状态栏、导航栏等。具体支持的系统窗口类型见[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)。
 
 在窗口显示、隐藏及窗口间切换时，窗口模块通常会添加动画效果，以使各个交互过程更加连贯流畅。
 
@@ -23,11 +23,11 @@
 
 ## 接口说明
 
-更多API说明请参见[API参考](../reference/apis-arkui/js-apis-window-sys.md)。
+更多API说明请参见[@ohos.window (窗口)(系统接口)](../reference/apis-arkui/js-apis-window-sys.md)。
 
 | 实例名            | 接口名                                                       | 描述                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br/>-`config`：创建窗口时的参数。     |
+| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br>-`config`：创建窗口时的参数。     |
 | Window            | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
 | Window            | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口位置。                                           |
 | Window            | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | 根据当前工程中某个页面的路径为窗口加载具体的页面内容。<br>其中path为要加载到窗口中的页面内容的路径，在Stage模型下该路径需添加到工程的main_pages.json文件中。                                     |
