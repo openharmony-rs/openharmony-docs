@@ -331,7 +331,7 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                         | 是   | 监听事件，固定为'rectChange'，即组件（EmbeddedComponent或UIExtensionComponent）矩形变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | 否   | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有组件（EmbeddedComponent或UIExtensionComponent）矩形变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | 否   | 回调函数，用于指定要注销的监听。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）所有矩形变化的监听。 |
 
 **错误码：**
 
