@@ -44,7 +44,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[InputMethodExtensionContext.destroy(callback: AsyncCallback\<void>)](./js-apis-inputmethod-extension-context.md#destroy9)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -87,7 +87,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[InputMethodExtensionContext.destroy()](./js-apis-inputmethod-extension-context.md#destroy9)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
