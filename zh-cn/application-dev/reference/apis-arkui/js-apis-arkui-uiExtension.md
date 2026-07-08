@@ -606,7 +606,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 | EVENT_PAN_GESTURE_RIGHT     | 0x00000002      | 右滑事件，用于占用组件区域内向右滑动的手势事件。当需要阻止宿主响应组件区域的右滑操作时选择。    |
 | EVENT_PAN_GESTURE_UP        | 0x00000004      | 上滑事件，用于占用组件区域内向上滑动的手势事件。当需要阻止宿主响应组件区域的上滑操作时选择。    |
 | EVENT_PAN_GESTURE_DOWN      | 0x00000008      | 下滑事件，用于占用组件区域内向下滑动的手势事件。当需要阻止宿主响应组件区域的下滑操作时选择。    |
-| EVENT_CLICK                 | 0x00000100      | 点击事件，用于占用组件区域内的单击事件。当需要阻止宿主响应组件区域的点击操作时选择。    |
+| EVENT_CLICK                 | 0x00000100      | 点击事件，用于占用组件区域内的点击事件。当需要阻止宿主响应组件区域的点击操作时选择。    |
 | EVENT_LONG_PRESS            | 0x00000200      | 长按事件，用于占用组件区域内的长按事件。当需要阻止宿主响应组件区域的长按操作时选择。    |
 
 ## AvoidAreaInfo
