@@ -1,18 +1,18 @@
 # Print_PageSize
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
-```c
-typedef struct {...} Print_PageSize
+```cpp
+typedef struct {...} Print_PageSize;
 ```
 
 ## 概述
 
-表示纸张尺寸信息。
+Print_PageSize用于表示打印任务中的纸张尺寸信息，包含纸张 ID、名称、宽度与高度等关键属性，适用于需要在打印配置流程中指定或查询纸张规格的场景，帮助用户精确匹配打印输出与纸张尺寸。
 
 **起始版本：** 12
 
@@ -26,8 +26,8 @@ typedef struct {...} Print_PageSize
 
 | 名称            | 描述       |
 | --------------- | ---------- |
-| char *id        | 纸张 ID。  |
-| char *name      | 纸张名称。 |
-| uint32_t width  | 纸张宽度，单位：毫米。 |
-| uint32_t height | 纸张高度，单位：毫米。 |
+| char *id        | 纸张尺寸的唯一标识 ID，用于区分不同标准纸张规格。 |
+| char *name      | 纸张尺寸的名称，如"A4"、"Letter"等标准纸张规格。 |
+| uint32_t width  | 纸张宽度，单位：毫米。取值原则：大于0。 |
+| uint32_t height | 纸张高度，单位：毫米。取值原则：大于0。 |
 

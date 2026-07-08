@@ -1,18 +1,18 @@
 # Print_DefaultValue
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
-```c
-typedef struct {...} Print_DefaultValue
+```cpp
+typedef struct {...} Print_DefaultValue;
 ```
 
 ## 概述
 
-表示当前属性。
+表示打印机的默认属性值，包含色彩模式、双面模式、介质类型、纸张尺寸、边距、纸张来源、打印质量、份数、分辨率、方向等默认打印参数。
 
 **起始版本：** 12
 
@@ -26,16 +26,16 @@ typedef struct {...} Print_DefaultValue
 
 | 名称 | 描述 |
 | -- | -- |
-| [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | 默认色彩模式。 |
-| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | 默认双面模式。 |
-| char *defaultMediaType | 默认介质类型。 |
-| char *defaultPageSizeId | 默认纸张尺寸 ID。 |
-| [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | 默认边距。 |
-| char *defaultPaperSource | 默认纸张来源。 |
-| [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | 默认打印质量。 |
-| uint32_t defaultCopies | 默认份数。 |
-| [Print_Resolution](capi-oh-print-print-resolution.md) defaultResolution | 默认打印机分辨率。 |
-| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) defaultOrientation | 默认方向。 |
-| char *otherDefaultValues | JSON 格式的其他默认值。 |
+| [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | 默认色彩模式，表示打印输出的色彩方式，具体取值由打印机支持的色彩模式决定。 |
+| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | 默认双面模式，表示打印的单双面方式，具体取值由打印机支持的双面模式决定。 |
+| char *defaultMediaType | 默认介质类型，表示打印所使用的介质类型（如普通纸、光面纸等），具体取值由打印机支持的介质类型决定。 |
+| char *defaultPageSizeId | 默认纸张尺寸 ID，表示打印所使用的纸张尺寸标识（如"A4"、"Letter"等），具体取值由打印机支持的纸张尺寸决定。 |
+| [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | 默认边距，表示打印输出页面的边距设置。 |
+| char *defaultPaperSource | 默认纸张来源，表示打印所使用的纸张来源，具体取值由打印机支持的纸张来源决定。 |
+| [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | 默认打印质量，表示打印输出的质量等级设置，具体取值由打印机支持的打印质量决定。 |
+| uint32_t defaultCopies | 默认份数，取值原则：不小于 1。 |
+| [Print_Resolution](capi-oh-print-print-resolution.md) defaultResolution | 默认打印机分辨率，表示打印输出的分辨率，具体取值由打印机支持的分辨率决定。 |
+| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) defaultOrientation | 默认打印方向，表示打印内容的方向模式（如纵向、横向等）。 |
+| char *otherDefaultValues | JSON 格式的其他默认值，用于表示未在上述成员变量中单独列出的额外打印默认属性，具体可设置的键值对由打印机支持的扩展能力决定。 |
 
 

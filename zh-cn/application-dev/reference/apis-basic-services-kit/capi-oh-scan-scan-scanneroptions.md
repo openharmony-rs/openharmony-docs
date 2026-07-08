@@ -2,17 +2,17 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @Q-haosu-->
-<!--Tester: @Q-haosu-->
+<!--Designer: @baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-```c
-typedef struct {...} Scan_ScannerOptions
+```cpp
+typedef struct {...} Scan_ScannerOptions;
 ```
 
 ## 概述
 
-表示一个扫描仪的所有参数选项
+表示一个扫描仪的可设置参数选项，用于配置扫描仪的参数设置，支持配置选项标题、描述、可设置范围及选项数量。每个选项由一组标题（titles）、描述（descriptions）和可设置范围（ranges）组成，三者以平行数组的形式存储，optionCount 表示选项的总数量，开发者可通过索引 i 同时访问 titles[i]、descriptions[i] 和 ranges[i] 来获取第 i 个选项的完整信息。
 
 **起始版本：** 12
 
