@@ -222,7 +222,7 @@ typedef void (*OH_HiTrace_TraceEventListener)(bool traceStatus)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (bool traceStatus | 当前应用trace捕获开关状态。<br> true：开启；false：关闭。 |
+| bool traceStatus | 当前应用trace捕获开关状态。<br> true：开启；false：关闭。 |
 
 ### OH_HiTrace_BeginChain()
 
@@ -699,7 +699,7 @@ void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 异步跟踪任务的名字，用于标识要测量的异步操作，需与对应的结束接口的name参数相同。 |
+| const char *name | 异步跟踪任务的名字，用于标识要测量的异步操作，需与对应的结束接口的name参数相同。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int32_t taskId | 异步跟踪的ID。 异步跟踪开始和结束由于不是顺序发生的，所以需要通过name和每次执行唯一的taskId进行开始和结束的匹配。 |
 
 ### OH_HiTrace_FinishAsyncTrace()

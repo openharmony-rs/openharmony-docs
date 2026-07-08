@@ -215,7 +215,7 @@ ArkTS-Sta: startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int,
 
 | 参数名         | 类型                                        | 必填 | 说明                                                                                                                                |
 | -------------- | ------------------------------------------- | ---- |-----------------------------------------------------------------------------------------------------------------------------------|
-| level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别，必须与流程开始的[startAsyncTrace()](#hitracemeterstartasynctrace19)的level参数值一致。                                                           |
+| level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                           |
 | name           | string                                      | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超过的部分将会被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
 | taskId         | ArkTS-Dyn: number<br>ArkTS-Sta: int        | 是   | 任务id。<br>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
 | customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br>由于单条trace记录的总长度限制为512Byte，超过的部分将会被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
