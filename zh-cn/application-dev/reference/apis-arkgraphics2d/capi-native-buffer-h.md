@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeBuffer的相关函数。
+定义获取和使用NativeBuffer的相关函数。提供NativeBuffer的创建分配、引用计数管理、ION内存映射、属性配置查询、颜色空间与元数据设置及跨进程序列化传输等能力，适用于图形渲染、图像处理和跨进程共享缓冲区等场景，帮助开发者高效管理图形数据并避免内存泄漏。
 
 **引用文件：** <native_buffer/native_buffer.h>
 
@@ -42,15 +42,15 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)](#oh_nativebuffer_alloc) | 通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)](#oh_nativebuffer_reference) | 将OH_NativeBuffer对象的引用计数加1。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)](#oh_nativebuffer_alloc) | 通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)](#oh_nativebuffer_reference) | 将OH_NativeBuffer对象的引用计数加1。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)](#oh_nativebuffer_unreference) | 将OH_NativeBuffer对象的引用计数减1，当引用计数为0的时候，该NativeBuffer对象会被析构掉。<br>本接口为非线程安全类型接口。 |
 | [void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* config)](#oh_nativebuffer_getconfig) | 用于获取OH_NativeBuffer的属性。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | 将OH_NativeBuffer对应的ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>通过[OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc)申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br>通过[OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer)转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。<br>本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | 将OH_NativeBuffer对应的ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>通过[OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc)申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br>通过[OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer)转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。<br>本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)](#oh_nativebuffer_unmap) | 将OH_NativeBuffer对应的ION内存从进程空间移除。<br>本接口为非线程安全类型接口。 |
 | [uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)](#oh_nativebuffer_getseqnum) | 获取OH_NativeBuffer的序列号。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)](#oh_nativebuffer_setcolorspace) | 为OH_NativeBuffer设置颜色空间属性。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | 将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | 将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindowBuffer, OH_NativeBuffer **buffer)](#oh_nativebuffer_fromnativewindowbuffer) | 将OHNativeWindowBuffer实例转换为OH_NativeBuffer实例。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | 获取OH_NativeBuffer颜色空间属性。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | 为OH_NativeBuffer设置元数据属性值。<br>本接口为非线程安全类型接口。 |
@@ -59,7 +59,7 @@
 | [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象写入IPC序列化对象中。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | 从IPC序列化对象中读取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象。<br>本接口将会创建一个[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)，当OH_NativeBuffer对象使用完，开发者需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)](#oh_nativebuffer_issupported) | 检查系统是否支持传入的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)配置信息。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的多通道ION内存映射到进程空间，并获取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的多通道ION内存映射到进程空间，并获取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)。<br>需注意调用该接口的[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。 |
 
 
 ## 枚举类型说明
@@ -128,7 +128,7 @@ OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 
 **描述**
 
-通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。
+通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -155,7 +155,7 @@ int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 
 **描述**
 
-将OH_NativeBuffer对象的引用计数加1。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。
+将OH_NativeBuffer对象的引用计数加1。<br>本接口需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -231,7 +231,7 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 
 **描述**
 
-将OH_NativeBuffer对应的ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>通过[OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc)申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br>通过[OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer)转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。<br>本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>本接口为非线程安全类型接口。
+将OH_NativeBuffer对应的ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>通过[OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc)申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。<br>通过[OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer)转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前，通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。<br>本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -341,7 +341,7 @@ int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_Na
 
 **描述**
 
-将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。
+将OH_NativeBuffer对应的多通道ION内存映射到进程空间。<br>需注意调用该接口的OH_NativeBuffer的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -491,7 +491,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。
 
-需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。
+需注意调用该接口的OH_NativeBuffer的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。
 
 本接口为非线程安全类型接口。
 
@@ -612,7 +612,7 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的多通道ION内存映射到进程空间，并获取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)。
 
-需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。
+需注意调用该接口的OH_NativeBuffer的usage必须带有[NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage)属性，否则可能导致稳定性问题。
 
 本接口为非线程安全类型接口。
 
