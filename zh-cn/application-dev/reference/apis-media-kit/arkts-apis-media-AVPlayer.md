@@ -3214,7 +3214,7 @@ addSubtitleFromUrl(url: string): Promise\<void>
 <!--code_no_check-->
 ```ts
 async function test(){
-  let fdUrl:string = 'http://xxx.xxx.xxx/xx/index.srt';
+  let fdUrl:string = 'https://abc.bcd.example/cde/index.srt'; // 此处仅为示意，请替换为真实资源文件URL。
   let avPlayer: media.AVPlayer = await media.createAVPlayer();
   avPlayer.addSubtitleFromUrl(fdUrl);
 }
