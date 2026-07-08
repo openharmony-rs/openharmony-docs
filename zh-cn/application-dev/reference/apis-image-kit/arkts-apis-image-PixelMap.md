@@ -5966,7 +5966,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> |Promise对象，返回仅包含Alpha通道信息的ALPHA_8格式的PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回反序列化后的PixelMap。 |
 
 **错误码：**
 
