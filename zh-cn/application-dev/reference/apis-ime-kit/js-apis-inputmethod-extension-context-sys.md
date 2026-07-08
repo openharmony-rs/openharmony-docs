@@ -251,7 +251,7 @@ startAbilityWithAccount(want: Want, accountId: number): Promise&lt;void&gt;
 | 16000011 | The context does not exist.                             |
 | 16000012 | The application is controlled.                          |
 | 16000013 | The application is controlled by EDM.                   |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module                                         |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
 | 16000053 | The ability is not on the top of the UI.                |
 | 16000055 | Installation-free timed out.                            |
 | 16200001 | The caller has been released.                           |
