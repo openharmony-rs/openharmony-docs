@@ -3992,7 +3992,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function getMetadata(context: Context) {
+function getMetadata(context: Context) {
   // 此处'app.media.hdrImage'需要替换为本地HDR图片。
   let img = context.resourceManager.getMediaContentSync($r('app.media.hdrImage').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
