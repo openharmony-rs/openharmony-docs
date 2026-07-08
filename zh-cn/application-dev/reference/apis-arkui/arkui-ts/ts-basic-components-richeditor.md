@@ -1387,7 +1387,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 
 未获焦时调用该接口不产生选中效果。
 
-从API version 12开始，在PC/2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
+从API version 12开始，在PC/2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非PC/2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
 
 1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。
 
@@ -1792,7 +1792,7 @@ fromStyledString(value: StyledString): Array\<RichEditorSpan>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Array<[RichEditorSpan](#richeditorspan12)>  | 将属性字符串解析后得到的文本和图片Span信息，可用于查询属性字符串中各Span的内容、样式和位置。 |
+| Array<[RichEditorSpan](#richeditorspan12)>  | 将属性字符串解析后得到的文本和图片Span信息，可用于查询属性字符串中各Span的内容、样式和位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 **错误码：**
 
@@ -1822,7 +1822,7 @@ toStyledString(value: RichEditorRange): StyledString
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| [StyledString](ts-universal-styled-string.md#styledstring) | 组件指定范围内容转换后的属性字符串，可用于跨组件传递富文本内容或进行样式编辑操作。 |
+| [StyledString](ts-universal-styled-string.md#styledstring) | 组件指定范围内容转换后的属性字符串，可用于跨组件传递富文本内容或进行样式编辑操作。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 **错误码：**
 
