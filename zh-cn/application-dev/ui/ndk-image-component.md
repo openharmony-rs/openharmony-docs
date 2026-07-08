@@ -401,6 +401,45 @@ nativeNodeApi->unregisterNodeEventReceiver();
     在ArkTS页面上声明用于Native页面挂载的占位组件，并在页面创建时通知Native侧创建图片界面。
 
     <!-- @[index_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import nativeNode from 'libentry.so';
+    import { NodeContent } from '@kit.ArkUI';
+    
+    @Entry
+    @Component
+    struct Index {
+      // 初始化NodeContent对象
+      private rootSlot: NodeContent = new NodeContent();
+      @State @Watch('changeNativeFlag') showNative: boolean = false;
+    
+      changeNativeFlag(): void {
+        if (this.showNative) {
+          // 传递NodeContent对象用于Native创建组件的挂载显示
+          nativeNode.createNativeRoot(this.rootSlot)
+        } else {
+          // 销毁NativeModule组件
+          nativeNode.destroyNativeRoot()
+        }
+      }
+    
+      build() {
+        Column() {
+          Button(this.showNative ? 'Hide Native UI' : 'Show Native UI')
+            .onClick(() => {
+              this.showNative = !this.showNative
+            })
+            .id('btn')
+          Row() {
+            // 将NodeContent和ContentSlot占位组件绑定
+            ContentSlot(this.rootSlot)
+          }.layoutWeight(1)
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    ```
 
 2. 提供NAPI桥接方法
 
