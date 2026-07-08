@@ -196,6 +196,24 @@
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
+   ``` TypeScript
+   let splitConfig:intelligence.SplitConfig = {
+     size: 10,
+     overlapRatio: 0.1
+   }
+   let splitText = 'text';
+   
+   intelligence.splitText(splitText, splitConfig)
+     .then((data: Array<string>) => {
+       console.info('Succeeded in splitting Text');
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       console.error('Failed to split Text and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 
    ArkTS-Sta示例：
