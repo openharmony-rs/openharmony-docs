@@ -131,7 +131,7 @@ try {
 
 setFontScale(fontScale: number): Promise\<void>
 
-Sets a font size scale factor.
+Sets the system font size scale factor.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
@@ -191,7 +191,7 @@ try {
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
-Sets a font weight scale factor.
+Sets the system font weight scale factor.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
