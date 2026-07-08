@@ -1,6 +1,10 @@
 # Interface (AVAdsController)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
+<!--Owner: @chennotfound-->
+<!--Designer: @dongyu_dy-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 广告内容控制接口，用于管理广告播放控制器中的广告资源及监听广告事件。通过[createAVAdsController()](arkts-apis-media-f.md#mediacreateavadcontroller)创建实例。
 
@@ -33,7 +37,7 @@ addAdsMediaSource(src: MediaSource, start: number): Promise\<string>
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 要插入到主内容中播放的视频源。 |
-| start | number | 是   | 将广告数据插入到主媒体资源的进度值。<br>单位：毫秒。<br>取值限定为非负整数。 |
+| start | number | 是   | 广告数据在主媒体资源播放进度中的插入位置。<br>单位：毫秒。<br>取值限定为非负整数。 |
 
 **返回值：**
 
