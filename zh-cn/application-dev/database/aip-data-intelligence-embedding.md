@@ -530,4 +530,16 @@
    ArkTS-Sta示例：
 
    <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   imageEmbedding?.releaseModel()
+     .then(() => {
+       console.info('Succeeded in releasing Model');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to release Model and code is ' + err.code);
+       // ...
+     })
+   ```
 
