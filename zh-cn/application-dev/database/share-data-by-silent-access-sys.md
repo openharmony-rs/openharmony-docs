@@ -61,7 +61,7 @@
 
     目前跨用户访问仅支持主空间和隐私空间之间的访问，且需要数据访问方配有跨用户访问权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS才可成功访问。
 
-  - "accountId"仅支持设置为整型，表示系统账号子身份资料标识符。accountId的定义及获取参照[getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount.md#getosaccountforegroundsubprofileid)。accountId不填写时，默认为调用方所属系统账号的前台子身份资料标识符。
+  - "accountId"仅支持设置为整型，表示系统账号子身份资料标识符。accountId的定义及获取参照[getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid)。accountId不填写时，默认为调用方所属系统账号的前台子身份资料标识符。
 
 ## 约束与限制
 
