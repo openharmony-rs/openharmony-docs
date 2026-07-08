@@ -18,8 +18,7 @@
 
 >  **说明：**
 > 
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 调用本模块接口需要申请权限 `ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER`（查询/绑定/解绑）或 `ohos.permission.ACCESS_DDK_DRIVERS`（新版本的绑定/解绑接口）。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。调用本模块接口需要申请权限 `ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER`（查询/绑定/解绑）或 `ohos.permission.ACCESS_DDK_DRIVERS`（新版本的绑定/解绑接口）。
 
 ## 导入模块
 
