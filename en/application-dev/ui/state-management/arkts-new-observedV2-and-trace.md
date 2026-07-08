@@ -958,7 +958,7 @@ let isInfoByNew: boolean = realInfo instanceof Info; // true
 let isInfoByParse: boolean = parseInfo instanceof Info; // false
 ```
 
-You can use the third-party library [class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer) to implement observation after deserialization.
+You can use the third-party library [class-transformer](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/class-transformer) to implement observation after deserialization.
 
 You can run the following command to install class-transformer:
 
