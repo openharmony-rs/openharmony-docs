@@ -8,7 +8,7 @@
 
 对于录制音频类的应用，开发者需要关注该应用的音频流的状态以做出相应的操作，比如监听到状态为结束时，及时提示用户录制已结束。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS?_fb=blob)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
 ## 读取或监听应用内音频流状态变化
 
@@ -199,12 +199,12 @@
 
    ArkTS-Dyn示例：
    <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-
+   
    ``` TypeScript
    async function getCurrentAudioCapturerInfoArray(updateCallback?:
      (msg: string, isError: boolean) => void): Promise<void>{
      // ...
-
+   
      await audioStreamManager.getCurrentAudioCapturerInfoArray()
        .then((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
          console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
@@ -214,11 +214,11 @@
              console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
              console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
              console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
-
+   
              detailInfo += `StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}\n`;
              detailInfo += `Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}\n`;
              detailInfo += `Flag ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}\n`;
-
+   
              for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
                console.info(`Type: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
