@@ -1194,10 +1194,10 @@ type OnDisconnectCallback = () => void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-| 名称                       | 值   | 说明                      |
+| 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
-| SINGLE_BLINK               | 1    | 表示单次闪烁。             |
-| CONTINUOUS_BLINK           | 2    | 表示持续闪烁。             |
+| SINGLE_BLINK                       |  1 | 表示单次闪烁。         |
+| CONTINUOUS_BLINK                |  2 | 表示持续闪烁。         |
 
 ## BlinkingScenario
 
