@@ -285,6 +285,27 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 <!-- @[image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
+``` C++
+void GlobalEventReceiver(ArkUI_NodeEvent* event)
+{
+    auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+    if (eventType == NODE_IMAGE_ON_COMPLETE) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_INFO(LOG_APP, "Image loaded: %.0fx%.0f",
+                        componentEvent->data[IMAGE_WIDTH_INDEX].f32, componentEvent->data[IMAGE_HEIGHT_INDEX].f32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_ERROR) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Image load failed, error: %d", componentEvent->data[ERROR_CODE_INDEX].i32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_SVG_PLAY_FINISH) {
+        OH_LOG_INFO(LOG_APP, "SVG animation play finished");
+    }
+}
+```
+
 ### 监听图片加载完成事件
 
 在图片节点上使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_COMPLETE完成事件，当图片加载成功后触发该事件，事件回调中可获取图片尺寸信息。
