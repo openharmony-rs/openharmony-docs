@@ -6,11 +6,20 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块主要提供管理外部设备的相关功能，包括查询设备列表、绑定设备和解除绑定设备。
+本模块是驱动开发套件提供的设备管理接口集合，提供外接设备信息的查询能力、应用与外设驱动之间的绑定与解绑能力。本模块的接口可用于实现以下功能：
+
+- 查询系统中已接入的外设设备列表。
+- 绑定指定外设设备并获取远程驱动通信对象，从而能通过跨进程通信与外设驱动进行数据交互。
+- 使用完毕后解绑设备，释放资源。
+
+本模块的外设访问能力需要多个 API 组合完成，典型调用流程为：**查询设备 → 绑定设备获取通信对象 → 通过通信对象与驱动交互 → 解绑设备释放资源**。设备绑定的生命周期视图如下：
+
+![DriverDeviceManager_flowchart](../figures/DriverDeviceManager_flowchart.png)
 
 >  **说明：**
 > 
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 调用本模块接口需要申请权限 `ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER`（查询/绑定/解绑）或 `ohos.permission.ACCESS_DDK_DRIVERS`（新版本的绑定/解绑接口）。
 
 ## 导入模块
 

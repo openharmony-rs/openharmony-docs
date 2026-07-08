@@ -47,7 +47,7 @@
 | [Hid_KeyCode](#hid_keycode) | Hid_KeyCode | 键值编码。 |
 | [Hid_AbsAxes](#hid_absaxes) | Hid_AbsAxes | 绝对坐标编码。 |
 | [Hid_RelAxes](#hid_relaxes) | Hid_RelAxes | 相对坐标编码。 |
-| [Hid_MscEvent](#hid_mscevent) | Hid_MscEvent | 不适合其它类型的输入事件编码。 |
+| [Hid_MscEvent](#hid_mscevent) | Hid_MscEvent | 不适合其他类型的输入事件编码。 |
 | [Hid_DdkErrCode](#hid_ddkerrcode) | Hid_DdkErrCode | HID DDK错误码定义。 |
 | [Hid_ReportType](#hid_reporttype) | Hid_ReportType | 报告（HID设备与主机之间交换的数据包）类型定义。 |
 
@@ -284,7 +284,7 @@ enum Hid_AbsAxes
 | HID_ABS_TILT_Y = 0x1b | Y轴倾斜度 |
 | HID_ABS_TOOL_WIDTH = 0x1c | 触摸工具的宽度 |
 | HID_ABS_VOLUME = 0x20 | 音量 |
-| HID_ABS_MISC = 0x28 | 其它类型的绝对坐标轴，用于不适合归入上述分类的特殊轴类型。 |
+| HID_ABS_MISC = 0x28 | 其他类型的绝对坐标轴，用于不适合归入上述分类的特殊轴类型。 |
 
 ### Hid_RelAxes
 
@@ -309,7 +309,7 @@ enum Hid_RelAxes
 | HID_REL_HWHEEL = 0x06 | 水平滚轮，表示鼠标水平滚轮的滚动方向和距离，用于水平方向的滚动操作。 |
 | HID_REL_DIAL = 0x07 | 刻度，表示旋钮或刻度盘的旋转方向和距离，用于调节音量、亮度或其他可调节参数。 |
 | HID_REL_WHEEL = 0x08 | 垂直滚轮，表示鼠标垂直滚轮的滚动方向和距离，用于垂直方向的滚动操作。 |
-| HID_REL_MISC = 0x09 | 其它类型的相对坐标事件，用于不适合归入上述分类的特殊相对坐标事件。 |
+| HID_REL_MISC = 0x09 | 其他类型的相对坐标事件，用于不适合归入上述分类的特殊相对坐标事件。 |
 | HID_REL_RESERVED = 0x0a | 预留 |
 | HID_REL_WHEEL_HI_RES = 0x0b | 高分辨率滚轮，表示鼠标高精度滚轮的滚动方向和距离，提供比普通滚轮更高的分辨率和精度。 |
 | HID_REL_HWHEEL_HI_RES = 0x0c | 高分辨率水平滚轮，表示鼠标高精度水平滚轮的滚动方向和距离，提供比普通水平滚轮更高的分辨率和精度。 |
@@ -322,7 +322,7 @@ enum Hid_MscEvent
 
 **描述**
 
-不适合其它类型的输入事件编码。
+不适合其他类型的输入事件编码。
 
 **起始版本：** 11
 
@@ -353,7 +353,7 @@ HID DDK错误码定义。
 | HID_DDK_NO_PERM = 201 | 没有权限，从API 16起，取值由-6变更为201。请检查应用是否已正确获取所需的权限。 |
 | HID_DDK_INVALID_PARAMETER = 401 | 非法参数，从API 16起，取值由-2变更为401。请检查参数取值是否符合要求。 |
 | HID_DDK_FAILURE = 27300001 | DDK接口执行失败，从API 16起，取值由-1变更为27300001。可能原因：设备状态异常或通信异常。请检查设备状态和参数设置。 |
-| HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。 |
+| HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。请检查传入参数的有效性。 |
 | HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确。请检查调用时机、以及是否初始化DDK。 |
 | HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。请检查设备状态和超时时间设置。 |
 | HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。请检查系统服务状态，确保在调用API前先初始化DDK。<br> **起始版本：** 18 |

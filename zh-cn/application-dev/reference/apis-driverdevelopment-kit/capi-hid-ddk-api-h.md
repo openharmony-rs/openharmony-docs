@@ -73,7 +73,7 @@ int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | deviceID（一个非负整数） 成功创建设备的ID。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败。可能原因：DDK服务未初始化。请调用OH_Hid_Init完成初始化。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因：1. 入参hidDevice为空指针；<br>         2. 入参hidEventProperties为空指针；3. properties的长度超过7；4. hidEventTypes的长度超过5；<br>         5. hidKeys的长度超过100；6. hidAbs的长度超过26；7.hidRelBits的长度超过13；<br>         8. hidMiscellaneous的长度超过6。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备数量达到最大值200。 |
+| int32_t | deviceID（一个非负整数）成功创建设备的ID。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败。可能原因：DDK服务未初始化。请调用OH_Hid_Init完成初始化。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因：1. 入参hidDevice为空指针；<br>         2. 入参hidEventProperties为空指针；3. properties的长度超过7；4. hidEventTypes的长度超过5；<br>         5. hidKeys的长度超过100；6. hidAbs的长度超过26；7.hidRelBits的长度超过13；<br>         8. hidMiscellaneous的长度超过6。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备数量达到最大值200。 |
 
 ### OH_Hid_EmitEvent()
 
@@ -95,7 +95,7 @@ int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t deviceId | 设备ID，必须是当前调用者创建的设备，取值为非负数。 |
-| const [Hid_EmitItem](capi-hidddk-hid-emititem.md) items[] | 发送的事件列表，事件包括类型（取值来源事件类型Hid_EventType）、编码（取值来源同步事件编码Hid_SynEvent、键值编码Hid_KeyCode、按钮编码HidBtnCode、绝对坐标编码Hid_AbsAxes、相对坐标编码Hid_RelAxes、其它类型的输入事件编码Hid_MscEvent）、值（根据实际设备输入决定）。发送的事件将被注入到指定设备，模拟设备产生相应的输入行为。 |
+| const [Hid_EmitItem](capi-hidddk-hid-emititem.md) items[] | 发送的事件列表，事件包括类型（取值来源事件类型Hid_EventType）、编码（取值来源同步事件编码Hid_SynEvent、键值编码Hid_KeyCode、绝对坐标编码Hid_AbsAxes、相对坐标编码Hid_RelAxes、其他类型的输入事件编码Hid_MscEvent）、值（根据实际设备输入决定）。发送的事件将被注入到指定设备，模拟设备产生相应的输入行为。 |
 | uint16_t length | 发送事件列表长度（一次发送事件个数），最大值不超过7。 |
 
 **返回：**
@@ -278,7 +278,7 @@ int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSiz
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 | int timeout | 超时时间（毫秒），取值说明：大于0时，表示阻塞等待的毫秒数；等于0时表示立即返回；设置为-1时表示阻塞等待直至读出数据，不会返回超时。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
@@ -309,7 +309,7 @@ int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
 **返回：**
@@ -395,7 +395,7 @@ int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | char *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 
 **返回：**
 
@@ -424,7 +424,7 @@ int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bu
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | char *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 
 **返回：**
 
@@ -453,7 +453,7 @@ int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buf
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 
 **返回：**
 
@@ -483,7 +483,7 @@ int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, cons
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | 报告类型，可指定为输入报告、输出报告或特性报告。 |
 | const uint8_t *data | 待发送的数据。 |
-| uint32_t length | 发送数据的字节长度，最大不超过 [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t length | 发送数据的字节长度，大于0且最大不超过 [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 
 **返回：**
 
@@ -513,7 +513,7 @@ int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | 报告类型。 |
 | uint8_t *data | 存放读取数据的缓冲区。 |
-| uint32_t bufSize | 存放读取数据的缓冲区大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 存放读取数据的缓冲区大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 
 **返回：**
 
@@ -542,7 +542,7 @@ int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | 设备操作句柄，使用前须通过[OH_Hid_Open](#oh_hid_open)打开并获取。 |
 | uint8_t *buf | 存放描述符的缓冲区。 |
-| uint32_t bufSize | 缓冲区的字节大小，最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
+| uint32_t bufSize | 缓冲区的字节大小，大于0且最大不超过[HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size)，否则无法通过参数校验。 |
 | uint32_t *bytesRead | 读取的字节数。 |
 
 **返回：**
