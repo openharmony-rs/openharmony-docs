@@ -34,6 +34,49 @@
    
    <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
+   ``` TypeScript
+   import { avMusicTemplate } from '@kit.AVSessionKit';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     private static sInstance: TemplateManager;
+     // ...
+     private constructor() {
+     }
+   
+     /**
+      * 获取模板控制器实例。
+      *
+      * @returns 模板控制器实例。
+      */
+     public static getInstance(): TemplateManager {
+       if (!TemplateManager.sInstance) {
+         TemplateManager.sInstance = new TemplateManager();
+       }
+       return TemplateManager.sInstance;
+     };
+   
+     /**
+      * 创建音频模板。
+      */
+     public createTemplate() {
+       if (this.template) {
+         console.warn('createTemplate: template not undefined');
+         return
+       }
+       try {
+         this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
+         console.info('createTemplate: success');
+         // ...
+       } catch (e) {
+         console.error(`createTemplate, errCode: ${e?.code}`);
+       }
+     }
+     // ...
+   }
+   ```
+   
 2. 注册事件监听，在监听到事件后可提供应用数据给音频模板使用。监听接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
    音频模板主界面显示需要同时注册如下两个接口：
