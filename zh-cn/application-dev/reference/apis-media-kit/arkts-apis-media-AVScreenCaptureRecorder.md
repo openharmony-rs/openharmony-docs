@@ -18,8 +18,13 @@
 
 ## 导入模块
 
+
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
 ```
 
 ## init<sup>12+</sup>
@@ -59,40 +64,29 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import fileIo from '@ohos.file.fs';
-import { media } from '@kit.MediaKit';
+async function testInit() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 创建文件。
+  let filesDir = '/data/storage/el2/base/haps';
+  let file = fileIo.openSync(filesDir + '/screenCapture.mp4', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+
+  let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
+      fd: file.fd, // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
+      frameWidth: 640,
+      frameHeight: 480
+      // 补充其他参数。
+  };
+
+  // 调用init方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
+      console.info('Succeeded in initializing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 创建文件。
-let filesDir = '/data/storage/el2/base/haps';
-let file = fileIo.openSync(filesDir + '/screenCapture.mp4', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-
-let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
-    fd: file.fd, // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
-    frameWidth: 640,
-    frameHeight: 480
-    // 补充其他参数。
-};
-
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-    console.info('Succeeded in initializing avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 
 ```
@@ -127,30 +121,20 @@ startRecording(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testStartRecording() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用startRecording方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.startRecording().then(() => {
+      console.info('Succeeded in starting avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用startRecording方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.startRecording().then(() => {
-    console.info('Succeeded in starting avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -184,30 +168,20 @@ stopRecording(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testStopRecording() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用stopRecording方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.stopRecording().then(() => {
+      console.info('Succeeded in stopping avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用stopRecording方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.stopRecording().then(() => {
-    console.info('Succeeded in stopping avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -244,30 +218,20 @@ pauseRecording(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testPauseRecording() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用pauseRecording方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.pauseRecording().then(() => {
+      console.info('Succeeded in pausing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to pause avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用pauseRecording方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.pauseRecording().then(() => {
-    console.info('Succeeded in pausing avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to pause avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -304,30 +268,20 @@ resumeRecording(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testResumeRecording() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用resumeRecording方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.resumeRecording().then(() => {
+      console.info('Succeeded in resuming avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to resume avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用resumeRecording方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.resumeRecording().then(() => {
-    console.info('Succeeded in resuming avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to resume avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -382,20 +336,23 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 ArkTS-Dyn示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-import { media } from '@kit.MediaKit';
+async function testAddWaterMark() {
+  // 创建录屏实例。s
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
-let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+  // 其余流程。
 
-if (watermark) {
+  let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+  let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+  if (watermark && avScreenCaptureRecorder) {
     avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
       console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
     })
     .catch((error: BusinessError) => {
       console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
     });
+  }
 }
 ```
 
@@ -458,31 +415,21 @@ ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testSkipPrivacyMode() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用skipPrivacyMode方法。
+  if (avScreenCaptureRecorder) {
+    let windowIDs = [];
+    avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+      console.info('Succeeded in skipping privacy mode');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用skipPrivacyMode方法。
-if (avScreenCaptureRecorder != undefined) {
-  let windowIDs = [];
-  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
-    console.info('Succeeded in skipping privacy mode');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -522,30 +469,20 @@ setMicEnabled(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testSetMicEnable() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用setMicEnabled方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setMicEnabled(true).then(() => {
+      console.info('Succeeded in setting microphone enabled.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用setMicEnabled方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.setMicEnabled(true).then(() => {
-    console.info('Succeeded in setting microphone enabled.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -586,30 +523,20 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testSetPickerMode() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用setPickerMode方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
+      console.info('Succeeded in setting picker mode.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用setPickerMode方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
-    console.info('Succeeded in setting picker mode.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -652,32 +579,22 @@ ArkTS-Sta: excludePickerWindows(excludedWindows: Array\<int>): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testExcludePickerWindows() {
+  let excludedWindows: Array<number> = [101, 102, 103];
+  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-let excludedWindows: Array<number> = [101, 102, 103];
+  // 其余流程。
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 调用excludePickerWindows方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
+      console.info('Succeeded in excluding picker windows.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用excludePickerWindows方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
-    console.info('Succeeded in excluding picker windows.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -716,30 +633,20 @@ presentPicker(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testPresentPicker() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用presentPicker方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.presentPicker().then(() => {
+      console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用presentPicker方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.presentPicker().then(() => {
-    console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -784,30 +691,20 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testSetContentAutoRotation() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用setContentAutoRotation方法。
+  if (avScreenCaptureRecorder != undefined) {
+    avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
+      console.info('Succeeded in enabling setContentAutoRotation.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用setContentAutoRotation方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
-    console.info('Succeeded in enabling setContentAutoRotation.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -841,30 +738,20 @@ release(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testRelease() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用release方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.release().then(() => {
+      console.info('Succeeded in releasing avScreenCaptureRecorder');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用release方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.release().then(() => {
-    console.info('Succeeded in releasing avScreenCaptureRecorder');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -892,28 +779,18 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testOnStateChange() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用on方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
+        console.info('avScreenCaptureRecorder stateChange to ' + state);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用on方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
-      console.info('avScreenCaptureRecorder stateChange to ' + state);
-  });
 }
 ```
 
@@ -951,28 +828,18 @@ on(type: 'error', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testOnError() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用on方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.on('error', (err: BusinessError) => {
+      console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
+    });
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用on方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
-  });
 }
 ```
 
@@ -1000,26 +867,16 @@ if (avScreenCaptureRecorder != undefined) {
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testOffStateChange() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用off方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.off('stateChange');
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用off方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.off('stateChange');
 }
 ```
 
@@ -1047,26 +904,16 @@ off(type: 'error', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+async function testOffError() {  
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-// 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
-media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
-    avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in creating avScreenCaptureRecorder');
-  } else {
-    console.error('Failed to create avScreenCaptureRecorder');
+  // 其余流程。
+
+  // 调用off方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.off('error');
   }
-}).catch((error: BusinessError) => {
-  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-});
-
-// 其余流程。
-
-// 调用off方法。
-if (avScreenCaptureRecorder != undefined) {
-  avScreenCaptureRecorder.off('error');
 }
 ```
 
