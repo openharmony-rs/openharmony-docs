@@ -400,6 +400,15 @@
 
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   let imageConfig: intelligence.ModelConfig = {
+     version: intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable: false,
+     cachePath: "/data"
+   }
+   let imageEmbedding: intelligence.ImageEmbedding;
+   ```
+   
 
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
