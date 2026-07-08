@@ -268,7 +268,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 801      | Capability not supported. |
 | 5400101  | No memory. |
 | 5400102  | Operation not allowed.|
-| 5400103  | I/O error. |
+| 5400103  | I/O error.  <br>适用版本：9-13    |
 | 5400104  | Time out.              |
 | 5400105  | Service died.         |
 | 5400106  | Unsupported format.     |
