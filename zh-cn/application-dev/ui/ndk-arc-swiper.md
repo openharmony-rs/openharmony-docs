@@ -20,6 +20,13 @@ ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提
 
 <!-- @[arc_swiper_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
+``` C++
+ArkUI_NativeNodeAPI_1 *nodeApi = nullptr;
+OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeApi);
+ArkUI_NodeHandle arcSwiper = nodeApi->createNode(ARKUI_NODE_ARC_SWIPER);
+AddChild(arcSwiper, nodeApi);
+```
+
 ## 设置常用属性
 
 本示例通过设置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的属性调整ArcSwiper页面显示和交互效果，常见的属性如下：
