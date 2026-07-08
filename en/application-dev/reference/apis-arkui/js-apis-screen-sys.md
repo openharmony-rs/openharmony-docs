@@ -1803,7 +1803,7 @@ Sets the screen orientation. This API uses a promise to return the result.
 
 You can use the **orientationOptions** parameter to specify whether to use an animation during rotation and whether to ignore the rotation lock of the system window.
 
-If the **orientationOptions** parameter is not passed, the API behavior is the same as that of **setOrientation(orientation: Orientation): Promise<void>**.
+If the **orientationOptions** parameter is not passed, the API behavior is the same as that of **setOrientation(orientation: Orientation): Promise\<void>**.
 
 The screen orientation changes only when the specified orientation complies with the application rotation policy (which can be set using the **orientation** field of **abilities** in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
