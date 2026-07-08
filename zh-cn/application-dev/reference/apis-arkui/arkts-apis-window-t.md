@@ -112,5 +112,5 @@ type WindowEventListener = (windowId: number, event: window.WindowEventType) => 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ------------------ |
-| windowId | number  | 是  | 触发生命周期变更的窗口ID。|
+| windowId | number  | 是  | 触发生命周期变更的窗口ID，用于标识发生状态变化的特定窗口。|
 | event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

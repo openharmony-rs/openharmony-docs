@@ -10,7 +10,7 @@
 
 Defines enumerations and APIs related to **Grid**.
 
-**File to include:** <arkui/grid.h>
+**File to include:** <arkui/node_attributes/grid.h>
 
 **Library:** libace_ndk.z.so
 

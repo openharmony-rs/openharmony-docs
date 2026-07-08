@@ -538,7 +538,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 **描述**
 
-获取全部主窗信息。
+获取全部主窗信息。使用完建议使用[OH_WindowManager_ReleaseAllMainWindowInfo()](#oh_windowmanager_releaseallmainwindowinfo)接口释放对应内存，避免内存泄漏。
 
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
