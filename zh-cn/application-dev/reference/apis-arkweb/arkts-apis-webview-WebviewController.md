@@ -11231,7 +11231,8 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 > **说明：**
 >
-> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 不同命令的返回格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)和[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+> - 当命令无法分发或无结果返回时，Promise可能返回空字符串。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
 
 **起始版本：** 26.0.0
@@ -11250,7 +11251,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。命令无法分发或无返回值时，返回空字符串。 |
 
 **错误码：**
 

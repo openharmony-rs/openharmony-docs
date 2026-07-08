@@ -13,7 +13,7 @@
 > - `command`必须为JSON对象字符串。
 > - `method`字段取值区分大小写，需使用[命令总览](#命令总览)中列出的取值。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
-> - 当网页不可用、命令无法执行或无结果返回时，接口返回空字符串。
+> - 不同命令的返回格式不同。命令无法分发或无结果返回时，接口可能返回空字符串。
 
 ## 命令总览
 
@@ -21,6 +21,10 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [getUrlHistory](#geturlhistory) | 获取URL历史 | [GetUrlHistoryCommand](#geturlhistorycommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 获取当前Web组件的URL历史列表、当前历史项位置和前进后退状态。 |
+| [goBack](#goback) | 后退 | [GoBackCommand](#gobackcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 返回上一个历史页面。 |
+| [goForward](#goforward) | 前进 | [GoForwardCommand](#goforwardcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 前进到下一个历史页面。 |
+| [navigate](#navigate) | 导航到指定URL | [NavigateCommand](#navigatecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 打开指定URL。 |
 | [addPageAnnotation](#addpageannotation) | 添加页面标注 | [AddPageAnnotationCommand](#addpageannotationcommand) | [PageAnnotationResult](#pageannotationresult) | 根据节点标识在当前页面视口绘制标注框和数字标签。 |
 | [removePageAnnotation](#removepageannotation) | 取消页面标注 | [RemovePageAnnotationCommand](#removepageannotationcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 清理当前页面标注。 |
 | [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
@@ -34,6 +38,10 @@
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称。支持的取值请参见[命令总览](#命令总览)。 |
 | params | - | - | Object | 否 | 命令参数。不同`method`对应的`params`格式不同。 |
+
+## 通用执行结果
+
+`getUrlHistory`、`goBack`、`goForward`和`navigate`返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)格式。成功且无额外结果时返回`{"code":10,"message":"success"}`；成功且需要返回结果时追加`result`字段；命令级失败时返回`{"code":错误码,"message":"错误描述"}`。
 
 ## getFullDom
 
@@ -443,6 +451,215 @@
 }
 ```
 
+## getUrlHistory
+
+获取当前Web组件的URL历史列表，以及当前历史项位置和前进后退状态。
+
+### GetUrlHistoryCommand
+
+```json
+{
+  "method": "getUrlHistory",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`getUrlHistory`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回说明
+
+成功时返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)，并在`result`中携带以下字段。
+
+| 字段 | 子字段 | 类型 | 说明 |
+| ---- | ---- | ---- | ---- |
+| result | currentIndex | number | 当前历史项下标。 |
+| result | canGoBack | boolean | 当前页面是否可后退。 |
+| result | canGoForward | boolean | 当前页面是否可前进。 |
+| result | entries | Array\<Object> | 历史项列表。 |
+| result.entries | index | number | 历史项下标。 |
+| result.entries | url | string | 历史项URL。 |
+| result.entries | title | string | 历史项标题。 |
+
+### 请求示例
+
+```json
+{
+  "method": "getUrlHistory",
+  "params": {}
+}
+```
+
+### 返回示例
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "result": {
+    "currentIndex": 1,
+    "canGoBack": true,
+    "canGoForward": false,
+    "entries": [
+      {
+        "index": 0,
+        "url": "https://www.example.com/",
+        "title": "Example"
+      },
+      {
+        "index": 1,
+        "url": "https://www.example.com/form",
+        "title": "Form"
+      }
+    ]
+  }
+}
+```
+
+## goBack
+
+返回上一个历史页面。
+
+### GoBackCommand
+
+```json
+{
+  "method": "goBack",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`goBack`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回示例
+
+可后退时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+不可后退时返回：
+
+```json
+{
+  "code": 11,
+  "message": "Cannot go back"
+}
+```
+
+## goForward
+
+前进到下一个历史页面。
+
+### GoForwardCommand
+
+```json
+{
+  "method": "goForward",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`goForward`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回示例
+
+可前进时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+不可前进时返回：
+
+```json
+{
+  "code": 11,
+  "message": "Cannot go forward"
+}
+```
+
+## navigate
+
+打开指定URL。
+
+### NavigateCommand
+
+```json
+{
+  "method": "navigate",
+  "params": {
+    "url": "https://www.example.com/"
+  }
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`navigate`。 |
+| params | - | - | Object | 是 | 命令参数。 |
+| params | url | - | string | 是 | 目标URL。支持`http`、`https`、`file`和`about`协议。 |
+
+> **说明：**
+>
+> - `params.url`缺失、不是string或为空字符串时，返回`{"code":391,"message":"params.url is required"}`。
+> - `params.url`不是合法URL，或使用不支持的协议时，返回`{"code":392,"message":"params.url is invalid"}`。
+> - `resource`、`javascript`、`data`和`ftp`协议不支持。
+
+### 请求示例
+
+```json
+{
+  "method": "navigate",
+  "params": {
+    "url": "about:blank"
+  }
+}
+```
+
+### 返回示例
+
+成功时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+URL不合法时返回：
+
+```json
+{
+  "code": 392,
+  "message": "params.url is invalid"
+}
+```
+
 ## addPageAnnotation
 
 根据节点标识在当前页面视口绘制标注框和数字标签。该命令会先清理已有页面标注，再根据`elementList`中的节点标识获取元素位置，并在top frame中绘制固定位置的overlay。
@@ -578,9 +795,7 @@
 | 391 | missing elementList | `elementList`缺失。 |
 | 392 | invalid elementList | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
 
-
 ## removePageAnnotation
-
 
 清理当前页面标注overlay。
 
@@ -617,10 +832,7 @@
 | 11 | annotation command failed或具体失败原因 | 取消标注命令执行失败。无法获取具体原因时，`message`为`"annotation command failed"`。 |
 | 130 | timed out | 取消标注命令执行超时。 |
 | 132 | browser or frame is null | browser、main frame或ArkWeb frame为空。 |
-
-
 ## screenCapture
-
 
 获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
 
