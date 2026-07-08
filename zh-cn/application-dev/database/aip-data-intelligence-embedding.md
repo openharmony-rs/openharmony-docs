@@ -276,6 +276,30 @@
 
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   let text = 'text';
+   textEmbedding?.getEmbedding(text)
+     .then((data: Array<double>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   
+   let batchTexts = ['text1','text2'];
+   textEmbedding?.getEmbedding(batchTexts)
+     .then((data: Array<Array<double>>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 6. 释放文本嵌入模型。
 
