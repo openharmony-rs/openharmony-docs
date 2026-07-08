@@ -491,6 +491,19 @@
 
    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+   imageEmbedding?.getEmbedding(image)
+     .then((data: Array<double>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 5. 释放图像嵌入模型。
 
