@@ -13,7 +13,7 @@ typedef struct AbilityRuntime_NativeAbilityWrapper AbilityRuntime_NativeAbilityW
 
 ## 概述
 
-定义AbilityRuntime_NativeAbilityWrapper结构体类型，用于封装Native Ability的相关信息。
+定义AbilityRuntime_NativeAbilityWrapper结构体类型，用于封装[UIAbility](js-apis-app-ability-uiAbility.md)的相关信息。
 
 **起始版本：** 26.0.0
 

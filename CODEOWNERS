@@ -2718,7 +2718,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-list.md @yylong
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-listitem.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-navigator.md @huangxiaolinabc @jiangdayuan @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-panel.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-panel.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-refresh.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-row-sys.md @camlostshi @lanshouren @Brilliantry_Rui
@@ -2982,7 +2982,7 @@ zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExt
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md @csliutt-private @ringking0 @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md @aohui @yaomingliu @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AIPageCommand.md @zourongchun @kurli1 @HelloShuo @ghiker
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AIPageInteraction.md @zhushengle @yyyiye @HelloShuo @ghiker
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AIPageInteraction.md @zhu-sheng-le @yyyiye @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheOptions.md @aohui @yaomingliu @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md @aohui @yaomingliu @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardList.md @aohui @yaomingliu @HelloShuo @ghiker
