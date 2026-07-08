@@ -734,7 +734,7 @@ struct Index {
 
 startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
-启用闪光灯或屏幕闪烁以进行闪光提醒。
+启用闪光灯或屏幕以进行闪烁提醒。
 
 **起始版本：** 26.0.0
 
@@ -750,7 +750,7 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪动的模式。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
 | scenario | BlinkingScenario&lt;[BlinkingScenario](#BlinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
@@ -786,7 +786,7 @@ try {
 
 stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
-停止闪光灯或屏幕闪烁以进行闪光提醒。
+停止闪光灯闪烁或屏幕闪烁。
 
 **起始版本：** 26.0.0
 
@@ -802,7 +802,7 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪动的模式。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
 | scenario | BlinkingScenario&lt;[BlinkingScenario](#BlinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
@@ -1194,10 +1194,10 @@ type OnDisconnectCallback = () => void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-| 名称                        | 值   | 说明                     |
+| 名称                       | 值   | 说明                      |
 | -------------------------- | ---- | ------------------------ |
-| SINGLE_BLINK                    |  1 | 表示单次闪烁。         |
-| CONTINUOUS_BLINK                |  2 | 表示持续闪烁。         |
+| SINGLE_BLINK               | 1    | 表示单次闪烁。             |
+| CONTINUOUS_BLINK           | 2    | 表示持续闪烁。             |
 
 ## BlinkingScenario
 
@@ -1220,7 +1220,7 @@ type OnDisconnectCallback = () => void
 
 ## BlinkResultCode
 
-闪烁操作的结果代码
+闪烁操作的结果枚举
 
 **起始版本：** 26.0.0
 
@@ -1237,4 +1237,4 @@ type OnDisconnectCallback = () => void
 | DEVICE_IN_USE                   |  2 | 表示设备正在使用中。     |
 | FLASH_BLINKING_UNSUPPORTED      |  3 | 表示不支持闪光灯闪烁。   |
 | SCREEN_BLINKING_UNSUPPORTED     |  4 | 表示不支持屏幕闪烁。     |
-| FEATURE_DISABLED                |  5 | 表示闪烁功能开关已关闭。 |
+| FEATURE_DISABLED                |  5 | 表示闪烁功能开关未开启。 |
