@@ -684,7 +684,7 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [UIContext](arkts-apis-uicontext-uicontext.md)对象，用以绑定实例。 |
 | bool enabled | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通。 |
-| [ArkUI_RawInputEventType](capi-native-type-h.md#arkui_rawinputeventtype) type | 指定启用或禁用事件直通的原始输入事件类型[ArkUI_RawInputEventType](capi-native-type-h.md#arkui_rawinputeventtype)。 |
+| [ArkUI_RawInputEventType](capi-common-attributes-h.md#arkui_rawinputeventtype) type | 指定启用或禁用事件直通的原始输入事件类型[ArkUI_RawInputEventType](capi-common-attributes-h.md#arkui_rawinputeventtype)。 |
 
 **返回：**
 

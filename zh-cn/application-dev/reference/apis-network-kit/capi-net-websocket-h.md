@@ -148,7 +148,7 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 | -- | -- |
 | [struct WebSocket](capi-netstack-websocket.md) *client | 客户端。 |
 | char *data |   客户端发送的数据。 |
-| size_t length | 客户端发送的数据长度。 |
+| size_t length | 客户端发送的数据长度。单位：Byte。|
 
 **返回：**
 

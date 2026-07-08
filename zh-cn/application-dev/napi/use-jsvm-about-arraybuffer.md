@@ -57,7 +57,7 @@ static JSVM_Value GetArraybufferInfo(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM GetArraybufferInfo isArrayBuffer:false");
     }
     void *data;
-    size_t byteLength;
+    size_t byteLength = 0;
     // 获取ArrayBuffer的底层数据缓冲区和长度
     JSVM_Status status = OH_JSVM_GetArraybufferInfo(env, args[0], &data, &byteLength);
     if (status != JSVM_OK) {
@@ -243,13 +243,14 @@ static JSVM_Value CreateArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     int32_t value = 0;
     size_t length = 0;
-    OH_JSVM_GetValueInt32(env, argv[0], &value);
+    JSVM_CALL(OH_JSVM_GetValueInt32(env, argv[0], &value));
     length = size_t(value);
     void *data;
     // 创建一个新的ArrayBuffer
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, length, &data, &result);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM CreateArraybuffer: failed");
+        return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM CreateArraybuffer: success");
         OH_LOG_INFO(LOG_APP, "JSVM ArrayBuffer length: %{public}d", length);

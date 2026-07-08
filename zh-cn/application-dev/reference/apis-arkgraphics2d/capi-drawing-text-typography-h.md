@@ -159,7 +159,7 @@
 | [void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)](#oh_drawing_destroyfontdescriptor) | 释放字体描述对象占用的内存。 |
 | [OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)](#oh_drawing_createfontparser) | 构造字体解析对象，用于解析系统字体。 |
 | [void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)](#oh_drawing_destroyfontparser) | 释放字体解析对象占用的内存。 |
-| [char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)](#oh_drawing_fontparsergetsystemfontlist) | 获取系统字体名称列表，此接口仅在2in1、phone设备上可用。 |
+| [char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)](#oh_drawing_fontparsergetsystemfontlist) | 获取系统字体名称列表，此接口仅在2in1、Phone设备上可用。 |
 | [void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)](#oh_drawing_destroysystemfontlist) | 释放系统字体名称列表占用的内存。 |
 | [OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontParser* fontParser, const char* name)](#oh_drawing_fontparsergetfontbyname) | 根据传入的系统字体名称获取系统字体的相关信息。 |
 | [OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography* typography)](#oh_drawing_typographygetlinemetrics) | 获取排版对象的行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。不再需要[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)时，请使用[OH_Drawing_DestroyLineMetrics](capi-drawing-text-typography-h.md#oh_drawing_destroylinemetrics)接口释放该对象的指针。 |
@@ -762,7 +762,7 @@ enum OH_Drawing_TypographyAttributeId
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TYPOGRAPH_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | 是否强制复用光栅化结果。设置后，在下次调用[OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint)绘制时生效。<br>true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
+| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | 是否强制复用光栅化结果。设置后，在下次调用[OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint)绘制时生效。<br>true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
 
 ## 函数说明
 
@@ -2907,7 +2907,7 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 
 **描述**
 
-获取系统字体名称列表，此接口仅在2in1、phone设备上可用。
+获取系统字体名称列表，此接口仅在2in1、Phone设备上可用。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
