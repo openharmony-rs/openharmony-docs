@@ -54,7 +54,7 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. 可能原因：设备类型不支持该能力，或API版本不符合要求。解决措施：请检查设备类型和API版本是否支持该接口，参考'设备行为差异'章节。 |
+| 801          | Capability not supported. 可能原因：设备类型不支持该能力，或API版本不符合要求。解决措施：请检查设备类型和API版本是否支持该接口，参考"设备行为差异"章节。 |
 | 31300000     | Inner error. 可能原因：系统内部错误，如NPU初始化失败或资源不足。解决措施：请检查设备配置，稍后重试或联系技术支持。 |
 
 **示例：**
