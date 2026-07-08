@@ -425,6 +425,40 @@ nativeNodeApi->unregisterNodeEventReceiver();
     **NativeEntry.cpp**
 
     <!-- @[native_root_creator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/NativeEntry.cpp) -->
+    
+    ``` C++
+    namespace NativeModule {
+    
+    napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+        // 获取NodeContent
+        ArkUI_NodeContentHandle contentHandle;
+        OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
+        // 创建图片示例界面
+        auto root = CreateImageExample();
+    
+        // 挂载到NodeContent
+        NativeEntry::GetInstance()->SetRootNode(root);
+    
+        return nullptr;
+    }
+    
+    napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+    {
+        // 清理图片示例资源
+        CleanupImageExample();
+        NativeEntry::GetInstance()->DisposeRootNode();
+        return nullptr;
+    }
+    
+    } // namespace NativeModule
+    ```
 
 4. 显示并设置图片
 
