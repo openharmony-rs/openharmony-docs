@@ -7,7 +7,8 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeWindow的相关函数。
+定义获取和使用NativeWindow的相关函数。NativeWindow基于生产者-消费者模型，通过Buffer队列管理图形缓冲区的申请、写入和消费。开发者通过OHNativeWindow申请OHNativeWindowBuffer，向缓冲区写入内容后送回Buffer队列供消费者使用，完成内容渲染流程。
+
 
 <!--RP1-->
 **相关示例：** [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--RP1End-->
