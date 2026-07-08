@@ -13,7 +13,7 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntim
 
 ## 概述
 
-定义指向OH_AbilityRuntime_ModObjExtensionContextHandle的指针类型。
+表示ModularObjectExtensionAbility上下文的句柄。
 
 **起始版本：** 26.0.0
 
