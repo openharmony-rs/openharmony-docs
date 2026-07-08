@@ -172,7 +172,7 @@ export default class EntryAbility extends UIAbility {
 
 findWindow(name: string): Window
 
-查找指定名称对应的窗口。
+查找指定名称对应的窗口对象。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
