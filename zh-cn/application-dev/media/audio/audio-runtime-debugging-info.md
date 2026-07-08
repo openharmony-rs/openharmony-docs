@@ -437,7 +437,7 @@ audioLoopback {
 
 **C/C++接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
 ``` C++
 #include "ohaudio/native_audio_debugging_manager.h"
@@ -461,22 +461,38 @@ OH_AudioSessionManager *audioSessionManager;
     // fd 文件描述符，实际使用时请根据具体情况获取
     // 输出到文件
     OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
+}
 ```
 
 **ArkTS接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 输出到hilog日志。
-debugManager.printSessionInfo(audioSessionManager, -1);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+import { fileIo as fs } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
 
-// 输出到文件。
-const path = this.context.filesDir + '/audio_session_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printSessionInfo(audioSessionManager, file.fd);
-fileio.closeSync(file);
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fs.closeSync(fd);
 ```
 
 **输出示例：**
