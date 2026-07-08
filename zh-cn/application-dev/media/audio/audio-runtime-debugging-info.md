@@ -527,25 +527,35 @@ audioLoopback {
 
 **C/C++接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
 ``` C++
-// audioSessionManager为已创建并激活的OH_AudioSessionManager实例。
-// 输出到hilog日志。
-OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, -1);
-
-// 输出到文件。
-int32_t fd = open("/data/storage/el2/base/cache/audio_session_snapshot.txt",
-    O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
-    OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, fd);
-    close(fd);
-}
+#include "ohaudio/native_audio_debugging_manager.h"
+// ...
+OH_AudioSessionManager *audioSessionManager;
+// ...
+    // 创建音频会话管理器。
+    OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+    // 设置音频并发模式。
+    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    // 激活音频会话。
+    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+    
+    // 创建音频调试管理器。
+    OH_AudioDebuggingManager *audioDebuggingManager;
+    OH_AudioManager_GetAudioDebuggingManager(&audioDebuggingManager);
+    
+    // 输出到hilog日志。
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, -1);
+    
+    // fd 文件描述符，实际使用时请根据具体情况获取
+    // 输出到文件
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
 ```
 
 **ArkTS-Dyn示例：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
