@@ -33832,5 +33832,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avsession/using-avsession-AVMusicTemplate.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"ability_create_template",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets",
+				"functions":[
+					{
+						"end_line":1440,
+						"name":"manager_create_template",
+						"start_line":16
+					},
+					{
+						"end_line":1441,
+						"name":"template_register_listener",
+						"start_line":17
+					},
+					{
+						"end_line":1442,
+						"name":"set_user_info",
+						"start_line":18
+					},
+					{
+						"end_line":1443,
+						"name":"unregister_listener",
+						"start_line":19
+					}
+				]
+			}
+		]
 	}
 ]
