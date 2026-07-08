@@ -131,7 +131,7 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
-<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -143,7 +143,7 @@ const BUNDLE = 'SupportingAgingFriendly_';
 @Entry
 @Component
 struct OnWillDismiss_Dismiss {
-  @State isShow: Boolean = false;
+  @State isShow: boolean = false;
 
   @Builder
   myBuilder() {
@@ -167,11 +167,11 @@ struct OnWillDismiss_Dismiss {
         title: { title: 'title', subtitle: 'subtitle' },
         enableOutsideInteractive: false,
         onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
-          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
+          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否选择关闭半模态"
           this.getUIContext().showAlertDialog(
             {
-              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
-              message: $r('app.string.bindContentCover_label2'),
+              // 请将$r('app.string.bindSheetCmd_label12')替换为实际资源文件，在本示例中该资源文件的value值为"是否选择关闭半模态"
+              message: $r('app.string.bindSheetCmd_label12'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
               gridCount: 4,
