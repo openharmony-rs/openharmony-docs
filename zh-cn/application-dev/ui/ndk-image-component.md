@@ -202,6 +202,11 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 <!-- @[image_alt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
+``` C++
+ArkUI_AttributeItem altItem = {nullptr, 0, "resources/rawfile/imageCapiExample.png"};
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
+```
+
 ### 设置图片解码尺寸
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_SOURCE_SIZE属性设置图片解码尺寸。
