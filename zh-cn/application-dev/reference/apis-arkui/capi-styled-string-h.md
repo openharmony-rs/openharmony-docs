@@ -310,14 +310,14 @@ enum OH_ArkUI_StyledStringKey
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARKUI_STYLEDSTRINGKEY_UNSPECIFIED = -1 | 未指定样式。 |
-| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式，适用于需要自定义字体颜色、大小、粗细等字体属性的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式，适用于需要为文本添加下划线、删除线等装饰线的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式，适用于需要微调文本垂直位置的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式，适用于需要调整字符之间间距的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式，适用于需要为文本添加阴影效果的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式，适用于需要调整文本行高的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式，适用于需要为文本区域添加背景色高亮的场景。 |
-| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式，适用于需要为文本添加可点击超链接的场景。 |
+| OH_ARKUI_STYLEDSTRINGKEY_FONT = 0 | 文本字体样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_DECORATION = 1 | 文本装饰线样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_BASELINE_OFFSET = 2 | 文本基线偏移量样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_LETTER_SPACING = 3 | 文本字符间距样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_TEXT_SHADOW = 4 | 文本阴影样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_LINE_HEIGHT = 5 | 文本行高样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_BACKGROUND_COLOR = 6 | 文本背景颜色样式。 |
+| OH_ARKUI_STYLEDSTRINGKEY_URL = 7 | 超链接样式。 |
 | OH_ARKUI_STYLEDSTRINGKEY_LINE_SPACING = 8 | 文本行间距样式。**起始版本：** 26.0.0 |
 | OH_ARKUI_STYLEDSTRINGKEY_GESTURE = 100 | 事件手势样式。 |
 | OH_ARKUI_STYLEDSTRINGKEY_PARAGRAPH_STYLE = 200 | 文本段落样式。 |
@@ -756,7 +756,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetString(const ArkUI_StyledStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常，可能原因包括descriptor为空指针、buffer为空指针或writeLength为空指针，请检查参数是否有效。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-native-type-h.md#arkui_errorcode) 属性字符串无效，可能原因包括属性字符串对象已被销毁或未正确创建，请确保使用有效的属性字符串对象。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 缓冲区大小不足，当提供的bufferSize小于实际需要写入的数据长度时返回此错误码。处理步骤：通过writeLength参数获取所需最小缓冲区大小，重新分配足够大小的缓冲区后再次调用。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，可能原因包括descriptor为空指针、buffer为空指针或writeLength为空指针，请检查参数是否有效。 <br>         [ARKUI_ERROR_CODE_INVALID_STYLED_STRING](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 属性字符串无效，可能原因包括属性字符串对象已被销毁或未正确创建，请确保使用有效的属性字符串对象。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足，当提供的bufferSize小于实际需要写入的数据长度时返回此错误码。处理步骤：通过writeLength参数获取所需最小缓冲区大小，重新分配足够大小的缓冲区后再次调用。 |
 
 ### OH_ArkUI_StyledString_Descriptor_IsEqual()
 
@@ -953,7 +953,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString
 
 **描述**
 
-替换属性字符串指定范围内的样式。与[OH_ArkUI_StyledString_Descriptor_SetStyle](#oh_arkui_styledstring_descriptor_setstyle)的区别：ReplaceStyle会覆盖指定范围内已有的样式进行替换；SetStyle为指定范围设置样式，不覆盖已有样式。建议需要完全替换已有样式时使用ReplaceStyle，需要叠加设置样式时使用SetStyle。
+替换属性字符串指定范围内的样式。与[OH_ArkUI_StyledString_Descriptor_SetStyle](#oh_arkui_styledstring_descriptor_setstyle)的区别：ReplaceStyle会清除指定范围内所有类型的已有样式后设置新样式；SetStyle为指定范围设置样式，只替换同类型的已有样式，不影响其他类型的样式。建议需要完全替换已有样式时使用ReplaceStyle，需要叠加设置样式时使用SetStyle。
 
 **起始版本：** 24
 
@@ -978,7 +978,7 @@ ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Des
 
 **描述**
 
-为属性字符串指定范围设置新样式。与[OH_ArkUI_StyledString_Descriptor_ReplaceStyle](#oh_arkui_styledstring_descriptor_replacestyle)的区别：SetStyle为指定范围设置样式，不覆盖已有样式，适用于叠加设置样式的场景；ReplaceStyle会覆盖指定范围内已有的样式进行替换，适用于完全替换已有样式的场景。
+为属性字符串指定范围设置新样式。与[OH_ArkUI_StyledString_Descriptor_ReplaceStyle](#oh_arkui_styledstring_descriptor_replacestyle)的区别：SetStyle为指定范围设置样式，只替换同类型的已有样式，不影响其他类型的样式，适用于叠加设置样式的场景；ReplaceStyle会清除指定范围内所有类型的已有样式后设置新样式，适用于完全替换已有样式的场景。
 
 **起始版本：** 24
 
@@ -1833,7 +1833,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetParagraphStyle(OH_ArkUI_SpanStyle* spanSty
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle]对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、GestureStyle等）将被清除。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、GestureStyle等）将被清除。
 
 **起始版本：** 24
 
@@ -1887,7 +1887,7 @@ ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetGestureStyle(OH_ArkUI_SpanStyle* spanStyle
 
 >**说明：**
 >
->此操作会替换[OH_ArkUI_SpanStyle]对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、ParagraphStyle等）将被清除。
+>此操作会替换[OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md)对象中已设置的其他类型样式。一个SpanStyle对象只能持有一种类型的样式，设置新类型样式后，之前已设置的其他类型样式（如已设置的TextStyle、ParagraphStyle等）将被清除。
 
 **起始版本：** 24
 

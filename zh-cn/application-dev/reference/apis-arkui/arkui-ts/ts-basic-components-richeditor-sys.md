@@ -25,8 +25,8 @@
 
 | 名称     | 类型     | 必填   | 说明                                    |
 | ------ | ------ | ---- | ------------------------------------- |
-| dragBackgroundColor<sup>18+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 设置 BuilderSpan 单独拖拽时的背板颜色。未配置或传入无效颜色值时，按默认值处理。<br/>默认值：跟随系统主题拖拽背板色。  |
-| isDragShadowNeeded<sup>18+</sup> | boolean | 否    | 设置 BuilderSpan 单独拖拽时是否需要投影。true表示需要投影，false表示不需要投影。未配置或传入无效值时，按默认值处理。<br/>默认值：true。 |
+| dragBackgroundColor<sup>18+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 设置 BuilderSpan 单独拖拽时的背板颜色。未配置或传入无效颜色值时，按默认值处理。<br>默认值：跟随系统主题拖拽背板色。  |
+| isDragShadowNeeded<sup>18+</sup> | boolean | 否    | 设置 BuilderSpan 单独拖拽时是否需要投影。true表示需要投影，false表示不需要投影。未配置或传入无效值时，按默认值处理。<br>默认值：true。 |
 
 ## RichEditorGesture<sup>11+</sup>
 
