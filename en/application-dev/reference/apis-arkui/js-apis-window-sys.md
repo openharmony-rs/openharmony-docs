@@ -3543,7 +3543,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors when being called in PC/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in PCs/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3622,7 +3622,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors when being called in PC/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in PCs/2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3880,7 +3880,7 @@ Called by the main window to place the window above all the other windows. This 
 
 **Device behavior differences**
 
-In versions earlier than <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on PC/2-in-1 devices but returns error code 801 on other devices.
+In versions earlier than <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
