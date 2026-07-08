@@ -992,7 +992,7 @@ ArkTS-Sta: updateContentSize(width: int, height: int): void
 
 **ArkTS-Sta起始版本：** 26.0.0
 <!--Del-->
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在Car设备中仅支持固定大小尺寸，宽高比>1则为横屏小窗类型，宽高比<=1则为竖屏大窗类型。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在Car设备中仅支持固定大小尺寸，宽高比>=1则为横屏小窗类型，宽高比<1则为竖屏大窗类型。
 <!--DelEnd-->
 
 **参数：**
