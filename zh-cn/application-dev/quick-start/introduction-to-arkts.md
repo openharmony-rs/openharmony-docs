@@ -689,8 +689,10 @@ throw new Error('this error')
 ``` TypeScript
 try {
   // 可能发生异常的语句块
+  // ...
 } catch (e) {
   // 异常处理
+  // ...
 }
 ```
 
@@ -2038,6 +2040,7 @@ export default new Demo();
 
 ``` TypeScript
 import * as Utils from './Utils';
+// ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
 ```
@@ -2048,6 +2051,7 @@ Utils.Y // 表示来自Utils的Y
 
 ``` TypeScript
 import { X, Y } from './Utils';
+// ...
 X // 表示来自Utils的X
 Y // 表示来自Utils的Y
 ```

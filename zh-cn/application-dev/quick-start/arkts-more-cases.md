@@ -70,6 +70,7 @@ printObj('abc'); // abc
 ``` TypeScript
 function printObj(obj: string) {
   console.info(obj);
+  // ...
 }
 
 printObj('abc'); // abc
