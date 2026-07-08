@@ -8,10 +8,22 @@
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息）。
 
+多端协同的逻辑分层架构视图如下：
+
+![abilityConnectionManager_sequenceDiagram](../figures/abilityConnectionManager_sequenceDiagram.png)
+
+逻辑分层架构视图的关键原理说明如下：
+
+1. **应用适配协同接口**：应用通过abilityConnectionManager适配协同接口，基于软总线实现秒级快速建立连接和会话，并在connect时自动拉起对端应用。
+2. **基于会话ID的数据传输**：连接建立后，双端应用基于sessionId直接通过软总线通道进行数据传输（sendMessage/sendData），点对点通信效率更高、更加安全。
+3. **对等协同框架**：设备A与设备B运行对称的协同框架层，统一管理会话全生命周期（创建→连接→传输→断开→销毁），双端接口配对调用（connect与acceptConnect）保证连接可靠性。
+4. **事件驱动通信**：通过on/off注册机制监听连接状态（connect/disconnect）和数据接收（receiveMessage/receiveData）事件，实现异步解耦的协同通信。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
