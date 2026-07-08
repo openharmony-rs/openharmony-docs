@@ -97,7 +97,7 @@
 
 | - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
-| 默认场景 | 启动音乐播放 | 开启录制 | 录音抢占焦点，音乐暂停；录音结束后音乐收到RESUME提示可恢复 | RESUME需应用主动调用play()恢复 |
+| 默认场景 | 启动音乐播放 | 开启录制 | 录音抢占焦点，音乐暂停；录音结束后音乐收到RESUME提示可恢复 | RESUME事件需应用主动调用play()恢复 |
 | 方案一 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | 录音期间音乐静音继续播放，录音结束后音乐恢复有声 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
 | 方案二 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | 录音正常采集，音乐音量降低；录音结束后音量自动恢复 | 音量自动恢复，无需额外适配 |
 | 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 录音与音乐同时运行，互不影响 | - |
