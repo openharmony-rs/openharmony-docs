@@ -151,7 +151,7 @@ Yet, this approach has its drawbacks: If the nesting level is deep, the code bec
 | \@Trace member property decorator| Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
 | Parameters           | N/A                                                          |
-| Supported type         | Member properties in classes in any of the following types: Member properties in classes in any of the following types: number, string, boolean, class, [Array](#decorating-an-array-of-a-built-in-type-with-trace), [Date](#decorating-a-property-of-the-date-type-with-trace), [Map](#decorating-a-property-of-the-map-type-with-trace), and [Set](#decorating-a-property-of-the-set-type-with-trace). \@Trace does not support the observation of data of the function type. If the data of the function type decorated by \@Trace is modified, the UI is not refreshed.|
+| Supported type         | Member properties in classes in any of the following types: number, string, boolean, class, [Array](#decorating-an-array-of-a-built-in-type-with-trace), [Date](#decorating-a-property-of-the-date-type-with-trace), [Map](#decorating-a-property-of-the-map-type-with-trace), and [Set](#decorating-a-property-of-the-set-type-with-trace). \@Trace does not support the observation of data of the function type. If the data of the function type decorated by \@Trace is modified, the UI is not refreshed.|
 
 ## Observed Changes
 
