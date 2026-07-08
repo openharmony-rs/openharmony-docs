@@ -326,6 +326,18 @@
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   textEmbedding?.releaseModel()
+     .then(() => {
+       console.info('Succeeded in releasing Model');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to release Model and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 ## 图像向量化开发步骤
 
