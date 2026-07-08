@@ -77,16 +77,17 @@ export default class EntryAbility extends UIAbility {
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  // ···
+  // ...
   
   const DOMAIN = 0x0000;
   
   export default class EntryAbility extends UIAbility {
-  
-    // ···
+    // ...
   
     onWindowStageCreate(windowStage: window.WindowStage): void {
-      // ···
+      // ...
+  
+      // ...
       // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
       try {
         windowStage.on('windowStageEvent', (data) => {
@@ -121,11 +122,11 @@ export default class EntryAbility extends UIAbility {
       hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
       // 设置UI加载
       windowStage.loadContent('pages/Index', (err) => {
-        // ···
+        // ...
       });
     }
   
-  // ···
+    // ...
   }
   ```
 
