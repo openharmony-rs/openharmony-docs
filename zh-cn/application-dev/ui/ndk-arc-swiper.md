@@ -66,3 +66,45 @@ ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
 
 <!-- @[arc_swiper_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+
+``` C++
+nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_CHANGE, 0, nullptr);  // 0: onChange事件id
+nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START, 1, nullptr);  // 1: 动画开始事件id
+nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END, 2, nullptr);  // 2: 动画结束事件id
+nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE, 3, nullptr);  // 3: 跟手滑动事件id
+nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+    ArkUI_NodeEventType eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+    auto componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+    if (!componentEvent) {
+        return;
+    }
+
+    if (eventType == NODE_ARC_SWIPER_EVENT_ON_CHANGE) {
+        auto index = componentEvent->data[0].i32;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArcSwiper",
+                     "NODE_ARC_SWIPER_EVENT_ON_CHANGE index = %{public}d", index);
+    }
+    if (eventType == NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START) {
+        auto currentIndex = componentEvent->data[0].i32;
+        auto targetIndex = componentEvent->data[1].i32;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArcSwiper",
+                     "NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START currentIndex = %{public}d, "
+                     "targetIndex = %{public}d",
+                     currentIndex, targetIndex);
+    }
+    if (eventType == NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END) {
+        auto index = componentEvent->data[0].i32;
+        auto offset = componentEvent->data[1].f32;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArcSwiper",
+                     "NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END index = %{public}d, offset = %{public}f",
+                     index, offset);
+    }
+    if (eventType == NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE) {
+        auto index = componentEvent->data[0].i32;
+        auto offset = componentEvent->data[1].f32;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArcSwiper",
+                     "NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE index = %{public}d, offset = %{public}f",
+                     index, offset);
+    }
+});
+```
