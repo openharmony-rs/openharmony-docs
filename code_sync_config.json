@@ -13356,6 +13356,21 @@
 						"end_line":341,
 						"name":"set_mute_hint",
 						"start_line":320
+					},
+					{
+						"end_line":241,
+						"name":"listen_AudioCapturer",
+						"start_line":19
+					},
+					{
+						"end_line":432,
+						"name":"release_AudioCapturer",
+						"start_line":22
+					},
+					{
+						"end_line":470,
+						"name":"all_audioCapturer",
+						"start_line":15
 					}
 				]
 			}
