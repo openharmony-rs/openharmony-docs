@@ -57,7 +57,7 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区，像素格式为PixelMap的像素格式，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -135,7 +135,7 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区，像素格式为PixelMap的像素格式，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -208,7 +208,7 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明                                                                                                  |
 | ------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst    | ArrayBuffer | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区，像素格式为PixelMap的像素格式，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst    | ArrayBuffer | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -270,7 +270,7 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区，像素格式为PixelMap的像素格式，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当读取像素数据到ArrayBuffer成功，err为undefined，否则为错误对象。  |
 
 **示例：**
@@ -314,7 +314,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区，像素格式为PixelMap的像素格式，缓冲区内的像素不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
