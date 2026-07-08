@@ -1,19 +1,23 @@
-# @State
+# @State：组件内状态
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @s10021109-->
-<!--TSE: @TerryTsao-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+@State用于状态管理V1，将自定义组件内的普通变量转变为状态变量，当状态变量变化时，触发组件内UI重新渲染。适用于需要在组件内管理可变状态的场景。
+
+在ArkTS-Dyn中使用时，开发指南参考：[@State装饰器：组件内状态（ArkTS-Dyn）](../../../ui/state-management/arkts-state.md)。
 
 > **说明：**
 >
 > 从API version 7开始，支持该装饰器。
->
 
-@State用于状态管理V1中，将自定义组件内的普通变量转变为状态变量，管理组件内UI刷新。
+## @State
 
-在ArkTS-Dyn中使用时，开发指南参考：[@State装饰器：组件内状态（ArkTS-Dyn）](../../../ui/state-management/arkts-state.md)。
+const State: PropertyDecorator
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -27,7 +31,8 @@
 @Entry
 @Component
 struct StateExample {
-  @State count: number = 0;
+  @State count: number = 0; // 状态变量
+
   build() {
     Column() {
       Text(`${this.count}`)

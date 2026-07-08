@@ -7,7 +7,9 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-AbilityDelegatorArgs模块提供在应用程序执行测试用例期间，获取测试用例参数AbilityDelegatorArgs对象的能力。
+AbilityDelegatorArgs封装和提供测试用例参数的数据，通过AbilityDelegatorRegistry中[getArguments](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetarguments)方法获取，包含bundleName、parameters、testCaseNames等关键测试信息，为测试脚本提供了标准化的参数访问方式。
+
+该模块适用于编写单元测试脚本时需要获取测试参数进行条件判断或配置测试环境的场景。需要注意的是，其接口仅限测试框架中使用，不应在正式业务代码中调用。
 
 > **说明：**
 >
@@ -22,10 +24,6 @@ AbilityDelegatorArgs模块提供在应用程序执行测试用例期间，获取
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
-
-## 使用说明
-
-通过AbilityDelegatorRegistry中[getArguments](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetarguments)方法获取。
 
 ## AbilityDelegatorArgs
 
@@ -47,7 +45,9 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 **示例：**
 
 ```ts
+// 导入测试注册模块
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
+// 通过AbilityDelegatorRegistry获取AbilityDelegatorArgs对象
 let args: abilityDelegatorRegistry.AbilityDelegatorArgs = abilityDelegatorRegistry.getArguments();
 ```

@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 从API version 18开始支持弧形列表。弧形列表是一种专为圆形屏幕设备设计的特殊列表，它能够以结构化、可滚动的形式高效展示信息。具体用法可参考[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)。
@@ -340,7 +340,6 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State private contacts: Array<object> = [
     // 请将$r('app.string.xxx')替换为实际资源文件
     new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
@@ -773,7 +772,7 @@ export struct ArcListArcIndexerBar {
             }
             // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
-              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
+              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.indexerIndex
               this.indexerIndex = centerIndex + 1;
             })
             // ...

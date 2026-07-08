@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
@@ -962,7 +962,7 @@ ArkTS-Sta: enableEditMode(enabled: boolean | Bindable\<boolean\> | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;Bindable\<boolean\>&nbsp;\|&nbsp;undefined | 是   | 是否启用编辑模式。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。<br/>Bindable\<boolean\>时，支持双向绑定。 |
+| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;Bindable\<boolean\>&nbsp;\|&nbsp;undefined | 是   | 是否启用编辑模式，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。<br/>Bindable\<boolean\>时，支持双向绑定。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -1805,7 +1805,7 @@ type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end:
 
 有子组件划入或划出List显示区域时触发。
 
-List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。
+API版本26.0.0开始，List从有子组件变成空的List时，上报的start和end参数的index成员为-1，itemGroupArea和itemIndexInGroup成员为undefined。API版本26.0.0以前，List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。
 
 start和end的index同时返回0，代表List内只有一个子组件。
 
@@ -2130,7 +2130,7 @@ struct ListExample {
 }
 ```
 
-![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 
 ### 示例2（设置子元素对齐）
@@ -3250,11 +3250,11 @@ struct ListExample {
 
 ### 示例18（设置滑动多选）
 
-该示例通过使用[enableEditMode](#enableeditmode)接口，实现了在List上通过在热区中滑动改变ListItem的选中状态。
+该示例通过使用[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件，在List上实现了手指滑动多选的效果。
+
+从API版本26.0.0开始，List组件新增enableEditMode接口和onEditModeChange事件。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
-
-从API版本26.0.0开始，新增enableEditMode接口。
 
 <!--code_no_check-->
 ```ts
@@ -3264,20 +3264,31 @@ import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4]);
+  private arr: ListDataSource = new ListDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
   @State isSelected: boolean[] = [];
+  @State selectedIndexes: number[] = [];
 
-  onPageShow(): void {
-    let i: number = 0;
-    for (i = 0; i < 5; i++) {
-      this.isSelected.push(false);
+  onEditModeChanged() {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
     }
+  }
+
+  aboutToAppear() {
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+        list.push(i);
+    }
+    this.arr = new ListDataSource(list);
   }
 
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
-        LazyForEach(this.arr, (item: number) => {
+        LazyForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text(item.toString())
               .fontSize(16)
@@ -3286,13 +3297,28 @@ struct ListExample {
               .height(50)
               .textAlign(TextAlign.Center)
           }
-          .selected(this.isSelected[item])
+          .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean) => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
         }, (item: number) => item.toString())
       }
-      .enableEditMode(true)
       .width('90%')
       .height(300)
       .scrollBar(BarState.Off)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean) => {
+        // 在此处也可实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
     }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
   }
 }

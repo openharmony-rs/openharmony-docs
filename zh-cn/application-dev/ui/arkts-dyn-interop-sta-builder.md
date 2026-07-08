@@ -8,7 +8,7 @@
 
 ## 概述
 
-从API version 23开始，支持在ArkTS-Dyn中使用ArkTS-Sta自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于ArkTS-Sta互操作中引用\@Builder函数的场景。
+从API version 23开始，支持在ArkTS-Dyn中使用ArkTS-Sta自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中引用\@Builder函数的场景。
 
 
 ## 使用限制
@@ -25,7 +25,7 @@
 
 开发者可以通过[`UIUtils.makeBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
 
-在ArkTS-Dyn调用ArkTS-Sta自定义构建函数的场景下，ArkTS-Sta侧@Builder需要接收静态`Binding`或静态`MutableBinding`类型。由于ArkTS-Dyn侧通过`UIUtils.makeBinding()`创建的是动态`Binding`或`MutableBinding`，与ArkTS-Sta的参数类型不兼容。因此在传递给@Builder之前，需要使用`transfer.transferStatic()`将其转换为静态`Binding`或静态`MutableBinding`类型。
+在ArkTS-Dyn调用ArkTS-Sta自定义构建函数的场景下，ArkTS-Sta侧@Builder需要接收静态`Binding`或静态`MutableBinding`类型。由于ArkTS-Dyn侧通过`UIUtils.makeBinding()`创建的是动态`Binding`或`MutableBinding`，与ArkTS-Sta的参数类型不兼容。因此在传递给@Builder之前，需要使用[`transfer.transferStatic()`](../reference/apis-arkts/js-apis-transfer.md#transfertransferstatic)将其转换为静态`Binding`或静态`MutableBinding`类型。
 
 > **说明：**
 >

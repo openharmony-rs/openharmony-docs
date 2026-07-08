@@ -1,7 +1,7 @@
 # avplayer_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -54,6 +54,7 @@
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 用于获取SEI消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。 |
 | [typedef void (\*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmoutputcallback) | OH_AVPlayerPCMOutputCallback | 用于获取音频PCM数据输出的回调处理函数。 |
+| [typedef void (\*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmprocessorcallback) | OH_AVPlayerPCMProcessorCallback | 用于获取待进行后处理的音频PCM数据的回调处理函数。AVPlayer需要使用处理后的数据进行音频播放，且处理必须及时完成，否则会阻塞播放。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。 |
 
 ### 变量
 
@@ -451,6 +452,26 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 **描述**
 
 用于获取音频PCM数据输出的回调处理函数。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
+| void \*userData | 指向用户指定数据的指针。 |
+
+### OH_AVPlayerPCMProcessorCallback()
+
+```c
+typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)
+```
+
+**描述**
+
+用于获取待进行后处理的音频PCM数据的回调处理函数。AVPlayer需要使用处理后的数据进行音频播放，且处理必须及时完成，否则会阻塞播放。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。
 
 **起始版本：** 26.0.0
 

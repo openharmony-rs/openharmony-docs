@@ -11,7 +11,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 1120001 非法的事件领域
+## 11200001 非法的事件领域
 
 **错误信息**
 
@@ -33,7 +33,7 @@ Invalid event domain.
 
 检查系统事件领域名称是否合法。
 
-## 1120002 非法的事件名称
+## 11200002 非法的事件名称
 
 **错误信息**
 
@@ -87,7 +87,7 @@ The event length exceeds the limit.
 
 **可能原因**
 
-系统事件总长度超过384K。
+系统事件总长度超过384KB。
 
 **处理步骤**
 
@@ -101,7 +101,7 @@ Invalid event parameter.
 
 **错误描述**
 
-在调用write接口进行系统事件打点时，由于传入了非法的参数名称，系统以抛出错误的形式提示，但会完成此次系统事件打点。
+在调用write接口进行系统事件打点时，由于传入了非法的参数名称，系统将抛出错误，但仍会完成此次系统事件打点。
 
 **可能原因**
 
@@ -127,7 +127,7 @@ The size of the event parameter of the string type exceeds the limit.
 
 **可能原因**
 
-字符串类型的参数值的长度超过10K。
+字符串类型的参数值的长度超过10KB。
 
 **处理步骤**
 
@@ -213,7 +213,7 @@ The watcher does not exist.
 
 **错误描述**
 
-在调用removeWatcher移除系统事件监听者时，由于该系统事件监听者不在监听队列，系统将拒绝此系统事件监听者的移除。
+在调用removeWatcher接口移除系统事件监听者时，由于该系统事件监听者不在监听队列，系统将拒绝此系统事件监听者的移除。
 
 **可能原因**
 
@@ -249,7 +249,6 @@ The number of query rules exceeds the limit.
 **错误信息**
 
 Invalid query rule.
-
 
 **错误描述**
 
@@ -311,7 +310,7 @@ Unsubscription failed.
 
 **错误描述**
 
-在调用unsubscribe接口失败的时候，返回此错误码。
+在调用unsubscribe接口取消订阅时，由于hiview服务异常，返回此错误码。
 
 **可能原因**
 
@@ -319,4 +318,4 @@ hiview服务异常。
 
 **处理步骤**
 
-尝试重新调用unsubscribe接口。
+确认hiview服务正常后，尝试重新调用unsubscribe接口取消订阅。

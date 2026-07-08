@@ -208,10 +208,18 @@ ArkTS-Sta: static createColorShader(color: int): ShaderEffect | undefined
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 let shaderEffect = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let shaderEffect = drawing.ShaderEffect.createColorShader((0xFFFF0000).toInt());
 ```
 
 ## createLinearGradient<sup>12+</sup>
@@ -259,12 +267,24 @@ ArkTS-Sta: static createLinearGradient(startPt: common2D.Point, endPt: common2D.
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common2D,drawing } from '@kit.ArkGraphics2D';
 
 let startPt: common2D.Point = { x: 100, y: 100 };
 let endPt: common2D.Point = { x: 300, y: 300 };
 let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common2D,drawing } from '@kit.ArkGraphics2D';
+
+let startPt: common2D.Point = { x: 100, y: 100 };
+let endPt: common2D.Point = { x: 300, y: 300 };
+let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, [(0xFF00FF00).toInt(), (0xFFFF0000).toInt()], drawing.TileMode.REPEAT);
 ```
 
 ## createRadialGradient<sup>12+</sup>
@@ -312,11 +332,22 @@ ArkTS-Sta: static createRadialGradient(centerPt: common2D.Point, radius: double,
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common2D,drawing } from '@kit.ArkGraphics2D';
 
 let centerPt: common2D.Point = { x: 100, y: 100 };
 let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common2D,drawing } from '@kit.ArkGraphics2D';
+
+let centerPt: common2D.Point = { x: 100, y: 100 };
+let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 100, [(0xFF00FF00).toInt(), (0xFFFF0000).toInt()], drawing.TileMode.REPEAT);
 ```
 
 ## createSweepGradient<sup>12+</sup>
@@ -365,11 +396,22 @@ ArkTS-Sta: static createSweepGradient(centerPt: common2D.Point, colors: Array\<i
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common2D,drawing } from '@kit.ArkGraphics2D';
 
 let centerPt: common2D.Point = { x: 100, y: 100 };
 let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT, 100, 200);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common2D,drawing } from '@kit.ArkGraphics2D';
+
+let centerPt: common2D.Point = { x: 100, y: 100 };
+let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, [(0xFF00FF00).toInt(), (0xFFFF0000).toInt()], drawing.TileMode.REPEAT, 100, 200);
 ```
 
 ## createConicalGradient<sup>12+</sup>
@@ -419,10 +461,22 @@ ArkTS-Sta: static createConicalGradient(startPt: common2D.Point, startRadius: do
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common2D,drawing } from '@kit.ArkGraphics2D';
 
 let startPt: common2D.Point = { x: 100, y: 100 };
 let endPt: common2D.Point = {x: 200, y: 200};
 let shaderEffect = drawing.ShaderEffect.createConicalGradient(startPt, 100, endPt, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common2D,drawing } from '@kit.ArkGraphics2D';
+
+let startPt: common2D.Point = { x: 100, y: 100 };
+let endPt: common2D.Point = {x: 200, y: 200};
+let shaderEffect = drawing.ShaderEffect.createConicalGradient(startPt, 100, endPt, 50, [(0xFF00FF00).toInt(), (0xFFFF0000).toInt()], drawing.TileMode.REPEAT);
 ```

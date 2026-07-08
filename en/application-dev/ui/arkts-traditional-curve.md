@@ -115,4 +115,4 @@ struct CurveDemo {
 ```
 
 
-![en-us_image_0000001641260233](figures/en-us_image_0000001641260233.gif)
+![en-us_image_0000001641260233](figures/Traditional-Curve.gif)

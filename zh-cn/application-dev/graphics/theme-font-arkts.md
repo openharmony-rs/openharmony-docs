@@ -51,10 +51,11 @@
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例，用于生成段落。
    > **说明：**
    >
-   > 在生成段落对象设置段落样式入参时，不能指定fontFamilies属性，否则会变为优先使用指定字体而非主题字体。
+   > 在生成段落对象设置段落样式入参时，不能指定fontFamilies属性，否则系统会优先使用指定字体而非主题字体。
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -73,6 +74,26 @@
    let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 设置文本样式
+   let myTextStyle: text.TextStyle = {
+     color: { alpha: 255, red: 255, green: 0, blue: 0 },
+     fontSize: 33
+   };
+   // 创建一个段落样式对象，以设置排版风格
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: text.TextAlign.JUSTIFY,
+     wordBreak:text.WordBreak.NORMAL
+   };
+   // 创建一个段落生成器
+   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   ```
+   
+
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
@@ -88,6 +109,7 @@
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -132,9 +154,56 @@
      }
    }
    ```
+   
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 创建渲染节点数组
+   const renderNodeMap: Array<RenderNode> = new Array<RenderNode>();
+   // 创建节点控制器
+   class MyNodeController extends NodeController {
+     private rootNode: FrameNode | null = null;
+     makeNode(uiContext: UIContext): FrameNode | null {
+       this.rootNode = new FrameNode(uiContext);
+       if (this.rootNode == null) {
+         return this.rootNode;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.frame = { x: 0, y: 0, width: 300, height: 50 };
+         renderNode.pivot = { x: 0, y: 0 };
+       }
+       return this.rootNode;
+     }
+     addNode(node: RenderNode): void {
+       if (this.rootNode == null) {
+         return;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.appendChild(node);
+         // 将节点添加到渲染节点数组中
+         renderNodeMap.push(node);
+       }
+     }
+     clearNodes(): void {
+       if (this.rootNode == null) {
+         return;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.clearChildren();
+         // 将节点从渲染节点数组中移除
+         renderNodeMap.pop();
+       }
+     }
+   }
+   ```
 
 7. 创建渲染节点更新函数，并导出函数，供其他文件（如：EntryAbility.ets）使用；重绘制节点目的为更新排版中字体信息，若不更新字体信息，使用之前残留结果，可能造成文字乱码。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -146,9 +215,23 @@
      });
    }
    ```
+   
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 导出渲染节点更新函数
+   export function updateRenderNodeData(): void {
+     renderNodeMap.forEach((node) => {
+       // 主动触发节点重绘制
+       node.invalidate();
+     });
+   }
+   ```
 
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
@@ -173,7 +256,33 @@
      }
    }
    ```
-
+   
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   import { updateRenderNodeData } from '../pages/Index';
+   import { BusinessError } from '@ohos.base'
+   
+   // ...
+   
+   export default class EntryAbility extends UIAbility {
+     private preFontId: string = "";
+     // ...
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       let fontId = newConfig.fontId;
+       if (fontId && fontId !== this.preFontId) {
+         this.preFontId = fontId;
+         updateRenderNodeData();
+         // ...
+       }
+     }
+   }
+   ```
 
 ## 效果展示
 

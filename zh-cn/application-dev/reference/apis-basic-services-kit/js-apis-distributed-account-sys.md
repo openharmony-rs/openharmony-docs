@@ -4,10 +4,10 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
-本模块提供管理分布式账号的一些基础功能，主要包括查询和更新账号登录状态。
+本模块提供管理分布式账号的一些基础功能，主要包括查询和更新账号登录状态。适用于多设备协同场景，提升跨设备账号管理的一致性和用户体验。典型使用场景包括多设备协同、分布式数据同步、跨设备能力调用等。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ import distributedAccount from '@ohos.account.distributedAccount';
 
 ## DistributedAccountAbility
 
-提供查询和更新分布式账号登录状态方法(需要先获取分布式账号的单实例对象)。
+提供查询和更新分布式账号登录状态的方法（使用前需要先获取分布式账号的单实例对象）。
 
 ### getOsAccountDistributedInfoByLocalId<sup>10+</sup>
 
@@ -37,7 +37,7 @@ ArkTS-Dyn: getOsAccountDistributedInfoByLocalId(localId: number, callback: Async
 
 ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-获取指定系统账号的分布式信息。使用callback异步回调。
+获取指定系统账号的分布式账号信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -54,7 +54,7 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCal
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
-  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | 是 | 回调参数。当获取分布式账号信息成功，err为undefined，data为获取到的分布式账号信息对象；否则为错误对象。 |
+  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | 是 | 回调函数。当获取分布式账号信息成功时，err为undefined，data为获取到的分布式账号信息对象；否则err为错误对象。 |
 
 **错误码：**
 
@@ -74,7 +74,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 try {
-  accountAbility.getOsAccountDistributedInfoByLocalId(100,
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.getOsAccountDistributedInfoByLocalId(localId,
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
       if (err) {
         console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
@@ -115,7 +116,7 @@ ArkTS-Dyn: getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;Dis
 
 ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int): Promise&lt;DistributedInfo&gt;
 
-获取指定系统账号的分布式信息。使用Promise异步回调。
+获取指定系统账号的分布式账号信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -157,7 +158,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 try {
-  accountAbility.getOsAccountDistributedInfoByLocalId(100).then((
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.getOsAccountDistributedInfoByLocalId(localId).then((
     data: distributedAccount.DistributedInfo) => {
     console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
@@ -195,7 +197,7 @@ ArkTS-Dyn: setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo
 
 ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定系统账号的分布式信息。使用callback异步回调。
+设置指定系统账号的分布式账号信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -213,7 +215,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
   | -------- | -------- | -------- | -------- |
   | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
   | distributedInfo | [DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 是 | 分布式账号信息。 |
-  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置指定系统账号的分布式信息成功时，err为undefined，否则为错误对象。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置指定系统账号的分布式账号信息成功时，err为undefined，否则err为错误对象。 |
 
 **错误码：**
 
@@ -238,7 +240,8 @@ const accountAbility: distributedAccount.DistributedAccountAbility = distributed
 let accountInfo: distributedAccount.DistributedInfo =
   {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
 try {
-  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo, (err: BusinessError) => {
     if (err) {
       console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
     } else {
@@ -279,7 +282,7 @@ ArkTS-Dyn: setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo
 
 ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: DistributedInfo): Promise&lt;void&gt;
 
-设置指定系统账号的分布式信息。使用Promise异步回调。
+设置指定系统账号的分布式账号信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -302,7 +305,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -327,7 +330,8 @@ const accountAbility: distributedAccount.DistributedAccountAbility = distributed
 let accountInfo: distributedAccount.DistributedInfo =
   {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
 try {
-  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
+  let localId: number = 100; // 示例值，实际使用时请获取真实的系统账号ID
+  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo).then(() => {
       console.info('setOsAccountDistributedInfoByLocalId successfully');
   }).catch((err: BusinessError) => {
       console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);

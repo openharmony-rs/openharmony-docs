@@ -45,7 +45,7 @@ struct ComponentDemo {
 ```
 
 
-![en-us_image_0000001649338585](figures/en-us_image_0000001649338585.gif)
+![animation-default](figures/animation-default.gif)
 
 
 ## Customizing Component Animation
@@ -362,7 +362,7 @@ export struct TaskSwitchMainPage {
 }
 ```
 
-![en-us_image_0000001599808406](figures/en-us_image_0000001599808406.gif)
+![animation-custom](figures/animation-custom.gif)
 
 You can use the **animateTo** API to replace a specified item in a list with the first item, while other items in the list are rearranged sequentially. Below is the sample code and animation effect demonstrating a custom dynamic replacement animation for the **List** component.
 

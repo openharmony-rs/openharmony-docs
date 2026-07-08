@@ -95,7 +95,7 @@ export default {
 ```
 
 
-![en-us_image_0000001218599708](figures/en-us_image_0000001218599708.gif)
+![OffscreenCanvasRenderingContext2D](figures/OffscreenCanvasRenderingContext2D.gif)
 
 
 ## Determining the Position
@@ -202,4 +202,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001178084014](figures/en-us_image_0000001178084014.gif)
+![Determining-Position](figures/Determining-Position.gif)

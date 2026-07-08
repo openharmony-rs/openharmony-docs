@@ -1,4 +1,4 @@
-# crypto framework错误码
+# cryptoFramework错误码
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -70,7 +70,7 @@ Parameter check failed.
 
 **错误信息**
 
-Invalid function call. 
+Invalid function call.
 
 **错误描述**
 
@@ -102,4 +102,4 @@ Crypto operation error.
 
 检查该接口或相关联接口输入参数的正确性。
 
-AES解密失败可参考[AES解密失败返回错误码17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md)。
+AES解密失败可参考[算法库加解密失败返回错误码17630001](../../security/CryptoArchitectureKit/crypto-architecture-kit-error-faq.md)

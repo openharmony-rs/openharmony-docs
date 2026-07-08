@@ -40,5 +40,5 @@ The following figures show the comparison.
 
 | Display Optimization Enabled or Not| Effect                                                    |
 | ---------------- | ------------------------------------------------------------ |
-| Disabled          | ![image_undefined_off_ts](figures/image_undefined_off_ts.png)|
-| Enabled            | ![image_undefined_on_ts](figures/image_undefined_on_ts.png)|
+| Disabled          | ![undefined-off-ts](figures/undefined-off-ts.png)|
+| Enabled            | ![undefined-on-ts](figures/undefined-on-ts.png)|

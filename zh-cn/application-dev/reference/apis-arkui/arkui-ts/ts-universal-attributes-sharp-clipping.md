@@ -240,75 +240,91 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 

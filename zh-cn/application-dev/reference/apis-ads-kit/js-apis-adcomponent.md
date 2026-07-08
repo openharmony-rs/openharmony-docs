@@ -7,50 +7,57 @@
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
 
-本模块提供展示广告的能力。
 
-> **说明：**<br/>
+本模块提供展示广告的能力，覆盖了原生、贴片、开屏等广告样式。
+
+
+> **说明：**
+> 
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## 导入模块
 
-```ts
+```typescript
 import { AdComponent } from '@kit.AdsKit';
 ```
 
+
 ## AdComponent
 
-AdComponent({ads: advertising.Advertisement[], displayOptions: advertising.AdDisplayOptions, interactionListener: advertising.AdInteractionListener, @BuilderParam adRenderer?: () => void, @Prop rollPlayState?: number})
+```typescript
+AdComponent({
+  ads: advertising.Advertisement[], 
+  displayOptions: advertising.AdDisplayOptions,
+  interactionListener: advertising.AdInteractionListener,
+  @BuilderParam adRenderer?: () => void,   
+  @Prop rollPlayState?: number
+})
+```
 
-**装饰器类型：** @Component
+广告展示组件，提供展示原生、贴片、开屏等广告的能力。
 
-**系统能力：** SystemCapability.Advertising.Ads
+**装饰器类型：**\@Component
+
+**系统能力：**  SystemCapability.Advertising.Ads
 
 **参数：**
 
-| 名称                        | 类型                                                                              | 必填 | 装饰器类型    | 说明                                                                                                                                                                                                  |
-|-----------------------------|-----------------------------------------------------------------------------------|------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ads                         | advertising.[Advertisement](js-apis-advertising.md#advertisement)[]               | 是   | -             | 广告对象数组。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                            |
-| displayOptions              | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions)           | 是   | -             | 广告展示参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                            |
-| interactionListener         | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | 是   | -             | 广告状态变化回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                        |
-| adRenderer<sup>12+</sup>    | () => void                                                                        | 否   | @BuilderParam | 应用自渲染广告样式。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                                                                                      |
-| rollPlayState<sup>15+</sup> | number                                                                            | 否   | @Prop         | 用于对外提供贴片广告的播放状态。设置为1表示播放，设置为2表示暂停。默认值为2。其他值被视为非法值，不会改变当前的播放状态。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| **名称** | **类型** | 必填 | **装饰器类型** |说明 | 
+| -------- | -------- | -------- | -------- | -------- |
+| ads | advertising.[Advertisement](js-apis-advertisement.md#advertisement)[] | 是 | - | 广告对象数组。<br/>说明：非贴片广告类型，组件只展示数组第一个数据。<br/>原子化服务API：从API version 12开始，该接口支持在原子化服务中使用。 | 
+| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | 是 | - | 广告展示参数。<br/>原子化服务API：从API version 12开始，该接口支持在原子化服务中使用。 | 
+| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | 是| - | 广告状态变化回调。<br/>原子化服务API：从API version 12开始，该接口支持在原子化服务中使用。 | 
+| adRenderer<sup>12+</sup> | () =&gt; void | 否 | \@BuilderParam | 应用自渲染广告样式。应用自渲染广告样式为受限使用能力，具体请前往[流量变现官网客服支持](https://developer.huawei.com/consumer/cn/doc/monetize/kefuzhichi-0000001104461922)进行咨询。<br/>原子化服务API：从API version 20开始，该接口支持在原子化服务中使用。| 
+| rollPlayState<sup>15+</sup> | number | 否 | \@Prop | 用于对外提供贴片广告播放状态，设置1为播放，2为暂停，默认值为2，其他值为非法值，不改变之前的播放状态。在贴片广告所在页面需要通过\@State关联属性，使用方法参考[示例代码](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ads-publisher-service-roll#展示广告)。<br/>原子化服务API：从API version 20开始，该接口支持在原子化服务中使用。|
 
-### build
+> **说明：**
+> 
+> 为了保证广告能正确展示，该接口必须和请求广告接口配套使用。效果和使用方法可参考[原生广告](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ads-publisher-service-native)、[贴片广告](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ads-publisher-service-roll)、[开屏广告](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ads-publisher-service-splash)接入和展示。
 
-build(): void
+**示例：**
 
-用于创建AdComponent对象的构造函数。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Advertising.Ads
-
-## 示例
-
-该示例代码实现了广告的展示。
-
-```ts
+```typescript
 import { AdComponent, advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -91,3 +98,18 @@ struct Index {
   }
 }
 ```
+
+
+### build
+
+
+build(): void
+
+
+用于创建AdComponent对象的构造函数。
+
+
+**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
+
+
+**系统能力：**  SystemCapability.Advertising.Ads

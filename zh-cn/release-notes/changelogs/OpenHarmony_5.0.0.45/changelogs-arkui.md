@@ -20,11 +20,11 @@ API version 14及以后，设备宽度在600-840vp间时，默认显示居中弹
 
 变更前：设备宽度在600-840vp间时，SheetOptions中的preferType设置为SheetType.POPUP，实际显示居中弹窗样式。
 
-![zh-cn_image_alert](figures/45.1.3.png)
+![image-alert](figures/45.1.3.png)
 
 变更后：设备宽度在600-840vp间时，SheetOptions中的preferType设置为SheetType.POPUP，实际显示跟手弹窗样式。
 
-![zh-cn_image_alert](figures/45.1.2.png)
+![image-alert](figures/45.1.2.png)
 
 **起始API Level**
 
@@ -65,7 +65,7 @@ API version 14及以后，关闭按钮不显示时，关闭按钮区域放开限
 
 | 变更前                                   | 变更后                                   |
 | ---------------------------------------- | ---------------------------------------- |
-| ![zh-cn_image_alert](figures/45.1.5.png) | ![zh-cn_image_alert](figures/45.1.4.png) |
+| ![image-alert](figures/45.1.5.png) | ![image-alert](figures/45.1.4.png) |
 
 **起始API Level**
 

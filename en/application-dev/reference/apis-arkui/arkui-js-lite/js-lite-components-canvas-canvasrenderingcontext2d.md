@@ -33,7 +33,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001431548113](figures/en-us_image_0000001431548113.png)
+  ![CanvasRenderingContext2D](figures/CanvasRenderingContext2D.png)
 
 
 ## fillRect()
@@ -51,7 +51,7 @@ Fills a rectangle on the canvas.
 
 **Example**
 
- ![en-us_image_0000001431388525](figures/en-us_image_0000001431388525.png)
+ ![fillRect](figures/fillRect.png)
 
 
   ```javascript
@@ -71,7 +71,7 @@ Sets the style to fill an area.
 
 **Example**
 
-  ![en-us_image_0000001431388505](figures/en-us_image_0000001431388505.png)
+  ![fillStyle](figures/fillStyle.png)
 
 
   ```javascript
@@ -95,7 +95,7 @@ Draws a rectangle stroke on the canvas.
 
 **Example**
 
-  ![en-us_image_0000001381268264](figures/en-us_image_0000001381268264.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
   ```javascript
@@ -117,7 +117,7 @@ Draws filled text on the canvas.
 
 **Example**
 
-  ![en-us_image_0000001431548109](figures/en-us_image_0000001431548109.png)
+  ![fillText](figures/fillText.png)
 
 
   ```javascript
@@ -138,7 +138,7 @@ Sets the width of a line.
 
 **Example**
 
-  ![en-us_image_0000001431548121](figures/en-us_image_0000001431548121.png)
+  ![lineWidth](figures/lineWidth.png)
 
 
   ```javascript
@@ -159,7 +159,7 @@ Sets the stroke style.
 
 **Example**
 
-  ![en-us_image_0000001380789172](figures/en-us_image_0000001380789172.png)
+  ![strokeStyle](figures/strokeStyle.png)
 
 
   ```javascript
@@ -175,7 +175,7 @@ Draws a stroke.
 
 **Example**
 
-![en-us_image_0000001431388513](figures/en-us_image_0000001431388513.png)
+![stroke](figures/stroke.png)
 
   ```javascript
   ctx.moveTo(25, 25);
@@ -191,7 +191,7 @@ Creates a drawing path.
 
 **Example**
 
-  ![en-us_image_0000001431548125](figures/en-us_image_0000001431548125.png)
+  ![beginPath](figures/beginPath.png)
 
 
   ```javascript
@@ -217,7 +217,7 @@ Moves a drawing path to a target position on the canvas.
 
 **Example**
 
-  ![en-us_image_0000001431388529](figures/en-us_image_0000001431388529.png)
+  ![moveTo](figures/moveTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -240,7 +240,7 @@ Connects the current point to a target position using a straight line.
 
 **Example**
 
-![en-us_image_0000001431148365](figures/en-us_image_0000001431148365.png)
+![lineTo](figures/lineTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -256,7 +256,7 @@ Draws a closed path.
 
 **Example**
 
-  ![en-us_image_0000001381268284](figures/en-us_image_0000001381268284.png)
+  ![closePath](figures/closePath.png)
 
 
   ```javascript
@@ -281,7 +281,7 @@ Sets the font style.
 
 **Example**
 
-  ![en-us_image_0000001381108328](figures/en-us_image_0000001381108328.png)
+  ![font](figures/font.png)
 
 
   ```javascript
@@ -302,7 +302,7 @@ Sets the text alignment mode.
 
 **Example**
 
-  ![en-us_image_0000001431388517](figures/en-us_image_0000001431388517.png)
+  ![textAlign](figures/textAlign.png)
 
 
   ```javascript
@@ -340,7 +340,7 @@ Draws an arc on the canvas.
 
 **Example**
 
-![en-us_image_0000001381108320](figures/en-us_image_0000001381108320.png)
+![arc](figures/arc.png)
 
   ```javascript
   ctx.beginPath();
@@ -364,7 +364,7 @@ Creates a rectangle on the canvas.
 
 **Example**
 
-![en-us_image_0000001381108312](figures/en-us_image_0000001381108312.png)
+![rect](figures/rect.png)
 
   ```javascript
   ctx.rect(20, 20, 100, 100); // Create a 100*100 rectangle at (20, 20)

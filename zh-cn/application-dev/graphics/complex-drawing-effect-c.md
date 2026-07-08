@@ -58,7 +58,7 @@ OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
 
-![zh-cn_image_0000002158744138](figures/zh-cn_image_0000002158744138.png)
+![Blend-Mode](figures/Blend-Mode.png)
 
 
 ## 路径效果
@@ -105,7 +105,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002158584342](figures/zh-cn_image_0000002158584342.png) | ![zh-cn_image_0000002194110865](figures/zh-cn_image_0000002194110865.png) |
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 
 
 ## 着色器效果
@@ -168,7 +168,7 @@ OH_Drawing_PointDestroy(endPt);
 
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002194110873](figures/zh-cn_image_0000002194110873.png)
+![Linear-Gradient-Shader-Effect](figures/Linear-Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果
@@ -213,7 +213,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002158744130](figures/zh-cn_image_0000002158744130.png)
+![Radial-Gradient-Shader-Effect](figures/Radial-Gradient-Shader-Effect.png)
 
 
 ### 扇形渐变着色器效果
@@ -256,7 +256,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002158584354](figures/zh-cn_image_0000002158584354.png)
+![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
 
 
 ## 滤波器效果
@@ -350,7 +350,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110869](figures/zh-cn_image_0000002194110869.png) | ![zh-cn_image_0000002194025241](figures/zh-cn_image_0000002194025241.png) |
+| ![Original-Image6](figures/Original-Image6.png) | ![Image-with-a-Color](figures/Image-with-a-Color.png) |
 
 
 ### 图像滤波器效果
@@ -408,7 +408,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194025225](figures/zh-cn_image_0000002194025225.png) | ![zh-cn_image_0000002194025245](figures/zh-cn_image_0000002194025245.png) |
+| ![Original-Image5](figures/Original-Image5.png) | ![Image-with-the-Filter](figures/Image-with-the-Filter.png) |
 
 
 ### 蒙版滤波器效果
@@ -463,7 +463,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置蒙版滤波器效果的示意图 | 设置蒙版滤波器效果的示意图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110877](figures/zh-cn_image_0000002194110877.png) | ![zh-cn_image_0000002158744126](figures/zh-cn_image_0000002158744126.png) |
+| ![Original-Image4](figures/Original-Image4.png) | ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png) |
 
 <!--RP1-->
 ## 相关实例

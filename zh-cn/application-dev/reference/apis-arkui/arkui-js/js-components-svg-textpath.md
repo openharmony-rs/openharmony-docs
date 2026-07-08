@@ -42,9 +42,9 @@
 | by             | number                             | -      | 相对被指定动画的属性偏移值，from默认为原属性值。             |
 | opacity        | number                             | 1      | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。<br/>默认值：1 |
 | fill-opacity   | number                             | 1.0    | 字体填充透明度。<br/>默认值：1.0                             |
-| stroke         | &lt;color&gt;                      | black  | 绘制字体边框并指定颜色。<br/>默认值：black                   |
-| stroke-width   | number                             | 1      | 字体边框宽度。<br/>默认值：1px                               |
-| stroke-opacity | number                             | 1.0    | 字体边框透明度。<br/>默认值：1.0                             |
+| stroke         | &lt;color&gt;                      | black  | 绘制字体描边并指定颜色。<br/>默认值：black                   |
+| stroke-width   | number                             | 1      | 字体描边宽度。<br/>默认值：1，单位px。                          |
+| stroke-opacity | number                             | 1.0    | 字体描边透明度。<br/>默认值：1.0                             |
 
 
 ## 示例
@@ -170,7 +170,7 @@ startOffset属性动画，文本绘制时起点偏移从10%运动到40%，不绘
 </div>
 ```
 
-![zh-cn_image_0000001127125118](figures/zh-cn_image_0000001127125118.gif)
+![onTextPath](figures/onTextPath.gif)
 
 textpath与tspan组合属性动画与效果图
 

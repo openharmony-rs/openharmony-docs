@@ -31,11 +31,13 @@
 
 ![live-form-click-timeline.png](figures/live-form-click-timeline.png)
 
-定时定点刷新互动卡片动效的时序图如下。
-
 **图4** 定时定点触发互动卡片动效时序图
 
 ![live-form-update-timeline.png](figures/live-form-update-timeline.png)
+
+**图5** 摇一摇触发互动卡片动效时序图
+
+![live-form-shake-timeline.png](figures/live-form-shake-timeline.png)
 
 ## 约束和限制
 
@@ -44,7 +46,7 @@
 2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-该设备不支持此api)错误码。
 
 ### 请求参数约束
-1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效的时间不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
+1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效时长不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
 2. 由卡片定时定点刷新触发的互动卡片动效，一天内单张卡片最多触发50次。
 3. 最大可申请动效区域：如下图，矩形ABCD表示卡片自身渲染区域，矩形IJKL表示卡片最大可申请动效区域。两个矩形中心对齐。尺寸满足以下表格描述。
 
@@ -56,13 +58,13 @@
 | 4 * 4 | 不超过AD边长的125%。| 不超过AB边长的125%。|
 | 6 * 4 | 不超过AD边长的125%。| 不超过AB边长的110%。|
 
-**图5** 互动卡片动效区域申请规则说明
+**图6** 互动卡片动效区域申请规则说明
 
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 例如：某设备上一个2*2卡片宽度为158vp，高度为158vp。对应上图则有：
 
-（1）AD=158vp，AB=158vp，IJ=158\*1.5=237vp，IL=158\*1.5=237vp。
+（1）AD=158vp，AB=158vp，IJ=158\*1.5=237vp，JK=158\*1.5=237vp。
 
 （2）IA两点水平相距39.5vp，垂直相距39.5vp。
 

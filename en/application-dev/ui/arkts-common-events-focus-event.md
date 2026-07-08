@@ -471,7 +471,7 @@ export struct OnFocusBlur {
 ```
 
 
-![en-us_image_0000001511740584](figures/en-us_image_0000001511740584.gif)
+![focus-event](figures/focus-event.gif)
 
 
 The preceding example includes three steps:

@@ -1,4 +1,4 @@
-# 使用RSA密钥对签名验签（PSS模式）（OnlySign和OnlyVerify模式）(ArkTS)
+# 使用RSA密钥对（PSS模式）签名验签（OnlySign和OnlyVerify模式）(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -29,7 +29,7 @@
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256|OnlyVerify'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，验签模式为OnlyVerify的Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256|OnlyVerify'，创建非对称密钥类型为RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，验签模式为OnlyVerify的Verify实例，用于完成验签操作。
 
 2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 

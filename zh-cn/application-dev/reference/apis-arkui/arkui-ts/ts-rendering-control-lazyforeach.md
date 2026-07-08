@@ -4,7 +4,7 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -314,6 +314,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 | dataOperations | [DataOperation](#dataoperation12)[] | 是   | 一次处理数据的操作。 |
 
 ## DataOperation<sup>12+</sup>
+
+type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation
 
 > **说明**
 >

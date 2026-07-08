@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供终端设备信息查询，开发者不可配置。
+本模块提供终端设备信息查询能力，支持获取设备类型、品牌、型号、系统版本、安全补丁级别、设备唯一标识等多种设备信息，适用于设备适配、版本兼容性检查、设备识别、统计分析等场景，帮助开发者快速获取设备信息进行应用适配和优化。开发者不可配置这些信息。
 
 > **说明：**
 >
@@ -70,8 +70,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
-| distributionOSApiVersion<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 发行版系统api版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
-| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统api版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 <br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 24|
+| distributionOSApiVersion<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
+| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 <br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
 | ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节(包含结束符)。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24|
 | diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在部分2in1设备上进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
@@ -87,7 +87,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 14700103 | Permission verification failed. System permission operation permission denied |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例**
 
@@ -328,7 +328,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 ```
 
 
-## apiAvailable
+## deviceInfo.apiAvailable
 
 apiAvailable(version: string | number): boolean;
 <!--RP13-->
@@ -337,9 +337,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口Stage模型和FA模型下皆可使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
@@ -347,30 +345,34 @@ apiAvailable(version: string | number): boolean;
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。|
+| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号范围为大于0的正整数。点分版本号格式为x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
+
+**返回值**：
+
+| 类型                                       | 说明                                            |
+| ------------------------------------------ | ----------------------------------------------- |
+| boolean                                     | 布尔值。返回true表示当前设备API版本大于等于入参版本号；返回false则表示当前设备API版本小于入参版本号  |
 
 **示例：**
 
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
-if (deviceInfo.apiAvailable("26.0.0")) {
-   // 需要版本隔离的方法
+// Check API 26.0.0 (String format for API 26.0.0+ represents both OpenHarmony and Distribution OS)
+if (deviceInfo.apiAvailable('26.0.0')) {
+  // 需要版本隔离的方法
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26-)
-if (deviceInfo.apiAvailable("5.0.1")) {
-   // 需要版本隔离的方法
+// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+if (deviceInfo.apiAvailable('5.0.1')) {
+  // 需要版本隔离的方法
 }
 
 
-import { deviceInfo } from '@kit.BasicServicesKit';
-
-// Check API 13 (OpenHarmony SDK version, API 26-)
+// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
 if (deviceInfo.apiAvailable(13)) {
-   // 需要版本隔离的方法
+  // 需要版本隔离的方法
 }
 
 ```

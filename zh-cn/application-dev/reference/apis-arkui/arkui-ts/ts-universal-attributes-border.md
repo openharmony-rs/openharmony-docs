@@ -217,7 +217,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -318,11 +318,52 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Row, Flex, ColumnOptions, FlexAlign, ItemAlign, TextAlign, Color, BorderStyle } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // 线段
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
+        // 点线
+        Text('dotted')
+          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        .border({
+          width: { left: 3, right: 6, top: 10, bottom: 15 },
+          color: { left: '#e3bbbb', right: Color.Blue, top: Color.Red, bottom: Color.Green },
+          radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        }).textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+![borderRadius](figures/borderRadius.gif)
 
 ### 示例2（边框宽度类型和边框颜色）
 
-border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
+border属性的width使用LocalizedEdgeWidths类型，radius使用LocalizedBorderRadiuses类型，color使用LocalizedEdgeColors类型。
 
 **ArkTS-Dyn示例：**
 
@@ -336,7 +377,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -459,11 +500,11 @@ struct BorderExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_border_ltr](figures/zh-cn_image_border_ltr.png)
+![zh-cn_image_border_ltr](figures/image-border-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+![zh-cn_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 

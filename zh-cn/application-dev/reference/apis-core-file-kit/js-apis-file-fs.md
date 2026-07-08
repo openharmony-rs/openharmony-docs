@@ -6,7 +6,15 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
+本模块是Core File Kit的核心模块，提供基础文件操作API，用于对应用沙箱内的文件和目录进行创建、打开、读写、拷贝、移动、删除、查询属性等操作。
+
+模块提供了多种文件访问模式，开发者可根据场景选择：
+
+- **基于文件描述符（fd）**：通过open获取File对象，再使用read/write进行读写，适用于通用文件读写场景。
+- **基于流（Stream）**：通过createStream/fdopenStream创建Stream，或通过createReadStream/createWriteStream创建ReadStream/WriteStream，适用于流式数据处理或大文件分块读写等场景。
+- **基于RandomAccessFile**：通过createRandomAccessFile创建RandomAccessFile对象，支持独立的偏移指针和随机读写，适用于需要频繁跳转读写位置的场景。
+
+此外，模块还提供文件监听（Watcher）、内存映射（FileMapping）、安全原子写入（AtomicFile）等其他能力。
 
 > **说明：**
 >
@@ -47,7 +55,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 ```
 
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -55,7 +63,7 @@ ArkTS-Dyn: stat(file: string | number): Promise&lt;Stat&gt;
 
 ArkTS-Sta: stat(file: string | int): Promise&lt;Stat&gt;
 
-获取文件或目录详细属性信息，使用Promise异步回调。
+获取文件或目录详细属性信息，返回包含文件大小、权限模式、访问时间、修改时间等属性的Stat对象，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -116,7 +124,7 @@ ArkTS-Dyn: stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): voi
 
 ArkTS-Sta: stat(file: string | int, callback: AsyncCallback&lt;Stat&gt;): void
 
-获取文件或目录的详细属性信息。使用callback异步回调。
+获取文件或目录的详细属性信息，返回包含文件大小、权限模式、访问时间、修改时间等属性的Stat对象。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -173,7 +181,7 @@ ArkTS-Dyn: statSync(file: string | number): Stat
 
 ArkTS-Sta: statSync(file: string | int): Stat
 
-以同步方法获取文件或目录详细属性信息。
+以同步方法获取文件或目录详细属性信息，返回包含文件大小、权限模式、访问时间、修改时间等属性的Stat对象。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -224,14 +232,14 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| path | string | 是 | 文件或目录的应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否 | 文件或目录校验的权限。不填该参数则默认校验文件是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示文件存在；返回false表示文件不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
 
 **错误码：**
 
@@ -290,7 +298,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录应用沙箱路径。 |
+| path | string | 是 | 文件或目录的应用沙箱路径。 |
 | mode | [AccessModeType](#accessmodetype12) | 是 | 文件或目录校验的权限。 |
 | flag | [AccessFlagType](#accessflagtype12) | 是 | 文件或目录校验的位置。 |
 
@@ -357,7 +365,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录应用沙箱路径。 |
+| path | string | 是 | 文件或目录的应用沙箱路径。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
@@ -422,14 +430,14 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| path | string | 是 | 文件或目录的应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否 | 文件或目录校验的权限。不填该参数则默认校验文件或目录是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| boolean | 返回true，表示文件存在；返回false，表示文件不存在。 |
+| boolean | 返回true，表示文件或目录存在；返回false，表示文件或目录不存在。 |
 
 **错误码：**
 
@@ -470,7 +478,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件应用沙箱路径。 |
+| path | string | 是 | 文件或目录的应用沙箱路径。 |
 | mode | [AccessModeType](#accessmodetype12) | 是 | 文件或目录校验的权限。 |
 | flag | [AccessFlagType](#accessflagtype12) | 是 | 文件或目录校验的位置。 |
 
@@ -478,7 +486,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 | 类型 | 说明 |
 | ---- | ---- |
-| boolean | 返回true，表示文件在本地且校验权限存在；返回false，表示文件不存在或者文件在云端或其他分布式设备上。 |
+| boolean | 返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 
@@ -509,7 +517,7 @@ ArkTS-Dyn: close(file: number | File): Promise&lt;void&gt;
 
 ArkTS-Sta: close(file: int | File): Promise&lt;void&gt;
 
-关闭文件或目录，使用Promise异步回调。
+关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -523,7 +531,7 @@ ArkTS-Sta: close(file: int | File): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 
 **返回值：**
 
@@ -572,7 +580,7 @@ ArkTS-Dyn: close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
 ArkTS-Sta: close(file: int | File, callback: AsyncCallback&lt;void&gt;): void
 
-关闭文件或目录。使用callback异步回调。
+关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -586,7 +594,7 @@ ArkTS-Sta: close(file: int | File, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当异步关闭文件或目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -633,7 +641,7 @@ ArkTS-Dyn: closeSync(file: number | File): void
 
 ArkTS-Sta: closeSync(file: int | File): void
 
-以同步方法关闭文件或目录。
+以同步方法关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -645,7 +653,7 @@ ArkTS-Sta: closeSync(file: int | File): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 
 **错误码：**
 
@@ -1159,7 +1167,7 @@ ArkTS-Dyn: copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
 ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 
-复制源目录至目标路径下，使用Promise异步回调。
+复制源目录及其内容至目标路径下，可设置冲突处理模式，使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1225,7 +1233,7 @@ ArkTS-Dyn: copyDir(src: string, dest: string, mode: number, callback: AsyncCallb
 
 ArkTS-Sta: copyDir(src: string, dest: string, mode: int, callback: AsyncCallback\<void>): void
 
-复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
+复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1286,7 +1294,7 @@ fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<void> | null) => {
 
 copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
+复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1335,7 +1343,7 @@ fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) 
 
 copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
+复制源目录及其内容至目标路径下，可设置冲突处理模式。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1385,7 +1393,7 @@ fileIo.copyDirWithConflictFiles(srcPath, destPath, 0, (err: BusinessError<Array<
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
-复制源目录至目标路径下。使用callback异步回调。
+复制源目录及其内容至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。
 
@@ -1447,7 +1455,7 @@ fileIo.copyDir(srcPath, destPath, (err: BusinessError<void> | null) => {
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录至目标路径下。使用callback异步回调。
+复制源目录及其内容至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
@@ -1497,7 +1505,7 @@ fileIo.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => 
 
 copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-复制源目录至目标路径下。使用callback异步回调。
+复制源目录及其内容至目标路径下。使用callback异步回调。
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
@@ -2061,7 +2069,7 @@ try {
 
 mkdir(path: string): Promise&lt;void&gt;
 
-创建目录，使用Promise异步回调。
+创建单层目录，若父目录不存在则会报错，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2118,7 +2126,7 @@ fileIo.mkdir(dirPath).then(() => {
 
 mkdir(path: string, recursion: boolean): Promise\<void>
 
-创建目录，使用Promise异步回调。当recursion指定为true时，可递归创建目录。
+ 创建目录，使用Promise异步回调。当recursion指定为true时，可递归创建目录。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2178,7 +2186,7 @@ fileIo.mkdir(dirPath, true).then(() => {
 
 mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-创建目录。使用callback异步回调。
+创建单层目录，若父目录不存在则会报错。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2234,7 +2242,7 @@ fileIo.mkdir(dirPath, (err: BusinessError<void> | null) => {
 
 mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-创建目录，当recursion指定为true，可递归创建目录。使用callback异步回调。
+创建目录，当recursion指定为true，可递归创建单层目录，若父目录不存在则会报错。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2292,7 +2300,7 @@ fileIo.mkdir(dirPath, true, (err: BusinessError<void> | null) => {
 
 mkdirSync(path: string): void
 
-以同步方法创建目录。
+以同步方法创建单层目录，若父目录不存在则会报错。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2323,7 +2331,7 @@ fileIo.mkdirSync(dirPath);
 
 mkdirSync(path: string, recursion: boolean): void
 
-以同步方法创建目录。当recursion指定为true，可递归创建目录。
+以同步方法创建单层目录，若父目录不存在则会报错。当recursion指定为true，可递归创建目录。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2357,7 +2365,7 @@ ArkTS-Dyn: open(path: string, mode?: number): Promise&lt;File&gt;
 
 ArkTS-Sta: open(path: string, mode?: int): Promise&lt;File&gt;
 
-打开文件或目录，使用Promise异步回调。支持使用URI打开文件。
+打开文件或目录，支持使用URI打开文件，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2586,7 +2594,7 @@ ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise
 
 ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
-读取文件数据，使用Promise异步回调。
+从文件读取数据，返回实际读取的字节数，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2600,7 +2608,7 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | options | [ReadOptions](#readoptions11) | 否 | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
@@ -2662,7 +2670,7 @@ ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback&lt;numb
 
 ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback&lt;long&gt;): void
 
-从文件读取数据。使用callback异步回调。
+从文件读取数据，返回实际读取的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2676,7 +2684,7 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback&lt;long&gt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是 | 回调函数。返回实际读取的数据长度，单位为Byte。|
 
@@ -2732,7 +2740,7 @@ ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options: ReadOptions, callback:
 
 ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options: ReadOptions, callback: AsyncCallback&lt;long&gt;): void
 
-从文件读取数据，支持配置读取选项。使用callback异步回调。
+从文件读取数据，支持配置读取选项（如偏移位置和读取长度），返回实际读取的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2746,7 +2754,7 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options: ReadOptions, callback: As
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | options | [ReadOptions](#readoptions11) | 是 | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
@@ -2813,7 +2821,7 @@ ArkTS-Dyn: readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): num
 
 ArkTS-Sta: readSync(fd: int, buffer: ArrayBuffer, options?: ReadOptions): long
 
-以同步方法从文件读取数据。
+以同步方法从文件读取数据，返回实际读取的字节数。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2827,7 +2835,7 @@ ArkTS-Sta: readSync(fd: int, buffer: ArrayBuffer, options?: ReadOptions): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | options | [ReadOptions](#readoptions11) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
@@ -3014,7 +3022,7 @@ fileIo.rmdirSync(dirPath);
 
 unlink(path: string): Promise&lt;void&gt;
 
-删除单个文件，使用Promise异步回调。
+删除单个文件，仅适用于文件，不可用于删除目录，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3073,7 +3081,7 @@ fileIo.unlink(filePath).then(() => {
 
 unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除文件。使用callback异步回调。
+删除单个文件，仅适用于文件，不可用于删除目录。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3130,7 +3138,7 @@ fileIo.unlink(filePath, (err: BusinessError<void> | null) => {
 
 unlinkSync(path: string): void
 
-以同步方法删除文件。
+以同步方法删除单个文件，仅适用于文件，不可用于删除目录。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3163,7 +3171,7 @@ ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options?: WriteOption
 
 ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;long&gt;
 
-将数据写入文件，使用Promise异步回调。
+将数据写入文件，返回实际写入的字节数，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3177,7 +3185,7 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | options | [WriteOptions](#writeoptions11) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
@@ -3234,7 +3242,7 @@ ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallba
 
 ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入文件。使用callback异步回调。
+将数据写入文件，返回实际写入的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3300,7 +3308,7 @@ ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options: WriteOptions
 
 ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options: WriteOptions, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入文件。使用callback异步回调。
+将数据写入文件，返回实际写入的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3314,7 +3322,7 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options: WriteOptions, c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | options | [WriteOptions](#writeoptions11) | 是 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
@@ -3377,7 +3385,7 @@ ArkTS-Dyn: writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOp
 
 ArkTS-Sta: writeSync(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions): long
 
-以同步方法将数据写入文件。
+以同步方法将数据写入文件，返回实际写入的字节数。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3391,7 +3399,7 @@ ArkTS-Sta: writeSync(fd: int, buffer: ArrayBuffer | string, options?: WriteOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | options | [WriteOptions](#writeoptions11) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta：<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
@@ -3422,7 +3430,7 @@ ArkTS-Dyn: truncate(file: string | number, len?: number): Promise&lt;void&gt;
 
 ArkTS-Sta: truncate(file: string | int, len?: long): Promise&lt;void&gt;
 
-截断文件，使用Promise异步回调。
+截断文件，将文件大小调整为指定长度，超出部分的内容将被删除，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3486,7 +3494,7 @@ ArkTS-Dyn: truncate(file: string | number, callback: AsyncCallback&lt;void&gt;):
 
 ArkTS-Sta: truncate(file: string | int, callback: AsyncCallback&lt;void&gt;): void
 
-截断文件。使用callback异步回调。
+截断文件，删除文件内容。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3528,7 +3536,7 @@ ArkTS-Dyn: truncate(file: string | number, len: number, callback: AsyncCallback&
 
 ArkTS-Sta: truncate(file: string | int, len: long, callback: AsyncCallback&lt;void&gt;): void
 
-截断文件。使用callback异步回调。
+ 截断文件，将文件大小调整为指定长度，超出部分的内容将被删除。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3590,7 +3598,7 @@ ArkTS-Dyn: truncateSync(file: string | number, len?: number): void
 
 ArkTS-Sta: truncateSync(file: string | int, len?: long): void
 
-以同步方法截断文件内容。
+以同步方法截断文件内容，将文件大小调整为指定长度，超出部分的内容将被删除。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3830,7 +3838,7 @@ fileIo.readLines(filePath, options, (err: BusinessError<void> | null, readerIter
 
 readLinesSync(filePath: string, options?: Options): ReaderIterator
 
-以同步方式逐行读取文件的文本内容。
+以同步方式逐行读取文件的文本内容，只支持读取utf-8格式文件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4204,7 +4212,7 @@ console.info(`Succeeded in reading text, text is: ${str}`);
 
 lstat(path: string): Promise&lt;Stat&gt;
 
-获取链接文件信息，使用Promise异步回调。
+获取符号链接文件信息，返回符号链接本身的属性而非目标文件的属性。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4261,7 +4269,7 @@ fileIo.lstat(filePath).then((stat:fileIo.Stat) => {
 
 lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
-获取符号链接文件信息。使用callback异步回调。
+获取符号链接文件信息，返回符号链接本身的属性而非目标文件的属性。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4316,7 +4324,7 @@ fileIo.lstat(filePath, (err: BusinessError<void> | null, stat:fileIo.Stat | unde
 
 lstatSync(path: string): Stat
 
-以同步方法获取符号链接文件信息。
+以同步方法获取符号链接文件信息，返回符号链接本身的属性而非目标文件的属性。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4370,8 +4378,8 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| oldPath | string | 是 | 文件的应用沙箱原路径。 |
-| newPath | string | 是 | 文件的应用沙箱新路径。 |
+| oldPath | string | 是 | 文件或目录的应用沙箱原路径。 |
+| newPath | string | 是 | 文件或目录的应用沙箱新路径。 |
 
 **返回值：**
 
@@ -4436,8 +4444,8 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| oldPath | string | 是 | 文件的应用沙箱原路径。 |
-| newPath | string | 是 | 文件的应用沙箱新路径。 |
+| oldPath | string | 是 | 文件或目录的应用沙箱原路径。 |
+| newPath | string | 是 | 文件或目录的应用沙箱新路径。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当重命名文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -4500,8 +4508,8 @@ renameSync(oldPath: string, newPath: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| oldPath | string | 是 | 文件的应用沙箱原路径。 |
-| newPath | string | 是 | 文件的应用沙箱新路径。 |
+| oldPath | string | 是 | 文件或目录的应用沙箱原路径。 |
+| newPath | string | 是 | 文件或目录的应用沙箱新路径。 |
 
 **错误码：**
 
@@ -4533,7 +4541,7 @@ ArkTS-Sta: fsync(fd: int): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 
 **返回值：**
 
@@ -4598,7 +4606,7 @@ ArkTS-Sta: fsync(fd: int, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当文件系统缓存数据写入磁盘成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -4659,7 +4667,7 @@ ArkTS-Sta: fsyncSync(fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 
 **错误码：**
 
@@ -4692,7 +4700,7 @@ ArkTS-Sta: fdatasync(fd: int): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 
 **返回值：**
 
@@ -4757,7 +4765,7 @@ ArkTS-Sta: fdatasync(fd: int, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当文件内容数据同步成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -4818,7 +4826,7 @@ ArkTS-Sta: fdatasyncSync(fd: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 
 **错误码：**
 
@@ -4998,7 +5006,7 @@ fileIo.symlinkSync(srcFile, dstFile);
 
 listFile(path: string, options?: ListFileOptions): Promise&lt;string[]&gt;
 
-默认列出当前目录下所有文件名和目录名。支持过滤。使用Promise异步回调。
+默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用Promise异步回调。
 
 可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
@@ -5084,7 +5092,7 @@ fileIo.listFile(pathDir, listFileOption).then((filenames: Array<string>) => {
 
 listFile(path: string, callback: AsyncCallback&lt;string[]&gt;): void
 
-默认列出当前目录下所有文件名和目录名。使用callback异步回调。
+默认列出当前目录下所有文件名和目录名，返回文件名数组。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5145,7 +5153,7 @@ fileIo.listFile(pathDir, (err: BusinessError<void> | null, filenames: Array<stri
 
 listFile(path: string, options: ListFileOptions, callback: AsyncCallback&lt;string[]&gt;): void
 
-默认列出当前目录下所有文件名和目录名。支持过滤。使用callback异步回调。
+默认列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。使用callback异步回调。
 
 可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
@@ -5229,7 +5237,7 @@ fileIo.listFile(pathDir, listFileOption, (err: BusinessError<void> | null, filen
 
 listFileSync(path: string, options?: ListFileOptions): string[]
 
-默认以同步方式列出当前目录下所有文件名和目录名。支持过滤。
+默认以同步方式列出当前目录下所有文件名和目录名，返回文件名数组，支持按后缀、文件名等条件过滤。
 
 可通过配置ListFileOptions中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
@@ -5462,7 +5470,7 @@ ArkTS-Dyn: moveDir(src: string, dest: string, mode?: number): Promise\<void>
 
 ArkTS-Sta: moveDir(src: string, dest: string, mode?: int): Promise\<void>
 
-移动源目录至目标路径下，使用Promise异步回调。
+移动源目录及其内容至目标路径下，使用Promise异步回调。
 
 > **说明：**
 >
@@ -5527,7 +5535,7 @@ ArkTS-Dyn: moveDir(src: string, dest: string, mode: number, callback: AsyncCallb
 
 ArkTS-Sta: moveDir(src: string, dest: string, mode: int, callback: AsyncCallback\<void>): void
 
-移动源目录至目标路径下，支持设置移动模式。使用callback异步回调。
+移动源目录及其内容至目标路径下，支持设置冲突处理模式。使用callback异步回调。
 
 > **说明：**
 >
@@ -5590,7 +5598,7 @@ fileIo.moveDir(srcPath, destPath, 1, (err: BusinessError<void> | null) => {
 
 moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-移动源目录至目标路径下，支持设置移动模式。使用callback异步回调。
+移动源目录及其内容至目标路径下，支持设置冲突处理模式。使用callback异步回调。
 
 > **说明：**
 >
@@ -5642,7 +5650,7 @@ fileIo.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) 
 
 moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-移动源目录至目标路径下，支持设置移动模式。使用callback异步回调。
+移动源目录及其内容至目标路径下，支持设置冲突处理模式。使用callback异步回调。
 
 > **说明：**
 >
@@ -5697,7 +5705,7 @@ fileIo.moveDirWithConflictFiles(srcPath, destPath, 1, (err: BusinessError<Array<
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
-移动源目录至目标路径下。使用callback异步回调。
+移动源目录及其内容至目标路径下。使用callback异步回调。
 
 移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
 
@@ -5761,7 +5769,7 @@ fileIo.moveDir(srcPath, destPath, (err: BusinessError<void> | null) => {
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-移动源目录至目标路径下。使用callback异步回调。
+移动源目录及其内容至目标路径下。使用callback异步回调。
 
 移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
 
@@ -5814,7 +5822,7 @@ fileIo.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => 
 
 moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
-移动源目录至目标路径下。使用callback异步回调。
+移动源目录及其内容至目标路径下。使用callback异步回调。
 
 移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
 
@@ -5872,7 +5880,7 @@ ArkTS-Dyn: moveDirSync(src: string, dest: string, mode?: number): void
 
 ArkTS-Sta: moveDirSync(src: string, dest: string, mode?: int): void
 
-以同步方法移动源目录至目标路径下。
+以同步方法移动源目录及其内容至目标路径下。
 
 > **说明：**
 >
@@ -5925,7 +5933,7 @@ ArkTS-Dyn: moveFile(src: string, dest: string, mode?: number): Promise\<void>
 
 ArkTS-Sta: moveFile(src: string, dest: string, mode?: int): Promise\<void>
 
-移动文件，使用Promise异步回调。
+移动文件至目标路径，支持设置冲突处理模式。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5992,7 +6000,7 @@ ArkTS-Dyn: moveFile(src: string, dest: string, mode: number, callback: AsyncCall
 
 ArkTS-Sta: moveFile(src: string, dest: string, mode: int, callback: AsyncCallback\<void>): void
 
-移动文件，支持设置移动模式。使用callback异步回调。
+移动文件至目标路径，支持设置冲突处理模式。使用callback异步回调。
 
 > **说明：**
 >
@@ -6119,7 +6127,7 @@ ArkTS-Dyn: moveFileSync(src: string, dest: string, mode?: number): void
 
 ArkTS-Sta: moveFileSync(src: string, dest: string, mode?: int): void
 
-以同步方式移动文件。
+以同步方式移动文件至目标路径。
 
 > **说明：**
 >
@@ -6264,7 +6272,7 @@ fileIo.mkdtemp(pathDir + "/XXXXXX", (err: BusinessError<void> | null, res: strin
 
 mkdtempSync(prefix: string): string
 
-以同步的方法创建临时目录。
+以同步方法创建临时目录。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -6478,7 +6486,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int): Promise&lt;R
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path未指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
+| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path未指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
 
 **返回值：**
 
@@ -6982,7 +6990,7 @@ ArkTS-Sta: fdopenStream(fd: int, mode: string): Promise&lt;Stream&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 
 **返回值：**
@@ -7056,7 +7064,7 @@ ArkTS-Sta: fdopenStream(fd: int, mode: string, callback: AsyncCallback&lt;Stream
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 | callback | AsyncCallback&lt;[Stream](#stream)&gt; | 是 | 回调函数，返回Stream对象。 |
 
@@ -7128,7 +7136,7 @@ ArkTS-Sta: fdopenStreamSync(fd: int, mode: string): Stream
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 已打开的文件描述符fd。 |
 | mode | string | 是 | -&nbsp;r：打开只读文件，该文件必须存在。<br/>-&nbsp;r+：打开可读写的文件，该文件必须存在。<br/>-&nbsp;w：打开只写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;w+：打开可读写文件，若文件存在则文件长度清0，即该文件内容会消失。若文件不存在则建立该文件。<br/>-&nbsp;a：以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。<br/>-&nbsp;a+：以附加方式打开可读写的文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾后，即文件原先的内容会被保留。 |
 
 **返回值：**
@@ -7296,7 +7304,7 @@ rs.on('readable', () => {
 
 ## AtomicFile<sup>15+</sup>
 
-AtomicFile是一个用于对文件进行原子读写操作的类。
+AtomicFile是一个用于对文件进行原子读写等操作的类。
 
 在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。
 
@@ -7822,7 +7830,7 @@ ArkTS-Dyn: createWatcher(path: string, events: number, listener: WatchEventListe
 
 ArkTS-Sta: createWatcher(path: string, events: int, listener: WatchEventListener): Watcher
 
-创建Watcher对象，监听文件或目录变动。
+创建Watcher对象，用于监听文件或目录的创建、删除、修改等变动事件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7834,7 +7842,7 @@ ArkTS-Sta: createWatcher(path: string, events: int, listener: WatchEventListener
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 监听文件或目录的沙箱路径。 |
+| path | string | 是 | 监听文件或目录的应用沙箱路径。 |
 | events | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 监听变动的事件集，多个事件通过或(\|)的方式进行集合。<br/>-&nbsp;0x1: IN_ACCESS， 文件被访问。<br/>-&nbsp;0x2: IN_MODIFY，文件内容被修改。<br/>-&nbsp;0x4: IN_ATTRIB，文件元数据被修改。<br/>-&nbsp;0x8: IN_CLOSE_WRITE，文件在打开时进行了写操作，然后被关闭。<br/>-&nbsp;0x10: IN_CLOSE_NOWRITE，文件或目录在打开时未进行写操作，然后被关闭。<br/>-&nbsp;0x20: IN_OPEN，文件或目录被打开。 <br/>-&nbsp;0x40: IN_MOVED_FROM，监听目录中文件被移动走。<br/>-&nbsp;0x80: IN_MOVED_TO，监听目录中文件被移动过来。<br/>-&nbsp;0x100: IN_CREATE，监听目录中文件或子目录被创建。<br/>-&nbsp;0x200: IN_DELETE，监听目录中文件或子目录被删除。<br/>-&nbsp;0x400: IN_DELETE_SELF，监听的目录被删除，删除后监听停止。<br/>-&nbsp;0x800: IN_MOVE_SELF，监听的文件或目录被移动，移动后监听继续。<br/>-&nbsp;0xfff: IN_ALL_EVENTS，监听以上所有事件。 |
 | listener | [WatchEventListener](#watcheventlistener10) | 是 | 监听事件发生后的回调。监听事件每发生一次，回调一次。 |
 
@@ -7878,7 +7886,7 @@ watcher.stop();
 
 (event: WatchEvent): void
 
-事件监听类。
+事件监听类，当监听的文件或目录发生变动事件时触发回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -8120,7 +8128,7 @@ let copyOption: fileIo.CopyOptions = {
 
 ## Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fileiostat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，包含文件大小、权限模式、访问时间、修改时间等属性。在调用Stat的方法前，需要先通过[stat()](#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -8360,7 +8368,7 @@ let isSymbolicLink = fileIo.statSync(filePath).isSymbolicLink();
 
 ## Stream
 
-文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](#fileiocreatestream)方法或者[fileIo.fdopenStream](#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过[fileIo.createStream](#fileiocreatestream)方法或者[fileIo.fdopenStream](#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -8370,7 +8378,7 @@ let isSymbolicLink = fileIo.statSync(filePath).isSymbolicLink();
 
 close(): Promise&lt;void&gt;
 
-关闭文件流，使用Promise异步回调。
+关闭文件流，关闭后不可再用于读写等操作，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8425,7 +8433,7 @@ stream.close().then(() => {
 
 close(callback: AsyncCallback&lt;void&gt;): void
 
-异步关闭文件流。使用callback异步回调。
+关闭文件流，关闭后不可再用于读写等操作。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8483,7 +8491,7 @@ stream.close((err: BusinessError<void> | null) => {
 
 closeSync(): void
 
-同步关闭文件流。
+同步关闭文件流，关闭后不可再用于读写等操作。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8655,7 +8663,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;long&gt;
 
-将数据写入流文件，使用Promise异步回调。
+将数据写入流文件，返回实际写入的字节数，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8733,7 +8741,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, callback: AsyncCallback&lt;number
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入流文件。使用callback异步回调。
+将数据写入流文件，返回实际写入的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8803,7 +8811,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, options: WriteOptions, callback: 
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, options: WriteOptions, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入流文件，支持配置写入选项。使用callback异步回调。
+将数据写入流文件，支持配置写入选项，返回实际写入的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8884,7 +8892,7 @@ ArkTS-Dyn: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): numb
 
 ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 
-以同步方法将数据写入流文件。
+以同步方法将数据写入流文件，返回实际写入的字节数。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8933,7 +8941,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&g
 
 ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
-从流文件读取数据，使用Promise异步回调。
+从流文件读取数据，返回实际读取的字节数，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -9016,7 +9024,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, callback: AsyncCallback&lt;number&gt;): voi
 
 ArkTS-Sta: read(buffer: ArrayBuffer, callback: AsyncCallback&lt;long&gt;): void
 
-从流文件读取数据。使用callback异步回调。
+从流文件读取数据，返回实际读取的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -9088,7 +9096,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, options: ReadOptions, callback: AsyncCallba
 
 ArkTS-Sta: read(buffer: ArrayBuffer, options: ReadOptions, callback: AsyncCallback&lt;long&gt;): void
 
-从流文件读取数据，支持配置读取选项。使用callback异步回调。
+从流文件读取数据，支持配置读取选项，返回实际读取的字节数。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -9169,7 +9177,7 @@ ArkTS-Dyn: readSync(buffer: ArrayBuffer, options?: ReadOptions): number
 
 ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 
-以同步方法从流文件读取数据。
+以同步方法从流文件读取数据，返回实际读取的字节数。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -9214,7 +9222,7 @@ stream.close();
 
 ## File
 
-由open接口打开的File对象。
+由open接口打开的File对象，持有文件描述符fd，提供文件锁和获取父目录等能力。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -9228,7 +9236,7 @@ stream.close();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 打开的文件描述符。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 已打开的文件描述符fd。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | path<sup>10+</sup> | string | 是 | 否 | 文件路径。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | name<sup>10+</sup> | string | 是 | 否 | 文件名。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 
@@ -9236,7 +9244,7 @@ stream.close();
 
 getParent(): string
 
-获取File对象对应文件父目录。
+获取File对象对应文件的父目录路径。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10346,7 +10354,7 @@ DFSListener回调函数。用于通知链路状态变化。
 
 ## DfsListeners<sup>12+</sup>
 
-事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
+事件监听类，当监听的文件或目录发生变动事件时触发回调。创建DFSListener对象，用于监听分布式文件系统状态。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10389,7 +10397,7 @@ onStatus(networkId: string, status: number): void
 
 ## RandomAccessFile<sup>10+</sup>
 
-随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。
+随机读写文件流，提供基于偏移指针的随机读写能力。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10403,8 +10411,8 @@ onStatus(networkId: string, status: number): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 打开的文件描述符。 |
-| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | RandomAccessFile对象的偏移指针，单位为Byte。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 已打开的文件描述符fd。 |
+| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | RandomAccessFile对象的偏移指针，表示当前读写位置，单位为Byte。 |
 
 ### setFilePointer<sup>10+</sup>
 
@@ -10412,7 +10420,7 @@ ArkTS-Dyn: setFilePointer(filePointer: number): void
 
 ArkTS-Sta: setFilePointer(filePointer: long): void
 
-设置文件偏移指针。
+设置文件偏移指针，用于指定后续读写等操作的起始位置。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10443,7 +10451,7 @@ randomAccessFile.close();
 
 close(): void
 
-以同步方式关闭RandomAccessFile对象。
+以同步方式关闭RandomAccessFile对象，关闭后不可再用于读写等操作。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10469,7 +10477,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;long&gt;
 
-将数据写入文件，使用Promise异步回调。
+将数据写入文件，返回实际写入的字节数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10557,7 +10565,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, callback: AsyncCallback&lt;number
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入文件。使用callback异步回调。
+将数据写入文件，返回实际写入的字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10630,7 +10638,7 @@ ArkTS-Dyn: write(buffer: ArrayBuffer | string, options: WriteOptions, callback: 
 
 ArkTS-Sta: write(buffer: ArrayBuffer | string, options: WriteOptions, callback: AsyncCallback&lt;long&gt;): void
 
-将数据写入文件，支持配置写入选项。使用callback异步回调。
+将数据写入文件，支持配置写入选项（如偏移位置和写入长度），返回实际写入的字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10716,7 +10724,7 @@ ArkTS-Dyn: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): numb
 
 ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 
-以同步方法将数据写入文件。
+以同步方法将数据写入文件，返回实际写入的字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10763,7 +10771,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&g
 
 ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
-从文件读取数据，使用Promise异步回调。
+从文件读取数据，返回实际读取的字节数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10847,7 +10855,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, callback: AsyncCallback&lt;number&gt;): voi
 
 ArkTS-Sta: read(buffer: ArrayBuffer, callback: AsyncCallback&lt;long&gt;): void
 
-从文件读取数据。使用callback异步回调。
+从文件读取数据，返回实际读取的字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -10922,7 +10930,7 @@ ArkTS-Dyn: read(buffer: ArrayBuffer, options: ReadOptions, callback: AsyncCallba
 
 ArkTS-Sta: read(buffer: ArrayBuffer, options: ReadOptions, callback: AsyncCallback&lt;long&gt;): void
 
-从文件读取数据，支持配置读取选项。使用callback异步回调。
+从文件读取数据，支持配置读取选项（如偏移位置和读取长度），返回实际读取的字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11006,7 +11014,7 @@ ArkTS-Dyn: readSync(buffer: ArrayBuffer, options?: ReadOptions): number
 
 ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 
-以同步方法从文件读取数据。
+以同步方法从文件读取数据，返回实际读取的字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11063,7 +11071,7 @@ fileIo.closeSync(file);
 
 getReadStream(): ReadStream
 
-获取当前 RandomAccessFile 的一个 ReadStream 实例。
+获取当前RandomAccessFile的一个ReadStream实例，用于流式读取文件数据。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11095,7 +11103,7 @@ randomAccessFile.close();
 
 getWriteStream(): WriteStream
 
-获取当前 RandomAccessFile 的一个 WriteStream 实例。
+获取当前RandomAccessFile的一个WriteStream实例，用于流式写入文件数据。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11135,7 +11143,7 @@ randomAccessFile.close();
 
 start(): void
 
-开启监听。
+开启监听文件或目录变动事件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11160,7 +11168,7 @@ watcher.stop();
 
 stop(): void
 
-停止监听并移除Watcher对象。
+停止监听文件或目录变动事件并移除Watcher对象。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11183,7 +11191,7 @@ watcher.stop();
 
 ## OpenMode
 
-open接口flags参数常量。文件打开标签。
+open接口flags参数常量，用于指定文件打开模式（如只读、只写、读写、创建等）。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

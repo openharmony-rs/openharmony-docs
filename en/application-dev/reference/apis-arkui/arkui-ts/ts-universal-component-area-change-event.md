@@ -74,4 +74,4 @@ struct AreaExample {
 }
 ```
 
-![en-us_image_0000001189634870](figures/en-us_image_0000001189634870.gif)
+![onAreaChange](figures/onAreaChange.gif)

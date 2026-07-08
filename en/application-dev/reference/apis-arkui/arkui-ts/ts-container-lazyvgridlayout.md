@@ -261,4 +261,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/en-us_image_lazyvgridlayout1.gif)
+![image-lazyvgridlayout1](figures/image-lazyvgridlayout1.gif)

@@ -344,3 +344,57 @@ export struct Page2 {
 ```
 
 ![appStoragev2-two-pages](../figures/appstoragev2_2.gif)
+
+## 常见问题
+### 使用Class.of导致AppStorageV2类型不匹配报错
+
+@Local等状态变量装饰器，会自动给装饰的属性替换实际类型，以支持观测能力。如果使用`Class.of`获取该属性的类型，会跟属性声明的类型不一致，如果再用`Class.of`作为`type`参数调用`AppStorageV2.connect`，会因为数据类型不匹配导致运行时异常。
+
+【反例】
+
+```ts
+'use static'
+import { Entry, ComponentV2, Local, AppStorageV2, Text, Column } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local arr: string[] = [];
+  @Local arrStorage?: string[] = AppStorageV2.connect(
+    Class.of(this.arr), // 这里会报错，因为this.arr的实际类型是WrappedArray，用于支持观测能力
+    () => { return new Array<string>('Hello world'); }
+  )
+  build() {
+    Column() {
+      Text(`arrStorage is ${this.arrStorage}`)
+    }
+      .width('100%')
+  }
+}
+```
+
+推荐使用`Class.from`直接构造类型，确保`AppStorageV2.connect`参数`type`和`defaultCreator`类型一致。
+
+【正例】
+
+```ts
+'use static'
+import { Entry, ComponentV2, Local, AppStorageV2, Text, Column } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local arr: string[] = [];
+  @Local arrStorage?: string[] = AppStorageV2.connect(
+    Class.from<Array<string>>(), // 使用Class.from能固定返回泛型的类型
+    () => { return new Array<string>('Hello world'); }
+  )
+  build() {
+    Column() {
+      Text(`arrStorage is ${this.arrStorage}`)
+    }
+      .width('100%')
+  }
+}
+```
+![appstoragev2-static-faq-class-of.png](../state-management/figures/appstoragev2-static-faq-class-of.png)

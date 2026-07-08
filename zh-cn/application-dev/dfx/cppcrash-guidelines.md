@@ -68,7 +68,7 @@
 | 7 | SIGBUS | 非法内存访问 | 进程访问了未对齐或者不存在的物理地址。 |
 | 8 | SIGFPE | 浮点异常 | 进程执行了错误的算术运算，如除数为0、浮点溢出、整数溢出等。 |
 | 11 | SIGSEGV | 无效内存访问 | 进程访问了无效内存引用。 |
-| 16 | SIGSTKFLT | 栈错误 | 处理器执行了错误的栈操作，如栈空时弹出、栈满时压入。 |
+| 16 | SIGSTKFLT | 栈错误 | 处理器执行了错误的栈操作，如栈空时弹出、栈满时压入。<br>SIGSTKFLT信号不支持生成minidump。 |
 | 31 | SIGSYS | 错误系统调用 | 系统调用时使用了错误或非法参数。 |
 
 以上系统处理的崩溃信号，根据错误码（code）还有二级分类，二级分类如下：
@@ -210,6 +210,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
 | SubmitterStacktrace | 提交者线程栈 | 12 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | Registers | 故障现场寄存器 | 8 | 是 | - |
+| ExtraCrashInfo | 额外的内存信息 | 23 | 否 | 应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的内存信息。 |
 | Other thread info | 其他线程信息 | 8 | 是 | - |
 | Memory near registers | 故障现场寄存器附近内存值 | 8 | 是 | - |
 | FaultStack | 故障线程栈内存信息 | 8 | 是 | - |
@@ -779,6 +780,25 @@ Uid:0
 > enters foreground：应用进入前台运行。
 >
 > leaves foreground：应用在后台运行。
+
+### 包含额外内存信息的故障场景日志规格
+通过使用HiDebug提供添加维测信息的接口[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在崩溃日志中找到该维测信息。
+
+故障文件按照设置长度从指定地址记录内存内容。以长度64字节为例：
+
+```text
+...
+ExtraCrashInfo(Memory start address 0000007e3c6f2f80):
+                                           ^
+                                    设置的内存起始地址
++0x000: 0706050403020100 0000000000009080 0000000000000000 0000000000000000
+   ^                            ^
+相对起始地址的偏移         内存中的值
++0x020: 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+        ^                                                  ^
+        偏移0x020内存中的值                                偏移0x038内存中的值
+...
+```
 
 ## CppCrash聚类
 

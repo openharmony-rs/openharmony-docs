@@ -1,9 +1,9 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroup组件提供操作块群组，用于文件或资源内容的分类等场景。
@@ -47,6 +47,8 @@ ChipGroup({
   multiple?: boolean,
   chipGroupSpace?: ChipGroupSpaceOptions,
   chipGroupPadding?: ChipGroupPaddingOptions,
+  backgroundSystemMaterial?: uiMaterial.Material,
+  selectedBackgroundSystemMaterial?: uiMaterial.Material,
   onChange?: Callback<Array<number>>,
   suffix?: Callback<void>
 })
@@ -71,26 +73,22 @@ ChipGroup({
 
 ### 属性
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称            | 类型                                            | 必填 | 装饰器类型 | 说明                                                                                     |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
-| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | ArkTS-Dyn: [@Require](../../../ui/state-management/arkts-require.md) &nbsp;[@Prop](../../../ui/state-management/arkts-prop.md) <br/> ArkTS-Sta: @Require &nbsp;[@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 每个[Chip](./ohos-arkui-advanced-Chip.md)的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br/>若为undefined时，ChipGroup默认为空。            |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br/>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') } <br>值为undefined时，按默认值处理。 |
-| selectedIndexes | ArkTS-Dyn: [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)&lt;number&gt; <br/> ArkTS-Sta: Array&lt;int&gt; | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 被选中Chip的索引。<br/>默认值：[0] <br>值为undefined时，按默认值处理。 |
-| multiple        | boolean                                         | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false` <br>值为undefined时，按默认值处理。 |
-| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 } <br>单位：vp <br>值为undefined时，按默认值处理。 |
-| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 } <br>单位：vp  <br>值为undefined时，按默认值处理。 |
-| onChange        | ArkTS-Dyn: Callback\<Array\<number>> <br/> ArkTS-Sta: Callback\<Array\<int>> | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。                                                              |
-| suffix          | Callback\<void\>                                        | 否   | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。  |
+| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | ArkTS-Dyn: [@Require](../../../ui/state-management/arkts-require.md) &nbsp;[@Prop](../../../ui/state-management/arkts-prop.md) <br/> ArkTS-Sta: @Require &nbsp;[@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 每个[Chip](./ohos-arkui-advanced-Chip.md)的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br/>若为undefined时，ChipGroup默认为空。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23            |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br/>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') } <br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| selectedIndexes | ArkTS-Dyn: [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)&lt;number&gt; <br/> ArkTS-Sta: Array&lt;int&gt; | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 被选中Chip的索引。<br/>默认值：[0] <br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| multiple        | boolean                                         | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false` <br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 } <br>单位：vp <br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 } <br>单位：vp  <br>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用选中状态的材质样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| onChange        | ArkTS-Dyn: Callback\<Array\<number>> <br/> ArkTS-Sta: Callback\<Array\<int>> | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| suffix          | Callback\<void\>                                        | 否   | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
 
 > **说明：**
 >
@@ -256,26 +254,25 @@ ChipGroup的尾部图标选项类型。
 ## IconGroupSuffix
 
 ```typescript 
-IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>}) 
+IconGroupSuffix({
+  items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>,
+  iconBackgroundSystemMaterial?: uiMaterial.Material
+}) 
 ```
 
 **装饰器类型：**@Component
 
 ### 属性
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称     | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   |  ArkTS-Dyn: @Require &nbsp;@Prop <br/> ArkTS-Sta: @Require &nbsp;@PropRef | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   |  ArkTS-Dyn: @Require &nbsp;@Prop <br/> ArkTS-Sta: @Require &nbsp;@PropRef | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。<br>**原子化服务API：（仅ArkTS-Dyn）** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| iconBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+
 
 > **说明：**
 >
@@ -335,7 +332,7 @@ IconOptions定义图标的共通属性。
 
 ## LabelOptions
 
-Label定义图标属性。
+LabelOptions定义文本属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -475,6 +472,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -509,6 +507,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.SMALL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -646,6 +645,7 @@ struct Index {
 
   @Builder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [{
         icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
@@ -666,6 +666,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -700,6 +701,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -714,6 +716,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<int>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -847,6 +850,7 @@ struct Index {
 
   @Builder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [
         new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
@@ -866,6 +870,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。 
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
@@ -899,6 +904,7 @@ struct Index {
             allowClose: true,
           },
         ],
+        // 设置Chip的style属性。 
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -913,6 +919,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<int>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -1173,7 +1180,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1183,7 +1190,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1194,6 +1201,7 @@ export struct ChipGroupExample2 {
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
           accessibilityText: '更多',
+          // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
@@ -1221,7 +1229,7 @@ export struct ChipGroupExample2 {
                     label: { text: '选项1' },
                     suffixImageIcon: {
                       src: $r('sys.media.save_button_picture'),
-                      accessibilityText: '保存',
+                      accessibilityText: '保存', // 播报“保存，按钮”
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
                           message: '后缀图标被点击！'
@@ -1237,7 +1245,7 @@ export struct ChipGroupExample2 {
                     },
                     suffixSymbolOptions: {
                       normalAccessibility: {
-                        accessibilityText: '保存'
+                        accessibilityText: '保存' // 播报“保存，按钮”
                       },
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
@@ -1514,7 +1522,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1524,7 +1532,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1535,6 +1543,7 @@ export struct ChipGroupExample2 {
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
           accessibilityText: '更多',
+          // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
@@ -1603,3 +1612,174 @@ export struct ChipGroupExample2 {
 ```
 
 ![](figures/ChipGroupDemo5.png)
+
+### 示例6（设置系统材质样式）
+
+该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式。
+
+从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增backgroundSystemMaterial属性，[IconGroupSuffix](#icongroupsuffix)新增iconBackgroundSystemMaterial属性。
+
+ArkTS-Dyn示例：
+
+```typescript
+import { ChipGroup, IconGroupSuffix, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ChipGroupMaterialExample {
+  @State selectedIndexes: Array<number> = [0];
+
+  @LocalBuilder
+  suffix() {
+    IconGroupSuffix({
+      items: [{
+        icon: {
+          src: $r('sys.media.AI_phone'),
+        },
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({
+            message: '后缀图标被点击'
+          })
+        }
+      }],
+      // 设置后缀图标的系统材质样式
+      iconBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+      })
+    })
+  }
+
+  build() {
+    Column() {
+      ChipGroup({
+        items: [
+          { label: { text: '选项1' } },
+          { label: { text: '选项2' } },
+          { label: { text: '选项3' } },
+          { label: { text: '选项4' } },
+          { label: { text: '选项5' } },
+          { label: { text: '选项6' } },
+        ],
+        selectedIndexes: this.selectedIndexes,
+        itemStyle: {
+          // 设置透明的背景颜色，否则会和系统材质冲突
+          backgroundColor: Color.Transparent,
+        },
+        // 设置ChipGroup的系统材质样式
+        backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+        }),
+        onChange: (activatedChipsIndex: Array<number>) => {
+          this.selectedIndexes = activatedChipsIndex;
+        },
+        suffix: () => {
+          this.suffix()
+        }
+      })
+    }
+    .linearGradient({
+      angle: 135, // 渐变角度，135度是从左上到右下
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置 (0.0 表示起点)
+        ['#FECFEF', 0.5], // 中间颜色及位置
+        ['#A18CD1', 1.0]  // 结束颜色及位置 (1.0 表示终点)
+      ]
+    })
+    .padding(12)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```typescript
+'use static'
+
+import {
+  $r,
+  Builder,
+  ChipGroup,
+  ChipGroupItemOptions,
+  ChipItemLabelOptions,
+  ChipItemStyle,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  IconGroupSuffix,
+  IconItemOptions,
+  IconOptions,
+  State,
+  uiMaterial
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ChipGroupMaterialExample {
+  @State selectedIndexes: Array<int> = [0];
+
+  @Builder
+  suffix() {
+    IconGroupSuffix({
+      items: [{
+        icon: { src: $r('sys.media.ohos_ic_public_more') } as IconOptions,
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({
+            message: '后缀图标被点击'
+          })
+        }
+      } as IconItemOptions],
+      // 设置后缀图标的系统材质样式
+      iconBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+      })
+    })
+  }
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      ChipGroup({
+        items: [
+          { label: { text: '选项1' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+          { label: { text: '选项2' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+          { label: { text: '选项3' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+          { label: { text: '选项4' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+          { label: { text: '选项5' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+          { label: { text: '选项6' } as ChipItemLabelOptions } as ChipGroupItemOptions,
+        ],
+        selectedIndexes: this.selectedIndexes,
+        itemStyle: {
+          // 设置透明的背景颜色，否则会和系统材质冲突
+          backgroundColor: Color.Transparent,
+        } as ChipItemStyle,
+        // 设置ChipGroup的系统材质样式
+        backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+        }),
+        onChange: (activatedChipsIndex: Array<int>) => {
+          this.selectedIndexes = activatedChipsIndex;
+        },
+        suffix: () => {
+          this.suffix()
+        }
+      })
+    }
+    .linearGradient({
+      angle: 135, // 渐变角度，135度是从左上到右下
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置 (0.0 表示起点)
+        ['#FECFEF', 0.5], // 中间颜色及位置
+        ['#A18CD1', 1.0]  // 结束颜色及位置 (1.0 表示终点)
+      ]
+    })
+    .padding(12)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![](figures/zh-cn_chip-group_material.png)

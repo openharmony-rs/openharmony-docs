@@ -755,7 +755,7 @@ struct Index {
 
 ### 示例4（设置偏移）
 
-本示例通过[bias](ts-types.md#bias对象说明)实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
+本示例通过[bias](ts-types.md#bias11对象说明)实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
 
 ArkTS-Dyn示例：
 
@@ -1351,7 +1351,7 @@ struct Index {
 
 ### 示例8（链中设置偏移）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias11对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 ArkTS-Dyn示例：
 

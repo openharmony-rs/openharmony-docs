@@ -71,7 +71,7 @@ ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Prom
 
 **示例：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -114,7 +114,7 @@ struct ShortcutExample {
   }
 }
 ```
-ArkTS-Sta: 
+ArkTS-Sta示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -271,9 +271,9 @@ try {
 
 ## shortcutManager.getAllDesktopShortcutInfo
 
-ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number) : Promise<Array\<ShortcutInfo>>
+ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number): Promise<Array\<ShortcutInfo>>
 
-ArkTS-Sta: getAllDesktopShortcutInfo(userId: int) : Promise<Array\<ShortcutInfo>>
+ArkTS-Sta: getAllDesktopShortcutInfo(userId: int): Promise<Array\<ShortcutInfo>>
 
 查询指定用户的所有快捷方式信息。
 

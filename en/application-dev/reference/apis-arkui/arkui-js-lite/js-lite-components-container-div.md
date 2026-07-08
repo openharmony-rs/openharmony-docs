@@ -108,7 +108,7 @@ Supported
    }
    ```
 
-   ![en-us_image_0000001381108420](figures/en-us_image_0000001381108420.png)
+   ![div](figures/div.png)
 
 2. Flex wrap style
   
@@ -157,4 +157,4 @@ Supported
    }
    ```
 
-   ![en-us_image_0000001431148457](figures/en-us_image_0000001431148457.png)
+   ![div2](figures/div2.png)

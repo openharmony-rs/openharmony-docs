@@ -19,6 +19,8 @@ Popup属性可绑定在组件上显示气泡弹窗提示，设置弹窗内容、
 
 在Button组件上绑定Popup属性，每次点击Button按钮时，handlePopup会切换布尔值。当值为true时，触发bindPopup弹出气泡。
 
+ArkTS-Dyn示例：
+
 <!-- @[text_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets) -->
 
 ``` TypeScript
@@ -46,11 +48,52 @@ export struct TextPopupExample {
 }
 ```
 
-![zh-cn_image_0000001511740524](figures/zh-cn_image_0000001511740524.png)
+ArkTS-Sta示例：
+
+<!-- @[text_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  NavDestination,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct TextPopupExample {
+  @State handlePopup: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .margin({ top: 300 })
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with PopupOptions',
+          })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ...
+  }
+}
+```
+
+![zh-cn_image_0000001511740524](figures/Creating-Text-Popup.png)
 
 ## 添加气泡状态变化的事件
 
 通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的onStateChange属性为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
+
+ArkTS-Dyn示例：
 
 <!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
 
@@ -84,11 +127,57 @@ export struct StatePopupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  NavDestination,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct StatePopupExample {
+  @State handlePopup: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .margin({ top: 300 })
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with PopupOptions',
+            onStateChange: (e): void => { // 返回当前的气泡状态
+              if (!e.isVisible) {
+                this.handlePopup = false;
+              }
+            }
+          })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ...
+  }
+}
+```
+
 ![PopupOnStateChange](figures/PopupOnStateChange.gif)
 
 ## 带按钮的提示气泡
 
 通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
+
+ArkTS-Dyn示例：
 
 <!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
 
@@ -136,11 +225,72 @@ export struct ButtonPopupExample {
 }
 ```
 
-![zh-cn_other_0000001500740342](figures/zh-cn_other_0000001500740342.jpeg)
+ArkTS-Sta示例：
+
+<!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Button,
+  NavDestination,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { State } from '@ohos.arkui.stateManagement';
+
+const DOMAIN: int = 0xFF00;
+
+@Entry
+@Component
+export struct ButtonPopupExample {
+  @State handlePopup: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('PopupOptions').margin({ top: 300 })
+          .id('PopupOptions')
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with PopupOptions',
+            primaryButton: {
+              value: 'Confirm',
+              action: (): void => {
+                this.handlePopup = !this.handlePopup;
+                hilog.info(DOMAIN, 'DialogProject', 'confirm Button click');
+              }
+            },
+            secondaryButton: {
+              value: 'Cancel',
+              action: (): void => {
+                this.handlePopup = !this.handlePopup;
+              }
+            },
+            onStateChange: (e): void => {
+              if (!e.isVisible) {
+                this.handlePopup = false;
+              }
+            }
+          })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ...
+  }
+}
+```
+
+![zh-cn_other_0000001500740342](figures/Creating-Popup-with-Buttons.jpeg)
 
 ## 气泡的动画
 
 通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)或[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中的transition属性，可以控制气泡的进场和出场动画效果。
+
+ArkTS-Dyn示例：
 
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
@@ -212,11 +362,103 @@ export struct AnimationPopupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  Entry,
+  Component,
+  Button,
+  Row,
+  Text,
+  NavDestination,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  Builder,
+  Placement,
+  TransitionEffect,
+  Curve,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct AnimationPopupExample {
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder(): void {
+    Row() {
+      Text('Custom Popup with transitionEffect').fontSize(10)
+    }.height(50).padding(5)
+  }
+
+  build(): void {
+    NavDestination() {
+      Flex({ direction: FlexDirection.Column } as FlexOptions) {
+        // PopupOptions 类型设置弹框内容
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with transitionEffect',
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e): void => {
+              if (!e.isVisible) {
+                this.handlePopup = false;
+              }
+            },
+            // 设置弹窗显示动效为透明度动效与平移动效的组合效果，无退出动效
+            transition: TransitionEffect.asymmetric(
+              TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
+                TransitionEffect.translate({ x: 50, y: 50 })),
+              TransitionEffect.IDENTITY)
+          })
+          .position({ x: 100, y: 150 })
+
+        // CustomPopupOptions 类型设置弹框内容
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .onClick((): void => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder,
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e): void => {
+              if (!e.isVisible) {
+                this.customPopup = false;
+              }
+            },
+            // 设置弹窗显示动效与退出动效为缩放动效
+            transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+          })
+          .position({ x: 80, y: 300 })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ...
+  }
+}
+```
+
 ![popup_transition](figures/popup_transition.gif)
 
 ## 自定义气泡
 
 开发者可以使用[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，[@Builder](./state-management/arkts-builder.md)中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
@@ -264,9 +506,75 @@ export struct CustomPopupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
+
+``` TypeScript
+// 请将$r('app.media.xxx')替换为实际资源文件
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  RowOptions,
+  Button,
+  Text,
+  Image,
+  NavDestination,
+  Builder,
+  Placement,
+  Color,
+  BlurStyle,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct CustomPopupExample {
+  @State customPopup: boolean = false;
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder(): void {
+    Row({ space: 2 } as RowOptions) {
+      Image($r('app.media.app_icon')).width(24).height(24).margin({ left: 5 })
+      Text('This is Custom Popup').fontSize(15)
+    }.width(200).height(50).padding(5)
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .margin({ top: 300 })
+          .onClick((): void => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder, // 气泡的内容
+            placement: Placement.Bottom, // 气泡的弹出位置
+            popupColor: Color.Pink, // 气泡的背景色
+            backgroundBlurStyle: BlurStyle.NONE,
+            onStateChange: (e): void => {
+              if (!e.isVisible) {
+                this.customPopup = false
+              }
+            }
+          })
+      }
+      .height('100%')
+    }
+    // ...
+  }
+}
+```
+
 使用者通过配置placement参数将弹出的气泡放到需要提示的位置。弹窗构造器会触发弹出提示信息，来引导使用者完成操作，也让使用者有更好的UI体验。
 
-![zh-cn_other_0000001500900234](figures/zh-cn_other_0000001500900234.jpeg)
+![zh-cn_other_0000001500900234](figures/Custom-Popup.jpeg)
 
 ## 气泡样式
 
@@ -281,6 +589,8 @@ export struct CustomPopupExample {
 显示位置：气泡默认显示在宿主组件的下方，可以通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的Placement属性来配置其显示位置以及对齐方向。
 
 以下示例通过设置[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
+
+ArkTS-Dyn示例：
 
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
 
@@ -317,11 +627,63 @@ export struct StylePopupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Button,
+  NavDestination,
+  Placement,
+  Color,
+  BlurStyle,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct StylePopupExample {
+  @State handlePopup: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 100 } as ColumnOptions) {
+        Button('PopupOptions')
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            width: 200,
+            message: 'This is a popup.',
+            popupColor: Color.Red, // 设置气泡的背景色
+            mask: {
+              color: '#33d9d9d9'
+            },
+            placement: Placement.Top,
+            backgroundBlurStyle: BlurStyle.NONE // 去除背景模糊效果需要关闭气泡的模糊背景
+          })
+      }
+      .width('100%')
+    }
+    // ...
+  }
+}
+```
+
 ![image](figures/UIpopupStyle.gif)
 
 ## 气泡避让软键盘
 
 当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为[KeyboardAvoidMode.DEFAULT](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明)，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
+
+ArkTS-Dyn示例：
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
@@ -367,12 +729,77 @@ export struct AvoidSoftKeyboardPopupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Button,
+  Text,
+  TextInput,
+  NavDestination,
+  Builder,
+  Placement,
+  KeyboardAvoidMode,
+  CustomPopupOptions,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct AvoidSoftKeyboardPopupExample {
+  @State handlePopup: boolean = false;
+
+  @Builder
+  popupBuilder(): void {
+    Column({ space: 2 } as ColumnOptions) {
+      Text('Custom Popup').fontSize(20)
+        .borderWidth(2)
+      TextInput()
+    }.width(200).padding(5)
+  }
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 100 } as ColumnOptions) {
+        TextInput()
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick((): void => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup!!, {
+            width: 200,
+            builder: this.popupBuilder,
+            placement: Placement.Bottom,
+            mask: false,
+            autoCancel: false,
+            keyboardAvoidMode: KeyboardAvoidMode.DEFAULT
+          } as CustomPopupOptions)
+          .position({ x: 100, y: 300 })
+      }
+      .width('100%')
+    }
+    // ...
+  }
+}
+```
+
 ![image](figures/avoidKeyboard.gif)
 
 
 ## 设置气泡内的多态效果
 
 目前使用[@Builder](./state-management/arkts-builder.md)自定义气泡内容时，默认不支持多态样式，可以使用[@Component](state-management/arkts-create-custom-components.md#component)新建一个组件实现按下气泡中的内容时背景变色。
+
+ArkTS-Dyn示例：
 
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
@@ -475,6 +902,127 @@ struct PopupItemChild {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
+
+``` TypeScript
+// 请将$r('app.media.xxx')替换为实际资源文件
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  RowOptions,
+  Button,
+  Text,
+  Image,
+  NavDestination,
+  Builder,
+  Placement,
+  Color,
+  FlexAlign,
+  PropRef,
+  ForEach,
+  CommonMethod,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct PolymorphicEffectPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx',value为非空字符串的资源
+  @State scan: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
+  @State createGroupChat: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Create_group_chat') as string;
+  @State electronicWorkCard: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Electronic_work_card') as string;
+  private menus: Array<string> = [this.scan, this.createGroupChat, this.electronicWorkCard];
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupItemBuilder(name: string, action: string): void {
+    PopupItemChild({ childName: name, childAction: action })
+  }
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder(): void {
+    Column() {
+      ForEach(
+        this.menus,
+        (item: string) => {
+          this.popupItemBuilder(item, String(this.menus.indexOf(item)))
+        })
+    }
+    .padding(8)
+  }
+
+  @State customPopup: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .id('click me')
+          .onClick((): void => {
+            this.customPopup = !this.customPopup
+          })
+          .bindPopup(
+            this.customPopup,
+            {
+              builder: this.popupBuilder, // 气泡的内容
+              placement: Placement.Bottom, // 气泡的弹出位置
+              popupColor: Color.White, // 气泡的背景色
+              onStateChange: (event): void => {
+                if (!event.isVisible) {
+                  this.customPopup = false
+                }
+              }
+            })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    // ...
+  }
+}
+
+@Component
+struct PopupItemChild {
+  @PropRef childName: string = '';
+  @PropRef childAction: string = '';
+  @State selected: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Selected') as string;
+
+  build(): void {
+    Row({ space: 8 } as RowOptions) {
+      Image($r('app.media.startIcon'))
+        .width(24)
+        .height(24)
+      Text(this.childName)
+        .fontSize(16)
+    }
+    .width(130)
+    .height(50)
+    .padding(8)
+    .onClick((): void => {
+      this.getUIContext().getPromptAction().showToast({ message: this.selected + this.childName })
+    })
+    .stateStyles({
+      normal: (instance: CommonMethod): void => {
+        instance.backgroundColor(Color.White)
+      },
+      pressed: (instance: CommonMethod): void => {
+        instance.backgroundColor('#d4f1ff')
+      }
+    })
+  }
+}
+```
+
 ![popupStateStyle](figures/popupStateStyle.gif)
 
 ## 气泡支持避让中轴
@@ -484,6 +1032,8 @@ struct PopupItemChild {
 > **说明：** 
 > - 如果气泡的点击位置在中轴区域，则气泡不会避让。
 > - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
+
+ArkTS-Dyn示例：
 
 <!-- @[supportedAvoidAxis_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets) -->
 
@@ -564,6 +1114,116 @@ export struct SupportedAvoidAxisPopupExample {
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
+        .margin({
+          top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
+          bottom: this.index === 0 ? 330 : 0
+        })
+      }
+      .height('100%')
+      .width('100%')
+    }
+    // ...
+  }
+}
+```
+ArkTS-Sta示例：
+
+<!-- @[supportedAvoidAxis_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  Button,
+  NavDestination,
+  RelativeContainer,
+  Placement,
+  VerticalAlign,
+  HorizontalAlign,
+  AlignRuleOption,
+  FontWeight,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct SupportedAvoidAxisPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
+  @State upScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
+  @State middleAxle: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Middle_axle') as string;
+  @State lowerScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Lower_half_screen') as string;
+  @State subwindowDisplay: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Subwindow_display') as string;
+  @State subwindow: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Subwindow') as string;
+  @State nonSubwindow: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Non_Subwindow') as string;
+  @State zone: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
+  @State hoverModeStart: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+
+  @State message: string = 'Hello World';
+  @State index: int = 0;
+  @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
+  @State enableHoverMode: boolean | undefined = true;
+  @State showInSubwindow: boolean = false;
+  @State placement: Placement | undefined = undefined;
+  @State isShow: boolean = false;
+
+  build(): void {
+    NavDestination() {
+      RelativeContainer() {
+        Column() {
+          Button(this.zone + this.arrayStr[this.index])
+            .onClick((): void => {
+              if (this.index < 2) {
+                this.index++
+              } else {
+                this.index = 0
+              }
+            })
+
+          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow))
+            .onClick((): void => {
+              this.showInSubwindow = !this.showInSubwindow
+            })
+
+          Button(this.hoverModeStart + this.enableHoverMode)
+            .onClick((): void => {
+              if (this.enableHoverMode === undefined) {
+                this.enableHoverMode = true
+              } else if (this.enableHoverMode === true) {
+                this.enableHoverMode = false
+              } else {
+                this.enableHoverMode = undefined
+              }
+            })
+        }
+
+        Row() {
+          Button('Popup')
+            .id('Popup')
+            .fontWeight(FontWeight.Bold)
+            .bindPopup(this.isShow, {
+              message: 'popup',
+              enableHoverMode: this.enableHoverMode,
+              showInSubWindow: this.showInSubwindow,
+            })
+            .onClick((): void => {
+              this.isShow = !this.isShow
+            })
+        }
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
         .margin({
           top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
           bottom: this.index === 0 ? 330 : 0

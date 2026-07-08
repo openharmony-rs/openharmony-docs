@@ -1,8 +1,8 @@
 # Navigation动画常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -26,6 +26,8 @@
 
 在[onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12)、[onWillDisappear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwilldisappear12)生命周期执行背景色动画，示例如下：
 
+ArkTS-Dyn示例：
+
 <!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
 
 ``` TypeScript
@@ -37,7 +39,7 @@ export function DialogNavDestinationBuilder() {
 @Component
 export struct DialogNavDestination {
   stack: NavPathStack = AppStorage.get<NavPathStack>('basicNavigationStack')!;
-  @State backColor: ResourceColor = '#0000000';
+  @State backColor: ResourceColor = '#00000000';
 
   build() {
     NavDestination() {
@@ -53,13 +55,79 @@ export struct DialogNavDestination {
     .backgroundColor(this.backColor)
     .mode(NavDestinationMode.DIALOG)
     .onWillAppear(() => {
-      //启动时候蒙层渐现
+      // 启动时蒙层渐现
       this.getUIContext().animateTo({ duration:450 }, () => {
         this.backColor = '#66000000';
       });
     })
     .onWillDisappear(() => {
-      // 消失时候蒙层渐隐
+      // 消失时蒙层渐隐
+      this.getUIContext().animateTo({ duration: 450 }, () => {
+        this.backColor = '#00000000';
+      });
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
+
+``` TypeScript
+import {
+  Color,
+  Component,
+  Column,
+  NavPathStack,
+  Button,
+  NavPathInfo,
+  NavDestinationContext,
+  NavigationOperation,
+  ButtonType,
+  GestureEvent,
+  PanGesture,
+  NavDestination,
+  ColumnOptions,
+  Stack,
+  Text,
+  NavDestinationMode,
+  ResourceColor,
+  State,
+  AppStorage,
+} from '@kit.ArkUI';
+
+@Builder
+export function DialogNavDestinationBuilder(): void {
+  DialogNavDestination();
+}
+
+@Component
+export struct DialogNavDestination {
+  stack: NavPathStack = AppStorage.get<NavPathStack>('basicNavigationStack')!;
+  @State backColor: ResourceColor = '#0000000';
+
+  build(): void {
+    NavDestination() {
+      Stack() {
+        Text('Dialog')
+          .fontSize(44)
+          .backgroundColor(Color.White)
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .hideTitleBar(true)
+    .backgroundColor(this.backColor)
+    .mode(NavDestinationMode.DIALOG)
+    .onWillAppear(() => {
+      // 启动时蒙层渐现
+      this.getUIContext().animateTo({ duration:450 }, () => {
+        this.backColor = '#66000000';
+      });
+    })
+    .onWillDisappear(() => {
+      // 消失时蒙层渐隐
       this.getUIContext().animateTo({ duration: 450 }, () => {
         this.backColor = '#00000000';
       });
@@ -79,6 +147,8 @@ router跳到navigation页面，navigation在aboutToAppear回调里马上push一�
 **解决措施**
 
 关闭aboutToAppear中push的动画：
+
+ArkTS-Dyn示例：
 
 <!-- @[NavigationAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
 
@@ -101,17 +171,74 @@ struct NavigationPage {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[NavigationAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
+
+``` TypeScript
+import {
+  Color,
+  Component,
+  Column,
+  NavPathStack,
+  Button,
+  NavPathInfo,
+  NavDestinationContext,
+  NavigationOperation,
+  ButtonType,
+  GestureEvent,
+  PanGesture,
+  NavDestination,
+  ColumnOptions,
+  Stack,
+  Text,
+  NavDestinationMode,
+  Entry,
+  Navigation,
+  State,
+  AppStorage,
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationPage {
+  navStack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    AppStorage.setOrCreate<NavPathStack>('basicNavigationStack', this.navStack);
+    this.navStack.pushPath(new NavPathInfo('animation-BasicNavDestination', undefined), false); // 关闭本次push动画即可
+  }
+
+  build() {
+    Navigation(this.navStack) {
+      // ...
+    }
+  }
+}
+```
+
 ## pop、push同时进行却执行pop动画
 
 **问题现象**
 
 先pop栈顶页面，再马上push一个页面，动画效果是栈顶页面pop的动画，并不是PageOne的push动画。
 
+ArkTS-Dyn示例：
+
 <!-- @[PopAndPush-Normal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
 
 ``` TypeScript
 this.stack.pop();
 this.stack.pushPath({ name: 'animation-BasicNavDestination' });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[PopAndPush-Normal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
+
+``` TypeScript
+this.stack.pop();
+this.stack.pushPath(new NavPathInfo('animation-BasicNavDestination', undefined));
 ```
 
 **解决措施**
@@ -124,11 +251,22 @@ this.stack.pushPath({ name: 'animation-BasicNavDestination' });
 
 如果想移除页面的同时push另一个页面并且执行push动画，可以将push的页面设置为NEW_INSTANCE，默认执行push动画：
 
+ArkTS-Dyn示例：
+
 <!-- @[PopAndPush-NEW_INSTANCE](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
 
 ``` TypeScript
 this.stack.pop();
 this.stack.pushPath({ name: 'animation-BasicNavDestination' }, { launchMode: LaunchMode.NEW_INSTANCE });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[PopAndPush-NEW_INSTANCE](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
+
+``` TypeScript
+this.stack.pop();
+this.stack.pushPath(new NavPathInfo('animation-BasicNavDestination', undefined), { launchMode: LaunchMode.NEW_INSTANCE });
 ```
 
 ## 跳转动画是否有结束回调

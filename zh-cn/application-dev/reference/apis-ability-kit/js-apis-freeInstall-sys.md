@@ -63,7 +63,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | GET_BUNDLE_SUMMARY | 0x00000002 | 获取应用包pack.info的bundle摘要信息。  |
 | GET_MODULE_SUMMARY | 0x00000004 | 获取应用包pack.info的module摘要信息。  |
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback\<void>):void
 
@@ -122,7 +122,7 @@ try {
 }
 ```
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag): Promise\<void>
 
@@ -206,7 +206,7 @@ try {
 }
 ```
 
-## isHapModuleRemovable
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCallback\<boolean>): void
 
@@ -263,7 +263,7 @@ try {
 }
 ```
 
-## isHapModuleRemovable
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
@@ -344,9 +344,9 @@ try {
 }
 ```
 
-## getBundlePackInfo
+## freeInstall.getBundlePackInfo
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
 
 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。
 
@@ -399,9 +399,9 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
-## getBundlePackInfo
+## freeInstall.getBundlePackInfo
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\<BundlePackInfo>
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag): Promise\<BundlePackInfo>
 
 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。
 
@@ -479,7 +479,7 @@ try {
 }
 ```
 
-## getDispatchInfo
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
@@ -529,7 +529,7 @@ try {
 }
 ```
 
-## getDispatchInfo
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(): Promise\<DispatchInfo>
 

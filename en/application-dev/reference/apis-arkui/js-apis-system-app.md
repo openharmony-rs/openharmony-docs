@@ -246,7 +246,7 @@ Sets the maximum number of decoded images that can be cached in the memory to sp
 
 **setImageCacheCount** takes effect only when used in [onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) on the page decorated by @Entry.
 
-The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) for more complex scenarios.
+The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife) for more complex scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

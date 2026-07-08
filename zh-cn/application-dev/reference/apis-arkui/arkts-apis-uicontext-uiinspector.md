@@ -110,7 +110,7 @@ createComponentObserver(id: string | int): inspector.ComponentObserver
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| id   | string \| int | 是    | 类型为string时，为指定的组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)或者[key](./arkui-ts/ts-universal-attributes-component-id.md#key12)设置。类型为int时，为系统分配的唯一标识的节点UniqueID，UniqueID通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。使用UniqueID创建监听句柄时，请确保UniqueID对应的节点已经存在，否则后续监听无法生效。int的范围为1~2147483647的整数。|
+| id   | string \| int | 是    | 类型为string时，为指定的组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)或者[key](./arkui-ts/ts-universal-attributes-component-id.md#key12)设置。类型为int时，为系统分配的节点唯一标识UniqueID，UniqueID通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。使用UniqueID创建监听句柄时，请确保UniqueID对应的节点已经存在，否则后续监听无法生效。int的范围为1~2147483647的整数。|
 
 **返回值：** 
 

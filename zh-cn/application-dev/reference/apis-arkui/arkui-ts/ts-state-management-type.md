@@ -1,18 +1,25 @@
-# @Type
+# @Type：标记类属性的类型
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @s10021109-->
-<!--TSE: @TerryTsao-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+@Type装饰类属性，用于状态管理V1中，可以实现序列化类时不丢失属性的复杂类型。
+
+在ArkTS-Dyn中使用时，开发指南参考：[@Type装饰器：标记类属性的类型（ArkTS-Dyn）](../../../ui/state-management/arkts-new-type.md)。
 
 > **说明：**
 >
 > 从API version 12开始，支持该装饰器。
 
-@Type装饰类属性，用于状态管理V1中，可以实现序列化类时不丢失属性的复杂类型。
+## @Type
 
-在ArkTS-Dyn中使用时，开发指南参考：[@Type装饰器：标记类属性的类型（ArkTS-Dyn）](../../../ui/state-management/arkts-new-type.md)。
+const Type: TypeDecorator
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -36,6 +43,8 @@ class SampleChild {
 
 @ObservedV2
 class Sample {
+  // 使用@Type装饰器标记sampleChild属性的类型为SampleChild
+  // 确保序列化时不会丢失属性的复杂类型信息
   @Type(SampleChild)
   @Trace sampleChild?: SampleChild = undefined;
 }
@@ -43,11 +52,13 @@ class Sample {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰器声明组件内部状态变量
+  // 通过PersistenceV2.connect连接持久化数据，若不存在则创建新的Sample实例
   @Local sample: Sample = PersistenceV2.connect(Sample, () => new Sample)!;
 
   build() {
     Column() {
-      Text('childNumber value:' + this.sample.sampleChild?.childNumber)
+      Text(`childNumber value: ${this.sample.sampleChild?.childNumber}`)
         .onClick(() => {
           this.sample.sampleChild = new SampleChild();
           this.sample.sampleChild.childNumber = 2;

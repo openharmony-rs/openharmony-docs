@@ -1,4 +1,4 @@
-# Ukey流程示例指导
+# UKey流程示例指导
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -106,7 +106,7 @@
        /* 定义UkeyInfo入参 */
        OH_CM_UkeyInfo ukeyInfo = { OH_CM_CERT_PURPOSE_SIGN }; /* USB凭据的属性信息，此处省略 */
 
-       /* 获取keyUri对应的Ukey证书详情 */
+       /* 获取keyUri对应的UKey证书详情 */
        OH_CM_CredentialDetailList credentialList = { 0, nullptr };
        int32_t ret = OH_CertManager_GetUkeyCertificate(&keyUri, &ukeyInfo, &credentialList);
 

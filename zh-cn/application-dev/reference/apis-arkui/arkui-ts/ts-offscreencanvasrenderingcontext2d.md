@@ -1,8 +1,8 @@
 # OffscreenCanvasRenderingContext2D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,13 +10,13 @@
 
 >  **说明：**
 >
->  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  * 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+>  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 >
->  [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
+>  * [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 
-## 构造函数
+## 接口
 
 ### constructor
 
@@ -47,6 +47,8 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +142,7 @@ struct FillStyleExample {
 }
 ```
 
-![zh-cn_image_0000001193872516](figures/zh-cn_image_0000001193872516.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -187,7 +189,7 @@ struct LineWidthExample {
 }
 ```
 
-![zh-cn_image_0000001238832403](figures/zh-cn_image_0000001238832403.png)
+![lineWidth2](figures/lineWidth2.png)
 
 
 ### strokeStyle
@@ -268,7 +270,7 @@ struct StrokeStyleExample {
 }
 ```
 
-![zh-cn_image_0000001238712437](figures/zh-cn_image_0000001238712437.png)
+![strokeStyle2](figures/strokeStyle2.png)
 
 
 ### lineCap
@@ -319,7 +321,7 @@ struct LineCapExample {
 }
 ```
 
-![zh-cn_image_0000001194192454](figures/zh-cn_image_0000001194192454.PNG)
+![lineCap](figures/lineCap.PNG)
 
 
 ### lineJoin
@@ -371,7 +373,7 @@ struct LineJoinExample {
 }
 ```
 
-![zh-cn_image_0000001194352450](figures/zh-cn_image_0000001194352450.png)
+![lineJoin2](figures/lineJoin2.png)
 
 
 ### miterLimit
@@ -423,7 +425,7 @@ struct MiterLimit {
 }
 ```
 
-![zh-cn_image_0000001238952397](figures/zh-cn_image_0000001238952397.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -550,12 +552,12 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001239032423](figures/zh-cn_image_0000001239032423.png)
+![textAlign2](figures/textAlign2.png)
 
 
 ### textBaseline
 
-设置文本绘制中的水平对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+设置文本绘制中的基线类型，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -666,7 +668,7 @@ struct GlobalAlpha {
 }
 ```
 
-![zh-cn_image_0000001238832405](figures/zh-cn_image_0000001238832405.png)
+![globalAlpha2](figures/globalAlpha2.png)
 
 
 ### lineDashOffset
@@ -715,7 +717,7 @@ struct LineDashOffset {
 }
 
 ```
-![zh-cn_image_0000001238712439](figures/zh-cn_image_0000001238712439.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 
 ### globalCompositeOperation
@@ -908,7 +910,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![zh-cn_image_0000001194192456](figures/zh-cn_image_0000001194192456.png)
+![globalCompositeOperation](figures/globalCompositeOperation.png)
 
 
 ### shadowBlur
@@ -1056,7 +1058,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![zh-cn_image_0000001194032478](figures/zh-cn_image_0000001194032478.png)
+![shadowOffsetX2](figures/shadowOffsetX2.png)
 
 
 ### shadowOffsetY
@@ -1106,7 +1108,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![zh-cn_image_0000001239032425](figures/zh-cn_image_0000001239032425.png)
+![shadowOffsetY2](figures/shadowOffsetY2.png)
 
 
 ### imageSmoothingEnabled
@@ -1159,7 +1161,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![zh-cn_image_0000001193872520](figures/zh-cn_image_0000001193872520.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 ### imageSmoothingQuality
@@ -1552,8 +1554,8 @@ strokeRect(x: number, y: number, w: number, h: number): void
 | ------ | ------ | ---- | ------------ |
 | x      | number | 是   | 指定矩形的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | y      | number | 是   | 指定矩形的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| width  | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| height | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w      | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h      | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -1585,7 +1587,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352436](figures/zh-cn_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1606,8 +1608,8 @@ clearRect(x: number, y: number, w: number, h: number): void
 | ------ | ------ | ---- | ------------- |
 | x      | number | 是   | 指定矩形上的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | y      | number | 是   | 指定矩形上的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| width  | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| height | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w      | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h      | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -1641,7 +1643,7 @@ clearRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952377](figures/zh-cn_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1696,7 +1698,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032458](figures/zh-cn_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1751,7 +1753,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952401](figures/zh-cn_image_0000001238952401.png)
+  ![strokeText](figures/strokeText.png)
 
 
 ### measureText
@@ -1860,7 +1862,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832393.png)
+  ![stroke4](figures/stroke4.png)
 
 ### stroke
 
@@ -1916,7 +1918,7 @@ stroke(path: Path2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832392.png)
+  ![stroke3](figures/stroke3.png)
 
 
 ### beginPath
@@ -2027,7 +2029,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832409](figures/zh-cn_image_0000001238832409.png)
+  ![moveTo3](figures/moveTo3.png)
 
 
 ### lineTo
@@ -2044,7 +2046,7 @@ lineTo(x: number, y: number): void
 
  **参数：**
 
-| 参数名   | 类型     | 必填   | 描述        |
+| 参数名   | 类型     | 必填   | 说明        |
 | ---- | ------ | ----  | --------- |
 | x    | number | 是    | 指定位置的x坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是    | 指定位置的y坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
@@ -2082,7 +2084,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712443](figures/zh-cn_image_0000001238712443.png)
+  ![lineTo2](figures/lineTo2.png)
 
 
 ### closePath
@@ -2132,7 +2134,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001194192460](figures/zh-cn_image_0000001194192460.png)
+  ![closePath2](figures/closePath2.png)
 
 
 ### createPattern
@@ -2279,7 +2281,7 @@ struct BezierCurveTo {
 }
 ```
 
-![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
+![bezierCurveTo](figures/bezierCurveTo.png)
 
 
 ### quadraticCurveTo
@@ -2356,7 +2358,7 @@ struct QuadraticCurveTo {
 }
 ```
 
-![zh-cn_image_0000001193872494](figures/zh-cn_image_0000001193872494.png)
+![quadraticCurveTo2](figures/quadraticCurveTo2.png)
 
 ### arc
 
@@ -2414,7 +2416,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001239032429](figures/zh-cn_image_0000001239032429.jpeg)
+  ![arc2](figures/arc2.jpeg)
 
 
 ### arcTo
@@ -2500,7 +2502,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872524](figures/zh-cn_image_0000001193872524.png)
+  ![arcTo](figures/arcTo.png)
 
   > 此示例中，arcTo()创建的圆弧为黑色，圆弧的两条切线为灰色。控制点为红色，起始点为绿色。
   >
@@ -2567,7 +2569,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001194192440](figures/zh-cn_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2623,7 +2625,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712445](figures/zh-cn_image_0000001238712445.jpeg)
+  ![rect2](figures/rect2.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2634,6 +2636,8 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2777,7 +2781,7 @@ fill(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194192462](figures/zh-cn_image_0000001194192462.png)
+  ![fill](figures/fill.png)
 
 ### fill
 
@@ -2838,7 +2842,7 @@ struct Fill {
 }
 ```
 
- ![zh-cn_image_000000127777775](figures/zh-cn_image_000000127777775.jpg)
+ ![Yellow-trapezoid-02](figures/Yellow-trapezoid-02.jpg)
 
 ### clip
 
@@ -2892,7 +2896,7 @@ clip(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194032462](figures/zh-cn_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2908,7 +2912,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 
 **参数:** 
 
-| 参数名       | 类型 | 必填   | 描述                                       |
+| 参数名       | 类型 | 必填   | 说明                                       |
 | -------- | -------------- | ---- | ---------------------------------------- |
 | path | [Path2D](ts-components-canvas-path2d.md) | 是 | Path2D剪切路径。<br>异常值undefined或null按无效值处理。 |
 | fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule类型说明) | 否 | 指定要剪切对象的规则。<br/>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
@@ -2953,7 +2957,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_000000127777779](figures/zh-cn_image_000000127777779.jpg)
+  ![Yellow-trapezoid](figures/Yellow-trapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -2963,6 +2967,8 @@ reset(): void
 将OffscreenCanvasRenderingContext2D重置为其默认状态，清除后台缓冲区、绘制状态栈、绘制路径和样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2999,7 +3005,7 @@ reset(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032460](figures/zh-cn_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 ### saveLayer<sup>12+</sup>
 
@@ -3008,6 +3014,8 @@ saveLayer(): void
 创建一个图层。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3051,7 +3059,7 @@ saveLayer(): void
     }
   }
   ```
-  ![zh-cn_image_CanvasSavelayer](figures/zh-cn_image_CanvasSavelayer.png)
+  ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -3060,6 +3068,8 @@ restoreLayer(): void
 恢复图像变换和裁剪状态至saveLayer前的状态，并将图层绘制在canvas上。restoreLayer示例同saveLayer。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3160,7 +3170,7 @@ rotate(angle: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952405](figures/zh-cn_image_0000001238952405.png)
+  ![rotate2](figures/rotate2.png)
 
 
 ### scale
@@ -3215,7 +3225,7 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872498](figures/zh-cn_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
@@ -3359,7 +3369,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001193872526](figures/zh-cn_image_0000001193872526.png)
+  ![setTransform](figures/setTransform.png)
 
 ### setTransform
 
@@ -3375,7 +3385,7 @@ setTransform(transform?: Matrix2D): void
 
 **参数：**
 
-| 参数名       | 类型 | 必填   | 描述    |
+| 参数名       | 类型 | 必填   | 说明    |
 | --------- | ---------------------------------------- | ---- | ----- |
 | transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否 | 变换矩阵。<br>异常值undefined或null按无效值处理。<br>默认值：null |
 
@@ -3424,7 +3434,7 @@ setTransform(transform?: Matrix2D): void
     }
   }
  ```
- ![zh-cn_image_0000001193872527.jpeg](figures/zh-cn_image_0000001193872527.jpeg)
+ ![setTransform](figures/setTransform.jpeg)
 
 ### getTransform
 
@@ -3494,7 +3504,7 @@ getTransform(): Matrix2D
   }
   ```
 
-  ![zh-cn_image_0000001219982726.png](figures/zh-cn_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3548,7 +3558,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832413](figures/zh-cn_image_0000001238832413.png)
+  ![translate2](figures/translate2.png)
 
 
 ### drawImage
@@ -3566,7 +3576,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
  **参数：**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -3624,7 +3634,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 
  **参数：**
 
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -3684,7 +3694,7 @@ drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh:
 
  **参数：**
 
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | sx    | number | 是  | 裁切源图像时距离源图像左上角的x坐标值。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
@@ -3767,6 +3777,10 @@ createImageData(imageData: ImageData): ImageData
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
  **参数：**
 
 | 参数名       | 类型 | 必填   | 说明 |
@@ -3791,7 +3805,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
  **参数：**
 
-| 参数   | 类型     | 必填  | 说明            |
+| 参数名   | 类型     | 必填  | 说明            |
 | ---- | ------ | ---- | --------------- |
 | sx   | number | 是  | 需要输出的区域的左上角x坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 | sy   | number | 是  | 需要输出的区域的左上角y坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -3845,7 +3859,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   }
   ```
 
-  ![zh-cn_image_000000127777783](figures/zh-cn_image_000000127777783.png)
+  ![Yellow-with-sky-01](figures/Yellow-with-sky-01.png)
 
 ### setPixelMap
 
@@ -3930,7 +3944,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -3947,7 +3961,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 
  **参数：**
 
-| 参数名          | 类型 | 必填 | 描述 |
+| 参数名          | 类型 | 必填 | 说明 |
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | 是 | 填充区域在x轴方向的偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -4007,7 +4021,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string, dir
 
  **参数：**
 
-| 参数名          | 类型 | 必填 | 描述 |
+| 参数名          | 类型 | 必填 | 说明 |
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | 是 | 填充区域在x轴方向的偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -4055,7 +4069,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string, dir
   }
   ```
 
-  ![zh-cn_image_0000001194192464](figures/zh-cn_image_0000001194192464.png)
+  ![putImageData3](figures/putImageData3.png)
 
 ### setLineDash
 
@@ -4066,6 +4080,8 @@ setLineDash(segments: number[]): void
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
@@ -4104,7 +4120,7 @@ setLineDash(segments: number[]): void
     }
   }
   ```
-  ![zh-cn_image_000000127777772](figures/zh-cn_image_000000127777772.png)
+  ![Dotted-circle](figures/Dotted-circle.png)
 
 
 ### getLineDash
@@ -4116,6 +4132,8 @@ getLineDash(): number[]
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
 
@@ -4162,7 +4180,7 @@ getLineDash(): number[]
     }
   }
   ```
-![zh-cn_image_000000127777778](figures/zh-cn_image_000000127777778.png) 
+![Dotted-circle-01](figures/Dotted-circle-01.png) 
 
 
 
@@ -4221,7 +4239,7 @@ toDataURL(type?: string, quality?: any): string
     }
   }
   ```
-![zh-cn_image_0000001194192442](figures/zh-cn_image_0000001194192442.png)
+![toDataURL2](figures/toDataURL2.png)
 
 
 ### transferToImageBitmap
@@ -4279,7 +4297,7 @@ transferToImageBitmap(): ImageBitmap
     }
   }
   ```
-![zh-cn_image_0000001238952387](figures/zh-cn_image_0000001238952387.png) 
+![transferToImageBitmap](figures/transferToImageBitmap.png) 
 
 ### restore
 
@@ -4332,7 +4350,7 @@ restore(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### save
@@ -4380,7 +4398,7 @@ save(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### createLinearGradient
@@ -4445,7 +4463,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
   }
   ```
 
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 
 ### createRadialGradient
@@ -4512,7 +4530,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001238952407](figures/zh-cn_image_0000001238952407.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4521,6 +4539,8 @@ createConicGradient(startAngle: number, x: number, y: number): CanvasGradient
 创建一个圆锥渐变色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4573,4 +4593,4 @@ struct OffscreenCanvasConicGradientPage {
 }
 ```
 
-  ![zh-cn_image_0000001239032419](figures/zh-cn_image_0000001239032420.png)
+  ![createConicGradient](figures/createConicGradient.png)

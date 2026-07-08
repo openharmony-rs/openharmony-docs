@@ -175,29 +175,31 @@ struct Index {
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
-  ```ts
+  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
+  
+  ``` TypeScript
   // Index.ets
   import { BusinessError } from '@kit.BasicServicesKit';
   import { window } from '@kit.ArkUI';
-
+  
   let subWindowClass: window.Window | undefined = undefined;
-
+  
   @Entry
   @Component
   struct Index {
     // ...
-
+  
     build() {
-    // ...
+      // ...
     }
-
+  
     private async showShadowSubWindow(): Promise<void> {
       let windowStage = AppStorage.get<window.WindowStage>('windowStage');
       if (!windowStage) {
         this.prompt = 'WindowStage is unavailable.';
         return;
       }
-
+  
       try {
         if (!subWindowClass) {
           subWindowClass = await windowStage.createSubWindow('shadowSubWindow');
@@ -225,21 +227,23 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
-  ```ts
+  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct SliderDemo {
-    @State shadowRadiusValue: number = 0;
-
+    // ...
+  
     // 设置窗口边缘阴影的模糊半径
     setShadowRadius(val: number) {
       const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
       floatWindowObj?.setWindowShadowRadius(val);
     }
-
+  
     build() {
       // ...
     }
@@ -254,21 +258,23 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
-  ```ts
+  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct SliderDemo {
-    @State cornerRadiusValue: number = 0;
-
+    // ...
+  
     // 设置圆角
     setCornerRadius(val: number) {
       const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
       floatWindowObj?.setWindowCornerRadius(val);
     }
-
+  
     build() {
       // ...
     }
@@ -284,20 +290,16 @@ struct Index {
 
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
 
-```ts
+<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
+
+``` TypeScript
 // pages/page1.ets
 import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct SliderDemo {
-  @State blurValue: number = 0;
-  @State backdropBlurValue: number = 0;
-  @State columnBg: Color = Color.Orange;
-
-  setColumnBg() {
-    this.columnBg = Color.Orange;
-  }
+  // ...
 
   // 设置窗口内容的模糊半径
   setBlur(val: number) {
@@ -314,7 +316,7 @@ struct SliderDemo {
   }
 
   build() {
-  // ...
+    // ...
   }
 }
 ```

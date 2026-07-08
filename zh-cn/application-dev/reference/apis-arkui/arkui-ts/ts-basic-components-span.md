@@ -507,7 +507,7 @@ key(value: string | undefined)
 | -------- | -------- | -------- | -------- |
 | value | string \| undefined | 是 | 组件的键值。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
-### debugLine<sup>24+</sup>
+### debugLine
 
 debugLine(sourceLine: string, moduleName?: string)
 
@@ -517,7 +517,7 @@ debugLine(sourceLine: string, moduleName?: string)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -616,7 +616,7 @@ ArkTS-Dyn: textBackgroundStyle(style: TextBackgroundStyle): T
 
 ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
-设置背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
+设置文本背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -632,7 +632,7 @@ ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
-| style  | ArkTS-Dyn: [TextBackgroundStyle](#textbackgroundstyle11对象说明) <br/>ArkTS-Sta: [TextBackgroundStyle](#textbackgroundstyle11对象说明) \| undefined | 是   | 背景样式。<br />默认值:<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>取值undefined时，按默认值处理。 |
+| style  | ArkTS-Dyn: [TextBackgroundStyle](#textbackgroundstyle11对象说明) <br/>ArkTS-Sta: [TextBackgroundStyle](#textbackgroundstyle11对象说明) \| undefined | 是   | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>取值undefined时，按默认值处理。 |
 
 **返回值：**
 

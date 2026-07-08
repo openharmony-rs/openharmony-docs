@@ -410,8 +410,8 @@ struct PanGestureExample {
 
 向左滑动：
 
-![zh-cn_image_0000001174264374](figures/zh-cn_image_0000001174264374.png) 
+![panGesture2](figures/panGesture2.png) 
 
-点击按钮时，修改PanGesture触发条件为双指向左下方滑动：
+点击按钮时，修改PanGesture触发条件为双指以任意方向滑动：
 
- ![zh-cn_image1_0000001174264374](figures/zh-cn_image1_0000001174264374.png) 
+ ![panGesture](figures/panGesture.png) 

@@ -174,7 +174,7 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-扩展安全区域的边缘。
+扩展布局安全区域的边缘。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -203,9 +203,6 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 @Entry
 @Component
 struct SafeAreaExample1 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
   build() {
     Row() {
       Column()
@@ -344,9 +341,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -399,9 +395,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时把页面上抬直到露出光标
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -447,9 +442,9 @@ struct KeyboardAvoidExample2 {
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyboardAvoidMode } from '@kit.ArkUI';
+
 @Entry
 @Component
-
 struct KeyboardAvoidExample3 {
   build() {
     Column() {
@@ -646,8 +641,6 @@ struct IgnoreLayoutSafeAreaTest2 {
 该示例展示了容器分别设置了expandSafeArea和ignoreLayoutSafeArea的布局效果和各自对子组件布局效果的影响。两种设置下，容器都可见地进行了延伸，但前者的子组件不受延伸影响，后者的子组件因父容器的延伸改变了位置。
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct IgnoreLayoutSafeAreaTest3 {

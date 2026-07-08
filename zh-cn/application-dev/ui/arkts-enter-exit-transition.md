@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)是基础的组件转场接口，用于实现一个组件出现或者消失时的动画效果。可以通过[TransitionEffect对象](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)的组合使用，定义出各式效果。
+[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)是基础的组件转场接口，用于实现一个组件出现或者消失时的动画效果。可以通过[TransitionEffect<sup>10+</sup>对象说明](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)的组合使用，定义出各式效果。
 
 
   **表1** 转场效果接口
@@ -147,7 +147,7 @@
 
 
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818064.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
 
 
 对多个组件添加转场效果时，可以在[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
@@ -215,4 +215,4 @@
    }
    ```
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818065.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)

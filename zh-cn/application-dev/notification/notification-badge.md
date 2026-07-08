@@ -34,6 +34,7 @@
 
 1. 导入NotificationManager模块。
 
+   ArkTS-Dyn示例：
    <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
    
    ``` TypeScript
@@ -44,13 +45,26 @@
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
+
+   ArkTS-Sta示例：
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 增加角标个数。
 
    发布通知时，可在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带相关信息，具体可参考[通知发布](text-notification.md)章节。
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
+   ArkTS-Dyn示例：
    <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
@@ -63,10 +77,24 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: int = 9;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
 3. 减少角标个数。
 
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
+   ArkTS-Dyn示例：
    <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
@@ -74,6 +102,19 @@
    notificationManager.setBadgeNumber(badgeNumber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
    }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: int = 8;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err) => {
      hilog.error(DOMAIN_NUMBER, TAG,
        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
    });
@@ -89,6 +130,7 @@
 
     示例如下：
 
+    ArkTS-Dyn示例：
     <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
@@ -108,12 +150,33 @@
     });
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
+    let badgeNumber: int = 10;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
+    badgeNumber = 11;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
+    ```
+
 - 正例
 
     多次接口调用存在依赖关系，确保上一次设置完成后才能进行下一次设置。
 
     示例如下：
 
+    ArkTS-Dyn示例：
     <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
@@ -128,6 +191,26 @@
           `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
     }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
+    let badgeNumber: int = 10;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+      badgeNumber = 11;
+      notificationManager.setBadgeNumber(badgeNumber).then(() => {
+        hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+      }).catch((err) => {
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+      });
+    }).catch((err) => {
       hilog.error(DOMAIN_NUMBER, TAG,
         `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });

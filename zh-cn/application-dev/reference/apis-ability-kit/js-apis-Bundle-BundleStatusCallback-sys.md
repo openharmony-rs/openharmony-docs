@@ -26,8 +26,8 @@
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
-| 监听类型   | 注册回调                                          | 说明                                   |
-| ------ | --------------------------------------------- | -------------------------------------- |
-| add    | (bundleName : string, userId: number) => void | 获取应用安装时的信息。 |
-| update | (bundleName : string, userId: number) => void | 获取应用更新时的信息。 |
-| remove | (bundleName : string, userId: number) => void | 获取应用卸载时的信息。 |
+| 监听类型   | 注册回调                                 | 说明                                   |
+| ------ | -------------------------------------------- | -------------------------------------- |
+| add    | (bundleName: string, userId: number) => void | 获取应用安装时的信息。 |
+| update | (bundleName: string, userId: number) => void | 获取应用更新时的信息。 |
+| remove | (bundleName: string, userId: number) => void | 获取应用卸载时的信息。 |

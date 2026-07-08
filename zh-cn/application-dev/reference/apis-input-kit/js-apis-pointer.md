@@ -19,6 +19,7 @@
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## pointer.setPointerVisible
@@ -47,7 +48,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>适用版本：18+ |
 
 **示例**：
 
@@ -76,7 +77,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -145,7 +146,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>适用版本：18+ |
 
 **示例**：
 
@@ -240,6 +241,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -481,6 +483,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -574,7 +577,7 @@ struct Index {
         .onClick(() => {
           // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
-            if (error.code) {
+            if (error) {
               console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
@@ -586,6 +589,10 @@ struct Index {
             try {
               // 获取鼠标指针样式
               pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
+                if (error) {
+                  console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  return;
+                }
                 console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
               });
             } catch (error) {
@@ -776,6 +783,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -947,7 +955,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
-| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
+| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。          |
 
 **返回值**：
 
@@ -1059,7 +1067,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
-| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
+| pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。          |
 
 **错误码**：
 
@@ -1102,7 +1110,7 @@ struct Index {
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
               console.info(`Succeeded in setting pointer style.`);
             } catch (error) {
-              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -1204,7 +1212,7 @@ struct Index {
 | COLOR_SUCKER                     | 16   | 取色器     |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | 并拢的手   |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | 张开的手   |![Hand_Open.png](./figures/Hand_Open.png)|
-| HAND_POINTING                    | 19   | 手形指针   |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
+| HAND_POINTING                    | 19   | 手形指针   |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
 | HELP                             | 20   | 帮助选择   |![Help.png](./figures/Help.png)|
 | MOVE                             | 21   | 移动     |![Move.png](./figures/Move.png)|
 | RESIZE_LEFT_RIGHT                | 22   | 内部左右调整 |![Resize_Left_Right.png](./figures/Resize_Left_Right.png)|
@@ -1224,7 +1232,7 @@ struct Index {
 | MIDDLE_BTN_SOUTH_EAST            | 36   | 向东南滚动  |![MID_Btn_South_East.png](./figures/MID_Btn_South_East.png)|
 | MIDDLE_BTN_SOUTH_WEST            | 37   | 向西南滚动  |![MID_Btn_South_West.png](./figures/MID_Btn_South_West.png)|
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST | 38   | 四向锥形移动 |![MID_Btn_North_South_West_East.png](./figures/MID_Btn_North_South_West_East.png)|
-| HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | 垂直文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
+| HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | 水平文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | 十字光标 |![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
 | LOADING<sup>10+</sup> | 42 | 正在载入动画光标<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Loading.png](./figures/Loading.png)|
@@ -1247,6 +1255,8 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。
 
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
+
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **ArkTS-Dyn起始版本**：11
@@ -1257,7 +1267,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为像素（px）。 |
 | focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为像素（px）。 |
@@ -1295,7 +1305,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -1395,7 +1405,7 @@ struct Index {
 
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
-| followSystem  | boolean  | 否   | 否   | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小，256×256]。 |
+| followSystem  | boolean  | 否   | 否   | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小, 256×256]。 |
 
 ## pointer.setCustomCursor<sup>15+</sup>
 
@@ -1417,9 +1427,9 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。取值为大于0的整数。                           |
 | cursor  | [CustomCursor](#customcursor15) | 是    | 自定义光标资源。 |
-| config  | [CursorConfig](#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
+| config  | [CursorConfig](#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小, 256×256]。 |
 
 **返回值**：
 
@@ -1455,7 +1465,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -1541,6 +1551,8 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
 
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
+
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **ArkTS-Dyn起始版本**：11
@@ -1583,7 +1595,7 @@ struct Index {
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            $r('app.media.app_icon').id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             // 光标图片宽高

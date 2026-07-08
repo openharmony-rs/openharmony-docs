@@ -24,7 +24,7 @@
 - 精细化排版管理：如实现艺术排版、动态文字布局等系统标准文本组件难以达到的效果。
 
 ### 接口说明
-文本塑形中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)和[@ohos.graphics.drawing (drawing TextBlob)](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)。
+文本塑形中常用接口如下表所示，详细接口说明参考[Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)和[Class (TextBlob)](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -34,7 +34,6 @@
 | getGlyphs(): Array&lt;number&gt; | 获取该排版单元中每个字符的字形序号。 | 
 | getFont(): drawing.Font | 获取排版单元的字体属性对象。 | 
 | getAdvances(range: Range): Array&lt;common2D.Point&gt; | 获取该排版单元指定范围内每个字形的字形宽度数组。 | 
-| static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
 | static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
 | drawTextBlob(blob: TextBlob, x: number, y: number): void | 绘制一段文字。若构造blob的字体不支持待绘制字符，则该部分字符无法绘制。 | 
 
@@ -51,6 +50,7 @@
    ```
 
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
+
    <!-- @[arkts_independent_shaping_text_paragraph_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
    
    ``` TypeScript
@@ -66,14 +66,17 @@
    ```
 
 3. 添加文本内容。
+
    <!-- @[arkts_independent_shaping_text_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
    
    ``` TypeScript
    paragraphBuilder.addText('Hello World');
    ```
 
-4. 创建行对象。获取行中所有文字的塑形结果。  
-使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
+4. 创建行对象。获取行中所有文字的塑形结果。
+
+   使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
+
    <!-- @[arkts_independent_shaping_text_get_glyph_runs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
    
    ``` TypeScript
@@ -85,8 +88,10 @@
    let runs: text.Run[] = textLine.getGlyphRuns();
    ```
 
-5. 该步骤是文本塑形流程中的自定义绘制环节。通过调用getGlyphs()方法获取文本中每个字符对应的字形序号，再结合getFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
-从 API version 20 开始，新增的getAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
+5. 该步骤是文本塑形流程中的自定义绘制环节。通过调用getGlyphs()方法获取文本中每个字符对应的字形序号，再结合getFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。</br>
+   从API version 20开始，新增的getAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
+
+   ArkTS-Dyn示例：
    <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
    
    ``` TypeScript
@@ -111,6 +116,36 @@
      canvas.drawTextBlob(textBlob, 20, 100);
    }
    ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   let x: double = 0;
+   let y: double = 0;
+   for (let index = 0; index < runs.length; index++) {
+     const run = runs[index];
+     // 绘制字形
+     let glyphs: int[] = run.getGlyphs();
+     let font: drawing.Font = run.getFont();
+     let advances: common2D.Point[] | undefined = run.getAdvances({ start: 0, end: 0 });
+   
+     // 创建字形buffer，通过drawing接口进行字形独立绘制
+     let runBuffer: drawing.TextBlobRunBuffer[] = [];
+     for (let i = 0; i < glyphs.length; i++) {
+       runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
+       if (advances != undefined) {
+         x += advances[i].x + 10;
+         y += advances[i].y + 30;
+       }
+     }
+     let textBlob: drawing.TextBlob | undefined = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, undefined);
+     if (textBlob != undefined) {
+       // 自定义绘制一串具有相同属性的一系列连续字形
+       canvas.drawTextBlob(textBlob, 20, 100);
+     }
+   }
+   ```
 
-效果展示：  
+效果展示：
+
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)

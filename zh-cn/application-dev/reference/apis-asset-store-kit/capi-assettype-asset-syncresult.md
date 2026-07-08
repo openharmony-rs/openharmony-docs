@@ -27,7 +27,7 @@ typedef struct {...} Asset_SyncResult
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t resultCode | 关键资产同步的结果码。 |
+| int32_t resultCode | 关键资产同步的结果码。同步成功时结果码为0，同步失败时结果码参考[Asset_ResultCode](capi-asset-type-h.md#asset_resultcode)。 |
 | uint32_t totalCount | 触发同步的关键资产总数。 |
 | uint32_t failedCount | 关键资产同步失败的数量。 |
 

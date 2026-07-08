@@ -21,8 +21,27 @@
 
 无
 
-
 ## 接口
+
+### Polygon
+
+new Polygon(options?: PolygonOptions)
+
+用于绘制多边形的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+
+### Polygon
 
 Polygon(options?: PolygonOptions)
 
@@ -143,7 +162,7 @@ stroke(value: ResourceColor)
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-设置边框间隙，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围≥0。异常值按照默认值处理。
+设置边框的虚线长度和虚线间隙长度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围≥0。异常值按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -155,7 +174,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 定义Polygon轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
+| value  | Array&lt;any&gt; | 是   | 定义Polygon边框的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -291,6 +310,8 @@ antiAlias(value: boolean)
 
 通过points、fill、fillOpacity、stroke属性分别绘制多边形的经过坐标、填充颜色、透明度、边框颜色。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -322,11 +343,45 @@ struct PolygonExample {
 }
 ```
 
-![zh-cn_image_0000001174582856](figures/zh-cn_image_0000001174582856.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, Color, ColumnOptions, PolygonOptions, ShapePoint, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PolygonExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Polygon({ width: 100, height: 100 } as PolygonOptions)
+        .points([[0, 0], [50, 100], [100, 0]])
+        .fill(Color.Green)
+      Polygon()
+        .width(100)
+        .height(100)
+        .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        .fillOpacity(0)
+        .strokeWidth(5)
+        .stroke(Color.Blue)
+      Polygon()
+        .width(100)
+        .height(100)
+        .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        .fill(Color.Red)
+        .fillOpacity(0.6)
+    }.width('100%').margin({ top: 10 } as Margin)
+  }
+}
+```
+
+![polygon](figures/polygon.png)
 
 ### 示例2（宽和高使用不同参数类型绘制多边形）
 
 width、height属性分别使用不同的长度类型绘制图形。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -353,17 +408,86 @@ struct PolygonTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, Color, ColumnOptions, PolygonOptions, ShapePoint, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PolygonTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Polygon({ width: '100', height: '100' } as PolygonOptions)
+        .points([[0, 0], [50, 100], [100, 0]])
+      Polygon({ width: 100, height: 100 } as PolygonOptions)
+        .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        .fillOpacity(0)
+        .strokeWidth(5)
+        .stroke(Color.Blue)
+      Polygon({ width: $r('app.string.PolygonWidth'), height: $r('app.string.PolygonHeight') } as PolygonOptions)
+        .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        .fillOpacity(0.6)
+    }.width('100%').margin({ top: 10 } as Margin)
+  }
+}
+```
+
 ![polygonDemo2](figures/polygonDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Polygon组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Polygon组件的points、fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyPolygonModifier implements AttributeModifier<PolygonAttribute> {
   applyNormalAttribute(instance: PolygonAttribute): void {
     // 三角形，起点(0, 0)，经过(50, 100)，终点(100, 0)，填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.points([[0, 0], [50, 100], [100, 0]])
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PolygonModifierDemo {
+  @State modifier: MyPolygonModifier = new MyPolygonModifier()
+
+  build() {
+    Column() {
+      Polygon()
+        .width(100)
+        .height(100)
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, PolygonAttribute, AttributeModifier, LineCapStyle, LineJoinStyle, ShapePoint, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyPolygonModifier implements AttributeModifier<PolygonAttribute> {
+  applyNormalAttribute(instance: PolygonAttribute): void {
     instance.points([[0, 0], [50, 100], [100, 0]])
     instance.fill("#707070")
     instance.fillOpacity(0.5)

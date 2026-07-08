@@ -88,7 +88,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001127125208](figures/en-us_image_0000001127125208.png)
+  ![Yellow-triangle-02](figures/Yellow-triangle-02.png)
 
 
 ## closePath
@@ -122,7 +122,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001127125202](figures/en-us_image_0000001127125202.png)
+  ![Yellow-triangle-01](figures/Yellow-triangle-01.png)
 
 
 ## moveTo
@@ -372,7 +372,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001127125204](figures/en-us_image_0000001127125204.png)
+  ![Yellow-Curve](figures/Yellow-Curve.png)
 
 
 ## ellipse
@@ -456,4 +456,4 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001127125212](figures/en-us_image_0000001127125212.png)
+  ![Yellow-square](figures/Yellow-square.png)

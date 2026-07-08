@@ -39,7 +39,7 @@ import { media } from '@kit.MediaKit';
 | fdDst<sup>12+</sup>                               | ArkTS-Dyn: number<br>ArkTS-Sta: int                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 ## addWatermark
  
-addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
  
 为视频转码添加水印。使用Promise异步回调。
   
@@ -59,7 +59,7 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
  | 参数名    | 类型                                    | 必填 | 说明                       |
  | --------- | --------------------------------------- | ---- | -------------------------- |
  | watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 水印图像。                 |
- | configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
+ | config   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
  
  **返回值：**
  
@@ -138,7 +138,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 401  | The parameter check failed. Return by promise. |
+| 401  | The parameter check failed. Return by promise. <br>适用版本：22+ |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.       |

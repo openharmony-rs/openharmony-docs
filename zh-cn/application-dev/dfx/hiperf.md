@@ -128,7 +128,7 @@ See 'hiperf help [command]' for more information on a specific command.
 ### 性能数据统计
 
 
-1. 对进程ID为1745，1910的进程进行计数，计数时长为10s。
+1. 对进程ID为1745和1910的进程进行计数，计数时长为10s。
 
 
     ```shell
@@ -173,7 +173,7 @@ See 'hiperf help [command]' for more information on a specific command.
     ```
 
 
-3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles，hw-instructions，并打印详细的信息。
+3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles和hw-instructions，并打印详细的信息。
 
 
     ```shell
@@ -246,6 +246,7 @@ Supported events for hardware:
 >
 > 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。  
 > 从API version 24开始，PC设备通过终端命令行应用可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
+> 从API版本26.0.0开始，可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
 
 **record命令参数说明**
 
@@ -298,6 +299,7 @@ Supported events for hardware:
 | --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](../../device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --append-smo-data | 开启此参数后增加打包的so中原始so的名称。<br>**说明**：从API version 23开始，支持该参数。|
 | --add-counter | 采集该参数指定事件的性能计数器值，多个事件以逗号分隔。该参数必须和--no-inherit一起使用。<br>**说明**：从API版本26.0.0开始，支持该参数。|
+| --raw-data | 启用事件原始二进制数据采集，通常用于获取tracepoint等事件的详细信息<br>**说明**：从API版本26.0.0开始，支持该参数。|
 <!--RP1End-->
 
 **命令行示例**：
@@ -321,6 +323,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 >
 > 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。  
 > 从API version 24开始，PC设备通过终端命令行应用可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
+> 从API版本26.0.0开始，可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
 
 **stat命令参数说明**
 
@@ -395,7 +398,7 @@ $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 
 ## report命令
 
-此命令主要用于将采样数据（perf.data）转换为用户指定的格式（例如Json或者ProtoBuf)，并可以将属于相同进程、线程、函数的样本分组到同一样本条目中，根据样本条目的事件计数对样本条目进行排序，并以报告的形式进行展示。
+此命令主要用于将采样数据（perf.data）转换为用户指定的格式（例如Json或者ProtoBuf），并可以将属于相同进程、线程、函数的样本分组到同一样本条目中，根据样本条目的事件计数对样本条目进行排序，并以报告的形式进行展示。
 
 **report命令参数说明**
 
@@ -437,17 +440,21 @@ $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 
 仅支持采集带有debug证书签名的应用，提示：only support debug application.
 
+从API版本26.0.0开始，支持采集开启profileable标签属性的release证书签名应用，提示为：only support debug or profileable application.
+
 **可能原因&amp;解决方法**
 
 **造成原因**：
 
-应用没有debug证书签名
+应用没有debug证书签名且未开启profileable标签属性。
 
 **可采取的解决方法**：
 
-使用`hiperf record/stat -p [pid]`命令时，被采集的进程必须是使用debug证书签名的应用。
+使用`hiperf record/stat -p [pid]`命令时，被采集的进程必须是使用debug证书签名的应用或开启profileable标签属性的release证书签名应用。
 
-确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
+确认命令指定的应用是否为可调试应用，可执行hdc shell "bm dump -n bundlename | grep appProvisionType"查询是否为使用debug证书签名的应用，使用debug证书签名的应用预期返回信息为"appProvisionType": "debug"。
+
+或执行hdc shell "bm dump -n bundlename | grep profileable"查询是否为开启profileable标签属性的release证书签名的应用，开启profileable标签属性的release证书签名的应用预期返回信息为"profileable": true。
 
 以包名com.example.myapplication为例，可执行如下命令查询：
 
@@ -455,10 +462,24 @@ $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 ```
 
-如包名对应的应用是可调试应用，预期返回信息如下：
+如包名对应的应用是使用debug签名的可调试应用，预期返回信息如下：
 
 ```shell
 "appProvisionType": "debug",
 ```
 
+或
+
+```shell
+hdc shell "bm dump -n bundlename | grep profileable"
+```
+
+如包名对应的应用是开启profileable标签属性的可调试应用，预期返回信息如下：
+
+```shell
+"profileable": true
+```
+
 构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+
+开启profileable标签属性可参考：[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)。

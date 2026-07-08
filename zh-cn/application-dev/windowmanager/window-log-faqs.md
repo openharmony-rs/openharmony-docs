@@ -467,13 +467,13 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 关键信息：
 - 错误码：1300002（窗口状态异常）
 - 错误信息：This is not main window or decor enabled sub window
-- 原因：子窗口未启用装饰栏，不支持拖拽缩放
+- 原因：子窗口未启用标题栏，不支持拖拽缩放
 
 **分析定位及解决**
 
 检查创建子窗口时是否在SubWindowOptions中将`decorEnabled`设置为`true`。
 
-对于调用该接口的子窗口，要保证子窗口已开启窗口装饰栏。
+对于调用该接口的子窗口，要保证子窗口已开启窗口标题栏。
 
 **正反案例**
 
@@ -482,7 +482,7 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 ```ts
 windowStage.createSubWindowWithOptions('mySubWindow', {
   title: "",
-  decorEnabled: false,    // 错误：未开启装饰栏
+  decorEnabled: false,    // 错误：未开启标题栏
   isModal: false,
   maximizeSupported: true
 })
@@ -493,7 +493,7 @@ windowStage.createSubWindowWithOptions('mySubWindow', {
 ```ts
 let options: window.SubWindowOptions = {
   title: "",
-  decorEnabled: true,   // 开启窗口装饰栏
+  decorEnabled: true,   // 开启窗口标题栏
   isModal: false,
   maximizeSupported: true
 };

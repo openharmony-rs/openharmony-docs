@@ -598,5 +598,5 @@ perfTest.destroy();
     ```
 
 <!--Del-->
-PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest)。
+PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/perftest)。
 <!--DelEnd-->

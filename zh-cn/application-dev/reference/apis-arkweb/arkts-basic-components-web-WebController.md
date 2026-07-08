@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
+WebController是ArkWeb组件的控制器类，用于控制Web组件的各种行为。一个WebController对象只能与一个Web组件绑定，绑定后开发者可通过该控制器对Web组件进行页面导航（前进/后退/加载）、焦点控制、缩放调整、页面刷新与停止、Cookie管理、JavaScript注入与执行等操作。
+
+WebController适用于需要在应用侧对嵌入式Web组件进行主动控制的场景，例如实现浏览器式的前进后退导航、在应用侧与网页侧之间建立JavaScript交互通道、动态加载网页内容或管理Cookie数据。
 
 > **说明：**
 >
@@ -16,7 +18,7 @@
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 该组件接口从API version 9开始废弃，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
+> - 该组件从API version 9开始废弃，建议使用[WebviewController](./arkts-apis-webview-WebviewController.md)代替。
 >
 > - 示例效果请以真机运行为准。
 
@@ -366,7 +368,7 @@ getHitTest(): HitTestType
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>(deprecated)</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
 
 **ArkTS-Dyn起始版本：** 8
 

@@ -68,7 +68,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## UsedScene
 
-描述权限使用的场景和时机。
+描述权限的使用场景和时机，帮助开发者合理申请和使用权限。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -85,9 +85,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## SignatureInfo
 
-描述应用包的签名信息。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -98,7 +96,7 @@ import { bundleManager } from '@kit.AbilityKit';
 |appIdentifier<sup>11+</sup> | string      | 是   | 否   | 应用的唯一标识。详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
 |certificate<sup>14+</sup>   | string      | 是   | 是   | 应用的证书公钥。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 
-## AppCloneIdentity<sup>14+<sup>
+## AppCloneIdentity<sup>14+</sup>
 
 描述应用包的身份信息。
 
@@ -111,7 +109,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName | string         | 是   | 否   | 应用的bundleName。          |
-| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用包的分身索引信息。 |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用包的分身索引信息。取值为整数，范围：[0-5]，0表示主应用，1-5等表示分身应用。 |
 
 ## AlternateIconInfo
 

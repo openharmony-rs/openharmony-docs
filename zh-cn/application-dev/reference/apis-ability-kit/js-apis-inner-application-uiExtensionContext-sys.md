@@ -31,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 
 startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;AbilityResult&gt;
 
-使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。
+使用设置的caller信息启动Ability，caller信息由want携带，在系统服务层识别。Ability可在onCreate生命周期的want参数中获取caller信息。启动Ability时，want的caller信息不会被当前应用信息覆盖，系统服务层可获取初始caller信息。使用Promise异步回调。
 
  - 正常情况下可通过调用[terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
  - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。
@@ -56,7 +56,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;Ab
 | 参数名  | 类型                                                | 必填 | 说明                      |
 | ------- | --------------------------------------------------- | ---- | ------------------------- |
 | want    | [Want](js-apis-app-ability-want.md)                 | 是   | 启动Ability的want信息。   |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否   | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。不传此参数时使用默认启动配置。 |
 
 **返回值：**
 
@@ -78,14 +78,14 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;Ab
 | 16000050 | Internal error.                                         |
 | 16000069 | The extension cannot start the third party application. |
 | 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
 | 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 
 **示例：**
 
@@ -95,6 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class UIExtension extends UIExtensionAbility {
   onForeground() {
+    // 使用caller信息启动Ability
     this.context.startAbilityForResultAsCaller({
       bundleName: 'com.example.startabilityforresultascaller',
       abilityName: 'EntryAbility',
@@ -113,7 +114,11 @@ export default class UIExtension extends UIExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动一个ServiceExtensionAbility。使用Promise异步回调。
+启动一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，用于提供后台服务能力。使用Promise异步回调。
+
+> **说明：**
+>
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -174,6 +179,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     };
 
     try {
+      // 启动ServiceExtensionAbility
       this.context.startServiceExtensionAbility(want)
         .then(() => {
           // 执行正常业务
@@ -199,7 +205,7 @@ ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number
 
 ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-启动一个指定系统账号下的ServiceExtensionAbility。使用Promise异步回调。
+启动一个指定系统账号下的[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，用于提供后台服务能力。使用Promise异步回调。
 
 > **说明：**
 >
@@ -270,6 +276,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     let accountId = 100;
 
     try {
+      // 在指定系统账号下启动ServiceExtensionAbility
       this.context.startServiceExtensionAbilityWithAccount(want, accountId)
         .then(() => {
           // 执行正常业务
@@ -293,7 +300,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 setHostPageOverlayForbidden(isForbidden: boolean) : void
 
-是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。
+设置是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。
 
 > **说明：**
 >
@@ -315,7 +322,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| isForbidden | boolean | 是 | 是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。true表示不允许，false表示允许。 |
+| isForbidden | boolean | 是 | 设置是否允许[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)拉起的页面被使用方的页面覆盖。true表示不允许，false表示允许。 |
 
 
 **错误码**：
@@ -334,8 +341,9 @@ import { UIExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class UIExtAbility extends UIExtensionAbility {
-  OnCreate() {
+  onCreate() {
     try {
+      // 设置禁止UIExtensionAbility拉起的页面被覆盖
       this.context.setHostPageOverlayForbidden(true)
     } catch (err) {
       // 处理入参错误异常
@@ -428,11 +436,12 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
     };
     let wantList: Array<Want> = [want1, want2];
     try {
+      // 同时启动多个UIAbility
       this.context.startUIAbilities(wantList).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((err: Error) => {
         let error = err as BusinessError;
-        console.info(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
+        console.error(`TestTag:: startUIAbilities failed. Code: ${error.code}, message: ${error.message}`);
       });
     } catch (error) {
       // 处理入参错误异常
@@ -461,6 +470,8 @@ ArkTS-Sta: startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -524,11 +535,12 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
       abilityName: 'EntryAbility'
     };
     try {
+      // 以分屏模式启动第二个UIAbility
       this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secondaryWant).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((err: Error) => {
         let error = err as BusinessError;
-        console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);
+        console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed. Code: ${error.code}, message: ${error.message}`);
       });
     } catch (err) {
       // 处理入参错误异常
@@ -543,7 +555,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 
 connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): number
 
-将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#serviceextensionability)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
+将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
 
 > **说明：**
 >
@@ -574,7 +586,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. Possible cause: target service extension ability is in cross-device and needed designated permission to be started, but call ability do not have this permission. |
 | 202 | Not system application |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -584,7 +596,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by EDM. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to commnicate with dependency module.|
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
 | 16000053 | The ability is not on the top of the UI. |
 | 16000070 | The extension cannot start the service. |
 
@@ -605,19 +617,20 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
     let commRemote: rpc.IRemoteObject;
     let options: common.ConnectOptions = {
-      onConnect(elementName, remote) {
+      onConnect: (elementName, remote) => {
         commRemote = remote;
         console.info('onConnect...');
       },
-      onDisconnect(elementName) {
+      onDisconnect: (elementName) => {
         console.info('onDisconnect...');
       },
-      onFailed(code) {
+      onFailed: (code) => {
         console.error(`onFailed, err code: ${code}.`);
       }
     };
     let connection: number;
     try {
+      // 连接ServiceExtensionAbility并传递原始宿主Ability的Token
       connection = this.context.connectServiceExtensionAbilityWithRootHostToken(want, options);
     } catch (err) {
       // 处理入参错误异常

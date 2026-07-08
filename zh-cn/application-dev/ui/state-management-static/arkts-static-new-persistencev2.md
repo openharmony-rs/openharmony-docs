@@ -57,6 +57,7 @@ globalConnect支持以下类型的持久化：
 | **Date** | 日期对象，在持久化时自动完成序列化和反序列化。 |
 | **嵌套自定义类** | 通过`defaultSubCreators`提供子对象构造器恢复类型。 |
 | **循环引用** | 支持对象间互相引用的正确持久化和恢复。 |
+| **联合类型** | 联合类型，例如int\|string、double\|undefined等。 |
 
 [ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)提供可选字段defaultSubCreators，用于为嵌套的自定义类注册构造器，确保持久化数据恢复时能正确还原为类实例。构造器的返回类型必须与注册的className严格一致，如果不一致或未提供对应的构造器，数据将不能正确地恢复，可能会导致使用该数据的地方出现异常。
 
@@ -823,6 +824,90 @@ struct PersistenceV2MixedCollectionExample {
 
 ![persistence_v2_mixed_collection](../figures/persistencev2_7.gif)
 
+### 联合类型
+
+此示例展示通过globalConnect持久化包含联合类型属性的对象，联合类型属性可在不同类型间切换，并正确持久化和恢复。
+
+``` TypeScript
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义包含联合类型属性的数据类
+@ObservedV2
+class Sample {
+  // 联合类型属性，支持string和int之间切换
+  @Trace mixedValue: string | int = 'hello';
+  // 联合类型属性，支持double和undefined之间切换
+  @Trace optionalValue: double | undefined = undefined;
+}
+
+// 为类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Sample>(), () => new Sample()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2UnionTypeExample {
+  // 通过globalConnect持久化包含联合类型属性的Sample对象
+  @Local stateVar: Sample = PersistenceV2.globalConnect<Sample>({
+    type: Class.from<Sample>(),
+    key: 'UnionSample',
+    defaultCreator: () => {
+      return new Sample();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      // 展示mixedValue的值和类型
+      Text(`mixedValue: ${this.stateVar.mixedValue}`)
+        .fontSize(20)
+        .margin(10)
+      // 展示optionalValue的值
+      Text(`optionalValue: ${this.stateVar.optionalValue === undefined ? 'undefined' : this.stateVar.optionalValue}`)
+        .fontSize(20)
+        .margin(10)
+
+      // 点击按钮将mixedValue切换为string类型
+      Button('set mixedValue to string')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.mixedValue = 'world';
+        })
+      // 点击按钮将mixedValue切换为int类型
+      Button('set mixedValue to int')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.mixedValue = 42;
+        })
+      // 点击按钮将optionalValue切换为double类型
+      Button('set optionalValue to double')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.optionalValue = 3.14;
+        })
+      // 点击按钮将optionalValue切换为undefined
+      Button('set optionalValue to undefined')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.optionalValue = undefined;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
 ## 使用限制
 
 1. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
@@ -1456,6 +1541,112 @@ struct Index {
         })
       }
     }
+  }
+}
+```
+
+### 修改联合类型定义后重新进入应用数据异常
+
+当开发者使用`@Trace`装饰联合类型属性时，联合类型的定义可以包含undefined。在将undefined作为属性值持久化后，若此时修改联合类型定义，将undefined去除，则重新进入应用后，将根据属性的类型定义，表现出不同的行为：
+
+- 如果属性的类型为基本类型（boolean、byte、char、short、int、long、float、double），将使用默认值覆盖undefined的值。
+- 如果属性的类型为非基本类型，如string、对象类型或仍为联合类型，虽然对象会成功恢复，但应用运行时由于undefined值与类型定义不一致会出现数据异常。
+
+状态管理框架使用[setValue](../../reference/apis-arkts/arkts-sta-reflect.md#setvalue-1)接口恢复持久化对象属性，上述行为与setValue接口的行为保持一致，即向基本类型赋值undefined时抛出错误（此时使用默认值恢复），向string、对象类型或联合类型赋值undefined时将赋值成功。
+
+因此，不建议开发者将undefined定义进联合类型并且持久化后，又将undefined类型从联合类型的定义中去除，这可能会导致行为与预期产生不一致。
+
+>**说明：**
+>
+>由于complexValue去除undefined定义后会导致应用运行时异常，如果开发者想要观察basicValue使用默认值覆盖undefined的行为，需要先将complexValue相关的定义和逻辑注释掉。
+
+``` TypeScript
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+@ObservedV2
+export class SampleInfo {
+  @Trace info: string = 'Hello';
+}
+
+// 初始定义：联合类型包含undefined
+@ObservedV2
+export class Sample {
+  @Trace basicValue: int | undefined = undefined;
+  @Trace complexValue: SampleInfo | undefined = undefined;
+}
+// 以下为错误演示：将联合类型中的undefined去除后重新运行应用
+// basicValue为基本类型：重新进入应用时，框架使用默认值覆盖undefined的值
+// complexValue为对象类型：重新进入应用时，对象成功恢复，但运行时由于undefined值与类型定义不一致会出现数据异常
+/* @ObservedV2
+   export class Sample {
+     @Trace basicValue: int = 0;
+     @Trace complexValue: SampleInfo = new SampleInfo();
+   }
+ */
+
+// 为嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Sample>(), () => new Sample()],
+  [Class.from<SampleInfo>(), () => new SampleInfo()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2UnionTypeExample {
+  // 通过globalConnect持久化包含联合类型属性的Sample对象
+  @Local stateVar: Sample = PersistenceV2.globalConnect<Sample>({
+    type: Class.from<Sample>(),
+    key: 'UnionSample',
+    defaultCreator: () => {
+      return new Sample();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      // 展示基本类型联合undefined的值
+      Text(`basicValue: ${this.stateVar.basicValue === undefined ? 'undefined' : this.stateVar.basicValue}`)
+        .fontSize(20)
+        .margin(10)
+      // 展示对象类型联合undefined的值
+      Text(`complexValue: ${this.stateVar.complexValue === undefined ? 'undefined' : this.stateVar.complexValue!.info}`)
+        .fontSize(20)
+        .margin(10)
+
+      // 点击按钮设置basicValue和complexValue为有意义的值
+      Button('set values')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.basicValue = 1;
+          this.stateVar.complexValue = new SampleInfo();
+        })
+      // 点击按钮将basicValue和complexValue设为undefined并持久化
+      // 注意：只有在类型定义包含undefined时，才允许将值设置为undefined
+      Button('set undefined')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.basicValue = undefined;
+          this.stateVar.complexValue = undefined;
+        })
+      // 去掉undefined定义后，需将上述赋值注释掉
+      /* Button('set undefined')
+         .width(300)
+         .margin(10)
+         .onClick(() => {
+           this.stateVar.basicValue = undefined;
+           this.stateVar.complexValue = undefined;
+         })
+       */
+    }
+    .width('100%')
   }
 }
 ```

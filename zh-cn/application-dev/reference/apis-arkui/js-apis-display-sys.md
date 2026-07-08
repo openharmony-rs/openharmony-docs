@@ -42,7 +42,7 @@ ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId    | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
+| displayId    | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是   | 屏幕ID，该参数应为非负整数。 |
 
 **返回值：**
 
@@ -56,8 +56,8 @@ ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -69,24 +69,26 @@ import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
+  // 获取默认Display对象
   displayClass = display.getDefaultDisplaySync();
 
-  let ret: boolean = true;
+  let ret: boolean | undefined = undefined;
   try {
+    // 查询默认屏幕上是否有隐私窗口
     ret = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
-    console.error(`Failed to check has privateWindow or not. Code: ${exception.code} , message : ${exception.message}`);
+    console.error(`Failed to check has privateWindow or not. Code: ${exception.code}, message: ${exception.message}`);
   }
   if (ret == undefined) {
-    console.error("Failed to check has privateWindow or not.");
+    console.error('Failed to check has privateWindow or not.');
   }
   if (ret) {
-    console.info("There has privateWindow.");
+    console.info('There has privateWindow.');
   } else if (!ret) {
-    console.info("There has no privateWindow.");
+    console.info('There has no privateWindow.');
   }
 } catch (exception) {
-  console.error(`Failed to obtain the default display object. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to obtain the default display object. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -104,7 +106,7 @@ try {
     ret = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
     let error = exception as BusinessError;
-    console.error(`Failed to check has privateWindow or not. Code: ${error.code} , message : ${error.message}`);
+    console.error(`Failed to check has privateWindow or not. Code: ${error.code} , message: ${error.message}`);
   }
   if (ret == undefined) {
     console.error("Failed to check has privateWindow or not.");
@@ -116,7 +118,7 @@ try {
   }
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to obtain the default display object. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to obtain the default display object. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -149,8 +151,8 @@ on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -161,9 +163,10 @@ let callback: Callback<boolean> = (data: boolean) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
 try {
-  display.on("privateModeChange", callback);
+  // 注册隐私模式变化监听
+  display.on('privateModeChange', callback);
 } catch (exception) {
-  console.error(`Failed to register callback. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -195,7 +198,7 @@ onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -209,7 +212,7 @@ try {
   display.onPrivateModeChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to register callback. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to register callback. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -242,16 +245,17 @@ off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
 try {
-  display.off("privateModeChange");
+  // 取消隐私模式变化监听
+  display.off('privateModeChange');
 } catch (exception) {
-  console.error(`Failed to unregister callback. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -283,7 +287,8 @@ offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -292,7 +297,7 @@ try {
   display.offPrivateModeChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to unregister callback. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to unregister callback. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -323,8 +328,8 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -336,9 +341,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
+  // 设置折叠显示模式为全屏显示
   display.setFoldDisplayMode(mode);
 } catch (exception) {
-  console.error(`Failed to change the fold display mode. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -352,7 +358,7 @@ try {
   display.setFoldDisplayMode(mode);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to change the fold display mode. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to change the fold display mode. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -376,7 +382,7 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | mode     | [FoldDisplayMode](js-apis-display.md#folddisplaymode10)    | 是   | 可折叠设备的显示模式。 |
-| reason     | string    | 是   | 更改显示模式的原因。不设置，则默认为空字符串。 |
+| reason     | string    | 是   | 更改显示模式的原因。不设置时默认为空字符串。 |
 
 **错误码：**
 
@@ -384,7 +390,7 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -396,9 +402,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
+  // 设置折叠显示模式为主屏幕显示并指定原因为“backSelfie”
   display.setFoldDisplayMode(mode, 'backSelfie');
 } catch (exception) {
-  console.error(`Failed to change the fold display mode. Code: ${exception}`);
+  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -412,7 +419,7 @@ try {
   display.setFoldDisplayMode(mode, 'backSelfie');
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to change the fold display mode. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to change the fold display mode. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -441,8 +448,8 @@ setFoldStatusLocked(locked: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -454,9 +461,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let locked: boolean = false;
+  // 设置折叠状态不锁定
   display.setFoldStatusLocked(locked);
 } catch (exception) {
-  console.error(`Failed to change the fold status locked mode. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to change the fold status locked mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -470,7 +478,7 @@ try {
   display.setFoldStatusLocked(locked);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to change the fold status locked mode. Code: ${error.code} , message : ${error.message}`);
+  console.error(`Failed to change the fold status locked mode. Code: ${error.code} , message: ${error.message}`);
 }
 ```
 
@@ -507,9 +515,9 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 801     | Capability not supported.Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801     | Capability not supported. Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -524,15 +532,16 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     // ...
-    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id; // 获取窗口ID
     let windowIds = [windowId];
 
+    // 将窗口添加到禁止投屏显示的名单
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
-    })
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -547,14 +556,15 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     // ...
-    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id; // 获取窗口ID
     let windowIds = [windowId];
 
+    // 将窗口添加到禁止投屏显示的名单
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: Error) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message : ${err?.message}`);
+      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message: ${err?.message}`);
     })
   }
 }
@@ -565,7 +575,7 @@ ArkTS-Dyn: removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<voi
 
 ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
-将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。
+将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -593,9 +603,9 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 801     | Capability not supported.Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801     | Capability not supported. Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -610,22 +620,24 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     // ...
-    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id; // 获取窗口ID
     let windowIds = [windowId];
 
+    // 将窗口添加到禁止投屏显示的名单
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
-    })
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
 
+    // 将窗口从禁止投屏显示的名单移除
     promise = display.removeVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in removing virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code} , message: ${err.message}`);
-    })
+      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -647,7 +659,7 @@ export default class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: Error) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message : ${err?.message}`);
+      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message: ${err?.message}`);
     })
 
     promise = display.removeVirtualScreenBlocklist(windowIds);
@@ -690,7 +702,7 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -704,14 +716,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
+// 获取默认Display对象
 displayClass = display.getDefaultDisplaySync();
-displayClass.hasImmersiveWindow((err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message : ${err.message}`);
-      return;
-    }
-    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+// 查询是否包含沉浸式窗口
+displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 });
 ```
 
@@ -726,7 +740,7 @@ displayClass = display.getDefaultDisplaySync();
 displayClass.hasImmersiveWindow((err: BusinessError | null, data) => {
     const errCode = err?.code;
     if (errCode) {
-      console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message : ${err?.message}`);
+      console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message: ${err?.message}`);
       return;
     }
     console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
@@ -758,7 +772,7 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -772,7 +786,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
+// 获取默认Display对象
 displayClass = display.getDefaultDisplaySync();
+// 查询是否包含沉浸式窗口
 let promise = displayClass.hasImmersiveWindow();
 promise.then((data) => {
   console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);

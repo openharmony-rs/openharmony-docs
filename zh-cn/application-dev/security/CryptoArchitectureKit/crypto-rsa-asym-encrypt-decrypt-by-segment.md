@@ -124,7 +124,7 @@
     for (let i = 0; i < plainText.data.length; i += plainTextSplitLen) {
       let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      // 将原文按64字符进行拆分，循环调用doFinal进行加密，使用1024bit密钥时，每次加密生成128字节长度的密文
+      // 将原文按64字节进行拆分，循环调用doFinal进行加密，使用1024bit密钥时，每次加密生成128字节长度的密文
       let updateOutput = cipher.doFinalSync(updateMessageBlob);
       let mergeText = new Uint8Array(cipherText.length + updateOutput.data.length);
       mergeText.set(cipherText);

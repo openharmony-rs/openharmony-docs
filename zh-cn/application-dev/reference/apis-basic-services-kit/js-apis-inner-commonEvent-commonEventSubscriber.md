@@ -145,8 +145,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getCode().then((code: int) => {
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get code. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -311,8 +312,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCode(1).then(() => {
   console.info(`Succeeded in setting code.`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to set code. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set code. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -458,8 +460,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getData().then((data: string) => {
   console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -602,8 +605,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setData('publish_data_changed').then(() => {
   console.info(`Succeeded in setting data.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -762,8 +766,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
   console.info(`Succeeded in setting code and data.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to set code and data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set code and data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -903,8 +908,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isOrderedCommonEvent failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1026,8 +1032,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isStickyCommonEvent failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1166,13 +1173,15 @@ ArkTS-Sta示例：
 ```ts
 subscriber.abortCommonEvent().then(() => {
   console.info(`Succeeded in aborting common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1209,8 +1218,9 @@ ArkTS-Sta示例：
 subscriber.abortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1324,13 +1334,15 @@ ArkTS-Sta示例：
 ```ts
 subscriber.clearAbortCommonEvent().then(() => {
   console.info(`Succeeded in clearing abort common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to clear abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to clear abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1367,8 +1379,9 @@ ArkTS-Sta示例：
 subscriber.clearAbortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1463,8 +1476,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1728,8 +1742,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1755,10 +1770,15 @@ ArkTS-Dyn中使用ArkTS-Sta的CommonEventSubscriber对象。
   try {
     subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
     let dynamicHandler = transfer.transferDynamic(subscriber, 'CommonEventManager.CommonEventSubscriber');
-    CommonEventSubscriberStaticToDynamic(dynamicHandler);
+    CommonEventSubscriberStaticToDynamic(dynamicHandler as commonEventManager.CommonEventSubscriber);
   } catch (err) {
     console.error('transferDynamic catch error：-----------' + err.message);
   }
+  ```
+
+- 在`library/src/index.ets`文件中导出依赖CommonEventSubscriberStaticToDynamic。
+  ```TypeScript
+  export { CommonEventSubscriberStaticToDynamic } from './src/main/ets/components/MainPage';
   ```
 
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
@@ -1800,14 +1820,20 @@ ArkTS-Sta中使用ArkTS-Dyn的CommonEventSubscriber对象。
   }
   ```
 
+- 在`library/src/index.ets`文件中导出依赖CommonEventSubscriberDynamicToStatic。
+  ```TypeScript
+  export { CommonEventSubscriberDynamicToStatic } from './src/main/ets/components/MainPage';
+  ```
+
 - 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
 
   ArkTS-Sta示例：
   ```TypeScript
   'use static'
+  import { transfer } from '@kit.ArkTS';
   import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
 
-  export function CommonEventSubscriberDynamicToStatic(dynObject: Object | undefined | null) {
+  export function CommonEventSubscriberDynamicToStatic(dynObject: Object | undefined | null) :void {
     try {
       let staticSubscriber: commonEventManager.CommonEventSubscriber = transfer.transferStatic(dynObject, 'CommonEventManager.CommonEventSubscriber') as commonEventManager.CommonEventSubscriber;
       let subscribeInfo = staticSubscriber.getSubscribeInfoSync();

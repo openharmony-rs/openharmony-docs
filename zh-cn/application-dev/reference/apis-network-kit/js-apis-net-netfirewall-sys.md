@@ -87,7 +87,7 @@ netFirewall.getInterceptedRecords(100, interceptRecordParam).then((result: netFi
 
 | 名称       | 类型   | 只读 |可选| 说明                |
 |------------| -------|------|---|-------------------- |
-| time       | number | 否   |否| 时间戳。            |
+| time       | number | 否   |否| 时间戳。单位：s。            |
 | localIp    | string | 否   |是 |本地IP。            |
 | remoteIp   | string | 否   |是| 远端IP。            |
 | localPort  | number | 否   |是 |本地端口，默认值为0。          |

@@ -57,8 +57,8 @@ ArkTS-Sta: startTrace(name: string, taskId: int): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                |
 | ------ | ------ | ---- |-------------------------------------------------------------------|
-| name   | string | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
-| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。            |
+| name   | string | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| taskId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 任务id。<br>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。            |
 
 **示例：**
 
@@ -91,7 +91,7 @@ finishTrace的name和taskId必须与流程开始的[startTrace()](#hitracemeters
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | name   | string | 是   | 要跟踪的任务名称。 |
-| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 任务id。           |
+| taskId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 任务id。           |
 
 **示例：**
 
@@ -139,8 +139,8 @@ ArkTS-Sta: traceByValue(name: string, count: long): void
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| name   | string | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
-| count  | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 整数变量的值。         |
+| name   | string | 是   | 要跟踪的整数变量名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| count  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 整数变量的值。         |
 
 **示例：**
 
@@ -211,10 +211,10 @@ ArkTS-Sta: startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int,
 | 参数名         | 类型                                        | 必填 | 说明                                                                                                                                |
 | -------------- | ------------------------------------------- | ---- |-----------------------------------------------------------------------------------------------------------------------------------|
 | level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                                                           |
-| name           | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
-| taskId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
-| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
-| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔，默认为空字符串。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。 |
+| name           | string                                      | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
+| taskId         | ArkTS-Dyn: number<br>ArkTS-Sta: int        | 是   | 任务id。<br>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
+| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
+| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔，默认为空字符串。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。 |
 
 **示例：**
 
@@ -253,7 +253,7 @@ finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace
 | ------ | ------------------------------------------- | ---- | ------------------ |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。     |
 | name   | string                                      | 是   | 要跟踪的任务名称。 |
-| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 任务id。           |
+| taskId | ArkTS-Dyn: number<br>ArkTS-Sta: int        | 是   | 任务id。           |
 
 **示例：**
 
@@ -313,7 +313,7 @@ startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): vo
 | 参数名     | 类型                                        | 必填 | 说明                                                                                     |
 | ---------- | ------------------------------------------- | ---- |----------------------------------------------------------------------------------------|
 | level      | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                |
-| name       | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。 |
+| name       | string                                      | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。 |
 | customArgs | string                                      | 否   | 键值对，格式key=value，多个键值对用逗号分隔，默认值为空字符串。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。                               |
 
 **示例：**
@@ -394,8 +394,8 @@ ArkTS-Sta: traceByValue(level: HiTraceOutputLevel, name: string, count: long): v
 | 参数名 | 类型                                        | 必填 | 说明                   |
 | ------ | ------------------------------------------- | ---- | ---------------------- |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。         |
-| name   | string                                      | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
-| count  | ArkTS-Dyn: number<br/>ArkTS-Sta: long       | 是   | 整数变量的值。         |
+| name   | string                                      | 是   | 要跟踪的整数变量名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| count  | number                                      | 是   | 整数变量的值。         |
 
 **示例：**
 
@@ -507,7 +507,7 @@ ArkTS-Sta: registerTraceListener(callback: TraceEventListener): int
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| ArkTS-Dyn: number <br/> ArkTS-Sta: int | 回调注册状态。<br>>= 0：注册成功，返回用于注销的回调索引，索引范围0到9；<br> -1：已达到最大回调函数注册数量；<br> -2：无效参数，参数非TraceEventListener类型。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 回调注册状态。<br>>= 0：注册成功，返回用于注销的回调索引，索引范围0到9；<br> -1：已达到最大回调函数注册数量；<br> -2：无效参数，参数非TraceEventListener类型。 |
 
 **示例：**
 
@@ -549,13 +549,13 @@ ArkTS-Sta: unregisterTraceListener(index: int): int
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| index  | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 是   | 已注册回调函数索引，即[registerTraceListener()](#hitracemeterregistertracelistener22)调用成功时的返回值。 |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 已注册回调函数索引，即[registerTraceListener()](#hitracemeterregistertracelistener22)调用成功时的返回值。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| ArkTS-Dyn: number <br/> ArkTS-Sta: int | 回调注销状态。<br>0：注销成功；<br>-1：目标索引的回调函数未注册；<br>-2：无效索引，参数index值不在0到9的范围内。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 回调注销状态。<br>0：注销成功；<br>-1：目标索引的回调函数未注册；<br>-2：无效索引，参数index值不在0到9的范围内。 |
 
 **示例：**
 

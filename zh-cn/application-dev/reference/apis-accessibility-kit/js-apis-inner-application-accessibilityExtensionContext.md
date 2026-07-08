@@ -173,7 +173,11 @@ type WindowType = 'application' | 'system'
 | 'application' | 表示应用窗口类型。 |
 | 'system'      | 表示系统窗口类型。 |
 
-## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
+## AccessibilityExtensionContext
+
+辅助功能扩展的上下文环境。需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext的实例。
+
+### setTargetBundleName<sup>(deprecated)</sup>
 
 setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 
@@ -222,7 +226,7 @@ axContext.setTargetBundleName(targetNames).then(() => {
 })
 ```
 
-## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
+### setTargetBundleName<sup>(deprecated)</sup>
 
 setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>): void
 
@@ -272,7 +276,7 @@ try {
 }
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
@@ -324,7 +328,7 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 })
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -373,7 +377,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
 });
 ```
 
-## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
+### getFocusElement<sup>(deprecated)</sup>
 
 getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -424,7 +428,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
@@ -477,7 +481,7 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -526,7 +530,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
 });
 ```
 
-## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
+### getWindowRootElement<sup>(deprecated)</sup>
 
 getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityElement>): void
 
@@ -577,7 +581,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
@@ -627,7 +631,7 @@ axContext.getWindows().then((data: AccessibilityElement[]) => {
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
@@ -673,7 +677,7 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
 });
 ```
 
-## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
+### getWindows<sup>(deprecated)</sup>
 
 getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
@@ -721,7 +725,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 });
 ```
 
-## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
+### injectGesture<sup>(deprecated)</sup>
 
 injectGesture(gesturePath: GesturePath): Promise\<void>
 
@@ -729,7 +733,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -776,7 +780,7 @@ axContext.injectGesture(gesturePath).then(() => {
   console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
 });
 ```
-## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
+### injectGesture<sup>(deprecated)</sup>
 
 injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
@@ -784,7 +788,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[injectGestureSync](#injectgesturesyncdeprecated)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -827,7 +831,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
   console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
-## AccessibilityExtensionContext.injectGestureSync<sup>(deprecated)</sup>
+### injectGestureSync<sup>(deprecated)</sup>
 
 injectGestureSync(gesturePath: GesturePath): void
 
@@ -873,7 +877,7 @@ axContext.injectGestureSync(gesturePath);
 
 ## AccessibilityElement
 
-无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
+无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#getfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#getwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 ### attributeNames<sup>(deprecated)</sup>
 

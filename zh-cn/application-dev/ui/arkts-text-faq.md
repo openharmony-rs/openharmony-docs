@@ -38,7 +38,7 @@ ArkTS-Dyn示例：
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct WordBreakd {
+  struct WordBreakd {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -113,7 +113,7 @@ ArkTS-Sta示例：
 
 自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)的示例<!--RP1--><!--RP1End-->。
 
-### Text组件如何实现内容超长时自动显示省略样式吗？
+### Text组件如何实现内容超长时自动显示省略样式
 
 **问题现象**
 
@@ -134,7 +134,7 @@ ArkTS-Dyn示例：
   
   @Entry
   @Component
-  export struct HeightAdaptivePolicy {
+  struct HeightAdaptivePolicy {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -260,23 +260,21 @@ ArkTS-Dyn示例：
   
   @Entry
   @Component
-  export struct LengthMetric {
+  struct LengthMetric {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
     // 'Text_Add_Tags_Front_and_Post'资源文件中的value值为'这是一段长文本，超长部分折行，前后添加标签'
     @State message: string = this.manager.getStringByNameSync('Text_Add_Tags_Front_and_Post');
-    // 'Text_Add_Tags_Front'前标签'
+    // 'Text_Add_Tags_Front'资源文件中的value值为'前标签'
     @State frontTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Front');
     // 'Text_Add_Tags_Post'资源文件中的value值为'后标签'
     @State backTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Post');
     @State frontPaddingVp: number = 20;
     @State backPaddingVp: number = 10;
     @State fontTagWidthVp: Length = 0;
-    @State backTagWidthVp: Length = 0;
     @State backOffsetVpX: Length = 0;
     @State backOffsetVpY: Length = 0;
-    @State messageLines: number = 0;
     @State stackWidthVp: number = 300;
   
     // 显示之前，测算前后标签的位置，中间文本的缩进距离
@@ -471,7 +469,7 @@ ArkTS-Dyn示例：
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct DisplayedTogether {
+  struct DisplayedTogether {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -698,9 +696,11 @@ ArkTS-Dyn示例：
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+
   @Entry
   @Component
-  export struct TextLong {
+  struct TextLong {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -769,9 +769,11 @@ ArkTS-Dyn示例：
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  
   @Entry
   @Component
-  export struct TextLongTow {
+  struct TextLongTow {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -842,63 +844,65 @@ ArkTS-Sta示例：
 **解决措施**
 
 若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+  <!-- @[How_To_Set_Custom_Selection_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToSetCustomSelectionMenu.ets) -->
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct TextExample8 {
-  controller: TextController = new TextController();
-  options: TextOptions = { controller: this.controller };
-  @State selectStart: number = 0;
-  @State selectEnd: number = 0;
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct HowToSetCustomSelectionMenuExample {
+    @State selectStart: number = 0;
+    @State selectEnd: number = 0;
 
-  build() {
-    Column() {
+    build() {
+      NavDestination() {
+        Column() {
+          Column() {
+            // 请将$r('app.string.Set_Custom_Selection_Menu_Example_String')替换为实际资源文件，在本示例中该资源文件的value值为"TextTextTextText"
+            Text($r('app.string.Set_Custom_Selection_Menu_Example_String'))
+              .fontSize(14)
+              .selection(this.selectStart, this.selectEnd)
+              .copyOption(CopyOptions.InApp)
+              .bindSelectionMenu(TextSpanType.TEXT, this.CustomMenu, TextResponseType.DEFAULT, {
+                onDisappear: () => {
+                  this.selectStart = -1;
+                  this.selectEnd = -1;
+                },
+              })
+              .textAlign(TextAlign.Center)
+              .borderWidth(1)
+              .borderColor(Color.Red)
+            Button('Set selection')
+              .onClick(() => {
+                this.selectStart = 0;
+                this.selectEnd = 10;
+              })
+              .fontSize(14)
+              .margin({ top: 20 })
+          }
+          .width('100%')
+          .padding({ top: 300 })
+        }
+        .height('100%')
+      }
+    }
+  
+    @Builder
+    CustomMenu() {
       Column() {
-        Text("TextTextTextText")
-          .fontSize(14)
-          .selection(this.selectStart, this.selectEnd)
-          .copyOption(CopyOptions.InApp)
-          .bindSelectionMenu(TextSpanType.TEXT, this.CustomMenu, TextResponseType.DEFAULT, {
-            onDisappear: () => {
-              this.selectStart = -1;
-              this.selectEnd = -1;
-            },
-          })
-          .textAlign(TextAlign.Center)
-          .borderWidth(1)
-          .borderColor(Color.Red)
-        Button("Set selection")
-          .onClick(() => {
-            this.selectStart = 0;
-            this.selectEnd = 10;
-          })
-          .fontSize(14)
-          .margin({ top: 20 })
+        Menu() {
+          // 请将$r('app.string.Menu_Item_String')替换为实际资源文件，在本示例中该资源文件的value值为"Item Content"
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+          MenuItem({ content: $r('app.string.Menu_Item_String') })
+        }
+        .font({ size: 14 })
+        .radius($r('sys.float.ohos_id_corner_radius_card'))
+        .clip(true)
+        .backgroundColor('#F0F0F0')
       }
-      .width('100%')
-      .padding({ top: 300 })
-    }
-    .height('100%')
-  }
-
-  @Builder
-  CustomMenu() {
-    Column() {
-      Menu() {
-        MenuItem({ content: "Item Content" })
-        MenuItem({ content: "Item Content" })
-        MenuItem({ content: "Item Content" })
-      }
-      .font({ size: 14 })
-      .radius($r('sys.float.ohos_id_corner_radius_card'))
-      .clip(true)
-      .backgroundColor('#F0F0F0')
     }
   }
-}
-```
+  ```
 
 ![](figures/selectionAndBindMenuAndFont.gif)
 
@@ -1057,3 +1061,145 @@ ArkTS-Sta示例：
   ```
 
 ![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)
+
+### 如何设置TextArea的文本最少显示行数并自适应高度
+
+**问题现象**
+
+设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
+
+**解决措施**
+
+设置[minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20)（从API version 20开始），或者设置height为"auto"，并使用[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)自行计算高度。
+
+ArkTS-Dyn示例：
+
+<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
+
+``` TypeScript
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
+  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
+  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
+  @State fullText: string = this.changeText;
+  @State originText: string = this.changeText;
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: 'minLines: ' + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: 'constraintSize: ' + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height('auto')
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
+      Button($r('app.string.NormalQuestion_AddInput'))
+        .onClick(() => {
+          this.fullText += this.changeText;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
+
+``` TypeScript
+import {
+  $r,
+  Blank,
+  Builder,
+  Button,
+  Column,
+  Component,
+  Entry,
+  FlexAlign,
+  NavDestination,
+  SizeOptions,
+  TextArea,
+  ConstraintSizeOptions
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct TextExample {
+  private textAreaPadding: int = 12;
+  private setMaxLines: int = 3;
+  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
+  private changeText: string =
+    this.getUIContext().getHostContext()?.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
+  @State fullText: string = this.changeText;
+  @State originText: string = this.changeText;
+  textSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build(): void {
+    Column() {
+      TextArea({ text: 'minLines: ' + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: 'constraintSize: ' + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height('auto')
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(this.textSize.height as number)
+        } as ConstraintSizeOptions)
+
+      Blank(50)
+      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
+      Button($r('app.string.NormalQuestion_AddInput'))
+        .onClick(() => {
+          this.fullText += this.changeText;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)

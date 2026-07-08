@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（文本输入类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -180,13 +180,13 @@ NODE_TEXT_INPUT_ENTER_KEY_TYPE = 7006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)，默认值为ARKUI_ENTER_KEY_TYPE_DONE。 |
+| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)，默认值为ARKUI_ENTER_KEY_TYPE_DONE。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。 |
+| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)。 |
 
 ## NODE_TEXT_INPUT_PLACEHOLDER_COLOR
 
@@ -229,8 +229,8 @@ NODE_TEXT_INPUT_PLACEHOLDER_FONT = 7008
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0]?.f32 | 可选字体大小数值，默认值16.0，单位为fp。 |
-| .value[1]?.i32 | 可选字体样式[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
-| .value[2]?.i32 | 可选字体粗细样式[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
+| .value[1]?.i32 | 可选字体样式[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
+| .value[2]?.i32 | 可选字体粗细样式[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
 | ?.string | 字体族内容，多个字体族之间使用逗号分隔，形如“字重；字体族1，字体族2”。 |
 
 **返回：**
@@ -238,8 +238,8 @@ NODE_TEXT_INPUT_PLACEHOLDER_FONT = 7008
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 字体大小数值，单位为fp。 |
-| .value[1].i32 | 字体样式[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)。 |
-| .value[2].i32 | 字体粗细样式[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[1].i32 | 字体样式[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)。 |
+| .value[2].i32 | 字体粗细样式[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 | .string | 字体族内容，多个字体族之间使用逗号分隔。 |
 
 ## NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS
@@ -282,13 +282,13 @@ NODE_TEXT_INPUT_TYPE = 7010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 输入框类型枚举[ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype)，默认值为ARKUI_TEXTINPUT_TYPE_NORMAL。 |
+| .value[0].i32 | 输入框类型枚举[ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype)，默认值为ARKUI_TEXTINPUT_TYPE_NORMAL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 输入框类型枚举[ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype)。 |
+| .value[0].i32 | 输入框类型枚举[ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype)。 |
 
 ## NODE_TEXT_INPUT_SELECTED_BACKGROUND_COLOR
 
@@ -378,7 +378,7 @@ NODE_TEXT_INPUT_CANCEL_BUTTON = 7014
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-native-type-h.md#arkui_cancelbuttonstyle)，默认值为ARKUI_CANCELBUTTON_STYLE_INPUT。 |
+| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)，默认值为ARKUI_CANCELBUTTON_STYLE_INPUT。 |
 | .value[1]?.f32 | 图标大小数值，单位为vp。 |
 | .value[2]?.u32 | 按钮图标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
 | ?.string | 按钮图标地址，入参内容为图片本地地址，例如 /pages/icon.png。 |
@@ -387,7 +387,7 @@ NODE_TEXT_INPUT_CANCEL_BUTTON = 7014
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-native-type-h.md#arkui_cancelbuttonstyle)。 |
+| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)。 |
 | .value[1].f32 | 图标大小数值，单位为vp。 |
 | .value[2].u32 | 按钮图标颜色数值，0xargb格式。 |
 | .string | 按钮图标地址。 |
@@ -488,13 +488,13 @@ NODE_TEXT_INPUT_CONTENT_TYPE = 7018
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype)。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype)。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)。 |
 
 ## NODE_TEXT_INPUT_PASSWORD_RULES
 
@@ -574,7 +574,7 @@ NODE_TEXT_INPUT_INPUT_FILTER = 7021
 NODE_TEXT_INPUT_STYLE = 7022
 ```
 
-设置输入框为默认风格或内联输入风格。内联输入风格只支持输入框类型的枚举[ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype)设置为ARKUI_TEXTINPUT_TYPE_NORMAL。<br>
+设置输入框为默认风格或内联输入风格。内联输入风格只支持输入框类型的枚举[ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype)设置为ARKUI_TEXTINPUT_TYPE_NORMAL。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -584,13 +584,13 @@ NODE_TEXT_INPUT_STYLE = 7022
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputStyle](capi-native-type-h.md#arkui_textinputstyle)。默认值为ARKUI_TEXTINPUT_STYLE_DEFAULT。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputStyle](capi-text-input-h.md#arkui_textinputstyle)。默认值为ARKUI_TEXTINPUT_STYLE_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputStyle](capi-native-type-h.md#arkui_textinputstyle)。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputStyle](capi-text-input-h.md#arkui_textinputstyle)。 |
 
 ## NODE_TEXT_INPUT_CARET_OFFSET
 
@@ -749,13 +749,13 @@ NODE_TEXT_INPUT_WORD_BREAK = 7029
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)。默认值ARKUI_WORD_BREAK_BREAK_WORD。 |
+| .value[0].i32 | 参数类型[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)。默认值ARKUI_WORD_BREAK_BREAK_WORD。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)。 |
+| .value[0].i32 | 参数类型[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)。 |
 
 ## NODE_TEXT_INPUT_SHOW_KEYBOARD_ON_FOCUS
 
@@ -893,13 +893,13 @@ NODE_TEXT_INPUT_KEYBOARD_APPEARANCE = 7035
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)。 |
+| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)。默认值ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE。 |
+| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance)。默认值ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE。 |
 
 ## NODE_TEXT_INPUT_ENABLE_FILL_ANIMATION
 
@@ -923,7 +923,7 @@ NODE_TEXT_INPUT_ENABLE_FILL_ANIMATION = 7036
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 是否启用自动填充动效。启用之后，仅输入框类型的枚举[ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype)设置为ARKUI_TEXTINPUT_TYPE_PASSWORD、ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD或ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD的输入框在进行自动填充时动效可生效。 |
+| .value[0].i32 | 是否启用自动填充动效。启用之后，仅输入框类型的枚举[ArkUI_TextInputType](capi-text-input-h.md#arkui_textinputtype)设置为ARKUI_TEXTINPUT_TYPE_PASSWORD、ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD或ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD的输入框在进行自动填充时动效可生效。 |
 
 ## NODE_TEXT_INPUT_LINE_HEIGHT
 
@@ -1043,13 +1043,13 @@ NODE_TEXT_INPUT_ELLIPSIS_MODE = 7042
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。 |
+| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。 |
+| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode)。 |
 
 ## NODE_TEXT_INPUT_COMPRESS_LEADING_PUNCTUATION
 
@@ -1139,13 +1139,13 @@ NODE_TEXT_INPUT_DIRECTION = 7047
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本的排版方向，取[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。 |
+| .value[0].i32 | 表示文本的排版方向，取[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。 |
+| .value[0].i32 | 表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)枚举值。 |
 
 ## NODE_TEXT_INPUT_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -1187,13 +1187,13 @@ NODE_TEXT_INPUT_TEXT_OVERFLOW = 7049
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。内联模式非编辑态下默认值为ARKUI_TEXT_OVERFLOW_ELLIPSIS，内联模式编辑态下默认值为ARKUI_TEXT_OVERFLOW_CLIP。 |
+| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。内联模式非编辑态下默认值为ARKUI_TEXT_OVERFLOW_ELLIPSIS，内联模式编辑态下默认值为ARKUI_TEXT_OVERFLOW_CLIP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。 |
+| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。 |
 
 ## NODE_TEXT_INPUT_DECORATION
 
@@ -1357,8 +1357,8 @@ NODE_TEXT_AREA_PLACEHOLDER_FONT = 8004
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0]?.f32 | 可选字体大小数值，默认值16.0，单位为fp。 |
-| .value[1]?.i32 | 可选字体样式[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
-| .value[2]?.i32 | 可选字体粗细样式[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
+| .value[1]?.i32 | 可选字体样式[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
+| .value[2]?.i32 | 可选字体粗细样式[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
 | ?.string | 字体族内容，多个字体族之间使用逗号分隔，形如“字重；字体族1，字体族2”。 |
 
 **返回：**
@@ -1366,8 +1366,8 @@ NODE_TEXT_AREA_PLACEHOLDER_FONT = 8004
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 字体大小数值，单位为fp。 |
-| .value[1].i32 | 字体样式[ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle)。 |
-| .value[2].i32 | 字体粗细样式[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[1].i32 | 字体样式[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)。 |
+| .value[2].i32 | 字体粗细样式[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 | .string | 字体族内容，多个字体族之间使用逗号分隔。 |
 
 ## NODE_TEXT_AREA_CARET_COLOR
@@ -1386,13 +1386,13 @@ NODE_TEXT_AREA_CARET_COLOR = 8005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式。 |
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -1434,13 +1434,13 @@ NODE_TEXT_AREA_TYPE = 8007
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 输入框类型枚举[ArkUI_TextAreaType](capi-native-type-h.md#arkui_textareatype)，默认值为ARKUI_TEXTAREA_TYPE_NORMAL。 |
+| .value[0].i32 | 输入框类型枚举[ArkUI_TextAreaType](capi-text-area-h.md#arkui_textareatype)，默认值为ARKUI_TEXTAREA_TYPE_NORMAL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 输入框类型枚举[ArkUI_TextAreaType](capi-native-type-h.md#arkui_textareatype)。 |
+| .value[0].i32 | 输入框类型枚举[ArkUI_TextAreaType](capi-text-area-h.md#arkui_textareatype)。 |
 
 ## NODE_TEXT_AREA_SHOW_COUNTER
 
@@ -1584,13 +1584,13 @@ NODE_TEXT_AREA_ENTER_KEY_TYPE = 8013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)，默认值为ARKUI_ENTER_KEY_TYPE_DONE。 |
+| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)，默认值为ARKUI_ENTER_KEY_TYPE_DONE。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。 |
+| .value[0].i32 | 回车键类型枚举[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)。 |
 
 ## NODE_TEXT_AREA_ENABLE_KEYBOARD_ON_FOCUS
 
@@ -1749,13 +1749,13 @@ NODE_TEXT_AREA_CONTENT_TYPE = 8020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype)。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-native-type-h.md#arkui_textinputcontenttype)。 |
+| .value[0].i32 | 参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)。 |
 
 ## NODE_TEXT_AREA_SHOW_KEYBOARD_ON_FOCUS
 
@@ -1893,13 +1893,13 @@ NODE_TEXT_AREA_KEYBOARD_APPEARANCE = 8026
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)。 |
+| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)。 |
+| .value[0].i32 | 键盘样式，参数类型[ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance)。 |
 
 ## NODE_TEXT_AREA_MAX_LINES
 
@@ -2159,13 +2159,13 @@ NODE_TEXT_AREA_ELLIPSIS_MODE = 8038
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。 |
+| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。 |
+| .value[0].i32 | 参数类型[ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode)。 |
 
 ## NODE_TEXT_AREA_ORPHAN_CHAR_OPTIMIZATION
 
@@ -2173,7 +2173,7 @@ NODE_TEXT_AREA_ELLIPSIS_MODE = 8038
 NODE_TEXT_AREA_ORPHAN_CHAR_OPTIMIZATION = 8039
 ```
 
-设置TextArea文本排版时是否使能孤字优化，设置后通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)属性为非ARKUI_WORD_BREAK_BREAK_ALL时生效。<br>
+设置TextArea文本排版时是否使能孤字优化，设置后通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak)属性为非ARKUI_WORD_BREAK_BREAK_ALL时生效。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 26.0.0
@@ -2303,13 +2303,13 @@ NODE_TEXT_AREA_DIRECTION = 8044
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本的排版方向，取[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。 |
+| .value[0].i32 | 表示文本的排版方向，取[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。 |
+| .value[0].i32 | 表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection)枚举值。 |
 
 ## NODE_TEXT_AREA_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -2351,13 +2351,13 @@ NODE_TEXT_AREA_TEXT_OVERFLOW = 8046
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_CLIP。 |
+| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_CLIP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。 |
+| .value[0].i32 | 表示文本超长时的显示方式[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)。 |
 
 ## NODE_TEXT_AREA_DECORATION
 

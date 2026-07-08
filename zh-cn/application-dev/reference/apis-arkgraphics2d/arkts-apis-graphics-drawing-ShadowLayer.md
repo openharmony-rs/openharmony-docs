@@ -154,7 +154,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context: DrawContext) {
     const canvas = context.canvas;
-    let shadowLayer = drawing.ShadowLayer.create(3.0, -3.0, 3.0, 0xff00ff00);
+    let shadowLayer = drawing.ShadowLayer.create(3.0, -3.0, 3.0, (0xff00ff00).toInt());
   }
 }
 ```

@@ -244,9 +244,10 @@
     struct EntryComponent {
       build() {
         Column() {
-          // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化
+          // count、increaseBy使用传入值1、2初始化；title未传入，使用本地默认值new Model('Hello World')初始化
           MyComponent({ count: 1, increaseBy: 2 })
             .width(300)
+          // title、count使用传入值new Model('Hello World 2')、7初始化；increaseBy未传入，使用本地默认值1初始化
           MyComponent({ title: new Model('Hello World 2'), count: 7 })
         }
       }
@@ -283,30 +284,6 @@
     ```
 
 ![Video-state](figures/Video-state.gif)
-
-从上述示例中，我们可以了解到\@State变量的初始化机制：
-
-1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
-
-    <!-- @[state_scene_type_class_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-    
-    ``` TypeScript
-    // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
-    MyComponent({ count: 1, increaseBy: 2 })
-    // increaseBy没有外部传入，使用本地的值1进行初始化
-    MyComponent({ title: new Model('Hello World 2'), count: 7 })
-    ```
-
-2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
-
-    <!-- @[state_scene_type_class_out_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-    
-    ``` TypeScript
-    // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
-    MyComponent({ count: 1, increaseBy: 2 })
-    // title和count均有外部传入，分别使用传入的new Model('Hello World 2')和7进行初始化
-    MyComponent({ title: new Model('Hello World 2'), count: 7 })
-    ```
 
 ### 装饰Array类型变量
 
@@ -566,7 +543,7 @@ struct DatePickerExample {
 
 ![state-date](figures/state-date.gif)
 
-### State支持联合类型实例
+### \@State支持联合类型实例
 
 \@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的值，视图会随之刷新。
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->

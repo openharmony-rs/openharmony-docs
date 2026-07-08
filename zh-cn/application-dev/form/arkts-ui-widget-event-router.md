@@ -19,6 +19,7 @@
 
 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。
 
+   ArkTS-Dyn示例：
    <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) -->
    
    ``` TypeScript
@@ -87,8 +88,66 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) --> 
+   
+   ``` TypeScript
+   // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
+   
+   @Entry
+   @Component
+   struct WidgetEventRouterCard {
+     build() {
+       Column() {
+         // $r('app.string.JumpLabel')需要替换为开发者所需的资源文件
+         Text($r('app.string.JumpLabel')).fontColor('#FFFFFF').opacity(0.9).fontSize(14).margin({ top: '8%', left: '10%' })
+         Row() {
+           Column() {
+             Button() {
+               // $r('app.string.ButtonA_label')需要替换为开发者所需的资源文件
+               Text($r('app.string.ButtonA_label')).fontColor('#45A6F4').fontSize(12)
+             }
+             .width(120)
+             .height(32)
+             .margin({ top: '20%' })
+             .backgroundColor('#FFFFFF')
+             .borderRadius(16)
+             .onClick(() => {
+               postCardAction(this, {
+                 action: 'router', abilityName: 'EntryAbility', params: { targetPage: 'funA' }
+               });
+             })
+   
+             Button() {
+               // $r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
+               Text($r('app.string.ButtonB_label')).fontColor('#45A6F4').fontSize(12)
+             }
+             .width(120)
+             .height(32)
+             .margin({ top: '8%', bottom: '15vp' })
+             .backgroundColor('#FFFFFF')
+             .borderRadius(16)
+             .onClick(() => {
+               postCardAction(this, {
+                 action: 'router', abilityName: 'EntryAbility', params: { targetPage: 'funB' }
+               });
+             })
+           }
+         }.width('100%').height('80%').justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
+
 3. 处理router事件，在UIAbility中接收router事件并获取参数，根据传递的params不同，选择拉起不同的页面。
   
+   ArkTS-Dyn示例：
    <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) -->
    
    ``` TypeScript
@@ -157,8 +216,164 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   // src/main/ets/entryability/EntryAbility.ets
+   
+   import UIAbility from '@ohos.app.ability.UIAbility';
+   import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+   import Want from '@ohos.app.ability.Want';
+   import window from '@ohos.window';
+   import { BusinessError, RecordData } from '@ohos.base'
+   import hilog from '@ohos.hilog'
+   
+   const TAG: string = 'EntryAbility';
+   const DOMAIN_NUMBER: int = 0x0000;
+   
+   class EntryAbility extends UIAbility {
+     private selectPage: string = 'Index';
+     private currentWindowStage: window.WindowStage | undefined = undefined;
+   
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'entry onCreate');
+       let params = want?.parameters;
+       if (params !== undefined && params['targetPage'] !== undefined) {
+         this.selectPage = params['targetPage'] as string;
+         hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${params['targetPage']}`);
+       } else {
+         this.selectPage = 'Index';
+       }
+     }
+   
+     // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
+     onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'Ability onNewWant');
+       let params = want?.parameters;
+       if (params !== undefined && params['targetPage'] !== undefined) {
+         this.selectPage = params['targetPage'] as string;
+         hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${params['targetPage']}`);
+       } else {
+         this.selectPage = 'Index';
+       }
+       if (this.currentWindowStage !== undefined) {
+         this.onWindowStageCreate(this.currentWindowStage);
+       }
+     }
+   
+     onWindowStageCreate(windowStage: window.WindowStage | undefined): void {
+       hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageCreate this.selectPage: ${this.selectPage}`);
+       let targetPage: string = 'pages/Index';
+       // 根据传递的targetPage不同，选择拉起不同的页面
+       switch (this.selectPage) {
+         case 'funA':
+           targetPage = 'funpages/FunA';
+           break;
+         case 'funB':
+           targetPage = 'funpages/FunB';
+           break;
+         default:
+           targetPage = 'pages/Index';
+       }
+       if (windowStage) {
+         this.currentWindowStage = windowStage;
+       }
+       try {
+         windowStage?.loadContent(targetPage, (err: BusinessError<void> | null): void => {
+           if (err && err.code) {
+             hilog.error(DOMAIN_NUMBER, TAG,
+               `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
+             return;
+           }
+           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
+         });
+       } catch (e) {
+         hilog.info(DOMAIN_NUMBER, TAG, `loadContent catch error, code: ${e.code}, message: ${e.message}`);
+       }
+     }
+   }
+   ```
+   
+   ``` TypeScript
+   // src/main/ets/entryability/EntryAbility.ets
+   
+   import UIAbility from '@ohos.app.ability.UIAbility';
+   import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+   import Want from '@ohos.app.ability.Want';
+   import window from '@ohos.window';
+   import { BusinessError, RecordData } from '@ohos.base'
+   import hilog from '@ohos.hilog'
+   
+   const TAG: string = 'EntryAbility';
+   const DOMAIN_NUMBER: int = 0x0000;
+   
+   class EntryAbility extends UIAbility {
+     private selectPage: string = 'Index';
+     private currentWindowStage: window.WindowStage | undefined = undefined;
+   
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'entry onCreate');
+       let params = want?.parameters;
+       if (params !== undefined && params['targetPage'] !== undefined) {
+         this.selectPage = params['targetPage'] as string;
+         hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${params['targetPage']}`);
+       } else {
+         this.selectPage = 'Index';
+       }
+     }
+   
+     // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
+     onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'Ability onNewWant');
+       let params = want?.parameters;
+       if (params !== undefined && params['targetPage'] !== undefined) {
+         this.selectPage = params['targetPage'] as string;
+         hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${params['targetPage']}`);
+       } else {
+         this.selectPage = 'Index';
+       }
+       if (this.currentWindowStage !== undefined) {
+         this.onWindowStageCreate(this.currentWindowStage);
+       }
+     }
+   
+     onWindowStageCreate(windowStage: window.WindowStage | undefined): void {
+       hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageCreate this.selectPage: ${this.selectPage}`);
+       let targetPage: string = 'pages/Index';
+       // 根据传递的targetPage不同，选择拉起不同的页面
+       switch (this.selectPage) {
+         case 'funA':
+           targetPage = 'funpages/FunA';
+           break;
+         case 'funB':
+           targetPage = 'funpages/FunB';
+           break;
+         default:
+           targetPage = 'pages/Index';
+       }
+       if (windowStage) {
+         this.currentWindowStage = windowStage;
+       }
+       try {
+         windowStage?.loadContent(targetPage, (err: BusinessError<void> | null): void => {
+           if (err && err.code) {
+             hilog.error(DOMAIN_NUMBER, TAG,
+               `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
+             return;
+           }
+           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
+         });
+       } catch (e) {
+         hilog.info(DOMAIN_NUMBER, TAG, `loadContent catch error, code: ${e.code}, message: ${e.message}`);
+       }
+     }
+   }
+   ```
+
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
 
+   ArkTS-Dyn示例：
    <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) --> 
    
    ``` TypeScript
@@ -257,6 +472,111 @@
        }
        .width('100%')
        .height('100%')
+     }
+   }
+   ```
+   ArkTS-Sta示例：
+   <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunA.ets) --> 
+   
+   ``` TypeScript
+   // src/main/ets/funpages/FunA.ets
+   import {
+     $r,
+     Button,
+     Column,
+     Component,
+     Entry,
+     FlexAlign,
+     FontWeight,
+     Image,
+     Row,
+     Text,
+     TextAlign
+   } from '@ohos.arkui.component'
+   
+   @Entry
+   @Component
+   struct FunA {
+     build() {
+       Column(undefined) {
+         Row() {
+           Text(($r('app.string.ButtonA_label')))
+             .fontSize(24)
+             .fontWeight(FontWeight.Bold)
+             .textAlign(TextAlign.Start)
+             .margin({
+               top: 12,
+               bottom: 11,
+               right: 24,
+               left: 24
+             })
+         }.width('100%').height(56).justifyContent(FlexAlign.Start)
+   
+         Image($r('app.media.pic_empty')).width(120).height(120).margin({ top: 224 })
+   
+         Text($r('app.string.NoContentAvailable')).fontSize(14).fontColor($r('app.color.text_color')).opacity(0.4).margin({
+           top: 8,
+           bottom: 317,
+           right: 152,
+           left: 152
+         })
+       }.width('100%').height('100%')
+     }
+   }
+   ```
+
+   <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunB.ets) --> 
+   
+   ``` TypeScript
+   // src/main/ets/funpages/FunB.ets
+   import {
+     $r,
+     Button,
+     Column,
+     Component,
+     Entry,
+     FlexAlign,
+     FontWeight,
+     Image,
+     Row,
+     Text,
+     TextAlign
+   } from '@ohos.arkui.component'
+   
+   @Entry
+   @Component
+   struct FunB {
+     build() {
+       Column() {
+         Row() { // $r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
+           Text(($r('app.string.ButtonB_label')))
+             .fontSize(24)
+             .fontWeight(FontWeight.Bold)
+             .textAlign(TextAlign.Start)
+             .margin({
+               top: 12,
+               bottom: 11,
+               right: 24,
+               left: 24
+             })
+         }.width('100%').height(56).justifyContent(FlexAlign.Start)
+   
+         // $r('app.media.pic_empty')需要替换为开发者所需的资源文件
+         Image($r('app.media.pic_empty')).width(120).height(120).margin({ top: 224 })
+   
+         // $r('app.string.NoContentAvailable')需要替换为开发者所需的资源文件
+         Text($r('app.string.NoContentAvailable'))
+           .fontSize(14)
+           // $r('app.color.text_color')需要替换为开发者所需的资源文件
+           .fontColor($r('app.color.text_color'))
+           .opacity(0.4)
+           .margin({
+             top: 8,
+             bottom: 317,
+             right: 152,
+             left: 152
+           })
+       }.width('100%').height('100%')
      }
    }
    ```

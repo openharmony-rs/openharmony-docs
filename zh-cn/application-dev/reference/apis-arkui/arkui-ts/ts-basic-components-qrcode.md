@@ -6,13 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于显示单个二维码的组件。
+QRCode组件用于显示单个二维码，支持自定义二维码颜色、背景颜色及内容不透明度，适用于需要展示二维码以供扫描获取字符串信息的场景。
 
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
 >
@@ -42,7 +42,7 @@ QRCode(value: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 是 | 二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。 <br>从API version 20开始，支持Resource类型。 <br/>**说明：** <br/>设置为null时与设置字符串“null”效果一致；设置为undefined时与设置字符串“undefined”效果一致；当传入空字符串时，将生成无效二维码。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 是 | 二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。 <br>从API version 20开始，支持Resource类型。 <br>**说明：** <br>设置为null时与设置字符串"null"效果一致；设置为undefined时与设置字符串"undefined"效果一致；当传入空字符串时，将生成无效二维码。 |
 
 ## 属性
 
@@ -64,7 +64,7 @@ attributeModifier(modifier: AttributeModifier\<QRCodeAttribute> | AttributeModif
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<QRCodeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置QRCode组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<QRCodeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置QRCode组件的属性。<br>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### color
 
@@ -88,7 +88,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明         |
 | ------ | ------------------------------------------ | ---- | ------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码颜色。默认值：'#ff000000'，且不跟随系统深浅色模式切换而修改。<br/>设置undefined时按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码颜色。默认值：'#ff000000'，且不跟随系统深浅色模式切换而修改。<br>设置undefined时按默认值处理。 |
 
 ### backgroundColor
 
@@ -112,7 +112,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码背景颜色。<br/>默认值：Color.White <br/>从API version 11开始，默认值改为'#ffffffff'，且不跟随系统深浅色模式切换而修改。<br/>设置undefined时按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码背景颜色。<br>默认值：Color.White <br>从API version 11开始，默认值改为'#ffffffff'，且不跟随系统深浅色模式切换而修改。<br>设置undefined时按默认值处理。 |
 
 ### contentOpacity<sup>11+</sup>
 
@@ -136,7 +136,7 @@ ArkTS-Sta: contentOpacity(value: double | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  \| undefined | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。<br/>设置undefined时按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  \| undefined | 是   | 二维码内容颜色的不透明度。<br>默认值：1<br>取值范围：[0, 1]，超出取值范围按默认值处理。<br>设置undefined时按默认值处理。 |
 
 
 ## 事件
@@ -158,19 +158,19 @@ struct QRCodeExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('normal').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('normal').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140)
 
       // 设置二维码颜色
-      Text('color').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('color').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).color(0xF7CE00).width(140).height(140)
 
       // 设置二维码背景色
-      Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('backgroundColor').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).backgroundColor(Color.Orange)
 
       // 设置二维码不透明度
-      Text('contentOpacity').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('contentOpacity').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.1)
     }.width('100%').margin({ top: 5 })
   }

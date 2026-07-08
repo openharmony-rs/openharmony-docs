@@ -21,6 +21,7 @@
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## pointer.setPointerSpeed
@@ -43,16 +44,16 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。   |
+| speed    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功，err为undefined，否则为错误对象。|
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -72,7 +73,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针速度
+            // 设置鼠标光标速度
             pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -83,7 +84,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -142,7 +143,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **返回值**：
 
@@ -156,7 +157,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -257,6 +258,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -323,7 +325,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br> ArkTS-Sta: AsyncCallback&lt;int&gt;| 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br> ArkTS-Sta: AsyncCallback&lt;int&gt;| 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度，取值范围[1, 20]；否则为错误对象。 |
 
 **错误码**：
 
@@ -331,7 +333,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -351,7 +353,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针速度
+            // 获取鼠标光标速度
             pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -429,7 +431,7 @@ ArkTS-Sta: getPointerSpeed(): Promise&lt;int&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 
 **示例**：
 
@@ -528,6 +530,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1738,7 +1741,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滚动开关
+            // 设置触控板滚动开关
             pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1927,7 +1930,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滚动开关
+            // 获取触控板滚动开关
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2106,7 +2109,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滚动方向
+            // 设置触控板滚动方向
             pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2208,7 +2211,7 @@ struct Index {
         .onClick(() => {
           try {
             // 设置触摸板滚动方向
-            pointer.setTouchpadScrollDirection (false).then(() => {
+            pointer.setTouchpadScrollDirection(false).then(() => {
               console.info(`Succeeded in setting touchpad scroll direction.`);
             }).catch((error: BusinessError) => {
               console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2295,8 +2298,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滚动方向
-            pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
+            // 获取触控板滚动方向
+            pointer.getTouchpadScrollDirection((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -2470,7 +2477,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板点击开关
+            // 设置触控板点击开关
             pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2520,7 +2527,7 @@ struct Index {
 }
 ```
 
-## pointer.setTouchpadTapSwitch <sup>10+</sup>
+## pointer.setTouchpadTapSwitch<sup>10+</sup>
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
@@ -2658,7 +2665,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板点击开关
+            // 获取触控板点击开关
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2839,7 +2846,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板指针速度
+            // 设置触控板光标速度
             pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3032,7 +3039,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板指针速度
+            // 获取触控板光标速度
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3218,7 +3225,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板捏合开关
+            // 设置触控板捏合开关
             pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3407,7 +3414,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板捏合开关
+            // 获取触控板捏合开关
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3586,7 +3593,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滑动开关
+            // 设置触控板滑动开关
             pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3775,8 +3782,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滑动开关
+            // 获取触控板滑动开关
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -3950,8 +3961,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板右键点击类型
-            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
+            // 设置触控板右键点击类型
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -4139,8 +4150,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板右键点击类型
+            // 获取触控板右键点击类型
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
+              if (error) {
+                console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             });
           } catch (error) {
@@ -4292,7 +4307,7 @@ ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| size     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
+| size     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -4320,7 +4335,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针大小
+            // 设置鼠标光标大小
             pointer.setPointerSize(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -4390,7 +4405,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。 |
 
 **返回值**：
 
@@ -4486,7 +4501,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。 |
 
 **错误码**：
 
@@ -4503,6 +4518,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4571,7 +4587,7 @@ ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1, 7]；否则为错误对象。 |
 
 **错误码**：
 
@@ -4598,7 +4614,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针大小
+            // 获取鼠标光标大小
             pointer.getPointerSize((error: BusinessError, size: number) => {
               if (error) {
                 console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -4668,7 +4684,7 @@ ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回鼠标光标大小，范围为[1, 7]。 |
 
 **错误码**：
 
@@ -4758,7 +4774,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标大小，范围为[1-7]。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标大小，范围为[1, 7]。 |
 
 **错误码**：
 
@@ -4775,6 +4791,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4873,7 +4890,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针颜色
+            // 设置鼠标光标颜色
             pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -5064,6 +5081,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5159,7 +5177,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针颜色
+            // 获取鼠标光标颜色
             pointer.getPointerColor((error: BusinessError, color: number) => {
               if (error) {
                 console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -5336,6 +5354,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5428,7 +5447,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板双击拖拽状态
+            // 设置触控板双击拖拽状态
             pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -5616,7 +5635,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板双击拖拽状态
+            // 获取触控板双击拖拽状态
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -5803,7 +5822,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("setMouseScrollDirection")
+      Button('setMouseScrollDirection')
         .onClick(() => {
           try {
             // 设置鼠标滚动方向
@@ -5894,7 +5913,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("getMouseScrollDirection")
+      Button('getMouseScrollDirection')
         .onClick(() => {
           try {
             // 获取鼠标滚动方向

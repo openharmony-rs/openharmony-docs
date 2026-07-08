@@ -194,7 +194,7 @@ struct CanvasExample {
   }
 }
 ```
-  ![en-us_image_0000001194032666](figures/en-us_image_0000001194032666.png)
+  ![canvas1](figures/canvas1.png)
 
 ### Example 2: Using APIs in DrawingRenderingContext
 

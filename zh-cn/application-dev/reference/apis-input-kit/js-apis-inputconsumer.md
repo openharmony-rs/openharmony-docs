@@ -57,7 +57,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考[优先响应系统功能键开发指导](../../device/input/keypressed-guidelines.md)。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 <br/> ArkTS-Sta：支持以上按键功能。|
+| key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API版本26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考[优先响应系统功能键开发指导](../../device/input/keypressed-guidelines.md)。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 <br/> ArkTS-Sta：支持以上按键功能。|
 | action    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 订阅指定的按键事件。支持取值为1和2，取值为1表示订阅按键按下事件，取值为2表示同时订阅按键按下事件和按键抬起事件。<br/>**说明：** ArkTS-Dyn：从API version 21开始，支持取值为1和2。<br/>对于API version 20及之前的版本，仅支持取值为1。<br/> ArkTS-Sta：支持以上按键功能。 |
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
@@ -178,6 +178,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -195,10 +196,10 @@ struct Index {
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
           } catch (error) {
             console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -310,6 +311,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -323,13 +325,13 @@ struct Index {
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // 取消订阅热键变更事件
-            inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -342,6 +344,7 @@ struct Index {
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -355,13 +358,13 @@ struct Index {
           // 取消订阅所有应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
-          }
+          };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // 取消订阅热键变更事件
-            inputConsumer.off("hotkeyChange", hotkeyOption);
+            inputConsumer.off('hotkeyChange', hotkeyOption);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -481,6 +484,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -609,6 +613,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -626,13 +631,13 @@ struct Index {
             }
             let callback = (event: KeyEvent) => {
               console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
-            }
+            };
             // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, callback);
             // 取消订阅按键按下事件
             inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
-            inputConsumer.off("keyPressed");
+            inputConsumer.off('keyPressed');
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

@@ -84,7 +84,7 @@
 
 ## LevelMode<sup>15+</sup>
 
-type LevelMode = LevelMode
+type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 弹窗的显示层级。
 
@@ -100,11 +100,11 @@ type LevelMode = LevelMode
 
 | 类型                                                        | 说明                 |
 | ----------------------------------------------------------- | -------------------- |
-| [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
+| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
 
 ## ImmersiveMode<sup>15+</sup>
 
-type ImmersiveMode = ImmersiveMode
+type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 弹窗的蒙层效果。
 
@@ -120,7 +120,7 @@ type ImmersiveMode = ImmersiveMode
 
 | 类型                                                         | 说明                       |
 | ------------------------------------------------------------ | -------------------------- |
-| [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
+| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
 
 ## DismissDialogAction<sup>12+</sup>
 
@@ -240,6 +240,8 @@ static show(value: ActionSheetOptions)
 
 该示例通过点击按钮弹出列表选择弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -304,11 +306,81 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action](figures/zh-cn_image_action.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+![image-action](figures/image-action.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
 在2in1设备上设置[showInSubWindow](#actionsheetoptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -376,11 +448,83 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_showinsubwindow](figures/zh-cn_image_action_showinsubwindow.jpg)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            showInSubWindow: true,
+            isModal: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Center,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+![image-action-showinsubwindow](figures/image-action-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
 该示例通过配置[transition](#actionsheetoptions对象说明)实现弹窗的显示和消失动画。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -438,11 +582,72 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_animation](figures/zh-cn_image_action_animation.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, TransitionEffect, Curve, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('ActionSheet Set Duration')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet 1',
+            message: 'Set Animation Duration open 3 second, close 100 ms',
+            autoCancel: true,
+            alignment: DialogAlignment.Top,
+            transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+              .animation({ duration: 3000, curve: Curve.Sharp })
+              .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
+              TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }).animation({ duration: 100, curve: Curve.Smooth }))),
+            offset: { dx: 0, dy: -20 },
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        }).backgroundColor(0x317aff).height("88px")
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-action-animation](figures/image-action-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
 该示例定义了ActionSheet的样式，如宽度、高度、背景色、阴影等。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -520,14 +725,166 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_style](figures/zh-cn_image_action_style.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, DialogAlignment, BorderStyle,
+  Color, DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            width: 300,
+            height: 350,
+            cornerRadius: 20,
+            borderWidth: 1,
+            borderStyle: BorderStyle.Solid, // 使用borderStyle属性，需要和borderWidth属性一起使用
+            borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
+            backgroundColor: Color.White,
+            shadow: ({
+              radius: 20,
+              color: Color.Grey,
+              offsetX: 50,
+              offsetY: 0
+            }),
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+  }
+}
+```
+
+![image-action-style](figures/image-action-style.gif)
 
 ### 示例5（悬停态弹窗）
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Click to Show ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            subtitle: 'ActionSheet subtitle',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              defaultFocus: true,
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info(`reason= ${dismissDialogAction.reason}`);
+              console.info('ActionSheet onWillDismiss');
+              if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            enableHoverMode: true,
+            hoverModeArea: HoverModeAreaType.TOP_SCREEN,
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          })
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Flex, Button, FlexDirection, ItemAlign, FlexAlign, DialogAlignment,
+  DismissDialogAction, DismissReason, HoverModeAreaType } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ActionSheetExample {
@@ -600,6 +957,8 @@ struct ActionSheetExample {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -671,7 +1030,81 @@ struct Example1 {
 }
 ```
 
-![zh-cn_image_action_lifecycle](figures/zh-cn_image_action_lifecycle.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, State, Margin, DialogAlignment, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example1 {
+  @State log: string = 'Log information:';
+  flag: boolean = false;
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet',
+            message: 'message',
+            autoCancel: true,
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -20 },
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('ActionSheet Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet Closed callbacks');
+            },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('ActionSheet apples')
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('ActionSheet bananas')
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('ActionSheet pears')
+                }
+              }
+            ],
+            onDidAppear: () => {
+              this.log += '# onDidAppear';
+              console.info('ActionSheet,is onDidAppear!');
+            },
+            onDidDisappear: () => {
+              this.log += '# onDidDisappear';
+              console.info('ActionSheet,is onDidDisappear!');
+            },
+            onWillAppear: () => {
+              this.log = 'Log information:onWillAppear';
+              console.info('ActionSheet,is onWillAppear!');
+            },
+            onWillDisappear: () => {
+              this.log += '# onWillDisappear';
+              console.info('ActionSheet,is onWillDisappear!');
+            }
+          })
+        })
+      Text(this.log).fontSize(30).margin({ top: 200 } as Margin)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
@@ -679,12 +1112,15 @@ struct Example1 {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct ActionSheetExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("ActionSheet")
@@ -731,7 +1167,65 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_backgroundBlurStyleOptions](figures/zh-cn_image_action_backgroundBlurStyleOptions.png)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, DialogAlignment, BlurStyle,
+  ThemeColorMode, AdaptiveColor, BackgroundBlurStyleOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column(undefined) {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundBlurStyleOptions: {
+                colorMode: ThemeColorMode.LIGHT,
+                adaptiveColor: AdaptiveColor.AVERAGE,
+                scale: 1,
+                blurOptions: { grayscale: [20, 20] },
+              } as BackgroundBlurStyleOptions,
+            });
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### 示例8（自定义背景效果参数）
 
@@ -739,12 +1233,15 @@ struct ActionSheetExample {
 
 从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundEffect属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct ActionSheetExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
         Button("ActionSheet")
@@ -791,4 +1288,63 @@ struct ActionSheetExample {
   }
 }
 ```
-![zh-cn_image_action_backgroundEffect](figures/zh-cn_image_action_backgroundEffect.png)
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, DialogAlignment, BlurStyle, Color } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundEffect: {
+                radius: 60,
+                saturation: 0,
+                brightness: 1,
+                color: Color.White,
+                blurOptions: { grayscale: [20, 20] }
+              },
+            });
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)

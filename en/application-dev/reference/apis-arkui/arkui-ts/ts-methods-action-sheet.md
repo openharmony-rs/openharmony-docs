@@ -246,7 +246,7 @@ struct ActionSheetExample {
 }
 ```
 
-![en-us_image_action](figures/en-us_image_action.gif)
+![image-action](figures/image-action.gif)
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
@@ -318,7 +318,7 @@ struct ActionSheetExample {
 }
 ```
 
-![en-us_image_action_showinsubwindow](figures/en-us_image_action_showinsubwindow.jpg)
+![image-action-showinsubwindow](figures/image-action-showinsubwindow.jpg)
 
 ### Example 3: Setting the Dialog Box Animation
 
@@ -380,7 +380,7 @@ struct ActionSheetExample {
 }
 ```
 
-![en-us_image_action_animation](figures/en-us_image_action_animation.gif)
+![image-action-animation](figures/image-action-animation.gif)
 
 ### Example 4: Setting the Dialog Box Style
 
@@ -462,7 +462,7 @@ struct ActionSheetExample {
 }
 ```
 
-![en-us_image_action_style](figures/en-us_image_action_style.gif)
+![image-action-style](figures/image-action-style.gif)
 
 ### Example 5: Configuring a Dialog Box in the Hover State
 
@@ -613,7 +613,7 @@ struct Example1 {
 }
 ```
 
-![en-us_image_action_lifecycle](figures/en-us_image_action_lifecycle.gif)
+![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### Example 7: Customizing the Background Blur Effect
 
@@ -673,7 +673,7 @@ struct ActionSheetExample {
 }
 ```
 
-![en-us_image_action_backgroundBlurStyleOptions](figures/en-us_image_action_backgroundBlurStyleOptions.png)
+![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### Example 8: Customizing the Background Effect
 
@@ -733,4 +733,4 @@ struct ActionSheetExample {
   }
 }
 ```
-![en-us_image_action_backgroundEffect](figures/en-us_image_action_backgroundEffect.png)
+![en-us_image_action_backgroundEffect](figures/image-action-backgroundEffect.png)

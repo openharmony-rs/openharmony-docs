@@ -287,7 +287,7 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 | SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
 | url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
 | email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码提供跳转服务，拉起电话拨号页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
 | address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
 | dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
 | askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
@@ -557,7 +557,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | URL | 1 | 链接<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
 | EMAIL | 2 | 邮箱<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
 | ADDRESS | 3 | 地址<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
-| DATE_TIME<sup>12+</sup> | 4 | 时间<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23 |
+| DATE_TIME<sup>12+</sup> | 4 | 日期时间<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## TextDeleteDirection<sup>12+</sup>枚举说明
 
@@ -1122,7 +1122,7 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 ## LineMetrics<sup>12+</sup>
 
-ArkTS-Dyn: type LineMetrics = LineMetrics
+ArkTS-Dyn: type LineMetrics =import('../api/@ohos.graphics.text').default.LineMetrics
 
 ArkTS-Sta: type LineMetrics = text.LineMetrics
 
@@ -1138,11 +1138,11 @@ ArkTS-Sta: type LineMetrics = text.LineMetrics
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) <br/>ArkTS-Sta: text.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics)| 用于描述文本布局中单行文字的度量信息。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) <br/>ArkTS-Sta: text.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics)| 用于描述文本布局中单行文字的度量信息。 |
 
 ## Affinity<sup>12+</sup>
 
-ArkTS-Dyn: type Affinity = Affinity
+ArkTS-Dyn: type Affinity = import('../api/@ohos.graphics.text').default.Affinity
 
 ArkTS-Sta: type Affinity = text.Affinity
 
@@ -1158,11 +1158,11 @@ ArkTS-Sta: type Affinity = text.Affinity
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) <br/>ArkTS-Sta: text.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) <br/>ArkTS-Sta: text.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
 
 ## TextBox<sup>14+</sup>
 
-ArkTS-Dyn: type TextBox = TextBox
+ArkTS-Dyn: type TextBox = import('../api/@ohos.graphics.text').default.TextBox
 
 ArkTS-Sta: type TextBox = text.TextBox
 
@@ -1178,11 +1178,11 @@ ArkTS-Sta: type TextBox = text.TextBox
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) <br/>ArkTS-Sta: text.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) <br/>ArkTS-Sta: text.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
 
 ## Paragraph<sup>20+</sup>
 
-ArkTS-Dyn: type Paragraph = Paragraph
+ArkTS-Dyn: type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph
 
 ArkTS-Sta: type Paragraph = text.Paragraph
 
@@ -1198,11 +1198,11 @@ ArkTS-Sta: type Paragraph = text.Paragraph
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) <br/>ArkTS-Sta: text.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) <br/>ArkTS-Sta: text.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
 
 ## RectHeightStyle<sup>14+</sup>
 
-ArkTS-Dyn: type RectHeightStyle = RectHeightStyle
+ArkTS-Dyn: type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle
 
 ArkTS-Sta: type RectHeightStyle = text.RectHeightStyle
 
@@ -1218,11 +1218,11 @@ ArkTS-Sta: type RectHeightStyle = text.RectHeightStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) <br/>ArkTS-Sta: text.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) <br/>ArkTS-Sta: text.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
 
 ## RectWidthStyle<sup>14+</sup>
 
-ArkTS-Dyn: type RectWidthStyle = RectWidthStyle
+ArkTS-Dyn: type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle
 
 ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
@@ -1238,7 +1238,7 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) <br/>ArkTS-Sta: text.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.text').default.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) <br/>ArkTS-Sta: text.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
 
 ## TextChangeOptions<sup>15+</sup>对象说明
 
@@ -1778,7 +1778,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
-type InputMethodExtraConfig = InputMethodExtraConfig
+type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig
 
 输入法扩展信息。
 
@@ -1794,7 +1794,7 @@ type InputMethodExtraConfig = InputMethodExtraConfig
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
+| import('../api/@ohos.inputMethod.ExtraConfig').[InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
 
 ## AccessibilitySpanOptions<sup>23+</sup>对象说明
 

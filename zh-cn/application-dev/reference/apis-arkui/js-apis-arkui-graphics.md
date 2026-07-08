@@ -79,7 +79,7 @@ type NodePosition = Vector2
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
@@ -2987,7 +2987,7 @@ ArkTS-Sta中使用ArkTS-Dyn的LengthMetrics、ColorMetrics、ShapeMask、ShapeCl
 
 | 名称     | 类型     | 只读 | 可选 | 说明                                     |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大背景模糊效果越明显，为0时不模糊。 |
+| radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大背景模糊效果越明显，为0时不模糊。 |
 | grayscale | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [int, int] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
 
 ## ContentBlur
@@ -3006,7 +3006,7 @@ ArkTS-Sta中使用ArkTS-Dyn的LengthMetrics、ColorMetrics、ShapeMask、ShapeCl
 
 | 名称     | 类型     | 只读 | 可选 | 说明                                     |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大模糊效果越明显，为0时不模糊。 |
+| radius   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大模糊效果越明显，为0时不模糊。 |
 | grayscale | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [int, int] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
 
 ## ForegroundBlur
@@ -3025,4 +3025,4 @@ ArkTS-Sta中使用ArkTS-Dyn的LengthMetrics、ColorMetrics、ShapeMask、ShapeCl
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                |
 | ------ | ------ | ---- | ---- | ----------------------------------- |
-| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 模糊效果半径。取值范围为[0, +∞)，默认值为0，值越大前景模糊效果越明显，为0时不模糊。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 模糊效果半径。取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大前景模糊效果越明显，为0时不模糊。 |

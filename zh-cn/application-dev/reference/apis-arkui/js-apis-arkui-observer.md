@@ -259,7 +259,7 @@ TabContent页面的切换信息。
 | index        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
 | id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                          |
 | uniqueId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                       |
-| lastIndex<sup>22+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23    |
+| lastIndex<sup>22+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 是   | 最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23    |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 

@@ -61,28 +61,29 @@ project/
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn的页面。
 
-  ```TypeScript
-  // entry\src\main\ets\pages\Index.ets
-  import { Entry, Button, ClickEvent, Column, Component, Text } from '@ohos.arkui.component';
+  <!-- @[call_resource_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInterop/entry/src/main/ets/pages/ResInterop.ets) -->
+  
+  ``` TypeScript
+  import { Entry, Button, ClickEvent, Column, Component, Text, FontWeight, ColumnOptions } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { $r } from 'arkui.component.common';
   import { Resource } from 'global.resource';
   import transfer from '@ohos.transfer';
   import { createResource } from 'library';
-
+  
   @Entry
   @Component
-  struct Index {
+  struct ResInterop {
     // $r("app.string.res")需替换为开发者所需要的资源
     @State resText: Resource = $r("app.string.res");
     // $r("app.color.start_window_background"需替换为开发者所需要的资源
     @State resTextColor: Resource = $r("app.color.start_window_background");
-
+  
     build() {
       Column() {
         Button("createResource").height(35)
           .onClick((e: ClickEvent) => {
-            let res = createResource() as object;
+            let res = createResource();
             let res2 = transfer.transferStatic(res, 'Global.Resource');
             this.resText = res2 as Resource;
           })
