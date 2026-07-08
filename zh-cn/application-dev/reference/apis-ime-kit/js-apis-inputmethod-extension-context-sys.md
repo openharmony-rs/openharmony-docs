@@ -552,9 +552,9 @@ disconnectAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：9+ |
+| 16000011 | The context does not exist.<br>适用版本：9+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：9+ |
 
 **示例：**
 
@@ -615,9 +615,9 @@ disconnectAbility(connection: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：9+ |
+| 16000011 | The context does not exist.<br>适用版本：9+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：9+ |
 
 **示例：**
 
@@ -671,9 +671,9 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：9+ |
+| 16000011 | The context does not exist.<br>适用版本：9+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：9+ |
 
 **示例：**
 
@@ -738,9 +738,9 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：9+ |
+| 16000011 | The context does not exist.<br>适用版本：9+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：9+ |
 
 **示例：**
 
