@@ -196,7 +196,7 @@ OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 视频解码器异步回调函数集合，用于接收输入缓冲区可用、输出数据生成、错误和格式变化等事件。回调函数及其参数定义请参阅[OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md)。 |
+| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 视频解码器异步回调函数集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
@@ -224,14 +224,14 @@ OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码器实例的指针。 |
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | 视频解码器异步回调函数集合，用于接收输入缓冲区可用、输出缓冲区生成、错误和格式变化等事件。回调函数及其参数定义请参阅[OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)。 |
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | 视频解码器异步回调函数集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前操作不允许，建议确认解码器状态和调用顺序后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前操作不允许。 |
 
 ### OH_VideoDecoder_SetSurface()
 
@@ -241,7 +241,7 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 
 **描述**
 
-设置输出surface以提供视频解码输出。<br>  该接口可在Configured、Prepared、Flushed、Running、EndOfStream状态调用；在初始化阶段，必须在调用OH_VideoDecoder_Prepare接口之前调用此接口。
+设置输出surface以提供视频解码输出。<br> 在初始化阶段，必须在调用OH_VideoDecoder_Prepare接口之前调用此接口。在Executing状态可以直接调用该接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -252,7 +252,7 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| [OHNativeWindow](capi-codecbase-nativewindow.md) *window | 指向OHNativeWindow实例的指针，指向OHNativeWindow实例的指针，用作视频解码输出surface，解码后的图像数据将输出到该窗口对应的surface。 |
+| [OHNativeWindow](capi-codecbase-nativewindow.md) *window | 指向OHNativeWindow实例的指针。 |
 
 **返回：**
 
@@ -475,7 +475,7 @@ OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| [OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针，用于设置视频解码器运行期间可变更的动态参数；参数键值及取值范围需符合当前解码器支持的配置。 |
+| [OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针。 |
 
 **返回：**
 
@@ -507,7 +507,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
 | uint32_t index | 输入Buffer对应的索引值。由[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)给出。 |
-| [OH_AVCodecBufferAttr](capi-codecbase-oh-avcodecbufferattr.md) attr |  输入缓冲区数据属性，用于描述缓冲区中有效数据的偏移、大小、时间戳和标志位等信息，解码器根据该属性解析本次提交的输入数据。 |
+| [OH_AVCodecBufferAttr](capi-codecbase-oh-avcodecbufferattr.md) attr | 描述缓冲区中包含的数据的信息。 |
 
 **返回：**
 
@@ -602,7 +602,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：<br>1. 输入的codec指针为非解码器实例，或者为空指针；<br>2. index非法，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前操作不允许。 <br>         AV_ERR_DRM_DECRYPT_FAILED(201)：受DRM保护的视频缓冲区解密失败，建议查看日志。|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：<br>1. 输入的codec指针为非解码器实例，或者为空指针；<br>2. index非法，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前操作不允许。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受DRM保护的视频缓冲区解密失败，建议查看日志。|
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
@@ -684,7 +684,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. index非法或者连续给同一个index，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误，建议查看日志并确认解码器实例状态是否正常。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许，建议确认解码器状态和调用顺序后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. index非法或者连续给同一个index，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoDecoder_IsValid()
 
@@ -760,7 +760,7 @@ OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| uint32_t *index | 输入buffer对应的索引值。接口返回AV_ERR_OK时，该索引可用于调用[OH_VideoDecoder_GetInputBuffer](#oh_videodecoder_getinputbuffer)获取输入缓冲区。 |
+| uint32_t *index | 输入buffer对应的索引值。 |
 | int64_t timeoutUs | 超时时长，单位为微秒。负值：无限等待；0：立即退出；正值：等待指定时长后退出。 |
 
 **返回：**
@@ -794,7 +794,7 @@ OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVBuffer * | 如果执行成功，则返回一个指向OH_AVBuffer实例的指针，用于访问指定索引对应的可用输入缓冲区；否则返回NULL。 |
+| OH_AVBuffer * | 如果执行成功，则返回一个指向OH_AVBuffer实例的指针，否则返回NULL。 |
 
 ### OH_VideoDecoder_QueryOutputBuffer()
 
@@ -815,7 +815,7 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| uint32_t *index | 输出buffer对应的索引值。接口返回AV_ERR_OK时，该索引可用于调用[OH_VideoDecoder_GetOutputBuffer](#oh_videodecoder_getoutputbuffer)获取输出缓冲区，并用于后续释放或渲染。 |
+| uint32_t *index | 输出buffer对应的索引值。 |
 | int64_t timeoutUs | 超时时长，单位为微秒。负值：无限等待；0：立即退出；正值：等待指定时长后退出。 |
 
 **返回：**
@@ -849,6 +849,6 @@ OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVBuffer](capi-core-oh-avbuffer.md) * | 如果执行成功，则返回一个指向OH_AVBuffer实例的指针，用于访问指定索引对应的可用输出缓冲区；否则返回NULL。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) * | 如果执行成功，则返回一个指向OH_AVBuffer实例的指针，否则返回NULL。 |
 
 
