@@ -87,8 +87,8 @@
 | const char * OH_PLAYER_SEI_PAYLOAD_TYPE | SEI消息中表示负载类型的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | SEI消息中表示负载内容的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | 超分辨率功能启用状态关键字，值类型为int32_t。值为1表示已启用，0表示未启用；用于超分辨率状态变化时的信息回调。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | 字幕更新信息中表示持续时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | 字幕更新信息中表示起始时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | 字幕更新信息中表示字幕文本内容的关键字，值类型为字符串（string）。<br>**起始版本：** 23 |
