@@ -208,6 +208,12 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 <!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
+``` C++
+ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
+ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
+```
+
 ### 设置图片渲染模式
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_RENDER_MODE属性设置图片渲染模式。
