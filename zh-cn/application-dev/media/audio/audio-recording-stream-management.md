@@ -199,12 +199,12 @@
 
    ArkTS-Dyn示例：
    <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) --> 
-
+   
    ``` TypeScript
    async function getCurrentAudioCapturerInfoArray(updateCallback?:
      (msg: string, isError: boolean) => void): Promise<void>{
      // ...
-
+   
      await audioStreamManager.getCurrentAudioCapturerInfoArray()
        .then((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
          console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
@@ -214,11 +214,11 @@
              console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
              console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
              console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
-
+   
              detailInfo += `StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}\n`;
              detailInfo += `Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}\n`;
              detailInfo += `Flag ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}\n`;
-
+   
              for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
                console.info(`Type: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
