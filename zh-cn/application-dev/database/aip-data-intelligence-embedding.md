@@ -87,30 +87,12 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   let textConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let textEmbedding:intelligence.TextEmbedding;
-   ```
-   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
 3. 加载文本嵌入模型。
 
@@ -124,19 +106,9 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   textEmbedding?.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
 4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
 
@@ -150,25 +122,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   let splitConfig:intelligence.SplitConfig = {
-     size:10,
-     overlapRatio:0.1
-   }
-   let splitText = 'text';
-   
-   intelligence.splitText(splitText, splitConfig)
-     .then((data:Array<string>) => {
-       console.info('Succeeded in splitting Text');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to split Text and code is ' + err.code);
-       // ...
-     })
-   ```
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
 
@@ -181,31 +136,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   let text = 'text';
-   textEmbedding?.getEmbedding(text)
-     .then((data:Array<double>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   
-   let batchTexts = ['text1','text2'];
-   textEmbedding?.getEmbedding(batchTexts)
-     .then((data:Array<Array<double>>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
 
 6. 释放文本嵌入模型。
 
@@ -218,19 +150,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   textEmbedding?.releaseModel()
-     .then(() => {
-       console.info('Succeeded in releasing Model');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to release Model and code is ' + err.code);
-       // ...
-     })
-   ```
 
 ## 图像向量化开发步骤
 
@@ -243,11 +164,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
-   ```
 
 2. 获取图像嵌入模型。
 
@@ -263,30 +181,12 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   let imageConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let imageEmbedding:intelligence.ImageEmbedding;
-   ```
-   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   intelligence.getImageEmbeddingModel(imageConfig)
-     .then((data:intelligence.ImageEmbedding) => {
-       console.info('Succeeded in getting ImageModel');
-       imageEmbedding = data;
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to get ImageModel and code is ' + err.code);
-       // ...
-     })
-   ```
+
 
 3. 加载图像嵌入模型。
 
@@ -299,19 +199,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   imageEmbedding?.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
 
 4. 获取给定图像的嵌入向量。
 
@@ -324,20 +213,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
-   ``` TypeScript
-   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-   imageEmbedding?.getEmbedding(image)
-     .then((data:Array<double>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
 
 5. 释放图像嵌入模型。
 
@@ -351,16 +228,5 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
 
-   ``` TypeScript
-   imageEmbedding?.releaseModel()
-     .then(() => {
-       console.info('Succeeded in releasing Model');
-       // ...
-     })
-     .catch((err) => {
-       console.error('Failed to release Model and code is ' + err.code);
-       // ...
-     })
-   ```
