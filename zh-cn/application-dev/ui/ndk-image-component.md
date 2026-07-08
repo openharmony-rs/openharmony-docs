@@ -179,6 +179,12 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
+``` C++
+ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
+ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
+```
+
 ### 设置图片重复样式
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_OBJECT_REPEAT属性设置图片重复样式。
