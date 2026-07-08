@@ -37,27 +37,27 @@
 
 ![preload-application-procedure](figures/preload-application-procedure.png)
 
-## 判断本次启动是否为预加载
+## 应用预加载状态识别与判断
 
-应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取当前进程的预加载类型，从而判断本次启动是否为预加载，以及预加载到的具体阶段。返回值为[AppPreloadType](../reference/apis-ability-kit/js-apis-app-ability-application.md#apppreloadtype22)枚举，具体取值含义详见API参考。
+当应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取当前进程的预加载类型（返回值为[AppPreloadType](../reference/apis-ability-kit/js-apis-app-ability-application.md#apppreloadtype22)）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
 
 > **说明：**
 >
-> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)完成之前调用该接口，才可以返回真实的预加载类型。
-> - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
+> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)完成之前调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，此时调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 ```ts
 import { AbilityStage, application } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 根据appPreloadType的值判断当前进程的预加载类型
     let appPreloadType = application.getAppPreloadType();
-    // 根据 appPreloadType 的值判断当前进程的预加载类型
   }
 }
 ```
 
-除了通过上述接口在AbilityStage中判断进程级别的预加载类型外，当应用配置预加载到windowStageCreated阶段时，开发者也可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调中，通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)是否等于PRELOAD来判断当前UIAbility实例是否由预加载机制启动，详见[开发步骤](#开发步骤)中步骤3。
+除了在AbilityStage中判断进程级别的预加载类型外，若应用配置的预加载阶段为windowStageCreated，开发者还可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中进行判断。通过校验[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)是否等于PRELOAD，即可识别当前UIAbility实例是否由预加载机制启动。具体实现请参考[开发步骤](#开发步骤)中的步骤3。
 
 ## 开发步骤
 
