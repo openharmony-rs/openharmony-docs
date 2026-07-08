@@ -1017,9 +1017,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // 占用事件
     setTimeout(() => {
       try {
-        let promise =
-          extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
-        promise.then(() => {
+        extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS).then(() => {
           console.info(`Succeeded in occupying events`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to occupy events. Cause code: ${err.code}, message: ${err.message}`);
@@ -1046,9 +1044,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // 占用事件
     setTimeout(() => {
       try {
-        let promise =
-          extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
-        promise.then(() => {
+        extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS).then(() => {
           console.info(`Succeeded in occupying events`);
         }).catch((err) => {
           let error = err as BusinessError;
