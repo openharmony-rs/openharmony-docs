@@ -433,6 +433,21 @@ nativeNodeApi->unregisterNodeEventReceiver();
     **ImageExample.h**
 
     <!-- @[image_example_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.h) -->
+    
+    ``` C
+    #ifndef IMAGE_EXAMPLE_H
+    #define IMAGE_EXAMPLE_H
+    
+    #include <arkui/native_node.h>
+    
+    // 创建图片示例界面
+    ArkUI_NodeHandle CreateImageExample();
+    
+    // 清理图片示例资源
+    void CleanupImageExample();
+    
+    #endif // IMAGE_EXAMPLE_H
+    ```
 
     **ImageExample.cpp**
 
