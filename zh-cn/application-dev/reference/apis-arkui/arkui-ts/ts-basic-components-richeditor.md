@@ -1387,7 +1387,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 
 未获焦时调用该接口不产生选中效果。
 
-从API version 12开始，在2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
+从API version 12开始，在PC/2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
 
 1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。
 
@@ -1800,7 +1800,7 @@ fromStyledString(value: StyledString): Array\<RichEditorSpan>
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | 参数检查失败。  |
+| 401      | The parameter check failed.  |
 
 ### toStyledString<sup>12+</sup>
 
@@ -1830,7 +1830,7 @@ toStyledString(value: RichEditorRange): StyledString
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | 参数检查失败。  |
+| 401      | The parameter check failed.  |
 
 
 ## RichEditorStyledStringController<sup>12+</sup>
