@@ -412,6 +412,19 @@
 
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   intelligence.getImageEmbeddingModel(imageConfig)
+     .then((data: intelligence.ImageEmbedding) => {
+       console.info('Succeeded in getting ImageModel');
+       imageEmbedding = data;
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to get ImageModel and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 
 3. 加载图像嵌入模型。
