@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ArcList** component is a circular layout container that displays a series of list items in an arc shape. It is suitable for presenting homogeneous data, such as images and text, in a continuous, multi-row format.
@@ -48,9 +48,9 @@ Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
 >
 > - In the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) statement, only the child components for which the condition evaluates to true participate in the index calculation. 
 >
-> - In the [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) or [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the indexes of all expanded subnodes are calculated. 
+> - In the [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) or [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the indexes of all child components are calculated and expanded.
 >
-> - If the values of [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the indexes of subnodes are updated. 
+> - If the values of [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the indexes of child components are updated.
 >
 > - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **Hidden** or **None** are still included in the index calculation. 
 
@@ -73,7 +73,7 @@ Creates an **ArcList** component instance with specified configuration options.
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported (the [universal attributes of scrollable components](ts-container-scrollable-common.md#attributes) are not supported):
 
 ### digitalCrownSensitivity
 
@@ -148,8 +148,6 @@ chainAnimation(enable: Optional\<boolean>)
 Sets whether to enable chained animations, which provide a visually connected, or "chained," effect when the **ArcList** component is scrolled or its top or bottom edge is dragged.
 
 The list items are separated with even space, and one item animation starts after the previous animation during basic sliding interactions. The chained animation effect is similar with spring physics.
-
-For chained animations to work properly, the edge scrolling effect of the **ArcList** component must be set to [EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -511,4 +509,3 @@ struct Index {
 ```
 
 ![arkts-arclist](figures/arkts-arclist.png)
-<!--no_check-->
