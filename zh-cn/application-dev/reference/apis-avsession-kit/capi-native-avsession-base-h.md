@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明avsession基本信息。
+声明AVSession基本信息。
 
 **引用文件：** <multimedia/av_session/native_avsession_base.h>
 
@@ -259,7 +259,7 @@ enum AVSession_AVCastControlCommandType
 | CAST_CONTROL_CMD_PLAY_PREVIOUS = 4 | 上一首命令。 |
 | CAST_CONTROL_CMD_FAST_FORWARD = 5 | 快进命令。 |
 | CAST_CONTROL_CMD_REWIND = 6 | 快退命令。 |
-| CAST_CONTROL_CMD_SEEK = 7 | 跳转某一节点命令。 |
+| CAST_CONTROL_CMD_SEEK = 7 | 跳转到指定播放位置命令。 |
 | CAST_CONTROL_CMD_SET_VOLUME = 8 | 设置音量命令。 |
 | CAST_CONTROL_CMD_SET_SPEED = 9 | 设置播放倍速命令。 |
 
@@ -277,13 +277,13 @@ enum AVSession_PlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放视频。 |
-| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放视频。 |
-| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放视频。 |
-| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放视频。 |
-| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放视频。 |
-| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放视频。 |
-| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放视频。 |
+| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放音视频。 |
+| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放音视频。 |
+| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放音视频。 |
+| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放音视频。 |
+| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放音视频。 |
+| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放音视频。 |
+| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放音视频。 |
 
 ### AVSession_PlaybackFilter
 
@@ -299,9 +299,9 @@ enum AVSession_PlaybackFilter
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FILTER_STATE = 1 << 0 | 过滤出状态。 |
-| FILTER_POSITION = 1 << 1 | 过滤出位置。 |
-| FILTER_SPEED = 1 << 2 | 过滤出倍速。 |
-| FILTER_VOLUME = 1 << 3 | 过滤出音量。 |
+| FILTER_STATE = 1 << 0 | 过滤状态。 |
+| FILTER_POSITION = 1 << 1 | 过滤位置。 |
+| FILTER_SPEED = 1 << 2 | 过滤倍速。 |
+| FILTER_VOLUME = 1 << 3 | 过滤音量。 |
 
 

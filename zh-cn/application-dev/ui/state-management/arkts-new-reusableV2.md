@@ -901,7 +901,7 @@ struct Index {
 
   build() {
     Column() {
-      ForEach(this.simpleList, (num: number, index) => {
+      ForEach(this.simpleList, (num: number, index: number) => {
         Row() {
           Button('Click to change')
             .margin({ right: 10 })
@@ -1085,7 +1085,7 @@ struct Index {
 @ReusableV2
 @ComponentV2
 struct ChildComponent {
-  @Param @Require data: string;
+  @Require @Param data: string;
 
   aboutToAppear(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);

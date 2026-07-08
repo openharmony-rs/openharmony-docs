@@ -12,10 +12,10 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 ## Overview
 
-Defines a struct for the measurement metrics of a custom span.
+Customizes the metrics of the **Span** component.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [custom_span.h](capi-custom-span-h.md)

@@ -26,7 +26,7 @@ typedef struct {...} ArkUI_AnimateCompleteCallback
 
 | 名称                                                                              | 描述 |
 |---------------------------------------------------------------------------------| -- |
-| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | 在动画中定义结束回调的类型。 |
+| [ArkUI_FinishCallbackType](capi-native-type-visual-h.md#arkui_finishcallbacktype) type | 在动画中定义结束回调的类型。 |
 | void* userData                                                                  | 用于动画结束回调，传递用户自定义数据。 |
 
 

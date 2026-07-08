@@ -1436,7 +1436,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\<void\>;
 
-删除应用分身。使用Promise异步回调。
+删除应用分身或CLI沙箱应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1448,9 +1448,9 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\
 
 | 参数名        | 类型                          | 必填 | 说明                                                          |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName   | string                        | 是   | 待删除应用分身的包名。                                         |
-| appIndex     | number                        | 是   | 待删除应用分身的索引。                                         |
-| userId       | number                        | 否   | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                |
+| bundleName   | string                        | 是   | 待删除应用分身或CLI沙箱应用的包名。                                         |
+| appIndex     | number                        | 是   | 待删除应用分身或CLI沙箱应用的索引。取值范围：[1, 5]，[2000, 3000]。1-5表示应用分身，2000-3000表示CLI沙箱应用。从API版本26.0.0开始，支持取值范围[2000, 3000]。                                         |
+| userId       | number                        | 否   | 待删除应用分身或CLI沙箱应用所属用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                |
 
 **返回值：**
 
@@ -1501,7 +1501,7 @@ try {
 
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise\<void\>;
 
-删除应用分身。使用Promise异步回调。
+删除应用分身或CLI沙箱应用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1513,9 +1513,9 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 | 参数名        | 类型                          | 必填 | 说明                                                          |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName   | string                        | 是   | 待删除应用分身的包名。                                         |
-| appIndex     | number                        | 是   | 待删除应用分身的索引。                                         |
-| destroyAppCloneParam       | [DestroyAppCloneParam](#destroyappcloneparam15)   | 否   | 指定删除应用分身所需的其他参数，默认值：参照[DestroyAppCloneParam](#destroyappcloneparam15)的默认值。   |
+| bundleName   | string                        | 是   | 待删除应用分身或CLI沙箱应用的包名。                                         |
+| appIndex     | number                        | 是   | 待删除应用分身或CLI沙箱应用的索引。取值范围：[1, 5]，[2000, 3000]。1-5表示应用分身，2000-3000表示CLI沙箱应用。从API版本26.0.0开始，支持取值范围[2000, 3000]。                                         |
+| destroyAppCloneParam       | [DestroyAppCloneParam](#destroyappcloneparam15)   | 否   | 指定删除应用分身或CLI沙箱应用所需的其他参数，默认值：参照[DestroyAppCloneParam](#destroyappcloneparam15)的默认值。   |
 
 **返回值：**
 
@@ -1953,8 +1953,8 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 | 名称        | 类型   | 只读  |  可选 | 说明                                                          |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
-| userId      | number | 否 | 是  | 指定删除分身应用所在的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
-| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定删除分身应用扩展参数，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.clone.isKeepData"：从API version 21开始支持，若对应value值为"true"，表示删除分身时会保留分身的用户数据，否则不会保留分身的用户数据。            |
+| userId      | number | 否 | 是  | 指定删除分身应用或CLI沙箱应用所在的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。            |
+| parameters  | Array<[Parameters](#parameters15)> | 否 | 是   | 指定删除分身应用扩展参数，默认值为空，不支持CLI沙箱应用。Parameters.key取值支持：</br> - "ohos.bms.param.clone.isKeepData"：从API version 21开始支持，若对应value值为"true"，表示删除分身时会保留分身的用户数据，否则不会保留分身的用户数据。            |
 
 ## PluginParam<sup>19+</sup>
 

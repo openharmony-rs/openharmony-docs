@@ -35,6 +35,8 @@ IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ab
 
 先创建服务端Stub对象，通过元能力获取其客户端代理Proxy对象，然后用Proxy对象与服务端Stub对象进行IPC通信，同时再注册远端对象的死亡通知回调，用于Proxy侧感知服务端Stub对象所在进程的死亡状态。
 
+阅读以下示例时，可按照“子进程创建Stub对象、主进程启动子进程并获取Proxy对象、Proxy端发送请求、Stub端处理请求并返回结果”的顺序理解。Proxy端和Stub端需要使用相同的`code`定义和接口描述符。
+
 **动态库文件**
 
 CMakeLists.txt中添加以下lib。
@@ -56,6 +58,8 @@ libchild_process.so
 ```
 
 **子进程实现**
+
+子进程创建Stub对象，并通过`NativeChildProcess_OnConnect`返回该对象，用于接收主进程发送的IPC请求。以下代码中的`OnRemoteRequest`仅展示回调函数的基本形式，具体的请求处理过程参见后文“Stub侧实现”。
 
 <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
 
@@ -119,11 +123,15 @@ void NativeChildProcessMainProc()
 
 **主进程实现**
 
+主进程调用`OH_Ability_CreateNativeChildProcess`启动子进程。子进程启动成功后，通过`OnNativeChildProcessStarted`回调获取与子进程Stub对象对应的`remoteProxy`，后续可基于该对象向子进程发送IPC请求。
+
 <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
 
 ``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
+// ...
+int32_t g_result = -1;
 // ...
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {
@@ -152,6 +160,8 @@ void CreateNativeChildProcess()
 ```
 
 **Proxy侧实现**
+
+Proxy端用于向远端Stub发送IPC请求。以下示例展示了创建`OHIPCParcel`对象、写入接口描述符和请求数据、调用`OH_IPCRemoteProxy_SendRequest`发送请求，以及从回应数据对象中读取处理结果的过程。不同操作通过不同的`code`值进行区分。
 
 <!-- @[proxy_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcProxy.cpp) -->
 
@@ -271,6 +281,8 @@ bool IpcProxy::WriteInterfaceToken(OHIPCParcel* data)
 ```
 
 **Stub侧实现**
+
+Stub端通过`OnRemoteRequest`接收Proxy端发送的请求。该回调先读取并校验接口描述符，再根据`code`调用对应的处理方法。处理方法从请求数据对象`data`中读取数据，并将处理结果写入回应数据对象`reply`，返回给Proxy端。
 
 <!-- @[stub_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcStub.cpp) -->
 

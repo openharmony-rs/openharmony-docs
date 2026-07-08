@@ -14,7 +14,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
 Defines methods for the web controller.
 
@@ -22,7 +22,7 @@ Defines methods for the web controller.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | Used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
+| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md)  | Used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 

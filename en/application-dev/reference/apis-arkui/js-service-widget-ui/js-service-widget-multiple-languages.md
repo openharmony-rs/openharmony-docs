@@ -1,16 +1,15 @@
-# Multi-Language Capability 
-
+# Multi-Language Capability
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Applications designed based on the development framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
+Applications designed based on the JS UI framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
 
 
-You only need to perform operations in [Defining Resource Files](#defining-resource-files) and [Referencing Resources](#referencing-resources) to use the multi-language capability of this framework. 
+You only need to perform operations in [Defining Resource Files](#defining-resource-files) and [Referencing Resources](#referencing-resources) to use the multi-language capability of this framework.
 
 
 ## Defining Resource Files
@@ -62,11 +61,12 @@ Different languages have different matching rules for singular and plural forms.
 Multi-language syntax used on application development pages (including simple formatting and singular-plural formatting) can be used in **.hml** or **.js** files.
 
 - Simple formatting
+
   Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
 
-    **Table 1** Simple formatting
+    Table 1 Simple formatting
 
-  | Name  | Type      | Parameter      | Mandatory  | Description                                    |
+  | Attribute  | Type      | Parameter      | Mandatory  | Description                                    |
   | ---- | -------- | -------- | ---- | -------------------------------------- |
   | $t   | Function | Described in **$t parameters**| Yes   | Sets the parameters based on the system language, for example, **this.$t('strings.hello')**.|
 
@@ -86,11 +86,11 @@ Multi-language syntax used on application development pages (including simple fo
    </div>
   ```
 
-- Singular-Plural Conversion
+- Singular-plural formatting
 
   **Table 3** Singular-plural conversion
 
-  | Name  | Type      | Parameter       | Mandatory  | Description                                      |
+  | Attribute  | Type      | Parameter       | Mandatory  | Description                                      |
   | ---- | -------- | --------- | ---- | ---------------------------------------- |
   | $tc  | Function | Described in **$tc parameters**| Yes   | Converts between the singular and plural forms based on the system language, for example, **this.$tc('strings.plurals')**.<br>The resource content is distinguished by the following JSON keys: **zero**, **one**, **two**, **few**, **many**, and **other**.|
 
@@ -99,24 +99,24 @@ Multi-language syntax used on application development pages (including simple fo
   | Parameter   | Type    | Mandatory  | Description   |
   | ----- | ------ | ---- | ----- |
   | path  | string | Yes   | Resource path. |
-  | count | number | Yes   | Number|
+  | count | number | Yes   | Number.|
 
 - Example code for converting between the singular and plural forms
 
   ```html
   <!--xxx.hml-->
   <div>
-      <!-- When the value 0 is passed, "0 people" matches the Arabic string whose key is zero. -->
+    <!-- When the value 0 is passed, "0 people" matches the Arabic string whose key is zero. -->
     <text>{{ $tc('strings.plurals', 0) }}</text>
-      <!-- When the value 1 is passed, "one person" matches the Arabic string whose key is one. -->
+    <!-- When the value 1 is passed, "1 person" matches the Arabic string whose key is one. -->
     <text>{{ $tc('strings.plurals', 1) }}</text>
-      <!-- When the value 2 is passed, "2 people" matches the Arabic string whose key is two. -->
+    <!-- When the value 2 is passed, "2 people" matches the Arabic string whose key is two. -->
     <text>{{ $tc('strings.plurals', 2) }}</text>
-      <!-- When the value 6 is passed, "6 people" matches the Arabic string whose key is few. -->
+    <!-- When the value 6 is passed, "6 people" matches the Arabic string whose key is few. -->
     <text>{{ $tc('strings.plurals', 6) }}</text>
-      <!-- When the value 50 is passed, "50 people" matches the Arabic string whose key is many. -->
+    <!-- When the value 50 is passed, "50 people" matches the Arabic string whose key is many. -->
     <text>{{ $tc('strings.plurals', 50) }}</text>
-      <!-- When the value 100 is passed, "100 people" matches the Arabic string whose key is other. -->
+    <!-- When the value 100 is passed, "100 people" matches the Arabic string whose key is other. -->
     <text>{{ $tc('strings.plurals', 100) }}</text>
   </div>
   ```

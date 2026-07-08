@@ -2,9 +2,9 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei; @buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -120,6 +120,8 @@ enum PreferStrategy
 | PREFER_OPEN_LOG = 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值。 |
 
 ## 函数说明
+
+各接口具体使用说明可查阅：[使用HiLog打印日志（C/C++）](../../dfx/hilog-guidelines-ndk.md)。
 
 ### OH_LOG_Print()
 

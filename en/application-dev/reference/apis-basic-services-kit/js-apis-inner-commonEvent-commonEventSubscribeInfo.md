@@ -1,4 +1,10 @@
 # CommonEventSubscribeInfo
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **CommonEventSubscribeInfo** module provides APIs for providing subscriber information.
 

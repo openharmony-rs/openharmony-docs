@@ -17,7 +17,7 @@
 >
 > - 该组件在不同父组件下的懒加载支持条件如下：
 >   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段场景下使用时支持懒加载。
->   2. 在List组件下，当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
+>   2. 在List组件下，当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 >   3. 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。
 
 **起始版本：** 26.0.0
@@ -251,12 +251,16 @@ export class LazyListLayout extends LazyCustomLayoutAlgorithm {
     } else {
       // 反向布局（从下到上）
       if (this.endIndex >= 0 && this.endIndex < this.childCnt - 1 && this.prevSpace != this.space) {
-        let adjustStartOffset = this.endIndex * (this.prevSpace - this.space);
-        let adjustEndOffset = this.totalHeight - prevTotalHeight - adjustStartOffset;
+        let adjustEndOffset = (this.childCnt - 1 - this.endIndex) * (this.space - this.prevSpace);
+        let adjustStartOffset = this.totalHeight - prevTotalHeight - adjustEndOffset;
         console.info(`Bottom setAdjustedOffset:${adjustEndOffset}`);
         helper.setAdjustedOffset(adjustEndOffset);
-        viewStart -= adjustStartOffset;
-        viewEnd -= adjustStartOffset;
+        viewStart += adjustStartOffset;
+        viewEnd += adjustStartOffset;
+      } else if (this.totalHeight != prevTotalHeight) {
+        let adjustOffset = this.totalHeight - prevTotalHeight;
+        viewStart += adjustOffset;
+        viewEnd += adjustOffset;
       }
     }
     this.prevSpace = this.space;

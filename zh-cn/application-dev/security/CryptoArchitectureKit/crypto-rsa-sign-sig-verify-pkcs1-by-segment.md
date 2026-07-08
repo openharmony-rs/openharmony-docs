@@ -1,4 +1,4 @@
-# 使用RSA密钥对分段签名验签（PKCS1模式）(ArkTS)
+# 使用RSA密钥对（PKCS1模式）分段签名验签(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

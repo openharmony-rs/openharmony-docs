@@ -8,7 +8,7 @@
 
 ## 概述
 
-ipc_cskeleton.h提供IPC框架tokenId、凭据、PID/UID、线程池配置等功能C接口，主要用于进程间通信的上下文管理和线程管理。
+ipc_cskeleton.h提供IPC框架TokenId、凭据、PID/UID、线程池配置等功能C接口，主要用于进程间通信的上下文管理和线程管理。
 
 **引用文件：** <IPCKit/ipc_cskeleton.h>
 
@@ -35,7 +35,7 @@ ipc_cskeleton.h提供IPC框架tokenId、凭据、PID/UID、线程池配置等功
 | [uint64_t OH_IPCSkeleton_GetCallingUid(void)](#oh_ipcskeleton_getcallinguid) | 获取调用方用户ID。该接口需要在IPC上下文中调用，否则返回当前用户ID。 |
 | [int OH_IPCSkeleton_IsLocalCalling(void)](#oh_ipcskeleton_islocalcalling) | 判断是否正在进行本地调用。 |
 | [int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)](#oh_ipcskeleton_setmaxworkthreadnum) | 设置最大工作线程数。 |
-| [int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_MemAllocator allocator)](#oh_ipcskeleton_resetcallingidentity) | 重置调用方身份凭证为自身进程的身份凭证（包括tokenid、UID和PID信息），并返回调用方的凭证信息。 该信息主要用于OH_IPCSkeleton_SetCallingIdentity接口调用。 |
+| [int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_MemAllocator allocator)](#oh_ipcskeleton_resetcallingidentity) | 重置调用方身份凭证为自身进程的身份凭证（包括TokenId、UID和PID信息），并返回调用方的凭证信息。 该信息主要用于OH_IPCSkeleton_SetCallingIdentity接口调用。 |
 | [int OH_IPCSkeleton_SetCallingIdentity(const char *identity)](#oh_ipcskeleton_setcallingidentity) | 恢复调用方凭证信息至IPC上下文中。 |
 | [int OH_IPCSkeleton_IsHandlingTransaction(void)](#oh_ipcskeleton_ishandlingtransaction) | 是否正在处理IPC请求。该接口需要在IPC上下文中调用，否则返回0。 |
 
@@ -49,15 +49,11 @@ void OH_IPCSkeleton_JoinWorkThread(void)
 
 **描述：**
 
-当前线程加入IPC工作线程池，使其能够参与处理IPC请求。
+当前线程加入IPC工作线程池，使其能够参与处理IPC请求。适用于需要自定义IPC请求处理线程的场景，例如：在需要扩展IPC并发处理能力时手动添加工作线程、在特定业务场景下需要专用线程处理IPC请求以提高响应速度。
 
 **调用后的行为：**
 
 调用此方法后，当前线程将被注册为IPC工作线程，参与处理来自其他进程的IPC请求，直到调用[OH_IPCSkeleton_StopWorkThread()](#oh_ipcskeleton_stopworkthread)退出线程池。
-
-**原理说明：**
-
-该方法将当前线程注册到IPC框架的工作线程池中，当有IPC请求到达时，IPC框架会从线程池中分配工作线程来处理请求。
 
 **约束和限制：**
 
@@ -82,10 +78,6 @@ void OH_IPCSkeleton_StopWorkThread(void)
 **调用后的行为：**
 
 调用此方法后，当前线程将从IPC工作线程池中移除，不再被分配处理IPC请求的任务，线程可以执行其他操作。
-
-**原理说明：**
-
-该方法将当前线程从IPC框架的工作线程池注销，释放相关资源。
 
 **约束和限制：**
 
@@ -130,15 +122,11 @@ uint64_t OH_IPCSkeleton_GetFirstTokenId(void)
 **调用后的行为：**
 
 返回发起IPC调用的首个客户端的TokenId标识。
- 
-**原理说明：**
- 
-在多级IPC调用场景中（A->B->C），该方法返回调用链发起者A的TokenId，而非直接调用方B的TokenId。
- 
+
 **约束和限制：**
- 
+
 - 仅在多级IPC调用场景中有意义。
-- 在单级调用场景中，与[OH_IPCSkeleton_GetCallingTokenId](#oh_ipcskeleton_getcallingtokenid)返回值相同。
+- 在单级调用场景中，与[OH_IPCSkeleton_GetCallingTokenId()](#oh_ipcskeleton_getcallingtokenid)返回值相同。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -163,8 +151,6 @@ uint64_t OH_IPCSkeleton_GetSelfTokenId(void)
 **调用后的行为：**
 
 返回当前进程的TokenId，无论是否在IPC上下文中调用。
-
-**原理说明：**
 
 TokenId是系统为每个进程分配的唯一标识，用于权限校验和身份识别。
 
@@ -236,10 +222,6 @@ int OH_IPCSkeleton_IsLocalCalling(void)
 
 返回1表示本地调用，返回0表示远程调用。
 
-**原理说明：**
-
-本地调用指调用方与被调用方在同一进程内，远程调用指跨进程调用。该方法帮助区分调用来源。
-
 **约束和限制：**
 
 - 需在IPC上下文中调用。
@@ -275,10 +257,6 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 
 调用此方法后，IPC框架将按照设置的最大线程数管理工作线程，当并发IPC请求数超过线程数时，请求将排队等待。
 
-**原理说明：**
-
-该方法调整IPC框架工作线程池的容量上限，影响IPC请求的并发处理能力。
-
 **约束和限制：**
 
 - 若无特殊诉求，不建议用户更改最大线程数。
@@ -293,7 +271,7 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 
   | 参数项 | 描述 |
   | ------ | ---- |
-  | const int maxThreadNum   | maxThreadNum 最大工作线程数，单位：个，默认16，范围:[1, 32]。设置该参数可控制IPC并发处理能力，较小的值可节省系统资源，较大的值可提高并发处理效率。超出范围时返回参数错误OH_IPC_CHECK_PARAM_ERROR。 |
+  | const int maxThreadNum   | 最大工作线程数，单位：个，默认16，范围:[1, 32]。设置该参数可控制IPC并发处理能力，较小的值可节省系统资源，较大的值可提高并发处理效率。超出范围时返回参数错误OH_IPC_CHECK_PARAM_ERROR。 |
 
 **返回：**
 
@@ -309,15 +287,11 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 **描述：**
 
-重置调用方身份凭证为自身进程的身份凭证（包括TokenID、UID和PID信息），并返回调用方的凭证信息。适用于需要临时提升权限或以服务进程身份执行操作的场景，例如：在系统服务中需要访问受保护资源时临时切换为服务身份、在权限代理场景中以服务身份代为执行特权操作。
+重置调用方身份凭证为自身进程的身份凭证（包括TokenId、UID和PID信息），并返回调用方的凭证信息。适用于需要临时提升权限或以服务进程身份执行操作的场景，例如：在系统服务中需要访问受保护资源时临时切换为服务身份、在权限代理场景中以服务身份代为执行特权操作。
 
 **调用后的行为：**
 
 调用此方法后，当前IPC上下文的身份凭证将切换为自身进程的凭证，同时返回原始调用方的凭证信息，用于后续恢复。
-
-**原理说明：**
-
-该方法用于IPC场景下的身份切换，常用于需要在服务端以服务进程身份执行操作的场景。
 
 **约束和限制：**
 - 必须在IPC请求处理上下文中调用。
@@ -329,11 +303,11 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 **起始版本：** 12
 
-**参数:**
+**参数：**
 
 | 参数项 | 描述 |
 | ------ | ---- |
-| char **identity | identity 用于存储调用凭证的内存地址，凭证中包含调用方的tokenid、UID和PID等身份信息，可用于后续通过[OH_IPCSkeleton_SetCallingIdentity()](#oh_ipcskeleton_setcallingidentity)恢复调用方身份。该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放。必须在IPC请求处理上下文中调用。不能为空。 |
+| char **identity | identity 用于存储调用凭证的内存地址，凭证中包含调用方的TokenId、UID和PID等身份信息，可用于后续通过[OH_IPCSkeleton_SetCallingIdentity()](#oh_ipcskeleton_setcallingidentity)恢复调用方身份。该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放。必须在IPC请求处理上下文中调用。不能为空。 |
 | int32_t *len | len 写入identity的数据长度（字节数），用于告知调用者凭证数据的实际大小，便于后续正确使用和释放内存。必须在IPC请求处理上下文中调用。不能为空。 |
 | [OH_IPC_MemAllocator](capi-ipc-cparcel-h.md#oh_ipc_memallocator) allocator | allocator 用户指定的内存分配器，用于为identity分配内存。通过自定义分配器可控制内存分配策略（如使用共享内存或堆内存）。必须在IPC请求处理上下文中调用。不能为空。 |
 
@@ -351,15 +325,11 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 
 **描述：**
 
-恢复调用方凭证信息至IPC上下文中。将IPC上下文的身份凭证恢复为原始调用方的凭证。适用于完成临时权限提升操作后恢复正常权限的场景，例如：在服务端完成受保护资源访问后恢复调用方身份、在权限代理操作完成后还原调用方权限状态。
+恢复调用方凭证信息至IPC上下文中。将IPC上下文的身份凭证恢复为原始调用方的凭证。必须在IPC请求处理上下文中调用。适用于完成临时权限提升操作后恢复正常权限的场景，例如：在服务端完成受保护资源访问后恢复调用方身份、在权限代理操作完成后还原调用方权限状态。
 
 **调用后的行为：**
 
 调用此方法后，IPC上下文的身份凭证将恢复为之前通过[OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity)保存的调用方凭证。
-
-**原理说明：**
-
-该方法用于在完成服务端身份操作后，恢复原始调用方身份，确保后续IPC操作的权限正确性。
 
 **约束和限制：**
 
@@ -376,7 +346,7 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 
 | 参数项 | 描述 |
 | ------ | ---- |
-| const char *identity | identity 调用方凭证，不能为空。来源于OH_IPCSkeleton_ResetCallingIdentity的返回值。必须在OH_IPCSkeleton_ResetCallingIdentity之后使用，来源于其返回值。需与OH_IPCSkeleton_ResetCallingIdentity配对使用。 |
+| const char *identity | identity 调用方凭证，不能为空。来源于OH_IPCSkeleton_ResetCallingIdentity的返回值。需与OH_IPCSkeleton_ResetCallingIdentity配对使用。 |
 
 **返回：**
 
@@ -402,4 +372,4 @@ int OH_IPCSkeleton_IsHandlingTransaction(void)
 
 | 类型 | 说明 |
 | ---- | ---- |
-| int | 正在处理IPC请求，返回1；否则，返回0。 |
+| int | 正在处理IPC请求，返回1表示正在处理IPC请求；返回0表示未处理IPC请求。 |

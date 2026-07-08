@@ -24,11 +24,15 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-## restrictions.setPrinterDisabled
+## restrictions.setPrinterDisabled<sup>(deprecated)</sup>
 
 setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void>): void
 
 使设备禁用或启用打印能力。使用callback异步回调。 
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -79,11 +83,15 @@ restrictions.setPrinterDisabled(wantTemp, true, (err) => {
 })
 ```
 
-## restrictions.setPrinterDisabled
+## restrictions.setPrinterDisabled<sup>(deprecated)</sup>
 
 setPrinterDisabled(admin: Want, disabled: boolean): Promise\<void>
 
 使设备禁用或启用打印能力。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -138,11 +146,15 @@ restrictions.setPrinterDisabled(wantTemp, true).then(() => {
 })
 ```
 
-## restrictions.isPrinterDisabled
+## restrictions.isPrinterDisabled<sup>(deprecated)</sup>
 
 isPrinterDisabled(admin: Want, callback: AsyncCallback\<boolean>): void
 
 查询设备打印能力是否被禁用。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -192,11 +204,15 @@ restrictions.isPrinterDisabled(wantTemp, (err, result) => {
 })
 ```
 
-## restrictions.isPrinterDisabled
+## restrictions.isPrinterDisabled<sup>(deprecated)</sup>
 
 isPrinterDisabled(admin: Want): Promise\<boolean>
 
 查询设备打印能力是否被禁用。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -250,11 +266,15 @@ restrictions.isPrinterDisabled(wantTemp).then((result) => {
 })
 ```
 
-## restrictions.setHdcDisabled
+## restrictions.setHdcDisabled<sup>(deprecated)</sup>
 
 setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void>): void
 
 使设备禁用或启用[HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -305,11 +325,15 @@ restrictions.setHdcDisabled(wantTemp, true, (err) => {
 })
 ```
 
-## restrictions.setHdcDisabled
+## restrictions.setHdcDisabled<sup>(deprecated)</sup>
 
 setHdcDisabled(admin: Want, disabled: boolean): Promise\<void>
 
 使设备禁用或启用HDC。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -364,11 +388,15 @@ restrictions.setHdcDisabled(wantTemp, true).then(() => {
 })
 ```
 
-## restrictions.isHdcDisabled
+## restrictions.isHdcDisabled<sup>(deprecated)</sup>
 
 isHdcDisabled(admin: Want, callback: AsyncCallback\<boolean>): void
 
 查询HDC是否被禁用。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -418,11 +446,15 @@ restrictions.isHdcDisabled(wantTemp, (err, result) => {
 })
 ```
 
-## restrictions.isHdcDisabled
+## restrictions.isHdcDisabled<sup>(deprecated)</sup>
 
 isHdcDisabled(admin: Want): Promise\<boolean>
 
 查询HDC是否被禁用。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -476,11 +508,15 @@ restrictions.isHdcDisabled(wantTemp).then((result) => {
 })
 ```
 
-## restrictions.isMicrophoneDisabled<sup>11+</sup>
+## restrictions.isMicrophoneDisabled<sup>(deprecated)</sup>
 
 isMicrophoneDisabled(admin: Want): boolean
 
 查询麦克风是否被禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -534,11 +570,15 @@ try {
 }
 ```
 
-## restrictions.disableMicrophone<sup>11+</sup>
+## restrictions.disableMicrophone<sup>(deprecated)</sup>
 
 disableMicrophone(admin: Want, disable: boolean): void
 
 使设备禁用或启用麦克风。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -587,11 +627,15 @@ try {
 }
 ```
 
-## restrictions.setFingerprintAuthDisabled<sup>11+</sup>
+## restrictions.setFingerprintAuthDisabled<sup>(deprecated)</sup>
 
 setFingerprintAuthDisabled(admin: Want, disabled: boolean): void
 
 禁用或启用指纹认证。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -641,11 +685,15 @@ try {
 
 ```
 
-## restrictions.isFingerprintAuthDisabled<sup>11+</sup>
+## restrictions.isFingerprintAuthDisabled<sup>(deprecated)</sup>
 
 isFingerprintAuthDisabled(admin: Want): boolean
 
 查询指纹认证是否被禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 

@@ -36,8 +36,11 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 | timeStamp                     | number                                   | 否    | 是    | 事件时间戳，单位是毫秒。默认值为0。                       |
 | extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件， 组件文本内容有新增或删除时，新增或删除的文本内容。 |
 
+## AccessibilityExtensionAbility
 
-## AccessibilityExtensionAbility.onAccessibilityConnect
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能业务的能力。
+
+### onAccessibilityConnect
 
 onAccessibilityConnect(): void
 
@@ -72,7 +75,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityDisconnect
+### onAccessibilityDisconnect
 
 onAccessibilityDisconnect(): void
 
@@ -107,7 +110,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityEventInfo
+### onAccessibilityEventInfo
 
 onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
@@ -149,7 +152,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-## AccessibilityExtensionAbility.onAccessibilityKeyEvent
+### onAccessibilityKeyEvent
 
 onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 

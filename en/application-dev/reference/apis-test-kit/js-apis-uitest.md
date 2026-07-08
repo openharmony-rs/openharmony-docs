@@ -28,7 +28,7 @@ This module provides the following functions:
 ## Modules to Import
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -306,6 +306,66 @@ Describes common touch options.
 | speed | number | No | Yes | Operation speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number beyond the value range or is **null**/**undefined**, the default value **600** is used. If the value is a negative number, the error code 17000007 is thrown.|
 | duration | number | No | Yes | Operation duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
 | pressure | number | No | Yes | Pressure value of the touch. The value ranges from 0 to 1. The default value is **0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, the 17000007 error code is thrown.|
+
+## PenKey
+
+Enumerates stylus key types.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| HANDWRITING | 0 | Handwriting key.|
+| SMART | 1 | Smart key.|
+| AIR_MOUSE | 2 | Air mouse key.|
+
+## PenMode
+
+Enumerates stylus modes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| HANDWRITING | 0 | Handwriting mode.|
+| AIR_MOUSE | 1 | Air mouse mode.|
+
+## PenKeyOperation
+
+Enumerates stylus key operation types.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| CLICK | 0 | Click.|
+| DOUBLE_CLICK | 1 | Double-click.|
+
+## PenKeyOperationOptions
+
+Describes stylus key operation options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| point | [Point](#point9) | No | Yes | Coordinates in air mouse mode. This attribute must be set when the **key** parameter is set to [AIR_MOUSE](#penkey) in the [triggerPenKey](#triggerpenkey) API. Otherwise, the API call will return the error code 17000007.|
 
 ## On<sup>9+</sup>
 
@@ -873,6 +933,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
+### isBefore
+
+isBefore(com: Component): On
+
+Specifies that the target component is located before the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                                |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | **On** object.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isBefore(com); // Search for the first component whose text is 123 before the first text component.
+}
+```
+
 ### isAfter<sup>9+</sup>
 
 isAfter(on: On): On
@@ -913,6 +1018,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
+### isAfter
+
+isAfter(com: Component): On
+
+Specifies that the target component is located after the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                                |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | **On** object. |
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isAfter(com); // Search for the component whose text is 123 after the first text component.
+}
+```
+
 ### within<sup>10+</sup>
 
 within(on: On): On
@@ -951,6 +1101,51 @@ import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
 let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the Scroller component.
+```
+
+### within
+
+within(com: Component): On
+
+Specifies that the target component is located within the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                              |
+| ---------- | -------------------------------------------------- |
+| [On](#on9) | **On** object.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').within(com); // Search for the component whose text is 123 within the first text component.
+}
 ```
 
 ### inWindow<sup>10+</sup>
@@ -1883,7 +2078,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **Example**
 ```ts
@@ -2409,7 +2604,7 @@ async function demo() {
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 
-All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use a promise to return the result and must be invoked using **await**.
+All methods provided by this class, except Driver.create() and Driver.createUIEventObserver(), are asynchronous methods using the Promise mode and must be invoked in await mode.
 
 ### create<sup>9+</sup>
 
@@ -3507,7 +3702,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -4895,7 +5089,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4942,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4990,7 +5184,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
-Drags from the start coordinate point to the end coordinate point by holding down the left mouse button. Touch options and key options can be specified. This API uses a promise to return the result.
+Drags from the start coordinate point to the end coordinate point by holding down the left mouse button. Touch options and key options can be specified. This API uses a promise to return the result. This API supports cross-screen mouse dragging.
 
 **Since**: 26.0.0
 
@@ -5123,7 +5317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -5471,6 +5665,65 @@ async function demo() {
 }
 ```
 
+### triggerPenKey
+
+triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
+
+Triggers a stylus key operation. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                                                                |
+| ------ | ---------- | ---- | -------------------------------------------------------------------- |
+| key | [PenKey](#penkey) | Yes  | Stylus key.                                                  |
+| mode | [PenMode](#penmode) | Yes  | Stylus mode.                                                  |
+| operation | [PenKeyOperation](#penkeyoperation) | Yes  | Operation type.                                                    |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | No  | Operation options, including optional coordinates. The default values are inherited from the default values of the properties in [PenKeyOperationOptions](#penkeyoperationoptions).|
+
+**Supported parameter combinations**:
+- When the value of **mode** is [HANDWRITING](#penmode): the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation).
+- When the value of **mode** is [AIR_MOUSE](#penmode): the value of **key** can be [AIR_MOUSE](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation) (the **point** needs to be specified in **options**); the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation); the value of **key** can be [SMART](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation).
+- If other parameter combinations are used, the 17000007 error code will be thrown.
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls. |
+| 17000005 | This operation is not supported. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, PenKey, PenMode, PenKeyOperation } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Trigger the handwriting key click in handwriting mode.
+  await driver.triggerPenKey(PenKey.HANDWRITING, PenMode.HANDWRITING, PenKeyOperation.CLICK);
+  // Trigger the air mouse key double-click in air mouse mode.
+  await driver.triggerPenKey(PenKey.AIR_MOUSE, PenMode.AIR_MOUSE, PenKeyOperation.DOUBLE_CLICK, { point: { x: 500, y: 500 } });
+  // Trigger the smart key click in air mouse mode.
+  await driver.triggerPenKey(PenKey.SMART, PenMode.AIR_MOUSE, PenKeyOperation.CLICK);
+}
+```
+
 ### crownRotate<sup>20+</sup>
 
 crownRotate(d: number, speed?: number): Promise\<void>
@@ -5504,7 +5757,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
-| 801 | Capability not support, function can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
@@ -5649,7 +5902,7 @@ Long-clicks at the specified coordinates and checks whether the target component
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | point  | [Point](#point9) | Yes  | Coordinates of the long-clicked point.|
-| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**.|
+| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
 
@@ -6610,7 +6863,7 @@ async function demo() {
 
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
 
-Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected. This API can be used only in [free windows](../../windowmanager/window-terminology.md#free-windows) mode.
+Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected. Only window listening for [free windows](../../windowmanager/window-terminology.md#free-windows) is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

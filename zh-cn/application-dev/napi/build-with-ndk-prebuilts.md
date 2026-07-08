@@ -44,7 +44,7 @@ include_directories(
 
 当在HAR中使用预构建库时，当前编译的库和链接所需预构建库会打包到HAR中的libs目录下，如下图所示：
 
-![zh-cn_image_0000001693795070](figures/zh-cn_image_0000001693795070.png)
+![har-library-packaging](figures/har-library-packaging.png)
 
 ### 预构建库的SONAME问题
 

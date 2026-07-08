@@ -43,4 +43,4 @@ The following example demonstrates how to draw different shapes and stitch them 
 }
 ```
 
-![en-us_image_0000001226911459](figures/en-us_image_0000001226911459.png)
+![Graph-Drawing](figures/Graph-Drawing.png)

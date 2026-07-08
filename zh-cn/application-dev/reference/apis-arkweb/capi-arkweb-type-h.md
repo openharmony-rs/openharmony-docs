@@ -64,7 +64,7 @@
 
 | 名称 | 描述 |
 | ---- | ---- |
-| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*reinterpret_cast&lt;size_t\*&gt;(s)) | 检查结构体中是否存在该成员变量。<br>**起始版本：** 12 |
+| ARKWEB_MEMBER_EXISTS(s, f)&nbsp;&nbsp;&nbsp;&nbsp;((intptr_t) &amp; ((s)-&gt;f) - (intptr_t)(s) + sizeof((s)-&gt;f) &lt;= \*(size_t \*)(s)) | 检查结构体中是否存在该成员变量。<br>**起始版本：** 12 |
 | ARKWEB_MEMBER_MISSING(s, f)&nbsp;&nbsp;&nbsp;(\!ARKWEB_MEMBER_EXISTS(s, f) \|\| !((s)-&gt;f)) | 当前结构体存在该成员变量则返回false，否则返回true<br/>**起始版本：** 12 |
 
 ## 枚举类型说明
@@ -212,8 +212,8 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 | -- | -- |
 | const char* webTag | Web组件名称。 |
 |  void* userData | 用户自定义的数据。 |
-|  double x | X轴滚动偏移。 |
-|  double y | Y轴滚动偏移。 |
+|  double x | X轴滚动偏移。单位：vp。 |
+|  double y | Y轴滚动偏移。单位：vp。 |
 
 ### ArkWeb_OnMessageEventHandler()
 

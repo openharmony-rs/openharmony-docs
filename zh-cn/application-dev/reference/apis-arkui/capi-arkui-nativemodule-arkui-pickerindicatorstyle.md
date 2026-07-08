@@ -18,4 +18,4 @@ typedef struct {...} ArkUI_PickerIndicatorStyle
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [picker.h](capi-picker-h.md)

@@ -27,7 +27,7 @@ typedef struct DateTimeRule {...} DateTimeRule
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t month | 月份。 |
+| int32_t month | 月份。月份从0开始计数，0表示一月。 |
 | int32_t dayOfMonth | 当月的第几天。 |
 | int32_t dayOfWeek | 当周的第几天。 |
 | int32_t weekInMonth | 当月的第几周。 |

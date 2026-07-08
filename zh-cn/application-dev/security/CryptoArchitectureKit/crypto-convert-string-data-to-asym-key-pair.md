@@ -26,7 +26,7 @@
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
 2. 调用[AsyKeyGenerator.convertPemKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey12)，传入二进制密钥数据，生成非对称密钥对象（KeyPair）。
-3. 调用[AsyKeyGenerator.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12)，将非对称密钥对象中的公钥转换成PKCS#1或X.509格式，私钥转换成PKCS#1或PKCS#8格式。
+3. 调用[AsyKeyGenerator.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12)，将非对称密钥对象中的公钥转换成PKCS #1或X.509格式，私钥转换成PKCS #1或PKCS #8格式。
 
 - 以Promise方式生成RSA密钥对为例：
   <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets) -->

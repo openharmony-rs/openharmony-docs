@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-约定外部密钥管理扩展（例如Ukey）中使用resourceId唯一标识资源。该resourceId目前支持以下两种获取方式：
+约定外部密钥管理扩展（例如UKey）中使用resourceId唯一标识资源。该resourceId目前支持以下两种获取方式：
 
 - **证书管理服务获取**：通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)返回。每个证书链对应1个resourceId。适用于浏览器双向SSL认证等需要证书选择的场景。
 - **getResourceId接口获取**：从API版本26.0.0开始，可通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)接口获取。适用于密钥生成、密钥导入等不需要证书选择的场景。

@@ -56,7 +56,7 @@ import { window } from '@kit.ArkUI';
 | TYPE_WALLET_SWIPE_CARD<sup>15+</sup>| 22      | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | TYPE_SCREEN_CONTROL<sup>15+</sup>   | 23      | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | TYPE_FLOAT_NAVIGATION<sup>17+</sup> | 24      | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_DYNAMIC<sup>20+</sup> | 25      | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| TYPE_DYNAMIC<sup>20+</sup> | 25      | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中不生效也不报错。 |
 | TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26      | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## Configuration<sup>9+</sup>
@@ -292,9 +292,9 @@ minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -353,9 +353,9 @@ minimizeAll(id: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -456,8 +456,8 @@ toggleShownStateForAllAppWindows(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -496,8 +496,8 @@ toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -1213,6 +1213,8 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+
 **参数：**
 
 | 参数名          | 类型   | 必填  | 说明                    |
@@ -1331,11 +1333,11 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.moveMainWindowToTargetDisplay
-moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+moveMainWindowToTargetDisplay(displayId: number, windowId: number, userId?: number): Promise&lt;void&gt;
 
-将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
+将当前用户或指定用户下，指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
-- 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
+- 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗、子窗和模态窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
 - 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕并抬升层级。
 
 <!--RP3--><!--RP3End-->
@@ -1354,6 +1356,7 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 | -------------- | ------ | ----- | ----------------------- |
 | displayId | number | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
 | windowId | number | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+| userId | number | 否    | 指定的用户ID，取值范围需大于等于0。此参数不填或值小于等于-1时，表示当前用户。|
 
 **返回值：**
 
@@ -1373,6 +1376,7 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
 | 1300008 | The display device is abnormal.           |
+| 1300016 | Parameter error. Possible cause: 1. The userId is not exist.           |
 
 **示例：**
 
@@ -1433,7 +1437,7 @@ setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;)
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1487,7 +1491,7 @@ setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1518,7 +1522,7 @@ try {
 
 hide (callback: AsyncCallback&lt;void&gt;): void
 
-隐藏当前窗口，使用callback异步回调，仅支持系统窗口与应用子窗口。
+隐藏当前窗口，使用callback异步回调，仅支持系统窗口、全局悬浮窗、模态窗口与应用子窗口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1536,7 +1540,7 @@ hide (callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 
 **示例：**
@@ -1558,7 +1562,7 @@ windowClass.hide((err: BusinessError) => {
 
 hide(): Promise&lt;void&gt;
 
-隐藏当前窗口，使用Promise异步回调，仅支持系统窗口与应用子窗口。
+隐藏当前窗口，使用Promise异步回调，仅支持系统窗口、全局悬浮窗、模态窗口与应用子窗口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1576,7 +1580,7 @@ hide(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 
 **示例：**
@@ -1614,7 +1618,7 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1656,7 +1660,7 @@ hideWithAnimation(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1696,7 +1700,7 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1738,7 +1742,7 @@ showWithAnimation(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
@@ -1779,7 +1783,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -1849,7 +1853,7 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -1939,7 +1943,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
 
 **示例：**
 
@@ -2089,7 +2093,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2177,7 +2181,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2258,7 +2262,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2401,7 +2405,7 @@ setWakeUpScreen(wakeUp: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2440,7 +2444,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
@@ -2477,7 +2481,7 @@ opacity(opacity: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2514,7 +2518,7 @@ scale(scaleOptions: ScaleOptions): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2557,7 +2561,7 @@ rotate(rotateOptions: RotateOptions): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2601,7 +2605,7 @@ translate(translateOptions: TranslateOptions): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2643,7 +2647,7 @@ try {
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
 
@@ -2675,7 +2679,7 @@ setBlur(radius: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2716,7 +2720,7 @@ setBackdropBlur(radius: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2754,7 +2758,7 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2794,7 +2798,7 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2831,7 +2835,7 @@ setCornerRadius(cornerRadius: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation.  |
@@ -2939,7 +2943,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
@@ -2986,7 +2990,7 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
@@ -4430,13 +4434,107 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### startMovingWithOptions
+
+startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise&lt;void&gt;
+
+开始移动窗口，使用Promise异步回调。
+
+仅在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
+
+在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](./arkui-ts/ts-appendix-enums.md#touchtype)（需要保证当前行为已经触发TouchType.Down事件）时调用此接口，触发移动效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ----- | ---------------------------- | -- | --------------------------------- |
+| startMovingOptions  | [StartMovingOptions](#startmovingoptions) | 否 | 窗口拖拽移动的配置项。 |
+
+**返回值：**
+
+| 类型                 | 说明                   |
+| ------------------- | ---------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300001 | Repeated operation. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if (event.type == TouchType.Down) {
+              let options: window.StartMovingOptions = {
+                needFocused: true,
+                avoidRect: {
+                  left: 0,
+                  top: 0,
+                  width: 200,
+                  height: 200
+                }
+              };
+              try {
+                windowClass.startMovingWithOptions(options)
+                  .then(() => {
+                    console.info('Succeeded in starting moving window.');
+                  })
+                  .catch((err: BusinessError) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+              } catch (exception) {
+                console.error(`Failed to start moving. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## SubWindowOptions<sup>11+</sup>
 
 子窗口创建参数。
 
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
-| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。需要配合isModal使用，当isModal设置为true时设置子窗isTopmost才生效；当isModal设置为false时设置子窗isTopmost为true返回401错误码。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## WindowStage<sup>9+</sup>
 
@@ -4464,7 +4562,7 @@ disableWindowDecor(): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. <br>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
 
@@ -4508,7 +4606,7 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
@@ -4634,7 +4732,7 @@ completeTransition(isCompleted: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **示例：**
@@ -4716,7 +4814,7 @@ animationForShown(context: TransitionContext): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **示例：**
@@ -4799,7 +4897,7 @@ animationForHidden(context: TransitionContext): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.               |
 
 **示例：**
@@ -4906,3 +5004,20 @@ try {
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否   | 窗口矩形区域。 |
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 否 | 是 | 创建子窗口的参数。无默认参数，当windowAttribute配置为SUB_WINDOW时必选，否则会导致窗口创建失败。 |
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | 否 | 是 | 创建系统窗口的参数。无默认参数，当windowAttribute配置为SYSTEM_WINDOW时必选，否则会导致窗口创建失败。 |
+
+## StartMovingOptions
+
+窗口拖拽移动的配置项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称     | 类型      | 只读 | 可选 | 说明               |
+| -------- | -------- | ---- | ---- | ------------------ |
+| needFocused | boolean  | 否   | 是   | 表示窗口是否必须处于获焦状态才能开始拖拽移动。默认值为true。<br/>- true：窗口处于获焦状态才能开始拖拽移动。<br/>- false：窗口无需处于获焦状态即可开始拖拽移动。|
+| avoidRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 表示窗口拖拽移动时的避让区域，以窗口左上角为原点，并随窗口移动而同步移动。系统会根据窗口区域与避让区域共同组成的最小外接矩形区域对窗口位置进行约束。若该最小外接矩形区域无法完全容纳于对应屏幕的可用区域内，则认为避让区域无效，不执行避让修正。否则，系统按以下规则调整窗口位置：<br/>- 单屏拖拽场景下，确保避让区域完全位于当前屏幕的可用区域内；<br/>- 跨屏拖拽场景下，在跨屏前确保避让区域完全位于当前屏幕的可用区域内，且窗口仅显示在当前屏幕上；跨屏后，确保避让区域完全位于目标屏幕的可用区域内，且窗口仅显示在目标屏幕上；整个拖拽过程中，窗口只会显示在一个屏幕上，不会部分显示到其他屏幕。|

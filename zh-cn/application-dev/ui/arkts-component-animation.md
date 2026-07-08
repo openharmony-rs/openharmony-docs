@@ -45,7 +45,7 @@ struct ComponentDemo {
 ```
 
 
-![zh-cn_image_0000001649338585](figures/zh-cn_image_0000001649338585.gif)
+![animation-default](figures/animation-default.gif)
 
 
 ## 打造组件定制化动效
@@ -362,7 +362,7 @@ export struct TaskSwitchMainPage {
 }
 ```
 
-![zh-cn_image_0000001599808406](figures/zh-cn_image_0000001599808406.gif)
+![animation-custom](figures/animation-custom.gif)
 
 通过animateTo可以实现将List中指定的Item替换到首位，List中其余Item依次向下排列。定制List组件动态替换动效的示例代码和效果如下。
 

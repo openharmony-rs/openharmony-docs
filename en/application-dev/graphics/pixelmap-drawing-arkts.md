@@ -105,7 +105,7 @@ Drawing pixel maps using the **Drawing** APIs (ArkTS) depends on the **PixelMap*
 
    The drawing effect is as follows:
 
-   ![image_0000002158584414](figures/image_0000002158584414.png)
+   ![Draw-the-pixel-map](figures/Draw-the-pixel-map.png)
 
 <!--RP1-->
 ## Samples

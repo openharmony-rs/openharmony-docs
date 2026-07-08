@@ -93,6 +93,7 @@
         - [组件复用迁移](state-management/arkts-v1-v2-migration-reusable.md)
         - [循环渲染迁移](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [内置对象的迁移](state-management/arkts-v1-v2-migration-inner-object.md)
+        - [卡片状态变量迁移](state-management/arkts-v1-v2-migration-card.md)
         - [AnimateTo使用迁移](state-management/arkts-v1-v2-migration-animateTo.md)
       - 状态管理V1和V2混用场景<!--v1v2-mixing-->
         - [状态管理V1和V2混用指导（API version 19前）](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -133,6 +134,7 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -141,6 +143,7 @@
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
     - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)<!--RP4--><!--RP4End-->
+    - [创建懒加载自定义布局 (LazyDynamicLayout)](arkts-layout-development-create-lazy-custom-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -409,7 +412,9 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
+    
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

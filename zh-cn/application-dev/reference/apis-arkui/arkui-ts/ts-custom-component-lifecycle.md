@@ -145,7 +145,7 @@ struct IndexComponent {
   }
 }
 ```
-![zh-cn_image_lifecycle](figures/zh-cn_image_lifecycle.gif)
+![zh-cn_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
 
@@ -318,8 +318,8 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
-    this.message = params.message as Message
+    console.info('Reuse Child');
+    this.message = params.message as Message;
   }
 
   build() {

@@ -52,7 +52,7 @@ Defines a key-value pair data structure that conforms to JSON format.
 
 ### PushParameters
 
-Defines the parameters required when using the **PluginManager.Push** API.
+Defines the parameters required when using the **pluginComponentManager.push** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -68,7 +68,7 @@ Defines the parameters required when using the **PluginManager.Push** API.
 
 ### RequestParameters
 
-Defines the parameters required when using the **PluginManager.Request** API.
+Defines the parameters required when using the **pluginComponentManager.request** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -83,7 +83,7 @@ Defines the parameters required when using the **PluginManager.Request** API.
 
 ### RequestCallbackParameters
 
-Provides the result returned after the **PluginManager.Request** API is called.
+Provides the result returned after the **pluginComponentManager.request** API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -124,7 +124,7 @@ Registers the listener for the push event.
 | Name       | Type                                      | Mandatory  | Description                    |
 | --------- | ---------------------------------------- | ---- | ---------------------- |
 | source    | [Want](../apis-ability-kit/js-apis-application-want.md)      | Yes   | Information about the push request sender.        |
-| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Name of the requested component template.|
+| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Component template.|
 | data      | [KVObject](#kvobject)                    | Yes   | Data.                   |
 | extraData | [KVObject](#kvobject)                    | Yes   | Extra data.                 |
 

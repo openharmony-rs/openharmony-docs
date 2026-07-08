@@ -71,6 +71,7 @@ HUKS handle结构体。
 | outData    | Uint8Array                      | 否   | 是   | 表示输出数据。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。默认为undefined。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。默认为undefined。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sharedSecret | Uint8Array                  | 否   | 是   | 表示密钥封装或解封装生成的共享密钥。默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## HuksListAliasesReturnResult<sup>12+</sup>
 
@@ -122,23 +123,23 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
 ArkTS示例：
 
 ```ts
+/* 以生成ECC密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以生成ECC256密钥为例 */
 let keyAlias: string = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
   {
@@ -161,6 +162,7 @@ let properties: Array<huks.HuksParam> = [
 let options: huks.HuksOptions = {
   properties: properties
 };
+/* 生成密钥 */
 huks.generateKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: generateKeyItem failed`);
@@ -300,19 +302,19 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
-/* 以生成ECC256密钥为例 */
+/* 以生成ECC密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 let keyAlias = 'keyAlias';
@@ -337,6 +339,7 @@ let properties: Array<huks.HuksParam> = [
 let options: huks.HuksOptions = {
   properties: properties
 };
+/* 生成密钥 */
 huks.generateKeyItem(keyAlias, options)
   .then((data) => {
     console.info(`promise: generateKeyItem success`);
@@ -374,7 +377,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -388,6 +391,8 @@ let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
+
+/* 删除密钥 */
 huks.deleteKeyItem(keyAlias, emptyOptions, (error) => {
   if (error) {
     console.error(`callback: deleteKeyItem failed`);
@@ -509,7 +514,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -521,6 +526,7 @@ let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
+/* 删除密钥 */
 huks.deleteKeyItem(keyAlias, emptyOptions)
   .then(() => {
     console.info(`promise: deleteKeyItem key success`);
@@ -561,19 +567,20 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist.<br>适用版本：9-19 |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES256密钥为例 */
 let plainTextSize32 = makeRandomArr(32);
 
 function makeRandomArr(size: number) {
@@ -611,6 +618,7 @@ let options: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
+/* 导入密钥 */
 huks.importKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: importKeyItem failed`);
@@ -657,19 +665,20 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist.<br>适用版本：9-19 |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES256为例 */
 function makeRandomArr(size: number) {
   let arr = new Uint8Array(size);
   for (let i = 0; i < size; i++) {
@@ -678,7 +687,6 @@ function makeRandomArr(size: number) {
   return arr;
 };
 
-/* 第一步：生成密钥 */
 let plainTextSize32 = makeRandomArr(32);
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
@@ -707,7 +715,7 @@ let huksOptions: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
-/* 第二步：导入密钥 */
+/* 导入密钥 */
 huks.importKeyItem(keyAlias, huksOptions)
   .then(() => {
     console.info(`promise: importKeyItem success`);
@@ -754,11 +762,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
 ```ts
+/* 以获取RSA密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
@@ -778,6 +787,7 @@ let keyAliasString = "key attest";
 async function generateKeyThenAttestKey() {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
+  /* 1. 配置密钥生成参数 */
   let generateProperties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -811,6 +821,7 @@ async function generateKeyThenAttestKey() {
   let generateOptions: huks.HuksOptions = {
     properties: generateProperties
   };
+  /* 2. 配置密钥证明参数 */
   let attestProperties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
@@ -832,6 +843,7 @@ async function generateKeyThenAttestKey() {
   let attestOptions: huks.HuksOptions = {
     properties: attestProperties
   };
+  /* 3. 生成密钥并获取密钥证明 */
   huks.generateKeyItem(aliasString, generateOptions, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
@@ -894,11 +906,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
 ```ts
+/* 以获取RSA密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
@@ -915,6 +928,7 @@ let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key attest";
 
+/* 1. 生成密钥 */
 async function generateKey(alias: string) {
   let properties: Array<huks.HuksParam> = [
     {
@@ -955,9 +969,11 @@ async function generateKey(alias: string) {
     });
 }
 
+/* 2. 获取密钥证书 */
 async function attestKey() {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
+  /* 配置密钥证明参数 */
   let properties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
@@ -1024,12 +1040,13 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
+/* 以获取RSA匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1049,6 +1066,7 @@ let keyAliasString = "key anon attest";
 async function generateKeyThenAttestKey(): Promise<void> {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
+  /* 1. 配置密钥生成参数 */
   let generateProperties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -1082,6 +1100,7 @@ async function generateKeyThenAttestKey(): Promise<void> {
   let generateOptions: huks.HuksOptions = {
     properties: generateProperties
   };
+  /* 2. 配置匿名证明参数 */
   let anonAttestProperties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
@@ -1103,6 +1122,7 @@ async function generateKeyThenAttestKey(): Promise<void> {
   let anonAttestOptions: huks.HuksOptions = {
     properties: anonAttestProperties
   };
+  /* 3. 生成密钥并获取匿名密钥证明 */
   huks.generateKeyItem(aliasString, generateOptions, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
@@ -1156,18 +1176,21 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：11-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：11-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
+/* 以获取RSA匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1184,6 +1207,7 @@ let challenge = stringToUint8Array('challenge_data');
 let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key anon attest";
 
+/* 1. 生成密钥 */
 async function generateKey(alias: string): Promise<void> {
   let properties: Array<huks.HuksParam> = [
     {
@@ -1222,9 +1246,11 @@ async function generateKey(alias: string): Promise<void> {
   await huks.generateKeyItem(alias, options);
 }
 
+/* 2. 获取匿名化密钥证书 */
 async function anonAttestKey(): Promise<void> {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
+
   let properties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
@@ -1305,6 +1331,7 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 **示例：**
 
 ```ts
+/* 以离线获取ECC匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1319,6 +1346,7 @@ function stringToUint8Array(str: string): Uint8Array {
 let challenge = stringToUint8Array('challenge_data');
 let keyAliasString = "key anon local attest";
 
+/* 1. 生成密钥 */
 async function generateKey(alias: string) {
   let properties: Array<huks.HuksParam> = [
     {
@@ -1349,6 +1377,7 @@ async function generateKey(alias: string) {
   await huks.generateKeyItem(alias, options);
 }
 
+/* 2. 离线获取匿名化密钥证书 */
 async function anonAttestKeyOffline() {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
@@ -1408,13 +1437,13 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1424,6 +1453,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 let alias1 = "importAlias";
 let alias2 = "wrappingKeyAlias";
 
+/* 1. 生成ECC密钥 */
 async function TestGenFunc(alias: string, options: huks.HuksOptions) {
   await genKey(alias, options)
     .then(() => {
@@ -1443,6 +1473,7 @@ function genKey(alias: string, options: huks.HuksOptions) {
   });
 }
 
+/* 2. 导出公钥 */
 async function TestExportFunc(alias: string, options: huks.HuksOptions) {
   await exportKey(alias, options)
     .then((data) => {
@@ -1462,6 +1493,7 @@ function exportKey(alias: string, options: huks.HuksOptions) {
   });
 }
 
+/* 3. 安全导入密钥 */
 async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await importWrappedKey(alias, wrappingAlias, options)
     .then(() => {
@@ -1509,6 +1541,7 @@ async function TestImportWrappedKeyFunc(
   await TestImportWrappedFunc(alias, wrappingAlias, importOptions);
 }
 
+/* ECC密钥生成的参数集 */
 function makeGenerateOptions() {
   let properties: Array<huks.HuksParam> = [
     {
@@ -1538,6 +1571,7 @@ function makeGenerateOptions() {
   return options;
 };
 
+/* 安全导入密钥的参数集 */
 function makeImportOptions() {
   let properties: Array<huks.HuksParam> = [
     {
@@ -1626,13 +1660,13 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1678,16 +1712,18 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1700,6 +1736,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 导出公钥 */
 huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: exportKeyItem failed`);
@@ -1741,16 +1778,18 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1763,6 +1802,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 导出公钥 */
 huks.exportKeyItem(keyAlias, emptyOptions)
   .then((data) => {
     console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
@@ -1807,7 +1847,7 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 <!--RP2--><!--RP2End-->
 
@@ -1850,9 +1890,171 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000018 | the input parameter is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 <!--RP3--><!--RP3End-->
+
+## huks.encapsulate
+
+encapsulate(keyAlias: string, params: HuksParam[], sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise\<HuksReturnResult>
+
+密钥封装，使用ML-KEM公钥生成密文和共享密钥。使用Promise异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                         |
+| -------- | --------------------------- | ---- | -------------------------------------------- |
+| keyAlias | string                      | 是   | ML-KEM公钥密钥别名。 |
+| params  | [HuksParam[]](#huksparam) | 是   | 密钥封装操作参数集。 |
+| sharedKeyAlias | string | 否   | 共享密钥存储别名。 |
+| sharedKeyParams | [HuksParam[]](#huksparam) | 否   | 共享密钥的属性参数集。 |
+
+**返回值：**
+
+| 类型                                           | 说明                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。outData为封装后的密文数据，sharedSecret为共享密钥（sharedKeyAlias非空时sharedSecret为空）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000001 | Algorithm mode is not supported |
+| 12000002 | Algorithm parameters are missing, please check the algorithm parameters. |
+| 12000003 | The algorithm parameters are invalid, please check the algorithm parameters. |
+| 12000004 | File operation failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | The algorithm engine reported an error, please check the input parameters. |
+| 12000011 | The queried key does not exist, please check the key-related parameters. |
+| 12000012 | Device environment or input parameters are abnormal. |
+| 12000013 | Queried credential does not exist |
+| 12000014 | Memory is insufficient. |
+| 12000015 | Failed to obtain the security information via UserIAM. |
+| 12000016 | The screen lock password is not set. |
+| 12000017 | The key with the same alias already exists. |
+| 12000018 | The input parameter is invalid. |
+
+**示例：**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyAlias = 'ml_kem_pub_key_b';
+let params: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_ML_KEM,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_ML_KEM_KEY_PARAM_SET_768,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_WRAP,
+}];
+
+try {
+  huks.encapsulate(keyAlias, params).then((data: huks.HuksReturnResult) => {
+    console.info(`encapsulate success, encapsulatedData length: ${(data.outData as Uint8Array).length}`);
+    console.info(`sharedSecret length: ${(data.sharedSecret as Uint8Array).length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`encapsulate failed, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`encapsulate input arg invalid`);
+}
+```
+
+## huks.decapsulate
+
+decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array, sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise\<HuksReturnResult>
+
+密钥解封装，使用ML-KEM私钥从密文中恢复共享密钥。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                         |
+| -------- | --------------------------- | ---- | -------------------------------------------- |
+| keyAlias | string                      | 是   | ML-KEM私钥密钥别名。 |
+| params  | [HuksParam[]](#huksparam) | 是   | 密钥解封装操作参数集。 |
+| encapData | Uint8Array | 是   | 封装密文数据。 |
+| sharedKeyAlias | string | 否   | 共享密钥存储别名。 |
+| sharedKeyParams | [HuksParam[]](#huksparam) | 否   | 共享密钥的属性参数集。 |
+
+**返回值：**
+
+| 类型                                           | 说明                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。sharedSecret为共享密钥（sharedKeyAlias非空时sharedSecret为空）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000001 | Algorithm mode is not supported |
+| 12000002 | The algorithm parameter is missing. Check the algorithm parameter. |
+| 12000003 | The algorithm parameter is invalid. Check the algorithm parameter. |
+| 12000004 | The file operation failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | The algorithm engine reports an error. Check the input parameters. |
+| 12000011 | The queried key does not exist. Check the key-related parameters. |
+| 12000012 | The device environment or input parameter is abnormal. |
+| 12000013 | Queried credential does not exist |
+| 12000014 | Insufficient memory. |
+| 12000015 | Failed to obtain the security information using UserIAM. |
+| 12000016 | The lock screen password is not set. |
+| 12000017 | A key with the same alias already exists. |
+| 12000018 | Invalid input parameter. |
+
+**示例：**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyAlias = 'ml_kem_key_b';
+let params: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_ML_KEM,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_ML_KEM_KEY_PARAM_SET_768,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP,
+}];
+
+let encapData = new Uint8Array(784);
+
+try {
+  huks.decapsulate(keyAlias, params, encapData).then((data: huks.HuksReturnResult) => {
+    console.info(`decapsulate success, sharedSecret length: ${(data.sharedSecret as Uint8Array).length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`decapsulate failed, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`decapsulate input arg invalid`);
+}
+```
 
 ## huks.getKeyItemProperties<sup>9+</sup>
 
@@ -1883,16 +2085,16 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
-| 12000002 | algorithm param is missing. |
-| 12000003 | algorithm param is invalid. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1905,6 +2107,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 获取密钥属性 */
 huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: getKeyItemProperties failed`);
@@ -1946,16 +2149,16 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksRetu
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
-| 12000002 | algorithm param is missing. |
-| 12000003 | algorithm param is invalid. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1968,6 +2171,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 获取密钥属性 */
 huks.getKeyItemProperties(keyAlias, emptyOptions)
   .then((data) => {
     console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
@@ -2006,7 +2210,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2021,6 +2225,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: isKeyItemExist failed`);
@@ -2153,7 +2358,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2166,6 +2371,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions).then(() => {
   console.info(`keyAlias:${keyAlias} is existed!`);
 });
@@ -2204,7 +2410,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<bool
 | 12000006 | error occurred in crypto engine. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2217,6 +2423,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: hasKeyItem failed`);
@@ -2268,7 +2475,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 12000006 | error occurred in crypto engine. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2281,6 +2488,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
   if (data) {
     console.info(`keyAlias:${keyAlias} is existed!`);
@@ -2328,12 +2536,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid.<br>适用版本：22+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.initSession<sup>9+</sup>
 
@@ -2378,12 +2586,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid.<br>适用版本：22+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2425,12 +2633,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2473,8 +2681,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2522,12 +2730,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2569,13 +2777,13 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2618,9 +2826,9 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2668,13 +2876,13 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.abortSession<sup>9+</sup>
 
@@ -2706,11 +2914,11 @@ abortSession终止密钥操作。使用callback异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000014 | memory is insufficient. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2722,7 +2930,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
  * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
  *
- * 以下以RSA2048密钥的callback功能使用为例
+ * 以下以RSA密钥的callback功能使用为例
  */
 
 let keyAlias = "HuksDemoRSA";
@@ -2754,17 +2962,20 @@ async function huksAbort() {
     value: huks.HuksCipherMode.HUKS_MODE_ECB,
   }];
 
+  /* 1. 生成密钥 */
   huks.generateKeyItem(keyAlias, options, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
     } else {
       console.info(`callback: generateKeyItem success`);
+      /* 2. 初始化密钥会话 */
       huks.initSession(keyAlias, options, (error, data) => { // 以initSession阶段进行abortSession为例
         if (error) {
           console.error(`callback: initSession failed`);
         } else {
           console.info(`callback: initSession success, data = ${JSON.stringify(data)}`);
           handle = data.handle;
+          /* 3. 发生错误，终止密钥操作 */
           huks.abortSession(handle, options, (error) => {
             if (error) {
               console.error(`callback: abortSession failed`);
@@ -2866,6 +3077,7 @@ function uint8ArrayToString(fileData) {
     return dataString;
 }
 
+/* 加密参数集 */
 function getDesEncryptProperties() {
     let properties = [{
         tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -2889,6 +3101,7 @@ function getDesEncryptProperties() {
     return properties;
 }
 
+/* 解密参数集 */
 function getDesDecryptProperties() {
     let properties = [{
         tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -2912,6 +3125,7 @@ function getDesDecryptProperties() {
     return properties;
 }
 
+/* 1. 加密数据 */
 function testThreeStageEncrypt() {
     let huksInfo;
     let ret = true;
@@ -2928,6 +3142,7 @@ function testThreeStageEncrypt() {
         inData: stringToUint8Array(plainText.substring(16, 32))
     };
 
+    /* 2. 初始化加密会话 */
     huks.initSession(keyAlias, initOptions, (err, data) => {
         if (err) {
             huksInfo = 'encrypt initSession failed, code: ' + err.code + ', message: ' + err.message;
@@ -2971,6 +3186,7 @@ function testThreeStageEncrypt() {
         return huksInfo;
     }
 
+    /* 3. 完成加密操作 */
     huks.finishSession(handle, finishOptions, (err, data) => {
         if (err) {
             huksInfo = 'encrypt finishSession failed, code: ' + err.code + ', message: ' + err.message;
@@ -2990,6 +3206,7 @@ function testThreeStageEncrypt() {
     return huksInfo;
 }
 
+/* 4. 解密数据 */
 function testThreeStageDecrypt() {
     let huksInfo;
     let ret = true;
@@ -3007,6 +3224,7 @@ function testThreeStageDecrypt() {
         inData: stringToUint8Array(cipherText.substring(16, 32))
     };
 
+    /* 5. 初始化解密会话 */
     huks.initSession(keyAlias, initOptions, (err, data) => {
         if (err) {
             huksInfo = 'decrypt initSession failed, code: ' + err.code + ', message: ' + err.message;
@@ -3046,6 +3264,7 @@ function testThreeStageDecrypt() {
         }
     });
 
+    /* 6. 完成解密操作 */
     huks.finishSession(handle, finishOptions, (err, data) => {
        if (err) {
            huksInfo = 'decrypt finishSession failed, code: ' + err.code + ', message: ' + err.message;
@@ -3116,11 +3335,11 @@ abortSession终止密钥操作。使用Promise异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000014 | memory is insufficient. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3130,7 +3349,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
  * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
  *
- * 以下以RSA2048密钥的promise功能使用为例
+ * 以下以RSA密钥的promise功能使用为例
  */
 let keyAlias = "HuksDemoRSA";
 let genProperties: Array<huks.HuksParam> = [{
@@ -3158,6 +3377,7 @@ let options: huks.HuksOptions = {
 };
 let handle: number = 0;
 
+/* 1. 生成密钥 */
 async function generateKey() {
   await huks.generateKeyItem(keyAlias, options)
     .then(() => {
@@ -3165,6 +3385,7 @@ async function generateKey() {
     });
 }
 
+/* 2. 初始化密钥会话 */
 async function huksInit() {
   console.info('enter huksInit');
   await huks.initSession(keyAlias, options)
@@ -3174,6 +3395,7 @@ async function huksInit() {
     });
 }
 
+/* 3. 终止密钥会话 */
 async function huksAbort() {
   console.info('enter huksAbort');
   await huks.abortSession(handle, options)
@@ -3223,12 +3445,13 @@ listAliases(options: HuksOptions): Promise\<HuksListAliasesReturnResult>
 | 12000005 | IPC communication failed. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
 ```ts
-import { huks } from '@kit.UniversalKeystoreKit'
+/* 以查询DE类密钥的别名集为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
 
 async function testListAliases() {
   let queryProperties: Array<huks.HuksParam> = [
@@ -3286,7 +3509,7 @@ async function testListAliases() {
 | HUKS_ERR_CODE_INVALID_ARGUMENT<sup>20+</sup>  | 12000018 | 输入参数非法。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core     |
 | HUKS_ERR_CODE_ITEM_EXISTS<sup>22+</sup>  | 12000019 | 同名provider已注册。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
 | HUKS_ERR_CODE_EXTERNAL_MODULE<sup>22+</sup>  | 12000020 | 依赖的外部模块返回错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
-| HUKS_ERR_CODE_PIN_LOCKED<sup>22+</sup>  | 12000021 | UKey PIN码被锁。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
+| HUKS_ERR_CODE_PIN_LOCKED<sup>22+</sup>  | 12000021 | UKey PIN码被锁定。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
 | HUKS_ERR_CODE_PIN_INCORRECT<sup>22+</sup>  | 12000022 | UKey PIN码错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
 | HUKS_ERR_CODE_PIN_NO_AUTH<sup>22+</sup>  | 12000023 | UKey PIN码未认证。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
 | HUKS_ERR_CODE_BUSY<sup>22+</sup>  | 12000024 | 设备或资源繁忙。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
@@ -3404,6 +3627,8 @@ async function testListAliases() {
 | HUKS_ML_DSA_KEY_PARAM_SET_44          | 44  | 表示使用ML-DSA算法的安全参数集为44。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ML_DSA_KEY_PARAM_SET_65          | 65  | 表示使用ML-DSA算法的安全参数集为65。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ML_DSA_KEY_PARAM_SET_87          | 87  | 表示使用ML-DSA算法的安全参数集为87。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ML_KEM_KEY_PARAM_SET_768  | 768  | 表示ML-KEM算法的密钥长度为768。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ML_KEM_KEY_PARAM_SET_1024  | 1024  | 表示ML-KEM算法的密钥长度为1024。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 
 ## HuksKeyAlg
 
@@ -3431,6 +3656,7 @@ async function testListAliases() {
 | HUKS_ALG_3DES<sup>12+</sup> | 161  | 表示使用3DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_CMAC<sup>12+</sup> | 162  | 表示使用CMAC算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_ML_DSA           | 201    | 表示使用ML-DSA算法。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ALG_ML_KEM | 200  | 表示使用ML-KEM算法。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 
 ## HuksKeyGenerateType
 
@@ -4007,7 +4233,7 @@ deleteKey(keyAlias: string, options: HuksOptions) : Promise\<HuksResult>
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 此处options选择emptyOptions传空 */
 let keyAlias = 'keyAlias';
@@ -4129,7 +4355,7 @@ function makeRandomArr(size: number) {
   return arr;
 };
 
-/* 第一步：生成密钥 */
+/* 1. 生成密钥 */
 let plainTextSize32 = makeRandomArr(32);
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
@@ -4158,7 +4384,7 @@ let huksOptions: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
-/* 第二步：导入密钥 */
+/* 2. 导入密钥 */
 let result = huks.importKey(keyAlias, huksOptions);
 ```
 
@@ -4567,6 +4793,7 @@ let options: huks.HuksOptions = {
 let handle: number = 0;
 let resultMessage = "";
 
+/* 生成密钥 */
 async function generateKey() {
   properties = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -4596,6 +4823,7 @@ function stringToUint8Array(str: string) {
   return tmpUint8Array;
 }
 
+/* 初始化密钥操作 */
 async function huksInit() {
   await huks.init(keyAlias, options).then((data) => {
     console.info(`test init data: ${JSON.stringify(data)}`);
@@ -4628,6 +4856,7 @@ function huksFinish() {
   });
 }
 
+/* 终止密钥操作 */
 async function huksAbort() {
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.abort(handle, options, (err, data) => {
@@ -4691,6 +4920,7 @@ function stringToUint8Array(str: string) {
   return tmpUint8Array;
 }
 
+/* 生成密钥 */
 async function generateKey() {
   properties = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -4717,6 +4947,7 @@ async function generateKey() {
   });
 }
 
+/* 初始化密钥操作 */
 async function huksInit() {
   return new Promise<huks.HuksHandle>((resolve, reject) => {
     huks.init(keyAlias, options, async (err, data) => {
@@ -4758,6 +4989,7 @@ async function huksFinish() {
   });
 }
 
+/* 终止密钥操作 */
 function huksAbort() {
   huks.abort(handle, options).then((data) => {
     if (data.errorCode === 0) {

@@ -428,7 +428,7 @@ struct TreeViewDemo {
   }}
 ```
 
-![en-us_image_0000001664822257](figures/en-us_image_0000001664822257.png)
+![Directory](figures/Directory.png)
 
 ### Example 2: Setting the Symbol Icon
 

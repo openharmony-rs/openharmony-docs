@@ -181,7 +181,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213396721](figures/zh-cn_image_0000001213396721.png)
+   ![flexWrap](figures/flexWrap.png)
 
 3. Grid样式
 
@@ -247,7 +247,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213276619](figures/zh-cn_image_0000001213276619.png)
+   ![Grid样式](figures/Grid样式.png)
 
 4. 拖拽<sup>7+</sup>
    ```html
@@ -297,7 +297,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213284927](figures/zh-cn_image_0000001213284927.gif)
+   ![drag](figures/drag.gif)
 
    ```html
    <!-- xxx.hml -->

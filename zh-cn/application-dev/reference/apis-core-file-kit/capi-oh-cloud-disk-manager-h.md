@@ -8,9 +8,9 @@
 
 ## 概述
 
-云盘管理模块的接口定义。
+云盘管理模块的接口定义，提供云盘同步根路径的注册、激活、监听和查询能力，支持监听文件变更、设置和查询文件同步状态，适用于需要在应用内实现云盘文件同步和变更监听的场景。
 
-**引用文件：** <filemanagement/clouddiskmanager/oh_cloud_disk_manager.h>
+**引用文件：** `<filemanagement/clouddiskmanager/oh_cloud_disk_manager.h>`
 
 **库：** libohclouddiskmanager.so
 
@@ -28,12 +28,12 @@
 | -- | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo/CloudDisk_FileIdInfo/CloudDisk_SyncFolderPath | CloudDisk_PathInfo：文件路径信息。<br> CloudDisk_FileIdInfo：定义的文件ID。<br> CloudDisk_SyncFolderPath：定义的同步根路径。 |
 | [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | CloudDisk_FileSyncState | 文件的同步状态。 |
-| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | 定义了同步根路径下单个文件变更事件的数据结构。该结构包含有关文件变更的详细信息，包括唯一ID、父目录的唯一ID、相对路径、变更类型、文件大小和时间戳。 |
-| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | 查询同步根路径中文件变更的结果。该结构体包含同步根路径中文件的变更数据，包括下一个更新序列号、结尾标志以及变更数据项数组。 |
+| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | 定义同步根路径下单个文件变更事件的数据结构，包含更新序列号、文件ID、父目录ID、相对路径、变更类型、文件大小和时间信息。 |
+| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | 查询同步根路径中文件变更的结果，包含下一次可查询的更新序列号、结尾标志以及变更数据项数组。 |
 | [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | CloudDisk_FailedList | 同步操作中失败的文件列表信息。该结构包含文件路径信息以及失败的具体错误原因。 |
-| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | 表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。 |
+| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | 表示一个文件同步操作的结果，包含文件路径信息、操作结果、同步状态或失败原因。 |
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | 定义同步根路径的显示名称信息。 |
-| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | 同步根属性信息。 |
+| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | 同步根路径属性信息。 |
 
 ### 枚举
 
@@ -99,8 +99,8 @@ enum CloudDisk_OperationType
 | -- | -- |
 | CREATE = 0 | 创建文件或目录。 |
 | DELETE = 1 | 删除文件或目录。 |
-| MOVE_FROM = 2 | 移动此文件或目录。 |
-| MOVE_TO = 3 | 移动到此文件或目录。 |
+| MOVE_FROM = 2 | 文件或目录被移出。 |
+| MOVE_TO = 3 | 文件或目录被移入。 |
 | CLOSE_WRITE = 4 | 在写入操作后关闭文件。 |
 | SYNC_FOLDER_INVALID = 5 | 同步根路径无效。 |
 
@@ -152,7 +152,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 
 **描述**
 
-应用注册一个回调函数，用于获取同步根路径下文件的变更。
+应用注册一个回调函数，用于获取同步根路径下文件的变更，适用于需要实时监听同步根路径下文件创建、删除、修改等变更事件的场景。
 
 **起始版本：** 21
 
@@ -161,7 +161,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 | 参数项 | 描述 |
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 表示同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
-| callback | 注册的回调函数。 |
+| void (*callback)(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_ChangeData changeDatas[], size_t bufferLength) | 注册的回调函数。当同步根路径下文件发生变更时触发。syncFolderPath表示同步根路径，changeDatas表示文件变更数据数组，bufferLength表示数组长度。 |
 
 **返回：**
 
@@ -177,7 +177,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 
 **描述**
 
-应用取消注册同步根路径下文件变更的回调。
+应用取消注册同步根路径下文件变更的回调，适用于应用不再需要监听文件变更、切换账号或释放监听资源的场景。
 
 **起始版本：** 21
 
@@ -201,7 +201,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 
 **描述**
 
-获取同步根路径下的历史操作记录。
+应用获取同步根路径下的历史操作记录，适用于按需查询文件变更历史、断线重连后恢复同步进度或排查同步问题的场景。
 
 **起始版本：** 21
 
@@ -210,9 +210,9 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 | 参数项 | 描述 |
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 查询的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
-| uint64_t startUsn | 查询起始的变更序列，范围：[0, 2^64 - 1]。 |
-| size_t count | 查询文件变更的数量，范围：[1, 100]。 |
-| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) **changesResult | 表示查询文件变更的结果。详情请参阅[CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)。 |
+| uint64_t startUsn | 查询起始的变更序列号，用于指定从哪个变更记录开始查询。首次查询可设为0，后续查询可使用上次返回结果中的下一个序列号。取值范围：[0, 2^64 - 1]。 |
+| size_t count | 查询文件变更的数量，取值范围：[1, 100]。 |
+| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) **changesResult | 输出参数，表示查询文件变更的结果。详情请参阅[CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)。 |
 
 **返回：**
 
@@ -228,7 +228,7 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 
 **描述**
 
-应用设置同步根路径下文件的同步状态。
+应用设置同步根路径下文件的同步状态，适用于需要手动控制文件同步行为的场景。
 
 **起始版本：** 21
 
@@ -238,9 +238,9 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 待设置的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | [const CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) fileSyncStates[] | 指定文件路径及其目标同步状态的[CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)数组。 |
-| size_t bufferLength | 待设置同步状态数组的长度，范围：[1, 100]。 |
+| size_t bufferLength | 待设置同步状态数组的长度，取值范围：[1, 100]。 |
 | [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) **failedLists | 输出参数。返回一个指向[CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)数组的指针，该数组包含设置失败的文件。 |
-| size_t *failedCount | 输出参数。设置同步状态失败的文件列表数组长度。 |
+| size_t *failedCount | 输出参数。返回设置同步状态失败的文件数量。 |
 
 **返回：**
 
@@ -256,7 +256,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 
 **描述**
 
-应用查询同步根路径下文件同步状态。
+应用查询同步根路径下文件同步状态，适用于需要在界面显示同步状态、判断文件是否已完成同步或检查文件同步是否失败的场景。
 
 **起始版本：** 21
 
@@ -266,9 +266,9 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 待查询的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) paths[] | 待查询同步状态[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)的数组。 |
-| size_t bufferLength | 待查询同步状态的数组的长度，范围：[1, 100]。 |
+| size_t bufferLength | 待查询同步状态的数组的长度，取值范围：[1, 100]。 |
 | [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) **resultLists | 输出参数。返回一个查询到的文件同步操作结果，详情可参考：[CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)。 |
-| size_t *resultCount | 输出参数。返回失败的文件数量。 |
+| size_t *resultCount | 输出参数。返回查询结果的数量。 |
 
 **返回：**
 
@@ -284,7 +284,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 
 **描述**
 
-应用注册同步根。
+应用注册同步根，适用于需要将本地目录设置为云盘同步目录的场景。
 
 **起始版本：** 21
 
@@ -308,7 +308,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 
 **描述**
 
-应用取消注册同步根。
+应用取消注册同步根，适用于需要移除云盘同步目录的场景。通常在取消激活同步根后调用。
 
 **起始版本：** 21
 
@@ -332,7 +332,7 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 **描述**
 
-应用激活同步根。
+应用激活同步根，适用于需要开始或恢复同步文件的场景。
 
 **起始版本：** 21
 
@@ -356,7 +356,7 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 
 **描述**
 
-应用取消激活同步根。
+应用取消激活同步根，适用于需要暂停同步文件或释放同步资源的场景。
 
 **起始版本：** 21
 
@@ -380,7 +380,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 
 **描述**
 
-应用获取所有同步根。
+应用获取所有同步根，适用于查询当前已注册的同步目录、展示同步目录列表或恢复同步状态的场景。
 
 **起始版本：** 21
 
@@ -389,7 +389,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 | 参数项 | 描述 |
 | -- | -- |
 | [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) **syncFolders | 输出参数。返回同步根路径数组[CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)。 |
-| size_t *count | 输出参数。当前网盘注册的所有同步根的数量。 |
+| size_t *count | 输出参数。当前应用注册的同步根数量。当没有同步根时为0。 |
 
 **返回：**
 
@@ -405,7 +405,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 
 **描述**
 
-应用更新同步根别名。
+应用更新同步根别名，适用于需要为同步目录设置自定义显示名称、区分多个同步目录或在界面显示友好目录名称的场景。
 
 **起始版本：** 21
 
@@ -414,8 +414,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 | 参数项 | 描述 |
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 待更新别名的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
-| const char *customAlias | 用户定义的别名，不能包含字符：\\\/\*\?\<\>\|\:\"，以及不能以"."、".."和纯空格作为完整名称。 |
-| size_t customAliasLength | 用户定义的别名长度，范围：[0, 255]。 |
+| const char *customAlias | 用户自定义的同步根别名，用于在界面上显示和标识不同的同步根，便于用户识别和管理。别名不能包含以下字符：\\\/\*\?\<\>\|\:\"。名称不能为"."、".."或纯空格。 |
+| size_t customAliasLength | 用户定义的别名长度，取值范围：[0, 255]。 |
 
 **返回：**
 

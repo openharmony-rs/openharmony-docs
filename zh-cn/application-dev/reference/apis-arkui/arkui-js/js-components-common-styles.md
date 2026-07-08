@@ -90,4 +90,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001214837129](figures/zh-cn_image_0000001214837129.png)
+![boxSizing](figures/boxSizing.png)

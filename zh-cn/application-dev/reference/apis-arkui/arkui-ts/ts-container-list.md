@@ -1432,7 +1432,7 @@ type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end:
 
 有子组件划入或划出List显示区域时触发。
 
-List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。
+API版本26.0.0开始，List从有子组件变成空的List时，上报的start和end参数的index成员为-1，itemGroupArea和itemIndexInGroup成员为undefined。API版本26.0.0以前，List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。
 
 start和end的index同时返回0，代表List内只有一个子组件。
 
@@ -1722,7 +1722,7 @@ struct ListExample {
 }
 ```
 
-![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 
 ### 示例2（设置子元素对齐）
@@ -2870,7 +2870,7 @@ struct ListExample {
   }
 
   aboutToAppear() {
-    let list: string[] = [];
+    let list: number[] = [];
     for (let i = 0; i < 10; i++) {
         list.push(i);
     }
@@ -2880,16 +2880,26 @@ struct ListExample {
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
-        LazyForEach(this.arr, (item: number) => {
+        LazyForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text(item.toString())
               .fontSize(16)
-              .backgroundColor(Color.White)
               .width('100%')
               .height(50)
               .textAlign(TextAlign.Center)
           }
+          .backgroundColor(Color.White)
           .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean) => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
         }, (item: number) => item.toString())
       }
       .width('90%')

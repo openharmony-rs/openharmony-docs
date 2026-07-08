@@ -31,7 +31,7 @@ setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](#pointerstyle) | 是   | 设置的鼠标样式。 |
+| value | [PointerStyle](#pointerstyle) | 是   | 设置的光标样式。 |
 
 ### restoreDefault
 
@@ -45,7 +45,7 @@ restoreDefault(): void
 
 ## PointerStyle
 
-type PointerStyle = pointer.PointerStyle
+type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
 
 光标样式。
 
@@ -55,7 +55,7 @@ type PointerStyle = pointer.PointerStyle
 
 |类型|说明|
 | -- | -- |
-|[pointer.PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
+|import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
 
 > **说明：**
 > 

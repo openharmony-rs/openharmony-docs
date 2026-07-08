@@ -76,7 +76,7 @@
 
 ## LevelMode<sup>15+</sup>
 
-type LevelMode = LevelMode
+type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 弹窗的显示层级。
 
@@ -88,11 +88,11 @@ type LevelMode = LevelMode
 
 | 类型                                                        | 说明                 |
 | ----------------------------------------------------------- | -------------------- |
-| [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
+| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
 
 ## ImmersiveMode<sup>15+</sup>
 
-type ImmersiveMode = ImmersiveMode
+type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 弹窗的蒙层效果。
 
@@ -104,7 +104,7 @@ type ImmersiveMode = ImmersiveMode
 
 | 类型                                                         | 说明                       |
 | ------------------------------------------------------------ | -------------------------- |
-| [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
+| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
 
 ## DismissDialogAction<sup>12+</sup>
 
@@ -258,7 +258,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action](figures/zh-cn_image_action.gif)
+![image-action](figures/image-action.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -330,7 +330,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_showinsubwindow](figures/zh-cn_image_action_showinsubwindow.jpg)
+![image-action-showinsubwindow](figures/image-action-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
@@ -392,7 +392,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_animation](figures/zh-cn_image_action_animation.gif)
+![image-action-animation](figures/image-action-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
@@ -474,7 +474,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_style](figures/zh-cn_image_action_style.gif)
+![zh-cn_image_action_style](figures/image-action-style.gif)
 
 ### 示例5（悬停态弹窗）
 
@@ -625,7 +625,7 @@ struct Example1 {
 }
 ```
 
-![zh-cn_image_action_lifecycle](figures/zh-cn_image_action_lifecycle.gif)
+![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
@@ -685,7 +685,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_backgroundBlurStyleOptions](figures/zh-cn_image_action_backgroundBlurStyleOptions.png)
+![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### 示例8（自定义背景效果参数）
 
@@ -745,7 +745,7 @@ struct ActionSheetExample {
   }
 }
 ```
-![zh-cn_image_action_backgroundEffect](figures/zh-cn_image_action_backgroundEffect.png)
+![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
 
 ### 示例9（设置弹窗的系统材质）
 

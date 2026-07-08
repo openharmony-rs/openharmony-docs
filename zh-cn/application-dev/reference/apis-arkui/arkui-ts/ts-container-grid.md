@@ -758,7 +758,7 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1199,7 +1199,7 @@ struct GridExample {
 }
 ```
 
-![zh-cn_image_0000001219744183](figures/zh-cn_image_0000001219744183.gif)
+![grid](figures/grid.gif)
 
 ### 示例2（可滚动Grid和滚动事件）
 
@@ -3364,3 +3364,216 @@ struct GridExample {
 ```
 
 ![grid_two_finger_select](figures/grid_two_finger_select.gif)
+
+### 示例22（使用OnMove进行拖拽）
+
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+
+```ts
+// RectGridDataSource.ets
+export class Rects {
+  id: number = 0
+  // rectSize表示该GridItem占用的[行, 列]数，默认[1, 1]为规则节点
+  rectSize: [number, number] = [1, 1]
+  constructor(id_: number) {
+    this.id = id_
+  }
+}
+
+// LazyForEach的数据源，实现IDataSource接口，负责管理数据及通知UI刷新
+export class RectGridDataSource implements IDataSource {
+  private list: Array<Rects> = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: Rects[]) {
+    this.list = list;
+  }
+
+  // 返回数据总数
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  // 根据索引获取对应的数据项
+  getData(index: number): Rects {
+    return this.list[index];
+  }
+
+  // 注册数据变更监听器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销数据变更监听器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 将from位置的元素移动到to位置，并通知UI全部重载刷新
+  public moveItem(from: number, to: number): void {
+    let tmp = this.list.splice(from, 1);  // 先移除被拖拽项
+    this.list.splice(to, 0, tmp[0]);      // 将被拖拽项插入到目标位置
+    this.notifyDataReload()
+  }
+}
+```
+
+```ts
+// xxx.ets
+import { RectGridDataSource, Rects } from './RectGridDataSource';
+
+@Entry
+@Component
+struct GridOnMoveExample {
+  numbers: RectGridDataSource = new RectGridDataSource([]);
+
+  // 网格布局选项（实际生效），声明不规则节点的索引及各自占用的行列数
+  @State layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],   // 设置哪些索引对应的GridItem为不规则节点
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  // 布局选项（备份），用于拖拽时通过整体赋值触发layoutOptions刷新
+  layoutOptions_back: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  build() {
+    Row() {
+      Grid(undefined, this.layoutOptions) {
+        LazyForEach(this.numbers, (item: Rects) => {
+          GridItem() {
+            Text(item.id.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              // 设置高度，跨行GridItem需额外增加外边距(规则GridItem的间距为2*10)用于界面对齐
+              .size({ height: 100 * item.rectSize[0] + (item.rectSize[0] - 1) * 20, width: '100%'})
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor(0xF9CF93)
+        }, (index: Rects) => index.id.toString())
+          // 当拖拽松手时，被拖拽项落位位置与拖拽前不同时触发，from为起始索引，to为目标索引
+          .onMove((from:number, to:number) => {
+            console.info("Grid onMove from " + from + " to " + to)
+            // 更新数据源
+            this.numbers.moveItem(from, to)
+            if (from < to) {  // 被拖拽项索引小于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 被拖拽项与目标位置之间的元素整体前移一位（索引-1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = len - 1; i >= 0; i --) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex > from && irregularIndex <= to) {
+                    this.layoutOptions.irregularIndexes[i] --
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            } else {  // 被拖拽项索引大于等于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 目标位置至被拖拽项之间的元素整体后移一位（索引+1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = 0; i < len; i ++) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex >= to && irregularIndex < from) {
+                    this.layoutOptions.irregularIndexes[i] ++
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            }
+            // 通过备份对象整体赋值，强制layoutOptions刷新生效
+            this.layoutOptions_back.irregularIndexes = this.layoutOptions.irregularIndexes
+            this.layoutOptions = this.layoutOptions_back
+            console.info("Grid this.layoutOptions.irregularIndexes " + this.layoutOptions.irregularIndexes)
+          },
+            {
+              onLongPress: (index: number) => {
+                // GridItem长按浮起时触发
+                console.info('Grid onLongPress: ' + index);
+              },
+              onDrop: (index: number) => {
+                // 拖拽的GridItem松手时触发
+                console.info('Grid onDrop: ' + index);
+              },
+              onDragStart: (index: number) => {
+                // GridItem长按浮起并开始拖拽时触发
+                console.info('Grid onDragStart: ' + index);
+              },
+              onMoveThrough: (from: number, to: number) => {
+                // GridItem拖拽过程中持续触发
+                console.info('Grid onMoveThrough From: ' + from + ' to: ' + to);
+              }
+            })
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr')   // 四列等宽布局
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xFAEEE0)
+    }
+  }
+
+  aboutToAppear(): void {
+    // 初始化100个矩形数据并设置各不规则节点的跨占尺寸
+    let list: Rects[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(new Rects(i));
+    }
+    list[4].rectSize = [2, 2] // 2行2列
+    list[5].rectSize = [1, 2] // 1行2列
+    list[6].rectSize = [1, 2] // 1行2列
+    list[7].rectSize = [2, 1] // 2行1列
+    list[8].rectSize = [2, 1] // 2行1列
+    list[13].rectSize = [1, 4]  // 1行4列
+    this.numbers = new RectGridDataSource(list);
+  }
+}
+```
+
+![grid-onmove-drag](figures/grid-onmove-drag.gif)

@@ -14,7 +14,7 @@
   - [Multi-Language Capability](js-service-widget-multiple-languages.md)
   - [Version Compatibility Adaptation](js-service-widget-version-compatibility.md)
   - [Theme Configuration](js-service-widget-theme.md)
-- Universal Components<!--card-comp-universal-comp-infor-->
+- Universal Components<!--card-comp-universal-comp-inform-->
   - [Universal Attributes](js-service-widget-common-attributes.md)
   - [Universal Styles](js-service-widget-common-styles.md)
   - [Universal Events](js-service-widget-common-events.md)

@@ -8,7 +8,7 @@
 
 >  **NOTE**
 >
->  - This API is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  - The **media** attribute uses the actual size, physical pixel, and screen resolution of the device by default.
 
@@ -20,19 +20,19 @@ Media queries are widely used. You can use them to modify the application style 
 
 Use **@media** to import query statements. The rule is as follows:
 
-```
+```css
 @media [media-type] [and|or] [(media-feature)] {
   CSS-Code;
 }
 ```
 
-**@media screen and (round-screen: true) { … }**: The condition is met when the device screen is round.
+**@media screen and (round-screen: true) { ... }** : The condition is met when the device screen is round.
 
-**@media (max-height: 454) { … }**: Range query. CSS level 3 is used.
+**@media (max-height: 454) { ... }**: Range query. CSS level 3 is used.
 
 >  **NOTE**
 >
->  - The following operators are not supported: &lt;=, &gt;=, &lt;, and &gt;.
+>  - The following operators are not supported: <=, >=, <, and >.
 >  - Nested parentheses are supported since API version 9.
 >  - A media query statement can contain a maximum of 512 characters.
 >  - A media query condition can contain a maximum of 32 characters.
@@ -47,7 +47,7 @@ Use **@media** to import query statements. The rule is as follows:
 
 ## Media Logical Operation
 
-You can use media logical operators to implement complex media query. The following table describes the available operators.
+You can use media logical operators (**and** and **or<sup>9+</sup>**) to implement complex media query. The following table describes the available operators.
 
 **Table 1** Media logical operators
 

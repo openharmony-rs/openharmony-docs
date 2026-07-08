@@ -217,7 +217,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频输入源，这里设置为麦克风。
     profile: avProfile,
-    url: 'fd://35', // 参考应用文件访问与管理开发示例新建并读写一个文件。
+    url: '', // 参考应用文件访问与管理开发示例新建并读写一个文件。
   };
 
   // 创建文件以及设置avConfig.url。

@@ -44,8 +44,8 @@
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
   - [录音并发策略说明](audio-recording-concurrency.md)
-  - [实现音频耳返](audio-ear-monitor.md)
-  - [实现音频低时延耳返](audio-ear-monitor-loopback.md)
+  - [实现自定义耳返](audio-ear-monitor.md)
+  - [实现低时延耳返](audio-ear-monitor-loopback.md)
 - 音频设备路由管理<!--audio-device-->
   - [查询和监听音频输入设备](audio-input-device-management.md)
   - [查询和监听音频输出设备](audio-output-device-management.md)
@@ -71,3 +71,6 @@
   - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
+- Audio Kit常见问题<!--audio-issues-->
+  - [使用音频快照获取问题定位信息](audio-runtime-debugging-info.md)
+- [Audio Kit术语](audio-glossary.md)

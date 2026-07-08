@@ -1,10 +1,12 @@
 # Device Usage Statistics Development (for System Applications Only)
+
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:20.252Z pushedAt=2026-06-30T09:58:49.798Z -->
 
 ## When to Use
 
@@ -13,7 +15,9 @@ Device usage statistics include the usage of applications, notifications, and th
 The application records (usage history statistics and event records) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
 
 ## Available APIs
-Before using the APIs, import the **usageStatistics** module:
+
+Import the registration-related API package:
+
 ```ts
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
@@ -47,12 +51,17 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 ## How to Develop
 
-1. Before obtaining the device usage statistics, check whether the application has the **ohos.permission.BUNDLE_ACTIVE_INFO** permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+1. Before obtaining device usage information, check whether the required permissions have been configured.
+
+    The permission for device usage statistics provided by the system is **ohos.permission.BUNDLE_ACTIVE_INFO**.
+
+    For the specific configuration method, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
 2. Query events of all applications based on the specified start time and end time. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
@@ -83,6 +92,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res: usageStatistics.BundleStatsMap) => {
@@ -103,10 +113,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-4. Query events of this application based on the specified start time and end time. No permission is required for calling the **queryCurrentBundleEvents()** API.
+4. Query events of this application based on the specified start time and end time. No permission is required for calling the API.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
@@ -133,10 +144,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-5. Query the application usage duration in the specified time frame at the specified interval (daily, weekly, monthly, or annually). The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+5. To query application usage duration statistics by specifying a time interval (day, week, month, year), the ohos.permission.BUNDLE_ACTIVE_INFO permission must be configured.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: Array<usageStatistics.BundleStatsInfo>) => {
@@ -164,10 +176,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-6. Query the priority group of the current application. No permission is required for calling the **queryAppGroup()** API.
+6. Query the usage priority group of the current application. No permission configuration is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryAppGroup().then((res : number) => {
@@ -190,10 +203,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```
 
-7. Check whether the application specified by **bundleName** is in the idle state. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+7. Determine whether the application with the specified bundle name is currently in the idle state. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.isIdleState("com.ohos.camera").then((res: boolean) => {
@@ -215,10 +229,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     let isIdleState = usageStatistics.isIdleStateSync("com.ohos.camera");
     ```
 
-8. Obtain the number of FA usage records specified by **maxNum**. If **maxNum** is not specified, the default value **1000** is used. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+8. Query FA usage records. The maximum number of returned records cannot exceed **maxNum**. If **maxNum** is not specified, the default value is 1000. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
@@ -269,10 +284,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-9. Query the number of notifications from all applications based on the specified start time and end time. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+9. Query the number of notifications for all applications based on the specified start time and end time. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
@@ -297,6 +313,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
@@ -321,6 +338,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode when bundleName is specified
     let bundleName = "com.ohos.camera";
@@ -341,10 +359,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-12. Set the priority group of for application specified by **bundleName**. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+12. Set the priority group of the application with the specified **bundleName** to **newGroup**. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     let bundleName = "com.example.deviceUsageStatistics";
@@ -368,10 +387,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-13. Register a callback for application group changes. When an application group of the user changes, the change is returned to all applications that have registered the callback. The caller must have the ohos.permission.BUNDLE_ACTIVE_INFO permission.
+13. Register a listener for application group changes, which returns whether the registration is successful. When an application group changes, all registered listeners receive callback information. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     function  onBundleGroupChanged (res: usageStatistics.AppGroupCallbackInfo) {
@@ -406,10 +426,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     });
     ```
 
-14. Deregister the callback for application group changes. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
+14. Unregister the callback for application group changes. The caller must have the **ohos.permission.BUNDLE_ACTIVE_INFO** permission.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.unregisterAppGroupCallBack().then(() => {

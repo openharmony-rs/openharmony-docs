@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @yuchaozhng-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
@@ -46,7 +46,7 @@ import { commonType } from '@kit.ArkData';
 | path       | string                      | 否   | 否   | 资产在应用沙箱里的路径。           |
 | createTime | string                      | 否   | 否   | 资产被创建出来的时间。             |
 | modifyTime | string                      | 否   | 否   | 资产最后一次被修改的时间。         |
-| size       | string                      | 否   | 否   | 资产占用空间的大小（单位为字节（Byte），取值为非负整数）。 |
+| size       | string                      | 否   | 否   | 资产占用空间的大小（单位：字节（Byte），取值为非负整数）。 |
 | status     | [AssetStatus](#assetstatus) | 否   | 是   | 资产的状态，默认值为ASSET_NORMAL。 |
 
 ## Assets
@@ -65,7 +65,7 @@ type Assets = Array\<Asset>
 
 type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
 
-用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
+表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 

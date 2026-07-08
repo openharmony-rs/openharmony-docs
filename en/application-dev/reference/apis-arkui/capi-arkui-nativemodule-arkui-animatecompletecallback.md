@@ -26,7 +26,7 @@ Defines the callback type for when the animation playback is complete.
 
 | Name                                                                             | Description|
 |---------------------------------------------------------------------------------| -- |
-| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | Callback type for when the animation playback is complete.|
+| [ArkUI_FinishCallbackType](capi-native-type-visual-h.md#arkui_finishcallbacktype) type | Callback type for when the animation playback is complete.|
 | void* userData                                                                  | Custom data passed upon animation end callback.|
 
 
