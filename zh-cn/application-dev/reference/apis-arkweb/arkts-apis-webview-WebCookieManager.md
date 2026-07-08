@@ -97,7 +97,7 @@ struct WebComponent {
 
 static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
 
-获取指定url对应cookie的值。可以获取partitioned cookies。
+获取指定url对应的cookies，可以通过参数指定是否获取隐私模式下的cookies，也可以通过includePartitionedCookies指定是否获取第一方partitioned cookie。
 
 > **说明：**
 >
@@ -354,7 +354,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
 
-以Promise方式异步获取指定url对应cookie的值。可以获取partitioned cookies。
+以Promise方式异步获取指定url对应的cookies，可以通过参数指定是否获取隐私模式下的cookies，也可以通过includePartitionedCookies指定是否获取第一方partitioned cookie。
 
 **起始版本：** 26.0.0
 
