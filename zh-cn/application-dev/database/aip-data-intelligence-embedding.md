@@ -220,6 +220,24 @@
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   let splitConfig:intelligence.SplitConfig = {
+     size: 10,
+     overlapRatio: 0.1
+   }
+   let splitText = 'text';
+   
+   intelligence.splitText(splitText, splitConfig)
+     .then((data: Array<string>) => {
+       console.info('Succeeded in splitting Text');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to split Text and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
 
