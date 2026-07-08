@@ -264,7 +264,7 @@ try {
 
 unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-取消任务状态监听。使用callback异步回调。停止监听前，请确保已通过 registerMissionListener 完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
+取消任务状态监听。使用callback异步回调。停止监听前，请确保已通过registerMissionListener完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -344,7 +344,7 @@ try {
 
 unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-取消任务状态监听。使用Promise异步回调。停止监听前，请确保已通过 registerMissionListener 完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
+取消任务状态监听。使用Promise异步回调。停止监听前，请确保已通过registerMissionListener完成注册，否则调用无效。成功调用后，系统将不再监听该设备上的任务状态变化。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -419,7 +419,7 @@ try {
 
 startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;void&gt;): void;
 
-开始同步远端设备的任务列表。使用callback异步回调。使用时须与 stopSyncRemoteMissions 严格配对，按"先启动、后停止"的顺序执行，同步完成后应立即停止以释放系统资源。
+开始同步远端设备的任务列表。使用callback异步回调。使用时须与stopSyncRemoteMissions严格配对，按"先启动、后停止"的顺序执行，同步完成后应立即停止以释放系统资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -507,7 +507,7 @@ try {
 
 startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
-开始同步远端设备的任务列表。使用Promise异步回调。使用时须与 stopSyncRemoteMissions 严格配对，按"先启动、后停止"的顺序执行，同步完成后应立即停止以释放系统资源。
+开始同步远端设备的任务列表。使用Promise异步回调。使用时须与stopSyncRemoteMissions严格配对，按"先启动、后停止"的顺序执行，同步完成后应立即停止以释放系统资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -591,7 +591,7 @@ try {
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-调用该接口停止同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
+调用该接口停止同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用startSyncRemoteMissions启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -673,7 +673,7 @@ try {
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-停止同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
+停止同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用startSyncRemoteMissions启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -1170,7 +1170,7 @@ try {
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
-注册当前任务流转状态变化事件的监听。此接口需与 `off('continueStateChange')` 成对使用，不再监听时应及时取消；调用顺序为先通过 `on` 注册监听，不需要时再调用 `off` 取消监听。
+注册当前任务流转状态变化事件的监听。此接口需与`off('continueStateChange')`成对使用，不再监听时应及时取消；调用顺序为先通过`on`注册监听，不需要时再调用`off`取消监听。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -1237,7 +1237,7 @@ try {
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
-取消当前任务流转的状态监听。此接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
+取消当前任务流转的状态监听。此接口需与`on('continueStateChange')`成对使用，在不需要监听时应及时调用以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
