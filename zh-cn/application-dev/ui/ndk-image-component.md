@@ -173,6 +173,12 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 <!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
+``` C++
+ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
+ArkUI_AttributeItem fitItem = {fitValue, 1};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
+```
+
 ### 设置图片插值效果
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_INTERPOLATION属性设置图片插值效果。
