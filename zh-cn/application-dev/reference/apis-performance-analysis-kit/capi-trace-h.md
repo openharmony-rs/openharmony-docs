@@ -828,7 +828,7 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为[HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level）。 |
+| [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为[HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level)。 |
 | const char *name | 同步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
 | const char *customArgs | 自定义键值对参数，用于附加额外的跟踪信息，多个键值对使用逗号分隔，例'key1=value1,key2=value2'。这些参数可以在性能分析时帮助过滤或标记特定的跟踪点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
 

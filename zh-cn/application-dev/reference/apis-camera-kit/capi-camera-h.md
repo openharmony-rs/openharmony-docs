@@ -37,6 +37,7 @@
 | [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | 点参数。 |
 | [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | 拍照位置。 |
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
 | [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
@@ -96,6 +97,7 @@
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
 | [OH_Camera_NotificationName](#oh_camera_notificationname) | OH_Camera_NotificationName | 相机通知名称枚举类型。 |
 | [OH_Camera_ProximityStateForFocus](#oh_camera_proximitystateforfocus) | OH_Camera_ProximityStateForFocus | 对焦物体和相机距离状态枚举类型。 |
+| [OH_Camera_AutomotiveCameraPosition](#oh_camera_automotivecameraposition) | OH_Camera_AutomotiveCameraPosition | Car设备摄像头位置的枚举。 |
 
 ### 函数
 
@@ -133,6 +135,7 @@ enum Camera_ErrorCode
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
 | CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
+| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。 <br>**起始版本：** 26.0.0 |
 
 ### Camera_Status
 
@@ -797,6 +800,36 @@ enum OH_Camera_ProximityStateForFocus
 | -- | -- |
 | OH_CAMERA_PROXIMITY_STATE_IN_RANGE_RAISE_NONE   = 0 | 对焦物体和镜头距离在合理范围内。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_PROXIMITY_STATE_OUT_OF_RANGE_RAISE_REQUIRED   = 1 | 对焦物体和相机过近，需要远离对焦物体。<br>**起始版本：** 26.0.0 |
+
+### OH_Camera_AutomotiveCameraPosition
+
+```c
+enum OH_Camera_AutomotiveCameraPosition
+```
+
+**描述**
+
+Car设备摄像头位置的枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Car设备外部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Car设备外部前侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Car设备外部后侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Car设备外部左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Car设备外部右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Car设备内部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Car设备内部第一排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Car设备内部第一排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Car设备内部第一排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Car设备内部第二排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Car设备内部第二排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Car设备内部第二排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0 |
 
 ## 函数说明
 

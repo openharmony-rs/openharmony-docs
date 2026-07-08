@@ -80,7 +80,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（us）。 |
+| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 
@@ -123,8 +123,8 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((fetchedPixelMap: image.PixelMap) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
     });
@@ -196,8 +196,8 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((fetchedPixelMap: image.PixelMap | undefined) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
     });

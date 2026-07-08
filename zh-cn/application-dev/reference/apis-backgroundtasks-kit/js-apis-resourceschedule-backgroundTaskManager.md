@@ -65,16 +65,16 @@ requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspen
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let myReason = 'test requestSuspendDelay';
+let delayReason = 'test requestSuspendDelay';
 try {
-  let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+  let delayInfo = backgroundTaskManager.requestSuspendDelay(delayReason, () => {
   // 回调函数。应用申请的短时任务即将超时，通过此函数回调应用，执行一些清理和标注工作，并取消短时任务
   // 此处回调与应用的业务功能不耦合，短时任务申请成功后，正常执行应用本身的业务
     console.info('Request suspension delay will time out.');
   })
-  let id = delayInfo.requestId;
+  let requestId = delayInfo.requestId;
   let time = delayInfo.actualDelayTime;
-  console.info('The requestId is: ' + id);
+  console.info('The requestId is: ' + requestId);
   console.info('The actualDelayTime is: ' + time);
 } catch (error) {
   console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -118,8 +118,8 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let id = 1;
-backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
+let requestId = 1;
+backgroundTaskManager.getRemainingDelayTime(requestId, (error: BusinessError, res: number) => {
   if(error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
@@ -169,8 +169,8 @@ getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-let id = 1;
-backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
+let requestId = 1;
+backgroundTaskManager.getRemainingDelayTime(requestId).then((res: number) => {
   console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
@@ -212,9 +212,9 @@ cancelSuspendDelay(requestId: number): void
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-  let id = 1;
+  let requestId = 1;
   try {
-    backgroundTaskManager.cancelSuspendDelay(id);
+    backgroundTaskManager.cancelSuspendDelay(requestId);
   } catch (error) {
     console.error(`cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
   }
@@ -497,7 +497,7 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
-  id: number = 0; // 保存通知id
+  notificationId: number = 0; // 保存通知Id
 
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -527,7 +527,7 @@ export default class EntryAbility extends UIAbility {
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info('Operation startBackgroundRunning succeeded');
             // 对于上传下载类的长时任务，应用可以使用res中返回的notificationId来更新通知，比如发送带进度条的模板通知
-            this.id = res.notificationId;
+            this.notificationId = res.notificationId;
           }).catch((error: BusinessError) => {
             console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
           });
@@ -561,14 +561,14 @@ export default class EntryAbility extends UIAbility {
           text: 'test', // 应用自定义
         }
       },
-      id: this.id, // 必须是申请长时任务返回的id，否则应用更新通知失败
+      id: this.notificationId, // 必须是申请长时任务返回的notificationId，否则应用更新通知失败
       notificationSlotType: notificationManager.SlotType.LIVE_VIEW, // 实况窗类型，保持不变
       template: downLoadTemplate // 应用需要设置的模版名称
     };
 
     try {
       notificationManager.publish(request).then(() => {
-        console.info('publish success, id= ' + this.id);
+        console.info('publish success, id= ' + this.notificationId);
       }).catch((err: BusinessError) => {
         console.error(`publish fail: ${JSON.stringify(err)}`);
       });

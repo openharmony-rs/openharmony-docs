@@ -42,6 +42,7 @@
 | [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | 组件的UI状态枚举，用于处理状态样式。               |
 | [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | 定义焦点移动方向的枚举值。                     |
 | [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool)                         | ArkUI_ResponseRegionSupportedTool             | 定义支持响应区域设置的事件工具类型。                         |
+| [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | 原始输入事件类型枚举。 |
 
 ### 函数
 
@@ -205,6 +206,23 @@ enum ArkUI_ResponseRegionSupportedTool
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER  = 1  | 手指类型。 |
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN  = 2  | 手写笔类型。 |
 | ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE  = 3  | 鼠标类型。 |
+
+### ArkUI_RawInputEventType
+
+```c
+enum ArkUI_RawInputEventType
+```
+
+**描述**
+
+原始输入事件类型枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | 触摸事件类型。 |
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | 鼠标事件类型。 |
 
 ## 函数说明
 
