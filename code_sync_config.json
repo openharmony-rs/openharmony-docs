@@ -30663,6 +30663,11 @@
 						"end_line":251,
 						"name":"aip_releaseImageModel_operating",
 						"start_line":237
+					},
+					{
+						"end_line":96,
+						"name":"aip_getTextEmbeddingModel_operating",
+						"start_line":81
 					}
 				]
 			}
