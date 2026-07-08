@@ -12,7 +12,7 @@
 
 ## 约束限制
 
-- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。
+- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为1MB~2GB。
 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。
 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加[权限管控](get-pastedata-permission-guidelines.md)。
 
@@ -68,7 +68,7 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
 | [setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9) | 将数据写入系统剪贴板，使用callback异步回调。 |
 | [setData(data: PasteData): Promise&lt;void&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9-1) | 将数据写入系统剪贴板，使用Promise异步回调。 |
-| [getData( callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
+| [getData(callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
 | [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | 读取系统剪贴板内容，使用Promise异步回调。 |
 | [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
 

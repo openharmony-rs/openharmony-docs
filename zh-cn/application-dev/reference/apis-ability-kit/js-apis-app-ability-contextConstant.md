@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
+ContextConstant提供Context相关的枚举，包含文件加密分区等级、进程模式等。其中，文件加密分区等级用于保护应用数据安全，开发者可根据应用需求选择合适的加密等级；进程模式用于控制UIAbility的启动方式和进程行为。这些枚举帮助开发者实现更灵活的应用架构和更安全的数据管理。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## AreaMode
 
-文件加密分区等级，保证应用在不同场景下的数据安全。开发者可以根据应用的具体需求选择合适的加密等级，以保护用户的数据安全。
+文件加密分区等级，保证应用在不同场景下的数据安全。开发者可根据应用需求选择合适的加密等级。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,9 +32,9 @@ import { contextConstant } from '@kit.AbilityKit';
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | EL1 | 0 | 设备级加密区，设备开机后可访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | EL2 | 1 | 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| EL3<sup>11+</sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| EL4<sup>11+</sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| EL5<sup>12+</sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EL3<sup>11+</sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL4<sup>11+</sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| EL5<sup>12+</sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## ProcessMode<sup>12+</sup>
@@ -53,7 +53,7 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| NEW_PROCESS_ATTACH_TO_PARENT | 1 | 创建一个新进程，并在该进程上启动UIAbility。该进程会跟随父进程退出。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用。                     |
+| NEW_PROCESS_ATTACH_TO_PARENT | 1 | 创建一个新进程，并在该进程上启动UIAbility。该进程会跟随父进程（调用方进程）退出，即当父进程退出时，此进程也会自动退出。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用。                     |
 | NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM | 2 | 创建一个新进程，在该进程上启动UIAbility，并绑定该进程到状态栏图标上。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用，并且应用要在状态栏中有图标。                  |
 | ATTACH_TO_STATUS_BAR_ITEM | 3 | 启动UIAbility，并绑定该UIAbility所在进程到状态栏图标上。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用，并且应用要在状态栏中有图标。                  |
 
@@ -70,10 +70,11 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
         bundleName: 'com.example.myapplication',
         abilityName: 'MainAbility2'
       };
-      let options: StartOptions = {
-        processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
-        startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
-      };
+    // 创建启动选项，设置进程模式和启动可见性
+    let options: StartOptions = {
+          processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
+          startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
+        };
 
       try {
         this.context.startAbility(want, options, (err: BusinessError<void> | null) => {
@@ -146,11 +147,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 设置不触发onNewWant的场景，组合多个场景标志位
     let scenarios: number = contextConstant.Scenarios.SCENARIO_MOVE_MISSION_TO_FRONT |
       contextConstant.Scenarios.SCENARIO_SHOW_ABILITY |
       contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
 
     try {
+      // 设置跳过onNewWant的场景
       this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
         // 执行正常业务
         console.info('setOnNewWantSkipScenarios succeed');
@@ -199,6 +202,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // 判断Context类型是否为UIAbilityContext
     let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
