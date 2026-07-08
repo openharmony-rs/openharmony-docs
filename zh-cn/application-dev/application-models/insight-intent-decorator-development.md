@@ -435,14 +435,9 @@
 
 2. 使用可查询意图实体：添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌单信息（AppPlaylistEntity意图实体）作为播放音乐的入参。系统入口在调用意图前，会先根据歌单ID、歌单名称或者创建者查询应用内歌单信息。
 
-    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->   
 
-    ```ts
-    import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const LOG_TAG: string = 'testTag';
-
+    ```TypeScript
     // 使用@InsightIntentEntry装饰器定义意图
     @InsightIntentEntry({
       intentName: 'PlayMusicList',
