@@ -65,13 +65,13 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) *dataSource | 用户自定义数据源，用于为OH_AVSource提供媒体输入数据。需设置有效的数据大小和读取回调，且生命周期需与返回的OH_AVSource实例保持一致。 |
+| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) *dataSource | 用户自定义数据源。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 如果执行成功，则返回一个用于解析用户自定义数据源媒体资源的OH_AVSource实例指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
 
 ### OH_AVSource_CreateWithDataSourceExt()
 
@@ -99,7 +99,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 如果执行成功，则返回一个用于解析用户自定义扩展数据源媒体资源的OH_AVSource实例指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
 
 ### OH_AVSource_CreateWithURI()
 
@@ -120,13 +120,13 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *uri | 远程媒体资源的统一资源标识符，需为HTTP渐进式流媒体资源的URI字符串，用于创建对应的OH_AVSource实例。 |
+| char *uri | 远程媒体资源的统一资源标识符。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个用于解析URI对应媒体资源的OH_AVSource实例指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
 
 ### OH_AVSource_CreateWithFD()
 
@@ -148,14 +148,14 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t fd | 数据资源的文件描述符。 |
-| int64_t offset | 开始读取数据的位置，单位为字节。通常应为文件起始位置；若不为文件起始位置，可能因数据不完整导致OH_AVSource创建失败或后续解封装失败。 |
-| int64_t size | 文件的字节数大小，表示从offset指定位置开始可读取的数据长度。通常应与文件实际大小匹配；若大小错误，可能导致OH_AVSource创建失败或后续解封装失败。 |
+| int64_t offset | 开始读取数据的位置，单位为字节。 |
+| int64_t size | 文件的字节数大小，表示从offset指定位置开始可读取的数据长度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * |  执行成功返回一个用于解析文件描述符对应媒体资源的OH_AVSource实例指针，否则返回NULL。<br> 可能的故障原因：<br> 1. fd无效。<br> 2. 传入offset不是文件起始位置。<br> 3. size错误。<br> 4. 资源无效。<br> 5. 文件格式不支持。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. fd无效。<br> 2. 传入offset不是文件起始位置。<br> 3. size错误。<br> 4. 资源无效。<br> 5. 文件格式不支持。 |
 
 ### OH_AVSource_Destroy()
 
@@ -182,7 +182,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK(0)：操作成功。<br>AV_ERR_INVALID_VAL(3)：<br>1. source指针无效，空指针。请检查source是否为空，并传入有效的OH_AVSource实例。<br>2. 非OH_AVSource实例。请确认source由OH_AVSource_CreateWithDataSource、OH_AVSource_CreateWithDataSourceExt、OH_AVSource_CreateWithURI或OH_AVSource_CreateWithFD接口创建。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>AV_ERR_INVALID_VAL：<br>1. source指针无效，空指针。<br>2. 非OH_AVSource实例。 |
 
 ### OH_AVSource_GetSourceFormat()
 
@@ -231,7 +231,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSource](capi-avsource-oh-avsource.md) *source | 指向OH_AVSource实例的指针。 |
-| uint32_t trackIndex | 需要获取信息的轨道的索引，取值范围为[0, 轨道数量-1]。传入超出范围的轨道索引时，接口返回NULL。 |
+| uint32_t trackIndex | 需要获取信息的轨道的索引。 |
 
 **返回：**
 
