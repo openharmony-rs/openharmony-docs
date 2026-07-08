@@ -327,12 +327,12 @@ function createPixelMapFromPixels() {
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreatePixelMapFromPixels() {
+function createPixelMapFromPixels() {
   const size: image.Size = {
     width: 6,
     height: 4
   };
-  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的单位像素字节数。
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的每像素字节数。
   const pixelsArr = new Uint8Array(pixels);
   for (let i = 0; i < pixelsArr.length; i += 4) {
     // RGBA_8888格式下，下列数组索引依次为：R通道、G通道、B通道、A通道。
@@ -344,15 +344,15 @@ function DemoCreatePixelMapFromPixels() {
   const config: image.InitializationOptions = {
     size,
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区内的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
     editable: true
   };
 
   image.createPixelMapFromPixels(pixels, config)
     .then((pixelMap: image.PixelMap) => {
-      console.info('Succeeded in creating PixelMap.');
-    }).catch((error: Error) => {
-      console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+      console.info('Succeeded in creating the PixelMap.');
+    }).catch((err: Error) => {
+      console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
     });
 }
 ```
@@ -445,12 +445,12 @@ function createPixelMapFromPixelsSync() {
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreatePixelMapFromPixelsSync() {
+function createPixelMapFromPixelsSync() {
   const size: image.Size = {
     width: 6,
     height: 4
   };
-  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的单位像素字节数。
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的每像素字节数。
   const pixelsArr = new Uint8Array(pixels);
   for (let i = 0; i < pixelsArr.length; i += 4) {
     // RGBA_8888格式下，下列数组索引依次为：R通道、G通道、B通道、A通道。
@@ -462,15 +462,15 @@ function DemoCreatePixelMapFromPixelsSync() {
   const config: image.InitializationOptions = {
     size,
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区内的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
     editable: true
   };
 
   try {
     const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
-    console.info('Succeeded in creating PixelMap.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -547,18 +547,18 @@ function createEmptyPixelMap() {
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreateEmptyPixelMap() {
+function createEmptyPixelMap() {
   const config: image.InitializationOptions = {
     size: { width: 6, height: 4 },
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_1010102, // 新创建的PixelMap的像素格式。
     editable: true
   };
 
   try {
     const pixelMap = image.createEmptyPixelMap(config);
-    console.info('Succeeded in creating empty PixelMap.');
-  } catch (error) {
-    console.error(`Failed to create empty PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the empty PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create the empty PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -620,19 +620,19 @@ function createPixelMap() {
 ArkTS-Sta示例：
 
 ```ts
-async function CreatePixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：width * height * 4。
+function createPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
     editable: true
   };
   image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating pixelmap.');
-  }).catch((error: Error) => {
-    console.error(`Failed to create pixelmap. Code is ${error.code}, message is ${error.message}`);
-  })
+    console.info('Succeeded in creating the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -752,19 +752,19 @@ function createPixelMapSync() {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapSync() {
+function createPixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
     editable: true
   };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-    console.info('Succeeded in creating PixelMap.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -828,13 +828,13 @@ function createPixelMapSync() {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapSync() {
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+function createPixelMapSync() {
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_1010102, size: { height: 4, width: 6 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
-    console.info('Succeeded in creating PixelMap.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -906,7 +906,7 @@ function createPixelMapUsingAllocator() {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapUseAllocator() {
+function createPixelMapUsingAllocator() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
@@ -914,10 +914,10 @@ function CreatePixelMapUseAllocator() {
     pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
     editable: true
   };
-  image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating PixelMap.');
-  }).catch((error: Error) => {
-    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.DMA).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating the PixelMap.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -965,6 +965,8 @@ createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptio
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -981,6 +983,26 @@ function createPixelMapUsingAllocatorSync() {
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createPixelMapUsingAllocatorSync() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.DMA);
+    console.info('Succeeded in creating the PixelMap.');
+  } catch (err) {
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1027,6 +1049,8 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1037,6 +1061,20 @@ function createPixelMapUsingAllocatorSync() {
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
+    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createPixelMapUsingAllocatorSync() {
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.BGRA_8888, size: { height: 4, width: 6 } };
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.DMA);
+    console.info('Succeeded in creating the PixelMap.');
+  } catch (err) {
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1187,6 +1225,8 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1195,6 +1235,19 @@ function createPixelMapFromSurface(surfaceId: string) {
   image.createPixelMapFromSurface(surfaceId, region).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating the PixelMap from Surface.');
   }).catch((err: BusinessError) => {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
+  });
+} 
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createPixelMapFromSurface(surfaceId: string) {
+  let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  image.createPixelMapFromSurface(surfaceId, region).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  }).catch((err: Error) => {
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   });
 } 
@@ -1262,13 +1315,13 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+function createPixelMapFromSurfaceSync(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
-    console.info('Succeeded in creating PixelMap from Surface.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1331,11 +1384,11 @@ function createPixelMapFromSurface(surfaceId: string) {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapFromSurface(surfaceId: string) {
+function createPixelMapFromSurface(surfaceId: string) {
   image.createPixelMapFromSurface(surfaceId).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating PixelMap from Surface');
-  }).catch((error: Error) => {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   });
 } 
 ```
@@ -1400,12 +1453,12 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
 ArkTS-Sta示例：
 
 ```ts
-function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
-    console.info('Succeeded in creating PixelMap from Surface.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1471,11 +1524,11 @@ function createPixelMapFromSurfaceWithTransformation(surfaceId: string, transfor
 ArkTS-Sta示例：
 
 ```ts
-function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
+function createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
   image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating PixelMap.');
-  }).catch((error: Error) => {
-    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  }).catch((err: Error) => {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1545,12 +1598,12 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
+function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
-    console.info('Succeeded in creating pixelMap.');
-  } catch (error) {
-    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+    console.info('Succeeded in creating the PixelMap from Surface.');
+  } catch (err) {
+    console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1605,9 +1658,9 @@ function createPremultipliedPixelMap() {
     bufferArr[i + 2] = 122;
     bufferArr[i + 3] = 122;
   }
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL};
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
   let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL};
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
   let dstPixelMap = image.createPixelMapSync(optsForPre);
   image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap, (err: BusinessError) => {
     if (err) {
@@ -1662,6 +1715,8 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1674,13 +1729,37 @@ function createPremultipliedPixelMap() {
     bufferArr[i + 2] = 122;
     bufferArr[i + 3] = 122;
   }
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL};
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
   let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL};
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
   let dstPixelMap = image.createPixelMapSync(optsForPre);
   image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
     console.info('Succeeded in converting the PixelMap.');
   }).catch((err: BusinessError) => {
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createPremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForPre);
+  image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting the PixelMap.');
+  }).catch((err: Error) => {
     console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
@@ -1736,9 +1815,9 @@ function createUnpremultipliedPixelMap() {
     bufferArr[i + 2] = 122;
     bufferArr[i + 3] = 122;
   }
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL};
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
   let srcPixelMap = image.createPixelMapSync(color, optsForPre);
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL};
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
   let dstPixelMap = image.createPixelMapSync(optsForUnpre);
   image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap, (err: BusinessError) => {
     if (err) {
@@ -1793,6 +1872,8 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1805,13 +1886,37 @@ function createUnpremultipliedPixelMap() {
     bufferArr[i + 2] = 122;
     bufferArr[i + 3] = 122;
   }
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL};
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
   let srcPixelMap = image.createPixelMapSync(color, optsForPre);
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL};
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
   let dstPixelMap = image.createPixelMapSync(optsForUnpre);
   image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
     console.info('Succeeded in converting the PixelMap.');
   }).catch((err: BusinessError) => {
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function createUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForUnpre);
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting the PixelMap.');
+  }).catch((err: Error) => {
     console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
   });
 }
