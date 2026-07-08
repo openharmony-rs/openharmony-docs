@@ -3385,6 +3385,10 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+> **说明：**
+>
+> 窗口拖动或窗口拖拽缩放后，无论窗口大小是否发生变化，均会通知应用windowSizeChange回调。
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
