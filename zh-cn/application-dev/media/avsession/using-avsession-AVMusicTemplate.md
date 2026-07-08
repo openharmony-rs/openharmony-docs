@@ -52,3 +52,45 @@
 4. 媒体应用启动时注册的事件监听需要在应用退出时注销，以释放资源。注销接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   
+   ``` TypeScript
+   import { avMusicTemplate } from '@kit.AVSessionKit';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     // ...
+     /**
+      * 注销监听。
+      */
+     public unregisterListener() {
+       this.template?.offQueryMainTabs();
+       this.template?.offQueryMediaTabContent();
+       this.template?.offQueryMediaEntity();
+       this.template?.offQueryCompilation();
+       this.template?.offQueryPlaylist();
+       this.template?.offQueryCurrentSingle();
+       this.template?.offQueryCompilationByKeyword();
+       this.template?.offQueryMediaEntityByKeyword();
+       this.template?.offQueryRecommendMediaEntityList();
+       this.template?.offQueryHotWords();
+       this.template?.offQuerySearchHistory();
+       this.template?.offClearSearchHistory();
+       this.template?.offLogin();
+       this.template?.offRequestDialogInfo();
+       this.template?.offHandleMemberPurchase();
+       this.template?.offQueryMemberPurchase();
+       this.template?.offQueryCustomContent();
+       this.template?.offDownloadMediaEntity();
+       this.template?.offSettingsChange();
+       this.template?.offProblemAndAdvice();
+       this.template?.offPlayForSearch();
+       this.template?.offExecuteAction();
+       this.template?.offPlayMediaEntity();
+       this.template?.offFavoriteMediaEntity();
+       this.template?.destroy();
+       this.template = undefined;
+     };
+     // ...
+   }
+   ```
