@@ -331,6 +331,8 @@ export default class MigrationAbility extends UIAbility {
 
 注册或注销回调函数返回的快速拉起结果，包含操作状态码和结果说明信息，用于应用获取跨端迁移快速拉起的执行结果。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Dyn起始版本：** 18
@@ -341,12 +343,14 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明，提供操作成功或失败的详细描述信息。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明，提供操作成功或失败的详细描述信息。 |
 
 ## ContinueStateCode
 
 快速拉起的结果状态码的枚举值。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -358,6 +362,6 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 值  | 说明    |
 | -------- |----|-------|
-| SUCCESS  | 0  | 操作成功。表示快速拉起已成功完成，应用可以继续执行跨端迁移流程。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| SYSTEM_ERROR | 1 | 操作失败。表示快速拉起过程中发生系统错误，应用需要提示用户迁移失败，并根据业务场景决定是否需要重试。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| SUCCESS  | 0  | 操作成功。表示快速拉起已成功完成，应用可以继续执行跨端迁移流程。 |
+| SYSTEM_ERROR | 1 | 操作失败。表示快速拉起过程中发生系统错误，应用需要提示用户迁移失败，并根据业务场景决定是否需要重试。 |
 
