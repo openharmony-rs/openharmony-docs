@@ -194,7 +194,7 @@
     avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
+            console.error('Failed to reset, error message is :' + err.message);
         } else {
             console.info('Succeeded in resetting');
         }
