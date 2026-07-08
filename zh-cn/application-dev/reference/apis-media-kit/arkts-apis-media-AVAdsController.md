@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-广告内容控制接口，用于管理广告播放控制器中的广告资源及监听广告事件。通过[createAVAdsController()](arkts-apis-media-f.md#mediacreateavadcontroller)创建实例。
+广告内容控制接口，用于管理广告播放控制器中的广告资源及监听广告事件。通过[createAVAdsController()](arkts-apis-media-f.md#createAVAdsController)创建实例。
 
 > **说明：**
 >
