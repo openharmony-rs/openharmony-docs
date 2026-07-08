@@ -42,6 +42,120 @@
    - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent)：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。
    
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   
+   ``` TypeScript
+   import { avMusicTemplate } from '@kit.AVSessionKit';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     // ...
+     private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
+       return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
+         try {
+           let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
+           resolve(tabs);
+         } catch (e) {
+           console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
+           reject(e);
+         }
+       });
+     };
+     private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
+       return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
+         try {
+           let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
+           resolve(tabContent);
+         } catch (e) {
+           console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
+           reject(e);
+         }
+       });
+     };
+     // ...
+   
+     /**
+      * 注册监听。
+      */
+     private registerListener() {
+       this.template?.onQueryMainTabs(this.queryMainTabsEvent);
+       this.template?.onQueryMediaTabContent(this.queryMediaTabContentEvent);
+       // ...
+     };
+   
+     // ...
+     /**
+      * 模拟获取主界面的所有TAB。
+      *
+      * @returns Promise类型MediaTab数组。
+      */
+     private async getMainTabs(): Promise<avMusicTemplate.MediaTab[]> {
+       let homeTab: avMusicTemplate.MediaTab = {
+         tabId: 'home',
+         tabName: '首页'
+       };
+       let mineTab: avMusicTemplate.MediaTab = {
+         tabId: 'mine',
+         tabName: '我的'
+       };
+       let mainTabs: avMusicTemplate.MediaTab[] = [homeTab, mineTab];
+       return mainTabs;
+     };
+   
+     /**
+      * 模拟获取TAB内容。
+      *
+      * @returns 标签页内容。
+      */
+     private async createMediaTabContent(): Promise<avMusicTemplate.MediaTabContent> {
+       let compilation: avMusicTemplate.Compilation = await this.createCompilation();
+       let mediaTabContent: avMusicTemplate.MediaTabContent = {
+         errorCode: 0,
+         tabId: 'tabId',
+         compilations: [compilation]
+       }
+       return mediaTabContent;
+     };
+   
+     /**
+      * 模拟获取合集数据。
+      *
+      * @returns 合集。
+      */
+     private async createCompilation(): Promise<avMusicTemplate.Compilation> {
+       let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
+       let compilation: avMusicTemplate.Compilation = {
+         errorCode: 0,
+         id: '',
+         title: '',
+         hasMoreData: false,
+         totalSize: 1,
+         memberMediaType: avMusicTemplate.EntityType.SINGLE,
+         topElements: [mediaEntity],
+       }
+       return compilation;
+     };
+   
+     /**
+      * 模拟获取媒体数据。
+      *
+      * @returns 媒体数据。
+      */
+     private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
+       let mediaEntity: avMusicTemplate.MediaEntity = {
+         mediaId: 'mediaId',
+         mediaType: avMusicTemplate.EntityType.SINGLE,
+         parentId: 'parentId',
+         parentMediaType: avMusicTemplate.EntityType.SINGLE,
+         title: 'title',
+         imageUrl: 'imageUrl',
+         playState: avMusicTemplate.PlaybackState.PLAYBACK_STATE_PREPARE
+       };
+       return mediaEntity;
+     };
+     // ...
+   }
+   ```
 
 3. 在音频模板无法直接感知的场景（登录、下载等），需要媒体应用主动向音频模板同步数据。同步接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
