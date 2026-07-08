@@ -49,6 +49,44 @@
    
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
+   ``` TypeScript
+   import { avMusicTemplate } from '@kit.AVSessionKit';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     // ...
+     private isLogin: boolean = false;
+     // ...
+   
+     /**
+      * 模拟登录状态改变。
+      *
+      * @param isLogin 是否登录。
+      */
+     public setLoginState(isLogin: boolean) {
+       this.isLogin = isLogin;
+       this.setUserInfo();
+     }
+   
+     /**
+      * 用户信息发生变化后通知界面刷新用户信息，如登录账号后。
+      */
+     public setUserInfo() {
+       let userInfo: avMusicTemplate.UserInfo = {
+         userInfoId: this.isLogin ? 'userInfoId' : '',
+         nickName: this.isLogin ? '昵称' : '',
+         profilePicUrl: this.isLogin ? 'profilePicUrl' : '',
+         tips: this.isLogin ? 'tips' : '',
+         isLogin: this.isLogin,
+         isVip: false
+       };
+       this.template?.setUserInfo(userInfo);
+     };
+     // ...
+   }
+   ```
+   
 4. 媒体应用启动时注册的事件监听需要在应用退出时注销，以释放资源。注销接口详情请查看[AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
