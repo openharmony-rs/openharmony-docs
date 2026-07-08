@@ -452,6 +452,18 @@
 
    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->  
    
+   ``` TypeScript
+   imageEmbedding?.loadModel()
+     .then(() => {
+       console.info('Succeeded in loading Model');
+       // ...
+     })
+     .catch((err) => {
+       console.error('Failed to load Model and code is ' + err.code);
+       // ...
+     })
+   ```
+   
 
 4. 获取给定图像的嵌入向量。
 
