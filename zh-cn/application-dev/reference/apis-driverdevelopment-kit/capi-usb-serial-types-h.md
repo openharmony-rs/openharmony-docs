@@ -56,7 +56,7 @@ enum UsbSerial_DdkRetCode
 | USB_SERIAL_DDK_NO_PERM = 201 | 权限被拒绝。请确保应用在module.json5文件中声明了相应的权限。 |
 | USB_SERIAL_DDK_INVALID_PARAMETER = 401 | 无效参数。请确保传入的参数值在有效范围内，参考相关接口的参数说明。 |
 | USB_SERIAL_DDK_SUCCESS = 31600000 | 操作成功。 |
-| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作，例如使用了无效的设备句柄。请检查设备处于正常打开的状态， |
+| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作，例如使用了无效的设备句柄。请检查确保设备处于正常打开的状态。 |
 | USB_SERIAL_DDK_INIT_ERROR = 31600002 | 初始化失败。请先初始化DDK服务。 |
 | USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | 服务错误。 |
 | USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | 内存相关错误，例如内存不足、内存数据复制失败或内存应用程序故障。建议优化内存参数，及时释放不再需要的资源。 |

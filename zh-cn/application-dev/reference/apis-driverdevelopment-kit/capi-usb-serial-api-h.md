@@ -26,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | 初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用此该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。|
+| [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | 初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。|
 | [int32_t OH_UsbSerial_Release(void)](#oh_usbserial_release) | 释放USB Serial DDK。 |
 | [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | 通过deviceId和interfaceIndex打开USB串口设备。该接口会建立与指定USB串口设备的连接，并返回设备句柄用于后续操作。使用完毕后请调用[OH_UsbSerial_Close](#oh_usbserial_close)关闭设备，否则可能导致设备资源无法正确释放。 |
 | [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | 关闭USB串口设备。该接口会释放设备占用的资源，需和[OH_UsbSerial_Open](#oh_usbserial_open)配对使用。 |
@@ -50,7 +50,7 @@ int32_t OH_UsbSerial_Init(void)
 
 **描述**
 
-初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用此该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。
+初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB_SERIAL
 
