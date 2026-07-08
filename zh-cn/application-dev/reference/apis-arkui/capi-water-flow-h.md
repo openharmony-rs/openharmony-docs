@@ -10,7 +10,7 @@
 
 定义WaterFlow组件相关的枚举和接口。
 
-**引用文件：** <arkui/water_flow.h>
+**引用文件：** <arkui/node_attributes/water_flow.h>
 
 **库：** libace_ndk.z.so
 

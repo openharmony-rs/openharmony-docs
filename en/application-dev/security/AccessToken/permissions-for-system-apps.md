@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
@@ -6244,6 +6232,20 @@ Allows an agent application to stop a specific application using CLI commands.
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_FUNCTION
+
+Allows a system application to access available functions.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **Valid since**: 26.0.0
 

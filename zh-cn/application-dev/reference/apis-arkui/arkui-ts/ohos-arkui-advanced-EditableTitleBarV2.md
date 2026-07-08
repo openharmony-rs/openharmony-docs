@@ -161,7 +161,7 @@ EditableLeftIconV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [EditableLeftIconV2Options](#editablelefticonv2options) | 是 | 左侧图标配置选项。 |
+| options | [EditableLeftIconV2Options](#editablelefticonv2options) | 否 | 左侧图标配置选项。 |
 
 
 ## EditableTitleV2Options
@@ -224,7 +224,7 @@ EditableTitleV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| options | [EditableTitleV2Options](#editabletitlev2options) | 是 | 标题配置选项。 |
+| options | [EditableTitleV2Options](#editabletitlev2options) | 否 | 标题配置选项。 |
 
 
 ## EditableTitleBarMenuItemV2Options

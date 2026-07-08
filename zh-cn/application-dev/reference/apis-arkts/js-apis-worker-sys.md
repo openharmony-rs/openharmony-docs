@@ -6,13 +6,13 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Worker是与主线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker传入的url文件在Worker线程中执行，可以处理耗时操作但不可以直接操作UI。
+Worker是与宿线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker传入的URL文件在Worker线程中执行，可以处理耗时操作但不可以直接操作UI。
 
-Worker主要作用是为应用程序提供一个多线程的运行环境，使应用程序在执行过程中与宿主线程分离，在后台线程中运行脚本来处理耗时操作，有效避免如计算密集型或高延迟的任务阻塞宿主线程的运行。由于Worker一旦被创建则不会主动被销毁，若不处于任务状态却一直运行，在一定程度上会造成资源的浪费，应及时关闭空闲的Worker。
+Worker的主要作用是为应用程序提供多线程运行环境，使应用程序在执行过程中与宿主线程分离，在后台线程中运行脚本处理耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。由于Worker一旦创建不会主动销毁，若不处于任务状态会一直运行，造成资源浪费，应及时销毁空闲的Worker。
 
 Worker的上下文对象和UI主线程的上下文对象是不同的，Worker线程不支持UI操作。
 
-Worker使用过程中的相关注意点请查看[Worker注意事项](../../arkts-utils/worker-introduction.md)。
+请查看[Worker注意事项](../../arkts-utils/worker-introduction.md)，了解Worker使用过程中的相关注意点。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { worker } from '@kit.ArkTS';
 
 RestrictedWorker类继承[ThreadWorker<sup>9+</sup>](js-apis-worker.md#threadworker9)，具有ThreadWorker中所有的方法。
 
-RestrictedWorker主要作用是提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。
+RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。
 
 ### constructor<sup>11+</sup>
 
@@ -47,7 +47,7 @@ RestrictedWorker构造函数。使用其他方法前，均需先构造Restricted
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | 是   | Worker线程文件的路径，路径规则详细参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。 |
-| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | 否   | RestrictedWorker构造的选项。                                           |
+| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | 否   | 构造RestrictedWorker时的选项。                                           |
 
 **错误码：**
 
@@ -70,7 +70,7 @@ import { worker } from '@kit.ArkTS';
 // 主要说明以下两种场景：
 
 // 场景1： worker文件所在路径："entry/src/main/ets/workers/worker.ets"
-const workerStageModel01 = new worker.RestrictedWorker('entry/ets/workers/worker.ets', {name: "first worker in Stage model"});
+const workerStageModel01 = new worker.RestrictedWorker('entry/ets/workers/worker.ets', {name: 'first worker in Stage model'});
 
 // 场景2： worker文件所在路径："testworkers/src/main/ets/ThreadFile/workers/worker.ets"
 const workerStageModel02 = new worker.RestrictedWorker('testworkers/ets/ThreadFile/workers/worker.ets');
@@ -87,7 +87,7 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 const workerPort = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents): void => {
-  console.info("worker:: This is worker thread.");
-  //console.info("worker:: worker tid: " + process.tid) // 执行process.tid，宿主线程会有对应的TypeError报出。
+  console.info('worker:: This is worker thread.');
+  //console.info('worker:: worker tid: ' + process.tid) // 执行process.tid，宿主线程会有对应的TypeError报出。
 }
 ```

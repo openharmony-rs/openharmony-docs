@@ -88,7 +88,7 @@ addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 以下情况下，通过本接口添加蓝牙设备可用名单，会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了蓝牙。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用蓝牙后，可解除冲突。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了蓝牙。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口启用蓝牙后，可解除冲突。
 2. 已经通过[addDisallowedBluetoothDevices](#bluetoothmanageradddisallowedbluetoothdevices20)接口添加了蓝牙设备禁用名单。通过[removeDisallowedBluetoothDevices](#bluetoothmanagerremovedisallowedbluetoothdevices20)移除蓝牙设备禁用名单后，可解除冲突。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
@@ -255,7 +255,7 @@ addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
 以下情况下，通过本接口添加蓝牙设备禁用名单，会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了蓝牙。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用蓝牙后，可解除冲突。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了蓝牙。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口启用蓝牙后，可解除冲突。
 2. 已经通过[addAllowedBluetoothDevices](#bluetoothmanageraddallowedbluetoothdevices)接口添加了蓝牙设备可用名单。通过[removeAllowedBluetoothDevices](#bluetoothmanagerremoveallowedbluetoothdevices)移除蓝牙设备可用名单后，可解除冲突。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH

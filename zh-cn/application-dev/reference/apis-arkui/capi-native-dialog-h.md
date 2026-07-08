@@ -74,7 +74,7 @@
 | [int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)](#oh_arkui_customdialog_setmodalmode) | - | 设置自定义弹窗是否开启模态样式的弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)](#oh_arkui_customdialog_setautocancel) | - | 设置自定义弹窗是否允许点击遮罩层退出。 |
 | [int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)](#oh_arkui_customdialog_setsubwindowmode) | - | 设置弹窗是否在子窗口显示此弹窗。 |
-| [int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayMode)](#oh_arkui_customdialog_setdisplaymodeinsubwindow) | - | 设置弹窗在子窗口中的显示模式。 |
+| [int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayModeInSubWindow)](#oh_arkui_customdialog_setdisplaymodeinsubwindow) | - | 设置弹窗在子窗口中的显示模式。 |
 | [int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_customdialog_setsystemmaterial) | - | 设置指定弹窗的沉浸式材质。|
 | [int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_customdialog_setsystemmaterialinoptions) | - | 设置弹窗参数的沉浸式材质属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)](#oh_arkui_customdialog_setmask) | - | 设置自定义弹窗遮罩属性。 |
@@ -956,7 +956,7 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 ### OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow()
 
 ```c
-int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayMode)
+int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayModeInSubWindow)
 ```
 
 **描述：**
@@ -978,7 +978,7 @@ int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOption
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [OH_ArkUI_DialogDisplayModeInSubWindow](capi-native-dialog-h.md#oh_arkui_dialogdisplaymodeinsubwindow) displayMode | 弹窗在子窗口中的显示模式，类型为[OH_ArkUI_DialogDisplayModeInSubWindow](capi-native-dialog-h.md#oh_arkui_dialogdisplaymodeinsubwindow)。<br/>默认值：OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED |
+| [OH_ArkUI_DialogDisplayModeInSubWindow](capi-native-dialog-h.md#oh_arkui_dialogdisplaymodeinsubwindow) displayModeInSubWindow | 弹窗在子窗口中的显示模式，类型为[OH_ArkUI_DialogDisplayModeInSubWindow](capi-native-dialog-h.md#oh_arkui_dialogdisplaymodeinsubwindow)。<br/>默认值：OH_ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED |
 
 **返回：**
 

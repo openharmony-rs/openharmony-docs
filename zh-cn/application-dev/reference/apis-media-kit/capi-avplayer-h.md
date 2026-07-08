@@ -40,7 +40,7 @@
 | [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。<br> 推荐单个应用创建的音视频播放器实例（即音频、视频、音视频三类相加）不超过16个。<!--Del--><br> 可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd--> |
 | [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是http url。 |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | 设置播放器的媒体文件描述符来源。 |
-| [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
+| [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer \*player, OH_AVDataSourceExt\* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
 | [OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)](#oh_avplayer_prepare) | - | 准备播放环境，异步缓存媒体数据。<br> 此函数必须在SetSource之后调用。 |
 | [OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)](#oh_avplayer_play) | - | 开始播放。<br> 此函数必须在[OH_AVPlayer_Prepare](capi-avplayer-h.md#oh_avplayer_prepare)之后调用。<br> 如果播放器状态为\<Prepared>，调用此函数开始播放。 |
 | [OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)](#oh_avplayer_pause) | - | 暂停播放。 |

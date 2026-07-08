@@ -17,18 +17,6 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：7
-
 ## ohos.permission.SET_WALLPAPER
 
 允许应用设置壁纸。
@@ -6252,6 +6240,20 @@
 ## ohos.permission.cli.KILL_APP_PROCESSES
 
 允许智能体应用通过CLI命令停止指定应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_FUNCTION
+
+允许系统应用访问可用的函数。
 
 **权限级别**：system_basic
 

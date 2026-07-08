@@ -1442,7 +1442,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Convert avoid area failed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range.|
 
 **示例：**
 
@@ -1648,7 +1648,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.|
 
 **示例：**
 
@@ -11602,7 +11602,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11680,7 +11680,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11754,7 +11754,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12294,7 +12294,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12351,7 +12351,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
