@@ -1603,13 +1603,15 @@ type OnDisconnectCallback = () => void
 
 闪烁模式枚举
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
@@ -1620,13 +1622,15 @@ type OnDisconnectCallback = () => void
 
 闪烁场景枚举
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
@@ -1639,13 +1643,15 @@ type OnDisconnectCallback = () => void
 
 闪烁操作的结果枚举
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
