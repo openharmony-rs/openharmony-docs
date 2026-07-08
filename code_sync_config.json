@@ -51897,7 +51897,7 @@
 						"start_line":48
 					},
 					{
-						"end_line":97,
+						"end_line":116,
 						"name":"napi_create_function",
 						"start_line":81
 					}
