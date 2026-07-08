@@ -281,7 +281,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    import AbilityConstant from '@ohos.app.ability.AbilityConstant';
    import common from '@ohos.app.ability.common';
    import { AppStorage } from '@ohos.arkui.stateManagement';
- 
+    
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -289,7 +289,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        this.onCollab(param);
        return AbilityConstant.CollaborateResult.ACCEPT;
      }
- 
+    
      onCollab(collabParam: Record<string, Object>):void {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
@@ -297,14 +297,14 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          return;
        }
      }
- 
+    
      createSessionFromWant(collabParam: Record<string, Object>): number {
        let sessionId = -1;
        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
        if (peerInfo == undefined) {
          return sessionId;
        }
- 
+    
        const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
@@ -902,7 +902,7 @@ abilityConnectionManager.off("connect", sessionId);
 offConnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
 
 取消connect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('connect')](#abilityconnectionmanageroffconnect)。
@@ -940,7 +940,7 @@ abilityConnectionManager.offConnect(sessionId,(callbackInfo) => {});
 on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 注册disconnect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnect](#abilityconnectionmanagerondisconnect23)。
@@ -981,13 +981,13 @@ abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
 });
 ```
-  
+
 ## abilityConnectionManager.onDisconnect<sup>23+</sup>
 
 onDisconnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 注册disconnect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnect')](#abilityconnectionmanagerondisconnect)。
@@ -1564,9 +1564,9 @@ const arrayBuffer  = textEncoder.encodeInto("data send success");
 
 let sessionId = 100;
 abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage success");
+  hilog.info(0x0000, 'testTag', "sendData success");
 }).catch(() => {
-  hilog.error(0x0000, 'testTag', "sendMessage failed");
+  hilog.error(0x0000, 'testTag', "sendData failed");
 })
 ```
 
@@ -1583,9 +1583,9 @@ const arrayBuffer = textEncoder.encodeInto("data send success");
 
 let sessionId = 100;
 abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage success");
+  hilog.info(0x0000, 'testTag', "sendData success");
 }).catch(() => {
-  hilog.error(0x0000, 'testTag', "sendMessage failed");
+  hilog.error(0x0000, 'testTag', "sendData failed");
 })
 ```
 
