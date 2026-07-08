@@ -506,7 +506,7 @@ struct MouseWheel {
 此外，如果开发者期望控制上述转换行为，系统开放了自定义配置能力，开发者可以通过在应用中新增配置文件的方式来控制是否将鼠标事件转换成触摸事件。
 
 ### 开发步骤
-**1. 增加配置文件。**
+**1. 增加配置文件**
 
 在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
 
