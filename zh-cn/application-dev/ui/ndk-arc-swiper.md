@@ -40,6 +40,39 @@ ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提
 
 <!-- @[arc_swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
+``` C++
+ArkUI_NumberValue value[] = {0};
+ArkUI_AttributeItem item = {.value = value, .size = 1};
+
+value[0].f32 = ARC_SWIPER_HEIGHT_PERCENT;
+nodeApi->setAttribute(arcSwiper, NODE_HEIGHT_PERCENT, &item);
+value[0].f32 = ARC_SWIPER_WIDTH_PERCENT;
+nodeApi->setAttribute(arcSwiper, NODE_WIDTH_PERCENT, &item);
+
+value[0].i32 = 0;
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_INDEX, &item);
+value[0].i32 = ARC_SWIPER_DURATION;
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_DURATION, &item);
+value[0].i32 = 0;
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_VERTICAL, &item);
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_DISABLE_SWIPE, &item);
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION, &item);
+value[0].i32 = ARKUI_CROWN_SENSITIVITY_MEDIUM;
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY, &item);
+value[0].i32 = ARKUI_EDGE_EFFECT_SPRING;
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_EFFECT_MODE, &item);
+
+ArkUI_NumberValue indicatorValue[] = {
+    {.i32 = 1},
+    {.i32 = OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION},
+    {.u32 = INDICATOR_COLOR},
+    {.u32 = INDICATOR_SELECTED_COLOR},
+    {.u32 = INDICATOR_BACKGROUND_COLOR},
+};
+ArkUI_AttributeItem indicatorItem = {.value = indicatorValue, .size = 5};
+nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_INDICATOR, &indicatorItem);
+```
+
 ## 设置弧形导航点指示器
 
 本示例通过设置NODE_ARC_SWIPER_INDICATOR属性控制弧形导航点指示器的显示状态、方向、未选中颜色、选中颜色和长按后的背景颜色。其中，导航点方向使用OH_ArkUI_ArcDirection枚举，支持3点钟、6点钟和9点钟方向。
