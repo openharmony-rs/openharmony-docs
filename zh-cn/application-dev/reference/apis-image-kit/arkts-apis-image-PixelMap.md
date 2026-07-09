@@ -3931,8 +3931,8 @@ toSdr(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function toSdr(context: Context) {
-  // 此处'app.media.hdrImage'需要替换为本地HDR图片。
-  let img = context.resourceManager.getMediaContentSync($r('app.media.hdrImage').id);
+  // 此处'app.media.startIcon'需要替换为本地HDR图片。
+  let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
   let decodingOptions: image.DecodingOptions = {
     desiredDynamicRange: image.DecodingDynamicRange.AUTO
@@ -3993,8 +3993,8 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function getMetadata(context: Context) {
-  // 此处'app.media.hdrImage'需要替换为本地HDR图片。
-  let img = context.resourceManager.getMediaContentSync($r('app.media.hdrImage').id);
+  // 此处'app.media.startIcon'需要替换为本地HDR图片。
+  let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
   let decodingOptions: image.DecodingOptions = {
     desiredDynamicRange: image.DecodingDynamicRange.AUTO
