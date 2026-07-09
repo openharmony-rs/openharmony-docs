@@ -303,7 +303,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **处理步骤**
 
-保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key的\@Provide设置为[allowOverride](./arkui-ts/ts-state-management-v1-parameter.md#provideoptions)，示例见[\@Provide支持allowOverride参数](../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
+保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key设置为可重写，即设置[ProvideOptions](./arkui-ts/ts-state-management-provide.md#provideoptions11)中的allowOverride参数，示例见[\@Provide支持allowOverride参数](../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
 
 ## 140115 状态管理V1状态变量使用了非法的类型
 
