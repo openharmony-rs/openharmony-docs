@@ -2086,6 +2086,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2142,6 +2143,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
