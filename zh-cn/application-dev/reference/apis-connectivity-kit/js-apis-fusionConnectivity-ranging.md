@@ -1,4 +1,4 @@
-# @ohos.FusionConnectivity.ranging (测距模块)
+# @ohos.FusionConnectivity.ranging (融合测距模块)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -46,8 +46,12 @@ isRangingSupported(): boolean
 
 ```js
 import { ranging } from '@kit.ConnectivityKit';
-let isSupport = ranging.isRangingSupported();
-console.info(`This device support ranging: ${isSupport}`);
+try {
+  let isSupport = ranging.isRangingSupported();
+  console.info(`This device support ranging: ${isSupport}`);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 ## ranging.getRangingCapability
@@ -57,6 +61,7 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 查询本设备是否支持具体的测距能力，使用Promise异步返回具体的测距能力是否支持的结果。
 
 使用约束：
+
 - 建议先使用[isRangingSupported](#rangingisrangingsupported)判断本机是否支持测距特性。仅在特性支持的情况下才能使用getRangingCapability接口进行能力查询，在本机不支持测距特性时调用接口，会抛出接口不支持异常错误。
 - 异步回调结果返回后，才能基于具体支持的测距能力判断是否可以发起对指定能力类型的测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为true时，可以调用启动测距接口发起对星闪HADM的测距或者调用启动被动测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为false，请不要再调用对应能力的主动或者被动测距接口。
 
@@ -86,12 +91,15 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 
 ```js
 import { ranging } from '@kit.ConnectivityKit';
-
-ranging.getRangingCapability().then((capability) => {
-  console.info(`nearlink HADM supported: ${capability.nearlinkHadm}`);
-}).catch((err) => {
+try {
+  ranging.getRangingCapability().then((capability) => {
+    console.info(`nearlink HADM supported: ${capability.nearlinkHadm}`);
+  }).catch((err:BusinessError) => {
+    console.error(`getRangingCapability errCode: ${err.code}, errMessage: ${err.message}`);
+  });
+} catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
-});
+}
 ```
 
 ## ranging.startRanging
@@ -101,6 +109,7 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 向指定设备发起主动测距。
 
 该接口的执行流程取决于本设备与目标设备的连接状态：
+
 - 若本设备已与目标设备建立了连接，调用此接口会直接向目标设备发起测距。
 - 若本设备与目标设备未连接，该接口将执行以下流程：
   1. 尝试与目标设备建立连接，连接成功后进行配对/加密操作，配对时需要用户主动在设备上操作授权；若用户超时未授权，本次测距将会因超时停止，停止后需要在应用侧主动调用停止测距接口释放测距资源。
@@ -147,13 +156,7 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 
 ```js
 import { ranging } from '@kit.ConnectivityKit';
-
-let params = {
-  deviceId: "11:22:33:44:55:66",
-  capabilityType: ranging.RangingTypes.NEARLINK_HADM
-};
-
-let rangingCallback = (result) => {
+rangingCallback = (result:ranging.RangingResult) => {
   console.info(`deviceId: ${result.deviceId}`);
   console.info(`distance value: ${result.distance.value} cm`);
   console.info(`distance confidence: ${result.distance.confidence}`);
@@ -162,12 +165,15 @@ let rangingCallback = (result) => {
   console.info(`rssi: ${result.rssi}`);
 };
 
-ranging.startRanging(params, rangingCallback);
-
-ranging.onRangingStateChange((stateInfo) => {
-  console.info(`ranging state: ${stateInfo.state}`);
-  console.info(`ranging cause: ${stateInfo.cause}`);
-});
+let params:ranging.RangingParams = {
+  deviceId: "11:22:33:44:55:66",
+  capabilityType: ranging.RangingTypes.NEARLINK_HADM
+};
+try {
+  ranging.startRanging(params, this.rangingCallback);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 ## ranging.stopRanging
@@ -177,6 +183,7 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 停止正在进行中的主动测距。
 
 该接口支持以下两种停止方式：
+
 - 若指定了[params](#rangingrangingparams)参数（包含目标设备地址和测距类型）时则仅停止与指定目标设备的测距。
 - 若未指定[params](#rangingrangingparams)参数，则停止与callback关联的所有设备的测距。
 
@@ -199,7 +206,7 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 | 参数名    | 类型                                         | 必填 | 说明                      |
 | ------- | ------------------------------------------ | ---- | ----------------------- |
 | callback | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是   | 测距结果回调，需与startRanging传入的callback为同一引用。 |
-| params   | [RangingParams](#rangingrangingparams)  | 否   | 测距参数，包含deviceId和测距类型。不传入此参数时将停止与callback关联所有设备的测距。|
+| params   | [RangingParams](#rangingrangingparams)  | 否   | 测距参数，包含deviceId和测距类型。不传入此参数时将停止与callback关联所有设备的测距。 |
 
 **错误码**：
 
@@ -218,21 +225,27 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 
 ```js
 import { ranging } from '@kit.ConnectivityKit';
+rangingCallback = (result:ranging.RangingResult) => {
+  console.info(`deviceId: ${result.deviceId}`);
+  console.info(`distance value: ${result.distance.value} cm`);
+  console.info(`distance confidence: ${result.distance.confidence}`);
+  console.info(`angle value: ${result.angle.value}`);
+  console.info(`angle confidence: ${result.angle.confidence}`);
+  console.info(`rssi: ${result.rssi}`);
+};
 
-let params = {
+let params:ranging.RangingParams = {
   deviceId: "11:22:33:44:55:66",
   capabilityType: ranging.RangingTypes.NEARLINK_HADM
 };
-
-let rangingCallback = (result) => {
-  console.info(`ranging result: ${result.deviceId}`);
-};
-
-// 停止指定设备的测距
-ranging.stopRanging(rangingCallback, params);
-
-// 停止该callback关联的所有设备的测距
-// ranging.stopRanging(rangingCallback);
+try {
+  // 停止指定设备的测距
+  ranging.stopRanging(this.rangingCallback, params);
+  // 停止该callback关联的所有设备的测距
+  // ranging.stopRanging(this.rangingCallback);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 ## ranging.startPassiveRanging
@@ -244,6 +257,7 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
 启动成功后，本设备将作为测距信标开始广播测距数据包，可被其他支持对应测距类型的主动测距设备发现和测量。
 
 返回值为被动测距会话的句柄标识符（handle），该句柄用于：
+
 - 在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。
 - 在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。
 
@@ -291,14 +305,17 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
 ```js
 import { ranging } from '@kit.ConnectivityKit';
 
-let passiveHandle = -1;
-
-ranging.startPassiveRanging(ranging.RangingTypes.NEARLINK_HADM).then((handle) => {
-  passiveHandle = handle;
-  console.info(`start passive ranging success, handle: ${handle}`);
-}).catch((err) => {
+passiveHandle = -1; // -1 is invalid handle
+try {
+  ranging.startPassiveRanging(ranging.RangingTypes.NEARLINK_HADM).then((handle) => {
+    this.passiveHandle = handle;
+    console.info(`startPassiveRanging handle: ${handle}`);
+  }).catch((err:BusinessError) => {
+    console.error(`startPassiveRanging errCode: ${err.code}, errMessage: ${err.message}`);
+  });
+} catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
-});
+}
 ```
 
 ## ranging.stopPassiveRanging
@@ -365,6 +382,7 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 注册测距状态变化回调，监听测距状态通知。
 
 通知主动测距或者被动测距操作的状态变化。回调中通过不同字段区分：
+
 - 主动测距场景：通过[stateInfo.deviceId](#rangingrangingstatechangeinfo)标识发生状态变化的设备。
 - 被动测距场景：通过[stateInfo.handle](#rangingrangingstatechangeinfo)标识发生状态变化的被动测距会话。
 
@@ -399,8 +417,7 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 
 ```js
 import { ranging } from '@kit.ConnectivityKit';
-
-ranging.onRangingStateChange((stateInfo) => {
+stateChangeCallback = ((stateInfo:ranging.RangingStateChangeInfo) => {
   console.info(`ranging state: ${stateInfo.state}`);
   if (stateInfo.state === ranging.RangingState.RANGING_STOPPED) {
     console.info(`ranging stopped cause: ${stateInfo.cause}`);
@@ -412,6 +429,11 @@ ranging.onRangingStateChange((stateInfo) => {
     console.info(`passive ranging handle: ${stateInfo.handle}`);
   }
 });
+try {
+  ranging.onRangingStateChange(this.stateChangeCallback);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 ## ranging.offRangingStateChange
@@ -452,18 +474,25 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 ```js
 import { ranging } from '@kit.ConnectivityKit';
 
-let stateCallback = (stateInfo) => {
+stateChangeCallback = ((stateInfo:ranging.RangingStateChangeInfo) => {
   console.info(`ranging state: ${stateInfo.state}`);
-};
-
-// 注册订阅
-ranging.onRangingStateChange(stateCallback);
-
-// 取消指定回调的订阅
-ranging.offRangingStateChange(stateCallback);
-
-// 取消所有已注册回调的订阅
-// ranging.offRangingStateChange();
+  if (stateInfo.state === ranging.RangingState.RANGING_STOPPED) {
+    console.info(`ranging stopped cause: ${stateInfo.cause}`);
+  }
+  if (stateInfo.deviceId) {
+    console.info(`active ranging deviceId: ${stateInfo.deviceId}`);
+  }
+  if (stateInfo.handle !== undefined) {
+    console.info(`passive ranging handle: ${stateInfo.handle}`);
+  }
+});
+try {
+  ranging.offRangingStateChange(this.stateChangeCallback);
+  // 取消所有已注册回调的订阅
+  // ranging.offRangingStateChange();
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 ## ranging.RangingParams
