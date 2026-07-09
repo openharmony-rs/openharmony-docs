@@ -84,7 +84,7 @@ ArkTS-Dyn: scrollBarColor(color: Optional\<ColorMetrics\>)
 
 ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
-设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
+设置滚动条的颜色，仅滚动条不放置子组件时生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
