@@ -172,7 +172,7 @@ enum OH_VideoCodecFormat
 | OH_VIDEO_DEFAULT = 0 | 默认视频编码，默认为H.264。 |
 | OH_H264 = 2 | H.264。适用于大多数录制场景，兼容性最好，是最广泛支持的视频编码格式。 |
 | OH_H265 = 4 | H.265/HEVC。适用于对压缩效率要求高的场景，相同画质下文件更小，但兼容性低于H.264。 |
-| OH_MPEG4 = 6 | MPEG4。适用于对兼容性要求不高的旧设备场景，压缩效率低于H.264/H.265。 |
+| OH_MPEG4 = 6 | MPEG4。适用于对兼容性要求不高的场景，压缩效率低于H.264/H.265。 |
 | OH_VP8 = 8 | VP8。适用于Web场景的开源编码格式，兼容性有限。 |
 | OH_VP9 = 10 | VP9。适用于Web高清场景的开源编码格式，压缩效率优于VP8，兼容性有限。 |
 | OH_VIDEO_CODEC_FORMAT_BUTT | 无效格式。 |
@@ -189,7 +189,7 @@ enum OH_DataType
 
 根据使用需求选择合适的数据格式：原始流格式适用于需要实时处理音视频数据的场景（如实时预览、流式传输）；保存文件格式适用于直接录制为文件的场景。
 
-当前仅支持原始流格式和保存文件格式，编码流格式当前版本暂不支持。
+当前仅支持原始流格式和保存文件格式。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -417,7 +417,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-|  int32_t errorCode | 指定错误码，具体错误码值及含义请参考屏幕录制错误码说明。 |
+|  int32_t errorCode | 指定错误码，具体错误码值及含义请参考[OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode)说明。 |
 
 ### OH_AVScreenCaptureOnAudioBufferAvailable()
 
@@ -505,7 +505,7 @@ typedef void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-|  int32_t errorCode | 指定错误码，具体错误码值及含义请参考屏幕录制错误码说明。 |
+|  int32_t errorCode | 指定错误码，具体错误码值及含义请参考[OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode)说明。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnBufferAvailable()
