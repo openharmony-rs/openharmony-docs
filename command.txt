@@ -1,8 +1,0 @@
- 任务：修复csv中潜在的问题。如果是问题那么就在当前仓修复对应的文档，并在最后新增三列：“是否是问题”、“原因”、“修改方案”并填写
-csv：/home/y/openharmony/docs/client-sync-issues-export-2026-07-08 (35).csv
-interface：/home/y/openharmony/interface
-背景：csv是之前扫描出来的问题，不一定存在，你需要结合interface仓库进行判断。修复建议不一定准确规范，存在误报的情况，你必须结合其他文档进行判断、修改
-要求：“原因”和“修改方案”，必须具体到某行文档或是某行代码
-修改文档完成后，进行git add .，得到我的“提交”指令后，再执行首次commit：先git add .，再git commit -sm "8分文档：[修改的文档名称]"
-首次提交后，后续我与你的交互产生的修改，都不用git add 或git commit。
-首次提交后，我会对你提出检视意见，你要同步修改文档和csv。
