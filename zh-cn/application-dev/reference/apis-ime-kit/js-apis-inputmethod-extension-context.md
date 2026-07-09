@@ -34,7 +34,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+## InputMethodExtensionContext.destroy<sup>9+</sup>
 
 destroy(callback: AsyncCallback&lt;void&gt;): void;
 
@@ -72,7 +72,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+## InputMethodExtensionContext.destroy<sup>9+</sup>
 
 destroy(): Promise&lt;void&gt;;
 
