@@ -620,7 +620,7 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |	 
+| 5400102  | Operation not allowed. Return by promise. |
 | 5400108  | The media source ID does not exist in the playlist. Returned by promise.|
 
 **示例：**
@@ -847,7 +847,7 @@ advanceToNextMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |	 
+| 5400102  | Operation not allowed. Return by promise. |
 | 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
 
 **示例：**
@@ -896,7 +896,7 @@ advanceToPrevMediaSource(): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |	 
+| 5400102  | Operation not allowed. Return by promise. |
 | 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
 
 **示例：**
@@ -954,7 +954,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |	 
+| 5400102  | Operation not allowed. Return by promise. |
 | 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
 
 **示例：**
