@@ -375,8 +375,6 @@ barState(state: BarState)
 
 RichEditor滚动条的显示模式。
 
-单行模式下该属性设置无效，不显示滚动条。
-
 >**说明：**
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -397,8 +395,6 @@ maxLength(maxLength: Optional\<number\>)
 
 设置组件内容的最大长度。
 
-当内容（包含文本、图片、Symbol和Builder）的总长度达到此值时，将无法继续添加内容。
-
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -407,15 +403,13 @@ maxLength(maxLength: Optional\<number\>)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 内容的最大输入长度。当内容（包含文本、图片、Symbol和Builder）的总长度达到此值时，将无法继续添加内容。<br>默认值：Infinity，可以无限输入，支持undefined类型。<br>**说明：** <br>取值范围：[0, +∞)。当不设置该属性或设置为undefined或负数时，取默认值Infinity；设置为0时，无法输入内容；设置小数时，取整数部分。 |
+| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 内容的最大输入长度。当内容（包含文本、图片、Symbol和Builder）的总长度达到此值时，将无法继续添加内容。<br>默认值：Infinity，可以无限输入。<br>**说明：** <br>取值范围：[0, +∞)。当不设置该属性或设置为undefined或负数时，取默认值Infinity；设置为0时，无法输入内容；设置小数时，取整数部分。 |
 
 ### maxLines<sup>18+</sup>
 
 maxLines(maxLines: Optional\<number\>)
 
-设置富文本可显示的最大行数。
-
-maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。
+设置组件可显示的最大行数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -614,8 +608,6 @@ singleLine(isEnable: boolean | undefined)
 设置是否启用单行模式。未通过该接口设置时，默认不启用单行模式。
 
 > **说明：**
->
-> 单行模式下[barState](#barstate13)属性设置无效，不显示滚动条。
 >
 > 单行模式下换行符会显示为空格。
 >
@@ -2197,11 +2189,11 @@ RichEditor span信息。
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称          | 类型          | 只读 | 可选   | 说明            |
 | ----------- | ---------- | ---- | -------|------ |
-| onAppear    | [MenuOnAppearCallback](#menuonappearcallback12) | 否 | 是    | 自定义选择菜单弹出时回调。当需要在菜单弹出时执行自定义逻辑（如记录用户操作、动态调整菜单内容）时传入此参数；不传入时，菜单弹出无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| onDisappear | Callback\<void\>  | 否 | 是    | 自定义选择菜单关闭时回调。当需要在菜单关闭时执行自定义逻辑（如恢复界面状态、清理临时数据）时传入此参数；不传入时，菜单关闭无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| onAppear    | [MenuOnAppearCallback](#menuonappearcallback12) | 否 | 是    | 自定义选择菜单弹出时回调。若需在菜单弹出时执行自定义逻辑（如记录用户操作、动态调整菜单内容），可传入此参数；不传入则无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| onDisappear | Callback\<void\>  | 否 | 是    | 自定义选择菜单关闭时回调。若需在菜单关闭时执行自定义逻辑（如恢复界面状态、清理临时数据），可传入此参数；不传入则无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | menuType<sup>13+</sup> | [MenuType](ts-text-common.md#menutype13枚举说明) | 否 | 是 | 自定义选择菜单类型。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>默认值：MenuType.SELECTION_MENU。 |
-| onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。当需要在菜单显示时执行自定义逻辑时传入此参数；不传入时，菜单显示无回调触发。 |
-| onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。当需要在菜单隐藏时执行自定义逻辑时传入此参数；不传入时，菜单隐藏无回调触发。 |
+| onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。若需在菜单显示时执行自定义逻辑，可传入此参数；不传入则无回调触发。 |
+| onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。若需在菜单隐藏时执行自定义逻辑，可传入此参数；不传入则无回调触发。 |
 | previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。<br>从API版本26.0.0开始，该参数在Text组件中也生效。<br>不传入时，预览菜单使用默认配置。 |
 
 ## PreviewMenuOptions<sup>18+</sup>
