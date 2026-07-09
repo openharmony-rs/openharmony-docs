@@ -6713,3 +6713,67 @@ Allows an application to access associated assistant service.
 **Supported devices**: Phone | PC/2in1 | Tablet | Car
 
 **Since**: 26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+Allows the application to connect to network neighborhood clients and manage network neighborhood files.
+
+After obtaining permission, the application can connect to and disconnect from the network neighborhood, operate on network neighborhood files, and obtain basic information about network neighborhood connections, etc.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+Allows the application to call the file management service interface to operate files.
+
+After obtaining this permission, the application can use file management functions such as the Recycle Bin, commonly used folders, favorite files, USB device queries, and shortcuts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+Allow the app to access and manage smart files in the file manager. 
+
+Once granted permission, the app can handle smart file categorization, generate file summaries, and make file recommendations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+Allows the application to access and manage files.  
+
+After obtaining this permission, the application can add file event records, search files, manage recent files, and access music files, duplicate files, and aggregated files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
