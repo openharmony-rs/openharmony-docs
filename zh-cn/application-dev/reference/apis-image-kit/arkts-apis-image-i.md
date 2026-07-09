@@ -22,12 +22,12 @@
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-| 名称   | 类型               | 只读|  可选| 说明                                                         |
+| 名称   | 类型               | 只读|  可选| 说明                                                    |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
-| pixels | ArrayBuffer        | 否 |   否  | 像素数据缓冲区。仅支持BGRA_8888格式的像素数据。 |
-| offset | number             | 否 |   否  | 偏移量。单位：字节（Byte）。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride >= region.size.width * 4，不满足时数据读取异常。                   |
-| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
+| pixels | ArrayBuffer        | 否 |   否  | 像素数据缓冲区。                                        |
+| offset | number             | 否 |   否  | 偏移量。单位：字节（Byte）。                             |
+| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。       |
+| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。指定的区域宽度加X坐标不能大于原图的宽度，指定的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
 
@@ -176,9 +176,9 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size | [Size](#size) | 否   | 否   | 区域大小。   |
-| x    | number        | 否   | 否  | 区域左上角横坐标。单位：像素（px）。 |
-| y    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素（px）。 |
+| size | [Size](#size) | 否   | 否   | 区域尺寸。    |
+| x    | number        | 否   | 否  | 区域左上角像素的横坐标（X坐标）。单位：像素（px）。 |
+| y    | number        | 否  | 否  | 区域左上角像素的纵坐标（Y坐标）。单位：像素（px）。 |
 
 ## PackingSizeLimit
 
@@ -277,7 +277,7 @@ HDR增益图单个通道的数据内容，参考ISO 21496-1。
 | 名称          | 类型       | 只读 | 可选 | 说明         |
 | ------------- | ----------| -- | -- | ------------ |
 | gainmapMax     | number   | 否 | 否 | 增益图的最大值。浮点数，取值范围是(0, +∞)且必须大于gainmapMin，参考ISO 21496-1。  |
-| gainmapMin     | number   | 否 | 否 | 增强图像的最小值。浮点数，取值可以为0或负值但必须小于gainmapMax，参考ISO 21496-1。  |
+| gainmapMin     | number   | 否 | 否 | 增益图的最小值。浮点数，取值可以为0或负值但必须小于gainmapMax，参考ISO 21496-1。  |
 | gamma  | number    | 否 | 否 | 增益曲线的Gamma校正值。浮点数，取值范围是(0, +∞)，参考ISO 21496-1。   |
 | baseOffset  | number     | 否 | 否 | 基础图的偏移量。浮点数，参考ISO 21496-1。   |
 | alternateOffset  | number    | 否 | 否 | 可选择图像的偏移量。浮点数，参考ISO 21496-1。    |
@@ -418,7 +418,7 @@ Dng图像元数据类，用于存储图像的元数据。
 | useBaseColorFlag  | boolean     | 否 | 否 | 是否使用基础图的色彩空间。true表示使用，false表示不使用，参考ISO 21496-1。 |
 | baseHeadroom  | number    | 否 | 否 | 基础图的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。   |
 | alternateHeadroom  | number     | 否 | 否 | 可选择图像的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。  |
-| channels  | Array\<[GainmapChannel](#gainmapchannel12)> | 否 | 否 | 各通道的数据，长度为3，按R、G、B三通道储存，参考ISO 21496-1。 |
+| channels  | Array\<[GainmapChannel](#gainmapchannel12)> | 否 | 否 | 各通道的数据，长度为3，按R、G、B三通道存储，参考ISO 21496-1。 |
 
 ## ImageReceiverOptions<sup>23+</sup>
 

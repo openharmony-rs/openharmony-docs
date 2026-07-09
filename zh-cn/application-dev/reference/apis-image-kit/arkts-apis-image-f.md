@@ -124,7 +124,7 @@ class MySequence implements rpc.Parcelable {
     this.picture = image.createPictureFromParcel(messageSequence);
     this.picture.getMainPixelmap().getImageInfo().then((imageInfo : image.ImageInfo) => {
       console.info(`Unmarshalling to get mainPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
-    }).catch((err: BusinessError) => {
+    }).catch((error: BusinessError) => {
       console.error(`Unmarshalling failed error.code: ${error.code} ,error.message: ${error.message}`);
     });
     return true;

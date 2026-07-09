@@ -32,10 +32,10 @@ typedef struct OH_Pixelmap_HdrGainmapMetadata {...} OH_Pixelmap_HdrGainmapMetada
 | bool useBaseColorFlag | 是否使用基础图的色彩空间。true表示使用，false表示不使用，参考ISO 21496-1。 |
 | float baseHeadroom | 基础图的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。 |
 | float alternateHeadroom | 可选择图像的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。 |
-| float gainmapMax[3] | 增益图的最大值。按R、G、B三通道储存，取值范围是(0, +∞)且必须大于gainmapMin的对应通道，参考ISO 21496-1。 |
-| float gainmapMin[3] | 增益图的最小值。按R、G、B三通道储存，取值可以为0或负值但必须小于gainmapMax的对应通道，参考ISO 21496-1。 |
-| float gamma[3] | 增益曲线的Gamma校正值。按R、G、B三通道储存，取值范围是(0, +∞)，参考ISO 21496-1。 |
-| float baselineOffset[3] | 基础图的偏移量。按R、G、B三通道储存，参考ISO 21496-1。 |
-| float alternateOffset[3] | 可选择图像的偏移量。按R、G、B三通道储存，参考ISO 21496-1。 |
+| float gainmapMax[3] | 增益图的最大值。按R、G、B三通道存储，取值范围是(0, +∞)且必须大于gainmapMin的对应通道，参考ISO 21496-1。 |
+| float gainmapMin[3] | 增益图的最小值。按R、G、B三通道存储，取值可以为0或负值但必须小于gainmapMax的对应通道，参考ISO 21496-1。 |
+| float gamma[3] | 增益曲线的Gamma校正值。按R、G、B三通道存储，取值范围是(0, +∞)，参考ISO 21496-1。 |
+| float baselineOffset[3] | 基础图的偏移量。按R、G、B三通道存储，参考ISO 21496-1。 |
+| float alternateOffset[3] | 可选择图像的偏移量。按R、G、B三通道存储，参考ISO 21496-1。 |
 
 
