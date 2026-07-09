@@ -34,7 +34,12 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+## InputMethodExtensionContext
+
+The **InputMethodExtensionContext** module, inherited from **ExtensionContext**, provides context for **InputMethodExtension** abilities. You can use the APIs of this module to start, terminate, connect, and disconnect abilities.
+
+<a id="destroy9"></a>
+### destroy<sup>9+</sup>
 
 destroy(callback: AsyncCallback&lt;void&gt;): void;
 
@@ -72,7 +77,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+### destroy<sup>9+</sup>
 
 destroy(): Promise&lt;void&gt;;
 
@@ -108,7 +113,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.startAbility<sup>12+</sup>
+### startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise&lt;void&gt;;
 

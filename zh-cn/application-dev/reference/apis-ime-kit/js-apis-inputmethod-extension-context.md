@@ -21,7 +21,7 @@ import { InputMethodExtensionContext } from '@kit.IMEKit';
 
 ## 使用说明
 
-在使用InputMethodExtensionContext的功能前，需要通过InputMethodExtensionAbility子类实例获取。
+在使用InputMethodExtensionContext的功能前,需要通过InputMethodExtensionAbility子类实例获取。
 
 ```ts
 import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
@@ -34,7 +34,12 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+## InputMethodExtensionContext
+
+InputMethodExtensionContext是InputMethodExtensionAbility的上下文环境,继承自ExtensionContext,用于操作输入法扩展相关的生命周期和状态。
+
+<a id="destroy9"></a>
+### destroy<sup>9+</sup>
 
 destroy(callback: AsyncCallback&lt;void&gt;): void;
 
@@ -72,7 +77,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.destroy
+### destroy<sup>9+</sup>
 
 destroy(): Promise&lt;void&gt;;
 
@@ -108,7 +113,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.startAbility<sup>12+</sup>
+### startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise&lt;void&gt;;
 
