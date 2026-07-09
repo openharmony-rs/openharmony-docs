@@ -143,7 +143,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   
   @Entry
   @Component
-  export struct TextSpanOnHover {
+  struct TextSpanOnHover {
     @State textStr1: string = '';
     @State textStr2: string = '';
   
@@ -499,7 +499,6 @@ The following examples demonstrate usage of common APIs.
   ``` TypeScript
   Text('This is the text content with textCase set to Normal.')
     .textCase(TextCase.Normal)
-    .padding(10)
     .border({ width: 1 })
     .padding(10)
     .margin(5)
@@ -554,9 +553,9 @@ The following examples demonstrate usage of common APIs.
   
   @Entry
   @Component
-  export struct ContentTransition {
+  struct ContentTransitionDemo {
     private static readonly INITIAL_SCORE: number = 98;
-    @State number: number = ContentTransition.INITIAL_SCORE;
+    @State number: number = ContentTransitionDemo.INITIAL_SCORE;
     @State numberTransition: NumericTextTransition =
       new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
     build() {
@@ -624,7 +623,7 @@ The following examples demonstrate usage of common APIs.
   
   @Entry
   @Component
-  export struct LineSpacing {
+  struct LineSpacing {
     build() {
       NavDestination() {
         Column() {
@@ -647,7 +646,7 @@ The following examples demonstrate usage of common APIs.
   ``` TypeScript
   @Entry
   @Component
-  export struct EnableAutoSpacing {
+  struct EnableAutoSpacing {
     @State enableSpacing: boolean = false;
   
     build() {
@@ -695,7 +694,7 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  
+ 
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -704,7 +703,7 @@ The following examples demonstrate usage of common APIs.
   ``` TypeScript
   @Entry
   @Component
-  export struct ShaderStyle {
+  struct ShaderStyle {
     @State message: string = 'Hello World';
     @State linearGradientOptions: LinearGradientOptions =
       {
@@ -746,7 +745,7 @@ You can bind the **Text** component to the [onClick](../reference/apis-arkui/ark
   import { hilog } from '@kit.PerformanceAnalysisKit';
   @Entry
   @Component
-  export struct GeneralEvents {
+  struct GeneralEvents {
     @State textStr1: string = '';
     @State textStr2: string = '';
   
@@ -956,7 +955,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     // xxx.ets
     @Entry
     @Component
-    export struct SelectionChange {
+    struct SelectionChange {
       @State text: string =
         'This is set selection to Selection text content This is set selection to Selection text content.';
       @State start: number = 0;
@@ -992,6 +991,8 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     ```
 
+
+
 ### Disabling System Menu Callbacks and Custom Extended Menu Items
 
 Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to disable system menu callbacks and custom extended menu items .
@@ -1002,7 +1003,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  export struct CustomAndBlockMenus {
+  struct CustomAndBlockMenus {
     private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
     private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
     private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
@@ -1143,7 +1144,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  export struct ServiceMenuItems {
+  struct ServiceMenuItems {
     aboutToAppear(): void {
       // Disable all system service menus.
       TextMenuController.disableSystemServiceMenuItems(true);
@@ -1194,7 +1195,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  export struct DisableMenuItems {
+  struct DisableMenuItems {
     aboutToAppear(): void {
       // Disable the search menu item.
       TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
@@ -1250,8 +1251,7 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
   const DOMAIN = 0x0000;
   @Entry
   @Component
-  
-  export struct PrepareMenu {
+  struct PrepareMenu {
     @State text: string = 'Text editMenuOptions';
     @State endIndex: number = 0;
     onCreateMenu = (menuItems: Array<TextMenuItem>) => {
@@ -1341,7 +1341,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
   
   ``` TypeScript
   // The value in the 'app.string.AIMenu_Text_One' resource file is 'Phone number: (86) (755)  ********  \n \n URL: www.********.com
-  // \n \n Email: ***@example.com\n \n Address: XX District, XX City, XX Province \n \n Time: XX:XX, MM, DD, YYYY.'
+  // \n \n Email: ***@example.com\n \n Address: XXXX, XX District, XX City, XX Province \n \n Time: XX:XX, MM, DD, YYYY.'
   Text($r('app.string.AIMenu_Text_One'))
     .fontSize(16)
     .copyOption(CopyOptions.LocalDevice)
@@ -1367,11 +1367,9 @@ This example demonstrates how to implement a hot search list using the [maxLines
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   
   ``` TypeScript
-  import { ComponentCard } from '../../common/Card';
-  
   @Entry
   @Component
-  export struct TextHotSearch {
+  struct TextHotSearch {
     build() {
       NavDestination() {
         Column({ space: 12 }) {
