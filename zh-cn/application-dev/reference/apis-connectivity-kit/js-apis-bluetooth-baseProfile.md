@@ -67,7 +67,9 @@ getConnectedDevices(): Array&lt;string&gt;
 
 获取和本端设备间已连接Profile的对端设备列表。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -162,7 +164,9 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 订阅Profile的连接状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -180,7 +184,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例：**

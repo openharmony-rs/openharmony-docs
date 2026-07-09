@@ -397,7 +397,8 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|201 |Permission denied.<br>适用版本：10-17 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -603,7 +604,9 @@ getPairedDevices(): Array&lt;string&gt;
 
 获取已配对蓝牙设备的地址集合。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1336,7 +1339,9 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 - 该上报方式只支持获取设备地址信息。<br>
 - 推荐使用API version 18开始支持的[connection.on('discoveryResult')](#connectionondiscoveryresult18)扫描上报方式，可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1356,7 +1361,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1426,7 +1431,9 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 订阅蓝牙配对状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1444,7 +1451,7 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1513,7 +1520,9 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
 订阅配对请求事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1531,7 +1540,7 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1602,7 +1611,9 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 - 可扫描到的设备类型包括传统蓝牙设备和低功耗蓝牙设备。<br>
 - 该上报方式支持获取设备地址、设备信号强度、设备名称和设备类型。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本18-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1620,7 +1631,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：18-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1790,7 +1801,7 @@ getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
