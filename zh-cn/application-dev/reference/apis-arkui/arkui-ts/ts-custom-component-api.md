@@ -16,7 +16,7 @@
 
 ## getUIContext
 
-getUIContext(): UIContext
+getUIContext(): UIContext | undefined
 
 获取UIContext对象。
 
@@ -28,7 +28,7 @@ getUIContext(): UIContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](#uicontext) | 返回UIContext实例对象。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面时，可能导致接口调用发生在自定义组件销毁之后，返回 undefined。 |
+| [UIContext](#uicontext) \| undefined | 返回当前自定义组件所属的UIContext实例对象。在异步调用的回调方法中调用该接口，或从非当前自定义组件所在页面发起调用时，接口调用可能发生在自定义组件销毁之后，此时返回 undefined。 |
 
 ## UIContext
 
@@ -64,7 +64,7 @@ struct MyComponent {
 
 getUniqueId(): number
 
-获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
+获取当前组件的UniqueId。UniqueId由系统为每个组件分配，可保证在当前应用中唯一。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
