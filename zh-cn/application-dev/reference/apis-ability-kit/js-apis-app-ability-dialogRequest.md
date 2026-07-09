@@ -123,7 +123,7 @@ export default class EntryAbility extends UIAbility {
     try {
       let requestCallback = dialogRequest.getRequestCallback(want);
     } catch(err) {
-      console.error(`getRequestInfo err= ${JSON.stringify(err)}`);
+      console.error(`getRequestCallback  err= ${JSON.stringify(err)}`);
     }
   }
 }
@@ -207,7 +207,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| result | [ResultCode](#resultcode) | 否 | 否 | 表示结果码。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| result | [ResultCode](#resultcode) | 否 | 否 | 表示结果码，用于判断请求是否成功。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | want<sup>10+</sup> | [Want](js-apis-app-ability-want.md)  | 否 | 是 | 表示Want类型信息，如ability名称，包名等。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestCallback

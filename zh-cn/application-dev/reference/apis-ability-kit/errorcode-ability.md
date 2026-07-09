@@ -2661,7 +2661,7 @@ The specified agentId does not exist.
 
 **处理步骤**
 
-1. 检查一下目标应用的静态配置信息，重新传入正确的agentId。<!--Del-->
+1. 检查目标应用的静态配置信息，重新传入正确的agentId。<!--Del-->
 2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName保持一致。<!--DelEnd-->
 
 ## 35600002 IPC消息发送失败
@@ -2863,7 +2863,7 @@ write系统调用失败。
 
 **处理步骤**
 
-缓冲区满或对端异常，尝试等待一会重新写入。
+缓冲区满或对端异常，尝试等待一段时间后重新写入。
 
 ## 35600050 偶发性报错
 
