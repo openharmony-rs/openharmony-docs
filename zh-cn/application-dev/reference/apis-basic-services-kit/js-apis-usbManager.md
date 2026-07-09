@@ -1473,8 +1473,8 @@ async function controlTransfer() {
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
-  })
   usbManager.closePipe(devicepipe);
+  })
 }
 ```
 
