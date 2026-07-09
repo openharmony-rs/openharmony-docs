@@ -1,8 +1,8 @@
 # @ohos.screen (屏幕)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1166,7 +1166,7 @@ ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string, callback:
 
 ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用callback异步回调。
+设置虚拟屏幕的surface，表示虚拟屏幕内容显示在对应surface上。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1264,7 +1264,7 @@ ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&
 
 ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用Promise异步回调。
+设置虚拟屏幕的surface，表示虚拟屏幕内容显示在对应surface上。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
