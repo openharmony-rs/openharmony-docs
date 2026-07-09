@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 HashSet是一种非线性容器，用于存储不重复的元素集合，支持高效的元素增删和存在性判断。HashSet基于[HashMap](js-apis-hashmap.md)实现，仅操作元素的值对象，不涉及键的概念。
 
