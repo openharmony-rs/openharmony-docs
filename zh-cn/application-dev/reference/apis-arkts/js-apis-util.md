@@ -22,7 +22,7 @@ import { util } from '@kit.ArkTS';
 
 format(format: string,  ...args: Object[]): string
 
-使用样式化字符串将输入内容按特定格式输出。
+使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -49,10 +49,10 @@ format(format: string,  ...args: Object[]): string
 | %d     | 将参数作为十进制整数进行格式化输出，用于除Symbol和BigInt之外的所有值。|
 | %i     | 将字符串转换为十进制整数，用于除BigInt和Symbol之外的所有值。|
 | %f     | 将字符串转换为浮点数，用于除BigInt和Symbol之外的所有值。|
-| %j     | 将JavaScript对象转换为JSON字符串进行格式化输出。|
+| %j     | 将JavaScript对象序列化为JSON字符串进行格式化输出。|
 | %o     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示，但不包含对象的原型链信息。|
 | %O     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示。|
-| %c     | 只在浏览器环境中有效。其余环境不会产生样式效果。|
+| %c     | CSS样式占位符，仅在浏览器环境中有效，用于指定格式化输出的样式；其余环境会忽略该占位符。|
 | %%     | 转义百分号的特殊格式化占位符。|
 
 **示例：**
@@ -125,7 +125,7 @@ console.info(formattedString);
 
 errnoToString(errno: number): string
 
-获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误。
+获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误，常用于错误日志记录和错误提示显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -141,7 +141,7 @@ errnoToString(errno: number): string
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| string | 错误码对应的详细信息。 |
+| string | 错误码对应的详细信息，包含可读的错误描述文本，便于开发者定位问题。 |
 
 **示例：**
 
@@ -387,7 +387,7 @@ printf(format: string,  ...args: Object[]): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 按特定格式式样化后的字符串。 |
+| string | 按特定格式式样化后的字符串，包含根据格式说明符处理后的参数值。 |
 
 **示例：**
 
@@ -1045,7 +1045,7 @@ console.info('result is ' + result);
 console.info('asp.msg is ' + asp.msg);
 // 输出结果：asp.msg is msg111
 
-// 前后插桩的例子
+// 分别添加前置和后置插桩的例子
 class AroundTest {
   foo(arg: string) {
     console.info('execute foo with arg ' + arg);

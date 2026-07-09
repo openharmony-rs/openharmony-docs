@@ -85,12 +85,12 @@ let treeSet = new TreeSet<string | number | boolean | Object>();
 let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
   return firstValue < secondValue;
 });
-treeSet.add("a");
-treeSet.add("c");
-treeSet.add("d");
-treeSet.add("b");
+treeSet.add('a');
+treeSet.add('c');
+treeSet.add('d');
+treeSet.add('b');
 for (let value of treeSet) {
-  console.info("value:", value);
+  console.info('value:', value);
 };
 // value: a
 // value: b
@@ -99,20 +99,20 @@ for (let value of treeSet) {
 ```
 
 ```ts
-// 当插入自定义类型时，则必须要提供比较函数。
+// 插入自定义类型时，必须提供比较函数。
 class TestEntry {
   public id: number = 0;
 }
-let ts1: TreeSet<TestEntry> = new TreeSet<TestEntry>((t1: TestEntry, t2: TestEntry): boolean => { return t1.id > t2.id; });
-let entry1: TestEntry = {
+let testEntrySet: TreeSet<TestEntry> = new TreeSet<TestEntry>((t1: TestEntry, t2: TestEntry): boolean => { return t1.id > t2.id; });
+let firstEntry: TestEntry = {
   id: 0
 };
-let entry2: TestEntry = {
+let secondEntry: TestEntry = {
   id: 1
 }
-ts1.add(entry1);
-ts1.add(entry2);
-console.info("treeSet: ", ts1.length);
+testEntrySet.add(firstEntry);
+testEntrySet.add(secondEntry);
+console.info('treeSet: ', testEntrySet.length);
 ```
 
 
@@ -146,7 +146,7 @@ isEmpty(): boolean
 let treeSet = new TreeSet<string>();
 // 判断容器是否为空
 let result = treeSet.isEmpty();
-console.info("result:", result);  // result: true
+console.info('result:', result);  // result: true
 ```
 
 
@@ -187,7 +187,7 @@ let treeSet = new TreeSet<number>();
 treeSet.add(123);
 // 判断容器中是否包含指定元素
 let result = treeSet.has(123);
-console.info("result:", result); // result: true
+console.info('result:', result); // result: true
 ```
 
 ### getFirstValue
@@ -218,10 +218,10 @@ getFirstValue(): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 let result = treeSet.getFirstValue();
-console.info("result:", result); // result: sparrow
+console.info('result:', result); // result: sparrow
 ```
 
 
@@ -253,10 +253,10 @@ getLastValue(): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 let result = treeSet.getLastValue();
-console.info("result:", result); // result: squirrel
+console.info('result:', result); // result: squirrel
 ```
 
 
@@ -294,8 +294,8 @@ add(value: T): boolean
 
 ```ts
 let treeSet = new TreeSet<string>();
-let result = treeSet.add("squirrel");
-console.info("result:", result); // result: true
+let result = treeSet.add('squirrel');
+console.info('result:', result); // result: true
 ```
 
 
@@ -333,10 +333,10 @@ remove(value: T): boolean
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
-let result = treeSet.remove("sparrow");
-console.info("result:", result); // result: true
+treeSet.add('squirrel');
+treeSet.add('sparrow');
+let result = treeSet.remove('sparrow');
+console.info('result:', result); // result: true
 ```
 
 
@@ -374,11 +374,11 @@ getLowerValue(key: T): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
-treeSet.add("gander");
-let result = treeSet.getLowerValue("sparrow");
-console.info("result:", result); // result: gander
+treeSet.add('squirrel');
+treeSet.add('sparrow');
+treeSet.add('gander');
+let result = treeSet.getLowerValue('sparrow');
+console.info('result:', result); // result: gander
 ```
 
 
@@ -416,11 +416,11 @@ getHigherValue(key: T): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
-treeSet.add("gander");
-let result = treeSet.getHigherValue("sparrow");
-console.info("result:", result); // result: squirrel
+treeSet.add('squirrel');
+treeSet.add('sparrow');
+treeSet.add('gander');
+let result = treeSet.getHigherValue('sparrow');
+console.info('result:', result); // result: squirrel
 ```
 
 
@@ -452,10 +452,10 @@ popFirst(): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 let result = treeSet.popFirst();
-console.info("result:", result); // result: sparrow
+console.info('result:', result); // result: sparrow
 ```
 
 
@@ -487,10 +487,10 @@ popLast(): T
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 let result = treeSet.popLast();
-console.info("result:", result); // result: squirrel
+console.info('result:', result); // result: squirrel
 ```
 
 
@@ -516,11 +516,11 @@ clear(): void
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 treeSet.clear();
 let result = treeSet.isEmpty();
-console.info("result:", result); // result: true
+console.info('result:', result); // result: true
 ```
 
 
@@ -553,11 +553,11 @@ values(): IterableIterator&lt;T&gt;
 ```ts
 // 不建议在values中使用add、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 let values = treeSet.values();
 for (let value of values) {
-  console.info("value:", value);
+  console.info('value:', value);
 }
 // value: sparrow
 // value: squirrel
@@ -600,11 +600,11 @@ callbackFn的参数说明：
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("sparrow");
-treeSet.add("gull");
+treeSet.add('sparrow');
+treeSet.add('gull');
 // 通过forEach遍历TreeSet中的元素
 treeSet.forEach((value: string, key: string): void => {
-  console.info("value:" + value);
+  console.info('value:' + value);
 });
 // value:gull
 // value:sparrow
@@ -613,10 +613,10 @@ treeSet.forEach((value: string, key: string): void => {
 // 不建议在forEach中使用add、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let treeSet = new TreeSet<string>();
 for (let i = 0; i < 10; i++) {
-  treeSet.add("sparrow" + i);
+  treeSet.add('sparrow' + i);
 }
 for (let i = 0; i < 10; i++) {
-  treeSet.remove("sparrow" + i);
+  treeSet.remove('sparrow' + i);
 }
 ```
 
@@ -648,14 +648,14 @@ entries(): IterableIterator<[T, T]>
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 // 获取entries迭代器
 let iterator = treeSet.entries();
 // 遍历迭代器获取键值对
 let iterResult: IteratorResult<Object[]> = iterator.next();
 while (!iterResult.done) {
-  console.info("TreeSet: " + iterResult.value[1]);
+  console.info('TreeSet: ' + iterResult.value[1]);
   iterResult = iterator.next();
 }
 // TreeSet: sparrow
@@ -666,10 +666,10 @@ while (!iterResult.done) {
 // 不建议在entries中使用add、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let treeSet = new TreeSet<string>();
 for(let i = 0; i < 10; i++) {
-  treeSet.add("sparrow" + i);
+  treeSet.add('sparrow' + i);
 }
 for(let i = 0; i < 10; i++) {
-  treeSet.remove("sparrow" + i);
+  treeSet.remove('sparrow' + i);
 }
 ```
 
@@ -701,11 +701,11 @@ for(let i = 0; i < 10; i++) {
 
 ```ts
 let treeSet = new TreeSet<string>();
-treeSet.add("squirrel");
-treeSet.add("sparrow");
+treeSet.add('squirrel');
+treeSet.add('sparrow');
 // 使用方法一：使用for...of语法遍历TreeSet
 for (let item of treeSet) {
-  console.info("value:" + item);
+  console.info('value:' + item);
 }
 // value:sparrow
 // value:squirrel
@@ -714,7 +714,7 @@ for (let item of treeSet) {
 let iterator = treeSet[Symbol.iterator]();
 let currentValue: IteratorResult<string> = iterator.next().value;
 while (currentValue != undefined) {
-  console.info("value:" + currentValue);
+  console.info('value:' + currentValue);
   currentValue = iterator.next().value;
 }
 // value:sparrow
@@ -725,9 +725,9 @@ while (currentValue != undefined) {
 // 不建议在Symbol.iterator中使用add、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let treeSet = new TreeSet<string>();
 for (let i = 0; i < 10; i++) {
-  treeSet.add("sparrow" + i);
+  treeSet.add('sparrow' + i);
 }
 for (let i = 0; i < 10; i++) {
-  treeSet.remove("sparrow" + i);
+  treeSet.remove('sparrow' + i);
 }
 ```
