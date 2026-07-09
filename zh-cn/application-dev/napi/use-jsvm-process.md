@@ -1,10 +1,10 @@
 # 使用JSVM-API实现JS与C/C++语言交互开发流程
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 使用JSVM-API实现跨语言交互，首先需按其机制注册和加载模块。
 
