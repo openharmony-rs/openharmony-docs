@@ -942,7 +942,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## updateAccessibilityElementProperty
+### updateAccessibilityElementProperty
 
 updateAccessibilityElementProperty(elementId: number, windowId: number, node: AccessibilityVirtualNode): Promise&lt;OperateVirtualNodeResult&gt;
 
@@ -964,7 +964,7 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | elementId | number | 是 | 修改无障碍节点的elementId。 |
 | windowId | number | 是 | 修改无障碍节点的windowId。 |
-| node | [AccessibilityVirtualNode](#AccessibilityVirtualNode) | 是 | 修改无障碍节点的属性值。 |
+| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值。 |
 
 **返回值：**
 
@@ -1032,7 +1032,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## addAccessibilityVirtualNodes
+### addAccessibilityVirtualNodes
 
 addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&lt;AccessibilityVirtualNode&gt;): Promise&lt;OperateVirtualNodeResult&gt;
 
@@ -1054,7 +1054,7 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | elementId | number | 是 | 新增虚拟节点的父节点elementId。 |
 | windowId | number | 是 | 新增虚拟节点的父节点windowId。 |
-| nodes | Array<[AccessibilityVirtualNode](#AccessibilityVirtualNode)> | 是 | 新增虚拟节点数组。 |
+| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 |
 
 **返回值：**
 
@@ -1123,7 +1123,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## removeAccessibilityVirtualNodes
+### removeAccessibilityVirtualNodes
 
 removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt;OperateVirtualNodeResult&gt;
 
@@ -1143,8 +1143,8 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 修改无障碍节点的elementId。 |
-| windowId | number | 是 | 修改无障碍节点的windowId。 |
+| elementId | number | 是 | 删除虚拟节点所在父节点的elementId。 |
+| windowId  | number | 是 | 删除虚拟节点所在父节点的windowId。 |
 
 **返回值：**
 
@@ -2176,5 +2176,5 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 | 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| x | number | 否 | 否 | 坐标x。|
-| y | number  | 否  | 否  | 坐标y。|
+| x | number | 否 | 否 | 点击位置x坐标，单位为像素（px）。|
+| y | number  | 否  | 否  | 点击位置y坐标，单位为像素（px）。|
