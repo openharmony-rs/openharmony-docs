@@ -111,7 +111,7 @@ intelligence.getSupportedCloudModel()
     console.info("Succeeded in getting CloudModelInfo");
   })
   .catch((err: BusinessError) => {
-    console.error("Failed and code is " + err.code);
+    console.error(`Failed to get CloudModelInfo. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -454,30 +454,19 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let textConfig: intelligence.ModelConfig = {
-  version: intelligence.ModelVersion.BASIC_MODEL,
-  isNpuAvailable: false,
-  cachePath: "/data"
-}
-intelligence.getTextEmbeddingModel(textConfig)
-  .then((textEmbedding: intelligence.TextEmbedding) => {
-    console.info("Succeeded in getting TextModel");
-    textEmbedding.loadModel()
-      .then(() => {
-        let text = 'text';
-        textEmbedding.getEmbedding(text)
-          .then((data: Array<number>) => {
-            console.info("Succeeded in getting Embedding");
-          })
-          .catch((err: BusinessError) => {
-            console.error("Failed to get Embedding and code is " + err.code);
-          })
-      }).catch((err: BusinessError) => {
-        console.error("Failed to load Model and code is " + err.code);
+// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
+textEmbedding.loadModel()
+  .then(() => {
+    let text = 'text';
+    textEmbedding.getEmbedding(text)
+      .then((data: Array<number>) => {
+        console.info("Succeeded in getting Embedding");
       })
-  })
-  .catch((err: BusinessError) => {
-    console.error(`Failed to get TextModel. Code: ${err.code}, message: ${err.message}`);
+      .catch((err: BusinessError) => {
+        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
+      })
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -520,30 +509,19 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let textConfig: intelligence.ModelConfig = {
-  version: intelligence.ModelVersion.BASIC_MODEL,
-  isNpuAvailable: false,
-  cachePath: "/data"
-}
-intelligence.getTextEmbeddingModel(textConfig)
-  .then((textEmbedding: intelligence.TextEmbedding) => {
-    console.info("Succeeded in getting TextModel");
-    textEmbedding.loadModel()
-      .then(() => {
-        let batchTexts = ['text1', 'text2'];
-        textEmbedding.getEmbedding(batchTexts)
-          .then((data: Array<Array<number>>) => {
-            console.info("Succeeded in getting Embedding");
-          })
-          .catch((err: BusinessError) => {
-            console.error("Failed to get Embedding and code is " + err.code);
-          })
-      }).catch((err: BusinessError) => {
-        console.error("Failed to load Model and code is " + err.code);
+// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
+textEmbedding.loadModel()
+  .then(() => {
+    let batchTexts = ['text1', 'text2'];
+    textEmbedding.getEmbedding(batchTexts)
+      .then((data: Array<Array<number>>) => {
+        console.info("Succeeded in getting Embedding");
       })
-  })
-  .catch((err: BusinessError) => {
-    console.error(`Failed to get TextModel. Code: ${err.code}, message: ${err.message}`);
+      .catch((err: BusinessError) => {
+        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
+      })
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -597,7 +575,7 @@ imageEmbedding.loadModel()
     console.info("Succeeded in loading Model");
   })
   .catch((err: BusinessError) => {
-    console.error("Failed to load Model and code is " + err.code);
+    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -642,7 +620,7 @@ imageEmbedding.releaseModel()
     console.info("Succeeded in releasing Model");
   })
   .catch((err: BusinessError) => {
-    console.error("Failed to release Model and code is " + err.code);
+    console.error(`Failed to release Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
 
@@ -693,9 +671,9 @@ imageEmbedding.loadModel().then(() => {
       console.info("Succeeded in getting Embedding");
     })
     .catch((err: BusinessError) => {
-      console.error("Failed to get Embedding and code is " + err.code);
+      console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err: BusinessError) => {
-  console.error("Failed to load Model and code is " + err.code);
+  console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
 })
 ```
