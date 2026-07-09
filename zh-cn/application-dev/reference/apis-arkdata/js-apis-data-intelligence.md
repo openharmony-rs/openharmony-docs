@@ -416,8 +416,6 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 获取给定文本的嵌入向量。使用Promise异步回调。
 
-获取给定文本的嵌入向量。使用Promise异步回调。
-
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **使用场景**：
