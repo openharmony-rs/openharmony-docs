@@ -108,7 +108,7 @@ for (let value of treeSet) {
 // value: d
 ```
 
- ```ts
+```ts
 // 插入自定义类型时，必须提供比较函数。
 class TestEntry {
   public id: number = 0;
