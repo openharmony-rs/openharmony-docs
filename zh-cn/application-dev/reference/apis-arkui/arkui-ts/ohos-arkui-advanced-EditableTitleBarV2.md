@@ -57,7 +57,7 @@ EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr \| Editabl
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | leftIcon | [EditableLeftIconV2](#editablelefticonv2) | 否 | \@Param | 左侧图标配置。需要在标题栏左侧显示返回或取消图标时传入此参数，不传入时取默认值，不显示左侧图标。<br />默认值：undefined。 |
-| title | [ResourceStr](ts-types.md#resourcestr) \| [EditableTitleV2](#editabletitlev2) | 是 | \@Param | 标题内容，支持字符串或对象形式配置。传入字符串时仅显示主标题，传入EditableTitleV2对象时可同时配置主标题和副标题。<br />默认值：new EditableTitleV2()，表示标题内容为空。 |
+| title | [ResourceStr](ts-types.md#resourcestr) \| [EditableTitleV2](#editabletitlev2) | 是 | ArkTS-Dyn: \@Param<br>ArkTS-Sta: \@Param<br/>\@Require | 标题内容，支持字符串或对象形式配置。传入字符串时仅显示主标题，传入EditableTitleV2对象时可同时配置主标题和副标题。<br />默认值：new EditableTitleV2()，表示标题内容为空。 |
 | imageItem | [EditableTitleBarItemV2](#editabletitlebaritemv2) | 否 | \@Param | 用于左侧头像的单个菜单项。需要在标题栏左侧显示头像时传入此参数，不传入时取默认值，不显示头像。<br />默认值：undefined。<br/>**说明：** 左侧头像不支持配置无障碍属性。 |
 | menuItems | Array&lt;[EditableTitleBarMenuItemV2](#editabletitlebarmenuitemv2)&gt; | 否 | \@Param | 右侧菜单项列表。需要在标题栏右侧显示自定义操作按钮时传入此参数，不传入时取默认值，不显示右侧菜单项列表。<br/>**说明：** 最多支持配置3个菜单项，如果同时配置保存按钮，则最多支持2个菜单项。<br />默认值：undefined。 |
 | saveButton | [EditableSaveButtonV2](#editablesavebuttonv2) | 否 | \@Param | 保存按钮配置。需要对标题栏右侧保存按钮的控制显示或隐藏状态、设置默认焦点、或者设置保存回调函数时传入此参数，不传入时取默认值，显示保存按钮。<br />默认值：undefined，显示保存按钮。 |
