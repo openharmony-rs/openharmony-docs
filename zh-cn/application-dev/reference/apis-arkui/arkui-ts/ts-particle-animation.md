@@ -439,7 +439,7 @@ interface ParticlePropertyAnimation<T> {
 ## ParticleTuple<sup>18+</sup>
 
 ```typescript
-declare type ParticleTuple<T1, T2> = [T1, T2];
+type ParticleTuple<T1, T2> = [T1, T2]
 ```
 
 粒子元组，表示定义一些动画参数的类型。

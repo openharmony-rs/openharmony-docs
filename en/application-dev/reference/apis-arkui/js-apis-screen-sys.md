@@ -26,7 +26,7 @@ import { screen } from '@kit.ArkUI';
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
-Obtains all screens. This API uses an asynchronous callback to return the result.
+Obtains all screen objects. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -36,7 +36,7 @@ Obtains all screens. This API uses an asynchronous callback to return the result
 
 | Name  | Type                                               | Mandatory| Description                                  |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | Yes  | Callback used to return all the Screen objects obtained.|
+| callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | Yes  | Callback used to return all the screen objects obtained.|
 
 **Error codes**
 
@@ -71,7 +71,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
-Obtains all screens. This API uses a promise to return the result.
+Obtains all screen objects. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -81,7 +81,7 @@ Obtains all screens. This API uses a promise to return the result.
 
 | Type                                         | Description                                     |
 | --------------------------------------------- | ----------------------------------------- |
-| Promise&lt;Array&lt;[Screen](#screen)&gt;&gt; | Promise used to return all the Screen objects obtained.|
+| Promise&lt;Array&lt;[Screen](#screen)&gt;&gt; | Promise used to return all the screen objects obtained.|
 
 **Error codes**
 
@@ -110,6 +110,109 @@ promise.then((data: Array<screen.Screen>) => {
 });
 ```
 
+## screen.getAllScreens
+
+getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?: boolean): void
+
+Obtains all screen objects. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                               | Mandatory| Description                                  |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | Yes  | Callback used to return all the screen objects obtained.|
+| isNeedUnused | boolean | No  | Whether to provide unused screen objects. The value **true** indicates to provide unused screen objects, and **false** indicates the opposite.<br>The default value is **false**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// Obtain all screen objects.
+screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+}, true);
+```
+
+## screen.getAllScreens
+
+getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
+
+Obtains all screen objects. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                               | Mandatory| Description                                  |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| isNeedUnused | boolean | No  | Whether to provide unused screen objects. The value **true** indicates to provide unused screen objects, and **false** indicates the opposite.<br>The default value is **false**.|
+
+**Return value**
+
+| Type                                         | Description                                     |
+| --------------------------------------------- | ----------------------------------------- |
+| Promise&lt;Array&lt;[Screen](#screen)&gt;&gt; | Promise used to return all the screen objects obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// Obtain all screen objects.
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
+promise.then((data: Array<screen.Screen>) => {
+  if(data.length > 0){
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## screen.on('connect' | 'disconnect' | 'change')
 
 on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&gt;): void
@@ -125,7 +228,7 @@ Subscribes to events related to the screen state.
 | Name   | Type                  | Mandatory| Description                                                       |
 | --------- | ---------------------- | ---- | ----------------------------------------------------------- |
 | eventType | string                 | Yes  | Event type.<br>- **connect**: screen connection event.<br>- **disconnect**: screen disconnection event.<br>- **change**: screen state change event.|
-| callback  | Callback&lt;number&gt; | Yes  | Callback used to return the screen ID, which is an integer.                                   |
+| callback  | Callback&lt;number&gt; | Yes  | Callback used to return the screen ID, which is an integer.|
 
 **Error codes**
 
@@ -1263,7 +1366,7 @@ Sets the screen to extended mode. This API uses an asynchronous callback to retu
 | Name  | Type                                      | Mandatory| Description                        |
 | -------- | ------------------------------------------ | ---- |----------------------------|
 | options  | Array&lt;[ExpandOption](#expandoption)&gt; | Yes  | Parameters for expanding the screen.              |
-| callback | AsyncCallback&lt;number&gt;                     | Yes  | Callback used to Return the group ID of the extended screens, which is an integer.|
+| callback | AsyncCallback&lt;number&gt;                     | Yes  | Callback used to return the group ID of the extended screens, which is an integer.|
 
 **Error codes**
 
@@ -1351,8 +1454,7 @@ let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
 // Set the screen to extend mode.
-screen.makeExpand(expandOptionArray).then((
-  data: number) => {
+screen.makeExpand(expandOptionArray).then((data: number) => {
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
@@ -1540,6 +1642,7 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | Yes  | No  | Source mode of the screen.    |
 | serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.|
 | densityDpi | number        | Yes  | Yes  | Physical pixel density of the screen, that is, the number of pixels per inch.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| isInUse | boolean        | Yes  | Yes  | Screen usage status. The value **true** indicates that the screen is in use, and **false** indicates that the screen is not in use. The default value is **true**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ### setOrientation
 
@@ -1550,6 +1653,12 @@ Sets the screen orientation. This API uses an asynchronous callback to return th
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Device behavior differences**:
+
+- For phones and tablets: This API does not take effect and no error is reported when it is called on a device that is in the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state. It can be called properly on a device that is not in the freeform window state. For some devices with strong restrictions on the screen (determined by the product configuration), if rotation is not required, calling this API does not take effect.
+- For PCs/2-in-1 devices: When a foldable device is in the hover state, calling this API does not take effect and reports no error. In other cases, this API can be called properly and take effect.
+- For other devices: The API behavior is not defined, and the screen orientation may not change.
 
 **Parameters**
 
@@ -1618,6 +1727,12 @@ Sets the screen orientation. This API uses a promise to return the result. The s
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Device behavior differences**:
+
+- For phones and tablets: This API does not take effect and no error is reported when it is called on a device that is in the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state. It can be called properly on a device that is not in the freeform window state. For some devices with strong restrictions on the screen (determined by the product configuration), if rotation is not required, calling this API does not take effect.
+- For PCs/2-in-1 devices: When a foldable device is in the hover state, calling this API does not take effect and reports no error. In other cases, this API can be called properly and take effect.
+- For other devices: The API behavior is not defined, and the screen orientation may not change.
 
 **Parameters**
 
@@ -1688,6 +1803,8 @@ Sets the screen orientation. This API uses a promise to return the result.
 
 You can use the **orientationOptions** parameter to specify whether to use an animation during rotation and whether to ignore the rotation lock of the system window.
 
+If the **orientationOptions** parameter is not passed, the API behavior is the same as that of **setOrientation(orientation: Orientation): Promise\<void>**.
+
 The screen orientation changes only when the specified orientation complies with the application rotation policy (which can be set using the **orientation** field of **abilities** in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **Since**: 26.0.0
@@ -1697,6 +1814,12 @@ The screen orientation changes only when the specified orientation complies with
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Device behavior differences**:
+
+- For phones and tablets: This API does not take effect and no error is reported when it is called on a device that is in the [free multi-window](../../windowmanager/window-terminology.md#free-multi-window-mode) state. It can be called properly on a device that is not in the free multi-window state. For some devices with strong restrictions on the screen (determined by the product configuration), if rotation is not required, calling this API does not take effect.
+- For PCs/2-in-1 devices: When a foldable device is in the hover state, calling this API does not take effect and reports no error. In other cases, this API can be called properly and take effect.
+- For other devices: The API behavior is not defined, and the screen orientation may not change.
 
 **Parameters**
 
@@ -2106,4 +2229,6 @@ Sets optional parameters for the screen orientation.
 | Name       | Type| Read-Only| Optional| Description                                              |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
 | needAnimation          | boolean   | No  | Yes  |  Whether to rotate with an animation. The value **true** indicates that the screen rotates with an animation, and **false** indicates the opposite. The default value is **true**.| 
-| ignoreRotationLock     | boolean   | No  | Yes  |  Whether to ignore the rotation lock. The value **true** indicates that the screen rotation is allowed even if some system windows lock the screen rotation. The value **false** indicates that the screen rotation is not allowed when system windows lock the screen rotation. The default value is **false**.<br> **Device behavior differences**: This field takes effect only on PCs/2-in-1 devices (non-foldable PCs) and other devices in desktop mode. For other devices, it does not take effect and no error is reported.|
+| ignoreRotationLock     | boolean   | No  | Yes  |  Whether to ignore the rotation lock. The value **true** indicates that the screen rotation is allowed even if some system windows lock the screen rotation. The value **false** indicates that the screen rotation is not allowed when system windows lock the screen rotation. The default value is **false**.<br> **Device behavior differences**: This field takes effect only on PCs/2-in-1 devices (non-foldable PCs) and other devices in [desktop mode](../../windowmanager/window-terminology.md#pc-mode). For other devices, it does not take effect and no error is reported.|
+
+<!--no_check-->

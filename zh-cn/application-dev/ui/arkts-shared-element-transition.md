@@ -2192,4 +2192,6 @@ export default struct Post {
 
 ![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
+<!--RP2--><!--RP2End-->
+
 <!--RP1--><!--RP1End-->
