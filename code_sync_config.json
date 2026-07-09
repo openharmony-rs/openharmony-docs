@@ -50734,7 +50734,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":87,
 						"name":"copy_arraybuffer_transfer",
 						"start_line":16
 					}
@@ -51292,7 +51292,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":37,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
