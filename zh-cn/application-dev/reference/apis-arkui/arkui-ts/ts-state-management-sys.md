@@ -1,10 +1,10 @@
 # 应用级变量的状态管理（系统接口）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhushilin0206-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和环境状态管理能力，适用于跨组件状态共享、数据持久化存储、UIAbility数据管理等场景。

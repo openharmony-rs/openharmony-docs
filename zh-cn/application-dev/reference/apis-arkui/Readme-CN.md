@@ -580,6 +580,9 @@
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
+    <!--Del-->
+    - [内置环境变量说明（系统接口）](arkui-ts/ts-state-management-environment-variables-sys.md)
+    <!--DelEnd-->
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
     - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
     - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
