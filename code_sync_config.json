@@ -33881,5 +33881,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-sheet-page.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"onWillDismiss_Dismiss",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
