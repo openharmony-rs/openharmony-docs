@@ -589,7 +589,7 @@ function readPixelsYUV(pixelMap: image.PixelMap) {
     stride: 8,
     region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
   };
-  pixelMap.readPixels(area, (error: BusinessError) => {
+  pixelMap.readPixels(area, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -943,7 +943,7 @@ function writePixelsYUV(pixelMap: image.PixelMap) {
   }
   pixelMap.writePixels(area).then(() => {
     console.info('Succeeded in writing pixels into the specified area.');
-  }).catch((error: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   });
 }
@@ -1013,7 +1013,7 @@ function writePixelsYUV(pixelMap: image.PixelMap) {
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  pixelMap.writePixels(area, (error: BusinessError) => {
+  pixelMap.writePixels(area, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -4271,7 +4271,7 @@ import { rpc } from '@kit.IPCKit';
 class MySequence implements rpc.Parcelable {
   pixelMap: image.PixelMap;
   constructor(pixelMap: image.PixelMap) {
-    this.pixelMap = conPixelMap;
+    this.pixelMap = pixelMap;
   }
   marshalling(messageSequence: rpc.MessageSequence) {
     this.pixelMap.marshalling(messageSequence);
