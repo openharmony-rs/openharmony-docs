@@ -53,8 +53,8 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. 可能原因：设备类型不支持该能力，或API版本不符合要求。解决措施：请检查设备类型和API版本是否支持该接口，参考"设备行为差异"章节。 |
-| 31300000     | Inner error. 可能原因：系统内部错误，如NPU初始化失败或资源不足。解决措施：请检查设备配置，稍后重试或联系技术支持。 |
+| 801          | Capability not supported. |
+| 31300000     | Inner error.  |
 
 **示例：**
 
@@ -106,6 +106,8 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 intelligence.getSupportedCloudModel()
   .then((info: Array<intelligence.CloudModelInfo>) => {
     console.info("Succeeded in getting CloudModelInfo");
@@ -242,7 +244,7 @@ intelligence.splitText(textToSplit, splitConfig)
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
 | version    | [ModelVersion](#modelversion)           | 否 | 否   | 模型的版本。BASIC_MODEL为基本嵌入模型版本，提供基础的文本向量化功能。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
-| cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。超出长度时抛出异常。
+| cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。超出长度时抛出异常。 |
 | modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](#intelligencegetsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型的网络策略，在使用文本向量模型时配置，该参数控制下载模型时允许使用的网络类型。WIFI_ONLY（默认值）仅在WiFi状态下下载模型，适用于需要节省移动数据流量的场景；WIFI_AND_CELLULAR在WiFi和蜂窝网络状态下均可下载模型，适用于需要快速获取模型且允许使用移动数据的场景。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
