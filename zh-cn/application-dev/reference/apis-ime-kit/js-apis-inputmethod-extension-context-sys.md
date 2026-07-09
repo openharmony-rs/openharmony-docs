@@ -47,7 +47,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#destroy9)替代。
+> 从API version 9 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +88,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#destroy9)替代。
+> 从API version 9 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy-1)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
