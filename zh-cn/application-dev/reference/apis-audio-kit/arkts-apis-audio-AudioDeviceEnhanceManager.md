@@ -54,9 +54,7 @@ isEnhancedRoutingSupported(): boolean
 ```ts
 import { audio } from '@kit.AudioKit';
 
-let audioManager = audio.getAudioManager();
-let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
-let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
+let isSupported = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
 console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
 ```
 
@@ -109,9 +107,8 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
-let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
-let outputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
+let audioSessionManager = audioManager.getSessionManager();
+let outputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectOutputDevice(outputDevice).then(() => {
   console.info('Succeeded in selecting output device.');
 }).catch((err: BusinessError) => {
@@ -168,8 +165,7 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
-let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+let audioSessionManager = audioManager.getSessionManager();
 let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDevice(inputDevice).then(() => {
   console.info('Succeeded in selecting input device.');
@@ -227,16 +223,37 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
 let audioManager = audio.getAudioManager();
-let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
-// audioRenderer需提前通过audio.createAudioRenderer创建。
-let audioRenderer: audio.AudioRenderer;
+let audioSessionManager = audioManager.getSessionManager();
 let outputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
-audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(audioRenderer, outputDevice).then(() => {
-  console.info('Succeeded in selecting output device for audio renderer.');
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+  let audioRenderer = data;
+  audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(audioRenderer, outputDevice).then(() => {
+    console.info('Succeeded in selecting output device for audio renderer.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
 });
 ```
 
@@ -289,15 +306,36 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
 let audioManager = audio.getAudioManager();
-let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
-// audioCapturer需提前通过audio.createAudioCapturer创建。
-let audioCapturer: audio.AudioCapturer;
+let audioSessionManager = audioManager.getSessionManager();
 let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
-audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(audioCapturer, inputDevice).then(() => {
-  console.info('Succeeded in selecting input device for audio capturer.');
+
+audio.createAudioCapturer(audioCapturerOptions).then((data) => {
+  console.info('AudioCapturer Created : SUCCESS');
+  let audioCapturer = data;
+  audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(audioCapturer, inputDevice).then(() => {
+    console.info('Succeeded in selecting input device for audio capturer.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select input device for audio capturer. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to select input device for audio capturer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```
