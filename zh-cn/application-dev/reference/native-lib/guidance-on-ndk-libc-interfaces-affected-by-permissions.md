@@ -203,6 +203,9 @@
 | unistd.h       | tcgetpgrp      |
 | unistd.h       | tcsetpgrp      |
 | utmp.h         | login_tty      |
+| wordexp.h      | wordexp        |
+
+参考：[SELinux 强相关的接口详情](#third_party_musl-中与-selinux-强相关的接口按实现路径归类)
 
 
 ## 沙箱机制影响的musl接口
@@ -265,3 +268,76 @@
 | unistd.h       | setdomainname     | CAP_SYS_ADMIN        |
 | unistd.h       | sethostname       | CAP_SYS_ADMIN        |
 | unistd.h       | chroot            | CAP_SYS_CHROOT       |
+
+
+## third_party_musl 中与 SELinux 强相关的接口(按实现路径归类)
+
+### 1. pty/tty 与终端链路
+
+| 头文件 | musl 接口名称 | 固定访问路径 |
+| --- | --- | --- |
+| pty.h | forkpty | 无；通过 `openpty` 间接访问 `/dev/ptmx`、`/dev/pts/%d` |
+| pty.h | openpty | `/dev/ptmx`、`/dev/pts/%d` |
+| stdlib.h | ptsname | 无；通过 `ptsname_r` 间接得到 `/dev/pts/%d` |
+| stdlib.h | ptsname_r | `/dev/pts/%d` |
+| stdlib.h | posix_openpt | `/dev/ptmx` |
+| stdlib.h | unlockpt | 无；对传入 fd 执行 `ioctl(TIOCSPTLCK)` |
+| unistd.h | ctermid | 无；仅返回 `/dev/tty` 字符串 |
+| unistd.h | ttyname_r | `/proc/self/fd/` |
+| unistd.h | getpass | `/dev/tty` |
+| utmp.h | login_tty | 无；对传入 fd 执行 `ioctl(TIOCSCTTY)` |
+
+说明：这类接口常关联 `dev_ptmx`、`devpts`、`tty_device`，在策略中通常不是“所有主体无差别放开”。
+
+### 2. 共享内存与命名信号量
+
+| 头文件 | musl 接口名称 | 固定访问路径 |
+| --- | --- | --- |
+| sys/mman.h | shm_open / shm_unlink | `/dev/shm/` |
+| semaphore.h | sem_open | `/dev/shm/`、`/dev/shm/tmp-%d` |
+| semaphore.h | sem_unlink | `/dev/shm/` |
+
+说明：`/dev/shm` 路径受系统侧 SELinux 管控。
+
+### 3. shell 执行与日志控制台
+
+| 头文件 | musl 接口名称 | 固定访问路径 |
+| --- | --- | --- |
+| stdio.h | popen | `/bin/sh` |
+| stdio.h | pclose | 无；等待并回收 `popen` 创建的子进程 |
+| stdlib.h | system | `/bin/sh` |
+| wordexp.h | wordexp | `/bin/sh` |
+| syslog.h | syslog 相关接口 | `/dev/log`、`/dev/console` |
+| fmtmsg.h | fmtmsg | `/dev/console` |
+
+说明：`/dev/log`、`/dev/console` 的访问一般依赖主体域授权，不是默认全放行。
+
+### 4. 账号与敏感文件
+
+| 头文件 | musl 接口名称 | 固定访问路径 |
+| --- | --- | --- |
+| shadow.h | getspnam_r | `/etc/tcb/%s/shadow`、`/etc/shadow` |
+
+说明：该类接口客体敏感度高，建议按最小权限单独审计。
+
+### 5. 无固定路径但存在 SELinux 管控点的接口
+
+| 头文件 | musl 接口名称 | 可能受影响的原因 |
+| --- | --- | --- |
+| net/if.h | if_indextoname | 通过 `socket` + `ioctl(SIOCGIFNAME)`，SELinux 管控 `udp_socket/unix_dgram_socket ioctl` |
+| net/if.h | if_nametoindex | 通过 `socket` + `ioctl(SIOCGIFINDEX)`，SELinux 管控 `udp_socket/unix_dgram_socket ioctl` |
+| sys/mount.h | mount / umount / umount2 | 路径由参数传入，SELinux 管控 `filesystem { mount unmount remount }` 和挂载点 `dir/file mounton` |
+| sys/msg.h | msgctl / msgget / msgrcv / msgsnd | System V 消息队列对象，SELinux 管控 `msg/msgq` |
+| sys/sem.h | semget / semctl / semop / semtimedop | System V 信号量对象，SELinux 管控 `sem` |
+| sys/shm.h | shmget / shmat / shmdt / shmctl | System V 共享内存对象，SELinux 管控 `shm` |
+| sys/stat.h | mkfifo / mkfifoat | 路径由参数传入，SELinux 管控父目录 `add_name/create` 和目标 `fifo_file` |
+| sys/stat.h | mknod / mknodat | 路径由参数传入，SELinux 管控父目录 `add_name/create` 和目标 `chr_file/blk_file/fifo_file` |
+| sys/ioctl.h | ioctl | 通过 fd 访问目标客体，典型受 `ioctl`/`allowxperm` 管控 |
+| termios.h | tcgetattr / tcsetattr | 通过 fd 执行 `ioctl`，典型客体是 `tty_device/devpts:chr_file` |
+| termios.h | tcsendbreak / tcdrain / tcflush / tcflow / tcgetsid | 通过 fd 执行 `ioctl`，典型客体是 `tty_device/devpts:chr_file` |
+| unistd.h | tcgetpgrp / tcsetpgrp | 通过 fd 执行 `ioctl`，典型客体是 `tty_device/devpts:chr_file` |
+| unistd.h | link / linkat | 路径由参数传入，SELinux 管控 `file link`、父目录 `add_name` |
+| unistd.h | readlink / readlinkat | 路径由参数传入，SELinux 管控 `lnk_file read/getattr` |
+| unistd.h | symlink / symlinkat | 路径由参数传入，SELinux 管控 `lnk_file create`、父目录 `add_name` |
+
+说明：以上接口没有在 musl 内部固定访问路径，是否触发 SELinux 拦截取决于调用主体、传入路径或 fd、内核对象标签及对应策略。
