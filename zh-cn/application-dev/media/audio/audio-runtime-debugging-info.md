@@ -138,7 +138,7 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 **ArkTS-Dyn示例：**
 
-<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印应用快照到文件。
@@ -223,7 +223,7 @@ if (fd >= 0) {
 
 **ArkTS-Dyn示例：**
 
-<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定播放实例的快照。
@@ -333,7 +333,7 @@ if (fd >= 0) {
 
 **ArkTS-Dyn示例：**
 
-<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定录音实例的快照。
