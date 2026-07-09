@@ -466,7 +466,7 @@ OH_AudioSessionManager *audioSessionManager;
     // fd 文件描述符，实际使用时请根据具体情况获取
     // 输出到文件
     OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
-}
+
 ```
 
 **ArkTS接口：**
