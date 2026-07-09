@@ -49,11 +49,6 @@
    > - 目标组件exported字段配置为false，表示组件仅允许应用内启动。
    > - 跨设备启动需要设备间建立信任关系，且目标设备处于在线状态。
 
-   启动组件的具体校验流程如下图：
-
-   ![component-startup-rules-cross-device-sys](figures/component-startup-rules-cross-device-sys.png)
-
-
    通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口跨设备启动UIAbility组件时，需要具备三个条件：1.申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（下文简称CALL）权限；2.目标UIAbility组件的exported为true，若申请INVISIBLE权限，可不受该条规则约束；3.启动方的UIAbility位于前台，否则需要申请BACKGROUND权限。在建立通路过程中，底层软总线会校验DATASYNC权限。权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
    | 应用状态 | 组件可见性     | 权限要求                                  |
@@ -67,10 +62,6 @@
    >
    > - 当前仅分布式迁移场景对第三方应用开放Call调用权限，系统应用可自由使用。
    > - startAbilityByCall()接口在建立通路过程中，底层软总线会校验DATASYNC权限。
-
-   启动组件的具体校验流程如下图：
-
-   ![component-startup-rules-cross-device-call-sys](figures/component-startup-rules-cross-device-call-sys.png)
 
 ## 跨设备启动校验拦截规则
 
@@ -115,10 +106,6 @@
    | 前台应用 | exported:false | INVISIBLE权限 + DATASYNC权限（软总线校验） |
    | 后台应用 | exported:true  | DATASYNC权限（软总线校验）             |
    | 后台应用 | exported:false | INVISIBLE权限 + DATASYNC权限（软总线校验） |
-
-   启动组件的具体校验流程如下图：
-
-   ![component-startup-rules-cross-device-extension-sys](figures/component-startup-rules-cross-device-extension-sys.png)
 
 - [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)组件启动规则：
 
