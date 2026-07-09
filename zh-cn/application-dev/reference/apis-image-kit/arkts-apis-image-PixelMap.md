@@ -4013,7 +4013,6 @@ function getMetadata(context: Context) {
     console.error('Failed to create the PixelMap.');
   }
 }
-
 ```
 
 ## setMetadata<sup>12+</sup>
