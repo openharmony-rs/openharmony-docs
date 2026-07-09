@@ -1164,11 +1164,11 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明度类型从非预乘模式转换为预乘模式，转换后的数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用callback异步回调。
+将PixelMap像素数据的透明度类型从非预乘模式转换为预乘模式，转换后的像素数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用callback异步回调。
 
 > **说明：**
 >
-> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1177,8 +1177,8 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，像素格式需包含Alpha通道（RGBA_F16除外），透明度类型需为非预乘（AlphaType.UNPREMUL）。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），像素格式必须包含Alpha通道（RGBA_F16和ASTC_4x4除外）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL）且必须可编辑，其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的像素数据将写入该对象。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当透明度类型转换成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -1224,11 +1224,11 @@ function createPremultipliedPixelMap() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap的透明度类型从非预乘模式转换为预乘模式，转换后的数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用Promise异步回调。
+将PixelMap像素数据的透明度类型从非预乘模式转换为预乘模式，转换后的像素数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用Promise异步回调。
 
 > **说明：**
 >
-> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1237,8 +1237,8 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，像素格式需包含Alpha通道（RGBA_F16除外），透明度类型需为非预乘（AlphaType.UNPREMUL）。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），像素格式必须包含Alpha通道（RGBA_F16和ASTC_4x4除外）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL）且必须可编辑，其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的像素数据将写入该对象。 |
 
 **返回值：**
 
@@ -1287,11 +1287,11 @@ function createPremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明度类型从预乘模式转换为非预乘模式，转换后的数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用callback异步回调。
+将PixelMap像素数据的透明度类型从预乘模式转换为非预乘模式，转换后的像素数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用callback异步回调。
 
 > **说明：**
 >
-> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1300,8 +1300,8 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，像素格式需包含Alpha通道（RGBA_F16除外），透明度类型需为预乘（AlphaType.PREMUL）。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），像素格式必须包含Alpha通道（RGBA_F16和ASTC_4x4除外）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL）且必须可编辑，其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的像素数据将写入该对象。 |
 |callback | AsyncCallback\<void> | 是   | 回调函数，当透明度类型转换成功时，err为undefined；否则为错误对象。|
 
 **错误码：**
@@ -1347,11 +1347,11 @@ function createUnpremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap的透明度类型从预乘模式转换为非预乘模式，转换后的数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用Promise异步回调。
+将PixelMap像素数据的透明度类型从预乘模式转换为非预乘模式，转换后的像素数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用Promise异步回调。
 
 > **说明：**
 >
-> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1360,8 +1360,8 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，像素格式需包含Alpha通道（RGBA_F16除外），透明度类型需为预乘（AlphaType.PREMUL）。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），像素格式必须包含Alpha通道（RGBA_F16和ASTC_4x4除外）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL）且必须可编辑，其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的像素数据将写入该对象。 |
 
 **返回值：**
 
