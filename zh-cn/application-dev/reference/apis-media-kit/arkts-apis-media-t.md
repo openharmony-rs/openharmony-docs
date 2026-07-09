@@ -391,6 +391,72 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 | 'stopped'  | 视频播放停止。 |
 | 'error'    | 错误状态。     |
 
+## AVDownloadTaskState
+
+type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'
+
+离线下载任务状态枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 类型         | 说明                     |
+| ------------ | ------------------------ |
+| 'init'       | 下载任务初始化。         |
+| 'queued'     | 下载任务排队等待。       |
+| 'running'    | 下载任务正在运行。       |
+| 'completed'  | 下载任务已完成。         |
+| 'paused'     | 下载任务已暂停。         |
+| 'removing'   | 下载任务正在移除。       |
+| 'error'      | 下载任务出错。           |
+
+## OnAVDownloadTaskStateHandle
+
+type OnAVDownloadTaskStateHandle = (taskId: string, state: AVDownloadTaskState) => void
+
+离线下载任务状态变化事件回调方法。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| taskId | string | 是     | 状态变化的离线下载任务ID。                                  |
+| state  | [AVDownloadTaskState](#avdownloadtaskstate) | 是 | 任务的新状态。 |
+
+## OnAVDownloadProgressChangeHandle
+
+type OnAVDownloadProgressChangeHandle = (taskId: string, progress: number) => void
+
+离线下载任务进度变化事件回调方法。当下载进度相比上次变化超过1%，且距上次触发时间超过500ms时，触发该事件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| taskId | string | 是     | 离线下载任务ID。                                            |
+| progress | number | 是     | 下载进度值。<br>取值范围：[0.0, 1.0)<br>若值为-1，表示资源大小未知。 |
+
 ## OnAdsEventLoadingErrorHandle
 
 type OnAdsEventLoadingErrorHandle = (adsId: string, reason: BusinessError) => void
