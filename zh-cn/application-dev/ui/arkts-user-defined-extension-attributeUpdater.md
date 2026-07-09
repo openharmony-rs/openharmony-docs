@@ -117,7 +117,7 @@ struct updaterDemo {
           .height(50)
           .backgroundColor('#2787D9')
           .onClick(() => {
-            // 调用updateConstructorParams方法，直接更新组件的构造参数
+            // 调用updateConstructorParams属性，直接更新组件的构造参数
             this.modifier.updateConstructorParams('Update');
           })
       }

@@ -90,7 +90,7 @@ Napi的基础开发知识请查看以下文档：[开发导读](../../napi/ndk-d
 #include "arkui/native_node_napi.h"
 #include "arkui/native_interface.h"
 #include "hilog/log.h"
-// ···
+// ...
 ArkUI_NodeContentHandle nodeContentHandle_ = nullptr;
 ArkUI_NativeNodeAPI_1 *nodeAPI;
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
@@ -139,7 +139,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
             component = CreateNodeHandle();
             // 将组件添加到nodeContent管理器中
             OH_ArkUI_NodeContent_AddNode(nodeContentHandle_, component);
-            // ···
+            // ...
         }
     }
     return nullptr;
@@ -151,18 +151,18 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 注册上下树事件，并通过事件获取对应的Content对象。
 
   <!-- @[contentslot_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
       ArkUI_NodeContentHandle content = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
       // 针对不同content需要额外做的逻辑
       if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW) {
           // ContentSlot上树时需要触发的逻辑
-          // ···
+          // ...
       } else if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW) {
           // ContentSlot下树时需要触发的逻辑
-          // ···
-      };
+          // ...
+      }
   };
   // 将该事件注册到nodeContent上
   OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
@@ -183,9 +183,9 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 插入子组件。
 
   <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
-  size_t position = 0;
+  int32_t position = 0;
   ArkUI_NodeHandle component1 = CreateNodeHandle();
   // 将组件插入nodeContent管理器对应位置
   OH_ArkUI_NodeContent_InsertNode(nodeContentHandle_, component1, position);
