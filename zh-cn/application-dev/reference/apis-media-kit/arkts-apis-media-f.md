@@ -1003,3 +1003,89 @@ async function test() {
 }
 ```
 
+## media.createMediaSourceWithDirectory
+
+createMediaSourceWithDirectory(path: string): Promise\<MediaSource | undefined>
+
+根据指定目录路径创建一个媒体源对象。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| path | string | 是   | 用于创建媒体源的目录路径信息。 |
+
+**返回值：**
+
+| 类型                            | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[MediaSource](arkts-apis-media-MediaSource.md) \| undefined> | Promise对象。成功时返回MediaSource实例，失败时返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5411007  | path参数指定的目录不存在或无法访问。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  media.createMediaSourceWithDirectory("/data/storage/el2/base/media/cache/").then((mediaSource: media.MediaSource | undefined) => {
+    if (mediaSource) {
+      console.info('Succeeded in creating MediaSource with directory');
+    } else {
+      console.error('Failed to create MediaSource with directory');
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create MediaSource with directory, error: ${error}`);
+  });
+}
+```
+
+## media.createAVDownloaderManager
+
+createAVDownloaderManager(): Promise\<AVDownloaderManager>
+
+创建一个离线下载任务管理器实例。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**返回值：**
+
+| 类型                            | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[AVDownloaderManager](arkts-apis-media-AVDownloaderManager.md)> | Promise对象。返回离线下载任务管理器实例。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  media.createAVDownloaderManager().then((downloaderManager: media.AVDownloaderManager) => {
+    console.info('Succeeded in creating AVDownloaderManager');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create AVDownloaderManager, error: ${error}`);
+  });
+}
+```
+
