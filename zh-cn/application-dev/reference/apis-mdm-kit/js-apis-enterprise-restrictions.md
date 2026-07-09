@@ -90,7 +90,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200013  | The enterprise management policy has been successfully set, but the function has not taken effect in real time. |
+| 9200013  | The enterprise management policy has been successfully set, but the function has not taken effect in real time. <br>适用版本：21+ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -239,7 +239,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, a
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | the administrator application does not have permission to manage the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010  | A conflict policy has been configured.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -298,7 +298,7 @@ getDisallowedPolicyForAccount(admin: Want | null, feature: string, accountId: nu
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | the administrator application does not have permission to manage the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**

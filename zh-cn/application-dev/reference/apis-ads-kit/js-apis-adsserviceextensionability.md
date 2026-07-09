@@ -32,7 +32,7 @@ import { RespCallback } from '@kit.AdsKit';
 
 **参数：**
 
-| **参数名** | **类型** | 必填 | 说明 | 
+| **名称** | **类型** | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertisement.md#advertisement)&gt;&gt; | 是 | 广告请求回调数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 | 
 

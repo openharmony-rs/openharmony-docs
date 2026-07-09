@@ -536,7 +536,8 @@ async function setupPlayer() {
 | event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 事件发生时的系统时间。 |
 | playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。 |
-| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>卡顿事件包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br/>音画不同步事件包含不同步类型（视频帧超前或滞后音频帧）和不同步起止时间。<br/>加载速率变化事件包含变化前后的数据下载速率。<br/>加载数据请求错误事件包含请求阶段（连接、请求流媒体播放列表、请求流媒体数据）、请求时间和网络错误码。<br/>播放内容切换事件包含切换前后的资源参数信息（视频分辨率、视频帧率、音频采样率、音频通道数等）。<br/>播放内容不连续事件包含不连续类型（PTS跳变或者音频参数变化）、跳变前后的PTS/变化前后的音频参数（音频采样率、音频通道数、音频位深）。<br/>音频状态变化事件包括失焦事件发生时的前/后状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 
 ## VideoSize
 

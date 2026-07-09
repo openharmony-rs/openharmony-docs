@@ -63,6 +63,8 @@
 1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 导入通知订阅模块。
+
+   ArkTS-Dyn示例：
    
    ```ts
    import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
@@ -73,8 +75,19 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-3. 创建订阅者对象。
+   ArkTS-Sta示例：
    
+   ```ts
+   import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+   const TAG: string = '[SubscribeOperations]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
+3. 创建订阅者对象。
+
    ```ts
    let subscriber: notificationSubscribe.NotificationSubscriber = {
      onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
@@ -126,13 +139,26 @@
      },
    };
    ```
-   
+
 4. 发起通知订阅。
+
+   ArkTS-Dyn示例：
    
    ```ts
    notificationSubscribe.subscribeNotification(subscriber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
    }).catch((err: BusinessError) => {
      hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+   ArkTS-Sta示例：
+   
+   ```ts
+   notificationSubscribe.subscribeNotification(subscriber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
+   }).catch((err: Error) => {
+     let error: BusinessError = err as BusinessError;
+     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
    });
    ```

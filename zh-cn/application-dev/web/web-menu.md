@@ -18,7 +18,7 @@ Web组件的文本选中菜单是一种通过自定义元素实现的上下文�
 3. 创建一个[EditMenuOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions)对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口与Web组件绑定。
 
 ArkTS-Dyn示例：
-<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
+<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -91,11 +91,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) -->
+<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { $rawfile, $r, Web, EditMenuOptions, TextMenuItem, TextMenuItemId, TextRange } from '@ohos.arkui.component';
@@ -190,7 +188,7 @@ struct WebComponent {
 3. 在onContextMenuShow回调中获取上下文菜单事件信息[onContextMenuShowEvent](../reference/apis-arkweb/arkts-basic-components-web-i.md#oncontextmenushowevent12)。其中param为[WebContextMenuParam](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)类型，包含点击位置对应HTML元素信息和位置信息，result为[WebContextMenuResult](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)类型，提供常见的菜单能力。
 
 ArkTS-Dyn示例：
-<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
+<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -317,11 +315,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) -->
+<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
 
 ``` TypeScript
-'use static'
-
 // xxx.ets
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -473,7 +469,7 @@ struct WebComponent {
 2. 通过Web组件的[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)方法绑定MenuBuilder菜单弹窗。将[WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13)设置为WebElementType.IMAGE，[responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13)设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在[options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13)中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 
 ArkTS-Dyn示例：
-<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
+<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -557,11 +553,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
+<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import webview from '@ohos.web.webview';
 import { Entry, Column, Component, Web, Image, Resource, Menu, ImageFit,
   WebContextMenuResult, UIContext, WebOptions, MenuItem, $rawfile, WebResponseType, WebElementType, SelectionMenuOptionsExt, MenuType } from '@ohos.arkui.component';
@@ -674,7 +668,7 @@ struct WebComponent {
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
 ArkTS-Dyn示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -847,7 +841,7 @@ struct SelectionMenuLongPress {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
 
 ``` TypeScript
 import webview from '@ohos.web.webview';
@@ -1056,7 +1050,7 @@ html示例
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
 ArkTS-Dyn示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1183,7 +1177,7 @@ struct WebComponent {
 ```
 
 ArkTS-Dyn示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
 
 ``` TypeScript
 import webview from '@ohos.web.webview';
@@ -1348,7 +1342,7 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 2. 在HTML侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
 
 ArkTS-Dyn示例：
-<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
+<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1395,11 +1389,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
+<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { $rawfile, Web, Text, JavaScriptProxy } from '@ohos.arkui.component';
@@ -1502,7 +1494,7 @@ struct WebComponent {
 可通过[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口将系统默认菜单全部过滤，此时无菜单项，则不会显示菜单。
 
 ArkTS-Dyn示例：
-<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
+<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1536,11 +1528,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) -->
+<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { $rawfile, Web, EditMenuOptions, TextRange, TextMenuItem } from '@ohos.arkui.component';
@@ -1595,7 +1585,7 @@ struct WebComponent {
 **示例代码**
 
 ArkTS-Dyn示例：
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1680,11 +1670,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import webview from '@ohos.web.webview';
 import { Entry, Column, Component, Web, Menu, MenuItem, $rawfile, WebResponseType, WebElementType, MenuType, Color } from '@ohos.arkui.component';
 import { BusinessError } from '@ohos.base';

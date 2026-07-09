@@ -328,7 +328,7 @@ PixelMapDrawableDescriptor的构造函数，通过PixelMap类型或者ResourceSt
 
 ```ts
 // xxx.ets
-import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -747,7 +747,6 @@ ArkTS-Sta: setBlendMode(mode: drawing.BlendMode | undefined): void
 
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
 @Entry
@@ -824,7 +823,7 @@ struct Index {
 **示例：**
 
 ```ts
-import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry

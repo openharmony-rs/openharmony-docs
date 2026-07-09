@@ -840,7 +840,7 @@ connect():&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390204 | The number of connections exceeds the limit. |
+| 32390204 | The number of connection exceeds the limit. |
 | 32390300 | Internal error. |
 
 **示例：**

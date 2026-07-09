@@ -170,7 +170,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->  
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -203,7 +203,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->  
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -322,7 +322,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -386,7 +386,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -615,7 +615,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 <!--deprecated_code_no_check-->
-<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -818,7 +818,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
@@ -951,7 +951,7 @@ class PixelUtils {
 使用UIContext接口替换：
 
 ArkTS-Dyn示例：
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
@@ -1001,7 +1001,7 @@ export class PixelUtil {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
@@ -1052,7 +1052,7 @@ export class PixelUtil {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1118,7 +1118,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1193,7 +1193,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->  
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -1226,7 +1226,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/VpPage.ets) -->  
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -1257,7 +1257,7 @@ struct Index {
 ```
 无法获取UIContext时，可考虑直接调用。
 
-<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
@@ -1277,7 +1277,7 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->  
 
 ``` TypeScript
 // common/WindowUtils.ets
@@ -1329,7 +1329,7 @@ export class WindowUIContextUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->  
 
 ``` TypeScript
 // common/WindowUtils.ets
@@ -1387,7 +1387,7 @@ export class WindowUIContextUtils {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1452,7 +1452,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1528,7 +1528,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ArkTS-Dyn示例：
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -1593,7 +1593,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -1666,7 +1666,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->  
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -1702,7 +1702,7 @@ struct CalendarPickerDialogPage {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->  
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -1813,7 +1813,7 @@ export class PixelUtils {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->  
 
 ``` TypeScript
 // Common/UIContext.ets
@@ -1861,7 +1861,7 @@ export class PixelUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/UIContext.ets) -->  
 
 ``` TypeScript
 // Common/UIContext.ets
@@ -1968,7 +1968,7 @@ struct GetContextPage {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->  
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -1991,7 +1991,7 @@ export class ContextUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->  
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -2017,7 +2017,7 @@ export class ContextUtils {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -2049,7 +2049,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -2085,7 +2085,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->  
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -2113,7 +2113,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->  
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -2141,7 +2141,7 @@ struct Index {
 ```
 无UI场景直接返回窗口创建时设置的默认返回值。
 
-<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let context = ContextUtils.getContext();
@@ -2240,7 +2240,7 @@ struct LocalStoragePage {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->  
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -2275,7 +2275,7 @@ struct LocalStoragePage {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->  
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -2313,7 +2313,7 @@ struct LocalStoragePage {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -2351,7 +2351,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets

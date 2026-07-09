@@ -171,10 +171,11 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist. <br>适用版本：10+ |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
+| 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -479,14 +480,15 @@ UIAbility被启动后，有如下情况：
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist. <br>适用版本：10+ |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
+| 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. <br>适用版本：14+ |
+| 16000055 | Installation-free timed out. |
 | 16000071 | App clone is not supported. <br>适用版本：14+ |
 | 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
 | 16000073 | The app clone index is invalid. <br>适用版本：12+ |
@@ -1388,11 +1390,11 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
-| 16000011 | The context does not exist. <br>适用版本：10+ |
+| 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. <br>适用版本：14+ |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
 | 16000071 | App clone is not supported. <br>适用版本：14+ |
 | 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
 | 16000073 | The app clone index is invalid. <br>适用版本：12+ |
@@ -5094,7 +5096,7 @@ startSelf(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 801 | Capability not supported. |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current devive or current UIAbility is a non-native UIAbility. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. Connect to system service failed. |
 | 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |

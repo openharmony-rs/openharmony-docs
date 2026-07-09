@@ -739,11 +739,11 @@ Navigation路由的构造方式类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                       | 只读  |  可选 | 默认值      | 描述                                                         |
-| ----------- | ------------------------------------------ | ---- | -------- | ----------- | ------------------------------------------------------------ |
-| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是  | Color.White | 内部图标颜色。                                               |
-| size        | [Length](ts-types.md#length)               | 否  |  是  | -           | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认大小处理。默认大小与多选框组件宽度相同。 |
-| strokeWidth | [Length](ts-types.md#length)               | 否  |  是  | 2           | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。 |
+| 名称        | 类型                                       | 只读  |  可选 | 说明                                                         |
+| ----------- | ------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
+| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是  | 内部图标颜色。默认值：Color.White                                               |
+| size        | [Length](ts-types.md#length)               | 否  |  是  | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认大小处理。默认大小与多选框组件宽度相同。 |
+| strokeWidth | [Length](ts-types.md#length)               | 否  |  是  | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。默认值：2 |
 
 ## ModalTransition<sup>10+</sup>
 
@@ -1053,11 +1053,11 @@ type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
 | 名称     | 类型                                      | 只读 | 可选 | 说明              |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>  | 否 | 是 | 分割线的线宽。         |
+| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。         |
 | color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。         |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
-| mode  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)<sup>19+</sup>| 否  | 是 | 设置分割线模式。 |
+| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
+| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
+| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。 |
 
 ## ChainWeightOptions<sup>14+</sup>对象说明
 
@@ -1122,7 +1122,7 @@ type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
 type ResponsiveFillType = PresetFillType
 
-响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+响应式布局填充模式，用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1136,7 +1136,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件的响应式布局策略。
+定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)、[Swiper](./ts-container-swiper.md)和[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 

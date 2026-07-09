@@ -57,13 +57,13 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 | 名称                                      | 类型                  | 只读    |  可选   |         说明                 |
 | ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
 | axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23          |
-| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 15            |
+| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 15            |
 
 ### stopPropagation<sup>23+</sup>
 
 stopPropagation(): void
 
-阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

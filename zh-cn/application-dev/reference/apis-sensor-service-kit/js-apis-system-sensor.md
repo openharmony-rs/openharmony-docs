@@ -219,7 +219,7 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 调用此接口后，系统会按指定的回调频率上报加速度数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)。
+除Lite Wearable外，从API version 8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -535,22 +535,22 @@ export default {
           sensor.unsubscribeCompass();
           break;
         case "PROXIMITY":
-          sensor.unsubscribeProximity()
+          sensor.unsubscribeProximity();
           break;
         case "AMBIENT_LIGHT":
-          sensor.unsubscribeLight()
+          sensor.unsubscribeLight();
           break;
         case "PEDOMETER":
-          sensor.unsubscribeStepCounter()
+          sensor.unsubscribeStepCounter();
           break;
         case "BAROMETER":
           sensor.unsubscribeBarometer();
           break;
         case "HEART_RATE":
-          sensor.unsubscribeHeartRate()
+          sensor.unsubscribeHeartRate();
           break;
         case "WEAR_DETECTION":
-          sensor.unsubscribeOnBodyState()
+          sensor.unsubscribeOnBodyState();
           break;
         case "ORIENTATION":
           sensor.unsubscribeDeviceOrientation();
@@ -559,9 +559,9 @@ export default {
           sensor.unsubscribeGyroscope();
           break;
         }
-        this.TextContent = ""
+        this.TextContent = "";
     } catch (e) {
-        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`)
+        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`);
     }
   }
 }
@@ -577,7 +577,7 @@ unsubscribeAccelerometer(): void
 
 调用此接口后，之前通过subscribeAccelerometer注册的回调函数将不再被触发。如需再次获取数据，需重新调用subscribeAccelerometer。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -605,7 +605,7 @@ Sensor.unsubscribeAccelerometer();
 
 调用此接口后，系统会在罗盘数据变化时上报方向数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -613,7 +613,7 @@ Sensor.unsubscribeAccelerometer();
 
 | 参数名  | 类型                                                | 必填 | 说明                             |
 | ------- | --------------------------------------------------- | ---- | -------------------------------- |
-| options | [SubscribeCompassOptions](#subscribecompassoptions) | 是   | 当罗盘传感器数据发生变化时调用。 |
+| options | [SubscribeCompassOptions](#subscribecompassoptions) | 是   | 用于设置罗盘传感器订阅的参数，包括回调函数。 |
 
 **ArkTS示例**：
 
@@ -657,7 +657,7 @@ unsubscribeCompass(): void
 
 调用此接口后，之前通过subscribeCompass注册的回调函数将不再被触发。需先调用subscribeCompass订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -683,7 +683,7 @@ Sensor.unsubscribeCompass();
 
 调用此接口后，系统会在距离传感器数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -693,7 +693,7 @@ Sensor.unsubscribeCompass();
 
 | 参数名  | 类型                                                    | 必填 | 说明                             |
 | ------- | ------------------------------------------------------- | ---- | -------------------------------- |
-| options | [SubscribeProximityOptions](#subscribeproximityoptions) | 是   | 当距离传感器数据发生变化时调用。 |
+| options | [SubscribeProximityOptions](#subscribeproximityoptions) | 是   | 用于设置距离传感器订阅的参数，包括回调函数。 |
 
 **ArkTS示例**：
 
@@ -737,7 +737,7 @@ unsubscribeProximity(): void
 
 调用此接口后，之前通过subscribeProximity注册的回调函数将不再被触发。需先调用subscribeProximity订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -765,7 +765,7 @@ Sensor.unsubscribeProximity();
 
 再次调用时，会覆盖前一次调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -819,7 +819,7 @@ unsubscribeLight(): void
 
 调用此接口后，之前通过subscribeLight注册的回调函数将不再被触发。需先调用subscribeLight订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -847,7 +847,7 @@ Sensor.unsubscribeLight();
 
 调用此接口后，系统会在计步数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -901,7 +901,7 @@ unsubscribeStepCounter(): void
 
 调用此接口后，之前通过subscribeStepCounter注册的回调函数将不再被触发。需先调用subscribeStepCounter订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -930,7 +930,7 @@ subscribeBarometer(options: SubscribeBarometerOptions): void
 
 调用此接口后，系统会在气压数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-1)。
+除Lite Wearable外，从API version 8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-1)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -983,7 +983,7 @@ unsubscribeBarometer(): void
 
 调用此接口后，之前通过subscribeBarometer注册的回调函数将不再被触发。需先调用subscribeBarometer订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1009,7 +1009,7 @@ Sensor.unsubscribeBarometer();
 
 调用此接口后，系统会以5秒/次的频率上报心率数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1064,7 +1064,7 @@ unsubscribeHeartRate(): void
 
 调用此接口后，之前通过subscribeHeartRate注册的回调函数将不再被触发。需先调用subscribeHeartRate订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1092,7 +1092,7 @@ Sensor.unsubscribeHeartRate();
 
 调用此接口后，系统会在佩戴状态变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1144,7 +1144,7 @@ unsubscribeOnBodyState(): void
 
 调用此接口后，之前通过subscribeOnBodyState注册的回调函数将不再被触发。需先调用subscribeOnBodyState订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1218,9 +1218,9 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 当开发者需要获取设备方向信息以实现屏幕旋转、游戏方向控制、AR/VR场景等功能时，使用此接口。
 
-针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
+针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1230,7 +1230,7 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 | 参数名  | 类型                                                         | 必填 | 说明                                             |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| options | [SubscribeDeviceOrientationOptions](#subscribedeviceorientationoptions6) | 是   | 用于监听设备方向传感器数据的回调函数的执行频率。 |
+| options | [SubscribeDeviceOrientationOptions](#subscribedeviceorientationoptions6) | 是   | 用于设置设备方向传感器订阅的参数，包括回调频率和回调函数。 |
 
 **ArkTS示例**：
 
@@ -1280,7 +1280,7 @@ unsubscribeDeviceOrientation(): void
 
 调用此接口后，之前通过subscribeDeviceOrientation注册的回调函数将不再被触发。需先调用subscribeDeviceOrientation订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1308,7 +1308,7 @@ Sensor.unsubscribeDeviceOrientation();
 
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
-除Lite Wearable外，从API Version8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated)。
+除Lite Wearable外，从API version 8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1318,7 +1318,7 @@ Sensor.unsubscribeDeviceOrientation();
 
 | 参数名  | 类型                                                     | 必填 | 说明                                           |
 | ------- | -------------------------------------------------------- | ---- | ---------------------------------------------- |
-| options | [SubscribeGyroscopeOptions](#subscribegyroscopeoptions6) | 是   | 用于侦听陀螺仪传感器数据的回调函数的执行频率。 |
+| options | [SubscribeGyroscopeOptions](#subscribegyroscopeoptions6) | 是   | 用于设置陀螺仪传感器订阅的参数，包括回调频率和回调函数。 |
 
 **ArkTS示例**：
 
@@ -1368,7 +1368,7 @@ unsubscribeGyroscope(): void
 
 调用此接口后，之前通过subscribeGyroscope注册的回调函数将不再被触发。需先调用subscribeGyroscope订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API Version8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated-2)。
+除Lite Wearable外，从API version 8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1397,7 +1397,7 @@ Sensor.unsubscribeGyroscope();
 | 名称     | 类型                                            | 只读 | 可选 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
 | interval | string                                          | 否   | 否   | 频率参数，加速度的回调函数执行频率。<br/>默认值：'normal'。<br/>可选值：<br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。<br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。<br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。 |
-| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 感应到加速度数据变化后的回调函数，回调参数为AccelerometerResponse对象。                           |
+| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 当加速度传感器数据发生变化时的回调函数，回调参数为AccelerometerResponse对象。                          |
 | fail     | Function                                        | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                                     |
 
 ## AccelerometerResponse 

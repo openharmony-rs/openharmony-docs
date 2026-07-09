@@ -7,9 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AbilityStageContext是AbilityStage的上下文环境，继承自[Context](js-apis-inner-application-context.md)。
-
-AbilityStageContext提供允许访问特定于abilityStage的资源的能力，包括获取AbilityStage对应的ModuleInfo对象、环境变化对象。
+AbilityStageContext是AbilityStage的上下文环境，继承自[Context](js-apis-inner-application-context.md)。AbilityStageContext提供访问特定于AbilityStage的资源的能力，适用于需要在AbilityStage生命周期中访问模块信息和环境配置的场景，可帮助开发者快速获取模块信息和环境配置。
 
 > **说明：**
 >
@@ -45,6 +43,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // 获取AbilityStageContext上下文
     let abilityStageContext = this.context;
     // 获取当前模块名
     let name = abilityStageContext.currentHapModuleInfo.name;

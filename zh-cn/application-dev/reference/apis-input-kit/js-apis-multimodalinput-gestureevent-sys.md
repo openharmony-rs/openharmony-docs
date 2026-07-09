@@ -20,7 +20,7 @@
 ## 导入模块
 
 ```js
-import { Touch , SwipeInward } from '@kit.InputKit';
+import { Touch, SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent<sup>18+</sup>

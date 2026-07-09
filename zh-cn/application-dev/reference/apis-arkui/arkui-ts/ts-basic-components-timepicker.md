@@ -1106,6 +1106,7 @@ struct TimePickerExample {
       TimePicker({
         selected: this.selectedTime,
       })
+        .useMilitaryTime(false)
         .enableCascade(true)
         .loop(true)
         .onChange((value: TimePickerResult) => {

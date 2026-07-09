@@ -153,7 +153,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 停止Ability的want信息。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 停止Ability的want信息，需包含bundleName和abilityName等必要字段。 |
 
 **返回值：**
 

@@ -77,7 +77,7 @@ ArkTS-Sta: Web(value: WebOptions, content_?: CustomBuilder)
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
-| content_        | CustomBuilder   | 否    | 子组件的Builder函数。 <br>**ArkTS模式：** 该参数仅适用于ArkTS-Sta。|
+| content_        | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)   | 否    | 子组件的Builder函数。 <br>**ArkTS模式：** 该参数仅适用于ArkTS-Sta。|
 
 
 **示例：**

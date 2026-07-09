@@ -125,7 +125,7 @@ struct Index {
       };
       let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
-      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     } finally {
       if (fd !== -1) {
         fileIo.closeSync(fd);

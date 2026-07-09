@@ -18,7 +18,7 @@
 2. 在cryptoability目录，右键选择“New > ArkTS File”，新建一个文件，名称可以自己定义，例如CryptoAbility.ets。
 
    其目录结构如下所示：
-   ```json5
+   ```txt
    ├── ets
    │   └── cryptoability
    │       └── CryptoAbility.ets

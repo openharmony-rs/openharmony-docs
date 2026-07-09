@@ -80,7 +80,7 @@ void processPerson(uintptr_t person) {
 ```typescript
 export interface Person {
     name: string;
-    age: number;
+    age: int;
 }
 ```
 
@@ -137,5 +137,5 @@ void processPerson(uintptr_t person) {
 ```sh
 true
 false
-name: John, age: 0
+name: John, age: 30
 ```

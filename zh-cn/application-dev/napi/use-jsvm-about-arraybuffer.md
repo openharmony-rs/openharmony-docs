@@ -37,12 +37,13 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// OH_JSVM_GetArraybufferInfo的示例方法
+#include "hilog/log.h"
+// ...
+
+// OH_JSVM_GetArraybufferInfo的样例方法
 static JSVM_Value GetArraybufferInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -54,7 +55,6 @@ static JSVM_Value GetArraybufferInfo(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_IsArraybuffer(env, args[0], &isArrayBuffer);
     if (!isArrayBuffer) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetArraybufferInfo isArrayBuffer:false");
-        return nullptr;
     }
     void *data;
     size_t byteLength = 0;
@@ -76,8 +76,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getArraybufferInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// 示例测试js
-const char *srcCallNative = R"JS(
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(
 getArraybufferInfo(new ArrayBuffer(10));
 )JS";
 ```
@@ -95,12 +95,13 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// OH_JSVM_IsArraybuffer的示例方法
+#include "hilog/log.h"
+// ...
+
+// OH_JSVM_IsArraybuffer的样例方法
 static JSVM_Value IsArrayBuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -128,8 +129,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isArrayBuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// 示例测试js
-const char *srcCallNative = R"JS(
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(
 isArrayBuffer(new ArrayBuffer(8));
 )JS";
 ```
@@ -152,12 +153,13 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// OH_JSVM_DetachArraybuffer、OH_JSVM_IsDetachedArraybuffer的示例方法
+#include "hilog/log.h"
+// ...
+
+// OH_JSVM_DetachArraybuffer、OH_JSVM_IsDetachedArraybuffer的样例方法
 static JSVM_Value DetachArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -199,11 +201,11 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // DetachArraybuffer、IsDetachedArraybuffer方法别名，TS侧调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"detachArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"isDetachedArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"detachArraybuffer", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"isDetachedArraybuffer", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// 示例测试js
-const char *srcCallNative = R"JS(
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(
 let arrayBuffer = new ArrayBuffer(10);
 detachArraybuffer(arrayBuffer);
 isDetachedArraybuffer(arrayBuffer);
@@ -225,12 +227,13 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// OH_JSVM_CreateArraybuffer的示例方法
+#include "hilog/log.h"
+// ...
+
+// OH_JSVM_CreateArraybuffer的样例方法
 static JSVM_Value CreateArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -264,8 +267,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// 示例测试js
-const char *srcCallNative = R"JS(
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(
 createArraybuffer(8);
 )JS";
 ```

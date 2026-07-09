@@ -1554,7 +1554,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5400104  | Time out.              |
 | 5400105  | Service died.          |
 | 5400106  | Unsupported format.    |
-| 5400107  | Audio interrupted.     |
+| 5400107  | Audio interrupted. <br>适用版本：11+     |
 
 **示例：**
 

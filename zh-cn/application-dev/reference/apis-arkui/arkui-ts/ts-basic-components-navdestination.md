@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -2131,6 +2131,8 @@ struct NavDest {
 
 以下示例主要演示NavDestination设置系统转场动画[systemTransition](#systemtransition14)为Fade、Explode、SlideBottom与SlideRight时的转场效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -2373,6 +2375,296 @@ struct HomeBody {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  Scroller,
+  Scroll,
+  List,
+  ForEach,
+  ListItem,
+  TextAlign,
+  BarState,
+  NestedScrollMode,
+  ScrollDirection,
+  FontWeight,
+  EdgeEffect,
+  BarStyle,
+  ToolbarItem,
+  NavigationToolbarOptions,
+  FlexAlign,
+  $r,
+  NavigationTitleMode,
+  ShadowStyle,
+  FontWeight,
+  NavigationOperation,
+  NavDestinationTransition,
+  Curve,
+  NavigationSystemTransitionType,
+  Search,
+  State,
+  Consume,
+  Provide
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavDestinationSystemTransition {
+  @Provide stack: NavPathStack = new NavPathStack()
+  @Provide homePageTransitionType: NavigationSystemTransitionType = NavigationSystemTransitionType.DEFAULT;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'Fade') {
+      Fade();
+    } else if (name === 'Explode') {
+      Explode();
+    } else if (name === 'SlideRight') {
+      SlideRight();
+    } else if (name === 'SlideBottom') {
+      SlideBottom();
+    } else {
+      Dest();
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath(new NavPathInfo("Dest", undefined));
+  }
+
+  build() {
+    Navigation(this.stack) {
+      // empty
+    }
+    .navDestination(this.pageMap)
+    .hideNavBar(true)
+  }
+}
+
+@Component
+struct Dest {
+  @Consume stack: NavPathStack;
+  @Consume homePageTransitionType: NavigationSystemTransitionType;
+  @State name: string = 'NA';
+
+  build() {
+    NavDestination() {
+      HomeBody();
+    }
+    .title('Navigation System Animation')
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+    })
+    .systemTransition(this.homePageTransitionType)
+  }
+}
+
+@Component
+struct Fade {
+  @Consume stack: NavPathStack;
+  @State name: string = 'NA';
+
+  build() {
+    NavDestination() {
+      DestBody({
+        name: this.name
+      })
+    }
+    .title(this.name)
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+    })
+    .systemTransition(NavigationSystemTransitionType.FADE)
+  }
+}
+
+@Component
+struct Explode {
+  @Consume stack: NavPathStack;
+  @State name: string = 'NA';
+
+  build() {
+    NavDestination() {
+      DestBody({
+        name: this.name
+      })
+    }
+    .title(this.name)
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+    })
+    .systemTransition(NavigationSystemTransitionType.EXPLODE)
+  }
+}
+
+@Component
+struct SlideRight {
+  @Consume stack: NavPathStack;
+  @State name: string = 'NA';
+
+  build() {
+    NavDestination() {
+      DestBody({
+        name: this.name
+      })
+    }
+    .title(this.name)
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+    })
+    .systemTransition(NavigationSystemTransitionType.SLIDE_RIGHT)
+  }
+}
+
+@Component
+struct SlideBottom {
+  @Consume stack: NavPathStack;
+  @State name: string = 'NA';
+
+  build() {
+    NavDestination() {
+      DestBody({
+        name: this.name
+      })
+    }
+    .title(this.name)
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+    })
+    .systemTransition(NavigationSystemTransitionType.SLIDE_BOTTOM)
+  }
+}
+
+@Component
+struct DestBody {
+  name: string = 'NA';
+  columnTextSize: int = 22;
+  columnTextFontWeight: FontWeight = FontWeight.Bolder;
+  columnWidth: string = '65%';
+  columnPadding: int = 22;
+  columnMargin: int = 10;
+  columnBorderRadius: int = 10;
+
+  build() {
+    Column(undefined) {
+      Column(undefined)
+        .width('85')
+        .height(50)
+        .backgroundColor(Color.White)
+      Column(undefined) {
+        Text(this.name)
+          .fontSize(this.columnTextSize)
+          .fontWeight(this.columnTextFontWeight)
+      }
+      .width(this.columnWidth)
+      .padding(this.columnPadding)
+      .margin(this.columnMargin)
+      .borderRadius(this.columnBorderRadius)
+      .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+    }
+  }
+}
+
+@Component
+struct HomeBody {
+  @Consume stack: NavPathStack;
+  @Consume homePageTransitionType: NavigationSystemTransitionType;
+  columnTextSize: int = 22;
+  columnTextFontWeight: FontWeight = FontWeight.Bolder;
+  columnWidth: string = '85%';
+  columnPadding: int = 22;
+  columnMargin: int = 10;
+  columnBorderRadius: int = 10;
+  columnShadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD;
+
+  build() {
+    Column(undefined) {
+      Search({ value: 'Search' })
+        .width(this.columnWidth)
+
+      Column(undefined) {
+        Text('fade')
+          .fontSize(this.columnTextSize)
+          .fontWeight(this.columnTextFontWeight)
+      }
+      .width(this.columnWidth)
+      .padding(this.columnPadding)
+      .margin(this.columnMargin)
+      .borderRadius(this.columnBorderRadius)
+      .shadow(this.columnShadow)
+      .onClick(() => {
+        this.homePageTransitionType = NavigationSystemTransitionType.FADE;
+        this.stack.pushPath(new NavPathInfo("Fade", undefined));
+      })
+
+      Column(undefined) {
+        Text('explode')
+          .fontSize(this.columnTextSize)
+          .fontWeight(this.columnTextFontWeight)
+      }
+      .width(this.columnWidth)
+      .padding(this.columnPadding)
+      .margin(this.columnMargin)
+      .borderRadius(this.columnBorderRadius)
+      .shadow(this.columnShadow)
+      .onClick(() => {
+        this.homePageTransitionType = NavigationSystemTransitionType.EXPLODE;
+        this.stack.pushPath(new NavPathInfo("Explode", undefined));
+      })
+
+      Column(undefined) {
+        Text('slide right')
+          .fontSize(this.columnTextSize)
+          .fontWeight(this.columnTextFontWeight)
+      }
+      .width(this.columnWidth)
+      .padding(this.columnPadding)
+      .margin(this.columnMargin)
+      .borderRadius(this.columnBorderRadius)
+      .shadow(this.columnShadow)
+      .onClick(() => {
+        this.homePageTransitionType = NavigationSystemTransitionType.SLIDE_RIGHT;
+        this.stack.pushPath(new NavPathInfo("SlideRight", undefined));
+      })
+
+      Column(undefined) {
+        Text('slide bottom')
+          .fontSize(this.columnTextSize)
+          .fontWeight(this.columnTextFontWeight)
+      }
+      .width(this.columnWidth)
+      .padding(this.columnPadding)
+      .margin(this.columnMargin)
+      .borderRadius(this.columnBorderRadius)
+      .shadow(this.columnShadow)
+      .onClick(() => {
+        this.homePageTransitionType = NavigationSystemTransitionType.SLIDE_BOTTOM;
+        this.stack.pushPath(new NavPathInfo("SlideBottom", undefined));
+      })
+    }
+  }
+}
+```
+
 ![navdestination_fade](figures/navdestination_fade_transition.gif)
 
 ![navdestination_explode](figures/navdestination_explode_transition.gif)
@@ -2386,6 +2678,8 @@ struct HomeBody {
 以下示例主要演示每个NavDestination可以配置[preferredOrientation](#preferredorientation19)指定的页面方向和状态栏，导航条显隐状态。
 
 从API version 19开始，新增了preferredOrientation属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -2448,6 +2742,118 @@ struct ExamplePage {
 
   aboutToAppear(): void {
     this.stack.pushPath({name: "portrait"});
+  }
+
+  @Builder
+  MyPageMap(name: string) {
+    if (name === 'portrait') {
+      PortraitPage();
+    } else {
+      LandscapePage();
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+    }
+    .width('100%')
+    .height('100%')
+    .hideNavBar(true)
+    .navDestination(this.MyPageMap)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import window from '@ohos.window';
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestinationContext,
+  LayoutSafeAreaType,
+  NavDestination,
+  LayoutSafeAreaEdge,
+  State
+} from '@kit.ArkUI';
+
+@Component
+struct PortraitPage {
+  @State info: string = '';
+  private stack: NavPathStack | undefined = undefined;
+
+  build() {
+    NavDestination() {
+      Stack({ alignContent: Alignment.Center }) {
+        Button('push LANDSCAPE page').onClick(() => {
+          this.stack?.pushPath(new NavPathInfo("landscape", undefined));
+        })
+      }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PortraitPage')
+    .preferredOrientation(window.Orientation.PORTRAIT) // 竖屏方向
+    .enableStatusBar(true) // 显示状态栏
+    .enableNavigationIndicator(true) // 显示导航条
+    .backgroundColor('#ffbaece9')
+    .onResult((result: Object | null | undefined) => {
+      if (result !== undefined && result !== null) {
+        this.info = result as string;
+      }
+    })
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+
+@Component
+struct LandscapePage {
+  private stack: NavPathStack | undefined = undefined;
+
+  build() {
+    NavDestination() {
+      Stack({ alignContent: Alignment.Center }) {
+        Button('push PORTRAIT page').onClick(() => {
+          this.stack?.pushPath(new NavPathInfo("portrait", undefined));
+        })
+      }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('LandscapePage')
+    .preferredOrientation(window.Orientation.LANDSCAPE) // 横屏方向
+    .enableStatusBar(false) // 隐藏状态栏
+    .enableNavigationIndicator(false) // 隐藏导航条
+    .backgroundColor('#ffecb8b8')
+    .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM])
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+
+@Entry
+@Component
+struct ExamplePage {
+  private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath(new NavPathInfo("portrait", undefined));
   }
 
   @Builder

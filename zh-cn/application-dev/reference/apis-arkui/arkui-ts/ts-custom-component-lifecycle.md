@@ -307,7 +307,7 @@ ArkTS-Sta: aboutToReuse(params: ReuseObject): void
 
 > **说明：**
 >
-> * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse#section7441712174414)。
+> * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-component_reuse#避免对linkobjectlinkprop等自动更新的状态变量在abouttoreuse中重复赋值)。
 > * 在滑动场景中，使用组件复用通常需要用该回调函数去更新组件的状态变量，因此在该回调函数中应避免耗时操作，否则会导致丢帧卡顿。最佳实践请参考[主线程耗时操作优化指导-组件复用回调](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -324,7 +324,7 @@ ArkTS-Sta: aboutToReuse(params: ReuseObject): void
 
 | 参数名  | 类型                                      | 必填 | 说明                |
 |--------|-------------------------------------------|-----|---------------------|
-| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: ReuseObject |   是   | 自定义组件的构造参数。|
+| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](ts-custom-component-api-sta.md#reuseobject) |   是   | 自定义组件的构造参数。|
 
 **示例：**
 

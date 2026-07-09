@@ -6,7 +6,7 @@
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-**DataShare**用于应用管理其自身数据，同时支持同个设备上不同应用间的数据共享。
+**DataShare**用于应用管理其自身数据，同时支持同一个设备上不同应用间的数据共享。
 
 静默访问场景支持的数据库类型请参考[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)。
 

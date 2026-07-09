@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Builder装饰的函数也称为“自定义构建函数”。开发指南见[\@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
+\@Builder装饰的函数也称为“自定义构建函数”，用于封装可复用的UI构建逻辑，可在自定义组件中多次调用。开发指南见[@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@ const Builder: MethodDecorator
 @Entry
 @Component
 struct BuilderDemo {
-  // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+  // @Builder装饰此函数，使其成为自定义构建函数，用于配置并构建Text组件
   @Builder
   showTextBuilder() {
     Text('Hello World')

@@ -163,15 +163,21 @@ PID:13680
 UID:20020177
 PACKAGE_NAME:com.samples.freezedebug
 PROCESS_NAME:com.samples.freezedebug
-NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis.
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis.Main thread is blocked by GC, which may be caused by high memory usage or system resource overload.
 ***
 ```
 
-从API version 20开始，当整机资源告警（如整机低内存或热限频）时，系统会输出NOTE行。此时开发者可忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，系统都不会输出此NOTE行。
-
 从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
-从API版本26.0.0开始，支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息。若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因。
+**NOTE信息说明：**
+
+- **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄露问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
+  - 如果[GC垃圾回收](../arkts-utils/gc-introduction.md)类型是Shared GC，系统不会输出此信息。
+  - 如果在[GC垃圾回收](../arkts-utils/gc-introduction.md)期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
+  - Shared GC类型介绍，请参考[SharedHeap结构](../arkts-utils/gc-introduction.md#sharedheap结构)及[SharedHeap相关参数](../arkts-utils/gc-introduction.md#sharedheap相关参数)。
+  - Local GC类型介绍，请参考[LocalHeap结构](../arkts-utils/gc-introduction.md#localheap结构)及[LocalHeap相关参数](../arkts-utils/gc-introduction.md#localheap相关参数)。
 
 AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息：
 
@@ -206,6 +212,10 @@ eventLog_action = ffrt,t,GpuStack,cmd:m,hot
 eventLog_interval = 10
 this thread has blocked 3000ms.
 IS_FROZEN = 0
+MainHeap(bytes): Used 7630936, Total 9961472
+SharedHeap(bytes): Used 322984, Total 815792128
+GC Status: count 3, maxPause 86.305ms, minPause 16.875ms, averagePause 48.4983ms, lastStartTime 2025/06/28-14:08:34:125, lastEndTime 2025/06/28-14:08:34:135, lastType Local GC
+I/O(bytes): rchar 14557921, wchar 909, syscr 6934, syscw 118, read_bytes 0, write_bytes 0, cancelled_write_bytes 4096
 MSG =
 Fault time:2025/06/28-14:08:34
 App main thread is not response!
@@ -249,6 +259,10 @@ AppFreeze事件THREAD_BLOCK_6S、APP_INPUT_BLOCK均包含以下信息：
 | MSG | 发生故障时间及EventHandler信息。 |
 | IS_FROZEN | 发生故障时，进程冻结状态。<br/>- 0表示进程未冻结。<br/>- 1表示进程冻结。<br>**说明**：从API版本26.0.0开始支持。|
 | this thread has blocked 3000ms. | 发生线程阻塞故障时，应用线程执行任务超时 3 秒（即 THREAD_BLOCK_3S 阈值）。具体超时时间以日志中实际数值为准（示例中为 3000ms）。<br>**说明**：从API版本26.0.0开始支持。|
+| MainHeap(bytes) | 主线程LocalHeap大小。详细介绍参考：[Heap](../arkts-utils/gc-introduction.md#heap)。<br>**说明**：从API版本26.0.0开始支持。 |
+| SharedHeap(bytes) | 主线程SharedHeap大小。详细介绍参考：[Heap](../arkts-utils/gc-introduction.md#heap)。<br>**说明**：<br>- 从API版本26.0.0开始支持。<br>- SharedHeap的Total值为固定大小：815792128byte（即：778MB），请参考[SharedHeap相关参数](../arkts-utils/gc-introduction.md#sharedheap相关参数)中的SharedHeapSize参数说明。 |
+| GC Status | 发生AppFreeze事件时，GC（垃圾回收）的相关信息。详细介绍参考：[application_gc_info字段说明](hiappevent-watcher-freeze-events.md#application_gc_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
+| I/O(bytes) | 发生AppFreeze事件时，I/O的相关信息。详细介绍参考：[application_io_info字段说明](hiappevent-watcher-freeze-events.md#application_io_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。|
 
 EventHandler信息，具体解释如下：
 

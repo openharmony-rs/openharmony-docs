@@ -18,5 +18,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [usb_ddk_api.h](capi-usb-ddk-api-h.md) | 声明用于主机侧访问设备的USB DDK接口。 |
+| [usb_ddk_api.h](capi-usb-ddk-api-h.md) | 声明用于主机侧访问设备的USB DDK接口，提供USB设备管理、配置和数据传输等功能，帮助开发者实现与USB设备的底层交互和数据通信。 |
 | [usb_ddk_types.h](capi-usb-ddk-types-h.md) | 提供USB DDK中的枚举变量、结构体定义与宏定义。 |

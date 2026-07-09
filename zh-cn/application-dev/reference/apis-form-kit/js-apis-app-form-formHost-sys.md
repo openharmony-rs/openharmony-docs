@@ -2007,7 +2007,7 @@ ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallb
 
 ArkTS-Sta: deleteInvalidForms(formIds: Array\<string>, callback: AsyncCallback\<int>): void
 
-根据列表删除应用程序的无效卡片。使用callback异步回调。
+根据有效的卡片列表，删除应用程序不在有效列表中的卡片。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -3380,7 +3380,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
 
 > **说明：**
 >
@@ -3851,7 +3851,7 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-恢复卡片。使用callback异步回调。
+恢复被回收的卡片，并将它的状态更新为不可回收。如果卡片未被回收，则只更新状态为不可回收。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
