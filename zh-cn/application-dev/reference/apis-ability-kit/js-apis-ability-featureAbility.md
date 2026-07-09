@@ -31,11 +31,13 @@ import { featureAbility } from '@kit.AbilityKit';
 
 startAbility(parameter: StartAbilityParameter, callback: AsyncCallback\<number>): void
 
-启动新的Ability。使用callback异步回调。
+启动新的Ability。使用callback异步回调。用于启动Ability实现页面跳转、拉起其他应用、打开第三方应用等场景。
 
 > **说明：**
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
+>
+> 如需获取被启动Ability返回的结果，请使用[startAbilityForResult](#featureabilitystartabilityforresult7)接口。
 
 **模型约束**：此接口仅可在FA模型下使用。
 
@@ -87,11 +89,13 @@ featureAbility.startAbility(
 
 startAbility(parameter: StartAbilityParameter): Promise\<number>
 
-启动新的Ability。使用Promise异步回调。
+启动新的Ability。使用Promise异步回调。用于启动Ability实现页面跳转、拉起其他应用、打开第三方应用等场景。
 
 > **说明：**
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
+>
+> 如需获取被启动Ability返回的结果，请使用[startAbilityForResult](#featureabilitystartabilityforresult7-1)接口。
 
 **模型约束**：此接口仅可在FA模型下使用。
 
@@ -190,6 +194,8 @@ startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback\
 > **说明：**
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
+>
+> 如不需要获取被启动Ability返回的结果，建议使用[startAbility](#featureabilitystartability)接口。
 
 **模型约束**：此接口仅可在FA模型下使用。
 
@@ -583,7 +589,11 @@ context.getBundleName((error, data) => {
 
 terminateSelf(callback: AsyncCallback\<void>): void
 
-停止当前的Ability。使用callback异步回调。
+停止当前的Ability。使用callback异步回调。用于主动关闭当前页面或结束Ability生命周期。
+
+> **说明：**
+>
+> 如需返回结果给调用者，请使用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口。
 
 **模型约束**：此接口仅可在FA模型下使用。
 
@@ -614,7 +624,7 @@ featureAbility.terminateSelf(
 
 terminateSelf(): Promise\<void>
 
-停止当前的Ability。使用Promise异步回调。
+停止当前的Ability。使用Promise异步回调。用于主动关闭当前页面或结束Ability生命周期。
 
 **模型约束**：此接口仅可在FA模型下使用。
 
