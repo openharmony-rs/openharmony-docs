@@ -9,7 +9,7 @@
 
 \@Provide和\@Consume配套使用，用于状态管理V1，实现跨组件层级的双向同步，适用于需要跨越多层组件传递状态、避免逐层传递的场景，能够解决组件层级较深时状态传递繁琐的问题。\@Provide装饰的变量作为数据源，通过别名或变量名与\@Consume装饰的变量建立双向绑定关系。当\@Provide或\@Consume装饰的变量发生变化时，变化会自动同步到对方。
 
-在ArkTS-Dyn中使用时，开发指南参考：[\@Provide装饰器和\@Consume装饰器：与后代组件双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-provide-and-consume.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Provide装饰器和@Consume装饰器：与后代组件双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-provide-and-consume.md)。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ const Provide: PropertyDecorator & ((value: string | ProvideOptions) => Property
 
 | 参数名 | 类型                                        | 必填 | 说明                         |
 | ------ | ------------------------------------------------- | ---- | ---------------------------- |
-| value  | string \| [ProvideOptions](#provideoptions11) | 否   | 用于设置别名及允许重写的别名。<br/>ProvideOptions用于设置allowOverride参数，指定允许重写的别名。<br>缺省时默认别名为变量名，不允许重写。 |
+| value  | string \| [ProvideOptions](#provideoptions11) | 否   | 用于设置别名或允许重写的别名。<br/>类型为string时，将直接作为别名，后代组件可通过该别名访问数据。<br/>类型为ProvideOptions时，allowOverride的值将作为别名，且该别名允许重写。<br>缺省时别名为变量名，不允许重写。 |
 
 **返回值：**
 
@@ -39,7 +39,7 @@ const Provide: PropertyDecorator & ((value: string | ProvideOptions) => Property
 
 ## ProvideOptions<sup>11+</sup>
 
-ProvideOptions是\@Provide的选项。允许在同一组件树下通过allowOverride重写同名的\@Provide。
+ProvideOptions是\@Provide的选项。允许在同一组件树下通过allowOverride重写同名的\@Provide。具体例子可见[\@Provide支持allowOverride参数](../../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -53,7 +53,7 @@ ProvideOptions是\@Provide的选项。允许在同一组件树下通过allowOver
 
 | 名称 | 类型     | 只读 | 可选 | 说明                                                         |
 | ------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| allowOverride  | string   | 否   | 是   | 允许\@Provide重写的别名。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的\@Provide，运行时会报错。<br/>默认值：undefined，表示\@Provide不允许重写。 |
+| allowOverride  | string   | 否   | 是   | 允许\@Provide重写的别名。允许在同一组件树下通过allowOverride重写同名的@Provide。<br/>缺省时表示\@Provide不允许重写。若在未设置allowOverride的情况下定义同名@Provide，运行时会报错。 |
 
 **示例：**
 
