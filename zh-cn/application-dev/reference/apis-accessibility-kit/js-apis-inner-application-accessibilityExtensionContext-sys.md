@@ -1023,7 +1023,7 @@ export default class AccessibilityManager {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
     }
-    let result = this.context.updateAccessibilityElementProperty(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+    this.context.updateAccessibilityElementProperty(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
       console.info(`updateAccessibilityElementProperty: elementId:${elementId} windowId:${windowId}, result:${data}`)
     }).catch((err: BusinessError) => {
       console.error(`failed to update accessibility element property, Code is ${err.code}, message is ${err.message}`);
@@ -1113,7 +1113,7 @@ export default class AccessibilityManager {
       virtualNodeId: 1,
       accessibilityText: "accessibilityTextNew"
     }
-    let result = this.context.addAccessibilityVirtualNodes(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+    this.context.addAccessibilityVirtualNodes(elementId, windowId, [accessibilityVirtualNode]).then((data: OperateVirtualNodeResult)=>{
       console.info(`addAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
     }).catch((err: BusinessError) => {
       console.error(`failed to add virtual nodes, Code is ${err.code}, message is ${err.message}`);
@@ -1198,7 +1198,7 @@ export default class AccessibilityManager {
 
     let elementId: number = 0;
     let windowId: number = 0;
-    let result = this.context.removeAccessibilityVirtualNodes(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+    this.context.removeAccessibilityVirtualNodes(elementId, windowId).then((data: OperateVirtualNodeResult)=>{
       console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
     }).catch((err: BusinessError) => {
       console.error(`failed to remove virtual nodes, Code is ${err.code}, message is ${err.message}`);
