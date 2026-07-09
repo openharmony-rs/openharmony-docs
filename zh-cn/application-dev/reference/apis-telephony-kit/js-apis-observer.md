@@ -2059,7 +2059,7 @@ observer.offCCallStateChange();
 ```
 
 ## observer.onCommunicationStateChange
- 	 
+
 onCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOptions\): void
 
 订阅5A网络状态变化事件，使用callback异步回调。
@@ -2071,7 +2071,7 @@ onCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOpt
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **ArkTS-Dyn起始版本**： 26.0.0
- 	 
+
 **ArkTS-Sta起始版本**： 26.0.0
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
@@ -2117,7 +2117,7 @@ offCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOp
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **ArkTS-Dyn起始版本**： 26.0.0
- 	 
+
 **ArkTS-Sta起始版本**： 26.0.0
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
