@@ -36,7 +36,7 @@ allowsCellularAccess(value: boolean): void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| value | boolean | 是   | 是否允许在蜂窝网络环境下进行下载。<br>- true：允许在任意网络环境下下载。<br>- false：仅在Wi-Fi网络环境下下载（默认）。 |
+| value | boolean | 是   | 是否允许在蜂窝网络环境下进行下载。<br>- true：允许在蜂窝网络环境下下载。<br>- false：不允许在蜂窝网络环境下下载（默认）。 |
 
 **示例：**
 
@@ -140,7 +140,7 @@ removeDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
 
 **示例：**
 
@@ -180,8 +180,8 @@ pauseDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
-| 5400102  | 操作不允许。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400102  | Operation not allowed. |
 
 **示例：**
 
@@ -221,8 +221,8 @@ resumeDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
-| 5400102  | 操作不允许。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400102  | Operation not allowed. |
 
 **示例：**
 
@@ -241,7 +241,7 @@ async function test() {
 
 getDownloadTasks(): Array\<string>
 
-获取离线下载管理器中的所有下载任务。已结束的下载任务会被自动清除。
+获取离线下载管理器中的当前所有下载任务。
 
 **起始版本：** 26.0.0
 
@@ -302,7 +302,7 @@ getTaskCacheDirectory(taskId: string): string
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
 
 **示例：**
 
@@ -349,7 +349,7 @@ getTaskStatus(taskId: string): AVDownloadTaskState
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
 
 **示例：**
 
@@ -396,7 +396,7 @@ getTaskProgress(taskId: string): number
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | 指定的ID不在离线下载任务管理器中。 |
+| 5400108  | If the specified ID is not in the AVDownloaderManager. |
 
 **示例：**
 
