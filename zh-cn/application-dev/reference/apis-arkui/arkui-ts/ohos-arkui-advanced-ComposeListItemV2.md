@@ -45,7 +45,7 @@ ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -83,7 +83,7 @@ build函数用于构造ComposeListItemV2高级组件。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -130,7 +130,7 @@ ContentItemV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -151,7 +151,7 @@ ContentItemV2构造函数的参数选项。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +180,7 @@ ContentItemV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -230,7 +230,7 @@ OperateItemV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -259,7 +259,7 @@ OperateItemV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -305,7 +305,7 @@ OperateIconV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -330,7 +330,7 @@ OperateIconV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -374,7 +374,7 @@ OperateButtonV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -397,7 +397,7 @@ OperateButtonV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -441,7 +441,7 @@ OperateCheckV2构造函数的参数选项。
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -465,7 +465,7 @@ type OnActionCallback = () => void
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
@@ -481,7 +481,7 @@ type OnChangeCallback = (value: boolean) => void
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
