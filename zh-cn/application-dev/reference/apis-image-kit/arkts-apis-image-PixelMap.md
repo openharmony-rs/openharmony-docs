@@ -2555,6 +2555,7 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 > **说明：**
 >
 > 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -2626,6 +2627,7 @@ extractAlphaPixelMapSync(): PixelMap
 > **说明：**
 >
 > 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
