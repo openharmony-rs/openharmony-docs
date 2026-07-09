@@ -1,4 +1,4 @@
-# @ohos.FusionConnectivity.ranging（测距模块）
+# @ohos.FusionConnectivity.ranging (测距模块)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -57,8 +57,8 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 查询本设备是否支持具体的测距能力，使用Promise异步返回具体的测距能力是否支持的结果。
 
 使用约束：
-- 建议先使用[isRangingSupported](#rangingisRangingSupported)判断本机是否支持测距特性。仅在特性支持的情况下才能使用getRangingCapability接口进行能力查询，在本机不支持测距特性时调用接口，会抛出接口不支持异常错误（错误码801）。
-- 异步回调结果返回后，才能基于具体的测距能力判断是否可以发起对相关能力的测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为true时，可以调用启动测距接口发起对星闪HADM的测距或者调用启动被动测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为false，请不要再调用对应能力的主动或者被动测距接口。
+- 建议先使用[isRangingSupported](#rangingisrangingsupported)判断本机是否支持测距特性。仅在特性支持的情况下才能使用getRangingCapability接口进行能力查询，在本机不支持测距特性时调用接口，会抛出接口不支持异常错误。
+- 异步回调结果返回后，才能基于具体支持的测距能力判断是否可以发起对指定能力类型的测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为true时，可以调用启动测距接口发起对星闪HADM的测距或者调用启动被动测距；如果[nearlinkHadm](#rangingrangingcapabilitysupported)值为false，请不要再调用对应能力的主动或者被动测距接口。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -70,7 +70,7 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 
 | 类型                      | 说明               |
 | ----------------------- | ------------------ |
-| Promise&lt;RangingCapabilitySupported&gt; | Promise对象，返回设备测距能力是否支持的状态信息。 |
+| Promise&lt;RangingCapabilitySupported&gt; | Promise对象，返回设备测距类型是否支持的状态信息。 |
 
 **错误码**：
 
@@ -101,18 +101,20 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 向指定设备发起主动测距。
 
 该接口的执行流程取决于本设备与目标设备的连接状态：
-- 若本设备已与目标设备建立了链路连接，则直接向目标设备发起测距。
+- 若本设备已与目标设备建立了连接，调用此接口会直接向目标设备发起测距。
 - 若本设备与目标设备未连接，该接口将执行以下流程：
-  1. 尝试与目标设备建立连接，连接成功后进行配对/加密操作，配对时需要用户主动在设备上操作授权；
-  2. 查询目标设备是否支持对应的测距服务能力，确认服务支持后自动发起测距。
+  1. 尝试与目标设备建立连接，连接成功后进行配对/加密操作，配对时需要用户主动在设备上操作授权；若用户超时未授权，本次测距将会因超时停止，停止后需要在应用侧主动调用停止测距接口释放测距资源。
+  2. 连接完成后，测距服务会先查询目标设备是否支持对应的测距服务，确认服务支持后自动发起测距。
 
-测距状态发生变化时通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。测距结果通过本接口中的入参callback持续回调。由于测距结果会频繁回调上报，建议在拿到测距的结果后可根据实际需要适时调用stopRanging停止测距，之后业务需要时再次发起测距，避免无意义的测距结果上报引起本设备不必要的功耗损失。
+测距状态发生变化时通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。测距结果通过本接口中的入参callback回调。由于在成功启动测距后，结果会频繁回调上报，建议在拿到测距的结果后可根据实际需要适时调用stopRanging停止测距，业务需要时可再次发起测距，避免无意义的测距结果上报引起本设备不必要的功耗损失。
 
 > **说明：**
 >
-> - callback同时作为测距会话的标识，在调用[stopRanging](#rangingstopranging)时需传入相同的callback引用以关联会话；因此不要使用临时callback作为入参。
-> - 对同一设备重复调用startRanging会提示设备已初始化测距并返回错误码34900051。
-> - 同一callback可关联多个设备的测距会话，停止时可通过params指定需要停止测距的设备，否则停止测距接口将根据callback停止全部关联的设备。
+> - [params](#rangingrangingparams)入参中的deviceId需要按照指定格式填写，如果填入的参数不合法，会抛出34900054的错误码；capabilityType必须要填入有效的范围，否则接口会抛出34900052错误。
+> - callback入参会作为测距会话的标识，在调用[stopRanging](#rangingstopranging)时需传入相同的callback引用以关联会话；因此在应用侧不要使用临时callback作为入参。
+> - 对同一设备连续重复调用startRanging会提示设备已初始化测距并返回错误码34900051。
+> - 同一callback可关联多个设备的测距会话，但需要注意，如果调用[stopRanging](#rangingstopranging)接口停止测距时未指定[params](#rangingrangingparams)，接口将根据callback停止全部关联的测距设备，因此不建议多个设备共用同一测距回调。
+> - 如果启动测距时，对应类型的测距服务已下线，那么调用本接口时会抛出服务未使能错误码34900053。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -124,8 +126,8 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 
 | 参数名          | 类型                                   | 必填 | 说明                    |
 | ------------- | ------------------------------------ | ---- | --------------------- |
-| params        | [RangingParams](#rangingrangingparams)            | 是   | 测距参数，包含目标设备的地址和测距类型。 |
-| callback      | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距会话标识，用于stopRanging关联会话。 |
+| params        | [RangingParams](#rangingrangingparams)            | 是   | 目标设备的测距参数，包含设备的地址和测距类型。 |
+| callback      | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距目标标识，用于[stopRanging](#rangingstopranging)时查找关联的目标设备。 |
 
 **错误码**：
 
@@ -175,15 +177,16 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 停止正在进行中的主动测距。
 
 该接口支持以下两种停止方式：
-- 若指定了params参数（包含目标设备地址和测距类型）时则仅停止与指定目标设备的测距。
-- 若未指定params参数，则停止与该callback关联的所有设备的测距。
+- 若指定了[params](#rangingrangingparams)参数（包含目标设备地址和测距类型）时则仅停止与指定目标设备的测距。
+- 若未指定[params](#rangingrangingparams)参数，则停止与callback关联的所有设备的测距。
 
 > **说明：**
 >
 > - 此方法同时释放测距占用的资源。为实现正确的资源管理，startRanging测距启动后必须调用stopRanging进行停止测距避免测距资源泄漏。
 > - 测距状态的变化通过[onRangingStateChange](#rangingonrangingstatechange)回调进行通知。
-> - callback必须与startRanging时传入的callback为同一引用对象，否则将无法停止测距。
-> - 如果未调用过startRanging直接调用stopRanging将返回错误。
+> - callback必须与[startRanging](#rangingstartranging)时传入的callback为同一引用对象，否则将无法停止测距。
+> - [params](#rangingrangingparams)入参中的deviceId需要按照指定格式填写，如果填入的参数不合法，会抛出34900054的错误码；capabilityType必须要填入有效的范围，否则接口会抛出34900052错误。
+> - 如果未调用过[startRanging](#rangingstartranging)直接调用[stopRanging](#rangingstopranging)将抛出设备未初始化错误34900050。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -206,7 +209,7 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 | -------- | ------------------------------------------------------------------------ |
 | 201      | Permission denied.                                                         |
 | 801      | Capability not supported.                                                  |
-| 34900050 | The device has already initiated ranging.                                  |
+| 34900050 | The device has not initiated ranging.                                   |
 | 34900052 | The specified type of ranging service is not supported.                    |
 | 34900054 | The parameter value does not meet specifications.                          |
 | 34900099 | Internal system error. For example, Internal object is invalid.            |
@@ -246,10 +249,12 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
 
 > **说明：**
 >
-> - 接口调用前需要通过[getRangingCapability](#ranginggetrangingcapability)确认设备支持对应的测距能力类型，否则将返回测距类型不支持错误码34900052。
-> - 同一测距能力类型仅支持单次调用startPassiveRanging，成功后返回的handle对应独立的广播会话。
-> - 同一测距能力如果想再次调用startPassiveRanging，需要先调用stopPassiveRanging结束本次的被动测距，如果直接再次调用，接口将返回错误码34900099。
+> - 接口调用前需要通过[getRangingCapability](#ranginggetrangingcapability)确认设备支持对应的测距类型。
+> - capabilityType必须要填入有效的范围，否则接口会抛出34900052错误。
+> - 同一测距能力类型仅支持单次调用[startPassiveRanging](#rangingstartpassiveranging)，成功后返回的handle对应独立的广播会话。
+> - 同一测距能力如果想再次调用[startPassiveRanging](#rangingstartpassiveranging)，需要先调用[stopPassiveRanging](#rangingstoppassiveranging)结束本次的被动测距，如果直接再次调用，接口将返回错误码34900099。
 > - 被动测距期间，主动测距设备可以通过[startRanging](#rangingstartranging)向本机发起测距。
+> - 如果启动测距时，对应类型的测距服务已下线，那么调用本接口时会抛出服务未使能错误码34900053。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -306,9 +311,9 @@ stopPassiveRanging(handle: int, capabilityType: RangingTypes): void
 
 > **说明：**
 >
-> - handle必须为[startPassiveRanging](#rangingstartpassiveranging)返回的有效句柄。
-> - 停止后该handle不再有效，不可重复使用。
-> - 状态变化通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。
+> - handle必须为[startPassiveRanging](#rangingstartpassiveranging)返回的有效句柄，否则会抛出34900054错误；停止后该handle不再有效，不可重复使用。
+> - capabilityType必须要填入有效的范围，否则接口会抛出34900052错误。
+> - 停止测距的状态变化通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -418,7 +423,7 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 > **说明：**
 >
 > - 若传入callback参数，则仅取消注册该callback的订阅。
-> - 若不传入callback参数，则取消所有已注册的测距状态变化回调。
+> - 若不传入callback参数，则取消所有已注册的测距状态变化回调，建议在调用接口时传入目标callback。
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -440,7 +445,7 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 | -------- | ----------- |
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
-| 34900099 | 34900099 - Internal system error. For example, Internal object is invalid. |
+| 34900099 | Internal system error. For example, Internal object is invalid. |
 
 **示例**：
 
@@ -486,8 +491,8 @@ ranging.offRangingStateChange(stateCallback);
 | ----- | ------------------------------------ | ---- | ---- | --------- |
 | state  | [RangingState](#rangingrangingstate)              | 否   | 否   | 测距状态。    |
 | cause  | [RangingStoppedCause](#rangingrangingstoppedcause) | 否   | 否   | 测距停止原因，仅在state为RANGING_STOPPED时有意义。  |
-| deviceId | string                               | 否   | 是   | 测距设备地址，主动测距场景下标识发生状态变化的目标设备。  |
-| handle | int                               | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
+| deviceId | string           | 否   | 是   | 测距设备地址，主动测距场景下标识发生状态变化的目标设备。  |
+| handle | int           | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
 
 ## ranging.RangingResult
 
@@ -567,7 +572,7 @@ ranging.offRangingStateChange(stateCallback);
 | NO_ERROR         | 0   | 正常停止，无错误。通常由应用主动调用stopRanging或stopPassiveRanging触发。      |
 | INTERNAL_ERROR   | 1   | 发生内部错误，测距服务异常导致停止。   |
 | BUSINESS_CONFLICT | 2   | 发生业务冲突，其他服务占用导致测距停止。   |
-| BACKGROUND_PAUSED | 3  | 应用退到后台时测距暂停。应用回到前台会自动恢复测距。   |
+| BACKGROUND_PAUSED | 3   | 应用退到后台时测距暂停。应用回到前台会自动恢复测距。   |
 
 ## ranging.RangingConfidence
 
