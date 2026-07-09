@@ -16,7 +16,7 @@
 
 ## getUIContext
 
-getUIContext(): UIContext | undefined
+getUIContext(): UIContext
 
 获取UIContext对象。
 
@@ -28,7 +28,7 @@ getUIContext(): UIContext | undefined
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](#uicontext) \| undefined | 返回当前自定义组件所属的UIContext实例对象。在异步调用的回调方法中调用该接口，或从非当前自定义组件所在页面发起调用时，接口调用可能发生在自定义组件销毁之后，此时返回 undefined。 |
+| [UIContext](#uicontext) | 返回UIContext实例对象。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面时，可能导致接口调用发生在自定义组件销毁之后，返回 undefined。 |
 
 ## UIContext
 
