@@ -988,7 +988,8 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 import {
   AccessibilityEvent, 
   AccessibilityExtensionContext,
-  AccessibilityVirtualNode
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
 
 export default class AccessibilityManager {
@@ -1016,18 +1017,17 @@ export default class AccessibilityManager {
       return;
     }
 
-    try {
-      let elementId: number = 0;
-      let windowId: number = 0;
-      let accessibilityVirtualNode: AccessibilityVirtualNode = {
-        virtualNodeId: 1,
-        accessibilityText: "accessibilityTextNew"
-      }
-      let result = this.context.updateAccessibilityElementProperty(elementId, windowId, accessibilityVirtualNode);
-      console.info(`updateAccessibilityElementProperty: elementId:${elementId} windowId:${windowId}, result:${result}`)
-    } catch (err) {
-      console.error(`[FAILED] updateAccessibilityElementProperty: ${err.code} ${err.message}`)
+    let elementId: number = 0;
+    let windowId: number = 0;
+    let accessibilityVirtualNode: AccessibilityVirtualNode = {
+      virtualNodeId: 1,
+      accessibilityText: "accessibilityTextNew"
     }
+    let result = this.context.updateAccessibilityElementProperty(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+      console.info(`updateAccessibilityElementProperty: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to update accessibility element property, Code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```
@@ -1078,7 +1078,8 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 import {
   AccessibilityEvent, 
   AccessibilityExtensionContext,
-  AccessibilityVirtualNode
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
 
 export default class AccessibilityManager {
@@ -1106,19 +1107,17 @@ export default class AccessibilityManager {
       return;
     }
 
-    try {
-      let elementId: number = 0;
-      let windowId: number = 0;
-      let accessibilityVirtualNode: AccessibilityVirtualNode = {
-        virtualNodeId: 1,
-        accessibilityText: "accessibilityTextNew",
-        parentId: -1,
-      }
-      let result = this.context.addAccessibilityVirtualNodes(elementId, windowId, [accessibilityVirtualNode]);
-      console.info(`addAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${result}`)
-    } catch (err) {
-      console.error(`[FAILED] addAccessibilityVirtualNodes: ${err.code} ${err.message}`)
+    let elementId: number = 0;
+    let windowId: number = 0;
+    let accessibilityVirtualNode: AccessibilityVirtualNode = {
+      virtualNodeId: 1,
+      accessibilityText: "accessibilityTextNew"
     }
+    let result = this.context.addAccessibilityVirtualNodes(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+      console.info(`addAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to add virtual nodes, Code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```
@@ -1168,7 +1167,8 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 import {
   AccessibilityEvent, 
   AccessibilityExtensionContext,
-  AccessibilityVirtualNode
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
 } from '@kit.AccessibilityKit';
 
 export default class AccessibilityManager {
@@ -1196,14 +1196,13 @@ export default class AccessibilityManager {
       return;
     }
 
-    try {
-      let elementId: number = 0;
-      let windowId: number = 0;
-      let result = this.context.removeAccessibilityVirtualNodes(elementId, windowId);
-      console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${result}`)
-    } catch (err) {
-      console.error(`[FAILED] removeAccessibilityVirtualNodes: ${err.code} ${err.message}`)
-    }
+    let elementId: number = 0;
+    let windowId: number = 0;
+    let result = this.context.removeAccessibilityVirtualNodes(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+      console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to remove virtual nodes, Code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```
