@@ -9514,7 +9514,7 @@ getParentWindow(): Window
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type, not called from subwindow. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, not called from subWindow. |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
