@@ -18,13 +18,8 @@
 
 ## 导入模块
 
-<!-- @[screenCapture_arkts_interface_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
-import { fileIo } from '@kit.CoreFileKit';
 ```
 
 ## init<sup>12+</sup>
@@ -63,10 +58,11 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function testInit() {
   // 创建录屏实例。
@@ -123,10 +119,9 @@ startRecording(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_startRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testStartRecording() {
   // 创建录屏实例。
@@ -174,10 +169,9 @@ stopRecording(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_stopRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testStopRecording() {
   // 创建录屏实例。
@@ -228,10 +222,9 @@ pauseRecording(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_pauseRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testPauseRecording() {
   // 创建录屏实例。
@@ -282,10 +275,9 @@ resumeRecording(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_resumeRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testResumeRecording() {
   // 创建录屏实例。
@@ -433,10 +425,9 @@ ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testSkipPrivacyMode() {
   // 创建录屏实例。
@@ -495,10 +486,9 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_setMicEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testSetMicEnable() {
   // 创建录屏实例。
@@ -555,10 +545,9 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_setPickerMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testSetPickerMode() {
   // 创建录屏实例。
@@ -615,10 +604,9 @@ ArkTS-Sta: excludePickerWindows(excludedWindows: Array\<int>): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_excludePickerWindows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testExcludePickerWindows() {
   let excludedWindows: number[] = [101, 102, 103];
@@ -673,10 +661,9 @@ presentPicker(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_presentPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testPresentPicker() {
   // 创建录屏实例。
@@ -735,10 +722,9 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_setContentAutoRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testSetContentAutoRotation() {
   // 创建录屏实例。
@@ -786,10 +772,9 @@ release(): Promise\<void>
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testRelease() {
   // 创建录屏实例。
@@ -831,10 +816,9 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_onStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testOnStateChange() {
   // 创建录屏实例。
@@ -884,10 +868,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_onError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testOnError() {
   // 创建录屏实例。
@@ -927,10 +910,9 @@ async function testOnError() {
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_offStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testOffStateChange() {
   // 创建录屏实例。
@@ -968,10 +950,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **示例：**
 
-<!-- @[screenCapture_arkts_interface_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
-
 ``` TypeScript
-// 导入相关模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 async function testOffError() {
   // 创建录屏实例。
