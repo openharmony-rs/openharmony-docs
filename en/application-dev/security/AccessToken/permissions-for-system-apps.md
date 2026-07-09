@@ -6235,20 +6235,6 @@ Allows an agent application to stop a specific application using CLI commands.
 
 **Valid since**: 26.0.0
 
-## ohos.permission.ACCESS_FUNCTION
-
-Allows a system application to access available functions.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
-
-**Valid since**: 26.0.0
-
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 Allows a system application to read and write map data.
@@ -6518,86 +6504,3 @@ Allows a system application to access the file cache path of the file transfer s
 **Supported devices**: PCs/2-in-1 devices
  	 
 **Valid since**: 26.0.0
-
-## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
-
-Allows an application to set cellular network information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.TBOX_CELLULAR_INFO
-
-Allows an application to read cellular network information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.MANAGE_TBOX_WIFI
-
-Allows an application to set TBox WiFi related information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.TBOX_WIFI_INFO
-
-Allows an application to obtain T-Box Wi-Fi–related information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.PACKET_CAPTURE_INFO
-
-Allows an application to trigger network packet capture.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.CCN_SELF_HEALING
-
-Allows the triggering of network self-check and self-healing.
-
-**Permission level**: system_basic
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
