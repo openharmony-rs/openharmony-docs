@@ -23,7 +23,7 @@ The target is not a custom component instance or V2 class instance.
 **可能原因**
 
 目标对象不满足以下情况：
-- [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的class(至少有一个[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的变量)。
+- [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的class（至少有一个[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的变量）。
 - [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)装饰的自定义组件的实例。
 
 **处理步骤**
@@ -46,7 +46,7 @@ addMonitor/clearMonitor的路径参数不合法。
 
 **处理步骤**
 
-确保addMonitor/clearMonitor的路径合法，详情可见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+确保addMonitor/clearMonitor的路径合法，详情请参见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
 
 ## 130002 addMonitor/clearMonitor非法回调方法
 
@@ -64,7 +64,7 @@ addMonitor/clearMonitor的回调方法参数不合法。
 
 **处理步骤**
 
-确保addMonitor/clearMonitor的回调方法合法，详情可见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+确保addMonitor/clearMonitor的回调方法合法，详情请参见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
 
 ## 140001 applySync/flushUpdates/flushUIUpdates非法调用
 
@@ -74,7 +74,7 @@ The function is not allowed to be called in @Computed.
 
 **错误描述**
 
-applySync/flushUpdates/flushUIUpdates接口在@Computed装饰的getter方法内调用是不合法的。
+applySync/flushUpdates/flushUIUpdates接口在[\@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter方法内调用是不合法的。
 
 **可能原因**
 
@@ -92,7 +92,7 @@ The function is not allowed to be called in @Monitor.
 
 **错误描述**
 
-flushUpdates/flushUIUpdates接口在@Monitor回调方法内调用是不合法的。
+flushUpdates/flushUIUpdates接口在[\@Monitor](../../ui/state-management/arkts-new-monitor.md)回调方法内调用是不合法的。
 
 **可能原因**
 
@@ -118,7 +118,7 @@ Not supported type! The type should have function constructor signature.
 
 **处理步骤**
 
-确保connect/globalConnect传入type类型是TypeConstructorWithArgs\<T\>类型，具体支持类型见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)和[AppStorageV2使用限制](../../ui/state-management/arkts-new-appstoragev2.md#使用限制)。
+确保connect/globalConnect传入的type为TypeConstructorWithArgs\<T\>类型，具体支持类型见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)和[AppStorageV2使用限制](../../ui/state-management/arkts-new-appstoragev2.md#使用限制)。
 
 ## 140104 AppStorageV2和PersistenceV2使用非法的默认值创建函数
 
@@ -128,7 +128,7 @@ The default creator should be function when first connect.
 
 **错误描述**
 
-使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)的[connect](./js-apis-stateManagement.md#connect)或[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，defaultCreator默认数据的构造器不是[StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort)。
+首次使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)的[connect](./js-apis-stateManagement.md#connect)或[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，defaultCreator默认数据的构造器不是[StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort)。
 
 **可能原因**
 
@@ -154,7 +154,7 @@ connect和globalConnect使用了相同的key。
 
 **处理步骤**
 
-connect和globalConnect不建议混用，如果开发者需要混用，则要保证这两个接口不能使用相同的key，详情见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)。
+connect和globalConnect不建议混用，如果开发者需要混用，则要保证这两个接口不能使用相同的key，详情请参见[PersistenceV2使用限制](../../ui/state-management/arkts-new-persistencev2.md#使用限制)。
 
 ## 140106 使用PersistenceV2存储数据到不支持的加密级别
 
@@ -172,7 +172,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **处理步骤**
 
-设置存储范围为EL1-EL5，示例请参考[使用globalConnect存储数据](../../ui/state-management/arkts-new-persistencev2.md#使用globalconnect存储数据)。
+设置加密级别范围为EL1-EL5，示例请参考[使用globalConnect存储数据](../../ui/state-management/arkts-new-persistencev2.md#使用globalconnect存储数据)。
 
 ## 140107 AppStorageV2和PersistenceV2数据类型不匹配
 
@@ -191,7 +191,7 @@ The type of target mismatches the type of source.
 
 **处理步骤**
 
-- type类型和defaultCreator返回类型一致。
+- 确保type类型和defaultCreator返回类型一致。
 - 需要保证数据持久化前后类型不变。如果要改变类型，需要手动卸载应用，清空当前应用的持久化的数据，并再次安装。
 
 ## 140108 PersistenceV2缺少类型参数
@@ -228,7 +228,7 @@ Miss @Type.
 
 **处理步骤**
 
-不在\@Builder装饰的函数内部修改入参内容，可使用[MutableBinding](./js-apis-stateManagement.md#mutablebindingt20)代替，示例请参考[在@Builder装饰的函数内部修改入参内容](../../ui/state-management/arkts-builder.md#在builder装饰的函数内部修改入参内容)。
+不在\@Builder装饰的函数内部修改入参属性，可使用[MutableBinding](./js-apis-stateManagement.md#mutablebindingt20)代替，示例请参考[在@Builder装饰的函数内部修改入参内容](../../ui/state-management/arkts-builder.md#在builder装饰的函数内部修改入参内容)。
 
 ## 140110 在UI中使用非@Track装饰的属性发生运行时报错
 
@@ -238,7 +238,7 @@ Illegal usage of not @Track'ed property on UI!
 
 **错误描述**
 
-如果类里中一个[\@Track](../../ui/state-management/arkts-track.md)装饰的属性，则禁止在UI中使用该类中未被@Track装饰的属性。
+如果类中有一个[\@Track](../../ui/state-management/arkts-track.md)装饰的属性，则禁止在UI中使用该类中未被@Track装饰的属性。
 
 **可能原因**
 
@@ -246,7 +246,7 @@ Illegal usage of not @Track'ed property on UI!
 
 **处理步骤**
 
-给报错的属性也加上\@Track装饰器装饰，例子见[在UI中使用非@Track装饰的属性发生运行时报错](../../ui/state-management/arkts-track.md#在ui中使用非track装饰的属性发生运行时报错)。
+为报错信息中提示的属性添加\@Track装饰，示例请参考[在UI中使用非@Track装饰的属性发生运行时报错](../../ui/state-management/arkts-track.md#在ui中使用非track装饰的属性发生运行时报错)。
 
 ## 140112 @Consume缺失对应的@Provide
 
