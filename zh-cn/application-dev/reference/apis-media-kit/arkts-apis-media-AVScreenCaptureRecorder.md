@@ -101,7 +101,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 startRecording(): Promise\<void>
 
-开始录屏，在使用前需要先调用[init](arkts-apis-media-AVScreenCaptureRecorder.md#init12)接口。使用Promise异步回调。
+开始录屏，在使用前需要先调用[init](#init12)接口。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -337,13 +337,13 @@ ArkTS-Dyn: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<int>
 
-在录制视频过程中添加自定义水印图像。使用Promise异步回调。
+在录制的视频中添加自定义水印图像。使用Promise异步回调。
 
 > **说明：**
 >
 > - 应用最多可添加5个水印。
 >
-> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用addWatermark接口。
+> - 需在[startRecording](#startrecording12)接口调用前调用addWatermark接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -690,7 +690,7 @@ presentPicker(): Promise\<void>
 > **说明：**
 >
 > - 更新录制源过程中，原录制流程不中断。
-> - 通过picker动态更新录制源后，按照新的录制源进行录制。
+> - 通过Picker动态更新录制源后，按照新的录制源进行录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -707,6 +707,7 @@ presentPicker(): Promise\<void>
 **错误码：**
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
@@ -751,7 +752,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+> 需在[startRecording](#startrecording12)接口调用前调用此接口。
 
 **起始版本：** 26.0.0
 
@@ -763,7 +764,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false。true表示启用自动旋转，输出帧中的图像内容将保持直立。 |
+| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false表示不启用自动旋转。true表示启用自动旋转，输出帧中的图像内容将保持直立。 |
 
 **返回值：**
 
@@ -872,7 +873,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
-订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -921,7 +922,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅AVScreenCaptureRecorder的错误事件，用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+订阅AVScreenCaptureRecorder的错误事件，用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1041,7 +1042,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                       |
 | -------- | -------- | ---- | ---------------------------------------------------------- |
-| type     | string   | 是   | 状态切换事件回调类型，支持的事件：'error'。                |
+| type     | string   | 是   | 错误事件回调类型，支持的事件：'error'。                |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
 
 **示例：**
@@ -1076,7 +1077,7 @@ onStateChange(callback: Callback\<AVScreenCaptureStateCode>): void
 
 订阅录屏状态切换的事件。使用callback异步回调。
 
-当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1106,7 +1107,7 @@ onError(callback: ErrorCallback): void
 
 订阅AVScreenCaptureRecorder的错误事件。使用callback异步回调。
 
-用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
