@@ -36518,7 +36518,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":380,
+						"end_line":382,
 						"name":"get_Status",
 						"start_line":18
 					},
@@ -36528,47 +36528,47 @@
 						"start_line":19
 					},
 					{
-						"end_line":190,
+						"end_line":191,
 						"name":"set_ReverbPreset",
 						"start_line":23
 					},
 					{
-						"end_line":474,
+						"end_line":476,
 						"name":"get_ReverbPreset",
 						"start_line":24
 					},
 					{
-						"end_line":241,
+						"end_line":243,
 						"name":"set_EqualizerPreset",
 						"start_line":25
 					},
 					{
-						"end_line":483,
+						"end_line":485,
 						"name":"get_EqualizerPreset",
 						"start_line":26
 					},
 					{
-						"end_line":355,
+						"end_line":357,
 						"name":"enable",
 						"start_line":27
 					},
 					{
-						"end_line":356,
+						"end_line":358,
 						"name":"all_audioLoopback",
 						"start_line":15
 					},
 					{
-						"end_line":427,
+						"end_line":429,
 						"name":"get_SupportedDevicePairs",
 						"start_line":21
 					},
 					{
-						"end_line":458,
+						"end_line":460,
 						"name":"get_PreferredDevicePair",
 						"start_line":22
 					},
 					{
-						"end_line":395,
+						"end_line":397,
 						"name":"get_Volume",
 						"start_line":20
 					}
@@ -36927,7 +36927,7 @@
 						"start_line":69
 					},
 					{
-						"end_line":131,
+						"end_line":133,
 						"name":"get_CurrentAudioCapturerInfoArray",
 						"start_line":75
 					}
@@ -58496,19 +58496,19 @@
 						"start_line":290
 					},
 					{
-						"end_line":307,
+						"end_line":309,
 						"name":"print_app_snapshot_ts",
 						"start_line":298
 					},
 					{
-						"end_line":329,
+						"end_line":333,
 						"name":"print_renderer_snapshot_ts",
-						"start_line":323
+						"start_line":326
 					},
 					{
-						"end_line":318,
+						"end_line":321,
 						"name":"print_capturer_snapshot_ts",
-						"start_line":312
+						"start_line":314
 					}
 				]
 			},
