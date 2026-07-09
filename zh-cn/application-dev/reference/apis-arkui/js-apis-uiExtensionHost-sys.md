@@ -1301,9 +1301,9 @@ export default class EntryAbility extends UIExtensionAbility {
         console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
       });
       this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
+        console.info(`Succeeded in enabling privacy protection for non-system screenshots.`);
       }).catch((err) => {
-        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to enable privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
       });
     }
 
