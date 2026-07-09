@@ -1679,7 +1679,7 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("请选择")
-        **
+        /**
          * 自定义下拉选项分割线完整样式
          * strokeWidth：分割线粗细，使用vp单位统一适配不同屏幕
          * color：分割线浅灰色

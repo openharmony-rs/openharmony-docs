@@ -82,7 +82,7 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
     console.info('uiContext is undefined : ' + (uiContext === undefined));
@@ -124,7 +124,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -235,7 +235,7 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
     console.info('uiContext is undefined : ' + (uiContext === undefined));
@@ -277,7 +277,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -430,7 +430,7 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
     console.info('uiContext is undefined : ' + (uiContext === undefined));
@@ -474,7 +474,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<string, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<string, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -484,7 +484,7 @@ export const createNWeb = (url: string, uiContext: UIContext) => {
   let controller = new webview.WebviewController();
   // 初始化自定义Web组件
   baseNode.initWeb(url, uiContext, controller);
-  controllerMap.set(url, controller)
+  controllerMap.set(url, controller);
   nodeMap.set(url, baseNode);
 }
 

@@ -19,4 +19,4 @@ Defines the **ChildrenMainSize** information of the **List** component.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [list.h](capi-list-h.md)

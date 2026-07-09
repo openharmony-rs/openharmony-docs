@@ -203,7 +203,7 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| options | [ShowWindowOptions](arkts-apis-window-i.md#showwindowoptions20) | 是 | 显示子窗口或系统窗口时的参数。 |
+| options | [ShowWindowOptions](arkts-apis-window-i.md#showwindowoptions20) | 是 | 显示子窗口、应用主窗、全局悬浮窗口或系统窗口时的参数。 |
 
 **返回值：**
 
@@ -1266,8 +1266,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br/>适用版本：26.0.0+ |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：20-24 |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation. |
@@ -1443,7 +1442,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Convert avoid area failed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range.|
 
 **示例：**
 
@@ -1484,7 +1483,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device does not support the API itself. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only global floating windows, dialog windows, or Window Type as system windows are supported.|
@@ -1649,7 +1648,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.|
 
 **示例：**
 
@@ -1695,9 +1694,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置应用主窗口或应用子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。其余窗口调用不生效也不报错。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1713,7 +1712,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ------- | -- | ------------------------------------------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。|
 
 **返回值：**
 
@@ -2089,9 +2088,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。
+设置主窗口状态栏、<!--RP18-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP18End-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2107,7 +2106,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
-| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 
 **返回值：**
 
@@ -2166,9 +2165,9 @@ export default class EntryAbility extends UIAbility {
 
 setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnimation?: boolean): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
+设置主窗口状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2185,8 +2184,8 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | name  | [SpecificSystemBar](arkts-apis-window-t.md#specificsystembar11) | 是 | 设置窗口全屏模式时，显示或隐藏的系统栏类型。 |
-| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
-| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
+| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
+| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
 
 **返回值：**
 
@@ -2245,7 +2244,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调。
+设置主窗口状态栏<!--Del-->、工具栏或三键导航栏<!--DelEnd-->的属性。<!--Del-->当前工具栏的属性设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。
 
 子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2253,13 +2252,17 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+**设备行为差异：**
+
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
+
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏、<!--DelEnd-->状态栏的属性。 |
 
 **返回值：**
 
@@ -2522,7 +2525,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏的显隐状态。<!--RP17End-->|
+| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏或工具栏的显隐状态。当前工具栏的显隐状态仅Car设备支持。<!--RP17End-->|
 
 **错误码：**
 
@@ -3109,7 +3112,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name     | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name     | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。                                                   |
 
@@ -3202,7 +3205,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明             |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是   | 命名路由页面的名称。 |
+| name     | string                    | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。       |
 
 **错误码：**
@@ -3276,7 +3279,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name    | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name    | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。   |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
@@ -3381,6 +3384,10 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+> **说明：**
+>
+> 窗口拖动或窗口拖拽缩放后，无论窗口大小是否发生变化，均会通知应用windowSizeChange回调。
 
 **参数：**
 
@@ -5152,7 +5159,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -5193,7 +5200,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -5415,8 +5422,8 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -5457,8 +5464,8 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -7535,7 +7542,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的PC/2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
@@ -8533,8 +8540,7 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br/>适用版本：26.0.0+                    |
-| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12-24 |
+| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 1300002  | This window state is abnormal.    |
 | 1300003  | This window manager service works abnormally.                                                                      |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
@@ -8777,7 +8783,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation.        |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -9098,7 +9104,7 @@ getDecorButtonStyle(): DecorButtonStyle
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -9217,7 +9223,7 @@ getWindowStatus(): WindowStatusType
 
 > **说明：**
 >
-> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
+> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9236,7 +9242,7 @@ getWindowStatus(): WindowStatusType
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -9396,7 +9402,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and floating windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows, subwindows, and floating windows are supported; 2. When SubWindowOptions.zLevelAboveParentLoosened is true, only main windows are supported. |
 
 **示例：**
 
@@ -9461,10 +9467,10 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例：**
 
@@ -9563,7 +9569,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows with subwindowoptions.zlevelaboveparentloosened set to true are supported. |
 
 **示例：**
 
@@ -10071,7 +10077,6 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：14-19 |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -10123,9 +10128,9 @@ startMoving(): Promise&lt;void&gt;
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
 
 **示例：**
 
@@ -10886,7 +10891,7 @@ isWindowHighlighted(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal  Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -11068,7 +11073,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
 
 **参数：**
 
@@ -11440,7 +11445,7 @@ isInFreeWindowMode(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11473,7 +11478,7 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11511,7 +11516,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11529,6 +11534,139 @@ try {
   windowClass.off('freeWindowModeChange');
 } catch (exception) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## isInWindowPostureMode
+
+isInWindowPostureMode(mode: WindowPostureMode): boolean
+
+查询当前窗口是否处于指定的窗口姿态模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 窗口姿态模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 当前窗口是否处于指定的窗口姿态模式。true表示当前窗口处于指定的窗口姿态模式，false表示不处于。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+try {
+  let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
+  console.info(`isInDesktopMode: ${isInDesktopMode}`);
+} catch (exception) {
+  console.error(`Failed to check window posture mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onWindowPostureModeChange
+
+onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback&lt;boolean&gt;): void
+
+开启窗口所处指定姿态模式变化的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 监听的窗口姿态模式。 |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。当窗口所处指定窗口姿态模式变化时触发，返回当前窗口是否处于指定的窗口姿态模式，true表示处于，false表示不处于。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
+    console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for window posture mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowPostureModeChange
+
+offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口所处指定姿态模式变化的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 监听的窗口姿态模式。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。返回当前窗口是否处于指定的窗口姿态模式。如果传入参数，则关闭该监听；如果不传入参数，则关闭所有注册到指定窗口姿态模式的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+const callback = (isInDesktopMode: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
+} catch (exception) {
+  console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -11605,7 +11743,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11683,7 +11821,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11757,7 +11895,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11783,7 +11921,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                               |
 | 1300003  | This window manager service works abnormally.                                                                |
 
 **示例：**
@@ -12297,7 +12435,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12354,7 +12492,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

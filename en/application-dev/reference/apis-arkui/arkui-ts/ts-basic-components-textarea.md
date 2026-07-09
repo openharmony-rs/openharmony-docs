@@ -2627,7 +2627,7 @@ struct TextAreaExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        TextArea({text: '中文 Text'})
+        TextArea({text: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         TextArea({text: '中文Text'})
@@ -2802,6 +2802,9 @@ struct Index {
 ### Example 25: Setting the Placeholder Rich Text Style
 
 This example demonstrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
+
+The base text supports multiple languages, and **start** and **length** values vary by language. This example implements rich text styling on Chinese text.
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

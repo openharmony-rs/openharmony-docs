@@ -31,7 +31,7 @@ PinchGesture(value?: { fingers?: number; distance?: number })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; distance?: number } | 否 | 设置捏合手势事件参数。<br> - fingers：触发捏合的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]。当设置的值不在该范围内时，会被转化为默认值。<br/>触发手势的手指数量可以多于fingers数目，但只有最先落下的与fingers相同数目的手指参与手势计算。<br> - distance：最小识别距离，单位为vp。该距离是指当前多根手指位置与手指中心位置的平均距离，与手指落下时的平均距离之间的差值。当这一差值大于或等于最小识别距离时，捏合手势被视为成功。<br/>默认值：5 <br/>**说明：** <br/>取值范围：[0, +∞)。当识别距离的值小于等于0时，会被转化为默认值。|
+| value | { fingers?: number; distance?: number } | 否 | 捏合手势配置参数。<br> - fingers：触发捏合的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]。当设置的值不在该范围内时，会被转化为默认值。<br/>触发手势的手指数量可以多于fingers数目，但只有最先落下的与fingers相同数目的手指参与手势计算。<br> - distance：最小识别距离，单位为vp。该距离是指当前多根手指位置与手指中心位置的平均距离，与手指落下时的平均距离之间的差值。当这一差值大于或等于最小识别距离时，捏合手势被视为成功。<br/>默认值：5 <br/>**说明：** <br/>取值范围：[0, +∞)。当识别距离的值小于等于0时，会被转化为默认值。|
 
 ### PinchGesture<sup>15+</sup>
 
@@ -256,7 +256,7 @@ struct PinchGestureExample {
           // 图片本次缩放前左上角顶点
           const left = (this.screenWidth - displayWidth) / 2 + this.offsetX;
           const top = (this.screenHeight - displayHeight) / 2 + this.offsetY;
-          // 本次缩放前手指终点相对图片左上角顶点尺寸占图片展示尺寸的百分比
+          // 本次缩放前手指中点相对图片左上角顶点尺寸占图片展示尺寸的百分比
           this.pntX = (event.pinchCenterX - left) / displayWidth;
           this.pntY = (event.pinchCenterY - top) / displayHeight;
           // 图片本次缩放前的缩放比例

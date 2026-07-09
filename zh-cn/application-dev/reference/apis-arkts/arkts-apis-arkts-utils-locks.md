@@ -21,7 +21,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## AsyncLockCallback
@@ -88,7 +88,7 @@ class A {
 
 @Concurrent
 async function foo(a: A) {
-  await a.setCount(10)
+  await a.setCount(10);
 }
 ```
 

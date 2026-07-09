@@ -366,7 +366,7 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].i32 | 表示图片解码的宽，单位px。 |
-| .value[1].i32 | 表示图片解码的高，单位px。当任意参数小于等于0时，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常。 |
+| .value[1].i32 | 表示图片解码的高，单位px。当任意参数小于等于0时，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)函数参数异常。 |
 
 **返回：**
 
@@ -391,7 +391,7 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
+| .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
 
 **返回：**
 
@@ -535,13 +535,13 @@ NODE_IMAGE_ORIENTATION = 4020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation)。 |
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -594,7 +594,7 @@ NODE_IMAGE_CONTENT_TRANSITION = 4022
 ## NODE_IMAGE_ALT_PLACEHOLDER
 
 ```c
-NODE_IMAGE_ALT_PLACEHOLDER  = 4023
+NODE_IMAGE_ALT_PLACEHOLDER = 4023
 ```
 
 支持加载过程中的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>
@@ -620,7 +620,7 @@ NODE_IMAGE_ALT_PLACEHOLDER  = 4023
 ## NODE_IMAGE_ALT_ERROR
 
 ```c
-NODE_IMAGE_ALT_ERROR  = 4024
+NODE_IMAGE_ALT_ERROR = 4024
 ```
 
 支持加载失败时的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>

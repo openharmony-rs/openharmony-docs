@@ -254,7 +254,7 @@ metadata对象示例：
         "entities": ["entity.system.home"],
         "uris": []
       }]
-    }],
+    }]
   }
 }
 ```

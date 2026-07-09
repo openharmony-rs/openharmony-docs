@@ -69,7 +69,7 @@ PageAbility的图标和标签配置请参见[PageAbility组件配置](pageabilit
         "type": "page",
         "visible": true,
         "launchType": "singleton"
-      },
+      }
     ]
   }
 }

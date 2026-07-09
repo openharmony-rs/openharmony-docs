@@ -34,7 +34,7 @@
     "alternateIcons": [
       {
         "name": "summer_theme",
-        "icon": "$media:layered-image"
+        "icon": "$media:layered_image"
       },
       {
         "name": "winter_theme",
@@ -258,7 +258,7 @@ alternateIcons标签示例：
     "alternateIcons": [
       {
         "name": "summer_theme",
-        "icon": "$media:layered-image"
+        "icon": "$media:layered_image"
       },
       {
         "name": "winter_theme",

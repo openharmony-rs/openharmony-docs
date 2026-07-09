@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用Image_NativeModule解码HDR图片，获取解码结果的动态范围信息，并根据业务需要处理HDR图片、SDR回退图和带有GainMap辅助图的Picture对象。
+使用Image_NativeModule解码HDR图片，获取解码结果的动态范围信息，并根据业务需要处理HDR图片、SDR图片和带有GainMap辅助图的Picture对象。
 
 HDR（High Dynamic Range，高动态范围）图片相比SDR（Standard Dynamic Range，标准动态范围）图片，可以记录更丰富的亮度层次和色彩信息。应用在解码HDR图片时，需要关注图片源是否包含HDR信息、设备是否支持HDR解码、解码结果是否仍为HDR，以及后续显示、编辑、编码或分享场景是否需要回退为SDR。当前系统仅支持JPEG格式和HEIF格式的HDR图片，且在接口调用方未主动配置相关参数的情况下，默认使用SDR处理。
 

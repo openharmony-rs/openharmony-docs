@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@StorageLink用于状态管理V1中，与AppStorage中对应的属性建立双向数据同步。
+@StorageLink是状态管理V1的装饰器，用于与AppStorage中指定键名的属性建立双向数据同步：当@StorageLink装饰的变量发生变化时，变更会同步到AppStorage中该键名对应的属性；当AppStorage中该键名对应的属性发生变化时，变更也会同步回@StorageLink装饰的变量。
 
 开发指南参考：[AppStorage：应用全局的UI状态存储](../../../ui/state-management/arkts-appstorage.md)。
 
@@ -27,7 +27,13 @@ const StorageLink: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| value  | string | 是   | AppStorage中的属性键值，用于建立与对应属性值的双向数据同步。 |
+| value  | string | 是   | AppStorage中的属性键名，用于建立与该键名对应属性的双向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageLink装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则以@StorageLink装饰变量的本地初始值在AppStorage中创建对应属性。 |
+
+**返回值：**
+
+| 类型              | 说明                                 |
+| ----------------- | ------------------------------------ |
+| PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 
@@ -64,4 +70,3 @@ struct StorageLinkComponent {
   }
 }
 ```
-

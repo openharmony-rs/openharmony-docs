@@ -6,13 +6,13 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供[overlay特征应用](js-apis-overlay.md)的安装，overlay特征应用的[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)信息的查询以及overlay特征应用的禁用使能的能力。
+本模块提供overlay特征应用的安装，overlay特征应用的[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)信息的查询以及overlay特征应用的禁用使能的能力。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle.overlay`](js-apis-overlay.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bundle.overlay](js-apis-overlay.md)。
 
 ## 导入模块
 

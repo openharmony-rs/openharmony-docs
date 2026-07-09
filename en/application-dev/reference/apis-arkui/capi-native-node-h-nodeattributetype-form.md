@@ -156,13 +156,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Button style. The parameter type is [ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
+| .value[0].i32 | Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Button style. The parameter type is [ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
+| .value[0].i32 | Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
 
 ## NODE_BUTTON_MIN_FONT_SCALE
 
@@ -328,13 +328,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 ## NODE_CHECKBOX_NAME
 
@@ -496,7 +496,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
+| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-slider-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb. In this case, the width and height values in the defined shape do not represent the actual size of the thumb; they are scaled proportionally to ensure the thumb displays correctly.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
 | .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
@@ -508,7 +508,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
+| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-slider-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
 | .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
@@ -628,13 +628,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderDirection](capi-native-type-h.md#arkui_sliderdirection).|
+| .value[0].i32 | Slider direction. The parameter type is [ArkUI_SliderDirection](capi-slider-h.md#arkui_sliderdirection).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderDirection](capi-native-type-h.md#arkui_sliderdirection).|
+| .value[0].i32 | Slider direction. The parameter type is [ArkUI_SliderDirection](capi-slider-h.md#arkui_sliderdirection).|
 
 ## NODE_SLIDER_REVERSE
 
@@ -676,13 +676,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderStyle](capi-native-type-h.md#arkui_sliderstyle).|
+| .value[0].i32 | Slider style. The parameter type is [ArkUI_SliderStyle](capi-slider-h.md#arkui_sliderstyle).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderStyle](capi-native-type-h.md#arkui_sliderstyle).|
+| .value[0].i32 | Slider style. The parameter type is [ArkUI_SliderStyle](capi-slider-h.md#arkui_sliderstyle).|
 
 ## NODE_SLIDER_TRACK_THICKNESS
 
@@ -1081,10 +1081,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|

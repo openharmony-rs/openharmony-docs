@@ -547,7 +547,7 @@ The specified userId is inconsistent with the current userId.
 
 **错误信息**
 
-The specified userId belongs to a personal space user and cannot be controlled.
+The specified userId belongs to a personal space user and cannot be managed.
 
 **错误描述**
 

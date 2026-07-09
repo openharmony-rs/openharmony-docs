@@ -32,11 +32,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_strict_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/strictequals/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_StrictEquals的样例方法
 static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -66,7 +67,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"isStrictEquals", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(data = '123';value = '123';isStrictEquals(data,value);)JS";
+const char* SRC_CALL_NATIVE = R"JS(data = '123';value = '123';isStrictEquals(data,value);)JS";
 ```
 
 预期的输出结果：

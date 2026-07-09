@@ -100,7 +100,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 >
 > 用于容器节点时，会屏蔽节点下子节点产生的告警。
 >
-> 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型
+> 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型。
 
   ```typescript
   import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';

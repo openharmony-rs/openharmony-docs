@@ -1,7 +1,7 @@
 # 文本输入 (TextInput/TextArea/Search)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -244,7 +244,6 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
-          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -492,7 +491,7 @@ struct DisableMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems不包含搜索和翻译
+              // menuItems不包含搜索、翻译和AI帮写
               return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -529,9 +528,9 @@ this.getUIContext()
 ``` TypeScript
 // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
 TextInput({ text: $r('app.string.Service_MenuItems_Text') })
-  .fontSize(20)
+  .fontSize(15)
+  .margin({ top: 100 })
   .copyOption(CopyOptions.InApp)
-  .textAlign(TextAlign.Center)
 ```
 
 
@@ -597,7 +596,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET_WITH_CARET);
     if (err.code) {
       hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');

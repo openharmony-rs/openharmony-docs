@@ -101,7 +101,7 @@ appendChild(node: RenderNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -179,7 +179,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 

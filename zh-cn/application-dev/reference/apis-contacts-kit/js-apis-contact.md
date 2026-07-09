@@ -4634,7 +4634,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
         };
       contacts.push(contactData);
     }
-    const progress: ContactSyncProgress = {
+    const progress: contact.ContactSyncProgress = {
       syncId: syncId,
       currentBatch: batch,
       totalBatches: totalBatches
@@ -4699,7 +4699,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as ContactSyncInfo[];
+const syncInfoList: contact.ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as contact.ContactSyncInfo[];
 console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
 
@@ -5586,5 +5586,5 @@ let website: contact.Website = {
 | syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
 | completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
-| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|
 
