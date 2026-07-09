@@ -455,7 +455,7 @@ type OnAVDownloadProgressChangeHandle = (taskId: string, progress: number) => vo
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
 | taskId | string | 是     | 离线下载任务ID。                                            |
-| progress | number | 是     | 下载进度值。<br>取值范围：[0.0, 1.0)<br>若值为-1，表示资源大小未知。 |
+| progress | number | 是     | 下载进度值。<br>取值范围：[0.0, 1.0]<br>若值为-1，表示资源大小未知。 |
 
 ## OnAdsEventLoadingErrorHandle
 
