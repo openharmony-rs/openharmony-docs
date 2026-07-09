@@ -43,6 +43,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [bool OH_LocationInfo_IsFromMock(Location_Info* location)](#oh_locationInfo_isfrommock) | - | 获取位置是否来源模拟位置。 |
 | [Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)](#oh_locationinfo_getbasicinfo) | - | 获取位置基本信息。 |
 | [Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)](#oh_locationinfo_getadditionalinfo) | - | 获取位置信息中的附加信息。 |
 | [typedef void (\*Location_InfoCallback)(Location_Info* location, void* userData)](#location_infocallback) | Location_InfoCallback | 用于接收位置上报的回调函数。 |
@@ -134,6 +135,30 @@ enum Location_SourceType
 
 
 ## 函数说明
+
+### OH_LocationInfo_IsFromMock()
+
+```c
+bool OH_LocationInfo_IsFromMock(Location_Info* location)
+```
+
+**描述**
+
+判断定位信息是否来自模拟定位功能。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回 bool 类型的结果，用于指示该位置是否来自模拟提供程序。<br> 如果值为 true，表示该位置来自模拟定位功能；如果值为 false，表示该位置源自系统的真实定位结果。<br> |
 
 ### OH_LocationInfo_GetBasicInfo()
 
