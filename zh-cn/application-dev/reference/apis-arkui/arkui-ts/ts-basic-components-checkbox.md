@@ -1033,6 +1033,7 @@ struct Index {
 
 ### 示例4（设置文本多选框样式）
 该示例通过配置indicatorBuilder实现选中样式为Text。
+
 ArkTS-Dyn示例：
 
 ```ts
