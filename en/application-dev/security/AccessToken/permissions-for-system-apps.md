@@ -6732,6 +6732,22 @@ With this permission, the application can connect to or disconnect from network 
 
 ## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
 
+Allows an application to call the file management service APIs to perform operations on files.
+
+With this permission, the application can use file management functions, including the recycle bin, frequently used folders, favorites, USB device queries, and shortcuts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
 Allows an application to obtain and manage smart files.
 
 With this permission, the application can manage smart file categorization, generate file summaries, and provide file recommendations.
@@ -6746,27 +6762,11 @@ With this permission, the application can manage smart file categorization, gene
 
 **Since**: 26.0.0
 
-## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
 
 Allows an application to obtain and operate files of the file management application.
 
 With this permission, the application can add file event records, search for files, manage recent files, and obtain music files, duplicate files, and aggregated files.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: Phone | PC/2in1 | Tablet
-
-**Since**: 26.0.0
-
-## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
-
-Allows the application to access and manage files.  
-
-After obtaining this permission, the application can add file event records, search files, manage recent files, and access music files, duplicate files, and aggregated files.
 
 **Permission level**: system_basic
 
