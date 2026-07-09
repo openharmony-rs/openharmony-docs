@@ -156,7 +156,9 @@ buildDone(): void
 
 ### refreshNode
 
-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
+ArkTS-Dyn：refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
+
+ArkTS-Sta：refreshNode(parentId: int, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 
 更新树视图。调用该方法，更新当前节点的信息。
 
@@ -174,7 +176,7 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| parentId | number | 是 | 父节点Id。<br />取值范围：大于等于-1。 |
+| parentId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 父节点Id。<br />取值范围：大于等于-1。 |
 | parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 父节点副标题。 |
 | currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 当前节点副标题。 |
 
@@ -194,8 +196,8 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                               |
 | -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| parentNodeId | number | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，该节点无效，不显示在树视图上。                               |
-| currentNodeId | number | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1  |
+| parentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，该节点无效，不显示在树视图上。                               |
+| currentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1  |
 | isFolder | boolean | 否 | 是 | 是否是目录。<br />默认值：false<br />true：是目录，false：不是目录。                                                         |
 | icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。<br/>默认值：空字符串。                  |
 | symbolIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式，显示优先级大于icon，同时设置symbolIconStyle和icon，只显示Symbol图标。<br/>默认值：undefined，表示不显示Symbol图标。                  |
@@ -642,9 +644,9 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                       |
 | -------- | -------- |---|---|------------------------------------------|
-| currentNodeId | number | 否 | 否 | 返回当前子节点id。<br />取值范围：大于等于0。              |
-| parentNodeId | number | 否 | 是 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
-| childIndex | number | 否 | 是 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1<br />仅在节点移动事件中有效，表示移动后的位置索引。   |
+| currentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 返回当前子节点id。<br />取值范围：大于等于0。              |
+| parentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
+| childIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1<br />仅在节点移动事件中有效，表示移动后的位置索引。   |
 
 ## OnContainerCallback
 
