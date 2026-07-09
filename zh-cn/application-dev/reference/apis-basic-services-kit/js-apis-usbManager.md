@@ -21,7 +21,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 ## 使用说明
 
-凡是参数类型为[USBDevicePipe](#usbdevicepipe)的接口,都需要执行如下操作：
+凡是参数类型为[USBDevicePipe](#usbdevicepipe)的接口，都需要执行如下操作：
  
 **在使用接口前：**
 
@@ -53,7 +53,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 > **说明：**
 >
-> 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
+> 三方应用无法通过getDevices()接口直接获取serial字段的设备序列号信息（该字段对三方应用不可用）。如需获取序列号，需要在申请设备访问权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -77,7 +77,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 console.info(`devicesList = ${devicesList}`);
 /*
-  devicesList 返回的数据结构,此处提供一个简单的示例，如下
+  devicesList 返回的数据结构，此处提供一个简单的示例，如下
   [
     {
       name: "1-1",
@@ -173,7 +173,11 @@ async function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
   usbManager.closePipe(devicepipe);
@@ -374,7 +378,11 @@ async function claimInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
@@ -416,7 +424,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -430,7 +438,11 @@ async function releaseInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
@@ -444,7 +456,7 @@ async function releaseInterface() {
 
 setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
-设置设备配置。
+设置设备配置。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -481,7 +493,11 @@ async function setConfiguration() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number = usbManager.setConfiguration(devicepipe, config);
@@ -494,7 +510,7 @@ async function setConfiguration() {
 
 setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
-设置设备接口。
+设置设备接口。调用成功后接口将被切换到指定的备用设置，端点配置将随之改变以匹配传输类型要求。
 
 > **说明：**
 >
@@ -537,7 +553,11 @@ async function setInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
@@ -586,7 +606,11 @@ async function getRawDescriptor() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.getRawDescriptor(devicepipe);
   usbManager.closePipe(devicepipe);
@@ -632,7 +656,11 @@ async function getFileDescriptor() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
@@ -669,7 +697,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -698,7 +726,11 @@ async function usbControlTransfer() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
     console.info(`usbControlTransfer = ${ret}`);
@@ -788,7 +820,6 @@ async function bulkTransfer() {
       });
     }
   }
-  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -870,8 +901,12 @@ async function usbSubmitTransfer() {
   };
   try {
     transferParams.endpoint=endpoint?.address as number;
-    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-      console.info('callBackData =' +JSON.stringify(callBackData));
+    transferParams.callback=(err, callbackData: usbManager.SubmitTransferCallback)=>{
+      if (err) {
+        console.error('USB transfer failed:', err);
+        return;
+      }
+      console.info('callbackData =' +JSON.stringify(callbackData));
     }
     usbManager.usbSubmitTransfer(transferParams); 
     console.info('USB transfer request submitted.');
@@ -931,7 +966,11 @@ async function usbCancelTransfer() {
     return;
   }
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe === undefined) {
     console.info(`connect device fail`);
@@ -1017,7 +1056,11 @@ async function closePipe() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
@@ -1306,7 +1349,7 @@ try {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB外设。
+重置USB外设。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1353,7 +1396,11 @@ async function resetUsbDevice() {
     return;
   }
 
-  await usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
@@ -1418,7 +1465,11 @@ async function controlTransfer() {
     return;
   }
 
-  await usbManager.requestRight(devicesList[0].name);
+  let rightResult = await usbManager.requestRight(devicesList[0].name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
