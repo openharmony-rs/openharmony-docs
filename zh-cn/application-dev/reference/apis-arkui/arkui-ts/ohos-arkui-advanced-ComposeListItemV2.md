@@ -541,7 +541,51 @@ struct ComposeListItemV2Example {
 
 ArkTS-Sta示例：
 ```ts
+import { Entry, ComponentV2, Column, Text, $r, List, ListItem } from '@ohos.arkui.component';
+import { Local } from '@ohos.arkui.stateManagement';
+import {
+  IconTypeV2,
+  ComposeListItemV2,
+  ContentItemV2,
+  ContentItemV2Options,
+  OperateItemV2,
+  OperateIconV2
+} from '@ohos.arkui.advanced.ComposeListItemV2';
 
+@Entry
+@ComponentV2
+struct ComposeListItemExample01 {
+  build() {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              // 系统app图标资源
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                // 系统app图标资源
+                value: $r('sys.media.ohos_app_icon'),
+                action: () => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                }
+              }),
+              text: '右侧文本'
+            })
+          })
+        }
+      }
+    }
+  }
+}
 ```
 ![示例1-ComposeListItemV2 左右元素+文本](figures/image-composelistitemv2-demo-01.jpg)
 
@@ -638,7 +682,94 @@ struct ComposeListItemV2Example {
 
 ArkTS-Sta示例：
 ```ts
+import { Entry, Component, Column, Text, $r, List, ListItem } from '@ohos.arkui.component';
+import {
+  IconTypeV2,
+  ComposeListItemV2,
+  ContentItemV2,
+  OperateItemV2,
+  OperateCheckV2,
+  OperateIconV2,
+  OperateButtonV2
+} from '@ohos.arkui.advanced.ComposeListItemV2';
 
+@Entry
+@Component
+struct ComposeListItemExample02 {
+  build() {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              // 系统app图标资源
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              radio: new OperateCheckV2({
+                accessibilityText: '单选框', // 该单选框屏幕朗读播报文本为‘单选框’
+                accessibilityDescription: '未选中', // 该单选框屏幕朗读播报描述为'未选中'
+                accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
+              })
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              // 系统app图标资源
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              button: new OperateButtonV2({
+                text: '确定',
+                accessibilityText: '这是一个按钮',
+                accessibilityDescription: '单指双击即可执行',
+                accessibilityLevel: 'no'  // 该按钮不可被屏幕朗读服务识别
+              })
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              // 系统app图标资源
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                // 系统app图标资源
+                value: $r('sys.media.ohos_app_icon'),
+                action: () => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                },
+                accessibilityText: '这是一个icon', // 该icon屏幕朗读播报文本为‘这是一个icon’
+                accessibilityDescription: '单指双击即可弹出', // 该icon屏幕朗读播报描述为'单指双击即可弹出'
+                accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
+              })
+            })
+          })
+        }
+      }
+    }
+  }
+}
 ```
 ![示例2-ComposeListItemV2 设置列表项右侧元素自定义播报](figures/image-composelistitemv2-demo-02.png)
 
@@ -726,6 +857,80 @@ struct ComposeListItemV2Example {
 
 ArkTS-Sta示例：
 ```ts
+import { Entry, Component, Column, $r, List, ListItem, Color } from '@ohos.arkui.component';
+import { SymbolGlyphModifier } from '@ohos.arkui.modifier';
+import {
+  IconTypeV2,
+  ComposeListItemV2,
+  ContentItemV2,
+  OperateItemV2,
+  OperateIconV2
+} from '@ohos.arkui.advanced.ComposeListItemV2';
 
+@Entry
+@Component
+struct ComposeListItemExample03 {
+  build() {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              image: $r('sys.symbol.car'),
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Red]),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              image: $r('sys.symbol.car'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.heart')).fontColor([Color.Pink])
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Blue]),
+              primaryText: '双行列表',
+              secondaryText: '辅助文字',
+              description: '描述内容文字'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                value: $r('sys.symbol.car'),
+                symbolStyle: new SymbolGlyphModifier($r('sys.symbol.heart')).fontColor([Color.Orange]),
+                action: (): void => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                }
+              })
+            })
+          })
+        }
+      }
+    }
+  }
+}
 ```
 ![示例3-ComposeListItemV2 设置Symbol类型图标](figures/image-composelistitemv2-demo-03.png)
