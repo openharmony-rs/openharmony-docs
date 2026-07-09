@@ -28,12 +28,12 @@
 
 ## module.json5配置项说明
 
-跨设备启动时，目标组件在`module.json5`中的以下配置项会影响启动结果：
+跨设备启动时，目标组件在`module.json5`中的以下配置项会影响启动结果。字段说明可参考[abilities标签](../quick-start/module-configuration-file.md#abilities标签)和[权限声明](../security/AccessToken/declare-permissions.md)。
 
 | 配置项 | 说明 | 跨设备启动影响 |
 | --- | --- | --- |
-| `exported` | 组件是否可被其他应用调用，**缺省值为`false`**，字段说明参考[abilities标签](../quick-start/module-configuration-file.md#abilities标签) | 必须显式配置为`true`。缺省或配置为`false`时，第三方应用无法跨设备拉起 |
-| `permissions` | 组件被拉起时要求调用方持有的权限列表，字段说明参考[权限声明](../security/AccessToken/declare-permissions.md) | 若声明了权限数组，调用方必须持有其中所有权限，否则启动被拦截 |
+| `exported` | 组件是否可被其他应用调用，**缺省值为`false`** | 若配置为`false`，调用方需申请`ohos.permission.START_INVISIBLE_ABILITY`权限方可拉起 |
+| `permissions` | 组件被拉起时要求调用方持有的权限列表 | 若声明了权限数组，调用方必须持有其中所有权限，否则启动被拦截。权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md) |
 | `type` | 组件类型（`UIAbility`或`ExtensionAbility`） | 决定可使用的启动接口 |
 
 ## 支持的启动接口
@@ -46,7 +46,7 @@
 | --- | --- | --- |
 | [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 启动UIAbility | - |
 | [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startAbilityForResult) | 启动目标UIAbility，并在目标组件调用[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)销毁时获取返回结果 | 结果返回时，发起方组件的`exported`属性也会被校验，必须为`true` |
-| [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 启动目标UIAbility并将通信对象返回给发起方 | **仅支持同应用**跨设备调用，建立通路过程中底层软总线会校验双端应用的[ohos.permission.DISTRIBUTED_DATASYNC](../security/AccessToken/declare-permissions.md)权限 |
+| [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 启动目标UIAbility并将通信对象返回给发起方 | **仅支持同应用**跨设备调用，建立通路过程中底层软总线会校验双端应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限。权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md) |
 
 ### ExtensionAbility组件启动接口
 
@@ -54,10 +54,9 @@
 
 | 接口 | 说明 | 特殊限制 |
 | --- | --- | --- |
-| [connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext.md#serviceextensioncontextconnectserviceextensionability) | 连接ServiceExtensionAbility | 建立通路过程中底层软总线会校验双端应用的[ohos.permission.DISTRIBUTED_DATASYNC](../security/AccessToken/declare-permissions.md)权限 |
+| [connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext.md#serviceextensioncontextconnectserviceextensionability) | 连接ServiceExtensionAbility | 建立通路过程中底层软总线会校验双端应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限。权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md) |
 
 > **说明：**
 >
 > - startAbilityByCall场景不校验自定义权限，但会校验目标组件的可见性配置（结合设备安全等级）。若目标组件不可见且调用方设备安全等级低于被调用方设备，则拦截。
 > - 禁止拉起`Distributed`类型的ExtensionAbility组件。
-> - 其他类型ExtensionAbility组件的启动规则请参考[ExtensionAbility组件](extensionability-overview.md#extensionability类型说明)。
