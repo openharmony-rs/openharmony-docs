@@ -34,11 +34,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext
-
-InputMethodExtensionContext是InputMethodExtensionAbility的上下文环境，继承自ExtensionContext，用于操作输入法扩展相关的生命周期和状态。
-
-### destroy<sup>9+</sup>
+## InputMethodExtensionContext.destroy
 
 destroy(callback: AsyncCallback&lt;void&gt;): void;
 
@@ -76,7 +72,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-### destroy<sup>9+</sup>
+## InputMethodExtensionContext.destroy
 
 destroy(): Promise&lt;void&gt;;
 
@@ -112,7 +108,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 }
 ```
 
-### startAbility<sup>12+</sup>
+## InputMethodExtensionContext.startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise&lt;void&gt;;
 
