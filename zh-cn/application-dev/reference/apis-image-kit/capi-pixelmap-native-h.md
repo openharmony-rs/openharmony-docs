@@ -107,8 +107,8 @@
 | [Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_crop) | 根据输入的区域信息对图片进行裁剪。<br>     建议使用[OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop)代替。 |
 | [Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_release) | 释放OH_PixelmapNative指针（当内存被[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)锁定时无法释放）。<br>推荐使用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)。 |
 | [Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_destroy) | 释放OH_PixelmapNative指针，不受[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)锁定内存的影响。 |
-| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative *dstPixelmap, const bool toPremul)](#oh_pixelmapnative_convertalphatype) | 将Pixelmap的透明度类型在预乘（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
-| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将Pixelmap的像素数据做预乘和非预乘之间的转换。该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative *dstPixelmap, const bool toPremul)](#oh_pixelmapnative_convertalphatype) | 将Pixelmap像素数据的透明度类型在预乘模式（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘模式（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | 利用OH_Pixelmap_InitializationOptions创建空的Pixelmap对象，内存数据为0。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | 通过Surface的ID创建一个Pixelmap。若Surface携带旋转或翻转的变换信息且需要处理，请使用[OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation](#oh_pixelmapnative_createpixelmapfromsurfacewithtransformation)。 |
@@ -1691,7 +1691,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelma
 
 **描述**
 
-将Pixelmap的透明度类型在预乘（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。
+将Pixelmap像素数据的透明度类型在预乘模式（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘模式（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。
 
 **起始版本：** 26.0.0
 
@@ -1700,7 +1700,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelma
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | 源Pixelmap的指针，包含待转换的像素数据，其透明度格式必须是预乘或非预乘。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *dstPixelmap | 一个空白的目标Pixelmap的指针，其属性（宽度、高度、像素格式等）必须与源Pixelmap相同，但其透明度类型必须与源Pixelmap相反（例如，如果源Pixelmap为预乘，则目标Pixelmap必须为非预乘）。转换后的像素数据将写入此Pixelmap。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *dstPixelmap | 一个空白的目标Pixelmap的指针，其属性（宽度、高度、像素格式等）必须与源Pixelmap相同，但其透明度类型必须与源Pixelmap相反（例如，如果源Pixelmap为预乘，则目标Pixelmap必须为非预乘）且必须可编辑。转换后的像素数据将写入此Pixelmap。 |
 | const bool toPremul | 指定转换方向。true表示从非预乘转换为预乘，false表示从预乘转换为非预乘。 |
 
 **返回：**
@@ -1717,7 +1717,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 
 **描述**
 
-将Pixelmap的像素数据做预乘和非预乘之间的转换。该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。
+将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。
 
 **起始版本：** 12
 
@@ -1726,7 +1726,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* srcpixelmap | 源Pixelmap的指针，包含待转换的像素数据，其透明度格式必须是预乘或非预乘。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | 一个空白的目标Pixelmap的指针，其属性（宽度、高度、像素格式等）必须与源Pixelmap相同，但其透明度类型必须与源Pixelmap相反（例如，如果源Pixelmap为预乘，则目标Pixelmap必须为非预乘）。转换后的像素数据将写入此Pixelmap。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | 一个空白的目标Pixelmap的指针，其属性（宽度、高度、像素格式等）必须与源Pixelmap相同，但其透明度类型必须与源Pixelmap相反（例如，如果源Pixelmap为预乘，则目标Pixelmap必须为非预乘）且必须可编辑。转换后的像素数据将写入此Pixelmap。 |
 | const bool isPremul | 转换方向，true为非预乘转预乘，false为预乘转非预乘。 |
 
 **返回：**
