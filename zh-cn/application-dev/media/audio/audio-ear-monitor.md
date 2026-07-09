@@ -178,7 +178,7 @@ int32_t MyOnError_Legacy(
 
 ### 设置播放回调函数
 
-<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->  
 
 ``` C++
 int32_t MyOnWriteData(
