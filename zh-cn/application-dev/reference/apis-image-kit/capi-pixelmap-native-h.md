@@ -26,9 +26,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_STATIC_METADATA关键字对应的元数据值类型，用于储存HDR静态元数据。 |
-| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，用于储存HDR动态元数据，格式遵循相关HDR动态元数据标准。 |
-| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_GAINMAP_METADATA关键字对应的元数据值类型，用于储存HDR增益图元数据，参考ISO 21496-1。 |
+| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_STATIC_METADATA关键字对应的元数据值类型，用于存储HDR静态元数据。 |
+| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，用于存储HDR动态元数据，格式遵循相关HDR动态元数据标准。 |
+| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_GAINMAP_METADATA关键字对应的元数据值类型，用于存储HDR增益图元数据，参考ISO 21496-1。 |
 | [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)关键字相对应。当传入相应的[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)关键字作为入参时，可通过本结构体设置或获取对应类型的元数据值，用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative结构体是Native层封装的图像解码后无压缩的位图格式结构体。<br> 创建OH_PixelmapNative使用[OH_PixelmapNative_CreatePixelmap](#oh_pixelmapnative_createpixelmap)函数，默认采用BGRA_8888格式处理数据。<br> 释放OH_PixelmapNative对象使用[OH_PixelmapNative_Release](#oh_pixelmapnative_release)函数。 |
 | [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) | - | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
@@ -121,7 +121,7 @@
 | [Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager **colorSpaceNative)](#oh_pixelmapnative_getcolorspacenative) | 获取Pixelmap的NativeColorSpaceManager对象，用于查询Pixelmap当前配置的色彩空间信息。 |
 | [Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, char *name, size_t *size)](#oh_pixelmapnative_setmemoryname) | 设置Pixelmap内存名称，便于在内存调试或问题定位时识别该内存。 |
 | [Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint32_t *byteCount)](#oh_pixelmapnative_getbytecount) | 获取Pixelmap中所有像素所占用的总字节数，不包含内存对齐填充字节。 |
-| [Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)](#oh_pixelmapnative_getallocationbytecount) | 获取Pixelmap实际分配的用于储存像素数据的内存字节数，包含内存对齐填充字节。与[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)（不包含内存填充）不同，本接口返回的是系统为Pixelmap分配的真实内存大小。 |
+| [Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)](#oh_pixelmapnative_getallocationbytecount) | 获取Pixelmap实际分配的用于存储像素数据的内存字节数，包含内存对齐填充字节。与[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)（不包含内存填充）不同，本接口返回的是系统为Pixelmap分配的真实内存大小。 |
 | [Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void **addr)](#oh_pixelmapnative_accesspixels) | 获取Pixelmap像素数据的内存地址，并锁定这块内存。<br> 当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。<br> 使用完毕后，必须调用[OH_PixelmapNative_UnaccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_unaccesspixels)释放内存锁，两者需配对使用。 |
 | [Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_unaccesspixels) | 释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)匹配使用。 |
 | [Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint32_t *uniqueId)](#oh_pixelmapnative_getuniqueid) | 获取Pixelmap的唯一ID。 |
@@ -1084,8 +1084,8 @@ Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| uint8_t *destination | 缓冲区，获取的图像像素数据写入到该内存区域内。 |
-| size_t *bufferSize | 缓冲区大小。单位：字节（Byte）。可通过[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)接口获取。 |
+| uint8_t *destination | 缓冲区，获取的图像像素数据写入到该内存区域内。缓冲区大小应不小于width * height * 4字节。 |
+| size_t *bufferSize | 缓冲区大小。单位：字节（Byte）。 |
 
 **返回：**
 
@@ -2055,7 +2055,7 @@ Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixe
 
 **描述**
 
-获取Pixelmap实际分配的用于储存像素数据的内存字节数，包含内存对齐填充字节。与[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)（不包含内存填充）不同，本接口返回的是系统为Pixelmap分配的真实内存大小。
+获取Pixelmap实际分配的用于存储像素数据的内存字节数，包含内存对齐填充字节。与[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)（不包含内存填充）不同，本接口返回的是系统为Pixelmap分配的真实内存大小。
 
 **起始版本：** 18
 
