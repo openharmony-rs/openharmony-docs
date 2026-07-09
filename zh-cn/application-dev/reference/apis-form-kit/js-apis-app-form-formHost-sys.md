@@ -2133,7 +2133,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>>| 以Promise方式返回接口运行结果及分享数据。 |
+| Promise\<Record\<string, Object>> | 以Promise方式返回接口运行结果及分享数据。 |
 
 **错误码：**
 
@@ -2664,7 +2664,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
