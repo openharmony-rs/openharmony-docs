@@ -1374,6 +1374,6 @@ export default class EntryAbility extends UIExtensionAbility {
   {
     "name": "ExampleUIExtensionAbility",
     "srcEntry": "./ets/extensionAbility/ExampleUIExtensionAbility.ets",
-    "type": "sys/commonUI",
+    "type": "sys/commonUI"
   }
   ```
