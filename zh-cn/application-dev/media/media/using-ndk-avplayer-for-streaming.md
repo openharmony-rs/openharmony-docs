@@ -98,7 +98,7 @@
    LOG("player %{public}s >> URL source", url);
    LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
    ret = OH_AVPlayer_SetURLSource(player, url);
-   LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetURLSource ret:%{public}d", ret);
    ```
 
 4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy)，设置AVPlayer启用智能追帧。
