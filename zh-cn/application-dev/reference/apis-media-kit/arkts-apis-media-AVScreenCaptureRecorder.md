@@ -18,9 +18,9 @@
 
 ## 导入模块
 
+<!-- @[screenCapture_arkts_interface_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
 
-
-```ts
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
@@ -59,7 +59,11 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testInit() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -84,7 +88,6 @@ async function testInit() {
     });
   }
 }
-
 ```
 
 ## startRecording<sup>12+</sup>
@@ -112,7 +115,11 @@ startRecording(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_startRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testStartRecording() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -155,7 +162,11 @@ stopRecording(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_stopRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testStopRecording() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -205,7 +216,11 @@ pauseRecording(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_pauseRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testPauseRecording() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -255,7 +270,11 @@ resumeRecording(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_resumeRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testResumeRecording() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -317,9 +336,13 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_addWatermark](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testAddWaterMark() {
-  // 创建录屏实例。s
+  // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
   // 其余流程。
@@ -371,7 +394,11 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testSkipPrivacyMode() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -425,7 +452,11 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_setMicEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testSetMicEnable() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -477,7 +508,11 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_setPickerMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testSetPickerMode() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -527,7 +562,11 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_excludePickerWindows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testExcludePickerWindows() {
   let excludedWindows: Array<number> = [101, 102, 103];
   
@@ -577,7 +616,11 @@ presentPicker(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_presentPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testPresentPicker() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -634,7 +677,11 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_setContentAutoRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testSetContentAutoRotation() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -677,7 +724,11 @@ release(): Promise\<void>
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testRelease() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -712,7 +763,11 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_onStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testOnStateChange() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -755,7 +810,11 @@ on(type: 'error', callback: ErrorCallback): void
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_onError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testOnError() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -788,7 +847,11 @@ async function testOnError() {
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_offStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testOffStateChange() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -819,7 +882,11 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **示例：**
 
-```ts
+<!-- @[screenCapture_arkts_interface_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+
+``` TypeScript
+// 导入相关模块。
+
 async function testOffError() {  
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
