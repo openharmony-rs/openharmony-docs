@@ -745,9 +745,9 @@ OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* c
 
 **描述**
 
-设置当前录音流的降噪模式。建议先调用[OH_AudioCapturer_GetSupportedNoiseReductionModes](#oh_audiocapturer_getsupportednoisereductionmodes)获取当前录音流支持的降噪模式，再通过本接口进行设置。
+设置当前录音流的降噪模式。建议先调用[OH_AudioCapturer_GetSupportedNoiseReductionModes](#oh_audiocapturer_getsupportednoisereductionmodes)获取当前录音流支持的降噪模式后，再通过本接口进行设置。
 
-当前仅使用[AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅支持[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
+当前仅支持对使用[AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)创建的录音流进行降噪模式设置，其他录音流默认仅支持[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
 
 该接口仅可在录音流创建后未开始录音，或停止录音后调用；录音流处于运行态或已释放时调用将返回[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result)。
 
@@ -764,7 +764,7 @@ OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* c
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr，或参数noiseReductionMode无效。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：录音流处于运行态或已释放。<br>         AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：设置的降噪模式不支持。<br>         AUDIOSTREAM_ERROR_SERVICE_DIED：音频服务进程死亡。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr，或参数noiseReductionMode无效。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：录音流处于运行态或已释放。<br>         AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：设置的降噪模式不支持。<br>         AUDIOSTREAM_ERROR_SERVICE_DIED：音频服务进程异常结束。 |
 
 ### OH_AudioCapturer_GetNoiseReductionMode()
 
@@ -774,7 +774,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetNoiseReductionMode(OH_AudioCapturer* c
 
 **描述**
 
-获取当前录音流的降噪模式。返回结果仅反映默认值或应用设置值，不考虑当前输入设备和录音并发情况。默认值为[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。
+获取当前录音流的降噪模式。返回结果仅反映当前录音流的降噪模式。默认值为[AUDIO_NOISE_REDUCTION_MODE_FIDELITY](capi-native-audio-common-h.md#oh_audionoisereductionmode)。
 
 **起始版本：** 26.0.0
 
