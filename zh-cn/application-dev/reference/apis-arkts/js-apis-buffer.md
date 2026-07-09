@@ -244,7 +244,7 @@ ArkTS-Dyn: allocUninitialized(size: number): Buffer
 
 ArkTS-Sta: allocUninitialized(size: int): Buffer
 
-创建指定大小未初始化的Buffer对象。内存不从缓冲池分配，适用于需要创建较大Buffer或希望精确控制内存分配的场景，如一次性分配较大内存区域，避免缓冲池的内存碎片和缓存占用。
+创建指定大小未初始化的Buffer对象。内存不从缓冲池分配，适用于需要创建较大Buffer或希望精确控制内存分配的场景，如一次性分配较大内存区域（避免缓冲池可能导致的内存碎片累积和缓存性能损耗）。
 
 创建的Buffer的内容未知，需要使用[fill](#fill)函数来初始化Buffer对象。
 
@@ -446,7 +446,7 @@ ArkTS-Dyn: concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 ArkTS-Sta: concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
-将数组中的内容复制指定字节长度到新的Buffer对象中并返回。
+将数组中的内容复制（默认复制全部内容，或复制指定字节长度）到新的Buffer对象中并返回。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -531,7 +531,7 @@ console.info(buf.toString('hex'));
 
 from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer
 
-创建与`arrayBuffer`共享内存的指定长度的Buffer对象。共享内存意味着Buffer与arrayBuffer引用同一块内存区域，对Buffer数据的修改将同步反映到arrayBuffer中，反之亦然。
+创建与`arrayBuffer`共享内存的指定长度的Buffer对象。共享内存意味着Buffer与arrayBuffer引用同一块内存区域，对Buffer数据的修改将同步反映到arrayBuffer中，反之亦然（注意：此方式避免内存拷贝，提升性能，但需注意内存释放时机）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -546,7 +546,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 用于创建Buffer的ArrayBuffer或SharedArrayBuffer对象。 |
-| byteOffset | number | 否 | 字节偏移量，默认值：0。 |
+| byteOffset | number | 否 | 字节偏移量。指定从arrayBuffer起始位置偏移的字节数，创建的Buffer从该偏移位置开始。默认值：0。 |
 | length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。在传入null时字节长度为0。 |
 
 **返回值：**
@@ -1452,13 +1452,13 @@ ArkTS-Sta: readBigInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| bigint | 读取出的内容。 |
+| bigint | 从Buffer中读取的有符号小端序64位整数值，可用于高精度整数运算的二进制数据处理。 |
 
 **错误码：**
 
@@ -1510,7 +1510,7 @@ ArkTS-Sta: readBigUInt64BE(offset?: int): bigint
 
 | 类型 | 说明 |
 | -------- | -------- |
-| bigint | 读取出的内容。 |
+| bigint | 从Buffer中读取的无符号大端序64位整数值。 |
 
 **错误码：**
 
@@ -1561,7 +1561,7 @@ ArkTS-Sta: readBigUInt64LE(offset?: int): bigint
 
 | 类型 | 说明 |
 | -------- | -------- |
-| bigint | 读取出的内容。 |
+| bigint |  从Buffer中读取的无符号小端序64位整数值。 |
 
 **错误码：**
 
@@ -2023,7 +2023,7 @@ ArkTS-Sta: readInt32LE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 10200001 |  The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
+| 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **示例：**
 
@@ -2757,7 +2757,7 @@ toString(encoding?: string, start?: number, end?: number): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 字符编码格式，支持的格式范围为[BufferEncoding](#bufferencoding)。默认值：'utf8'。 |
-| start  | number | 否 |  开始位置。默认值：0。 |
+| start  | number | 否 |  开始位置，单位：字节。默认值：0。 |
 | end  | number | 否 |  结束位置。默认值：Buffer.length。 |
 
 **返回值：**
@@ -4172,7 +4172,7 @@ arrayBuffer(): Promise&lt;ArrayBuffer&gt;
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;ArrayBuffer&gt; | Promise对象，返回包含Blob数据的ArrayBuffer。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，resolve返回包含Blob数据的ArrayBuffer，reject返回错误信息。 |
 
 **示例：**
 ```ts
@@ -4242,7 +4242,7 @@ text(): Promise&lt;string&gt;
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回以utf8解码后的字符串。 |
+| Promise&lt;string&gt; | Promise对象，resolve返回以utf8解码后的字符串，reject返回错误信息。 |
 
 **示例：**
 ```ts

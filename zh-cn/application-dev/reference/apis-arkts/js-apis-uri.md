@@ -67,7 +67,7 @@ import { uri } from '@kit.ArkTS';
         - userinfo: 用户信息，与host通过@进行分隔，根据需要填写。
         - host: 服务器的主机名部分，当authority存在时，此项必填。
         - port: 服务器端口，默认值为-1。根据需要填写。
-    - path: 路径信息，位于host与query之间以 / 进行分隔，根据需要填写。
+    - path: 路径信息，位于authority之后或host之后（authority不存在时），以/开头，在query之前，根据需要填写。
     - query: 查询部分，位于path和fragment之间，以 ? 开头的键值对格式，以&分隔键值对，以=分隔键值，根据需要填写。
 - fragment: 片段部分，以#与scheme-specific-part进行分隔，根据需要填写。
 
