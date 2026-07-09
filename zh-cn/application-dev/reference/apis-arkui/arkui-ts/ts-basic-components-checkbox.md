@@ -628,6 +628,8 @@ type OnCheckboxChangeCallback  = (value: boolean) => void
 
 该示例通过配置CheckBoxShape实现圆形和圆角方形多选框样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -654,12 +656,55 @@ struct CheckboxExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  Checkbox,
+  CheckBoxShape
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct CheckboxExample {
+  build() {
+    Flex({ justifyContent: FlexAlign.SpaceEvenly } as FlexOptions) {
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+        .select(true)
+        .selectedColor(0xed6f21)
+        .shape(CheckBoxShape.CIRCLE)
+        .onChange((value: boolean) => {
+          console.info('Checkbox1 change is' + value);
+        })
+      Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
+        .select(false)
+        .selectedColor(0x39a2db)
+        .shape(CheckBoxShape.ROUNDED_SQUARE)
+        .onChange((value: boolean) => {
+          console.info('Checkbox2 change is' + value);
+        })
+    }
+  }
+}
+```
 
 ![](figures/checkbox.gif)
 
 ### 示例2（设置多选框颜色）
 
 该示例通过配置mark实现自定义多选框的颜色。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -706,11 +751,78 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Checkbox,
+  CheckBoxShape,
+  Text,
+  Color,
+  Row,
+  Column
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Row() {
+      Column() {
+        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center } as FlexOptions) {
+          Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+            .selectedColor(0x39a2db)
+            .shape(CheckBoxShape.ROUNDED_SQUARE)
+            .onChange((value: boolean) => {
+              console.info('Checkbox1 change is'+ value);
+            })
+            .mark({
+              strokeColor:Color.Black,
+              size: 50,
+              strokeWidth: 5
+            })
+            .unselectedColor(Color.Red)
+            .width(30)
+            .height(30)
+          Text('Checkbox1').fontSize(20)
+        }
+        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center } as FlexOptions) {
+          Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
+            .selectedColor(0x39a2db)
+            .shape(CheckBoxShape.ROUNDED_SQUARE)
+            .onChange((value: boolean) => {
+              console.info('Checkbox2 change is' + value);
+            })
+            .width(30)
+            .height(30)
+          Text('Checkbox2').fontSize(20)
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ![](figures/checkbox2.gif)
 
 ### 示例3（自定义多选框样式）
 该示例通过[contentModifier](#contentmodifier12)属性实现了自定义多选框样式的功能，自定义样式实现了一个五边形多选框，如果选中，内部会出现红色三角图案，标题会显示选中字样，如果取消选中，红色三角图案消失，标题会显示非选中字样。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -797,12 +909,207 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Checkbox,
+  CheckBoxShape,
+  Text,
+  Color,
+  Row,
+  Column,
+  ColumnOptions,
+  ContentModifier,
+  CheckBoxConfiguration,
+  WrappedBuilder,
+  wrapBuilder,
+  Toggle,
+  ToggleType,
+  Shape,
+  Path,
+  Visibility,
+  LineJoinStyle
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+type BuilderCheckbox = @Builder(config: CheckBoxConfiguration) => void
+
+// xxx.ets
+class MyCheckboxStyle implements ContentModifier<CheckBoxConfiguration> {
+  selectedColor: Color = Color.White;
+
+  constructor(selectedColor: Color) {
+    this.selectedColor = selectedColor;
+  }
+
+  applyContent(): WrappedBuilder<BuilderCheckbox> {
+    return wrapBuilder(buildCheckbox);
+  }
+}
+
+@Builder
+function buildCheckbox(config: CheckBoxConfiguration) {
+  Column({ space: 10 } as ColumnOptions) {
+    Text(config.name + (config.selected ? "（ 选中 ）" : "（ 非选中 ）")).margin({ right: 70, top: 50 })
+    Text(config.enabled ? "enabled true" : "enabled false").margin({ right: 110 })
+    Shape() {
+      Path()
+        .width(100)
+        .height(100)
+        .commands('M100 0 L0 100 L50 200 L150 200 L200 100 Z')
+        .fillOpacity(0)
+        .strokeWidth(3)
+        .onClick(() => {
+          if (config.selected) {
+            config.triggerChange(false);
+          } else {
+            config.triggerChange(true);
+          }
+        })
+        .opacity(config.enabled ? 1 : 0.1)
+      Path()
+        .width(10)
+        .height(10)
+        .commands('M50 0 L100 100 L0 100 Z')
+        .visibility(config.selected ? Visibility.Visible : Visibility.Hidden)
+        .fill(config.selected ? (config.contentModifier as MyCheckboxStyle).selectedColor : Color.Black)
+        .stroke((config.contentModifier as MyCheckboxStyle).selectedColor)
+        .margin({ left: 10, top: 10 })
+        .opacity(config.enabled ? 1 : 0.1)
+    }
+    .width(300)
+    .height(200)
+    .viewPort({
+      x: 0,
+      y: 0,
+      width: 310,
+      height: 310
+    })
+    .strokeLineJoin(LineJoinStyle.Miter)
+    .strokeMiterLimit(5)
+    .margin({ left: 50 })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State checkboxEnabled: boolean = true;
+
+  build() {
+    Column({ space: 100 } as ColumnOptions) {
+      Checkbox({ name: '多选框状态', group: 'checkboxGroup' })
+        .contentModifier(new MyCheckboxStyle(Color.Red))
+        .onChange((value: boolean) => {
+          console.info('Checkbox change is' + value);
+        }).enabled(this.checkboxEnabled)
+
+      Row() {
+        Toggle({ type: ToggleType.Switch, isOn: true }).onChange((value: boolean) => {
+          if (value) {
+            this.checkboxEnabled = true;
+          } else {
+            this.checkboxEnabled = false;
+          }
+        })
+      }.position({ x: 50, y: 130 })
+    }.margin({ top: 30 })
+  }
+}
+```
+
 
 ![](figures/checkbox3.gif)
 
 ### 示例4（设置文本多选框样式）
 该示例通过配置indicatorBuilder实现选中样式为Text。
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
+@Entry
+@Component
+struct CheckboxExample {
+  @Builder
+  indicatorBuilder(value: number) {
+    Column(){
+      Text(value > 99 ? '99+': value.toString())
+        .textAlign(TextAlign.Center)
+        .fontSize(value > 99 ?  '16vp': '20vp')
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#ffffffff')
+    }
+  }
+  build() {
+    Row() {
+      Column() {
+        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center}) {
+          Checkbox({ name: 'checkbox1', group: 'checkboxGroup', indicatorBuilder:()=>{this.indicatorBuilder(9)}})
+            .shape(CheckBoxShape.CIRCLE)
+            .onChange((value: boolean) => {
+              console.info('Checkbox1 change is'+ value);
+            })
+            .mark({
+              strokeColor:Color.Black,
+              size: 50,
+              strokeWidth: 5
+            })
+            .width(30)
+            .height(30)
+          Text('Checkbox1').fontSize(20)
+        }.padding(15)
+        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+          Checkbox({ name: 'checkbox2', group: 'checkboxGroup', indicatorBuilder:()=>{this.indicatorBuilder(100)}})
+            .shape(CheckBoxShape.ROUNDED_SQUARE)
+            .onChange((value: boolean) => {
+              console.info('Checkbox2 change is' + value);
+            })
+            .width(30)
+            .height(30)
+          Text('Checkbox2').fontSize(20)
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Checkbox,
+  CheckBoxShape,
+  Text,
+  Color,
+  Row,
+  Column,
+  TextAlign,
+  FontWeight
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
 // xxx.ets
 @Entry
 @Component
@@ -858,6 +1165,8 @@ struct CheckboxExample {
 ### 示例5（获取多选框选中信息）
 
 该示例通过选中Checkbox以及CheckboxGroup多选框来获取选中的信息。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1011,6 +1320,183 @@ struct CheckboxExample {
           } catch (error) {
             console.error("show toast failed");
           }
+        })
+    }.padding(10)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexAlign,
+  ItemAlign,
+  Checkbox,
+  CheckBoxShape,
+  Text,
+  Row,
+  Column,
+  CheckboxGroup,
+  Button,
+  ForEach,
+  CheckboxGroupResult
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct CheckboxExample {
+  @State arrOne: Array<string> = ['1', '2', '3'];
+  @State arrTwo: Array<string> = ['1', '2', '3', '4'];
+  @State arrThree: Array<string> = ['1', '2', '3', '4', '5', '6'];
+  @State selected: boolean = false;
+  @State infoOne: string = '';
+  @State infoTwo: string = '';
+  @State infoThree: string = '';
+
+  build() {
+    Column() {
+      // 单元项全选按钮
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        CheckboxGroup({ group: 'checkboxGroupOne' })
+          .selectAll(this.selected)
+          .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
+          .selectedColor('#007DFF')
+          .onChange((itemName: CheckboxGroupResult) => {
+            this.infoOne = "checkboxGroupOne" + JSON.stringify(itemName);
+            console.info("checkboxGroupOne" + JSON.stringify(itemName));
+          })
+        Text('checkboxGroupOne Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
+      }
+
+      // 选项1
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        Column() {
+          ForEach(this.arrOne, (item: string) => {
+            Row() {
+              Checkbox({ name: 'checkbox' + item, group: 'checkboxGroupOne' })
+                .selectedColor('#007DFF')
+                .shape(CheckBoxShape.ROUNDED_SQUARE)
+                .onChange((value: boolean) => {
+                  console.info('Checkbox' + item + 'change is' + value);
+                })
+                .margin({ left: 20 })
+              Text('Checkbox' + item)
+                .fontSize(14)
+                .lineHeight(20)
+                .fontColor('#182431')
+                .fontWeight(500)
+                .margin({ left: 10 })
+            }
+          }, (item: string) => item)
+        }
+      }.margin({ bottom: 15 })
+
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        CheckboxGroup({ group: 'checkboxGroupTwo' })
+          .selectAll(this.selected)
+          .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
+          .selectedColor('#007DFF')
+          .onChange((itemName: CheckboxGroupResult) => {
+            this.infoTwo = "checkboxGroupTwo" + JSON.stringify(itemName);
+            console.info("checkboxGroupTwo" + JSON.stringify(itemName));
+          })
+        Text('checkboxGroupTwo Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
+      }
+
+      // 选项2
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        Column() {
+          ForEach(this.arrTwo, (item: string) => {
+            Row() {
+              Checkbox({ name: 'checkbox' + item, group: 'checkboxGroupTwo' })
+                .selectedColor('#007DFF')
+                .shape(CheckBoxShape.ROUNDED_SQUARE)
+                .onChange((value: boolean) => {
+                  console.info('Checkbox' + item + 'change is' + value);
+                })
+                .margin({ left: 20 })
+              Text('Checkbox' + item)
+                .fontSize(14)
+                .lineHeight(20)
+                .fontColor('#182431')
+                .fontWeight(500)
+                .margin({ left: 10 })
+            }
+          }, (item: string) => item)
+        }
+      }.margin({ bottom: 15 })
+
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        CheckboxGroup({ group: 'checkboxGroupThree' })
+          .selectAll(this.selected)
+          .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
+          .selectedColor('#007DFF')
+          .onChange((itemName: CheckboxGroupResult) => {
+            this.infoThree = "checkboxGroupThree" + JSON.stringify(itemName);
+            console.info("checkboxGroupThree" + JSON.stringify(itemName));
+          })
+        Text('checkboxGroupThree Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
+      }
+
+      // 选项3
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        Column() {
+          ForEach(this.arrThree, (item: string) => {
+            Row() {
+              Checkbox({ name: 'checkbox' + item, group: 'checkboxGroupThree' })
+                .selectedColor('#007DFF')
+                .shape(CheckBoxShape.ROUNDED_SQUARE)
+                .onChange((value: boolean) => {
+                  console.info('Checkbox' + item + 'change is' + value);
+                })
+                .margin({ left: 20 })
+              Text('Checkbox' + item)
+                .fontSize(14)
+                .lineHeight(20)
+                .fontColor('#182431')
+                .fontWeight(500)
+                .margin({ left: 10 })
+            }
+          }, (item: string) => item)
+        }
+      }.margin({ bottom: 15 })
+
+      // 全选按钮
+      Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
+        Row() {
+          CheckboxGroup({ group: 'checkboxGroup' })
+            .checkboxShape(CheckBoxShape.CIRCLE)
+            .selectedColor('#007DFF')
+            .width(30)
+            .margin({ left: 10 })
+            .onChange(() => {
+              this.selected = !this.selected
+            })
+          Text('Select All')
+            .fontSize(14)
+            .lineHeight(20)
+            .fontColor('#182431')
+            .fontWeight(500)
+            .margin({ left: 10 })
+        }
+      }.margin({ bottom: 15 })
+
+      // 获取选中信息
+      Button('get selected info')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showToast({
+            message: 'selected info: ' + this.infoOne + '\n' + this.infoTwo + '\n' + this.infoThree
+          })
         })
     }.padding(10)
   }
