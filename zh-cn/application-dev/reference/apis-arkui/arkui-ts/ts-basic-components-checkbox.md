@@ -110,7 +110,7 @@ select(isSelected: boolean | undefined | Bindable\<boolean\>)
 
 | 参数名     | 类型                                | 必填 | 说明                                                         |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean \| undefined \| Bindable\<boolean\> | 是   | 多选框是否选中。取值为undefined时，按默认值处理。<br/>true：多选框被选中；false：多选框未选中。<br/>默认值：false |
+| isSelected | boolean \| undefined \| [Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<boolean\> | 是   | 多选框是否选中。取值为undefined时，按默认值处理。<br/>true：多选框被选中；false：多选框未选中。<br/>默认值：false |
 
 ### select<sup>18+</sup>
 
