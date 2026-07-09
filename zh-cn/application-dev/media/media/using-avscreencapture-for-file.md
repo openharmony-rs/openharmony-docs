@@ -74,7 +74,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
-   void SetConfig02(OH_AVScreenCaptureConfig &config, RecorderInfo &recorderInfo)
+   void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
    {
        // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
        OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
@@ -130,7 +130,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
            .videoInfo = videoInfo,
            .recorderInfo = recorderInfo // 录制文件信息。
        };
-       // 设置状态回调函数、错误回调函数和获取录屏屏幕ID回调函数等。
+       // 设置状态回调函数、错误回调函数和录屏屏幕ID回调函数等。
        SetCallbackFile(g_avCapture);
    }
    ```

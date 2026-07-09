@@ -516,7 +516,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 
 **描述**
 
-当OH_AVScreenCapture实例操作期间音频或视频缓存区可用时，将调用该函数指针。使用前需将该回调注册到OH_AVScreenCapture实例中。
+当OH_AVScreenCapture实例操作期间音频或视频冲存区可用时，将调用该函数指针。使用前需将该回调注册到OH_AVScreenCapture实例中。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
