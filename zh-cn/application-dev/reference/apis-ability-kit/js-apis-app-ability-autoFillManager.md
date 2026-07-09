@@ -240,7 +240,7 @@ onSuccess: OnFillSuccessFn
 
 onFailure: OnFillFailureFn
 
-当填充请求失败时，该回调被调用。
+当填充请求失败时，会触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
