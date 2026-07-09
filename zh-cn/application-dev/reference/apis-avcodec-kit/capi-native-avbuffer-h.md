@@ -100,7 +100,7 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：输入的buffer为空指针或者buffer格式校验失败。<br> AV_ERR_OPERATE_NOT_PERMIT(2)：输入的buffer不是用户创建的。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：输入的buffer为空指针或者buffer格式校验失败。<br> AV_ERR_OPERATE_NOT_PERMIT：输入的buffer不是用户创建的。 |
 
 ### OH_AVBuffer_GetBufferAttr()
 

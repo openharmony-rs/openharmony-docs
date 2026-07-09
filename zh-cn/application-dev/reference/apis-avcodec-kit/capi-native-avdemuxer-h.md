@@ -264,7 +264,7 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 
 **描述**
 
-根据设定的跳转模式，将所有选中的轨道到指定时间附近。
+根据设定的跳转模式，将所有选中的轨道跳转到指定时间附近。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
