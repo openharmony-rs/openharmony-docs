@@ -108,7 +108,11 @@ export async function loadPixelMap(rawFileDescriptor: resourceManager.RawFileDes
   // 释放imageSource。
   imageSource.release();
   // 使pixelMap在跨线程传输完成后，脱离原线程的引用。
-  pixelMap.setTransferDetached(true);
+  try {
+       pixelMap.setTransferDetached(true);
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'Failed to set transferDetached. Cause: %{public}s', JSON.stringify(err));
+     }
   // 返回pixelMap给主线程。
   return pixelMap;
 }
