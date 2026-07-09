@@ -162,7 +162,7 @@ update(sectionIndex: number, section: SectionOptions): boolean
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| boolean | 分组更新成功返回true，更新失败（新分组的itemsCount不是非负数）返回false。 |
+| boolean | 分组是否更新成功。分组更新成功返回true，更新失败（新分组的itemsCount不是非负数）返回false。 |
 
 ### values<sup>12+</sup>
 
@@ -1958,7 +1958,7 @@ struct WaterFlowDemo {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // 设置FlowItem的宽/高数组
+  // 设置FlowItem的高度数组
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemHeightArray.push(this.getSize());

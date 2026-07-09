@@ -301,7 +301,7 @@ struct GridItemExample {
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: String[] = ['0', '1', '2'];
+  @State numbers: string[] = ['0', '1', '2'];
 
   build() {
     Column({ space: 5 }) {

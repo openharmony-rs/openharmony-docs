@@ -92,9 +92,9 @@ type OnMoveHandler = (from: number, to: number) => void
 | 名称 | 类型   | 只读 | 可选 | 说明                 |
 | ------ | ------ | ---- | ---- | -------------------- |
 | onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否  | 是 | 长按时触发的回调，不设置时不触发该回调。<br>- 参数index为长按时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
-| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动开始时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽开始时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
+| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 拖拽开始时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽开始时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
 | onMoveThrough  | [OnMoveHandler](#onmovehandler) | 否   | 是 | 在页面跟手滑动过程中经过其他组件时触发的回调，不设置时不触发该回调。<br>- 参数from为拖拽起始索引号，参数to为当前经过的目标索引号，取值范围均是[0, 数据源长度-1]。 |
-| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 在页面跟手滑动结束时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽结束时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
+| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 是 | 拖拽结束时触发的回调，不设置时不触发该回调。<br>- 参数index为拖拽结束时当前目标的索引号，取值范围是[0, 数据源长度-1]。 |
 
 ## 示例
 
