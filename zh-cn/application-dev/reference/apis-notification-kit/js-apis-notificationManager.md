@@ -1713,6 +1713,7 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> 适用版本：26.0.0+                 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
