@@ -703,7 +703,7 @@ struct ToggleMaterialTest {
 }
 ```
 
-ArkTS-sta示例：
+ArkTS-Sta示例：
 
 ```ts
 'use static'
