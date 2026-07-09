@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_cond_t
 
 ## 概述
 
-FFRT条件变量结构。
+条件变量结构体，用于存储条件变量的内部数据。
 
 **起始版本：** 10
 
@@ -23,9 +23,22 @@ FFRT条件变量结构。
 
 ## 汇总
 
-### 成员变量
+### 成员函数
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | FFRT条件变量占用空间 |
+| [uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。 |
+
+## 成员函数说明
+
+### sizeof()
+
+```c
+uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
+```
+
+**描述**
+
+条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。
+
 

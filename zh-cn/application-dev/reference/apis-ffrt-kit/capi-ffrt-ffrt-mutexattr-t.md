@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_mutexattr_t
 
 ## 概述
 
-FFRT锁属性结构。
+互斥锁属性结构体，用于存储互斥锁的属性信息。
 
 **起始版本：** 10
 
@@ -27,6 +27,6 @@ FFRT锁属性结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | FFRT锁属性占用空间 |
+| long storage | 互斥锁属性的内部存储。请勿直接访问，通过{@link ffrt_mutexattr_init}初始化。 |
 
 
