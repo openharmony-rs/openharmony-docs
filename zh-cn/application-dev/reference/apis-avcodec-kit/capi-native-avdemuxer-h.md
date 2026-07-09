@@ -235,7 +235,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 
 **描述**
 
-获取指定轨道的sample及相关信息。<br>注意，读取轨道sample前，轨道必须被选中，可使用[OH_AVDemuxer_SelectTrackByID](#oh_avdemuxer_selecttrackbyid)。调用接口后解封装器将自动前进到下一帧。
+获取指定轨道的sample及相关信息。<br> 注意，读取轨道sample前，轨道必须被选中，可使用[OH_AVDemuxer_SelectTrackByID](#oh_avdemuxer_selecttrackbyid)。调用接口后解封装器将自动前进到下一帧。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -254,7 +254,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. sample为空指针。<br>                           3. 轨道的索引超出范围。<br>                           4. 输入sample为空。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>         AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。<br>         AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. sample为空指针。<br>                           3. 轨道的索引超出范围。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>         AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。<br>         AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
 
 ### OH_AVDemuxer_SeekToTime()
 
