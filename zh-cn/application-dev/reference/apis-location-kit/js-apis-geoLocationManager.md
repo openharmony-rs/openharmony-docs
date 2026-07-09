@@ -833,7 +833,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 设置事件类型。type为“locationChange”，表示位置变化。 |
-  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致，否则会取消订阅失败且不会返回任何错误码。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
 
@@ -874,6 +874,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 offLocationChange(callback?: Callback\<Location\>): void
 
 关闭位置变化订阅，并删除对应的定位请求。
+当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -887,7 +888,7 @@ offLocationChange(callback?: Callback\<Location\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与onLocationChange接口传入的回调函数保持一致。若无此参数，则取消所有订阅。 |
+| callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与onLocationChange接口传入的回调函数保持一致，否则将抛出401错误码。若无此参数，则取消所有订阅。 |
 
 **错误码**：
 
