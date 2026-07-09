@@ -76,7 +76,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -268,7 +268,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -367,7 +367,7 @@ UIAbility被启动后，有如下情况：
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+|
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -567,7 +567,7 @@ UIAbility被启动后，有如下情况：
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -1203,7 +1203,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
 | 16000071 | App clone is not supported. <br>适用版本：14+ |
 | 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
