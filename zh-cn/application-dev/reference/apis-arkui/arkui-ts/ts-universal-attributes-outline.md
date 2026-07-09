@@ -82,9 +82,9 @@ outline(options: Optional\<OutlineOptions>): T
 
 ## outlineStyle
 
-outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
+outlineStyle(value: OutlineStyle \| EdgeOutlineStyles): T
 
-设置元素的外描边样式。不设置该接口时，默认显示为一条实线。
+设置元素的外描边样式，不设置时默认显示为一条实线。需设置outlineWidth大于0，外描边样式才可见。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -106,9 +106,9 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
 ## outlineStyle<sup>18+</sup>
 
-outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
+outlineStyle(style: Optional\<OutlineStyle \| EdgeOutlineStyles>): T
 
-设置元素的外描边样式。不设置该接口时，默认显示为一条实线。与[outlineStyle](#outlinestyle)相比，style参数新增了对undefined类型的支持。
+设置元素的外描边样式。需设置outlineWidth大于0，外描边样式才可见。不设置该接口时，默认显示为一条实线。与[outlineStyle](#outlinestyle)相比，style参数新增了对undefined类型的支持。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -130,7 +130,7 @@ outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
 ## outlineWidth
 
-outlineWidth(value: Dimension | EdgeOutlineWidths): T
+outlineWidth(value: Dimension \| EdgeOutlineWidths): T
 
 设置元素的外描边宽度。不设置该接口时，默认无变化。
 
@@ -154,7 +154,7 @@ outlineWidth(value: Dimension | EdgeOutlineWidths): T
 
 ## outlineWidth<sup>18+</sup>
 
-outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
+outlineWidth(width: Optional\<Dimension \| EdgeOutlineWidths>): T
 
 设置元素的外描边宽度。不设置该接口时，默认无变化。与[outlineWidth](#outlinewidth)相比，width参数新增了对undefined类型的支持。
 
@@ -178,9 +178,9 @@ outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
 
 ## outlineColor
 
-outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
+outlineColor(value: ResourceColor \| EdgeColors \| LocalizedEdgeColors): T
 
-设置元素的外描边颜色。不设置该接口时，默认显示为黑色。
+设置元素的外描边颜色，需设置outlineWidth大于0，外描边颜色才可见。不设置该接口时，默认显示为黑色。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -202,9 +202,9 @@ outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 
 ## outlineColor<sup>18+</sup>
 
-outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
+outlineColor(color: Optional\<ResourceColor \| EdgeColors \| LocalizedEdgeColors>): T
 
-设置元素的外描边颜色。不设置该接口时，默认显示为黑色。与[outlineColor](#outlinecolor)相比，color参数新增了对undefined类型的支持。
+设置元素的外描边颜色。需设置outlineWidth大于0，外描边颜色才可见。不设置该接口时，默认显示为黑色。与[outlineColor](#outlinecolor)相比，color参数新增了对undefined类型的支持。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -226,7 +226,7 @@ outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>)
 
 ## outlineRadius
 
-outlineRadius(value: Dimension | OutlineRadiuses): T
+outlineRadius(value: Dimension \| OutlineRadiuses): T
 
 设置元素的外描边圆角半径。不设置该接口时，默认无变化。
 
@@ -250,7 +250,7 @@ outlineRadius(value: Dimension | OutlineRadiuses): T
 
 ## outlineRadius<sup>18+</sup>
 
-outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
+outlineRadius(radius: Optional\<Dimension \| OutlineRadiuses>): T
 
 设置元素的外描边圆角半径。不设置该接口时，默认无变化。与[outlineRadius](#outlineradius)相比，radius参数新增了对undefined类型的支持。
 
