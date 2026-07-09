@@ -568,7 +568,7 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 // 导入相关模块。
 
 async function testExcludePickerWindows() {
-  let excludedWindows: Array<number> = [101, 102, 103];
+  let excludedWindows: number[] = [101, 102, 103];
   
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -622,7 +622,7 @@ presentPicker(): Promise\<void>
 ``` TypeScript
 // 导入相关模块。
 
-async function testPresentPicker() {  
+async function testPresentPicker() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -683,14 +683,14 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 ``` TypeScript
 // 导入相关模块。
 
-async function testSetContentAutoRotation() {  
+async function testSetContentAutoRotation() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
   // 其余流程。
 
   // 调用setContentAutoRotation方法。
-  if (avScreenCaptureRecorder != undefined) {
+  if (avScreenCaptureRecorder) {
     avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
       console.info('Succeeded in enabling setContentAutoRotation.');
     }).catch((err: BusinessError) => {
@@ -730,7 +730,7 @@ release(): Promise\<void>
 ``` TypeScript
 // 导入相关模块。
 
-async function testRelease() {  
+async function testRelease() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -769,7 +769,7 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 ``` TypeScript
 // 导入相关模块。
 
-async function testOnStateChange() {  
+async function testOnStateChange() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -816,7 +816,7 @@ on(type: 'error', callback: ErrorCallback): void
 ``` TypeScript
 // 导入相关模块。
 
-async function testOnError() {  
+async function testOnError() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -853,7 +853,7 @@ async function testOnError() {
 ``` TypeScript
 // 导入相关模块。
 
-async function testOffStateChange() {  
+async function testOffStateChange() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
@@ -888,7 +888,7 @@ off(type: 'error', callback?: ErrorCallback): void
 ``` TypeScript
 // 导入相关模块。
 
-async function testOffError() {  
+async function testOffError() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
