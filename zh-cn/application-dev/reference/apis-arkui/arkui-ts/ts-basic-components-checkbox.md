@@ -1004,9 +1004,13 @@ struct CheckboxExample {
       Button('get selected info')
         .margin({ top: 10 })
         .onClick(() => {
-          this.getUIContext().getPromptAction().showToast({
-            message: 'selected info: ' + this.infoOne + '\n' + this.infoTwo + '\n' + this.infoThree
-          })
+          try {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'selected info: ' + this.infoOne + '\n' + this.infoTwo + '\n' + this.infoThree
+            })
+          } catch (error) {
+            console.error("show toast failed");
+          }
         })
     }.padding(10)
   }
@@ -1053,7 +1057,11 @@ struct Index {
     let rect: componentUtils.ComponentInfo | null = null;
     for (let i = 0; i < 100; i++) {
       let uiContext: UIContext = this.getUIContext();
-      rect = this.componentUtils.getRectangleById(`stack${i}`);
+      try {
+        rect = this.componentUtils.getRectangleById(`stack${i}`);
+      } catch (error) {
+        console.error("getRectangleById failed");
+      }
       if (rect) {
         const x1 = uiContext.px2vp(rect.windowOffset.x);
         const x2 = uiContext.px2vp(rect.windowOffset.x + rect.size.width);
@@ -1078,20 +1086,24 @@ struct Index {
       end = this.selectedStart;
       start = this.selectedEnd;
     }
-    if (this.selectedState == SelectedState.Selected) {
-      for (let i = start; i <= end; i++) {
-        if (!this.selectedPhotos.has(i)) {
-          this.selectedPhotos.add(i);
+    try {
+      if (this.selectedState == SelectedState.Selected) {
+        for (let i = start; i <= end; i++) {
+          if (!this.selectedPhotos.has(i)) {
+            this.selectedPhotos.add(i);
+          }
+        }
+      } else if (this.selectedState == SelectedState.Remove) {
+        for (let i = start; i <= end; i++) {
+          if (this.selectedPhotos.has(i)) {
+            this.selectedPhotos.remove(i);
+          }
         }
       }
-    } else if (this.selectedState == SelectedState.Remove) {
-      for (let i = start; i <= end; i++) {
-        if (this.selectedPhotos.has(i)) {
-          this.selectedPhotos.remove(i);
-        }
-      }
+      this.selectedList = this.selectedPhotos.convertToArray();
+    } catch (error) {
+      console.error("onSelectedEndChange handle failed");
     }
-    this.selectedList = this.selectedPhotos.convertToArray();
   }
 
   // 当滑动选择时，如果手指移到边缘区域，自动滚动列表。滚动距离由getSpeed计算
@@ -1124,7 +1136,11 @@ struct Index {
               this.isChoosing = false;
               this.selectedStart = -1;
               this.selectedEnd = -1;
-              this.selectedPhotos.clear();
+              try {
+                this.selectedPhotos.clear();
+              } catch (error) {
+                console.error("selectedPhotos clear failed");
+              }
               this.selectedList = [];
             })
         }
@@ -1179,10 +1195,14 @@ struct Index {
                 // 滑动开始，记录selectedStart索引
                 this.selectedStart = this.getIndex(fingerX, fingerY);
                 // 根据滑动开始的图片选中状态，判断是选中操作还是取消选中操作
-                if (this.selectedPhotos.has(this.selectedStart)) {
-                  this.selectedState = SelectedState.Remove;
-                } else {
-                  this.selectedState = SelectedState.Selected;
+                try {
+                  if (this.selectedPhotos.has(this.selectedStart)) {
+                    this.selectedState = SelectedState.Remove;
+                  } else {
+                    this.selectedState = SelectedState.Selected;
+                  }
+                } catch (error) {
+                  console.error("pan gesture handle failed");
                 }
               })
               .onActionUpdate(event => {
@@ -1207,10 +1227,14 @@ struct Index {
               const fingerX = fingerInfo.globalX;
               const fingerY = fingerInfo.globalY;
               this.selectedStart = this.getIndex(fingerX, fingerY);
-              if (this.selectedPhotos.has(this.selectedStart)) {
-                this.selectedState = SelectedState.Remove;
-              } else {
-                this.selectedState = SelectedState.Selected;
+              try {
+                if (this.selectedPhotos.has(this.selectedStart)) {
+                  this.selectedState = SelectedState.Remove;
+                } else {
+                  this.selectedState = SelectedState.Selected;
+                }
+              } catch (error) {
+                console.error("pan gesture handle failed");
               }
             })
             .onActionUpdate(event => {
