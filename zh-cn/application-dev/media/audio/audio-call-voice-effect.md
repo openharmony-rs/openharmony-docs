@@ -1,4 +1,4 @@
-# 通话语音音效
+# 音频通话算法选择
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ZhengYong21-->
@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-通话语音音效是系统面向通话场景提供的音频处理能力，主要用于提升人声清晰度和通话听感。系统会根据音频流类型和音频场景识别通话业务，并自动启用相应的3A处理策略。
+系统面向通话场景主动提供音频算法处理能力，主要用于提升人声清晰度和通话听感。系统会根据音频流类型和音频场景识别通话业务，并自动启用相应的3A处理策略。
 
 3A通常包括以下音频处理能力：
 
@@ -16,13 +16,13 @@
 
 ## 生效方式
 
-应用无需单独创建3A音效节点。开发VoIP通话时，系统会依据播放流和录音流的通话类型自动选择通话音频通路，并在支持的设备上启用3A处理。
+1. 应用无需单独创建3A音效节点。开发VoIP通话时，系统会依据播放流和录音流的通话类型自动选择通话音频通路，并在支持的设备上启用3A处理。
+2. 当应用需要进行语音通话等注重增强人声、抑制环境噪声、回声消除的音频场景，建议使用通话类型创建音频流；当应用更关注录制环境声音如录像场景，不推荐使用通话类型录制。
 
 关键配置如下：
 
 - 播放对端声音时，`AudioRendererInfo`中的`usage`需设置为[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或者[STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)，用于标识VoIP语音通话播放流。该类型的播放流起播时，会触发开启3A算法。
 - 录制本端声音时，`AudioCapturerInfo`中的`source`需设置为[SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)，用于标识语音通话采集流。单独启动该录音流不会开启3A，需要同时存在通话类型的播放流起播。
-- 通话过程中，系统音频场景通常会切换到[AUDIO_SCENE_VOICE_CHAT](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioscene8)。应用可通过[AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md)的`getAudioScene`检查当前音频场景。
 
 ## 开发建议
 

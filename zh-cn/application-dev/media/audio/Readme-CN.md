@@ -55,7 +55,7 @@
   - [响应输出设备变更时合理暂停](audio-output-device-change.md)
 - 音频通话<!--audio-call-->
   - [音频通话开发概述](audio-call-overview.md)
-  - [通话语音音效](audio-call-voice-effect.md)
+  - [音频通话算法选择](audio-call-voice-effect.md)
   - [开发音频通话功能](audio-call-development.md)
   - [使用ArkTS接口实现音频通话](using-arkts-audio-call.md)
 - 音频性能调优<!--audio-performance-optimization-->
