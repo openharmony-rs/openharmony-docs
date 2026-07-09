@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 native实现检测到业务错误时，可以构造ArkTS异常并抛回调用侧，由ArkTS侧按普通异常流程捕获。这个流程适合需要中断当前ArkTS调用链的错误场景。
 

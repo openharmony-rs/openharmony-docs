@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 Array模块提供数组操作的基本方法。开发者可以使用本模块的功能，如创建数组、访问数组元素等。
 

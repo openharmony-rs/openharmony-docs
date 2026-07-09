@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)为ArkTS-Sta应用提供多线程任务执行能力。开发者可以将函数或任务对象提交到TaskPool内部任务队列，由运行时调度到工作线程执行，并通过Promise获取执行结果。TaskPool负责管理工作线程生命周期，开发者无需自行创建、复用或销毁线程。
 

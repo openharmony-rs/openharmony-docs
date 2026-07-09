@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供XML生成和解析的接口，支持多种方式的XML文本生成与解析，可帮助开发者高效处理结构化XML数据。
 

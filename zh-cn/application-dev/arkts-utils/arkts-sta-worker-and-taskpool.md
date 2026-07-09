@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 在ArkTS-Sta中，可以实现“EAWorker常驻线程通过TaskPool进行多任务并发处理”场景，但实现模型与动态ArkTS不同。动态ArkTS通常通过Worker线程文件创建ThreadWorker，并在Worker内部使用TaskPool；ArkTS-Sta常驻线程应使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)，并将并行子任务提交给[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)，通过run、postToMain、MessageHandler和Message等接口进行线程协同。
 

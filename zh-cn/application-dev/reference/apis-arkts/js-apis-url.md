@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。<br>
 
