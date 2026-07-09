@@ -184,8 +184,8 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 |---|---|---|---|---|
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
-| DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关 | 23 | 是 | - |
-| Fingerprint | 故障特征，聚类同类问题的哈希值，不同日志该值相同表示为同一故障原因 | 8 | 是 | - |
+| DeviceDebuggable | 设备的系统版本是否可调试 | 23 | 是 | - |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 8 | 是 | - |
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
 | ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
@@ -201,10 +201,11 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Uid | 用户ID | 8 | 是 | - |
 | HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见[HiTraceChain介绍](hitracechain-intro.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
-| App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
+| App running unique id | 应用运行时唯一关联的ID | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存状态 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
+| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 用户态生成的cppcrash日志<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时生成的cppcrash日志<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异) | 26.0.0 | 是 | - |
 | Reason | 故障原因 | 8 | 是 | - |
 | LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息。<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志。<br>系统内部的维测信息。<br>应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的字符串信息。<br>从API版本26.0.0开始，应用若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则此字段包含模块加载链路。|
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
@@ -951,6 +952,48 @@ onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 开发者通过比对多份故障日志提取出的聚类特征，对Cpp Crash故障问题进行分类统计。
 
 也可以参考当前故障日志中的Fingerprint字段，对聚类特征内容进行哈希运算生成故障特征标识值，再根据故障特征标识值对Cpp Crash故障问题进行分类统计。
+
+## 不同采集方式下日志规格差异
+|字段|描述| processdump | pdump | liteprocessdump |
+|---|---|---|---|---|
+| Device info | 设备信息 | 有 | 有 | 有 |
+| Build info | 版本信息 | 有 | 有 | 有 |
+| DeviceDebuggable | 设备的系统版本是否可调试 | 有 | 有 | 有 |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 有 | 有 | 有 |
+| Enabled app log configs | 使能的配置参数列表 | 有 | 无 | 无 |
+| Module name | 模块名 | 有 | 有 | 有 |
+| ReleaseType | 应用的版本类型 | 有 | 有 | 有 |
+| CpuAbi | 二进制接口类型 | 有 | 有 | 有 |
+| Version | 应用版本号(点分格式) | 有 | 有 | 有 |
+| VersionCode | 应用版本号(整数格式) | 有 | 有 | 有 |
+| IsSystemApp | 应用是否为系统应用 | 有 | 有 | 有 |
+| PreInstalled | 是否预置应用 | 有 | 有 | 有 |
+| Foreground | 前后台状态 | 有 | 有 | 有 |
+| Page switch history | 页面切换轨迹 | 有 | 有 | 有 |
+| Timestamp | 故障发生时间戳 | 有 | 有 | 有 |
+| Pid | 进程号 | 有 | 有 | 有 |
+| Uid | 用户ID | 有 | 有 | 有 |
+| HiTraceId | HiTraceChain唯一跟踪标识 | 有 | 无 | 无 |
+| Process name | 故障进程名 | 有 | 有 | 有 |
+| App running unique id | 应用运行时唯一关联的ID | 有 | 无 | 有 |
+| Process life time | 故障进程存活时间 | 有 | 有 | 有 |
+| Process Memory(kB) | 故障进程内存占用 | 有 | 有 | 有 |
+| Device Memory(kB) | 整机内存状态 | 有 | 有 | 有 |
+| Log source | 用于标识采集日志的方式 | 有 | 有 | 有 |
+| Reason | 故障原因 | 有 | 有 | 有 |
+| LastFatalMessage | Fatal消息 | 有 | 无 | 无 |
+| Fault thread info | 故障线程信息 | 有 | 有 | 有 |
+| SubmitterStacktrace | 提交者线程栈 | 有 | 无 | 无 |
+| Registers | 故障现场寄存器 | 有 | 有 | 有 |
+| ExtraCrashInfo | 额外的内存信息 | 有 | 无 | 无 |
+| Other thread info | 其他线程信息 | 有 | 有 | 有 |
+| Memory near registers | 故障现场寄存器附近内存值 | 有 | 有 | 有 |
+| FaultStack | 故障线程栈内存信息 | 有 | 有 | 有 |
+| Maps | 故障时进程的内存空间 | 有 | 有 | 有 |
+| OpenFiles | 故障时进程持有的文件句柄信息 | 有 | 无 | 有 |
+| HiLog | 故障之前打印的流水日志，最多1000行 | 有 | 有 | 有 |
+| [truncated] | 故障日志截断标志 | 有 | 有 | 有 |
+| MergeLog | 三方应用拼接日志标识 | 有 | 无 | 无 |
 
 ## 常见问题
 
