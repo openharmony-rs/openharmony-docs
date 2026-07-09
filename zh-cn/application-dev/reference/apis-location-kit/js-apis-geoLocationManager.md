@@ -873,7 +873,10 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 offLocationChange(callback?: Callback\<Location\>): void
 
-关闭位置变化订阅，并删除对应的定位请求。当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
+关闭位置变化订阅，并删除对应的定位请求。
+
+当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
+
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
