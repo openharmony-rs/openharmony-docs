@@ -74,7 +74,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
         console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
         return;
       }
-      console.info('terminateSelf succeed');
+      console.info('terminateSelf succeeded');
     });
   }
 }
@@ -111,7 +111,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
   onCreate() {
     this.context.terminateSelf().then(() => {
-      console.info('terminateSelf succeed');
+      console.info('terminateSelf succeeded');
     }).catch((error: BusinessError) => {
       console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
     });
@@ -189,7 +189,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
         console.error(`startAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
         return;
       }
-      console.info('startAbilityWithAccount succeed');
+      console.info('startAbilityWithAccount succeeded');
     });
   }
 }
@@ -266,7 +266,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
     };
     let accountId = 100;
     this.context.startAbilityWithAccount(want, accountId).then(() => {
-      console.info('startAbilityWithAccount succeed');
+      console.info('startAbilityWithAccount succeeded');
     }).catch((error: BusinessError) => {
       console.error(`startAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
     });
@@ -575,7 +575,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
           console.error(`disconnectAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
           return;
         }
-        console.info('disconnectAbility succeed');
+        console.info('disconnectAbility succeeded');
       });
     } catch (paramError) {
       commRemote = null;
@@ -633,7 +633,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
     let connection = 1;
     this.context.disconnectAbility(connection).then(() => {
       commRemote = null;
-      console.info('disconnectAbility succeed');
+      console.info('disconnectAbility succeeded');
     }).catch((error: BusinessError) => {
       commRemote = null;
       console.error(`disconnectAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -694,7 +694,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
           console.error(`disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
           return;
         }
-        console.info('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeeded');
       });
     } catch (paramError) {
       commRemote = null;
@@ -756,7 +756,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
     let connection = 1;
     this.context.disconnectServiceExtensionAbility(connection).then(() => {
       commRemote = null;
-      console.info('disconnectServiceExtensionAbility succeed');
+      console.info('disconnectServiceExtensionAbility succeeded');
     }).catch((error: BusinessError) => {
       commRemote = null;
       console.error(`disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
