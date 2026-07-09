@@ -30,8 +30,8 @@ ArkWeb Enums模块是ArkWeb（Web子系统）的枚举类型定义集合，为We
 | ------------- | -- |----------------------------------------- |
 | ArkTS-Dyn: EditText <br>ArkTS-Sta: EDIT_TEXT     | 0 |可编辑的区域。                            |
 | ArkTS-Dyn: Email <br>ArkTS-Sta: EMAIL         | 1 |电子邮件地址。                            |
-| ArkTS-Dyn: HttpAnchor <br>ArkTS-Sta: HTTP_ANCHOR    | 2 |超链接，其中src为http。                     |
-| ArkTS-Dyn: HttpAnchorImg <br>ArkTS-Sta: HTTP_ANCHOR_IMG | 3 |带有超链接的图片，其中src为http + HTML::img。 |
+| ArkTS-Dyn: HttpAnchor <br>ArkTS-Sta: HTTP_ANCHOR    | 2 |超链接，其中链接地址为http。                     |
+| ArkTS-Dyn: HttpAnchorImg <br>ArkTS-Sta: HTTP_ANCHOR_IMG | 3 |带有超链接的图片，其中链接地址为http + HTML::img。 |
 | ArkTS-Dyn: Img <br>ArkTS-Sta: IMG          | 4 |HTML::img标签。                           |
 | ArkTS-Dyn: Map <br>ArkTS-Sta: MAP          | 5 |地理地址。                                |
 | ArkTS-Dyn: Phone <br>ArkTS-Sta: PHONE         | 6 |电话号码。                                |

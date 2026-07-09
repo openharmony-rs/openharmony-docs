@@ -83,10 +83,12 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
       if (error) {
         console.error(`Failed to fetch FrameByTime, err = ${JSON.stringify(error)}`);
@@ -158,10 +160,12 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
@@ -227,10 +231,12 @@ let outputSize: media.OutputSize = {
   height: 300,
 };
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {

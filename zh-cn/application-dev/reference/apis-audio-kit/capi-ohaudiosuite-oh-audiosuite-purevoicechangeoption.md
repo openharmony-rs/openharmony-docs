@@ -26,6 +26,6 @@ typedef struct {...} OH_AudioSuite_PureVoiceChangeOption
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_PureVoiceChangeGenderOption](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) optionGender | 定义传统变声性别。 |
-| [OH_AudioSuite_PureVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) optionType | 定义传统变声类型。 |
-| float pitch | 定义传统变声音调。如果使用系统中的默认音调以获得最佳效果, 设置为[OH_PURE_VOICE_DEFAULT_PITCH](capi-native-audio-suite-base-h.md#宏定义)。<br> 设置自定义音调的取值范围为[0.3f, 3.0f]。 |
+| [OH_AudioSuite_PureVoiceChangeGenderOption](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) optionGender | 指定传统变声性别。 |
+| [OH_AudioSuite_PureVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) optionType | 指定传统变声类型。 |
+| float pitch | 指定传统变声音调。如果使用系统中的默认音调以获得最佳效果, 设置为[宏定义](capi-native-audio-suite-base-h.md#宏定义)中的OH_PURE_VOICE_DEFAULT_PITCH。<br> 设置自定义音调的取值范围为[0.3f, 3.0f]。 |

@@ -373,11 +373,11 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **系统能力**：`SystemCapability.Notification.Emitter`
 
-**ArkTS-Dyn起始版本**：12
-
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onceGenericEventData](#emitteroncegenericeventdata23)
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -416,7 +416,7 @@ emitter.once("eventId", callback);
 
 onceGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-**方法介绍：** 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。
+单次订阅指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -700,7 +700,7 @@ emitter.off("eventId1", callback);
 
 offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-取消订阅当前Emitter类实例的事件。仅当已使用[onGenericEventData](#emitterongenericeventdata23)或[onceGenericEventData](#emitteroncegenericeventdata23)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。使用callback异步回调。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[onGenericEventData](#emitterongenericeventdata23)或[onceGenericEventData](#emitteroncegenericeventdata23)接口订阅callback时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit<T\>(eventId: string, data: GenericEventData<T\>)](#emitteremit23-2)接口发布但尚未执行的事件将被取消。
 
@@ -750,9 +750,7 @@ emit(event: InnerEvent, data?: EventData): void
 
 发送指定事件。
 
-ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
-
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -817,7 +815,7 @@ emit(eventId: string, data?: EventData): void
 
 发送指定事件。
 
-ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -857,7 +855,7 @@ emit(eventId: string): void
 
 发送指定事件。
 
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -887,7 +885,7 @@ emit(eventId: string, data: EventData): void
 
 发送指定事件。
 
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -930,7 +928,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 发送指定事件。
 
-ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -977,7 +975,7 @@ emit<T\>(eventId: string, data: GenericEventData<T\>): void
 
 发送指定事件。
 
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1022,7 +1020,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 发送指定优先级事件。
 
-ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -1030,11 +1028,11 @@ ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **系统能力**：`SystemCapability.Notification.Emitter`
 
-**ArkTS-Dyn起始版本**：11
-
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[emit(eventId: string, options: Options)](#emitteremit23-3)和[emit(eventId: string, options: Options, data: EventData)](#emitteremit23-4)
+
+**ArkTS-Dyn起始版本**：11
 
 **参数：**
 
@@ -1062,22 +1060,13 @@ let options: emitter.Options = {
 emitter.emit("eventId", options, eventData);
 ```
 
-ArkTS-Sta示例：
-```ts
-let options: emitter.Options = {
-  priority: emitter.EventPriority.HIGH
-};
-
-emitter.emit("eventId", options);
-```
-
 ## emitter.emit<sup>23+</sup>
 
 emit(eventId: string, options: Options): void
 
 发送指定优先级事件。
 
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1112,7 +1101,7 @@ emit(eventId: string, options: Options, data: EventData): void
 
 发送指定优先级事件。
 
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1159,9 +1148,7 @@ ArkTS-Sta: emit<T\>(eventId: string, options: Options, data: GenericEventData<T\
 
 发送指定优先级事件。
 
-ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
-
-ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
@@ -1260,8 +1247,14 @@ ArkTS-Sta: getListenerCount(eventId: long | string): long
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let count: number = emitter.getListenerCount("eventId");
+```
+
+ArkTS-Sta示例：
+```ts
+let count: long = emitter.getListenerCount("eventId");
 ```
 
 ## EventPriority
@@ -1860,7 +1853,7 @@ emitter1.off("eventId", callback);
 
 offEventData(eventId: string, callback: Callback\<EventData\>): void
 
-取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22)或[once](#once22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[onEventData](#oneventdata22)或[onceEventData](#onceeventdata22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit](#emit22)接口发布但尚未执行的事件将被取消。
 
@@ -1899,7 +1892,7 @@ emitter1.offEventData("eventId", callback);
 
 offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22-1)或[once](#once22-1)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[onGenericEventData](#ongenericeventdata22)或[onceGenericEventData](#oncegenericeventdata22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit](#emit22-1)接口发布但尚未执行的事件将被取消。
 
@@ -2060,6 +2053,8 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 发送指定优先级事件到当前Emitter类实例。
 
 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+
+该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 

@@ -571,7 +571,7 @@ const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // 1.创建悬浮窗。
+    // 1.创建全局悬浮窗。
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
       name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
@@ -584,7 +584,7 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
       windowClass = data;
-      // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
+      // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -601,7 +601,7 @@ export default class EntryAbility extends UIAbility {
         }
         hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
       });
-      // 3.为悬浮窗加载对应的目标页面。
+      // 3.为全局悬浮窗加载对应的目标页面。
       windowClass.setUIContent('pages/Index', (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -609,7 +609,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
-        // 3.显示悬浮窗。
+        // 3.显示全局悬浮窗。
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -619,7 +619,7 @@ export default class EntryAbility extends UIAbility {
           hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
-      // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+      // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
     });
   }
 };

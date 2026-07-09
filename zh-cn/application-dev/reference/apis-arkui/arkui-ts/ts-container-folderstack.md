@@ -410,7 +410,6 @@ struct Index {
       .alignContent(Alignment.Bottom)
       .height("100%")
       .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
 
     }
     .height("100%")
@@ -579,7 +578,6 @@ struct attributeDemo {
       .alignContent(Alignment.Bottom)
       .height("100%")
       .width("100%")
-      .backgroundColor('rgb(39, 135, 217)')
     }
     .height("100%")
     .width("100%")

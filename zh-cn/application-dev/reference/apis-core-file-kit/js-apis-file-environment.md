@@ -22,11 +22,13 @@ import { Environment } from '@kit.CoreFileKit';
 
 getUserDownloadDir(): string
 
-获取当前用户的下载目录的沙箱路径。
+获取当前用户下载目录的沙箱路径，用于访问对应目录中的文件。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -62,11 +64,13 @@ function getUserDownloadDirExample() {
 
 getUserDesktopDir(): string
 
-获取当前用户的桌面目录的沙箱路径。
+获取当前用户桌面目录的沙箱路径，用于访问对应目录中的文件。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -102,11 +106,13 @@ function getUserDesktopDirExample() {
 
 getUserDocumentDir(): string
 
-获取当前用户的文档目录的沙箱路径。
+获取当前用户文档目录的沙箱路径，用于访问对应目录中的文件。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 

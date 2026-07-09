@@ -61,9 +61,9 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
-| 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
-| 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+| 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
+| 11102004 | Invalid size value. Possibly caused by the size value is less than zero. |
+| 11102005 | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 
 > **注意：**
 >
@@ -363,7 +363,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101004 | Invalid string length of the event parameter. |
@@ -697,7 +697,7 @@ ArkTS-Sta: setSize(size: int): void
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -737,7 +737,7 @@ ArkTS-Sta: setRow(size: int): void
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -865,10 +865,10 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -964,10 +964,10 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -1510,7 +1510,7 @@ configure(config: ConfigOption): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11103001 | Invalid max storage quota value. Possible caused by incorrectly formatted. |
+| 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **示例：**
 
@@ -1523,7 +1523,7 @@ hiAppEvent.configure(config1);
 
 // 配置文件目录存储配额为100M
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -1544,7 +1544,7 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | 否 | 是   | 打点功能开关，默认值为false。true：关闭打点功能，false：开启打点功能。 |
-| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10M”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
+| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10MB”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
 ## EventPolicy<sup>22+</sup>
@@ -1622,6 +1622,7 @@ hiAppEvent.configure(config2);
 | extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| collectMinidump    | boolean | 否 | 是   | 是否使能minidump，默认值为false。<br/>true：在Native Crash场景同时生成minidump。<br/>false：在Native Crash场景不生成minidump。<br/>生成minidump日志文件以.dmp结尾，跟随APP_CRASH事件一起返回，保存在external_log字段中。<br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1648,7 +1649,8 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生oom时，不传递堆快照。<br/>"event_rawheap"：应用发生oom时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生OOM时，不传递堆快照。<br/>"event_rawheap"：应用发生OOM时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| useRefinedLogFileName    | boolean | 否 | 是   | 是否使能事件日志文件名精细化开关。<br/>true：使能事件日志文件名精细化开关。<br/>false：不使能事件日志文件名精细化开关。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 

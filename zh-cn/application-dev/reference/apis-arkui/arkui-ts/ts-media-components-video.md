@@ -1052,6 +1052,8 @@ setCurrentTime(value: double, seekMode?: SeekMode): void
 
 基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置AVPlayer、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1184,11 +1186,136 @@ interface FullscreenObject {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Video, Row, Button, VideoController, PlaybackSpeed, PosterOptions, ContentTransitionEffect, SeekMode, VideoOptions, $rawfile, $r, PreparedInfo, PlaybackInfo, FullscreenInfo, Resource } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct VideoCreateComponent {
+  @State videoSrc: Resource = $rawfile('video1.mp4');
+  @State previewUri: Resource = $r('app.media.poster1');
+  @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+  @State isAutoPlay: boolean = false;
+  @State showControls: boolean = true;
+  @State isShortcutKeyEnabled: boolean = false;
+  @State showFirstFrame: boolean = false;
+  controller: VideoController = new VideoController();
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        previewUri: this.previewUri,
+        currentProgressRate: this.curRate,
+        controller: this.controller,
+        posterOptions: {
+          showFirstFrame: this.showFirstFrame,
+          contentTransitionEffect: ContentTransitionEffect.OPACITY
+        } as PosterOptions
+      } as VideoOptions)
+        .width('100%')
+        .height(600)
+        .autoPlay(this.isAutoPlay)
+        .controls(this.showControls)
+        .enableShortcutKey(this.isShortcutKeyEnabled)
+        .onStart(() => {
+          console.info('onStart');
+        })
+        .onPause(() => {
+          console.info('onPause');
+        })
+        .onFinish(() => {
+          console.info('onFinish');
+        })
+        .onError(() => {
+          console.error('onError');
+        })
+        .onStop(() => {
+          console.info('onStop');
+        })
+        .onPrepared((e?: PreparedInfo) => {
+          if (e != undefined) {
+            console.info(`onPrepared is ${e.duration}`);
+          }
+        })
+        .onSeeking((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeking is ${e.time}`);
+          }
+        })
+        .onSeeked((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeked is ${e.time}`);
+          }
+        })
+        .onUpdate((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onUpdate is ${e.time}`);
+          }
+        })
+        .onFullscreenChange((e?: FullscreenInfo) => {
+          if (e != undefined) {
+            console.info(`onFullscreenChange is ${e.fullscreen}`);
+          }
+        })
+
+      Row() {
+        Button('src').onClick(() => {
+          this.videoSrc = $rawfile('video2.mp4');
+        }).margin(5)
+        Button('previewUri').onClick(() => {
+          this.previewUri = $r('app.media.poster2');
+        }).margin(5)
+        Button('controls').onClick(() => {
+          this.showControls = !this.showControls;
+        }).margin(5)
+      }
+
+      Row() {
+        Button('start').onClick(() => {
+          this.controller.start();
+        }).margin(2)
+        Button('pause').onClick(() => {
+          this.controller.pause();
+        }).margin(2)
+        Button('stop').onClick(() => {
+          this.controller.stop();
+        }).margin(2)
+        Button('reset').onClick(() => {
+          this.controller.reset();
+        }).margin(2)
+        Button('setTime').onClick(() => {
+          this.controller.setCurrentTime(10, SeekMode.Accurate);
+        }).margin(2)
+      }
+
+      Row() {
+        Button('rate 0.75').onClick(() => {
+          this.curRate = PlaybackSpeed.Speed_Forward_0_75_X;
+        }).margin(5)
+        Button('rate 1').onClick(() => {
+          this.curRate = PlaybackSpeed.Speed_Forward_1_00_X;
+        }).margin(5)
+        Button('rate 2').onClick(() => {
+          this.curRate = PlaybackSpeed.Speed_Forward_2_00_X;
+        }).margin(5)
+      }
+    }
+  }
+}
+```
+
 ![VideoSample](figures/video_sample.gif)
 
 ### 示例2（图像分析功能）
 
 通过enableAnalyzer属性开启图像AI分析。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1244,9 +1371,69 @@ struct ImageAnalyzerExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Video, Row, Button, VideoController, ImageAnalyzerConfig, ImageAnalyzerType, ImageAnalyzerController, ImageAIOptions, VideoOptions, $rawfile, $r, Resource } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ImageAnalyzerExample {
+  @State videoSrc: Resource = $rawfile('video1.mp4');
+  @State previewUri: Resource = $r('app.media.poster1');
+  controller: VideoController = new VideoController();
+  config: ImageAnalyzerConfig = {
+    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
+  }
+  private aiController: ImageAnalyzerController = new ImageAnalyzerController();
+  private options: ImageAIOptions = {
+    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
+    aiController: this.aiController
+  }
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        previewUri: this.previewUri,
+        controller: this.controller,
+        imageAIOptions: this.options
+      } as VideoOptions)
+        .width('100%')
+        .height(600)
+        .controls(false)
+        .enableAnalyzer(true)
+        .analyzerConfig(this.config)
+        .onStart(() => {
+          console.info('onStart');
+        })
+        .onPause(() => {
+          console.info('onPause');
+        })
+
+      Row() {
+        Button('start').onClick(() => {
+          this.controller.start();
+        }).margin(5)
+        Button('pause').onClick(() => {
+          this.controller.pause();
+        }).margin(5)
+        Button('getTypes').onClick(() => {
+          this.aiController.getImageAnalyzerSupportTypes();
+        }).margin(5)
+      }
+    }
+  }
+}
+```
+
 ### 示例3（播放拖入的视频）
 
 以下示例展示了如何使Video组件能够播放拖入的视频。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1284,9 +1471,49 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { Entry, Component, Column, Video, VideoController, VideoOptions, DragEvent, $rawfile, Resource } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State videoSrc: Resource | string = $rawfile('video1.mp4');
+  private controller: VideoController = new VideoController();
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        controller: this.controller
+      } as VideoOptions)
+        .width('100%')
+        .height(600)
+        .onPrepared(() => {
+          this.controller.start();
+        })
+        .onDrop((e: DragEvent) => {
+          let record = e.getData()!.getRecords()[0];
+          if (record!.getType() == uniformTypeDescriptor.UniformDataType.VIDEO as String) {
+            let videoInfo = record as unifiedDataChannel.Video;
+            this.videoSrc = videoInfo.videoUri;
+          }
+        })
+    }
+  }
+}
+```
+
 ### 示例4（视频填充模式）
 
 通过objectFit属性设置视频填充模式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1340,11 +1567,71 @@ struct VideoObject {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Video, VideoController, ImageFit, HorizontalAlign, VideoOptions, Text, $rawfile, $r, Resource } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct VideoObject {
+  @State videoSrc: Resource = $rawfile('rabbit.mp4');
+  @State previewUri: Resource = $r('app.media.tree');
+  @State showControls: boolean = true;
+  controller: VideoController = new VideoController();
+
+  build() {
+    Column() {
+      Text('ImageFit.Contain').fontSize(12)
+      Video({
+        src: this.videoSrc,
+        previewUri: this.previewUri,
+        controller: this.controller
+      } as VideoOptions)
+        .width(350)
+        .height(230)
+        .controls(this.showControls)
+        .objectFit(ImageFit.Contain)
+        .margin(5)
+
+      Text('ImageFit.Fill').fontSize(12)
+      Video({
+        src: this.videoSrc,
+        previewUri: this.previewUri,
+        controller: this.controller
+      } as VideoOptions)
+        .width(350)
+        .height(230)
+        .controls(this.showControls)
+        .objectFit(ImageFit.Fill)
+        .margin(5)
+
+      Text('ImageFit.START').fontSize(12)
+      Video({
+        src: this.videoSrc,
+        previewUri: this.previewUri,
+        controller: this.controller
+      } as VideoOptions)
+        .width(350)
+        .height(230)
+        .controls(this.showControls)
+        .objectFit(ImageFit.START)
+        .margin(5)
+    }.width('100%').alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ![VideoObjectFit](figures/video_objectfit.png)
 
 ### 示例5（onError事件上报错误码）
 
 从API version 20开始，支持通过[onError](#onerror)获取错误信息，该示例以传入不存在的视频资源路径为例。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1354,7 +1641,6 @@ struct VideoErrorComponent {
   @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
-  @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
   @State errorMessage: string = '';
 
@@ -1384,11 +1670,54 @@ struct VideoErrorComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Video, Text, VideoController, VideoOptions } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct VideoErrorComponent {
+  @State videoSrc: string = 'video.mp4';
+  @State isAutoPlay: boolean = false;
+  @State showControls: boolean = true;
+  @State showFirstFrame: boolean = false;
+  controller: VideoController = new VideoController();
+  @State errorMessage: string = '';
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        controller: this.controller,
+      } as VideoOptions)
+        .width(200)
+        .height(120)
+        .margin(5)
+        .autoPlay(this.isAutoPlay)
+        .controls(this.showControls)
+        .onError((err) => {
+          console.error(`code is ${err.code}, message is ${err.message}`);
+          this.errorMessage = `code is ${err.code}, message is ${err.message}`;
+        })
+      Text(this.errorMessage)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('rgb(213,213,213)')
+  }
+}
+```
+
 ![](figures/onError.png)
 
 ### 示例6（使用attributeModifier动态设置Video组件的属性及方法）
 
 以下示例展示了如何使用attributeModifier动态设置Video组件的enableAnalyzer、analyzerConfig属性和onStart、onPause、onFinish、onError、onStop、onPrepared、onSeeking、onSeeked、onUpdate、onFullscreenChange方法。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -1506,6 +1835,114 @@ interface FullscreenObject {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Video, Row, Button, VideoController, VideoAttribute, AttributeModifier, PlaybackSpeed, ImageAnalyzerConfig, ImageAnalyzerType, VideoOptions, SeekMode, $rawfile, Resource, PreparedInfo, PlaybackInfo, FullscreenInfo } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyVideoModifier implements AttributeModifier<VideoAttribute> {
+  applyNormalAttribute(instance: VideoAttribute): void {
+    instance.enableAnalyzer(true);
+    let config: ImageAnalyzerConfig = {
+      types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
+    }
+    instance.analyzerConfig(config);
+    instance.onStart(() => {
+      console.info('video: onStart');
+    })
+    instance.onPause(() => {
+      console.info('video: onPause');
+    })
+    instance.onFinish(() => {
+      console.info('video: onFinish');
+    })
+    instance.onError((err) => {
+      console.error(`video: onError is code = ${err.code}, message = ${err.message}`);
+    })
+    instance.onStop(() => {
+      console.info('video: onStop');
+    })
+    instance.onPrepared((e?: PreparedInfo) => {
+      if (e != undefined) {
+        console.info(`video: onPrepared is ${e.duration}`);
+      }
+    })
+    instance.onSeeking((e?: PlaybackInfo) => {
+      if (e != undefined) {
+        console.info(`video: onSeeking is ${e.time}`);
+      }
+    })
+    instance.onSeeked((e?: PlaybackInfo) => {
+      if (e != undefined) {
+        console.info(`video: onSeeked is ${e.time}`);
+      }
+    })
+    instance.onUpdate((e?: PlaybackInfo) => {
+      if (e != undefined) {
+        console.info(`video: onUpdate is ${e.time}`);
+      }
+    })
+    instance.onFullscreenChange((e?: FullscreenInfo) => {
+      if (e != undefined) {
+        console.info(`video: onFullscreenChange is ${e.fullscreen}`);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct VideoModifierDemo {
+  @State videoSrc: Resource = $rawfile('video.mp4');
+  @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+  @State isAutoPlay: boolean = false;
+  @State showControls: boolean = false;
+  controller: VideoController = new VideoController();
+  @State modifier: MyVideoModifier = new MyVideoModifier();
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        currentProgressRate: this.curRate,
+        controller: this.controller
+      } as VideoOptions)
+        .width(300)
+        .height(180)
+        .autoPlay(this.isAutoPlay)
+        .controls(this.showControls)
+        .attributeModifier(this.modifier)
+      Row() {
+        Button('start').onClick(() => {
+          this.controller.start();
+        }).margin(2)
+        Button('pause').onClick(() => {
+          this.controller.pause();
+        }).margin(2)
+        Button('stop').onClick(() => {
+          this.controller.stop();
+        }).margin(2)
+        Button('reset').onClick(() => {
+          this.controller.reset();
+        }).margin(2)
+      }
+
+      Row() {
+        Button('Fullscreen').onClick(() => {
+          this.controller.requestFullscreen(true);
+        }).margin(2)
+        Button('showControls').onClick(() => {
+          this.showControls = !this.showControls;
+        }).margin(2)
+      }
+    }
+  }
+}
+
+```
+
 ![](figures/videoModifier.png)
 
 ### 示例7（VideoControllerAsync用法）
@@ -1514,6 +1951,8 @@ interface FullscreenObject {
 
 从API版本26.0.0开始，新增VideoControllerAsync控制器及[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1521,7 +1960,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct VideoControllerAsyncExample {
   @State videoSrc: Resource = $rawfile('video1.mp4');// 替换为开发者所需的视频资源文件。
-  @State showFirstFrame: boolean = false;
   controller: VideoControllerAsync = new VideoControllerAsync();
 
   build() {
@@ -1603,6 +2041,113 @@ struct VideoControllerAsyncExample {
         }).margin(2)
         Button('reset').onClick(() => {
           this.controller.reset() // 重置AVPlayer。
+            .then(() => {
+              console.info('reset success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`reset failed: ${err.message}`)
+            })
+        }).margin(2)
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Component, Column, Video, Row, Button, VideoControllerAsync, PreparedInfo, PlaybackInfo, FullscreenInfo, VideoOptions, $rawfile, Resource } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct VideoControllerAsyncExample {
+  @State videoSrc: Resource = $rawfile('video1.mp4');
+  @State showFirstFrame: boolean = false;
+  controller: VideoControllerAsync = new VideoControllerAsync();
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        controllerAsync: this.controller,
+      } as VideoOptions)
+        .width('100%')
+        .height(600)
+        .onStart(() => {
+          console.info('onStart');
+        })
+        .onPause(() => {
+          console.info('onPause');
+        })
+        .onFinish(() => {
+          console.info('onFinish');
+        })
+        .onError(() => {
+          console.error('onError');
+        })
+        .onStop(() => {
+          console.info('onStop');
+        })
+        .onPrepared((e?: PreparedInfo) => {
+          if (e != undefined) {
+            console.info(`onPrepared is ${e.duration}`);
+          }
+        })
+        .onSeeking((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeking is ${e.time}`);
+          }
+        })
+        .onSeeked((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeked is ${e.time}`);
+          }
+        })
+        .onUpdate((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onUpdate is ${e.time}`);
+          }
+        })
+        .onFullscreenChange((e?: FullscreenInfo) => {
+          if (e != undefined) {
+            console.info(`onFullscreenChange is ${e.fullscreen}`);
+          }
+        })
+
+      Row() {
+        Button('start').onClick(() => {
+          this.controller.start()
+            .then(() => {
+              console.info('start success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`start failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('pause').onClick(() => {
+          this.controller.pause()
+            .then(() => {
+              console.info('pause success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`pause failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('stop').onClick(() => {
+          this.controller.stop()
+            .then(() => {
+              console.info('stop success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`stop failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('reset').onClick(() => {
+          this.controller.reset()
             .then(() => {
               console.info('reset success')
             })

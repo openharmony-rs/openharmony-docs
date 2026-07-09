@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
 
 ## 概述
 
-定义内容修改器指针。
+定义渲染内容修改器指针。
 
 **起始版本：** 20
 

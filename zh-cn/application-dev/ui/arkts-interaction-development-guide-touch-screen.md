@@ -334,7 +334,7 @@ struct MultipleFingerInformation {
 
 ![finger ids](figures/finger_ids.png)
 
-按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指② -> 抬起手指① -> 抬起手指③
+按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指③ -> 抬起手指① -> 抬起手指③
 
 ```text
   fingers start to press down   // 按下手指①

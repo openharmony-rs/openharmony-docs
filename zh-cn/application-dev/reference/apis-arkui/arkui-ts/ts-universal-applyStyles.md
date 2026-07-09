@@ -19,7 +19,7 @@ applyStyles\<T extends CommonMethod\>(this: T, customStyles: CustomStyles): T
 | 参数名         | 类型                                    | 必填 | 说明                                                         |
 | -------------- | -------------------------------------- | ---- | ----  |
 | this           | T                                      | 是   | UI组件。 |
-| customStyles   | CustomStyles | 是   | 给UI组件添加样式的回调函数。 |
+| customStyles   | [CustomStyles](./ts-universal-attributes-polymorphic-style.md#customstyles23) | 是   | 给UI组件添加样式的回调函数。 |
 
 **返回值：**
 

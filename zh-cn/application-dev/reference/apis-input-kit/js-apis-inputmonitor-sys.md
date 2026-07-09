@@ -3567,7 +3567,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 ArkTS-Dyn示例：
 
 ```js
-import { inputMonitor, TouchEvent } from '@kit.InputKit'
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {

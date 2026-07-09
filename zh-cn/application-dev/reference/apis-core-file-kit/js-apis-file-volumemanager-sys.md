@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息，对卷设备的挂载卸载、对磁盘设备分区以及卷设备的格式化等功能。
+该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息和磁盘设备信息，对卷设备的挂载卸载、弹出、擦除，对磁盘设备的分区创建、删除、格式化及分区表查询，卷设备的格式化，以及光盘刻录（包括创建ISO镜像、数据刻录、刻录数据校验和操作进度查询）等功能。
 
 > **说明：**
 >
@@ -62,9 +62,9 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
   
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
-    // do something with volumes, which is an array
+    // 获取到所有卷设备信息
   }).catch((error: BusinessError) => {
-    console.error("getAllVolumes failed");
+    console.error(`Failed to getAllVolumes. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -74,9 +74,9 @@ ArkTS-Sta示例：
   import { BusinessError } from '@kit.BasicServicesKit';
   
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
-    // do something with volumes, which is an array
+    // 获取到所有卷设备信息
   }).catch((error: BusinessError): void => {
-    console.error("getAllVolumes failed");
+    console.error(`Failed to getAllVolumes. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -122,7 +122,11 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
   
   volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
-    // do something
+    if (error) {
+      console.error(`getAllVolumes failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到所有卷设备信息
   });
   ```
 
@@ -132,7 +136,11 @@ ArkTS-Sta示例：
   import { BusinessError } from '@kit.BasicServicesKit';
   
   volumeManager.getAllVolumes((error: BusinessError | null, volumes: Array<volumeManager.Volume> | undefined) => {
-    // do something
+    if (error) {
+      console.error(`getAllVolumes failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到所有卷设备信息
   });
   ```
 
@@ -140,7 +148,7 @@ ArkTS-Sta示例：
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-挂载指定卷设备，使用Promise异步回调。
+挂载指定卷设备，只有处于卸载状态的卷设备可以挂载。使用Promise异步回调。
 
 当前仅支持以下文件系统的卷设备挂载：
 
@@ -162,7 +170,7 @@ vfat、exfat及ntfs。
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -193,11 +201,12 @@ vfat、exfat及ntfs。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
-    // do something
+    // 挂载指定卷设备成功后的回调
   }).catch((error: BusinessError) => {
-    console.error("mount failed");
+    console.error(`Failed to mount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -206,11 +215,12 @@ vfat、exfat及ntfs。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
-    // do something
+    // 挂载指定卷设备成功后的回调
   }).catch((error: BusinessError): void => {
-    console.error("mount failed");
+    console.error(`Failed to mount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -218,7 +228,7 @@ vfat、exfat及ntfs。
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-挂载指定卷设备，使用callback异步回调。
+挂载指定卷设备，只有处于卸载状态的卷设备可以挂载。使用callback异步回调。
 
 当前仅支持以下文件系统的卷设备挂载：
 
@@ -240,7 +250,7 @@ vfat、exfat及ntfs。
 
   | 参数名   | 类型                                  | 必填 | 说明                 |
   | -------- | ------------------------------------- | ---- | -------------------- |
-  | volumeId | string                                | 是   | 卷设备ID。                 |
+  | volumeId | string                                | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                 |
   | callback | AsyncCallback&lt;void&gt; | 是   | 挂载指定卷设备之后的回调。 |
 
 **错误码：**
@@ -266,9 +276,14 @@ vfat、exfat及ntfs。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId, (error: BusinessError) => {
-    // do something
+    if (error) {
+      console.error(`mount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 挂载指定卷设备成功后的回调
   });
   ```
 
@@ -277,9 +292,14 @@ vfat、exfat及ntfs。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId, (error: BusinessError | null) => {
-    // do something
+    if (error) {
+      console.error(`mount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 挂载指定卷设备成功后的回调
   });
   ```
 
@@ -303,7 +323,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -334,11 +354,12 @@ unmount(volumeId: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId).then(() => {
-    // do something
+    // 卸载指定卷设备成功后的回调
   }).catch((error: BusinessError) => {
-    console.error("unmount failed");
+    console.error(`Failed to unmount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -347,11 +368,12 @@ unmount(volumeId: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId).then(() => {
-    // do something
+    // 卸载指定卷设备成功后的回调
   }).catch((error: BusinessError): void => {
-    console.error("unmount failed");
+    console.error(`Failed to unmount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -375,7 +397,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
   | 参数名   | 类型                                  | 必填 | 说明                 |
   | -------- | ------------------------------------- | ---- | -------------------- |
-  | volumeId | string                                | 是   | 卷设备ID。                 |
+  | volumeId | string                                | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                 |
   | callback | AsyncCallback&lt;void&gt; | 是   | 卸载指定卷设备之后的回调。 |
 
 **错误码：**
@@ -401,9 +423,14 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId, (error: BusinessError) => {
-    // do something
+    if (error) {
+      console.error(`unmount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 卸载指定卷设备成功后的回调
   });
   ```
 
@@ -412,9 +439,14 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId, (error: BusinessError | null) => {
-    // do something
+    if (error) {
+      console.error(`unmount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 卸载指定卷设备成功后的回调
   });
   ```
 
@@ -438,13 +470,13 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | uuid | string | 是   | 卷设备uuid。 |
+  | uuid | string | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。 |
 
 **返回值：**
 
   | 类型                               | 说明                       |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回当前uuid的卷设备信息。 |
+  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回指定uuid对应的卷设备信息。 |
 
 **错误码：**
 
@@ -466,11 +498,12 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
-    console.error(`getVolumeByUuid failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to getVolumeByUuid. Code: ${error.code}, message: ${error.message}`);
   });
   ```
   
@@ -479,11 +512,12 @@ ArkTS-Sta示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError): void => {
-    console.error(`getVolumeByUuid failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to getVolumeByUuid. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -507,7 +541,7 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
   | 参数名    | 类型                                                 | 必填 | 说明                 |
   | -------- | ------------------------------------------------ | ---- | -------------------- |
-  | uuid | string                                                 | 是   | 卷设备uuid。                 |
+  | uuid | string                                                 | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。                 |
   | callback | AsyncCallback&lt;[Volume](#volume)&gt;  | 是   | 获取卷设备信息之后的回调。 |
 
 **错误码：**
@@ -530,9 +564,14 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeByUuid failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
   
@@ -541,9 +580,14 @@ ArkTS-Sta示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError | null, volume: volumeManager.Volume | undefined) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeByUuid failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
 
@@ -567,13 +611,13 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
   | 参数名    | 类型    | 必填  | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
   | 类型                               | 说明                       |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回当前ID的卷设备信息。 |
+  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回指定volumeId对应的卷设备信息。 |
 
 **错误码：**
 
@@ -595,11 +639,12 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
-    console.error(`getVolumeById failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to getVolumeById. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -608,11 +653,12 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError): void => {
-    console.error(`getVolumeById failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to getVolumeById. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -659,9 +705,14 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeById failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
 
@@ -670,9 +721,14 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId, (error: BusinessError | null, volume: volumeManager.Volume | undefined) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeById failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
 
@@ -696,7 +752,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
   | 参数名     | 类型   | 必填 | 说明 |
   | --------- | ------ | ---- | ---- |
-  | uuid      | string | 是   | 卷设备uuid。 |
+  | uuid      | string | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。 |
   | description | string | 是   | 卷设备描述。 |
 
 **返回值：**
@@ -727,12 +783,13 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
     console.info("setVolumeDescription successfully");
   }).catch((error: BusinessError) => {
-    console.error(`setVolumeDescription failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to setVolumeDescription. Code: ${error.code}, message: ${error.message}`);
   });
   ```
   
@@ -741,12 +798,13 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
     console.info("setVolumeDescription successfully");
   }).catch((error: BusinessError): void => {
-    console.error(`setVolumeDescription failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to setVolumeDescription. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -770,7 +828,7 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
   | 参数名      | 类型                                     | 必填 | 说明              |
   | ---------- | --------------------------------------- | ---- | ---------------- |
-  | uuid       | string                                  | 是   | 卷设备uuid。            |
+  | uuid       | string                                  | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。            |
   | description | string                                 | 是   | 卷设备描述。            |
   | callback   | AsyncCallback&lt;void&gt;   | 是   | 设置卷描述之后的回调。 |
 
@@ -796,10 +854,15 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`setVolumeDescription failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 设置卷设备描述成功的回调
   });
   ```
 
@@ -808,10 +871,15 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description, (error: BusinessError | null) => {
-    // do something    
+    if (error) {
+      console.error(`setVolumeDescription failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 设置卷设备描述成功的回调
   });
   ```
 
@@ -843,7 +911,7 @@ vfat和exfat。
 
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
-  | volumeId    | string | 是   | 卷设备ID。 |
+  | volumeId    | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备须处于卸载状态，否则返回错误码13600005。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
   | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
 
 **返回值：**
@@ -874,12 +942,13 @@ vfat和exfat。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
     console.info("format successfully");
   }).catch((error: BusinessError) => {
-    console.error(`format failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to format. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -888,12 +957,13 @@ vfat和exfat。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
     console.info("format successfully");
   }).catch((error: BusinessError): void => {
-    console.error(`format failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to format. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -951,10 +1021,15 @@ vfat和exfat。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`format failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对指定卷设备格式化成功的回调
   });
   ```
 
@@ -963,10 +1038,15 @@ vfat和exfat。
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType, (error: BusinessError | null) => {
-    // do something    
+    if (error) {
+      console.error(`format failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对指定卷设备格式化成功的回调
   });
   ```
 
@@ -976,7 +1056,7 @@ ArkTS-Dyn: partition(diskId: string, type: number): Promise&lt;void&gt;
 
 ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
 
-对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
+对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统支持读取已存在多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -993,7 +1073,7 @@ ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
   | diskId    | string | 是   | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
-  | type      | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 分区类型。    |
+  | type      | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 分区类型，用于指定分区方式。当前仅支持传入0，表示将磁盘重新分区为一个分区。    |
 
 **返回值：**
 
@@ -1021,12 +1101,13 @@ ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type).then(() => {
     console.info("partition successfully");
   }).catch((error: BusinessError) => {
-    console.error(`partition failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to partition. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -1035,12 +1116,13 @@ ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: int = 0;
   volumeManager.partition(diskId, type).then(() => {
     console.info("partition successfully");
   }).catch((error: BusinessError): void => {
-    console.error(`partition failed with error, code is: ${error.code}, message is: ${error.message}`);
+    console.error(`Failed to partition. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -1050,7 +1132,7 @@ ArkTS-Dyn: partition(diskId: string, type: number, callback: AsyncCallback&lt;vo
 
 ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&gt;): void
 
-对磁盘设备进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
+对磁盘设备进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统支持读取已存在多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -1067,8 +1149,8 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
   | 参数名      | 类型                                   | 必填 | 说明              |
   | -------- | --------------------------------------- | ---- | ---------------- |
   | diskId   | string                                  | 是   | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。      |
-  | type     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                | 是   | 分区类型。          |
-  | callback | AsyncCallback&lt;void&gt;   | 是   | 对磁盘设备进行分区。      |
+  | type     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                | 是   | 分区类型，用于指定分区方式。当前仅支持传入0，表示将磁盘重新分区为一个分区。          |
+  | callback | AsyncCallback&lt;void&gt;   | 是   | 对磁盘设备分区完成后的回调。      |
 
 **错误码：**
 
@@ -1090,10 +1172,15 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`partition failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对磁盘设备分区成功后的回调
   });
   ```
 
@@ -1102,37 +1189,23 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: int = 0;
   volumeManager.partition(diskId, type, (error: BusinessError | null) => {
-    // do something    
+    if (error) {
+      console.error(`partition failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对磁盘设备分区成功后的回调
   });
   ```
-
-## VerifyType
-
-刻录数据校验类型的枚举。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：此接口为系统接口。
-
-| 名称         | 值    | 说明                 |
-| ----------- | ------- | -------------------- |
-| KEY_DATA    | 0       | 关键数据校验类型。     |
-| FULL_DATA   | 1       | 全量数据校验类型。     |
 
 ## volumemanager.erase
 
 erase(volumeId: string): Promise&lt;void&gt;
 
-擦除指定卷设备，使用Promise异步回调。
+擦除指定卷设备中的数据，使用Promise异步回调。适用于需要彻底清除卷设备上数据的场景，例如光盘重写前的数据擦除。擦除操作会清除卷设备上的所有数据，仅处于卸载状态的卷设备可执行擦除操作。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1150,7 +1223,7 @@ erase(volumeId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -1176,11 +1249,12 @@ erase(volumeId: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 volumeManager.erase(volumeId).then(() => {
   console.info("erase successfully.");
 }).catch((error: BusinessError) => {
-  console.error("erase failed with error:" + JSON.stringify(error));
+  console.error(`Failed to erase. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1188,7 +1262,7 @@ volumeManager.erase(volumeId).then(() => {
 
 eject(diskId: string): Promise&lt;void&gt;
 
-弹出指定卷设备，使用Promise异步回调。
+弹出指定磁盘设备及其所属卷设备，使用Promise异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1206,7 +1280,7 @@ eject(diskId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 卷设备所属的磁盘ID。 |
+| diskId | string | 是   | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -1224,17 +1298,19 @@ eject(diskId: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
+| 13600027 | Eject operation failed. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.eject(diskId).then(() => {
   console.info("eject successfully.");
 }).catch((error: BusinessError) => {
-  console.error("eject failed with error:" + JSON.stringify(error));
+  console.error(`Failed to eject. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1260,7 +1336,7 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 | filePath | string | 是   | ISO镜像文件的保存路径。 |
 
 **返回值：**
@@ -1289,12 +1365,13 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let filePath: string = "";
 volumeManager.createIsoImage(volumeId, filePath).then(() => {
   console.info("createIsoImage successfully.");
 }).catch((error: BusinessError) => {
-  console.error("createIsoImage failed with error:" + JSON.stringify(error));
+  console.error(`Failed to createIsoImage. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1320,7 +1397,7 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的Want信息。 |
 
 **返回值：**
@@ -1348,6 +1425,7 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 import { Want } from '@kit.AbilityKit';
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let want: Want = {
   diskName: "MyDisc",
@@ -1360,7 +1438,7 @@ let want: Want = {
 volumeManager.burn(volumeId, want).then(() => {
   console.info("burn successfully.");
 }).catch((error: BusinessError) => {
-  console.error("burn failed with error:" + JSON.stringify(error));
+  console.error(`Failed to burn. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1370,7 +1448,7 @@ ArkTS-Dyn: getOpProcess(volumeId: string): Promise&lt;number&gt;
 
 ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
 
-获取指定卷设备的操作进度，使用Promise异步回调。
+获取指定卷设备的光驱刻录操作进度，使用Promise异步回调。在调用burn接口向光盘刻录数据后，可通过本接口获取刻录进度。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1388,13 +1466,13 @@ ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
 | 类型                   | 说明       |
 | ---------------------- | ---------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回光驱刻录操作进度，进度值为0-100的整数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回当前操作的进度，进度值为0-100的整数。 |
 
 **错误码：**
 
@@ -1414,11 +1492,12 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 volumeManager.getOpProcess(volumeId).then((progress: number) => {
   console.info("getOpProcess successfully, progress:" + progress);
 }).catch((error: BusinessError) => {
-  console.error("getOpProcess failed with error:" + JSON.stringify(error));
+  console.error(`Failed to getOpProcess. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1426,69 +1505,12 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 volumeManager.getOpProcess(volumeId).then((progress: int) => {
   console.info("getOpProcess successfully, progress:" + progress);
 }).catch((error: BusinessError) => {
-  console.error("getOpProcess failed with error:" + JSON.stringify(error));
-});
-```
-
-## volumemanager.verifyBurnData
-
-verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
-
-校验指定卷设备的刻录数据，使用Promise异步回调。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型   | 必填 | 说明 |
-| -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
-| verType | [VerifyType](#verifytype) | 是   | 刻录数据的校验类型。 |
-
-**返回值：**
-
-| 类型                   | 说明       |
-| ---------------------- | ---------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
-| 13600030 | Verification failed. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let volumeId: string = "";
-let verType: volumeManager.VerifyType = volumeManager.VerifyType.KEY_DATA;
-volumeManager.verifyBurnData(volumeId, verType).then(() => {
-  console.info("verifyBurnData successfully.");
-}).catch((error: BusinessError) => {
-  console.error("verifyBurnData failed with error:" + JSON.stringify(error));
+  console.error(`Failed to getOpProcess. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1536,7 +1558,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 volumeManager.getAllDisks().then((disks: Array<volumeManager.Disk>) => {
   console.info("getAllDisks successfully:" + JSON.stringify(disks));
 }).catch((error: BusinessError) => {
-  console.error(`getAllDisks failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getAllDisks. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1548,7 +1570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 volumeManager.getAllDisks().then((disks: Array<volumeManager.Disk>) => {
   console.info("getAllDisks successfully:" + JSON.stringify(disks));
 }).catch((error: BusinessError): void => {
-  console.error(`getAllDisks failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getAllDisks. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1601,11 +1623,12 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getDiskById(diskId).then((disk: volumeManager.Disk) => {
   console.info("getDiskById successfully:" + JSON.stringify(disk));
 }).catch((error: BusinessError) => {
-  console.error(`getDiskById failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getDiskById. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1614,11 +1637,12 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getDiskById(diskId).then((disk: volumeManager.Disk) => {
   console.info("getDiskById successfully:" + JSON.stringify(disk));
 }).catch((error: BusinessError): void => {
-  console.error(`getDiskById failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getDiskById. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1672,11 +1696,12 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getPartitionTable(diskId).then((partitionTableInfo: volumeManager.PartitionTableInfo) => {
   console.info("getPartitionTable successfully:" + JSON.stringify(partitionTableInfo));
 }).catch((error: BusinessError) => {
-  console.error(`getPartitionTable failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getPartitionTable. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1685,11 +1710,12 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getPartitionTable(diskId).then((partitionTableInfo: volumeManager.PartitionTableInfo) => {
   console.info("getPartitionTable successfully:" + JSON.stringify(partitionTableInfo));
 }).catch((error: BusinessError): void => {
-  console.error(`getPartitionTable failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to getPartitionTable. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1697,7 +1723,7 @@ volumeManager.getPartitionTable(diskId).then((partitionTableInfo: volumeManager.
 
 createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 
-对指定磁盘设备创建分区。使用Promise异步回调。
+对指定磁盘设备创建分区，不支持对光盘进行分区。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1746,6 +1772,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let params: volumeManager.PartitionParams = {
   partitionNum: 1,
@@ -1756,7 +1783,7 @@ let params: volumeManager.PartitionParams = {
 volumeManager.createPartition(diskId, params).then(() => {
   console.info("createPartition successfully.");
 }).catch((error: BusinessError) => {
-  console.error(`createPartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to createPartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1765,6 +1792,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let params: volumeManager.PartitionParams = {
   partitionNum: 1,
@@ -1775,7 +1803,7 @@ let params: volumeManager.PartitionParams = {
 volumeManager.createPartition(diskId, params).then(() => {
   console.info("createPartition successfully.");
 }).catch((error: BusinessError): void => {
-  console.error(`createPartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to createPartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1785,7 +1813,7 @@ ArkTS-Dyn: deletePartition(diskId: string, partitionNum: number): Promise&lt;voi
 
 ArkTS-Sta: deletePartition(diskId: string, partitionNum: int): Promise&lt;void&gt;
 
-对指定磁盘设备删除指定分区。使用Promise异步回调。
+对指定磁盘设备删除指定分区，不支持对光盘进行分区。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1833,12 +1861,13 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: number = 1;
 volumeManager.deletePartition(diskId, partitionNum).then(() => {
   console.info("deletePartition successfully.");
 }).catch((error: BusinessError) => {
-  console.error(`deletePartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to deletePartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1847,12 +1876,13 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: int = 1;
 volumeManager.deletePartition(diskId, partitionNum).then(() => {
   console.info("deletePartition successfully.");
 }).catch((error: BusinessError): void => {
-  console.error(`deletePartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to deletePartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1862,7 +1892,7 @@ ArkTS-Dyn: formatPartition(diskId: string, partitionNum: number, params: FormatP
 
 ArkTS-Sta: formatPartition(diskId: string, partitionNum: int, params: FormatParams): Promise&lt;void&gt;
 
-对指定磁盘设备的指定分区进行格式化。使用Promise异步回调。
+对指定磁盘设备的指定分区进行格式化，需确保相关卷设备处于卸载状态。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1912,6 +1942,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: number = 1;
 let params: volumeManager.FormatParams = {
@@ -1922,7 +1953,7 @@ let params: volumeManager.FormatParams = {
 volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
   console.info("formatPartition successfully.");
 }).catch((error: BusinessError) => {
-  console.error(`formatPartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to formatPartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1931,6 +1962,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: int = 1;
 let params: volumeManager.FormatParams = {
@@ -1941,7 +1973,7 @@ let params: volumeManager.FormatParams = {
 volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
   console.info("formatPartition successfully.");
 }).catch((error: BusinessError): void => {
-  console.error(`formatPartition failed with error, code is: ${error.code}, message is: ${error.message}`);
+  console.error(`Failed to formatPartition. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1959,14 +1991,14 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | ----------- | ------- | ------- | ----- | -------------------- |
 | id          | string  | 否 | 否 | 卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                |
 | uuid        | string  | 否 | 否 | 卷设备uuid是卷设备的通用唯一识别码，不会随着插卡顺序变化而变化，但是卷设备的格式化会改变卷设备的uuid。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                |
-| diskId      | string  | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID相似。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23         |
-| description | string  | 否 | 否 | 卷设备描述。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23            |
-| removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| diskId | string | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID的格式结构类似，均采用{主设备号}-{次设备号}的命名规则。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| description | string | 否 | 否 | 卷设备描述。卷设备的格式化会改变卷设备描述。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| removable | boolean | 否 | 否 | 表示卷设备是否可移除。当前仅支持查询可移除存储设备，因此该字段值始终为true。true表示可移除；false表示不可移除。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
 | state       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23           |
-| path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23          |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23        |
-| partitionNum   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 卷设备的分区号。<br> **ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。         |
-| extraInfo   | string  | 否 | 是 | 卷设备的扩展信息。<br>**ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。         |
+| path | string | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。卷设备的格式化会改变挂载路径。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| fsType<sup>12+</sup> | string | 否 | 否 | 文件系统的类型，取值包括ext2、vfat、ntfs等。<br>**说明**：从API version 24开始，还支持ISO9660、UDF。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 卷设备的分区号。该字段为可选字段，不存在时表示无分区号信息。<br> **ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| extraInfo | string | 否 | 是 | 卷设备的扩展信息，包含设备的附加属性数据，具体内容因设备类型不同而异。该字段为可选字段，不存在时表示无扩展信息。<br>**ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DiskType
 
@@ -2016,8 +2048,8 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | sizeBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 磁盘总大小，单位Byte。               |
 | diskType    | [DiskType](#disktype) | 否 | 否 | 磁盘类型。        |
 | removable   | boolean | 否 | 否 | 表示磁盘是否可移除，true为可移除；false为不可移除。默认为true。           |
-| volumeIds   | Array&lt;string&gt; | 否 | 否 | 磁盘包含的卷设备ID数组，一个磁盘可以包含多个卷设备。         |
-| extraInfo   | string  | 否 | 否 | 磁盘设备的扩展信息。         |
+| volumeIds | Array&lt;string&gt; | 否 | 否 | 磁盘包含的卷设备ID数组，一个磁盘可以包含一个或多个卷设备。         |
+| extraInfo | string | 否 | 否 | 磁盘设备的扩展信息，包含磁盘的附加属性数据，具体内容因设备类型不同而异。         |
 
 ## PartitionInfo
 
@@ -2042,7 +2074,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | startSector | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 分区的起始扇区号。        |
 | endSector   | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 分区的结束扇区号。           |
 | sizeBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 分区总大小，单位Byte。         |
-| fsType      | string  | 否 | 否 | 文件系统类型，当前支持的格式为ext4、vfat、exfat、NTFS、f2fs和hmfs。         |
+| fsType | string | 否 | 否 | 文件系统类型，当前支持的格式为ext4、vfat、exfat、ntfs、f2fs和hmfs。         |
 
 ## PartitionTableInfo
 
@@ -2067,7 +2099,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | partitionCount | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 分区数量。        |
 | totalSector | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 总扇区数。           |
 | sectorSize  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 每个扇区的大小，单位Byte。         |
-| alignSector | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 对齐扇区号。         |
+| alignSector | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 分区对齐所依据的扇区号，用于确保分区起始位置与物理扇区边界对齐。         |
 | partitions  | Array&lt;[PartitionInfo](#partitioninfo)&gt; | 否 | 否 | 分区信息数组。         |
 
 ## PartitionParams
@@ -2091,7 +2123,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 分区号。                 |
 | startSector | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 分区的起始扇区号。               |
 | endSector   | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 否 | 否 | 分区的结束扇区号。        |
-| typeCode    | string  | 否 | 否 | 文件系统代码，当前支持的格式为ext4、vfat、exfat、NTFS、f2fs和hmfs。           |
+| typeCode | string | 否 | 否 | 文件系统代码，当前支持的格式为ext4、vfat、exfat、ntfs、f2fs和hmfs。           |
 
 ## FormatParams
 
@@ -2113,4 +2145,4 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | ----------- | ------- | ------- | ----- | -------------------- |
 | fsType      | string  | 否 | 否 | 文件系统类型，当前支持格式化为ext4、vfat和exfat。                 |
 | quickFormat | boolean | 否 | 是 | 是否执行快速格式化。当前仅支持快速格式化，因此该参数只支持传true。传false时将返回参数非法错误，错误码13600010。默认值为true。               |
-| volumeName  | string  | 否 | 是 | 格式化后的卷名称。        |
+| volumeName  | string | 否 | 是 | 格式化后的卷名称。不传入时默认使用空字符串作为卷名称。        |

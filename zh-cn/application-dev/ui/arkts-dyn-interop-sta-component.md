@@ -8,7 +8,7 @@
 
 ## 概述
 
-从API version 23开始，支持在ArkTS-Dyn中使用ArkTS-Sta自定义组件。
+从API version 23开始，支持在ArkTS-Dyn中使用[ArkTS-Sta](../quick-start/arkts-interop-overview.md)自定义组件。
 
 
 ## 使用限制

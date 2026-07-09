@@ -94,7 +94,7 @@ type ErrorCallback = ErrorCallback
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
+| entryPoint | string | 否 | 否 | 要加载的Abc页面入口。 |
 | worker | ArkTS-Dyn: [Worker](#worker)<br/>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是 | 运行Abc的Worker。<br/>ArkTS-Sta模式下，undefined回拉起一个空的DynamicComponent。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |

@@ -310,6 +310,8 @@ antiAlias(value: boolean)
 
 通过points、fill、fillOpacity、stroke属性分别绘制多边形的经过坐标、填充颜色、透明度、边框颜色。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -341,11 +343,45 @@ struct PolygonExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, Color, ColumnOptions, PolygonOptions, ShapePoint, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PolygonExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Polygon({ width: 100, height: 100 } as PolygonOptions)
+        .points([[0, 0], [50, 100], [100, 0]])
+        .fill(Color.Green)
+      Polygon()
+        .width(100)
+        .height(100)
+        .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        .fillOpacity(0)
+        .strokeWidth(5)
+        .stroke(Color.Blue)
+      Polygon()
+        .width(100)
+        .height(100)
+        .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        .fill(Color.Red)
+        .fillOpacity(0.6)
+    }.width('100%').margin({ top: 10 } as Margin)
+  }
+}
+```
+
 ![polygon](figures/polygon.png)
 
 ### 示例2（宽和高使用不同参数类型绘制多边形）
 
 width、height属性分别使用不同的长度类型绘制图形。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -372,17 +408,86 @@ struct PolygonTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, Color, ColumnOptions, PolygonOptions, ShapePoint, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PolygonTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Polygon({ width: '100', height: '100' } as PolygonOptions)
+        .points([[0, 0], [50, 100], [100, 0]])
+      Polygon({ width: 100, height: 100 } as PolygonOptions)
+        .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        .fillOpacity(0)
+        .strokeWidth(5)
+        .stroke(Color.Blue)
+      Polygon({ width: $r('app.string.PolygonWidth'), height: $r('app.string.PolygonHeight') } as PolygonOptions)
+        .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        .fillOpacity(0.6)
+    }.width('100%').margin({ top: 10 } as Margin)
+  }
+}
+```
+
 ![polygonDemo2](figures/polygonDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Polygon组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Polygon组件的points、fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyPolygonModifier implements AttributeModifier<PolygonAttribute> {
   applyNormalAttribute(instance: PolygonAttribute): void {
     // 三角形，起点(0, 0)，经过(50, 100)，终点(100, 0)，填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.points([[0, 0], [50, 100], [100, 0]])
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PolygonModifierDemo {
+  @State modifier: MyPolygonModifier = new MyPolygonModifier()
+
+  build() {
+    Column() {
+      Polygon()
+        .width(100)
+        .height(100)
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Polygon, PolygonAttribute, AttributeModifier, LineCapStyle, LineJoinStyle, ShapePoint, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyPolygonModifier implements AttributeModifier<PolygonAttribute> {
+  applyNormalAttribute(instance: PolygonAttribute): void {
     instance.points([[0, 0], [50, 100], [100, 0]])
     instance.fill("#707070")
     instance.fillOpacity(0.5)

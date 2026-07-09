@@ -7,13 +7,13 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Watch装饰器用于状态管理V1中，监听状态变量的变化。
+@Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-Dyn）](../../../ui/state-management/arkts-watch.md)。
 
 > **说明：**
 >
-> 从API version 7开始，支持该装饰器。
+> 该装饰器从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## @Watch
 
@@ -29,7 +29,13 @@ const Watch: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| value  | string | 是   | 用于监听的回调函数名，内容由开发者指定。 |
+| value  | string | 是   | 监听状态变量变化的回调函数名，函数签名为`(propertyName: string) => void`，`propertyName`为变化的属性名。 |
+
+**返回值：**
+
+| 类型              | 说明                                 |
+| ----------------- | ------------------------------------ |
+| PropertyDecorator | 属性装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 

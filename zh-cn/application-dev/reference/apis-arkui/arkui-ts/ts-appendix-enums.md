@@ -308,11 +308,11 @@
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 说明               | 动效参数                          | 默认缩放比                     |
-| ------ | --------------------------------- | --------------------------------- | --------------------------------- |
-| LIGHT  | 小面积（轻盈） | 弹簧动效， 刚性：410，阻尼：38，初始速度：1 | 90% |
-| MIDDLE | 中面积（稳定） | 弹簧动效， 刚性：350，阻尼：35，初始速度：0.5 | 95% |
-| HEAVY  | 大面积（厚重） | 弹簧动效， 刚性：240，阻尼：28，初始速度：0 | 95% |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| LIGHT  | 0 | 小面积（轻盈），弹簧动效，刚性：410，阻尼：38，初始速度：1，默认缩放比90%。 |
+| MIDDLE | 1 | 中面积（稳定），弹簧动效，刚性：350，阻尼：35，初始速度：0.5，默认缩放比95%。 |
+| HEAVY  | 2 | 大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。 |
 
 ## Color
 
@@ -484,7 +484,7 @@
 
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
+| DEFAULT   | 0    | 白底蓝字（深色主题下为黑底蓝字）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
 ## DialogDisplayMode<sup>24+</sup>
@@ -744,8 +744,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -896,17 +896,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureShortcut
 
@@ -1633,7 +1633,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)和[WaterFlow](./ts-container-waterflow.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)和[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -1977,7 +1977,7 @@ type Nullable\<T> = T | undefined
 | 名称    | 值 | 说明                                                         |
 | ------- | ----------- | ------------------------------------------------------------ |
 | DEFAULT | ArkTS-Dyn: - <br/>ArkTS-Sta: 0| 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| INLINE  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
 

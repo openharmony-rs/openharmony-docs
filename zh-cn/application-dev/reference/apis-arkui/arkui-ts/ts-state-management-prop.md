@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Prop用于状态管理V1中，接收外部传入值，并与父组件建立单向同步关系。
+@Prop用于状态管理V1，接收外部传入值，并与父组件建立单向同步关系。适用于子组件需要响应父组件状态变化但不需要反向修改的场景。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Prop装饰器：父子单向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-prop.md)。
 

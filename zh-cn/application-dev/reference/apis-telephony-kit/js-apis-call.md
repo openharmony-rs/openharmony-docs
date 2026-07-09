@@ -353,6 +353,66 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 });
 ```
 
+## call.makeCallWithToken
+
+makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>
+
+跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
+
+> **说明**:
+> 
+> 该接口返回校验token，应用可以利用phoneNumber和token实现特定能力，比如蜂窝下行流的录制。
+ 
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力**：SystemCapability.Applications.Contacts
+
+**ArkTS-Dyn起始版本**： 26.0.0
+
+**ArkTS-Sta起始版本**： 26.0.0
+ 
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明       |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | 是   | 电话号码。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
+
+**返回值：**
+
+| 类型                | 说明                              |
+| ------------------- | --------------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回鉴权校验token。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+// 设置通话结束后是否返回当前App与应用是否开启自定义无障碍功能
+let makeOptions: call.MakeCallOptions = {
+  isHideDialScreen: true,
+  isCustomAccessibility : true
+}
+
+call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
+  console.info(`makeCallWithToken success`);
+}).catch((err: BusinessError) => {
+  console.error(`makeCallWithToken fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 ## call.hasCall
 
 hasCall\(callback: AsyncCallback\<boolean\>\): void
@@ -982,6 +1042,7 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1032,6 +1093,7 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1083,6 +1145,7 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1107,7 +1170,7 @@ call.rejectCall((err: BusinessError) => {
 
 getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
 
-获取带有电话号码的呼叫转移信息。使用Promise异步回调。
+获取电话号码的呼叫转移状态。使用Promise异步回调。
 
 **起始版本**: 26.0.0
 
@@ -1202,7 +1265,7 @@ call.getCallTransferInfo(type, number)
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。   |
-
+| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，默认为false。true表示支持，false表示不支持。   <br>**起始版本:** 26.0.0|
 
 ## TelCallState<sup>21+</sup>
 
@@ -1296,10 +1359,10 @@ call.getCallTransferInfo(type, number)
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|          名称            |                 类型               | 必填 |       说明       |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
-| startHour   | number                             |  是  | 开始时间的小时数。 |
-| startMinute | number                             |  是  | 开始时间的分钟数。 |
-| endHour     | number                             |  是  | 结束时间的小时数。 |
-| endMinute   | number                             |  是  | 结束时间的分钟数。 |
+|          名称            |                 类型               | 只读 | 可选 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) | 否 |  否  | 转移状态。         |
+| startHour   | number                             | 否 |  否  | 开始时间的小时数。 |
+| startMinute | number                             | 否 |  否  | 开始时间的分钟数。 |
+| endHour     | number                             | 否 |  否  | 结束时间的小时数。 |
+| endMinute   | number                             | 否 |  否  | 结束时间的分钟数。 |

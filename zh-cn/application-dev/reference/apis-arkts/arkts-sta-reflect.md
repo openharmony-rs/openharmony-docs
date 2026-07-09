@@ -1526,12 +1526,19 @@ setValue(thisObj: Object, value: Any): void
 | TypeError | 当字段是只读字段时抛出。                     |
 | NullPointerError | 向基本类型（boolean、byte、char、short、int、long、float、double）字段赋值`undefined`时抛出。 |
 
+> **说明：**
+>
+> - 基本类型（如`int`）在内存中以原始值存储，无法表示`undefined`，因此赋值`undefined`会抛出`NullPointerError`。
+> - 联合类型（如`int | undefined`）在运行时以引用形式存储，不属于基本类型，赋值`undefined`不会抛出异常，字段将被设为`undefined`。
+> - 引用类型（如`string`、`Object`）同样可以接受`undefined`，赋值后字段将被设为`undefined`。
+
 **示例：**
 
 ```ts
 class MyClass {
     public name = 'test';
     public age = 0;
+    public score: int | undefined = 100;
 }
 let obj = new MyClass();
 let cls = Class.from<MyClass>();
@@ -1539,12 +1546,18 @@ let field = cls.getInstanceField("name");
 field!.setValue(obj, "new value");
 console.info(obj.name); // "new value"
 
+// 基本类型字段赋值undefined，抛出NullPointerError
 try {
     field = cls.getInstanceField("age");
     field!.setValue(obj, undefined);
 } catch (e) {
     console.info(e instanceof NullPointerError); // true
 }
+
+// 联合类型字段可以接受undefined，不抛出异常
+let scoreField = cls.getInstanceField("score");
+scoreField!.setValue(obj, undefined);
+console.info(obj.score); // undefined
 ```
 
 ## StaticField
@@ -1846,22 +1859,35 @@ setValue(value: Any): void
 | TypeError | 当字段是只读字段时抛出。         |
 | NullPointerError | 向基本类型（boolean、byte、char、short、int、long、float、double）字段赋值`undefined`时抛出。 |
 
+> **说明：**
+>
+> - 基本类型（如`int`）在内存中以原始值存储，无法表示`undefined`，因此赋值`undefined`会抛出`NullPointerError`。
+> - 联合类型（如`int | undefined`）在运行时以引用形式存储，不属于基本类型，赋值`undefined`不会抛出异常，字段将被设为`undefined`。
+> - 引用类型（如`string`、`Object`）同样可以接受`undefined`，赋值后字段将被设为`undefined`。
+
 **示例：**
 
 ```ts
 class MyClass {
     public static count = 0;
+    public static score: int | undefined = 100;
 }
 let cls = Class.from<MyClass>();
 let field = cls.getStaticField("count");
 field!.setValue(10);
 console.info(MyClass.count); // 10
 
+// 基本类型字段赋值undefined，抛出NullPointerError
 try {
     field!.setValue(undefined);
 } catch(e) {
     console.info(e instanceof NullPointerError); // true
 }
+
+// 联合类型字段可以接受undefined，不抛出异常
+let scoreField = cls.getStaticField("score");
+scoreField!.setValue(undefined);
+console.info(MyClass.score); // undefined
 ```
 
 ## InstanceMethod

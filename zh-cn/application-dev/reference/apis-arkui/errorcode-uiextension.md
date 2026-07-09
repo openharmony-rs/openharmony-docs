@@ -18,7 +18,7 @@ Failed to start the UIExtension ability.
 
 **错误描述**
 
-扩展Ability拉起失败，请检查扩展Ability的Want参数。
+扩展Ability启动失败，请检查扩展Ability的Want参数。
 
 **可能原因**
 
@@ -111,7 +111,7 @@ Cascading UIExtension components is not allowed.
 
 **错误描述**
 
-拉取另一个嵌入式组件失败，UIExtension存在特殊场景嵌套。
+UIExtension组件禁止嵌套使用，检测到特殊场景嵌套。
 
 **可能原因**
 
@@ -183,12 +183,12 @@ Failed to start the UIExtension ability.
 
 **错误描述**
 
-设置onTerminated回调场景下，扩展Ability拉起失败，请检查扩展Ability的Want参数。
+设置onTerminated回调场景下，扩展Ability启动失败，请检查扩展Ability的Want参数。
 
 **可能原因**
 
 1. Want参数配置错误；
-2. type类型不一致，具体请参考[EmbeddedComponent组件](arkui-ts/ts-container-embedded-component.md#接口)；
+2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
 3. 提供方应用未安装；
 4. 设备类型不支持；
 

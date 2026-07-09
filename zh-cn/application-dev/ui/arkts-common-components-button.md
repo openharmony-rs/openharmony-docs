@@ -354,9 +354,11 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
 
   ArkTS-Dyn示例：
 
-  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
+  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) --> 
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN = 0x0000;
   // xxx.ets
   @Entry

@@ -14,12 +14,12 @@ LinkedList和[ArrayList](js-apis-arraylist.md)相比，LinkedList插入数据效
 
 > **注意：**
 >
-> 在LinkedList中使用\[index\]的方式获取元素可能导致未定义结果，推荐使用get()方法。
+> 在LinkedList中使用\[index\]的方式获取元素可能导致结果不可预测，推荐使用get()方法。
 
 **推荐使用场景：** 当需要频繁的插入删除元素且需要使用双向链表时，推荐使用LinkedList。
 
-文档中使用了泛型，涉及以下泛型标记符：
-- T： Type，类
+文档中使用了泛型，涉及以下泛型类型参数：
+- T： Type，泛型类型参数，可以是任意类型
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ import { LinkedList } from '@kit.ArkTS';
 
 constructor()
 
-LinkedList的构造函数。
+LinkedList的构造函数。调用后，创建一个空的LinkedList实例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -131,17 +131,21 @@ ArkTS-Dyn示例：
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
 let result = linkedList.add("a");
+console.info("result = ", result); // result =  true
 let result1 = linkedList.add(1);
-let b = [1, 2, 3];
-let result2 = linkedList.add(b);
-class C {
-  name: string = ''
-  age: string = ''
+console.info("result = ", result1); // result =  true
+let numArray = [1, 2, 3];
+let result2 = linkedList.add(numArray);
+console.info("result = ", result2); // result =  true
+class PersonInfo {
+  name: string = '';
+  age: string = '';
 }
-let c: C = {name : "Dylan", age : "13"};
-let result3 = linkedList.add(c);
+let personInfo: PersonInfo = {name : "Dylan", age : "13"};
+let result3 = linkedList.add(personInfo);
+console.info("result = ", result3); // result =  true
 let result4 = linkedList.add(false);
-console.info("result = ", result4) // result =  true
+console.info("result = ", result4); // result =  true
 ```
 
 ArkTS-Sta示例：
@@ -198,14 +202,14 @@ ArkTS-Dyn示例：
 let linkedList = new LinkedList<string | number | boolean | object>();
 linkedList.addFirst("a");
 linkedList.addFirst(1);
-let b = [1, 2, 3];
-linkedList.addFirst(b);
-class C {
-  name: string = ''
-  age: string = ''
+let numArray = [1, 2, 3];
+linkedList.addFirst(numArray);
+class PersonInfo {
+  name: string = '';
+  age: string = '';
 }
-let c: C = {name : "Dylan", age : "13"};
-linkedList.addFirst(c);
+let personInfo: PersonInfo = {name : "Dylan", age : "13"};
+linkedList.addFirst(personInfo);
 linkedList.addFirst(false);
 let result = linkedList.get(2);
 console.info("result:", result);  // result: 1,2,3
@@ -236,7 +240,7 @@ ArkTS-Dyn: insert(index: number, element: T): void
 
 ArkTS-Sta: insert(index: int, element: T): void
 
-在长度范围内任意位置插入指定元素。
+在长度范围内任意位置插入指定元素，可插入位置区间为[0, LinkedList.length]，在linkedList.length处插入时即在linkedList尾部添加元素。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -538,7 +542,7 @@ console.info("result:", result);  // result: 0
 
 removeByIndex(index: number): T
 
-根据元素的下标值查找元素，并将其删除。
+在LinkedList长度范围内，根据元素的下标值查找元素，并将其删除。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -552,13 +556,13 @@ removeByIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定元素的下标值。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定元素的下标值，取值范围[0, LinkedList.length-1]，且需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回删除的元素，如果元素为空返回undefined。 |
+| T | 返回删除的元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -857,7 +861,7 @@ console.info("result:", result);  // result: true
 
 removeFirstFound(element: T): boolean
 
-删除第一次出现的指定元素。
+删除第一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -877,7 +881,7 @@ removeFirstFound(element: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 删除成功返回true，删除失败或不存在该元素时返回false。 |
+| boolean | 删除成功返回true，删除失败时返回false。 |
 
 **错误码：**
 
@@ -918,7 +922,7 @@ let result = linkedList.removeFirstFound(4);
 
 removeLastFound(element: T): boolean
 
-删除最后一次出现的指定元素。
+删除最后一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -938,7 +942,7 @@ removeLastFound(element: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 删除成功返回true，删除失败或不存在该元素时返回false。 |
+| boolean | 删除成功返回true，删除失败返回false。 |
 
 **错误码：**
 
@@ -993,7 +997,7 @@ clone(): LinkedList&lt;T&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| LinkedList&lt;T&gt; | 返回LinkedList对象实例。 |
+| LinkedList&lt;T&gt; | 返回LinkedList对象的克隆实例。 |
 
 **错误码：**
 
@@ -1197,7 +1201,7 @@ ArkTS-Sta: set(index: int, element: T): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回替换后的元素，如果元素为空则返回undefined。 |
+| T | 返回替换后的元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -1307,7 +1311,7 @@ getFirst(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回对应元素，若元素为空则返回undefined。 |
+| T | 返回对应元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -1362,7 +1366,7 @@ getLast(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回对应元素，若元素为空则返回undefined。 |
+| T | 返回对应元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -1403,7 +1407,7 @@ console.info("result:", result);  // result: 4
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
+返回一个迭代器，用于遍历LinkedList中的元素。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

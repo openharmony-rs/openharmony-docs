@@ -354,12 +354,13 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境。|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 闪控窗的模板类型。|
+| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境。 |
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 闪控窗的模板类型。 |
+| isConfirmOnClose | boolean | 否 | 是 | 点击关闭按钮时是否需要用户确认。true表示点击关闭按钮时需要用户确认，否则不需要确认。默认值为false。 |
 
 ## TemplateProperty
 
-切换悬浮窗模板并修改窗口尺寸时需要提供的参数配置。
+切换闪控窗模板并修改窗口尺寸时需要提供的参数配置。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -387,6 +388,10 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 根据当前工程中指定的页面路径为闪控窗加载具体页面内容，通过LocalStorage传递状态属性至加载页面。使用Promise异步回调。
+
+建议在闪控窗启动前使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+本接口不支持加载跨包页面，若有需要请使用[setUIContextByName()](#setuicontextbyname)接口。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -439,6 +444,8 @@ try {
 setUIContextByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+
+建议在闪控窗启动前使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

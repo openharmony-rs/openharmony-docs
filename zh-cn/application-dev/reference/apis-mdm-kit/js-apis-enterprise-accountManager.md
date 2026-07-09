@@ -78,7 +78,7 @@ try {
 
 ## accountManager.isOsAccountAdditionDisallowed
 
-isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
+isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
 
 查询是否禁止用户添加账号。
 
@@ -93,7 +93,7 @@ isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。                          |
 | accountId | number                                                  | 否   | 用户ID，指定具体用户。当不传入此参数时，表示查询所有用户是否禁止添加账号；当传入此参数时，表示查询指定用户是否禁止添加账号。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
 **返回值：**
@@ -481,6 +481,12 @@ removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | accountId   | number                                                  | 是   | 系统账号ID，指将被移除系统账号的ID。不可移除默认系统账号 (ID为100) ，会报错误码9201041。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当移除系统账号失败时，会抛出错误对象。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
@@ -542,6 +548,12 @@ activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                      |
 | accountId   | number                                                  | 是   | 系统账号ID。切换不存在的系统账号，会报错误码9200012。切换受限制的系统账号，例如使用[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号，会报错误码9201041。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当切换系统账号失败时，会抛出错误对象。 |
 
 **错误码**：
 

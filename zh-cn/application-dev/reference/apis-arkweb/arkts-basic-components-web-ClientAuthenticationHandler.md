@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL客户端证书请求事件的处理对象。示例代码参考[onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)事件。
+ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求的类。当服务器请求客户端证书进行TLS双向认证时，该处理器通过`onClientAuthenticationRequest`事件回调提供给应用，允许应用选择合适的证书凭据进行响应。示例代码参考[onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)事件。
 
 > **说明：**
 >
@@ -77,6 +77,10 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。   
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

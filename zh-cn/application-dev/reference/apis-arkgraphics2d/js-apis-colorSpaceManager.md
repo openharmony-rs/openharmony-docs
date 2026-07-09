@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供管理抽象化色域对象的一些基础能力，包括色域对象的创建与色域基础属性的获取等。
+本模块提供管理抽象化色域对象的基础能力，包括创建标准色域对象（如SRGB、DCI-P3、BT2020等）和自定义色域对象，获取色域类型、白点值、gamma值等属性。适用于需要保证色彩一致性的场景，如图像处理、视频渲染、跨设备色彩显示等，帮助开发者实现准确的色彩管理和转换，提升应用在色彩显示方面的用户体验。
 
 > **说明：**
 >
@@ -113,16 +113,17 @@ create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
 
 ```ts
 try {
+  // 创建标准SRGB色域的色彩管理实例
   let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-  console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -159,13 +160,14 @@ ArkTS-Sta: create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceMana
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
 
 **示例：**
 
 ```ts
 try {
+  // 定义色域标准三原色参数
   let primaries: colorSpaceManager.ColorSpacePrimaries = {
     redX: 0.1,
     redY: 0.1,
@@ -176,10 +178,12 @@ try {
     whitePointX: 0.4,
     whitePointY: 0.4
   };
+  // 定义色域gamma值
   let gamma = 2.2;
+  // 创建自定义色域对象
   let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-  console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -219,10 +223,11 @@ getColorSpaceName(): ColorSpace
 
 ```ts
 try {
+  // 获取色域类型
   let spaceName = colorSpace.getColorSpaceName();
   console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-  console.error(`Failed to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -258,10 +263,11 @@ ArkTS-Sta: getWhitePoint(): Array\<double\>
 
 ```ts
 try {
+  // 获取色域白点值
   let point = colorSpace.getWhitePoint();
   console.info(`point: ` + point.toString());
 } catch (err) {
-  console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -297,9 +303,10 @@ ArkTS-Sta: getGamma(): double
 
 ```ts
 try {
+  // 获取色域gamma值
   let gamma = colorSpace.getGamma();
   console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-  console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```

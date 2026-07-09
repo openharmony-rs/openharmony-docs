@@ -36,11 +36,11 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 // 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 执行Shell命令，通过回调获取执行结果
-abilityDelegator.executeShellCommand(cmd, (error: BusinessError<void> | null, data) => {
+abilityDelegator.executeShellCommand(shellCommand, (error: BusinessError<void> | null, data) => {
   if (error) {
     console.error(`executeShellCommand fail, error: ${JSON.stringify(error)}`);
   } else {

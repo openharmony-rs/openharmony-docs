@@ -66,9 +66,9 @@ struct Index {
 
 当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportObserveChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEObserveChange.ets) -->
 
+``` TypeScript
 import { Entry, ComponentV2, Text, Column, Button, CustomEnv, Local, CustomEnvKey } from '@kit.ArkUI';
 import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
 
@@ -364,9 +364,9 @@ struct Index {
 
 新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv('custom') customVarName: string = 'hello world'`。其中'custom'为开发者自定义的环境变量key，'hello world'为该变量的初始值。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportCustomKeyValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportCustomKeyValue.ets) -->
 
+``` TypeScript
 import { CustomEnv, ComponentV2, Entry, Text, Column, CustomEnvKey } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
@@ -393,9 +393,9 @@ struct Index {
 
 \@CustomEnv支持简单类型和复杂类型的变量声明。简单类型包括string、number、boolean、enum等；复杂类型包括class、Object等对象类型。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportMultipleTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportMultipleTypes.ets) -->
 
+``` TypeScript
 import {
   Entry, ComponentV2, Column, CustomEnv, Text, CustomEnvKey, ObservedV2, Trace
 } from '@kit.ArkUI';
@@ -438,12 +438,12 @@ struct Index {
 
 当子组件中使用\@CustomEnv装饰的变量向上查找环境变量值但未找到匹配的WithEnv组件时，该变量将使用声明时指定的初始值作为默认值。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportInitialDefaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportInitialDefaultValue.ets) -->
 
+``` TypeScript
 import {
   Entry, ComponentV2, Column, Text, Local, CustomEnvKey, CustomEnv
-} from '@kit.ArkUI'; 
+} from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -454,7 +454,7 @@ struct Index {
 
   build() {
     Column() {
-        Child()
+      Child()
     }
   }
 }
@@ -482,9 +482,9 @@ struct Child {
 
 以下示例中，Child组件中声明\@CustomEnv(custom)将被离它最近的内层WithEnv赋值，最终值为'the nearest WithEnv'。
 
-```ts
-'use static'
+<!-- @[CustomEnvFollowSearchClosestValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEFollowSearchClosestValue.ets) -->
 
+``` TypeScript
 import {
   Entry, ComponentV2, Column, Text, CustomEnv, Local, CustomEnvKey
 } from '@kit.ArkUI';
@@ -529,9 +529,9 @@ struct Child {
 
 当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportResponseCapability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportResponseCapability.ets) -->
 
+``` TypeScript
 import {
   Entry, Component, ComponentV2, Column, Require, Param, ObjectLink, SystemProperties, Text, Button, Row, Local, CustomEnvKey, CustomEnv
 } from '@kit.ArkUI';
@@ -580,9 +580,9 @@ struct Child {
 
 在ArkTS-Sta中，\@CustomEnv不支持与状态变量、[\@Watch](./arkts-static-watch.md)等其他装饰器连用，可以在\@Component里使用[addMonitor](./arkts-static-new-addmonitor-clearmonitor.md)监听变量变化。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportAddMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportAddMonitor.ets) -->
 
+``` TypeScript
 import { Entry, Row, Component, Column, Text, Button, CustomEnv, CustomEnvKey, UIUtils, IMonitorDecoratedVariable, IMonitor, State } from '@kit.ArkUI';
 import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
 
@@ -641,9 +641,9 @@ struct Child {
 
 在\@ComponentV2中，可通过\@Monitor监听\@CustomEnv装饰变量的变化。需要注意的是，仅当\@CustomEnv装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportMonitor.ets) -->
 
+``` TypeScript
 import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, Local, IMonitor, Monitor, CustomEnvKey } from '@kit.ArkUI';
 import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
 
@@ -705,9 +705,9 @@ struct Child {
 
 需要注意的是：在首次渲染的时候，Tab只会创建当前正在显示的TabContent，当切换所有TabContent后，TabContent才会被全部创建。
 
-```ts
-'use static'
+<!-- @[CustomEnvSupportComponentFreeze](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportComponentFreeze.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, FontWeight, ForEach, IMonitor, Local, Monitor, Param, Repeat, Row, TabContent, Tabs, Text, CustomEnvKey, CustomEnv } from '@kit.ArkUI';
 import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
 
@@ -774,9 +774,9 @@ struct FreezeChild {
 
 当装饰的对象是Array时，可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-```ts
-'use static'
+<!-- @[CustomEnvDecorateArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEDecorateArray.ets) -->
 
+``` TypeScript
 import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, ForEach, CustomEnvKey } from '@kit.ArkUI';
 
 class Fruit {
@@ -839,9 +839,9 @@ struct Index {
 
 当装饰的对象是Date时，可通过调用Date的接口`setFullYear`，`setMonth`，`setDate`，`setHours`，`setMinutes`，`setSeconds`，`setMilliseconds`，`setTime`，`setUTCFullYear`，`setUTCMonth`，`setUTCDate`，`setUTCHours`，`setUTCMinutes`，`setUTCSeconds`，`setUTCMilliseconds`更新Date的属性。
 
-```ts
-'use static'
+<!-- @[CustomEnvDecorateDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEDecorateDate.ets) -->
 
+``` TypeScript
 import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, CustomEnvKey, DatePicker } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Date>();
@@ -896,9 +896,9 @@ struct DatePickerExample {
 
 当装饰的对象是Map时，可以通过调用Map的接口`set`, `clear`, `delete`更新Map中的数据。
 
-```ts
-'use static'
+<!-- @[CustomEnvDecorateMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEDecorateMap.ets) -->
 
+``` TypeScript
 import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, CustomEnvKey, ForEach } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Map<string, number>>();
@@ -960,9 +960,9 @@ struct MapSample {
 
 当装饰的对象是Set时，可以通过调用Set的接口`add`, `clear`, `delete`更新Set中的数据。
 
-```ts
-'use static'
+<!-- @[CustomEnvDecorateSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CEDecorateSet.ets) -->
 
+``` TypeScript
 import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, Local, ForEach, CustomEnvKey } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Set<string>>();
@@ -1019,15 +1019,16 @@ struct SetSample {
 
 
 - \@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能接收\@ObservedV2装饰的class的规则。
-```ts
-'use static'
 
+<!-- @[CustomEnvSupportMixV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportMixV2ToV1.ets) -->
+
+``` TypeScript
 import { Entry, Row, ComponentV2, Component, Column, Text, Button, CustomEnv, ObservedV2, Trace, Require, PropRef, CustomEnvKey } from '@kit.ArkUI';
 
 @ObservedV2
 class CustomValue {
   @Trace defaultVal: string = 'hello';
-} 
+}
 
 const custom = CustomEnvKey.create<string>();
 const customObj = CustomEnvKey.create<CustomValue>();
@@ -1069,9 +1070,10 @@ struct Child {
 ![image](../figures/custom-env-static-13.png)
 
 - \@CustomEnv装饰的变量传递给V2时，遵循V2只有\@Param可以接收外部变量的规则。
-```ts
-'use static'
 
+<!-- @[CustomEnvSupportMixV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportMixV1ToV2.ets) -->
+
+``` TypeScript
 import { Entry, Row, ComponentV2, Component, Column, Text, Button, CustomEnv, ObservedV2, Trace, Require, CustomEnvKey, Param } from '@kit.ArkUI';
 
 @ObservedV2

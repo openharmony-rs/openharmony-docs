@@ -438,7 +438,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
             this.path2Db.moveTo(10, 10)
             this.path2Db.quadraticCurveTo(100, 100, 200, 20)
             this.context.stroke(this.path2Db)
-        })
+          })
       }
       .width('100%')
       .height('100%')

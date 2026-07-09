@@ -47,7 +47,7 @@ env&lt;T&gt;(key: WritableSystemEnvKey&lt;T&gt;, value: T)
 
 > **说明：**
 >
-> - `WithEnv.env(WritableEnvKey.FONT_SCALE, value)`用于为尾随闭包里的作用域内组件提供局部字体缩放比例，`value`为number类型，表示字体缩放倍数。
+> - `WithEnv.env(WritableEnvKey.FONT_SCALE, value)`用于为尾随闭包里的作用域内组件提供局部字体缩放比例，`value`为number类型，表示字体缩放倍数。设置的`value`小于0时按0处理。
 > - WithEnv尾随闭包里的作用域内组件实际生效的字体缩放值同时受env属性通过键WritableEnvKey.FONT_SCALE设置的值与组件自身的字体缩放限制共同作用。该限制可通过组件的`minFontScale`和`maxFontScale`属性设置，也可通过应用配置中的[fontSizeMaxScale](../../../quick-start/app-configuration-file.md)等全局配置生效。最终生效值为WritableEnvKey.FONT_SCALE设置值在各限制范围内的取值。
 
 **起始版本：** 26.0.0
