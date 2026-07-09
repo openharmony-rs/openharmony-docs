@@ -41,11 +41,11 @@
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | 获取当前节点所在的NavDestination组件的状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getnavdestinationindex) | 获取当前节点所在的NavDestination组件在页面栈的索引。 |
 | [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | 获取当前节点所在的NavDestination组件的参数。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getrouterpageindex) | 获取当前节点所在[Router](arkts-apis-uicontext-router.md)页面栈中的索引。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagename) | 获取当前节点所在Router页面的名称。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagepath) | 获取当前节点所在Router页面的路径。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)](#oh_arkui_getrouterpagestate) | 获取当前节点所在Router页面的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpageid) | 获取当前节点所在Router页面的ID。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getrouterpageindex) | 获取当前节点所在页面在Router页面栈中的索引。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagename) | 获取当前节点所在页面的名称。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagepath) | 获取当前节点所在页面的Page组件的路径。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)](#oh_arkui_getrouterpagestate) | 获取当前节点所在页面的Page组件的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpageid) | 获取当前节点所在页面的Page组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)](#oh_arkui_initmoduleforarktsenv) | 初始化指定上下文环境的ArkUI相关接口，适用于在Native侧使用ArkUI相关接口前进行上下文环境初始化的场景。该函数禁止在非UI线程中调用，否则程序将主动中止。使用该函数初始化指定上下文环境后，在对应环境销毁时调用[OH_ArkUI_NotifyArkTSEnvDestroy()](#oh_arkui_notifyarktsenvdestroy)通知环境已销毁。 |
 | [void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)](#oh_arkui_notifyarktsenvdestroy) | 通知指定的上下文环境已销毁，适用于ArkTS上下文环境销毁时在Native侧同步清理相关状态的场景。该函数禁止在非UI线程中调用，否则程序将主动中止。 |
 | [int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (\*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))](#oh_arkui_postframecallback) | 注册一个回调函数，以便在下一帧渲染时执行，适用于Native侧在下一帧执行界面刷新或渲染相关任务的场景。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
