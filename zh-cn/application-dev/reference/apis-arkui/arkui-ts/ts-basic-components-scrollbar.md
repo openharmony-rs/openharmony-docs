@@ -100,7 +100,7 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>取值为undefined时，滚动条的颜色为'\#66182431'。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
+| color  |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是   | 滚动条滑块的颜色。<br/>取值为undefined时，滚动条的颜色为'\#66182431'。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
 
 ### attributeModifier<sup>23+</sup>
 
