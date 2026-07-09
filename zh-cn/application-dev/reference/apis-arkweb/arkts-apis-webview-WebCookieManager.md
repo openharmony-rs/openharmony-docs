@@ -380,8 +380,8 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 17100002 | URL error. No valid cookie found for the specified URL. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>传入undefined或null会抛出异常错误码401。 |
+| 17100002 | URL error. No valid cookie found for the specified URL. <br>传入undefined或null会抛出异常错误码401。 |
 
 **示例：**
 
