@@ -56,12 +56,12 @@ enum UsbSerial_DdkRetCode
 | USB_SERIAL_DDK_NO_PERM = 201 | 权限被拒绝。请确保应用在module.json5文件中声明了相应的权限。 |
 | USB_SERIAL_DDK_INVALID_PARAMETER = 401 | 无效参数。请确保传入的参数值在有效范围内，参考相关接口的参数说明。 |
 | USB_SERIAL_DDK_SUCCESS = 31600000 | 操作成功。 |
-| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作。 |
-| USB_SERIAL_DDK_INIT_ERROR = 31600002 | 初始化失败。 |
+| USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作，例如使用了无效的设备句柄。请检查确保设备处于正常打开的状态。 |
+| USB_SERIAL_DDK_INIT_ERROR = 31600002 | 初始化失败。请先初始化DDK服务。 |
 | USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | 服务错误。 |
 | USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | 内存相关错误，例如内存不足、内存数据复制失败或内存应用程序故障。建议优化内存参数，及时释放不再需要的资源。 |
 | USB_SERIAL_DDK_IO_ERROR = 31600005 | I/O 错误。请检查设备连接是否正常、传输线是否完好、设备是否处于正常工作状态。 |
-| USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | 未找到设备。 |
+| USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | 未找到设备。请检查参数和设备连接状态。 |
 
 ### UsbSerial_FlowControl
 
@@ -71,7 +71,7 @@ enum UsbSerial_FlowControl
 
 **描述**
 
-定义USB Serial DDK中的流量控制。在使用USB串口进行数据传输时，需要根据通信场景选择合适的流量控制方式。例如，在高速大数据量传输场景下，建议使用硬件流控（USB_SERIAL_HARDWARE_FLOW_CONTROL）以避免数据丢失；在低速或对实时性要求不高的场景下，可使用软件流控（USB_SERIAL_SOFTWARE_FLOW_CONTROL）；在短距离、可靠的点对点通信场景下，可选择无流控（USB_SERIAL_NO_FLOW_CONTROL）。
+定义USB Serial DDK中的流量控制。在使用USB串口进行数据传输时，需要根据通信场景选择合适的流量控制方式。例如，在高速大数据量传输场景下，建议使用硬件流控以避免数据丢失；在低速或对实时性要求不高的场景下，可使用软件流控；在短距离、可靠的点对点通信场景下，可选择无流控。
 
 **起始版本：** 18
 
@@ -89,7 +89,7 @@ enum UsbSerial_Parity
 
 **描述**
 
-定义USB Serial DDK使用的校验参数枚举。在配置USB串口通信参数时，需要根据数据传输的可靠性要求选择合适的校验方式。例如，在对数据完整性要求较高的工业控制场景下，建议使用奇校验（USB_SERIAL_PARITY_ODD）或偶校验（USB_SERIAL_PARITY_EVEN）来检测传输错误；在高噪声干扰环境下，校验可以帮助识别错误数据；在短距离、可靠的通信场景下，为提高传输效率，可选择无校验（USB_SERIAL_PARITY_NONE）。
+定义USB Serial DDK使用的校验参数枚举。在配置USB串口通信参数时，需要根据数据传输的可靠性要求选择合适的校验方式。例如，在对数据完整性要求较高的工业控制场景下，建议使用奇校验或偶校验来检测传输错误；在高噪声干扰环境下，校验可以帮助识别错误数据；在短距离、可靠的通信场景下，为提高传输效率，可选择无校验。
 
 **起始版本：** 18
 
@@ -97,6 +97,6 @@ enum UsbSerial_Parity
 | -- | -- |
 | USB_SERIAL_PARITY_NONE = 0 | 无校验。在短距离、可靠的通信场景下，为提高传输效率，可选择无校验。 |
 | USB_SERIAL_PARITY_ODD = 1 | 奇校验。适用于对数据完整性要求较高的场景。 |
-| USB_SERIAL_PARITY_EVEN = 2 | 偶校验。适用于在对数据完整性要求较高的场景。 |
+| USB_SERIAL_PARITY_EVEN = 2 | 偶校验。适用于对数据完整性要求较高的场景。 |
 
 
