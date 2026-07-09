@@ -8072,7 +8072,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForWaterFlowUsageScenario.ets",
 				"functions":[
 					{
-						"end_line":156,
+						"end_line":155,
 						"name":"reusable_for_water_flow_usage_scenario",
 						"start_line":16
 					}
@@ -8287,7 +8287,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets",
 				"functions":[
 					{
-						"end_line":131,
+						"end_line":130,
 						"name":"place_holder_layout_diff",
 						"start_line":15
 					}
@@ -12290,7 +12290,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets",
 				"functions":[
 					{
-						"end_line":152,
+						"end_line":156,
 						"name":"repeat_scroll_two",
 						"start_line":16
 					}
