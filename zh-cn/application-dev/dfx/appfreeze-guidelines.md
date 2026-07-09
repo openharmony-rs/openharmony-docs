@@ -555,7 +555,7 @@ client actions for app:
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync begin（InsightIntent场景） | 异步创建Ability（onAboutToCreateAbilityAsync回调）。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync end（InsightIntent场景） | onAboutToCreateAbilityAsync回调结束。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
    | - | AbilityThread::CreateObjError（异常场景） | Ability JS对象创建失败，记录异常信息。 | Ability类未注册、JS引擎初始化失败。 | 是，检查Ability类是否正确注册导出。 |
-   | - | AbilityThread::Attach | Ability binder挂载（Attach）到服务测，建立通信。 | - | 否，系统侧IPC。 |
+   | - | AbilityThread::Attach | Ability binder挂载（Attach）到服务侧，建立通信。 | - | 否，系统侧IPC。 |
    | - | AbilityThread::Attach; error *（异常场景） | AttachAbilityThread IPC调用失败，记录错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
    | AbilityManagerService::AttachAbilityThread; the end of load lifecycle. | - | 服务端确认AbilityThread挂载完成，load生命周期结束。 | - | 否，系统侧调度。 |
 
