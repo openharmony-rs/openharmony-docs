@@ -132,16 +132,7 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 <!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-// 打印应用快照到文件。
-const path = this.context.filesDir + '/audio_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644); // O_WRONLY | O_CREAT
-debugManager.printAppInfo(file.fd);
-fileio.closeSync(file);
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
-debugManager.printAppInfo(-1);
-```
 
 **输出示例：**
 
@@ -204,13 +195,7 @@ if (fd >= 0) {
 
 <!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-// 打印指定播放实例的快照。
-const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printRendererInfo(renderer, file.fd);
-fileio.closeSync(file);
-```
+
 
 **输出示例：**
 
@@ -301,13 +286,7 @@ if (fd >= 0) {
 
 <!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-// 打印指定录音实例的快照。
-const path = this.context.filesDir + '/capturer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printCapturerInfo(capturer, file.fd);
-fileio.closeSync(file);
-```
+
 
 **输出示例：**
 
@@ -439,30 +418,7 @@ audioLoopback {
 
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
-``` C++
-#include "ohaudio/native_audio_debugging_manager.h"
-// ...
-OH_AudioSessionManager *audioSessionManager;
-// ...
-    // 创建音频会话管理器。
-    OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-    // 设置音频并发模式。
-    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
-    // 激活音频会话。
-    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-    
-    // 创建音频调试管理器。
-    OH_AudioDebuggingManager *audioDebuggingManager;
-    OH_AudioManager_GetAudioDebuggingManager(&audioDebuggingManager);
-    
-    // 输出到hilog日志。
-    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, -1);
-    
-    // fd 文件描述符，实际使用时请根据具体情况获取
-    // 输出到文件
-    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
-}
-```
+
 
 **ArkTS接口：**
 
