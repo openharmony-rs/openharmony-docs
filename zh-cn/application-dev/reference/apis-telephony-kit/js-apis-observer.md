@@ -2064,8 +2064,6 @@ onCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOpt
 
 订阅5A网络状态变化事件，使用callback异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
@@ -2109,8 +2107,6 @@ observer.onCommunicationStateChange(callback, options);
 offCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOptions\): void
 
 取消订阅5A网络状态变化事件，使用callback异步回调。
-
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
