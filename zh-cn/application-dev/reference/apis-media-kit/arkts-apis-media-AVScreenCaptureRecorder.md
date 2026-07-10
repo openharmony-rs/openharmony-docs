@@ -346,7 +346,11 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 ArkTS-Dyn示例：
 
-```ts
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
 async function testAddWaterMark() {
   // 创建录屏实例。
   let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
@@ -369,20 +373,28 @@ async function testAddWaterMark() {
 
 ArkTS-Sta示例：
 
-```ts
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
-let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+async function testAddWaterMark() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
 
-if (watermark) {
-    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: int) => {
-      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
-    })
-    .catch((error: Error) => {
-      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
-    });
+  // 其余流程。
+
+  let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+  let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+  if (watermark && avScreenCaptureRecorder) {
+      avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: int) => {
+        console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+      })
+      .catch((error: Error) => {
+        console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+      });
+  }
 }
 ```
 
