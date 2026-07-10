@@ -59039,5 +59039,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-recording-no-audio-troubleshooting.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets",
+				"functions":[
+					{
+						"end_line":250,
+						"name":"create_AudioCapturer",
+						"start_line":16
+					},
+					{
+						"end_line":443,
+						"name":"view_AudioCapturerState",
+						"start_line":440
+					},
+					{
+						"end_line":241,
+						"name":"listen_AudioCapturer",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"audioStreamManager_on",
+						"start_line":27
+					}
+				]
+			}
+		]
 	}
 ]
