@@ -38,3 +38,5 @@ Basic Services Kit also provides the ArkTS-based [@ohos.zlib (Zip)](../reference
 |---|---|---|
 | **Implementation** | A high-performance compression framework developed in-house | An ArkTS wrapper around the zlib C library, with a small set of high-level file APIs |
 | **Applicable scenarios** | Native development requiring high performance, progress callbacks, cancellation support (for example, [OH_Archive_Reader_SetProgressHandlerWithData](../reference/apis-core-file-kit/capi-oh-archive-h.md#oh_archive_reader_setprogresshandlerwithdata)), or large data stream processing | ArkTS-only development requiring the full set of low-level zlib capabilities |
+
+<!--no_check-->
