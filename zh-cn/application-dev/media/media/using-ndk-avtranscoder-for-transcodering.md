@@ -175,6 +175,8 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
     }
     static napi_value OHAvTranscoderNdkPlay(napi_env env, napi_callback_info info)
     {
+       OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
+       NdkAVTransCoderUser *transcoderUser = new NdkAVTransCoderUser();
        OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl,  transcoderUser); // 设置状态回调
        OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl,  transcoderUser); // 设置错误码回调
        OH_AVTranscoder_SetProgressUpdateCallback(transcoder,  AvTranscoderProgressUpdateCbImpl, transcoderUser); // 设置进度值回调
