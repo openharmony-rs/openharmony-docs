@@ -143,7 +143,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 >
 > - 仅设置edgeLight不会产生边缘流光效果，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
 >
-> - 当position参数以对角线方式变更时，边缘流光将沿倾斜角45°的方式运行。
+> - 当position参数以对角线方式变更时（如从TOP_LEFT变更到BOTTOM_RIGHT）时，边缘流光将沿倾斜角45°的方式运行。
 
 **起始版本：** 26.0.0
 
@@ -157,7 +157,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| params | [EdgeLightParams](#edgelightparams) \| undefined | 是   | 定义边缘流光效果的位置、长度、强度、颜色和厚度。<br/>当params的值为undefined时，移除边缘流光效果。 |
+| params | [EdgeLightParams](#edgelightparams) \| undefined | 是   | 定义边缘流光效果的位置、长度、强度、颜色和厚度。<br>当params的值为undefined时，移除边缘流光效果。 |
 
 **返回值：**
 
@@ -192,7 +192,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 
 ```ts
 // xxx.ets
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
 let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
@@ -273,7 +273,7 @@ struct ExcludeFromRenderGroupDemo {
           .width(100)
           .height(100)
           .backgroundColor(this.myColor)
-          .excludeFromRenderGroup(this.isExcluded)// 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
+          .excludeFromRenderGroup(this.isExcluded) // 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
           .onClick(() => {
             this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
             this.animationCnt++;
@@ -290,10 +290,10 @@ struct ExcludeFromRenderGroupDemo {
             })
           })
         // 节点组内的其他组件
-        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
           .width(100)
           .height(100)
-        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
           .width(100)
           .height(100)
       }.renderGroup(true)
@@ -396,8 +396,8 @@ struct Index {
           color: Color.White,
           thickness: 2
         })
-        .onClick(()=>{
-          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, ()=>{
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
             this.animate = !this.animate;
             this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
           })
