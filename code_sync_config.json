@@ -30898,13 +30898,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateCorrectCase.ets",
-				"functions":[
-					{
-						"end_line":62,
-						"name":"LlinkWithPrivate_CorrectCase",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets",
@@ -30942,6 +30936,36 @@
 					{
 						"end_line":42,
 						"name":"PrivateWithRequire_CorrectCase",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateErrorCase.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"LinkWithPrivate_ErrorCase",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateCorrectCase.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"LinkWithPrivate_CorrectCase",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkErrorCase.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"PrivateWithLink_ErrorCase",
 						"start_line":16
 					}
 				]
