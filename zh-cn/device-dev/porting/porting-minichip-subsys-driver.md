@@ -63,11 +63,11 @@ if (ohos_kernel_type == "liteos_m") {
 
 
    ```json
-   { 
-       "subsystem": "iothardware", 
-       "components": [ 
-           { "component": "peripheral", "features":[] }
-       ] 
+   {
+      "subsystem": "iothardware",
+      "components": [
+        { "component": "peripheral", "features":[] }
+      ]
    },
    ```
 
