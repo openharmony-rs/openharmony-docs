@@ -248,7 +248,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | 指向OH_AVDemuxer实例的指针。 |
 | uint32_t trackIndex | 本次读取压缩帧的轨道的索引。 |
-| OH_AVBuffer *sample | 指向OH_AVBuffer实例的指针，用于储存压缩帧数据以及相关信息。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) *sample | 指向OH_AVBuffer实例的指针，用于储存压缩帧数据以及相关信息。 |
 
 **返回：**
 
@@ -264,7 +264,7 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 
 **描述**
 
-根据设定的跳转模式，将所有选中的轨道跳转到指定时间附近。
+根据设定的跳转模式，将所有选中的轨道跳转到指定时间附近。调用前需先通过OH_AVDemuxer_SelectTrackByID选中轨道。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
