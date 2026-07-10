@@ -26,13 +26,9 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 获取文本嵌入模型。使用Promise异步回调。
 
-**使用场景**：
-- 文本相似度计算：用于搜索、推荐系统等场景
-- 问答系统：用于匹配用户问题与答案的语义相似度
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -85,15 +81,11 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 获取支持的云侧模型信息。使用Promise异步回调。
 
-**使用场景**：
-- 模型选择：应用在初始化时可调用此接口查看当前设备支持的云侧模型，以便选择合适的模型进行文本向量化
-- 版本兼容性检查：用于确保应用使用的模型版本在当前设备上可用
-
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -101,7 +93,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | Promise对象，返回云侧模型信息。 |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | Promise对象，返回支持的云侧模型信息。 |
 
 **示例：**
 
@@ -123,13 +115,9 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 获取图像嵌入模型。使用Promise异步回调。
 
-**使用场景**：
-- 以图搜图：用于图像相似度搜索和推荐
-- 图像分类：用于识别图像内容和类别
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -181,11 +169,6 @@ intelligence.getImageEmbeddingModel(imageConfig)
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 获取文本的分块。使用Promise异步回调。
-
-**使用场景**：
-- 长文本向量化：将长文本分割成适合模型处理的较小文本块
-- 文档摘要：对长文本分块后分别处理，提取关键信息
-- 知识库构建：将长文档分块存储，便于检索和匹配
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -242,11 +225,11 @@ intelligence.splitText(textToSplit, splitConfig)
 
 | 名称     | 类型              | 只读 | 可选| 说明                                                         |
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
-| version    | [ModelVersion](#modelversion)           | 否 | 否   | 模型的版本。BASIC_MODEL为基本嵌入模型版本，提供基础的文本向量化功能。 |
+| version    | [ModelVersion](#modelversion)           | 否 | 否   | 模型的版本。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。超出长度时抛出异常。 |
 | modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](#intelligencegetsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型的网络策略，在使用文本向量模型时配置，该参数控制下载模型时允许使用的网络类型。WIFI_ONLY（默认值）仅在WiFi状态下下载模型，适用于需要节省移动数据流量的场景；WIFI_AND_CELLULAR在WiFi和蜂窝网络状态下均可下载模型，适用于需要快速获取模型且允许使用移动数据的场景。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型时使用的网络策略。在使用文本嵌入模型时，此参数必填。在使用图像嵌入模型场景此参数不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ModelVersion
 
@@ -285,8 +268,8 @@ intelligence.splitText(textToSplit, splitConfig)
 
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
-| WIFI_ONLY  | 0 | 仅在WiFi状态下下载模型。|
-| WIFI_AND_CELLULAR  | 1 | 在WiFi和蜂窝网络状态下下载模型。 |
+| WIFI_ONLY  | 0 | 仅在WiFi状态下下载模型，适用于需要节省移动数据流量的场景。|
+| WIFI_AND_CELLULAR  | 1 | 在WiFi和蜂窝网络状态下下载模型，适用于需要快速获取模型且允许使用移动数据的场景。 |
 
 ## Image
 
@@ -308,8 +291,8 @@ type Image = string
 
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
-| size | number | 否 | 否 |分块的最大大小，取值为非负整数。较小的size值适用于需要精细化分块或处理内存受限场景，较大的size值适用于处理大数据量时减少分块数量。不传入时使用系统默认值。 |
-| overlapRatio | number | 否 | 否 | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。较高的重叠比率适用于需要保持语义连贯性的长文本场景，较低的比率适用于需要减少重复计算的短文本场景。不传入时使用系统默认值。 |
+| size | number | 否 | 否 |分块的最大大小，取值为非负整数。较小的size值适用于需要精细化分块或处理内存受限场景，较大的size值适用于处理大数据量时减少分块数量。 |
+| overlapRatio | number | 否 | 否 | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。较高的重叠比率适用于需要保持语义连贯性的长文本场景，较低的比率适用于需要减少重复计算的短文本场景。 |
 
 
 ## TextEmbedding
@@ -328,14 +311,9 @@ loadModel(): Promise&lt;void&gt;
 
 加载文本嵌入模型。使用Promise异步回调。
 
-**使用场景**：
-- 应用启动时预加载：在应用初始化阶段调用，提前加载模型以减少首次使用时的延迟
-- 按需加载：在需要使用文本向量化功能时动态加载模型
-- 模型切换：在切换不同版本或不同类型的模型时调用
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -373,14 +351,9 @@ releaseModel(): Promise&lt;void&gt;
 
 释放文本嵌入模型。使用Promise异步回调。
 
-**使用场景**：
-- 应用退出时释放：在应用关闭或进入后台时释放模型资源
-- 长时间不用时释放：在明确一段时间内不需要使用文本向量化功能时释放，节省内存
-- 切换功能时释放：在切换到其他功能模块时释放当前不用的模型
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -420,14 +393,9 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
-**使用场景**：
-- 语义搜索：将查询文本向量化后与文档向量计算相似度，实现语义搜索功能
-- 推荐系统：根据用户历史行为文本的向量特征，推荐相似内容
-- 文本聚类：将文本向量化后进行聚类分析，用于话题发现或内容分类
-
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -482,7 +450,7 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -535,17 +503,11 @@ textEmbedding.loadModel()
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 15阶段，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 ### loadModel
 
 loadModel(): Promise&lt;void&gt;
 
 加载图像嵌入模型。使用Promise异步回调。
-
-**使用场景**：
-- 应用启动时预加载：在应用初始化阶段调用，提前加载模型以减少首次使用时的延迟
-- 按需加载：在需要使用图像向量化功能时动态加载模型
-- 功能切换时加载：在切换到图像处理相关功能模块时加载对应模型
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -586,11 +548,6 @@ imageEmbedding.loadModel()
 releaseModel(): Promise&lt;void&gt;
 
 释放图像嵌入模型。使用Promise异步回调。
-
-**使用场景**：
-- 应用退出时释放：在应用关闭或进入后台时释放模型资源
-- 长时间不用时释放：在明确一段时间内不需要使用图像向量化功能时释放，节省内存
-- 切换功能时释放：在切换到其他功能模块时释放当前不用的图像模型
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -642,7 +599,7 @@ getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
-| image | [Image](#image) | 是   | 嵌入模型的输入图像类型的URI地址。长度上限为512个字符。 |
+| image | [Image](#image) | 是   | 嵌入模型的输入图像类型的URI地址。 |
 
 **返回值：**
 
