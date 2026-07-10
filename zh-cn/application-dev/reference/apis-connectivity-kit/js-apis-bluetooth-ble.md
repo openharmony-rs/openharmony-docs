@@ -5760,4 +5760,4 @@ BLE扫描的配置参数。
 | 名称                  | 类型        | 只读 | 可选   | 说明                                       |
 | ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | autoConnect         | boolean     | 否 | 是    | 是否直接连接到远端设备或者在远端设备可用时自动连接。true表示在远端设备可用时自动连接，false表示直接连接到远端设备。默认值为false。 |
-| transport           | [bluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)      | 否 | 是    | 连接的传输类型，默认值为TRANSPORT_LE。 |
+| transport           | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)      | 否 | 是    | 连接的传输类型，默认值为TRANSPORT_LE。 |
