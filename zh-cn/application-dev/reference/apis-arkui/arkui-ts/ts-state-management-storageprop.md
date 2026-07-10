@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@StorageProp用于状态管理V1中，与AppStorage中对应的属性建立单向数据同步。AppStorage中对应属性的变化会同步到@StorageProp装饰的变量，但仅修改@StorageProp装饰的变量不会同步回AppStorage。
+@StorageProp用于状态管理V1中，与AppStorage中对应的属性建立单向数据同步。AppStorage中对应属性的变化会同步到@StorageProp装饰的变量，但仅修改@StorageProp装饰的变量不会同步回AppStorage。适用于需要跨页面、跨Ability感知AppStorage全局状态变化且仅保持单向数据流的场景，可避免不必要的数据回写。
 
 开发指南参考：[AppStorage：应用全局的UI状态存储](../../../ui/state-management/arkts-appstorage.md)。
 
@@ -27,7 +27,7 @@ const StorageProp: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| value  | string | 是   | AppStorage中的属性键名，用于建立与该键名对应属性的单向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageProp装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则使用@StorageProp装饰变量的本地初始值在AppStorage中创建该属性。 |
+| value  | string | 是   | AppStorage中的属性键名，用于与该键名对应的属性建立单向数据同步。若AppStorage中已存在该键名对应的属性，则@StorageProp装饰变量的本地初始值将被AppStorage中对应属性的值覆盖；若AppStorage中不存在该键名对应的属性，则使用@StorageProp装饰变量的本地初始值在AppStorage中创建该属性。 |
 
 **返回值：**
 
