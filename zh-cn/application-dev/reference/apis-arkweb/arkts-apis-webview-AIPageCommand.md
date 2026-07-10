@@ -468,7 +468,7 @@
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | code | number | 执行结果码。取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
-| message | string | 执行结果描述。成功时为`"success"`；失败时为错误描述。。 |
+| message | string | 执行结果描述。成功时为`"success"`；失败时为错误描述。 |
 | data | string | PNG格式的Base64编码字符串。成功时返回。 |
 
 
