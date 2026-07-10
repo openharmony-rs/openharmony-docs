@@ -5578,7 +5578,7 @@ BLE扫描的配置参数。
 | 名称       | 类型  | 只读 | 可选   | 说明          |
 | -------- | ------ |---- |---- | ----------- |
 | txPhy | [BlePhy](#blephy23)| 否 | 否 | 发送端物理通道类型。 |
-| rxPhy | [BlePhy](#blephy23)| 否 | 否 | 接受端物理通道类型。 |
+| rxPhy | [BlePhy](#blephy23)| 否 | 否 | 接收端物理通道类型。 |
 | phyMode | [CodedPhyMode](#codedphymode23)| 否 | 是 | 用于指定物理通道类型为[BLE_PHY_CODED](#blephy23)的编码方式。<br>默认值为0，表示不指定明确的编码方式，由蓝牙子系统决定。 |
 
 
