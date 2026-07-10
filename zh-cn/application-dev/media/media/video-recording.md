@@ -83,7 +83,7 @@
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
-   > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+   > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
 
    <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
@@ -174,19 +174,19 @@
 
 10. 重置资源，调用[reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1)接口，重新进入idle状态，允许重新配置录制参数。
 
-   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
-   ``` TypeScript
-   await this.avRecorder?.reset();
-   ```
+    ``` TypeScript
+    await this.avRecorder?.reset();
+    ```
 
 11. 销毁实例，调用[release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1)接口，进入released状态，退出录制，释放视频数据输入源相关资源，例如相机资源。
 
-   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
-   ``` TypeScript
-   await this.avRecorder?.release();
-   ```
+    ``` TypeScript
+    await this.avRecorder?.release();
+    ```
 
 ## 完整示例
 
