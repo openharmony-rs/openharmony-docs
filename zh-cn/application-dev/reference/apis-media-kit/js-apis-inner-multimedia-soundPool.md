@@ -1279,7 +1279,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
+设置同一soundId对应的音频资源在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的play函数之前设置有效。若未设置，将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一个soundId对应的音频资源，如果前一播放实例尚未播放完成，后一播放实例在播放前会先打断前一播放实例的播放。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1578,7 +1578,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     soundPool.on('loadComplete', (soundId: number) => {
-      console.info('Succeeded in loadComplete, soundId：' + soundId);
+      console.info('Succeeded in loadComplete, soundId: ' + soundId);
     })
   }
 });

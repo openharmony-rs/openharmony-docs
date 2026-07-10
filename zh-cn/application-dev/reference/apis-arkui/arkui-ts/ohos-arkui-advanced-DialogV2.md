@@ -107,7 +107,7 @@ ConfirmDialogV2({title: ResourceStr, content?: ResourceStr, checkTips?: Resource
 |-----------------| ------------------------------------------------------------------- | -- | ------ |------------------------------------------------------------|
 | title           | [ResourceStr](ts-types.md#resourcestr)                              | 是  | @Param<br/>@Require | 确认弹出框标题。<br/> **说明：** 标题超过两行会显示“...”。                                                    |
 | content         | [ResourceStr](ts-types.md#resourcestr)                              | 否  | @Param | 确认弹出框内容。<br />默认不显示。                                  |
-| checkTips       | [ResourceStr](ts-types.md#resourcestr)                              | 否  | @Param | checkbox的提示内容。<br />默认不显示。                            |
+| checkTips       | [ResourceStr](ts-types.md#resourcestr)                              | 否  | @Param | checkbox的提示内容。<br />默认不显示。<br/>**说明：** 当提示内容不设置时，checkbox也会显示。     |
 | checked         | boolean                                                             | 否  | @Param | checked为true时，表示checkbox已选中，为false时，表示未选中。<br />默认值：false |
 | onCheckedChange | [AdvancedDialogV2OnCheckedChange](#advanceddialogv2oncheckedchange) | 否  | @Param | checkbox的选中状态改变事件。<br />默认无事件。                        |
 | primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button)                   | 否  | @Param | 确认弹出框左侧按钮。<br />默认不显示。                                  |

@@ -12,7 +12,7 @@ typedef struct ArkUI_Matrix4TranslationOptions ArkUI_Matrix4TranslationOptions
 
 ## 概述
 
-定义矩阵平移的平移对象。
+定义矩阵平移变换的参数配置对象。
 
 **起始版本：** 24
 

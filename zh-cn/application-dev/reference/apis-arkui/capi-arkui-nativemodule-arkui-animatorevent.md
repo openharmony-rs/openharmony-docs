@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
 
 ## 概述
 
-定义animator回调事件对象。
+定义animator回调事件对象，用于在动画状态变化回调中接收事件。
 
 **起始版本：** 12
 

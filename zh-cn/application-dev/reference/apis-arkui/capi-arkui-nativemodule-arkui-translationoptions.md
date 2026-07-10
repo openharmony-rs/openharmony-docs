@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_TranslationOptions
 
 ## 概述
 
-定义组件转场时的平移效果对象。
+定义组件转场时平移效果的配置选项。
 
 **起始版本：** 12
 

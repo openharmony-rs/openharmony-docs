@@ -40,7 +40,7 @@ import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 
 onCreate(): void
 
-AutoFillExtensionAbility创建时触发回调函数。
+AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行初始化操作，如注册监听器、加载必要资源等。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -91,12 +91,13 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
         'message': 'AutoFill Page',
-        'fillCallback': callback,
+        'saveCallback': callback,
         'viewData': request.viewData,
         'context': this.context
       };
       let storage_fill = new LocalStorage(localStorageData);
       if (session) {
+        // 加载自动保存页面
         session.loadContent('pages/SelectorList', storage_fill);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -146,6 +147,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
       };
       let storage_save = new LocalStorage(localStorageData);
       if (session) {
+        // 加载自动保存页面
         session.loadContent('pages/SavePage', storage_save);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -161,7 +163,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onUpdateRequest(request: UpdateRequest): void
 
-当收到更新请求时触发此回调函数。
+当应用界面数据发生变化、需要更新已填充的内容时，系统触发此回调函数。request参数包含更新后的viewData等信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -189,7 +191,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onSessionDestroy(session: UIExtensionContentSession): void
 
-当AutoFillExtensionAbility界面内容对象销毁后调用。
+当AutoFillExtensionAbility的session销毁时触发此回调。session通常在用户取消填充操作或填充任务完成后销毁。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 

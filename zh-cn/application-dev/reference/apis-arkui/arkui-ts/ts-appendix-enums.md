@@ -1183,7 +1183,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## Nullable\<T><sup>11+</sup>
 
-type Nullable\<T> = T | undefined
+type Nullable\<T> = T \| undefined
 
 在使用该类型时，该类型的对象可以是自定义类型，也可以是undefined。
 
@@ -1703,6 +1703,8 @@ type Nullable\<T> = T | undefined
 | None    | 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ## Week
+
+定义星期枚举值。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

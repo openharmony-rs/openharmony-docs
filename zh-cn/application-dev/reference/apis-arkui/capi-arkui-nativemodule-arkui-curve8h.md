@@ -12,7 +12,7 @@ typedef struct ArkUI_Curve* ArkUI_CurveHandle
 
 ## 概述
 
-曲线的插值对象指针类型定义。
+曲线插值对象的指针类型定义。
 
 **起始版本：** 12
 

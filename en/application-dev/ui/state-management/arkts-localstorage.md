@@ -508,7 +508,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Change the following to "windowStage.loadContent('pages/PageFiveShare', this.storage);" as required.
     windowStage.loadContent('pages/Index', this.storage).catch(() => {
-      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onCreonWindowStageCreateate');
+      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     });
   }
 
