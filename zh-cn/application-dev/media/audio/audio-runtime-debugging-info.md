@@ -209,7 +209,8 @@ if (fd >= 0) {
 ``` TypeScript
 // 打印指定播放实例的快照。
 const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printRendererInfo(renderer, file.fd);
 fileio.closeSync(file);
 ```
