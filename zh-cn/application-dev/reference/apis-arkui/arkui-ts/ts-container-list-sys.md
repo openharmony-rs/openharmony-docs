@@ -37,7 +37,7 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 ## ChainEdgeEffect<sup>10+</sup>枚举说明
 
-设置链式动效边缘效果。
+设置链式联动动效边缘效果。
 
 **系统接口：** 此接口为系统接口。
 
@@ -52,7 +52,7 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 ## ChainAnimationOptions<sup>10+</sup>对象说明
 
-链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数和边缘效果。
+链式联动动效属性集合，用于设置List最大间距、最小间距、效果强度、传导系数、边缘效果、刚度和阻尼。
 
 **系统接口：** 此接口为系统接口。
 

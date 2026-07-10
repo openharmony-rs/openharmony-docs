@@ -247,11 +247,11 @@ ListItem组件参数。
 <!--Table: 10%; auto; 10%; 10%; auto-->
 | 名称  | 类型                                  | 只读 | 可选 | 说明                                                         |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 是 | 设置List组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当设置为ListItemStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
+| style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 是 | 设置ListItem组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当设置为ListItemStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
 
 ## ListItemStyle<sup>10+</sup>枚举说明
 
-List组件卡片样式枚举。
+ListItem组件卡片样式枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -423,7 +423,7 @@ struct ListItemExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('90%')
       .scrollBar(BarState.Off)
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
@@ -523,7 +523,7 @@ struct ListItemExample3 {
     Column() {
       List({ space: '4vp', initialIndex: 0 }) {
         ListItemGroup({ style: ListItemGroupStyle.CARD }) {
-          ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: number, index?: number) => {
+          ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: ListItemStyle, index?: number) => {
             ListItem({ style: itemStyle }) {
               Text('' + index)
                 .width('100%')
@@ -532,7 +532,7 @@ struct ListItemExample3 {
           })
         }
 
-        ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: number, index?: number) => {
+        ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: ListItemStyle, index?: number) => {
           ListItem({ style: itemStyle }) {
             Text('' + index)
               .width('100%')
@@ -583,9 +583,9 @@ function itemBuilder(params: BuilderParams) {
 struct MyListItem {
   scroller: ListScroller = new ListScroller();
   @State arr: number[] = [0, 1, 2, 3, 4];
-  @State project ?: number = 0;
-  startBuilder ?: ComponentContent<BuilderParams> = undefined;
-  endBuilder ?: ComponentContent<BuilderParams> = undefined;
+  @State project?: number = 0;
+  startBuilder?: ComponentContent<BuilderParams> = undefined;
+  endBuilder?: ComponentContent<BuilderParams> = undefined;
   builderParam = new BuilderParams('delete', this.scroller);
 
   aboutToAppear(): void {
@@ -652,7 +652,7 @@ struct ListItemExample {
         ListItemGroup() {
           ForEach(this.arr, (project: number) => {
             MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
       }
     }

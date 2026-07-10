@@ -318,7 +318,7 @@ Failed to obtain the information via UserIAM.
 
 **错误信息**
 
-The key with same alias already exists.
+The key with the same alias already exists.
 
 **错误描述**
 

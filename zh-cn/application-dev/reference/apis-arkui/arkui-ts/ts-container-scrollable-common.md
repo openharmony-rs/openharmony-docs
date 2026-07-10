@@ -188,7 +188,7 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions): T
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | 是   | 滚动组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：Grid、Scroll、WaterFlow组件默认EdgeEffect.None，List组件默认EdgeEffect.Spring。|
-| options | [EdgeEffectOptions](#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时是否开启滑动效果，以及设置边缘效果生效的边缘。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：<br/>List、Grid、WaterFlow组件默认{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END }，Scroll组件默认{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END }。|
+| options | [EdgeEffectOptions](#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时是否开启滑动效果，以及设置边缘效果生效的边缘。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：<br/>List、Grid、WaterFlow组件默认{ alwaysEnabled: false, effectEdge: EffectEdge.START \| EffectEdge.END }，Scroll组件默认{ alwaysEnabled: true, effectEdge: EffectEdge.START \| EffectEdge.END }。|
 
 **返回值：**
 
@@ -635,7 +635,7 @@ onScrollStart(event: () => void): T
 
 onScrollStop(event: () => void): T
 
-滚动停止时触发。手拖动滚动组件或拖动滚动组件的滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
+滚动停止时触发。手指拖动滚动组件或拖动滚动组件的滚动条触发的滚动，手指离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
 
 触发该事件的条件：
 
@@ -807,7 +807,7 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
-滚动组件结束拖拽时触发。
+滚动组件结束拖动时触发。
 
 **卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 

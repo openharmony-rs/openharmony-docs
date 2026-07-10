@@ -6535,23 +6535,27 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+## ohos.permission.SAMBA_CLIENT_ACCESS
 
-允许应用设置蜂窝网络相关信息。
+允许应用连接网络邻居客户端，管理网络邻居文件。
+
+获取权限后，应用可以连接、断开网络邻居，操作网络邻居文件，获取网络邻居连接基本信息等。
 
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
-**是否支持证书授权**：true
+ **是否支持证书授权**：true
 
-**支持设备**：Car
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 
-## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
 
-允许应用读取蜂窝网络相关信息。
+允许应用调用文件管理服务的接口操作文件。
+
+获取该权限后，应用可以使用回收站、常用文件夹、收藏文件、USB设备查询、快捷方式等文件管理功能。
 
 **权限级别**：system_basic
 
@@ -6559,13 +6563,15 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Car
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 
-## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
 
-允许应用设置TBox Wi-Fi相关信息。
+允许应用获取和管理文件管理智能文件。
+
+获取权限后，应用可以管理文件的智能分类、生成文件摘要和进行文件推荐等。
 
 **权限级别**：system_basic
 
@@ -6573,27 +6579,15 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Car
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 
-## ohos.permission.vehicle.TBOX_WIFI_INFO
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
 
-允许应用获取TBox Wi-Fi相关信息。
+允许应用获取和管理文件管理文件。
 
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**支持设备**：Car
-
-**起始版本**：26.0.0
-
-## ohos.permission.vehicle.PACKET_CAPTURE_INFO
-
-允许应用触发网络抓包。
+获取该权限后，应用可以添加文件事件记录、搜索文件、管理最近文件、以及获取音乐文件、重复文件、聚合文件。
 
 **权限级别**：system_basic
 
@@ -6601,20 +6595,6 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Car
-
-**起始版本**：26.0.0
-
-## ohos.permission.vehicle.CCN_SELF_HEALING
-
-允许应用触发网络的自检自愈。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**支持设备**：Car
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0

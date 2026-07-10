@@ -198,7 +198,7 @@ enum OH_DataType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ORIGINAL_STREAM = 0 | 原始流格式，如YUV/RGBA/PCM等。 |
-| OH_ENCODED_STREAM = 1 | 编码格式，如H264/AAC等。当前版本暂不支持。 |
+| OH_ENCODED_STREAM = 1 | 编码流格式，如H.264/AAC等。当前版本暂不支持。 |
 | OH_CAPTURE_FILE = 2 | 保存文件格式，支持mp4。 |
 | OH_INVAILD = -1 | 无效格式。 |
 
@@ -529,7 +529,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer缓冲区实例的指针，该回调方法执行结束返回后，数据缓冲区不再有效。 |
 | [OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | 可用缓冲区的数据类型。 |
-|  int64_t timestamp | 时间戳，单位纳秒。 |
+|  int64_t timestamp | 时间戳，单位：纳秒（ns）。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnDisplaySelected()
@@ -595,7 +595,7 @@ typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, O
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)* selections | 用户在授权界面选择的录制参数信息。 |
-|  void *userData | 指向用户数据的指针。 |
+|  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnPrivacyProtect()
 
@@ -605,7 +605,7 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
  
 **描述**
 
-当[OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)实例在运行过程中发生隐私保护事件时，函数指针将被调用。
+当[OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)实例在运行过程中发生隐私保护事件时，函数指针将调用。
   
 **起始版本：** 24
 
@@ -615,4 +615,4 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | 隐私保护信息指针。指向包含隐私保护事件详细信息的结构体，用于处理录屏过程中的隐私保护回调事件。 |
-| void *userData | 指向用户数据的指针。 |
+| void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |

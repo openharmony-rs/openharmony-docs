@@ -245,7 +245,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可视区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
 
 **返回值：**
 

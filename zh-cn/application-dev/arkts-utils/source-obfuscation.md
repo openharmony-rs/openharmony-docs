@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkGuard在编译时读取模块的build-profile.json5配置文件，解析并合并当前模块与依赖模块的混淆规则，然后对中间文件进行混淆处理，最终将结果输出至build目录。
 
