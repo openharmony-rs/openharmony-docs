@@ -6,11 +6,11 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供下拉选择菜单，让用户在多个选项间选择。
+提供下拉选择菜单，让用户在多个选项间选择。Select组件支持设置选项图标、自定义样式、分割线等，适用于需要在有限空间内展示多个选项供用户选择的场景。
 
 >  **说明：**
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 子组件
 
@@ -39,8 +39,8 @@ Select(options: Array\<SelectOption>)
 | 名称 | 类型                            | 只读 | 可选 | 说明       |
 | ------ | ----------------------------------- | ---- | -------------- | -------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | 否  | 否 | 下拉选项内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon   | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 下拉选项图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是  | 下拉选项Symbol图片。<br/>symbolIcon优先级高于icon。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| icon   | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 下拉选项图片，默认不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是  | 下拉选项Symbol图片，默认不显示。<br/>symbolIcon优先级高于icon。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## 属性
 
@@ -50,7 +50,7 @@ Select(options: Array\<SelectOption>)
 
 selected(value: number | Resource)
 
-设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置为异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
+设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性、或设置为负数、非整数、超出索引范围等异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
 从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
@@ -70,7 +70,7 @@ selected(value: number | Resource)
 
 selected(numCount: Optional<number | Resource>)
 
-设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置异常值时，默认选择值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
+设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性、或设置为负数、非整数、超出索引范围等异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
@@ -84,7 +84,7 @@ selected(numCount: Optional<number | Resource>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
+| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 下拉菜单初始选项的索引，索引值从0开始。<br/>当numCount的值为undefined或null时，选中第一项。 |
 
 ### value
 
@@ -104,7 +104,7 @@ value(value: ResourceStr)
 
 | 参数名 | 类型                                                 | 必填 | 说明                     |
 | ------ | ---------------------------------------------------- | ---- | ------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr)<sup>11+</sup> | 是   | 下拉按钮本身的文本内容。<br/>**说明：** 文本长度大于列宽时，文本被截断。 |
+| value  | [ResourceStr](ts-types.md#resourcestr)<sup>11+</sup> | 是   | 下拉按钮本身的文本内容。<br/>**说明：** 文本长度大于列宽时，文本被截断，超出的部分以省略号的方式显示。 |
 
 ### value<sup>18+</sup>
 
@@ -124,7 +124,7 @@ value(resStr: Optional\<ResourceStr>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceStr](ts-types.md#resourcestr)> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。 |
+| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceStr](ts-types.md#resourcestr)> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。<br/>**说明：** 文本长度大于列宽时，文本被截断。 |
 
 ### controlSize<sup>12+</sup>
 
@@ -168,21 +168,21 @@ controlSize(size: Optional\<ControlSize>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ControlSize](ts-basic-components-button.md#controlsize11枚举说明)> | 是   | Select组件的尺寸。<br/>当size的值为undefined时，默认值为ControlSize.NORMAL。 |
+| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ControlSize](ts-basic-components-button.md#controlsize11枚举说明)> | 是   | Select组件的尺寸。<br/>默认值：ControlSize.NORMAL。<br/>当size的值为undefined或null时，默认值为ControlSize.NORMAL。 |
 
 controlSize、width、height接口作用优先级：
 
-   1）如果开发者只设置了width和height，当文字大小设置的是比较大的值的时候，文字超出组件大小，超出的部分以省略号的方式显示；
+   1）如果开发者只设置了width和height，当文字大小设置为较大值时，文字会超出组件大小，超出的部分以省略号的方式显示；
 
    2）如果开发者只设置了controlSize，没有设置width和height，组件宽高自适应文字，文字不超出组件，并设置最小宽度minWidth和最小高度minHeight；
 
-   3）如果controlSize、width、height接口都设置了，width和height设置的值生效，但如果width和height设置的值小于controlSize设置的最小宽度minWidth和最小高度minHeight，width和height设置的值不生效，宽高仍保持controlSize设置的最小宽度minWidth和最小高度minHeight。
+   3）如果同时设置了controlSize、width、height接口，width和height设置的值生效，但如果width和height设置的值小于controlSize设置的最小宽度minWidth和最小高度minHeight，width和height设置的值不生效，宽高仍保持controlSize设置的最小宽度minWidth和最小高度minHeight。
 
 ### menuItemContentModifier<sup>12+</sup>
 
 menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
 
-定制Select下拉菜单项内容区的方法。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。
+定制Select下拉菜单项内容区的方法。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。适用于下拉菜单项需要展示图文混排、多行文本、复杂图标或内置控件等复杂布局的场景。
 
 > **说明：**
 >
@@ -220,13 +220,13 @@ menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfigurati
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[MenuItemConfiguration](#menuitemconfiguration12对象说明)>> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[MenuItemConfiguration](#menuitemconfiguration12对象说明)>> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined或null时，不使用内容修改器。 |
 
 ### divider<sup>12+</sup>
 
 divider(options: Optional\<DividerOptions> | null)
 
-设置分割线样式，不设置该属性则按“默认值”展示分割线。
+设置分割线样式，不设置该属性则按“默认值”展示分割线。该属性与dividerStyle冲突，如果同时设置，按调用顺序生效，后者覆盖前者。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -244,7 +244,7 @@ divider(options: Optional\<DividerOptions> | null)
 
 dividerStyle(style: Optional\<DividerStyleOptions>)
 
-设置分割线样式，不设置该属性则按“默认值”展示分割线。该属性与divider互斥，按调用顺序生效。
+设置分割线样式，不设置该属性则按“默认值”展示分割线。该属性与divider冲突，如果同时设置，按调用顺序生效，后者覆盖前者。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -257,7 +257,7 @@ dividerStyle(style: Optional\<DividerStyleOptions>)
 <!--Table: 10%; auto; 10%; auto-->
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | 是   | 1.设置DividerStyleOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
 ### font
 
@@ -461,7 +461,7 @@ optionBgColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，下拉菜单项的背景色为Color.White。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，默认值：API version 11之前为Color.White，API version 11及之后为Color.Transparent。 |
 
 ### optionFont
 
@@ -622,7 +622,7 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 | 参数名    | 类型                                      | 必填 | 说明                                                         |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | alignType | [MenuAlignType](#menualigntype10枚举说明) | 是   | 对齐方式类型。<br/>默认值：MenuAlignType.START               |
-| offset    | [Offset](ts-types.md#offset)              | 否   | 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br/> 默认值：{dx: 0, dy: 0} |
+| offset    | [Offset](ts-types.md#offset)              | 否   | 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。dx控制水平方向偏移，dy控制垂直方向偏移。<br/> 默认值：{dx: 0, dy: 0} |
 
 ### menuAlign<sup>18+</sup>
 
@@ -649,7 +649,7 @@ optionWidth(value: Dimension | OptionWidthMode )
 
 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。
 
-当设置为异常值或小于最小宽度56vp时，属性无效，菜单项宽度设为默认值，即2栅格。
+当设置为无效值或小于最小宽度56vp时，属性无效，菜单项宽度设为默认值，即2栅格。
 
 Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜单项的宽度设置为小于等于`calc(100% - 32vp)`的值，以避免下拉菜单弹出时发生偏移。
 
@@ -671,7 +671,7 @@ optionWidth(width: Optional\<Dimension | OptionWidthMode> )
 
 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。与[optionWidth](#optionwidth11)<sup>11+</sup>相比，width参数新增了对undefined类型的支持。
 
-当设置为异常值或小于最小宽度56vp时，属性无效，菜单项宽度设为默认值，即2栅格。
+当设置为无效值或小于最小宽度56vp时，属性无效，菜单项宽度设为默认值，即2栅格。
 
 Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜单项的宽度设置为小于等于`calc(100% - 32vp)`的值，以避免下拉菜单弹出时发生偏移。
 
@@ -693,9 +693,9 @@ optionHeight(value: Dimension)
 
 设置下拉菜单显示的最大高度，不支持设置百分比。默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。
 
-当设置为异常值或零时，属性不生效。
+当设置为无效值或零时，属性不生效。
 
-如果下拉菜单所有选项的实际高度没有设定的高度大，下拉菜单的高度按实际高度显示。
+如果下拉菜单所有选项的实际高度小于设定的高度，下拉菜单的高度按实际高度显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -715,7 +715,7 @@ optionHeight(height: Optional\<Dimension>)
 
 设置下拉菜单显示的最大高度，不支持设置百分比。默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。与[optionHeight](#optionheight11)<sup>11+</sup>相比，height参数新增了对undefined类型的支持。
 
-当设置为异常值或零时，属性不生效。
+当设置为无效值或零时，属性不生效。
 
 如果下拉菜单所有选项的实际高度小于设定的高度，下拉菜单的高度按实际高度显示。
 
@@ -729,7 +729,7 @@ optionHeight(height: Optional\<Dimension>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)> | 是   | 下拉菜单显示的最大高度。<br/>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即下拉菜单最大高度默认值为屏幕可用高度的80%。 |
+| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)> | 是   | 下拉菜单显示的最大高度。<br/>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即屏幕可用高度的80%。 |
 
 ### menuBackgroundColor<sup>11+</sup>
 
@@ -751,7 +751,7 @@ menuBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单的背景色。<br/>默认值：<br/>API version 11之前，默认值为$r('sys.color.ohos_id_color_card_bg')。<br/>API version 11及之后，默认值为Color.Transparent。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单的背景色。<br/>默认值：API version 11之前为$r('sys.color.ohos_id_color_card_bg')，API version 11及之后为Color.Transparent。 |
 
 ### menuBackgroundColor<sup>18+</sup>
 
@@ -931,7 +931,7 @@ optionTextModifier(modifier: Optional\<TextModifier>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项文本样式的方法。 <br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
@@ -991,7 +991,7 @@ keyboardAvoidMode(mode:Optional\<MenuKeyboardAvoidMode>)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23枚举说明)> | 是 | 设置下拉菜单是否避让软键盘。取值为undefined时，按照MenuKeyboardAvoidMode.NONE处理，不避让软键盘。 |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23枚举说明)> | 是 | 设置下拉菜单是否避让软键盘。取值为undefined时，按照MenuKeyboardAvoidMode.NONE处理，不避让软键盘。各枚举值的具体效果参见[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23枚举说明)枚举说明。 |
 
 ### minKeyboardAvoidDistance<sup>23+</sup>
 
@@ -1069,7 +1069,7 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)> | 是 | 设置下拉菜单系统材质。材质设置为无效值、undefined时，按照不设置系统材质处理。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
@@ -1148,7 +1148,7 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
 | 名称   | 类型                   |只读                                      |可选                                      | 说明                                                         |
 | ------ | ----------------------|-------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| width  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明)| 否| 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0 |
+| width  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明)| 否| 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0vp |
 | color  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)|否 |是 | 设置外描边颜色。<br/>默认值：#19ffffff|
 
 ## 事件
@@ -1754,7 +1754,7 @@ struct SelectExample {
 
 ![select-menu-outline](figures/selectMenuOutline.png)
 
-### 示例10（设置Select的弹出菜单避让软键盘）
+### 示例10（设置Select弹出菜单避让软键盘）
 
 该示例通过调用[keyboardAvoidMode](#keyboardavoidmode23)和[minKeyboardAvoidDistance](#minkeyboardavoiddistance23)接口，实现下拉菜单避让软键盘并自定义避让软键盘的最小距离。
 
