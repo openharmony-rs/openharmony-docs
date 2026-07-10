@@ -50,11 +50,12 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
      all_features += [
        "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
        "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
-
+       "//test/xts/acts/communication_lite/dsoftbus_hal:ActsDsoftbusMgrTest",
        #"//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
        "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
        "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
        "//test/xts/acts/iothardware_lite/peripheral_hal:ActsWifiIotTest",
+       "//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
        "//test/xts/acts/distributeddatamgr_lite/kv_store_hal:ActsKvStoreTest",
        "//test/xts/acts/security_lite/huks/liteos_m_adapter:ActsHuksHalFunctionTest",
        "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
