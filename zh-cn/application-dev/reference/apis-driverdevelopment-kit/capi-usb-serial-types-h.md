@@ -58,7 +58,7 @@ enum UsbSerial_DdkRetCode
 | USB_SERIAL_DDK_SUCCESS = 31600000 | 操作成功。 |
 | USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作，例如使用了无效的设备句柄。请检查确保设备处于正常打开的状态。 |
 | USB_SERIAL_DDK_INIT_ERROR = 31600002 | 初始化失败。请先初始化DDK服务。 |
-| USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | 服务错误。 |
+| USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | 服务错误。请检查DDK服务状态和接口调用逻辑是否正常。 |
 | USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | 内存相关错误，例如内存不足、内存数据复制失败或内存应用程序故障。建议优化内存参数，及时释放不再需要的资源。 |
 | USB_SERIAL_DDK_IO_ERROR = 31600005 | I/O 错误。请检查设备连接是否正常、传输线是否完好、设备是否处于正常工作状态。 |
 | USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | 未找到设备。请检查参数和设备连接状态。 |
