@@ -1,3 +1,7 @@
+V5TNiAziGWSoE1W6M5cLKpk7
+https://wu_wx:V5TNiAziGWSoE1W6M5cLKpk7@gitcode.com/wu_wx/docs.git weekly_20260629
+
+Signed-off-by: wuwenxin (C) <wuwenxin6@h-partners.com>
 # 空间音频管理（仅对系统应用开放）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -56,7 +60,7 @@
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -103,7 +107,7 @@
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -143,7 +147,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -163,7 +167,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 查询指定设备的空间音频渲染效果开关状态
 
-系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationenabled12)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
+系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationenabled12)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -174,7 +178,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -236,7 +240,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -256,7 +260,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询指定设备的头动跟踪效果开关状态
 
-系统应用开发者可以通过[isHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isheadtrackingenabled12)接口查询指定设备的头动跟踪效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示头动跟踪开启，false表示头动跟踪关闭。返回值为[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口中成功设置的指定设备头动跟踪开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持头动跟踪，以及指定设备空间音频渲染开关是否打开。
+系统应用开发者可以通过[isHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isheadtrackingenabled12)接口查询指定设备的头动跟踪效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示头动跟踪开启，false表示头动跟踪关闭。返回值为[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口中成功设置的指定设备头动跟踪开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持头动跟踪，以及指定设备空间音频渲染开关是否打开。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -267,7 +271,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
     deviceType : audio.DeviceType.BLUETOOTH_A2DP,
     id : 1,
     name : "",
-    address : "00:11:22:33:FF:EE",
+    address : "123",
     sampleRates : [44100],
     channelCounts : [2],
     channelMasks : [0],
@@ -314,14 +318,14 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间化设备状态的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialdevicestate11)。
+空间化设备状态AudioSpatialDeviceState的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialdevicestate11)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let spatialDeviceState: audio.AudioSpatialDeviceState = {
-    address: "00:11:22:33:FF:EE",
+    address: "123",
     isSpatializationSupported: true,
     isHeadTrackingSupported: true,
     spatialDeviceType: audio.AudioSpatialDeviceType.SPATIAL_DEVICE_TYPE_IN_EAR_HEADPHONE
@@ -342,7 +346,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间音频渲染场景类型的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
+空间音频渲染场景类型AudioSpatializationSceneType的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
