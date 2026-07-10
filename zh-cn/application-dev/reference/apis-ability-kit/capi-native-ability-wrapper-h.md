@@ -60,7 +60,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(
 | -- | -- |
 | [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-nativeabilitywrapper.md)* nativeAbilityWrapper | NativeAbility数据信息指针。 |
 | char* buffer | 接收实例ID字符串的缓冲区指针。实例ID为UUID格式，长度为37字节。 |
-| int32_t bufferSize | 缓冲区长度，必须至少为37字节。 |
+| int32_t bufferSize | 缓冲区长度，必须至少为37字节。确保缓冲区至少有额外一个字节用于'\0'。 |
 
 **返回：**
 
@@ -82,6 +82,7 @@ void GetAbilityInstanceId(const AbilityRuntime_NativeAbilityWrapper* wrapper)
     }
     // buffer中存储了UUID格式的Ability实例ID
     char buffer[37] = {0};
+    // 获取Ability实例ID
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetAbilityInstanceId(wrapper, buffer, 37);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -137,6 +138,7 @@ void GetAbilityName(const AbilityRuntime_NativeAbilityWrapper* wrapper)
     const int32_t bufferSize = 256; // 根据实际需要调整缓冲区大小
     char buffer[bufferSize] = {0};
     int32_t writeLength = 0;
+    // 获取Ability名称
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetAbilityName(wrapper, buffer, bufferSize, &writeLength);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -191,6 +193,7 @@ void GetEnv(const AbilityRuntime_NativeAbilityWrapper* wrapper)
     }
 
     napi_env env = nullptr;
+    // 获取napi_env
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetEnv(wrapper, &env);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
