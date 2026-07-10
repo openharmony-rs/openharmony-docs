@@ -104,7 +104,8 @@ ArkTS-Sta示例：
 import { audio } from '@kit.AudioKit';
 // ...
   let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-  console.info(`Succeeded in checking spatialization enabled for current device is: ${isSpatializationEnabledForCurrentDevice}.`);
+  console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function,
+    IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 ### 订阅当前发声设备空间音频渲染效果的开关状态变化事件
@@ -141,16 +142,6 @@ import { audio } from '@kit.AudioKit';
       // ...
     });
 ```
-
-### 取消订阅当前发声设备空间音频渲染效果的开关状态变化事件
-
-应用开发者可以通过[off('spatializationEnabledChangeForCurrentDevice')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSpatializationManager.md#offspatializationenabledchangeforcurrentdevice18)接口取消订阅空间音频渲染效果的开关状态变化事件。
-
-ArkTS-Dyn示例：
-
-<!-- @[unregist_spacesoundcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
 import { audio } from '@kit.AudioKit';
 // ...
   audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
