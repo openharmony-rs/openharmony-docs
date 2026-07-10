@@ -536,11 +536,11 @@ function init(updateCallback?: (msg: string, isError: boolean) => void): void {
   let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
   if (isSupported) {
     audio.createAudioLoopback(mode).then((loopback) => {
-      console.info('Invoke createAudioLoopback succeeded.');
+      console.info('Succeeded in creating audio loopback.');
       // ...
       audioLoopback = loopback;
     }).catch((err: BusinessError) => {
-      console.error(`Invoke createAudioLoopback failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to create audio loopback. Code: ${err.code}, message: ${err.message}`);
       // ...
     });
   } else {
@@ -554,10 +554,10 @@ async function setVolume(volume: number, updateCallback?: (msg: string, isError:
   if (audioLoopback !== undefined) {
     try {
       await audioLoopback.setVolume(volume);
-      console.info(`Invoke setVolume ${volume} succeeded.`);
+      console.info('Succeeded in setting volume.');
       // ...
     } catch (err) {
-      console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
@@ -571,12 +571,17 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset, updateCa
   isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
-      audioLoopback.setReverbPreset(preset);
-      console.info(`setReverbPreset( ${preset} succeeded.`);
-      // ...
-      currentReverbPreset = audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
+      if (audioLoopback.setReverbPreset(preset)) {
+        console.info('Succeeded in setting reverb preset.');
+        // ...
+        // 获取当前的混响模式，防止设置失败。
+        currentReverbPreset = preset;
+      } else {
+        console.error('Failed to set reverb preset.');
+        // ...
+      }
     } catch (err) {
-      console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to set reverb preset. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
@@ -590,12 +595,17 @@ async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset, up
   (msg: string, isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
-      audioLoopback.setEqualizerPreset(preset);
-      console.info(`setEqualizerPreset ${preset} succeeded.`);
-      // ...
-      currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
+      if (audioLoopback.setEqualizerPreset(preset)) {
+        console.info('Succeeded in setting equalizer preset.');
+        // ...
+        // 获取当前的均衡器类型，防止设置失败。
+        currentEqualizerPreset = preset;
+      } else {
+        console.error('Failed to set equalizer preset.');
+        // ...
+      }
     } catch (err) {
-      console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to set equalizer preset. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
@@ -613,9 +623,9 @@ async function enable(updateCallback?: (msg: string, isError: boolean) => void):
         // 注册监听。
         audioLoopback.on('statusChange', statusChangeCallback);
         // 启动返听。
-        let success = await audioLoopback.enable(true);
-        if (success) {
-          console.info('Invoke enable succeeded');
+        let isSuccess = await audioLoopback.enable(true);
+        if (isSuccess) {
+          console.info('Succeeded in using enable function.');
           // ...
         } else {
           status = await audioLoopback.getStatus();
@@ -625,7 +635,7 @@ async function enable(updateCallback?: (msg: string, isError: boolean) => void):
         statusChangeCallback(status);
       }
     } catch (err) {
-      console.error(`Invoke enable failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
@@ -641,9 +651,9 @@ async function disable(updateCallback?: (msg: string, isError: boolean) => void)
       let status = await audioLoopback.getStatus();
       if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
         // 禁用返听。
-        let success = await audioLoopback.enable(false);
-        if (success) {
-          console.info('Invoke disable succeeded');
+        let isSuccess = await audioLoopback.enable(false);
+        if (isSuccess) {
+          console.info('Succeeded in using enable function.');
           // ...
           // 关闭监听。
           audioLoopback.off('statusChange', statusChangeCallback);
@@ -655,7 +665,7 @@ async function disable(updateCallback?: (msg: string, isError: boolean) => void)
         statusChangeCallback(status);
       }
     } catch (err) {
-      console.error(`Invoke disable failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
