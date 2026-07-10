@@ -179,6 +179,10 @@ async function connectDevice() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   console.info(`devicepipe = ${devicepipe}`);
   usbManager.closePipe(devicepipe);
 }
@@ -384,6 +388,10 @@ async function claimInterface() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
@@ -444,6 +452,10 @@ async function releaseInterface() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
@@ -499,6 +511,10 @@ async function setConfiguration() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
@@ -559,6 +575,10 @@ async function setInterface() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
@@ -612,6 +632,10 @@ async function getRawDescriptor() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.getRawDescriptor(devicepipe);
   usbManager.closePipe(devicepipe);
 }
@@ -662,6 +686,10 @@ async function getFileDescriptor() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: number = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicepipe);
@@ -732,6 +760,10 @@ async function usbControlTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
     console.info(`usbControlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
@@ -804,6 +836,10 @@ async function bulkTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
@@ -880,6 +916,10 @@ async function usbSubmitTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   // 获取endpoint端点地址
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
@@ -1062,6 +1102,10 @@ async function closePipe() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1098,8 +1142,8 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
@@ -1145,8 +1189,8 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
@@ -1186,8 +1230,8 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 
 **示例：**
 
@@ -1274,8 +1318,8 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 801      | Capability not supported.                                    |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14401001 | The target USBAccessory not matched.                         |
-| 14401002 | Failed to open the native accessory node.                    |
+| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
 | 14401003 | Cannot reopen the accessory.                                 |
 
 **示例：**
@@ -1402,6 +1446,10 @@ async function resetUsbDevice() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
@@ -1471,16 +1519,23 @@ async function controlTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`controlTransfer = ${ret}`);
-  usbManager.closePipe(devicepipe);
-  })
+    console.info(`controlTransfer = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
+  }).finally(() => {
+    usbManager.closePipe(devicepipe);
+  });
 }
 ```
 
 ## USBEndpoint
 
-通过USB发送和接收数据的端口。通过[USBInterface](#usbinterface)获取。
+USB端点，用于主机与设备之间数据传输的通信端点。通过[USBInterface](#usbinterface)获取。
 
 >**说明：**
 >
@@ -1492,7 +1547,7 @@ async function controlTransfer() {
 graph LR
     A[端点类型] --> B[批量端点 bulk]
     A --> C[中断端点 interrupt]
-    A --> D[实时端点 isoc]
+    A --> D[实时端点 sochronous]
     B --> B1[宽带共享调度]
     B1 --> B2[适合大量数据非实时传输]
     C --> C1[固定轮询调度]
