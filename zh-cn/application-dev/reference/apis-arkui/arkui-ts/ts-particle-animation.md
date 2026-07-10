@@ -1093,15 +1093,16 @@ struct ParticleExample3 {
 
           }
         ]
+      // 设置粒子扰动场，干扰粒子运动轨迹
       }).width(300).height(300).disturbanceFields([{
-        strength: 10,
-        shape: DisturbanceFieldShape.RECT,
-        size: { width: 100, height: 100 },
-        position: { x: 100, y: 100 },
-        feather: 15,
-        noiseScale: 10,
-        noiseFrequency: 15,
-        noiseAmplitude: 5
+        strength: 10, // 场强，表示排斥力或吸引力的强度
+        shape: DisturbanceFieldShape.RECT, // 扰动场形状为矩形
+        size: { width: 100, height: 100 }, // 扰动场大小
+        position: { x: 100, y: 100 }, // 扰动场位置
+        feather: 15, // 羽化值，表示场从中心点到场边缘的衰减程度
+        noiseScale: 10, // 噪声尺度
+        noiseFrequency: 15, // 噪声频率
+        noiseAmplitude: 5 // 噪声振幅
       }])
     }.width('100%').height('100%').align(Alignment.Center)
   }
