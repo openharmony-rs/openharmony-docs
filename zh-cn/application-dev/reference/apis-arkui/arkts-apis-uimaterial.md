@@ -90,6 +90,8 @@ static get empty(): Material
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明              |
@@ -129,7 +131,7 @@ static get empty(): Material
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | state   | [MaterialState](#materialstate)                                   | 否 | 否   | 材质使能状态配置。 |
-| type   | [MaterialType](#materialtype)                                   | 否 | 否   | 材质类型标识，表示当前配置对应的材质类型。该值仅用于类型标识，不映射到底层功能。 |
+| type   | [MaterialType](#materialtype)                                   | 否 | 否   | 系统材质类型标识，表示当前配置对应的材质类型。该值仅用于类型标识，不映射到底层功能。 |
 
 ## uiMaterial.getMaterialInfo
 
@@ -231,7 +233,7 @@ isImmersiveMaterialSupported(): boolean
 
 ## LightEffectOptions
 
-沉浸式材质的光感交互反馈配置。用于自定义反馈光感的颜色。
+沉浸式材质的光感交互反馈配置。光感交互反馈是指组件在用户触摸交互时，材质表面呈现动态光感变化的视觉效果。用于自定义反馈光感的颜色。
 
 **起始版本：** 26.0.0
 
@@ -243,7 +245,7 @@ isImmersiveMaterialSupported(): boolean
 
 | 名称                           | 类型                                     | 只读 | 可选 | 说明                                     |
 | ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| color       | [ResourceColor](./arkui-ts/ts-types.md#resourcecolor) | 否    | 是   | 自定义交互反馈光感的颜色。<br/>默认值：Color.White |
+| color       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否    | 是   | 自定义交互反馈光感的颜色。<br>默认值：Color.White |
 
 ## ImmersiveOptions
 
@@ -321,7 +323,7 @@ struct SystemMaterialPage {
 
         Column({ space: 30 }) {
           Column() {
-            Text("ULTRA_THIN")
+            Text('ULTRA_THIN')
           }
           .width(328)
           .height(56)
@@ -333,7 +335,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("THIN")
+            Text('THIN')
           }
           .width(328)
           .height(56)
@@ -345,7 +347,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("REGULAR")
+            Text('REGULAR')
           }
           .width(328)
           .height(56)
@@ -357,7 +359,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("THICK")
+            Text('THICK')
           }
           .width(328)
           .height(56)
@@ -369,7 +371,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("ULTRA_THICK")
+            Text('ULTRA_THICK')
           }
           .width(328)
           .height(56)
@@ -469,7 +471,8 @@ struct MaterialInfoPage {
     .height('100%')
     .justifyContent(FlexAlign.Center)
     // $r('app.media.img')需要替换为开发者所需的图像资源文件
-    .backgroundImage($r('app.media.img')).backgroundImageSize(ImageSize.FILL)
+    .backgroundImage($r('app.media.img'))
+    .backgroundImageSize(ImageSize.FILL)
   }
 }
 ```
