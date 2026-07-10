@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta运行时采用基于**对象追踪**的GC算法设计，默认使用**G1 GC**——一种分代、Region化、并发标记的垃圾回收器，灵感来自JVM G1收集器。
 

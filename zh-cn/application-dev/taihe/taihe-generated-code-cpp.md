@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文档旨在帮助用户深入理解Taihe在ABI层和C++层生成的代码结构和调用链。通过对生成代码的分析，用户可以更好地掌握Taihe的工作原理，并在实际开发中有效利用这些自动生成的接口。
 

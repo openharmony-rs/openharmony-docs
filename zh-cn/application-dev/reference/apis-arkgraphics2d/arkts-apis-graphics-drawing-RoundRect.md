@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-圆角矩形对象。
+圆角矩形对象。支持设置和获取指定圆角位置的圆角半径，以及对圆角矩形进行平移操作。
 
 > **说明：**
 >
@@ -50,7 +50,7 @@ constructor(roundRect: RoundRect)
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = {left : 100.0, top : 100.0, right : 500.0, bottom : 300.0};
+let rect: common2D.Rect = {left: 100.0, top: 100.0, right: 500.0, bottom: 300.0};
 let roundRect = new drawing.RoundRect(rect, 50.0, 50.0);
 let roundRect2 = new drawing.RoundRect(roundRect);
 ```
@@ -61,7 +61,7 @@ ArkTS-Dyn: constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 
 ArkTS-Sta: constructor(rect: common2D.Rect, xRadii: double, yRadii: double)
 
-构造一个圆角矩形对象，当且仅当xRadii和yRadii均大于0时，圆角生效，否则只会构造一个矩形。
+构造一个圆角矩形对象，当且仅当 xRadii 和 yRadii 均大于 0 时，圆角生效，否则只会构造一个矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -74,8 +74,8 @@ ArkTS-Sta: constructor(rect: common2D.Rect, xRadii: double, yRadii: double)
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 需要创建的圆角矩形区域。      |
-| xRadii        | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | X轴上的圆角半径，该参数为浮点数，小于等于0时无效。     |
-| yRadii        | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | Y轴上的圆角半径，该参数为浮点数，小于等于0时无效。     |
+| xRadii        | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | x轴方向的圆角半径，该参数为浮点数，取值大于0时圆角生效，小于等于0时圆角不生效。单位为物理像素px。     |
+| yRadii        | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | y轴方向的圆角半径，该参数为浮点数，取值大于0时圆角生效，小于等于0时圆角不生效。单位为物理像素px。     |
 
 **错误码：**
 
@@ -113,8 +113,8 @@ ArkTS-Sta: setCorner(pos: CornerPos, x: double, y: double): void
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pos | [CornerPos](arkts-apis-graphics-drawing-e.md#cornerpos12) | 是   | 圆角位置。                 |
-| x     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的圆角半径，该参数为浮点数，小于等于0时无效。 |
-| y     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的圆角半径，该参数为浮点数，小于等于0时无效。 |
+| x     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的圆角半径，该参数为浮点数，取值大于0时该圆角半径设置生效，小于等于0时该圆角半径设置不生效。单位为物理像素px。 |
+| y     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的圆角半径，该参数为浮点数，取值大于0时该圆角半径设置生效，小于等于0时该圆角半径设置不生效。单位为物理像素px。 |
 
 **错误码：**
 
@@ -173,10 +173,10 @@ ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect : drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
 let cornerRadius = roundRect.getCorner(drawing.CornerPos.BOTTOM_LEFT_POS);
-console.info("getCorner---"+cornerRadius.x)
-console.info("getCorner---"+cornerRadius.y)
+console.info("getCorner---" + cornerRadius.x);
+console.info("getCorner---" + cornerRadius.y);
 ```
 
 ArkTS-Sta示例：
@@ -197,7 +197,7 @@ ArkTS-Dyn: offset(dx: number, dy: number): void
 
 ArkTS-Sta: offset(dx: double, dy: double): void
 
-将圆角矩形分别沿x轴方向和y轴方向平移dx,dy。
+将圆角矩形沿x轴方向平移dx、沿y轴方向平移dy。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -54,9 +54,9 @@ try {
       let msg = (err as BusinessError).message;
       console.error(`getAbilityRunningInfos fail, error code: ${code}, error msg: ${msg}`);
     })
-} catch (e) {
-  let code = (e as BusinessError).code;
-  let msg = (e as BusinessError).message;
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
   console.error(`getAbilityRunningInfos fail, error code: ${code}, error msg: ${msg}`);
 }
 ```

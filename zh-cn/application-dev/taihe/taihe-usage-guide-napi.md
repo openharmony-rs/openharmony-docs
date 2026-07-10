@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文档旨在帮助用户了解如何使用Taihe生成NAPI桥接代码。注意，使用[Taihe工具](taihe-introduction.md)需要用户对[Taihe IDL语言规范](taihe-idl-reference.md)，[Taihe C++数据结构用法](taihe-usage-guide-cpp.md)有基础的了解。
 

@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta在引入了静态类型系统、增强的并发能力的同时，也引入了与ArkTS-Dyn在语法和语义上的一部分差异。本文罗列了所有在ArkTS-Sta中限制使用的ArkTS-Dyn特性，并提供了重构代码的建议。
 

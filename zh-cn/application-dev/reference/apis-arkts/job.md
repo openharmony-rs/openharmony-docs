@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [EAWorker](./eaworker_managed.md)执行任务返回值的句柄，用于表征一个任务。包含两个类：
 - [Job](#job)：执行任务返回值的句柄，可通过[Await](#await)等待获取任务的返回值。

@@ -470,6 +470,7 @@ async function queryByName(context: Context, name: string) {
   }
   resultSet.close();
   await store.close();
+  return undefined;
 }
 
 

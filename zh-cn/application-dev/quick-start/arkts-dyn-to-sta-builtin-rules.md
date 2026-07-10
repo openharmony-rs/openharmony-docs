@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta版本中，builtin API引入了一些新特性，部分变更会影响多个builtin对象，部分变更只影响某个具体API。本文按“跨对象通用规则”和“按builtin对象查看”两种方式整理：通用规则用于了解跨对象的迁移模式，对象文档用于查看具体签名、参数说明和适配示例。
 

@@ -38,7 +38,7 @@ import { CompletionHandler } from '@kit.AbilityKit';
 
 ## CompletionHandler
 
-CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFailure](#onrequestfailure)两个回调函数，分别用来处理拉起应用成功和失败时的结果。
+CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFailure](#onrequestfailure)两个回调函数，分别处理拉起应用成功和失败时的结果。
 
 ### 属性
 
@@ -57,7 +57,7 @@ CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFail
 
 onRequestSuccess(elementName: ElementName, message: string): void
 
-拉起应用成功时的回调函数。
+拉起应用成功时的回调函数，用于接收并处理拉起应用成功后的结果信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -82,7 +82,7 @@ onRequestSuccess(elementName: ElementName, message: string): void
 
 onRequestFailure(elementName: ElementName, message: string): void
 
-拉起应用失败时的回调函数。
+拉起应用失败时的回调函数，用于接收并处理拉起应用失败后的错误信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 

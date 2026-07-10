@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta支持并发与内存共享，为了解决多并发实例间的数据竞争问题，引入异步锁能力。由于ArkTS-Sta支持异步操作，阻塞锁容易产生死锁问题，因此我们在ArkTS-Sta中仅支持异步锁（非阻塞式锁）。
 

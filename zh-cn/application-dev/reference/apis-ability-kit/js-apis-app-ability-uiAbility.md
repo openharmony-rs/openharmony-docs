@@ -304,7 +304,7 @@ onDestroy(): void | Promise&lt;void&gt;
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async onDestroy() {
       hilog.info(0x0000, 'testTag', `onDestroy`);
@@ -354,6 +354,7 @@ ArkTS-Sta示例：
   }
   ```
   
+
 ArkTS-Sta示例：
 
 - Promise异步回调示例如下：
@@ -653,11 +654,11 @@ export default class MyUIAbility extends UIAbility {
 
 onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueResult | Promise&lt;AbilityConstant.OnContinueResult&gt;
 
-当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。
+当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。支持同步返回和使用Promise异步调用。
 
 > **说明：**
 >
-> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
+> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -671,13 +672,13 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wantParam | Record&lt;string,&nbsp;Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。 |
+| wantParam | Record&lt;string,&nbsp;Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。为保证迁移性能和成功率，建议保存的数据大小控制在合理范围内，避免传递过大的数据对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&nbsp;\|&nbsp;Promise&lt;[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&gt;  | 表示是否同意迁移的结果：<br>- AGREE：表示同意。<br>- REJECT：表示拒绝，如应用在onContinue中异常可以返回REJECT。<br>- MISMATCH：表示版本不匹配，接续源端应用可以在onContinue中获取到迁移对端应用的版本号，进行协商后，如果版本不匹配导致无法迁移，可以返回该结果。<br> 该回调与onWindowStageRestore成对出现。在接续场景下，源端的UIAbility触发onContinue保存自定义数据，在目标端UIAbility触发onWindowStageRestore恢复自定义数据。 |
+| [AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&nbsp;\|&nbsp;Promise&lt;[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&gt;  | 表示是否同意迁移的结果：<br>- AGREE：表示同意。<br>- REJECT：表示拒绝，如应用在onContinue中异常可以返回REJECT。<br>- MISMATCH：表示版本不匹配。接续源端应用可以在onContinue中获取到迁移对端应用的版本号，经检查确认版本不匹配后返回该结果。<br> 该回调与onWindowStageRestore成对出现。在接续场景下，源端的UIAbility触发onContinue保存自定义数据，在目标端UIAbility触发onWindowStageRestore恢复自定义数据。 |
 
 **示例：**
 
@@ -687,9 +688,9 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
   export default class MyUIAbility extends UIAbility {
-    onContinue(wantParams: Record<string, Object>) {
+    onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567';
+      wantParam['myData'] = 'my1234567';
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }
@@ -699,7 +700,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
   ```ts
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async setWant(wantParams: Record<string, Object>) {
       console.info('setWant start');
@@ -708,7 +709,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
       }
       console.info('setWant end');
     }
-
+  
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
       return this.setWant(wantParams).then(() => {

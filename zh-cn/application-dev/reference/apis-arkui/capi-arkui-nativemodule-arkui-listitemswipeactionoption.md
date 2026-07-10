@@ -13,7 +13,7 @@ typedef struct ArkUI_ListItemSwipeActionOption ArkUI_ListItemSwipeActionOption
 
 ## 概述
 
-定义ListItemSwipeActionOption方法的配置信息。
+定义ListItemSwipeActionOption结构体的配置信息。
 
 **起始版本：** 12
 
