@@ -21,7 +21,7 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
-| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
+| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | JSON字符串 | 返回JSON字符串，图片数据为Base64编码。支持获取当前网页视口截图或视口内目标元素截图。 |
 | [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
 交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
@@ -460,19 +460,33 @@
 
 > **说明：**
 >
-> - `nodeid`与`xpath`互斥，均传入时以`nodeid`为准。两者均未传入时，默认获取当前网页视口截图。
+> - `nodeid`与`xpath`互斥。同时存在时，优先使用`nodeid`定位元素；若`nodeid`为空，则使用`xpath`；若`xpath`为空，则默认获取当前网页视口截图。
 > - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
 
-### ScreenCaptureResult
+### 返回说明
 
-成功时返回PNG格式的Base64编码字符串。
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`；失败时为错误描述。 |
+| data | string | PNG格式的Base64编码字符串。成功时返回。 |
 
-> **说明：**
->
-> - `nodeid`格式错误，返回`{"code": 392, "message": "invalid param: nodeid"}`；`nodeid`中的`frameToken`或`documentToken`与当前页面不匹配，返回`{"code": 392, "message": "invalid param: nodeid, token mismatch"}`。
-> - 根据`nodeid`或`xpath`在页面中未找到目标元素，返回`{"code": 352, "message": "element not found"}`。
 
-### 示例
+命令执行成功时返回`{"code":10,"message":"success","data":"PNG格式的Base64编码字符串"}`；失败时返回错误码JSON，常见错误码见下表：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11  | 截图数据获取或编码失败。 |
+| 131 | 目标元素不在当前网页视口内。 |
+| 132 | browser或host为空，通常表示Web实例不可用。 |
+| 160 | 页面未就绪。 |
+| 350 | 截图获取命令下发失败。 |
+| 351 | 截图获取通道初始化失败。 |
+| 352 | 截图获取执行失败（含XPath定位目标元素失败，目标元素不在当前网页内）。 |
+| 353 | 截图获取响应解析失败。 |
+| 392 | `nodeid`格式错误、`frameToken`或`documentToken`不匹配、或DOM节点不存在于当前网页。 |
+
+### 请求示例
 
 通过节点标识获取目标元素截图：
 
@@ -500,6 +514,40 @@
 >
 > - 开发者使用时需自行替换`nodeid`或`xpath`，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段或`xpath`字段获取。
 
+### 返回示例
+
+成功时：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "data": "PNG格式的Base64编码字符串"
+}
+```
+
+失败时：
+
+`131`（目标元素不在当前网页视口内）：
+
+```json
+{
+  "code": 131,
+  "message": "element not in viewport"
+}
+```
+
+`392`（`nodeid`格式错误）：
+
+```json
+{
+  "code": 392,
+  "message": "invalid param: nodeid"
+}
+```
+
+### 示例代码
+
 Ark-Dyn示例：
 ```ts
 // xxx.ets
@@ -514,6 +562,12 @@ interface CaptureParams {
 interface PageCommand {
   method: string;
   params?: CaptureParams;
+}
+
+interface AiCommandResponse {
+  code: number;
+  message?: string;
+  data?: string;
 }
 
 @Entry
@@ -531,22 +585,31 @@ struct Index {
       const cmd: PageCommand = {
         method: 'screenCapture',
         params: {
-          xpath: "/html/body/div/p[2]/a"
+          xpath: '/html/body/div/p[2]/a'
         }
       };
 
       const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
 
-      if (res.includes('"code"')) {
-        this.statusMsg = `截图失败：${res} `;
+      if (!res || res.length === 0) {
+        this.statusMsg = `❌ 错误：内核返回空响应`;
         return;
       }
 
-      this.imgData = res;
-      this.statusMsg = '✅ 截图成功';
+      const responseObj = JSON.parse(res) as AiCommandResponse;
+
+      if (responseObj.code === 10) {
+        const base64Result = responseObj.data ?? '';
+        this.imgData = base64Result.replace(/\s/g, '');
+        this.statusMsg = '✅ 截图成功';
+      } else {
+        const errorMsg = responseObj.message ?? '未知内核错误';
+        this.statusMsg = `❌ 截图失败 (Code：${responseObj.code})：${errorMsg}`;
+      }
+
     } catch (e) {
       const error = e as BusinessError;
-      this.statusMsg = `截图失败：${error.message}`;
+      this.statusMsg = `❌ 接口调用或解析失败：${error.message}`;
     }
   }
 
@@ -598,6 +661,12 @@ import { Button, Column, Component, Entry, Image, ImageFit, ColumnOptions, Row, 
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+class ScreenCaptureResult {
+  code: number;
+  message: string = '';
+  data?: string;
+}
+
 @Entry
 @Component
 struct Index {
@@ -609,6 +678,14 @@ struct Index {
     try {
       this.controller.executeAIPageCommand(cmdStr).then((res: string) => {
         this.imgData = res;
+        const result: ScreenCaptureResult | null | undefined =
+          JSON.parse<ScreenCaptureResult>(res, Type.from<ScreenCaptureResult>());
+
+        if (result?.code === 10) {
+          this.imgData = result?.data ?? '';
+        } else {
+          console.error(`截图失败: ${result?.code ?? -1}, message=${result?.message ?? 'unknown'}`);
+        }
       }).catch((e: Error) => {
         console.error(`截图失败: ${(e as BusinessError).message}`);
       });
