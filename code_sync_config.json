@@ -48804,91 +48804,137 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets",
-				"functions":[
-					{
-						"end_line":20,
-						"name":"export_numberString",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEleven.ets",
-				"functions":[
-					{
-						"end_line":21,
-						"name":"import_modulePartEleven",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwelve.ets",
-				"functions":[
-					{
-						"end_line":22,
-						"name":"import_modulePartTwelve",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/Index.ets",
-				"functions":[
-					{
-						"end_line":21,
-						"name":"import_serviceManagerOne",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets",
-				"functions":[
-					{
-						"end_line":33,
-						"name":"export_serviceManagerPartOne",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThirteen.ets",
-				"functions":[
-					{
-						"end_line":22,
-						"name":"import_modulePartThirteen",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartTwo.ets",
-				"functions":[
-					{
-						"end_line":33,
-						"name":"export_serviceManagerPartTwo",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFourteen.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
-						"name":"import_modulePartFourteen",
-						"start_line":17
+						"end_line":20,
+						"name":"unOptIndex",
+						"start_line":15
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/Index.ets",
 				"functions":[
 					{
-						"end_line":35,
-						"name":"export_serviceManagerPartThree",
+						"end_line":22,
+						"name":"expandPathHarIndex",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/Utils.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"Utils",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"export_numberString",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/index2.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"OptIndex",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/opIndex.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"opServiceManagerIndex",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/Index.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"ServiceManagerIndex",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/ServiceManager.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"ServiceManager",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"ServiceManagerIndex",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/OpServiceManager.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"OpServiceManager",
+						"start_line":15
 					}
 				]
 			}
