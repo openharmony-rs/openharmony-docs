@@ -146,7 +146,7 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 
 判断定位信息是否来自模拟位置功能。
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 
