@@ -48,6 +48,26 @@ type BluetoothAddress = common.BluetoothAddress
 | ------------------- | ------------------- |
 | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
 
+
+## BluetoothTransport
+
+type BluetoothTransport = connection.BluetoothTransport
+
+表示远端设备的传输类型。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [connection.BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 远程设备的传输类型。 |
+
+
 ## ble.createGattServer
 
 createGattServer(): GattServer
@@ -78,6 +98,7 @@ console.info('gatt success');
 createGattClientDevice(deviceId: string): GattClientDevice
 
 创建[GattClientDevice](#gattclientdevice)实例，表示GATT连接中的client端。
+- 该接口仅支持BLE传输类型，若需自定义传输类型[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)，可使用[createGattClientDevice](#blecreategattclientdevice-1)。
 - 通过该实例可以操作client端行为，如调用[connect](#connect)向对端设备发起连接，调用[getServices](#getservices)获取对端设备支持的所有服务能力。
 - 创建该实例所需要的设备地址表示server端设备。可以通过[ble.startBLEScan](#blestartblescan)或[BleScanner](#blescanner15)的[startScan](#startscan15)接口获取server端设备地址，且需保证server端设备的BLE广播是可连接的。
 
@@ -111,6 +132,59 @@ createGattClientDevice(deviceId: string): GattClientDevice
 ```js
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## ble.createGattClientDevice
+
+createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
+
+创建[GattClientDevice](#gattclientdevice)实例，表示GATT连接中的client端，可通过[GattSetting](#gattsetting)设置GATT连接参数。
+- 通过该实例可以操作client端行为，如调用[connect](#connect)向对端设备发起连接，调用[getServices](#getservices)获取对端设备支持的所有服务能力。
+- 创建该实例所需要的设备地址表示server端设备。可以通过[ble.startBLEScan](#blestartblescan)或[BleScanner](#blescanner15)的[startScan](#startscan15)接口获取server端设备地址，且需保证server端设备的BLE广播是可连接的。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名      | 类型     | 必填   | 说明                                   |
+| -------- | ------ | ---- | ------------------------------------ |
+| deviceId | string | 是    | 对端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| setting  | [GattSetting](#gattsetting) | 是    | GATT连接设置。 |
+
+**返回值**：
+
+| 类型                                    | 说明                                   |
+| ------------------------------------- | ------------------------------------ |
+| [GattClientDevice](#gattclientdevice) | GATT客户端类，使用client端方法之前需要创建该类的实例进行操作。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
+
+**示例**：
+
+```js
+import { connection } from '@kit.ConnectivityKit';
+try {
+    let setting: ble.GattSetting = {
+        autoConnect: true,
+        transport: connection.BluetoothTransport.TRANSPORT_LE
+    };
+    let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX', setting);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -1762,6 +1836,108 @@ try {
     server.close();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### connect
+
+connect(deviceId: string, autoConnect?: boolean): void
+
+调用方充当GATT客户端，发起和远端BLE设备连接，通过参数autoConnect设置是否直接连接到远端设备或者在远端设备可用时自动重连。
+
+- 若要实现在远端设备可用时自动重连（即[autoConnect](#gattsetting)为true），需保证client端[createGattClientDevice](#blecreategattclientdevice-1)发起连接，并设置[autoConnect](#gattsetting)为true。
+- server端可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件感知连接状态。
+- 当server端想要断开连接时，可主动调用[disconnect](#disconnect)。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名         | 类型     | 必填   | 说明                                       |
+| ----------- | ------ | ---- | ---------------------------------------- |
+| deviceId  | string | 是    | 对端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| autoConnect | boolean | 否 | 是否直接连接到远端设备或者在远端设备可用时自动连接。true表示在远端设备可用时自动连接，false表示直接连接到远端设备。默认值为false。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    let gattServer: ble.GattServer = ble.createGattServer();
+    let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+    let autoConnect: boolean = true;
+    gattServer.connect(deviceId, autoConnect);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+### disconnect
+
+disconnect(deviceId: string): void
+
+调用方充当GATT客户端，主动发起与远端设备断连，或停止正在进行的连接。
+
+可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接状态。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名         | 类型     | 必填   | 说明                                       |
+| ----------- | ------ | ---- | ---------------------------------------- |
+| deviceId  | string | 是    | 对端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    let gattServer: ble.GattServer = ble.createGattServer();
+    let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+    gattServer.disconnect(deviceId);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -5402,7 +5578,7 @@ BLE扫描的配置参数。
 | 名称       | 类型  | 只读 | 可选   | 说明          |
 | -------- | ------ |---- |---- | ----------- |
 | txPhy | [BlePhy](#blephy23)| 否 | 否 | 发送端物理通道类型。 |
-| rxPhy | [BlePhy](#blephy23)| 否 | 否 | 接受端物理通道类型。 |
+| rxPhy | [BlePhy](#blephy23)| 否 | 否 | 接收端物理通道类型。 |
 | phyMode | [CodedPhyMode](#codedphymode23)| 否 | 是 | 用于指定物理通道类型为[BLE_PHY_CODED](#blephy23)的编码方式。<br>默认值为0，表示不指定明确的编码方式，由蓝牙子系统决定。 |
 
 
@@ -5579,3 +5755,20 @@ BLE扫描的配置参数。
 | --------  | ---- | ------------------------------ |
 | BLE_PHY_CODED_S2 | 1 | 每发送1位有效数据，会添加1位冗余信息。传输速度较快，抗干扰较强，适合中等距离（10 - 100m），理论数据速率为500Kbit/s。|
 | BLE_PHY_CODED_S8 | 2 | 每发送1位有效数据，会添加7位冗余信息。传输速度较慢，抗干扰更强，适合远距离（100 - 300m），理论数据速率为125Kbit/s。|
+
+## GattSetting
+
+描述GATT连接的参数。
+
+**起始版本**： 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称                  | 类型        | 只读 | 可选   | 说明                                       |
+| ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
+| autoConnect         | boolean     | 否 | 是    | 是否直接连接到远端设备或者在远端设备可用时自动连接。true表示在远端设备可用时自动连接，false表示直接连接到远端设备。默认值为false。 |
+| transport           | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)      | 否 | 是    | 连接的传输类型，默认值为TRANSPORT_LE。 |
