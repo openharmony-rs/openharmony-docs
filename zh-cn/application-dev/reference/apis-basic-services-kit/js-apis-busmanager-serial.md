@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供串口通信管理功能，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等。
+本模块提供串口通信管理功能，适用于需要与串口设备进行数据交互的场景，如工业控制、传感器数据采集、嵌入式设备通信等。支持获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等功能，帮助开发者便捷地实现与外部串口设备的通信，提高设备互联效率。
 
 **起始版本：** 26.0.0
 
@@ -21,7 +21,7 @@ import { serial } from "@kit.BasicServicesKit";
 
 getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
-查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。
+查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
 
 **起始版本：** 26.0.0
 
@@ -79,7 +79,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
-打开串口设备。使用Promise异步回调。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。
+打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。
 
 **起始版本：** 26.0.0
 
@@ -97,7 +97,7 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值，用于异步操作。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
 
 close(): Promise&lt;void&gt;
 
-关闭串口设备。使用Promise异步回调。
+关闭串口设备。使用Promise异步回调。用于断开与串口设备的通信连接，如应用退出、设备切换、任务完成后释放串口资源等场景。需在串口打开后调用。
 
 **起始版本：** 26.0.0
 
@@ -178,7 +178,7 @@ port.close().then(() => {
 
 write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。
+向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。用于向连接的串口设备发送控制命令、数据包、配置参数等，如工业控制、设备调试、数据采集等场景。需在串口打开后调用。
 
 **起始版本：** 26.0.0
 
@@ -230,7 +230,7 @@ port.write(writeData, 2000).then((size: number) => {
 
 onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
-监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](#close)后，所有回调将被清除。
+监听串口接收数据事件。使用callback异步回调，返回接收到的数据。需在串口打开后调用，调用[close](#close)后，所有回调将被清除。用于实时接收串口设备发送的数据，如传感器数据监测、设备状态反馈、实时数据采集等场景。
 
 **起始版本：** 26.0.0
 
@@ -242,7 +242,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 | 参数名   | 类型                       | 必填 | 说明                             |
 | -------- | -------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;Uint8Array&gt; | 是   | 回调函数，返回串口接收到的数据。 |
+| callback | Callback&lt;Uint8Array&gt; | 是   | 回调函数，返回串口接收到的数据。用于监听串口数据接收事件，注册回调后，串口接收到数据时会触发该回调函数。 |
 
 **错误码：**
 
@@ -269,7 +269,7 @@ port.onDataRead((data: Uint8Array) => {
 
 offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
-取消监听串口接收数据事件。使用callback异步回调。
+取消监听串口接收数据事件。使用callback异步回调。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
 
 **起始版本：** 26.0.0
 
@@ -311,7 +311,7 @@ port.offDataRead(callback);
 
 flush(): Promise&lt;void&gt;
 
-清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。
+清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。需在串口打开后调用。用于丢弃缓冲区中无效或过时的数据，如数据传输出错时清空缓冲区重传、切换通信协议时清理旧数据等场景。
 
 **起始版本：** 26.0.0
 
@@ -352,7 +352,7 @@ port.flush().then(() => {
 
 drain(): Promise&lt;void&gt;
 
-等待所有写请求完成。使用Promise异步回调。需在串口打开后调用。
+等待所有写请求完成。使用Promise异步回调。需在串口打开后调用。用于确保所有数据写入完成后再进行后续操作，如数据传输完成后关闭串口、发送数据后等待硬件响应等场景。
 
 **起始版本：** 26.0.0
 
@@ -393,7 +393,7 @@ port.drain().then(() => {
 
 setRts(enable: boolean): Promise&lt;void&gt;
 
-设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。
+设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制硬件流控的请求发送信号，如启用RTS/CTS硬件流控时控制发送权、与支持硬件流控的设备通信等场景。
 
 **起始版本：** 26.0.0
 
@@ -440,7 +440,7 @@ port.setRts(true).then(() => {
 
 getCts(): Promise&lt;boolean&gt;
 
-获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。
+获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。
 
 **起始版本：** 26.0.0
 
@@ -481,7 +481,7 @@ port.getCts().then((cts: boolean) => {
 
 sendBrk(): Promise&lt;void&gt;
 
-发送BRK（中断）信号。使用Promise异步回调。需在串口打开后调用。
+发送BRK（中断）信号。使用Promise异步回调。需在串口打开后调用。用于向设备发送中断信号，如紧急停止设备通信、通知设备复位、特殊协议要求的信号交互等场景。
 
 **起始版本：** 26.0.0
 
@@ -522,7 +522,7 @@ port.sendBrk().then(() => {
 
 setDtr(enable: boolean): Promise&lt;void&gt;
 
-设置DTR（数据终端就绪）信号状态。使用Promise异步回调。需在串口打开后调用。
+设置DTR（数据终端就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制数据终端就绪信号，如向设备通知终端准备就绪、通过DTR信号控制设备上电或复位、与需要DTR信号检测的设备通信等场景。
 
 **起始版本：** 26.0.0
 
@@ -540,7 +540,7 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值，用于异步操作。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -569,7 +569,7 @@ port.setDtr(true).then(() => {
 
 getDsr(): Promise&lt;boolean&gt;
 
-获取DSR（数据设备就绪）信号状态。使用Promise异步回调。需在串口打开后调用。
+获取DSR（数据设备就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询数据设备就绪信号状态，判断通信设备是否准备就绪，如检查设备连接状态、在设备准备就绪后开始通信等场景。
 
 **起始版本：** 26.0.0
 
@@ -610,7 +610,7 @@ port.getDsr().then((dsr: boolean) => {
 
 onDisconnect(callback: Callback&lt;void&gt;): void
 
-监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。
+监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
 
 **起始版本：** 26.0.0
 
@@ -622,7 +622,7 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                             |
 | -------- | --------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;void&gt;  | 是   | 回调函数，串口断开时触发。 |
+| callback | Callback&lt;void&gt;  | 是   | 回调函数，串口断开时触发。用于监听串口断开事件，注册回调后，串口设备断开连接时会触发该回调函数。 |
 
 **错误码：**
 
@@ -648,7 +648,7 @@ port.onDisconnect(() => {
 
 offDisconnect(callback?: Callback&lt;void&gt;): void
 
-取消监听串口断开事件。
+取消监听串口断开事件。用于不再需要监听串口断开事件时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
 
 **起始版本：** 26.0.0
 
@@ -767,9 +767,9 @@ port.offDisconnect(disconnectedCallback);
 | -------- | ------------------------ | ---- | ---- | --------------------------------------------------------------------- |
 | baudRate | number                   | 否   | 是   | 波特率。值为正整数，非标准波特率的具体支持情况依赖于硬件。单位：bit/s。默认值：115200。       |
 | dataBits | [DataBits](#databits) | 否 | 是   | 数据位。默认值：EIGHT（8数据位，标准通信）。FIVE/SIX/SEVEN用于老旧设备或特殊协议。 |
-| stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。                                                  |
+| stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。1个停止位用于标准通信场景；2个停止位用于低速通信或与老旧设备通信时增加信号稳定性。 |
 | parity | [Parity](#parity) | 否 | 是   | 校验位。默认值：NONE（无校验）。EVEN/ODD用于数据准确性要求高的场景；MARK/SPACE用于特殊通信协议。 |
 | rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。RTS/CTS硬件流控是一种通过硬件信号实现的自动数据流控制机制，RTS和CTS信号线协同工作以防止缓冲区溢出。启用后，系统会自动控制RTS和CTS信号来管理数据流量。默认值：false。true表示启用，false表示未启用。                                   |
-| xon      | boolean                  | 否   | 是   | 是否启用XON控制发送流。XON是软件流控协议中的一个控制字符（ASCII值为17），当接收端缓冲区有空间时发送XON字符通知发送端恢复发送数据。默认值：false。true表示启用，false表示未启用。                                  |
-| xoff     | boolean                  | 否   | 是   | 是否启用XOFF控制接收流。XOFF是软件流控协议中的一个控制字符（ASCII值为19），当接收端缓冲区即将溢出时发送XOFF字符通知发送端暂停发送数据。默认值：false。true表示启用，false表示未启用。                                 |
-| xany     | boolean                  | 否   | 是   | 是否启用XANY控制流。XANY是软件流控协议中的一种扩展模式，当启用XANY时，任何字符都可以作为恢复发送的信号，而不仅仅是XON字符。默认值：false。true表示启用，false表示未启用。                                     |
+| xon      | boolean                  | 否   | 是   | 是否启用XON（Xmitter On，传输继续控制字符）控制发送流。XON是软件流控协议中的一个控制字符（ASCII值为17），当接收端缓冲区有空间时发送XON字符通知发送端恢复发送数据。默认值：false。true表示启用，false表示未启用。                                  |
+| xoff     | boolean                  | 否   | 是   | 是否启用XOFF（Xmitter Off，传输停止控制字符）控制接收流。XOFF是软件流控协议中的一个控制字符（ASCII值为19），当接收端缓冲区即将溢出时发送XOFF字符通知发送端暂停发送数据。默认值：false。true表示启用，false表示未启用。                                 |
+| xany     | boolean                  | 否   | 是   | 是否启用XANY（Any Character Resume，任意字符恢复模式）控制流。XANY是软件流控协议中的一种扩展模式，当启用XANY时，任何字符都可以作为恢复发送的信号，而不仅仅是XON字符。默认值：false。true表示启用，false表示未启用。                                     |
