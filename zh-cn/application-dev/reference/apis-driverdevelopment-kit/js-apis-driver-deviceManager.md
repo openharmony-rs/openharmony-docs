@@ -135,7 +135,7 @@ unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
 
 解除设备绑定。使用Promise异步回调。
 
-**需要权限：**ohos.permission.ACCESS_DDK_DRIVERS
+**需要权限：** ohos.permission.ACCESS_DDK_DRIVERS
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -420,7 +420,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。
 
-**需要权限：**ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
+**需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -469,7 +469,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。
 
-**需要权限：**ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
+**需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
