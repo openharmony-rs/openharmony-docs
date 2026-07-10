@@ -19,7 +19,7 @@
 
 const ReusableV2: ClassDecorator & ((options: ReusableOptions) => ClassDecorator)
 
-声明一个可复用的自定义组件。该装饰器必须与@ComponentV2搭配使用，用于装饰@ComponentV2装饰的自定义组件，以实现组件复用。
+声明一个可复用的自定义组件。该装饰器必须与@ComponentV2搭配使用，用于装饰自定义组件，以实现组件复用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -31,7 +31,7 @@ const ReusableV2: ClassDecorator & ((options: ReusableOptions) => ClassDecorator
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| options  | [ReusableOptions](./ts-custom-component-parameter.md#reusableoptions) | 否    | 可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多或对内存占用敏感的场景下可配置此参数进行优化；缺省时无内存优化策略。<br>**起始版本：** 26.0.0               |
+| options  | [ReusableOptions](./ts-custom-component-parameter.md#reusableoptions) | 否    | 可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多（例如同一页面中复用组件实例达到数十个以上）或对内存占用敏感的场景下可配置此参数进行优化；缺省时无内存优化策略。<br>**起始版本：** 26.0.0               |
 
 **返回值：**
 
