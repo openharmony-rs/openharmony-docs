@@ -115,5 +115,51 @@
    > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
    > 从API version 20开始，通常在音频录制启动前调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，判断当前传入的音频采集器信息中音源类型的录制是否可以启动成功。
 
-   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->   
+   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) --> 
    
+   ``` TypeScript
+   async function getCurrentAudioCapturerInfoArray(updateCallback?:
+     (msg: string, isError: boolean) => void): Promise<void>{
+     // ...
+   
+     await audioStreamManager.getCurrentAudioCapturerInfoArray()
+       .then((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+         console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
+         let detailInfo = 'getCurrentAudioCapturerInfoArray Get Promise Called\n';
+         if (audioCapturerChangeInfoArray != null) {
+           for (let i = 0; i < audioCapturerChangeInfoArray.length; i++) {
+             console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
+             console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
+             console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+   
+             detailInfo += `StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}\n`;
+             detailInfo += `Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}\n`;
+             detailInfo += `Flag ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}\n`;
+   
+             for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+               console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+               console.info(`Type: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+               console.info(`Role: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+               console.info(`Name: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+               console.info(`Address: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+               console.info(`SampleRates: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+               console.info(`ChannelCounts ${i} : ${audioCapturerChangeInfoArray[i]
+                 .deviceDescriptors[j].channelCounts[0]}`);
+               console.info(`ChannelMask: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+             }
+           }
+         }
+         if (updateCallback) {
+           updateCallback(detailInfo, false);
+         }
+       }).catch((err: BusinessError) => {
+         console.error(`Invoke getCurrentAudioCapturerInfoArray failed, code is ${err.code}, message is ${err.message}`);
+         const errorMsg = `Invoke getCurrentAudioCapturerInfoArray failed, code is ${err.code}, message is ${err.message}`;
+         if (updateCallback) {
+           updateCallback(errorMsg, true);
+         }
+       });
+     // 获取后取消监听
+     cancelListenAudioStreamManager();
+   }
+   ```
