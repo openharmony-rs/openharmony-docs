@@ -15941,6 +15941,26 @@
 						"end_line":458,
 						"name":"check_isspacesoundon",
 						"start_line":30
+					},
+					{
+						"end_line":474,
+						"name":"regist_spacesoundcallback",
+						"start_line":31
+					},
+					{
+						"end_line":481,
+						"name":"unregist_spacesoundcallback",
+						"start_line":32
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
+				"functions":[
+					{
+						"end_line":467,
+						"name":"check_isspacesoundon",
+						"start_line":25
 					}
 				]
 			}
