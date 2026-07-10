@@ -22,7 +22,7 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 | :-------- | :-------- | :-------- |
 | \<rect\> | 矩形 | x：x轴方向偏移分量； <br>y：y轴方向偏移分量；<br>width：宽度； <br>height：高度；<br>rx：圆角x轴半径； <br>ry：圆角y轴半径。|
 | \<circle\> | 圆形 | cx：圆心x轴坐标；<br> cy：圆心y轴坐标；<br> r：圆形半径。 |
-| \<ellipse\> | 椭圆 | cx：x轴坐标；<br> cy：y轴坐标；<br> rx：x轴半径；<br> ry：y轴半径。 |
+| \<ellipse\> | 椭圆 | cx：椭圆中心的x轴坐标；<br> cy：椭圆中心的y轴坐标；<br> rx：x轴半径；<br> ry：y轴半径。 |
 | \<line\> | 线 | x1：起点x轴坐标；<br> y1：起点y轴坐标；<br> x2：终点x轴坐标；<br> y2：终点y轴坐标。 |
 | \<polyline\> | 折线 | points：顶点坐标。 |
 | \<polygon\> | 多边形 | points：顶点坐标。 |
@@ -133,7 +133,7 @@ struct Index {
 | :-------- | :-------- | :-------- |
 | \<filter\> | 定义滤镜 | x：滤镜区域x轴偏移分量，默认值为0； <br>y：滤镜区域y轴偏移分量，默认值为0； <br>width：滤镜区域宽； <br>height：滤镜区域高。 <br>**说明**：从API version 21开始，当Image组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，默认值参考[filter参数异常时默认效果变更](ts-image-svg2-capabilities.md#filter参数异常时默认效果变更)。|
 | \<feOffset\> | 定义沿x、y方向偏移距离 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>dx：x轴方向偏移距离；<br>dy：y轴方向偏移距离。 |
-| \<feGaussianBlur\> | 定义高斯模糊效果 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>edgemode：边缘模式；<br>stddeviation：标准偏差，控制模糊程度。 |
+| \<feGaussianBlur\> | 定义高斯模糊效果 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>edgemode：边缘模式；<br>stddeviation：标准偏差，控制模糊程度，取值范围：大于等于0。 |
 | \<feBlend\> | 定义两张输入图像混合模式 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>mode：混合模式，指定两张图像的混合方式（normal、multiply、screen、darken、lighten）。 |
 | \<feComposite\> | 定义两张输入图像合成方式。当operator为arithmetic时，合成算法为：result = k1 * in * in2 + k2 * in + k3 * in2 + k4；当operator为其他值时，使用对应的[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)合成方式。 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>operator( over \| in \| out \| atop \| xor \| lighter \| arithmetic )：定义两张输入图像的合成方式，非arithmetic值对应[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)；<br>k1：arithmetic合成算法中in与in2乘积的系数；<br>k2：arithmetic合成算法中in的系数；<br>k3：arithmetic合成算法中in2的系数；<br>k4：arithmetic合成算法中的常量偏移。 |
 | \<feColorMatrix\> | 基于转换矩阵对颜色进行变换 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>type：变换类型，matrix表示使用4x5矩阵变换，saturate表示饱和度调整，hueRotate表示色相旋转；<br>values：变换值，随type不同格式不同。 |
@@ -158,7 +158,7 @@ struct Index {
 图案标签：\<pattern\>
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<pattern\> | 定义填充图案 | x：填充区域x轴偏移分量； <br>y：填充区域y轴偏移分量； <br>width：填充区域宽； <br>height：填充区域高。 |
+| \<pattern\> | 定义填充图案 | x：填充区域x轴偏移分量，默认值为0； <br>y：填充区域y轴偏移分量，默认值为0； <br>width：填充区域宽，默认值为0； <br>height：填充区域高，默认值为0。 |
 
 ### 渐变色
 
@@ -175,7 +175,7 @@ struct Index {
 图片标签：\<image\>
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<image\> | 用于图像显示 | x：图像x轴偏移；<br> y：图像y轴偏移；<br> width：图像宽；<br> height：图像高；<br> href：目标图片(支持：jpg、jpeg、png、bmp、webp、heic、base64，不支持svg)。 |
+| \<image\> | 用于图像显示 | x：图像x轴偏移；<br> y：图像y轴偏移；<br> width：图像宽；<br> height：图像高；<br> href：目标图片（支持：jpg、jpeg、png、bmp、webp、heic、base64，不支持svg）。 |
 
 ## 动画
 
@@ -187,8 +187,8 @@ struct Index {
 
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<animate\> | 定义元素属性动画 | attributeName：定义动画属性，取值：( cx \| cy \| r \| fill \| stroke \| fill-opacity \| stroke-opacity \| stroke-miterlimit )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
-| \<animateTransform\> | 定义元素变形动画 | attributeName：定义动画属性，取值：transform；<br/>type：属性定义转换类型取值：( translate \| scale \| rotate \| skewX \| skewY )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
+| \<animate\> | 定义元素属性动画 | attributeName：定义动画属性，当前已验证支持的属性包括（不限于）：cx、cy、r、fill、stroke、fill-opacity、stroke-opacity、stroke-miterlimit，具体可动画属性取决于目标元素（如rect支持width/height/x/y/rx/ry，line支持x1/y1/x2/y2等）；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态，默认值为remove（取值：freeze \| remove）；<br> calcMode：定义插值，默认值为linear；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
+| \<animateTransform\> | 定义元素变形动画 | attributeName：定义动画属性，取值：transform；<br/>type：属性定义转换类型取值：( translate \| scale \| rotate \| skewX \| skewY )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态，默认值为remove（取值：freeze \| remove）；<br> calcMode：定义插值，默认值为linear；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
 
 ## 其它
 
