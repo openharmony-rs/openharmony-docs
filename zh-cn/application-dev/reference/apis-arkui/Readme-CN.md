@@ -595,6 +595,9 @@
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定 (ArkTS-Sta)](js-apis-twoWayBinding-static.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
+    <!--Del-->
+    - [内置环境变量说明（系统接口）](arkui-ts/ts-state-management-environment-variables-sys.md)
+    <!--DelEnd-->
     - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
     - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
     - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
