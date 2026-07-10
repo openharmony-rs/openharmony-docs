@@ -635,7 +635,7 @@ int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)
 
 **描述**
 
-将[HiTraceId](capi-hitrace-hitraceid.md)序列化为大端序字节数组，支持本地缓存及跨设备传输。<br> 接口内部统一输出大端序数据，在大小端架构不一致的设备间同步HiTraceId时，可屏蔽字节序的差异，保证跨端数据解析正确。<br> 本接口需与[OH_HiTrace_IdToBytes](#oh_hitrace_idfrombytes)配套使用，用于将序列化后的大端序数据还原为HiTraceId。 
+将[HiTraceId](capi-hitrace-hitraceid.md)序列化为大端序字节数组，支持本地缓存及跨设备传输。<br> 接口内部统一输出大端序数据，在大小端架构不一致的设备间同步HiTraceId时，可屏蔽字节序的差异，保证跨端数据解析正确。<br> 本接口需与[OH_HiTrace_IdFromBytes](#oh_hitrace_idfrombytes)配套使用，用于将序列化后的大端序数据还原为HiTraceId。
 
 **起始版本：** 12
 
