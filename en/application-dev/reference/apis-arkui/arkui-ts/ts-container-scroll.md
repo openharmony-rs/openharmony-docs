@@ -16,7 +16,7 @@ The **Scroll** component scrolls the content when the layout size of a component
 >  - The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md#clip12) is **true** for the **Scroll** component.
 >  - If the **Scroll** component's height exceeds the screen height, use the [layoutWeight](ts-universal-attributes-size.md#layoutweight) attribute to make it fill the remaining main-axis space.
 >  - A touch on the screen stops all ongoing scroll animations within the touch area (except those triggered by [scrollTo](#scrollto) or [scrollToIndex](#scrolltoindex)), including edge bounce effects.
->  - The component includes built-in gesture recognition for finger‑following and other interactive features. For details about how to add custom gestures, see [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
+>  - The component includes built-in gesture recognition for finger-following and other interactive features. For details about how to add custom gestures, see [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 
 ## Child Components
 
@@ -251,7 +251,7 @@ Sets the initial scrolling offset. This attribute takes effect only during the i
 
 maxZoomScale(scale: number)
 
-Sets the maximum gesture‑based zoom scale for the **Scroll** component's content.
+Sets the maximum gesture-based zoom scale for the **Scroll** component's content.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -261,7 +261,7 @@ Sets the maximum gesture‑based zoom scale for the **Scroll** component's conte
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| scale  | number  | Yes  |Maximum gesture‑based zoom scale for the **Scroll** component's content.<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
+| scale  | number  | Yes  |Maximum gesture-based zoom scale for the **Scroll** component's content.<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
 
 ### minZoomScale<sup>20+</sup>
 
@@ -346,7 +346,7 @@ Enumerates the scrolling directions.
 
 >  **NOTE**
 >  - The **edgeEffect** attribute supports only **Spring** and **None**. Other edge effects are not available.
->  - The **onWillScroll** callback can only modify the offset during the follow‑up (inertial) scrolling phase, not during direct dragging.
+>  - The **onWillScroll** callback can only modify the offset during the follow-up (inertial) scrolling phase, not during direct dragging.
 >  - The **onScrollEdge** callback is triggered once when the content reaches the edge, but not again during the subsequent bounce animation.
 >  - Changing the edge effect mode during a flick animation does not interrupt that animation.
 
@@ -559,7 +559,7 @@ Triggered when scrolling stops after the user's finger leaves the screen. This e
 
 Trigger conditions:
 
-1. Scrolling is stopped by the scrollable component (supports keyboard, mouse, and other input methods that trigger scrolling).<br>2. The controller API is called to start the scrolling, accompanied by a transition animation.
+1. Scrolling is stopped by the scrollable component (supports keyboard, mouse, and other input methods that trigger scrolling).<br>2. The controller API is called to stop the scrolling, accompanied by a transition animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -769,8 +769,19 @@ A constructor used to create a **Scroller** object.
 
 scrollTo(options: ScrollOptions)
 
-
 Scrolls to the specified position.
+
+>  **NOTE**
+>
+> - If the scrolling speed of the **scrollTo** animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events.
+>
+> - Component behavior varies:
+>
+>   - The [ArcList](ts-container-arclist.md) and [List](ts-container-list.md) components load and lay out all items that are passed through.
+>
+>   - The **Grid** components and the [WaterFlow](ts-container-waterflow.md) components in [SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+>
+>   - The [WaterFlow](ts-container-waterflow.md) components in [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -781,11 +792,6 @@ Scrolls to the specified position.
 | Name  | Type| Mandatory  | Description     |
 | ----- | ---- | ---- | --------- |
 | options | [ScrollOptions](#scrolloptions18) | Yes   | Parameters for scrolling to the specified position.|
-
->  **NOTE**
->
-> If the scrolling speed of the **scrollTo** animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events.
->
 
 ### scrollEdge
 
@@ -946,13 +952,19 @@ When smooth scrolling is enabled, all items encountered during the scroll are lo
 
 scrollBy(dx: Length, dy: Length)
 
-
 Scrolls by the specified amount.
 
-
->  **NOTE**
+> **NOTE**
 >
->  This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
+> - This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
+>
+> - Component behavior varies:
+>
+>   - The [ArcList](ts-container-arclist.md) and [List](ts-container-list.md) components load and lay out all items that are passed through.
+>
+>   - The **Grid** components and the **WaterFlow** components in [SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+>
+>   - The [WaterFlow](ts-container-waterflow.md) components in [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1816,7 +1828,7 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct StickyNestedScroll {
-  scroller: Scroller = new Scroller;
+  scroller: Scroller = new Scroller();
 
   build() {
     Column() {
@@ -2001,12 +2013,12 @@ class MyNodeController extends NodeController {
     // Set the OnWillScroll callback.
     scrollEvent?.setOnWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState,
       scrollSource: ScrollSource) => {
-      console.info('onWillScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}');
+      console.info(`onWillScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
     });
 
     // Set the OnDidScroll callback.
-    scrollEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+    scrollEvent?.setOnDidScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
+      console.info(`onDidScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}`);
     });
 
     // Set the OnReachStart callback.
@@ -2031,7 +2043,7 @@ class MyNodeController extends NodeController {
 
     // Set the OnScrollFrameBegin callback.
     scrollEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState) => {
-      console.info('onScrollFrameBegin offset = ${offset}, state = ${state}');
+      console.info(`onScrollFrameBegin offset = ${offset}, state = ${state}`);
       return undefined;
     });
   }
@@ -2046,7 +2058,7 @@ struct Index {
 
   aboutToAppear() {
     for (let i = 0; i < 30; i++) {
-      this.numbers.push('${i+1}');
+      this.numbers.push(`${i+1}`);
     }
   }
 
