@@ -17,7 +17,7 @@ base/iothardware/peripheral/
 ├── BUILD.gn
 ├── bundle.json
 └── interfaces
-    └── kits
+    └── inner_api
         ├── iot_errno.h
         ├── iot_flash.h
         ├── iot_gpio.h
