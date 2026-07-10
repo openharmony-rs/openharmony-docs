@@ -251,6 +251,27 @@
 
     示例代码如下：
     <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+    
+    ``` C++
+    static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
+    {
+        int32_t layerID = -1;
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID, &layerID);
+        return layerID;
+    }
+    
+    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+    {
+        if (userData == nullptr) {
+            return;
+        }
+        // ...
+    
+        // 从AVBuffer中获取时域层级信息。
+        int32_t layerID = GetTemporalLayerID(buffer);
+    }
+    ```
 
 5. （可选）在输出过程中，使用步骤4获取的时域层级信息，开发者可根据实际带宽或业务场景实现自适应传输或自适应解码。
 
