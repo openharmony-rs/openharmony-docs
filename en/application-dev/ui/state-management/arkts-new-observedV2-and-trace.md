@@ -425,7 +425,7 @@ struct Index {
 ```
 
 - Classes decorated with \@ObservedV2 and \@Trace must be instantiated using the **new** operator to have change observation capabilities.
-- The class instance of \@ObservedV2 cannot be directly deserialized using JSON.parse (the object obtained by directly deserializing JSON.parse cannot observe attribute changes). You can use the third-party library [class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer) to deserialize the object and observe attribute changes. For details, see [Serialization and Deserialization of Objects Decorated with \@ObservedV2](#serialization-and-deserialization-of-objects-decorated-with-observedv2).
+- The class instance of \@ObservedV2 cannot be directly deserialized using JSON.parse (the object obtained by directly deserializing JSON.parse cannot observe attribute changes). You can use the third-party library [class-transformer](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/class-transformer) to deserialize the object and observe attribute changes. For details, see [Serialization and Deserialization of Objects Decorated with \@ObservedV2](#serialization-and-deserialization-of-objects-decorated-with-observedv2).
 
 ## When to Use
 
@@ -958,7 +958,7 @@ let isInfoByNew: boolean = realInfo instanceof Info; // true
 let isInfoByParse: boolean = parseInfo instanceof Info; // false
 ```
 
-You can use the third-party library [class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer) to implement observation after deserialization.
+You can use the third-party library [class-transformer](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/class-transformer) to implement observation after deserialization.
 
 You can run the following command to install class-transformer:
 
@@ -986,7 +986,7 @@ If multiple layers of objects are nested, the following operations are required:
 - Remove the **__ob_** prefix from the serialization result. Otherwise, the inner object cannot be correctly converted.
 - Use the @Type decorator provided by the class-transformer library (re-named as **TypeFromLibrary** in the example for distinguishing from [@Type](arkts-new-type.md) in state management V2) to mark the type of the inner object.
 
-To use the @Type decorator of the third-party library, you need to install [reflect-metadata](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/reflect-metadata).
+To use the @Type decorator of the third-party library, you need to install [reflect-metadata](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/reflect-metadata).
 
 You can run the following command to install reflect-metadata:
 
