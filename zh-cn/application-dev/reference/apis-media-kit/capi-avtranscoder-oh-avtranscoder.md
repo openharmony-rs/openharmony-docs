@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AVTranscoder OH_AVTranscoder
+typedef struct OH_AVTranscoder OH_AVTranscoder;
 ```
 
 ## 概述
