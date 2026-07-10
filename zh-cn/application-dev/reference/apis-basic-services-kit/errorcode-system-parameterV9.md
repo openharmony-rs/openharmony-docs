@@ -1,4 +1,10 @@
 # 系统参数错误码
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 系统参数错误码用于标识系统参数操作中的错误情况，包括参数查找失败、值无效、权限不足、系统内部错误等场景。通过明确的错误码和描述，帮助开发者快速定位和解决问题。
 
