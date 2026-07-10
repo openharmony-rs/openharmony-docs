@@ -714,7 +714,7 @@ libace_napi.z.so
 |FUNC|napi_wrap_sendable | 封装一个native实例到ArkTS对象中。|12|
 |FUNC|napi_wrap_sendable_with_size | 封装一个native实例到ArkTS对象中并指定大小。|12|
 |FUNC|napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|12|
-|FUNC|napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|12|
+|FUNC|napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。|12|
 |FUNC|napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。|18|
 |FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
 |FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
@@ -1412,7 +1412,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 **描述：**
 
-移除并获取ArkTS对象封装的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。
 
 **参数：**
 
