@@ -216,7 +216,7 @@ const char *OH_GetBootloaderVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的Bootloader版本号。常见的取值包括："bootloader"等 。 |
+| const char* | 字符串类型的Bootloader版本号。常见的取值包括："bootloader"等。
 
 ### OH_GetAbiList()
 
