@@ -312,7 +312,6 @@ const file = fileio.openSync(path,
 debugManager.printCapturerInfo(capturer, file.fd);
 fileio.closeSync(file);
 ```
-```
 
 **输出示例：**
 
