@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 Provides APIs for managing data in an RDB store.
@@ -28,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | Name        | Type           | Read-Only      | Optional| Description                            |
 | ------------ | ----------- | ---- | -------------------------------- | -------------------------------- |
-| version<sup>10+</sup>  | number | No| No  | RDB store version, which is an integer greater than 0.<br>Reading and setting this property will occupy the database connection. Do not frequently perform operations on this property.<br>Use a temporary variable to store the value obtained and assign the value to the **version** property of the **RdbStore** instance after the database change is complete. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md#how-to-develop).|
+| version<sup>10+</sup>  | number | No| No  | RDB store version, which is a positive integer.<br>Reading and setting this property will occupy the database connection. Do not frequently perform operations on this property.<br>Use a temporary variable to store the value obtained and assign the value to the **version** property of the **RdbStore** instance after the database change is complete. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md#how-to-develop).|
 | rebuilt<sup>12+</sup> | [RebuildType](arkts-apis-data-relationalStore-e.md#rebuildtype12) | Yes| No| Whether the RDB store has been rebuilt or repaired.|
 
 **Error codes**
@@ -38,19 +38,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
-| 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
+| 801       | Capability not supported.<br>Applicable versions: 12+|
+| 14800000  | Inner error.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -95,7 +95,13 @@ class EntryAbility extends UIAbility {
 
 insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
 
-Inserts a row of data into a table. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into a table. This API uses an asynchronous callback to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -105,9 +111,9 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                         | Mandatory| Description                                                      |
 | -------- | ----------------------------- | ---- | ---------------------------------------------------------- |
-| table    | string                        | Yes  | Name of the target table.                                          |
+| table    | string                        | Yes  | Name of the target table, which cannot be an empty string.                                          |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Row of data to insert.                                |
-| callback | AsyncCallback&lt;number&gt;   | Yes  | Callback used to return the result. If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| callback | AsyncCallback&lt;number&gt;   | Yes  | Callback used to return the result. If the data is successfully inserted, **err** is **undefined** and data is the row ID. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -117,24 +123,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -179,7 +185,13 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -189,10 +201,10 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                       | Mandatory| Description                                                      |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| table    | string                                      | Yes  | Name of the target table.                                          |
+| table    | string                                      | Yes  | Name of the target table, which cannot be an empty string.                                          |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.                                |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict.                                        |
-| callback | AsyncCallback&lt;number&gt;                 | Yes  | Callback used to return the result. If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| callback | AsyncCallback&lt;number&gt;                 | Yes  | Callback used to return the result. If the data is successfully inserted, **err** is **undefined** and data is the row ID. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -202,23 +214,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ---------------------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
@@ -265,7 +277,13 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
-Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into a table. This API uses a promise to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -275,14 +293,14 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                         | Mandatory| Description                      |
 | ------ | ----------------------------- | ---- | -------------------------- |
-| table  | string                        | Yes  | Name of the target table.          |
+| table  | string                        | Yes  | Name of the target table, which cannot be an empty string.          |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Row of data to insert.|
 
 **Return value**
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data.|
 
 **Error codes**
 
@@ -292,24 +310,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -354,7 +372,13 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into a table. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -364,7 +388,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                       | Mandatory| Description                      |
 | -------- | ------------------------------------------- | ---- | -------------------------- |
-| table    | string                                      | Yes  | Name of the target table.          |
+| table    | string                                      | Yes  | Name of the target table, which cannot be an empty string.          |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict.        |
 
@@ -372,7 +396,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data.|
 
 **Error codes**
 
@@ -382,23 +406,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
@@ -444,7 +468,13 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into a table. This API returns the result synchronously.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -454,7 +484,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| table    | string                                      | Yes  | Name of the target table.                                            |
+| table    | string                                      | Yes  | Name of the target table, which cannot be an empty string.                                            |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.                                  |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
@@ -462,7 +492,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| number | If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| number | ID of the row where the data is inserted.|
 
 **Error codes**
 
@@ -533,7 +563,13 @@ if (store != undefined) {
 
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
-Inserts a row of Sendable data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of Sendable data into a table. This API returns the result synchronously.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
 
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
@@ -543,7 +579,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                                                                          | Mandatory| Description                                                                           |
 | -------- | ---------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
-| table    | string                                                                                         | Yes  | Name of the target table.                                                               |
+| table    | string                                                                                         | Yes  | Name of the target table, which cannot be an empty string.                                                               |
 | values   | [sendableRelationalStore.ValuesBucket](js-apis-data-sendableRelationalStore.md#valuesbucket) | Yes  | Sendable data to insert.                                           |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | No  | Resolution used to resolve the conflict.<br> Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
@@ -551,7 +587,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| number | If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| number | ID of the row where the data is inserted.|
 
 **Error codes**
 
@@ -613,9 +649,15 @@ This API returns either an error or **-1** if the data fails to be inserted.
 
 Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
-[Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
+Since API version 20, the vector store is supported (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -623,9 +665,9 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table    | string                                     | Yes  | Name of the target table.                                            |
+| table    | string                                     | Yes  | Name of the target table, which cannot be an empty string.                                            |
 | values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.            |
-| callback | AsyncCallback&lt;number&gt;                | Yes  | Callback used to return the result. If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| callback | AsyncCallback&lt;number&gt;                | Yes  | Callback used to return the result. If batch insertion is successful, **err** is **undefined** and **data** is the number of inserted data records. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -635,24 +677,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -711,9 +753,15 @@ This API returns either an error or **-1** if the data fails to be inserted.
 
 Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
-[Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
+Since API version 20, this API can be used for the vector store (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -721,14 +769,14 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes  | Name of the target table, which cannot be an empty string.            |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 
 **Return value**
 
 | Type                 | Description                                                       |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| Promise&lt;number&gt; | Promise used to return the number of data records inserted in batches.|
 
 **Error codes**
 
@@ -738,24 +786,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -837,6 +885,12 @@ This API returns either an error or **-1** if the data fails to be inserted.
 
 Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -845,14 +899,14 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes  | Name of the target table, which cannot be an empty string.            |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 
 **Return value**
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| number | If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| number | Number of data records inserted in batches.|
 
 **Error codes**
 
@@ -943,6 +997,12 @@ For example, if the size of the union set is 10, a maximum of 3,276 data records
 
 Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -951,7 +1011,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes  | Name of the target table, which cannot be an empty string.            |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict.      |
 
@@ -959,7 +1019,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| Promise&lt;number&gt; | Promise used to return the number of data records inserted in batches.|
 
 **Error codes**
 
@@ -1047,6 +1107,12 @@ For example, if the size of the union set is 10, a maximum of 3,276 data records
 
 Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -1055,7 +1121,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes  | Name of the target table, which cannot be an empty string.            |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict.      |
 
@@ -1063,7 +1129,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| number | If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| number | Number of data records inserted in batches.|
 
 **Error codes**
 
@@ -1144,19 +1210,25 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10), and [Result](arkts-apis-data-relationalStore-i.md#result23) is returned. This API uses a promise to return the result.
 
-A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800001 is returned. The number of inserted data records multiplied by the total number of fields in the inserted data equals the number of parameters.
+A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800001 is returned. The number of inserted data records multiplied by the size of the union set of all fields in the inserted data equals the number of parameters.
 
-For example, if the total number of fields is 10, a maximum of 3,276 data records can be inserted (3276 x 10 = 32760).
+For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
 
 Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1171,7 +1243,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                                                        | Description                                           |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise used to return the data set inserted.|
 
 **Error codes**
 
@@ -1208,6 +1280,7 @@ async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStor
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1228,11 +1301,17 @@ Ensure that you comply with this constraint when calling this API to avoid error
 
 It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
 
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
 A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1247,7 +1326,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                                                   | Description                              |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Inserted data set.|
 
 **Error codes**
 
@@ -1284,6 +1363,7 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1294,7 +1374,15 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
 
 update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data in the RDB store based on the specified **RdbPredicates** object. This API uses an asynchronous callback to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1304,7 +1392,7 @@ Updates data in the RDB store based on the specified **RdbPredicates** object. T
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)        | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Update conditions specified by the **RdbPredicates** object.                   |
-| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the number of rows updated.                  |
+| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the result. If the data is updated successfully, **err** is **undefined** and **data** is the number of affected rows. Otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -1314,24 +1402,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -1378,7 +1466,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses an asynchronous callback to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1389,7 +1485,7 @@ Updates data based on the specified **RdbPredicates** object. You can use the **
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)            | Yes  | Update conditions specified by the **RdbPredicates** object.                     |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict.                                          |
-| callback   | AsyncCallback&lt;number&gt;                 | Yes  | Callback used to return the number of rows updated.                  |
+| callback   | AsyncCallback&lt;number&gt;                 | Yes  | Callback used to return the result. If the data is updated successfully, **err** is **undefined** and **data** is the number of affected rows. Otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -1399,23 +1495,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
@@ -1463,7 +1559,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1488,24 +1592,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -1552,7 +1656,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data based on the specified **RdbPredicates** object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1578,23 +1690,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
@@ -1642,7 +1754,15 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data in the RDB store based on the specified **RdbPredicates** object.
+
+Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
+
+Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](#query) or [querySql](#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+
+To read data larger than 2 MB, use the [queryByStep](#querybystep) API.
+
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1735,9 +1855,11 @@ Updates data in the RDB store based on the specified **RdbPredicates** instance 
 
 It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
 
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1752,7 +1874,7 @@ It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict*
 
 | Type                                                   | Description                                           |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the data set updated.|
 
 **Error codes**
 
@@ -1793,6 +1915,7 @@ async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1807,9 +1930,11 @@ Updates data in the RDB store based on the specified **RdbPredicates** instance 
 
 It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
 
+A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1824,7 +1949,7 @@ It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict*
 
 | Type                                                   | Description                              |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Updated data set.|
 
 **Error codes**
 
@@ -1865,6 +1990,7 @@ function updateWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1884,7 +2010,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object.
 | Name    | Type                                | Mandatory| Description                                     |
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Deletion conditions specified by the **RdbPredicates** object.|
-| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the number of rows deleted.|
+| callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the result. If the data is deleted successfully, **err** is **undefined** and **data** is the number of affected rows. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1894,24 +2020,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -1957,24 +2083,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -2062,7 +2188,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object 
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2075,7 +2201,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object 
 
 | Type                                                   | Description                                           |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the data set deleted.|
 
 **Error codes**
 
@@ -2113,6 +2239,7 @@ async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2127,7 +2254,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object 
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2140,7 +2267,7 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object 
 
 | Type                                                   | Description                              |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Deleted data set.|
 
 **Error codes**
 
@@ -2178,6 +2305,7 @@ function deleteWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2197,7 +2325,7 @@ Queries data from the RDB store based on specified conditions. This API uses an 
 | Name    | Type                                                        | Mandatory| Description                                                       |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                         | Yes  | Query conditions specified by the **RdbPredicates** object.                  |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is a **ResultSet** object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2207,8 +2335,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2255,7 +2383,7 @@ Queries data from the RDB store based on specified conditions (for example, colu
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                         | Yes  | Query conditions specified by the **RdbPredicates** object.                  |
 | columns    | Array&lt;string&gt;                                          | Yes  | Columns to query. If this parameter is not specified, the query applies to all columns.           |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is a **ResultSet** object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2265,8 +2393,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2318,7 +2446,7 @@ Queries data from the RDB store based on specified conditions. This API uses a p
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
 
 **Error codes**
 
@@ -2328,8 +2456,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2381,7 +2509,7 @@ Queries data in a database based on specified conditions. This API returns the r
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | If the operation is successful, a **ResultSet** object will be returned.|
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | The **ResultSet** object.|
 
 **Error codes**
 
@@ -2429,7 +2557,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 Queries data from the RDB store based on specified conditions without calculating the row count. This API delivers better performance than the [query](#query-1) API and uses a promise to return the result.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2444,7 +2572,7 @@ Queries data from the RDB store based on specified conditions without calculatin
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | If the operation is successful, a **LiteResultSet** object will be returned.|
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise used to return the **LiteResultSet** object.|
 
 **Error codes**
 
@@ -2492,7 +2620,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 Queries data from the RDB store based on specified conditions without calculating the row count. If complex logic and a large number of loops are involved in the operations on the **LiteResultSet** obtained by **queryWithoutRowCountSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2507,7 +2635,7 @@ Queries data from the RDB store based on specified conditions without calculatin
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | If the operation is successful, a **LiteResultSet** object will be returned.|
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | The **LiteResultSet** object.|
 
 **Error codes**
 
@@ -2553,7 +2681,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 Queries data from the RDB store based on specified conditions without calculating the row count. This API delivers better performance than the [querySql](#querysql-1) API and uses a promise to return the result. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2561,14 +2689,14 @@ Queries data from the RDB store based on specified conditions without calculatin
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise used to return the **LiteResultSet** object.|
 
 **Error codes**
 
@@ -2576,7 +2704,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014  | The target instance is already closed. |
 
 **Example:**
@@ -2615,7 +2743,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 Queries data from the RDB store based on the specified SQL statements without calculating the row count. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. If complex logic and a large number of loops are involved in the operations on the **LiteResultSet** obtained by **querySqlWithoutRowCountSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2623,14 +2751,14 @@ Queries data from the RDB store based on the specified SQL statements without ca
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is null.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | If the operation is successful, a **LiteResultSet** object will be returned.|
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | The **LiteResultSet** object.|
 
 **Error codes**
 
@@ -2638,7 +2766,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed. |
 
 **Example:**
@@ -2685,11 +2813,11 @@ Queries data from the RDB store of a remote device based on specified conditions
 
 | Name    | Type                                        | Mandatory| Description                                                     |
 | ---------- | -------------------------------------------- | ---- | --------------------------------------------------------- |
-| device     | string                                       | Yes  | ID of the remote device.                                       |
-| table      | string                                       | Yes  | Name of the target table.                                         |
+| device     | string                                       | Yes  | ID of the specified remote device, which cannot be an empty string.                                       |
+| table      | string                                       | Yes  | Name of the target table, which cannot be an empty string.                                         |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)              | Yes  | Query conditions specified by the **RdbPredicates** object.                |
 | columns    | Array&lt;string&gt;                          | Yes  | Columns to query. If this parameter is not specified, the query applies to all columns.         |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is a **ResultSet** object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2700,7 +2828,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2728,7 +2856,11 @@ try {
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.greaterThan("id", 0);
 if (store != undefined && deviceId != undefined) {
-  (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+  (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], async (err, resultSet) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      return;
+    }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
     try {
@@ -2745,8 +2877,6 @@ if (store != undefined && deviceId != undefined) {
       // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
       resultSet.close();
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
 }
 ```
@@ -2767,8 +2897,8 @@ Queries data from the RDB store of a remote device based on specified conditions
 
 | Name    | Type                                | Mandatory| Description                                            |
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------ |
-| device     | string                               | Yes  | ID of the remote device.                  |
-| table      | string                               | Yes  | Name of the target table.                                |
+| device     | string                               | Yes  | ID of the specified remote device, which cannot be an empty string.                  |
+| table      | string                               | Yes  | Name of the target table, which cannot be an empty string.                                |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.     |
 | columns    | Array&lt;string&gt;                  | Yes  | Columns to query. If this parameter is not specified, the query applies to all columns.|
 
@@ -2776,7 +2906,7 @@ Queries data from the RDB store of a remote device based on specified conditions
 
 | Type                                                        | Description                                              |
 | ------------------------------------------------------------ | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
 
 **Error codes**
 
@@ -2787,7 +2917,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2844,7 +2974,7 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
 Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
-[Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
+This API is supported for vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)). For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
 Aggregate functions cannot be nested.
 
@@ -2854,8 +2984,8 @@ Aggregate functions cannot be nested.
 
 | Name  | Type                                        | Mandatory| Description                                   |
 | -------- | -------------------------------------------- | ---- |---------------------------------------|
-| sql      | string                                       | Yes  | SQL statement to run.                         |
-| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| sql      | string                                       | Yes  | SQL statement to be executed, which cannot be an empty string.                         |
+| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is a **ResultSet** object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2865,8 +2995,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2921,7 +3051,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 
 Queries data using the specified SQL statements. The number of relational operators in the SQL statements cannot exceed 1,000. The parameter values in the SQL statement can be passed in. This API uses an asynchronous callback to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
-[Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
+This API is supported for vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)). For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
 Aggregate functions cannot be nested.
 
@@ -2931,9 +3061,9 @@ Aggregate functions cannot be nested.
 
 | Name  | Type                                        | Mandatory| Description                                                        |
 | -------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sql      | string                                       | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | Yes  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, the value of this parameter must be an empty array.|
-| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.   |
+| sql      | string                                       | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | Yes  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
+| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is a **ResultSet** object. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
@@ -2943,8 +3073,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -2981,7 +3111,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 
 Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained. As a result, the operation may fail or an exception may be thrown.
 
-[Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported. For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
+This API is supported for vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)). For details about the supported syntax, see [Specifications](../../database/data-persistence-by-vector-store.md#specifications).
 
 Aggregate functions cannot be nested.
 
@@ -2991,14 +3121,14 @@ Aggregate functions cannot be nested.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
 
 **Error codes**
 
@@ -3008,8 +3138,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -3063,14 +3193,14 @@ Queries data in the RDB store using the specified SQL statement. The number of r
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is null.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | If the operation is successful, a **ResultSet** object will be returned.|
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | The **ResultSet** object.|
 
 **Error codes**
 
@@ -3110,6 +3240,134 @@ if (store != undefined) {
 }
 ```
 
+## queryByStep
+
+queryByStep(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
+
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. This API uses a promise to return the result. This API queries data row by row. There is no 2 MB limit on the size of a single data record.
+
+Aggregate functions cannot be nested.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name  | Type                                | Mandatory| Description                                                        |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.<br>The SQL statement must be valid. Otherwise, an error code may be thrown when **ResultSet** is used.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. The default value is an empty array.|
+
+**Return value**
+
+| Type                                                   | Description                                              |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**Example:**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).queryByStep("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'").then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## queryByStep
+
+queryByStep(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
+
+Queries data from the RDB store based on specified conditions. This API uses a promise to return the result. This API queries data row by row. There is no 2 MB limit on the size of a single data record.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name    | Type                                | Mandatory| Description                                            |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------ |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.       |
+| columns    | Array&lt;string&gt;                  | No  | Columns to query. If this parameter is not specified, the query applies to all columns. The default value is an empty array.|
+
+**Return value**
+
+| Type                                                   | Description                                              |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**Example:**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  (store as relationalStore.RdbStore).queryByStep(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      resultSet.close();
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
 ## executeSql<sup>10+</sup>
 
 executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
@@ -3126,8 +3384,8 @@ Statements separated by semicolons (\;) are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback used to return the result.                                      |
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback used to return the result. If the SQL statement is executed successfully, **err** is **undefined**. Otherwise, **err** is an error object.                                      |
 
 **Error codes**
 
@@ -3136,25 +3394,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
@@ -3188,9 +3446,9 @@ Statements separated by semicolons (\;) are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Yes  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, the value of this parameter must be an empty array.|
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback used to return the result.                                      |
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Yes  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback used to return the result. If the SQL statement is executed successfully, **err** is **undefined**. Otherwise, **err** is an error object.                                      |
 
 **Error codes**
 
@@ -3199,26 +3457,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -3251,8 +3509,8 @@ Statements separated by semicolons (\;) are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
@@ -3267,26 +3525,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>Applicable versions: 12+|
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -3325,8 +3583,8 @@ Statements starting with comments are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
@@ -3421,7 +3679,7 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1,000. This API uses a promise to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig). When this API is used to insert data originating from a subquery, full-field insertion is supported, but partial-field insertion is not yet supported.
+This API is available only to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)). When this API is used to insert data originating from a subquery, full-field insertion is supported, but partial-field insertion is not yet supported.
 
 This API does not support data query. To query data, use [querySql](#querysql10).
 
@@ -3435,15 +3693,15 @@ Statements starting with comments are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
+| sql      | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
 | txId      | number                               | Yes  | Transaction ID obtained via [beginTrans](#begintrans12). If the value is **0**, the SQL statement is executed in a separate transaction by default.                                     |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If this parameter is left blank or set to **null** or **undefined**, the SQL parameter statement is considered complete.|
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is an empty array.|
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise that returns **null**.|
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise used to return the SQL execution result.|
 
 **Error codes**
 
@@ -3479,8 +3737,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -3517,8 +3775,8 @@ Statements starting with comments are not supported.
 
 | Name| Type                                | Mandatory| Description                                                        |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql    | string                               | Yes  | SQL statement to run.                                       |
-| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If this parameter is left blank or set to **null** or **undefined**, the SQL statement is complete. The default value is null.|
+| sql    | string                               | Yes  | SQL statement to be executed, which cannot be an empty string.                                       |
+| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If this parameter is left empty, or set to **null** or **undefined**, the SQL parameter statement is considered complete. The default value is an empty array.|
 
 **Return value**
 
@@ -3551,7 +3809,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800032     | SQLite: Abort due to constraint violation.                   |
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800034     | SQLite: Library used incorrectly.                            |
-| 14800047     | The WAL file size exceeds the default limit.                 |
+| 14800047  | The WAL file size exceeds the default limit. |
 
 **Example:**
 
@@ -3605,7 +3863,7 @@ Obtains the last modification time of the data in a table. This API uses an asyn
 | table       | string                                           | Yes  | Name of the database table to query.                                |
 | columnName  | string                                           | Yes  | Pointer to the column name of the database table to query.                                |
 | primaryKeys | [PRIKeyType](arkts-apis-data-relationalStore-t.md#prikeytype10)[]                    | Yes  | Pointer to the primary keys of the rows to query.<br>If the database table has no primary key, **rowid** must be passed in through **columnName**. In this case, **primaryKeys** specifies the row numbers of the database table to query.<br>If the database table has no primary key and no **rowid** is passed in through **columnName**, an error code will be returned.|
-| callback    | AsyncCallback&lt;[ModifyTime](arkts-apis-data-relationalStore-t.md#modifytime10)&gt; | Yes  | Callback used to return the result. If the operation is successful, the **ModifyTime** object is returned.|
+| callback    | AsyncCallback&lt;[ModifyTime](arkts-apis-data-relationalStore-t.md#modifytime10)&gt; | Yes  | Callback used to return the result. If the modification time is successfully obtained, **err** is **undefined** and **data** is a **ModifyTime** object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3616,23 +3874,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -3680,23 +3938,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr.3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -3733,24 +3991,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+|
 
 **Example:**
 
@@ -3781,7 +4039,7 @@ Begins a transaction before executing the SQL statement. This API uses a promise
 
 Different from [beginTransaction](#begintransaction), this API returns a transaction ID. [execute](#execute12-1) can specify the transaction ID to isolate different transactions.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available only to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3825,8 +4083,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -3861,7 +4119,7 @@ You are advised to use **createTransaction** instead of **beginTransaction**.
 
 | Name     | Type                         | Mandatory| Description                                                        |
 | ----------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | No  | Configuration of the transaction object to create.                                |
+| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | No  | Configuration of a transaction object. The default value is **DEFERRED**.                                |
 
 **Return value**
 
@@ -3900,6 +4158,7 @@ if (store != undefined) {
       console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
     });
   }).catch((err: BusinessError) => {
+    (store as relationalStore.RdbStore).close();
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   });
 }
@@ -3922,24 +4181,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800000  | Inner error.<br>Applicable versions: 12+|
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -3968,7 +4227,7 @@ commit(txId : number):Promise&lt;void&gt;
 
 Commits an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available only to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4016,8 +4275,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -4051,24 +4310,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800000  | Inner error.<br>Applicable versions: 12+|
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4106,7 +4365,7 @@ rollback(txId : number):Promise&lt;void&gt;
 
 Rolls back an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available only to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4154,8 +4413,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -4178,7 +4437,7 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 
 Backs up an RDB store. This API uses an asynchronous callback to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4186,8 +4445,8 @@ This API is available only to [vector stores](arkts-apis-data-relationalStore-i.
 
 | Name  | Type                     | Mandatory| Description                    |
 | -------- | ------------------------- | ---- | ------------------------ |
-| destName | string                    | Yes  | Name of the RDB store backup file.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.  |
+| destName | string                    | Yes  | Name of the backup file of the specified store. The value cannot be an empty string.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the backup is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
 
@@ -4197,24 +4456,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800010  | Failed to open or delete the database by an invalid database path.<br>Applicable versions: 12+|
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4236,7 +4495,7 @@ backup(destName:string): Promise&lt;void&gt;
 
 Backs up an RDB store. This API uses a promise to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4244,7 +4503,7 @@ This API is available only to [vector stores](arkts-apis-data-relationalStore-i.
 
 | Name  | Type  | Mandatory| Description                    |
 | -------- | ------ | ---- | ------------------------ |
-| destName | string | Yes  | Name of the RDB store backup file.|
+| destName | string | Yes  | Name of the backup file of the specified store. The value cannot be an empty string.|
 
 **Return value**
 
@@ -4260,23 +4519,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4299,7 +4558,7 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 
 Restores an RDB store from a backup file. This API uses an asynchronous callback to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4307,8 +4566,8 @@ This API is available only to [vector stores](arkts-apis-data-relationalStore-i.
 
 | Name  | Type                     | Mandatory| Description                    |
 | -------- | ------------------------- | ---- | ------------------------ |
-| srcName  | string                    | Yes  | Name of the RDB store backup file.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.  |
+| srcName  | string                    | Yes  | Name of the backup file of the specified store. The value cannot be an empty string.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the restoration is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
 
@@ -4318,23 +4577,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4356,7 +4615,7 @@ restore(srcName:string): Promise&lt;void&gt;
 
 Restores an RDB store from a backup file. This API uses a promise to return the result.
 
-This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
+This API is available to vector stores (set **vector** to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4364,7 +4623,7 @@ This API is available only to [vector stores](arkts-apis-data-relationalStore-i.
 
 | Name | Type  | Mandatory| Description                    |
 | ------- | ------ | ---- | ------------------------ |
-| srcName | string | Yes  | Name of the RDB store backup file.|
+| srcName | string | Yes  | Name of the backup file of the specified store. The value cannot be an empty string.|
 
 **Return value**
 
@@ -4380,23 +4639,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+|
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+|
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+|
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+|
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+|
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4428,7 +4687,7 @@ Sets distributed tables. This API uses an asynchronous callback to return the re
 | Name  | Type                     | Mandatory| Description                  |
 | -------- | ------------------------- | ---- | ---------------------- |
 | tables   | Array&lt;string&gt;       | Yes  | Names of the distributed tables to set.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the distributed list is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4439,7 +4698,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4486,7 +4745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4518,7 +4777,7 @@ Sets distributed tables. The distributed type of the table can be specified. Thi
 | -------- | ------------------------------------- | ---- | ---------------------------- |
 | tables   | Array&lt;string&gt;                   | Yes  | Names of the distributed tables to set. |
 | type     | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10) | Yes  | Distributed type of the tables.       |
-| callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the distributed list is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4529,7 +4788,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
 
 **Example:**
@@ -4563,7 +4822,7 @@ Sets distributed tables. The distributed type and configuration of the table can
 | tables   | Array&lt;string&gt;                 | Yes  | Names of the distributed tables to set. |
 | type     | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10) | Yes  | Distributed type of the tables.       |
 | config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | Yes| Configuration of the distributed mode.     |
-| callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the distributed list is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4574,7 +4833,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
 
 **Example:**
@@ -4609,7 +4868,7 @@ Sets distributed tables. The distributed type and configuration of the table can
 | ------ | ----------------------------------------- | ---- |-----------------------------------------------------------------|
 | tables | Array&lt;string&gt;                       | Yes  | Names of the distributed tables to set.                                                 |
 | type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | No  | Distributed type of the tables.<br> Default value: **relationalStore.DistributedType.DISTRIBUTED_DEVICE**.|
-| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | No  | Configuration of the distributed mode. If this parameter is not specified, the value of **autoSync** is **false** by default, which means only manual sync is supported.                       |
+| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | No  | Configuration of the distributed mode. If this parameter is not specified, the value of **autoSync** is **false** by default. You need to call the [cloudSync](#cloudsync10-3) API to trigger device-cloud sync.|
 
 **Return value**
 
@@ -4626,7 +4885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 | 14800051  | The type of the distributed table does not match. |
 
 **Example:**
@@ -4663,9 +4922,9 @@ Obtains the distributed table name of a remote device based on the local table n
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| device   | string                      | Yes  | ID of the remote device.                                               |
+| device   | string                      | Yes  | ID of the remote device, which cannot be an empty string.                                               |
 | table    | string                      | Yes  | Local table name of the remote device.                                        |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the result. If the operation succeeds, the distributed table name of the remote device is returned.|
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the result. If the distributed table name is successfully obtained, **err** is **undefined** and **data** is the distributed table name of the remote device. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4676,7 +4935,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4730,14 +4989,14 @@ Obtains the distributed table name of a remote device based on the local table n
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| device | string | Yes  | ID of the remote device.        |
+| device | string | Yes  | ID of the remote device, which cannot be an empty string.        |
 | table  | string | Yes  | Local table name of the remote device.|
 
 **Return value**
 
 | Type                 | Description                                                 |
 | --------------------- | ----------------------------------------------------- |
-| Promise&lt;string&gt; | Promise used to return the result. If the operation succeeds, the distributed table name of the remote device is returned.|
+| Promise&lt;string&gt; | Promise used to return the distributed table name of the remote device.|
 
 **Error codes**
 
@@ -4748,7 +5007,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4798,7 +5057,7 @@ Synchronizes data across devices. This API uses an asynchronous callback to retu
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | Yes  | Data sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.                              |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | Yes  | **RdbPredicates** object that specifies the data and devices to sync.                                        |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | Yes  | Callback used to return the sync result to the caller. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
+| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | Yes  | Callback used to send the sync result to the caller. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
 
 **Error codes**
 
@@ -4809,7 +5068,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4869,7 +5128,7 @@ Synchronizes data across devices. This API uses a promise to return the result.
 
 | Type                                        | Description                                                        |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise used to send the sync result to the caller. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
+| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise used to return the sync result. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
 
 **Error codes**
 
@@ -4880,7 +5139,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -4917,11 +5176,88 @@ if (store != undefined) {
 }
 ```
 
+## syncEx
+
+syncEx(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;SyncResult&gt;&gt;
+
+Syncs data across devices. This API uses a promise to return the sync status.
+
+**Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name    | Type                                | Mandatory| Description                          |
+| ---------- | ------------------------------------ | ---- | ------------------------------ |
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | Yes  | Sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that specifies the data and devices to sync.          |
+
+**Return value**
+
+| Type                                        | Description                                                        |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| Promise&lt;Array&lt;[SyncResult](arkts-apis-data-relationalStore-i.md#syncresult)&gt;&gt; | Promise used to return the **SyncResult** array.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 201       | the application does not have permission to call this function. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800014  | The target instance is already closed. |
+
+**Example:**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceIds: Array<string> = [];
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+  for (let i = 0; i < devices.length; i++) {
+    deviceIds[i] = devices[i].networkId!;
+  }
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error("createDeviceManager errCode:" + code + ",errMessage:" + message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.inDevices(deviceIds);
+store.syncEx(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: relationalStore.SyncResult[]) => {
+  for (let i = 0; i < result.length; i++) {
+    let code = result[i].code;
+    let message = result[i].message;
+    if (code === 0) {
+      console.info(`SyncEx success`);
+    } else {
+      console.error(`SyncEx failed, message: ${message} code : ${code}`);
+    }
+  }
+}).catch((err: Error) => {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error("syncEx errCode:" + code + ",errMessage:" + message);
+});
+```
+
 ## cloudSync<sup>10+</sup>
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Manually starts device-cloud sync for all distributed tables. This API uses an asynchronous callback to return the result. Before using this API, ensure that the cloud service is available.
+Starts device-cloud sync for all distributed tables. This API uses an asynchronous callback to return the result. Before using this API, ensure that the cloud service is available.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4931,7 +5267,7 @@ Manually starts device-cloud sync for all distributed tables. This API uses an a
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | mode     | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                                 | Yes  | Sync mode of the database.                            |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes  | Callback used to process database sync details.            |
-| callback | AsyncCallback&lt;void&gt;                             | Yes  | Callback used to return the sync result to the caller.|
+| callback | AsyncCallback&lt;void&gt;                             | Yes  | Callback used to return the result. If the sync is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4941,7 +5277,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------|-------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. 5. The callback must be a function. |
 | 801       | Capability not supported.       |
-| 14800014  | The target instance is already closed.        |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+       |
 
 **Example:**
 
@@ -4963,7 +5299,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-Manually starts device-cloud sync for all distributed tables. This API uses a promise to return the result. Before using this API, ensure that the cloud service is available.
+Starts device-cloud sync for all distributed tables. This API uses a promise to return the result. Before using this API, ensure that the cloud service is available.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4978,7 +5314,7 @@ Manually starts device-cloud sync for all distributed tables. This API uses a pr
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise used to send the sync result to the caller.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -4988,7 +5324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------|------------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
 | 801       | Capability not supported.   |
-| 14800014  | The target instance is already closed.           |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+          |
 
 **Example:**
 
@@ -5010,7 +5346,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Manually starts device-cloud sync of the specified table. This API uses an asynchronous callback to return the result. Before using this API, ensure that the cloud service is available.
+Starts device-cloud sync of the specified table. This API uses an asynchronous callback to return the result. Before using this API, ensure that the cloud service is available.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5021,7 +5357,7 @@ Manually starts device-cloud sync of the specified table. This API uses an async
 | mode     | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                                 | Yes  | Sync mode of the database.                            |
 | tables   | string[]                                              | Yes  | Name of the table to sync.                                  |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes  | Callback used to process database sync details.            |
-| callback | AsyncCallback&lt;void&gt;                             | Yes  | Callback used to return the sync result to the caller.|
+| callback | AsyncCallback&lt;void&gt;                             | Yes  | Callback used to return the result. If the sync is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5029,9 +5365,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                                                                                                                                                                                 |
 |-----------|-------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
+| 401       | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.|
 | 801       | Capability not supported.   |
-| 14800014  | The target instance is already closed.   |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+  |
 
 **Example:**
 
@@ -5055,7 +5391,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-Manually starts device-cloud sync of the specified table. This API uses a promise to return the result. Before using this API, ensure that the cloud service is available.
+Starts device-cloud sync of the specified table. This API uses a promise to return the result. Before using this API, ensure that the cloud service is available.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5071,7 +5407,7 @@ Manually starts device-cloud sync of the specified table. This API uses a promis
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise used to send the sync result to the caller.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -5079,9 +5415,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**    |
 |-----------|---------------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type |
+| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
 | 801       | Capability not supported.    |
-| 14800014  | The target instance is already closed.  |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
 
 **Example:**
 
@@ -5099,6 +5435,125 @@ if (store != undefined) {
     console.error(`cloudSync failed, code is ${err.code},message is ${err.message}`);
   });
 };
+```
+
+## cloudSyncEx
+
+cloudSyncEx(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+
+Starts device-cloud sync based on the cloud sync configuration. This API uses a promise to return the result. Before using this API, ensure that the cloud service is available.
+
+> **NOTE**
+>
+> The following predicates are supported in [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig):
+> 
+> - [beginWrap](arkts-apis-data-relationalStore-RdbPredicates.md#beginwrap)
+> - [endWrap](arkts-apis-data-relationalStore-RdbPredicates.md#endwrap)
+> - [or](arkts-apis-data-relationalStore-RdbPredicates.md#or)
+> - [and](arkts-apis-data-relationalStore-RdbPredicates.md#and)
+> - The data field type [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) of the following predicates supports only integer and string of the number type:
+>   - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
+>   - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
+>   - [in](arkts-apis-data-relationalStore-RdbPredicates.md#in)
+>   - [notIn](arkts-apis-data-relationalStore-RdbPredicates.md#notin)
+> - The data field type [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) of the following predicates supports only integers of the number type:
+>   - [greaterThan](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthan)
+>   - [lessThan](arkts-apis-data-relationalStore-RdbPredicates.md#lessthan)
+>   - [greaterThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthanorequalto)
+>   - [lessThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#lessthanorequalto)
+> 
+> When specifying the predicates, you can use the primary key (mandatory) and asset (optional) as sync conditions. If assets are specified, the sync mode must be set to **relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST**, with a limit of 50 assets. If more assets are involved, you are advised to use only the primary key as the sync condition.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| config | [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | Yes| Cloud sync configuration.|
+| progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes| Callback used to return the **ProgressDetails** instance.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**Example:**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.in("id", ["id1", "id2"]);
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true,
+  predicate: predicates
+};
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSyncEx(config, (progressDetails: relationalStore.ProgressDetails) => {
+      console.info(`progress: ${progressDetails.schedule}`);
+  }).then(() => {
+      console.info('cloud sync succeeded');
+  }).catch((err: BusinessError) => {
+      console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## stopCloudSync
+
+stopCloudSync(): Promise&lt;void&gt;
+
+Stops data syncing with the cloud. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md) and [Universal Error Codes](errorcode-universal.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800014  | The target instance is already closed. |
+
+**Example:**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != undefined) {
+  (store as relationalStore.RdbStore).stopCloudSync().then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## on('dataChange')
@@ -5125,7 +5580,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
 
@@ -5176,7 +5631,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 Example 1: **type** is **SUBSCRIBE_TYPE_REMOTE**.
 
@@ -5260,7 +5715,7 @@ Subscribes to the intra-process or inter-process events of this RDB store. The r
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | Yes  | Event name, which must match the event name in **emit**.              |
 | interProcess | boolean         | Yes  | Type of the data to observe.<br> **true**: inter-process.<br> **false**: intra-process.|
-| observer     | Callback\<void> | Yes  | Callback used to return the result.                                                  |
+| observer     | Callback\<void> | Yes  | Callback used to return the result. This callback is triggered when data changes in the current process or between processes.                                                  |
 
 **Error codes**
 
@@ -5271,7 +5726,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.    |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 | 14800050  | Failed to obtain the subscription service.    |
 
 **Example:**
@@ -5307,7 +5762,7 @@ Subscribes to the auto sync progress. This API can be called only when device-cl
 | Name      | Type                             | Mandatory| Description                               |
 | ------------ |---------------------------------| ---- |-----------------------------------|
 | event        | string                          | Yes  | Event type. The value is **'autoSyncProgress'**, which indicates the auto sync progress.|
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes  | Callback used to return the result.                            |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes  | Callback used to return the [ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10) result.                            |
 
 **Error codes**
 
@@ -5317,7 +5772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------|--------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. 4. The event must be a not empty string. 5. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The target instance is already closed.     |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+    |
 
 **Example:**
 
@@ -5567,7 +6022,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
 
@@ -5629,7 +6084,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 
 **Example:**
 
@@ -5669,7 +6124,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-Unsubscribes from process events.
+Cancels intra-process or inter-process event listening of the database.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5690,7 +6145,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000     | Inner error.                           |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+   |
 | 14800050     | Failed to obtain the subscription service. |
 
 **Example:**
@@ -5746,7 +6201,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ |--------------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The target instance is already closed.       |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
 
 **Example:**
 
@@ -5921,7 +6376,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.     |
 | 14800000  | Inner error.   |
-| 14800014  | The target instance is already closed.     |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+    |
 | 14800050  | Failed to obtain the subscription service.    |
 
 
@@ -5947,34 +6402,34 @@ Clears the dirty data whose cursor is smaller than the specified cursor from the
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string                        | Yes  | Name of the table in the RDB store.                            |
 | cursor    | number                        | Yes  | Cursor of the data, which is an integer. All the dirty data with the cursor smaller than the specified value will be cleared.    |
-| callback  | AsyncCallback&lt;void&gt;     | Yes  | Callback used to return the result.|
+| callback  | AsyncCallback&lt;void&gt;     | Yes  | Callback used to return the result. If the clearing is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
 
-| **ID**| **Error Message**    |
-|-----------|---------------|
+| **ID**| **Error Message**      |
+|-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
-| 801       | Capability not supported. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 801       | Capability not supported.    |
+| 14800000  | Inner error.        |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+     |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+          |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+       |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+     |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+  |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+               |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+           |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+            |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+  |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+                 |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+         |
 
 **Example:**
 
@@ -6003,34 +6458,33 @@ Clears all dirty data from the local device. The dirty data is the data that has
 | Name  | Type                                                 | Mandatory| Description                                              |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string                        | Yes  | Name of the table in the RDB store.|
-| callback  | AsyncCallback&lt;void&gt;     | Yes  | Callback used to return the result.|
+| callback  | AsyncCallback&lt;void&gt;     | Yes  | Callback used to return the result. If the clearing is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
-
 | **ID**| **Error Message**      |
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s). 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. |
 | 801       | Capability not supported.    |
 | 14800000  | Inner error.        |
-| 14800011  | The current operation failed because the database is corrupted.   |
-| 14800014  | The target instance is already closed.       |
-| 14800015  | The database does not respond.      |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied.           |
-| 14800024  | SQLite: The database file is locked.        |
-| 14800025  | SQLite: A table in the database is locked.  |
-| 14800026  | SQLite: The database is out of memory.      |
-| 14800027  | SQLite: Attempt to write a readonly database.   |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.  |
-| 14800029  | SQLite: The database is full.                |
-| 14800030  | SQLite: Unable to open the database file.            |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.             |
-| 14800032  | SQLite: Abort due to constraint violation.   |
-| 14800033  | SQLite: Data type mismatch.                  |
-| 14800034  | SQLite: Library used incorrectly.          |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+     |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+          |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+       |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+     |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+  |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+               |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+           |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+            |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+  |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+                 |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+         |
 
 **Example:**
 
@@ -6076,23 +6530,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.            |
-| 14800011  | The current operation failed because the database is corrupted.   |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond.   |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied.          |
-| 14800024  | SQLite: The database file is locked.      |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory.   |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full.   |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+  |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+|
+| 14800015  | The database does not respond.<br>Applicable versions: 12+  |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+|
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+         |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+     |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+|
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+  |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+  |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+|
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+|
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+|
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+|
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+|
 
 **Example:**
 
@@ -6126,9 +6580,9 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 
 | Name       | Type    | Mandatory | Description          |
 | ----------- | ------ | --- | ------------ |
-| fullPath | string | Yes  | Path of the database file to attach.|
-| attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
+| fullPath | string | Yes  | Path of the store to be attached. The value cannot be an empty string and can contain a maximum of 1024 bytes.|
+| attachName | string | Yes  | Alias of the attached store, which cannot be a string.|
+| waitTime | number | No  | Waiting time for attaching a database file, in seconds. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -6200,8 +6654,8 @@ The **attach** API cannot be called concurrently. Concurrent calls may cause the
 | ----------- | ------ | --- | ------------ |
 | context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
-| attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for attaching the database file. <br>Value range: 1 to 300<br>Default value: **2**|
+| attachName | string | Yes  | Alias of the attached store, which cannot be a string.|
+| waitTime | number | No  | Waiting time for attaching a database file, in seconds. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -6311,8 +6765,8 @@ Before calling **detach()**, ensure that all database operations are complete an
 
 | Name       | Type    | Mandatory | Description          |
 | ----------- | ------ | --- | ------------ |
-| attachName | string | Yes  | Alias of the RDB store formed after the attach operation.|
-| waitTime | number | No  | Maximum time period (in seconds) allowed for detaching the RDB store. <br>Value range: 1 to 300<br>Default value: **2**|
+| attachName | string | Yes  | Alias of the attached store, which cannot be a string.|
+| waitTime | number | No  | Waiting time for detaching a database, in seconds. <br>Value range: 1 to 300<br>Default value: **2**|
 
 **Return value**
 
@@ -6517,7 +6971,7 @@ Queries the locked data in this RDB store. This API uses a promise to return the
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the **ResultSet** object.|
 
 **Error codes**
 
@@ -6618,11 +7072,13 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 Updates the key of an encrypted database. This API uses a promise to return the result.
 
+Since API version 26.0.0, this API can be used to update the key of a vector store (set the **vector** field in **StoreConfig** to **true** during store creation).
+
+Only encrypted databases can be updated. Non-encrypted databases cannot be changed to encrypted databases, and vice versa. The encryption parameters and key generation mode must be the same as those used during database creation.
+
 Key update is not supported for databases in non-WAL mode.
 
 Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.
-
-Only encrypted databases can be updated. Non-encrypted databases cannot be changed to encrypted databases, and vice versa. The encryption parameters and key generation mode must be the same as those used during database creation.
 
 The larger the database, the longer the key update takes.
 
@@ -6647,11 +7103,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                           |
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.                   |
 | 14800014     | The target instance is already closed.                           |
 | 14800015     | The database does not respond.                                         |
-| 14800021     | SQLite: Generic error.                                                 |
+| 14800021     | SQLite: Generic error. |
 | 14800023     | SQLite: Access permission denied.                                      |
 | 14800024     | SQLite: The database file is locked.                                   |
 | 14800026     | SQLite: The database is out of memory.                                 |
@@ -6664,6 +7120,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // Example 1: Use default encryption parameters.
@@ -6686,20 +7143,23 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam1);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam1);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
 ```
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // Example 2: Use custom encryption parameters.
@@ -6736,14 +7196,60 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam2);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam2);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
+    });
+  }
+}
+```
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// Example 3: Update the key of a vector store.
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+    };
+    const STORE_CONFIG1: relationalStore.StoreConfig = {
+      name: 'test.db',
+      securityLevel: relationalStore.SecurityLevel.S2,
+      encrypt: true,
+      vector: true,
+      cryptoParam: cryptoParam,
+    };
+
+    relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let newCryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekey(newCryptoParam);
+          console.info('rekey successful');
+        } catch (err) {
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
+        }
+      }
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
@@ -6763,7 +7269,7 @@ The value complies with the ISO 639 standard and supports some languages in ICU.
 
 | Name| Type    | Mandatory| Description                                      |
 | ------ | ------- | ---- | ----------------------------------------- |
-| locale  | string | Yes  | Locale to set. The value complies with the ISO 639 standard, for example, **zh**.|
+| locale  | string | Yes  | Locale, which cannot be an empty string. The value complies with the ISO 639 standard, for example, **zh**.|
 
 **Return value**
 
@@ -6778,7 +7284,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                           |
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed.                           |
 | 14800024     | SQLite: The database file is locked.                                   |
 | 14800026     | SQLite: The database is out of memory.                                 |
@@ -6846,10 +7352,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                            |
 | ------------ | ----------------------------------------------------------------------- |
 | 801          | Capability not supported.                                               |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
-| 14800021     | SQLite: Generic error.                                                  |
+| 14800021     | SQLite: Generic error. |
 | 14800023     | SQLite: Access permission denied.                                       |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800026     | SQLite: The database is out of memory.                                  |
@@ -6860,6 +7366,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example 1: The original database is encrypted using default parameters. Change the key and encryption parameters.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6905,6 +7412,7 @@ export default class EntryAbility extends UIAbility {
 **Example 2: The original database is encrypted using custom parameters. Change the custom key and encryption parameters.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6960,6 +7468,7 @@ export default class EntryAbility extends UIAbility {
 **Example 3: The original database is encrypted using default parameters. Change the default key and parameters to the custom key and encryption parameters.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7006,6 +7515,7 @@ export default class EntryAbility extends UIAbility {
 **Example 4: The original database is encrypted using custom parameters. Change the key generated by database and custom encryption parameters.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7061,6 +7571,7 @@ export default class EntryAbility extends UIAbility {
 **Example 5: The original database is an encrypted database. Change it to a non-encrypted database.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7112,6 +7623,7 @@ export default class EntryAbility extends UIAbility {
 **Example 6: The original database is a non-encrypted database. Change it to a database encrypted using custom parameters.**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
