@@ -185,9 +185,9 @@ type Margin = Padding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                |  必填   | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| Margin    | [Padding](#padding) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [Padding](#padding) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## LocalizedMargin<sup>12+</sup>
 
@@ -205,9 +205,9 @@ type LocalizedMargin = LocalizedPadding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                | 必填 | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| LocalizedMargin    | [LocalizedPadding](#localizedpadding12) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [LocalizedPadding](#localizedpadding12) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## EdgeWidths<sup>9+</sup>
 
@@ -244,9 +244,9 @@ type EdgeWidth = EdgeWidths
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型 | 必填 | 说明             |
-| ------ | ---- | ------| ---------------- |
-| EdgeWidth    | [EdgeWidths](#edgewidths9) | 否 | 组件边框不同方向的宽度。 |
+| 类型 | 说明             |
+| ---- | ---------------- |
+| [EdgeWidths](#edgewidths9) | 组件边框不同方向的宽度。 |
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
