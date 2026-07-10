@@ -28928,6 +28928,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"custom_draw_canvas_native",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
