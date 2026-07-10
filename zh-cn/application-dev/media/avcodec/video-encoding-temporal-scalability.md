@@ -251,8 +251,6 @@
 
     示例代码如下：
  	<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-    ```c++
- 	```
 
 5. （可选）在输出过程中，使用步骤4获取的时域层级信息，开发者可根据实际带宽或业务场景实现自适应传输或自适应解码。
 
