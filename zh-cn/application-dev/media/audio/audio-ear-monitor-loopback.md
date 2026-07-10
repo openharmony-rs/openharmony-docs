@@ -499,4 +499,3 @@ async function disable(updateCallback?: (msg: string, isError: boolean) => void)
   }
 }
 ```
-```
