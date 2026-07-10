@@ -100,8 +100,8 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 > 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
 > 
 >
->```json
->{
+> ```json
+> {
 >   "subsystem": "security",
 >   "components": [{
 >           "component": "device_auth",
@@ -115,5 +115,5 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 >           ]
 >       }
 >   ]
->}
->```
+> }
+> ```
