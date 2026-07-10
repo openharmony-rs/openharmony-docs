@@ -26,8 +26,7 @@ import {
   ArcSliderValueOptionsConstructorOptions,
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
-  ArcSliderOptionsConstructorOptions,
-  CrownSensitivity
+  ArcSliderOptionsConstructorOptions
 } from '@kit.ArkUI';
 ```
 
@@ -340,8 +339,7 @@ import {
   ArcSliderValueOptionsConstructorOptions,
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
-  ArcSliderOptionsConstructorOptions,
-  CrownSensitivity
+  ArcSliderOptionsConstructorOptions
 } from '@kit.ArkUI';
 
 @Entry

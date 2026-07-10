@@ -63,7 +63,7 @@ open()
 
 > **说明：**
 >
->  不支持在输入法类型窗口中使用子窗口（showInSubWindow为true）的CustomDialog，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> 不支持在输入法类型窗口中使用子窗口（showInSubWindow为true）的CustomDialog，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

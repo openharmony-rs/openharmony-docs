@@ -122,7 +122,7 @@ struct PopupExample {
     Row() {
       // popup 自定义高级组件
       Popup({
-        // PopupIconOptions 类型设置图标内容
+        // PopupIconOptions类型设置图标内容
         icon: {
           // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
           image: $r('app.media.icon'),
@@ -193,7 +193,7 @@ struct PopupPage {
     Column() {
       // popup 自定义高级组件
       Popup({
-        // PopupIconOptions 类型设置图标内容
+        // PopupIconOptions类型设置图标内容
         direction: this.currentDirection,
         icon: {
           // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -269,7 +269,7 @@ struct PopupPage {
       Popup({
         // 设置自定义宽度
         maxWidth: '50%',
-        // PopupIconOptions 类型设置图标内容
+        // PopupIconOptions类型设置图标内容
         icon: {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           image: $r('app.media.startIcon'),

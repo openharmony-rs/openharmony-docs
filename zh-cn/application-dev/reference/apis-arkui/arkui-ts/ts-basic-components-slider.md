@@ -335,7 +335,7 @@ stepColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                               |
 | ------ | ------------------------------------------ | ---- | ---------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 刻度颜色。<br/>默认值：<br/>混入<br/>`$r('sys.color.ohos_id_alpha_normal_bg')`透明度的<br/>`$r('sys.color.ohos_id_color_foreground')`颜色 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 刻度颜色。<br/>默认值：<br/>混入`$r('sys.color.ohos_id_alpha_normal_bg')`透明度的`$r('sys.color.ohos_id_color_foreground')`颜色。 |
 
 ### trackBorderRadius<sup>10+</sup>
 
@@ -921,7 +921,7 @@ type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMode) => vo
 
 ### 示例1（滑动条基础样式）
 
-通过配置style、showTips、showSteps控制气泡、刻度值、滑块和滑轨的显示。
+该示例通过配置style、showTips、showSteps控制气泡、刻度值、滑块和滑轨的显示。
 
 ```ts
 // xxx.ets

@@ -1273,7 +1273,7 @@ struct Index {
 
 ![hoverScaleInterruption](figures/menuPreviewBorderRadius.jpg)
 
-### 示例15（bindMenu<sup>11+</sup>配置生命周期回调）
+### 示例15（bindMenu配置生命周期回调）
 
 该示例为bindMenu<sup>11+</sup>配置生命周期回调。
 
