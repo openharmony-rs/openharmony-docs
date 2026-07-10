@@ -103,7 +103,7 @@ getCurrentSpeed(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 下载的速度（字节每秒）。 |
+| number | 下载的速度，单位：字节每秒。 |
 
 **示例：**
 
@@ -1193,7 +1193,7 @@ struct WebComponent {
 
 cancel(): void
 
-取消一个正在下载的下载任务。
+取消下载任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1273,7 +1273,7 @@ struct WebComponent {
 
 pause(): void
 
-暂停一个正在下载的下载任务。
+暂停下载任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
