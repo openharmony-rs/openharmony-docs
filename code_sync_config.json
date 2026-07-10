@@ -6805,7 +6805,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets",
 				"functions":[
 					{
-						"end_line":134,
+						"end_line":135,
 						"name":"particle_example3",
 						"start_line":15
 					}
