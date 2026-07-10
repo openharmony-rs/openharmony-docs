@@ -11,6 +11,8 @@
 
 声明[ffrt_usleep](capi-sleep-h.md#ffrt_usleep)和[ffrt_yield](capi-sleep-h.md#ffrt_yield)的C接口。
 
+**引用文件：** <ffrt/sleep.h>
+
 **库：** libffrt.z.so
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
@@ -52,7 +54,7 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | `ffrt_success`。 |
+| FFRT_C_API int | 执行后返回`ffrt_success`。 |
 
 ### ffrt_yield()
 

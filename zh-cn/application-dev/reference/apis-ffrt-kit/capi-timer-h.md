@@ -11,6 +11,8 @@
 
 声明定时器的C接口。提供基于QoS等级的定时器能力，支持在指定超时时间后执行回调函数，可用于延时任务调度等场景。
 
+**引用文件：** <ffrt/timer.h>
+
 **库：** libffrt.z.so
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
@@ -46,7 +48,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_qos_t qos | 运行定时器的工作线程的QoS等级。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 运行定时器的工作线程的QoS等级。 |
 | uint64_t timeout | 超时时间，单位是毫秒。 |
 | void* data | 传递给`cb`的用户数据。 |
 | [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | 超时后执行的用户回调函数。 |
@@ -56,7 +58,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_timer_t | 定时器句柄；若回调函数为空指针或QoS映射未注册则返回`-1`。 |
+| FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#变量) | 定时器句柄；若回调函数为空指针或QoS映射未注册则返回`-1`。 |
 
 **参考：**
 
@@ -79,8 +81,8 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_qos_t qos | 运行定时器的工作线程的QoS等级。必须与[ffrt_timer_start](capi-timer-h.md#ffrt_timer_start)中使用的QoS等级一致。 |
-| ffrt_timer_t handle | 目标定时器句柄，由[ffrt_timer_start](capi-timer-h.md#ffrt_timer_start)返回。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 运行定时器的工作线程的QoS等级。必须与[ffrt_timer_start](capi-timer-h.md#ffrt_timer_start)中使用的QoS等级一致。 |
+| [ffrt_timer_t](capi-type-def-h.md#变量) handle | 目标定时器句柄，由[ffrt_timer_start](capi-timer-h.md#ffrt_timer_start)返回。 |
 
 **返回：**
 

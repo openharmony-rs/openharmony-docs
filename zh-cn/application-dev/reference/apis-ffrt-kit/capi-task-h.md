@@ -11,6 +11,8 @@
 
 声明FFRT任务的C接口，提供任务属性的初始化与销毁、任务QoS设置与获取、任务延迟时间管理、并发队列任务优先级管理、任务栈大小管理、任务提交调度执行、任务句柄引用计数管理以及任务等待等功能。
 
+**引用文件：** <ffrt/task.h>
+
 **库：** libffrt.z.so
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
@@ -40,7 +42,7 @@
 | [FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)](#ffrt_this_task_update_qos) | 更新当前任务的QoS。在任务执行过程中需要根据运行阶段动态调整调度优先级时使用本接口。例如，一个后台同步任务在用户触发相关操作后，可通过本接口提升QoS等级以加快处理速度。 |
 | [FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)](#ffrt_this_task_get_qos) | 获取当前任务的QoS。 |
 | [FFRT_C_API uint64_t ffrt_this_task_get_id(void)](#ffrt_this_task_get_id) | 获取当前任务的ID。 |
-| [FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)](#ffrt_alloc_auto_managed_function_storage_base) | 申请函数执行结构体的内存。申请的内存用作任务执行体封装，在通过[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)或[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)提交任务时传入。该内存在所提交任务执行完成后由FFRT运行时自动释放，调用方无需手动释放。 |
+| [FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)](#ffrt_alloc_auto_managed_function_storage_base) | 申请函数执行结构体的内存。申请的内存用作任务执行体封装，在通过[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)或[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)提交任务时传入。该内存在所提交任务执行完成后由FFRT运行时自动释放，调用方无需手动释放。 |
 | [FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_base) | 提交任务调度执行。任务执行体、输入依赖、输出依赖和任务属性被一同提交到FFRT调度器，调度器根据依赖关系和任务QoS确定任务的执行时机并选择工作线程执行该任务。本接口为底层提交接口，若任务不需要销毁回调，可使用简化接口[ffrt_submit_f](capi-task-h.md#ffrt_submit_f)。与[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)的区别在于本接口不返回任务句柄，适用于不需要对已提交任务进行后续依赖管理或等待的场景。若任务属性中已通过[ffrt_task_attr_set_delay](capi-task-h.md#ffrt_task_attr_set_delay)设置延迟时间，则输入输出依赖关系不再生效，任务在延迟结束后被调度。 |
 | [FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_h_base) | 提交任务调度执行并返回任务句柄。任务执行体、输入依赖、输出依赖和任务属性被一同提交到FFRT调度器，调度器根据依赖关系确定任务的执行时机。返回的任务句柄可用于通过[ffrt_wait_deps](capi-task-h.md#ffrt_wait_deps)等待任务完成，或作为其他任务的输入依赖以构建任务间的依赖关系。本接口为返回任务句柄的底层提交接口，若任务不需要销毁回调，可使用简化接口[ffrt_submit_h_f](capi-task-h.md#ffrt_submit_h_f)。返回的任务句柄需通过[ffrt_task_handle_destroy](capi-task-h.md#ffrt_task_handle_destroy)销毁，引用计数可通过[ffrt_task_handle_inc_ref](capi-task-h.md#ffrt_task_handle_inc_ref)和[ffrt_task_handle_dec_ref](capi-task-h.md#ffrt_task_handle_dec_ref)管理。 |
 | [FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_f) | 提交任务调度执行，是[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)接口的简化形式。该接口将给定的任务函数及其参数包装为通用任务结构体（`ffrt_function_kind_general`），其中用于处理执行后清理的任务销毁回调（after_func）会被设为NULL，因而省略任何额外清理动作。封装后的任务结构体随后通过[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)接口提交。若任务属性中已通过[ffrt_task_attr_set_delay](capi-task-h.md#ffrt_task_attr_set_delay)设置延迟时间，则输入输出依赖关系不再生效，任务在延迟结束后被调度。 |
@@ -155,7 +157,7 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
-| ffrt_qos_t qos | 待设置的QoS等级，取值参考{@link ffrt_qos_t}。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 待设置的QoS等级，取值参考{@link ffrt_qos_t}。 |
 
 ### ffrt_task_attr_get_qos()
 
@@ -179,7 +181,7 @@ FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_qos_t | QoS等级，默认返回`ffrt_qos_default`。 |
+| FFRT_C_API [ffrt_qos_t](capi-type-def-h.md#变量) | QoS等级，默认返回`ffrt_qos_default`。 |
 
 ### ffrt_task_attr_set_delay()
 
@@ -265,7 +267,7 @@ FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_ta
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_priority_t | 并发队列任务的优先级。 |
+| FFRT_C_API [ffrt_queue_priority_t](capi-type-def-h.md#ffrt_queue_priority_t) | 并发队列任务的优先级。 |
 
 ### ffrt_task_attr_set_stack_size()
 
@@ -326,7 +328,7 @@ FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_qos_t qos | 任务待更新的QoS等级，取值参考{@link ffrt_qos_t}。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 任务待更新的QoS等级，取值参考{@link ffrt_qos_t}。 |
 
 **返回：**
 
@@ -355,7 +357,7 @@ FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_qos_t | 任务QoS。 |
+| FFRT_C_API [ffrt_qos_t](capi-type-def-h.md#变量) | 任务QoS。 |
 
 ### ffrt_this_task_get_id()
 
@@ -378,7 +380,7 @@ FFRT_C_API uint64_t ffrt_this_task_get_id(void)
 ### ffrt_alloc_auto_managed_function_storage_base()
 
 ```c
-FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)
+FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)
 ```
 
 **描述**
@@ -397,7 +399,7 @@ FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API void* | 内存申请成功时返回非空指针；<br>         否则返回空指针。 |
+| FFRT_C_API void * | 内存申请成功时返回非空指针；<br>         否则返回空指针。 |
 
 **参考：**
 
@@ -456,7 +458,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
 
 **参考：**
 
@@ -516,7 +518,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
 
 **参考：**
 
@@ -539,7 +541,7 @@ FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_task_handle_t handle | 任务句柄，由[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)或[ffrt_submit_h_f](capi-task-h.md#ffrt_submit_h_f)返回。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) handle | 任务句柄，由[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)或[ffrt_submit_h_f](capi-task-h.md#ffrt_submit_h_f)返回。 |
 
 **返回：**
 
@@ -563,7 +565,7 @@ FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_task_handle_t handle | 任务句柄。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) handle | 任务句柄。 |
 
 **返回：**
 
@@ -587,7 +589,7 @@ FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_task_handle_t handle | 任务句柄。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) handle | 任务句柄。 |
 
 ### ffrt_wait_deps()
 

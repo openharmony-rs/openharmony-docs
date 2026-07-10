@@ -11,6 +11,8 @@
 
 声明队列的C接口。
 
+**引用文件：** <ffrt/queue.h>
+
 **库：** libffrt.z.so
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
@@ -20,6 +22,12 @@
 **相关模块：** [FFRT](capi-ffrt.md)
 
 ## 汇总
+
+### 结构体
+
+| 名称               | 描述 |
+|------------------|--|
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | 队列句柄。  |
 
 ### 枚举
 
@@ -136,7 +144,7 @@ FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | 指向队列属性的指针。 |
-| ffrt_qos_t qos | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
 
 ### ffrt_queue_attr_get_qos()
 
@@ -160,7 +168,7 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_qos_t | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
+| FFRT_C_API [ffrt_qos_t](capi-type-def-h.md#变量) | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
 
 ### ffrt_queue_attr_set_timeout()
 
@@ -246,7 +254,7 @@ FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_function_header_t* | 队列任务超时回调函数。 |
+| FFRT_C_API [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* | 队列任务超时回调函数。 |
 
 ### ffrt_queue_attr_set_max_concurrency()
 
@@ -358,7 +366,7 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | 队列创建成功时返回非空的队列句柄；<br>         否则返回空指针。 |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | 队列创建成功时返回非空的队列句柄；<br>         否则返回空指针。 |
 
 ### ffrt_queue_destroy()
 
@@ -376,7 +384,7 @@ FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列句柄。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列句柄。 |
 
 ### ffrt_queue_submit()
 
@@ -394,7 +402,7 @@ FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f,
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列句柄。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列句柄。 |
 | [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* f | 指向任务执行体的指针。 |
 | [const ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
 
@@ -419,7 +427,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列句柄。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列句柄。 |
 | [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* f | 指向任务执行体的指针。 |
 | [const ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
 
@@ -427,7 +435,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
 
 **参考：**
 
@@ -450,7 +458,7 @@ FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, vo
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列句柄。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列句柄。 |
 | [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) func | 要执行的任务函数。 |
 | void* arg | 指向传递给任务函数的参数或闭包数据的指针。 |
 | [const ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
@@ -476,7 +484,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列句柄。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列句柄。 |
 | [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) func | 要执行的任务函数。 |
 | void* arg | 指向传递给任务函数的参数或闭包数据的指针。 |
 | [const ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
@@ -485,7 +493,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
 
 **参考：**
 
@@ -508,7 +516,7 @@ FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_task_handle_t handle | 任务句柄。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) handle | 任务句柄。 |
 
 ### ffrt_queue_cancel()
 
@@ -526,13 +534,13 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_task_handle_t handle | 任务句柄。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) handle | 任务句柄。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 任务取消成功时返回`0`；<br>         任务已执行完毕或已从队列中移除时返回`1`；<br>         `handle`为空时返回`-1`。 |
+| FFRT_C_API int | 任务取消成功时返回`0`；<br>         否则返回`-1`。 |
 
 ### ffrt_get_main_queue()
 
@@ -550,7 +558,7 @@ FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | 应用主线程队列。 |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | 应用主线程队列。 |
 
 ### ffrt_get_current_queue()
 
@@ -570,6 +578,6 @@ FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | 应用Worker（ArkTS）线程队列。 |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | 应用Worker（ArkTS）线程队列。 |
 
 

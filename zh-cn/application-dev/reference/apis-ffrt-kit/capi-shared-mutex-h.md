@@ -11,6 +11,8 @@
 
 声明读写锁（rwlock）的C接口。
 
+**引用文件：** <ffrt/shared_mutex.h>
+
 **库：** libffrt.z.so
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core

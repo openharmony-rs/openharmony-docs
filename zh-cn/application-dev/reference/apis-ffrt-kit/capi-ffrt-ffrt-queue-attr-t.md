@@ -23,8 +23,8 @@ typedef struct {...} ffrt_queue_attr_t
 
 ## 汇总
 
-### 成员函数
+### 成员变量
 
 | 名称 | 描述 |
 | -- | -- |
-| [uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 队列属性的内部存储。请勿直接访问，通过{@link ffrt_queue_attr_init}和`ffrt_queue_attr_set_*`等接口管理内容。 |
+| uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 队列属性的内部存储。请勿直接访问，通过{@link ffrt_queue_attr_init}和`ffrt_queue_attr_set_*`等接口管理内容。 |

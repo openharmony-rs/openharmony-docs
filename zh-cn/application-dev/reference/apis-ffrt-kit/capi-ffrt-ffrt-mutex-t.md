@@ -23,8 +23,8 @@ typedef struct {...} ffrt_mutex_t
 
 ## 汇总
 
-### 成员函数
+### 成员变量
 
 | 名称 | 描述 |
 | -- | -- |
-| [uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 互斥锁的内部存储。请勿直接访问，通过`ffrt_mutex_*`等接口管理。 |
+| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 互斥锁的内部存储。请勿直接访问，通过`ffrt_mutex_*`等接口管理。 |
