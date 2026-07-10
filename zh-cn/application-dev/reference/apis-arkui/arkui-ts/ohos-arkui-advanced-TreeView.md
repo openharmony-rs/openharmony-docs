@@ -7,10 +7,10 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-树视图作为一种分层显示的列表，适合显示嵌套结构。拥有父列表项和子列表项，可展开或折叠。
+树视图作为一种分层显示的列表，适合显示嵌套结构。树视图包含父节点和子节点，支持展开或折叠。
 
 
-用于效率型应用，如备忘录、电子邮件、图库中的侧边导航栏中。
+树视图适用于效率型应用的侧边导航栏中，如备忘录、电子邮件、图库等。
 
 
 > **说明：**
@@ -47,12 +47,12 @@ TreeView({ treeController: TreeController })
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| treeController | [TreeController](#treecontroller) | 是 | 树视图节点信息。 |
+| treeController | [TreeController](#treecontroller) | 是 | 树视图组件的控制器，用于控制树的节点信息。 |
 
 
 ## TreeController
 
-树视图组件的控制器，可以将此对象绑定至树视图组件，然后通过它控制树的节点信息，同一个控制器不可以控制多个树视图组件。
+树视图组件的控制器，用于控制树的节点信息。同一控制器实例不能同时控制多个树视图组件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -66,7 +66,7 @@ TreeView({ treeController: TreeController })
 
 addNode(nodeParam?: NodeParam): TreeController
 
-点击某个节点后，调用该方法可以触发新增孩子节点。
+选中某个节点后，调用该方法新增子节点。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -84,13 +84,13 @@ addNode(nodeParam?: NodeParam): TreeController
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| [TreeController](#treecontroller) | 树视图组件的控制器。 |
+| [TreeController](#treecontroller) | 返回树视图组件的控制器实例，支持链式调用。 |
 
 ### removeNode
 
 removeNode(): void
 
-点击某个节点后，调用该方法可以触发删除该节点。
+选中某个节点后，调用该方法删除该节点。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -104,7 +104,7 @@ removeNode(): void
 
 modifyNode(): void
 
-点击某个节点后，调用该方法可以触发修改该节点。
+选中某个节点后，调用该方法修改该节点。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -117,7 +117,7 @@ modifyNode(): void
 
 buildDone(): void
 
-建立树视图。节点增加完毕后，必须调用该方法，触发树信息的保存。
+节点增加完毕后，必须调用该方法保存树信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -130,7 +130,7 @@ buildDone(): void
 
 refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 
-更新树视图。调用该方法，更新当前节点的信息。
+调用该方法，通过指定父节点Id、父节点副标题和当前节点副标题，更新当前节点的显示信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -142,9 +142,9 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| parentId | number | 是 | 父节点Id。<br />取值范围：大于等于-1。 |
-| parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 父节点副文本。 |
-| currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 当前节点副文本。 |
+| parentId | number | 是 | 父节点Id。<br />取值范围：大于等于-1。根节点id值为-1。若设置数值小于-1，做不生效处理。 |
+| parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 父节点副标题。设置后将更新父节点的副标题显示内容。 |
+| currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 当前节点副标题。设置后将更新当前节点的副标题显示内容。 |
 
 ## NodeParam
 
@@ -155,22 +155,22 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                               |
 | -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | parentNodeId | number | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| currentNodeId | number | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| isFolder | boolean | 否 | 是 | 是否是目录。<br />默认值：false<br />true：是目录，false：不是目录。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                         |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                           |
+| currentNodeId | number | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id（即不能为-1），不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| isFolder | boolean | 否 | 是 | 是否是目录。<br />默认值：false<br />true：是目录，可以包含子节点，支持展开/折叠操作；false：不是目录，为叶子节点。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。若同时设置了symbolIconStyle，则以symbolIconStyle为准。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标，优先级大于icon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                       |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 选中图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                         |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 选中图标。若同时设置了symbolSelectedIconStyle，则以symbolSelectedIconStyle为准。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol选中图标，优先级大于selectedIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                             |
-| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 编辑图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                         |
+| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 编辑图标。若同时设置了symbolEditIconStyle，则以symbolEditIconStyle为准。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol编辑图标，优先级大于editIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                 |
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 主标题。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                          |
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 副标题。<br/>默认值：空字符串 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                           |
-| container | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 绑定在节点上的右键子组件，子组件由@Builder修饰。<br/>默认值：()&nbsp;=&gt;&nbsp;void <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                |
+| container | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 绑定在节点上的右键菜单组件，用户右键点击节点时显示该菜单，需通过@Builder函数定义。<br/>默认值：()&nbsp;=&gt;&nbsp;void <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## TreeListenerManager
 
-树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
+树视图组件的监听管理器，可以获取监听器实例并绑定至树视图组件，用于管理树的节点监听，同一个监听器不可以控制多个树视图组件。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。 
 
@@ -217,12 +217,11 @@ getTreeListener(): TreeListener
 
 树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
 
-
 ### on
 
 on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
 
-注册监听。
+注册树视图节点事件的监听，监听成功后，当节点发生对应事件时会触发回调函数。同一监听器不可控制多个树视图组件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -234,15 +233,15 @@ on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): v
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| type | [TreeListenType](#treelistentype) | 是 | 监听事件类型，用于指定要注册的监听事件。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 回调函数，在对应监听事件触发时调用。回调参数callbackParam包含currentNodeId、parentNodeId和childIndex等信息。 |
 
 
 ### once
 
 once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
 
-注册一次监听。
+注册一次树视图节点事件的监听，监听成功后，当节点首次发生对应事件时会触发回调函数，触发后自动移除监听。同一监听器不可控制多个树视图组件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -254,8 +253,8 @@ once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void):
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| type | [TreeListenType](#treelistentype) | 是 | 监听事件类型，用于指定要注册的监听事件。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 回调函数，在对应监听事件触发时调用。回调参数callbackParam包含currentNodeId、parentNodeId和childIndex等信息。 |
 
 
 ### off
@@ -263,7 +262,7 @@ once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void):
 
 off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void;
 
-取消监听。
+取消监听。需要先注册监听后才能取消。同一监听器不可控制多个树视图组件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -275,8 +274,8 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。传入时取消对应的节点信息的监听，否则取消该类型的所有节点信息的监听。 |
+| type | [TreeListenType](#treelistentype) | 是 | 监听事件类型，用于指定要取消的监听事件。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 回调函数，在对应监听事件触发时调用。默认值：undefined。传入时取消对应的节点信息的监听，不传时取消该类型的所有节点信息的监听。 |
 
 ## TreeListenType
 
@@ -427,7 +426,8 @@ struct TreeViewDemo {
       .showControlButton(false)
       .showSideBar(true)
     }
-  }}
+  }
+}
 ```
 
 ![clickid](figures/clickid.png)
@@ -553,7 +553,8 @@ struct TreeViewDemo {
       .showControlButton(false)
       .showSideBar(true)
     }
-  }}
+  }
+}
 ```
 
 ![示例2-TreeView示例2 设置Symbol类型图标](figures/image-treeview-demo-02.png)

@@ -245,8 +245,8 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* context | 上下文信息，由函数[OH_PasteboardObserver_SetData](capi-oh-pasteboard-h.md#oh_pasteboardobserver_setdata)传入。 |
-| [Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype) type | 数据变更的类型。详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| void* context | 上下文信息，由函数[OH_PasteboardObserver_SetData](#oh_pasteboardobserver_setdata)传入。 |
+| [Pasteboard_NotifyType](#pasteboard_notifytype) type | 数据变更的类型。详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 
 ### Pasteboard_Finalize()
 
@@ -289,7 +289,7 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](capi-oh-pasteboard-h.md#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_PasteboardObserver_Destroy()
 
@@ -341,9 +341,9 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。 |
-| void* context | 表示指向上下文数据的指针，将作为第一个参数传入[Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify)。 |
-| const [Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify) callback | 表示数据变更回调函数，在剪贴板数据变更时触发。详见[Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify)。 |
-| const [Pasteboard_Finalize](capi-oh-pasteboard-h.md#pasteboard_finalize) finalize | 表示可选的回调函数，可以用于剪贴板数据变更观察者销毁时释放上下文数据。默认为nullptr，不执行释放操作。详见[Pasteboard_Finalize](capi-oh-pasteboard-h.md#pasteboard_finalize)。 |
+| void* context | 表示指向上下文数据的指针，将作为第一个参数传入[Pasteboard_Notify](#pasteboard_notify)。 |
+| const [Pasteboard_Notify](#pasteboard_notify) callback | 表示数据变更回调函数，在剪贴板数据变更时触发。详见[Pasteboard_Notify](#pasteboard_notify)。 |
+| const [Pasteboard_Finalize](#pasteboard_finalize) finalize | 表示可选的回调函数，可以用于剪贴板数据变更观察者销毁时释放上下文数据。默认为nullptr，不执行释放操作。详见[Pasteboard_Finalize](#pasteboard_finalize)。 |
 
 **返回：**
 
@@ -424,7 +424,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| int type | 表示订阅的剪贴板数据变更类型，详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| int type | 表示订阅的剪贴板数据变更类型，详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 | const [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。它指定了剪贴板数据变更时触发的回调函数，详见：[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)。 |
 
 **返回：**
@@ -452,7 +452,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| int type | 表示订阅的剪贴板数据变更类型，需与订阅时传入的类型值一致，详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| int type | 表示订阅的剪贴板数据变更类型，需与订阅时传入的类型值一致，详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 | const [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。它指定了剪贴板数据变更时触发的回调函数，详见：[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)。 |
 
 **返回：**
@@ -721,7 +721,7 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 
@@ -752,7 +752,7 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 ### OH_Pasteboard_GetDataParams_SetProgressIndicator()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params,Pasteboard_ProgressIndicator progressIndicator)
+void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params, Pasteboard_ProgressIndicator progressIndicator)
 ```
 
 **描述：**
@@ -788,12 +788,12 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 | -- | -- |
 | [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | const char* destUri | 定义拷贝文件目标路径。路径需为绝对路径格式，且应用需具有该路径的读写权限。 |
-| uint32_t destUriLen | 定义拷贝文件目标路径长度，单位：字节。 |
+| uint32_t destUriLen | 定义拷贝文件目标路径的长度（含字符串结束符），单位：字节。该值必须等于 destUri所指向字符串的实际长度。传入0或与实际长度不符时，接口调用失败。 |
 
 ### OH_Pasteboard_GetDataParams_SetFileConflictOptions()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params,Pasteboard_FileConflictOptions option)
+void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params, Pasteboard_FileConflictOptions option)
 ```
 
 **描述：**
@@ -819,7 +819,7 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 ### OH_Pasteboard_GetDataParams_SetProgressListener()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params,const OH_Pasteboard_ProgressListener listener)
+void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params, const OH_Pasteboard_ProgressListener listener)
 ```
 
 **描述：**
@@ -890,7 +890,7 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 ### OH_Pasteboard_GetDataWithProgress()
 
 ```c
-OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)
+OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)
 ```
 
 **描述：**

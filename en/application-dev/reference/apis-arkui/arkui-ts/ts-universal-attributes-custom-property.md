@@ -56,7 +56,7 @@ Defines the Optional type. The value can be **undefined**.
 
 | Type| Description                      |
 | ---- | -------------------------- |
-| T | The object can be of any custom type.|
+| T | Type specified by the type parameter **T**.|
 | undefined | The object can be **undefined**.|
 
 ## Example

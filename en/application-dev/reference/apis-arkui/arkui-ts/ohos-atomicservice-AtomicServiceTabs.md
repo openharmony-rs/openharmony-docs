@@ -66,7 +66,7 @@ AtomicServiceTabs({
 | --------------- | ------ | ---- | ----|----|
 | tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | No| @BuilderParam| Array of tab content containers. By default, this parameter is undefined, and no content is displayed.|
 | tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | Yes| @Prop | Array of tab bar container configurations.|
-| tabBarPosition | [TabBarPosition](#tabbarposition) | No  |@Prop | Position of the tab bar. The default value is **TabBarPosition.Bottom**.|
+| tabBarPosition | [TabBarPosition](#tabbarposition) | No  |@Prop | Position of the tab bar. The default value is **TabBarPosition.BOTTOM**.|
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | No  |@Prop | Layout mode of the images and text on the bottom tab. The default value is **LayoutMode.VERTICAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| @Prop | Background color of the tab bar. The default value is transparent.|
 | index | number | No| @Prop | Index of the currently displayed tab. The index is zero-based. The default value is **0**.|
@@ -140,7 +140,7 @@ Defines the callback function triggered when the page content changes.
 |--|--|
 | boolean | **true**: Callback execution is successful. **false**: Callback execution failed.|
 
-## Example
+## Examples
 
 ### Example 1: Pure Text Style
 

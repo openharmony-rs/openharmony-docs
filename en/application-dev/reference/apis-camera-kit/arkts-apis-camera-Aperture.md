@@ -39,11 +39,11 @@ Obtains the physical aperture in use.
 | ---------- | ----------------------------- |
 | number    | Physical aperture in use.|
 
-**Error Codes**
+**Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -84,11 +84,11 @@ For example, the physical aperture can be set to **2.6** when **zoomRange** is w
 | -------- | -------------------------------| ---- | ----------------------------- |
 | aperture   | number  | Yes  | Physical aperture.                |
 
-**Error Codes**
+**Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |

@@ -1,13 +1,13 @@
 # @ohos.graphics.sendableColorSpaceManager (Sendable Color Space Management)
 
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @xubo85-->
-<!--Designer: @comicchang; @wang-luyu4-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-The **sendableColorSpaceManager** module provides APIs for creating and managing sendable color space objects and obtaining basic attributes of sendable color spaces.
+This module provides APIs for creating and managing sendable color space objects and obtaining basic attributes of sendable color spaces. It is applicable to scenarios where color space information needs to be transferred between multiple threads. It solves the problem that color management objects cannot be shared across threads, improving the efficiency and consistency of color processing.
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ## ISendable
 type ISendable = lang.ISendable
 
-The ISendable type is redefined to align with the API specifications of the current module.
+The ISendable type alias is defined to align with the API specifications of the current module.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -34,7 +34,7 @@ The ISendable type is redefined to align with the API specifications of the curr
 
 create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
-Creates a standard color space object that is sendable.
+Creates a criterion color space management instance that is sendable.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -56,7 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **Example**
@@ -64,6 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// Create a color management instance for the criterion sRGB color space.
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
@@ -94,7 +95,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **Example**
@@ -102,6 +103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// Define the color space criterion primary colors parameter.
 let primaries: colorSpaceManager.ColorSpacePrimaries = {
   redX: 0.1,
   redY: 0.1,
@@ -112,13 +114,15 @@ let primaries: colorSpaceManager.ColorSpacePrimaries = {
   whitePointX: 0.4,
   whitePointY: 0.4
 };
+// Define the color space gamma value.
 let gamma: number = 2.2;
+// Create a custom color space management instance that is sendable.
 colorSpace = sendableColorSpaceManager.create(primaries, gamma);
 ```
 
 ## ColorSpaceManager
 
-Implements management of color space objects.
+Implements management of color space objects. ColorSpaceManager is a core class used to manage and operate color space objects. It provides functions such as obtaining the color space type, white point value, and gamma value, and supports transfer between concurrent ArkTS instances.
 
 Before calling any of the following APIs, you must use [create()](#sendablecolorspacemanagercreate) to create a color space manager.
 
@@ -136,9 +140,18 @@ Obtains the color space type.
 | ------------------ | ------------------------ |
 | [colorSpaceManager.ColorSpace](js-apis-colorSpaceManager.md#colorspace)  | Color space type.|
 
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 12-22|
+
 **Example**
 
 ```ts
+// Obtain the color space type.
 let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 ```
 
@@ -146,7 +159,7 @@ let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 
 getWhitePoint(): collections.Array\<number\>
 
-Obtains the coordinates of the white point in the color space.
+Obtains the white point value of the color space. The chromaticity coordinates [x, y] are returned, indicating the coordinates of the white point in the color space.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -154,12 +167,21 @@ Obtains the coordinates of the white point in the color space.
 
 | Type               | Description                    |
 | ------------------ | ------------------------ |
-| [collections.Array\<number\>](../apis-arkts/arkts-apis-arkts-collections-Array.md)  | Coordinates [x, y] of the white point.|
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<number>  | Coordinates [x, y] of the white point.|
+
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 12-22|
 
 **Example**
 
 ```ts
 import { collections } from '@kit.ArkTS';
+// Obtain the white point value [x, y] of the color space.
 let point: collections.Array<number> = colorSpace.getWhitePoint();
 ```
 
@@ -177,8 +199,17 @@ Obtains the gamma of the color space.
 | ------------------ | ------------------------ |
 | number  | Gamma of the color space.|
 
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 12-22|
+
 **Example**
 
 ```ts
+// Obtain the gamma value of the color space.
 let gamma: number = colorSpace.getGamma();
 ```

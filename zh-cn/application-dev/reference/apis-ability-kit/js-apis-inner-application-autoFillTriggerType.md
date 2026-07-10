@@ -33,4 +33,4 @@ import { autoFillManager } from '@kit.AbilityKit';
 | -------------- | --- | --------------------------------- |
 | AUTO_REQUEST   | 0 | 自动拉起自动填充服务，可通过[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)控件获焦后自动拉起。 |
 | MANUAL_REQUEST | 1 | 手动拉起自动填充服务，可通过长按任意输入控件弹出二级菜单，选择自动填充，拉起自动填充服务。 |
-| PASTE_REQUEST  | 2 | 粘贴拉起自动填充服务，可通过在密码保险箱内长按用户名或密码选择安全复制后，再长按任意输入控件弹出二级菜单，选择粘贴，拉起自动填充服务。 |
+| PASTE_REQUEST  | 2 | 粘贴拉起自动填充服务，仅在用户已从密码保险箱内长按用户名或密码选择安全复制后，通过长按任意输入控件弹出二级菜单并选择粘贴时拉起自动填充服务。 |

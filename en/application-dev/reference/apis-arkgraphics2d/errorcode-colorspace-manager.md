@@ -1,5 +1,12 @@
 # colorSpaceManager Error Codes
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -11,11 +18,11 @@ The parameter value is abnormal.
 
 **Description**
 
-This error code is reported when a parameter value passed in the API does not meet the requirements.
+The system returns this error code when the parameter value does not meet the API calling requirements.
 
 **Possible Causes**
 
-The parameter value exceeds the valid range. For example, an enumerated value exceeds the defined range.
+An error code is returned when the parameter value exceeds the API calling range. For example, an enumerated value exceeds the defined range.
 
 **Solution**
 

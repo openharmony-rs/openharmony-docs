@@ -8,13 +8,15 @@
 
 ![mouse](figures/device_mouse.png)
 
-鼠标设备是2in1类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)及[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)上报给应用。
+鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)及[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)上报给应用。
 
 >**说明：**
 >
 >所有单指可响应的触摸事件/手势事件，均可通过鼠标左键来操作和响应。
 > - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
+
+此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
 
 ## 处理鼠标移动
 
@@ -35,7 +37,7 @@ onMouse(event: (event?: MouseEvent) => void)
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
 
-<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -75,7 +77,7 @@ struct MouseMove {
     .justifyContent(FlexAlign.Center)
     .borderWidth(2)
     .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
       if (event) {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
@@ -324,7 +326,7 @@ struct ListExample {
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index);
+                this.allSelectedItems = this.allSelectedItems.filter(item => item !== index);
                 this.isSelected[index] = false;
               } else {
                 this.allSelectedItems.push(index);
@@ -497,3 +499,69 @@ struct MouseWheel {
 ```
 
 ![ListAxis](figures/listAxis.gif)
+
+## 鼠标事件转换
+如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，系统提供兜底方案，会默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
+
+此外，如果开发者期望控制上述转换行为，系统开放了自定义配置能力，开发者可以通过在应用中新增配置文件的方式来控制是否将鼠标事件转换成触摸事件。
+
+### 开发步骤
+**1. 增加配置文件**
+
+在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
+
+![easy_go](figures/easy_go.png)
+
+**2. 增加事件转换配置**
+
+在easy_go.json配置文件中，配置事件转换的相关属性。
+
+### 配置内容说明
+easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置设备类型；第二层配置对应设备类型下的鼠标事件转换模式。
+
+**1. 设备类型**
+
+第一层配置，设置鼠标事件转换在不同设备类型下的表现。
+``` json
+{ 
+  "common": {},
+  "phone": {},
+  "2in1": {},
+  "tablet": {}
+}
+```
+| 枚举值 | 说明 | 可选 |
+| --- | --- | --- |
+| common | 通用设备配置，为所有设备类型提供基础默认配置。 | 否 |
+| phone | Phone类型设备上生效的配置，配置后common配置在Phone类型设备上不再生效。 | 是 |
+| 2in1 | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是 |
+| tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是 |
+
+**2. 多模态输入选项**
+
+第二层配置multiModalInputOptions字段，设置事件输入选项。内部字段说明如下：
+| 字段名 | 说明 | 可选 |
+| --- | --- | --- |
+| mouse2TouchEventMode | 配置鼠标事件转触摸事件模式。 | 是 |
+
+mouse2TouchEventMode可配置字段说明：
+
+| 枚举值 | 说明 |
+| --- | --- |
+| all | 表示鼠标事件全部都转换成触摸事件。 |
+| xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
+| disabled | 表示鼠标事件全部都不转换成触摸事件。 |
+
+**3. 配置示例**
+
+在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
+``` json
+{
+  "common": {},
+  "2in1": {
+    "multiModalInputOptions": {
+      "mouse2TouchEventMode": "disabled"
+    }
+  }
+}
+```

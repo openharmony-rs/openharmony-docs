@@ -107,7 +107,7 @@ Defines a custom theme object.
 | Name                          | Type                                                | Read-Only | Optional | Description        |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
 | colors | [CustomColors](#customcolors) | No  | Yes  | Custom light theme color resources.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not configured, the color values will default to those specified in the **colors** configuration for light mode and will not adapt to dark mode changes, unless the colors are defined using resources from the **dark** directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not set, the **colors** configuration in light color mode is used and does not change with the system's dark/light color mode. If the corresponding color is set using the resources in the **dark** directory, the resources in the **dark** directory are preferentially used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CustomColors
 
@@ -159,7 +159,7 @@ Sets a custom theme as the default, application-level theme, applying it to all 
 
 | Name      | Type                          | Mandatory| Description            |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | Yes   | Custom theme to set.|
+| theme | [CustomTheme](#customtheme)  | Yes   | Defines a custom theme object.|
 
 ## Examples
 
@@ -171,9 +171,9 @@ This example demonstrates how to use [ThemeControl](#themecontrol).[setDefaultTh
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // Custom theme color
 class BlueColors implements CustomColors {
-  fontPrimary = "#FF707070";
-  backgroundPrimary = "#FF2787D9";
-  brand = "#FFEEAAFF"; // Brand color.
+  fontPrimary = '#FF707070'; // Level-1 text font color.
+  backgroundPrimary = '#FF2787D9'; // Level-1 background color.
+  brand = '#FFEEAAFF'; // Brand color.
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -184,9 +184,9 @@ class PageCustomTheme implements CustomTheme {
   }
 }
 // Create an instance.
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
-// Call ThemeControl.setDefaultTheme before page build to set the default application style to BlueColorsTheme.
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
+// Call ThemeControl.setDefaultTheme before page build to set the default application style to blueColorsTheme.
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @Component

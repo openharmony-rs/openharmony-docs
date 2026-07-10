@@ -257,19 +257,27 @@ A notification dialog box is already displayed.
 
 **错误信息**
 
-No permission.
+1. No permission.
+
+2. The right of liveView is not enabled.
 
 **错误描述**
 
-没有相关权限，方法将返回该错误码。
+1. 没有相关权限，方法将返回该错误码。
+
+2. 当应用发布三方实况类型通知，且未申请实况窗权益时，将返回该错误码。
 
 **可能原因**
 
-没有相关权限。
+1. 没有相关权限。
+
+2. 应用未申请对应场景的权益。
 
 **处理步骤**
 
-确认是否具有相关权限。
+1. 确认是否具有相关权限。
+
+2. 请确认是否申请实况窗权益。
 
 ## 1600015 当前通知状态不支持重复配置
 
@@ -540,3 +548,21 @@ This notification is not supported.
 
 设置稍后提醒时，检查该通知类型是否为三方实况、系统实况或者其他无法删除的类型。
 <!--DelEnd-->
+
+## 1600029 系统无法找到实况窗卡片自定义扩展区的ExtensionAbility
+
+**错误信息**
+
+The system failed to find the ExtensionAbility instance for the custom Live View widget template.
+
+**错误描述**
+
+当应用发布三方实况类型通知时，系统未找到自定义扩展区的ExtensionAbility实例，方法将返回该错误码。
+
+**可能原因**
+
+应用未配置或未正确配置实况窗卡片自定义扩展区的ExtensionAbility。
+
+**处理步骤**
+
+检查应用是否正确配置实况窗卡片自定义扩展区的ExtensionAbility。

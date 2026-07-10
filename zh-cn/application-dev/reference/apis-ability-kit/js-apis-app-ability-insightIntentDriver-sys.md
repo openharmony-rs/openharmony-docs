@@ -42,14 +42,14 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | abilityName | string | 否 | 否 | 意图调用Ability名称。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段传空字符串即可。 |
 | insightIntentName | string | 否 | 否 | 意图调用名称。 |
 | insightIntentParam | Record\<string, Object> | 否 | 否 | 意图调用参数。 |
-| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | 否 | 否 | 意图调用执行模式。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。 |
+| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | 否 | 否 | 意图调用执行模式。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填ExecuteMode枚举类型中的任意值），但不会影响应用跳转的实际执行逻辑。 |
 | displayId<sup>12+</sup> | number | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。 |
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
 | userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
 | deviceId | string | 否 | 是 | 连接的目标设备ID。<br/>**说明：**<br/>如果调用方应用的设备ID与目标意图所属的设备ID不同，则需要申请权限`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`。<br>**起始版本：** 26.0.0    |
 
-## InsightIntentInfoFilter<sup>23+<sup>
+## InsightIntentInfoFilter<sup>23+</sup>
 
 意图筛选器，描述目标意图的筛选条件，用于筛选设备上符合条件的意图。
 
@@ -66,7 +66,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | moduleName  | string | 否   | 是   | 目标意图所属的模块名称。                                                   |
 | intentName  | string | 否   | 是   | 目标意图名称。                                                   |
 | userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
-## InsightIntentType<sup>20+<sup>
+## InsightIntentType<sup>20+</sup>
 
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)等方法返回的[LinkIntentInfo](#linkintentinfo20)获取。
 
@@ -80,7 +80,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | FUNCTION | @InsightIntentFunctionMethod | [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)类型装饰器。 |
 | FORM | @InsightIntentForm | [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)类型装饰器。 |
 
-## ExecuteModeForConfiguration<sup>23+<sup>
+## ExecuteModeForConfiguration<sup>23+</sup>
 
 [使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)支持的意图执行模式。例如，将[insight_intent.json配置文件](../../application-models/insight-intent-config-development.md#insight_intentjson配置文件说明)中的executeMode设置为"foreground"，表示支持与UIAbility组件绑定的意图在前台运行。
 
@@ -91,7 +91,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | FOREGROUND | 0 | 表示支持与UIAbility组件绑定的意图在前台运行。 |
 | BACKGROUND | 1 | 表示支持与UIAbility组件绑定的意图在后台运行。 |
 
-## LinkIntentInfo<sup>20+<sup>
+## LinkIntentInfo<sup>20+</sup>
 
 LinkIntentInfo用于描述[@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器支持的参数，例如应用间跳转需要的uri信息。
 
@@ -105,7 +105,7 @@ LinkIntentInfo用于描述[@InsightIntentLink](./js-apis-app-ability-InsightInte
 | -------- | -------- | -------- | -------- |-------- |
 | uri | string | 是 | 否 | 表示意图的uri信息。 |
 
-## PageIntentInfo<sup>20+<sup>
+## PageIntentInfo<sup>20+</sup>
 
 PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
 
@@ -117,12 +117,12 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-| uiAbility | string | 是 | 否 | Ability名称。 |
+| uiAbility | string | 是 | 否 | UIAbility名称。 |
 | pagePath | string | 是 | 否 | 页面名称。 |
 | navigationId | string | 是 | 否 |  表示与意图绑定[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)的id。 |
 | navDestinationName | string | 是 | 否 | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)组件的名称。 |
 
-## FunctionIntentInfo<sup>20+<sup>
+## FunctionIntentInfo<sup>20+</sup>
 
 [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)。
 
@@ -132,7 +132,7 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-## FormIntentInfo<sup>20+<sup>
+## FormIntentInfo<sup>20+</sup>
 
 FormIntentInfo用于描述[@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的卡片信息。
 
@@ -147,7 +147,7 @@ FormIntentInfo用于描述[@InsightIntentForm](./js-apis-app-ability-InsightInte
 | abilityName | string | 是 | 否 | Ability名称。 |
 | formName | string | 是 | 否 | 表示[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)绑定的卡片名称。 |
 
-## EntryIntentInfo<sup>20+<sup>
+## EntryIntentInfo<sup>20+</sup>
 
 EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器支持的参数，例如意图调用执行模式。
 
@@ -162,7 +162,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | abilityName | string | 是 | 否 | Ability名称。 |
 | executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | 是 | 否 | 意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
 
-## SubIntentInfoForConfiguration<sup>23+<sup>
+## SubIntentInfoForConfiguration<sup>23+</sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)的特有信息。
 
@@ -183,7 +183,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | 是 | 是 | 表示意图绑定的ServiceExtensionAbility组件信息。 |
 | entities | Record\<string, Object\> | 是 | 是 | 表示意图包含的实体信息。 |
 
-## UIAbilityIntentInfo<sup>23+<sup>
+## UIAbilityIntentInfo<sup>23+</sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIAbility组件信息。
 
@@ -198,7 +198,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | abilityName | string | 是 | 否 | 意图绑定的UIAbility组件名称。 |
 | executeMode | [ExecuteModeForConfiguration](#executemodeforconfiguration23)[] | 是 | 否 | 意图调用执行模式。 |
 
-## UIExtensionIntentInfo<sup>23+<sup>
+## UIExtensionIntentInfo<sup>23+</sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIExtensionAbility组件信息。
 
@@ -212,7 +212,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | 意图绑定的UIExtensionAbility组件名称。 |
 
-## ServiceExtensionIntentInfo<sup>23+<sup>
+## ServiceExtensionIntentInfo<sup>23+</sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的ServiceExtensionAbility组件信息。
 
@@ -226,7 +226,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | 意图绑定的ServiceExtensionAbility组件名称。 |
 
-## DevelopType<sup>23+<sup>
+## DevelopType<sup>23+</sup>
 
 用于描述意图的开发方式。
 
@@ -241,7 +241,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | CONFIGURATION  | 'configuration' | 使用配置文件开发的意图。 |
 | DECORATOR | 'decorator' | 使用装饰器开发的意图。 |
 
-## EntityInfo<sup>20+<sup>
+## EntityInfo<sup>20+</sup>
 
 EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)，用于描述[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
 
@@ -261,7 +261,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | isQueryable | boolean | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体类是否支持查询，只有继承自[insightIntent.AppIntentEntity](./js-apis-app-ability-insightIntent.md#appintententity)类的意图实体支持查询。<br> - true：支持查询。<br> - false：不支持查询。<br>**起始版本**：26.0.0 |
 | supportedQueryProperties | string[] | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体支持通过哪些属性进行查询。意图实体查询参数[parameters](./js-apis-app-ability-insightIntent.md#queryentityparam)的key值必须在该属性列表中。<br>**起始版本**：26.0.0 |
 
-## InsightIntentInfo<sup>20+<sup>
+## InsightIntentInfo<sup>20+</sup>
 
 意图信息，表示设备中意图的具体参数配置。
 
@@ -292,7 +292,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | subIntentInfoForConfiguration<sup>23+</sup> | [SubIntentInfoForConfiguration](#subintentinfoforconfiguration23) | 是 | 是 | 表示使用配置文件开发的意图的特有信息。 |
 | developType<sup>23+</sup> | [DevelopType](#developtype23) | 是 | 是 | 表示意图的开发方式。 |
 
-## GetInsightIntentFlag<sup>20+<sup>
+## GetInsightIntentFlag<sup>20+</sup>
 
 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
 
@@ -430,7 +430,7 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
         }
         hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', data.code);
         hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(data.result));
-      })
+      });
     } catch (error) {
       hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
     }
@@ -521,7 +521,7 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
   }
 ```
 
-## insightIntentDriver.getAllInsightIntentInfo<sup>20+<sup>
+## insightIntentDriver.getAllInsightIntentInfo<sup>20+</sup>
 
 getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
 
@@ -555,7 +555,7 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 
@@ -569,8 +569,8 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
       insightIntentDriver.getAllInsightIntentInfo(insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
         hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo return %{public}s', JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errCode: %{public}d', err.code);
-        hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errMessage: %{public}s', err.message);
+        hilog.error(0x0000, 'testTag', 'getAllInsightIntentInfo errCode: %{public}d', err.code);
+        hilog.error(0x0000, 'testTag', 'getAllInsightIntentInfo errMessage: %{public}s', err.message);
       });
     } catch (error) {
       hilog.error(0x0000, 'testTag', 'getAllInsightIntentInfo error caught %{public}s', JSON.stringify(error));
@@ -578,7 +578,7 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
   }
 ```
 
-## insightIntentDriver.getInsightIntentInfoByBundleName<sup>20+<sup>
+## insightIntentDriver.getInsightIntentInfoByBundleName<sup>20+</sup>
 
 getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
 
@@ -628,8 +628,8 @@ getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promi
       insightIntentDriver.getInsightIntentInfoByBundleName(bundleName, insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
         hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName return %{public}s', JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errCode: %{public}d', err.code);
-        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errMessage: %{public}s', err.message);
+        hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errCode: %{public}d', err.code);
+        hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errMessage: %{public}s', err.message);
       });
     } catch (error) {
       hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByBundleName error caught %{public}s', JSON.stringify(error));
@@ -637,7 +637,7 @@ getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promi
   }
 ```
 
-## insightIntentDriver.getInsightIntentInfoByIntentName<sup>20+<sup>
+## insightIntentDriver.getInsightIntentInfoByIntentName<sup>20+</sup>
 
 getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentName: string, intentFlags: number): Promise<[InsightIntentInfo](#insightintentinfo20)>
 
@@ -693,8 +693,8 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
       .then((data) => {
         hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName return %{public}s', JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errCode: %{public}d', err.code);
-        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errMessage: %{public}s', err.message);
+        hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errCode: %{public}d', err.code);
+        hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errMessage: %{public}s', err.message);
       });
     } catch (error) {
       hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName error caught %{public}s', JSON.stringify(error));
@@ -702,7 +702,7 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
   }
 ```
 
-## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+<sup>
+## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+</sup>
 
 getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<InsightIntentInfo>>
 
@@ -759,8 +759,8 @@ function getInfoByFilter() {
     insightIntentDriver.getInsightIntentInfoByFilter(filter).then((data) => {
       hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter return %{public}s', JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errCode: %{public}d', err.code);
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errMessage: %{public}s', err.message);
+      hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter errCode: %{public}d', err.code);
+      hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter errMessage: %{public}s', err.message);
     });
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter error caught %{public}s', JSON.stringify(error));
@@ -832,7 +832,11 @@ function queryEntityInfoByPromise() {
   try {
     insightIntentDriver.queryEntityInfo(queryParam)
       .then((data: Array<Record<string, Object>> | undefined) => {
-        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+        if (data) {
+          hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+        } else {
+          hilog.info(0x0000, 'testTag', 'queryEntityInfo return empty result');
+        }
       })
       .catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);

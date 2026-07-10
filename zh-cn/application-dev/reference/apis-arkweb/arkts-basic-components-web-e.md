@@ -16,7 +16,7 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -221,6 +221,8 @@ Web布局模式的配置。
 | NAVIGATION_COMMIT_TIMEOUT      | 1 | 新的网页加载导航响应超时。   |
 
 ## ProtectedResourceType<sup>9+</sup>
+
+受保护的资源类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

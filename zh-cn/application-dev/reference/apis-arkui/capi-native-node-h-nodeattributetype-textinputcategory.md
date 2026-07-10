@@ -2124,13 +2124,13 @@ NODE_TEXT_AREA_BAR_STATE = 8032
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 文本控制滚动条状态。参数类型为[ArkUI_BarState](capi-native-type-h.md#arkui_barstate)。默认值为ARKUI_BAR_STATE_AUTO。 |
+| .value[0].i32 | 文本控制滚动条状态。参数类型为[ArkUI_BarState](capi-scroll-h.md#arkui_barstate)。默认值为ARKUI_BAR_STATE_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 文本控制滚动条状态。参数类型为[ArkUI_BarState](capi-native-type-h.md#arkui_barstate)。 |
+| .value[0].i32 | 文本控制滚动条状态。参数类型为[ArkUI_BarState](capi-scroll-h.md#arkui_barstate)。 |
 
 ## NODE_TEXT_AREA_ENABLE_SELECTED_DATA_DETECTOR
 

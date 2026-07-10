@@ -12,7 +12,7 @@
 
 - NDK配置文件entry/src/main/cpp/types/libentry/oh-package.json5如下。
 
-  <!-- @[Cpp_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/oh-package.json5) --> 
+  <!-- @[Cpp_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/oh-package.json5) -->  
   
   ``` JSON5
   {
@@ -25,7 +25,7 @@
 
 - 占位组件和其他ArkTS系统组件使用方法相同。详细代码请参考[示例](#示例)。
 
-  <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/ets/pages/Index.ets) -->  
   
   ``` TypeScript
   import nativeNode from 'libentry.so';
@@ -81,10 +81,10 @@
 
 ## NDK组件模块
 
-NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注册等是通过函数指针结构体（如[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)）进行暴露，该函数指针结构体可以通过[模块查询接口](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)获取。
+NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注册等是通过函数指针结构体（如[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)）进行暴露，该函数指针结构体可以通过[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)获取。
 
 > **说明：**
-> - [模块查询接口](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)带有初始化NDK的逻辑，建议先调用该接口进行全局初始化，再使用NDK进行UI构造。
+> - [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)带有初始化NDK的逻辑，建议先调用该接口进行全局初始化，再使用NDK进行UI构造。
 
 ``` c
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
@@ -171,7 +171,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
 1. 在ArkTS页面上声明用于Native页面挂载的占位组件，并在页面创建时通知Native侧创建文本列表。
 
-    <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     import nativeNode from 'libentry.so';
@@ -216,7 +216,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    接口声明。
 
-    <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
     
     ``` TypeScript
     // entry/src/main/cpp/types/libentry/Index.d.ts
@@ -226,7 +226,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    Native实现。
 
-    <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/napi_init.cpp) -->  
     
     ``` C++
     // entry/src/main/cpp/napi_init.cpp
@@ -239,11 +239,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         // 绑定Native侧的创建组件和销毁组件。
         napi_property_descriptor desc[] = {
             {"createNativeRoot", nullptr,
-            NativeModule::CreateNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+             NativeModule::CreateNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr},
             {"destroyNativeRoot", nullptr,
-            NativeModule::DestroyNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr}};
+             NativeModule::DestroyNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr}};
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
     }
@@ -264,7 +264,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
 3. 在NativeEntry.h文件中创建Native界面。
 
-    <!-- @[Cpp_Native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.h) -->
+    <!-- @[Cpp_Native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.h) -->  
     
     ``` C
     // NativeEntry.h
@@ -321,7 +321,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    对应实现文件。
 
-    <!-- @[Cpp_NativeEntry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.cpp) -->
+    <!-- @[Cpp_NativeEntry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.cpp) -->  
     
     ``` C++
     // NativeEntry.cpp
@@ -329,7 +329,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     #include <arkui/native_node_napi.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
-    #include "NormalNodeExample.h"
+    #include "NormalTextListExample.h"
     
     namespace NativeModule {
     
@@ -345,11 +345,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
     
-        // 创建组件节点
-        auto node = CreateExample();
+        // 创建文本列表
+        auto list = CreateTextListExample();
     
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetRootNode(node);
+        NativeEntry::GetInstance()->SetRootNode(list);
         return nullptr;
     }
     
@@ -374,7 +374,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    1）获取ArkUI在NDK接口的入口模块[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)，该结构体模块提供了一系列组件创建、树构建、属性设置和事件注册等函数指针。
    
-    <!-- @[Cpp_NativeModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeModule.h) -->
+    <!-- @[Cpp_NativeModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeModule.h) -->  
     
     ``` C
     // NativeModule.h
@@ -415,7 +415,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    2）提供列表，文本组件的基类对象，用于封装通用属性和事件。
    
-    <!-- @[Cpp_ArkUIBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIBaseNode.h) -->
+    <!-- @[Cpp_ArkUIBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIBaseNode.h) -->  
     
     ``` C
     // ArkUIBaseNode.h
@@ -491,7 +491,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     
     #endif // MYAPPLICATION_ARKUIBASENODE_H
     ```
-    <!-- @[Cpp_ArkUINode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUINode.h) -->
+    <!-- @[Cpp_ArkUINode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUINode.h) -->  
     
     ``` C
     // ArkUINode.h
@@ -542,48 +542,6 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
-        void SetMargin(float top, float right, float bottom, float left)
-        {
-            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
-            ArkUI_AttributeItem item = {value, 4};
-            nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
-        }
-        void SetPadding(float top, float right, float bottom, float left)
-        {
-            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
-            ArkUI_AttributeItem item = {value, 4};
-            nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
-        }
-        void SetBorderWidth(float width)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = width}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
-        }
-        void SetBorderColor(uint32_t color)
-        {
-            ArkUI_NumberValue value[] = {{.u32 = color}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
-        }
-        void SetBorderRadius(float radius)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = radius}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
-        }
-        void SetOpacity(float opacity)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = opacity}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_OPACITY, &item);
-        }
-        void SetScale(float x, float y)
-        {
-            ArkUI_NumberValue value[] = {{x}, {y}};
-            ArkUI_AttributeItem item = {value, 2};
-            nativeModule_->setAttribute(handle_, NODE_SCALE, &item);
-        }
     
     protected:
         // 组件树操作的实现类对接。
@@ -607,7 +565,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    3）实现列表组件。
    
-    <!-- @[Cpp_ArkUIListNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListNode.h) -->
+    <!-- @[Cpp_ArkUIListNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListNode.h) -->  
     
     ``` C
     // ArkUIListNode.h
@@ -641,7 +599,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    4）实现列表项组件。
    
-    <!-- @[Cpp_ArkUIListItemNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListItemNode.h) -->
+    <!-- @[Cpp_ArkUIListItemNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListItemNode.h) -->  
     
     ``` C
     // ArkUIListItemNode.h
@@ -664,7 +622,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
    5）实现文本组件。
    
-    <!-- @[Cpp_ArkUITextNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUITextNode.h) -->
+    <!-- @[Cpp_ArkUITextNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUITextNode.h) -->  
     
     ``` C
     // ArkUITextNode.h
@@ -713,7 +671,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    
 5. 完善步骤3的CreateTextListExample函数，实现Native文本列表的创建和挂载显示。
 
-    <!-- @[Cpp_NormalTextListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h) -->
+    <!-- @[Cpp_NormalTextListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h) -->  
     
     ``` C
     // NormalTextListExample.h

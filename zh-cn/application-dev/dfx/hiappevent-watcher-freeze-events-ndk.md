@@ -112,6 +112,8 @@
                           auto externalLog = writer.write(params["external_log"]);
                           auto logOverLimit = params["log_over_limit"].asBool();
                           auto externalCallbackLog = params["external_callback_log"].asString();
+                          auto applicationGCInfo = params["application_gc_info"].asString();
+                          auto applicationIOInfo = params["application_io_info"].asString();
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
@@ -132,6 +134,8 @@
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_gc_info=%{public}s", applicationGCInfo.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_io_info=%{public}s", applicationIOInfo.c_str());
                       }
                   }
               }
@@ -195,7 +199,9 @@
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
                       auto process_life_time = eventInfo["process_life_time"].asString();
-                      auto externalCallbackLog = params["external_callback_log"].asString();
+                      auto externalCallbackLog = eventInfo["external_callback_log"].asString();
+                      auto applicationGCInfo = eventInfo["application_gc_info"].asString();
+                      auto applicationIOInfo = eventInfo["application_io_info"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
@@ -217,6 +223,8 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_gc_info=%{public}s", applicationGCInfo.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.application_io_info=%{public}s", applicationIOInfo.c_str());
                   }
               }
           }
@@ -318,6 +326,8 @@
    HiAppEvent eventInfo.params.log_over_limit=0
    HiAppEvent eventInfo.params.process_life_time=18
    HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
+   HiAppEvent eventInfo.params.application_gc_info={"averagePause":48.4983,"count":3,"lastEndTime":1711440881768,"lastStartTime":1711440881708,"lastType":Local GC,"maxPause":"10.733","minPause":"2.832"}
+   HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。

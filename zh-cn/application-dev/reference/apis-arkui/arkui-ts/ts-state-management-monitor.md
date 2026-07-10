@@ -7,11 +7,13 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Monitor装饰器在状态管理V2中用于监听状态变量修改，使得状态变量具有深度监听的能力。开发指南参考：[@Monitor装饰器：状态变量修改监听](../../../ui/state-management/arkts-new-monitor.md)。
+@Monitor装饰器在状态管理V2中用于监听状态变量修改，使得状态变量支持深度监听。适用于需要在状态变量或其嵌套属性发生变化时执行自定义逻辑（如数据同步、UI刷新、日志记录等）的场景。相比状态管理V1的@Watch，@Monitor支持深度监听嵌套对象属性的变化，并从API版本26.0.0开始支持通配符能力，可更灵活地匹配变量路径。
+
+开发指南参考：[@Monitor装饰器：状态变量修改异步监听](../../../ui/state-management/arkts-new-monitor.md)。
 
 > **说明：**
 >
-> 从API version 12开始，支持该装饰器。
+> 从API version 12开始，支持该装饰器。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## @Monitor
 
@@ -25,40 +27,233 @@ Monitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+## MonitorDecorator
 
-| 参数名 | 类型     | 必填 | 说明                                         |
-| ------ | -------- | ---- | -------------------------------------------- |
-| value  | string \| [MonitorDecoratorOptions](./ts-state-management-watch-monitor.md#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
-| ...args   | string[] | 否   | 用于监听的变量名路径数组，内容由开发者指定。当开发者传入多个字符串时，入参为该类型。 |
+type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: string[]) => MethodDecorator
+
+@Monitor装饰器的实际类型。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数**：
+
+| 参数名 | 类型     | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
+| ...args   | string[] | 否   | 用于监听的变量名路径数组，内容由开发者指定。当开发者已使用MonitorDecoratorOptions或传入多个字符串时，入参为该类型。 |
+
+**返回值：**
+
+| 类型            | 说明                                 |
+| --------------- | ------------------------------------ |
+| MethodDecorator | 方法装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 
 ```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 25;
+  @Trace height: number = 175;
+
+  // 监听一个变量
+  @Monitor('name')
+  onNameChange() {
+    console.info(`name change to ${this.name}`);
+  }
+
+  // 监听多个变量
+  @Monitor('age','height')
+  onRecordChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+}
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local message: string = 'Hello World';
-  @Local name: string = 'Tom';
-  // 使用@Monitor装饰器监听message和name变量的变化
-  @Monitor('message', 'name')
-  onStrChange(monitor: IMonitor) {
-    monitor.dirty.forEach((path: string) => {
-      console.info(`${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-    });
-  }
+  @Local info: Info = new Info();
+
   build() {
     Column() {
-      Text(`message: ${this.message}`)
-      Text(`name: ${this.name}`)
-      Button('change string')
+      Text(`info.name: ${this.info.name}`)
         .onClick(() => {
-          // 触发@Monitor回调
-          this.message += '!';
-          this.name = 'Jack';
+          this.info.name = 'Bob'; // 输出日志：name change to Bob
+        })
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
+        .onClick(() => {
+          this.info.age++; // 输出日志：age change from 25 to 26
+          this.info.height++; // 输出日志：height change from 175 to 176
         })
     }
   }
 }
 ```
 
+## MonitorDecoratorOptions
+
+@Monitor装饰器的配置选项。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型    | 只读 | 可选 | 说明                                                         |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableWildcard | boolean | 否   | 是   | 是否支持通配符能力。true：使能通配符能力，false：关闭通配符能力。默认值为true，即默认使能通配符能力。 |
+
+
+## IMonitor
+
+当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型即为IMonitor类型。
+
+### 属性
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                | 类型            | 只读 | 可选 | 说明             |
+| ------------------- | --------------- | ---- | ---- | ---------------- |
+| dirty | Array\<string\> | 否   | 否   | 变化路径的数组。 |
+
+### value
+
+value\<T\>(path?: string): IMonitorValue\<T\> | undefined
+
+获取指定path的变化信息。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| path   | string | 否   | 可选，被监听的变量路径名。未指定时默认使用变化路径数组dirty中的第一个路径。 |
+
+**返回值：**
+
+| 类型                                                  | 说明                                                         |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| [IMonitorValue\<T\>](#imonitorvaluet)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>API版本26.0.0之前，当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。<br>从API版本26.0.0开始，当未指定路径时，默认返回变化路径数组dirty中第一个非通配符路径。<br>当指定路径为通配符路径时，返回undefined。<br>当未指定路径，且变化路径数组dirty中所有路径均为通配符路径时，返回undefined。 |
+
+**示例：**
+
+```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 25;
+  @Trace height: number = 175;
+
+  // 监听一个变量
+  @Monitor('name')
+  onNameChange(monitor: IMonitor) {
+    // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
+    console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  // 监听多个变量
+  @Monitor('age','height')
+  onRecordChange(monitor: IMonitor) {
+    // 指定value的入参时，将返回入参路径path对应的变量变化值信息
+    monitor.dirty.forEach((path: string) => {
+      console.info(`path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.info.name}`)
+        .onClick(() => {
+          this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
+        })
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
+        .onClick(() => {
+          this.info.age++; // 输出日志：path: age change from 25 to 26
+          this.info.height++; // 输出日志：path: height change from 175 to 176
+        })
+    }
+  }
+}
+```
+
+## IMonitorValue\<T\>
+
+@Monitor监听变量变化的具体信息，通过IMonitor的value接口获取。T为变量类型。
+
+### 属性
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                 | 类型   | 只读 | 可选 | 说明             |
+| -------------------- | ------ | ---- | ---- | ---------------- |
+| before | T      | 否   | 否   | 变量变化前的值。 |
+| now    | T      | 否   | 否   | 变量当前的值。   |
+| path   | string | 否   | 否   | 变量的路径。     |
+
+**示例：**
+
+```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Monitor('name')
+  onNameChange(monitor: IMonitor) {
+    // value的返回值为IMonitorValue类型，可以通过该返回值获取变量变化的信息
+    console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info();
+  build() {
+    Column() {
+      Text(`info.name: ${this.info.name}`)
+        .onClick(() => {
+          this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
+        })
+    }
+  }
+}
+```

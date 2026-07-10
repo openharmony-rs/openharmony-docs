@@ -64,7 +64,7 @@ static vibrate(options?: [VibrateOptions](#vibrateoptions)): void
 
 > **说明：**
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -128,7 +128,7 @@ export default {
       // 触发设备振动
       vibrator.vibrate(vibrateOptions);
     } catch (e) {
-      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e)) 
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e));
     }
   }
 };

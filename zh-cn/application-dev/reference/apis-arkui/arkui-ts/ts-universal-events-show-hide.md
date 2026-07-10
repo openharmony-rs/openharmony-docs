@@ -127,8 +127,6 @@ onDisAppear(event: () => void): T
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {

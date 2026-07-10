@@ -233,7 +233,7 @@ import promptAction from '@ohos.promptAction';
 
 export default {
     data: {
-        selectList: ["text", "data", "time", "datetime", "multitext"],
+        selectList: ["text", "date", "time", "datetime", "multitext"],
         rangetext: ['15', "20", "25"],
         multitext: [["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
         textvalue: 'default textvalue',
@@ -267,7 +267,7 @@ export default {
         })
     },
     dateonchange(e) {
-        this.datevalue = e.year + "-" + e.month + "-" + e.day;
+        this.datevalue = e.year + "-" + (e.month + 1) + "-" + e.day;
         promptAction.showToast({
             message: "date:" + e.year + "-" + (e.month + 1) + "-" + e.day
         })
@@ -296,7 +296,7 @@ export default {
         })
     },
     datetimeonchange(e) {
-        this.datetimevalue = e.year + "-" + e.month + "-" + e.day + " " + e.hour + ":" + e.minute;
+        this.datetimevalue = e.year + "-" + (e.month + 1) + "-" + e.day + " " + e.hour + ":" + e.minute;
         promptAction.showToast({
             message: "Time:" + (e.month + 1) + "-" + e.day + " " + e.hour + ":" + e.minute
         })
@@ -318,7 +318,7 @@ export default {
         })
     },
     popup_picker() {
-        this.$element("picker_text").show();
+        this.$element("picker0").show();
     },
 }
 ```

@@ -185,7 +185,6 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State private contacts: Array<object> = [
     // 请将$r('app.string.xxx')替换为实际资源文件
     new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
@@ -429,7 +428,7 @@ export struct ArcListArcIndexerBar {
             }
             // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
-              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
+              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.indexerIndex
               this.indexerIndex = centerIndex + 1;
             })
             // ...

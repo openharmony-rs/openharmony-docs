@@ -70,7 +70,7 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* mime | 音频解码器MIME类型，取值范围请参考[AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
+| const char* mime | 音频解码器MIME类型，取值范围请参考[OH_AVCODEC_MIMETYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
@@ -329,7 +329,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。不能重复销毁。
+清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。建议在OH_LowPowerAudioSink_Stop后调用。不能重复销毁。
 
 **起始版本：** 20
 

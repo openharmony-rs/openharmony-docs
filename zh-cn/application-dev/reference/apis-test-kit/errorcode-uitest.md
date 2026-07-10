@@ -29,18 +29,18 @@ Initialization failed.
 
 执行param set persist.ace.testmode.enabled 1，并重启设备。
 
-## 17000002 当前无法调用
+## 17000002 接口不支持并发调用
 **错误信息**
 
 The API does not support concurrent calls.
 
 **错误描述**
 
-接口不支持并行调用。
+接口不支持并发调用。
 
 **可能原因**
 
-异步API没有使用await等待异步执行完成，导致出现接口并行调用。
+异步API没有使用await等待异步执行完成，导致出现接口并发调用。
 
 **处理步骤**
 
@@ -63,14 +63,14 @@ Assertion failed.
 
 检查用户断言存在的控件实际是否存在。
 
-## 17000004 目标控件/窗口丢失
+## 17000004 目标控件/窗口不可见或已销毁
 **错误信息**
 
 The window or component is invisible or destroyed.
 
 **错误描述**
 
-目标控件或窗口丢失，无法进行操作。
+目标控件/窗口不可见或已销毁，无法进行操作。
 
 **可能原因**
 

@@ -116,9 +116,9 @@
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
 
-   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   function configuringSession(photoSession: camera.PhotoSession): void {
+   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   ``` TypeScript
+   configuringSession(photoSession: camera.PhotoSession | camera.VideoSession): void {
      // 判断设备是否支持闪光灯。
      let flashStatus: boolean = false;
      try {
@@ -129,18 +129,18 @@
      }
      console.info(`Returned with the flash light support status: ${flashStatus}`);
      if (flashStatus) {
-       // 判断是否支持自动闪光灯模式。
+       // 判断是否支持关闭闪光灯模式。
        let flashModeStatus: boolean = false;
        try {
-         flashModeStatus = photoSession?.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
+         flashModeStatus = photoSession?.isFlashModeSupported(camera.FlashMode.FLASH_MODE_CLOSE);
        } catch (error) {
          let err = error as BusinessError;
          console.error(`Failed to check whether the flash mode is supported. error: ${err}`);
        }
        if (flashModeStatus) {
-         // 设置自动闪光灯模式。
+         // 设置闪光灯模式关闭。
          try {
-           photoSession?.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+           photoSession?.setFlashMode(camera.FlashMode.FLASH_MODE_CLOSE);
          } catch (error) {
            let err = error as BusinessError;
            console.error(`Failed to set the flash mode. error: ${err}`);
@@ -165,7 +165,7 @@
        }
      }
      // 获取相机支持的可变焦距比范围。
-     let zoomRatioRange: Array<number> = [];
+     let zoomRatioRange: number[] = [];
      try {
        zoomRatioRange = photoSession?.getZoomRatioRange();
      } catch (error) {

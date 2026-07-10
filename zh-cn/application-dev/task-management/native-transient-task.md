@@ -296,23 +296,23 @@
 
 1. 连接设备并运行程序。
 
-2. 点击 `申请短时任务` 按钮，控制台会打印日志，示例如下：
+2. 点击 `RequestSuspendDelay` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The returned requestId is 1
    ```
 
-3. 点击 `获取剩余时间` 按钮，控制台会打印日志，示例如下：
+3. 点击 `GetRemainingDelayTime` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The time is 18000
    ```
-4. 点击 `取消短时任务` 按钮，控制台会打印日志，示例如下：
+4. 点击 `CancelSuspendDelay` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The return value is 0
    ```
-5. 点击 `获取所有短时任务信息` 按钮，控制台会打印日志，示例如下：
+5. 点击 `GetTransientTaskInfo` 按钮，控制台会打印日志，示例如下：
 
    ```txt
    The transientTaskInfo is {"remainingQuota":600000,"transientTasks":[]}

@@ -51,7 +51,7 @@
    // ...
    AccessibilityManager::AccessibilityManager()
    {
-    // 多实例场景
+   // 多实例场景
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -59,7 +59,7 @@
        accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction = ExecuteAccessibilityAction;
        accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
        accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
-    // 单实例场景
+   // 单实例场景
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacks_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -301,6 +301,9 @@
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
        OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+       // 本函数仅演示创建事件信息，未发送事件。若无需发送事件，请调用 OH_ArkUI_DestoryAccessibilityEventInfo
+       // 释放内存；若需发送事件，请调用 OH_ArkUI_SendAccessibilityAsyncEvent，并在回调中释放内存。
+       OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
    }
    ```
@@ -348,9 +351,11 @@
                   ArkUI_AccessibilityEventType eventType, std::string announcedText)
    {
        if (eventInfo == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FillEvent eventInfo is nullptr");
            return;
        }
        if (elementInfo == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FillEvent elementInfo is nullptr");
            return;
        }
        // 设置事件类型
@@ -359,7 +364,8 @@
        OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
        
        if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
-           // 给无障碍节点设置优先播报的无障碍文本
+           // 给无障碍节点设置优先播报的无障碍文本。
+           // 该 Set 接口为同步调用且会拷贝文本，announcedText 为按值传入的局部对象，其生命周期覆盖本次调用，故直接传 data() 安全。
            OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
        }
    }
@@ -379,6 +385,8 @@
        };
        // 3. 调用接口发送事件给OH侧
        OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
+       // 发送完成后释放 eventInfo 内存
+       OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
    }
    // ...
    
@@ -402,6 +410,7 @@
        const char *actionKey = "some_key";
        char *actionValue = nullptr;
        OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
+       // 根据 actionValue 执行相应逻辑，或移除未使用的查询代码。
        // 根据action类型执行对应的行为。
        switch (action) {
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
@@ -468,7 +477,7 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "GetAccessibilityNodeCursorPosition, instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, index: %{public}d",
-                    instanceId, elementId, requestId, index);
+                    instanceId, elementId, requestId, *index);
        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
    }
    ```

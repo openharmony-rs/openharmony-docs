@@ -20,7 +20,7 @@
 
 onSizeChange(event: SizeChangeCallback): T
 
-组件区域变化时触发该回调。仅会响应由布局变化所导致的组件尺寸发生变化时的回调。
+组件尺寸变化时触发该回调。仅会响应由布局变化所导致的组件尺寸发生变化时的回调。
 
 >**说明：**
 >
@@ -50,7 +50,7 @@ onSizeChange(event: SizeChangeCallback): T
 
 type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
-组件区域变化时的回调类型。
+组件尺寸变化时的回调类型。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

@@ -336,7 +336,7 @@ The uri field is missing in the want parameter.
 
 **可能原因**
 
-调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
+调用DLP文件相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
@@ -547,7 +547,7 @@ The specified userId is inconsistent with the current userId.
 
 **错误信息**
 
-The specified userId belongs to a personal space user and cannot be controlled.
+The specified userId belongs to a personal space user and cannot be managed.
 
 **错误描述**
 

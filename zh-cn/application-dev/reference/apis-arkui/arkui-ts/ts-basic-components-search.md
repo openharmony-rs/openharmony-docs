@@ -788,9 +788,9 @@ enableHapticFeedback(isEnabled: boolean)
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
@@ -1045,11 +1045,11 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                    | 说明        |
-| ----------------------- | ---------------- |
-| CONSTANT  | 清除按钮常显样式。 |
-| INVISIBLE | 清除按钮常隐样式。 |
-| INPUT     | 清除按钮输入样式。 |
+| 名称                    | 值 |说明        |
+| ----------------------- | ---- |---------------- |
+| CONSTANT  | - | 清除按钮常显样式。 |
+| INVISIBLE | - | 清除按钮常隐样式。 |
+| INPUT     | - | 清除按钮输入样式。 |
 
 ## SearchType<sup>11+</sup>枚举说明
 

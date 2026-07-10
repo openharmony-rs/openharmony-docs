@@ -12,7 +12,7 @@ typedef struct ArchiveStreamReadCtx *OH_Archive_StreamRead_Ctx
 
 ## 概述
 
-流式解压器的上下文结构体。
+流式解压缩器的上下文结构体指针。
 
 **起始版本：** 26.0.0
 

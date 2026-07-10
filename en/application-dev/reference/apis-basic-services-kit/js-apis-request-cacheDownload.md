@@ -193,7 +193,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                                                                     |
+| ID   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | permission denied.                                                                                                              |
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -246,7 +246,7 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                                                                     |
+| ID   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -297,7 +297,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                                                                     |
+| ID   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -338,7 +338,7 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                                                                                                     |
+| ID   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -428,7 +428,7 @@ Obtains the download information based on the URL. The download information is s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 |-------|--------------------|
 | 201   | permission denied. |
 

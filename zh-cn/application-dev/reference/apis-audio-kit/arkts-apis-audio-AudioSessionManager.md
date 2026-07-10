@@ -51,7 +51,7 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 | ------- | ---------------------------------------------|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed.|
-| 6800301 | System error. Returned by promise. |
+| 6800301 | System error. Possible causes: 1.Focus preemption failure. 2.Audio server process died. |
 
 **示例：**
 
@@ -91,7 +91,7 @@ deactivateAudioSession(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------|
-| 6800301 | System error. Returned by promise. |
+| 6800301 | System error. Possible causes: 1.The audio session is not existed or has been released. 2.Audio server process died. |
 
 **示例：**
 
@@ -424,7 +424,7 @@ setMediaOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 6800101 | Parameter verification failed, for example, the selected device type is not supported. |
-| 6800301 | Audio client call audio service error, System error. |
+| 6800301 | System error. Possible causes: 1.Internal variable memory allocation failed. 2.Audio server process died. 3.Speaker device is not available. |
 
 **示例：**
 
@@ -997,7 +997,7 @@ setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------|
-| 6800103 | Operation not permitted at current state, there is no audio capturer running. |
+| 6800103 | Operation not permit at current state, there is no audio capturer running. |
 
 **示例：**
 

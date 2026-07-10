@@ -114,11 +114,6 @@ enum Image_AuxiliaryPictureType
 | AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | 人像未对焦的原图，提供了一种在人像拍摄中突出背景模糊效果的方式，能够帮助用户在后期处理中选择焦点区域，增加创作自由度。 |
 | AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | 线性图，用于提供额外的数据视角或补充信息，通常用于视觉效果的增强，它可以包含场景中光照、颜色或其他视觉元素的线性表示。 |
 | AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | 水印裁剪图，表示在原图中被水印覆盖的区域，该图像用于修复或移除水印影响，恢复图像的完整性和可视性。 |
-| AUXILIARY_PICTURE_TYPE_SNAP_MAP = 6 | 抓拍图。用于记录快速抓拍场景的原始图像数据，保留瞬间画面的完整信息。常用于高速连拍、动态抓拍场景。<br>**起始版本：** 26.0.0 |
-| AUXILIARY_PICTURE_TYPE_SNAP_GAINMAP = 7 | 抓拍增益图，与抓拍图配套使用。用于对抓拍图像进行HDR亮度增强与动态范围调整，提升抓拍画面的显示效果。<br>**起始版本：** 26.0.0 |
-| AUXILIARY_PICTURE_TYPE_PAN_MAP = 8 | 摇拍图。用于记录摇拍（追随拍摄）模式下的原始图像数据，保留运动轨迹与动态模糊效果，适配运动场景拍摄。<br>**起始版本：** 26.0.0 |
-| AUXILIARY_PICTURE_TYPE_PAN_GAINMAP = 9 | 摇拍增益图，与摇拍图配套使用。用于对摇拍图像进行HDR增益优化，增强摇拍画面的亮度、对比度与动态显示效果。<br>**起始版本：** 26.0.0 |
-
 
 ## 函数说明
 

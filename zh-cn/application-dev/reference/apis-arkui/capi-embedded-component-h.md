@@ -10,7 +10,7 @@
 
 EmbeddedComponent组件相关的结构体和方法定义。
 
-**引用文件：** <arkui/embedded_component.h>
+**引用文件：** <arkui/node_attributes/embedded_component.h>
 
 **库：** libace_ndk.z.so
 

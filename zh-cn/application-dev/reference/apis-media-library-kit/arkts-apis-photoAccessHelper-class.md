@@ -2,9 +2,9 @@
 
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xuchangda; @yixiaoff-->
-<!--Designer: @guxinggang; @liweilu1-->
-<!--Tester: @wangbeibei; @xchaosioda-->
+<!--Owner: @xuchangda-->
+<!--Designer: @guxinggang-->
+<!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
 > **说明：**

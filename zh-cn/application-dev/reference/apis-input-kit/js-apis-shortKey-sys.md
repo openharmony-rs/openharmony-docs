@@ -62,7 +62,7 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
+            shortKey.setKeyDownDuration('businessId', 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -72,7 +72,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -123,10 +123,10 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+            shortKey.setKeyDownDuration('businessId', 500).then(() => {
               console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);

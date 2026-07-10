@@ -300,9 +300,9 @@ export default {
   childClicked () {
     this.isShow = !this.isShow;
     console.info('child component get parent text');
-    console.info('${this.$parent().text}');
+    console.info(`${this.$parent().text}`);
     console.info('child component get root text');
-    console.info('${this.$root().text}');
+    console.info(`${this.$root().text}`);
   },
 }
 ```

@@ -4,7 +4,7 @@
 <!--Owner: @vigavi-->
 <!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease; @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## A
 

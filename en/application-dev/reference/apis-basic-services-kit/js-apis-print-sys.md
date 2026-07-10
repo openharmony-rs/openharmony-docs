@@ -59,7 +59,7 @@ Obtains the information of all installed printer extensions. This API uses an as
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -101,7 +101,7 @@ Obtains the information of all installed printer extensions. This API uses a pro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -143,7 +143,7 @@ Disconnects from the specified printer. This API uses an asynchronous callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -193,7 +193,7 @@ Disconnects from the specified printer. This API uses a promise to return the re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -236,7 +236,7 @@ Queries the printer capability. This API uses an asynchronous callback to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -286,7 +286,7 @@ Queries the printer capability. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -329,7 +329,7 @@ Starts the specified print job. This API uses an asynchronous callback to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -395,7 +395,7 @@ Starts the specified print job. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -454,7 +454,7 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -504,7 +504,7 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -552,7 +552,7 @@ Restarts a print job that has been finished before. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -594,7 +594,7 @@ Requests print preview data. This API uses a callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -656,7 +656,7 @@ Requests print preview data. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -715,7 +715,7 @@ Registers a listener for printer state change events. This API uses a callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -760,7 +760,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -799,7 +799,7 @@ Registers a listener for print job state change events. This API uses a callback
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -838,7 +838,7 @@ Unregisters the listener for print job state change events. This API uses a call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -877,7 +877,7 @@ Registers a listener for printer extension information change events. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -916,7 +916,7 @@ Unregisters the listener for printer extension information change events. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -955,7 +955,7 @@ Adds printers. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1013,7 +1013,7 @@ Adds printers. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1064,7 +1064,7 @@ Removes printers. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1114,7 +1114,7 @@ Removes printers. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1157,7 +1157,7 @@ Updates information about the specified printers. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1215,7 +1215,7 @@ Updates information about the specified printers. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1267,7 +1267,7 @@ Updates the printer state. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1319,7 +1319,7 @@ Updates the printer state. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1363,7 +1363,7 @@ Updates the printer extension information. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1413,7 +1413,7 @@ Updates the printer extension information. This API uses a promise to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1458,7 +1458,7 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1503,7 +1503,7 @@ Queries all print jobs. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1543,7 +1543,7 @@ Queries all active print jobs. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1583,7 +1583,7 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1625,7 +1625,7 @@ Queries all print jobs. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1666,7 +1666,7 @@ Queries a print job by ID. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1716,7 +1716,7 @@ Queries a print job by ID. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1761,7 +1761,7 @@ Starts to obtain the print file. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1834,7 +1834,7 @@ Notifies the print service of the spooler shutdown information. This API uses an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1885,7 +1885,7 @@ Notifies the print service of the spooler shutdown information. This API uses a 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1933,7 +1933,7 @@ Obtains printer information based on the printer ID. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1981,7 +1981,7 @@ Notifies the print service of the print application events. This API uses a prom
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2030,7 +2030,7 @@ Sets the printer preferences. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2075,7 +2075,7 @@ Discovers USB printers. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2122,7 +2122,7 @@ Sets the default printer. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2172,7 +2172,7 @@ Notifies the print service of the print application events. This API uses a prom
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2224,7 +2224,7 @@ Queries the printer capability by the printer URI. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Print Service Error Codes](errorcode-print.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2277,7 +2277,7 @@ Adds a printer to CUPS. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Print Service Error Codes](errorcode-print.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2330,7 +2330,7 @@ Deletes a printer from CUPS. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |

@@ -52,7 +52,7 @@ Defines the visual types for the native module.
 | [ArkUI_MaskType](#arkui_masktype)                                   | ArkUI_MaskType                  | Enumerates mask types. A mask is a means to limit the display area of a component. It uses a specific shape to crop the component content so that only the content in the mask area is visible.                          |
 | [ArkUI_ClipType](#arkui_cliptype)                                   | ArkUI_ClipType                  | Enumerates clipping region types.                          |
 | [ArkUI_ShapeType](#arkui_shapetype)                                 | ArkUI_ShapeType                 | Enumerates custom shape types.                           |
-| [ArkUI_LinearGradientDirection](#arkui_lineargradientdirection)     | ArkUI_LinearGradientDirection   | Enumerates gradient directions.                        |
+| [ArkUI_LinearGradientDirection](#arkui_lineargradientdirection)     | ArkUI_LinearGradientDirection   | Enumerates linear gradient directions.                        |
 | [ArkUI_TransitionEdge](#arkui_transitionedge)                       | ArkUI_TransitionEdge            | Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.                 |
 | [ArkUI_FinishCallbackType](#arkui_finishcallbacktype)               | ArkUI_FinishCallbackType        | Enumerates the callback types for [OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback) in an animation.             |
 | [ArkUI_BlendApplyType](#arkui_blendapplytype)                       | ArkUI_BlendApplyType            | Enumerates how the specified blend mode is applied.               |
@@ -398,7 +398,7 @@ enum ArkUI_LinearGradientDirection
 
 **Description**
 
-Enumerates gradient directions.
+Enumerates linear gradient directions.
 
 **Since**: 12
 

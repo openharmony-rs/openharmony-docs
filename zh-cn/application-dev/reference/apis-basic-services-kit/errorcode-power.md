@@ -23,21 +23,23 @@ Failed to connect to the service.
 
 **可能原因**
 
-1. 系统服务停止运行。
+1. 电源管理模块依赖的PowerManagerService系统服务停止运行，导致接口调用无法建立服务连接。
 
-2. 系统服务内部通讯发生异常。
+2. 电源管理模块与PowerManagerService系统服务之间的服务通信发生异常，导致连接请求无法正常建立或响应。
 
 **处理步骤**
 
-检查系统服务是否正常运行。
+检查系统服务是否正常运行，若服务未运行或运行异常，请重启设备后重新调用接口。
 
 1. 在控制台中输入如下命令，查看当前的系统服务列表。
 
     ```bash
-    > hdc shell hidumper -ls
+      hdc shell hidumper -ls
     ```
 
 2. 查看系统服务列表中是否包含PowerManagerService系统服务。
+
+3. 若服务列表中不包含PowerManagerService系统服务，说明系统服务停止运行；若服务列表中包含PowerManagerService系统服务但仍报错，说明系统服务内部通信发生异常。请尝试手动重启设备后重新执行操作。
 
 ## 4900102 正在关机中
 
@@ -51,21 +53,21 @@ Operation failed. The system is shutting down.
 
 **可能原因**
 
-系统正在处于关机过程中。
+系统正处于关机过程中。
 
 **处理步骤**
 
-在系统正常运行的状态下进行操作。
+请在系统正常运行后，重新调用相关接口。
 
-## 4900201 接口调用间隔过短
+## 4900201 设备活跃状态刷新间隔过短
 
 **错误信息**
 
-The device activity is being refreshed too frequently; the minimum timeinterval is 100 ms.
+The device activity is being refreshed too frequently; the minimum time interval is 100 ms.
 
 **错误描述**
 
-频繁刷新设备活跃状态导致刷新失败，刷新设备活跃状态最小时间间隔为100ms。
+频繁刷新设备活跃状态，刷新设备活跃状态最小时间间隔为100ms。
 
 **可能原因**
 
@@ -87,11 +89,11 @@ Setting the power mode failed.
 
 **可能原因**
 
-电源模式管控规则导致设置电源模式失败。
+电源模式管控规则不允许从当前电源模式切换至目标电源模式，导致设置电源模式失败。
 
 **处理步骤**
 
-当前电源模式不可切换至目标电源模式，可使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。
+当前电源模式不可切换至目标电源模式，请使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。
 
 ## 4900400 接口入参错误
 
@@ -101,7 +103,7 @@ The input parameter is invalid.
 
 **错误描述**
 
-接口的入参错误。
+接口的入参无效。
 
 **可能原因**
 
@@ -109,9 +111,9 @@ The input parameter is invalid.
 
 **处理步骤**
 
-此错误说明入参值不符合要求，请检查入参值是否正确。
+此错误说明入参值不符合要求，请检查入参的类型和取值范围是否在接口定义的有效范围内，避免传入空值或超出有效范围的参数。
 
-## 4900501 读电源配置节点失败
+## 4900501 读电源配置值失败
 
 **错误信息**
 
@@ -119,17 +121,17 @@ Failed to read the power configuration value.
 
 **错误描述**
 
-读操作失败。
+读电源配置值失败。
 
 **可能原因**
 
-节点不存在。
+设备中配置文件power_config.json的配置节点不存在
 
 **处理步骤**
 
-请检查入参节点是否存在。
+请参考电源配置接口的参数说明确认有效节点取值，检查入参节点是否在有效范围内。
 
-## 4900601 写电源配置节点失败
+## 4900601 写电源配置值失败
 
 **错误信息**
 
@@ -137,12 +139,12 @@ Failed to write the power configuration value.
 
 **错误描述**
 
-写操作失败。
+写电源配置值失败。
 
 **可能原因**
 
-节点不存在。
+设备中配置文件power_config.json的配置节点不存在
 
 **处理步骤**
 
-请检查入参节点是否存在。
+请参考电源配置接口的参数说明确认有效节点取值，检查入参节点是否在有效范围内。

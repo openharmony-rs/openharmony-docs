@@ -10,25 +10,46 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 15100001 Subscription Count Reaches the Limit
+## 15100000 Invalid Parameter
 
 **Error Message**
 
-Over max  limits.
+Parameter error. Possible causes:
+1. Mandatory parameters are left unspecified.
+2. Incorrect parameter types.
+3. Parameter verification failed.
 
 **Description**
 
-The number of subscriptions or the number of opened result sets has reached the limit.
+The parameter is invalid.
 
 **Possible Causes**
 
-1.  The number of subscriptions made through **on()** reaches 8.
-2.  The number of result sets opened by **getResultSet()** reaches 8.
+The input arguments do not meet the API requirements, such as the value range, length, and format.
 
 **Solution**
 
-1. Cancel the subscriptions that are not required.
-2. Close the result sets that are no longer required.
+Modify the parameters to values that meet the requirements by referring to the API parameter description.
+
+## 15100001 Subscription Count or Result Set Count Reaches the Limit
+
+**Error Message**
+
+Over max limits.
+
+**Description**
+
+The number of KV store subscriptions or the number of opened result sets reaches the upper limit 8.
+
+**Possible Causes**
+
+1. When the [on('dataChange')](js-apis-distributedKVStore.md#ondatachange) API is called to subscribe to KV store changes, the number of KV store subscriptions exceeds the upper limit 8.
+2. When the [getResultSet](js-apis-distributedKVStore.md#getresultset) API is called to obtain the KV store result set, the number of opened result sets in the KV store exceeds the upper limit 8.
+
+**Solution**
+
+1. If the number of KV store subscriptions exceeds the maximum when the [on('dataChange')](js-apis-distributedKVStore.md#ondatachange) API is called, call the [off('dataChange')](js-apis-distributedKVStore.md#offdatachange) API to cancel some KV store subscriptions and try again.
+2. If the number of opened KV store result sets exceeds the maximum when the [getResultSet](js-apis-distributedKVStore.md#getresultset) API is called, call the [closeResultSet](js-apis-distributedKVStore.md#closeresultset) API to close some result sets and try again.
 
 ## 15100002 Parameter Configuration Changes
 
@@ -38,7 +59,7 @@ Open existed database with changed options.
 
 **Description**
 
-The **options** configuration changes when **getKVStore()** is called to obtain a KV store.
+When the [getKVStore](js-apis-distributedKVStore.md#getkvstore) API is called to open a created KV store, the passed **options** parameter is inconsistent with that used for creating the KV store.
 
 **Possible Causes**
 
@@ -59,7 +80,7 @@ Database corrupted.
 
 **Description**
 
-The target KV store is corrupted.
+This error code is returned when the KV store is corrupted during the call of APIs such as [put](js-apis-distributedKVStore.md#put), [delete](js-apis-distributedKVStore.md#delete), [get](js-apis-distributedKVStore.md#get) and [sync](js-apis-distributedKVStore.md#sync).
 
 **Possible Causes**
 
@@ -78,7 +99,7 @@ Not found.
 
 **Description**
 
-Related data is not found when **deleteKVStore()**, **sync()**, or **get()** is called.
+Related data is not found when [deleteKVStore](js-apis-distributedKVStore.md#deletekvstore), [sync](js-apis-distributedKVStore.md#sync), or [get](js-apis-distributedKVStore.md#get) is called.
 
 **Possible Causes**
 
@@ -111,3 +132,23 @@ The KV store or result set is closed manually before the operation.
 
 1. Obtain the KV store and try again.
 2. Obtain the result set and try again.
+
+## 15100006 Failed to Update the KV Store Encryption Key
+
+**Error Message**
+
+Failed to update the key.
+
+**Description**
+
+Failed to call the [rekey](js-apis-distributedKVStore.md#rekey) API to update the KV store encryption key.
+
+**Possible Causes**
+
+1. When the [getKVStore](js-apis-distributedKVStore.md#getkvstore) API is called to create a KV store, the encryption mode is not used (that is, the value of **encrypt** is **false**).
+2. An internal error occurs during the key update.
+
+**Solution**
+
+1. Before calling the [rekey](js-apis-distributedKVStore.md#rekey) API to update the encryption key, ensure that the current KV store is encrypted. That is, when the [getKVStore](js-apis-distributedKVStore.md#getkvstore) API is called to create a KV store, set **encrypt** to **true**.
+2. Update the key again.

@@ -14,6 +14,7 @@
     - [Interface (AudioDebuggingManager)](arkts-apis-audio-AudioDebuggingManager.md)
     - [Interface (AudioDeviceEnhanceManager)](arkts-apis-audio-AudioDeviceEnhanceManager.md)
     - [Interface (AudioManager)](arkts-apis-audio-AudioManager.md)
+    - [Interface (AudioRecordingManager)](arkts-apis-audio-AudioRecordingManager.md)
     - [Interface (AudioRenderer)](arkts-apis-audio-AudioRenderer.md)
     - [Interface (AudioRoutingManager)](arkts-apis-audio-AudioRoutingManager.md)
     - [Interface (AudioSessionManager)](arkts-apis-audio-AudioSessionManager.md)

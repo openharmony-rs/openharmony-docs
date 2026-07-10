@@ -28,7 +28,7 @@ typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescri
 | -- | -- |
 | uint8_t bLength | 该描述符的大小，单位为字节。 |
 | uint8_t bDescriptorType | 描述符类型。 |
-| uint16_t wTotalLength | 该配置描述符的总长度，包含配置、接口、端点和特定于类或供应商的描述符。 |
+| uint16_t wTotalLength | 该配置描述符的总长度，包含配置、接口、端点和特定于类或供应商的描述符，单位：字节。 |
 | uint8_t bNumInterfaces | 该配置所支持的接口数量。 |
 | uint8_t bConfigurationValue | 设置配置所需要的参数，用来选择当前配置。 |
 | uint8_t iConfiguration | 描述该配置的字符串描述符的索引。 |

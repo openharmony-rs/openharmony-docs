@@ -148,7 +148,7 @@ ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* s
 | 参数项 | 描述 |
 | -- | -- |
 | const char* webTag | Web组件名称。 |
-|  size_t* size | 出参，端口数量。 |
+| size_t* size | 出参，端口数量。 |
 
 **返回：**
 
@@ -170,7 +170,7 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 | 参数项           | 描述                |
 |---------------|--------------------|
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | 发送Message端口结构体指针数组。 |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | Post Message端口结构体指针数组。 |
 | size_t size   | 端口数量。              |
 
 ### postWebMessage()

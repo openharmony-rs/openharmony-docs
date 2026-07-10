@@ -26,6 +26,20 @@
 | TYPE_DIALOG<sup>10+</sup>           | 16      | 表示模态窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | TYPE_MAIN<sup>18+</sup>             | 32      | 表示应用主窗口。<br>此窗口类型不支持在创建窗口时使用。                               |
 
+## WindowPostureMode
+
+窗口姿态模式枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| DESKTOP_MODE | 0 | 桌面模式。当满足以下条件时处于桌面模式：<br>1. 当前设备折叠状态为半折叠状态（[FoldStatus.FOLD_STATUS_HALF_FOLDED](js-apis-display.md#foldstatus10)）；<br>2. 窗口所在屏幕通过[getLiveCreaseRegion()](js-apis-display.md#getlivecreaseregion20)获取的creaseRects宽度大于高度；<br>3. 窗口模式为全屏模式（[WindowStatusType.FULL_SCREEN](#windowstatustype11)）且窗口尺寸与屏幕尺寸相同。 |
+
 ## AvoidAreaType<sup>7+</sup>
 
 窗口内容的避让区域的类型枚举。
@@ -38,8 +52,10 @@
 | TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。当三键导航显示时，底部导航避让区域始终存在。<!--Del-->OpenHarmony各设备不支持此能力。<!--DelEnd--> <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域<!--Del-->或工具栏区域。当前工具栏仅Car设备支持<!--DelEnd-->。当三键导航显示时，底部导航避让区域始终存在。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_FLOAT_NAVIGATION | 5    | 表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**系统能力：** SystemCapability.Window.SessionManager<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。|
+
+<!--RP13--><!--RP13End-->
 
 ## SplitRatioPreference
 
@@ -60,10 +76,6 @@
 | EQUAL                            | 0    | 表示系统为主分屏和次分屏窗口分配同样大小的窗口比例。<br>未指定字段值时该字段为默认值。 |
 | PRIMARY_DOMINANT                 | 1    | 表示系统为主分屏窗口分配当前设备所允许的较大可用比例。 |
 | SECONDARY_DOMINANT               | 2    | 表示系统为次分屏窗口分配当前设备所允许的较大可用比例。 |
-
-<!--RP13-->
-
-<!--RP13End-->
 
 ## Orientation<sup>9+</sup>
 

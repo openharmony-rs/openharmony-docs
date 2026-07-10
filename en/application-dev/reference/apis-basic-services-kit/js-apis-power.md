@@ -105,7 +105,7 @@ Checks whether the device is in standby mode.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 

@@ -8,7 +8,39 @@
 
 ## Overview
 
-Defines the APIs for subscribing to and unsubscribing from common events and enumerates the error codes.
+Defines key operation functions for publishing, subscribing to, and unsubscribing from common events, event callback data access, and ordered event control, enumerates error codes, and defines core data types.
+
+**APIs used in combination**
+
+This module provides APIs for three processes: subscription, publishing, and ordered event processing.
+
+**Combination 1: subscribing to and processing common events**
+
+1. Call **OH_CommonEvent_CreateSubscribeInfo** to create subscriber information, declare the name of the event to be subscribed to, and set the publisher permissions and package name as required to filter the event source.
+2. Call **OH_CommonEvent_CreateSubscriber** to create a subscriber and register the callback function for receiving events. Then, call **OH_CommonEvent_Subscribe** to subscribe to a common event. After the subscription takes effect, wait for event delivery in the callback.
+3. When the event is triggered, obtain the event name, code, data, and publisher's package name from the callback parameter **CommonEvent_RcvData**, and then process the service logic.
+4. When the subscription is no longer needed, call **OH_CommonEvent_UnSubscribe** to unsubscribe from the event and release related resources.
+
+**Combination 2: publishing a common event that carries additional information**
+
+1. Call **OH_CommonEvent_CreatePublishInfo** to create a common event property object, and set the code, data, subscriber package name, subscriber permission, and additional information as required.
+2. Call **OH_CommonEvent_PublishWithInfo** to publish an event that carries the property.
+
+> If no additional property is required, you can call **OH_CommonEvent_Publish(event)** to publish the event.
+
+**Combination 3: processing ordered common events**
+
+Ordered common events are controlled by the subscriber handle in the subscription callback. The subscriber handle must be saved when the subscriber is created so that it can be used in the callback.
+
+1. When publishing common events, use **OH_CommonEvent_CreatePublishInfo(true)** to create the ordered event property. The events will be delivered to subscribers in sequence based on their priorities.
+2. The subscriber can use **OH_CommonEvent_SetCodeToSubscriber** and **OH_CommonEvent_SetDataToSubscriber** in the callback to set the code and data to be passed to subsequent subscribers. The subscriber can use **OH_CommonEvent_AbortCommonEvent** to mark the event as aborted and stop delivering the event to subsequent subscribers.
+3. After the callback processing is complete, you must call **OH_CommonEvent_FinishCommonEvent** to end the processing. Otherwise, the event cannot be delivered to subsequent subscribers.
+
+Note that this module follows the typical lifecycle of creation, use, and release.
+
+- **Subscriber object**: **CommonEvent_SubscribeInfo** and **CommonEvent_Subscriber**. The subscription takes effect after being created. After the subscription is canceled, the subscriber and subscription information must be destroyed in sequence to prevent memory leak.
+- **Publisher object**: **CommonEvent_PublishInfo** and **CommonEvent_Parameters**. After the publishing is complete, destroy the publishing information and additional information separately. They are independent of each other.
+
 
 **Library**: libohcommonevent.so
 
@@ -35,7 +67,7 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 | Name| typedef Keyword| Description|
 |----|------------|----|
 | void  | CommonEvent_Subscriber    | Information about **CommonEvent_Subscriber**.  |
-| void  | CommonEvent_Parameters    | Additional information about **CommonEvent_Subscriber**. |
+| void  | CommonEvent_Parameters    | Additional information about **CommonEvent_Parameters**. |
 
 ### Enums
 
@@ -57,7 +89,7 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 | [CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_subscribe) | - | Subscribes to a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_unsubscribe) | - | Unsubscribes from a common event.|
 | [const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_geteventfromrcvdata) | - | Obtains the name of a common event.|
-| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | Obtains the result data (integer type) of a common event.|
+| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | Obtains the result code (integer type) of a common event.|
 | [const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getdatastrfromrcvdata) | - | Obtains the result data (string type) of a common event.|
 | [const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getbundlenamefromrcvdata) | - | Obtains the bundle name of a common event.|
 | [const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getparametersfromrcvdata) | - | Obtains the additional information of a common event.|
@@ -127,7 +159,7 @@ Enumerates the error codes.
 | COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | Failed to send IPC requests.|
 | COMMONEVENT_ERR_INIT_UNDONE = 1500008 | Services not initialized.|
 | COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | System error.|
-| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | The number of subscribers exceeds the upper limit.|
+| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | The number of subscribers in the process exceeds the system limit (200).|
 | COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | Failed to allocate memory.|
 
 
@@ -170,7 +202,7 @@ Creates the subscriber information.
 | Name| Description|
 | -- | -- |
 | const char* events[] | Pointer to the common events. The valid number of subscribed common events is the smaller value between **eventsNum** and **events[]**.|
-| int32_t eventsNum | Number of common events to subscribe.|
+| int32_t eventsNum | Number of common events to subscribe. The value is the length of the **events** array.|
 
 **Returns**
 
@@ -317,7 +349,7 @@ Subscribes to a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers exceeds 200.<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory.|
+| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers in the process exceeds the system limit (200).<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory.|
 
 ### OH_CommonEvent_UnSubscribe()
 
@@ -367,7 +399,7 @@ Obtains the name of a common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Event name obtained.|
+| const char* | Name of a common event.|
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
@@ -392,7 +424,7 @@ Obtains the result code (integer type) of a common event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code obtained.|
+| int32_t | Result code (integer type) of a common event.|
 
 ### OH_CommonEvent_GetDataStrFromRcvData()
 
@@ -417,7 +449,7 @@ Obtains the result data (string type) of a common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Result data obtained.|
+| const char* | Result data (string type) of a common event.|
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
@@ -492,7 +524,7 @@ Creates a property object of a common event.
 
 | Type                          | Description|
 |------------------------------| -- |
-| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | Returns the property object if the operation is successful; returns **null** otherwise.|
+| [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* | Returns the property object if the operation is successful; returns **NULL** otherwise.|
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
@@ -558,7 +590,7 @@ Sets permissions for a common event.
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
 | const char* permissions[] | Pointer to the array of permission names. The valid number of permissions is the smaller value between **num** and **permissions[]**.|
-| int32_t num | Number of permissions.|
+| int32_t num | Number of permission names. The value is the length of the **permissions** array.|
 
 **Returns**
 
@@ -595,7 +627,7 @@ Sets the result code (integer type) of a common event.
 ### OH_CommonEvent_SetPublishInfoData()
 
 ```c
-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)
+CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info, const char* data, size_t length)
 ```
 
 **Description**
@@ -610,8 +642,8 @@ Sets the result data (string type) of a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Length of the result data.|
+| const char* data | Pointer to the result data to set. The value is a string. The valid data length is the smaller value between **length** and **data**.|
+| size_t length | Length of the result data. The value is the length of the **data** string.|
 
 **Returns**
 
@@ -637,7 +669,7 @@ Sets the additional information of a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| CommonEvent_Parameters* param | Pointer to the additional information to set.|
+| [CommonEvent_Parameters](#variables)* param | Pointer to the additional information to set.|
 
 **Returns**
 
@@ -661,7 +693,7 @@ Creates an additional information object of a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_Parameters](#variables)*| Returns additional information of the common event if operation is successful; returns **null** otherwise.|
+| [CommonEvent_Parameters](#variables)*| Returns additional information of the common event if operation is successful; returns **NULL** otherwise.|
 
 ### OH_CommonEvent_DestroyParameters()
 
@@ -727,7 +759,7 @@ Obtains the int data with a specific key from the additional information of a co
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| const int defaultValue | Default value.|
+| const int defaultValue | Default value, which is returned when the specified key does not exist.|
 
 **Returns**
 
@@ -781,7 +813,7 @@ Obtains the int array with a specific key from the additional information of a c
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| int** array | Double pointer to the int array to obtain.|
+| int** array | Output parameter, which is used to receive the int array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
 
 **Returns**
 
@@ -836,7 +868,7 @@ Obtains the long data with a specific key from the additional information of a c
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| const long defaultValue | Default value.|
+| const long defaultValue | Default value, which is returned when the specified key does not exist.|
 
 **Returns**
 
@@ -890,7 +922,7 @@ Obtains the long array with a specific key from the additional information of a 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| long** array | Double pointer to the long array to obtain.|
+| long** array | Output parameter, which is used to receive the long array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
 
 **Returns**
 
@@ -945,7 +977,7 @@ Obtains the Boolean data with a specific key from the additional information of 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| const bool defaultValue | Default value.|
+| const bool defaultValue | Default value, which is returned when the specified key does not exist.|
 
 **Returns**
 
@@ -999,7 +1031,7 @@ Obtains the Boolean array with a specific key from the additional information of
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| bool** array | Double pointer to the Boolean array to obtain.|
+| bool** array | Output parameter, which is used to receive the bool array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
 
 **Returns**
 
@@ -1054,7 +1086,7 @@ Obtains the character data with a specific key from the additional information o
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| const char defaultValue | Default value.|
+| const char defaultValue | Default value, which is returned when the specified key does not exist.|
 
 **Returns**
 
@@ -1108,7 +1140,7 @@ Obtains the character array with a specific key from the additional information 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| char** array | Double pointer to the character array to obtain.|
+| char** array | Output parameter, which is used to receive the character array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
 
 **Returns**
 
@@ -1147,7 +1179,7 @@ Sets the character array with a specific key for the additional information of a
 ### OH_CommonEvent_GetDoubleFromParameters()
 
 ```c
-double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key,const double defaultValue)
+double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key, const double defaultValue)
 ```
 
 **Description**
@@ -1163,7 +1195,7 @@ Obtains the double data with a specific key from the additional information of a
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| const double defaultValue | Default value.|
+| const double defaultValue | Default value, which is returned when the specified key does not exist.|
 
 **Returns**
 
@@ -1217,7 +1249,7 @@ Obtains the double array with a specific key from the additional information of 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| double** array | Double pointer to the double array to obtain.|
+| double** array | Output parameter, which is used to receive the double array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
 
 **Returns**
 
@@ -1503,7 +1535,7 @@ Obtains the result data (string type) of an ordered common event.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the result data obtained if the operation is successful; returns **null** otherwise.|
+| const char* | Returns the result data obtained if the operation is successful; returns **NULL** otherwise.|
 
 ### OH_CommonEvent_SetDataToSubscriber()
 
@@ -1524,7 +1556,7 @@ Sets the result data (string type) of an ordered common event.
 | -- | -- |
 | [CommonEvent_Subscriber](#variables)* subscriber| Pointer to the common event subscriber.|
 | const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Data length.|
+| size_t length | Length of the data to be transferred, in bytes. The value is the length of the **data** string.|
 
 **Returns**
 

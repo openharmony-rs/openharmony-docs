@@ -43,7 +43,7 @@ Shuts down the system.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -83,7 +83,7 @@ Reboots a device.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -124,7 +124,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -166,7 +166,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -206,7 +206,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -253,7 +253,7 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -296,7 +296,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
@@ -337,7 +337,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -378,7 +378,7 @@ This API takes effect only when the device is active. For details about the devi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
@@ -419,7 +419,7 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -457,7 +457,7 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -498,7 +498,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -549,7 +549,7 @@ Obtains the power configuration based on the specified scenario.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -595,7 +595,7 @@ Sets the power configuration based on the specified scenario.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |

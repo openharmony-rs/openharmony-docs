@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 - ArkTS API<!--arkts-arkts-->
   - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
@@ -25,7 +25,7 @@
     - [Interface (ConcatArray)](arkts-apis-arkts-collections-ConcatArray.md)
     - [Types](arkts-apis-arkts-collections-Types.md)
   - [@arkts.lang (ArkTS语言基础能力)](js-apis-arkts-lang.md)
-  - [@arkts.math.Decimal (高精度数学库Decimal)](js-apis-arkts-decimal.md)
+  - [@arkts.math.Decimal (任意精度数学库Decimal)](js-apis-arkts-decimal.md)
   - @arkts.utils (ArkTS工具库)<!--js-apis-arkts-utils-->
     - [模块描述](arkts-apis-arkts-utils.md)
     - [Functions](arkts-apis-arkts-utils-f.md)

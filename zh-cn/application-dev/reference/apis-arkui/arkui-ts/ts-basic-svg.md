@@ -14,7 +14,7 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 
 >  **说明：**
 >
->  基础标签支持[通用属性](../arkui-js/js-components-svg-common-attributes.md)：id、fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、opacity、transform、clip-path、clip-rule，其中transform属性只支持平移。
+>  基础标签支持[通用属性](../arkui-js/js-components-svg-common-attributes.md)：id、fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、opacity、transform、clip-path、clip-rule，其中默认情况下transform属性仅支持平移。
 >
 >  从API version 21开始，当[Image](./ts-basic-components-image.md)组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，transform属性支持平移、旋转、缩放、倾斜、矩阵变换，详细请参考[SVG标签解析能力增强](ts-image-svg2-capabilities.md)。
 
@@ -26,7 +26,7 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 | \<line\> | 线 | x1：起点x轴坐标；<br> y1：起点y轴坐标；<br> x2：终点x轴坐标；<br> y2：终点y轴坐标。 |
 | \<polyline\> | 折线 | points：顶点坐标。 |
 | \<polygon\> | 多边形 | points：顶点坐标。 |
-| \<path\> | 路径 | d：路径。 |
+| \<path\> | 路径 | d：路径数据，用于定义路径形状。常用命令包括M（移动到）、L（画线到）、H（水平线）、V（垂直线）、C（三次贝塞尔曲线）、S（平滑三次贝塞尔曲线）、Q（二次贝塞尔曲线）、T（平滑二次贝塞尔曲线）、A（弧形）、Z（闭合路径），坐标参数以空格或逗号分隔。 |
 
 SVG基础形状标签与支持的通用属性的示例如下。
 
@@ -132,12 +132,12 @@ struct Index {
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
 | \<filter\> | 定义滤镜 | x：滤镜区域x轴偏移分量，默认值为0； <br>y：滤镜区域y轴偏移分量，默认值为0； <br>width：滤镜区域宽； <br>height：滤镜区域高。 <br>**说明**：从API version 21开始，当Image组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，默认值参考[filter参数异常时默认效果变更](ts-image-svg2-capabilities.md#filter参数异常时默认效果变更)。|
-| \<feOffset\> | 定义沿x、y方向偏移距离 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入，dx和dy。 |
-| \<feGaussianBlur\> | 定义高斯模糊效果 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入，edgemode和stddeviation。 |
-| \<feBlend\> | 定义两张输入图像混合模式 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result），mode。 |
+| \<feOffset\> | 定义沿x、y方向偏移距离 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>dx：x轴方向偏移距离；<br>dy：y轴方向偏移距离。 |
+| \<feGaussianBlur\> | 定义高斯模糊效果 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>edgemode：边缘模式；<br>stddeviation：标准偏差，控制模糊程度。 |
+| \<feBlend\> | 定义两张输入图像混合模式 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>mode：混合模式，指定两张图像的混合方式（normal、multiply、screen、darken、lighten）。 |
 | \<feComposite\> | 定义两张输入图像合成方式。当operator为arithmetic时，合成算法为：result = k1 * in * in2 + k2 * in + k3 * in2 + k4；当operator为其他值时，使用对应的[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)合成方式。 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>operator( over \| in \| out \| atop \| xor \| lighter \| arithmetic )：定义两张输入图像的合成方式，非arithmetic值对应[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)；<br>k1：arithmetic合成算法中in与in2乘积的系数；<br>k2：arithmetic合成算法中in的系数；<br>k3：arithmetic合成算法中in2的系数；<br>k4：arithmetic合成算法中的常量偏移。 |
-| \<feColorMatrix\> | 基于转换矩阵对颜色进行变换 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>type ( matrix \| saturate \| hueRotate)、 values。 |
-| \<feFlood\> | 定义填充颜色和透明度 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；flood-color和flood-opacity。 |
+| \<feColorMatrix\> | 基于转换矩阵对颜色进行变换 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>type：变换类型，matrix表示使用4x5矩阵变换，saturate表示饱和度调整，hueRotate表示色相旋转；<br>values：变换值，随type不同格式不同。 |
+| \<feFlood\> | 定义填充颜色和透明度 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>flood-color：填充颜色，支持颜色值格式（如#rgb、#rrggbb、rgb()、rgba()等）；<br>flood-opacity：填充透明度。 |
 
 ### 遮罩
 
@@ -148,10 +148,10 @@ struct Index {
 
 ### 裁剪
 
-裁剪标签：\<clippath\>
+裁剪标签：\<clipPath\>
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<clippath\> | 定义一条剪切路径 | x：裁剪区域x轴偏移分量；<br>y：裁剪区域y轴偏移分量； <br>width：裁剪区域宽； <br>height：裁剪区域高。 |
+| \<clipPath\> | 定义一条剪切路径 | x：裁剪区域x轴偏移分量；<br>y：裁剪区域y轴偏移分量； <br>width：裁剪区域宽； <br>height：裁剪区域高。 |
 
 ### 图案
 
@@ -166,9 +166,9 @@ struct Index {
 
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<linearGradient\> | 线性渐变 | x1、y1、x2、y2 |
-| \<radialGradient\> | 放射渐变 | fx、fy、cx、cy、r |
-| \<stop\> | 色阶 | offset、stop-color |
+| \<linearGradient\> | 线性渐变 | x1：渐变起点x轴坐标；<br>y1：渐变起点y轴坐标；<br>x2：渐变终点x轴坐标；<br>y2：渐变终点y轴坐标。 |
+| \<radialGradient\> | 放射渐变 | fx：焦点x轴坐标；<br>fy：焦点y轴坐标；<br>cx：圆心x轴坐标；<br>cy：圆心y轴坐标；<br>r：半径。 |
+| \<stop\> | 色阶 | offset：色阶偏移量，表示色阶在渐变中的位置；<br>stop-color：色阶颜色。 |
 
 ## 静态图片
 
@@ -187,8 +187,8 @@ struct Index {
 
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<animate\> | 定义元素属性动画 | attributeName：定义动画属性，取值：( cx \| cy \| r \| fill \| stroke \| fill-opacity \| stroke-opacity \| stroke-miterlimit )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。曲线内的两个控制点格式为x1&nbsp;y1&nbsp;x2&nbsp;y2。比如0.5&nbsp;0&nbsp;0.5&nbsp;1;&nbsp;0.5&nbsp;0&nbsp;0.5&nbsp;1;0.5&nbsp;0&nbsp;0.5&nbsp;1|
-| \<animateTransform\> | 定义元素变形动画 | attributeName：定义动画属性，取值：transform；<br/>type：属性定义转换类型取值：( translate \| scale \| rotate \| skewX \| skewY )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。曲线内的两个控制点格式为x1&nbsp;y1&nbsp;x2&nbsp;y2。比如0.5&nbsp;0&nbsp;0.5&nbsp;1;&nbsp;0.5&nbsp;0&nbsp;0.5&nbsp;1;0.5&nbsp;0&nbsp;0.5&nbsp;1|
+| \<animate\> | 定义元素属性动画 | attributeName：定义动画属性，取值：( cx \| cy \| r \| fill \| stroke \| fill-opacity \| stroke-opacity \| stroke-miterlimit )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
+| \<animateTransform\> | 定义元素变形动画 | attributeName：定义动画属性，取值：transform；<br/>type：属性定义转换类型取值：( translate \| scale \| rotate \| skewX \| skewY )；<br>begin：定义动画起始时间；<br> dur：定义动画持续时间；<br>from：定义起始值；<br>to：定义结束值；<br>fill：定义动画结尾状态；<br> calcMode：定义插值；<br>keyTimes：设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。<br> values：设置一组动画的变化值。格式为value1;value2;value3。<br> keySplines：与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。每条贝塞尔曲线的两个控制点格式为x1 y1 x2 y2（坐标之间用空格分隔）。比如0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1。|
 
 ## 其它
 
@@ -200,8 +200,8 @@ struct Index {
 
 | 元素 | 说明 | 特有属性 | 通用属性 |
 | :-------- | :-------- | :-------- | :-------- |
-| \<svg\> | 容器，定义一个svg片段 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度； <br>height：高度；<br> viewBox：视口| fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
-| \<g\> | 分组 | width：宽度；<br> height：高度。<br>x、y轴偏移分量：可通过transform属性的translate(x, y)实现，参考[SVG标签解析能力增强](ts-image-svg2-capabilities.md)。 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
+| \<svg\> | 容器，定义一个svg片段 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度； <br>height：高度；<br> viewBox：视口大小和位置（定义SVG的可见区域与坐标系比例）。| fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
+| \<g\> | 分组 | width：宽度；<br> height：高度。<br>x：x轴偏移分量；<br>y：y轴偏移分量；可通过transform属性的translate(x, y)实现，参考[SVG标签解析能力增强](ts-image-svg2-capabilities.md)。 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 | \<use\> | 复用已有元素 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> href：目标元素 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
-| \<defs\> | 定义可复用对象 |无特有属性 |fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
+| \<defs\> | 定义可复用对象 | 无特有属性 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 

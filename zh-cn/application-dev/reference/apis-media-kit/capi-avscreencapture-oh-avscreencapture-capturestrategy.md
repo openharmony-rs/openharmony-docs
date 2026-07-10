@@ -14,6 +14,10 @@ typedef struct OH_AVScreenCapture_CaptureStrategy OH_AVScreenCapture_CaptureStra
 
 通过OH_AVScreenCapture_CaptureStrategy设置录屏策略。
 
+录屏策略需在录屏启动之前通过OH_AVScreenCapture_SetCaptureStrategy接口设置，录屏启动后设置将不生效。
+
+支持开发者根据业务需求灵活配置录屏捕获行为，适用于需要定制录屏策略的场景，可提升录屏功能的适用性和可控性。
+
 **起始版本：** 20
 
 **相关模块：** [AVScreenCapture](capi-avscreencapture.md)

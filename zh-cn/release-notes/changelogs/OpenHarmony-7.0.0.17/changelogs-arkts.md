@@ -61,15 +61,15 @@ struct Index {
           let type = new util.types();
           
           // 输出true，行为是正确的，该变更无影响。
-          type.isAsyncFunction(this.testFunction1);
-          type.isAsyncFunction(model.testFunction1);
+          console.info(`${type.isAsyncFunction(this.testFunction1)}`);
+          console.info(`${type.isAsyncFunction(model.testFunction1)}`);
           // 输出AsyncFunction，行为是正确的，该变更无影响。
           console.info(this.testFunction1.constructor.name);
           console.info(model.testFunction1.constructor.name);
           
           // 输出false，变更后输出true。
-          type.isAsyncFunction(this.testFunction2);
-          type.isAsyncFunction(model.testFunction2);
+          console.info(`${type.isAsyncFunction(this.testFunction2)}`);
+          console.info(`${type.isAsyncFunction(model.testFunction2)}`);
           // 输出Function，变更后输出AsyncFunction。
           console.info(this.testFunction2.constructor.name);
           console.info(model.testFunction2.constructor.name);

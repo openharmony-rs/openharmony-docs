@@ -56,7 +56,7 @@ Try again later or restart the device.
 
 ## 1400004 Parameter Error
 **Error Message**<br>
-Parameter error. 
+Parameter error.
 
 **Description**<br>
 This error code is reported when an input parameter is incorrect.

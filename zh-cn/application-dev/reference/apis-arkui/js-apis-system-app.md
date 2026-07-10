@@ -34,7 +34,7 @@ static getInfo(): AppResponse
 
 **返回值：**
 
-| 参数类型 | 说明 |
+| 类型 | 说明 |
 | -------- | -------- |
 | [AppResponse](#appresponse) | 定义AppResponse信息。 |
 

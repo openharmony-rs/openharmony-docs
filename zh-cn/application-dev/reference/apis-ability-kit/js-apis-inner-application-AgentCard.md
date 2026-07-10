@@ -32,7 +32,7 @@ import { common } from '@kit.AbilityKit';
 
 | 名称                  | 类型                                                     | 只读 | 可选 | 说明                                      |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
-| agentId | string | 否 | 否 | Agent的唯一标识符，在同一个应用下面agentId不可重复。 |
+| agentId | string | 否 | 否 | Agent的唯一标识符，在同一个应用中，agentId不可重复。 |
 | name                  | string                                                   | 否   | 否   | Agent的名称。使用方一般用于在UI界面中展示给用户，例如"Recipe Assistant"（食谱助手）。 |
 | description           | string                                                   | 否   | 否   | Agent功能的描述。该描述应清晰说明Agent的核心功能和用途，帮助用户理解Agent能做什么，例如"帮助用户搜索食谱、规划菜单并提供烹饪建议"。 |
 | type  | [agentConstant.AgentCardType](js-apis-app-agent-agentConstant.md#agentconstantagentcardtype) | 否 | 是 | AgentCard的类型。<!--Del-->当[agentConstant.AgentCardType](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)的枚举值为LOW_CODE时，对应的应用必须是系统应用，否则Agent卡片无法注册、安装或更新。<!--DelEnd-->如果未指定，默认为APP类型。 <br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
