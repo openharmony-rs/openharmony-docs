@@ -2068,14 +2068,14 @@ SymbolSpan样式选项。
 | 名称                       | 类型                                      |  只读  | 可选   | 说明                           |
 | ------------------------ | ---------------------------------------- | ---- | ---------|------------------------------- |
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是    | 文本颜色。<br> 默认值：$r('sys.color.font_primary')。当[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle优先级高于fontColor。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| fontSize                |  [Length](ts-types.md#length) \| number  | 否 | 是    | 设置字体大小，Length为number类型时，使用fp单位。number类型取值范围：(0, +∞)。设置为0或负值时，按默认值处理。字体默认大小为16fp。不支持设置百分比字符串。|
+| fontSize                |  [Length](ts-types.md#length) \| number  | 否 | 是    | 设置字体大小，Length为number类型时，使用fp单位。number类型取值范围：(0, +∞)。设置为0或负值时，按默认值处理。字体默认大小为16fp。不支持设置百分比字符串。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fontStyle                | [FontStyle](ts-appendix-enums.md#fontstyle) | 否 | 是    | 字体样式。<br/>默认值：FontStyle.Normal。          <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| fontWeight               | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否 | 是    | 字体粗细。<br>number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围时按默认值400生效。<br>string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"分别对应FontWeight中相应的枚举值。<br>默认值：FontWeight.Normal。|
+| fontWeight               | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否 | 是    | 字体粗细。<br>number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围时按默认值400生效。<br>string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"分别对应FontWeight中相应的枚举值。<br>默认值：FontWeight.Normal。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fontFamily               | [ResourceStr](ts-types.md#resourcestr) | 否 | 是    | 设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。默认字体:'HarmonyOS Sans'。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | decoration               | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface) | 否 | 是    | 设置文本装饰线的样式、颜色和粗细。<br/>type默认值：TextDecorationType.None <br/>color默认值：跟随字体颜色。<br/>style默认值：TextDecorationStyle.SOLID <br/>thicknessScale默认值：1.0 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textShadow<sup>11+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 否 | 是    | 设置文字阴影效果。<br>默认值：undefined，不设置文字阴影效果。<br>该接口支持以数组形式入参，实现多重文字阴影。<br>**说明：**<br>仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| lineHeight<sup>12+</sup>    | number \| string \| [Resource](ts-types.md#resource) | 否 | 是    | 设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。|
-| letterSpacing<sup>12+</sup> | number \| string             | 否 | 是    | 设置文本字符间距，默认单位为fp。默认值：0。当取值为负值时，文字会发生压缩。|
+| lineHeight<sup>12+</sup>    | number \| string \| [Resource](ts-types.md#resource) | 否 | 是    | 设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| letterSpacing<sup>12+</sup> | number \| string             | 否 | 是    | 设置文本字符间距，默认单位为fp。默认值：0。当取值为负值时，文字会发生压缩。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
@@ -2192,9 +2192,9 @@ RichEditor span信息。
 | onAppear    | [MenuOnAppearCallback](#menuonappearcallback12) | 否 | 是    | 自定义选择菜单弹出时回调。若需在菜单弹出时执行自定义逻辑（如记录用户操作、动态调整菜单内容），可传入此参数；不传入则无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | onDisappear | Callback\<void\>  | 否 | 是    | 自定义选择菜单关闭时回调。若需在菜单关闭时执行自定义逻辑（如恢复界面状态、清理临时数据），可传入此参数；不传入则无额外回调触发。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | menuType<sup>13+</sup> | [MenuType](ts-text-common.md#menutype13枚举说明) | 否 | 是 | 自定义选择菜单类型。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>默认值：MenuType.SELECTION_MENU。 |
-| onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。若需在菜单显示时执行自定义逻辑，可传入此参数；不传入则无回调触发。 |
-| onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。若需在菜单隐藏时执行自定义逻辑，可传入此参数；不传入则无回调触发。 |
-| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。<br>从API版本26.0.0开始，该参数在Text组件中也生效。<br>不传入时，预览菜单使用默认配置。 |
+| onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。若需在菜单显示时执行自定义逻辑，可传入此参数；不传入则无回调触发。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。若需在菜单隐藏时执行自定义逻辑，可传入此参数；不传入则无回调触发。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。<br>从API版本26.0.0开始，该参数在Text组件中也生效。<br>不传入时，预览菜单使用默认配置。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewMenuOptions<sup>18+</sup>
 
