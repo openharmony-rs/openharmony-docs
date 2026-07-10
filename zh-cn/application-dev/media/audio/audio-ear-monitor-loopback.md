@@ -399,6 +399,7 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset, updateCa
       if (audioLoopback.setReverbPreset(preset)) {
         console.info('Succeeded in setting reverb preset.');
         // ...
+        // 获取当前的混响模式，防止设置失败。
         currentReverbPreset = preset;
       } else {
         console.error('Failed to set reverb preset.');
@@ -422,6 +423,7 @@ async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset, up
       if (audioLoopback.setEqualizerPreset(preset)) {
         console.info('Succeeded in setting equalizer preset.');
         // ...
+        // 获取当前的均衡器类型，防止设置失败。
         currentEqualizerPreset = preset;
       } else {
         console.error('Failed to set equalizer preset.');
