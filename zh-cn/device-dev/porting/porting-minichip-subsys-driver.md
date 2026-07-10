@@ -61,6 +61,7 @@ if (ohos_kernel_type == "liteos_m") {
 
    修改如下：
 
+
    ```json
    { 
        "subsystem": "iothardware", 
