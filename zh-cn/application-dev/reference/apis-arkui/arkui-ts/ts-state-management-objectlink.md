@@ -7,7 +7,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
+<<<<<<< HEAD
 @ObjectLink用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)中，接收[@Observed](./ts-state-management-observed.md)装饰的类的实例，并与父组件中的数据源建立双向数据绑定，适用于在子组件中独立观察并监听嵌套类属性并触发UI刷新的场景。
+=======
+@ObjectLink用于状态管理V1中，接收\@Observed装饰的类的实例，并与父组件中的数据源建立双向数据绑定，适用于在子组件中独立观察并监听嵌套类属性并触发UI刷新的场景。
+>>>>>>> b7c9d17bef7 (fix 8 second and third)
 
 在ArkTS-Dyn中使用时，开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化（ArkTS-Dyn）](../../../ui/state-management/arkts-observed-and-objectlink.md)。
 
@@ -38,7 +42,7 @@ class Info {
 
 @Component
 struct Child {
-  @ObjectLink info: Info; // @ObjectLink接受父组件@State变量
+  @ObjectLink info: Info; // @ObjectLink接收父组件@State变量
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
