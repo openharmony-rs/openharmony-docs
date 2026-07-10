@@ -74,7 +74,7 @@ Describes the water flow item sections.
 
 > **NOTE**
 >
-> After the section information is modified using **splice**, **push**, and **update**, ensure that the total number of child nodes in all sections matches the actual total number of child nodes in the **WaterFlow** component. Any failure to do so may result in layout issues that prevent the **WaterFlow** component from scrolling properly.
+> After the section information is modified using **splice**, **push**, and **update**, ensure that the total number of child components in all sections matches the actual total number of child components in the **WaterFlow** component. Any failure to do so may result in layout issues that prevent the **WaterFlow** component from scrolling properly.
 
 ### constructor
 
@@ -220,7 +220,7 @@ Obtains the main axis size of a specified water flow item based on its index.
 
 | Name  | Type                           | Mandatory  | Description                  |
 | ---- | ----------------------------- | ---- | -------------------- |
-| index | number | Yes   | Index of the target water flow item.<br>Value range: [0, total number of child nodes - 1].|
+| index | number | Yes   | Index of the target water flow item.<br>Value range: [0, total number of child components – 1]|
 
 **Return value**
 
@@ -595,8 +595,8 @@ This event is triggered when either of the preceding indexes changes.
 
 | Name| Type  | Mandatory| Description                                 |
 | ------ | ------ | ---- | ------------------------------------- |
-| first  | number | Yes  | Index of the first item of the component.<br>Value range: [0, total number of child nodes - 1].|
-| last   | number | Yes  | Index of the last item of the component.<br>Value range: [0, total number of child nodes - 1].|
+| first  | number | Yes  | Index of the first item of the component.<br>Value range: [0, total number of child components – 1]|
+| last   | number | Yes  | Index of the last item of the component.<br>Value range: [0, total number of child components – 1]|
 
 The **last** parameter can be used to determine whether to continue to load data. For details, see the processing logic of adding data in advance when the bottom is about to be touched in [Example 3: Using WaterFlowSections](#example-3-using-waterflowsections).
 
@@ -1159,7 +1159,7 @@ struct WaterFlowDemo {
     }
   }
 
-  // Component lifecycle: Initialize data and restore the previous column settings.
+  // Component lifecycle: Initialize the size array and section configuration.
   aboutToAppear() {
     this.setItemSizeArray();
 
@@ -1888,7 +1888,7 @@ struct WaterFlowDemo {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Set the width and height array of the water flow item.
+  // Set the height array of the water flow item.
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemHeightArray.push(this.getSize());
@@ -2015,7 +2015,7 @@ struct WaterFlowContentSizeDemo {
             this.contentHeight = this.scroller.contentSize().height;
           } catch (error) {
             let err: BusinessError = error as BusinessError;
-            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            console.error(`Failed to get contentSize of the waterFlow, code=${err.code}, message=${err.message}`);
           }
         }).margin(5)
       // Display the obtained content size.
@@ -2076,12 +2076,12 @@ class MyNodeController extends NodeController {
 
     // Set the OnWillScroll callback.
     waterFlowEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
-      console.info('onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}');
+      console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
     });
 
     // Set the OnDidScroll callback.
     waterFlowEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+      console.info(`onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}`);
     });
 
     // Set the OnReachStart callback.
@@ -2106,13 +2106,13 @@ class MyNodeController extends NodeController {
 
     // Set the OnScrollFrameBegin callback.
     waterFlowEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState) => {
-      console.info('onScrollFrameBegin offset = ${offset}, state = ${state}');
+      console.info(`onScrollFrameBegin offset = ${offset}, state = ${state}`);
       return undefined;
     });
 
     // Set the OnScrollIndex event.
     waterFlowEvent?.setOnScrollIndex((first: number, last: number) => {
-      console.info('onScrollIndex start = ${first}, end = ${last}');
+      console.info(`onScrollIndex start = ${first}, end = ${last}`);
     });
   }
 }
@@ -2127,7 +2127,7 @@ struct Index {
 
   aboutToAppear() {
     for (let i = 0; i < 30; i++) {
-      this.numbers.push('${i+1}');
+      this.numbers.push(`${i+1}`);
       this.heights.push(70 + Math.floor(Math.random() * 60));
     }
   }
