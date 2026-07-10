@@ -12,7 +12,7 @@ typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
 
 ## 概述
 
-定义二维向量属性指针。
+定义二维向量属性指针，用于在ArkUI原生渲染属性接口中创建、附加、设置、获取和释放二维向量属性。
 
 **起始版本：** 20
 
