@@ -484,7 +484,7 @@ UIAbility被启动后，有如下情况：
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+|
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
