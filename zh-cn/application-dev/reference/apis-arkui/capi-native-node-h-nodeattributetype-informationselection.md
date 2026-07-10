@@ -198,7 +198,7 @@ NODE_DATE_PICKER_MODE = 13007
 
 设置要显示的日期选项列。DatePicker显示不同样式的日期列，支持属性设置，属性重置和属性获取接口。
 
-**使用场景**：根据应用需求选择合适的日期显示模式，如需要精确选择到日时使用年/月/日模式，只需要月份时使用年/月模式等。<br>
+使用场景：根据应用需求选择合适的日期显示模式，如需要精确选择到日时使用年/月/日模式，只需要月份时使用年/月模式等。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -246,7 +246,9 @@ NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK = 13008
 NODE_DATE_PICKER_CAN_LOOP = 13009
 ```
 
-Picker组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。<br>**使用场景**：循环滚动适用于选项有限且希望提供快速选择体验的场景（如月份选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景（如日期选择避免跨年混淆）。<br>
+Picker组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。
+
+使用场景：循环滚动适用于选项有限且希望提供快速选择体验的场景（如月份选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景（如日期选择避免跨年混淆）。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -438,7 +440,9 @@ NODE_TIME_PICKER_END = 14006
 NODE_TIME_PICKER_ENABLE_CASCADE = 14007
 ```
 
-在设置12小时制时，上午和下午的标识会根据小时数自动切换，支持属性设置、重置和获取；在24小时制时，该参数不生效。**使用场景**：适用于需要提供友好的12小时制选择体验的场景，例如用户滚动选择小时时，上午/下午标识自动跟随变化，无需用户手动切换。<br>
+在设置12小时制时，上午和下午的标识会根据小时数自动切换，支持属性设置、重置和获取；在24小时制时，该参数不生效。
+
+使用场景：适用于需要提供友好的12小时制选择体验的场景，例如用户滚动选择小时时，上午/下午标识自动跟随变化，无需用户手动切换。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -462,7 +466,9 @@ NODE_TIME_PICKER_ENABLE_CASCADE = 14007
 NODE_TEXT_PICKER_OPTION_RANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_PICKER = 15000
 ```
 
-设置滑动选择文本选择器的选择列表，支持属性设置，属性重置和属性获取接口。**使用场景**：单列选择器适用于单一类别选择（如省份、品牌），多列选择器适用于多个独立类别组合选择（如省-市），多列联动选择器适用于有层级关系的选择场景（如省-市-区，第二列根据第一列自动更新）。需先设置该参数后，才能使用 NODE_TEXT_PICKER_OPTION_SELECTED 和 NODE_TEXT_PICKER_SELECTED_INDEX 设置选中项。<br>
+设置滑动选择文本选择器的选择列表，支持属性设置，属性重置和属性获取接口。
+
+使用场景：单列选择器适用于单一类别选择（如省份、品牌），多列选择器适用于多个独立类别组合选择（如省-市），多列联动选择器适用于有层级关系的选择场景（如省-市-区，第二列根据第一列自动更新）。需先设置该参数后，才能使用 [NODE_TEXT_PICKER_OPTION_SELECTED](#node_text_picker_option_selected) 和 [NODE_TEXT_PICKER_SELECTED_INDEX](#node_text_picker_selected_index) 设置选中项。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -489,7 +495,8 @@ NODE_TEXT_PICKER_OPTION_RANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_PICKER = 15
 NODE_TEXT_PICKER_OPTION_SELECTED = 15001
 ```
 
-设置滑动选择文本内容的组件默认选中项在数组中的索引值，支持属性设置，属性重置和属性获取接口。需先通过 NODE_TEXT_PICKER_OPTION_RANGE 设置选项列表后才能使用该参数。<br>
+设置滑动选择文本内容的组件默认选中项在数组中的索引值，支持属性设置，属性重置和属性获取接口。需先通过 [NODE_TEXT_PICKER_OPTION_RANGE](#node_text_picker_option_range) 设置选项列表后才能使用该参数。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -608,7 +615,7 @@ NODE_TEXT_PICKER_SELECTED_TEXT_STYLE = 15005
 NODE_TEXT_PICKER_SELECTED_INDEX = 15006
 ```
 
-设置滑动选择文本内容的组件默认选中项的索引数组，支持属性设置，属性重置和属性获取接口。需先通过 NODE_TEXT_PICKER_OPTION_RANGE 设置选项列表后才能使用该参数。设置选项列表后，如未通过本参数设置索引数组，则默认选中各列的第1项。<br>
+设置滑动选择文本内容的组件默认选中项的索引数组，支持属性设置，属性重置和属性获取接口。需先通过 [NODE_TEXT_PICKER_OPTION_RANGE](#node_text_picker_option_range) 设置选项列表后才能使用该参数。设置选项列表后，如未通过本参数设置索引数组，则默认选中各列的第1项。<br>
 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -632,7 +639,9 @@ NODE_TEXT_PICKER_SELECTED_INDEX = 15006
 NODE_TEXT_PICKER_CAN_LOOP = 15007
 ```
 
-Picker组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。<br>**使用场景**：循环滚动适用于选项有限且希望提供快速选择体验的场景（如省份选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景（如数量选择避免误操作）。<br>
+Picker组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。
+
+使用场景：循环滚动适用于选项有限且希望提供快速选择体验的场景（如省份选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景（如数量选择避免误操作）。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -814,7 +823,9 @@ NODE_PICKER_ENABLE_HAPTIC_FEEDBACK = 1018001
 NODE_PICKER_CAN_LOOP = 1018002
 ```
 
-定义选择器是否支持滚动循环。支持属性设置，属性重置和属性获取接口。**使用场景**：循环滚动适用于选项有限且希望提供快速选择体验的场景（如性别选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景。<br>
+定义选择器是否支持滚动循环。支持属性设置，属性重置和属性获取接口。
+
+使用场景：循环滚动适用于选项有限且希望提供快速选择体验的场景（如性别选择）；非循环滚动适用于选项有明确边界、需要限制用户选择范围的场景。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 23
@@ -1002,7 +1013,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0]?.u32 | 入口区的文本颜色。未设置或执行resetAttribute后，使用系统主题 `calendar_picker_entry_font_color` 解析的值（具体色值随主题变化，可通过getAttribute获取）。 |
 | .value[1]?.f32 | 入口区的文本字号，单位为fp。未设置或执行resetAttribute后，使用系统主题 `calendar_picker_entry_font_size` 解析的值（具体数值随主题变化，可通过getAttribute获取）。 |
-| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。未设置或执行resetAttribute后，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
+| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。未设置或执行resetAttribute后，默认值为ARKUI_FONT_WEIGHT_NORMAL。 |
 
 **返回：**
 
