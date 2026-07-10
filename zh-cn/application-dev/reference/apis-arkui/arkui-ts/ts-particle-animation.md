@@ -855,7 +855,7 @@ struct ParticleExample {
               speed: {
                 range: [3, 9],
                 updater: {
-                  type: ParticleUpdater.RANDOM, // Speed的变化方式是随机变化
+                  type: ParticleUpdater.RANDOM, // Speed的变化方式是随机均匀变化
                   config: [1, 20]
                 }
               },
