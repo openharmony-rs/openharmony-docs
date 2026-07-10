@@ -163,7 +163,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 查询指定设备的空间音频渲染效果开关状态
 
-系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationenabled12)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
+系统应用开发者可以通过[isSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isspatializationenabled12)接口查询指定设备的空间音频渲染效果开关状态，该接口需要使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。该接口返回为true表示空间音频渲染开启，false表示空间音频渲染关闭。返回值为[setSpatializationEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setspatializationenabled12)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。此状态仅表示开关状态，实际是否生效还需依赖系统和指定设备是否支持空间音频渲染。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -314,7 +314,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间化设备状态[AudioSpatialDeviceState]的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialdevicestate11)。
+空间化设备状态的具体信息可以参考[AudioSpatialDeviceState](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatialdevicestate11)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -342,7 +342,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 在使用此功能前，应用需要先申请权限`ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS`，申请方式请参考：[system_basic等级应用申请权限的方式](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-空间音频渲染场景类型[AudioSpatializationSceneType]的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
+空间音频渲染场景类型的具体信息可以参考[AudioSpatializationSceneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#audiospatializationscenetype12)。
 
   ```ts
   import { audio } from '@kit.AudioKit';
