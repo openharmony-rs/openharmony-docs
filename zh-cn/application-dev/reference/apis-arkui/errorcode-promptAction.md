@@ -94,7 +94,7 @@ targetId无效，或者对应的节点已销毁。
 
 请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
 
-## 103305 指定的targetId对应的节点未挂载在节点树上
+## 103305 指定的targetId对应的节点未挂载在组件树上
 
 **错误信息**
 
@@ -102,17 +102,17 @@ The node of targetId is not in the component tree.
 
 **错误描述**
 
-指定的targetId对应的节点未挂载在节点树上时，方法将返回该错误码。
+指定的targetId对应的节点未挂载在组件树上时，方法将返回该错误码。
 
 **可能原因**
 
-指定的targetId对应的节点未挂载在节点树上。
+指定的targetId对应的节点未挂载在组件树上。
 
 **处理步骤**
 
 1. 请确认targetId对应的节点是否存在，可以通过[getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12)接口查询。
 
-2. 请确认targetId对应的节点已挂载在主节点树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主节点树上。
+2. 请确认targetId对应的节点已挂载在主组件树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主组件树上。
 
 ## 103307 系统弹出窗口导致无法打开浮层
 

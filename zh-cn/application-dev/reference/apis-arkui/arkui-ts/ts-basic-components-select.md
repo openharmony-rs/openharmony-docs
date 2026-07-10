@@ -863,7 +863,7 @@ showDefaultSelectedIcon(show: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | 是   | 是否显示默认选定的图标。<br/>true：显示默认选择的图标；false：不显示默认选择的图标，通过突出显示背景色来表示选中。<br/>默认值：false<br/>当show为true时，若设置了selectedOptionBgColor选中项的背景色时，则同时显示选中项的背景色和默认选定的图标；若未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。 |
+| show  | boolean | 是   | 是否显示默认选定的图标。<br/>true：显示默认选定的图标；false：不显示默认选定的图标，通过突出显示背景色来表示选中。<br/>默认值：false<br/>当show为true时，若设置了selectedOptionBgColor选中项的背景色时，则同时显示选中项的背景色和默认选定的图标；若未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。 |
 
 ### textModifier<sup>20+</sup>
 
@@ -955,7 +955,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单选中项的文本样式。 |
 
 ### showInSubWindow<sup>20+</sup>
 
@@ -1015,7 +1015,7 @@ minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 
 menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
 
-设置Select组件的背景模糊效果。
+设置Select下拉菜单的背景模糊效果。
 
 **起始版本：** 26.0.0
 
@@ -1029,13 +1029,13 @@ menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurStyle  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)> | 是   | 设置Select组件的背景模糊效果。 |
+| blurStyle  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)> | 是   | 设置Select下拉菜单的背景模糊效果。 |
 
 ### menuBackgroundEffect
 
 menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
-设置Select组件的背景属性。
+设置Select下拉菜单的背景属性。
 
 **起始版本：** 26.0.0
 
@@ -1049,7 +1049,7 @@ menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                       |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select下拉菜单的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
 
 ### menuSystemMaterial
 

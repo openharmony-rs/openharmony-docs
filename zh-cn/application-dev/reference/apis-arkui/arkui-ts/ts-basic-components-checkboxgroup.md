@@ -363,9 +363,9 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 
 | 名称  | 值 | 说明 |
 | ----- | -------------------- | -------------------- |
-| All   | 0  | 群组多选框全部被选中。 |
-| Part  | 1 | 群组多选框部分被选中。 |
-| None  | 2 | 群组多选框全部未被选中。 |
+| All   | 0  | 群组内多选框全部选中。 |
+| Part  | 1 | 群组内多选框部分选中。 |
+| None  | 2 | 群组内多选框全部未选中。 |
 
 ## CheckBoxGroupConfiguration<sup>21+</sup>对象说明
 
