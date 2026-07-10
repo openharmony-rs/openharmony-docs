@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
 
-该模块提供软硬件耗电统计信息的查询接口。
+该模块提供软硬件耗电统计信息的查询接口，支持查询应用和硬件单元的耗电量与耗电百分比，适用于开发者需要监控和分析设备耗电情况的场景，便于定位高耗电应用或硬件组件，从而优化应用的能耗表现。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import {batteryStats} from '@kit.BasicServicesKit';
 
 getBatteryStats(): Promise<Array&lt;BatteryStatsInfo&gt;>
 
-获取耗电信息列表。使用Promise异步回调。
+获取耗电信息列表，用于电池监控应用查看各应用及硬件的耗电情况。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -53,8 +53,8 @@ batteryStats.getBatteryStats()
 .then((data: batteryStats.BatteryStatsInfo[]) => {
     console.info('battery statistics info: ' + data);
 })
-.catch((err: Error) => {
-    console.error('get battery statistics failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -62,7 +62,7 @@ batteryStats.getBatteryStats()
 
 getBatteryStats(callback: AsyncCallback<Array&lt;BatteryStatsInfo&gt;>): void
 
-获取耗电信息列表。使用callback异步回调。
+获取耗电信息列表，用于电池监控应用查看各应用及硬件的耗电情况。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -81,17 +81,17 @@ getBatteryStats(callback: AsyncCallback<Array&lt;BatteryStatsInfo&gt;>): void
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
 ```js
-batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]) => {
-    if (typeof err === 'undefined') {
-        console.info('battery statistics info: ' + data);
+batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
+    if (err) {
+        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('get battery statistics failed, err: ' + err);
+        console.info('battery statistics info: ' + data);
     }
 });
 ```
@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-获取应用的耗电量，单位毫安时。
+获取应用的耗电量，单位毫安时。与getAppPowerPercent相比，本方法返回绝对耗电值（毫安时），适用于需要精确耗电数值的场景；getAppPowerPercent返回相对百分比，适用于需要比较不同应用耗电占比的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -110,7 +110,7 @@ getAppPowerValue(uid: number): number
 
 | 参数名 | 类型   | 必填 | 说明        |
 | ------ | ------ | ---- | ----------- |
-| uid    | number | 是   | 应用的UID。 |
+| uid    | number | 是   | 应用的UID，用于指定查询耗电量的目标应用。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)等接口获取应用UID。 |
 
 **返回值：**
 
@@ -126,16 +126,16 @@ getAppPowerValue(uid: number): number
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
 ```js
 try {
-    let value = batteryStats.getAppPowerValue(10021);
+    let value = batteryStats.getAppPowerValue(10021); // 10021为示例UID，实际使用时需通过bundleManager.getUidByBundleName等接口获取应用UID
     console.info('battery statistics value of app is: ' + value);
-} catch(err) {
-    console.error('get battery statistics value of app failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics value of app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -143,7 +143,7 @@ try {
 
 getAppPowerPercent(uid: number): number
 
-获取应用的耗电百分比。
+获取应用的耗电百分比，该百分比表示应用耗电量占总耗电量的比例。
 
 **系统接口：** 此接口为系统接口。
 
@@ -153,7 +153,7 @@ getAppPowerPercent(uid: number): number
 
 | 参数名 | 类型   | 必填 | 说明        |
 | ------ | ------ | ---- | ----------- |
-| uid    | number | 是   | 应用的UID。 |
+| uid    | number | 是   | 应用的UID，用于指定查询耗电百分比的目标应用。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)等接口获取应用UID。 |
 
 **返回值：**
 
@@ -169,16 +169,16 @@ getAppPowerPercent(uid: number): number
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
 ```js
 try {
-    let percent = batteryStats.getAppPowerPercent(10021);
+    let percent = batteryStats.getAppPowerPercent(10021); // 10021为示例UID，实际使用时需通过bundleManager.getBundleInfoForSelf等接口获取应用UID
     console.info('battery statistics percent of app is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of app failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-根据耗电类型获取硬件单元的耗电量，单位毫安时。
+根据耗电类型获取硬件单元的耗电量，单位毫安时。与getHardwareUnitPowerPercent相比，本方法返回绝对耗电值（毫安时），适用于需要精确耗电数值的场景；getHardwareUnitPowerPercent返回相对百分比，适用于需要比较不同硬件单元耗电占比的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -196,7 +196,7 @@ getHardwareUnitPowerValue(type: ConsumptionType): number
 
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
-| type   | [ConsumptionType](#consumptiontype) | 是   | 电量消耗类型；该参数类型是枚举类。 |
+| type   | [ConsumptionType](#consumptiontype) | 是   | 电量消耗类型，用于指定要查询的硬件单元耗电类型。可选值参见[ConsumptionType](#consumptiontype)，如CONSUMPTION_TYPE_SCREEN用于查询屏幕耗电、CONSUMPTION_TYPE_BLUETOOTH用于查询蓝牙耗电、CONSUMPTION_TYPE_WIFI用于查询无线网耗电等。 |
 
 **返回值：**
 
@@ -211,17 +211,17 @@ getHardwareUnitPowerValue(type: ConsumptionType): number
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
 ```js
 try {
-    let value = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
+    let powerValue = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
     console.info('battery statistics value of hardware is: ' + value);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics value of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -229,7 +229,7 @@ try {
 
 getHardwareUnitPowerPercent(type: ConsumptionType): number
 
-根据耗电类型获取硬件单元的耗电百分比。
+根据耗电类型获取硬件单元的耗电百分比，该百分比表示指定硬件单元耗电量占总耗电量的比例。
 
 **系统接口：** 此接口为系统接口。
 
@@ -239,7 +239,7 @@ getHardwareUnitPowerPercent(type: ConsumptionType): number
 
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
-| type   | [ConsumptionType](#consumptiontype) | 是   | 电量消耗类型；该参数类型是枚举类。 |
+| type   | [ConsumptionType](#consumptiontype) | 是   | 电量消耗类型，用于指定要查询的硬件单元耗电百分比类型。可选值参见[ConsumptionType](#consumptiontype)，如CONSUMPTION_TYPE_SCREEN用于查询屏幕耗电百分比、CONSUMPTION_TYPE_BLUETOOTH用于查询蓝牙耗电百分比、CONSUMPTION_TYPE_WIFI用于查询无线网耗电百分比等。 |
 
 **返回值：**
 
@@ -254,7 +254,7 @@ getHardwareUnitPowerPercent(type: ConsumptionType): number
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
@@ -263,14 +263,14 @@ getHardwareUnitPowerPercent(type: ConsumptionType): number
 try {
     let percent = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
     console.info('battery statistics percent of hardware is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## BatteryStatsInfo
 
-设备的耗电信息。
+设备软硬件的耗电信息。
 
 **系统接口：** 此接口为系统接口。
 

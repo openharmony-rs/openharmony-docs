@@ -1,7 +1,7 @@
 # AIPageInteraction
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zhushengle-->
+<!--Owner: @zhu-sheng-le-->
 <!--Designer: @yyyiye-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -153,7 +153,7 @@
 ```json
 {
   "code": 420,
-  "error": "click params not found"
+  "error": "click/focus params not found"
 }
 ```
 
@@ -162,7 +162,7 @@
 ```json
 {
   "code": 421,
-  "error": "click nodeid not found"
+  "error": "click/focus nodeid not found"
 }
 ```
 
@@ -171,7 +171,7 @@
 ```json
 {
   "code": 422,
-  "error": "click nodeid is empty"
+  "error": "click/focus nodeid is empty"
 }
 ```
 
@@ -180,7 +180,7 @@
 ```json
 {
   "code": 423,
-  "error": "click delegate not initialized"
+  "error": "click/focus delegate not initialized"
 }
 ```
 
@@ -189,7 +189,7 @@
 ```json
 {
   "code": 424,
-  "error": "click element not exist"
+  "error": "click/focus element not exist"
 }
 ```
 
@@ -267,7 +267,7 @@
 ```json
 {
   "code": 420,
-  "error": "click params not found"
+  "error": "click/focus params not found"
 }
 ```
 
@@ -276,7 +276,7 @@
 ```json
 {
   "code": 421,
-  "error": "click nodeid not found"
+  "error": "click/focus nodeid not found"
 }
 ```
 
@@ -285,7 +285,7 @@
 ```json
 {
   "code": 422,
-  "error": "click nodeid is empty"
+  "error": "click/focus nodeid is empty"
 }
 ```
 
@@ -294,7 +294,7 @@
 ```json
 {
   "code": 423,
-  "error": "click delegate not initialized"
+  "error": "click/focus delegate not initialized"
 }
 ```
 
@@ -303,7 +303,7 @@
 ```json
 {
   "code": 424,
-  "error": "click element not exist"
+  "error": "click/focus element not exist"
 }
 ```
 
