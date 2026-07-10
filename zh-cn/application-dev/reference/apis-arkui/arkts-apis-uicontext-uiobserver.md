@@ -262,7 +262,7 @@ struct PageOne {
   build() {
     NavDestination() {
       Text('pageOne')
-      Text('navigationUniqueId是:' + this.text)
+      Text('navigationUniqueId是：' + this.text)
         .width('80%')
         .height(50)
         .margin(50)
@@ -277,7 +277,7 @@ struct Index {
   private stack: NavPathStack = new NavPathStack();
 
   @Builder
-  PageBuilder(name: string) {
+  pageBuilder(name: string) {
     PageOne()
   }
 
@@ -291,7 +291,7 @@ struct Index {
       }
       .id('testId')
       .title('Navigation')
-      .navDestination(this.PageBuilder)
+      .navDestination(this.pageBuilder)
     }
     .width('100%')
     .height('100%')
