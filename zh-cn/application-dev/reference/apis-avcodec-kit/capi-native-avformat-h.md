@@ -59,7 +59,7 @@
 | [bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)](#oh_avformat_getdoublevalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取double类型的值。 |
 | [bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)](#oh_avformat_getstringvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取string类型的值。 |
 | [bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)](#oh_avformat_getbuffer) | 从OH_AVFormat中读取指定长度的数据块。 |
-| [bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)](#oh_avformat_getintbuffer) | 从OH_AVFormat中读取一个int32_t数据的数组。<br> 需要注意的是，获取的buffer生命周期与OH_AVFormat对象绑定，当format销毁时自动失效。<br> 如果开发者需要长时间保持绑定，应用程序必须将数据显式复制到新分配的内存。 |
+| [bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)](#oh_avformat_getintbuffer) | 从OH_AVFormat中读取一个int32_t数据的数组。<br> 需要注意的是，获取的buffer生命周期与OH_AVFormat对象绑定，当format销毁时自动失效。<br> 如果开发者需要长时间保留该buffer数据，应用程序必须将数据显式复制到新分配的内存。 |
 | [const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)](#oh_avformat_dumpinfo) | 返回OH_AVFormat中包含的key-value组成的字符串。最大可返回1024字节的字符串，销毁format时释放字符串指针。 |
 | [bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)](#oh_avformat_setintbuffer) | 将指定长度int32_t类型的数据块写入OH_AVFormat。 |
 | [uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)](#oh_avformat_getkeycount) | 获取OH_AVFormat中包含的键总数。 |
@@ -268,7 +268,7 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 设置的key对应的value类型错误。 |
 
 ### OH_AVFormat_SetLongValue()
 
@@ -463,7 +463,7 @@ bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入out为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入out为空指针。<br> 5. 获取的key不存在或者未设置。 |
 
 ### OH_AVFormat_GetLongValue()
 
@@ -633,7 +633,7 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入addr为空指针。<br> 5. 输入size为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入addr为空指针。<br> 5. 输入size为空指针。<br> 6. 获取的key不存在或者未设置。 |
 
 ### OH_AVFormat_DumpInfo()
 
