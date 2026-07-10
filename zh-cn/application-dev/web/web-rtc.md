@@ -14,14 +14,16 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 
   ```json5
     // src/main/resources/base/element/string.json
-    {
-      "name": "reason_for_camera",
-      "value": "reason_for_camera"
-    },
-    {
-      "name": "reason_for_microphone",
-      "value": "reason_for_microphone"
-    }
+    "string":[
+      {
+        "name": "reason_for_camera",
+        "value": "reason_for_camera"
+      },
+      {
+        "name": "reason_for_microphone",
+        "value": "reason_for_microphone"
+      }
+    ]
   ```
 
   ```json5
