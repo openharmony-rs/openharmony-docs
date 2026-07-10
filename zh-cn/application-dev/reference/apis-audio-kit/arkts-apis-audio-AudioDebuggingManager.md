@@ -45,10 +45,10 @@ ArkTS-Sta: printAppInfo(fd: int): void
 ```ts
 import { audio } from '@kit.AudioKit';
 
-const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getDebuggingManager();
+let audioManager = audio.getAudioManager();
+let debugManager = audioManager.getDebuggingManager();
 
-// 输出到日志
+// 输出到日志。
 debugManager.printAppInfo(-1);
 ```
 
@@ -77,12 +77,36 @@ ArkTS-Sta: printRendererInfo(renderer: AudioRenderer, fd: int): void
 
 ```ts
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getDebuggingManager();
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
 
-// 输出到日志
-debugManager.printRendererInfo(renderer, -1);
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let audioManager = audio.getAudioManager();
+let debugManager = audioManager.getDebuggingManager();
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+  let audioRenderer = data;
+  // 输出到日志。
+  debugManager.printRendererInfo(audioRenderer, -1);
+}).catch((err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
 ```
 
 ## printCapturerInfo
@@ -110,12 +134,36 @@ ArkTS-Sta: printCapturerInfo(capturer: AudioCapturer, fd: int): void
 
 ```ts
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getDebuggingManager();
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
 
-// 输出到日志
-debugManager.printCapturerInfo(capturer, -1);
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioManager = audio.getAudioManager();
+let debugManager = audioManager.getDebuggingManager();
+
+audio.createAudioCapturer(audioCapturerOptions).then((data) => {
+  console.info('AudioCapturer Created : SUCCESS');
+  let audioCapturer = data;
+  // 输出到日志。
+  debugManager.printCapturerInfo(audioCapturer, -1);
+}).catch((err: BusinessError) => {
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
+});
 ```
 
 ## printLoopbackInfo
@@ -143,12 +191,19 @@ ArkTS-Sta: printLoopbackInfo(loopback: AudioLoopback, fd: int): void
 
 ```ts
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getDebuggingManager();
+let audioManager = audio.getAudioManager();
+let debugManager = audioManager.getDebuggingManager();
 
-// 输出到日志
-debugManager.printLoopbackInfo(loopback, -1);
+audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE).then((data) => {
+  console.info('AudioLoopback Created : SUCCESS');
+  let audioLoopback = data;
+  // 输出到日志。
+  debugManager.printLoopbackInfo(audioLoopback, -1);
+}).catch((err: BusinessError) => {
+  console.error(`AudioLoopback Created : ERROR : ${err}`);
+});
 ```
 
 ## printSessionInfo
@@ -177,9 +232,10 @@ ArkTS-Sta: printSessionInfo(session: AudioSessionManager, fd: int): void
 ```ts
 import { audio } from '@kit.AudioKit';
 
-const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getDebuggingManager();
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+let debugManager = audioManager.getDebuggingManager();
 
-// 输出到日志
-debugManager.printSessionInfo(session, -1);
+// 输出到日志。
+debugManager.printSessionInfo(audioSessionManager, -1);
 ```
