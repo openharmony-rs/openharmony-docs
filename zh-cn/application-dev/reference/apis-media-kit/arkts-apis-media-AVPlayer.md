@@ -31,7 +31,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http://xx`。<br/>3. https网络播放：`https://xx`。<br/>4. HLS网络播放路径：`http://xx`或者`https://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -77,7 +77,7 @@ async function test(){
         console.info('state idle called');
         break;
       case 'initialized':
-        console.info('initialized prepared called');
+        console.info('state initialized called');
         break;
       case 'prepared':
         console.info('state prepared called');
@@ -255,7 +255,7 @@ setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 5400102  | Operation not allowed. Return by promise. |
 
 **示例：**
@@ -307,6 +307,8 @@ getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test() {
   let player = await media.createAVPlayer();
   player.getTrackSelectionFilter().then((selectionFilter: media.TrackSelectionFilter) => {
@@ -626,10 +628,10 @@ advanceToNextMediaSource(): Promise\<void>
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| 错误码 ID | 错误信息                                  |
+| 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
 
 **示例：**
 
@@ -673,10 +675,10 @@ advanceToPrevMediaSource(): Promise\<void>
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| 错误码 ID | 错误信息                                  |
+| 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
 
 **示例：**
 
@@ -729,7 +731,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| 错误码 ID | 错误信息                                  |
+| 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
@@ -1405,7 +1407,7 @@ async function  test(){
 
 getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 
-获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。
+获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1790,7 +1792,7 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2203,11 +2205,13 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 
 | 类型             | 说明           |
 | ---------------- | -------------- |
-| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒（ms）。 |
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
@@ -2239,11 +2243,13 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 
 | 类型             | 说明           |
 | ---------------- | -------------- |
-| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒（ms）。 |
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
@@ -2493,7 +2499,7 @@ async function test(){
 
 setLoudnessGain(loudnessGain: number): Promise\<void>
 
-设置播放器的响度。调用该接口后，响度增益立即生效。使用Promise异步回调。
+设置播放器的响度增益。响度是指音频的主观感知强度，响度增益通过调整音频信号的强度来改变感知音量，与setVolume的相对音量调节不同。调用该接口后，响度增益立即生效。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2714,7 +2720,7 @@ async function test() {
   let avPlayer = await media.createAVPlayer();
 
   let isSeeking = false;    // 标记是否正在seek。
-  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒）。
+  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒（ms））。
 
   // 1.监听seekDone：确认跳转完成。
   avPlayer.on('seekDone', (seekDoneTime: number) => {
@@ -2739,7 +2745,7 @@ async function test() {
   // 3.模拟seek操作。
   let seekTime: number = 1000;
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
-  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位：毫秒。
+  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位：毫秒（ms）。
   isSeeking = true; // 标记正在seek。
 }
 ```
@@ -3083,7 +3089,7 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStrea
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.       |
 
 **示例：**
 
@@ -3122,7 +3128,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 
 **示例：**
 
@@ -3138,7 +3144,7 @@ async function test(){
 
 addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
 
-依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
+依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在AVPlayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3184,7 +3190,7 @@ avPlayer.addSubtitleFromFd(fileDescriptor.fd, fileDescriptor.offset, fileDescrip
 
 addSubtitleFromUrl(url: string): Promise\<void>
 
-依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
+依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在AVPlayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3409,7 +3415,7 @@ async function test(){
 
 on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 
-订阅音频最大电平值，音频资源播放时定时上报。
+订阅音频最大电平值（振幅强度），用于音频可视化等场景，音频资源播放时定时上报。电平值表示音频信号的瞬时振幅大小。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3533,12 +3539,12 @@ async function test(){
 
 setSuperResolution(enabled: boolean) : Promise\<void>
 
-动态开启/关闭超分算法，可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
+动态开启/关闭超分辨率（超分）算法。超分辨率是一种视频画质增强技术，可将低分辨率视频提升至更高分辨率显示。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
 > **说明：**
 >
 > - 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
-> - 默认目标分辨率为1920x1080，单位为像素。
+> - 默认目标分辨率为1920x1080，单位为像素（px）。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3588,7 +3594,7 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 动态设置超分算法的输出分辨率。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
-输入参数须在320x320~1920x1080范围内，单位为像素。
+输入参数须在320x320~1920x1080范围内，单位为像素（px）。
 
 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
 
@@ -3600,8 +3606,8 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素。 |
-| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素。 |
+| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素（px）。 |
+| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素（px）。 |
 
 **返回值：**
 
@@ -3697,7 +3703,7 @@ async function test(){
 
 onPlaybackContentChanged(callback: Callback\<string>):void;
 
-注册监听器用于监听播放内容变更事件。使用callback异步回调。
+注册监听器用于监听播放内容变更事件。当播放列表中的当前播放源发生变化时（如调用advanceToNextMediaSource、advanceToMediaSource等方法切换播放源），触发此事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -3950,6 +3956,8 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
