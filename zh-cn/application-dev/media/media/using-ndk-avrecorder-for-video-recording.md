@@ -335,7 +335,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 10. 重置资源，调用OH_AVRecorder_Reset()重新进入idle状态，允许重新配置录制参数。
 
     <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorderNDK/entry/src/main/cpp/avrecorder_ndk.cpp) -->
-   
+    
     ``` C++
     OH_AVErrCode err = OH_AVRecorder_Reset(g_recorder);
     ```
@@ -343,7 +343,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 11. 销毁实例，调用OH_AVRecorder_Release()进入released状态，退出录制，释放视频数据输入源相关资源，例如相机资源。
 
     <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorderNDK/entry/src/main/cpp/avrecorder_ndk.cpp) -->
-   
+    
     ``` C++
     OH_AVRecorder_Release(g_recorder);
     ```
