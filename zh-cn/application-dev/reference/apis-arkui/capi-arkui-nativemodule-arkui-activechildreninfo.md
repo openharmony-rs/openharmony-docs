@@ -12,7 +12,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## 概述
 
-定义ActiveChildrenInfo结构体信息。
+定义ArkUI_ActiveChildrenInfo结构体信息，用于表示节点当前处于活跃状态的子节点信息，支持查询活跃子节点数量、按下标获取子节点，并在使用完毕后释放资源。
 
 **起始版本：** 14
 
