@@ -23,7 +23,7 @@
 - 需要配置`ohos.permission.DISTRIBUTED_DATASYNC`和`ohos.permission.sec.ACCESS_UDID`权限。
 - 不同设备间只有相同`bundleName`的应用才能进行消息交互。
 - 目标设备必须是同账号可信设备。
-- 支持系统原生的快速设备唤醒能力，设备在插电合盖状态下依然可达。
+- 支持系统原生的快速设备唤醒能力，近距离打开蓝牙、Wi-Fi，且Wi-Fi连接同一局域网。
 - 该能力从API版本 26.1.0开始支持。
 
 ## 环境准备
