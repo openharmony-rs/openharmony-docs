@@ -36505,7 +36505,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets",
 				"functions":[
 					{
-						"end_line":263,
+						"end_line":269,
 						"name":"all_VoIPDemoForAudioRenderer",
 						"start_line":16
 					}
