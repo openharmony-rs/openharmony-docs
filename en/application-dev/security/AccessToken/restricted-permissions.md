@@ -1379,14 +1379,6 @@ Allows an application to install and load self-distributed plug-ins.
 
 Allows an application to register audio accessories with the system.
 
-Applicable scenarios and functionalities:
-
-This permission can be requested when an audio accessory management application needs to register accessories (such as wireless microphones or external sound cards) with the system audio framework.
-
-Recommended alternative without this permission:
-
-Integrate into AI Life as a plug-in to provide users with a seamless, download-free experience for device discovery and connection.
-
 <!--RP91--><!--RP91End-->
 
 **Permission level**: system_basic
