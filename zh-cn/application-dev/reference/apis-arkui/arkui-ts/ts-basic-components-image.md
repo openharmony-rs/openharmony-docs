@@ -2640,7 +2640,7 @@ struct Index {
         .height(100)
         .width(100)
         .onError((e)=>{
-          console.error(`DownLoadErrorInfo: ${JSON.stringify(e?.downloadInfo)}`)
+          console.error(`DownloadErrorInfo: ${JSON.stringify(e?.downloadInfo)}`)
         })
     }
     .height('100%')
