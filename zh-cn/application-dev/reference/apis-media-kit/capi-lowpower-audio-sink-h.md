@@ -27,16 +27,16 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)](#oh_lowpoweraudiosink_createbymime) | 创建LowPowerAudioSink。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | 配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)前完成。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | 为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后动态设置。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | 配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)前完成。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | 为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后动态设置。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)](#oh_lowpoweraudiosink_getparameter) | 获取LowPowerAudioSink的相关参数。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | 准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_start) | 启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)成功后调用。<br> 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_pause) | 暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)后调用。<br> 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_resume) | 恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause)后调用。<br> 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_flush) | 清除LowPowerAudioSink中所有解码器和渲染缓存的输入输出数据。<br> 此接口不建议在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)之后调用。<br> 需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | 准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_start) | 启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)成功后调用。<br> 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_pause) | 暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume)后调用。<br> 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_resume) | 恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause)后调用。<br> 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_flush) | 清除LowPowerAudioSink中所有解码器和渲染缓存的输入输出数据。<br> 此接口不建议在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume)之后调用。<br> 需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_stop) | 停止LowPowerAudioSink。 |
-| [OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_reset) | 重置LowPowerAudioSink。<br> 如果要重新使用该实例，需要调用[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)完成配置。 |
+| [OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_reset) | 重置LowPowerAudioSink。<br> 如果要重新使用该实例，需要调用[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)完成配置。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_destroy) | 清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。不能重复销毁。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)](#oh_lowpoweraudiosink_setvolume) | 为LowPowerAudioSink设置渲染音量。 |
 | [OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)](#oh_lowpoweraudiosink_setloudnessgain) | 为LowPowerAudioSink设置播放响度。 |
@@ -86,7 +86,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 
 **描述**
 
-配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)前完成。
+配置LowPowerAudioSink，需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)前完成。
 
 **起始版本：** 20
 
@@ -111,7 +111,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const
 
 **描述**
 
-为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)后动态设置。
+为LowPowerAudioSink设置参数，支持[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后动态设置。
 
 **起始版本：** 20
 
@@ -136,7 +136,7 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 
 **描述**
 
-获取LowPowerAudioSink的相关参数。
+获取LowPowerAudioSink的相关参数。应在[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)配置参数后调用。
 
 **起始版本：** 20
 
@@ -144,7 +144,7 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向LowPowerAudioSink实例的指针。 |
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
 | [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | 指向OH_AVFormat实例的指针。 |
 
 **返回：**
@@ -161,7 +161,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。
+准备LowPowerAudioSink的解码、渲染资源，在[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)后调用。<br> 调用此接口前必须调用LowPowerVideoSink的[OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)方法。
 
 **起始版本：** 20
 
@@ -185,7 +185,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)成功后调用。<br> 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。
+启动低功耗音频接收器，此接口必须在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)成功后调用。<br> 启动成功后，LowPowerAudioSink将开始上报[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件。
 
 **起始版本：** 20
 
@@ -209,7 +209,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)后调用。<br> 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
+暂停LowPowerAudioSink，在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume)后调用。<br> 暂停成功后，LowPowerAudioSink将暂停[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
 
 **起始版本：** 20
 
@@ -233,7 +233,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause)后调用。<br> 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
+恢复LowPowerAudioSink，在[OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause)后调用。<br> 恢复成功后，LowPowerAudioSink将恢复[OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded)事件的上报。
 
 **起始版本：** 20
 
@@ -257,7 +257,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-清除LowPowerAudioSink中所有解码器和渲染缓存的输入输出数据。<br> 此接口不建议在[OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume)之后调用。<br> 需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。
+清除LowPowerAudioSink中所有解码器和渲染缓存的输入输出数据。<br> 此接口不建议在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume)之后调用。<br> 需要注意的是，如果编解码器之前已输入数据，则需要重新输入编解码器数据。
 
 **起始版本：** 20
 
@@ -281,7 +281,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-停止LowPowerAudioSink。
+停止LowPowerAudioSink。应在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)或[OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause)之后调用。
 
 **起始版本：** 20
 
@@ -305,7 +305,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-重置LowPowerAudioSink。<br> 如果要重新使用该实例，需要调用[OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure)完成配置。
+重置LowPowerAudioSink。<br> 如果要重新使用该实例，需要调用[OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure)完成配置。
 
 **起始版本：** 20
 
@@ -329,7 +329,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。建议在OH_LowPowerAudioSink_Stop后调用。不能重复销毁。
+清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。建议在[OH_LowPowerAudioSink_Stop](#oh_lowpoweraudiosink_stop)后调用。不能重复销毁。
 
 **起始版本：** 20
 
@@ -353,7 +353,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const fl
 
 **描述**
 
-为LowPowerAudioSink设置渲染音量。
+为LowPowerAudioSink设置渲染音量。需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后调用。
 
 **起始版本：** 20
 
@@ -378,7 +378,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, fl
 
 **描述**
 
-为LowPowerAudioSink设置播放响度。
+为LowPowerAudioSink设置播放响度。需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后调用。
 
 **起始版本：** 21
 
@@ -403,7 +403,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, c
 
 **描述**
 
-为LowPowerAudioSink设置音频渲染倍速。
+为LowPowerAudioSink设置音频渲染倍速。需要在[OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare)后调用。
 
 **起始版本：** 20
 
@@ -437,7 +437,7 @@ OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_A
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | 需要送OH_AVSamplesBuffer消费的OH_AVSamplesBuffer实例，支持聚包输入。 |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | 需要送入LowPowerAudioSink消费的OH_AVSamplesBuffer实例，支持聚包输入。 |
 
 **返回：**
 
@@ -453,7 +453,7 @@ OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, O
 
 **描述**
 
-为LowPowerAudioSink注册回调。
+为LowPowerAudioSink注册回调。需要在[OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start)之前调用，以确保事件回调正常接收。
 
 **起始版本：** 20
 
