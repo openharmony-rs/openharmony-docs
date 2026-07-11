@@ -19,11 +19,11 @@
 
 系统应用可通过以下接口跨设备启动 UIAbility 组件：
 
-| 接口 | 说明 | 特殊限制 |
+| 接口 | 适用场景 | 特殊限制 |
 | --- | --- | --- |
-| [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 启动UIAbility | 若调用方位于后台，需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限 |
-| [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startAbilityForResult) | 启动目标UIAbility，并在目标组件调用[terminateSelfWithResult](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)销毁时获取返回结果 | 结果返回时，发起方组件的`exported`属性也会被校验，必须为`true` |
-| [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 启动目标UIAbility并将通信对象返回给发起方 | **仅支持同应用**跨设备调用，建立通路过程中底层软总线会校验双端应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限 |
+| [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) | 适用于常规跨设备启动 UIAbility 场景 | 若调用方位于后台，需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限 |
+| [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startAbilityForResult) | 适用于启动目标 UIAbility 并需要获取返回结果的场景 | 结果返回时，发起方组件的`exported`属性也会被校验，必须为`true` |
+| [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 适用于建立跨设备双向通信通路的场景 | **仅支持同应用**跨设备调用，建立通路过程中底层软总线会校验双端应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限 |
 
 ### ExtensionAbility组件启动接口
 
