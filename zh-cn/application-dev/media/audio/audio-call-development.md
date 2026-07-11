@@ -76,15 +76,17 @@ async function initArguments(context: common.UIAbilityContext) {
           view.setUint8(i, 0);
         }
       }
-      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
-      // 如果开发者不希望播放某段buffer,返回audio.AudioDataCallbackResult.INVALID即可。
-      return audio.AudioDataCallbackResult.VALID;
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
+      // ...
       // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
@@ -168,7 +170,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -195,6 +196,7 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```
