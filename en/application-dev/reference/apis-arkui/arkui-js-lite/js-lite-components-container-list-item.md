@@ -2,13 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**\<list-item>** is a child component of the **[\<list>](js-lite-components-container-list.md)** component and is used to display items in a list.
-
+**\<list-item>** is a child component of the [\<list>](js-lite-components-container-list.md) component and is used to display items in a list.
 
 > **NOTE**
 >
@@ -17,7 +16,7 @@
 
 ## Child Components
 
-Supported
+Supported.
 
 
 ## Attributes
@@ -43,19 +42,19 @@ Supported
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| width | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used.|
-| height | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
-| padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding. - If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding. - If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
+| width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, default value **0** is used.|
+| height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, default value **0** is used.|
+| padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides in a declaration.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | No| Left, top, right, and bottom padding.|
-| border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the margin for all sides.|
-| border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|
-| border-radius | &lt;length&gt; | - | No| Radius of round-corner borders.|
+| border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
+| border-color | &lt;color&gt; | black | No| Shorthand attribute to set the border color for all sides.|
+| border-radius | &lt;length&gt; | - | No| Radius of border corners.|
 | background-color | &lt;color&gt; | - | No| Background color.|
 | opacity<sup>5+</sup> | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent.|
-| display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
+| display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 
 
 
 ## Example
 
-See [Example in list](js-lite-components-container-list.md#example).
+See [Example](js-lite-components-container-list.md#example) of the **\<list>** component.

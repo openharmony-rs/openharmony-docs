@@ -46,4 +46,4 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 ```
 
 
-![en-us_image_0000001173324721](figures/en-us_image_0000001173324721.png)
+![polygon](figures/polygon.png)

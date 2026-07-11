@@ -1,9 +1,9 @@
 # ohprint.h
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
 ## 概述
@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_Print](capi-oh-print.md)
+**相关模块：** [Print](capi-oh-print.md)
 
 ## 汇总
 
@@ -286,7 +286,7 @@ enum Print_JobDocAdapterState
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | 因取消导致的打印任务预览能力销毁。 |
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6  | 因启动导致的打印任务预览能力销毁。 |
 
-## OH_Print_JobState
+### OH_Print_JobState
 
 ```c
 enum OH_Print_JobState

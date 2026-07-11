@@ -30,23 +30,16 @@
 
    系统提供的media接口可以创建一个录像[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)实例，通过该实例的[getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
-   ```ts
-   async function getVideoSurfaceId(aVRecorderConfig: media.AVRecorderConfig): Promise<string | undefined> {  // aVRecorderConfig可参考步骤3.创建录像输出流。
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     let videoSurfaceId: string | undefined = undefined;
-     try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return videoSurfaceId;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-       videoSurfaceId = await avRecorder.getInputSurface();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
-     }
-     return videoSurfaceId;
+   <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   this.avRecorder = await this.createAVRecorder();
+   if (this.avRecorder === undefined) {
+     Logger.error(TAG, 'Failed to create the avRecorder.');
+     return;
    }
+   await this.prepareAVRecorder();
+   let videoSurfaceId = await this.avRecorder.getInputSurface();
    ```
 
 3. 创建录像输出流。
@@ -63,68 +56,18 @@
    >
    > 4.录像输出流帧率通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，选择[VideoProfile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#videoprofile)中[frameRateRange](../../reference/apis-camera-kit/arkts-apis-camera-i.md#frameraterange)满足实际业务需求的录像输出流videoProfile。
 
-   ```ts
-   async function getVideoOutput(cameraManager: camera.CameraManager, videoSurfaceId: string, cameraOutputCapability: camera.CameraOutputCapability): Promise<camera.VideoOutput | undefined> {
-     if (!cameraManager || !videoSurfaceId || !cameraOutputCapability || !cameraOutputCapability.videoProfiles) {
-       return;
-     }
-     let videoProfilesArray: Array<camera.VideoProfile> = cameraOutputCapability.videoProfiles;
-     if (!videoProfilesArray || videoProfilesArray.length === 0) {
-       console.error("videoProfilesArray is null or []");
-       return undefined;
-     }
-     // AVRecorderProfile。
-     let aVRecorderProfile: media.AVRecorderProfile = {
-       fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4。
-       videoBitrate : 100000, // 视频比特率。
-       videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持avc格式。
-       videoFrameWidth : 640,  // 视频分辨率的宽。
-       videoFrameHeight : 480, // 视频分辨率的高。
-       videoFrameRate : 30 // 视频帧率。
-     };
-     // 创建视频录制的参数，预览流与录像输出流的分辨率的宽(videoFrameWidth)高(videoFrameHeight)比要保持一致。
-     let avMetadata: media.AVMetadata = {
-      videoOrientation: '90' // rotation的值90，是通过getVideoRotation接口获取到的值，具体请参考说明中获取录像旋转角度的方法。
-     }
-     
-     let aVRecorderConfig: media.AVRecorderConfig = {
-       videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-       profile: aVRecorderProfile,
-       url: 'fd://35', // 此处为样例示范，需要根据开发需求填写实际的路径。
-       metadata: avMetadata
-     };
-     // 创建avRecorder，设置视频录制的参数。
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return undefined;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
-       await avRecorder?.release();
-       return;
-     }
-
-     // 创建VideoOutput对象。
+   <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   createVideoOutputFn(cameraManager: camera.CameraManager, videoProfileObj: camera.VideoProfile,
+     surfaceId: string): camera.VideoOutput | undefined {
      let videoOutput: camera.VideoOutput | undefined = undefined;
-     // createVideoOutput传入的videoProfile对象的宽高需要和aVRecorderProfile保持一致。
-     let videoProfile: undefined | camera.VideoProfile = videoProfilesArray.find((profile: camera.VideoProfile) => {
-       return profile.size.width === aVRecorderProfile.videoFrameWidth && profile.size.height === aVRecorderProfile.videoFrameHeight;
-     });
-     if (!videoProfile) {
-       console.error('videoProfile is not found');
-       await avRecorder.release();
-       return undefined;
-     }
      try {
-       videoOutput = cameraManager.createVideoOutput(videoProfile, videoSurfaceId);
+       videoOutput = cameraManager.createVideoOutput(videoProfileObj, surfaceId);
+       Logger.info(TAG, `createVideoOutputFn success: ${videoOutput}`);
      } catch (error) {
        let err = error as BusinessError;
-       console.error('Failed to create the videoOutput instance. errorCode = ' + err.code);
-       await avRecorder.release();
+       Logger.error(TAG, `createVideoOutputFn failed: ${err.code}`);
      }
      return videoOutput;
    }
@@ -139,24 +82,25 @@
    > - 当录像流已设置过范围帧率时，预览流帧率必须设置与其相同的范围帧率。
    >
    > - 当录像流已设置过固定帧率时，预览流帧率要设置成录像帧率的约数，且必须也为固定帧率。
+   >
+   > - 部分设备前置镜头录像分辨率若选择3280*2160，录像模式下可能会出现视频倒置的情况，建议在[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，避免该问题发生。
 
    先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
-   ```ts
-   async function startVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-    try {
-      await videoOutput.start();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`start videoOutput failed, error: ${err.code}`);
-    }
-    avRecorder.start(async (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to start the video output ${err.message}`);
-      return;
-    }
-    console.info('Callback invoked to indicate the video output start success.');
-    });
+   <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   async startVideo(): Promise<void> {
+     Logger.info(TAG, 'startVideo is called');
+     try {
+       await this.videoOutput?.start();
+       await this.avRecorder?.start();
+       this.isRecording = true;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `startVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'startVideo End of call');
    }
    ```
 
@@ -164,16 +108,28 @@
 
    先通过avRecorder的[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1)方法停止录像输出流。
 
-   ```ts
-   async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-     avRecorder.stop((err: BusinessError) => {
-     if (err) {
-       console.error(`Failed to stop the video output ${err.message}`);
+   <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   async stopVideo(): Promise<void> {
+     Logger.info(TAG, 'stopVideo is called');
+     if (!this.isRecording) {
+       Logger.info(TAG, 'not in recording');
        return;
      }
-     console.info('Callback invoked to indicate the video output stop success.');
-     });
-     await videoOutput.stop();
+     try {
+       if (this.avRecorder) {
+         await this.avRecorder.stop();
+       }
+       if (this.videoOutput) {
+         await this.videoOutput.stop();
+       }
+       this.isRecording = false;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `stopVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'stopVideo End of call');
    }
    ```
 
@@ -183,39 +139,34 @@
 在相机应用开发过程中，可以随时监听录像输出流状态，包括录像开始、录像结束、录像流输出的错误。
 
 - 通过注册固定的frameStart回调函数获取监听录像开始结果，videoOutput创建成功时即可监听，录像第一次曝光时触发，有该事件返回结果则认为录像开始。
-    
-  ```ts
-  function onVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('frameStart', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('Video frame started');
-    });
-  }
+
+  <!-- @[camera_video_frameStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  previewOutput.on('frameStart', (): void => {
+    Logger.debug(TAG, 'Preview frame started');
+    AppStorage.setOrCreate('frameStart', ++this.frameStartFlag);
+  });
   ```
 
 - 通过注册固定的frameEnd回调函数获取监听录像结束结果，videoOutput创建成功时即可监听，录像完成最后一帧时触发，有该事件返回结果则认为录像流已结束。
-    
-  ```ts
-  function onVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('frameEnd', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('Video frame ended');
-    });
-  }
+
+  <!-- @[camera_video_frameEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  previewOutput.on('frameEnd', (): void => {
+    Logger.debug(TAG, 'Preview frame ended');
+  });
   ```
 
 - 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
-    
-  ```ts
-  function onVideoOutputError(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('error', (error: BusinessError) => {
-      console.error(`Video output error code: ${error.code}`);
-    });
-  }
+
+  <!-- @[camera_video_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  previewOutput.on('error', (previewOutputError: BusinessError): void => {
+    Logger.info(TAG, `Preview output previewOutputError: ${JSON.stringify(previewOutputError)}`);
+  });
   ```
 
 <!--RP1-->

@@ -25,20 +25,21 @@ svg组件还可以绘制文本。
 <!-- xxx.hml -->
 <div class="container">
   <svg>
-    <text x="200" y="300" font-size="80px" fill="blue" >Hello World</text>    <text x="200" y="300" dx="20" dy="80" font-size="80px" fill="blue" fill-opacity="0.5" stroke="red" stroke-width="2">Hello World</text>
+    <text x="200" y="300" font-size="80px" fill="blue" >Hello World</text>
+    <text x="200" y="300" dx="20" dy="80" font-size="80px" fill="blue" fill-opacity="0.5" stroke="red" stroke-width="2">Hello World</text>
     <text x="20" y="550" fill="#D2691E">
-      <tspan dx="40" fill="red" font-size="80" fill-opacity="0.4">Hello World </tspan>
+      <tspan dx="40" fill="red" font-size="80px" fill-opacity="0.4">Hello World </tspan>
     </text>
   </svg>
 </div>
 ```
 
-![zh-cn_image_0000001227151887](figures/zh-cn_image_0000001227151887.png)
+![Text](figures/Text.png)
 
 
 ## 沿路径绘制文本
 
-textpath文本内容沿着属性path中的路径绘制文本。
+textpath文本沿着path属性指定的路径进行绘制。
 
 
 ```html
@@ -55,4 +56,4 @@ textpath文本内容沿着属性path中的路径绘制文本。
 </div>
 ```
 
-![zh-cn_image_0000001181354262](figures/zh-cn_image_0000001181354262.png)
+![Drawing-Text-Along](figures/Drawing-Text-Along.png)

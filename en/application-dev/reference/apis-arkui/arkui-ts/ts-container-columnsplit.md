@@ -120,7 +120,7 @@ struct ColumnSplitExample {
 }
 ```
 
-![en-us_image_0000001219982708](figures/en-us_image_0000001219982708.gif)
+![columnSplit1](figures/columnSplit1.gif)
 
 ### Example 2: Setting the ColumnSplit Component with Spacing
 

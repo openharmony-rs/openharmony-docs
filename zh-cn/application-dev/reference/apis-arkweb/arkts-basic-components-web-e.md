@@ -16,17 +16,17 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
 | Debug | 1 | 调试级别。 |
-| Error | 4 | 错误级别。 |
 | Info  | 2 | 消息级别。 |
-| Log   | 5 | 日志级别。 |
 | Warn  | 3 | 警告级别。 |
+| Error | 4 | 错误级别。 |
+| Log   | 5 | 日志级别。<br/>**起始版本：** 8<br/> **废弃版本：** 26.0.0 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
@@ -222,6 +222,8 @@ Web布局模式的配置。
 
 ## ProtectedResourceType<sup>9+</sup>
 
+受保护的资源类型。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称                          | 值 | 说明            |    可申请的权限          |
@@ -346,8 +348,8 @@ Web布局模式的配置。
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
-| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的宽度最大规格不超过500,000 px（物理像素）。   |
+| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的高度最大规格不超过7,680 px（物理像素）。   |
+| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的高度最大规格不超过500,000 px（物理像素）。   |
 
 ## ViewportFit<sup>12+</sup>
 

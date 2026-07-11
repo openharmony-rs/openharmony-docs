@@ -7,13 +7,13 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-AbilityDelegator模块可以通过[AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例来监听和管理[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。
+AbilityDelegator是用于调度和管理UIAbility测试生命周期的代理控制器，它通过AbilityMonitor机制来监听和管理[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。
 
-AbilityDelegator可以通过[getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator)方法获取。
+该模块适用于UIAbility单元测试和集成测试场景，用于验证生命周期行为正确性和模拟用户操作序列。需要注意的是，其接口仅限测试环境使用，不应在正式业务代码中调用。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
 
@@ -58,19 +58,25 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// 创建AbilityMonitor实例，设置监听的Ability名称和onAbilityCreate生命周期回调
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
+// 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// 调用addAbilityMonitor方法添加监听
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
-  console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`addAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -208,17 +214,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
 function onAbilityCreateCallback(data: UIAbility) {
-    console.info('onAbilityCreateCallback');
+  console.info('onAbilityCreateCallback');
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-    abilityName: 'abilityName',
-    onAbilityCreate: onAbilityCreateCallback
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
 };
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
-    console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`removeAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -253,7 +261,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
-- 示例
+**示例**：
 
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -359,16 +367,16 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   onAbilityCreate: onAbilityCreateCallback
 };
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbility) => {
   if (error) {
-    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
-    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info('waitAbilityMonitor success.');
   }
 });
 ```
@@ -407,8 +415,11 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// 设置最大等待时间（毫秒）
 let timeout = 100;
+// 创建AbilityMonitor实例，设置监听的Ability名称
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
@@ -418,12 +429,14 @@ function onAbilityCreateCallback(data: UIAbility) {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
 }
 
+// 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// 调用waitAbilityMonitor并传入超时参数等待匹配Ability
 abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
-  if (error && error.code !== 0) {
-    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
-    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info('waitAbilityMonitor success.');
   }
 });
 ```
@@ -516,7 +529,7 @@ let context = abilityDelegator.getAppContext();
 
 getAbilityState(ability: UIAbility): number
 
-获取指定ability的生命周期状态。
+获取指定Ability的生命周期状态。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -554,10 +567,14 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  let state = abilityDelegator.getAbilityState(ability);
-  console.info(`getAbilityState ${state}`);
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    let state = abilityDelegator.getAbilityState(ability);
+    console.info(`getAbilityState ${state}`);
+  }
 });
 ```
 
@@ -598,8 +615,12 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+  }
 });
 ```
 
@@ -617,7 +638,7 @@ getCurrentTopAbility(): Promise\<UIAbility>
 
 | 类型                                                        | 说明                                   |
 | ----------------------------------------------------------- | -------------------------------------- |
-| Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise对象，返回前应用顶部Ability。 |
+| Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise对象，返回当前应用顶部Ability。 |
 
 **错误码**：
 
@@ -676,8 +697,8 @@ startAbility(want: Want, callback: AsyncCallback\<void>): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -690,15 +711,23 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// 构造Want参数，指定目标Ability的bundleName和abilityName
 let want: Want = {
   bundleName: 'bundleName',
   abilityName: 'abilityName'
 };
 
+// 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// 调用startAbility启动指定Ability
 abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
-  console.info('startAbility callback');
+  if (err) {
+    console.error(`startAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('startAbility callback');
+  }
 });
 ```
 
@@ -740,8 +769,8 @@ startAbility(want: Want): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -803,11 +832,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
-    console.info("doAbilityForeground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityForeground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info("doAbilityForeground callback");
+      }
+    });
+  }
 });
 ```
 
@@ -854,11 +891,15 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability).then(() => {
-    console.info("doAbilityForeground promise");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability).then(() => {
+      console.info("doAbilityForeground promise");
+    });
+  }
 });
 ```
 
@@ -900,11 +941,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability, (err: BusinessError) => {
-    console.info("doAbilityBackground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityBackground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info("doAbilityBackground callback");
+      }
+    });
+  }
 });
 ```
 
@@ -951,11 +1000,15 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability).then(() => {
-    console.info("doAbilityBackground promise");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability).then(() => {
+      console.info("doAbilityBackground promise");
+    });
+  }
 });
 ```
 
@@ -1023,7 +1076,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.print(msg, (err: BusinessError) => {
-  console.info('print callback');
+  if (err) {
+    console.error(`print fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('print callback');
+  }
 });
 ```
 
@@ -1069,11 +1126,11 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
 执行指定的shell命令。使用callback异步回调。
 
-仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1088,12 +1145,19 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+// 设置要执行的shell命令字符串
+let shellCommand = 'cmd';
 
+// 获取AbilityDelegator实例并执行shell命令
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  console.info('executeShellCommand callback');
+abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
 });
 ```
 
@@ -1103,11 +1167,11 @@ executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<S
 
 指定超时时间，并执行指定的shell命令。使用callback异步回调。
 
-仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1124,12 +1188,16 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  console.info('executeShellCommand callback');
+abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
 });
 ```
 
@@ -1139,11 +1207,11 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
 指定超时时间，并执行指定的shell命令。使用Promise异步回调。
 
-仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1164,11 +1232,11 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
   console.info('executeShellCommand promise');
 });
 ```
@@ -1211,7 +1279,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
-  console.info('finishTest callback');
+  if (err) {
+    console.error(`finishTest fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('finishTest callback');
+  }
 });
 ```
 
@@ -1689,12 +1761,15 @@ setMockList(mockList: Record\<string, string>): void
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
+// 创建mock替换关系的键值对象，key为待替换的目标路径，value为mock实现文件路径
 let mockList: Record<string, string> = {
   '@ohos.router': 'src/main/mock/ohos/router.mock',
   'common.time': 'src/main/mock/common/time.mock',
 };
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
+// 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// 调用setMockList设置mock替换关系
 abilityDelegator.setMockList(mockList);
 ```

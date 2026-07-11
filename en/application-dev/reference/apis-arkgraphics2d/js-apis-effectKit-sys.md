@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -122,7 +122,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![image_Top_Proportion_Colors_And_Percentages.png](figures/image_Top_Proportion_Colors_And_Percentages.png)
+![Top-Proportion-Colors-And-Percentages.png](figures/Top-Proportion-Colors-And-Percentages.png)
 
 ### getShadeDegree<sup>22+</sup>
 
@@ -326,17 +326,17 @@ Adds the gradient blur effect with an elliptical mask to the filter linked list,
 **Example**
 
 ``` ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
 function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-	  let blurRadius:number = 25;
-	  let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
-	  let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
-	  let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
+    let blurRadius:number = 25;
+    let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
+    let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
+    let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
     imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {

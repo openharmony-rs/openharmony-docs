@@ -1,8 +1,8 @@
 # Video
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @qianpinyi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -50,9 +50,10 @@ Video(value: VideoOptions)
 | 名称       | 类型    | 只读 | 可选 | 说明                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | src                 | string \| [Resource](ts-types.md#resource)                            | 否   | 是 | 视频的数据源，支持本地视频和网络视频。<br>Resource格式可以跨包/跨模块访问资源文件，常用于访问本地视频。<br/>- 仅支持rawfile文件下的资源，即通过\$rawfile引用视频文件。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>- 支持网络视频地址，网络视频地址支持的格式见[流媒体支持的格式](../../../media/media/streaming-media-playback-development-guide.md#流媒体支持的格式)。<br/>- 支持file://路径前缀的字符串，即应用沙箱URI（见[uriOrPath](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)）：file://\<bundleName>/\<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>默认值：空字符串<br/>异常值：按默认值处理。<br/>**说明：**<br/>视频支持的格式是：mp4、mkv、TS。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| currentProgressRate | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8枚举说明) | 否   | 是 | 视频播放倍速。<br/>**说明：**<br/>number格式取值仅支持：0.75，1.0，1.25，1.75，2.0。从API version 22开始，新增支持取值0.5，1.5，3，0.25和0.125。<br/>string格式支持number格式取值的字符串形式："0.75"，"1.0"，"1.25"，"1.75"，"2.0"。从API version 22开始，新增支持取值"0.5"，"1.5"，"3"，"0.25"和"0.125"。<br/>除此之外的取值，比如"abc"或"1.5+1.5"会按照异常值处理。<br/>默认值：1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| currentProgressRate | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8枚举说明) | 否   | 是 | 视频播放倍速。<br/>**说明：**<br/>number格式取值仅支持：0.75，1.0，1.25，1.75，2.0。从API version 22开始，新增支持取值0.5，1.5，3，0.25和0.125。从API版本26.0.0开始，支持取值范围：[0.125, 8]。<br/>string格式支持number格式取值的字符串形式："0.75"，"1.0"，"1.25"，"1.75"，"2.0"。从API version 22开始，新增支持取值"0.5"，"1.5"，"3"，"0.25"和"0.125"。<br/>除此之外的取值，比如"abc"或"1.5+1.5"会按照异常值处理。<br/>默认值：1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | previewUri          | string&nbsp;\| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  | 否  | 是  | 视频未播放时的预览图片路径，默认不显示图片。<br/>string格式可用于加载本地图片和网络图片，<br/>- 支持网络图片地址。<br/>- 支持相对路径引用本地图片，例如：previewUri: “common/test.jpg”。当使用相对路径引用本地图片时，不支持跨包/跨模块调用。<br/>- 支持file://路径前缀的字符串，即应用沙箱URI（见[uriOrPath](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)）：file://\<bundleName>/\<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>Resource格式可以跨包/跨模块访问资源文件。<br/>- 支持rawfile文件下的资源，即通过\$rawfile引用图片。<br/>- 支持通过\$r引用系统资源或者应用资源中的图片。<br/>默认值：空字符串<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
-| controller          | [VideoController](#videocontroller)                          | 否 | 是   | 设置视频控制器，可以控制视频的播放状态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| controller          | [VideoController](#videocontroller)                          | 否 | 是   | 设置视频控制器，可以控制视频的播放状态。当设置了controllerAsync时，controller设置不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| controllerAsync          | [VideoControllerAsync](#videocontrollerasync)                          | 否 | 是   | 设置异步版本的视频控制器，可以控制视频的播放状态并通过Promise获取返回结果，当设置了controllerAsync时，controller会被忽略。<br/>默认值：空<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是   | 设置图像AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18对象说明) | 否 | 是   | 设置视频播放的首帧送显选项，可以控制视频是否支持首帧送显。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -135,7 +136,7 @@ controls(value: boolean)
 
 > **说明：**
 >
-> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/harmonyos_samples/video-play)<!--RP1End-->。
+> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
 
 ### objectFit
 
@@ -186,6 +187,8 @@ enableAnalyzer(enable: boolean)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,7 +253,7 @@ enableShortcutKey(enabled: boolean)
 
 onStart(event:&nbsp;VoidCallback)
 
-播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+开始播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -260,7 +263,7 @@ onStart(event:&nbsp;VoidCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频播放的回调函数。        |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频开始播放的回调函数。        |
 
 ### onPause
 
@@ -296,7 +299,7 @@ onFinish(event:&nbsp;VoidCallback)
 
 ### onError
 
-onError(event: VoidCallback | ErrorCallback)
+onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 
 播放失败时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -312,7 +315,7 @@ onError(event: VoidCallback | ErrorCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[Media错误码](../../apis-media-kit/errorcode-media.md)。|
+| event  | [VoidCallback](ts-types.md#voidcallback12) \| import('../api/@ohos.base').[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[Media错误码](../../apis-media-kit/errorcode-media.md)。|
 
 ### onStop<sup>12+</sup>
 
@@ -611,6 +614,185 @@ setCurrentTime(value: number, seekMode: SeekMode)
 | -------- | -------- | ---- | -------------- |
 | value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
 | seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。          |
+
+## VideoControllerAsync
+
+VideoControllerAsync是VideoController的异步版本，可以通过Promise获取部分播控命令的结果。不支持同时控制多个Video。
+
+> **说明：**
+>
+>  VideoControllerAsync向开发者暴露了命令的执行结果，与VideoController相比，VideoControllerAsync中的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)播放控制命令为异步执行，请求后可立即返回而不阻塞当前线程；并且可基于Promise的then和catch方法，对命令成功或失败的结果进行后续处理。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### 导入对象
+
+```ts
+let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
+```
+
+### constructor
+
+constructor()
+
+VideoControllerAsync的构造函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### start
+
+start(): Promise\<void\>
+
+开始播放视频。使用Promise异步回调。
+
+在视频准备完成前，如果没有收到[onPrepared](#onprepared)回调时调用start()方法会失败。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ----- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+### pause
+
+pause(): Promise\<void\>
+
+暂停播放视频，显示当前帧，再次播放时从当前位置继续播放。使用Promise异步回调。
+
+只能在正在播放的状态下调用，其他情况下调用pause()方法会失败。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ----- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+### stop
+
+stop(): Promise\<void\>
+
+停止播放视频，显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ----- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+### reset
+
+reset(): Promise\<void\>
+
+Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ----- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+### requestFullscreen
+
+requestFullscreen(value: boolean)
+
+请求全屏播放。未通过该接口设置时，默认不请求全屏播放。
+
+> **说明：**
+>
+>  Video组件自带的全屏功能仅将视频内容设为全屏，显示默认控制器，无法显示自定义标题或控制器。如需其他功能，用户需自行实现全屏功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| value  | boolean  | 是   | 是否全屏（填充满应用窗口）播放。<br/>true：请求全屏播放；false：不请求全屏播放。 |
+
+### exitFullscreen
+
+exitFullscreen()
+
+退出全屏播放。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### setCurrentTime
+
+setCurrentTime(value: number, seekMode?: SeekMode)
+
+指定视频播放的进度位置，可以指定跳转模式。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明           |
+| -------- | -------- | ---- | -------------- |
+| value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
+| seekMode | [SeekMode](#seekmode8枚举说明) | 否    | 跳转模式。          |
 
 ## SeekMode<sup>8+</sup>枚举说明
 
@@ -935,7 +1117,6 @@ struct VideoErrorComponent {
   @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
-  @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
   @State errorMessage: string = '';
 
@@ -1088,3 +1269,110 @@ interface FullscreenObject {
 ```
 
 ![](figures/videoModifier.png)
+
+### 示例7（VideoControllerAsync用法）
+
+该示例通过提供VideoControllerAsync的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口，获取命令结果。
+
+从API版本26.0.0开始，新增VideoControllerAsync控制器及[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct VideoControllerAsyncExample {
+  @State videoSrc: Resource = $rawfile('video1.mp4');// 替换为开发者所需的视频资源文件。
+  controller: VideoControllerAsync = new VideoControllerAsync();
+
+  build() {
+    Column() {
+      Video({
+        src: this.videoSrc,
+        controllerAsync: this.controller,
+      })
+        .width('100%')
+        .height(600)
+        .onStart(() => {
+          console.info('onStart');
+        })
+        .onPause(() => {
+          console.info('onPause');
+        })
+        .onFinish(() => {
+          console.info('onFinish');
+        })
+        .onError(() => {
+          console.error('onError');
+        })
+        .onStop(() => {
+          console.info('onStop');
+        })
+        .onPrepared((e?: PreparedInfo) => {
+          if (e != undefined) {
+            console.info(`onPrepared is ${e.duration}`);
+          }
+        })
+        .onSeeking((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeking is ${e.time}`);
+          }
+        })
+        .onSeeked((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onSeeked is ${e.time}`);
+          }
+        })
+        .onUpdate((e?: PlaybackInfo) => {
+          if (e != undefined) {
+            console.info(`onUpdate is ${e.time}`);
+          }
+        })
+        .onFullscreenChange((e?: FullscreenInfo) => {
+          if (e != undefined) {
+            console.info(`onFullscreenChange is ${e.fullscreen}`);
+          }
+        })
+
+      Row() {
+        Button('start').onClick(() => {
+          this.controller.start() // 开始播放，返回Promise<void>。
+            .then(() => { // 可以通过then等待执行成功。
+              console.info('start success')
+            })
+            .catch((err: BusinessError) => { // catch处理执行失败的场景。
+              console.info(`start failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('pause').onClick(() => {
+          this.controller.pause() // 暂停播放。
+            .then(() => {
+              console.info('pause success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`pause failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('stop').onClick(() => {
+          this.controller.stop() // 结束播放。
+            .then(() => {
+              console.info('stop success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`stop failed: ${err.message}`)
+            })
+        }).margin(2)
+        Button('reset').onClick(() => {
+          this.controller.reset() // 重置AVPlayer。
+            .then(() => {
+              console.info('reset success')
+            })
+            .catch((err: BusinessError) => {
+              console.info(`reset failed: ${err.message}`)
+            })
+        }).margin(2)
+      }
+    }
+  }
+}
+```

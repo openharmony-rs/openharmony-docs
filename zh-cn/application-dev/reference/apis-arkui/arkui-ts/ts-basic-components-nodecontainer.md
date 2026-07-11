@@ -32,7 +32,7 @@
 
 ### NodeContainer
 
-NodeContainer(controller: NodeController)
+NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -42,7 +42,7 @@ NodeContainer(controller: NodeController)
 
 | 参数名     | 类型                                                 | 必填 | 说明                                                         |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| controller | [NodeController](../js-apis-arkui-nodeController.md) | 是   | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
+| controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | 是   | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
 ## 属性
 
 支持[通用属性](ts-component-general-attributes.md)。

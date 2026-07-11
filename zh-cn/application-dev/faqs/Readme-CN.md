@@ -32,7 +32,6 @@
 - [DFX开发常见问题](faqs-dfx.md)
 - [泛Sensor服务开发常见问题](faqs-sensor.md)
 - [启动恢复开发常见问题](faqs-startup.md)
-- [SDK使用常见问题](faqs-sdk.md)
 - [NDK开发常见问题](faqs-ndk.md)
 - [语言编译运行时常见问题](faqs-compiler-runtime.md)
 - [三四方库使用常见问题](faqs-third-fourth-party-library.md)

@@ -119,7 +119,6 @@
     ```
 
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
-    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
 
     ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
@@ -234,6 +233,7 @@
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          return;
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');

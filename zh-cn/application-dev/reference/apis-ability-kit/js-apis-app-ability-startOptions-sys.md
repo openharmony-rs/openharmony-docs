@@ -14,7 +14,7 @@ StartOptions可以作为启动UIAbility接口（例如[startAbility()](js-apis-i
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.StartOptions (StartOptions)](js-apis-app-ability-startOptions.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.StartOptions](js-apis-app-ability-startOptions.md)。
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ import { StartOptions } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦。<br>**约束：**<br>1.该功能仅在2in1和Tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。 |
+| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦；false表示窗口不获焦。<br>**约束：**<br>1.该功能仅在2in1和Tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。 |
 
 **示例：**
 

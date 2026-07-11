@@ -25,7 +25,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the moving speed of the mouse pointer. This API uses an asynchronous callback to return the result.
+Sets the mouse pointer speed. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -35,8 +35,8 @@ Sets the moving speed of the mouse pointer. This API uses an asynchronous callba
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | number                    | Yes   | Moving speed of the mouse pointer. The value ranges from **1** to **20**. The default value is **10**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| speed    | number                    | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.  |
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **Example**
@@ -62,15 +62,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer speed.
             pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
-                console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set pointer speed success`);
+              console.info(`Succeeded in setting pointer speed.`);
             });
           } catch (error) {
-            console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -82,7 +83,7 @@ struct Index {
 
 setPointerSpeed(speed: number): Promise&lt;void&gt;
 
-Sets the moving speed of the mouse pointer. This API uses a promise to return the result.
+Sets the mouse pointer speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -92,7 +93,7 @@ Sets the moving speed of the mouse pointer. This API uses a promise to return th
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes   | Moving speed of the mouse pointer. The value ranges from **1** to **20**. The default value is **10**.|
+| speed | number | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.|
 
 **Return value**
 
@@ -107,7 +108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **Example**
@@ -124,13 +125,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer speed.
             pointer.setPointerSpeed(5).then(() => {
-              console.info(`Set pointer speed success`);
+              console.info(`Succeeded in setting pointer speed.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -142,7 +144,7 @@ struct Index {
 
 setPointerSpeedSync(speed: number): void
 
-Sets the moving speed of the mouse pointer. This API returns the result synchronously.
+Sets the mouse pointer speed. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -152,7 +154,7 @@ Sets the moving speed of the mouse pointer. This API returns the result synchron
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes   | Moving speed of the mouse pointer. The value ranges from **1** to **20**. The default value is **10**.|
+| speed | number | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.|
 
 **Error codes**
 
@@ -161,7 +163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -177,9 +179,9 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.setPointerSpeedSync(5);
-            console.info(`Set pointer speed success`);
+            console.info(`Succeeded in setting pointer speed.`);
           } catch (error) {
-            console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -191,7 +193,7 @@ struct Index {
 
 getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the moving speed of the mouse pointer. This API uses an asynchronous callback to return the result.
+Obtains the mouse pointer speed. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -201,7 +203,7 @@ Obtains the moving speed of the mouse pointer. This API uses an asynchronous cal
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the mouse pointer speed. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -210,7 +212,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | Permission denied, non-system app called system api. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **Example**
@@ -227,15 +229,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer speed.
             pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
-                console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
             });
           } catch (error) {
-            console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -247,7 +250,7 @@ struct Index {
 
 getPointerSpeed(): Promise&lt;number&gt;
 
-Obtains the moving speed of the mouse pointer. This API uses a promise to return the result.
+Obtains the mouse pointer speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -257,7 +260,7 @@ Obtains the moving speed of the mouse pointer. This API uses a promise to return
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise object, which is used to asynchronously return the result.|
+| Promise&lt;number&gt; | Promise used to return the mouse pointer speed.|
 
 **Error codes**
 
@@ -281,13 +284,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer speed.
             pointer.getPointerSpeed().then(speed => {
-              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -299,7 +303,7 @@ struct Index {
 
 getPointerSpeedSync(): number
 
-Obtains the moving speed of the mouse pointer. This API returns the result synchronously.
+Obtains the mouse pointer speed. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -309,7 +313,7 @@ Obtains the moving speed of the mouse pointer. This API returns the result synch
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| number | Moving speed of the mouse pointer.|
+| number | Mouse pointer speed. The value ranges from 1 to 20. |
 
 **Error codes**
 
@@ -318,7 +322,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -334,9 +338,9 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.getPointerSpeedSync();
-            console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
           } catch (error) {
-            console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -348,7 +352,7 @@ struct Index {
 
 setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the status of the mouse hover scroll switch. This API uses an asynchronous callback to return the result.
+Sets the mouse hover scrolling switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -359,7 +363,7 @@ Sets the status of the mouse hover scroll switch. This API uses an asynchronous 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state    | boolean                    | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -368,7 +372,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -384,15 +388,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse hover scrolling switch state.
             pointer.setHoverScrollState(true, (error: BusinessError) => {
               if (error) {
-                console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set the mouse hover scroll success`);
+              console.info(`Succeeded in setting mouse hover scroll.`);
             });
           } catch (error) {
-            console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -429,7 +434,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -445,13 +450,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse hover scrolling switch state.
             pointer.setHoverScrollState(true).then(() => {
-              console.info(`Set the mouse hover scroll success`);
+              console.info(`Succeeded in setting mouse hover scroll.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -463,7 +469,7 @@ struct Index {
 
 getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
-Obtains the status of the mouse hover scroll switch. This API uses an asynchronous callback to return the result.
+Obtains the mouse hover scrolling switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -473,7 +479,7 @@ Obtains the status of the mouse hover scroll switch. This API uses an asynchrono
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **true** (default) will be returned if the switch is enabled while false will be returned if the switch is disabled. If the operation fails, **err** is an error object.|
 
 **Error codes**
 
@@ -482,7 +488,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -498,15 +504,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse hover scrolling switch state.
             pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
               if (error) {
-                console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+                console.info(`Succeeded in getting mouse hover scroll, state: ${JSON.stringify(state)}.`);
               }
             });
           } catch (error) {
-            console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -528,7 +535,7 @@ Obtains the status of the mouse hover scroll switch. This API uses a promise to 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the mouse hover scrolling switch is enabled, and the value **false** indicates that the switch is disabled. The default value is **true**.|
 
 **Error codes**
 
@@ -537,7 +544,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -553,13 +560,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse hover scrolling switch state.
             pointer.getHoverScrollState().then((state: boolean) => {
-              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting mouse hover scroll, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -571,7 +579,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the primary button of the mouse. This API uses an asynchronous callback to return the result.
+Sets the primary mouse button. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -582,7 +590,7 @@ Sets the primary button of the mouse. This API uses an asynchronous callback to 
 | Name   | Type                     | Mandatory | Description                                   |
 | -------- | ------------------------- | ----  | ------------------------------------- |
 | primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | Yes   | Type of the primary mouse button.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -591,7 +599,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -607,15 +615,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the primary mouse button.
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: BusinessError) => {
               if (error) {
-                console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set mouse primary button success`);
+              console.info(`Succeeded in setting mouse primary button.`);
             });
           } catch (error) {
-            console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -627,7 +636,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
-Sets the mouse primary button. This API uses a promise to return the result.
+Sets the primary mouse button. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -652,7 +661,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -668,13 +677,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the primary mouse button.
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
-              console.info(`Set mouse primary button success`);
+              console.info(`Succeeded in setting mouse primary button.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -686,7 +696,7 @@ struct Index {
 
 getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
-Obtains the primary button of the mouse. This API uses an asynchronous callback to return the result.
+Obtains the current primary mouse button. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -696,7 +706,7 @@ Obtains the primary button of the mouse. This API uses an asynchronous callback 
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **PrimaryButton** is the obtained key value. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -705,7 +715,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -721,15 +731,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the primary mouse button.
             pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
               if (error) {
-                console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+                console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
               }
             });
           } catch (error) {
-            console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -741,7 +752,7 @@ struct Index {
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
-Obtains the current mouse primary button. This API uses a promise to return the result.
+Obtains the current primary mouse button. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -751,7 +762,7 @@ Obtains the current mouse primary button. This API uses a promise to return the 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise used to return the result.|
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise used to return the primary mouse button.|
 
 **Error codes**
 
@@ -760,7 +771,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -776,13 +787,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the primary mouse button.
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -794,7 +806,7 @@ struct Index {
 
 setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the number of mouse scroll rows. This API uses an asynchronous callback to return the result.
+Sets the number of mouse scroll lines. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -804,8 +816,8 @@ Sets the number of mouse scroll rows. This API uses an asynchronous callback to 
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | Yes   | Number of mouse scroll rows. The value ranges from 1 to 100. The default value is **3**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| rows     | number                    | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.  |
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -814,7 +826,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -830,15 +842,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the number of mouse scroll lines.
             pointer.setMouseScrollRows(1, (error: BusinessError) => {
               if (error) {
-                console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setMouseScrollRows success`);
+              console.info(`Succeeded in setting mouse scroll rows.`);
             });
           } catch (error) {
-            console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -850,7 +863,7 @@ struct Index {
 
 setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
-Sets the number of mouse scroll rows. This API uses a promise to return the result.
+Sets the number of mouse scroll lines. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -860,7 +873,7 @@ Sets the number of mouse scroll rows. This API uses a promise to return the resu
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | Yes   | Number of mouse scroll rows. The value ranges from 1 to 100. The default value is **3**.|
+| rows  | number | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.|
 
 **Return value**
 
@@ -875,7 +888,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -891,13 +904,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the number of mouse scroll lines.
             pointer.setMouseScrollRows(20).then(() => {
-              console.info(`setMouseScrollRows success`);
+              console.info(`Succeeded in setting mouse scroll rows.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -909,7 +923,7 @@ struct Index {
 
 getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of mouse scroll rows. This API uses an asynchronous callback to return the result.
+Obtains the number of mouse scroll lines. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -919,7 +933,7 @@ Obtains the number of mouse scroll rows. This API uses an asynchronous callback 
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the number of mouse scroll lines. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -928,7 +942,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -944,15 +958,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the number of mouse scroll lines.
             pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
               if (error) {
-                console.error(`getMouseScrollRows error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+                console.info(`Succeeded in getting mouse scroll rows, rows: ${JSON.stringify(rows)}.`);
               }
             });
           } catch (error) {
-            console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -964,7 +979,7 @@ struct Index {
 
 getMouseScrollRows(): Promise&lt;number&gt;
 
-Obtains the moving speed of the mouse pointer. This API uses a promise to return the result.
+Obtains the number of mouse scroll lines. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -974,7 +989,7 @@ Obtains the moving speed of the mouse pointer. This API uses a promise to return
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise object, which is used to asynchronously return the result.|
+| Promise&lt;number&gt; | Promise used to return the number of mouse scroll lines.|
 
 **Error codes**
 
@@ -983,7 +998,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -999,13 +1014,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the number of mouse scroll lines.
             pointer.getMouseScrollRows().then((rows: number) => {
-              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`Succeeded in getting mouse scroll rows, rows: ${JSON.stringify(rows)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1017,7 +1033,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the scroll switch of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad scroll switch. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1028,7 +1044,7 @@ Sets the scroll switch of the touchpad. This API uses an asynchronous callback t
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | Yes   | Scroll switch status. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1037,7 +1053,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1053,15 +1069,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad scroll switch state.
             pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadScrollSwitch success`);
+              console.info(`Succeeded in setting touchpad scroll switch.`);
             });
           } catch (error) {
-            console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1073,7 +1090,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
-Sets the scroll switch of the touchpad. This API uses a promise to return the result.
+Sets the touchpad scroll switch. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1098,7 +1115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1114,13 +1131,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad scroll switch state.
             pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.info(`setTouchpadScrollSwitch success`);
+              console.info(`Succeeded in setting touchpad scroll switch.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1132,7 +1150,7 @@ struct Index {
 
 getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the scroll switch status of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad scroll switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1142,7 +1160,7 @@ Obtains the scroll switch status of the touchpad. This API uses an asynchronous 
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the scroll switch state (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1151,7 +1169,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1167,15 +1185,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad scroll switch state.
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
               if (error) {
-                console.error(`getTouchpadScrollSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+                console.info(`Succeeded in getting touchpad scroll switch, state: ${JSON.stringify(state)}.`);
               }
             });
           } catch (error) {
-            console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1187,7 +1206,7 @@ struct Index {
 
 getTouchpadScrollSwitch(): Promise\<boolean>
 
-Obtains the scroll switch status of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad scroll switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1197,7 +1216,7 @@ Obtains the scroll switch status of the touchpad. This API uses a promise to ret
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad scroll switch is enabled, and the value **false** indicates that the touchpad scroll is disabled. The default value is **true**.|
 
 **Error codes**
 
@@ -1206,7 +1225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1222,13 +1241,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad scroll switch state.
             pointer.getTouchpadScrollSwitch().then((state) => {
-              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad scroll switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1240,7 +1260,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the scroll direction of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad scroll direction. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1250,8 +1270,8 @@ Sets the scroll direction of the touchpad. This API uses an asynchronous callbac
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   | Scroll direction of the touchpad.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| state | boolean | Yes   | Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.  |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1260,7 +1280,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1276,15 +1296,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad scroll direction.
             pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadScrollDirection success`);
+              console.info(`Succeeded in setting touchpad scroll direction.`);
             });
           } catch (error) {
-            console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1296,7 +1317,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
 
-Sets the scroll direction of the touchpad. This API uses a promise to return the result.
+Sets the touchpad scroll direction. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1306,7 +1327,7 @@ Sets the scroll direction of the touchpad. This API uses a promise to return the
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Scroll direction of the touchpad.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.|
+| state | boolean| Yes   |  Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.|
 
 **Return value**
 
@@ -1321,7 +1342,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1337,13 +1358,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad scroll direction.
             pointer.setTouchpadScrollDirection (false).then(() => {
-              console.info(`setTouchpadScrollDirection success`);
+              console.info(`Succeeded in setting touchpad scroll direction.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1355,7 +1377,7 @@ struct Index {
 
 getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
-Obtains the scroll direction of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad scroll direction. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1365,7 +1387,7 @@ Obtains the scroll direction of the touchpad. This API uses an asynchronous call
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad scroll direction matches the direction of finger movement (**true** indicates yes). Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1374,7 +1396,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1390,11 +1412,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad scroll direction.
             pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
-            console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1416,7 +1439,7 @@ Obtains the scroll direction of the touchpad. This API uses a promise to return 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise object, which is used to asynchronously return the result.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad scroll direction matches the direction of finger movement, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
 
@@ -1425,7 +1448,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1441,13 +1464,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad scroll direction.
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1459,7 +1483,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the tap switch of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad tap switch. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1470,7 +1494,7 @@ Sets the tap switch of the touchpad. This API uses an asynchronous callback to r
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | Yes   |Tap switch status of the touchpad The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1479,7 +1503,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1495,15 +1519,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad tap switch.
             pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadTapSwitch success`);
+              console.info(`Succeeded in setting touchpad tap switch.`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`); 
           }
         })
     }
@@ -1515,7 +1540,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
-Sets the tap switch of the touchpad. This API uses a promise to return the result.
+Sets the touchpad tap switch. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1525,7 +1550,7 @@ Sets the tap switch of the touchpad. This API uses a promise to return the resul
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Tap switch status of the touchpad. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| Yes   |  State of the touchpad tap switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
 
 **Return value**
 
@@ -1540,7 +1565,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1556,13 +1581,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad tap switch.
             pointer.setTouchpadTapSwitch(false).then(() => {
-              console.info(`setTouchpadTapSwitch success`);
+              console.info(`Succeeded in setting touchpad tap switch.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1574,7 +1600,7 @@ struct Index {
 
 getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the tap switch status of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad tap switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1584,8 +1610,7 @@ Obtains the tap switch status of the touchpad. This API uses an asynchronous cal
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
-
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad tap switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -1593,7 +1618,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1609,15 +1634,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad tap switch state.
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
               if (error) {
-                console.error(`getTouchpadTapSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+                console.info(`Succeeded in getting touchpad tap switch, state: ${JSON.stringify(state)}.`);
               }
             });
           } catch (error) {
-            console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1629,7 +1655,7 @@ struct Index {
 
 getTouchpadTapSwitch(): Promise\<boolean>
 
-Obtains the tap switch status of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad tap switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1639,7 +1665,7 @@ Obtains the tap switch status of the touchpad. This API uses a promise to return
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad tap switch is enabled, and the value **false** indicates that the touchpad tap switch is disabled. The default value is **true**.|
 
 **Error codes**
 
@@ -1648,7 +1674,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1664,13 +1690,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad tap switch state.
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
-              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad tap switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1682,7 +1709,7 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
-Sets the mouse pointer moving speed of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad pointer speed. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1692,8 +1719,8 @@ Sets the mouse pointer moving speed of the touchpad. This API uses an asynchrono
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | Yes   |Mouse pointer moving speed of the touchpad. The value range is [1,11]. The default value is **6**. |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| speed | number                    | Yes   |Touchpad pointer speed The value range is [1,11]. The default value is **6**. |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1702,7 +1729,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1718,15 +1745,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad pointer speed.
             pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadPointerSpeed success`);
+              console.info(`Succeeded in setting touchpad pointer speed.`);
             });
           } catch (error) {
-            console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1738,7 +1766,7 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number): Promise\<void>
 
-Sets the mouse pointer moving speed of the touchpad. This API uses a promise to return the result.
+Sets the touchpad pointer speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1748,7 +1776,7 @@ Sets the mouse pointer moving speed of the touchpad. This API uses a promise to 
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | Yes   | Mouse pointer moving speed of the touchpad. The value range is [1,11]. The default value is **6**.   |
+| speed| number | Yes   | Touchpad pointer speed The value range is [1,11]. The default value is **6**.   |
 
 **Return value**
 
@@ -1763,7 +1791,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1779,13 +1807,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad pointer speed.
             pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.info(`setTouchpadPointerSpeed success`);
+              console.info(`Succeeded in setting touchpad pointer speed.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1797,7 +1826,7 @@ struct Index {
 
 getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
-Obtains the mouse pointer moving speed of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad pointer speed. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1807,7 +1836,7 @@ Obtains the mouse pointer moving speed of the touchpad. This API uses an asynchr
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<number> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<number> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained touchpad pointer speed. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1816,7 +1845,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1832,15 +1861,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad pointer speed.
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
-                console.error(`getTouchpadPointerSpeed error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+                console.info(`Succeeded in getting touchpad pointer speed, speed: ${JSON.stringify(speed)}.`);
               }
             });
           } catch (error) {
-            console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1852,7 +1882,7 @@ struct Index {
 
 getTouchpadPointerSpeed(): Promise\<number>
 
-Obtains the mouse pointer moving speed of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad pointer speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1862,7 +1892,7 @@ Obtains the mouse pointer moving speed of the touchpad. This API uses a promise 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise object, which is used to asynchronously return the result.|
+| Promise\<number> | Promise used to return the touchpad pointer speed. The value range is [1,11].|
 
 **Error codes**
 
@@ -1871,7 +1901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1887,13 +1917,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad pointer speed.
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
-              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Succeeded in getting touchpad pointer speed, speed: ${JSON.stringify(speed)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1905,7 +1936,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the pinch switch of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad pinch switch. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1915,8 +1946,8 @@ Sets the pinch switch of the touchpad. This API uses an asynchronous callback to
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   |Pinch switch status of the touchpad. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| state | boolean | Yes   |Touchpad pinch switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1925,7 +1956,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1941,15 +1972,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad pinch switch.
             pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadPinchSwitch success`);
+              console.info(`Succeeded in setting touchpad pinch switch.`);
             });
           } catch (error) {
-            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1961,7 +1993,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
-Sets the pinch switch of the touchpad. This API uses a promise to return the result.
+Sets the touchpad pinch switch. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1971,7 +2003,7 @@ Sets the pinch switch of the touchpad. This API uses a promise to return the res
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Pinch switch status of the touchpad. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| Yes   |  Touchpad pinch switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
 
 **Return value**
 
@@ -1986,7 +2018,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2002,13 +2034,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad pinch switch.
             pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.info(`setTouchpadPinchSwitch success`);
+              console.info(`Succeeded in setting touchpad pinch switch.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2020,7 +2053,7 @@ struct Index {
 
 getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the pinch switch status of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad pinch switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2030,7 +2063,7 @@ Obtains the pinch switch status of the touchpad. This API uses an asynchronous c
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad pinch switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2039,7 +2072,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2055,15 +2088,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad pinch switch state.
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
               if (error) {
-                console.error(`getTouchpadPinchSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+                console.info(`Succeeded in getting touchpad pinch switch, state: ${JSON.stringify(state)}.`);
               }
             });
           } catch (error) {
-            console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2075,7 +2109,7 @@ struct Index {
 
 getTouchpadPinchSwitch(): Promise\<boolean>
 
-Obtains the pinch switch status of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad pinch switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2085,7 +2119,7 @@ Obtains the pinch switch status of the touchpad. This API uses a promise to retu
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad pinch switch is enabled, and the value **false** indicates that the touchpad pinch switch is disabled. The default value is **true**.|
 
 **Error codes**
 
@@ -2094,7 +2128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2110,13 +2144,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad pinch switch state.
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
-              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad pinch switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2128,7 +2163,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the multi-finger swipe switch of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad multi-finger swipe switch. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2138,8 +2173,8 @@ Sets the multi-finger swipe switch of the touchpad. This API uses an asynchronou
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   |Swipe switch status of the touchpad. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| state | boolean | Yes   |Touchpad multi-finger swipe switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2148,7 +2183,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2164,15 +2199,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad multi-finger swipe switch.
             pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadSwipeSwitch success`);
+              console.info(`Succeeded in setting touchpad swipe switch.`);
             });
           } catch (error) {
-            console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2184,7 +2220,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
-Sets the swipe switch of the touchpad. This API uses a promise to return the result.
+Sets the touchpad multi-finger swipe switch. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2194,7 +2230,7 @@ Sets the swipe switch of the touchpad. This API uses a promise to return the res
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Swipe switch status of the touchpad. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| Yes   |  Touchpad multi-finger swipe switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
 
 **Return value**
 
@@ -2209,7 +2245,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2225,13 +2261,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad multi-finger swipe switch.
             pointer.setTouchpadSwipeSwitch(false).then(() => {
-              console.info(`setTouchpadSwipeSwitch success`);
+              console.info(`Succeeded in setting touchpad swipe switch.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2243,7 +2280,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the multi-finger swipe switch status of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad multi-finger swipe switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2253,7 +2290,7 @@ Obtains the multi-finger swipe switch status of the touchpad. This API uses an a
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad multi-finger swipe switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object|
 
 **Error codes**
 
@@ -2262,7 +2299,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2278,11 +2315,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad multi-finger swipe switch state.
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
-            console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2294,7 +2332,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
 
-Obtains the multi-finger swipe switch status of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad multi-finger swipe switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2304,7 +2342,7 @@ Obtains the multi-finger swipe switch status of the touchpad. This API uses a pr
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad multi-finger swipe switch is enabled, and **false** indicates that the touchpad multi-finger swipe switch is disabled. The default value is **true**.|
 
 **Error codes**
 
@@ -2313,7 +2351,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2329,13 +2367,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad multi-finger swipe switch state.
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
-              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2347,7 +2386,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>): void
 
-Sets the shortcut menu type of the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad right-click menu type. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2357,8 +2396,8 @@ Sets the shortcut menu type of the touchpad. This API uses an asynchronous callb
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Shortcut menu type of the touchpad.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2367,7 +2406,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2383,15 +2422,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad right-click menu type.
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadRightClickType success`);
+              console.info(`Succeeded in setting touchpad right click type.`);
             });
           } catch (error) {
-            console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2403,7 +2443,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
-Sets the shortcut menu type of the touchpad. This API uses a promise to return the result.
+Sets the touchpad right-click menu type. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2413,7 +2453,7 @@ Sets the shortcut menu type of the touchpad. This API uses a promise to return t
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Shortcut menu type of the touchpad.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
+| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
 
 **Return value**
 
@@ -2428,7 +2468,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2444,13 +2484,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad right-click menu type.
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
-              console.info(`setTouchpadRightClickType success`);
+              console.info(`Succeeded in setting touchpad right click type.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad right click type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2462,7 +2503,7 @@ struct Index {
 
 getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
-Obtains the shortcut menu type of the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad right-click menu type. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2472,7 +2513,7 @@ Obtains the shortcut menu type of the touchpad. This API uses an asynchronous ca
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and the object is the touchpad right-click menu type. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2481,7 +2522,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2497,11 +2538,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad right-click menu type.
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
-              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+              console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             });
           } catch (error) {
-            console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2513,7 +2555,7 @@ struct Index {
 
 getTouchpadRightClickType(): Promise\<RightClickType>
 
-Obtains the shortcut menu type of the touchpad. This API uses a promise to return the result.
+Obtains the touchpad right-click menu type. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2523,7 +2565,7 @@ Obtains the shortcut menu type of the touchpad. This API uses a promise to retur
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise object, which is used to asynchronously return the result.|
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise used to return the touchpad right-click menu type.|
 
 **Error codes**
 
@@ -2532,7 +2574,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2548,13 +2590,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad right-click menu type.
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+              console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad right click type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2566,7 +2609,7 @@ struct Index {
 
 setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the pointer size. This API uses an asynchronous callback to return the result.
+Sets the mouse pointer size. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2586,7 +2629,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2602,15 +2645,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer size.
             pointer.setPointerSize(1, (error: BusinessError) => {
               if (error) {
-                console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setPointerSize success`);
+              console.info(`Succeeded in setting pointer size.`);
             });
           } catch (error) {
-            console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2647,7 +2691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2663,13 +2707,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer size.
             pointer.setPointerSize(3).then(() => {
-              console.info(`setPointerSize success`);
+              console.info(`Succeeded in setting pointer size.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set pointer size failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2700,7 +2745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2715,10 +2760,11 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer size synchronously.
             pointer.setPointerSizeSync(5);
-            console.info(`setPointerSizeSync success`);
+            console.info(`Succeeded in setting pointer size sync.`);
           } catch (error) {
-            console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2730,7 +2776,7 @@ struct Index {
 
 getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the pointer size. This API uses an asynchronous callback to return the result.
+Obtains the current mouse pointer size. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2740,7 +2786,7 @@ Obtains the pointer size. This API uses an asynchronous callback to return the r
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer size (value range: [1-7]). Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2749,7 +2795,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2765,15 +2811,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer size.
             pointer.getPointerSize((error: BusinessError, size: number) => {
               if (error) {
-                console.error(`getPointerSize error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+                console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
               }
             });
           } catch (error) {
-            console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2795,7 +2842,7 @@ Obtains the current mouse pointer size. This API uses a promise to return the re
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the mouse pointer size. The value ranges from 1 to 7.|
 
 **Error codes**
 
@@ -2820,13 +2867,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer size.
             pointer.getPointerSize().then((size: number) => {
-              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get pointer size failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2848,7 +2896,7 @@ Obtains the pointer size. This API returns the result synchronously.
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| number | Pointer size. |
+| number | Mouse pointer size. The value ranges from **1** to **7**.|
 
 **Error codes**
 
@@ -2873,9 +2921,9 @@ struct Index {
         .onClick(() => {
           try {
             let pointerSize = pointer.getPointerSizeSync();
-            console.info(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+            console.info(`Succeeded in getting pointer size sync, pointerSize: ${JSON.stringify(pointerSize)}.`);
           } catch (error) {
-            console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2887,7 +2935,7 @@ struct Index {
 
 setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the pointer color. This API uses an asynchronous callback to return the result.
+Sets the mouse pointer color. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2911,7 +2959,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2927,15 +2975,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer color.
             pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
-                console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setPointerColor success`);
+              console.info(`Succeeded in setting pointer color.`);
             });
           } catch (error) {
-            console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2976,7 +3025,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2992,13 +3041,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer color.
             pointer.setPointerColor(0xF6C800).then(() => {
-              console.info(`setPointerColor success`);
+              console.info(`Succeeded in setting pointer color.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3033,7 +3083,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3048,10 +3098,11 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the mouse pointer color synchronously.
             pointer.setPointerColorSync(0xF6C800);
-            console.info(`setPointerColorSync success`);
+            console.info(`Succeeded in setting pointer color sync.`);
           } catch (error) {
-            console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3063,7 +3114,7 @@ struct Index {
 
 getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the pointer color. This API uses an asynchronous callback to return the result.
+Obtains the mouse pointer color. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3073,7 +3124,7 @@ Obtains the pointer color. This API uses an asynchronous callback to return the 
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer color. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3082,7 +3133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3098,15 +3149,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer color.
             pointer.getPointerColor((error: BusinessError, color: number) => {
               if (error) {
-                console.error(`getPointerColor error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+                console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
               }
             });
           } catch (error) {
-            console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3128,7 +3180,7 @@ Obtains the current mouse pointer color. This API uses a promise to return the r
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the mouse pointer color.|
 
 **Error codes**
 
@@ -3153,13 +3205,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the mouse pointer color.
             pointer.getPointerColor().then((color: number) => {
-              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3206,9 +3259,9 @@ struct Index {
         .onClick(() => {
           try {
             let pointerColor = pointer.getPointerColorSync();
-            console.info(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+            console.info(`Succeeded in getting pointer color sync, pointerColor: ${JSON.stringify(pointerColor)}.`);
           } catch (error) {
-            console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3220,7 +3273,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>): void
 
-Sets the double-tap and drag switch for the touchpad. This API uses an asynchronous callback to return the result.
+Sets the touchpad double-tap and drag switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3230,8 +3283,8 @@ Sets the double-tap and drag switch for the touchpad. This API uses an asynchron
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | Yes   | Status of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| isOpen | boolean | Yes   | State of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3240,7 +3293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3256,15 +3309,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad double-tap and drag switch state.
             pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
-                console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`Succeeded in setting touchpad double tap and drag state.`);
             });
           } catch (error) {
-            console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3276,7 +3330,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
-Sets the double-tap and drag switch for the touchpad. This API uses a promise to return the result.
+Sets the touchpad double-tap and drag switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3286,7 +3340,7 @@ Sets the double-tap and drag switch for the touchpad. This API uses a promise to
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| isOpen | boolean | Yes   | Status of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| isOpen | boolean | Yes   | State of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
 
 **Return value**
 
@@ -3301,7 +3355,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3317,13 +3371,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the touchpad double-tap and drag switch state.
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
-              console.info(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`Succeeded in setting touchpad double tap and drag state.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3335,7 +3390,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
-Obtains the status of the double-tap and drag switch for the touchpad. This API uses an asynchronous callback to return the result.
+Obtains the touchpad double-tap and drag switch state. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3345,7 +3400,7 @@ Obtains the status of the double-tap and drag switch for the touchpad. This API 
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the status of the double-tap drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **true** is returned if the switch is enabled while **false** is returned if the switch is disabled. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3354,7 +3409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3370,15 +3425,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad double-tap and drag switch state.
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
               if (error) {
-                console.error(`getTouchpadDoubleTapAndDragState error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               } else {
-                console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+                console.info(`Succeeded in getting touchpad double tap and drag state, state: ${JSON.stringify(state)}.`);
               }
             });
           } catch (error) {
-            console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3390,7 +3446,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
-Obtains the status of the double-tap and drag switch for the touchpad. This API uses a promise to return the result.
+Obtains the touchpad double-tap and drag switch state. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3400,7 +3456,7 @@ Obtains the status of the double-tap and drag switch for the touchpad. This API 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad double-tap and drag switch is enabled, and the value **false** indicates that the touchpad double-tap and drag switch is disabled.|
 
 **Error codes**
 
@@ -3424,13 +3480,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Obtain the touchpad double-tap and drag switch state.
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
-              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting touchpad double tap and drag state, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3486,13 +3543,14 @@ struct Index {
       Button("setMouseScrollDirection")
         .onClick(() => {
           try {
+            // Set the mouse scroll direction.
             pointer.setMouseScrollDirection(false).then(() => {
-              console.info(`setMouseScrollDirection success`);
+              console.info(`Succeeded in setting mouse scroll direction.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3516,7 +3574,7 @@ Obtains the scroll direction of the mouse wheel. This API uses a promise to retu
 
 | Type             | Description                                                                                                                        |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Promise\<boolean> | Promise object, which returns the mouse wheel scroll direction asynchronously.<br>The value **true** indicates that scroll direction matches the finger movement on the wheel, and the value **false** indicates that the scroll direction is opposite to the finger movement.<br>The default value is **true**.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the mouse wheel scroll direction is the same as the finger direction, and the value **false** indicates that the mouse wheel scroll direction is opposite to the finger direction. The default value is **true**.|
 
 **Error codes**
 
@@ -3542,13 +3600,14 @@ struct Index {
       Button("getMouseScrollDirection")
         .onClick(() => {
           try {
+            // Obtain the mouse scroll direction.
             pointer.getMouseScrollDirection().then((state: boolean) => {
-              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`Succeeded in getting mouse scroll direction, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

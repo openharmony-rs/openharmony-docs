@@ -125,7 +125,7 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
-关于区域变化相关的参数。
+关于可见区域变化相关的参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -362,7 +362,7 @@ struct ScrollExample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change.gif)
+![visible-area-change.gif](figures/visible-area-change.gif)
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
@@ -474,4 +474,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change3.jpg)
+![visible-area-change.gif](figures/visible-area-change3.jpg)

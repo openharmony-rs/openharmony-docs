@@ -1,8 +1,8 @@
 # 屏幕管理开发术语
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @fei_1007-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 

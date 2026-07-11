@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:21:37.272Z pushedAt=2026-06-12T03:45:44.604Z -->
 
 ## Overview
 
@@ -116,8 +117,8 @@ Enumerates the key codes.
 | KEYCODE_TAB = 2049 | Tab key|
 | KEYCODE_SPACE = 2050 | Space key|
 | KEYCODE_SYM = 2051 | Symbol key|
-| KEYCODE_EXPLORER = 2052 | Explorer key, used to start the explorer application|
-| KEYCODE_ENVELOPE = 2053 | Email key, used to start the email application|
+| KEYCODE_EXPLORER = 2052 | Browser function key, used to launch the browser application.|
+| KEYCODE_ENVELOPE = 2053 | Email function key, used to launch the email application.|
 | KEYCODE_ENTER = 2054 | Enter key|
 | KEYCODE_DEL = 2055 | Delete key|
 | KEYCODE_GRAVE = 2056 | Key `|
@@ -227,7 +228,7 @@ Enumerates the key codes.
 | KEYCODE_FIND = 2623 | Find key<br>**Since**: 22|
 | KEYCODE_CUT = 2624 | Cut key<br>**Since**: 22|
 | KEYCODE_HELP = 2625 | Help key<br>**Since**: 22|
-| KEYCODE_CALC = 2626 | Calc key, which is used to start the calculator application<br>**Since**: 22|
+| KEYCODE_CALC = 2626 | Calculator special function key, used to launch the calculator application.<br/>**Since:** 22 |
 | KEYCODE_FILE = 2627 | File key<br>**Since**: 22|
 | KEYCODE_BOOKMARKS = 2628 | Bookmarks key<br>**Since**: 22|
 | KEYCODE_NEXT = 2629 | Page Down key<br>**Since**: 22|
@@ -326,15 +327,15 @@ Enumerates the key codes.
 | KEYCODE_KBD_LAYOUT_NEXT = 2723 | Next Keyboard Layout key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_MIN = 2724 | Min Brightness key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_MAX = 2725 | Max Brightness key<br>**Since**: 22|
-| KEYCODE_KBDINPUTASSIST_PREV = 2726 | Assist_Previous key, used to view historical inputs<br>**Since**: 22|
-| KEYCODE_KBDINPUTASSIST_NEXT = 2727 | Assist_Next key, used to view predictive inputs<br>**Since**: 22|
-| KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728 | Assist_Previous_Group key, used to switch to the previous input method in the input group<br>**Since**: 22|
-| KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | Assist_Next_Group key, used to switch to the next input method in the input group<br>**Since**: 22|
+| KEYCODE_KBDINPUTASSIST_PREV = 2726 | Keyboard Input Assist_Previous, used to view input method input history.<br/>**Since:** 22 |
+| KEYCODE_KBDINPUTASSIST_NEXT = 2727 | Keyboard Input Assist_Next, used to view input method input extensions.<br/>**Since:** 22 |
+| KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728 | Keyboard Input Assist_Previous, used to switch to the previous input method in the input group.<br/>**Since:** 22 |
+| KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input Assist_Next, used to switch to the next input method in the input group.<br/>**Since:** 22 |
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input-assisted Accept key<br>**Since**: 22|
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key<br>**Since**: 22|
 | KEYCODE_MOUSE_ASSISTANT = 2732 | Mouse AI Assistant key<br>**Since**: 24|
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | Mouse Smart Selection key<br>**Since**: 24|
-| KEYCODE_AOD_SINGLE_CLICK = 2740 | Tapping the phone touchscreen, which is used in AOD mode<br>**Since**: 26.0.0|
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | Phone touchscreen single-click event, used in Always-On Display state.<br/>**Since:** 26.0.0 |
 | KEYCODE_FRONT = 2800 | Front key, which is used to launch the windshield defogger<br>**Since**: 22|
 | KEYCODE_SETUP = 2801 | Setup key<br>**Since**: 22|
 | KEYCODE_WAKEUP = 2802 | Wakeup key<br>**Since**: 22|
@@ -374,7 +375,7 @@ Enumerates the key codes.
 | KEYCODE_SPORT = 2837 | Sport key<br>**Since**: 22|
 | KEYCODE_SHOP = 2838 | Shop key<br>**Since**: 22|
 | KEYCODE_ALTERASE = 2839 | Alternate key<br>**Since**: 22|
-| KEYCODE_SWITCHVIDEOMODE = 2841 | Switch Video Mode key (monitor, LCD, and TV, etc.)<br>**Since**: 22|
+| KEYCODE_SWITCHVIDEOMODE = 2841 | Cycle output between available videos (monitor/LCD/TV output/more)<br/>**Since:** 22 |
 | KEYCODE_BATTERY = 2842 | Battery key<br>**Since**: 22|
 | KEYCODE_BLUETOOTH = 2843 | Bluetooth key<br>**Since**: 22|
 | KEYCODE_WLAN = 2844 | WLAN key<br>**Since**: 22|
@@ -397,3 +398,5 @@ Enumerates the key codes.
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DIV = 3220 | Left button of the smart watch<br>**Since**: 22|
 | KEYCODE_XKEY = 3232 | Custom Shortcut Keys<br>**Since**: 26.0.0|
+| KEYCODE_FINGERPRINT_SLIDE_UP = 3233 | Smart control Key slide-up<br/>**Since:** 26.0.0 |
+| KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234 | Smart control Key slide-down<br/>**Since:** 26.0.0 |

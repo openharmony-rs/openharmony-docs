@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述应用的包信息。
+NotificationCommonDef中定义了通知相关接口中使用的通用数据结构。
 
 > **说明：**
 >

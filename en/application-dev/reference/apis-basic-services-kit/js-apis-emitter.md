@@ -1,13 +1,25 @@
 # @ohos.events.emitter (Emitter)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **Emitter** module provides the capabilities of sending and processing inter- or intra-thread events in a process. You can use the APIs of this module to subscribe to an event in persistent or one-shot manner, unsubscribe from an event, or emit an event to the event queue.
+This module provides the capability of sending and processing events between threads in a process or within a thread. You can use the APIs of this module to subscribe to events (continuous subscription or one-shot subscription), cancel event subscription, send events to the event queue, and query the number of subscribed events. In this way, event communication between different threads in the same process and within the same thread can be implemented.
+
+Two event processing entries are provided. You can select one based on the isolation requirements:
+
+- **Namespace APIs** (**on**, **once**, **off**, **emit**, and **getListenerCount** in the **emitter** namespace): provide global event subscription and publishing capabilities within a process. This entry works based on the global event queue. Any thread in the same process can subscribe to and publish events. These APIs are suitable for cross-thread event communication.
+- **Instance APIs** (**Emitter** class): provide the event subscription and publishing capabilities within the same **Emitter** instance. Different **Emitter** instances are isolated from each other. You can create multiple independent event communication channels when events need to be isolated or grouped by instance.
+
+**APIs used in combination**
+
+The event communication of this module follows the calling sequence of subscription, publishing, processing , and unsubscription. For both namespace and instance APIs, you need to subscribe to an event first, and then another thread or the same thread publishes the event. The callback is executed after the event is received. When the event is no longer needed, unsubscribe from the event to release resources. In addition, event subscription has a lifecycle. Pay attention to resource management:
+
+- **Continuous subscription** (**on**): The subscription remains valid until **off** is called to cancel subscription. If the subscription is not canceled, it will be retained.
+- **One-shot subscription** (**once**): The subscription is automatically canceled after the event is received for the first time and the callback is executed. You do not need to manually call **off**.
+- **Time for unsubscription**: After the subscription is canceled by calling **off**, the events that have been published through **emit** but have not been executed are also canceled and no callback is triggered. Note that when canceling a specified callback, you need to pass the corresponding callback function. If no callback is specified, all subscriptions to the event are canceled.
 
 > **NOTE**
 >
@@ -47,15 +59,15 @@ let innerEvent: emitter.InnerEvent = {
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-// Execute the callback after receiving the event whose eventId is 1.
+// Execute the callback after receiving the event whose ID is 1.
 emitter.on(innerEvent, callback);
 ```
 
 ## emitter.on<sup>11+</sup>
 
-on(eventId: string, callback:  Callback\<EventData\>): void
+on(eventId: string, callback: Callback\<EventData\>): void
 
 Subscribes to an event in persistent manner and executes a callback after the event is received.
 
@@ -67,7 +79,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -77,14 +89,14 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
-// Execute the callback after receiving the event whose event ID is eventId.
-emitter.on(`eventId`, callback);
+};
+// Execute the callback after receiving the event whose ID is eventId.
+emitter.on('eventId', callback);
 ```
 
 ## emitter.on<sup>12+</sup>
 
-on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
+on<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 Subscribes to an event in persistent manner and executes a callback after the event is received.
 
@@ -96,7 +108,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -120,9 +132,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 // Execute the callback after receiving the event whose event ID is eventId.
-emitter.on("eventId", callback);
+emitter.on('eventId', callback);
 ```
 
 ## emitter.once
@@ -153,8 +165,8 @@ let innerEvent: emitter.InnerEvent = {
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
-// Execute the callback after receiving the event whose eventId is 1.
+};
+// Execute the callback after receiving the event whose ID is 1.
 emitter.once(innerEvent, callback);
 ```
 
@@ -172,7 +184,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -182,9 +194,9 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 // Execute the callback after receiving the event whose event ID is eventId.
-emitter.once("eventId", callback);
+emitter.once('eventId', callback);
 ```
 
 ## emitter.once<sup>12+</sup>
@@ -201,7 +213,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -225,9 +237,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 // Execute the callback after receiving the event whose event ID is eventId.
-emitter.once("eventId", callback);
+emitter.once('eventId', callback);
 ```
 
 ## emitter.off
@@ -251,7 +263,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose **eventId** is **1**.
+// Unregister all callbacks for events whose **eventId** is **1**.
 emitter.off(1);
 ```
 
@@ -271,12 +283,12 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type  | Mandatory| Description    |
 | ------- | ------ | ---- | -------- |
-| eventId | string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
+| eventId | string | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.|
 
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose **eventId** is **eventId1**.
+// Unregister all callbacks for events whose **eventId** is **eventId1**.
 emitter.off("eventId1");
 ```
 
@@ -297,7 +309,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name | Type  | Mandatory| Description  |
 | ------- | ------ | ---- | ------ |
 | eventId | number | Yes  | Event ID.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister.  |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration. |
 
 **Example**
 
@@ -306,8 +318,8 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
-// Unregister the callbacks of all events whose **eventId** is **1**. The callback object must be the object used during registration.
+};
+// Unregister all callbacks for events whose **eventId** is **1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off(1, callback);
 ```
@@ -328,8 +340,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister.|
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration.|
 
 **Example**
 
@@ -338,8 +350,8 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
-// Unregister the callbacks of all events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
+};
+// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off("eventId1", callback);
 ```
@@ -360,8 +372,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister.|
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration.|
 
 **Example**
 
@@ -384,8 +396,8 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
-// Unregister the callbacks of all events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
+};
+// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off("eventId1", callback);
 ```
@@ -447,7 +459,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
@@ -455,12 +467,12 @@ After an event is published using this API, the event may not be executed immedi
 ```ts
 let eventData: emitter.EventData = {
   data: {
-  "content": "content",
-  "id": 1,
+    "content": "content",
+    "id": 1,
   }
 };
 
-emitter.emit("eventId", eventData);
+emitter.emit('eventId', eventData);
 ```
 
 ## emitter.emit<sup>12+</sup>
@@ -481,7 +493,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
@@ -501,7 +513,7 @@ class Sample {
 let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
-emitter.emit("eventId", eventData);
+emitter.emit('eventId', eventData);
 ```
 
 ## emitter.emit<sup>11+</sup>
@@ -522,7 +534,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
@@ -540,7 +552,7 @@ let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
 };
 
-emitter.emit("eventId", options, eventData);
+emitter.emit('eventId', options, eventData);
 ```
 
 ## emitter.emit<sup>12+</sup>
@@ -561,7 +573,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
@@ -586,7 +598,7 @@ let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
 
-emitter.emit("eventId", options, eventData);
+emitter.emit('eventId', options, eventData);
 ```
 
 ## emitter.getListenerCount<sup>11+</sup>
@@ -603,9 +615,9 @@ Obtains the number of subscriptions to a specified event.
 
 | Name | Type          | Mandatory| Description    |
 | ------- | -------------- | ---- | -------- |
-| eventId | number \| string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
+| eventId | number \| string | Yes  | Event ID.<br> The value is a string, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.|
 
-**Returns**
+**Return value**
 
 | Type    | Description        |
 | ------- |------------|
@@ -615,7 +627,7 @@ Obtains the number of subscriptions to a specified event.
 **Example**
 
 ```ts
-let count: number = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount('eventId');
 ```
 
 ## EventPriority
@@ -648,7 +660,7 @@ Describes an event to subscribe to or emit. The **EventPriority** settings do no
 
 ## EventData
 
-Describes data passed in the event.
+Describes data carried by the emitted event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -656,7 +668,7 @@ Describes data passed in the event.
 
 | Name| Type          | Read Only| Optional| Description          |
 | ---- | ------------------ | ---- | ---- | -------------- |
-| data | { [key: string]: any } | No  | Yes  | Data carried by the emitted event. The value can be in any of the following types: Array, ArrayBuffer, Boolean, DataView, Date, Error, Map, Number, Object, Primitive (except symbol), RegExp, Set, String, and TypedArray. The maximum data size is 16 MB.|
+| data | { [key: string]: any } | No  | Yes  | Data carried by the emitted event. The value can be in any of the following types: Array, ArrayBuffer, Boolean, DataView, Date, Error, Map, Number, Object, Primitive (except symbol), RegExp, Set, String, and TypedArray. The maximum data size is 16 MB. If the data size exceeds the limit, the event fails to be emitted.|
 
 ## Options<sup>11+</sup>
 
@@ -680,12 +692,12 @@ Describes the generic data carried by the emitted event.
 
 | Name    | Type                           | Read Only| Optional| Description          |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
-| data | T | No  | Yes  | Data passed in the event. **T**: generic type.|
+| data | T | No  | Yes  | Data carried by the emitted event. **T** represents a generic type, which can be customized based on service requirements.|
 
 
 ## Emitter<sup>22+</sup>
 
-This module provides the capabilities of sending and processing inter- or intra-thread events in a process of the same Emitter instance. You can use the following APIs to subscribe to an event in persistent or one-shot manner, unsubscribe from an event, or emit an event to the event queue.
+This module provides the capabilities of sending and processing inter- or intra-thread events in a process of the same **Emitter** instance. You can use the following APIs to subscribe to an event in persistent or one-shot manner, cancel the subscription, or emit an event to the event queue. This module is applicable when inter-thread communication and event management are required based on independent instances. Different **Emitter** instances are isolated from each other.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -710,7 +722,7 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 ### on<sup>22+</sup>
 
-on(eventId: string, callback:  Callback\<EventData\>): void
+on(eventId: string, callback: Callback\<EventData\>): void
 
 Subscribes to an event specified by the Emitter instance in persistent manner and executes a callback after the event is received.
 
@@ -722,7 +734,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  |  Callback to be invoked when the event is received.|
 
 **Example**
@@ -734,14 +746,14 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.on(`eventId`, callback);
+emitter1.on('eventId', callback);
 ```
 
 ### on<sup>22+</sup>
 
-on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
+on<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 Subscribes to an event specified by the Emitter instance in persistent manner and executes a callback after the event is received.
 
@@ -753,7 +765,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -779,9 +791,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.on("eventId", callback);
+emitter1.on('eventId', callback);
 ```
 
 ### once<sup>22+</sup>
@@ -798,7 +810,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -810,9 +822,9 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.once("eventId", callback);
+emitter1.once('eventId', callback);
 ```
 
 ### once<sup>22+</sup>
@@ -829,7 +841,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
@@ -855,9 +867,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.once("eventId", callback);
+emitter1.once('eventId', callback);
 ```
 
 ### off<sup>22+</sup>
@@ -876,14 +888,14 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type  | Mandatory| Description    |
 | ------- | ------ | ---- | -------- |
-| eventId | string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
+| eventId | string | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.|
 
 **Example**
 
 ```ts
 let emitter1: emitter.Emitter = new emitter.Emitter();
 
-emitter1.off("eventId");
+emitter1.off('eventId');
 ```
 
 ### off<sup>22+</sup>
@@ -902,7 +914,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  |  Callback to unregister.|
 
 **Example**
@@ -914,9 +926,9 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.off("eventId", callback);
+emitter1.off('eventId', callback);
 ```
 
 ### off<sup>22+</sup>
@@ -935,7 +947,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
+| eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister.|
 
 **Example**
@@ -961,9 +973,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.off("eventId", callback);
+emitter1.off('eventId', callback);
 ```
 
 ### emit<sup>22+</sup>
@@ -984,7 +996,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
@@ -993,12 +1005,12 @@ After an event is published using this API, the event may not be executed immedi
 let emitter1: emitter.Emitter = new emitter.Emitter();
 let eventData: emitter.EventData = {
   data: {
-  "content": "content",
-  "id": 1,
+    "content": "content",
+    "id": 1,
   }
 };
 
-emitter1.emit("eventId", eventData);
+emitter1.emit('eventId', eventData);
 ```
 
 ### emit<sup>22+</sup>
@@ -1019,7 +1031,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.|
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
@@ -1042,14 +1054,14 @@ let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
 
-emitter1.emit("eventId", eventData);
+emitter1.emit('eventId', eventData);
 ```
 
 ### emit<sup>22+</sup>
 
 emit(eventId: string, options: Options, data?: EventData): void
 
-Emits a specified event to the Emitter class instance.
+Emits an event of a specified priority to the Emitter instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
@@ -1063,7 +1075,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
@@ -1077,12 +1089,12 @@ let options: emitter.Options = {
 };
 let eventData: emitter.EventData = {
   data: {
-  "content": "content",
-  "id": 1,
+    "content": "content",
+    "id": 1,
   }
 };
 
-emitter1.emit("eventId", options, eventData);
+emitter1.emit('eventId', options, eventData);
 ```
 
 ### emit<sup>22+</sup>
@@ -1103,7 +1115,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| eventId | string                  | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
@@ -1130,7 +1142,7 @@ let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
 
-emitter1.emit("eventId", options, eventData);
+emitter1.emit('eventId', options, eventData);
 ```
 
 ### getListenerCount<sup>22+</sup>
@@ -1147,9 +1159,9 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 | Name | Type          | Mandatory| Description    |
 | ------- | -------------- | ---- | -------- |
-| eventId | string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
+| eventId | string | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.|
 
-**Returns**
+**Return value**
 
 | Type    | Description        |
 | ----- | ----- |
@@ -1160,5 +1172,5 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 ```ts
 let emitter1: emitter.Emitter = new emitter.Emitter();
-let count = emitter1.getListenerCount("eventId");
+let count: number = emitter1.getListenerCount('eventId');
 ```

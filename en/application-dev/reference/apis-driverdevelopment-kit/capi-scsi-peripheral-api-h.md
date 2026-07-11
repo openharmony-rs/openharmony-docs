@@ -1,10 +1,12 @@
 # scsi_peripheral_api.h
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:25.559Z pushedAt=2026-06-22T11:21:11.393Z -->
 
 ## Overview
 
@@ -98,7 +100,6 @@ Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **de
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                            | Description|
@@ -127,7 +128,6 @@ Closes the SCSI device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -153,7 +153,6 @@ Checks whether the logical unit is ready.
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -182,7 +181,6 @@ Queries basic information about the SCSI device.
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -213,7 +211,6 @@ Obtains the capacity information about the SCSI device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                                                      | Description                                                                                                        |
@@ -243,7 +240,6 @@ Obtains sense data, that is, information returned by the SCSI device to the host
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                                                      | Description                                                                                                        |
@@ -271,7 +267,6 @@ Reads data from the specified logical block(s).
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -301,7 +296,6 @@ Writes data to the specified logical block(s) of a device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                                                    | Description                                                                                              |
@@ -329,7 +323,6 @@ Verifies the specified logical block(s).
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -359,7 +352,6 @@ Sends SCSI commands in CDB mode.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                                                   | Description                                                                                  |
@@ -385,7 +377,6 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -413,7 +404,6 @@ Destroys a buffer. To prevent resource leakage, destroy a buffer in time after u
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                                                          | Description                                                                                                                                                                               |
@@ -438,7 +428,6 @@ Parses basic sense data, including the **Information**, **Command specific infor
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -451,4 +440,4 @@ Parses basic sense data, including the **Information**, **Command specific infor
 
 | Type| Description|
 | -- | -- |
-| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input **senseData** is not a descriptor or is not of the fixed format, or **senseDataLen** is smaller than<br>         **SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE** or **SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE**.|
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input **senseData** is not a descriptor or is not of the fixed format, or **senseDataLen** is smaller than<br>[SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_descriptor_format_sense) or [SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_fixed_format_sense). |

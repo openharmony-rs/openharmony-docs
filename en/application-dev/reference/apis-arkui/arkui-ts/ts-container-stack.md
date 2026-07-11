@@ -127,4 +127,4 @@ struct StackExample {
 }
 ```
 
-![en-us_image_0000001219982699](figures/en-us_image_0000001219982699.PNG)
+![stack](figures/stack.PNG)

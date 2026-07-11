@@ -25,7 +25,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## onDragStart
 
@@ -307,7 +307,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | ------ | ------ | ----- | ---- | ------- |
 | useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br/>应用可将该值设定为true来禁用系统默认落位动效，并实现自己的自定义落位动效。<br/>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br/>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br/>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪贴模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪切模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### setData<sup>10+</sup>
 
@@ -759,7 +759,7 @@ getGlobalDisplayX(): number
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| number | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| number | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：(-∞, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
@@ -777,7 +777,7 @@ getGlobalDisplayY(): number
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| number | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| number | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp，取值范围：(-∞, +∞)|
 
 ## DragResult<sup>10+</sup>枚举说明
 
@@ -832,7 +832,7 @@ getGlobalDisplayY(): number
 
 ## UnifiedData<sup>10+</sup>
 
-type UnifiedData = UnifiedData
+type UnifiedData = import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData
 
 拖拽相关的数据。
 
@@ -844,11 +844,11 @@ type UnifiedData = UnifiedData
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) |  拖拽相关的数据。|
+| import('../api/@ohos.data.unifiedDataChannel').default.[UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) |  拖拽相关的数据。|
 
 ## Summary<sup>10+</sup>
 
-type Summary = Summary
+type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary
 
 拖拽相关数据的简介。
 
@@ -860,11 +860,11 @@ type Summary = Summary
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
+| import('../api/@ohos.data.unifiedDataChannel').default.[Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
 
 ## DataLoadParams<sup>20+</sup>
 
-type DataLoadParams = DataLoadParams
+type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams
 
 落入操作时使用的数据加载参数。
 
@@ -876,11 +876,11 @@ type DataLoadParams = DataLoadParams
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20) | 落入操作时使用的数据加载参数。|
+| import('../api/@ohos.data.unifiedDataChannel').default.[DataLoadParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20) | 落入操作时使用的数据加载参数。|
 
 ## DataSyncOptions<sup>15+</sup>
 
-type DataSyncOptions = GetDataParams
+type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams
 
 作为startDataLoading的入参对象。
 
@@ -892,7 +892,7 @@ type DataSyncOptions = GetDataParams
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
+| import('../api/@ohos.data.unifiedDataChannel').default.[GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
 
 ## OnDragEventCallback<sup>15+</sup>
 
@@ -929,7 +929,7 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
-type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
+type DragSpringLoadingConfiguration = import('../api/@ohos.arkui.dragController').default.DragSpringLoadingConfiguration
 
 定义拖拽的悬停检测配置参数的接口。
 
@@ -941,11 +941,11 @@ type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
+| import('../api/@ohos.arkui.dragController').default.[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
 
 ## SpringLoadingContext<sup>20+</sup>
 
-type SpringLoadingContext = SpringLoadingContext
+type SpringLoadingContext = import('../api/@ohos.arkui.dragController').default.SpringLoadingContext
 
 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态。
 
@@ -957,7 +957,7 @@ type SpringLoadingContext = SpringLoadingContext
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
+| import('../api/@ohos.arkui.dragController').default.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
 
 ## 示例
 

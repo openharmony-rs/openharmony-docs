@@ -31,7 +31,7 @@ Create an **\<image>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001223127736](figures/en-us_image_0000001223127736.png)
+![image-Component](figures/image-Component.png)
 
 
 ## Setting the Image Style
@@ -68,7 +68,7 @@ image{
 ```
 
 
-![en-us_image_0000001222807796](figures/en-us_image_0000001222807796.png)
+![Image-Style](figures/Image-Style.png)
 
 
 ## Loading the Image
@@ -126,7 +126,7 @@ export default {
 }
 ```
 
-![en-us_image_images](figures/en-us_image_images.gif)
+![Loading-Image](figures/Loading-Image.gif)
 
 
 
@@ -208,4 +208,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001267607905](figures/en-us_image_0000001267607905.gif)
+![Example-Scenario-6](figures/Example-Scenario-6.gif)

@@ -152,7 +152,7 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
 
 The following figure shows the detection principles.
 
-![en-us_image_0000002326273258](figures/en-us_image_0000002326273258.png)
+![task-execution-timeout-principle](figures/task-execution-timeout-principle.png)
 
 ### Obtaining Logs
 

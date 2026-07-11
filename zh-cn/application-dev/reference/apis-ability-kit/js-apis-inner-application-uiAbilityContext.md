@@ -63,7 +63,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -74,21 +74,21 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -105,6 +105,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility
       this.context.startAbility(want, (err: BusinessError) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -152,34 +153,36 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>适用版本：12+ |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+|
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000055 | Installation-free timed out. <br>适用版本：12+ |
+| 16000067 | The StartOptions check failed. <br>适用版本：12+ |
+| 16000068 | The ability is already running. <br>适用版本：12+ |
+| 16300003 | The target application is not the current application. <br>适用版本：12+ |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -200,6 +203,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility
       this.context.startAbility(want, options, (err: BusinessError) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -244,7 +248,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -252,9 +256,9 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>适用版本：12+ |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -264,24 +268,24 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.  |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>适用版本：12+ |
+| 16000068 | The ability is already running. <br>适用版本：12+ |
+| 16300003 | The target application is not the current application. <br>适用版本：12+ |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -301,6 +305,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility
       this.context.startAbility(want, options)
         .then(() => {
           // 执行正常业务
@@ -352,7 +357,7 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -363,21 +368,21 @@ UIAbility被启动后，有如下情况：
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+|
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -395,6 +400,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility并获取返回结果
       this.context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -447,30 +453,32 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+|
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -491,6 +499,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility并获取返回结果
       this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -535,7 +544,7 @@ UIAbility被启动后，有如下情况：
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。不传时使用默认启动配置。 |
 
 
 **返回值：**
@@ -550,7 +559,7 @@ UIAbility被启动后，有如下情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -561,21 +570,21 @@ UIAbility被启动后，有如下情况：
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -595,6 +604,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动UIAbility并获取返回结果
       this.context.startAbilityForResult(want, options)
         .then((result: common.AbilityResult) => {
           // 执行正常业务
@@ -641,6 +651,9 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -656,6 +669,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
     export default class EntryAbility extends UIAbility {
       onForeground() {
         try {
+          // 销毁UIAbility自身
           this.context.terminateSelf((err: BusinessError) => {
             if (err.code) {
               // 处理业务逻辑错误
@@ -709,7 +723,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -717,6 +731,9 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -733,6 +750,7 @@ terminateSelf(): Promise&lt;void&gt;
     export default class EntryAbility extends UIAbility {
       onForeground() {
         try {
+          // 销毁UIAbility自身
           this.context.terminateSelf()
             .then(() => {
               // 执行正常业务
@@ -798,6 +816,9 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -823,6 +844,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 销毁UIAbility自身
       this.context.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -869,7 +891,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -878,6 +900,9 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -903,6 +928,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 销毁UIAbility自身
       this.context.terminateSelfWithResult(abilityResult)
         .then(() => {
           // 执行正常业务
@@ -956,17 +982,17 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 
 **示例：**
 
@@ -998,6 +1024,7 @@ export default class EntryAbility extends UIAbility {
     let connection: number;
 
     try {
+      // 连接ServiceExtensionAbility
       connection = this.context.connectServiceExtensionAbility(want, options);
     } catch (err) {
       // 处理入参错误异常
@@ -1027,7 +1054,7 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1053,6 +1080,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // 断开与ServiceExtensionAbility的连接
       this.context.disconnectServiceExtensionAbility(connection).then(() => {
         commRemote = null;
         // 执行正常业务
@@ -1111,6 +1139,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // 断开与ServiceExtensionAbility的连接
       this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError) => {
         commRemote = null;
         if (err.code) {
@@ -1168,7 +1197,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，获取要通讯的caller对象。 |
+| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象。成功时返回Caller通信对象，用于与Callee通信；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1181,21 +1210,23 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>适用版本：12+ |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16200001 | The caller has been released. <br>适用版本：9 |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 
 **示例：**
 
@@ -1234,6 +1265,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 获取Caller通信对象，将UIAbility启动到后台
       caller = await this.context.startAbilityByCall(wantBackground);
       await caller.call('TEST_CALL', new TestParcelable());
       caller.release();
@@ -1312,6 +1344,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 获取Caller通信对象，将UIAbility启动到前台
       caller = await this.context.startAbilityByCall(wantForeground);
       caller.release();
     } catch (err) {
@@ -1384,7 +1417,7 @@ setMissionLabel(label: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1425,12 +1458,14 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用不生效。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | state | [AbilityConstant.ContinueState](js-apis-app-ability-abilityConstant.md#continuestate10) | 是 | 流转状态。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当设置UIAbility任务的流转状态成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当设置UIAbility任务的流转状态成功，err中code为0；否则err中包含对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1450,9 +1485,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (result: BusinessError) => {
-      console.info(`setMissionContinueState: ${JSON.stringify(result)}`);
-    });
+    try {
+      this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (err: BusinessError) => {
+        if (err.code) {
+          console.error(`setMissionContinueState failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('setMissionContinueState succeed');
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`setMissionContinueState failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```
@@ -1467,6 +1512,8 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise&lt;void&g
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用不生效。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1477,7 +1524,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise&lt;void&g
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1607,7 +1654,7 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1618,8 +1665,8 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1682,7 +1729,7 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Promise对象。成功时返回请求处理结果；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1690,7 +1737,7 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1701,8 +1748,8 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1827,6 +1874,11 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11  |
+| 16200001 | The caller has been released. <br>适用版本：11  |
+| 16000002 | Incorrect ability type. <br>适用版本：11  |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1882,7 +1934,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1890,6 +1942,11 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
+| 16200001 | The caller has been released. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1938,7 +1995,7 @@ showAbility(): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -1971,6 +2028,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // 显示当前UIAbility
             context.showAbility().then(() => {
               console.info(`showAbility success`);
             }).catch((err: BusinessError) => {
@@ -2038,7 +2096,7 @@ hideAbility(): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2071,6 +2129,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // 隐藏当前UIAbility
             context.hideAbility().then(() => {
               console.info(`hideAbility success`);
             }).catch((err: BusinessError) => {
@@ -2122,7 +2181,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### moveAbilityToBackground<sup>12+<sup>
+### moveAbilityToBackground<sup>12+</sup>
 
 moveAbilityToBackground(): Promise\<void>
 
@@ -2133,14 +2192,16 @@ moveAbilityToBackground(): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 12开始，该接口仅在Phone、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
-- 从API version 13开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 12开始，该接口仅在Phone设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 13开始，该接口仅在Phone和Tablet设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 18开始，该接口仅在Phone、Tablet和Wearable设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 19开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2174,6 +2235,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+            // 将处于前台的UIAbility移动到后台
             context.moveAbilityToBackground().then(() => {
               console.info(`moveAbilityToBackground success.`);
             }).catch((err: BusinessError) => {
@@ -2188,7 +2250,7 @@ struct Index {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
@@ -2252,6 +2314,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动原子化服务
       this.context.openAtomicService(appId, options)
         .then((result: common.AbilityResult) => {
           // 执行正常业务
@@ -2271,7 +2334,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -2306,7 +2369,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2330,7 +2393,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>适用版本：23+ |
 
 **示例：**
 
@@ -2357,6 +2420,7 @@ struct Index {
           };
 
           try {
+            // 通过App Linking方式启动UIAbility
             context.openLink(
               link,
               openLinkOptions,
@@ -2382,7 +2446,7 @@ struct Index {
 }
 ```
 
-### backToCallerAbilityWithResult<sup>12+<sup>
+### backToCallerAbilityWithResult<sup>12+</sup>
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
@@ -2403,7 +2467,7 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2580,7 +2644,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -2606,7 +2670,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2667,7 +2731,7 @@ struct Index {
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
@@ -2782,7 +2846,7 @@ struct UIServiceExtensionAbility {
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
@@ -2807,7 +2871,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -2878,7 +2942,7 @@ struct UIServiceExtensionAbility {
 }
 ```
 
-### setAbilityInstanceInfo<sup>15+<sup>
+### setAbilityInstanceInfo<sup>15+</sup>
 
 setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
@@ -2901,7 +2965,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码**：
 
@@ -2944,6 +3008,7 @@ export default class EntryAbility extends UIAbility {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
+      // 设置UIAbility实例的图标和标签信息
       this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
         .then(() => {
           console.info('setAbilityInstanceInfo success');
@@ -2973,7 +3038,7 @@ revokeDelegator(): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码**：
 
@@ -3069,6 +3134,7 @@ export default class MyAbility extends UIAbility {
         hilog.error(0x0000, 'testTag', 'Failed to load the content.');
         return;
       }
+      // 设置UIAbility的深浅色模式
       let uiAbilityContext = this.context;
       uiAbilityContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
@@ -3100,7 +3166,7 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3137,6 +3203,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 启动AppServiceExtensionAbility
       this.context.startAppServiceExtensionAbility(want)
         .then(() => {
           // 执行正常业务
@@ -3180,7 +3247,7 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3213,6 +3280,7 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
+      // 停止AppServiceExtensionAbility
       this.context.stopAppServiceExtensionAbility(want)
         .then(() => {
           // 执行正常业务
@@ -3306,6 +3374,7 @@ export default class EntryAbility extends UIAbility {
     let connection: number;
 
     try {
+      // 连接AppServiceExtensionAbility
       connection = this.context.connectAppServiceExtensionAbility(want, callback);
     } catch (err) {
       // 处理入参错误异常
@@ -3339,7 +3408,7 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3365,6 +3434,7 @@ export default class EntryAbility extends UIAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
+      // 断开与AppServiceExtensionAbility的连接
       this.context.disconnectAppServiceExtensionAbility(connection).then(() => {
         commRemote = null;
         // 执行正常业务
@@ -3408,7 +3478,7 @@ setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3431,6 +3501,7 @@ export default class EntryAbility extends UIAbility {
       contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
 
     try {
+      // 设置特定场景下拉起UIAbility时不触发onNewWant生命周期回调
       this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
         // 执行正常业务
         console.info('setOnNewWantSkipScenarios succeed');
@@ -3476,7 +3547,7 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3518,6 +3589,7 @@ export default class EntryAbility extends UIAbility {
     let instanceFlag = 'instance1';
 
     try {
+      // // 在当前进程中启动应用程序自己的UIAbility
       this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
     } catch (err) {
       // 处理入参错误异常
@@ -3562,7 +3634,7 @@ restartApp(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3605,6 +3677,7 @@ struct Index {
           };
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
           try {
+            // 重启当前UIAbility所在的进程并拉起指定UIAbility
             await context.restartApp(want);
           } catch (err) {
             hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
@@ -3641,7 +3714,7 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3710,7 +3783,7 @@ startSelf(): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3718,7 +3791,7 @@ startSelf(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 801 | Capability not supported. |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current devive or current UIAbility is a non-native UIAbility. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. Connect to system service failed. |
 | 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
@@ -3733,6 +3806,7 @@ export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
       setTimeout((): void => {
+        // 启动当前UIAbility实例，将UIAbility切换至前台
         this.context.startSelf()
           .then((): void => {
             console.info('startSelf succeed');
@@ -3778,7 +3852,7 @@ startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<vo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
 
 **错误码：**
 
@@ -3813,6 +3887,7 @@ export default class EntryAbility extends UIAbility {
     };
     let instanceFlag = 'instance1';
     try {
+      // 在子进程中启动当前应用的UIAbility
       this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
         .then(() => {
           console.info('startSelfUIAbilityInChildProcess succeed');

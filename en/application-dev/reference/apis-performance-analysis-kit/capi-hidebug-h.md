@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -37,6 +37,7 @@ Defines the APIs for debugging.
 | [void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)](#oh_hidebug_getappmemorylimit) | - | Obtains the memory limit of an application process.|
 | [HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)](#oh_hidebug_startapptracecapture) | - | Starts application trace collection.|
 | [HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()](#oh_hidebug_stopapptracecapture) | - | Stops application trace collection.|
+| [HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)](#oh_hidebug_requesttrace) | - | Requests trace collection based on the configured collection settings.|
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | Obtains the size of the GPU memory. Note that this API involves multiple cross-process communications and may take more than 1 second. Therefore, you are advised not to call this API in the main thread.|
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | Performs stack back-tracing based on the given fp address. This function is async-signal-safe.|
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
@@ -51,6 +52,15 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | Performs Perf sampling on the specified threads and returns the sampling stack content after the call is complete. Note: After this function is called, the current thread is blocked until the sampling process ends. The system strictly limits the number of times that this API is called. If the number of times that this API is called exceeds the upper limit, the error code [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode) is returned.|
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | Adds debugging information to the crash logs. This function is used together with [OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj). If a program crashes between **OH_HiDebug_SetCrashObj** and **OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.|
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | Resets the debugging information object to the state before **OH_HiDebug_SetCrashObj** is used.|
+| [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | Asynchronously starts the resource profiler for the current process.<br>The callback function is called only when the collection is stopped (including when the system automatically stops the collection). It carries the resource type and file path to be collected.<br>If the collection is abnormal, the file path is **NULL**.|
+| [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | Stops resource profiler for the current process. This API can be called after the [OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler) API and the call duration must be within the maximum duration.|
+| [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | Triggered by the memory dump listener. You can write memory data using the file descriptor (FD) in the application and then use the [hidumper command](../../dfx/hidumper.md#querying-vm-heap-memory) to export the data.|
+| [HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)](#oh_hidebug_registermemdumplistener) | - | Registers a memory dump listener. When the memory usage of an application is high or the memory information is exported using the [hidumper command](../../dfx/hidumper.md#querying-vm-heap-memory), the system automatically calls the registered callback function.<br> The third-party application framework or developer can use this function to dump the internal memory information of the application to hidumper or upload the information to the OEM vendor through commercial grayscale release.<br> You can use [OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener) to unregister the listener.|
+| [HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)](#oh_hidebug_unregistermemdumplistener) | - | Unregisters a memory dump listener that has been successfully registered.|
+| [uint64_t OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext) | - | Obtains an **AsyncContext** for subsequent use. This API is an auxiliary API of the profiler. You can use [OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext) to release the context.|
+| [void OH_HiDebug_PushAsyncContext(uint64_t ctx)](#oh_hidebug_pushasynccontext) | - | Pushes an **AsyncContext** into the running context stack. This API is an auxiliary API of the profiler.|
+| [void OH_HiDebug_PopAsyncContext(uint64_t ctx)](#oh_hidebug_popasynccontext) | - | Pops an **AsyncContext** from the running context stack. This API is an auxiliary API of the profiler.|
+| [void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)](#oh_hidebug_releaseasynccontext) | - | Releases an **AsyncContext** to the system. This API is an auxiliary API of the profiler.|
 
 ## Function Description
 
@@ -244,6 +254,31 @@ Stops application trace collection.
 | Type| Description|
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | **0** - The operation is successful.<br>         **11400104** - An internal system error occurs.<br>         **11400105** - No trace collection is running.|
+
+### OH_HiDebug_RequestTrace()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)
+```
+
+**Description**
+
+Requests trace collection based on the configured collection settings.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) *config | Parameters for trace collection. For details, see [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md).|
+| [OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback) callback | Callback function for trace collection. For details, see [OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>         **HIDEBUG_SUCCESS**: The collection is successful.<br>         **HIDEBUG_TRACE_ABNORMAL**: The remote service or status is abnormal.<br>         **OH_HIDEBUG_TRACE_STORAGE_LIMIT**: The number of stored trace files reaches the upper limit. If the number of trace files stored in the directory is greater than or equal to 3, a failure message is returned.<br>         **HIDEBUG_RESOURCE_UNAVAILABLE**: The collection resources are unavailable.|
 
 ### OH_HiDebug_GetGraphicsMemory()
 
@@ -557,3 +592,208 @@ Resets the debugging information object to the state before **OH_HiDebug_SetCras
 | Name| Description|
 | -- | -- |
 | uint64_t crashObj | Return value of the **OH_HiDebug_SetCrashObj** function.|
+
+### OH_HiDebug_StartProfiler()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)
+```
+
+**Description**
+
+Asynchronously starts the resource profiler for the current process.<br>The callback function is called only when the collection is stopped (including when the system automatically stops the collection). It carries the resource type and file path to be collected.<br>If the collection is abnormal, the file path is **NULL**.
+
+> **NOTE**
+>
+> 1. This API can be called for a maximum of 10 times every 24 hours.
+> 2. The target process for resource profiling can only be the process that calls this API.
+> 3. If the system CPU usage exceeds 70%, the available memory space is less than 15%, or the available storage space is less than 15%, the API call will fail and the corresponding error code will be returned.
+> 4. If this API conflicts with a command line tool or a system collection task, the API call will fail and the corresponding error code will be returned.
+> 5. If an application has multiple processes, this API can start a maximum of four processes at the same time.
+> 6. The collection result is saved in the application sandbox **/data/storage/el2/base/files/** directory. The file name is in the format of **Resource profiling type-Process name-Process ID-Timestamp.htrace**.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | Resource profiling type.|
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | Configuration parameters of the resource profiler.|
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | Result callback function of resource profiling.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>        **HIDEBUG_RES_PROF_SUCCESS**: Resource profiler started successfully.<br>        **HIDEBUG_RES_PROF_INVALID_ARG**: Invalid resource profiler argument.<br>        **HIDEBUG_RES_PROF_INVALID_MAX_DURATION**: Invalid maximum duration.<br>        **HIDEBUG_RES_PROF_INVALID_FILTER_SIZE**: Invalid filter size.<br>        **HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH**: Invalid maximum stack depth.<br>        **HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL**: Invalid statistics interval.<br>        **HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL**: Invalid sampling interval.<br>        **HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE**: Invalid resource type.<br>        **HIDEBUG_RES_PROF_PERMISSION_DENIED**: Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.<br>        **HIDEBUG_RES_PROF_ALREADY_STARTED**: Resource profiler already started.<br>        **HIDEBUG_RES_PROF_PROCESS_OVERLIMIT**: The number of resource profiling processes exceeds 4.<br>        **HIDEBUG_RES_PROF_CONFLICT**: Resource profiling conflicts with CLI tools or system profiling tasks.<br>        **HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED**: The daily quota for resource profiling exceeds 10 times.<br>        **HIDEBUG_RES_PROF_CPU_OVERLOADED**: The system CPU is overloaded, with the CPU usage exceeding 70%.<br>        **HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL**: The available memory space is less than 15%.<br>        **HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL**: The available storage space is less than 15%.<br>        **HIDEBUG_RES_PROF_FAILURE**: Failed to start resource profiler.|
+
+### OH_HiDebug_StopProfiler()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
+```
+
+**Description**
+
+Stops resource profiler for the current process. This API can be called after the [OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler) API and the call duration must be within the maximum duration.
+
+**Since**: 24
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>        **HIDEBUG_RES_PROF_SUCCESS**: Resource profiler stopped successfully.<br>        **HIDEBUG_RES_PROF_NOT_STARTED**: Failed to stop resource profiler because it is not started.<br>        **HIDEBUG_RES_PROF_FAILURE**: Failed to stop resource profiler.|
+
+### OH_HiDebug_MemDumpListener()
+
+```c
+typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)
+```
+
+**Description**
+
+Triggered by the memory dump listener. You can write memory data using the file descriptor (FD) in the application and then use the [hidumper command](../../dfx/hidumper.md#querying-vm-heap-memory) to export the data.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t fd | File descriptor of the application that writes data to the memory.|
+| [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype)  tag | Type of the memory listener callback. You can process the related logic based on the callback type.|
+| bool mayReportToOEM | ID of the OEM vendor to which data is reported. **true** indicates that the data will be uploaded to the OEM vendor. Pay attention to data privacy and security. **false** indicates that the data will not be reported.|
+| const char\* arg | Pointer to the callback parameter. Different data content is carried based on the callback type for you to use.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Operation result:<br>        **true**: Memory data is successfully written.<br>        **false**: Memory data fails to be written.|
+
+### OH_HiDebug_RegisterMemDumpListener()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)
+```
+
+**Description**
+
+Registers a memory dump listener. When the memory usage of an application is high or the memory information is exported using the [hidumper command](../../dfx/hidumper.md#querying-vm-heap-memory), the system automatically calls the registered callback function.<br> The third-party application framework or developer can use this function to dump the internal memory information of the application to hidumper or upload the information to the OEM vendor through commercial grayscale release.<br> You can use [OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener) to unregister the listener.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* name | Pointer to the name of the listener, which uniquely identifies the listener to be registered. The same name must be passed during listener underegistration.<br> A listener with the same name can be registered only once. If you attempt to register a listener with the same name again, **HIDEBUG_INVALID_ARGUMENT** will be returned. To update a listener, unregister the original listener first.|
+| [OH_HiDebug_MemDumpListener](capi-hidebug-h.md#oh_hidebug_memdumplistener) listener | Callback triggered for listening.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>         **HIDEBUG_SUCCESS**: Operation succeeded.<br>         **HIDEBUG_INVALID_ARGUMENT**: Invalid parameter.|
+
+### OH_HiDebug_UnregisterMemDumpListener()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
+```
+
+**Description**
+
+Unregisters a memory dump listener that has been successfully registered.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* name | Pointer to the unique name of the listener. The value must be the same as the **name** passed during registration.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>         **HIDEBUG_SUCCESS**: Operation succeeded.<br>         **HIDEBUG_INVALID_ARGUMENT**: Invalid parameter.|
+
+### OH_HiDebug_AcquireAsyncContext()
+
+```c
+uint64_t OH_HiDebug_AcquireAsyncContext()
+```
+
+**Description**
+
+Obtains an **AsyncContext** for subsequent use. This API is an auxiliary API of the profiler. You can use [OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext) to release the context.
+
+> **NOTE**
+>
+> This API supports only the ARM64 architecture and can be used only in debug version applications.
+
+**Since:** 26.0.0
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| uint64_t | **AsyncContext**, which is the asynchronous thread context information.|
+
+### OH_HiDebug_PushAsyncContext()
+
+```c
+void OH_HiDebug_PushAsyncContext(uint64_t ctx)
+```
+
+**Description**
+
+Pushes an **AsyncContext** into the running context stack. This API is an auxiliary API of the profiler.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint64_t ctx | Asynchronous thread context obtained by [OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext).|
+
+### OH_HiDebug_PopAsyncContext()
+
+```c
+void OH_HiDebug_PopAsyncContext(uint64_t ctx)
+```
+
+**Description**
+
+Pops an **AsyncContext** from the running context stack. This API is an auxiliary API of the profiler.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint64_t ctx | Asynchronous thread context obtained by [OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext).|
+
+### OH_HiDebug_ReleaseAsyncContext()
+
+```c
+void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)
+```
+
+**Description**
+
+Releases an **AsyncContext** to the system. This API is an auxiliary API of the profiler.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint64_t ctx | Asynchronous thread context obtained by [OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext).|

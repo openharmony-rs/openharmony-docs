@@ -8,6 +8,8 @@
 
 在Stage模型中，WindowStage/Window可以通过loadContent接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
 
+UIContext用于获取与具体UI实例关联的上下文，使开发者可在对应UI实例上调用上下文相关的UI接口。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -73,7 +75,9 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -149,7 +153,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // 通过状态变量更新tab1内部Column节点的宽度，设置this.columnWidth1为'20%'。
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -193,7 +197,9 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -240,16 +246,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -263,25 +273,29 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
-          // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
+            // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // 设置延时任务。
-          setTimeout(() => {
-            // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // 设置延时任务。
+            setTimeout(() => {
+              // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -295,16 +309,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -445,6 +463,50 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
 
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
+
+该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明 |
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
@@ -565,48 +627,4 @@ struct SnapshotExample {
 }
 ```
 
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
-
-### recycleInvisibleImageMemory<sup>23+</sup>
-
-recycleInvisibleImageMemory(enabled: boolean): void
-
-设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
-
-该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。 
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型    | 必填 | 说明 |
-| -------- | ------- | ---- | ---- |
-| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct ImageRecycleSample {
-  build() {
-    Column({ space: 12 }) {
-      Button('Enable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(true)
-        })
-
-      Button('Disable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(false)
-        })
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)

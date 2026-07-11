@@ -1,8 +1,8 @@
-# 定义可动画属性 (@AnimatableExtend)
+# @AnimatableExtend：定义可动画属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

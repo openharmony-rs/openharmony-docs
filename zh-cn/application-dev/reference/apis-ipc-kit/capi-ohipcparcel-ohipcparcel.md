@@ -13,7 +13,7 @@ typedef struct OHIPCParcel OHIPCParcel
 
 ## 概述
 
-IPC序列化对象。
+IPC序列化对象，用于在跨进程通信中序列化和反序列化数据。
 
 **起始版本：** 12
 

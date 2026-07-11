@@ -104,4 +104,4 @@ This example shows how to use the **getImageData** API to obtain an **ImageData*
   }
   ```
 
-  ![en-us_image_000000127777780](figures/en-us_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)

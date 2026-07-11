@@ -1,7 +1,7 @@
 # OH_NativeXComponent_HistoricalPoint
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} OH_NativeXComponent_HistoricalPoint
 
 ## Overview
 
-Represents a historical touch point.
+Defines a historical touch point.
 
 **Since**: 10
 

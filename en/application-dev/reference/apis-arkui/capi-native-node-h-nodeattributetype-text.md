@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType (Text Display Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -109,13 +109,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[0].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle).|
+| .value[0].i32 | Font style. The value is an enumerated value of [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 
 ## NODE_FONT_WEIGHT
 
@@ -133,13 +133,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[0].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight).|
+| .value[0].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
 
 ## NODE_TEXT_LINE_HEIGHT
 
@@ -181,18 +181,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text decorative line type. The parameter type is [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype). The default value is **ARKUI_TEXT_DECORATION_TYPE_NONE**.|
+| .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). The default value is **ARKUI_TEXT_DECORATION_TYPE_NONE**.|
 | .value[1]?.u32 | Text decorative line color, in 0xARGB format. For example, **0xFFFF0000** indicates red. This parameter is optional.|
-| .value[2]?.i32 | Text decorative line style. The parameter type is [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle).|
+| .value[2]?.i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle).|
 | .value[3]?.f32 | Thickness of the text decorative line. This parameter is optional. The default value is **1.0**. The value range is [0, +∞).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text decorative line type. The parameter type is [ArkUI_TextDecorationType](capi-native-type-h.md#arkui_textdecorationtype).|
+| .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype).|
 | .value[1].u32 | Text decorative line color, in 0xARGB format.|
-| .value[2].i32 | Text decorative line style. The parameter type is [ArkUI_TextDecorationStyle](capi-native-type-h.md#arkui_textdecorationstyle).|
+| .value[2].i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle).|
 | .value[3].f32 | Thickness of the text decorative line.|
 
 ## NODE_TEXT_CASE
@@ -211,13 +211,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text case. The parameter type is [ArkUI_TextCase](capi-native-type-h.md#arkui_textcase). The default value is **ARKUI_TEXT_CASE_NORMAL**.|
+| .value[0].i32 | Text case. The parameter type is [ArkUI_TextCase](capi-text-common-h.md#arkui_textcase). The default value is **ARKUI_TEXT_CASE_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text case. The parameter type is [ArkUI_TextCase](capi-native-type-h.md#arkui_textcase).|
+| .value[0].i32 | Text case. The parameter type is [ArkUI_TextCase](capi-text-common-h.md#arkui_textcase).|
 
 ## NODE_TEXT_LETTER_SPACING
 
@@ -283,13 +283,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the text. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment). The default value is **ARKUI_TEXT_ALIGNMENT_START**.|
+| .value[0].i32 | Horizontal alignment mode of the text. The value is an enumerated value of [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment). The default value is **ARKUI_TEXT_ALIGNMENT_START**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the text. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
+| .value[0].i32 | Horizontal alignment mode of the text. The value is an enumerated value of [ArkUI_TextAlignment](capi-text-common-h.md#arkui_textalignment).|
 
 ## NODE_TEXT_OVERFLOW
 
@@ -307,13 +307,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long, specified using the [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow) enum. The default value is **ARKUI_TEXT_OVERFLOW_NONE**.|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow). The default value is **ARKUI_TEXT_OVERFLOW_NONE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display mode when the text is too long. The parameter type is [ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow).|
+| .value[0].i32 | Display mode when the text is too long. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow).|
 
 ## NODE_FONT_FAMILY
 
@@ -404,7 +404,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
 | .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -414,7 +414,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype).|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype).|
 | .value[2].u32 | Shadow color, in 0xARGB format.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -485,8 +485,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .string? | Font family. This parameter is optional. Use commas (,) to separate multiple fonts.|
 | .value[0].f32 | Font size, in fp.|
-| .value[1]?.i32 | Font weight. This parameter is optional. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
-| .value[2]?.i32 | Font style. This parameter is optional. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[1]?.i32 | Font weight. This parameter is optional. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[2]?.i32 | Font style. This parameter is optional. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
 
 **Returns**
 
@@ -494,8 +494,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .string | Font family. Use commas (,) to separate multiple fonts.|
 | .value[0].f32 | Font size, in fp.|
-| .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
-| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
 
 ## NODE_TEXT_HEIGHT_ADAPTIVE_POLICY
 
@@ -513,13 +513,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | How the adaptive height is determined for the text. The parameter type is [ArkUI_TextHeightAdaptivePolicy](capi-native-type-h.md#arkui_textheightadaptivepolicy). The default value is **ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST**.|
+| .value[0].i32 | The parameter type is [ArkUI_TextHeightAdaptivePolicy](capi-text-h.md#arkui_textheightadaptivepolicy). The default value is **ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | How the adaptive height is determined for the text. The parameter type is [ArkUI_TextHeightAdaptivePolicy](capi-native-type-h.md#arkui_textheightadaptivepolicy).|
+| .value[0].i32 | The parameter type is [ArkUI_TextHeightAdaptivePolicy](capi-text-h.md#arkui_textheightadaptivepolicy).|
 
 ## NODE_TEXT_INDENT
 
@@ -561,13 +561,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Line break rule. The parameter type is [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak). The default value is **ARKUI_WORD_BREAK_BREAK_WORD**.|
+| .value[0].i32 | The parameter type is [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak). The default value is **ARKUI_WORD_BREAK_BREAK_WORD**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Line break rule. The parameter type is [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak).|
+| .value[0].i32 | The parameter type is [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak).|
 
 ## NODE_TEXT_ELLIPSIS_MODE
 
@@ -585,13 +585,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode). The default value is **ARKUI_ELLIPSIS_MODE_END**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Ellipsis position. The parameter type is [ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode).|
+| .value[0].i32 | The parameter type is [ArkUI_EllipsisMode](capi-text-common-h.md#arkui_ellipsismode).|
 
 ## NODE_TEXT_LINE_SPACING
 
@@ -681,13 +681,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0...].i32 | Array of entity types. The parameter type is [ArkUI_TextDataDetectorType](capi-native-type-h.md#arkui_textdatadetectortype).|
+| .value[0...].i32 | Entity type array. The parameter type is [ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0...].i32 | Array of entity types. The parameter type is [ArkUI_TextDataDetectorType](capi-native-type-h.md#arkui_textdatadetectortype).|
+| .value[0...].i32 | Entity type array. The parameter type is [ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype).|
 
 ## NODE_TEXT_SELECTED_BACKGROUND_COLOR
 
@@ -777,13 +777,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
+| .value[0].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight).|
+| .value[0].i32 | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
 
 ## NODE_TEXT_LINE_COUNT
 
@@ -844,7 +844,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The setting takes effect only when **direction** is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
 | .value[2].i32 | Whether the colors are repeated. The value **false** means that the colors are not repeated, and **true** means the opposite. The default value is **false**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -856,7 +856,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The set value is used only when **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is used. In other cases, the default value **0** is used.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -917,13 +917,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the text content. The parameter type is [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment). The default value is **ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE**.|
+| .value[0].i32 | Vertical alignment mode of the text content. The parameter type is [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment). The default value is **ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the text content. The parameter type is [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
+| .value[0].i32 | Vertical alignment mode of the text content. The parameter type is [ArkUI_TextVerticalAlignment](capi-text-common-h.md#arkui_textverticalalignment).|
 
 ## NODE_TEXT_CONTENT_ALIGN
 
@@ -941,13 +941,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the text content area. The parameter type is [ArkUI_TextContentAlign](capi-native-type-h.md#arkui_textcontentalign). The default value is **ARKUI_TEXT_CONTENT_ALIGN_CENTER**.|
+| .value[0].i32 | Vertical alignment mode of the text content area. The parameter type is [ArkUI_TextContentAlign](capi-text-common-h.md#arkui_textcontentalign). The default value is **ARKUI_TEXT_CONTENT_ALIGN_CENTER**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the text content area. The parameter type is [ArkUI_TextContentAlign](capi-native-type-h.md#arkui_textcontentalign).|
+| .value[0].i32 | Vertical alignment mode of the text content area. The parameter type is [ArkUI_TextContentAlign](capi-text-common-h.md#arkui_textcontentalign).|
 
 ## NODE_TEXT_MIN_LINES
 
@@ -1061,7 +1061,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
+| .value[0].f32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
 
 **Returns**
 
@@ -1157,7 +1157,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION = 1047
 ```
 
-Whether to enable orphan character optimization for text layout in the **Text** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
+Whether to enable orphan character optimization for text layout in the **Text** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -1181,7 +1181,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048
 ```
 
-Whether to enable the feature of compressing punctuations at the beginning of a text line. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
@@ -1191,13 +1191,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the feature of compressing punctuations at the beginning of a text line.<br>**true** to enable; **false** otherwise. The default value is **false**.|
+| .value[0].i32 | Whether to enable leading punctuation compression.<br>**true** to enable; **false** otherwise. The default value is **false**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the feature of compressing punctuations is enabled at the beginning of a text line.|
+| .value[0].i32 | Whether leading punctuation compression is enabled.|
 
 ## NODE_TEXT_INCLUDE_FONT_PADDING
 
@@ -1287,13 +1287,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
+| .value[0].i32 | Text layout direction. The value is an enumerated value of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection). The default value is **ARKUI_TEXT_DIRECTION_DEFAULT**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection).|
+| .value[0].i32 | Text layout direction. For details about the values and meanings, see the enumerated values of [ArkUI_TextDirection](capi-text-common-h.md#arkui_textdirection).|
 
 ## NODE_TEXT_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -1318,6 +1318,74 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | Drag preview style when the text is selected. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md).|
+
+## NODE_TEXT_CONTROLLER
+
+```c
+NODE_TEXT_CONTROLLER = 1054
+```
+
+Text controller.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | Text controller. The parameter type is [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md).|
+
+## NODE_TEXT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
+```
+
+Whether to enable punctuation hanging at the end of a line for the **Text** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line.|
+
+## NODE_TEXT_TAIL_INDENTS
+
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+Tail indentation of each line in a text block.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[i].f32 | Tail indentation value of the *i*th line of text, in fp. The value range is [0, +∞). When the value of **.size** is **1**, all lines share the same tail indentation value (specified by **.value[0].f32**). When the value of **.size** is greater than **1**, the *i*th line uses the tail indentation value (specified by **.value[i].f32**). When the number of text lines exceeds the value of **.size**, the excess part reuses **.value[.size - 1].f32**.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[i].f32 | Tail indentation value of the *i*th line of text, in fp.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
 ## NODE_SPAN_CONTENT
 
@@ -1417,7 +1485,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .string? | Font family. Use commas (,) to separate multiple fonts. This parameter is optional.|
 | .value[0].f32 | Font size, in fp.|
 | .value[1]?.i32 | Font weight. This parameter is optional. The value range is [100, 900]. The default value is **400**. A larger value indicates a bolder font.|
-| .value[2]?.i32 | Font style. This parameter is optional. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
+| .value[2]?.i32 | Font style. This parameter is optional. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**.|
 | ?.object | Font configurations. This parameter is optional. The parameter type is [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md).|
 
 **Returns**
@@ -1427,7 +1495,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .string | Font family. Use commas (,) to separate multiple fonts.|
 | .value[0].f32 | Font size, in fp.|
 | .value[1].i32 | Font weight, without a unit. A larger value indicates a bolder font.|
-| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-native-type-h.md#arkui_fontstyle).|
+| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle).|
 | .object | Font configurations. The parameter type is [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md).|
 
 ## NODE_SPAN_FONT_WEIGHT
@@ -1498,13 +1566,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of the image with the text. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| .value[0].i32 | Alignment mode of the image with the text. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of the image with the text. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| .value[0].i32 | Alignment mode of the image with the text. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-image-span-h.md#arkui_imagespanalignment).|
 
 ## NODE_IMAGE_SPAN_ALT
 
@@ -1522,14 +1590,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string | Placeholder image address for the image span. GIF images are not supported.|
+| .string | Placeholder image address for the **imageSpan** component. GIF images are not supported.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).<br>Either **.object** or **.string** must be set.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .string | Placeholder image address.|
+| .string | Placeholder image address for the **imageSpan** component.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).|
 
 ## NODE_IMAGE_SPAN_BASELINE_OFFSET

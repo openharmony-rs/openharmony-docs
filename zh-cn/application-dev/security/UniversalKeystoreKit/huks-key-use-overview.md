@@ -15,6 +15,8 @@
 
 - [密钥协商](huks-key-agreement-overview.md)。
 
+- [密钥封装](huks-kem-overview.md)。
+
 - [密钥派生](huks-key-derivation-overview.md)。
 
 本章节提供了以上常用密钥操作的示例，这部分示例均没有设置二次身份访问控制，如设置了密钥访问控制请参考[用户身份认证访问控制](huks-identity-authentication-overview.md)。

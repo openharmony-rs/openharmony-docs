@@ -21,7 +21,7 @@ import { serial } from '@kit.BasicServicesKit';
 
 addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
-添加应用程序访问串口的权限。仅用于弹出串口授权弹窗的系统应用。使用Promise异步回调。
+添加应用程序访问串口的权限。此函数通过将应用的Token ID与串口设备ID关联，建立应用的串口访问权限关系。仅用于会弹出串口授权弹窗的系统应用，在用户授权后，权限信息将持久化存储。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -36,7 +36,7 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | --------- | -------- | ---- | ------------------------------------------------------------ |
 | tokenId   | string   | 是   | 被授权应用的Token ID。                                       |
-| deviceId  | string   | 是   | 串口设备ID。板载串口取值为portName；USB虚拟串口取值为VID+PID+SN的组合。 |
+| deviceId  | string   | 是   | 串口设备ID。板载串口取值为portName；USB虚拟串口取值为VID+PID+SN的组合或设备路径（如/dev/ttyUSB0）。 |
 
 **返回值：**
 
@@ -58,14 +58,12 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
-
-// 添加串口访问权限（仅系统应用可用）
-let tokenId: string = '123456';
-let deviceId: string = '/dev/ttyUSB0';
+// 添加串口访问权限
+let tokenId: string = "123456";
+let deviceId: string = "/dev/ttyUSB0";
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
-}).catch((error: Error) => {
-  console.error(`addPortAuthorization error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to addPortAuthorization. Code: ${err.code}, message: ${err.message}`);
 });
 ```

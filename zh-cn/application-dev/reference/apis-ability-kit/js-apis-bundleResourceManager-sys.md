@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用资源数据查询能力，支持[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)和[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)等信息的查询。
@@ -46,7 +46,7 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 ### bundleResourceManager.getBundleResourceInfo
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+getBundleResourceInfo(bundleName: string, resourceFlags?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
 
@@ -61,7 +61,7 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
+| resourceFlags | number | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -72,7 +72,7 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -103,7 +103,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
 
@@ -118,7 +118,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | number | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
 
 **返回值：**
 
@@ -128,7 +128,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -159,7 +159,7 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>): void
+getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>): void
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用callback异步回调。
 
@@ -173,8 +173,8 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: Async
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
+| resourceFlags | number | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -210,7 +210,7 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>;
+getAllBundleResourceInfo(resourceFlags: number): Promise<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>;
 
 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用Promise异步回调。
 
@@ -224,7 +224,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
+| resourceFlags | number | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -265,7 +265,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
+getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用callback异步回调。
 
@@ -279,8 +279,8 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
+| resourceFlags | number | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -317,7 +317,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
+getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用Promise异步回调。
 
@@ -331,7 +331,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promi
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
+| resourceFlags | number | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
 
 **返回值：**
 
@@ -371,7 +371,7 @@ try {
 
 ### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。
 
@@ -386,7 +386,7 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
+| resourceFlags | number | 否   | 指定返回的BundleResourceInfo所包含的信息。 |
 | appIndex | number | 否   | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**
@@ -398,7 +398,7 @@ getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -431,7 +431,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的LauncherAbilityResourceInfo。
 
@@ -446,7 +446,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | 是   | 指定查询应用的包名。 |
-| resourceFlags | [number](#resourceflag) | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | number | 否   | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL。 |
 | appIndex | number | 否   | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**
@@ -457,7 +457,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |

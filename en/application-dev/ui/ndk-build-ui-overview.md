@@ -43,7 +43,7 @@ The ArkUI NDK APIs provide the following capabilities:
 
 **Figure 1** Relationship between NDK APIs and the ArkTS declarative UI 
 
-![en-us_image_0000001923986433](figures/en-us_image_0000001923986433.png)
+![en-us_image_0000001923986433](figures/Overall-Architecture.png)
 
 **Figure 2** Schematic diagram of component mounting through NDK APIs 
 

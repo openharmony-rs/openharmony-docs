@@ -181,7 +181,7 @@ export struct FocusTransferExample {
 
 After the application runs, click **Button 1** to request focus for the **Row** component. The **Row** component's first focusable child node, **Button 2**, will gain focus.
 
-![Liner_Focus_1](figures/Focus_transfer.gif)
+
 
 ### Focus Traversal Guidelines
 
@@ -471,7 +471,7 @@ export struct OnFocusBlur {
 ```
 
 
-![en-us_image_0000001511740584](figures/en-us_image_0000001511740584.gif)
+![focus-event](figures/focus-event.gif)
 
 
 The preceding example includes three steps:

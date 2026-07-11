@@ -183,9 +183,9 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 
       | Line Join Style| Description| Effect|
       | -------- | -------- | -------- |
-      | MITER_JOIN | Miter join.| ![image_0000002158744154](figures/image_0000002158744154.png)|
-      | ROUND_JOIN | Round join.| ![image_0000002158744146](figures/image_0000002158744146.png)|
-      | BEVEL_JOIN | Beveled join.| ![image_0000002194025257](figures/image_0000002194025257.png)|
+      | MITER_JOIN | Miter join.| ![MITER-JOIN](figures/MITER-JOIN.png)|
+      | ROUND_JOIN | Round join.| ![ROUND-JOIN](figures/ROUND-JOIN.png)|
+      | BEVEL_JOIN | Beveled join.| ![BEVEL-JOIN](figures/BEVEL-JOIN.png)|
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 

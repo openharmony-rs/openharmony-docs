@@ -21,9 +21,9 @@
 
 | 接口名称 | 描述 |
 | -------- | -------- |
-| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result)| 获取用户Download目录沙箱路径。只支持2in1设备。 |
-| FileManagement_ErrCode OH_Environment_GetUserDesktopDir (char **result) | 获取用户Desktop目录沙箱路径。只支持2in1设备。 |
-| FileManagement_ErrCode OH_Environment_GetUserDocumentDir (char **result) | 获取用户Document目录沙箱路径。只支持2in1设备。 |
+| FileManagement_ErrCode OH_Environment_GetUserDownloadDir (char **result)| 获取用户Download目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备。 |
+| FileManagement_ErrCode OH_Environment_GetUserDesktopDir (char **result) | 获取用户Desktop目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备。 |
+| FileManagement_ErrCode OH_Environment_GetUserDocumentDir (char **result) | 获取用户Document目录沙箱路径。支持2in1设备。<br>从API版本26.0.0开始，支持tablet设备。 |
 
 ## 开发步骤
 

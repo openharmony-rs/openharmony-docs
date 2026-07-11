@@ -1,9 +1,9 @@
 # 监听游戏手柄的轴和按键事件（C/C++）
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
+<!--Tester: @fei_0805-->
 <!--Adviser: @luwy2025-->
 
 > **说明：**<br/>
@@ -24,7 +24,7 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 ## 接口说明
 
-接口详细介绍请参考[API参考](../reference/apis-game-controller-kit/capi-game-controller.md)。
+接口详细介绍请参考[GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |

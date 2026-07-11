@@ -36,7 +36,7 @@ EmbeddedUIExtensionAbility需要和[EmbeddedComponent](../reference/apis-arkui/a
 
 > **说明：**
 >
-> EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。<!--Del-->
+> EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。<!--Del-->
 > 
 > 当前提供的EmbeddedUIExtensionAbility支持多实例场景，并且继承了UIExtensionAbility的进程模型，UIExtensionAbility的多实例及进程配置相关介绍可参见[UIExtensionAbility](uiextensionability-sys.md)。<!--DelEnd-->
 >

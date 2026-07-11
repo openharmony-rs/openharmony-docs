@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -114,19 +114,18 @@ import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, N
 
 多态样式状态枚举，用于处理多态样式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NORMAL | 0 | 正常状态。 |
-| PRESSED | 1 << 0 | 按下状态。 |
-| FOCUSED | 1 << 1 | 获焦状态。 |
-| DISABLED | 1 << 2 | 禁用状态。 |
-| SELECTED | 1 << 3 | 选中状态。<br/>仅特定的组件支持此状态：Checkbox、Radio、Toggle、List、Grid、MenuItem。 |
+| NORMAL | 0 | 正常状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| PRESSED | 1 << 0 | 按下状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| FOCUSED | 1 << 1 | 获焦状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| DISABLED | 1 << 2 | 禁用状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| SELECTED | 1 << 3 | 选中状态。 <br/>仅特定的组件支持此状态：Checkbox、Radio、Toggle、List、Grid、MenuItem。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| HOVERED | 1 << 4 | 悬浮状态。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
@@ -267,7 +266,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -299,7 +298,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -573,7 +572,7 @@ getChildrenCount(): number
 
 ### getChildrenCount
 
-getChildrenCount(countMode?: ChildrenCountMode): int
+getChildrenCount(countMode?: ChildrenCountMode): number
 
 根据指定的计数模式获取当前FrameNode的子节点数量。
 
@@ -593,7 +592,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 **返回值：**
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| int | 根据计数模式返回的，当前FrameNode的子节点数量。 |
+| number | 根据计数模式返回的，当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -852,7 +851,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -1893,7 +1892,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2424,7 +2423,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -5359,7 +5358,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>适用版本：15-24 |
 
 **示例：**
 
@@ -6234,7 +6233,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：**
 
@@ -6939,7 +6938,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7554,7 +7553,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -9118,6 +9117,12 @@ getAllAvailableItems(): Array&lt;FrameNode&gt;
 onAttachToNode?(target: FrameNode): void
 
 FrameNode绑定NodeAdapter时回调。
+
+> **说明：**
+>
+> 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](#attachnodeadapter12)后、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。
+>
+> 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主树时触发。此时宿主节点可能尚未挂载到主树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在该回调中注册[onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear)，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用[attachNodeAdapter](#attachnodeadapter12)前完成设置，否则回调可能无法触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11079,6 +11084,8 @@ struct Index {
 
 ## 组件设置和删除多态样式状态示例
 
+从API版本26.0.0开始，[UIState](#uistate20)新增HOVERED枚举。
+
 ```ts
 import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 
@@ -11086,7 +11093,7 @@ import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 class MyNodeController extends NodeController {
   private isEnable: boolean = true;
   private theStatesToBeSupported =
-    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED;
+    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED | UIState.HOVERED;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     // 创建并组织节点关系
@@ -11119,31 +11126,36 @@ class MyNodeController extends NodeController {
     // 为Text组件添加多态样式处理能力
     styleText.addSupportedUIStates(this.theStatesToBeSupported, (node: FrameNode, currentState: number) => {
       if (currentState == UIState.NORMAL) { // 判断是否normal要使用等于
-        // normal状态，刷normal的UI效果
+        // normal状态，刷新普通状态的UI效果
         console.info('Callback UIState.NORMAL')
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
       }
+      if ((currentState & UIState.HOVERED) == UIState.HOVERED) {
+        // hovered状态，刷新悬浮状态的UI效果
+        console.info('Callback UIState.HOVERED')
+        node.commonAttribute.backgroundColor(Color.Blue)
+      }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
-        // press状态，刷press的UI效果
+        // pressed状态，刷新按压状态的UI效果
         console.info('Callback UIState.PRESSED')
         node.commonAttribute.backgroundColor(Color.Brown)
       }
       if ((currentState & UIState.FOCUSED) == UIState.FOCUSED) {
-        // focused状态，刷focused的UI效果
+        // focused状态，刷新获焦状态的UI效果
         console.info('Callback UIState.FOCUSED')
         node.commonAttribute.borderWidth(5)
         node.commonAttribute.borderColor(Color.Yellow)
       }
       if ((currentState & UIState.DISABLED) == UIState.DISABLED) {
-        // disabled状态，刷disabled的UI效果
+        // disabled状态，刷新禁用状态的UI效果
         console.info('Callback UIState.DISABLED')
         node.commonAttribute.backgroundColor(Color.Gray)
         node.commonAttribute.borderWidth(0)
       }
       if ((currentState & UIState.SELECTED) == UIState.SELECTED) {
-        // selected状态，刷selected的UI效果
+        // selected状态，刷新选中状态的UI效果
         console.info('Callback UIState.SELECTED')
         node.commonAttribute.backgroundColor(Color.Pink)
       }
@@ -11192,6 +11204,8 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+![frameNode_stateStyles](./figures/frameNode_stateStyles.gif)
 
 ## 动画创建与取消示例
 
@@ -11390,7 +11404,7 @@ struct Index {
 
 ## 检验FrameNode是否有效示例
 
-该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -11505,7 +11519,7 @@ struct Index {
 
 ## 检验NodeAdapter是否有效示例
 
-该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';

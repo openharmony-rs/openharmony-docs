@@ -27,7 +27,7 @@ The **Video** component supports both local and online videos. For details about
 
   To load a local video, specify the corresponding video file in the local **rawfile** directory, as shown in the following figure.
 
-  ![en-us_image_0000001562700409](figures/en-us_image_0000001562700409.png)
+  ![videoplayer-local](figures/videoplayer-local.png)
 
   Use **$rawfile()** to reference the video resource.
 
@@ -252,7 +252,7 @@ The video controller is used to control video playback. For details, see [VideoC
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
     // Initialize the current time to 0.
     @State currentTime: number = 0;
-    // Initialize the current time to 0.
+    // Initialize the duration time to 0.
     @State durationTime: number = 0;
     controller: VideoController = new VideoController();
 

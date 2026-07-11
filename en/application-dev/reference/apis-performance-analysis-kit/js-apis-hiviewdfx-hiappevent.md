@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -166,7 +166,7 @@ hiAppEvent.addWatcher({
     for (const eventGroup of appEventGroups) {
       hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
       for (const eventInfo of eventGroup.appEventInfos) {
-        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`, );
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
       }
     }
   }
@@ -278,9 +278,13 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Configuration items vary depending on events. Currently, only the following events are supported:
-- **MAIN_THREAD_JANK**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig).)
-- **APP_CRASH** (For details about the parameter configuration, see [Customizing Crash Log Specifications](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
+- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig).)
+- **APP_CRASH** (For details about the parameter configuration, see [Crash Log Configuration Parameters](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
 - **RESOURCE_OVERLIMIT** (For details about the parameter configuration, see [Resource Leak Event Overview](../../dfx/hiappevent-watcher-resourceleak-events.md#customizing-specifications).)
+
+ > **NOTE**
+ >
+ > Since API version 26.0.0, all settings of this API are supported by [configEventPolicy](#hiappeventconfigeventpolicy22). You are advised to use [configEventPolicy](#hiappeventconfigeventpolicy22).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -325,7 +329,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -363,13 +367,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy":{
-    "logType": 1,
-    "sampleInterval": 100,
-    "ignoreStartupTime": 11,
-    "sampleCount": 21,
-    "reportTimesPerApp": 3,
-    "autoStopSampling": true
+  mainThreadJankPolicy:{
+    logType: 1,
+    sampleInterval: 100,
+    ignoreStartupTime: 11,
+    sampleCount: 21,
+    reportTimesPerApp: 3,
+    autoStopSampling: true
   }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -397,7 +401,7 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 
 > **NOTE**
 >
-> You are not advised to [remove watchers](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
+> You are not advised to call [removeWatcher](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
 
 ## TriggerCondition
 
@@ -464,7 +468,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // Create an AppEventPackageHolder instance. holder1 holds the event data subscribed by Watcher1 added through addWatcher.
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -784,13 +788,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -873,14 +877,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // Remove a specified data processor based on the ID returned after the data processor is added.
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // Remove a specified data processor based on the ID returned after the data processor is added.
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -1182,13 +1186,14 @@ Defines the configuration policy for the high CPU usage event.
 
 Defines the crash event configuration policy.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| extendPcLrPrinting    | boolean | No| Yes  | Whether to print the memory values before and after the PC and LR registers in crash logs.<br>The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit system, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit system, or 8 bytes before and 116 bytes after on 32-bit systems.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| logFileCutoffSzBytes    | number | No| Yes  | Truncation size for crash logs. The value ranges from 0 to 5242880, in bytes. The default value is 0, indicating that crash logs are not truncated.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| simplifyVmaPrinting    | boolean | No| Yes  | Whether to print the mapping information of all virtual memory areas (VMAs) in the crash log, that is, the **Maps** field in the crash log.<br>The value **true** means to print only the VMA mapping information of the addresses in the crash log to reduce the log size.<br>The value **false** means to print all VMA mapping information.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1206,13 +1211,12 @@ Defines the application freeze event configuration policy.
 
 Defines the resource leak event configuration policy.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| jsHeapLogtype    | string | No| Yes  | Heap snapshot transfer specifications.<br>**event**: No heap snapshot is transferred when an OOM error occurs.<br>**event_rawheap**: The system generates and transfers a heap snapshot when an OOM error occurs.<br>**NOTE**<br>- Only the preceding two values are supported. If other values are passed in, the method fails to be called and takes no effect.<br>- If the parameter value is **event_rawheap**, the heap snapshot file may fail to be generated. This is because the application may exit in advance due to a freeze event triggered by a performance problem.<br>-The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1301,6 +1305,8 @@ Enumerates event types.
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### Constants
+
 Provides domain name constants.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1338,8 +1344,11 @@ Provides event name constants, including system event name constants and applica
 | APP_HICOLLIE<sup>21+</sup> | string | Yes| Task execution timeout event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 21.|
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | Yes| Audio jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 21.|
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
+| appFreezeWarning | string | Yes| Application freeze warning event. This is a system event name constant.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## hiAppEvent.param
+
+### Constants
 
 Provides parameter name constants.
 

@@ -1,8 +1,8 @@
 # 组件内容填充方式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -90,7 +90,7 @@ struct RenderFitExample {
         .height(this.height1)
         .borderWidth(1)
         .textAlign(TextAlign.Start)
-        .renderFit(RenderFit.LEFT)// 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
+        .renderFit(RenderFit.LEFT) // 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
         .margin(20)
 
       Text("Hello")
@@ -98,7 +98,7 @@ struct RenderFitExample {
         .height(this.height1)
         .textAlign(TextAlign.Center)
         .borderWidth(1)
-        .renderFit(RenderFit.CENTER)// 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
+        .renderFit(RenderFit.CENTER) // 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
         .margin(20)
 
       Button("animate")

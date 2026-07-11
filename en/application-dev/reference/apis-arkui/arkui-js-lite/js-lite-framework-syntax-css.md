@@ -62,9 +62,9 @@ A CSS selector is used to select elements for which styles need to be added to. 
 | ------ | --------------------- | ------------------------------------- |
 | .class | .container            | Selects all components whose **class** is **container**.            |
 | \#id   | \#titleId             | Selects all components whose **id** is **titleId**.                 |
-| ,      | .title, .content | Selects all components whose **class** is **title** or **content**.|
+| ,      | .title,&nbsp;.content | Selects all components whose **class** is **title** or **content**.|
 
-Example:
+The following is an example:
 
 
 ```html
@@ -79,7 +79,7 @@ Example:
 
 
 ```css
-/* Page style xxx.css */
+/* Pagestyleexample.css */
 /* Set the style for the components whose class is title. */
 .title {
   font-size: 30px;
@@ -98,14 +98,14 @@ Example:
 
 ## Pseudo-classes
 
-A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected elements.
+A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s).
 
 
 
 | Name      | Available Components                               | Description                                      |
 | -------- | ----------------------------------- | ---------------------------------------- |
-| :active  | <br>input[type="button"]           | Selects the element activated by a user, for example, a pressed button. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on mini-system wearables.|
-| :checked | input[type="checkbox", type="radio"]| Selects the element whose **checked** attribute is **true**. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on mini-system wearables.|
+| :active  | input[type="button"]           | Selects the element activated by a user, for example, a pressed button. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on lite wearables.|
+| :checked | input[type="checkbox", type="radio"]| Selects the element whose **checked** attribute is **true**. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on lite wearables.|
 
 The following is an example for you to use the **:active** pseudo-class to control the style when a user presses the button. 
 
@@ -137,7 +137,7 @@ Precompilation is a program that uses specific syntax to generate CSS files. It 
   /* Define a variable. */
   @colorBackground: #000000;
   .container {
-      background-color: @colorBackground; /* Use the variable defined in the .less file. */
+    background-color: @colorBackground; /* Use the variables defined in the current less file. */
   }
   ```
 

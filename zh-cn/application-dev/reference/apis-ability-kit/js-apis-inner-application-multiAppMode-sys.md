@@ -23,10 +23,10 @@
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 名称 | 值 |说明 | 
 | -------- |----|-------- |
 | NOT_SUPPORTED | 0 | 应用不支持多开模式。 |
-| MULTI_INSTANCE<sup>14+</sup>  | 1 | 应用支持多实例模式。<br>**说明：** 只支持2in1设备。  |
+| MULTI_INSTANCE<sup>14+</sup>  | 1 | 应用支持多实例模式。<br>**说明：** 只支持PC/2in1设备。  |
 | APP_CLONE | 2 | 应用支持分身模式。 |

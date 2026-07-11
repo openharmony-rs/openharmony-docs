@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeContent* ArkUI_NodeContentHandle
 
 ## Overview
 
-Defines the pointer to the ArkUI **NodeContent** instance on the native side.
+Defines the pointer to an **ArkUI_NodeContent** object on the native side.
 
 **Since**: 12
 

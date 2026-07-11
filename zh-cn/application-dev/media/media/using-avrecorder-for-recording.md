@@ -1,4 +1,4 @@
-# 使用AVRecorder录制音频(ArkTS)
+# 使用AVRecorder录制音频（ArkTS）
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_dyOv3Sds-->
@@ -65,6 +65,7 @@
    | error | 必要事件，监听AVRecorder的错误信息。 |
 
    ```ts
+   import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
    // 状态上报回调函数。
@@ -74,7 +75,7 @@
    });
 
    // 错误上报回调函数。
-   this.avRecorder?.on('error', (error) => {
+   this.avRecorder?.on('error', (error: BusinessError) => {
      console.error(`Error occurred in avRecorder, error code: ${error.code}, message: ${error.message}`);
    });
    ```
@@ -88,7 +89,7 @@
    >
    > - prepare接口的入参avConfig中仅设置音频相关的配置参数，如示例代码所示。
    >   如果只需要录制音频，请不要设置视频相关配置参数；如果需要录制视频，可以参考[视频录制开发指导](video-recording.md)进行开发。直接设置视频相关参数会导致后续步骤报错。
-   > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数需严格契合既定的[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+   > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数配置可参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
 
@@ -107,7 +108,7 @@
    };
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
-   let filePath: string = context.filesDir + '/example.mp3';
+   let filePath: string = context.filesDir + '/example.m4a';
    let audioFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = audioFile.fd; // 获取文件fd。
     
@@ -217,13 +218,13 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频输入源，这里设置为麦克风。
     profile: avProfile,
-    url: 'fd://35', // 参考应用文件访问与管理开发示例新建并读写一个文件。
+    url: '', // 参考应用文件访问与管理开发示例新建并读写一个文件。
   };
 
   // 创建文件以及设置avConfig.url。
   let audioFile: fileIo.File | undefined = undefined;
   try {
-    let path: string = context.filesDir + '/example.mp3'; // 文件沙箱路径，文件后缀名应与封装格式对应。
+    let path: string = context.filesDir + '/example.m4a'; // 文件沙箱路径，文件后缀名应与封装格式对应。
     audioFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
@@ -303,7 +304,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (audioFile) {
-      await fileIo.close(audioFile.fd);
+      fileIo.closeSync(audioFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;

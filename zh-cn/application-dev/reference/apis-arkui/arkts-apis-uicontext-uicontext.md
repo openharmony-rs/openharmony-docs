@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIContext实例对象。
+UIContext实例对象，用于提供与当前UI实例关联的上下文能力，支持获取UI相关控制器、管理弹窗与动画、查询节点和窗口信息、进行像素单位转换等，适用于在指定UI实例中管理页面、组件和交互行为的场景。
 
 > **说明：**
 >
@@ -32,24 +32,21 @@ import { UIContext } from '@kit.ArkUI';
 struct Index {
   build() {
     Column() {
-      Button("Button")
-          .onClick(()=>{
+      Button('Button')
+          .onClick(() => {
             // 通过自定义组件内置方法获取
             this.getUIContext()
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
-    }  
+    }
   }
 }
 
 // EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -80,7 +77,7 @@ constructor()
 import { UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function GetUIContextByAtomicInterface(): UIContext {
+function getUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -132,7 +129,7 @@ struct Index {
         })
         .onClick(() => {
           let resolvedUIContext = UIContext.resolveUIContext();
-          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          let contextByAtomicInterface = getUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
             `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
@@ -377,7 +374,7 @@ struct Index {
     Column() {
       Button('click').onClick(() => {
         let resolvedUIContext = UIContext.resolveUIContext();
-        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}`);
       })
     }
     .width(UIContext.resolveUIContext().px2vp(100))
@@ -405,28 +402,28 @@ isAvailable(): boolean
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct UIContextCompare {
-  @State result1: string = ""
-  @State result2: string = ""
+  @State result1: string = '';
+  @State result2: string = '';
 
   build() {
     Column() {
-      Text("getUIContext() 结果: " + this.result1)
+      Text('getUIContext() 结果: ' + this.result1)
         .fontSize(20)
         .margin(10)
 
-      Text("new UIContext() 结果: " + this.result2)
+      Text('new UIContext() 结果: ' + this.result2)
         .fontSize(20)
         .margin(10)
 
       Divider().margin(20)
 
-      Button("getUIContext()")
-        .width("70%")
+      Button('getUIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -434,14 +431,14 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
-            console.info("getUIContext测试:", available);
+            console.info('getUIContext测试:', available);
           } catch (e) {
-            this.result1 = "错误: " + (e instanceof Error ? e.message : String(e));
+            this.result1 = '错误: ' + (e instanceof Error ? e.message : String(e));
           }
         })
 
-      Button("new UIContext()")
-        .width("70%")
+      Button('new UIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -449,14 +446,14 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
-            console.info("new UIContext测试:", available);
+            console.info('new UIContext测试:', available);
           } catch (e) {
-            this.result2 = "错误: " + (e instanceof Error ? e.message : String(e));
+            this.result2 = '错误: ' + (e instanceof Error ? e.message : String(e));
           }
         })
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .padding(20)
   }
 }
@@ -536,7 +533,7 @@ getUIObserver(): UIObserver
 
 | 类型                          | 说明                 |
 | --------------------------- | ------------------ |
-| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象。 |
+| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象，用于监听UI相关状态变化。 |
 
 **示例：**
 
@@ -590,7 +587,7 @@ struct Index {
 
 getId(): number
 
-获取UI实例对象唯一标识，多实例场景下，开发者可使用此唯一标识区分多个UI实例对象，便于管理。
+获取UI实例对象唯一标识，多实例场景下，开发者可使用此唯一标识区分多个UI实例对象，便于管理。UI实例无效或实例ID不存在时，返回-1。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -996,7 +993,7 @@ struct SharedLocalStorage {
 
 getHostContext(): Context | undefined
 
-获得当前元能力的Context。
+获得当前组件所在Ability的Context。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1649,11 +1646,11 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 createAnimator(options: AnimatorOptions): AnimatorResult
 
-定义Animator类。
+创建Animator动画结果对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1719,7 +1716,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1775,13 +1772,13 @@ runScopedTask(callback: () => void): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| callback | () => void | 是    | 回调函数 |
+| callback | () => void | 是    | 需要在当前UI上下文中执行的回调函数。 |
 
 **示例：**
 
@@ -1906,7 +1903,7 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 | 类型                                              | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServerBar类型，否则返回undefined。 |
+| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServiceBar类型，否则返回undefined。 |
 
 **示例：**
 
@@ -2700,9 +2697,11 @@ struct Index {
   aboutToAppear() {
     const windowName = this.getUIContext().getWindowName();
     console.info('WindowName ' + windowName);
-    const currWindow = window.findWindow(windowName);
-    const windowProperties = currWindow.getWindowProperties();
-    console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    if (windowName) {
+      const currWindow = window.findWindow(windowName);
+      const windowProperties = currWindow.getWindowProperties();
+      console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    }
   }
 
   build() {
@@ -2751,7 +2750,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId ?? -1);
   }
 
   build() {
@@ -2984,7 +2983,7 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组。 |
+| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组，用于自定义场景相关帧率配置。 |
 
 **示例：**
 
@@ -2994,14 +2993,14 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Entry
 @Component
 struct Frame {
-  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  @State animationFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State gestureFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画" + JSON.stringify(this.ANIMATION))
-      Text("跟手" + JSON.stringify(this.GESTURE))
+      Text("动画" + JSON.stringify(this.animationFrameRateRange))
+      Text("跟手" + JSON.stringify(this.gestureFrameRateRange))
       Row() {
         Swiper() {
           Text("one")
@@ -3023,11 +3022,11 @@ struct Frame {
           this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
 
             if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+              scenes.setFrameRateRange(this.animationFrameRateRange);
             }
 
             if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
-              scenes.setFrameRateRange(this.GESTURE);
+              scenes.setFrameRateRange(this.gestureFrameRateRange);
             }
           });
         })
@@ -4011,7 +4010,7 @@ setImageCacheCount(value: number): void
 
 setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife)。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -4281,11 +4280,11 @@ struct NavigationExample {
   @Builder
   pageMap(name: string) {
     if (name === 'NavDestinationTitle1') {
-      pageOneTmp();
+      PageOne();
     } else if (name === 'NavDestinationTitle2') {
-      pageTwoTmp();
+      PageTwo();
     } else if (name === 'NavDestinationTitle3') {
-      pageThreeTmp();
+      PageThree();
     }
   }
 
@@ -4334,17 +4333,17 @@ struct NavigationExample {
 }
 
 @Component
-export struct pageOneTmp {
+export struct PageOne {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   aboutToDisappear(): void {
-    console.info('pageOneTmp', 'aboutToDisappear')
+    console.info('PageOne', 'aboutToDisappear')
   }
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageOneTmp')
+        Text('PageOne')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle1')
@@ -4357,13 +4356,13 @@ export struct pageOneTmp {
 }
 
 @Component
-export struct pageTwoTmp {
+export struct PageTwo {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageTwoTmp')
+        Text('PageTwo')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle2')
@@ -4376,13 +4375,13 @@ export struct pageTwoTmp {
 }
 
 @Component
-export struct pageThreeTmp {
+export struct PageThree {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageThreeTmp')
+        Text('PageThree')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle3')

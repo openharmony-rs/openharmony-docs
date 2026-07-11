@@ -1,8 +1,8 @@
 # CanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -186,7 +186,7 @@ export default {
             this.ctx.stroke();
             // 右上
             this.ctx.beginPath();
-            //线条相交处内角和外角的距离
+            // 线条相交处内角和外角的距离
             this.ctx.lineJoin = 'miter';
             this.ctx.miterLimit = 3;
             this.ctx.moveTo(400, 100);
@@ -209,7 +209,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001223064173](figures/zh-cn_image_0000001223064173.gif)
+![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
 
 ## 画边框
@@ -288,7 +288,7 @@ export default {
             this.ctx.setLineDash([0, 0]);
             // 画圆
             this.ctx.arc(300, 250, 150, 0, 6.28);
-            //进行边框绘制
+            // 进行边框绘制
             this.ctx.stroke();
         } else if (e.newValue == 'value3') {
             this.ctx.clearRect(0, 0, 600, 500);
@@ -306,12 +306,12 @@ export default {
 ```
 
 
-![zh-cn_image_0000001177466006](figures/zh-cn_image_0000001177466006.gif)
+![Drawing-Border](figures/Drawing-Border.gif)
 
 
 ## 填充渐变色
 
-添加[createLinearGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createlineargradient)和[createRadialGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createradialgradient)属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
+添加[createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient)和[createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient)属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
 
 
 ```html
@@ -435,12 +435,12 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001222985801](figures/zh-cn_image_0000001222985801.gif)
+![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
 
 ## 填充文字
 
-先创建文本，再用[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)方法把文字写在画布上。通过[globalAlpha](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#globalalpha)属性改变基线透明度，使基线不会挡住文字，再设置[textAlign](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textalign)和[textBaseline](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textbaseline)属性确定文字基于基线的位置。
+先创建文本，再用[fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext)方法把文字写在画布上。通过[globalAlpha](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#globalalpha)属性改变基线透明度，使基线不会挡住文字，再设置[textAlign](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textalign)和[textBaseline](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textbaseline)属性确定文字基于基线的位置。
 
 
 ```html
@@ -569,7 +569,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001223064401](figures/zh-cn_image_0000001223064401.gif)
+![Filling-Text](figures/Filling-Text.gif)
 
 > **说明：** 
 >
@@ -578,7 +578,7 @@ export default {
 
 ## 添加图片
 
-创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
+创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
 
 
 ```html
@@ -749,7 +749,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218279600](figures/zh-cn_image_0000001218279600.gif)
+![Adding-Images](figures/Adding-Images.gif)
 
 > **说明：**
 > - setTransform方法使用的参数和transform()方法相同，但setTransform()方法会重置现有的变换矩阵并创建新的变换矩阵。
@@ -851,4 +851,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001177624696](figures/zh-cn_image_0000001177624696.gif)
+![Adding-Methods](figures/Adding-Methods.gif)

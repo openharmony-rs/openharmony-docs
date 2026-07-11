@@ -1,8 +1,8 @@
 # 模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -53,7 +53,7 @@ struct BlurEffectsExample {
 ```
 
 
-![zh-cn_image_0000001599812870](figures/zh-cn_image_0000001599812870.png)
+![zh-cn_image_0000001599812870](figures/backdropBlur.png)
 
 
 ## 使用blur为组件添加内容模糊
@@ -119,7 +119,7 @@ struct Index {
 ```
 
 
-![zh-cn_image_0000001599813588](figures/zh-cn_image_0000001599813588.gif)
+![zh-cn_image_0000001599813588](figures/Applying-Foreground-Blur.gif)
 
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
@@ -393,7 +393,7 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001649455517](figures/zh-cn_image_0000001649455517.png)
+![zh-cn_image_0000001649455517](figures/backgroundBlurStyle.png)
 
 
 
@@ -666,7 +666,7 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001599658168](figures/zh-cn_image_0000001599658168.png)
+![zh-cn_image_0000001599658168](figures/foregroundBlurStyle.png)
 
 
 ## 使用motionBlur为组件添加运动模糊效果

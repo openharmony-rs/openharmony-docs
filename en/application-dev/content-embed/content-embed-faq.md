@@ -20,4 +20,3 @@ When the client creates a document by calling [OH_ContentEmbed_CreateDocumentByF
 
 - If the server does not support snapshots, the client can use <!--RP1-->[OH_NativeBundle_GetAbilityResourceInfo](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getabilityresourceinfo) to obtain the list of component resource information for the file type.<!--RP1End-->
 - If the server supports snapshot retrieval, the client can use [OH_ContentEmbed_Proxy_GetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot) to obtain snapshot information.
-<!--no_check-->

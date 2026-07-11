@@ -21,7 +21,7 @@ ArkTS脚本执行结果。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -40,7 +40,7 @@ ArkTS脚本执行结果。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -59,7 +59,7 @@ completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteR
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -97,7 +97,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class TotalTimeSkill {
   // 入口函数第一个参数必须为scriptManager.ArkTSScriptInfo，后续参数为开发者自定义
-  public async RemoteTotalTimeModel(arkTSScriptInfo: scriptManager.ArkTSScriptInfo, ...argv: string[]): void {
+  public async RemoteTotalTimeModel(arkTSScriptInfo: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
     // 参数解析
     const ruleId = argv[1] ? parseInt(argv[1], 10) : null;
     const childInfoStr = argv[2] || '{}'; 

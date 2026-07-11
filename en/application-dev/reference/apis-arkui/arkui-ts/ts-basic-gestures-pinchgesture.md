@@ -187,7 +187,7 @@ struct PinchGestureExample {
 }
 ```
 
- ![en-us_image_0000001174582848](figures/en-us_image_0000001174582848.png)
+ ![pinchGesture1](figures/pinchGesture1.png)
 
 ### Example 2: Implementing Image Scaling with Finger Tracking
 

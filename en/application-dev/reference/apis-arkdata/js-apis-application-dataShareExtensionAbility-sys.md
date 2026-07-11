@@ -5,6 +5,7 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:59.683Z pushedAt=2026-06-29T02:15:43.576Z -->
 
 The **DataShareExtensionAbility** module provides data share services based on the ExtensionAbility.
 
@@ -70,7 +71,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       console.info(`getRdbStore done, data : ${data}`);
       rdbStore = data;
       rdbStore.executeSql(DDL_TBL_CREATE, [], (err) => {
-        console.error(`executeSql done, error message : ${err}`);
+        console.error(`Failed to executeSql. Code: ${err.code}, message: ${err.message}`);
       });
       if (callback) {
         callback();
@@ -109,7 +110,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -186,7 +187,7 @@ let TBL_NAME = 'TBL00';
 let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
-  batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+  batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
     let a = Object.entries(recordOps);
@@ -199,7 +200,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
           console.info('Update row count is ' + rows);
           result.push(rows);
         }).catch((err:BusinessError) => {
-          console.info('Update failed, err is ' + JSON.stringify(err));
+          console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
         })
       }
@@ -317,7 +318,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
@@ -395,8 +396,8 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       name: key,
       message: key
     };
-      let ret = `denormalize ${uri}`;
-      callback(err, ret);
+    let ret = `denormalize ${uri}`;
+    callback(err, ret);
   }
 };
 ```

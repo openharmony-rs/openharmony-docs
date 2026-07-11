@@ -36,6 +36,8 @@ Shows a toast. This API uses a promise to return the toast ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -120,6 +122,8 @@ Closes the specified toast.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -154,15 +158,15 @@ Provides toast configuration options.
 | message                 | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | No | No | Text to display.<br>**NOTE**<br>The default font is **'Harmony Sans'**. Other fonts are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | duration                | number                                                       | No  | Yes | Duration that the toast will remain on the screen.<br>Default value: 1500 ms.<br>Value range: [1500, 10000].<br>If a value less than 1500 ms is set, the default value is used. If the value greater than 10000 ms is set, the upper limit 10000 ms is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | bottom                  | string&nbsp;\|&nbsp;number                                   | No  | Yes | Distance from the bottom of the toast to the navigation bar. If the soft keyboard is raised and the **bottom** value is too small, the toast will automatically avoid being blocked by the soft keyboard by moving up 80 vp above it.<br>Default value: **80vp**<br>**NOTE**<br>When there is no navigation bar at the bottom, **bottom** sets the distance from the bottom of the toast to the bottom of the window.<br>If the **alignment** property is set, **bottom** will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | No  | Yes | Alignment mode.<br>Default value: **undefined**. If **alignment** is not set and a navigation bar or soft keyboard is present, the toast is automatically adjusted according to the position of the navigation bar or soft keyboard. For details, see the description of **bottom**.<br>**NOTE**<br>The figure below shows the position of the toast in different alignment modes.<br>![en-us_image_0001](figures/toast_alignment.PNG)<br>The text display of the toast is always left-aligned; other alignment modes are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
-| offset<sup>12+</sup>    | [Offset](arkui-ts/ts-types.md#offset)                        | No  | Yes | Offset in the specified alignment mode.<br>Default value: **{ dx: 0, dy: 0 }**, indicating no offset<br>**NOTE**<br>Only values in units of px are supported. Values in other units must be converted to units of px before being passed in. For example, to set a value in vp, convert it to px first and then pass the converted value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| showMode<sup>11+</sup>  | [ToastShowMode](#toastshowmode11)                            | No  | Yes | Display level mode of the toast.<br>Default value: **ToastShowMode.DEFAULT**, which means to show the toast in the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Background color of the toast.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| textColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Text color of the toast.<br>Default value: **Color.Black**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundBlurStyle<sup>12+</sup>    | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the toast.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| shadow<sup>12+</sup>    | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the toast background.<br>Default value: **ShadowStyle.OUTER_DEFAULT_MD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableHoverMode<sup>14+</sup>    | boolean                       | No  | Yes | Whether to respond when the device is in hover mode. The value **true** means to respond when the device is in hover mode.<br>Default value: **false**, meaning not to respond when the device is in hover mode.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| hoverModeArea<sup>14+</sup> | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14)         | No  | Yes | Display area of the toast in the hover state.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**, indicating that the toast is displayed in the lower half screen<br>**Atomic service API**: This API can be used in atomic services since API version 14.        |
+| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | No  | Yes | Alignment mode.<br>Default value: **undefined**. If **alignment** is not set and a navigation bar or soft keyboard is present, the toast is automatically adjusted according to the position of the navigation bar or soft keyboard. For details, see the description of **bottom**.<br>**NOTE**<br>The figure below shows the position of the toast in different alignment modes.<br>![en-us_image_0001](figures/toast_alignment.PNG)<br>The text display of the toast is always left-aligned; other alignment modes are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| offset<sup>12+</sup>    | [Offset](arkui-ts/ts-types.md#offset)                        | No  | Yes | Offset in the specified alignment mode.<br>Default value: **{ dx: 0, dy: 0 }**, indicating no offset<br>**NOTE**<br>Only values in units of px are supported. Values in other units must be converted to units of px before being passed in. For example, to set a value in vp, convert it to px first and then pass the converted value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| showMode<sup>11+</sup>  | [ToastShowMode](#toastshowmode11)                            | No  | Yes | Display level mode of the toast.<br>Default value: **ToastShowMode.DEFAULT**, which means to show the toast in the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| backgroundColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Background color of the toast.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| textColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Text color of the toast.<br>Default value: **Color.Black**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| backgroundBlurStyle<sup>12+</sup>    | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the toast.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| shadow<sup>12+</sup>    | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the toast background.<br>Default value: **ShadowStyle.OUTER_DEFAULT_MD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
+| enableHoverMode<sup>14+</sup>    | boolean                       | No  | Yes | Whether to respond when the device is in hover mode. The value **true** means to respond when the device is in hover mode.<br>Default value: **false**, meaning not to respond when the device is in hover mode.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>**Model constraint**: This API can be used only in the stage model.|
+| hoverModeArea<sup>14+</sup> | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14)         | No  | Yes | Display area of the toast in the hover state.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**, indicating that the toast is displayed in the lower half screen<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>**Model constraint**: This API can be used only in the stage model.|
 | systemMaterial |  [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | No| Yes |System material for a component.<br>Default value: If the **backgroundBlurStyle** or **backgroundColor** API is set, the default value is that there is no system material effect. Otherwise, the default value is the [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) object whose **style** is **ImmersiveStyle.ULTRA_THICK**. If this parameter is set to **undefined**, the default value is used.<br>**NOTE**<br>Different system materials have different attribute effects. This API affects the [background color](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [border color](arkui-ts/ts-universal-attributes-border.md#bordercolor), [border width](arkui-ts/ts-universal-attributes-border.md#borderwidth), and [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow). You are advised not to use this API together with the aforementioned APIs.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## ToastShowMode<sup>11+</sup>
@@ -170,6 +174,8 @@ Provides toast configuration options.
 Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in subwindows.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,26 +196,26 @@ Describes the options for showing the dialog box.
 | title                             | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | No  | Yes | Title of the dialog box.<br>Default value: **undefined**, which indicates that no title is not displayed by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | message                           | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | No  | Yes | Text body.<br>Default value: **undefined**, which indicates that no content is displayed by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | buttons                           | Array&lt;[Button](#button)&gt;                               | No  | Yes | Array of buttons in the dialog box. The array structure is {text:'button',&nbsp;color:&nbsp;'\#666666'}. More than one button is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| alignment<sup>10+</sup>           | [DialogAlignment](arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment) | No  | Yes | Alignment mode of the dialog box in the vertical direction.<br>Default value: **DialogAlignment.Default**<br>**NOTE**<br>If **showInSubWindow** is set to **true** in **UIExtension**, the dialog box is aligned with the host window based on **UIExtension**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| offset<sup>10+</sup>              | [Offset](arkui-ts/ts-types.md#offset)                        | No  | Yes | Offset of the dialog box relative to the alignment position.<br>Default value: **{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maskRect<sup>10+</sup>            | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) | No  | Yes | Mask area of the dialog box. Events within the mask area are blocked, while events outside the mask area are transmitted.<br>Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**<br>**NOTE**<br>**maskRect** does not take effect when **showInSubWindow** is set to **true**.<br>If only some properties in [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) are set, the unset properties default to 0.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| showInSubWindow<sup>11+</sup>     | boolean                                                      | No  | Yes | Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window. <br>**true**: The dialog box is shown in a subwindow.<br>**false** (default): The dialog box is displayed within the application, not in a separate subwindow.<br>Note: A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the display of another dialog box whose **showInSubWindow** attribute is also **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isModal<sup>11+</sup>             | boolean                                                      | No  | Yes | Whether the dialog box is a modal, which has a mask applied and does not allow for interaction with other components around the dialog box. <br>**true**: The dialog box is a modal. <br>**false**: The dialog box is not a modal.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundColor<sup>12+</sup>     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | No  | Yes | Background color of the dialog box.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundBlurStyle<sup>12+</sup> | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10) | No| Yes| Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| shadow<sup>12+</sup>              | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableHoverMode<sup>14+</sup>     | boolean                                                      | No  | Yes | Whether to respond when the device is in hover mode. The value **true** means to respond when the device is in hover mode.<br>Default value: **false**, meaning not to respond when the device is in hover mode.<br>**NOTE**<br>For a PC or 2-in-1 device, the prompt is displayed on the upper half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the lower half of the screen. For other devices, the prompt is displayed on the lower half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the upper half of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 14.           |
-| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes | Default display area of the dialog box in hover mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, the animation will be interrupted, and **onDidAppear** will not be invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onWillDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
-| onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | No  | Yes | Display level of the dialog box.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY**<br>- This parameter takes effect only when **showInSubWindow** is set to **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| levelUniqueId<sup>15+</sup>       | number | No  | Yes | Unique ID of the node under the display level for the page-level dialog box. The unique ID can be obtained by calling [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12).<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level dialog box.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | No  | Yes | Display order of the dialog box.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**<br>- Dynamic updating is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| alignment<sup>10+</sup>           | [DialogAlignment](arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment) | No  | Yes | Alignment mode of the dialog box in the vertical direction.<br>Default value: **DialogAlignment.Default**<br>**NOTE**<br>If **showInSubWindow** is set to **true** in **UIExtension**, the dialog box is aligned with the host window based on **UIExtension**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offset<sup>10+</sup>              | [Offset](arkui-ts/ts-types.md#offset)                        | No  | Yes | Offset of the dialog box relative to the alignment position.<br>Default value: **{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}**<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maskRect<sup>10+</sup>            | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) | No  | Yes | Mask area of the dialog box. Events within the mask area are blocked, while events outside the mask area are transmitted.<br>Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**<br>**NOTE**<br>**maskRect** does not take effect when **showInSubWindow** is set to **true**.<br>If only some properties in [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8) are set, the unset properties default to 0.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| showInSubWindow<sup>11+</sup>     | boolean                                                      | No  | Yes | Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window. <br>**true**: The dialog box is shown in a subwindow.<br>**false** (default): The dialog box is displayed within the application, not in a separate subwindow.<br>Note: A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the display of another dialog box whose **showInSubWindow** attribute is also **true**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isModal<sup>11+</sup>             | boolean                                                      | No  | Yes | Whether the dialog box is a modal, which has a mask applied and does not allow for interaction with other components around the dialog box. <br>**true**: The dialog box is a modal. <br>**false**: The dialog box is not a modal.<br>Default value: **true**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| backgroundColor<sup>12+</sup>     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | No  | Yes | Background color of the dialog box.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| backgroundBlurStyle<sup>12+</sup> | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10) | No| Yes| Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| shadow<sup>12+</sup>              | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| enableHoverMode<sup>14+</sup>     | boolean                                                      | No  | Yes | Whether to respond when the device is in hover mode. The value **true** means to respond when the device is in hover mode.<br>Default value: **false**, meaning not to respond when the device is in hover mode.<br>**NOTE**<br>For a PC or 2-in-1 device, the prompt is displayed on the upper half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the lower half of the screen. For other devices, the prompt is displayed on the lower half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the upper half of the screen.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 14.           |
+| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes | Default display area of the dialog box in hover mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>4. If the dialog box is dismissed before its appearance animation is finished, the animation will be interrupted, and **onDidAppear** will not be invoked.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onWillDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Model constraint**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the dialog box disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | No  | Yes | Display level of the dialog box.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY**<br>- This parameter takes effect only when **showInSubWindow** is set to **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| levelUniqueId<sup>15+</sup>       | number | No  | Yes | Unique ID of the node under the display level for the page-level dialog box. The unique ID can be obtained by calling [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12).<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level dialog box.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | No  | Yes | Display order of the dialog box.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**<br>- Dynamic updating is not supported.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | systemMaterial  | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | No| Yes| System material of the dialog box.<br>**NOTE**<br>- Default value: [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) object whose **style** in [ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions) is **ImmersiveStyle.ULTRA_THICK** If this parameter is set to **undefined**, the default value is used.<br>- Different materials have different effects. This API affects the [background color](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [background blur style](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9), [background effect](arkui-ts/ts-universal-attributes-background.md#backgroundeffect11), and [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow). You are advised not to use this API together with the aforementioned APIs.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## ShowDialogSuccessResponse
@@ -234,15 +240,15 @@ Describes the options for showing the action menu.
 | ----------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | title                         | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | No  | Yes | Title of the dialog box.<br>Default value: **undefined**, which indicates that no title is not displayed by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | buttons                       | [[Button](#button),[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?] | No | No | Array of menu item buttons. The array structure is **{text:'button', color: '\#666666'}**. Up to six buttons are supported. If there are more than six buttons, only the first six buttons will be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| showInSubWindow<sup>11+</sup> | boolean                                                      | No  | Yes | Whether to show the menu in a subwindow when the menu needs to be displayed outside the main window. <br>**true**: The menu is shown in a subwindow.<br>Default value: **false**, indicating that the dialog box is not displayed in a subwindow.<br>**NOTE**<br> - A menu whose **showInSubWindow** attribute is **true** cannot trigger the display of another menu whose **showInSubWindow** attribute is also **true**.<br> - If **showInSubWindow** is set to **true** in **UIExtension**, the menu is aligned with the host window based on **UIExtension**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isModal<sup>11+</sup>         | boolean                                                      | No  | Yes | Whether the menu is a modal, which has a mask applied and does not allow for interaction with other components around the menu. <br>**true**: The menu is a modal. <br>**false**: The menu is not a modal.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | No  | Yes | Display level mode of the menu.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY**<br>- This parameter takes effect only when **showInSubWindow** is set to **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| levelUniqueId<sup>15+</sup>       | number | No  | Yes | Unique ID of the node under the display level for the page-level menu. The unique ID can be obtained by calling [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12).<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level menu.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| onWillAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. When a menu is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| onWillDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| showInSubWindow<sup>11+</sup> | boolean                                                      | No  | Yes | Whether to show the menu in a subwindow when the menu needs to be displayed outside the main window. <br>**true**: The menu is shown in a subwindow.<br>Default value: **false**, indicating that the dialog box is not displayed in a subwindow.<br>**NOTE**<br> - A menu whose **showInSubWindow** attribute is **true** cannot trigger the display of another menu whose **showInSubWindow** attribute is also **true**.<br> - If **showInSubWindow** is set to **true** in **UIExtension**, the menu is aligned with the host window based on **UIExtension**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isModal<sup>11+</sup>         | boolean                                                      | No  | Yes | Whether the menu is a modal, which has a mask applied and does not allow for interaction with other components around the menu. <br>**true**: The menu is a modal. <br>**false**: The menu is not a modal.<br>Default value: **true**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | No  | Yes | Display level mode of the menu.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY**<br>- This parameter takes effect only when **showInSubWindow** is set to **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| levelUniqueId<sup>15+</sup>       | number | No  | Yes | Unique ID of the node under the display level for the page-level menu. The unique ID can be obtained by calling [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12).<br>Value range: a number no less than 0<br>**NOTE**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No  | Yes | Overlay effect for the page-level menu.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| onWillAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidAppear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. When a menu is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onWillDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the menu disappearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Model constraint**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked after the menu disappears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | systemMaterial  | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | No| Yes| System material of the dialog box.<br>Default value: [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) object whose **style** in [ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions) is **ImmersiveStyle.ULTRA_THICK** If this parameter is set to **undefined**, the default value is used. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## ActionMenuSuccessResponse
@@ -263,6 +269,8 @@ Enumerates states of the custom dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Value  | Description                                      |
@@ -282,6 +290,8 @@ It can be used as a member variable of **UIContext** to display custom dialog bo
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## CommonController<sup>18+</sup>
@@ -289,6 +299,8 @@ It can be used as a member variable of **UIContext** to display custom dialog bo
 Implements a common controller for managing components related to **promptAction**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,6 +311,8 @@ A constructor used to create a controller instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### close<sup>18+</sup>
@@ -307,6 +321,8 @@ close(): void
 Closes the custom dialog box. If the dialog box is already closed, this API has no effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -317,6 +333,8 @@ getState(): CommonState
 Obtains the state of the custom dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,6 +350,8 @@ Defines the display order of a dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### clamp<sup>18+</sup>
@@ -340,6 +360,8 @@ static clamp(order: number): LevelOrder
 Creates a dialog box level with the specified order.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -362,6 +384,8 @@ Obtains the display order of this dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -375,6 +399,8 @@ Obtains the display order of this dialog box.
 Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customization capabilities for the dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,6 +424,8 @@ Defines the allowed data types for specifying the background corner radius of a 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                        |
@@ -412,6 +440,8 @@ type DialogOptionsBorderWidth = Dimension&nbsp;\|&nbsp;EdgeWidths
 Defines the allowed data types for specifying the background border width of a dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +458,8 @@ Defines the allowed data types for specifying the background border color of a d
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                        |
@@ -442,6 +474,8 @@ type DialogOptionsBorderStyle = BorderStyle&nbsp;\|&nbsp;EdgeStyles
 Defines the allowed data types for specifying the background border style of a dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,6 +492,8 @@ Defines the allowed data types for specifying the background shadow of a dialog 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                        |
@@ -470,6 +506,8 @@ Defines the allowed data types for specifying the background shadow of a dialog 
 Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customization capabilities for the dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,6 +527,8 @@ Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customizat
 ## BaseDialogOptions<sup>11+</sup>
 
 Defines the options of the dialog box.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -529,6 +569,8 @@ Provides information about the action to dismiss the dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### Attributes
@@ -544,6 +586,8 @@ Enumerates the display level modes of the dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Value  | Description                                            |
@@ -556,6 +600,8 @@ Enumerates the display level modes of the dialog box.
 Enumerates the display area modes of the dialog box overlay within a page.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -574,7 +620,7 @@ Describes the menu item button in the action menu.
 | ----- | ---------------------------------------- | ---- | ------- | ------- |
 | text  | string&nbsp;\|&nbsp; [Resource](arkui-ts/ts-types.md#resource) | No  | No  | Button text.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | color | string&nbsp;\| &nbsp;[Resource](arkui-ts/ts-types.md#resource) | No  | No  | Text color of the button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| primary<sup>12+</sup> | boolean | No   | Yes  | Whether the button responds to the **Enter** key by default when the dialog box has focus and the **Tab** key is not pressed for sequential focus navigation. If there are multiple buttons, set this parameter to **true** for only one button. Otherwise, no button will respond. Multiple dialog boxes can automatically gain focus and respond to user interactions in a sequential manner. **true**: The button responds to the **Enter** key by default. **false**: The button does not respond to the **Enter** key by default.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| primary<sup>12+</sup> | boolean | No   | Yes  | Whether the button responds to the **Enter** key by default when the dialog box has focus and the **Tab** key is not pressed for sequential focus navigation. If there are multiple buttons, set this parameter to **true** for only one button. Otherwise, no button will respond. Multiple dialog boxes can automatically gain focus and respond to user interactions in a sequential manner. **true**: The button responds to the **Enter** key by default. **false**: The button does not respond to the **Enter** key by default.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model.|
 
 ## Example
 
@@ -819,7 +865,7 @@ promptAction.showDialog({
   })
 ```
 
-![en-us_image_0002](figures/en-us_image_0002.gif)
+![en-us_image_0002](figures/showDialog-example01.gif)
 
 ## promptAction.showDialog<sup>(deprecated)</sup>
 
@@ -887,11 +933,9 @@ try {
 };
 ```
 
-![en-us_image_0004](figures/en-us_image_0004.gif)
+![en-us_image_0004](figures/showDialog-example02.gif)
 
 When the **showInSubWindow** attribute is set to **true**, the toast can be displayed outside the window.
-
-The **displayModeInSubWindow** attribute is added to [BaseDialogOptions](#basedialogoptions11) since API version 26.0.0.
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
@@ -903,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // The displayModeInSubWindow is added since API version 26.0.0.
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',
@@ -929,7 +971,7 @@ try {
 };
 ```
 
-![en-us_image_0002_showinsubwindow](figures/en-us_image_0002_showinsubwindow.jpg)
+![en-us_image_0002_showinsubwindow](figures/showDialog-showinsubwindow.jpg)
 
 This example demonstrates how to use the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** properties of [ShowDialogOptions](#showdialogoptions) to implement the dialog box lifecycle callbacks, supported since API version 19.
 
@@ -992,7 +1034,7 @@ struct DialogExample {
 }
 ```
 
-![en-us_image_0002_lifecycle](figures/en-us_image_0002_lifecycle.gif)
+![en-us_image_0002_lifecycle](figures/showDialog-lifecycle.gif)
 
 
 
@@ -1061,7 +1103,7 @@ try {
 };
 ```
 
-![en-us_image_0005](figures/en-us_image_0005.gif)
+![en-us_image_0005](figures/showActionMenu-example01.gif)
 
 **Example 2**
 
@@ -1136,7 +1178,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0008](figures/en-us_image_0008.gif)
+![en-us_image_0008](figures/showActionMenu-example03.gif)
 
 ## promptAction.showActionMenu<sup>(deprecated)</sup>
 
@@ -1201,7 +1243,7 @@ promptAction.showActionMenu({
   })
 ```
 
-![en-us_image_0006](figures/en-us_image_0006.gif)
+![en-us_image_0006](figures/showActionMenu-example02.gif)
 
 ## promptAction.openCustomDialog<sup>(deprecated)</sup>
 
@@ -1219,6 +1261,8 @@ By default, the width of the dialog box in portrait mode is the width of the win
 > - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **openCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 12, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1400,7 +1444,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0007](figures/en-us_image_0007.gif)
+![en-us_image_0007](figures/CustomDialog-example01.gif)
 
 This example shows how to implement a dialog box on a page.
 
@@ -1503,6 +1547,8 @@ Closes the specified custom dialog box.
 > - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **closeCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 12, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

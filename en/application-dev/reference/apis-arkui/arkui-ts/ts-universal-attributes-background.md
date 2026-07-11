@@ -733,7 +733,7 @@ struct BackgroundExample {
 }
 ```
 
-![en-us_image_0000001219982703](figures/en-us_image_0000001219982703.png)
+![background1](figures/background1.png)
 
 ### Example 2: Setting the Background Blur Style
 
@@ -764,7 +764,7 @@ struct BackgroundBlurStyleDemo {
 }
 ```
 
-![en-us_image_background_blur_style](figures/en-us_image_background_blur_style.png)
+![image-background-blur-style](figures/image-background-blur-style.png)
 
 ### Example 3: Setting the Component Background
 
@@ -799,7 +799,7 @@ struct BackgroundExample {
 }
 ```
 
-![en-us_image_background](figures/en-us_image_background.png)
+![image-background](figures/image-background.png)
 
 ### Example 4: Setting Component Background Brightness
 
@@ -834,15 +834,15 @@ The following figures show how the component looks with the background brightnes
 
 When **rate** and **lightUpDegree** are both set to **0.5**
 
-![en-us_image_background_brightness1](figures/en-us_image_background_brightness1.png)
+![image-background-brightness1](figures/image-background-brightness1.png)
 
 When **rate** is set to **0.5** and **lightUpDegree** **-0.1**
 
-![en-us_image_background_brightness2](figures/en-us_image_background_brightness2.png)
+![image-background-brightness2](figures/image-background-brightness2.png)
 
 The following figure shows how the component looks without the background brightness set.
 
-![en-us_image_background_brightness3](figures/en-us_image_background_brightness3.png)
+![image-background-brightness2](figures/image-background-brightness2.png)
 
 ### Example 5: Setting Blur Effects
 
@@ -1067,7 +1067,7 @@ struct P3BackgroundDemo {
 }
 ```
 
-![en-us_background_p3](figures/en-us_background_p3.png)
+![backgroundP3](figures/backgroundP3.png)
 
 ### Example 9: Setting Component Background Extension
 

@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
+<!--Owner: @buzhenwang-->
+<!--Designer: @milkbread123-->
 <!--Tester: @liyang2235-->
 <!--Adviser: @jinqiuheng-->
 
@@ -408,3 +408,247 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
 <!--RP8End-->
+
+
+## OutputType
+
+Enumerates the output types of HiLog. **DEFAULT** and **CONSOLE_ONLY** are used when logs are output only to the console. **PRIVATE_SANDBOX_ONLY** is used for storing private logs. **SHARE_SANDBOX_ONLY** is used when logs need to be collected on the cloud. **PRIVATE_SANDBOX_WITH_CONSOLE** and **SHARE_SANDBOX_WITH_CONSOLE** are used when logs need to be output to the console and stored in the sandbox.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+| Name |   Value  | Description                                                        |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| DEFAULT | 0 | Default output type, which is equivalent to **CONSOLE_ONLY**. HiLog outputs logs only to the console.|
+| CONSOLE_ONLY | 0 | HiLog outputs logs only to the console, which is equivalent to **DEFAULT**.|
+| PRIVATE_SANDBOX_ONLY | 1 | HiLog outputs logs to the private sandbox of the application. This path can be accessed only by the application itself.|
+| SHARE_SANDBOX_ONLY | 2 | HiLog outputs logs to the public sandbox of the application. This path can be accessed by both the application and the system.|
+| PRIVATE_SANDBOX_WITH_CONSOLE | 3 | Both **CONSOLE_ONLY** and **PRIVATE_SANDBOX_ONLY** are enabled.|
+| SHARE_SANDBOX_WITH_CONSOLE | 4 | Both **CONSOLE_ONLY** and **SHARE_SANDBOX_ONLY** are enabled.|
+
+## hilog.setOutputType
+
+setOutputType(type: OutputType): OutputType
+
+Sets the output type of HiLog.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Parameters**
+
+| Name| Type                 | Mandatory| Description                                                        |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| type  | [OutputType](#outputtype) | Yes  | Output type of HiLog.                                                  |
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | The previously set output type.|
+
+**Example**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_ONLY);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox only');
+hilog.flush();
+```
+
+**Log result**:
+
+Sandbox log output.
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log to share sandbox only
+```
+
+## hilog.setOutputTypeByDomainID
+
+setOutputTypeByDomainID(type: OutputType, domainIDs: Array&lt;number&gt;, isExclude: boolean): OutputType
+
+Sets the output type of HiLog and configures the domain ID list to be output. You can choose to output only the domain IDs in the list or not.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Parameters**
+
+| Name| Type                 | Mandatory| Description                                                        |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| type  | [OutputType](#outputtype) | Yes  | Output type of HiLog.                                                  |
+| domainIDs  | Array&lt;number&gt; | Yes  | Domain ID list. The value range of each domain ID is 0x0000 to 0xFFFF. This parameter is valid only for application domains.                                                  |
+| isExclude  | boolean | Yes  | Whether domain IDs take effect for the output type.<br>The value **true** indicates that the domain IDs in the list are excluded, and the configuration takes effect only for domains that are not in the list, and **false** indicates the opposite.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | The previously set output type.|
+
+**Example**
+
+```js
+hilog.setOutputTypeByDomainID(hilog.OutputType.SHARE_SANDBOX_ONLY, [0x0001, 0x0002, 0x0003], false);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0002, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0003, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0004, "testTag", 'sandbox log to share sandbox only');
+hilog.flush();
+```
+
+**Log result**:
+
+Sandbox log output. The logs of domain **0x0004** are not printed.
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00002/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00003/testTag: sandbox log to share sandbox only
+```
+
+## hilog.getOutputType
+
+getOutputType(): OutputType
+
+Obtains the output type of HiLog.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | Returns the output type of HiLog.|
+
+**Example**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let last = hilog.getOutputType();
+hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
+```
+
+**Log result**:
+
+Console output.
+```text
+05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  last output type:4
+```
+
+## hilog.getOutputDir
+
+getOutputDir(): string
+
+Obtains the path of the HiLog logs in the sandbox. If the output type of HiLog is **DEFAULT**, an empty string is returned.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| string | Sandbox path of the HiLog logs.|
+
+**Example**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let dir = hilog.getOutputDir();
+hilog.info(0x0001, "testTag", 'sandbox output dir:%{public}s', dir);
+```
+
+**Log result**:
+
+Console output.
+```text
+05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  sandbox output dir:/data/storage/el2/log/hiapplog/
+```
+
+## hilog.clean
+
+clean(): void
+
+Deletes all HiLog logs from the sandbox.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Example**
+```js
+hilog.clean();
+```
+
+## hilog.flush
+
+flush(): void
+
+Refreshes HiLog logs in the sandbox.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Example**
+```js
+hilog.flush();
+```
+
+## hilog.getLogFile
+
+getLogFile(latestSeconds: number): Array&lt;string&gt;
+
+Obtains the HiLog sandbox log files that have been modified within the specified number of seconds.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Parameters**
+
+| Name| Type                 | Mandatory| Description                                                        |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| latestSeconds  | number | Yes  | Interval from the current time, in seconds.<br>If the input value is less than 0, the value is invalid and the return value is empty.            |
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt; | List of sandbox files that have been written in a specified period.|
+
+**Example**
+
+Obtain the files that have been modified within 5 minutes.
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
+hilog.flush();
+let logs = hilog.getLogFile(300);
+hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+```
+
+**Log result**:
+
+Sandbox log output.
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log files:hiapplog.40518.001.20260515-165602.log
+```

@@ -11,12 +11,12 @@ The **\<stack>** component provides a stack container where child components are
 
 > **NOTE**
 >
->The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Child Components
 
-Supported
+Supported.
 
 
 ## Attributes
@@ -80,4 +80,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
 ```
 **4 x 4 widget**
 
-![Stack](figures/stack.PNG)
+![stack](figures/stack.PNG)

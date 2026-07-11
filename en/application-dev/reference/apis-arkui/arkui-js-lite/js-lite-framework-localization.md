@@ -1,5 +1,4 @@
 # Multi-Language Capability
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunfei2021-->
@@ -7,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Applications designed based on the development framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
+Applications designed based on the JS UI framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
 
 You only need to perform operations in [Defining Resource Files](#defining-resource-files) and [Referencing Resources](#referencing-resources) to use the multi-language capability of this framework. For details about how to obtain the current system language, see [Obtaining the Language](#obtaining-the-language).
 
@@ -15,7 +14,7 @@ You only need to perform operations in [Defining Resource Files](#defining-resou
 
 Resource files store application content in multiple languages. This framework uses JSON files to store resource definitions.
 
-Place the resource definition file of each locale in the **i18n** folder specified in [Directory Structure](js-lite-framework-file.md). Name the resource files in _language-region_.json format. For example, name the resource file for English (United States) **en-US.json**. If there is no resource file of the locale that matches the system language, content in the **en-US.json** file will be used by default.
+Place the resource file of each locale in the **i18n** directory described in [File Organization](js-lite-framework-file.md). Resource files are named in *language-region***.json** format. For example, the resource file for English (United States) is named **en-US.json**. If there is no resource file of the locale that matches the system language, content in the **en-US.json** file will be used by default.
 
 The format of the resource file content is as follows:
 
@@ -38,14 +37,14 @@ en-US.json
 
 ## Referencing Resources
 
-- Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
+- Use the **\$t** function to reference to resources of different locales. The **\$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **\$t** and the specified resource file whose locale matches the current system language.
 
   | Parameter  | Type         | Mandatory| Description                                                        |
   | ------ | ------------- | ---- | ------------------------------------------------------------ |
   | path   | string        | Yes  | Resource path.                                                    |
-  | params | Array\|Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, {name}. The actual content must be of the object type, for example, **$t('strings.object', { name: 'Hello world' })**.<br>- Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **$t('strings.array', ['Hello world']**. |
+  | params | Array\|Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available: Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, **\$t('strings.object', { name: 'Hello world' })**. Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **\$t('strings.array', ['Hello world']**.|
 
-- Example
+- Sample Code
 
   ```html
   <!-- xxx.hml -->

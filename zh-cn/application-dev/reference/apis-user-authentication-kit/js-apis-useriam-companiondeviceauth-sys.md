@@ -6,8 +6,6 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 **companionDeviceAuth**模块是OpenHarmony用户身份认证体系（UserIAM）的重要组成部分，专门用于伴随设备认证管理。该模块为系统应用提供伴随设备查询、订阅和服务范围管理等能力。
 
 该模块主要用于以下场景：
@@ -544,7 +542,8 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -552,7 +551,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {
@@ -598,7 +597,8 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -606,7 +606,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {
@@ -662,7 +662,8 @@ getStatusMonitor(localUserId: number): StatusMonitor
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -670,7 +671,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {
