@@ -291,7 +291,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
             break;
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
           // 此分支表示系统已将音频解除静音。
-            break;            
+            break;
         default:
             break;
     }
