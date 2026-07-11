@@ -28,7 +28,7 @@
 
 ## module.json5配置项说明
 
-跨设备启动时，目标组件在`module.json5`中的以下配置项会影响启动结果。字段说明可参考[abilities标签](../quick-start/module-configuration-file.md#abilities标签)和[权限声明](../security/AccessToken/declare-permissions.md)。
+跨设备启动时，目标组件在`module.json5`中的以下配置项会影响启动结果。字段说明可参考[abilities标签](../quick-start/module-configuration-file.md#abilities标签)。
 
 | 配置项 | 说明 | 跨设备启动影响 |
 | --- | --- | --- |
@@ -60,3 +60,9 @@
 >
 > - startAbilityByCall场景不校验自定义权限，但会校验目标组件的可见性配置（结合设备安全等级）。若目标组件不可见且调用方设备安全等级低于被调用方设备，则拦截。
 > - 禁止拉起`Distributed`类型的ExtensionAbility组件。
+
+## 跨设备启动流程
+
+启动 UIAbility 组件的具体校验流程如下图：
+
+![component-startup-rules-cross-device](figures/component-startup-rules-cross-device.png)

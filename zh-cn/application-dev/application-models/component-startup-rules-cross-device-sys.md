@@ -60,3 +60,9 @@
 >
 > - startAbilityByCall场景不校验自定义权限，但会校验目标组件的可见性配置（结合设备安全等级）。若目标组件不可见且调用方设备安全等级低于被调用方设备，则拦截。
 > - 禁止拉起`Distributed`类型的ExtensionAbility组件。
+
+## 跨设备启动流程
+
+启动 UIAbility 组件的具体校验流程如下图：
+
+![component-startup-rules-cross-device-sys](figures/component-startup-rules-cross-device-sys.png)
