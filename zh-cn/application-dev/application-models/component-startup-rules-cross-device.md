@@ -16,7 +16,7 @@
 ## 支持的启动接口
 
 | 接口 | 适用场景 | 发起方应用权限要求 | 被启动方权限要求 | 分布式设备安全等级要求 |
-| --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | [abilityConnectionManager.createAbilityConnectionSession](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md#abilityConnectionManager.createAbilityConnectionSession) | 支持UIAbility间的跨设备启动并进行多轮交互模式，依赖WIFI开启；**推荐使用该接口，接口速度快、性能更好** | 需要拥有ohos.permission.INTERNET，ohos.permission.GET_NETWORK_INFO，ohos.permission.SET_NETWORK_INFO和ohos.permission.DISTRIBUTED_DATASYNC权限。权限申请方式参考[声明权限](../security/AccessToken/declare-permissions.md)；若目标组件声明了权限数组，调用方必须持有其中所有权限。 | 需要拥有ohos.permission.INTERNET，ohos.permission.GET_NETWORK_INFO，ohos.permission.SET_NETWORK_INFO和ohos.permission.DISTRIBUTED_DATASYNC权限。 | 若目标组件设置`exported`为`false`，要求发起方设备的安全等级不能低于目标方设备。 |
 | [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) | 支持UIAbility间的跨设备启动并进行多轮交互模式 | **仅支持同应用**，建立应用间通路过程中底层软总线会校验应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限；若目标组件声明了权限数组，调用方必须持有其中所有权限。 | **仅支持同应用**，建立应用间通路过程中底层软总线会校验应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限。| 若目标组件设置`exported`为`false`，要求发起方设备的安全等级不能低于目标方设备。 |
 | [connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext.md#serviceextensioncontextconnectserviceextensionability) | ExtensionAbility | 建立应用间通路过程中底层软总线会校验应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限；若目标组件声明了权限数组，调用方必须持有其中所有权限。 | 建立应用间通路过程中底层软总线会校验应用的`ohos.permission.DISTRIBUTED_DATASYNC`权限。| 若目标组件设置`exported`为`false`，要求发起方设备的安全等级不能低于目标方设备。 |
