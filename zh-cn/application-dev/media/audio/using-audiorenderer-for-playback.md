@@ -68,7 +68,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            // ...
          }
        } else {
-         console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+         console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
          globalLogUpdate(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`, false);
        }
      });
@@ -208,11 +208,12 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            console.error(`Failed to release audio renderer. Code: ${err.code}, message: ${err.message}`);
            // ...
          } else {
-           // 关闭沙箱文件。
            console.info('Succeeded in releasing audio renderer.');
            // ...
          }
        });
+       // 关闭沙箱文件。
+       await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
    ```
 
 ### 选择正确的StreamUsage
