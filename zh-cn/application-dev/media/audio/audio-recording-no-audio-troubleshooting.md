@@ -70,7 +70,7 @@
 
    创建流程可参考AudioCaptureSampleJS页面代码中的`create_AudioCapturer`。
 
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
 
    ``` TypeScript
    audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => {
@@ -96,7 +96,7 @@
 
    状态查询和状态监听可参考AudioCaptureSampleJS页面代码中的`view_AudioCapturerState`和`listen_AudioCapturerState`。
 
-   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
 
    ``` TypeScript
    let audioCapturerState: audio.AudioState = audioCapturer.state;
@@ -121,7 +121,7 @@
 
    回调注册可参考AudioCaptureSampleJS页面代码中的`listen_AudioCapturer`。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
 
    ``` TypeScript
    if (audioCapturer !== undefined) {
@@ -179,7 +179,7 @@
 
    如果无声与通话、其他录音任务、蓝牙耳机、有线耳机或USB声卡有关，可通过录音流变化和输入设备信息确认当前录音流、`SourceType`和输入设备是否符合预期。
 
-   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->  
 
    ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
