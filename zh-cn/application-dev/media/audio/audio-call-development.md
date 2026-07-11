@@ -70,24 +70,26 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧,空白区域需要使用静音数据填充,否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据,使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
       // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
-      return audio.AudioDataCallbackResult.VALID;
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // ...
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
   };
@@ -170,7 +172,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -197,6 +198,7 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```
