@@ -71,15 +71,39 @@
    创建流程可参考AudioCaptureSampleJS页面代码中的`create_AudioCapturer`。
 
    <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
-
+   
    ``` TypeScript
-   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => {
-     if (err) {
-       console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     audioCapturer = capturer;
-   });
+   import { audio } from '@kit.AudioKit';
+   // ...
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+     channels: audio.AudioChannel.CHANNEL_2, // 通道。
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+   };
+   let audioCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型:Mic音频源。根据业务场景配置,参考SourceType。
+     capturerFlags: 0 // 音频采集器标志。
+   };
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
+   // ...
+     audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
+       if (err) {
+         console.error(`${TAG}: Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+         // ...
+         return;
+       }
+       console.info(`${TAG}: create AudioCapturer success`);
+       // ...
+       audioCapturer = capturer;
+       if (audioCapturer !== undefined) {
+         audioCapturer.on('readData', onReadData);
+         // ...
+       }
+     });
    ```
 
 2. 确认录音实例是否进入运行状态。
