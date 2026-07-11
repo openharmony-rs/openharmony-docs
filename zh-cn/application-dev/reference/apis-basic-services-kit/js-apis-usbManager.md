@@ -269,7 +269,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-async function requestRight() {
+function requestRight() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -277,7 +277,7 @@ async function requestRight() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  await usbManager.requestRight(device.name).then(ret => {
+  usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
