@@ -960,8 +960,6 @@ createAVAdsController(player: AVPlayer): Promise\<AVAdsController | undefined>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **参数：**
@@ -982,7 +980,7 @@ createAVAdsController(player: AVPlayer): Promise\<AVAdsController | undefined>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | The player object corresponding to player does not exist or is invalid. Return by promise. |
+| 5400108  | The player object corresponding to player does not exist or is invalid. |
 
 **示例：**
 
@@ -1012,8 +1010,6 @@ createMediaSourceWithDirectory(path: string): Promise\<MediaSource | undefined>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -1064,8 +1060,6 @@ createAVDownloaderManager(): Promise\<AVDownloaderManager>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
