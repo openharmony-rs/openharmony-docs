@@ -146,11 +146,34 @@
    回调注册可参考AudioCaptureSampleJS页面代码中的`listen_AudioCapturer`。
 
    <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
-
+   
    ``` TypeScript
-   if (audioCapturer !== undefined) {
-     audioCapturer.on('readData', readDataCallback);
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+   
+   // ...
+   class Options {
+     public offset?: number;
+     public length?: number;
    }
+   
+   // ...
+     let writtenBytes: number = 0;
+     let path = context.cacheDir;
+     let filePath = path + '/S16LE_2_48000.pcm';
+     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     onReadData = (buffer: ArrayBuffer) => {
+       // ...
+       let options: Options = {
+         offset: writtenBytes,
+         length: buffer.byteLength
+       }
+       fs.writeSync(file.fd, buffer, options);
+       writtenBytes += buffer.byteLength;
+     };
+     // ...
+         audioCapturer.on('readData', onReadData);
    ```
 
 4. 如果收到`readData`回调但录音结果无声，检查数据写入和解析逻辑。
