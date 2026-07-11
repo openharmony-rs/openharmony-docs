@@ -18,7 +18,7 @@ typedef struct AVPlayerCallback {...} AVPlayerCallback
 
 **废弃版本：** 12
 
-**替代接口：** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
+**替代接口：** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) 、[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
 **相关模块：** [AVPlayer](capi-avplayer.md)
 
