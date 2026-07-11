@@ -1547,7 +1547,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 graph LR
     A[端点类型] --> B[批量端点 bulk]
     A --> C[中断端点 interrupt]
-    A --> D[实时端点 sochronous]
+    A --> D[实时端点 isochronous]
     B --> B1[宽带共享调度]
     B1 --> B2[适合大量数据非实时传输]
     C --> C1[固定轮询调度]
