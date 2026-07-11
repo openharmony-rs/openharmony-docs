@@ -32,7 +32,7 @@ usbFunctionsFromString(funcs: string): number
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -76,7 +76,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -120,7 +120,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -169,7 +169,7 @@ getCurrentFunctions(): FunctionType
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **返回值：**
 
@@ -205,7 +205,7 @@ getPorts(): Array\<USBPort\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **返回值：**
 
@@ -241,7 +241,7 @@ getSupportedModes(portId: number): PortModeType
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -283,7 +283,7 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -337,7 +337,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -410,7 +410,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -460,7 +460,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -512,7 +512,7 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -573,7 +573,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **返回值：**
 
@@ -618,7 +618,7 @@ getPortList(): Array\<USBPort\>
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **返回值：**
 
@@ -665,7 +665,7 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
@@ -717,7 +717,7 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
-**系统能力：**  SystemCapability.USB.USBManager
+**系统能力：** SystemCapability.USB.USBManager
 
 **参数：**
 
