@@ -1377,7 +1377,7 @@ Allows an application to install and load self-distributed plug-ins.
 
 ## ohos.permission.MANAGE_AUDIO_ACCESSORY
 
-Allows an application to register audio accessories with the system。
+Allows an application to register audio accessories with the system.
 
 Applicable scenarios and functionalities:
 
@@ -1389,13 +1389,13 @@ Integrate into AI Life as a plug-in to provide users with a seamless, download-f
 
 <!--RP91--><!--RP91End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Supported devices**：Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
-**Since**：26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.ALLOW_USE_BM
 
