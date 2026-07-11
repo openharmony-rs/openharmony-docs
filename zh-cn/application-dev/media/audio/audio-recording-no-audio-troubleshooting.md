@@ -223,18 +223,31 @@
    如果无声与通话、其他录音任务、蓝牙耳机、有线耳机或USB声卡有关，可通过录音流变化和输入设备信息确认当前录音流、`SourceType`和输入设备是否符合预期。
 
    <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) --> 
-
+   
    ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
+     // ...
      for (let i = 0; i < audioCapturerChangeInfoArray.length; i++) {
+       console.info(`## CapChange on is called for element ${i} ##`);
        console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
        console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
+       console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+   
+       // ...
+   
        let devDescriptor: audio.AudioDeviceDescriptors = audioCapturerChangeInfoArray[i].deviceDescriptors;
-       for (let j = 0; j < devDescriptor.length; j++) {
-         console.info(`Type: ${j} : ${devDescriptor[j].deviceType}`);
-         console.info(`Role: ${j} : ${devDescriptor[j].deviceRole}`);
+       for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+         console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+         console.info(`Type: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+         console.info(`Role: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+         console.info(`Name: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+         console.info(`Address: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+         console.info(`SampleRates: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+         console.info(`ChannelCounts ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+         console.info(`ChannelMask: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
        }
      }
+     // ...
    });
    ```
 
