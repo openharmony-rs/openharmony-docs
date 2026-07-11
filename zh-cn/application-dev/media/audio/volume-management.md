@@ -69,7 +69,7 @@ let audioVolumeManager = audioManager.getVolumeManager();
 
 示例代码如下所示：
 
-<!-- @[get_systemvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
+<!-- @[get_systemvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
