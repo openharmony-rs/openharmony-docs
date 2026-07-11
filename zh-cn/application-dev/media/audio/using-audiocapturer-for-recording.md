@@ -89,21 +89,21 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    }
    
    // ...
-     let bufferSize: number = 0;
+     let writtenBytes: number = 0;
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
      file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-     readDataCallback = (buffer: ArrayBuffer) => {
+     onReadData = (buffer: ArrayBuffer) => {
        // ...
        let options: Options = {
-         offset: bufferSize,
+         offset: writtenBytes,
          length: buffer.byteLength
        }
        fs.writeSync(file.fd, buffer, options);
-       bufferSize += buffer.byteLength;
+       writtenBytes += buffer.byteLength;
      };
      // ...
-         audioCapturer.on('readData', readDataCallback);
+         audioCapturer.on('readData', onReadData);
    ```
 
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
