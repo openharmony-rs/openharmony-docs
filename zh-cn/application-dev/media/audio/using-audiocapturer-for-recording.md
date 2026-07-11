@@ -557,17 +557,17 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 };
 
 let file: fs.File;
-let readDataCallback: Callback<ArrayBuffer>;
+let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 // ...
 
-async function initArguments(context: common.UIAbilityContext): Promise<void> {
-  let bufferSize: number = 0;
+async function initRecordingResources(context: common.UIAbilityContext): Promise<void> {
+  let writtenBytes: number = 0;
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-  readDataCallback = (buffer: ArrayBuffer) => {
+  onReadData = (buffer: ArrayBuffer) => {
     if (capturerMuteHintEnabledByApp) {
       let view = new DataView(buffer);
       for (let i = 0; i < buffer.byteLength; i++) {
@@ -575,11 +575,11 @@ async function initArguments(context: common.UIAbilityContext): Promise<void> {
       }
     }
     let options: Options = {
-      offset: bufferSize,
+      offset: writtenBytes,
       length: buffer.byteLength
     }
     fs.writeSync(file.fd, buffer, options);
-    bufferSize += buffer.byteLength;
+    writtenBytes += buffer.byteLength;
   };
 }
 
@@ -680,7 +680,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
       if (err) {
         console.error('Renderer release failed.');
       } else {
-        fs.closeSync(file);
+        fs.closeSync(file.fd);
         console.info('Renderer release success.');
       }
     });
@@ -692,7 +692,7 @@ async function init(updateCallback?: (msg: string, isError: boolean) => void, st
   (msg: string) => void): Promise<void> {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
     if (err) {
-      console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`${TAG}: Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
       // ...
       return;
     }
@@ -700,7 +700,7 @@ async function init(updateCallback?: (msg: string, isError: boolean) => void, st
     // ...
     audioCapturer = capturer;
     if (audioCapturer !== undefined) {
-      audioCapturer.on('readData', readDataCallback);
+      audioCapturer.on('readData', onReadData);
       // ...
     }
   });
@@ -719,15 +719,15 @@ async function start(updateCallback?: (msg: string, isError: boolean) => void): 
     }
 
     // 启动采集。
-    audioCapturer.start((err: BusinessError) => {
-      if (err) {
-        // ...
-        console.error('Capturer start failed.');
-      } else {
-        // ...
-        console.info('Capturer start success.');
-      }
-    });
+    try {
+      await audioCapturer.start();
+      // ...
+      console.info(`${TAG}: Capturer start success.`);
+    } catch (err) {
+      let error = err as BusinessError;
+      // ...
+      console.error(`${TAG}: Capturer start failed, code: ${error.code}, message: ${error.message}`);
+    }
   }
 }
 
@@ -776,21 +776,21 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Capturer is not running or paused');
+      console.info(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
 
     // 停止采集。
-    audioCapturer.stop((err: BusinessError) => {
-      if (err) {
-        // ...
-        console.error('Capturer stop failed.');
-      } else {
-        // ...
-        console.info('Capturer stop success.');
-      }
-    });
+    try {
+      await audioCapturer.stop();
+      // ...
+      console.info(`${TAG}: Capturer stop success.`);
+    } catch (err) {
+      let error = err as BusinessError;
+      // ...
+      console.error(`${TAG}: Capturer stop failed, code: ${error.code}, message: ${error.message}`);
+    }
   }
 }
 
@@ -800,23 +800,24 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info('Capturer already released');
+      console.info(`${TAG}: Capturer already released`);
       // ...
       return;
     }
 
     // 释放资源。
-    audioCapturer.release((err: BusinessError) => {
-      if (err) {
-        // ...
-        console.error('Capturer release failed.');
-      } else {
-        fs.closeSync(file);
-        capturerMuteHintEnabledByApp = false;
-        console.info('Capturer release success.');
-        // ...
-      }
-    });
+    try {
+      await audioCapturer.release();
+      capturerMuteHintEnabledByApp = false;
+      console.info(`${TAG}: Capturer release success.`);
+      // ...
+    } catch (err) {
+      let error = err as BusinessError;
+      // ...
+      console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
+    } finally {
+      fs.closeSync(file.fd);
+    }
   }
 }
 
