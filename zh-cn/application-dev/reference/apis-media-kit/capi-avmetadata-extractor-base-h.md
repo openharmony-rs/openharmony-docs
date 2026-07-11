@@ -48,8 +48,8 @@
 | static const char * OH_AVMETADATA_EXTRACTOR_COMPOSER = "composer" | 获取媒体资源作曲家的关键字，对应值类型为const char*。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_DURATION = "duration" | 获取媒体资源时长的关键字，对应值类型为int64_t，单位为毫秒（ms）。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_GENRE = "genre" | 获取媒体资源类型或体裁的关键字，对应值类型为const char*。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
-| static const char * OH_AVMETADATA_EXTRACTOR_HAS_AUDIO = "hasAudio" | 获取媒体资源是否包含音频的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
-| static const char * OH_AVMETADATA_EXTRACTOR_HAS_VIDEO = "hasVideo" | 获取媒体资源是否包含视频的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
+| static const char * OH_AVMETADATA_EXTRACTOR_HAS_AUDIO = "hasAudio" | 获取媒体资源是否包含音频的关键字，对应值类型为int32_t，取值原则：0表示不包含视频，1表示包含视频。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
+| static const char * OH_AVMETADATA_EXTRACTOR_HAS_VIDEO = "hasVideo" | 获取媒体资源是否包含视频的关键字，对应值类型为int32_t，取值原则：0表示不包含音频，1表示包含音频。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_MIME_TYPE = "mimeType" | 获取媒体资源mime类型的关键字，对应值类型为const char*，例如：“video/mp4”、“audio/mp4”和“audio/amr-wb”。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_TRACK_COUNT = "trackCount" | 获取媒体资源轨道数量的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_SAMPLE_RATE = "sampleRate" | 获取音频采样率的关键字，对应值类型为int32_t，单位为赫兹（Hz）。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
@@ -77,8 +77,8 @@ enum OH_AVMetadataExtractor_FetchState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AVMETADATA_EXTRACTOR_FETCH_FAILED = 0 | 提取操作失败。 |
-| OH_AVMETADATA_EXTRACTOR_FETCH_SUCCEEDED = 1 | 提取操作成功。 |
-| OH_AVMETADATA_EXTRACTOR_FETCH_CANCELED = 2 | 提取操作被用户取消。 |
+| OH_AVMETADATA_EXTRACTOR_FETCH_FAILED = 0 | 帧提取操作失败。 |
+| OH_AVMETADATA_EXTRACTOR_FETCH_SUCCEEDED = 1 | 帧提取操作成功。 |
+| OH_AVMETADATA_EXTRACTOR_FETCH_CANCELED = 2 | 帧提取操作被用户取消。 |
 
 
