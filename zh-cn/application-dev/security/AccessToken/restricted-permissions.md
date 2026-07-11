@@ -1380,7 +1380,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用注册音频配件到系统。
 
-<!--RP91--><!--RP91End-->
+<!--RP99--><!--RP99End-->
 
 **权限级别**：system_basic
 

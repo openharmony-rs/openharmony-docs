@@ -1379,7 +1379,7 @@ Allows an application to install and load self-distributed plug-ins.
 
 Allows an application to register audio accessories with the system.
 
-<!--RP91--><!--RP91End-->
+<!--RP99--><!--RP99End-->
 
 **Permission level**: system_basic
 
