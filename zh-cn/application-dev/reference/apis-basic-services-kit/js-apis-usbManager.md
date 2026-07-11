@@ -189,14 +189,14 @@ async function connectDevice() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   console.info(`devicepipe = ${devicepipe}`);
   usbManager.closePipe(devicepipe);
 }
@@ -250,9 +250,9 @@ async function hasRight(): boolean {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
   return right;
@@ -420,14 +420,14 @@ async function claimInterface() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
@@ -489,14 +489,14 @@ async function releaseInterface() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
@@ -554,14 +554,14 @@ async function setConfiguration() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: int = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
@@ -624,14 +624,14 @@ async function setInterface() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
@@ -687,14 +687,14 @@ async function getRawDescriptor() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.getRawDescriptor(devicepipe);
   usbManager.closePipe(devicepipe);
 }
@@ -747,14 +747,14 @@ async function getFileDescriptor() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: int = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: int = usbManager.closePipe(devicepipe);
@@ -826,14 +826,14 @@ async function usbControlTransfer() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.usbControlTransfer(devicepipe, param).then((ret: int) => {
     console.info(`usbControlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
@@ -913,9 +913,9 @@ async function bulkTransfer() {
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
@@ -998,9 +998,9 @@ async function usbSubmitTransfer() {
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
@@ -1024,9 +1024,9 @@ async function usbSubmitTransfer() {
     transferParams.endpoint=endpoint?.address as int;
     transferParams.callback=(err, callbackData: usbManager.SubmitTransferCallback)=>{
       if (err) {
- 	      console.error('USB transfer failed:', err);
- 	      return;
- 	    }
+        console.error('USB transfer failed:', err);
+        return;
+      }
       console.info('callbackData =' +JSON.stringify(callbackData));
     }
     usbManager.usbSubmitTransfer(transferParams); 
@@ -1093,9 +1093,9 @@ async function usbCancelTransfer() {
   let device: usbManager.USBDevice = devicesList?.[0];
   let rightResult = await usbManager.requestRight(device.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe === undefined) {
     console.error(`connect device fail`);
@@ -1189,14 +1189,14 @@ async function closePipe() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   let ret: int = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1561,14 +1561,14 @@ async function resetUsbDevice() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
@@ -1634,21 +1634,21 @@ async function controlTransfer() {
 
   let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
   if (!rightResult) {
- 	  console.error(`request right failed`);
- 	  return;
- 	}
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   if (devicepipe == undefined) {
- 	  console.error(`connect device failed`);
- 	  return;
- 	}
+    console.error(`connect device failed`);
+    return;
+  }
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {
- 	  console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
- 	}).finally(() => {
- 	  usbManager.closePipe(devicepipe);
- 	});
+    console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
+  }).finally(() => {
+    usbManager.closePipe(devicepipe);
+  });
 }
 ```
 
