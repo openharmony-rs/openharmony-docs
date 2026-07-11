@@ -121,14 +121,10 @@
    状态查询和状态监听可参考AudioCaptureSampleJS页面代码中的`view_AudioCapturerState`和`listen_AudioCapturerState`。
 
    <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
-
+   
    ``` TypeScript
    let audioCapturerState: audio.AudioState = audioCapturer.state;
-   console.info(`Current state is: ${audioCapturerState}`);
-
-   audioCapturer.on('stateChange', (capturerState: audio.AudioState) => {
-     console.info(`State change to: ${capturerState}`);
-   });
+   console.info(`Current state is: ${audioCapturerState }`)
    ```
 
 3. 如果没有收到录音数据回调，检查回调注册和对象生命周期。
