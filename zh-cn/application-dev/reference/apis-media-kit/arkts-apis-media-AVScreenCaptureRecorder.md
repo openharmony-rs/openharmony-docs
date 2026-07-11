@@ -223,7 +223,7 @@ pauseRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not be permitted. Return by promise. |
+| 5400102  | Operation not permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
 | 5400105  | Service died. Return by promise. |
 
@@ -281,7 +281,7 @@ resumeRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not be permitted. Return by promise. |
+| 5400102  | Operation not permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
 | 5400105  | Service died. Return by promise. |
 
@@ -803,7 +803,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
-订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
+订阅录屏状态切换的事件，当状态发生变化时，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调方法为准。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
