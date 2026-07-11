@@ -84,3 +84,9 @@
 启动 UIAbility 组件的具体校验流程如下图：
 
 ![component-startup-rules-cross-device](figures/component-startup-rules-cross-device.png)
+
+## 跨设备启动流程
+
+启动 UIAbility 组件的具体校验流程如下图：
+
+![component-startup-rules-cross-device](figures/component-startup-rules-cross-device.png)
