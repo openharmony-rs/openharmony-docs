@@ -59,11 +59,12 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 ```ts
 // 添加串口访问权限
-let tokenId: string = "123456";
-let deviceId: string = "/dev/ttyUSB0";
+// Token ID 需要通过系统接口获取，此处仅为示例占位符
+let tokenId: string = '123456';
+let deviceId: string = '/dev/ttyUSB0';
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
 }).catch((error: BusinessError) => {
-  console.error(`Failed to addPortAuthorization. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to addPortAuthorization. Code: ${error.code}, message: ${error.message}`);
 });
 ```
