@@ -27,6 +27,4 @@
 
 启动组件的具体校验流程如下图：
 
-<div align="center">
 ![component-startup-rules-cross-device](figures/component-startup-rules-cross-device.png)
-</div>
