@@ -250,7 +250,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 **AudioSession申请焦点以及监听焦点变化事件的完整示例：**
 
-<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
