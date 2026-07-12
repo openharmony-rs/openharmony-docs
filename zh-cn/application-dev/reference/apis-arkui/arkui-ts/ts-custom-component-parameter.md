@@ -109,5 +109,5 @@ type ReusePoolOwnership = 'shared' | 'perInstance'
 
 | 类型            | 说明                  |
 |-------------    | ------------------- |
-| 'shared'        | 拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
-| 'perInstance'   | 拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |
+| 'shared'        | @Component/@ComponentV2类的所有实例共享同一个复用池实例。适用于多个同类型组件实例间需要复用相同资源的场景，可最大化复用池利用率，减少内存占用。 |
+| 'perInstance'   | @Component/@ComponentV2的每个实例拥有独立的复用池实例。适用于需要隔离各组件实例复用资源的场景，避免不同实例间的复用资源相互影响。 |
