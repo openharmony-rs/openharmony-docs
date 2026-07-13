@@ -31,9 +31,9 @@ import { collections } from '@kit.ArkTS';
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
-| buffer | ArrayBuffer | 是   | 否  | ArkTS Uint32Array底层使用的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | 是   | 否  | ArkTS Uint32Array底层使用的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。|
 | byteLength | number | 是   | 否   | ArkTS Uint32Array所占的字节数。|
-| byteOffset | number | 是   | 否   | ArkTS Uint32Array距离其ArrayBuffer起始位置的偏移。|
+| byteOffset | number | 是   | 否   | ArkTS Uint32Array距离其ArrayBuffer起始位置的字节偏移。|
 | length | number | 是   | 否  | ArkTS Uint32Array元素个数。|
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint32Array中每个元素所占的字节数。|
 
@@ -104,7 +104,7 @@ constructor(elements: Iterable\<number>)
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| elements |  Iterable\<number> | 是 | 可迭代数字集合，用于构造ArkTS Uint32Array对象，每个元素的取值范围为0~4294967295。 |
+| elements |  Iterable\<number> | 是 | 可迭代数字集合，用于构造ArkTS Uint32Array对象。 |
 
 **错误码：**
 
@@ -182,7 +182,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名  | 类型   | 必填 | 说明                                         |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | 是 | 用于构造ArkTS Uint32Array的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。buffer所占的字节数需是4的整数倍。|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | 是 | 用于构造ArkTS Uint32Array的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。buffer所占的字节数需是4的整数倍。|
 | byteOffset | number | 否 | 指定buffer的字节偏移，需为非负整数且为4的整数倍。默认值为0。 |
 | length | number | 否 | 指定ArkTS Uint32Array的长度，需为非负整数。默认值为0，此时表示从byteOffset开始到buffer末尾的全部元素。 |
 
@@ -207,7 +207,7 @@ console.info("[" + uint32Array1 + "]"); // [2, 3, 4, 5, 6]
 ## from
 static from(arrayLike: ArrayLike\<number>): Uint32Array
 
-从一个ArrayLike中创建一个ArkTS Uint32Array对象。
+从一个ArrayLike中创建一个ArkTS Uint32Array对象，通过映射函数对每个元素进行转换。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -257,21 +257,21 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 ```ts
 // 例1 从一个对象创建
 let array: collections.Uint32Array = collections.Uint32Array.from<number>(
-  { length: 5 }, (v: Object, k: number) => k);
+  { length: 5 }, (v: number, k: number) => k);
 // Uint32Array [0, 1, 2, 3, 4]
 ```
 
 ```ts
 // 例2 从一个字符数组创建
 let array: collections.Uint32Array = collections.Uint32Array.from<string>(
-  ["1", "3", "5"], (v: string, k: number) => parseInt(v));
+  ["1", "3", "5"], (value: string, k: number) => parseInt(value));
 // Uint32Array [1, 3, 5]
 ```
 
 ```ts
 // 例3 从一个字符串创建
 let array: collections.Uint32Array = collections.Uint32Array.from<string>(
-  "12345", (v: string, k: number) => parseInt(v));
+  "12345", (value: string, k: number) => parseInt(value));
 // Uint32Array [1, 2, 3, 4, 5]
 ```
 
@@ -309,7 +309,7 @@ let array: collections.Uint32Array = collections.Uint32Array.from(set);
 // 例2 指定映射函数
 let set: Set<number> = new Set<number>([1, 2, 3]);
 let array: collections.Uint32Array = collections.Uint32Array.from(
-  set, (v: number, k: number) => v + k);
+  set, (value: number, k: number) => value + k);
 // Uint32Array [1, 3, 5]
 ```
 
@@ -317,7 +317,7 @@ let array: collections.Uint32Array = collections.Uint32Array.from(
 
 static of(...items: number[]): Uint32Array
 
-通过可变数量的参数创建一个新的ArkTS Uint32Array对象，参数个数可以是0个、1个或者多个。
+通过可变数量的参数创建一个新的ArkTS Uint32Array对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -346,7 +346,7 @@ console.info(uint32Array.toString()); // 预期输出：1,2,3,4
 
 toString(): string
 
-ArkTS Uint32Array转换为字符串。
+将ArkTS Uint32Array转换为字符串。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -412,7 +412,7 @@ console.info(stringArray); // 预期输出：1,000, 2,000, 3,000
 ## copyWithin
 copyWithin(target: number, start: number, end?: number): Uint32Array
 
-从ArkTS Uint32Array指定范围内的元素依次拷贝到目标位置。
+将ArkTS Uint32Array指定范围内的元素依次拷贝到目标位置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -538,7 +538,7 @@ fill(value: number, start?: number, end?: number): Uint32Array
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | ------- | ------ | ---- | --------------------------------------------------------|
-| value | number | 是 | 待填充的值，取值范围为0~4294967295。|
+| value | number | 是 | 待填充的值。|
 | start | number | 否 | 开始填充的索引，如果`start < 0`，则会从`start + Uint32Array.length`位置开始。默认值为0。|
 | end | number | 否 | 结束填充的索引（不包括该元素），如果`end < 0`，则会到`end + Uint32Array.length`位置结束。默认为ArkTS Uint32Array的长度。|
 
@@ -727,7 +727,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名        | 类型   | 必填 | 说明                        |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | 是   | 待索引的值。                |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Uint32Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从前到后搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Uint32Array的长度，则返回-1。如果下标为负数，则被视为距离数组尾部的偏移，从前到后搜索。 |
 
 **返回值：**
 
@@ -769,7 +769,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名           | 类型     | 必填  | 说明                                                                                |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | 是   | 待索引的值。                                                                            |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为ArkTS Uint32Array的长度减1。如果下标大于等于ArkTS Uint32Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标，从该位置开始往前查找。默认值为ArkTS Uint32Array长度减1（即从末尾开始）。如果提供的下标值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -867,13 +867,13 @@ map(callbackFn: TypedArrayMapCallback\<number, Uint32Array>): Uint32Array
 
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([25, 36, 49]);
-const mapped: collections.Uint32Array = array.map(Math.sqrt); // Uint32Array [5, 6 ,7]
+const mapped: collections.Uint32Array = array.map(Math.sqrt); // Uint32Array [5, 6, 7]
 ```
 
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>): number
 
-对ArkTS Uint32Array中的每个元素执行归约函数，并返回最终的归约结果。
+对每个元素执行归约函数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -911,7 +911,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>): number
 
-反向遍历ArkTS Uint32Array，对ArkTS Uint32Array中的每个元素执行归约函数，并返回最终的归约结果。
+反向遍历ArkTS Uint32Array，对每个元素执行归约函数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -948,7 +948,7 @@ console.info(reducedValue + ''); // 预期输出： 15
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>, initialValue: number): number
 
-对ArkTS Uint32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+对每个元素执行归约函数，接收初始值作为首次调用参数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -988,7 +988,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint32Array>, initialValue: U): U
 
-反向遍历ArkTS Uint32Array，对ArkTS Uint32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+反向遍历ArkTS Uint32Array，对每个元素执行归约函数，接收初始值作为首次调用参数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1026,7 +1026,7 @@ console.info(reducedValue + ''); // 预期输出： 16
 ## reduce
 reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Uint32Array>, initialValue: U): U
 
-对ArkTS Uint32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+对每个元素执行归约函数，接收初始值作为首次调用参数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1065,7 +1065,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ## reverse
 reverse(): Uint32Array
 
-反转ArkTS Uint32Array。
+原地反转ArkTS Uint32Array的元素顺序（修改原数组），并返回修改后的原数组引用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1168,7 +1168,7 @@ array.slice(-2); // Uint32Array [4, 5]
 ## sort
 sort(compareFn?: TypedArrayCompareFn\<number>): Uint32Array
 
-对ArkTS Uint32Array进行排序，并返回排序后的ArkTS Uint32Array对象。
+原地对ArkTS Uint32Array进行排序（修改原数组），并返回排序后的原数组引用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1200,14 +1200,14 @@ sort(compareFn?: TypedArrayCompareFn\<number>): Uint32Array
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 3, 5, 4, 2]);
 array.sort(); // Uint32Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => a - b); // Uint32Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => b - a); // Uint32Array [5, 4, 3, 2, 1]
+array.sort((first: number, second: number) => first - second); // Uint32Array [1, 2, 3, 4, 5]
+array.sort((first: number, second: number) => second - first); // Uint32Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
 subarray(begin?: number, end?: number): Uint32Array
 
-从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Uint32Array对象。修改返回的subarray或原始Uint32Array会互相影响，因为它们共享同一份底层[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)数据。如需创建独立副本，请使用[slice()](#slice)方法。
+从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Uint32Array对象。修改返回的subarray或原始ArkTS Uint32Array会互相影响，因为它们共享同一份底层[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)数据。如需创建独立副本，请使用[slice()](#slice)方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1224,7 +1224,7 @@ subarray(begin?: number, end?: number): Uint32Array
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Uint32Array | 新的ArkTS Uint32Array对象。|
+| Uint32Array | 与原Uint32Array共享底层ArrayBuffer的ArkTS Uint32Array对象。 |
 
 **错误码：**
 
@@ -1427,7 +1427,7 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-返回一个迭代器，迭代器的每一项是Uint32Array中对应位置的元素值。
+返回一个迭代器，迭代器的每一项是ArkTS Uint32Array中对应位置的元素值。
 
 > **说明：**
 >
@@ -1466,7 +1466,7 @@ for (let item of uint32Array) {
 
 &#91;index: number&#93;: number
 
-返回Uint32Array指定索引位置的元素。
+返回ArkTS Uint32Array指定索引位置的元素。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1476,7 +1476,7 @@ for (let item of uint32Array) {
 
 | 参数名    | 类型   | 必填 | 说明                     |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | 是   | 所需元素的从零开始的索引。|
+| index | number | 是   | 所需元素的从零开始的索引。取值范围为[0, Uint32Array.length-1]。|
 
 **返回值：**
 

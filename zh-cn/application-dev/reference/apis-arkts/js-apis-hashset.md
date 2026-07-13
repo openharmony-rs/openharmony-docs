@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-HashSet基于[HashMap](js-apis-hashmap.md)实现。在HashSet中，仅操作元素的值对象，不涉及键的概念。
+HashSet是一种非线性容器，用于存储不重复的元素集合，支持高效的元素增删和存在性判断。HashSet基于[HashMap](js-apis-hashmap.md)实现，仅操作元素的值对象，不涉及键的概念。
 
 HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值分布存储，因此元素的插入顺序与遍历时的顺序可能不一致，而TreeSet则是按照元素的自然排序或者自定义比较器进行有序存储。这两种集合中的元素都不允许重复，HashSet允许插入null值，TreeSet不建议插入null值，会影响排序结果。
 
@@ -163,7 +163,7 @@ console.info("result:", result);  // result: true
 
 has(value: T): boolean
 
-判断HashSet是否包含指定元素。
+判断HashSet是否包含指定元素，基于哈希值进行查找，具有O(1)的时间复杂度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -228,7 +228,7 @@ add(value: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 成功添加元素返回true，添加失败返回false。 |
+| boolean | 成功添加元素返回true，若元素已存在则返回false。 |
 
 **错误码：**
 
@@ -273,7 +273,7 @@ remove(value: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 成功删除指定元素返回true，删除失败返回false。 |
+| boolean | 成功删除指定元素返回true，若指定元素不存在则返回false。 |
 
 **错误码：**
 
@@ -352,7 +352,7 @@ values(): IterableIterator&lt;T&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | 返回包含此HashSet中所有value的迭代器对象。 |
+| IterableIterator&lt;T&gt; | 返回包含此HashSet中所有值的迭代器对象。 |
 
 **错误码：**
 
@@ -404,9 +404,9 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet&lt;T&gt;) => void, thisAr
 callbackFn的参数说明：
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | T | 否 | 当前遍历到的元素值。 |
-| key | T | 否 | 当前遍历到的元素值（与value相同）。 |
-| set | HashSet&lt;T&gt; | 否 | 当前调用forEach方法的实例对象。 |
+| value | T | 否 | 当前遍历到的元素值，forEach遍历过程中总会传入此参数。 |
+| key | T | 否 | 当前遍历到的元素值（与value相同），forEach遍历过程中总会传入此参数。 |
+| set | [HashSet&lt;T&gt;](#hashset) | 否 | 当前调用forEach方法的实例对象。 |
 
 **错误码：**
 
@@ -498,7 +498,7 @@ entries(): IterableIterator&lt;[T, T]&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| IterableIterator&lt;[T, T]&gt; | 返回包含此HashSet中所有键值对的迭代器对象。 |
+| IterableIterator&lt;[T, T]&gt; | 返回包含此HashSet中所有元素的迭代器对象。 |
 
 **错误码：**
 
