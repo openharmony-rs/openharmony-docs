@@ -390,7 +390,7 @@ setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 
 | 名称  |   值   | 说明                                                         |
 | ------ | --------------------- | ------------------------------------------------------------ |
-| UNSET_LOGLEVEL | 0 | 清除设置, 实际生效的最低日志级别是系统控制的最低级别。 |
+| UNSET_LOGLEVEL | 0 | 清除设置，实际生效的最低日志级别是系统控制的最低级别。 |
 | PREFER_CLOSE_LOG | 1 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较大值，适用于需要严格限制日志输出的场景。 |
 | PREFER_OPEN_LOG | 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值，适用于需要尽可能多的打开日志输出的场景。 |
 
@@ -410,7 +410,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 由于全局日志起始为INFO，第一条日志可以正常打印。
 
-在设置进程最低日志级别为WARN, 并选择策略PREFER_OPEN_LOG后，实际生效的最低日志级别是全局日志级别INFO，所以第二条和第三条日志均可正常打印。
+在设置进程最低日志级别为WARN，并选择策略PREFER_OPEN_LOG后，实际生效的最低日志级别是全局日志级别INFO，所以第二条和第三条日志均可正常打印。
 
 在设置进程最低日志级别为DEBUG，并选择策略PREFER_CLOSE_LOG后（等同于hilog.setMinLogLevel(hilog.LogLevel.DEBUG)），但是此时全局日志级别为INFO，所以第四条日志不满足全局日志级别，打印失败，第五条日志可以打印。
 
