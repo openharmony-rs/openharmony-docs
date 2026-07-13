@@ -43,7 +43,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [bool OH_LocationInfo_IsFromMock(Location_Info* location)](#oh_locationInfo_isfrommock) | - | 判断定位信息是否来自模拟位置功能。<br />**起始版本：** 26.0.0 |
+| [bool OH_LocationInfo_IsFromMock(Location_Info* location)](#oh_locationinfo_isfrommock) | - | 判断定位信息是否来自模拟位置功能。<br />**起始版本：** 26.0.0 |
 | [Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)](#oh_locationinfo_getbasicinfo) | - | 获取位置基本信息。 |
 | [Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)](#oh_locationinfo_getadditionalinfo) | - | 获取位置信息中的附加信息。 |
 | [typedef void (\*Location_InfoCallback)(Location_Info* location, void* userData)](#location_infocallback) | Location_InfoCallback | 用于接收位置上报的回调函数。 |
