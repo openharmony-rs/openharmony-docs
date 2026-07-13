@@ -172,7 +172,7 @@
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频音量类型。                                    |
 | volume     | number                              | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。  |
-| updateUi   | boolean                             | 否 | 否 |  是否在UI中显示音量变化。true表示显示，false表示不显示。             |
+| updateUi   | boolean | 否 | 否 | 标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。 |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。|
 
 
@@ -197,7 +197,7 @@
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
 | streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音量发生变化的音频流。          |
 | volume | number | 否 | 否 | 音量值。          |
-| updateUi | boolean | 否 | 否 | 是否在UI上展示音量变化。true表示展示，false表示不展示。          |
+| updateUi   | boolean | 否 | 否 | 标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。 |
 | previousVolume<sup>23+</sup> | number | 否 | 是 | 变化前的音量值。 |
 
 ## DeviceChangeAction
@@ -278,6 +278,7 @@
 | streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 音频流信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer   |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer        |
 | playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | 否 | 是 | 音频内录的配置信息。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture<br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。  |
+| playbackCaptureMode | [AudioPlaybackCaptureMode](arkts-apis-audio-e.md#audioplaybackcapturemode) | 否 | 是 | 内录模式。可设置为AudioPlaybackCaptureMode中的枚举值或其按位或组合，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
 
 ## AudioInterrupt<sup>(deprecated)</sup>
 
@@ -337,3 +338,17 @@
 | type       | [InterruptType](arkts-apis-audio-e.md#interrupttype)             | 否 | 是 | 打断事件类型。                                               |
 | hint       | [InterruptHint](arkts-apis-audio-e.md#interrupthint)             | 否 | 是 | 打断事件提示。                                               |
 | activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获得/释放失败。 |
+
+## SystemRecordControllerConfig
+
+系统录音控制面板的配置信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :---- | :---- | :---- | :---- | :---- |
+| sourceType | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 应用期望使用的音频源类型。系统会根据该参数确定应用的录音场景，并为用户提供匹配的降噪模式选择能力。支持的音频源类型包括SOURCE_TYPE_MIC、SOURCE_TYPE_CAMCORDER和SOURCE_TYPE_LIVE。 |

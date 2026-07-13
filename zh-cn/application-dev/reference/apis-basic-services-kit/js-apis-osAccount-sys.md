@@ -7320,7 +7320,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
-| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
 
 ## AuthSubType<sup>8+</sup>
@@ -7680,7 +7680,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | accountId          | number | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
-| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0  |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

@@ -74,7 +74,9 @@ let onAbilityCreateCallback = (data: UIAbility) => {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 调用addAbilityMonitor方法添加监听
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
-  console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`addAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -222,7 +224,9 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
-  console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`removeAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -370,9 +374,9 @@ let onAbilityCreateCallback = (data: UIAbility) => {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbility) => {
   if (error) {
-    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
-    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info('waitAbilityMonitor success.');
   }
 });
 ```
@@ -429,10 +433,10 @@ function onAbilityCreateCallback(data: UIAbility) {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 调用waitAbilityMonitor并传入超时参数等待匹配Ability
 abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
-  if (error && error.code !== 0) {
-    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
-    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info('waitAbilityMonitor success.');
   }
 });
 ```
@@ -563,10 +567,14 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  let state = abilityDelegator.getAbilityState(ability);
-  console.info(`getAbilityState ${state}`);
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    let state = abilityDelegator.getAbilityState(ability);
+    console.info(`getAbilityState ${state}`);
+  }
 });
 ```
 
@@ -607,8 +615,12 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+  }
 });
 ```
 
@@ -711,7 +723,11 @@ let want: Want = {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 调用startAbility启动指定Ability
 abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
-  console.info('startAbility callback');
+  if (err) {
+    console.error(`startAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('startAbility callback');
+  }
 });
 ```
 
@@ -816,11 +832,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
-    console.info("doAbilityForeground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityForeground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info("doAbilityForeground callback");
+      }
+    });
+  }
 });
 ```
 
@@ -867,11 +891,15 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability).then(() => {
-    console.info("doAbilityForeground promise");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability).then(() => {
+      console.info("doAbilityForeground promise");
+    });
+  }
 });
 ```
 
@@ -913,11 +941,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability, (err: BusinessError) => {
-    console.info("doAbilityBackground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityBackground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info("doAbilityBackground callback");
+      }
+    });
+  }
 });
 ```
 
@@ -964,11 +1000,15 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability).then(() => {
-    console.info("doAbilityBackground promise");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability).then(() => {
+      console.info("doAbilityBackground promise");
+    });
+  }
 });
 ```
 
@@ -1036,7 +1076,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.print(msg, (err: BusinessError) => {
-  console.info('print callback');
+  if (err) {
+    console.error(`print fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('print callback');
+  }
 });
 ```
 
@@ -1086,7 +1130,7 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1104,12 +1148,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 // 设置要执行的shell命令字符串
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 
 // 获取AbilityDelegator实例并执行shell命令
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  console.info('executeShellCommand callback');
+abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
 });
 ```
 
@@ -1123,7 +1171,7 @@ executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<S
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1140,12 +1188,16 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  console.info('executeShellCommand callback');
+abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
 });
 ```
 
@@ -1159,7 +1211,7 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
@@ -1180,11 +1232,11 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
   console.info('executeShellCommand promise');
 });
 ```
@@ -1227,7 +1279,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
-  console.info('finishTest callback');
+  if (err) {
+    console.error(`finishTest fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('finishTest callback');
+  }
 });
 ```
 

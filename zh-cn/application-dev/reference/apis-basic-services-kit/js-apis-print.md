@@ -3,8 +3,8 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Designer: @baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
@@ -55,15 +55,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.on('block', () => {
-        console.info('print state is block');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.on('block', () => {
+                            console.info('print state is block');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### on
@@ -99,15 +116,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.on('succeed', () => {
-        console.info('print state is succeed');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.on('succeed', () => {
+                            console.info('print state is succeed');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### on
@@ -143,15 +177,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.on('fail', () => {
-        console.info('print state is fail');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.on('fail', () => {
+                            console.info('print state is fail');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### on
@@ -187,15 +238,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.on('cancel', () => {
-        console.info('print state is cancel');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.on('cancel', () => {
+                            console.info('print state is cancel');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### off
@@ -231,15 +299,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.off('block', () => {
-        console.info('unregister state block');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.off('block', () => {
+                            console.info('unregister state block');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### off
@@ -275,15 +360,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.off('succeed', () => {
-        console.info('unregister state succeed');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.off('succeed', () => {
+                            console.info('unregister state succeed');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### off
@@ -319,15 +421,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.off('fail', () => {
-        console.info('unregister state fail');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.off('fail', () => {
+                            console.info('unregister state fail');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ### off
@@ -363,15 +482,32 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.off('cancel', () => {
-        console.info('unregister state cancel');
-    })
-    // ...
-}).catch((error: BusinessError) => {
-    console.error('print err ' + JSON.stringify(error));
-})
+@Entry
+@Component
+struct Index {
+    build() {
+        Scroll() {
+            Column({ space: 10 }) {
+                Button("打印").width('90%').height(50).onClick(() => {
+                    let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+                    let context = this.getUIContext().getHostContext();
+                    print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
+                        printTask.off('cancel', () => {
+                            console.info('unregister state cancel');
+                        })
+                        // ...
+                    }).catch((error: BusinessError) => {
+                        console.error('print err ' + JSON.stringify(error));
+                    })
+                })
+            }
+            .justifyContent(FlexAlign.Center)
+            .constraintSize({ minHeight: '100%' })
+            .width('100%')
+        }
+        .height('100%')
+    }
+}
 ```
 
 ## PrintDocumentAdapter<sup>11+</sup>
@@ -1299,6 +1435,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。 |
 | supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。 |
 | options | string | 否 | 是 | 表示打印机能力详细信息。 |
+| vendorPrinterPrefAbility | string | 否 | 是 | 表示打印机驱动的厂商打印机首选项设置界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0<br/> |
+| vendorJobAttrAbility | string | 否 | 是 | 表示打印机驱动的厂商打印任务属性设置界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0<br/> |
 
 ## PrintQuality<sup>14+</sup>
 
@@ -1358,6 +1496,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 | defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印机首选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0<br/> |
 
 ## PrinterEvent<sup>18+</sup>
 
@@ -1890,6 +2029,7 @@ print.startPrint(printJobData).then(() => {
 | isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
 | isSequential | boolean | 否 | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
 | options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。<br/>**起始版本：** 26.0.0<br/> |
 
 ## PrintMargin<sup>24+</sup>
 
@@ -2007,6 +2147,7 @@ print.startPrint(printJobData).then(() => {
 | margin | [PrintMargin](#printmargin24) | 否 | 是 | 表示当前页边距设置。 |
 | preview | [PreviewAttribute](#previewattribute24) | 否 | 是 | 表示预览设置。 |
 | options | Object | 否 | 是 | 表示JSON对象字符串。 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0<br/> |
 
 ## print.updatePrintJobState<sup>24+</sup>
 

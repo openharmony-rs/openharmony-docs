@@ -1,4 +1,4 @@
-# MVVM V1
+# MVVM (V1)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->

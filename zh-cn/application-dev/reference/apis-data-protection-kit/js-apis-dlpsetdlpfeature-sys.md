@@ -55,7 +55,7 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性，菜单中显示"加密保护"选项；NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。超出此范围抛出错误码19100001。 |
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性，菜单中显示"加密保护"选项；NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。超出此范围抛出错误码401。 |
 
 **返回值：**
 

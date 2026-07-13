@@ -7,8 +7,6 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 安全控件的保存控件系统接口，适用于应用需要临时获取媒体库访问权限以保存图片或视频的场景，例如图片保存到相册、媒体内容导出等。
 
 应用集成保存控件后，用户首次使用该控件时，保存控件会展示弹窗供用户确认。用户点击允许后，应用获取访问媒体库接口的临时授权，相关接口请参见[Interface (PhotoAccessHelper)](../../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)；用户拒绝或关闭弹窗时，本次不授权，应用不会获得媒体库接口访问权限。后续使用无需弹窗授权。

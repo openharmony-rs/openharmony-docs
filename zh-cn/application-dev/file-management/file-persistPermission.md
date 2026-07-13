@@ -1,8 +1,8 @@
 # 授权持久化
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie; @hongjin-li_admin-->
-<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 

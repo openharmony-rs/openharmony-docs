@@ -27,7 +27,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## allowDrop
 
@@ -251,7 +251,7 @@ struct ImageExample {
   @State aBlockArr: string[] = [];
   @State bBlockArr: string[] = [];
   @State AVisible: Visibility = Visibility.Visible;
-  @State dragSuccess: Boolean = false;
+  @State dragSuccess: boolean = false;
 
   build() {
     Column() {
@@ -570,11 +570,6 @@ import { ImageModifier } from '@kit.ArkUI';
 @Component
 struct dragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
-  @State vis: boolean = true
-  @State changeValue: string = ''
-  @State submitValue: string = ''
-  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
-  controller: SearchController = new SearchController()
   @State OpacityIndex: number = 0
   @State OpacityList: (number | undefined | null)[] = [
     0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null

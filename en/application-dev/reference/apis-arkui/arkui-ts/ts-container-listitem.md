@@ -115,7 +115,7 @@ Sets whether the list item is selectable for multiselect. This attribute takes e
 
 | Name| Type   | Mandatory| Description                                             |
 | ------ | ------- | ---- | ------------------------------------------------- |
-| value  | boolean | Yes  | Whether the list item is selectable for multiselect. The **value** means that the grid item is selectable in the mouse selection box area, and **false** means the opposite.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether the list item is selectable for multiselect. The **value** means that the list item is selectable in the mouse selection box area, and **false** means the opposite.<br>Default value: **true**|
 
 ### selected<sup>10+</sup>
 
@@ -133,7 +133,7 @@ Sets whether the list item is selected. This attribute supports two-way binding 
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | boolean | Yes  | Whether the list item is selected. The **value** means that the grid item is selected, and **false** means that the grid item is in the default state.<br>Default value: **false**|
+| value  | boolean | Yes  | Whether the list item is selected. The **value** means that the list item is selected, and **false** means that the list item is in the default state.<br>Default value: **false**|
 
 ### swipeAction<sup>9+</sup>
 

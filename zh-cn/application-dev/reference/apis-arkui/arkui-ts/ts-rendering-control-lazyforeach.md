@@ -27,7 +27,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
-| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- 建议item的数据类型与数据源的数据类型保持一致，否则，当itemGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
@@ -315,6 +315,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## DataOperation<sup>12+</sup>
 
+type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation
+
 > **说明**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -331,6 +333,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
@@ -346,6 +350,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
@@ -359,6 +365,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 改变数据操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,6 +382,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
@@ -387,6 +397,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 交换数据操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -402,6 +414,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                     | 只读 | 可选 | 说明             |
@@ -413,6 +427,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 枚举类型，数据操作说明。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

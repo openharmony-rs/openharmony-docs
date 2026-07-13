@@ -1,7 +1,7 @@
 # textarea
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->

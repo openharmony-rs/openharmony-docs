@@ -10,7 +10,7 @@
 
 为NativeNode API提供Button节点类型定义。
 
-**引用文件：** <arkui/button.h>
+**引用文件：** <arkui/node_attributes/button.h>
 
 **库：** libace_ndk.z.so
 

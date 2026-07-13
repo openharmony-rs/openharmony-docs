@@ -46,7 +46,7 @@ During render tree construction, the custom node designated as the root node has
 
 When integrating a render node, verify whether the custom node being used already has child nodes.
 
-## 106403 Current Render Node Has a Parent Component
+## 106403 Current Render Node Has a Parent Node
 
 **Error Message**
 

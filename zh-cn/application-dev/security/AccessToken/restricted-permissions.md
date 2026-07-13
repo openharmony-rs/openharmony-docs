@@ -262,7 +262,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **权限级别**：system_basic
 
-**授权方式**：用户授权（user_grant）
+**授权方式**：系统授权（system_grant）
 
 **起始版本**：12
 
@@ -1258,7 +1258,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用应用浮窗。
+允许应用使用闪控窗。
 
 <!--RP78--><!--RP78End-->
 
@@ -1318,6 +1318,22 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+允许应用访问游戏伴随服务。
+
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+
+<!--RP93--><!--RP93End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
@@ -1357,6 +1373,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+允许应用注册音频配件到系统。
+
+<!--RP99--><!--RP99End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
 
@@ -1404,3 +1434,30 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+允许应用管理沙箱应用。
+
+<!--RP97--><!--RP97End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.DETECT_DEVICE
+
+允许应用调用智能检测服务获取数据。
+
+<!--RP98--><!--RP98End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0

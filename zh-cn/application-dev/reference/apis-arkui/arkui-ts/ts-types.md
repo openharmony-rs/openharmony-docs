@@ -455,12 +455,12 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型                     | 说明                             |
-| -------------- | ---------------------- | ------------------------------ |
-| width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
-| height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
+| 名称             | 类型                     | 只读 | 可选 | 说明                             |
+| -------------- | ---------------------- | --------| -----| ------------------------------ |
+| width          | [Length](#length)      | 否 | 否 | 目标元素的宽度。<br/>单位：vp |
+| height         | [Length](#length)      | 否 | 否 | 目标元素的高度。<br/>单位：vp |
+| position       | [Position](#position) | 否 | 否 | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 否 | 否 | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -590,9 +590,23 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型       | 必填   | 描述                                       |
-| ----------- | -------- | ---- | ---------------------------------------- |
-| constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+### constructor<sup>9+</sup>
+
+constructor(value: number[])
+
+ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ---- | ---- | ---- | ---- |
+| value | number[] | 是   | 4\*5颜色矩阵的值，[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
 
 
 ## CustomBuilder<sup>8+</sup>
@@ -631,11 +645,11 @@ type CustomBuilderT\<T> = (t: T) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                       | 只读  |  可选 | 默认值      | 描述                                                         |
-| ----------- | ------------------------------------------ | ---- | -------- | ----------- | ------------------------------------------------------------ |
-| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是  | Color.White | 内部图标颜色。                                               |
-| size        | [Length](ts-types.md#length)               | 否  |  是  | -           | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认值处理。 |
-| strokeWidth | [Length](ts-types.md#length)               | 否  |  是  | 2           | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。 |
+| 名称        | 类型                                       | 只读  |  可选   | 说明                                                         |
+| ----------- | ------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
+| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是   | 内部图标颜色。默认值：Color.White                                               |
+| size        | [Length](ts-types.md#length)               | 否  |  是   | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认值处理。 |
+| strokeWidth | [Length](ts-types.md#length)               | 否  |  是   | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。默认值：2 |
 
 ## ModalTransition<sup>10+</sup>
 
@@ -657,16 +671,20 @@ type CustomBuilderT\<T> = (t: T) => void
 
 外描边选项设置。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 | 名称   | 类型                   | 只读   |   可选                             | 说明                                                         |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
-| width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
-| color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
-| radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| width  | [EdgeOutlineWidths](#edgeoutlinewidths11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。  |
+| color  | [EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                    |
+| radius | [OutlineRadiuses](#outlineradiuses11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。  |
+| style  | [EdgeOutlineStyles](#edgeoutlinestyles11对象说明)&nbsp;\|&nbsp;[OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID             |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
@@ -741,7 +759,7 @@ type Dimension = PX | VP | FP | LPX | Percentage | Resource
 | [VP](#vp10)                | 需要指定数字或vp像素单位，如10或'10vp'。 |
 | [FP](#fp10)                | 需要指定以fp像素单位，如'10fp'。|
 | [LPX](#lpx10)              | 需要指定以lpx像素单位，如'10lpx'。|
-| [Percentage](#percentage10)        | 需要指定以%像素单位，如'10%'。|
+| [Percentage](#percentage10)        | 需要指定以百分比单位，如'10%'。|
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。|
 
 ## PX<sup>10+</sup>
@@ -766,7 +784,7 @@ type PX = { number }px
 
 type VP = { number }vp | number
 
-长度类型，用于描述以vp像素单位为单位的长度。
+长度类型，用于描述以vp为单位的长度。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -818,7 +836,7 @@ type LPX = { number }lpx
 
 ## Percentage<sup>10+</sup>
 
-长度类型，用于描述以%像素单位为单位的长度。
+长度类型，用于描述以百分比单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -828,9 +846,11 @@ type LPX = { number }lpx
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以%像素单位，如'10%'。 |
+| {number}%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
+
+type Degree = `${number}deg`
 
 角度类型，用于描述以deg像素单位为单位的长度。
 
@@ -854,14 +874,16 @@ type LPX = { number }lpx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型定义 | 描述       |
-| ------ | ----------------------| ---------- |
-| X | [Dimension](#dimension10) | 跟手点X轴坐标。 |
-| Y | [Dimension](#dimension10) | 跟手点Y轴坐标。 |
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | ------|--------|--------| ---------- |
+| x | [Dimension](#dimension10) | 否 | 否 | 跟手点X轴坐标。 |
+| y | [Dimension](#dimension10) | 否 | 否 | 跟手点Y轴坐标。 |
 
 ## VoidCallback<sup>12+</sup>
 
-type VoidCallback：() => void;
+type VoidCallback = () => void
+
+无参数、无返回值的函数回调类型，用于定义不需要传递数据且不返回结果的回调场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -871,7 +893,7 @@ type VoidCallback：() => void;
 
 ## Callback<sup>12+</sup>
 
-Callback<T,V = void> = (data: T) => V;
+type Callback<T, V = void> = (data: T) => V;
 
 带参数的函数回调。
 
@@ -893,11 +915,11 @@ Callback<T,V = void> = (data: T) => V;
 
 | 名称     | 类型                                      | 只读 | 可选 | 说明              |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>  | 否 | 是 | 分割线的线宽。         |
+| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。         |
 | color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。         |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
-| mode  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)<sup>19+</sup>| 否  | 是 | 设置分割线模式。 |
+| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
+| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
+| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。 |
 
 ## ChainWeightOptions<sup>14+</sup>对象说明
 
@@ -962,7 +984,7 @@ Callback<T,V = void> = (data: T) => V;
 
 type ResponsiveFillType = PresetFillType
 
-响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+响应式布局填充模式，用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -976,7 +998,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1093,6 +1115,8 @@ type ResponsiveFillType = PresetFillType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ------ | ---- | ---- | ---- |
 | isConsiderDescendants | boolean | 否 | 是 | 是否在无障碍自定义下一个焦点处理过程中查找后代节点中的焦点。<br/>true表示在无障碍自定义下一个焦点处理过程中查找后代节点中的焦点；false表示在无障碍自定义下一个焦点处理过程中不查找后代节点中的焦点。<br/>默认值：false |
@@ -1115,21 +1139,3 @@ type ResponsiveFillType = PresetFillType
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | name  | [ResourceStr](#resourcestr) | 否 | 否 | 自定义操作的名称，用于标识和绑定操作回调。<br/>**说明：**<br/>名称的文本长度需在128字节以内，超出部分将被截断。 |
 | onAction  | [VoidCallback](#voidcallback12) | 否 | 否 | 处理自定义操作的回调。 |
-
-## SmartGestureShortcutOptions
-
-智慧手势响应行为配置对象。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY，表示组件在智慧手势的滑动，点击等操作中作为首选响应目标。<br/>默认值为GestureShortcut.PRIMARY。 |
-| enabled | boolean | 否 | 是 | 当前组件是否响应智慧手势。<br/>true表示组件响应智慧手势，false表示组件不响应智慧手势。<br/>默认值为false。 |
-| selectable | boolean | 否 | 是 | 组件被智慧手势操作选中后是否展示并保留选中态。<br/>true表示显示选中框，false表示不显示选中框。<br/>当enabled为true时，默认值为true；当enabled为false时，默认值为false。 |

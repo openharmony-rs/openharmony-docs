@@ -56,7 +56,7 @@ plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    | 加法运算的对象。                           |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    | 与自身进行加法运算的另一个数据对象。                           |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    | 减法运算的对象。                           |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    | 与自身进行减法运算的另一个数据对象。                           |
 
 **返回值：**
 
@@ -122,7 +122,7 @@ equals(rhs: AnimatableArithmetic\<T\>): boolean
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    |  和自身比较相等的另一个数据对象。                          |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | 是    | 与当前对象判断是否相等的另一个数据对象。                          |
 
 **返回值：**
 
@@ -174,8 +174,8 @@ class Point {
   y: number
 
   constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   plus(rhs: Point): Point {
@@ -267,7 +267,7 @@ struct AnimatablePropertyExample {
     Column() {
       Polyline()
         .animatablePoints(this.points)
-        .animation({ duration: 1000, curve: Curve.Ease })// 设置动画参数
+        .animation({ duration: 1000, curve: Curve.Ease }) // 设置动画参数
         .size({ height: 220, width: 300 })
         .fill(Color.Green)
         .stroke(Color.Red)

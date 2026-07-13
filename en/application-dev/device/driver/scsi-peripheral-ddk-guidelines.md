@@ -224,7 +224,7 @@ libscsi.z.so
 
 12. (Optional) Send SCSI commands in CDB mode.
 
-    Use **OH_SCSIPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
+    Use **OH_ScsiPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
 
     <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
 

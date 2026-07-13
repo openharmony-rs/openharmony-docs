@@ -10,7 +10,7 @@
 
 Defines the enumerations of the **XComponent** component.
 
-**File to include:** <arkui/xcomponent.h>
+**File to include:** <arkui/node_attributes/xcomponent.h>
 
 **Library:** libace_ndk.z.so
 

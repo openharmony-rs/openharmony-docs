@@ -10,7 +10,7 @@
 
 Defines **ImageAnimator** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/image_animator.h>
+**File to include:** <arkui/node_attributes/image_animator.h>
 
 **Library:** libace_ndk.z.so
 
@@ -28,7 +28,7 @@ Defines **ImageAnimator** node types for **NativeNode** APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image frame information.|
+| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image animation frame information.|
 
 ### Enums
 
@@ -109,7 +109,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 **Description**
 
-Creates an image frame information object based on an [[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object, with the image format being Resource or PixelMap.
+Creates an image frame information object based on an [[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object, with the image format being Resource or PixelMap. After the created object is used, call [OH_ArkUI_ImageAnimatorFrameInfo_Dispose](#oh_arkui_imageanimatorframeinfo_dispose) to release it to prevent memory leakage.
 
 **Since:** 12
 
@@ -133,7 +133,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 
 **Description**
 
-Disposes of the pointer to an image frame information object.
+Disposes of the pointer to an image frame information object. This API is used to release the objects created by [OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString](#oh_arkui_imageanimatorframeinfo_createfromstring) and [OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) to prevent memory leakage.
 
 **Since:** 12
 
@@ -356,4 +356,4 @@ Obtains the playback duration of an image.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Playback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Playback duration of the image, in ms. If **imageInfo** is a null pointer, **0** is returned.|

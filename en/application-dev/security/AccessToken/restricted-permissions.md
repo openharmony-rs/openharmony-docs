@@ -262,7 +262,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -1318,6 +1318,21 @@ Allows an application to install the PCIe driver.
 
 **Since**: 26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Since**: 26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
@@ -1357,6 +1372,20 @@ Allows an application to install and load self-distributed plug-ins.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
 **Since**: 26.0.0
 
@@ -1401,5 +1430,33 @@ Allows an application to record downlink data of cellular calls.
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+Allows an application to manage sandbox applications.
+
+<!--RP97--><!--RP97End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.DETECT_DEVICE
+
+Allows an application to invoke the smart diagnosis service to obtain data.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0

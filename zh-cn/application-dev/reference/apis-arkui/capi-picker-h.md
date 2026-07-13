@@ -10,7 +10,7 @@
 
 为NativeNode API提供Picker节点类型定义。
 
-**引用文件：** <arkui/picker.h>
+**引用文件：** <arkui/node_attributes/picker.h>
 
 **库：** libace_ndk.z.so
 

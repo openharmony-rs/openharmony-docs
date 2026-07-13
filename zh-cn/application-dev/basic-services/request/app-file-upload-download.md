@@ -150,6 +150,8 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 > 从API version 20开始支持下载网络资源文件到用户文件。
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
 
@@ -234,6 +236,8 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 > **说明：**
 >
 > 从API version 20开始支持下载网络资源文件到用户文件。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 ### 下载文档类文件
 

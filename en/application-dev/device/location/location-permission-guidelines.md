@@ -1,8 +1,16 @@
-# Applying for Location Permissions (ArkTS)
+# Applying for Location Permissions
+
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:18.062Z pushedAt=2026-06-30T02:11:14.021Z -->
 
 ## Scenario
 
-Before using the capabilities provided by [Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md), check whether your application has been granted the permission to access the device location information. If not, your application needs to obtain the permission from the user.
+Before using the system capabilities of Location Kit, check whether your application has been granted the permission to access the device location information. If not, your application needs to obtain the permission from the user.
 
 The system provides the following location permission:
 
@@ -12,7 +20,7 @@ The system provides the following location permission:
 
 - **ohos.permission.LOCATION_IN_BACKGROUND**: used to obtain location while the application is running at the background.
 
-For details about the permissions required for each API of Location Kit, see [Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
+For the permission requirements of Location Kit APIs, see [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
 
 ## How to Develop
 
@@ -31,6 +39,4 @@ If your application needs to access the device location when running in the back
 
 For details about how to request for a continuous task, see [Continuous Task](../../task-management/continuous-task.md)<!--Del--> and [Continuous Task Development Example](../../performance/reasonable-running-backgroundTask.md#continuous-task)<!--DelEnd-->.
 
-
-<!--RP1-->
-<!--RP1End-->
+<!--RP1--><!--RP1End-->

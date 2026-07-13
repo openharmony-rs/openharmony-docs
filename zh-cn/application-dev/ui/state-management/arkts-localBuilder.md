@@ -483,20 +483,10 @@ struct ParentPage {
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       this.privateBuilder() // 调用局部@LocalBuilder
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       this.privateBuilderSecond() // 调用局部@LocalBuilder
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)

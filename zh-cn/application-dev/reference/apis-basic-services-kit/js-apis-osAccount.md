@@ -1190,6 +1190,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 
@@ -1244,6 +1245,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 

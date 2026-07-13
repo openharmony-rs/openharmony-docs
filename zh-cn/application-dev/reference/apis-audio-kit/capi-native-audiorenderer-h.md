@@ -407,7 +407,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| int64_t* frames | 指向将为帧计数设置的变量的指针。 |
+| int64_t* frames | 指向用于接收已写入帧数的变量的指针。 |
 
 **返回：**
 
@@ -500,7 +500,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| int32_t* frameSize | 指向将为帧大小设置的变量的指针。 |
+| int32_t* frameSize | 指向用于接收帧大小的变量的指针。 |
 
 **返回：**
 
@@ -677,7 +677,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| float* volume | 指向一个获取当前音频流音量值的指针。音量值的范围是[0.0, 1.0]。 |
+| float* volume | 指向一个用来接收当前音频流音量值的指针。音量值的范围是[0.0, 1.0]。 |
 
 **返回：**
 
@@ -870,7 +870,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 设置默认本机内置发声设备。<br> 本接口仅适用于音频流类型[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或者VoIP视频通话的场景使用，以及可选的设备类型为听筒、扬声器和系统默认设备。<br> 本接口允许在AudioRenderer创建以后的任何时间被调用，系统会记录应用设置的默认本机内置发声设备。在应用启动播放时，若有外接设备如蓝牙耳机/有线耳机接入，系统优先从外接设备发声；否则系统遵循应用设置的默认本机内置发声设备发声。<br>
 
-**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将从扬声器发声。
 
 **起始版本：** 12
 
@@ -972,7 +972,7 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。 |
-| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | 返回当前低时延状态。 |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | 表示当前低时延状态。 |
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
@@ -1049,7 +1049,7 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 应用实际填充有效音频数据的长度。返回值必须在[0, audioDataSize]范围内。<br> 如果返回值小于0，系统将调整为0。 并且，如果返回值大于audioDataSize，系统将其调整到audioDataSize。<br> 注意返回值必须是单个采样点大小的整数倍。<br> 比如，双声道s16格式的音频数据，必须是4(2 * 16 / 8)的整数倍。<br> 否则，可能造成播放杂音。 |
+| int32_t | 应用实际填充有效音频数据的长度。返回值必须在[0, audioDataSize]范围内。<br> 如果返回值小于0，系统将调整为0。 并且，如果返回值大于audioDataSize，系统将其调整到audioDataSize。<br> 注意返回值必须是单个采样点大小的整数倍。<br> 比如，双声道S16格式的音频数据，必须是4(2 * 16 / 8)的整数倍。<br> 否则，可能造成播放杂音。 |
 
 ### OH_AudioRenderer_GetLatency()
 

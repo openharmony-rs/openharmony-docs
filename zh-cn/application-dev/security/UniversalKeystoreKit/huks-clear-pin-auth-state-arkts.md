@@ -1,4 +1,4 @@
-# 清除Ukey PIN码认证状态(ArkTS)
+# 清除UKey PIN码认证状态(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，huksExternalCrypto提供清除Ukey PIN码认证状态功能接口。应用在密钥操作完成后或需要重置认证状态时，可以调用该接口清除指定资源的PIN码认证状态。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API版本26.0.0开始，huksExternalCrypto提供清除UKey PIN码认证状态功能接口。应用在密钥操作完成后或需要重置认证状态时，可以调用该接口清除指定资源的PIN码认证状态。具体的场景介绍及规格，请参考[UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 

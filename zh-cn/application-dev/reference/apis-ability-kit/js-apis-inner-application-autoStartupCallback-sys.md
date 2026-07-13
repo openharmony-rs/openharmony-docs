@@ -37,6 +37,7 @@ onAutoStartupOn(info: AutoStartupInfo): void;
 import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义开机自启动回调对象
 let autoStartupCallback: common.AutoStartupCallback = {
   onAutoStartupOn(data: common.AutoStartupInfo) {
     console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
@@ -46,6 +47,7 @@ let autoStartupCallback: common.AutoStartupCallback = {
   }
 }
 
+// 订阅系统开机自启动事件
 try {
   autoStartupManager.on('systemAutoStartup', autoStartupCallback);
 } catch (err) {
@@ -77,6 +79,7 @@ onAutoStartupOff(info: AutoStartupInfo): void;
 import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义开机自启动回调对象
 let autoStartupCallback: common.AutoStartupCallback = {
   onAutoStartupOn(data: common.AutoStartupInfo) {
     console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
@@ -86,6 +89,7 @@ let autoStartupCallback: common.AutoStartupCallback = {
   }
 }
 
+// 订阅系统开机自启动事件
 try {
   autoStartupManager.on('systemAutoStartup', autoStartupCallback);
 } catch (err) {

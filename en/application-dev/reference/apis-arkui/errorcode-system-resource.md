@@ -14,7 +14,7 @@
 
 **Error Message**
 
-System resources does not exist.
+System resource does not exist.
 
 **Description**
 

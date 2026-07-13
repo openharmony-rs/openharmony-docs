@@ -6,11 +6,11 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件提供勾选框样式、状态按钮样式和开关样式。
+组件提供勾选框样式、状态按钮样式和开关样式，适用于需要快速切换状态或进行单选确认的场景，能够有效提升交互体验与界面的直观性。
 
 >  **说明：**
 >
-> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 从API版本26.0.0开始，Toggle组件支持系统材质效果。Toggle组件使用通用系统材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)时，不同[ToggleType](#toggletype枚举说明)类型的效果不同：    
 >   - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
@@ -40,7 +40,7 @@ Toggle(options: ToggleOptions)
 
 ## ToggleOptions<sup>18+</sup>对象说明
 
-Toggle的信息。
+Toggle组件的配置信息。
 
 > **说明：**
 >
@@ -75,8 +75,8 @@ Toggle的样式。
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
-| Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
+| Checkbox | 0    | 提供勾选框样式。<br/>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br/>{<br/>&nbsp;top: '14px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '14px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br/>{width:'20vp', height:'20vp'}。 |
+| Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br/>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
 | Button   | 2    | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
 
 ## 属性
@@ -88,6 +88,9 @@ Toggle的样式。
 selectedColor(value: ResourceColor)
 
 设置组件在打开状态下的背景颜色。
+
+> **说明：**
+> 设置systemMaterial系统材质时对背景色的影响，请参考组件开篇说明。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -125,6 +128,9 @@ switchStyle(value: SwitchStyle)
 
 设置Switch类型的样式。仅当type为ToggleType.Switch生效。
 
+> **说明：**
+> 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -160,6 +166,9 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 ## SwitchStyle<sup>12+</sup>对象说明
 
 Switch类型的样式。
+
+> **说明：**
+> 与systemMaterial系统材质同时设置时，请参考组件开篇说明及通用系统材质属性文档。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -210,7 +219,7 @@ onChange(callback:&nbsp;(isOn:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| 否  | 否 | 开关是否打开。<br/>true：开关打开；false：开关关闭。<br/>默认值：false |
 | enabled | boolean | 否 | 否 | 是否可以切换状态。<br/>true：可以切换状态；false：不可以切换状态。<br/>默认值：true |
-| triggerChange |Callback\<boolean>| 否 | 否 |触发switch选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。 |
+| triggerChange | Callback\<boolean> | 否 | 否 | 用于触发Toggle开关状态变化的回调函数，通常在自定义ContentModifier中通过编程方式改变开关状态。调用此回调并传入true可将开关状态设置为打开，传入false可将开关状态设置为关闭。 |
 
 
 ## 示例
@@ -333,8 +342,11 @@ struct ToggleExample {
 
 ```ts
 // xxx.ets
+// 自定义Switch样式修改器，实现ContentModifier接口定制Toggle内容区
 class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
+  // 开关打开时的背景颜色
   selectedColor: Color = Color.White;
+  // 用于按钮显示的文本
   lamp: string = 'string';
 
   constructor(selectedColor: Color, lamp: string) {
@@ -370,6 +382,7 @@ function buildSwitch(config: ToggleConfiguration) {
 struct Index {
   build() {
     Column({ space: 50 }) {
+      // 使用自定义样式修改器定制Toggle内容，并通过onChange监听状态变化
       Toggle({ type: ToggleType.Switch })
         .enabled(true)
         .contentModifier(new MySwitchStyle(Color.Yellow, '灯'))
