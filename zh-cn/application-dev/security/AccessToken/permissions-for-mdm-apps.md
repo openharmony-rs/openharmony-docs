@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 以下权限仅对MDM（Mobile Device Management）设备管理应用开放。
- 	 
+ 
 <!--RP2-->
 MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
