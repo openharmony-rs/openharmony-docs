@@ -4025,7 +4025,6 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let bundleName: string = 'com.example.helloWorld';
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [photoAccessHelper.PhotoKeys.URI, photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT],
@@ -4034,9 +4033,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let assets: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
     let compatibleAssets: Array<photoAccessHelper.PhotoAsset> = await phAccessHelper.convertAssetToCompatibleAsset(assets);
-    console.info(`getAssetCompatibleUris success, compatibleAssets count: ${compatibleAssets.length}`);
+    console.info(`convertAssetToCompatibleAsset success, compatibleAssets count: ${compatibleAssets.length}`);
   } catch (err) {
-    console.error(`getAssetCompatibleUris failed with error: ${err.code}, ${err.message}`);
+    console.error(`convertAssetToCompatibleAsset failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
