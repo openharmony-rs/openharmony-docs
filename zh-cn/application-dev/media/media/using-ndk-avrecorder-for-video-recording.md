@@ -179,7 +179,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
                return;
            }
-           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG; // 待媒体库提供可用的VIDEO接口。
+           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    
@@ -380,7 +380,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static constexpr int32_t VIDEO_FRAME_HEIGHT = 1080;
    static constexpr int32_t VIDEO_FRAME_RATE = 30;
    static constexpr int32_t CALLBACK_ARG_COUNT = 2;
-   static constexpr int32_t FILE_PERMISSIONS = 0777;
+   static constexpr int32_t FILE_PERMISSIONS = 0644;
    
    static OH_AVRecorder *g_recorder = nullptr;
    static int32_t g_outputFd = -1;
@@ -427,7 +427,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
                return;
            }
-           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG; // 待媒体库提供可用的VIDEO接口。
+           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    
