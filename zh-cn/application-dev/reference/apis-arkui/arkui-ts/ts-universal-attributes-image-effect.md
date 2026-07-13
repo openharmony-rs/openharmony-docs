@@ -94,7 +94,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 ## shadow
 
-shadow(value: ShadowOptions | ShadowStyle): T
+shadow(value: ShadowOptions \| ShadowStyle): T
 
 为组件添加阴影效果。
 
@@ -118,7 +118,7 @@ shadow(value: ShadowOptions | ShadowStyle): T
 
 ## shadow<sup>18+</sup>
 
-shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
+shadow(options: Optional\<ShadowOptions \| ShadowStyle>): T
 
 为组件添加阴影效果。与[shadow](#shadow)相比，options参数新增了对undefined类型的支持。
 
@@ -344,7 +344,7 @@ contrast(contrast: Optional\<number>): T
 
 ## invert
 
-invert(value: number | InvertOptions): T
+invert(value: number \| InvertOptions): T
 
 反转输入的图像。
 
@@ -368,7 +368,7 @@ invert(value: number | InvertOptions): T
 
 ## invert<sup>18+</sup>
 
-invert(options: Optional\<number | InvertOptions>): T
+invert(options: Optional\<number \| InvertOptions>): T
 
 反转输入的图像。与[invert](#invert)相比，options参数新增了对undefined类型的支持。
 
@@ -444,7 +444,7 @@ sepia(sepia: Optional\<number>): T
 
 ## hueRotate
 
-hueRotate(value: number | string): T
+hueRotate(value: number \| string): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。
 
@@ -468,7 +468,7 @@ hueRotate(value: number | string): T
 
 ## hueRotate<sup>18+</sup>
 
-hueRotate(rotation: Optional\<number | string>): T
+hueRotate(rotation: Optional\<number \| string>): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](#huerotate)相比，rotation参数新增了对undefined类型的支持。
 
@@ -494,7 +494,7 @@ hueRotate(rotation: Optional\<number | string>): T
 
 ## colorBlend
 
-colorBlend(value: Color | string | Resource): T
+colorBlend(value: Color \| string \| Resource): T
 
 为组件添加颜色叠加效果。
 
@@ -518,7 +518,7 @@ colorBlend(value: Color | string | Resource): T
 
 ## colorBlend<sup>18+</sup>
 
-colorBlend(color: Optional\<Color | string | Resource>): T
+colorBlend(color: Optional\<Color \| string \| Resource>): T
 
 为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
@@ -979,7 +979,7 @@ systemBarEffect(): T
 | ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)，API版本26.0.0开始取值范围变更为(-∞, +∞)<br/>单位：px<br/>**说明：**  <br/>API版本26.0.0之前，设置小于0的值时，按值为0处理，此时不绘制阴影；从API版本26.0.0开始，设置的值即为最终取值，值为0时仍绘制阴影，设置负数值时不绘制阴影。<br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | type<sup>10+</sup> | [ShadowType](#shadowtype10枚举说明)  |      否 | 是    | 阴影类型。<br/>默认值：COLOR <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
-| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<sup>11+</sup>  | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
+| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<sup>11+</sup>  | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | offsetX | number \| [Resource](ts-types.md#resource) | 否  | 是  | 阴影的X轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetX为Resource类型，则传入的值需为number类型。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是   | 阴影的Y轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetY为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | fill<sup>11+</sup>     | boolean                                    | 否  | 是  | 阴影是否内部填充。true表示阴影在内部填充，false表示阴影在外部填充。<br/>默认值：false。<br/>**说明：**<br/>[textShadow](ts-basic-components-text.md#textshadow10)中该字段不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
@@ -1177,7 +1177,7 @@ freeze(freeze: Optional\<boolean>): T
 
 ## systemMaterial
 
-systemMaterial(material: SystemUiMaterial | undefined): T
+systemMaterial(material: SystemUiMaterial \| undefined): T
 
 设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
 
