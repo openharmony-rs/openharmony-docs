@@ -3,8 +3,8 @@
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @huipeizi-->
-<!--Designer: @huipeizi--->
-<!--Tester: @huipeizi--->
+<!--Designer: @huipeizi-->
+<!--Tester: @huipeizi-->
 <!--Adviser: @huipeizi-->
 <!-- md-trans-meta sourceCommit=e82880fc1b3fb82c03ab5c9c350aff1a7e98d202 translatedAt=2026-07-13T10:10:34.117Z pushedAt=2026-07-13T10:59:45.146Z -->
 
