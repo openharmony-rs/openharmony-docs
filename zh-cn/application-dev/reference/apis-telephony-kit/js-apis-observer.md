@@ -2060,7 +2060,7 @@ observer.offCCallStateChange();
 
 ## observer.onCommunicationStateChange
 
-onCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOptions\): void
+onCommunicationStateChange\(callback: Callback\<boolean\>, options?:ObserverOptions\): void
 
 订阅5A网络状态变化事件，使用callback异步回调。
 
@@ -2104,7 +2104,7 @@ observer.onCommunicationStateChange(callback, options);
 
 ## observer.offCommunicationStateChange
 
-offCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOptions\): void
+offCommunicationStateChange\(callback: Callback\<boolean\>, options?:ObserverOptions\): void
 
 取消订阅5A网络状态变化事件，使用callback异步回调。
 
