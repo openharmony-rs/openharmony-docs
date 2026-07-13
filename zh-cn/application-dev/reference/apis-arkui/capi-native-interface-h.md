@@ -112,6 +112,7 @@ do {                                                                            
 
 
 初始化C-API环境，并基于结构体类型获取对应结构体指针。
+
 适用于已确定Native接口集合类型和接口结构体类型，需要获取具体Native接口结构体指针以调用ArkUI Native C API的场景。此宏函数接收[ArkUI_NativeAPIVariantKind](#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、结构体类型参数structType、结构体指针变量structPtr；structPtr需与structType类型匹配。该宏调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)初始化C-API环境并获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
 
 **起始版本：** 12
