@@ -2149,7 +2149,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 | checkable | boolean | 否 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
 | checked | boolean | 否 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值：false。|
 | clickable | boolean | 否 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值：false。|
-| enabled | boolean | 否 | 是 | 元素是否启用，对应AccessibilityElement的isEnable属性。true表示启用，false表示未启用。<br>默认值：false。|
+| enabled | boolean | 否 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>对应AccessibilityElement的isEnable属性，默认值：false。|
 | selected | boolean | 否  | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值：false。|
 | customComponentType | string   | 否  | 是  | 自定义组件类型。|
 | touchPosition | [TouchPosition](#touchposition)   | 否  | 是  | 模拟触摸点击位置。|
