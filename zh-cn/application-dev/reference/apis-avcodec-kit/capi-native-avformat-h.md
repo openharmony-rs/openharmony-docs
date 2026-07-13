@@ -46,20 +46,20 @@
 | [void OH_AVFormat_Destroy(struct OH_AVFormat *format)](#oh_avformat_destroy) | 销毁OH_AVFormat实例，不允许重复销毁。 |
 | [bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)](#oh_avformat_copy) | 复制OH_AVFormat实例。 |
 | [bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)](#oh_avformat_setintvalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋int类型的值。该接口仅能设置int类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
-| [bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)](#oh_avformat_setuintvalue) | 对OH_AVFormat的key赋unsigned int类型的值。该接口仅能设置unsigned int类型的参数，具体参数类型定义请参考[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
+| [bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)](#oh_avformat_setuintvalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋unsigned int类型的值。该接口仅能设置unsigned int类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)](#oh_avformat_setlongvalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋long类型的值。该接口仅能设置long类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)](#oh_avformat_setfloatvalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋float类型的值。该接口仅能设置float类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)](#oh_avformat_setdoublevalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋double类型的值。该接口仅能设置double类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)](#oh_avformat_setstringvalue) | 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋string类型的值。该接口仅能设置string类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)](#oh_avformat_setbuffer) | 将指定长度的数据块写入OH_AVFormat。该接口仅能设置buffer类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。 |
 | [bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)](#oh_avformat_getintvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取int类型的值。 |
-| [bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)](#oh_avformat_getuintvalue) | 使用key从OH_AVFormat中获取unsigned int类型的值。 |
+| [bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)](#oh_avformat_getuintvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取unsigned int类型的值。 |
 | [bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)](#oh_avformat_getlongvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取long类型的值。 |
 | [bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)](#oh_avformat_getfloatvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取float类型的值。 |
 | [bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)](#oh_avformat_getdoublevalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取double类型的值。 |
 | [bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)](#oh_avformat_getstringvalue) | 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取string类型的值。 |
 | [bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)](#oh_avformat_getbuffer) | 从OH_AVFormat中读取指定长度的数据块。 |
-| [bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)](#oh_avformat_getintbuffer) | 从OH_AVFormat中读取一个int32_t数据的数组。<br> 需要注意的是，获取的buffer生命周期与OH_AVFormat对象绑定，当format销毁时自动失效。<br> 如果开发者需要长时间保持绑定，应用程序必须将数据显式复制到新分配的内存。 |
+| [bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)](#oh_avformat_getintbuffer) | 从OH_AVFormat中读取一个int32_t数据的数组。<br> 需要注意的是，获取的buffer生命周期与OH_AVFormat对象绑定，当format销毁时自动失效。<br> 如果开发者需要长时间保留该buffer数据，应用程序必须将数据显式复制到新分配的内存。 |
 | [const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)](#oh_avformat_dumpinfo) | 返回OH_AVFormat中包含的key-value组成的字符串。最大可返回1024字节的字符串，销毁format时释放字符串指针。 |
 | [bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)](#oh_avformat_setintbuffer) | 将指定长度int32_t类型的数据块写入OH_AVFormat。 |
 | [uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)](#oh_avformat_getkeycount) | 获取OH_AVFormat中包含的键总数。 |
@@ -252,7 +252,7 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 **描述**
 
-对OH_AVFormat的key赋unsigned int类型的值。该接口仅能设置unsigned int类型的参数，具体参数类型定义请参考[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。
+对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋unsigned int类型的值。该接口仅能设置unsigned int类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md#变量)。
 
 **起始版本：** 23
 
@@ -268,7 +268,7 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 设置的key对应的value类型错误。 |
 
 ### OH_AVFormat_SetLongValue()
 
@@ -447,7 +447,7 @@ bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 **描述**
 
-使用key从OH_AVFormat中获取unsigned int类型的值。
+从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取unsigned int类型的值。
 
 **起始版本：** 23
 
@@ -463,7 +463,7 @@ bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入out为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入out为空指针。<br> 5. 获取的key不存在或者未设置。 |
 
 ### OH_AVFormat_GetLongValue()
 
@@ -569,7 +569,7 @@ bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, con
 | -- | -- |
 | [struct OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针。 |
 | const char *key | 读取数据的键。 |
-| const char **out | 读取string指针，out数据的生命周期与format内string对应，如果开发者需要长时间保持它，必须进行拷贝内存。out最大输出字符串长度为256字节，如果长度超过256字节，会报false。 |
+| const char **out | 读取string指针。out指向的字符串生命周期与format中的string一致。如果开发者需要长期保存该字符串，必须拷贝到新分配的内存。out最大输出字符串长度为256字节，长度超过256字节时返回false。 |
 
 **返回：**
 
@@ -598,7 +598,7 @@ bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t 
 | [struct OH_AVFormat](capi-core-oh-avformat.md) *format | 指向OH_AVFormat实例的指针。 |
 | const char *key | 要读取数据的键。 |
 | uint8_t **addr | 生命周期与format相同，与format一同销毁。如果开发者需要长时间保持它，必须进行内存拷贝。 |
-| size_t *size | 读到数据的长度。 |
+| size_t *size | 读到数据的长度，单位为字节。 |
 
 **返回：**
 
@@ -633,7 +633,7 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入addr为空指针。<br> 5. 输入size为空指针。 |
+| bool | 返回值为true表示成功，为false表示失败。<br> 可能的失败原因：<br> 1. 输入format为空指针。<br> 2. 输入format参数结构校验失败。<br> 3. 输入key为空指针。<br> 4. 输入addr为空指针。<br> 5. 输入size为空指针。<br> 6. 获取的key不存在或者未设置。 |
 
 ### OH_AVFormat_DumpInfo()
 
@@ -659,7 +659,7 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 如果获取成功，返回一个由key-value组成的字符串，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.  传入的format为NULL。<br> 2. 系统资源不足。 |
+| const char * | 如果创建成功，返回一个由key-value组成的字符串，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1. 传入的format为NULL。<br> 2. 系统资源不足。 |
 
 ### OH_AVFormat_SetIntBuffer()
 
