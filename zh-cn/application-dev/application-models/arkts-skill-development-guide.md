@@ -74,7 +74,8 @@
            "abilityName": "EntryAbility", // 与该Skill关联的组件名称
            "srcEntries": [  // 实现Skill的代码文件路径列表
              "../../skills/music-assistant/scripts/MusicSkill.ets"
-           ]
+           ],
+           "version": "1.0.0"
          }
        ],
    
