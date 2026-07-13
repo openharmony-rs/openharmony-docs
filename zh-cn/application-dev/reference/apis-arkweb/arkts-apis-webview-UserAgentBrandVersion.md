@@ -30,7 +30,7 @@ setBrand(brand: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +54,7 @@ getBrand(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +78,7 @@ setMajorVersion(majorVersion: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,7 +102,7 @@ getMajorVersion(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,7 +126,7 @@ setFullVersion(fullVersion: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,7 +150,7 @@ getFullVersion(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

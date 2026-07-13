@@ -26,7 +26,6 @@ BackForwardCacheOptions是ArkWeb框架中用于配置Web组件前进后退缓存
 
 **ArkTS-Sta起始版本：** 23
 
-**系统能力：** SystemCapability.Web.Webview.Core
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
 | size<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 设置每个Web组件允许缓存的最大页面个数。<br>默认为1，最大可设置为50。<br>设置为0或负数时，前进后退缓存功能不生效。<br>Web组件会根据内存压力对缓存进行回收。 |
