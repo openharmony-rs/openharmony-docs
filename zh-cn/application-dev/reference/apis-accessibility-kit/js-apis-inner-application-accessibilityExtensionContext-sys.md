@@ -2145,7 +2145,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 | accessibilityText | string | 否 | 是 | 元素的无障碍文本信息。|
 | accessibilityGroup | boolean | 否 | 是 | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值：true。|
 | accessibilityLevel | string | 否 | 是 | 组件的无障碍级别。<br>'auto'：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>'yes'：当前组件可被辅助功能识别。<br>'no'：当前组件不可被辅助功能识别。<br>'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。|
-| rect    | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)  | 否  | 是  | 元素的区域。|
+| rect    | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)  | 否  | 是  | 元素的区域(父节点的相对位置)。|
 | checkable | boolean | 否 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
 | checked | boolean | 否 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值：false。|
 | clickable | boolean | 否 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值：false。|
