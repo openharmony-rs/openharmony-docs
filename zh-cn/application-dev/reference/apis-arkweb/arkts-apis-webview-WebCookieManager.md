@@ -376,7 +376,7 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise实例，用于获取指定url对应的cookie值。 |
+| Promise\<string> | Promise对象，用于获取指定url对应的cookies。 |
 
 **错误码：**
 
