@@ -709,8 +709,8 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点对象。 |
-|  int32_t positionX | 组件相对于父组件的x轴布局坐标，单位为px。 |
-|  int32_t positionY | 组件相对于父组件的y轴布局坐标，单位为px。 |
+|  int32_t positionX | 组件相对于父组件的X轴布局坐标，单位为px。 |
+|  int32_t positionY | 组件相对于父组件的Y轴布局坐标，单位为px。 |
 
 **返回：**
 
@@ -811,8 +811,8 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点对象。 |
-|  int32_t positionX | 目标组件相对于父组件的x轴期望坐标，单位为px。 |
-|  int32_t positionY | 目标组件相对于父组件的y轴期望坐标，单位为px。 |
+|  int32_t positionX | 目标组件相对于父组件的X轴期望坐标，单位为px。 |
+|  int32_t positionY | 目标组件相对于父组件的Y轴期望坐标，单位为px。 |
 
 **返回：**
 

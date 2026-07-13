@@ -216,7 +216,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **描述：**
 向父自定义节点添加子渲染节点。
 
-父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。默认使用[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy)挂载策略时，自定义节点只能挂载一个子渲染节点，且不能同时挂载其他类型的子节点。从API version 26.0.0开始，可通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)将挂载策略设置为OH_ARKUI_NODE_MOUNT_POLICY_MIXED，以支持混合挂载多个子节点。
+父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。默认使用[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy)挂载策略时，自定义节点只能挂载一个子渲染节点，且不能同时挂载其他类型的子节点。从API版本26.0.0开始，可通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)将挂载策略设置为OH_ARKUI_NODE_MOUNT_POLICY_MIXED，以支持混合挂载多个子节点。
 
 **起始版本：** 20
 
@@ -774,8 +774,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t width | 宽度值（以像素为单位）。<br/>默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
-| int32_t height | 高度值（以像素为单位）。<br/>默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| int32_t width | 宽度值，单位：px。<br/>默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| int32_t height | 高度值，单位：px。<br/>默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -797,8 +797,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t* width | 用于接收宽度值（以像素为单位）的指针，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0，单位：px。 |
-| int32_t* height | 用于接收高度值（以像素为单位）的指针，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0，单位：px。 |
+| int32_t* width | 用于接收宽度值的指针，单位：px，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
+| int32_t* height | 用于接收高度值的指针，单位：px，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1129,7 +1129,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| uint32_t* color | 用于存储获取到的ARGB颜色值的整数指针。<br/>默认值：0x00000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
+| uint32_t* color | 用于接收ARGB颜色值的整数指针。未设置阴影颜色时，接收值为0x00000000（完全透明）。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1219,7 +1219,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* alpha | 用于接收阴影Alpha值的指针。设置阴影相关属性后，接收值的取值范围为[0.0, 1.0]；未设置阴影相关属性时返回-1.0。 |
+| float* alpha | 用于接收阴影Alpha值的指针。未设置阴影相关属性时，接收值为-1.0，表示未配置；设置阴影相关属性后，接收值的取值范围为[0.0, 1.0]。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1263,7 +1263,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* elevation | 用于接收阴影高度值的指针，单位：px，接收值的取值范围为[0, +∞)。<br/>默认值：0。 |
+| float* elevation | 用于接收阴影高度值的指针，单位：px，接收值的取值范围为[0, +∞)。未设置阴影高度时，接收值为0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1307,7 +1307,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* radius | 用于接收阴影半径值的指针，单位：px。 |
+| float* radius | 用于接收阴影半径值的指针，单位：px。设置阴影半径后，接收值的取值范围为[0, +∞)；未设置阴影半径时，API版本26.0.0之前接收值为0，从API版本26.0.0开始接收值为-1。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -3453,7 +3453,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 在父自定义节点下的指定位置插入子渲染节点。
 
-默认挂载策略下，待插入的子渲染节点必须是父节点的唯一子节点；从API version 26.0.0开始，可将挂载策略设置为[OH_ARKUI_NODE_MOUNT_POLICY_MIXED](capi-native-type-h.md#oh_arkui_nodemountpolicy)，以混合挂载多个子节点。
+默认使用[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy)挂载策略，待插入的子渲染节点必须是父节点的唯一子节点；可通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)将挂载策略设置为OH_ARKUI_NODE_MOUNT_POLICY_MIXED，以混合挂载多个子节点。
 
 **起始版本：** 26.0.0
 
@@ -3461,7 +3461,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标父节点。|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标父节点，仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中的ARKUI_NODE_CUSTOM类型。|
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | 将要插入的子渲染节点。|
 | int32_t position | 插入子渲染节点的索引，取值范围为[0, 当前子节点数量]；等于当前子节点数量时等同于添加操作。|
 
