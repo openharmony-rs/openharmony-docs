@@ -248,8 +248,8 @@
     ```
 
     从API版本26.0.0开始，可以通过OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID字段获取时域层级信息，无需根据TGOP参数及出帧信息自行计算所属时域层级信息。时域层号为0时，表示基础层，1及以上时表示增强层。
- 	 
- 	示例代码如下：
+ 
+    示例代码如下：
 
     ``` C++
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
@@ -271,7 +271,7 @@
         int32_t layerID = GetTemporalLayerID(buffer);
     }
     ```
- 	 
+
 5. （可选）在输出过程中，使用步骤4获取的时域层级信息，开发者可根据实际带宽或业务场景实现自适应传输或自适应解码。
 
     根据获取的时域可分层码流和对应的层级信息，开发者可选择需要的层级进行传输，或携带至对端自适应选帧解码。
