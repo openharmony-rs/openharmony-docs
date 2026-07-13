@@ -11313,6 +11313,8 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -11377,11 +11379,13 @@ getSubframeErrorPageEnabled(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。 |
+| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。不启用默认错误页功能或者不启用subframe错误页功能时，返回false。|
 
 **错误码：**
 
