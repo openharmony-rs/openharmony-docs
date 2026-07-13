@@ -519,20 +519,3 @@
 | -------- | ---------- | -------- |-----| ---------- |
 | zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
 | equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
-
-## DefocusFromProximityNotificationInfo
-
-对焦物体和镜头距离过近导致失焦事件的通知对象。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称      | 类型                                                           | 只读 | 可选 | 说明            |
-| -------- | -------------------------------------------------------------- |----- |---| --------------|
-| name      | [NotificationName](arkts-apis-camera-e.md#notificationname)   |  是  | 否 | 通知事件名称。      |
-| value     | [ProximityStateForFocus](arkts-apis-camera-e.md#proximitystateforfocus)  |  是  | 否 | 通知事件状态。     |

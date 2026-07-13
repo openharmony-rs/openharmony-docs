@@ -37,7 +37,6 @@
 | [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | 点参数。 |
 | [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | 拍照位置。 |
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
 | [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
@@ -95,8 +94,6 @@
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
-| [OH_Camera_NotificationName](#oh_camera_notificationname) | OH_Camera_NotificationName | 相机通知名称枚举类型。 |
-| [OH_Camera_ProximityStateForFocus](#oh_camera_proximitystateforfocus) | OH_Camera_ProximityStateForFocus | 对焦物体和相机距离状态枚举类型。 |
 
 ### 函数
 
@@ -766,39 +763,6 @@ enum OH_Camera_MetadataObjectEmotion
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | 悲伤。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
-
-### OH_Camera_NotificationName
-
-```c
-enum OH_Camera_NotificationName
-```
-
-**描述**
-
-相机通知名称枚举。
-
-**起始版本：** 26.0.0
-
-| 枚举项 | 描述 |
-| -- | -- |
-| OH_CAMERA_DEFOCUS_FROM_PROXIMITY  = 0 | 相机因距离对焦物体过近导致失焦的通知。<br>**起始版本：** 26.0.0 |
-
-### OH_Camera_ProximityStateForFocus 
-
-```c
-enum OH_Camera_ProximityStateForFocus 
-```
-
-**描述**
-
-对焦物体和相机距离的状态枚举类型。
-
-**起始版本：** 26.0.0
-
-| 枚举项 | 描述 |
-| -- | -- |
-| OH_CAMERA_PROXIMITY_STATE_IN_RANGE_RAISE_NONE   = 0 | 对焦物体和镜头距离在合理范围内。<br>**起始版本：** 26.0.0 |
-| OH_CAMERA_PROXIMITY_STATE_OUT_OF_RANGE_RAISE_REQUIRED   = 1 | 对焦物体和相机过近，需要远离对焦物体。<br>**起始版本：** 26.0.0 |
 
 ### OH_Camera_AutomotiveCameraPosition
 

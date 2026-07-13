@@ -159,7 +159,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    >
    > [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口的处理时长和管线中连接的效果节点数量有关，需要注意接口处理时长，以避免实时预览卡顿。
 
-   请参考API[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)完成音频播放功能开发。
+   请参考[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)完成音频播放功能开发。
 
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。

@@ -185,9 +185,9 @@ type Margin = Padding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                |  必填   | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| Margin    | [Padding](#padding) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [Padding](#padding) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## LocalizedMargin<sup>12+</sup>
 
@@ -205,9 +205,9 @@ type LocalizedMargin = LocalizedPadding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                | 必填 | 说明                   |
-| ------ | ----------------- | ---- | -------- |
-| LocalizedMargin    | [LocalizedPadding](#localizedpadding12) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
+| 类型                | 说明                   |
+| ----------------- | -------- |
+| [LocalizedPadding](#localizedpadding12) | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## EdgeWidths<sup>9+</sup>
 
@@ -244,9 +244,9 @@ type EdgeWidth = EdgeWidths
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型 | 必填 | 说明             |
-| ------ | ---- | ------| ---------------- |
-| EdgeWidth    | [EdgeWidths](#edgewidths9) | 否 | 组件边框不同方向的宽度。 |
+| 类型 | 说明             |
+| ---- | ---------------- |
+| [EdgeWidths](#edgewidths9) | 组件边框不同方向的宽度。 |
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
@@ -784,7 +784,7 @@ type PX = { number }px
 
 type VP = { number }vp | number
 
-长度类型，用于描述以vp像素单位为单位的长度。
+长度类型，用于描述以vp为单位的长度。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -883,6 +883,8 @@ type Degree = `${number}deg`
 
 type VoidCallback = () => void
 
+无参数、无返回值的函数回调类型，用于定义不需要传递数据且不返回结果的回调场景。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -891,7 +893,7 @@ type VoidCallback = () => void
 
 ## Callback<sup>12+</sup>
 
-Callback<T,V = void> = (data: T) => V;
+type Callback<T, V = void> = (data: T) => V;
 
 带参数的函数回调。
 

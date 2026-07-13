@@ -120,7 +120,7 @@ compositingFilter(filter: Filter): T
 
 ## materialFilter<sup>23+</sup>
 
-materialFilter(filter: Filter | undefined): T
+materialFilter(filter: Filter \| undefined): T
 
 设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](#backgroundfilter)绘制，即位于backgroundFilter的更底层。
 
