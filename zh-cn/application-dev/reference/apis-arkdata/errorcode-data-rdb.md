@@ -29,10 +29,11 @@ Inner error.
 1. 设置分布式表不支持联合主键，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
 2. 多进程操作数据库，其中一个进程被冻结，数据库锁会被当前冻结进程一直持有，直到解冻才会释放，在此期间其他进程调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等接口开库时获取锁会失败。
 3. 使用读连接进行写操作。读连接不可用于执行写库操作，仅可执行读库操作。
-4. 并发查询和删除同一批数据。
-5. 根密钥生成失败。huks生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
-6. 远程查询时，没有查询到数据。在对端数据库中不存在要查询的数据的情况下，调用[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery)接口进行远程查询，获取到结果集后，再调用[goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow)等接口获取数据会失败。
-7. 数据管理服务启动失败。在数据管理服务启动失败的情况下，无法设置分布式表，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
+4. 事务未提交时，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或者[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)等接口依次执行删除触发器、删除表、重建表等DDL操作，后续再次执行类似操作时会出现失败。
+5. 并发查询和删除同一批数据。
+6. 根密钥生成失败。huks生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
+7. 远程查询时，没有查询到数据。在对端数据库中不存在要查询的数据的情况下，调用[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery)接口进行远程查询，获取到结果集后，再调用[goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow)等接口获取数据会失败。
+8. 数据管理服务启动失败。在数据管理服务启动失败的情况下，无法设置分布式表，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
 
 **处理步骤**
 
@@ -42,19 +43,22 @@ Inner error.
 2. 确认问题时间点附近，是否可正则搜索到和进程冻结相关的日志：`Freeze pid: 进程号 success`或`PID 进程号 has been frozen`，以及开库失败的日志：`ConnectionPool.*code:-15`。
    - 是：进程退后台时不要操作数据库，避免多进程并发操作数据库；调用[requestSuspendDelay](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay)接口申请短时任务或调用[startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)接口申请长时任务，使得数据库操作在进程被冻结前可以执行结束。
    - 否：转下一步。
-3. 排查业务代码是否存在如下操作：调用[beginTransaction](arkts-apis-data-relationalStore-RdbStore.md#begintransaction)接口开启事务后，事务未提交时，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或者[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)接口依次执行：删除触发器a、删除表A、重建表A，后续再次删除触发器a时出现失败。
+3. 排查业务代码是否存在使用读连接执行写操作的场景。
+   - 是：使用读连接时仅执行读操作，写操作请使用写连接。
+   - 否：转下一步。
+4. 排查业务代码是否存在如下操作：调用[beginTransaction](arkts-apis-data-relationalStore-RdbStore.md#begintransaction)接口开启事务后，事务未提交时，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或者[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)接口依次执行：删除触发器a、删除表A、重建表A，后续再次删除触发器a时出现失败。
    - 是：避免在事务未提交的时候，依次执行删除触发器a、删除表A、重建表A以及再次删除触发器a的类似操作。
    - 否：转下一步。
-4. 排查业务代码是否存在如下操作：获取结果集后，先调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)、[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)或[delete](arkts-apis-data-relationalStore-RdbStore.md#delete)接口删除待查询的数据，再调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时出现失败。
+5. 排查业务代码是否存在如下操作：获取结果集后，先调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)、[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)或[delete](arkts-apis-data-relationalStore-RdbStore.md#delete)接口删除待查询的数据，再调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时出现失败。
    - 是：业务需要控制好时序，不要并发查询和删除同一批数据。
    - 否：转下一步。
-5. 确认问题时间点附近，是否可正则搜索到关键日志：`01650.*Init.*retry.*error`，其中error不为0。
+6. 确认问题时间点附近，是否可正则搜索到关键日志：`01650.*Init.*retry.*error`，其中error不为0。
    - 是：根密钥可能生成失败，业务需要重试打开加密数据库。
    - 否：转下一步。
-6. 确认对端设备的数据库中是否存在要查询的数据。
+7. 确认对端设备的数据库中是否存在要查询的数据。
    - 是：转下一步。
    - 否：确保要查询的数据存在，再进行远程查询。
-7. 确认问题时间点附近，是否可搜索到关键日志：`Get distributed data manager failed`。
+8. 确认问题时间点附近，是否可搜索到关键日志：`Get distributed data manager failed`。
    - 是：数据管理服务启动失败，业务需要重试设置分布式表。
    - 否：提供hilog系统日志，联系技术支撑人员定位。
 
@@ -104,7 +108,7 @@ The current operation failed because the database is corrupted.
 
 数据库异常，当前操作失败。
 
-**可能原因：**
+**可能原因**
 
 1. 打开加密数据库时，自定义密钥不匹配，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等接口开库时会失败。
 2. 数据库文件描述符（fd）误用，导致数据库文件异常，因此调用增删改查等接口操作数据库会失败。
@@ -113,7 +117,7 @@ The current operation failed because the database is corrupted.
 5. 在数据库使用过程中使用文件接口直接操作数据库，导致数据库文件异常，因此调用增删改查等接口操作数据库会失败。
 6. 数据库文件不匹配：如：db文件和wal文件不是同一个数据库，导致数据库异常，因此调用增删改查等接口操作数据库会失败。
 
-**处理步骤：**
+**处理步骤**
 
 1. 排查自定义密钥参数和之前创建加密数据库的密钥参数是否一致。
    - 是：转下一步。
@@ -146,10 +150,10 @@ ResultSet is empty or pointer index is out of bounds. The row index is `rowIndex
 
 **可能原因**
 
-1. SQL拼写错误、找不到表或字段、重复添加字段、违反SQLite系统限制、数据库文件异常等（参考错误码14800021的问题场景），调用[getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
-2. 查询的单条数据大小超过2M，调用[getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
-3. 表中无任何数据，调用[getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
-4. 表中无符合查询条件的数据，调用[getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
+1. SQL拼写错误、找不到表或字段、重复添加字段、违反SQLite系统限制、数据库文件异常等（参考错误码14800021的问题场景），调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
+2. 查询的单条数据大小超过2M，调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
+3. 表中无任何数据，调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
+4. 表中无符合查询条件的数据，调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)等接口获取数据时会失败。
 
 **处理步骤**
 
@@ -157,7 +161,7 @@ ResultSet is empty or pointer index is out of bounds. The row index is `rowIndex
    - 是：参考错误码14800021的处理步骤。
    - 否：转下一步。
 2. 确认问题时间点附近，是否可正则搜索到关键日志：`ResetStatement.*over 2MB`或者排查单条数据的大小是否超过2M。
-   - 是：调用[queryWithoutRowCount](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querywithoutrowcount23)接口获取结果集[LiteResultSet](../reference/apis-arkdata/arkts-apis-data-relationalStore-LiteResultSet.md)后，再查询单条大小超过2M的数据。
+   - 是：调用[queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querywithoutrowcount23)接口获取结果集[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)后，再查询单条大小超过2M的数据。
    - 否：转下一步。
 3. 排查表中是否存在数据。
    - 是：转下一步。
@@ -170,14 +174,14 @@ ResultSet is empty or pointer index is out of bounds. The row index is `rowIndex
 
 **错误信息**
 
-Column index is out of bounds. The columnIndex: `index` is out of range.
+Column index is out of bounds. The columnIndex: `columnIndex` is out of range.
 
 **错误描述**
 
 列值为空或列类型与当前调用接口不兼容。
 
 **可能原因**
- 
+
 1. 调用[getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex)接口时，传参为表中不存在的列名，然后将其返回结果作为[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等获取数据接口的入参，会导致接口执行失败。
 2. 传入的列索引参数超出有效范围，合法范围：[0, 表字段数量 - 1]，因此调用[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)接口获取列类型时会失败。
 3. 传入的列索引参数超出有效范围，合法范围：[0, 表字段数量 - 1]，因此调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等接口获取数据时会失败。
@@ -261,7 +265,7 @@ StoreConfig is changed.
 
 **可能原因**
 
-数据库的area（区域），securityLevel（安全级别），数据库读写权限等关键配置发生变化。
+数据库的area（区域）、securityLevel（安全级别）、数据库读写权限等关键配置发生变化。
 
 **处理步骤**
 
@@ -328,7 +332,7 @@ The secret key is corrupted or lost.
 
 **错误信息**
 
-SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.
+SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. `sqliteErrorMsg`.
 
 **错误描述**
 
@@ -336,12 +340,12 @@ SQLite：通用错误。
 
 **可能原因**
 
-执行sql语句过程中出现错误，如：
-1. SQL拼写错误，存在语法问题，调用[executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
-2. 数据库中不存在某张表或者表中不存在某个字段，调用[executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
-3. 重复添加表中已存在的字段，调用[executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
-4. 违反SQLite系统限制（字符串或BLOB长度超限、列数过多、SQL变量过多、表达式树过深、复合SELECT过多或附加库过多等），调用[executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
-5. 数据库文件异常，调用[executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
+执行SQL语句过程中出现错误，如：
+1. SQL拼写错误，存在语法问题，调用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
+2. 数据库中不存在某张表或者表中不存在某个字段，调用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
+3. 重复添加表中已存在的字段，调用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
+4. 违反SQLite系统限制（字符串或BLOB长度超限、列数过多、SQL变量过多、表达式树过深、复合SELECT过多或附加库过多等），调用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
+5. 数据库文件异常，调用[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)、[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL会失败。
 
 **处理步骤**
 
