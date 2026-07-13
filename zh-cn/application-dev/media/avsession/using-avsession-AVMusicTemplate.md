@@ -128,26 +128,20 @@
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
      private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
-       return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-         try {
-           let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-           resolve(tabs);
-         } catch (e) {
-           console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       try {
+         return await this.getMainTabs();
+       } catch (e) {
+         console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
+         throw e instanceof Error ? e : new Error(e?.message ?? `queryMainTabsEvent error, code: ${e?.code}`);
+       }
      };
      private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
-       return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
-         try {
-           let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
-           resolve(tabContent);
-         } catch (e) {
-           console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       try {
+         return await this.createMediaTabContent();
+       } catch (e) {
+         console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
+         throw e instanceof Error ? e : new Error(e?.message ?? `queryMediaTabContentEvent error, code: ${e?.code}`);
+       }
      };
      // ...
    
