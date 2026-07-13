@@ -27,10 +27,10 @@
     - [视频可变帧率](video-variable-refreshrate.md)
     - [智能流畅倍速解码](video-smart-fluency-decoding.md)<!--RP1--><!--RP1End-->
   - 视频编解码典型场景实践<!--audio-video-typical-scenarios-codec-->
-      - [各类场景的视频编码基础参数配置](video-encoding-configuration-typical-scenarios.md)
-      - [B帧视频编码，提升编码压缩率](video-encoding-b-frame.md)
-      - [ROI视频编码，让感兴趣区域更清晰](video-encoding-ROI.md)
-      - [时域可分层视频编码，抗弱网视频丢包](video-encoding-temporal-scalability.md)<!--RP2--><!--RP2End-->
+    - [各类场景的视频编码基础参数配置](video-encoding-configuration-typical-scenarios.md)
+    - [B帧视频编码，提升编码压缩率](video-encoding-b-frame.md)
+    - [ROI视频编码，让感兴趣区域更清晰](video-encoding-ROI.md)
+    - [时域可分层视频编码，抗弱网视频丢包](video-encoding-temporal-scalability.md)<!--RP2--><!--RP2End-->
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
   - [媒体数据解析](audio-video-demuxer.md)
