@@ -28,7 +28,7 @@
 | autoCancel                        | boolean                                                      | 否   | 是  | 点击遮障层时，是否关闭弹窗。值为true表示关闭弹窗，值为false表示不关闭弹窗。<br/>默认值：true<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | cancel                            | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是  | 点击遮障层关闭dialog时的回调。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
 | alignment                         | [DialogAlignment](#dialogalignment枚举说明)                  | 否   | 是  | 弹窗在竖直方向上的对齐方式。<br/>默认值：DialogAlignment.Default <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 |
-| offset                            | [Offset](ts-types.md#offset)                                 | 否   | 是  | 弹窗相对alignment所在位置的偏移量。dx表示水平方向偏移，正值为向右偏移，负值为向左偏移；dy表示垂直方向偏移，正值为向下偏移，负值为向上偏移。<br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}，单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset                            | [Offset](ts-types.md#offset)                                 | 否   | 是  | 弹窗相对alignment所在位置的偏移量。dx表示水平方向偏移，正值为向右偏移，负值为向左偏移；dy表示垂直方向偏移，正值为向下偏移，负值为向上偏移。<br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}<br/>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | gridCount                         | number                                                       | 否   | 是  | 弹窗容器宽度所占用栅格数。栅格数为弹窗宽度的相对单位，值越大弹窗越宽。<br/>默认值：4 <br>取值范围：大于等于0的整数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                    |
 | maskRect<sup>10+</sup>            | [Rectangle](#rectangle8类型说明)                             | 否   | 是  | 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | showInSubWindow<sup>11+</sup>     | boolean                                                      | 否   | 是  | 某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br/>默认值：false，弹窗显示在应用内，而非独立子窗口。<br/>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -73,7 +73,7 @@ type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 | 类型                                                  | 说明                 |
 | ----------------------------------------------------- | -------------------- |
-| [LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
+| import('../api/@ohos.promptAction').[LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
 
 ## AlertDialogParamWithConfirm对象说明
 

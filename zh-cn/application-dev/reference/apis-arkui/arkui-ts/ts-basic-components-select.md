@@ -863,7 +863,7 @@ showDefaultSelectedIcon(show: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | 是   | 是否显示默认选定的图标。<br/>true：显示默认选择的图标；false：不显示默认选择的图标，通过突出显示背景色来表示选中。<br/>默认值：false。<br/>当show为true时，若设置了selectedOptionBgColor选中项的背景色时，则同时显示选中项的背景色和默认选定的图标；若未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。 |
+| show  | boolean | 是   | 是否显示默认选定的图标。<br/>true：显示默认选择的图标；false：不显示默认选择的图标，通过突出显示背景色来表示选中。<br/>默认值：false<br/>当show为true时，若设置了selectedOptionBgColor选中项的背景色时，则同时显示选中项的背景色和默认选定的图标；若未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。 |
 
 ### textModifier<sup>20+</sup>
 

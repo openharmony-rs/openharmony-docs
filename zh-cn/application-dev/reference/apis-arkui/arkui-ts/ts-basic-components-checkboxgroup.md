@@ -76,7 +76,7 @@ selectAll(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。<br/>若同组的[Checkbox](ts-basic-components-checkbox.md)显式设置了select属性，则Checkbox的优先级高 |
+| value  | boolean | 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。<br/>若同组的[Checkbox](ts-basic-components-checkbox.md)显式设置了select属性，则Checkbox的优先级高。 |
 
 ### selectAll<sup>18+</sup>
 
@@ -381,7 +381,6 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | 否 | 否 |当前多选框群组名称，用于标识和关联Checkbox与CheckboxGroup，与Checkbox的group属性值相同时属于同一群组。 |
 | status | [SelectStatus](#selectstatus枚举说明)| 否 | 否 | 表示多选框群组的选中状态。 |
-| enabled | boolean | 否 | 否 |多选框群组是否可用。值为true时，内容区可响应triggerChange等操作；值为false时，不响应triggerChange操作。 |
 | triggerChange |Callback\<boolean>| 否 | 否 |触发多选框群组选中状态变化。true表示从部分选中或未选中变为全部选中，false表示从全部选中或部分选中变为全部未选中。 |
 
 ## 示例
@@ -529,7 +528,9 @@ struct Index {
 
 ### 示例3（自定义多选框样式）
 
-该示例通过[contentModifier](#contentmodifier21)属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。从API version 21开始支持。
+该示例通过[contentModifier](#contentmodifier21)属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。
+
+从API version 21开始，支持contentModifier属性。
 
 ```ts
 // xxx.ets
