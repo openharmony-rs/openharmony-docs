@@ -9,8 +9,8 @@
 组件提供了一些属性和接口，可用于配置组件对拖拽事件的响应行为，或影响系统对拖拽事件的处理方式，包括是否允许被拖拽，自定义拖拽预览图的外观等。
 
 > **说明：**
-> 
-> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -87,7 +87,7 @@ dragPreview(value: CustomBuilder | DragItemInfo | string): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | 是   | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的预览图时，则长按浮起的预览图以[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)设置的预览图为准。开发者在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中返回的背板图优先级低于[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)设置的预览图，当设置了[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图时，拖拽过程中的背板图使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图。由于[CustomBuilder](ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](ts-appendix-enums.md#visibility)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。|
+| value  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | 是   | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的预览图时，则长按浮起的预览图以[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)设置的预览图为准。开发者在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中返回的背板图优先级低于[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)设置的预览图，当设置了[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图时，拖拽过程中的背板图使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图。由于[CustomBuilder](ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](ts-appendix-enums.md#visibility)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。|
 
 **返回值：**
 
@@ -113,14 +113,14 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| preview  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | 是   | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)拖拽方式中有效。<br/>当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的预览图时，则长按浮起的预览图以[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)设置的预览图为准。开发者在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中返回的背板图优先级低于[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)设置的预览图，当设置了[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图时，拖拽过程中的背板图使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图。由于[CustomBuilder](ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)方式。<br/> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](ts-appendix-enums.md#visibility)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。|
-| config | [PreviewConfiguration](ts-universal-events-drag-drop.md#previewconfiguration15) | 否 | 对自定义拖拽过程中的预览图进行配置。<br/>只对[dragPreview](#dragpreview11)中的预览生效。|
+| preview  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | 是   | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的预览图时，则长按浮起的预览图以[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)设置的预览图为准。开发者在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中返回的背板图优先级低于[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)设置的预览图，当设置了[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图时，拖拽过程中的背板图使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)预览图。由于[CustomBuilder](ts-types.md#custombuilder8)需要离线渲染之后才能使用，因此会增加预览图生成的性能开销和时延，推荐优先使用 [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件[Visibility](ts-appendix-enums.md#visibility)属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。|
+| config | [PreviewConfiguration](ts-universal-events-drag-drop.md#previewconfiguration15) | 否 | 对自定义拖拽过程中的预览图进行配置，仅对[dragPreview](#dragpreview11)中的预览生效。当需要配置预览图是否仅用于浮起效果、是否延迟创建等自定义预览行为时传入该参数；不传入时，使用系统默认的拖拽预览行为。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## dragPreviewOptions<sup>11+</sup>
 
@@ -141,7 +141,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 | 参数名 | 类型                                                            | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | 是   | 设置拖拽过程中预览图处理模式及数量角标的显示。|
-| options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| 否   | 设置拖拽过程中预览图浮起的交互模式。<br/>默认值：空|
+| options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| 否   | 设置拖拽过程中预览图浮起的交互模式。当需要启用多选聚拢、默认点按效果、禁用浮起、边缘自动滚屏或震动反馈等交互能力时传入该参数；不传入该参数时，拖拽交互按[DragInteractionOptions](#draginteractionoptions12)中各字段的默认值处理。|
 
 **返回值：**
 
@@ -158,10 +158,10 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 <!--Table: 20%; 27%; 8%; 8%; 37%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | --- |
-| mode | [DragPreviewMode](#dragpreviewmode11枚举说明) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11枚举说明)><sup>12+</sup> | 否 | 是 | 表示拖拽过程中背板图处理模式。<br/>默认值：DragPreviewMode.AUTO<br/>当组件同时设置DragPreviewMode.AUTO和其它枚举值时，以DragPreviewMode.AUTO为准，其它枚举值设置无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | 否 | 是 | 控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2<sup>31</sup>-1]，超过取值范围时会按默认状态处理。当设置为浮点数时，只显示整数部分。<br/>**说明：** <br>在多选拖拽场景，需通过该接口设置拖拽对象的数量。<br/>默认值：true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式（参考示例6），当前支持透明度，阴影，背景模糊度，圆角，材质效果。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br/>1.透明度。<br/>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。<br/>2.阴影。<br/>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br/>3.背景模糊度。<br/>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br/>4.圆角。<br/>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br/>5.材质效果，从API版本26.0.0开始支持。<br>通过[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)设置系统材质效果。<br/>默认值：空，拖拽背板不设置背板图样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** <br>1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用[dragPreview](#dragpreview11)自定义不包含背景模糊和材质效果的预览。<br>2.[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的[colorInvert](../arkts-apis-uimaterial.md#immersiveoptions)参数在拖拽中不生效。|
-| sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br/>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| mode | [DragPreviewMode](#dragpreviewmode11枚举说明) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11枚举说明)><sup>12+</sup> | 否 | 是 | 表示拖拽过程中背板图处理模式。<br>默认值：DragPreviewMode.AUTO<br>当组件同时设置DragPreviewMode.AUTO和其它枚举值时，以DragPreviewMode.AUTO为准，其它枚举值设置无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | 否 | 是 | 控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2<sup>31</sup>-1]，超过取值范围时会按默认值true处理。当设置为浮点数时，只显示整数部分。<br>**说明：** <br>在多选拖拽场景，需通过该接口设置拖拽对象的数量。<br>默认值：true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式（参考示例6），当前支持透明度、阴影、背景模糊度、圆角、材质效果。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br>1.透明度。<br>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或超出0-1范围的值时不透明。<br>2.阴影。<br>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br>3.背景模糊度。<br>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br>4.圆角。<br>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br>5.材质效果，从API版本26.0.0开始支持。<br>通过[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)设置系统材质效果。<br>默认值：空，拖拽背板图不设置样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** <br>1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用[dragPreview](#dragpreview11)自定义不包含背景模糊和材质效果的预览。<br>2.[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的[colorInvert](../arkts-apis-uimaterial.md#immersiveoptions)参数在拖拽中不生效。|
+| sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
 
@@ -201,11 +201,11 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 <!--Table: 25%; 15%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | ---- |
-| isMultiSelectionEnabled | boolean | 否 | 是 | 表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](ts-container-grid.md)和[List](ts-container-list.md)组件中的[GridItem](ts-container-griditem.md)组件和[ListItem](ts-container-listitem.md)组件生效。<br/>当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](#dragpreview11)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。<br/>不支持组件绑定[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)中参数存在isShown的模式。<br/>默认值：false<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| defaultAnimationBeforeLifting | boolean | 否 | 是 | 表示是否启用长按浮起阶段组件自身的默认点按效果（缩小）。true表示启用默认点按效果，false表示不启用默认点按效果。<br/>默认值：false <br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| isLiftingDisabled<sup>15+</sup> | boolean | 否 | 是 | 表示长按拖拽时，是否禁用浮起效果。true表示禁用浮起效果，false表示不禁用浮起效果。<br/>如果设置为true，当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)时，仅弹出配置的自定义菜单预览。 <br/>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| enableEdgeAutoScroll<sup>18+</sup> | boolean | 否 | 是 | 设置在拖拽至可滚动组件边缘时是否触发自动滚屏。true表示触发自动滚屏，false表示不触发自动滚屏。<br />默认值：true<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
-| enableHapticFeedback<sup>18+</sup> | boolean | 否 | 是 | 表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)）场景生效。<br/>**注意：** 仅当应用具备 ohos.permission.VIBRATE 权限，且用户启用了触感反馈时才会生效。<br/>默认值：false<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| isMultiSelectionEnabled | boolean | 否 | 是 | 表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](ts-container-grid.md)和[List](ts-container-list.md)组件中的[GridItem](ts-container-griditem.md)组件和[ListItem](ts-container-listitem.md)组件生效。<br>当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](#dragpreview11)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。<br>不支持组件绑定[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)中参数存在isShown的模式。<br>默认值：false<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| defaultAnimationBeforeLifting | boolean | 否 | 是 | 表示是否启用长按浮起阶段组件自身的默认点按效果（缩小）。true表示启用默认点按效果，false表示不启用默认点按效果。<br>默认值：false <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| isLiftingDisabled<sup>15+</sup> | boolean | 否 | 是 | 表示长按拖拽时，是否禁用浮起效果。true表示禁用浮起效果，false表示不禁用浮起效果。<br>如果设置为true，当组件支持拖拽并同时设置[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)时，仅弹出配置的自定义菜单预览。 <br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| enableEdgeAutoScroll<sup>18+</sup> | boolean | 否 | 是 | 设置在拖拽至可滚动组件边缘时是否触发自动滚屏。true表示触发自动滚屏，false表示不触发自动滚屏。<br>默认值：true<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| enableHapticFeedback<sup>18+</sup> | boolean | 否 | 是 | 表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)）场景生效。<br>**注意：** 仅当应用具备 ohos.permission.VIBRATE 权限，且用户启用了触感反馈时才会生效。<br>默认值：false<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## UniformDataType
 
@@ -250,7 +250,7 @@ struct ImageExample {
   @State uri: string = "";
   @State aBlockArr: string[] = [];
   @State bBlockArr: string[] = [];
-  @State AVisible: Visibility = Visibility.Visible;
+  @State aVisible: Visibility = Visibility.Visible;
   @State dragSuccess: boolean = false;
 
   build() {
@@ -263,16 +263,16 @@ struct ImageExample {
           .width(100)
           .height(100)
           .border({ width: 1 })
-          .visibility(this.AVisible)
+          .visibility(this.aVisible)
           .draggable(true)
           .onDragEnd((event: DragEvent) => {
             let ret = event.getResult();
             if (ret == 0) {
-              console.info("enter ret == 0")
-              this.AVisible = Visibility.Hidden;
+              console.info('enter ret == 0');
+              this.aVisible = Visibility.Hidden;
             } else {
-              console.info("enter ret != 0")
-              this.AVisible = Visibility.Visible;
+              console.info('enter ret != 0');
+              this.aVisible = Visibility.Visible;
             }
           })
       }
@@ -322,14 +322,14 @@ struct ImageExample {
                   .border({ width: 1 })
               }
               .margin({ left: 30, top: 30 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }
           .border({ width: 1 })
           .height('90%')
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
           .onDrop((event?: DragEvent, extraParams?: string) => {
-            console.info("enter onDrop")
+            console.info('enter onDrop');
             let dragData: UnifiedData = (event as DragEvent).getData() as UnifiedData;
             if (dragData != undefined) {
               let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
@@ -344,7 +344,7 @@ struct ImageExample {
               console.info(`dragData  is undefined`)
             }
             console.info("ondrop udmf data");
-            this.dragSuccess = true
+            this.dragSuccess = true;
           })
         }
         .height("50%")
@@ -371,7 +371,7 @@ struct DragPreviewDemo {
   @Builder
   dragPreviewBuilder() {
     Column() {
-      Text("dragPreview")
+      Text('dragPreview')
         .width(150)
         .height(50)
         .fontSize(20)
@@ -383,7 +383,7 @@ struct DragPreviewDemo {
   }
 
   @Builder
-  MenuBuilder() {
+  menuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)
@@ -412,7 +412,7 @@ struct DragPreviewDemo {
         Image($r('app.media.image'))
           .width("30%")
           .draggable(true)
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+          .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
             console.info("Image onDragStart")
           })
@@ -435,7 +435,7 @@ struct DragPreviewDemo {
 // xxx.ets
 @Entry
 @Component
-struct dragPreviewOptionsDemo {
+struct DragPreviewOptionsDemo {
   build() {
     Row() {
       Column() {
@@ -504,7 +504,7 @@ struct Example {
           .onDragStart(() => {
 
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -545,7 +545,7 @@ struct Example {
           .onDragStart(() => {
 
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -568,22 +568,22 @@ import { ImageModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct dragPreviewOptionsDemo {
+struct DragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
-  @State OpacityIndex: number = 0
-  @State OpacityList: (number | undefined | null)[] = [
+  @State opacityIndex: number = 0
+  @State opacityList: (number | undefined | null)[] = [
     0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null
   ]
 
   build() {
     Row() {
       Column() {
-        Text(this.OpacityList[this.OpacityIndex] + "")
-        Button("Opacity")
+        Text(this.opacityList[this.opacityIndex] + "")
+        Button('Opacity')
           .onClick(() => {
-            this.OpacityIndex++
-            if (this.OpacityIndex > this.OpacityList.length - 1) {
-              this.OpacityIndex = 0
+            this.opacityIndex++;
+            if (this.opacityIndex > this.opacityList.length - 1) {
+              this.opacityIndex = 0;
             }
           })
         // $r('app.media.image')需要替换为开发者所需的图像资源文件
@@ -592,7 +592,7 @@ struct dragPreviewOptionsDemo {
           .width("100%")
           .draggable(true)
           .dragPreviewOptions({
-            modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier
+            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex]) as ImageModifier
           })
       }
       .width("50%")
@@ -1080,10 +1080,10 @@ struct Index {
 @Component
 struct Index {
   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-  private iconStr: ResourceStr = $r("app.media.app_icon")
+  private iconStr: ResourceStr = $r('app.media.app_icon');
 
   @Builder
-  MyPreview() {
+  myPreview() {
     // $r('app.media.image')需要替换为开发者所需的图像资源文件
     Image($r('app.media.image'))
       .width(200)
@@ -1091,7 +1091,7 @@ struct Index {
   }
 
   @Builder
-  MyMenuPreviewSame() {
+  myMenuPreviewSame() {
     Column() {
       // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
@@ -1101,7 +1101,7 @@ struct Index {
   }
 
   @Builder
-  MyMenuPreview() {
+  myMenuPreview() {
     Column() {
       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.startIcon'))
@@ -1111,18 +1111,10 @@ struct Index {
   }
 
   @Builder
-  MyMenu() {
+  myMenu() {
     Menu() {
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-    }
-  }
-
-  @Builder
-  SubMenu() {
-    Menu() {
-      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
     }
   }
 
@@ -1134,10 +1126,10 @@ struct Index {
       Image($r('app.media.image'))
         .width(200)
         .height(200)
-        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-          preview: this.MyMenuPreviewSame
+        .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+          preview: this.myMenuPreviewSame
         })
-        .dragPreview(this.MyPreview)
+        .dragPreview(this.myPreview)
         .dragPreviewOptions({
           sizeChangeEffect: DraggingSizeChangeEffect.SIZE_TRANSITION
         })
@@ -1149,10 +1141,10 @@ struct Index {
       Image($r('app.media.image'))
         .width(200)
         .height(200)
-        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
-          preview: this.MyMenuPreview
+        .bindContextMenu(this.myMenu, ResponseType.LongPress, {
+          preview: this.myMenuPreview
         })
-        .dragPreview(this.MyPreview)
+        .dragPreview(this.myPreview)
         .dragPreviewOptions({
           sizeChangeEffect: DraggingSizeChangeEffect.SIZE_CONTENT_TRANSITION
         })
@@ -1240,12 +1232,12 @@ struct CustomExample {
         .allowDrop(['custom.card'])
         .onDrop((event: DragEvent) => {
           console.info('setData onDrop success');
-          let data = event.getData()
+          let data = event.getData();
           let arr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
           if (arr.length > 0) {
             if (arr[0].getTypes()[0] === 'custom.card') {
               let customCardData = arr[0].getValue() as Record<string, string>;
-              this.droppedItems.push(customCardData.value)
+              this.droppedItems.push(customCardData.value);
             }
           }
         })
@@ -1269,8 +1261,8 @@ struct CustomExample {
 // 自定义卡片组件
 @Component
 struct CustomCard {
-  title: string = '默认标题'
-  color: Color = Color.Gray
+  title: string = '默认标题';
+  color: Color = Color.Gray;
 
   build() {
     Column() {
@@ -1308,7 +1300,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct dragPreviewMaterialDemo {
+struct DragPreviewMaterialDemo {
   @State materialIndex: number = 0;
   @State materialName: string = 'ULTRA_THIN';
   // 材质样式列表
@@ -1332,11 +1324,11 @@ struct dragPreviewMaterialDemo {
 
         Button('切换材质样式')
           .onClick(() => {
-            this.materialIndex++
+            this.materialIndex++;
             if (this.materialIndex > this.materialList.length - 1) {
-              this.materialIndex = 0
+              this.materialIndex = 0;
             }
-            this.materialName = this.materialNames[this.materialIndex]
+            this.materialName = this.materialNames[this.materialIndex];
           })
           .margin({ bottom: 20 })
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
 
 ## 概述
 
-UI输入事件定义。
+ArkUI_UIInputEvent用于表示ArkUI中的UI输入事件，供相关事件接口传递和处理输入事件信息，适用于需要识别、分发或响应用户输入事件的场景。
 
 **起始版本：** 12
 

@@ -24,22 +24,22 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | (event: [KeyEvent](#keyevent对象说明)) => void | 是   | 获得KeyEvent对象。 |
+| event  | (event: [KeyEvent](#keyevent对象说明)) => void | 是   | 按键事件回调函数，用于在组件获焦后接收KeyEvent对象并处理按键事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onKeyEvent<sup>15+</sup>
 onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
-当绑定该方法的组件获焦后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
+当绑定该方法的组件获焦后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被消费，并阻止事件冒泡，效果等同于调用`stopPropagation`。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -47,25 +47,25 @@ onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 按键事件的回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 按键事件回调函数，用于接收KeyEvent对象并处理按键事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onKeyPreIme<sup>12+</sup>
 
-onKeyPreIme(event: Callback<KeyEvent, boolean>): T
+onKeyPreIme(event: Callback\<KeyEvent, boolean>): T
 
 绑定该方法的组件获焦后，按键动作优先触发该回调。
 
-该回调的返回值为`true`时，视作该按键事件已被消费，后续的事件回调（`keyboardShortcut`、输入法事件、`onKeyEventDispatch`、`onKeyEvent`）会被拦截，不再触发。
+该回调的返回值为`true`时，视作该按键事件已被消费，后续的事件回调（`keyboardShortcut`、输入法事件、`onKeyEventDispatch`、`onKeyEvent`）会被拦截，不再触发；返回`false`时，视作该按键事件未被消费，后续事件回调可继续触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -73,17 +73,17 @@ onKeyPreIme(event: Callback<KeyEvent, boolean>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 处理按键事件的回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 按键事件预处理回调函数，用于接收KeyEvent对象并在输入法事件前处理按键事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onKeyEventDispatch<sup>15+</sup>
 
@@ -91,7 +91,7 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。从API version 23开始，支持构造KeyEvent进行分发。API version 22及之前版本，不支持构造KeyEvent进行分发，只支持分发已有的按键事件。
 
-该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
+该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理；返回`false`时，视作该按键事件未被消费，可继续冒泡给父组件处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -99,17 +99,17 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 处理按键事件分发的回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> | 是   | 按键事件分发回调函数，用于接收KeyEvent对象并处理当前组件收到的按键事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 
 ## KeyEvent对象说明
@@ -118,19 +118,19 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 | 名称                                    | 类型                    | 只读    |  可选   |  说明                         |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
-| type                                  | [KeyType](ts-appendix-enums.md#keytype) |  否  |  否     |按键的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| keyCode | number           |  否        |  否     |按键的键值。按键设备提供的键值请参考[KeyCode](../../apis-input-kit/js-apis-keycode.md#keycode)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| keyText                               | string                   |  否   |  否     |按键的名称。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  否 |  否     |触发当前按键的输入设备类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| deviceId                              | number                |  否    |  否     |触发当前按键的输入设备ID。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| metaKey                               | number            |  否         |  否     |按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| timestamp                             | number                 |  否      |  否     |事件时间戳。触发事件时距离系统启动的时间间隔，单位：ns。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| stopPropagation                       | () => void             |  否    |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
-| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br/>默认值：IntentionCode.INTENTION_UNKNOWN。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
-| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
-| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
-| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| type                                  | [KeyType](ts-appendix-enums.md#keytype) |  否  |  否     |按键的类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyCode | number           |  否        |  否     |按键的键值。按键设备提供的键值请参考[KeyCode](../../apis-input-kit/js-apis-keycode.md#keycode)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyText                               | string                   |  否   |  否     |按键的名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  否 |  否     |触发当前按键的输入设备类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
+| deviceId                              | number                |  否    |  否     |触发当前按键的输入设备ID。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
+| metaKey                               | number            |  否         |  否     |按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| timestamp                             | number                 |  否      |  否     |事件时间戳。触发事件时距离系统启动的时间间隔，单位：ns。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| stopPropagation                       | () => void             |  否    |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
+| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br>默认值：IntentionCode.INTENTION_UNKNOWN。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true：锁定；false：解锁）。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。                     |
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -144,13 +144,13 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | 是   | 修饰键列表。支持修饰键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys | Array&lt;string&gt; | 是   | 修饰键列表。支持修饰键 'Ctrl'\| 'Alt' \| 'Shift'。<br>**说明：**<br>此接口不支持在手写笔场景下使用。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
@@ -184,7 +184,7 @@ type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').Intent
 
 ### 示例1（触发onKeyEvent回调）
 
-该示例通过按钮设置了按键事件。按钮获焦时，按下按键可触发onKeyEvent回调。按键事件触发的流程和具体时机参考[按键事件数据流](../../../ui/arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
+该示例为按钮设置按键事件。按钮获焦时，按下按键可触发onKeyEvent回调。按键事件触发的流程和具体时机参考[按键事件数据流](../../../ui/arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
 
 ```ts
 // xxx.ets
@@ -201,13 +201,13 @@ struct KeyEventExample {
         .onKeyEvent((event?: KeyEvent) => {
           if (event) {
             if (event.type === KeyType.Down) {
-              this.eventType = 'Down'
+              this.eventType = 'Down';
             }
             if (event.type === KeyType.Up) {
-              this.eventType = 'Up'
+              this.eventType = 'Up';
             }
             this.text = 'KeyType:' + this.eventType + '\nkeyCode:' + event.keyCode + '\nkeyText:' + event.keyText +
-              '\nintentionCode:' + event.intentionCode
+              '\nintentionCode:' + event.intentionCode;
           }
         })
       Text(this.text).padding(15)
@@ -216,7 +216,7 @@ struct KeyEventExample {
 }
 ```
 
- ![keyEvent](figures/keyEvent.gif) 
+ ![keyEvent](figures/keyEvent.gif)
 
 ### 示例2（获取Unicode码值）
 
@@ -237,21 +237,21 @@ struct KeyEventExample {
         .onKeyEvent((event?: KeyEvent) => {
           if (event) {
             if (event.type === KeyType.Down) {
-              this.eventType = 'Down'
+              this.eventType = 'Down';
             }
             if (event.type === KeyType.Up) {
-              this.eventType = 'Up'
+              this.eventType = 'Up';
             }
-            if (event.unicode == 97) {
-              this.keyType = 'a'
-            } else if (event.unicode == 65) {
-              this.keyType = 'A'
+            if (event.unicode === 97) {
+              this.keyType = 'a';
+            } else if (event.unicode === 65) {
+              this.keyType = 'A';
             } else {
-              this.keyType = ' '
+              this.keyType = ' ';
             }
             this.text =
               'KeyType:' + this.eventType + '\nUnicode:' + event.unicode + '\nkeyCode:' + event.keyCode + '\nkeyType:' +
-              this.keyType
+              this.keyType;
           }
         })
       Text(this.text).padding(15)
@@ -260,7 +260,7 @@ struct KeyEventExample {
 }
 ```
 
-![keyEvent](figures/keyEvent_unicode.gif) 
+![keyEvent](figures/keyEvent_unicode.gif)
 
 ### 示例3（触发onKeyPreIme回调）
 
@@ -276,14 +276,14 @@ struct PreImeEventExample {
   build() {
     Column() {
       Search({
-        placeholder: "Search..."
+        placeholder: 'Search...'
       })
-        .width("80%")
-        .height("40vp")
-        .border({ radius: "20vp" })
+        .width('80%')
+        .height('40vp')
+        .border({ radius: '20vp' })
         .onKeyPreIme((event: KeyEvent) => {
           // 使用方向左键不生效
-          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
+          if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }
           return false;
@@ -299,8 +299,8 @@ struct PreImeEventExample {
 
 >**说明：**
 >
-> 1. onKeyEvent事件默认是冒泡的。  
-> 2. 事件冒泡：在一个树形结构中，当子节点处理完一个事件后，再将该事件交给它的父节点处理。  
+> 1. onKeyEvent事件默认是冒泡的。
+> 2. 事件冒泡：在一个树形结构中，当子节点处理完一个事件后，再将该事件交给它的父节点处理。
 > 3. 可以在[onKeyEvent<sup>15+</sup>](#onkeyevent15)中，通过返回true消费按键事件阻止冒泡，效果等同于stopPropagation。
 
 ```ts
@@ -360,4 +360,4 @@ struct KeyEventExample {
 }
 ```
 
-![keyEvent4](figures/keyEvent_unicode4.gif) 
+![keyEvent4](figures/keyEvent_unicode4.gif)

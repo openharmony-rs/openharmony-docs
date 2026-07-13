@@ -56,26 +56,26 @@ struct HitTestBehaviorExample {
     Stack() {
       Button('outer button')
         .onTouch((event) => {
-          console.info(`outer button touched type: ${(event as TouchEvent).type}`)
+          console.info(`outer button touched type: ${(event as TouchEvent).type}`);
         })
       // inner stack
       Stack() {
         Button('inner button')
           .onTouch((event) => {
-            console.info(`inner button touched type: ${(event as TouchEvent).type}`)
+            console.info(`inner button touched type: ${(event as TouchEvent).type}`);
           })
       }
       .width("100%").height("100%")
       .hitTestBehavior(HitTestMode.Block)
       .onTouch((event) => {
-        console.info(`stack touched type: ${(event as TouchEvent).type}`)
+        console.info(`stack touched type: ${(event as TouchEvent).type}`);
       })
 
       Text('Transparent')
         .hitTestBehavior(HitTestMode.Transparent)
-        .width("100%").height("100%")
+        .width('100%').height('100%')
         .onTouch((event) => {
-          console.info(`text touched type: ${(event as TouchEvent).type}`)
+          console.info(`text touched type: ${(event as TouchEvent).type}`);
         })
     }.width(300).height(300)
   }
@@ -141,7 +141,7 @@ struct BlockHierarchy {
 
         Text('Transparent')
           .hitTestBehavior(HitTestMode.Transparent)
-          .width("100%").height("100%")
+          .width('100%').height('100%')
           .onTouch((event) => {
             console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
           })
@@ -189,7 +189,7 @@ struct BlockDescendants {
             })
         }
         .width("100%").height("100%")
-        // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试
+        // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子、孙子等）也不响应触摸测试
         .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
         .onTouch((event) => {
           console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
@@ -197,7 +197,7 @@ struct BlockDescendants {
 
         Text('Transparent')
           .hitTestBehavior(HitTestMode.Transparent)
-          .width("100%").height("100%")
+          .width('100%').height('100%')
           .onTouch((event) => {
             console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
           })
@@ -237,7 +237,7 @@ struct Index {
         .height('100%')
         .width('100%')
         .onTouch(() => {
-          console.info('background hit test!')
+          console.info('background hit test!');
         })
       Stack() {
         // 点击按钮进行触摸测试

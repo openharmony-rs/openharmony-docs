@@ -20,6 +20,8 @@
 
 提供ArkUI在Native侧的UI能力，如UI组件创建、销毁、树节点操作、属性设置、事件监听等。详细介绍请参考[接入ArkTS页面](../../ui/ndk-access-the-arkts-page.md)。
 
+上述能力适用于Native侧接入ArkTS页面并处理拖拽、按键、手势、动画和UI节点管理的场景，可帮助开发者在Native模块中完成ArkUI页面交互处理和组件树管理。
+
 **起始版本：** 12
 
 ## 文件汇总

@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeGesture接口的类型定义。
+提供NativeGesture接口的类型定义，支持手势识别器、手势事件、手势打断、触摸识别器、手势收集干预以及手势参数查询与设置等能力，适用于应用通过Native接口处理手势识别、手势冲突和手势收集干预等场景。
 
 **引用文件：** <arkui/native_gesture.h>
 
@@ -66,7 +66,7 @@
 | [int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterruptinfo_getsystemrecognizertype) | - | 当要触发的是系统内置手势时，使用该方法可返回该系统内置手势的类型。 |
 | [int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInterruptInfo* info,ArkUI_TouchRecognizerHandleArray* recognizers, int32_t* size)](#oh_arkui_gestureinterruptinfo_gettouchrecognizers) | - | 从手势打断信息中获取触摸识别器。 |
 | [ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecognizerHandle recognizer)](#oh_arkui_touchrecognizer_getnodehandle) | - | 获取触摸识别器对应的组件句柄。 |
-| [int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)](#oh_arkui_touchrecognizer_canceltouch) | - | 在手势打断回调中向指定的触摸识别器发送取消触摸的事件 |
+| [int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)](#oh_arkui_touchrecognizer_canceltouch) | - | 在手势打断回调中向指定的触摸识别器发送取消触摸的事件。 |
 | [ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getactiontype) | - | 返回手势事件类型。 |
 | [const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getrawinputevent) | - | 返回手势的原始输入事件。 |
 | [int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)](#oh_arkui_longpress_getrepeatcount) | - | 返回是否为重复触发事件。 |
@@ -280,10 +280,10 @@ enum OH_ArkUI_GestureCollectIntervention
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARKUI_GESTURE_COLLECT_INTERVENTION_CONTINUE = 0 | 继续正常的手势和事件收集流程。不进行任何干预。 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | 丢弃所有待收集的低优先级手势和事件。<br/>丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。<br/>仅保留当前节点和更高优先级节点中已收集的手势。 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | 丢弃已经收集到的高优先级手势和事件。<br/>会丢弃已收集的右侧兄弟节点和当前节点上的手势。<br/>将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | 丢弃当前节点自身的手势和事件。<br/>当前节点的手势和事件将从手势树中排除。<br/>兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
-| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | 丢弃左侧兄弟节点中待收集的手势和事件。<br/>当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。<br/>将继续处理父节点以及祖先节点的收集流程。 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER = 1 | 丢弃所有待收集的低优先级手势和事件。<br>丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。<br>仅保留当前节点和更高优先级节点中已收集的手势。 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_HIGHER = 2 | 丢弃已经收集到的高优先级手势和事件。<br>会丢弃已收集的右侧兄弟节点和当前节点上的手势。<br>将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_SELF = 3 | 丢弃当前节点自身的手势和事件。<br>当前节点的手势和事件将从手势树中排除。<br>兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
+| OH_ARKUI_GESTURE_COLLECT_INTERVENTION_DISCARD_LOWER_PRIORITY_SIBLINGS = 4 | 丢弃左侧兄弟节点中待收集的手势和事件。<br>当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。<br>将继续处理父节点以及祖先节点的收集流程。 |
 
 ### ArkUI_GestureInterruptResult
 
@@ -516,7 +516,7 @@ int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recogni
 **描述：**
 
 
-在手势打断回调中向指定的触摸识别器发送取消触摸的事件
+在手势打断回调中向指定的触摸识别器发送取消触摸的事件。
 
 **起始版本：** 15
 
@@ -558,7 +558,7 @@ ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_Ges
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_GestureEventActionType](capi-native-gesture-h.md#arkui_gestureeventactiontype) | 手势事件类型。 |
+| [ArkUI_GestureEventActionType](#arkui_gestureeventactiontype) | 手势事件类型。 |
 
 ### OH_ArkUI_GestureEvent_GetRawInputEvent()
 
@@ -662,7 +662,7 @@ float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 当前手势的x轴方向速度，单位px/秒。 |
+| float | 当前手势的x轴方向速度，单位px/s。 |
 
 ### OH_ArkUI_PanGesture_GetVelocityY()
 
@@ -688,7 +688,7 @@ float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 当前手势的y轴方向速度，单位px/秒。 |
+| float | 当前手势的y轴方向速度，单位px/s。 |
 
 ### OH_ArkUI_PanGesture_GetOffsetX()
 
@@ -765,7 +765,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。单位为deg。|
+| float | 快滑手势的角度，即手指滑动的瞬时方向与水平正方向的夹角，单位为deg。 |
 
 ### OH_ArkUI_SwipeGesture_GetVelocity()
 
@@ -791,7 +791,7 @@ float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 快滑手势速度，即所有手指滑动的平均速度，单位为px/秒。 |
+| float | 快滑手势速度，即所有手指滑动的平均速度，单位为px/s。 |
 
 ### OH_ArkUI_RotationGesture_GetAngle()
 
@@ -970,7 +970,7 @@ int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| bool enabled | 使能状态。true表示使能，false表示无法使能。 |
+| bool enabled | 使能状态。true表示使能，false表示禁用。 |
 
 **返回：**
 
@@ -1050,7 +1050,7 @@ int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| [ArkUI_GestureRecognizerState](capi-native-gesture-h.md#arkui_gesturerecognizerstate)* state | 手势识别器的状态。 |
+| [ArkUI_GestureRecognizerState](#arkui_gesturerecognizerstate)* state | 手势识别器的状态。 |
 
 **返回：**
 
@@ -1374,8 +1374,8 @@ int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| [ArkUI_GestureRecognizerDisposeNotifyCallback](capi-native-gesture-h.md#arkui_gesturerecognizerdisposenotifycallback) callback | 手势识别器对象析构通知回调函数。 |
-| void* userData | 用户自定义数据。 |
+| [ArkUI_GestureRecognizerDisposeNotifyCallback](#arkui_gesturerecognizerdisposenotifycallback) callback | 手势识别器对象析构通知回调函数。 |
+| void* userData | 用户自定义数据，会在手势识别器对象析构通知回调callback中透传给调用方。 |
 
 **返回：**
 
@@ -1635,7 +1635,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 **描述：**
 
 
-设置手势最小滑动阈值表。
+设置手势最小滑动阈值表，用于需要根据不同输入工具类型配置滑动手势识别阈值的场景。
 
 **起始版本：** 19
 
@@ -1645,9 +1645,9 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| int size | 手势最小滑动阈值数组的大小。 |
-| int* toolTypeArray | 指向输入事件的工具类型数组的指针。当设置[UI_INPUT_EVENT_TOOL_TYPE](./capi-ui-input-event-h.md#anonymous2)_XXX以外的值时，设置不生效。 |
-| double* distanceArray | 指向最小滑动阈值数组的指针。单位为px。 |
+| int size | toolTypeArray和distanceArray数组的元素个数。 |
+| int* toolTypeArray | 指向输入事件工具类型数组的指针，元素取值为[UI_INPUT_EVENT_TOOL_TYPE](./capi-ui-input-event-h.md#anonymous2)_XXX；当设置该范围以外的值时，设置不生效。 |
+| double* distanceArray | 指向最小滑动阈值数组的指针，单位为px；distanceArray[i]表示toolTypeArray[i]对应工具类型的最小滑动阈值。 |
 
 **返回：**
 
@@ -1664,7 +1664,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 **描述：**
 
 
-获取手势识别器的手势移动阈值表。仅支持对通过OH_ArkUI_PanGesture_SetDistanceMap修改过的设备类型的阈值查询。默认滑动阈值可通过查询[UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN](./capi-ui-input-event-h.md#anonymous2)类型获得，其他未设置过的类型不会返回。
+获取手势识别器的手势移动阈值表。仅支持对通过OH_ArkUI_PanGesture_SetDistanceMap修改过的设备类型的阈值查询。默认滑动阈值可通过查询[UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN](./capi-ui-input-event-h.md#anonymous2)类型获得，其他未设置过的类型不会返回对应的滑动阈值。
 
 **起始版本：** 19
 
@@ -1702,7 +1702,7 @@ ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node, void* u
 | 参数项                       | 描述 |
 |---------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要设置手势收集完成回调的节点句柄。 |
-| void* userData            | 用户自定义数据。 |
+| void* userData            | 用户自定义数据，会在touchTestDone回调中作为userData参数透传给调用方。 |
 | void (\*touchTestDone)([ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)* event, [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md) recognizers, int32_t count, void* userData)             | 手势收集完成的回调函数。event为手势的基本信息，recognizers为手势识别器数组，count为手势识别器个数，userData为用户自定义数据。 |
 
 **返回：**
@@ -1746,7 +1746,7 @@ ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* 
 **描述：**
 
 
-在手指全部抬起前阻止手势识别器参与当前手势识别。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。
+在手指全部抬起前阻止手势识别器参与当前手势识别，适用于需要在手势竞争过程中动态排除指定手势识别器的场景。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。
 
 **起始版本：** 20
 
@@ -1781,7 +1781,7 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureReco
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| double allowableMovement | 长按手势识别器识别的手势的最大移动距离。<br/>单位为px。 <br/>取值范围：(0, +∞)，设置小于等于0时，按照默认值15处理。 |
+| double allowableMovement | 长按手势识别器识别的手势的最大移动距离。<br>单位为px。 <br>取值范围：(0, +∞)，设置小于等于0时，按照默认值15处理。 |
 
 **返回：**
 
@@ -1808,7 +1808,7 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureReco
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| double* allowableMovement | 指向长按手势识别器识别的手势的最大移动距离的指针。 |
+| double* allowableMovement | 指向长按手势识别器识别的手势的最大移动距离的指针，单位为px。 |
 
 **返回：**
 
@@ -1824,7 +1824,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers(cons
 
 **描述：**
 
-从手势收集拦截信息中获取手势识别器。
+从手势收集拦截信息中获取手势识别器。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；回调结束后继续使用该对象可能导致参数无效。
 
 **起始版本：** 26.0.0
 
@@ -1850,7 +1850,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers(const A
 
 **描述：**
 
-从手势收集拦截信息中获取触摸识别器句柄。
+从手势收集拦截信息中获取触摸识别器句柄。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；回调结束后继续使用该对象可能导致参数无效。
 
 **起始版本：** 26.0.0
 
@@ -1876,7 +1876,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectInterventi
 
 **描述：**
 
-设置手势收集干预模式。
+设置手势收集干预模式。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；调用后会按指定OH_ArkUI_GestureCollectIntervention值干预当前手势和事件收集流程，回调结束后使用该对象设置干预模式可能导致参数无效。
 
 **起始版本：** 26.0.0
 

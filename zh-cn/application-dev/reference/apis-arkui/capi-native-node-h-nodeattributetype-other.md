@@ -26,7 +26,7 @@ enum ArkUI_NodeAttributeType
 NODE_ENABLED = 6
 ```
 
-设置组件是否可交互，支持属性设置，属性重置和属性获取。<br>
+设置组件是否可交互，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -49,7 +49,7 @@ NODE_ENABLED = 6
 NODE_FOCUSABLE = 39
 ```
 
-获焦属性，支持属性设置，属性重置和属性获取。<br>
+获焦属性，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -104,7 +104,7 @@ NODE_CLICK_DISTANCE = 97
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 表示识别点击手势时允许手指在该范围内移动，单位为vp。 |
+| .value[0].f32 | 表示识别点击手势时允许手指在该范围内移动，取值范围为[0, +∞)，单位为vp。 |
 
 ## NODE_ALLOW_FORCE_DARK
 

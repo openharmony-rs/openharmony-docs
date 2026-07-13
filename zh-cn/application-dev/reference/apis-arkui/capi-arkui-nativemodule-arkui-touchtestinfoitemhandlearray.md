@@ -12,7 +12,7 @@ typedef ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray
 
 ## 概述
 
-定义触摸测试信息项句柄数组。
+定义触摸测试信息项句柄数组，用于表示多个触摸测试信息项句柄。
 
 **起始版本：** 22
 
