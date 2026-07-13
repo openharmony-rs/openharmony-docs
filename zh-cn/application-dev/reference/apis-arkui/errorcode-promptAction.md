@@ -114,7 +114,7 @@ The node of targetId is not in the component tree.
 
 2. 请确认targetId对应的节点已挂载在主节点树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主节点树上。
 
-## 103306 节点挂载失败导致无法打开对话框
+## 103306 节点挂载失败导致无法打开弹出框
 
 **错误信息**
 
@@ -122,15 +122,15 @@ The dialog cannot be opened due to node mount failure.
 
 **错误描述**
 
-由于节点挂载失败，无法打开对话框。
+由于节点挂载失败，无法打开弹出框。
 
 **可能原因**
 
-对话框内容节点挂载失败，无法挂载到节点树上正常渲染显示。
+弹出框内容节点挂载失败，无法挂载到节点树上正常渲染显示。
 
 **处理步骤**
 
-1. 请确认对话框内容能够正常渲染显示。
+1. 请确认弹出框内容能够正常渲染显示。
 
 2. 当[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的levelMode设置为LevelMode.EMBEDDED时，请确认levelUniqueId对应的页面节点已挂载到节点树上后再调用[present](arkts-apis-uicontext-dialogpresenter.md#present)接口。
 
@@ -152,7 +152,7 @@ The overlay cannot be opened due to the system pop-up window.
 
 等待用户关闭系统弹出窗口后重新尝试打开浮层。
 
-## 103308 子窗口创建失败导致无法打开对话框
+## 103308 子窗口创建失败导致无法打开弹出框
 
 **错误信息**
 
@@ -160,17 +160,19 @@ The dialog cannot be opened due to subwindow create failure.
 
 **错误描述**
 
-由于子窗口创建失败，无法打开对话框。
+由于子窗口创建失败，无法打开弹出框。
 
 **可能原因**
 
-当对话框需要在子窗口中显示（[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的showInSubWindow设置为true）时，子窗口创建失败。
+1. 当前页面存在系统弹出窗口，拦截浮层的显示，导致弹出框的子窗创建失败。
+
+2. 当弹出框需要在子窗口中显示（[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的showInSubWindow设置为true）时，子窗口创建失败。
 
 **处理步骤**
 
-1. 请确认当前环境支持创建子窗口后重新尝试调用[present](arkts-apis-uicontext-dialogpresenter.md#present)接口。
+1. 等待用户关闭系统弹出窗口后重新尝试打开浮层。
 
-2. 请确认未同时设置isModal为true和showInSubWindow为true。
+2. 请确认当前环境支持创建子窗口后重新尝试调用[present](arkts-apis-uicontext-dialogpresenter.md#present)接口。
 
 ## 103401 无法找到对应的文本提示框
 

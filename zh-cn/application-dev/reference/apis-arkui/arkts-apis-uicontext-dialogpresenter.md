@@ -6,11 +6,11 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供统一的Dialog API，可创建并显示固定样式对话框、自定义样式对话框，并支持更新与关闭对话框。
+提供统一的Dialog API，可创建并显示固定样式弹出框、自定义样式弹出框，并支持更新与关闭弹出框。适用于应用中需要弹出提示、确认、选择等弹出框交互的场景。
 
 > **说明：**
 >
-> - 以下API需先使用UIContext中的[getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter)方法获取到DialogPresenter对象，再通过该对象调用对应方法。
+> 以下API需先使用UIContext中的[getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter)方法获取到DialogPresenter对象，再通过该对象调用对应方法。
 
 **起始版本：** 26.1.0
 
@@ -18,11 +18,7 @@
 
 present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
-提供一个固定样式的对话框，返回对话结果。使用Promise异步回调。
-
-固定样式对话框的标题、副标题、消息、按钮及工作表项等均通过[dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions)配置，弹窗本身的样式（背景、对齐、蒙层、避让等）继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)。
-
-**起始版本：** 26.1.0
+提供一个固定样式的弹出框，返回对话结果。使用Promise异步回调。适用于使用系统统一样式展示提示或确认信息的场景。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -34,13 +30,13 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 | 参数名  | 类型                                                         | 必填 | 说明           |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions) | 否   | 固定样式对话框选项。 |
+| options | [dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions) | 否   | 固定样式弹出框的配置选项，用于配置弹出框的标题、副标题、消息、按钮及工作表项等内容。弹出框样式（背景、对齐、蒙层、避让等）继承自dialog.DialogBaseOptions。<br>**说明：** [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的isModal与showInSubWindow不能同时设置为true。 |
 
 **返回值：**
 
 | 类型                                             | 说明                                   |
 | ------------------------------------------------ | -------------------------------------- |
-| Promise&lt;[DialogResult](js-apis-dialog.md#dialogresult)&gt; | Promise对象，返回对话结果，包含对话框ID。 |
+| Promise&lt;[DialogResult](js-apis-dialog.md#dialogresult)&gt; | Promise对象，返回对话结果，包含弹出框ID。 |
 
 **错误码：**
 
@@ -48,13 +44,13 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103306   | The dialog cannot be opened due to node mount failure.       |
 | 103308   | The dialog cannot be opened due to subwindow create failure. |
 
 **示例：**
 
-该示例通过调用present接口，展示了弹出固定样式对话框并通过Promise获取对话结果的功能。
+该示例通过调用present接口，展示固定样式弹出框并通过Promise获取对话结果的功能。
 
 从API版本26.1.0开始，新增[present](#present)接口。
 
@@ -72,6 +68,7 @@ struct Index {
     Column() {
       Button('Present fixed-style dialog')
         .onClick(() => {
+          // 弹出固定样式弹出框，配置标题、消息和按钮
           this.dialogPresenter.present({
             title: 'Tips',
             message: { content: 'This is a fixed-style dialog' },
@@ -108,21 +105,7 @@ struct Index {
 
 present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Object&gt;, options?: dialog.DialogCustomOptions): Promise&lt;DialogResult&gt;
 
-提供一个自定义样式的对话框，其中包含所提供的内容，返回对话结果。使用Promise异步回调。
-
-content参数通过联合类型接受CustomBuilder或ComponentContent：
-
-- [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)：自定义对话框内容的生成器函数。
-- [CustomBuilderWithId](arkts-apis-uicontext-t.md#custombuilderwithid18)：支持在自定义弹窗内容中持有弹窗ID的生成器函数。
-- [ComponentContent](./js-apis-arkui-ComponentContent.md)：支持状态驱动更新的组件内容。
-
-自定义对话框的背景、对齐、蒙层、避让等样式通过[dialog.DialogCustomOptions](js-apis-dialog.md#dialogcustomoptions)配置（继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)）。
-
-> **说明：**
->
-> [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的isModal与showInSubWindow不能同时设置为true，否则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。
-
-**起始版本：** 26.1.0
+提供一个自定义样式的弹出框，其中包含所提供的内容，返回对话结果，使用Promise异步回调。适用于需要自定义弹出框内容、布局和样式的场景。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -134,14 +117,14 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| content | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [CustomBuilderWithId](arkts-apis-uicontext-t.md#custombuilderwithid18) \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 自定义对话框内容。 |
-| options | [dialog.DialogCustomOptions](js-apis-dialog.md#dialogcustomoptions) | 否   | 自定义对话框选项。 |
+| content | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [CustomBuilderWithId](arkts-apis-uicontext-t.md#custombuilderwithid18) \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 自定义弹出框内容，支持三种类型：CustomBuilder（自定义内容的生成器函数）、CustomBuilderWithId（支持传入ID的生成器函数）、ComponentContent（支持状态驱动更新的组件内容）。 |
+| options | [dialog.DialogCustomOptions](js-apis-dialog.md#dialogcustomoptions) | 否   | 自定义弹出框的配置选项，用于配置弹出框的背景、对齐、蒙层、避让等样式，继承自dialog.DialogBaseOptions。 |
 
 **返回值：**
 
 | 类型                                             | 说明                                   |
 | ------------------------------------------------ | -------------------------------------- |
-| Promise&lt;[DialogResult](js-apis-dialog.md#dialogresult)&gt; | Promise对象，返回对话结果，包含对话框ID。 |
+| Promise&lt;[DialogResult](js-apis-dialog.md#dialogresult)&gt; | Promise对象，返回对话结果，包含弹出框ID。 |
 
 **错误码：**
 
@@ -149,7 +132,7 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103302   | Dialog content already exist. The ComponentContent has already been opened. |
 | 103306   | The dialog cannot be opened due to node mount failure.       |
@@ -157,7 +140,7 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 
 **示例：**
 
-该示例通过调用present、update和dismiss接口，展示了弹出、更新以及关闭自定义对话框的功能。
+该示例通过调用present、update和dismiss接口，展示了弹出、更新以及关闭自定义弹出框的功能。
 
 从API版本26.1.0开始，新增[present](#present)、[update](#update)、[dismiss](#dismiss)接口。
 
@@ -244,11 +227,7 @@ struct Index {
 
 update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptions): Promise&lt;void&gt;
 
-更新已呈现的自定义对话框，无返回结果。使用Promise异步回调。
-
-content用于标识需要更新的对话框，options为需要更新的选项（背景、对齐、蒙层、避让等，继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)）。
-
-**起始版本：** 26.1.0
+更新已弹出的自定义弹出框，无返回结果。使用Promise异步回调。适用于弹出框已弹出后需要动态更新其样式或位置的交互场景。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -260,8 +239,8 @@ content用于标识需要更新的对话框，options为需要更新的选项（
 
 | 参数名  | 类型                                                         | 必填 | 说明                          |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------------- |
-| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 用于标识对话框的组件内容。     |
-| options | [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) | 否   | 要更新的对话框选项。目前仅支持更新alignment、offset、autoCancel、maskColor。  |
+| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 用于标识弹出框的组件内容。     |
+| options | [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) | 否   | 要更新的弹出框选项。目前仅支持更新alignment、offset、autoCancel、maskColor。  |
 
 **返回值：**
 
@@ -275,7 +254,7 @@ content用于标识需要更新的对话框，options为需要更新的选项（
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103303   | Dialog content not found. The ComponentContent cannot be found. |
 
@@ -287,11 +266,9 @@ content用于标识需要更新的对话框，options为需要更新的选项（
 
 dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
-关闭对话框，无返回结果。使用Promise异步回调。
+关闭弹出框，无返回结果。使用Promise异步回调。适用于在用户完成交互后关闭弹出框的场景。
 
-接受对话框ID（由[present](#present)返回的[DialogResult](js-apis-dialog.md#dialogresult)中的dialogId）或[ComponentContent](./js-apis-arkui-ComponentContent.md)引用作为target，关闭对应的对话框。
-
-**起始版本：** 26.1.0
+接受弹出框ID（由[present](#present)返回的[DialogResult](js-apis-dialog.md#dialogresult)中的dialogId）或[ComponentContent](./js-apis-arkui-ComponentContent.md)引用作为target，关闭对应的弹出框。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -303,7 +280,7 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| target | number \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 要关闭的对话框ID或组件内容。            |
+| target | number \| [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 要关闭的弹出框ID或组件内容。            |
 
 **返回值：**
 
@@ -317,13 +294,13 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103303   | Dialog content not found. The ComponentContent cannot be found. |
 
 **示例：**
 
-该示例通过调用dismiss接口，展示了通过对话框ID关闭对话框的功能。对话框的弹出可参考[present](#present)的示例。
+该示例通过调用dismiss接口，展示了通过弹出框ID关闭弹出框的功能。弹出框的弹出可参考[present](#present)的示例。
 
 从API版本26.1.0开始，新增[present](#present)、[dismiss](#dismiss)接口。
 
@@ -345,13 +322,13 @@ struct Index {
       Text('A dialog is open').fontSize(20)
       Row({ space: 10 }) {
         Button('Close dialog').onClick(() => {
-          try {
-            this.getUIContext().getDialogPresenter().dismiss(this.dialogId)
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`dismiss error code is ${code}, message is ${message}`);
-          }
+          this.getUIContext().getDialogPresenter().dismiss(this.dialogId)
+            .then(() => {
+              console.info('dismiss success');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
+            })
         })
       }
     }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
@@ -361,7 +338,7 @@ struct Index {
     Column({ space: 10 }) {
       Button('Present custom dialog')
         .onClick(() => {
-          this.dialogPresenter?.present(() => {this.customDialogComponent()},
+          this.dialogPresenter?.present(() => {this.customDialogComponent();},
             {
               isModal: true,
               backgroundColor: Color.Pink,

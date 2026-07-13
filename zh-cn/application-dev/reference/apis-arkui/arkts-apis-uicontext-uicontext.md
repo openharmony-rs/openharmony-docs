@@ -683,7 +683,9 @@ getPromptAction(): PromptAction
 
 getDialogPresenter(): DialogPresenter
 
-获取Dialog对象。
+获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -693,7 +695,7 @@ getDialogPresenter(): DialogPresenter
 
 | 类型                            | 说明                  |
 | ----------------------------- | ------------------- |
-| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象。 |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象，可用于管理和展示Dialog。 |
 
 **示例：**
 
