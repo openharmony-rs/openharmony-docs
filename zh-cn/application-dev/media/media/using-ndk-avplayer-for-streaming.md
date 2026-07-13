@@ -17,7 +17,7 @@
 **播放状态变化示意图：**
 ![Playback status change](figures/playback-status-change-ndk.png)
 
-## 开发建议
+## 注意事项
 
 当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，请参考[使用AVPlayer播放视频(C/C++)](using-ndk-avplayer-for-video-playback.md)。如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
  
