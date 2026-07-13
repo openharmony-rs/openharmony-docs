@@ -3600,4 +3600,4 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
-    ```
+  ```
