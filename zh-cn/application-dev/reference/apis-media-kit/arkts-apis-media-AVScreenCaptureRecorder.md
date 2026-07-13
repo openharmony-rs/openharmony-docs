@@ -38,7 +38,7 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。 |
+| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。关键配置项包括：fd（文件描述符）、frameWidth（视频宽度）、frameHeight（视频高度）等。详细配置说明请参考[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)。 |
 
 **返回值：**
 
@@ -357,7 +357,7 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。支持透明度。图像格式和尺寸要求请参考[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
 | config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。 |
 
 **返回值：**
@@ -492,6 +492,8 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 设置麦克风开关。使用Promise异步回调。
 
+在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。使用前需要先调用[init](#init12)接口。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **ArkTS-Dyn起始版本：** 12
@@ -621,6 +623,8 @@ ArkTS-Sta: excludePickerWindows(excludedWindows: Array\<int>): Promise\<void>
 
 设置在Picker中隐藏的窗口列表，在下一次显示Picker时生效。使用Promise异步回调。
 
+在需要排除特定窗口不被用户选择时调用此接口，例如隐藏应用自身窗口、隐私窗口或不相关的后台窗口。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **ArkTS-Dyn起始版本：** 22
@@ -686,6 +690,8 @@ if (avScreenCaptureRecorder != undefined) {
 presentPicker(): Promise\<void>
 
 录屏开始后，调用该接口再次弹出Picker，可动态更新录制源（窗口、屏幕）。使用Promise异步回调。
+
+使用前需要先调用[startRecording](#startRecording12)接口。
 
 > **说明：**
 >
@@ -817,6 +823,8 @@ if (avScreenCaptureRecorder != undefined) {
 release(): Promise\<void>
 
 释放录屏。使用Promise异步回调。
+
+在录屏功能不再使用时调用此接口释放资源，例如应用退出或录屏功能模块卸载时。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
