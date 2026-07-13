@@ -40,13 +40,13 @@
 
 ### 接口说明
 
-1. 介绍自动睡眠与强制睡眠:
+1. 介绍自动睡眠与强制睡眠：
 
    系统睡眠（sleep）指的是计算机系统进入一种低功耗状态，其中大部分硬件组件停止工作，只有最小必要的组件保持运行，以维持系统状态。系统睡眠分为两种主要类型：自动睡眠和强制睡眠。
 
    （1）自动睡眠：由系统预设的条件或用户配置自动触发的睡眠状态。通常，当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，系统会自动进入睡眠状态。
 
-   （2）强制睡眠是指用户或应用程序直接命令系统立即进入睡眠状态（如用户合上pc盖子，或主动点击菜单里的睡眠等），而不考虑当前系统状态或用户活动。
+   （2）强制睡眠是指用户或应用程序直接命令系统立即进入睡眠状态（如用户合上PC盖子，或主动点击菜单里的睡眠等），而不考虑当前系统状态或用户活动。
 
 2. RunningLockType.BACKGROUND_USER_IDLE接口的使用约束和设备差异：
 
@@ -55,7 +55,7 @@
    （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听进入强制睡眠的公共事件[common_event_enter_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，在接收到该公共事件后1s内主动释放掉该锁；是否监听退出强制睡眠的公共事件[common_event_exit_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12)并重新持有锁，由应用根据具体场景自行决策。
    > **注意**：
    > 
-   > 进入强制睡眠时系统会做兜底来强制释放该锁，确保系统能正常进入睡眠，公共事件提供给业务测一个感知强制睡眠并处理相应业务的途径。
+   > 进入强制睡眠时系统会做兜底来强制释放该锁，确保系统能正常进入睡眠，公共事件提供给业务侧一个感知强制睡眠并处理相应业务的途径。
 
 
 ### 开发步骤
@@ -139,7 +139,7 @@
      public static recordLock: runningLock.RunningLock | undefined;
 
      public static holdRunningLock(): void {
-       // 通过isSupport接口查询当前设备是否支持该类型锁
+       // 通过isSupported接口查询当前设备是否支持该类型锁
        if (!runningLock.isSupported(runningLock.RunningLockType.BACKGROUND_USER_IDLE)) {
            console.error('type BACKGROUND_USER_IDLE is not support in the device.');
            return;

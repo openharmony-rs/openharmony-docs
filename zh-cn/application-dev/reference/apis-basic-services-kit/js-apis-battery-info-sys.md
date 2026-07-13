@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从 API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)。
 
@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```js
-import {batteryInfo} from '@kit.BasicServicesKit';
+import { batteryInfo } from '@kit.BasicServicesKit';
 ```
 
 ## batteryInfo.setBatteryConfig<sup>11+</sup>
@@ -58,7 +58,7 @@ setBatteryConfig(sceneName: string, sceneValue: string): number
 **示例**：
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let sceneName = 'xxx';
   let sceneValue = '0';
@@ -102,7 +102,7 @@ getBatteryConfig(sceneName: string): string
 **示例**：
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let sceneName = 'xxx';
   let result = batteryInfo.getBatteryConfig(sceneName);
@@ -145,7 +145,7 @@ isBatteryConfigSupported(sceneName: string): boolean
 **示例**：
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let sceneName = 'xxx';
   let result = batteryInfo.isBatteryConfigSupported(sceneName);
@@ -167,7 +167,7 @@ isBatteryConfigSupported(sceneName: string): boolean
 
 **示例**：
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let estimatedRemainingChargeTimeInfo: number = batteryInfo.estimatedRemainingChargeTime;
   console.info('The estimatedRemainingChargeTimeInfo is: ' + estimatedRemainingChargeTimeInfo);
