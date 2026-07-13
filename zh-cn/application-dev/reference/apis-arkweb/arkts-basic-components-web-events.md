@@ -3231,7 +3231,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
  onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
-设置网页首次内容绘制回调函数。
+设置网页首次内容绘制时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3239,7 +3239,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。       |
+| callback | Callback<\[OnFirstContentfulPaintEvent\](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)> | 是 | 网页首次内容绘制时触发。事件对象包含导航开始时间戳、首次内容绘制耗时等性能指标。 |
 
 **示例：**
 
@@ -3727,6 +3727,10 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 当同层标签生命周期变化时触发该回调。
+
+> **说明：**
+>
+> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE）, 适用于处理标签的创建、销毁、缓存等生命周期事件<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4409,7 +4413,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
-当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
+当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4417,7 +4421,7 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) | 是 | 同层标签可见性变化时触发该回调。 |
+| callback       | [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) | 是 | 同层标签可见性变化时触发该回调。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置nativeEmbedOptions并将EmbedOptions中的supportCssDisplayChange参数设为true。 |
 
 **示例：**
 
@@ -5058,7 +5062,7 @@ Web组件检测到白屏时触发此回调。
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏原因、检测到的内容节点数等诊断信息。 |
 
 **示例：**
 
@@ -5472,7 +5476,7 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | 是    | 回调函数，设置Web组件的检测到首屏渲染。 |
+| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | 是 | 首屏渲染完成时触发。事件对象包含页面URL、导航开始时间、首屏渲染时间等性能指标。 |
 
 **示例：**
 

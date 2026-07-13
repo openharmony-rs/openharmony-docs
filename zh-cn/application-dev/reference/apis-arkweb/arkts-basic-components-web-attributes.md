@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu ](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)。
+通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)。
 
 > **说明：**
 >
@@ -21,7 +21,7 @@ Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web
 
 domStorageAccess(domStorageAccess: boolean)
 
-设置是否开启文档对象模型存储接口（DOM Storage API）权限，当属性没有显式调用时，默认不开启文档对象模型存储接口（DOM Storage API）权限。
+设置是否开启文档对象模型存储接口(DOM Storage API)权限,当属性没有显式调用时,默认不开启。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -29,7 +29,7 @@ domStorageAccess(domStorageAccess: boolean)
 
 | 参数名              | 类型    | 必填   | 说明                                 |
 | ---------------- | ------- | ---- | ------------------------------------ |
-| domStorageAccess | boolean | 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启文档对象模型存储接口权限，false表示不开启文档对象模型存储接口权限。<br>传入undefined或null时为false。 |
+| domStorageAccess | boolean | 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启，false表示不开启。<br>传入undefined或null时为false。 |
 
 > **说明：**
 >
@@ -59,7 +59,7 @@ domStorageAccess(domStorageAccess: boolean)
 
 fileAccess(fileAccess: boolean)
 
-设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md#资源访问)中的文件不受该属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
+设置是否开启应用中文件系统的访问。API version 11及以前,默认开启;API version 12及以后,默认不开启。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -67,7 +67,7 @@ fileAccess(fileAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明                   |
 | ---------- | ------- | ---- | ---------------------- |
-| fileAccess | boolean | 是    | 设置是否开启应用中文件系统的访问。<br>true表示开启应用中文件系统的访问。false表示不开启应用中文件系统的访问。<br>同时，当fileAccess为false的时候，仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问，不受fileAccess管控。<br>API version 11及以前，传入undefined或null时为true，API version 12及以后传入undefined或null时为false。 |
+| fileAccess | boolean | 是    | 设置是否开启应用中文件系统的访问。<br>true表示开启,false表示不开启。<br>同时,当fileAccess为false的时候,仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问,不受fileAccess管控。<br>API version 11及以前,传入undefined或null时为true,API version 12及以后为false。 |
 
 **示例：**
 
@@ -372,7 +372,7 @@ zoomAccess(zoomAccess: boolean)
 
 overviewModeAccess(overviewModeAccess: boolean)
 
-设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当属性没有显式调用时，默认允许使用概览模式加载网页。
+设置是否使用概览模式加载网页,即缩小内容以适应屏幕宽度。当属性没有显式调用时,默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -382,7 +382,7 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 | 参数名                | 类型    | 必填   | 说明            |
 | ------------------ | ------- | ---- | --------------- |
-| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。<br>传入undefined或null时为false。 |
+| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示使用,false表示不使用。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -783,7 +783,7 @@ copyOptions(value: CopyOptions)
 
 textZoomRatio(textZoomRatio: number)
 
-设置页面的文本缩放百分比。当属性没有显式调用时，默认缩放百分比为100%。
+设置页面的文本缩放百分比。当属性没有显式调用时,默认为100%。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -791,7 +791,7 @@ textZoomRatio(textZoomRatio: number)
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。|
+| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。默认值：100。|
 
 **示例：**
 
@@ -889,9 +889,7 @@ blockNetwork(block: boolean)
 defaultFixedFontSize(size: number)
 
 
-设置网页的默认等宽字体大小。对于html前端使用monospace字体且未指定font-size样式的元素，将按此值渲染字体大小。
-
-当属性没有显式调用时，默认等宽字体大小为13。
+设置网页的默认等宽字体大小。对于html前端使用monospace字体且未指定font-size样式的元素,将按此值渲染字体大小,默认为13。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -928,9 +926,7 @@ defaultFixedFontSize(size: number)
 defaultFontSize(size: number)
 
 
-设置网页的默认字体大小。对于html前端使用非monospace字体且未指定font-size样式的元素，将按此值渲染字体大小。
-
-当属性没有显式调用时，网页的默认字体大小为16。
+设置网页的默认字体大小。对于html前端使用非monospace字体且未指定font-size样式的元素,将按此值渲染字体大小,默认为16。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -967,9 +963,7 @@ defaultFontSize(size: number)
 minFontSize(size: number)
 
 
-设置网页字体大小最小值。对于html前端元素，若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。
-
-当属性没有显式调用时，默认网页字体大小最小值为8。
+设置网页字体大小最小值。对于html前端元素,若元素字体大小低于该接口设置值,将采用接口设置值渲染字体大小,默认为8。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1006,14 +1000,11 @@ minFontSize(size: number)
 minLogicalFontSize(size: number)
 
 
-设置网页逻辑字体大小最小值。
+设置网页逻辑字体大小最小值,默认为8。
 
-对于html前端未指定font-size样式的元素：
-1. 若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。
-2. 若minLogicalFontSize和minFontSize同时设置时，对于未指定font-size样式元素，将采用两者中的较大值。
-
-
-当属性没有显式调用时，默认网页逻辑字体大小最小值为8。
+对于html前端未指定font-size样式的元素:
+1. 若元素字体大小低于该接口设置值,将采用接口设置值渲染字体大小。
+2. 若minLogicalFontSize和minFontSize同时设置时,对于未指定font-size样式元素,将采用两者中的较大值。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1050,9 +1041,7 @@ minLogicalFontSize(size: number)
 webFixedFont(family: string)
 
 
-设置网页的fixed font字体库，用于渲染html前端使用monospace字体的元素。
-
-当属性没有显式调用时，默认网页的fixed font字体库为monospace。
+设置网页的fixed font字体库,用于渲染html前端使用monospace字体的元素,默认为monospace。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1061,7 +1050,7 @@ webFixedFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fixed font字体库。<br>传入null或undefined时为monospace。 |
+| family | string | 是    | 设置网页的fixed font字体库，传入值为字体名称字符串，如"monospace"、"Arial"等。<br>传入null或undefined时为monospace。 |
 
 **示例：**
 
@@ -1089,9 +1078,7 @@ webFixedFont(family: string)
 webSansSerifFont(family: string)
 
 
-设置网页的sans-serif font字体库，用于渲染html前端使用sans-serif字体的元素。
-
-当属性没有显式调用时，默认网页的sans-serif font字体库为sans-serif。
+设置网页的sans-serif font字体库,用于渲染html前端使用sans-serif字体的元素,默认为sans-serif。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1128,9 +1115,7 @@ webSansSerifFont(family: string)
 webSerifFont(family: string)
 
 
-设置网页的serif font字体库，用于渲染html前端使用serif字体的元素。
-
-当属性没有显式调用时，默认网页的serif font字体库为serif。
+设置网页的serif font字体库,用于渲染html前端使用serif字体的元素,默认为serif。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1167,9 +1152,7 @@ webSerifFont(family: string)
 webStandardFont(family: string)
 
 
-设置网页的standard font字体库，用于渲染html前端未指定字体样式的元素。
-
-当属性没有显式调用时，默认网页的standard font字体库为sans-serif。
+设置网页的standard font字体库,用于渲染html前端未指定字体样式的元素,默认为sans-serif。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1206,9 +1189,7 @@ webStandardFont(family: string)
 webFantasyFont(family: string)
 
 
-设置网页的fantasy font字体库，用于渲染html前端使用fantasy字体的元素。
-
-当属性没有显式调用时，默认网页的fantasy font字体库为fantasy。
+设置网页的fantasy font字体库,用于渲染html前端使用fantasy字体的元素,默认为fantasy。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1244,9 +1225,7 @@ webFantasyFont(family: string)
 webCursiveFont(family: string)
 
 
-设置网页的cursive font字体库，用于渲染html前端使用cursive字体的元素。
-
-当属性没有显式调用时，默认网页的cursive font字体库为cursive。
+设置网页的cursive font字体库,用于渲染html前端使用cursive字体的元素,默认为cursive。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1282,7 +1261,7 @@ webCursiveFont(family: string)
 
 darkMode(mode: WebDarkMode)
 
-设置Web深色模式。当属性没有显式调用时，默认Web深色模式关闭。
+设置Web深色模式。当属性没有显式调用时,默认关闭。
 
 当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。
 
@@ -1319,7 +1298,7 @@ darkMode(mode: WebDarkMode)
 
 forceDarkAccess(access: boolean)
 
-设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认网页不开启强制深色模式。
+设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效,默认不开启。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1327,7 +1306,7 @@ forceDarkAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。<br>传入null或undefined时为false。 |
+| access | boolean | 是    | 该属性仅在darkMode开启深色模式时生效。设置网页是否开启强制深色模式。<br>true表示开启,false表示不开启。<br>传入null或undefined时为false。 |
 
 **示例：**
 
@@ -1356,7 +1335,7 @@ forceDarkAccess(access: boolean)
 
 pinchSmooth(isEnabled: boolean)
 
-设置网页是否开启捏合流畅模式。该属性没有显式调用时，默认不开启捏合流畅模式。
+设置网页是否开启捏合流畅模式。该属性没有显式调用时,默认不开启。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1907,13 +1886,17 @@ Hello world!
 
 layoutMode(mode: WebLayoutMode)
 
-设置Web布局模式。当属性没有显式调用时，默认Web布局跟随系统模式。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
-
+设置Web布局模式。当属性没有显式调用时，默认Web布局跟随系统模式（WebLayoutMode.NONE）。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
 > **说明：**
 >
-> 目前只支持两种Web布局模式，分别为Web布局跟随系统（`WebLayoutMode.NONE`）和Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
+> 目前只支持两种Web布局模式，分别为
+> - Web布局跟随系统（`WebLayoutMode.NONE`）
+> - Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
+> - 当layoutMode设置为WebLayoutMode.FIT_CONTENT
+> - - [forceDisplayScrollBar](#forcedisplayscrollbar14)不支持常驻
+> - - [blankScreenDetectionConfig](#blankscreendetectionconfig22)不生效
 > - 如果Web组件宽或长度超过7680px，请在Web组件创建的时候指定`RenderMode.SYNC_RENDER`模式，否则会整个白屏。
 > - Web组件创建后不支持动态切换layoutMode模式。
 > - Web组件宽高规格：指定`RenderMode.ASYNC_RENDER`模式时，分别不超过7680px。
@@ -2164,6 +2147,10 @@ bypassVsyncCondition(condition: WebBypassVsyncCondition)
 enableNativeEmbedMode(enabled: boolean)
 
 设置是否开启同层渲染功能。当该方法没有显式调用时，默认不开启同层渲染功能。
+
+> **说明：**
+>
+> [registerNativeEmbedRule](#registernativeembedrule12)和[nativeEmbedOptions](#nativeembedoptions16)等接口依赖此属性开启时才生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3398,7 +3385,7 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | 否    | 同层渲染相关配置。<br>传入undefined或null时为`{supportDefaultIntrinsicSize: false}`。 |
+| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | 否    | 同层渲染相关配置。EmbedOptions对象包含以下属性：<br>supportDefaultIntrinsicSize（boolean类型，是否支持默认固有大小，默认为false）。<br>传入undefined或null时为`{supportDefaultIntrinsicSize: false}`。 |
 
 **示例：**
 
@@ -3878,7 +3865,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| detectConfig | [BlankScreenDetectionConfig](./arkts-basic-components-web-i.md#blankscreendetectionconfig22) | 是    | 白屏检测的策略配置。 |
+| detectConfig | [BlankScreenDetectionConfig](./arkts-basic-components-web-i.md#blankscreendetectionconfig22) | 是    | 白屏检测的策略配置。BlankScreenDetectionConfig对象包含以下属性：<br>enable（boolean类型，是否启用白屏检测，默认为false）<br>detectionTiming（Array<number>类型，检测时间点数组，单位为秒）<br>contentfulNodesCountThreshold（number类型，内容节点数量阈值）<br>detectionMethods（Array<BlankScreenDetectionMethod>类型，检测方法数组）。 |
 
 **示例：**
 
@@ -4167,7 +4154,7 @@ textZoomAtio(textZoomAtio: number)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4175,7 +4162,7 @@ textZoomAtio(textZoomAtio: number)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为正整数。<br>默认值：100。 |
+| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为(0, 2147483647]。<br>默认值：100。 |
 
 **示例：**
 
