@@ -97,7 +97,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 **示例：**
 
 ```ts
-textEmbedding.getSupportedCloudModel()
+intelligence.getSupportedCloudModel()
   .then((info: Array<intelligence.CloudModelInfo>) => {
     console.info("Succeeded in getting CloudModelInfo");
   });
