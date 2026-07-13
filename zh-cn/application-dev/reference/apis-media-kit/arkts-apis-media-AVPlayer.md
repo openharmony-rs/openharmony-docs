@@ -566,7 +566,7 @@ async function test() {
 
 getMediaSources(): Array<MediaSource | undefined>
 
-获取当前播放列表中所有媒体源的数组，可以在idle/prepared/playing/paused/completed/stopped状态调用。。
+获取当前播放列表中所有媒体源的数组，可以在idle/prepared/playing/paused/completed/stopped状态调用。
 
 **起始版本：** 26.0.0
 
