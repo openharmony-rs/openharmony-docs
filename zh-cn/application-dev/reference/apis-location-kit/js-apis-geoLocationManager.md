@@ -692,7 +692,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   ```
 
 ## geoLocationManager.onLocationChange
- 	 
+
 onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback: Callback\<Location\>): void
 
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
@@ -816,7 +816,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 
  ## geoLocationManager.offLocationChange
- 	 
+
 offLocationChange(callback?: Callback\<Location\>): void
 
 关闭位置变化订阅，并删除对应的定位请求。
@@ -870,7 +870,8 @@ offLocationChange(callback?: Callback\<Location\>): void
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
-```
+  ```
+  
 
 ## geoLocationManager.on('locationError')<sup>12+</sup>
 
