@@ -678,7 +678,7 @@ advanceToPrevMediaSource(): Promise\<void>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+| 5400108  | The previous media source does not exist in the playlist. Returned via promise. |
 
 **示例：**
 
