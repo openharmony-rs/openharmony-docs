@@ -14,6 +14,7 @@
 4. 调用[setUiContent](#setuicontent)加载页面内容。
 5. 调用[moveToGlobalDisplay](#movetoglobaldisplay)移动面板到指定位置。
 6. 调用[show](#show)显示面板。
+7. 在不需要时调用[destroyPanel](#destroypanel)销毁面板，以及取消各种类型的监听。
 
 > **说明：**
 >
@@ -736,7 +737,7 @@ selectionPanel?.show().then(() => {
 
 hide(): Promise\<void>
 
-隐藏当前划词面板。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
+隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -850,6 +851,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 此代码需放置在ArkUI页面组件的build()方法中，RelativeContainer为ArkUI内置组件，TouchEvent和TouchType为ArkUI框架内置类型
 RelativeContainer() {
   /* 
    * 页面布局内容，需要开发者根据实际补充
@@ -1040,7 +1042,7 @@ try {
 
 onDestroy(callback: Callback\<void>): void
 
-订阅划词窗口销毁事件。使用callback异步回调。
+订阅划词面板销毁事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1054,7 +1056,7 @@ onDestroy(callback: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | 是   | 回调函数，面板销毁时触发，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，调用[destroyPanel](#destroypanel)销毁面板时触发，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1075,7 +1077,7 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-取消订阅划词面板销毁事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
+取消订阅划词面板销毁事件，与[on('destroyed')](#ondestroyed)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1107,7 +1109,7 @@ try {
 
 offDestroy(callback?: Callback\<void>): void
 
-取消订阅划词窗口销毁事件。使用callback异步回调。
+取消订阅划词面板销毁事件，与[onDestroy](#ondestroy)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1174,7 +1176,7 @@ try {
 
 onHide(callback: Callback\<void>): void
 
-订阅划词窗口隐藏事件。使用callback异步回调。
+订阅划词面板隐藏事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1188,7 +1190,7 @@ onHide(callback: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | 是   | 回调函数，面板隐藏时触发，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，面板隐藏时触发，返回值为空。面板可通过调用[hide](#hide)主动隐藏，或在失焦时自动隐藏。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1209,7 +1211,7 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-取消订阅划词面板隐藏事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
+取消订阅划词面板隐藏事件，与[on('hidden')](#onhidden)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1241,7 +1243,7 @@ try {
 
 offHide(callback?: Callback\<void>): void
 
-取消订阅划词窗口隐藏事件。使用callback异步回调。
+取消订阅划词面板隐藏事件，与[onHide](#onhide)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
