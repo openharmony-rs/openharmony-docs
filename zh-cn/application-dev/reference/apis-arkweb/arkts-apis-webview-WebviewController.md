@@ -11302,12 +11302,12 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 设置是否启用默认错误页，且支持控制subframe错误页是否启用。
 
-当enable设置为true时，如果主页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调；当enable和includeSubframe同时为true时，子页面加载发生错误也会触发onOverrideErrorPage回调，可在该回调接口中设置自定义的错误展示页面。
+当enable设置为true时，如果主页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调；当enable和includeSubframe同时为true时，subframe加载发生错误也会触发onOverrideErrorPage回调，可在该回调中设置自定义的错误展示页面。
 
 > **说明：**
 
 > - 当enable设置为false时，includeSubframe设置不生效。
-> - includeSubframe的配置同样受onOverrideErrorPage回调影响，可在该接口中设置自定义subframe的错误展示页面。
+> - includeSubframe的配置也受onOverrideErrorPage回调控制，可在该回调中设置自定义subframe的错误展示页面。
 
 **起始版本：** 26.0.0
 
@@ -11350,13 +11350,13 @@ struct WebComponent {
 ```
 
 ```html
-<!dectype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>iframe</title>
-</head>>
+</head>
 <body>
 <iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </body>
@@ -11367,11 +11367,11 @@ struct WebComponent {
 
 getSubframeErrorPageEnabled(): boolean
 
-查询是否启用了subframe默认错误页功能。
+查询是否启用了subframe错误页功能。
 
 > **说明：**
 >
-> - 不开启默认错误页功能或者没有设置subframe错误页功能时，返回false。
+> - 不启用默认错误页功能或者没有启用subframe错误页功能时，返回false。
 
 **起始版本：** 26.0.0
 
@@ -11413,13 +11413,13 @@ struct WebComponent {
 ```
 
 ```html
-<!dectype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>iframe</title>
-</head>>
+</head>
 <body>
 <iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </body>
