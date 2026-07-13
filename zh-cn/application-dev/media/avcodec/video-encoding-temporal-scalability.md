@@ -251,7 +251,7 @@
      
     示例代码如下：
     <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-          
+    
     ``` C++
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
     {
