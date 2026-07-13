@@ -71,7 +71,7 @@
 | const char * OH_PLAYER_BUFFERING_TYPE | 获取缓冲更新消息类型的关键字，对应值类型是[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlayerBufferingType类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_BUFFERING_VALUE | 获取缓冲更新消息数值的关键字，对应值类型是int32_t，参见[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。<br> 当缓冲更新消息类型是AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_SEEK_POSITION | 获取Seek后播放进度的关键字，对应值类型是int32_t。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
-| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字, 对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字，对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_PLAYBACK_RATE | 获取有效播放速率的关键字，对应值类型是浮点数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_BITRATE | 获取比特率信息的关键字，对应值类型是uint32_t。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_CURRENT_POSITION | 获取播放进度信息的关键字，对应值类型是int32_t，单位为毫秒。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
@@ -80,32 +80,32 @@
 | const char * OH_PLAYER_VIDEO_HEIGHT | 获取视频高度信息的关键字，对应值类型是int32_t。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_MESSAGE_TYPE | 获取播放器消息信息的关键字，对应值类型是int32_t。<br> 1：视频帧开始渲染。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_IS_LIVE_STREAM | 获取媒体资源是否为直播类型信息的关键字，对应值类型是int32_t。<br> 1：直播。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
-| const char * OH_PLAYER_MD_KEY_HAS_VIDEO | 获取媒体资源是否包含视频轨信息的关键字，对应值类型int32_t。<br> 1：包含视频轨，0：不包含视频轨。<br>**起始版本：** 22 |
-| const char * OH_PLAYER_MD_KEY_HAS_AUDIO | 获取媒体资源是否包含音频轨信息的关键字，对应值类型int32_t。<br> 1：包含音频轨，0：不包含音频轨。<br>**起始版本：** 22 |
-| const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | 获取媒体资源是否包含字幕轨信息的关键字，对应值类型int32_t。<br> 1：包含字幕轨，0：不包含字幕轨。<br>**起始版本：** 22 |
-| const char * OH_PLAYER_MD_KEY_TRACK_INDEX | 获取媒体资源轨道下标信息的关键字，对应值类型int32_t。<br>**起始版本：** 22 |
-| const char * OH_PLAYER_SEI_PAYLOAD_TYPE | SEI消息中表示负载类型的关键字。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | SEI消息中表示负载内容的关键字。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_MD_KEY_HAS_VIDEO | 获取媒体资源是否包含视频轨信息的关键字，对应值类型int32_t。<br> 1：包含视频轨，0：不包含视频轨。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_MD_KEY_HAS_AUDIO | 获取媒体资源是否包含音频轨信息的关键字，对应值类型int32_t。<br> 1：包含音频轨，0：不包含音频轨。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | 获取媒体资源是否包含字幕轨信息的关键字，对应值类型int32_t。<br> 1：包含字幕轨，0：不包含字幕轨。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_MD_KEY_TRACK_INDEX | 获取媒体资源轨道下标信息的关键字，对应值类型int32_t。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SEI_PAYLOAD_TYPE | SEI消息中表示负载类型的关键字。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | SEI消息中表示负载内容的关键字。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | 超分辨率功能启用状态关键字，值类型为int32_t。值为1表示已启用，0表示未启用；用于超分辨率状态变化时的信息回调。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | 字幕更新信息中表示持续时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | 字幕更新信息中表示起始时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | 字幕更新信息中表示字幕文本内容的关键字，值类型为字符串（string）。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_SERVER_IP_ADDRESS | 播放信息中表示服务器IP地址的关键字。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_IS_DOWNLOADING | 播放信息中表示当前是否处于下载状态的关键字，值类型为int32_t。值为1表示正在下载，0表示未下载。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_BUFFER_DURATION | 播放信息中表示缓冲区时长的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_DOWNLOAD_RATE | 播放信息中表示当前下载速率的关键字，下载速率的单位为比特率（bps）。<br>**起始版本：** 23 |
-| const char * OH_PLAYER_AVG_DOWNLOAD_RATE | 播放信息中表示平均下载速率的关键字，下载速率的单位为比特率（bps）。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_PREPARE_DURATION | 获取统计指标信息中的准备时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION | 获取统计指标信息中的资源链接建立时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION | 获取统计指标信息中的首帧解封装时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME | 获取统计指标信息中的累计播放时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT | 获取统计指标信息中的媒体资源加载请求累计次数的关键字，对应值类型为uint32_t。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME | 获取统计指标信息中的媒体资源加载总时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | 获取统计指标信息中的已加载媒体资源累计字节数的关键字，对应值类型为int64_t。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_STALLING_COUNT | 获取统计指标信息中的累计卡顿次数的关键字，对应值类型为uint32_t。<br>**起始版本：** 23 |
-| const char * OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | 获取统计指标信息中的累计卡顿时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23 |
+| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_INDEX | 轨道切换信息中表示轨道索引的关键字，值类型为int32_t。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_TRACK_CHANGE_INFO_TRACK_SELECTED | 轨道切换信息中表示轨道是否被选中的标志关键字，值类型为int32_t。值为1表示选中，0表示未选中。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_DURATION | 字幕更新信息中表示持续时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_START_TIME | 字幕更新信息中表示起始时间的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SUBTITLE_UPDATE_INFO_TEXT | 字幕更新信息中表示字幕文本内容的关键字，值类型为字符串（string）。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_SERVER_IP_ADDRESS | 播放信息中表示服务器IP地址的关键字。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_IS_DOWNLOADING | 播放信息中表示当前是否处于下载状态的关键字，值类型为int32_t。值为1表示正在下载，0表示未下载。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_BUFFER_DURATION | 播放信息中表示缓冲区时长的关键字，值类型为int32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_DOWNLOAD_RATE | 播放信息中表示当前下载速率的关键字，下载速率的单位为比特率（bps）。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_AVG_DOWNLOAD_RATE | 播放信息中表示平均下载速率的关键字，下载速率的单位为比特率（bps）。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_PREPARE_DURATION | 获取统计指标信息中的准备时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_RESOURCE_CONNECTION_DURATION | 获取统计指标信息中的资源链接建立时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_FIRST_FRAME_DECAPSULATION_DURATION | 获取统计指标信息中的首帧解封装时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_TOTAL_PLAYING_TIME | 获取统计指标信息中的累计播放时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_REQUEST_COUNT | 获取统计指标信息中的媒体资源加载请求累计次数的关键字，对应值类型为uint32_t。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_TIME | 获取统计指标信息中的媒体资源加载总时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | 获取统计指标信息中的已加载媒体资源累计字节数的关键字，对应值类型为int64_t。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_STALLING_COUNT | 获取统计指标信息中的累计卡顿次数的关键字，对应值类型为uint32_t。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | 获取统计指标信息中的累计卡顿时长的关键字，对应值类型为uint32_t，单位为毫秒。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 
 ## 枚举类型说明
 
