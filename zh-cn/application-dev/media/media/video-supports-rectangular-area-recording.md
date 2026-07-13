@@ -74,7 +74,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 > **设置失败的处理**：如果区域位置设置失败，系统将按照上一次的区域进行捕获。建议开发者在设置区域时进行错误检查和处理，以确保捕获区域的准确性。
 > **参数设置非负**：该接口设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。
 
-<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
 
 ``` C++
 g_avCapture = OH_AVScreenCapture_Create();
