@@ -7,7 +7,14 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供划词管理能力，包括创建面板、显示面板、移动面板、隐藏面板、销毁面板、监听鼠标/触控板划词事件、获取选中文本等。典型使用流程为：先通过[on('selectionCompleted')](#selectionmanageronselectioncompleted)订阅划词完成事件，在回调中调用[getSelectionContent](#getselectioncontent)获取选中文本，然后通过[createPanel](#createpanel)创建划词面板，调用[setUiContent](#setuicontent)加载页面内容，再调用[moveToGlobalDisplay](#movetoglobaldisplay)移动面板到指定位置，最后通过[show](#show)显示面板。如不主动调用[hide](#hide)，面板在失焦时会自动隐藏。
+本模块提供划词管理能力，包括创建面板、显示面板、移动面板、隐藏面板、销毁面板、监听鼠标/触控板划词事件、获取选中文本等。典型使用流程如下：
+1. 调用[on('selectionCompleted')](#selectionmanageronselectioncompleted)订阅划词完成事件。
+2. 在回调中调用[getSelectionContent](#getselectioncontent)获取选中文本。
+3. 调用[createPanel](#createpanel)创建划词面板。
+4. 调用[setUiContent](#setuicontent)加载页面内容。
+5. 调用[moveToGlobalDisplay](#movetoglobaldisplay)移动面板到指定位置。
+6. 调用[show](#show)显示面板。
+7. 在不需要时调用[destroyPanel](#destroypanel)销毁面板，以及取消各种类型的监听。
 
 > **说明：**
 >
@@ -137,7 +144,7 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。               |
+| type     | string                                      | 是   | 取消订阅的事件类型，固定取值为'selectionCompleted'。               |
 | callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
@@ -277,7 +284,7 @@ async function getSelectionContentAsync(): Promise<void> {
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
-创建划词面板。使用Promise异步回调。
+创建划词面板，用于向用户展示业务相关的操作界面或文本处理结果，使用完毕后需调用[destroyPanel](#destroypanel)销毁面板释放资源。使用Promise异步回调。
 
 单个划词应用仅允许创建一个[MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)。
 
@@ -294,12 +301,12 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息，需使用SelectionExtensionAbility提供的上下文。 |
-| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板的配置信息，用于指定面板类型、位置和尺寸等属性。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板的配置信息，用于指定面板类型、位置和尺寸等属性。单个划词应用仅允许创建一个MENU_PANEL和一个MAIN_PANEL。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<[Panel](#panel)> | Promise对象，返回当前创建的划词面板对象。  |
+| Promise\<[Panel](#panel)> | Promise对象，返回当前创建的划词面板对象，可用于面板内容设置、显示、隐藏、移动及事件订阅等管理操作。  |
 
 **错误码：**
 
@@ -343,7 +350,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       height: 200
     };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
-    // 创建划词面板
+    // 创建划词面板。this.context通过继承SelectionExtensionAbility获取
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         selectionPanel = panel;
@@ -471,7 +478,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       height: 200
     };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
-    // 先创建划词面板，获取面板实例用于后续销毁
+    // 先创建划词面板，获取面板实例用于后续销毁。this.context通过继承SelectionExtensionAbility获取
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
@@ -571,7 +578,7 @@ export default ServiceExtAbility;
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
+| selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 划词事件的触发方式类型。 |
 | startDisplayX |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
 | startDisplayY |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
 | endDisplayX   |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
@@ -586,7 +593,7 @@ export default ServiceExtAbility;
 
 ## Panel
 
-划词面板对象，通过[createPanel](#createpanel)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力。
+划词面板对象，通过[createPanel](#createpanel)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力，适用于在划词完成后向用户展示自定义操作界面的场景。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -602,7 +609,7 @@ export default ServiceExtAbility;
 
 setUiContent(path: string): Promise\<void>
 
-为当前的划词面板加载具体页面内容。使用Promise异步回调。
+为当前的划词面板加载具体页面内容。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -673,7 +680,7 @@ try {
 
 show(): Promise\<void>
 
-显示划词面板。使用Promise异步回调。
+显示划词面板。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。如不主动调用[hide](#hide)，面板在失焦时会自动隐藏。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -730,7 +737,7 @@ selectionPanel?.show().then(() => {
 
 hide(): Promise\<void>
 
-隐藏当前划词面板。使用Promise异步回调。
+隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -787,7 +794,7 @@ selectionPanel?.hide().then(() => {
 
 startMoving(): Promise\<void>
 
-设置划词面板可随鼠标拖动移动位置。使用Promise异步回调。该接口需要写在onTouch的回调函数中，并且事件类型为TouchType.Down。
+设置划词面板可随鼠标拖动移动位置。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。该接口需在onTouch的回调函数中调用，并且事件类型为TouchType.Down。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -819,6 +826,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 此代码需放置在ArkUI页面组件的build()方法中，RelativeContainer为ArkUI内置组件，TouchEvent和TouchType为ArkUI框架内置类型
 RelativeContainer() {
   /* 
    * 页面布局内容，需要开发者根据实际补充
@@ -843,6 +851,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 此代码需放置在ArkUI页面组件的build()方法中，RelativeContainer为ArkUI内置组件，TouchEvent和TouchType为ArkUI框架内置类型
 RelativeContainer() {
   /* 
    * 页面布局内容，需要开发者根据实际补充
@@ -867,7 +876,7 @@ RelativeContainer() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-移动划词面板至屏幕指定位置。使用Promise异步回调。
+移动划词面板至屏幕指定位置。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -927,7 +936,7 @@ ArkTS-Dyn: moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
-移动划词面板至屏幕全局坐标系下的指定位置，支持移动到扩展屏上。使用Promise异步回调。
+移动划词面板至屏幕全局坐标系下的指定位置，支持移动到扩展屏上。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -941,8 +950,8 @@ ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| x | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |目标位置的x轴坐标，单位为px。|
-| y | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |目标位置的y轴坐标，单位为px。|
+| x | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |目标位置在屏幕全局坐标系下的x轴坐标，单位为px。|
+| y | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |目标位置在屏幕全局坐标系下的y轴坐标，单位为px。|
 
 **返回值：**
 
@@ -999,7 +1008,7 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-订阅划词面板销毁事件。使用callback异步回调。
+订阅划词面板销毁事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1014,7 +1023,7 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback\<void> | 是   | 回调函数，面板销毁时触发，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，调用[destroyPanel](#destroypanel)销毁面板时触发，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1033,7 +1042,7 @@ try {
 
 onDestroy(callback: Callback\<void>): void
 
-订阅划词窗口销毁事件。使用callback异步回调。
+订阅划词面板销毁事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1047,7 +1056,7 @@ onDestroy(callback: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | 是   | 回调函数，面板销毁时触发，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，调用[destroyPanel](#destroypanel)销毁面板时触发，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1068,7 +1077,7 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-取消订阅划词面板销毁事件。使用callback异步回调。
+取消订阅划词面板销毁事件，与[on('destroyed')](#ondestroyed)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1082,7 +1091,7 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。               |
+| type     | string                                      | 是   | 取消订阅的事件类型，固定取值为'destroyed'。               |
 | callback | Callback\<void> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
@@ -1100,7 +1109,7 @@ try {
 
 offDestroy(callback?: Callback\<void>): void
 
-取消订阅划词窗口销毁事件。使用callback异步回调。
+取消订阅划词面板销毁事件，与[onDestroy](#ondestroy)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1133,7 +1142,7 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-订阅划词面板隐藏事件。使用callback异步回调。
+订阅划词面板隐藏事件，面板调用[hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1148,7 +1157,7 @@ on(type: 'hidden', callback: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，面板隐藏时触发，返回值为空。面板可通过调用[hide](#hide)主动隐藏，或在失焦时自动隐藏。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1167,7 +1176,7 @@ try {
 
 onHide(callback: Callback\<void>): void
 
-订阅划词窗口隐藏事件。使用callback异步回调。
+订阅划词面板隐藏事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1181,7 +1190,7 @@ onHide(callback: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | 是   | 回调函数，面板隐藏时触发，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，面板隐藏时触发，返回值为空。面板可通过调用[hide](#hide)主动隐藏，或在失焦时自动隐藏。       |
 
 **示例：**
 <!--code_no_check-->
@@ -1202,7 +1211,7 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-取消订阅划词面板隐藏事件。使用callback异步回调。
+取消订阅划词面板隐藏事件，与[on('hidden')](#onhidden)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1216,7 +1225,7 @@ off(type: 'hidden', callback?: Callback\<void>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。               |
+| type     | string                                      | 是   | 取消订阅的事件类型，固定取值为'hidden'。               |
 | callback | Callback\<void> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
@@ -1234,7 +1243,7 @@ try {
 
 offHide(callback?: Callback\<void>): void
 
-取消订阅划词窗口隐藏事件。使用callback异步回调。
+取消订阅划词面板隐藏事件，与[onHide](#onhide)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1277,6 +1286,6 @@ try {
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
-| MOUSE_MOVE | 1 | 滑动划词类型。 |
-| DOUBLE_CLICK   | 2 | 双击划词类型。 |
-| TRIPLE_CLICK   | 3 | 三击划词类型。 |
+| MOUSE_MOVE | 1 | 鼠标或触控板滑动划词。 |
+| DOUBLE_CLICK   | 2 | 鼠标或触控板双击划词。 |
+| TRIPLE_CLICK   | 3 | 鼠标或触控板三击划词。 |
