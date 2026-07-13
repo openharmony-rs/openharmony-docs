@@ -262,7 +262,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -1372,6 +1372,20 @@ Allows an application to install and load self-distributed plug-ins.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
 **Since**: 26.0.0
 

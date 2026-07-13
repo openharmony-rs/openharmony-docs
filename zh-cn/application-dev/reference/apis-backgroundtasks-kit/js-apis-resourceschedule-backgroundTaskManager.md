@@ -1527,7 +1527,6 @@ export default class EntryAbility extends UIAbility {
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL_REMOVE_NOTIFICATION           | 3    | 用户移除通知。 |
 | SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED     | 4    | 申请DATA_TRANSFER类型长时任务，但是数据传输速率低。 |
-| SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION   | 5    | 申请AUDIO_PLAYBACK类型长时任务，但是未接入[AVSession](../../media/avsession/avsession-overview.md)。   |
 | SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | 申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。   |
 | SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING | 7    | 申请AUDIO_RECORDING类型长时任务，但是未录制。       |
 | SYSTEM_CANCEL_NOT_USE_LOCATION            | 8    | 申请LOCATION类型长时任务，但是未使用定位导航。      |

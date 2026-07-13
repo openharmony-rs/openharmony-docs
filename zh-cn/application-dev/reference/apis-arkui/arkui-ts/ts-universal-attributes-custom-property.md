@@ -6,11 +6,11 @@
 <!--Tester: @sally__; @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能。这些自定义属性可以在其对应的FrameNode上获取，从而实现更自由的组件管理。
+当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能。这些自定义属性可以在组件对应的FrameNode上获取，从而便于根据自定义属性管理组件。
 
 >  **说明：**
 >
-> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -26,6 +26,8 @@ API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-cre
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -39,7 +41,7 @@ API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-cre
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 
 ## Optional\<T>
@@ -79,7 +81,7 @@ struct CustomPropertyExample {
         // 获取Column对应的frameNode节点并查询设置的自定义属性
         const uiContext: UIContext = this.getUIContext();
         if (uiContext) {
-          const node: FrameNode | null = uiContext.getFrameNodeById("Test_Column") || null;
+          const node: FrameNode | null = uiContext.getFrameNodeById('Test_Column') || null;
           if (node) {
             for (let i = 1; i < 4; i++) {
               const key = 'customProperty' + i;
@@ -147,7 +149,6 @@ struct CustomLayout {
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;
-  @State startSize: number = 100;
   result: SizeResult = {
     width: 0,
     height: 0

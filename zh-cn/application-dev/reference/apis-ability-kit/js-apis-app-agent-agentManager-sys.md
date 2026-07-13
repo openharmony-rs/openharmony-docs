@@ -191,7 +191,7 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 >
 > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
 
-**系统接口**：该接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -251,7 +251,7 @@ struct Index {
       console.info(`onData, data: ${data}.`);
     },
     onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+      console.info(`onAuth, data: ${handShakeData}.`);
     },
     onDisconnect: () => {
       console.info(`onDisconnect.`);
@@ -579,12 +579,12 @@ struct Index {
                 .then(() => {
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`connectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
+                  console.error(`disconnectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
                 });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
-              console.error(`connectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
+              console.error(`disconnectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
             }
           })
       }
@@ -601,7 +601,7 @@ notifyLowCodeAgentComplete(agentId: string): Promise\<void>
 
 **起始版本**：26.0.0
 
-**系统接口**：该接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -657,7 +657,7 @@ connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callb
 
 **起始版本**：26.0.0
 
-**系统接口**：该接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -702,6 +702,7 @@ connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callb
 
 ```ts
 import { common, Want, AgentExtensionAbility, agentManager, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 import { rpc } from '@kit.IPCKit';
 
@@ -727,7 +728,9 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
       console.info(`${TAG} connect end, connectId=${connectId} `);
       return connectId;
     } catch (err) {
-      console.error(`${TAG} connectServiceExtensionAbility failed.`);
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`${TAG} connectServiceExtensionAbility failed. Code: ${code}, message: ${message}`);
     }
     return -1;
   }

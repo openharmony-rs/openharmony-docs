@@ -262,7 +262,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **权限级别**：system_basic
 
-**授权方式**：用户授权（user_grant）
+**授权方式**：系统授权（system_grant）
 
 **起始版本**：12
 
@@ -1373,6 +1373,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+允许应用注册音频配件到系统。
+
+<!--RP99--><!--RP99End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
 

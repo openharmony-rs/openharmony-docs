@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于主机侧通过USB接口访问串口设备的USB Serial DDK接口。
+声明用于主机侧通过USB接口访问串口设备的USB Serial DDK接口，提供串口读写操作和参数配置的能力，适用于工业控制、嵌入式设备通信等需要通过USB访问串口设备的场景。
 
 **引用文件：** <usb_serial/usb_serial_api.h>
 
@@ -26,10 +26,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | 初始化USB Serial DDK。该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。 |
+| [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | 初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。|
 | [int32_t OH_UsbSerial_Release(void)](#oh_usbserial_release) | 释放USB Serial DDK。 |
 | [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | 通过deviceId和interfaceIndex打开USB串口设备。该接口会建立与指定USB串口设备的连接，并返回设备句柄用于后续操作。使用完毕后请调用[OH_UsbSerial_Close](#oh_usbserial_close)关闭设备，否则可能导致设备资源无法正确释放。 |
-| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | 关闭USB串口设备。 |
+| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | 关闭USB串口设备。该接口会释放设备占用的资源，需和[OH_UsbSerial_Open](#oh_usbserial_open)配对使用。 |
 | [int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)](#oh_usbserial_read) | 从USB串口设备读入数据到缓冲区。 |
 | [int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)](#oh_usbserial_write) | 将buff中的数据写入USB串口设备。 |
 | [int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)](#oh_usbserial_setbaudrate) | 设置USB串口设备的波特率。如果USB串口设备的参数为默认值（数据位为8，停止位为1，数据传输无校验），则只需要调用该接口设置波特率。 |
@@ -37,7 +37,7 @@
 | [int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)](#oh_usbserial_settimeout) | 设置读取USB串口设备上报数据的超时时间（毫秒）。在不调用此函数的情况下，超时值默认为0，表示不管是否读取到数据都立即返回。如果需要等待一定的时间或者必须读取到数据，则调用该接口。 |
 | [int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)](#oh_usbserial_setflowcontrol) | 设置流控参数。USB串口设备通信中的流控用于管理数据传输的速率，以确保发送方不会发送超过接收方处理能力的数据量。如果USB串口设备实现了流控处理，则需要调用此接口。未调用此接口时，默认为无流控。 |
 | [int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)](#oh_usbserial_flush) | 清空输入和输出缓冲区。在向USB串口设备发送数据时，可能会有大量数据缓冲在内核中等待发送。如果应用程序关闭文件描述符或者退出之前没有等待这些数据被实际发送出去，那么部分数据可能会丢失。调用该接口可以确保所有的数据都被发送完毕再继续执行后续操作。 |
-| [int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)](#oh_usbserial_flushinput) | 刷新输入缓冲区，缓冲区中的数据会被立刻清空。在和USB串口设备通信过程中，特别是在调试阶段，有时会遇到乱序的数据包或者其他异常情况，此时可以用该接口通清理接收端的异常状况，使通信恢复正常。此接口不影响输出缓冲区中的待发送数据。 |
+| [int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)](#oh_usbserial_flushinput) | 刷新输入缓冲区，缓冲区中的数据会被立刻清空。在和USB串口设备通信过程中，特别是在调试阶段，有时会遇到乱序的数据包或者其他异常情况，此时可以用该接口清理接收端的异常状况，使通信恢复正常。此接口不影响输出缓冲区中的待发送数据。 |
 | [int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)](#oh_usbserial_flushoutput) | 刷新输出缓冲区，缓冲区中的数据会被立刻清空。在和USB串口设备通信过程中，特别是在调试阶段，有时会遇到乱序的数据包或者其他异常情况，可以用该接口清理发送端的异常状况，使通信恢复正常。此接口不影响输入缓冲区中的已接收数据。 |
 
 ## 函数说明
@@ -50,7 +50,7 @@ int32_t OH_UsbSerial_Init(void)
 
 **描述**
 
-初始化USB Serial DDK。该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。
+初始化USB Serial DDK。必须在调用其他所有USB Serial DDK方法之前调用该接口，该接口会建立与DDK服务的通信连接，并加载必要的驱动资源。请在使用完毕后调用[OH_UsbSerial_Release](#oh_usbserial_release)释放DDK，以避免资源泄漏。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -119,7 +119,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 
 **描述**
 
-关闭USB串口设备。
+关闭USB串口设备。该接口会释放设备占用的资源，需和[OH_UsbSerial_Open](#oh_usbserial_open)配对使用。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -160,7 +160,7 @@ int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferS
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | uint8_t *buff | 从USB串口设备读取数据的缓冲区，需由调用方分配且容量不小于bufferSize。 |
 | uint32_t bufferSize | 缓冲区的大小。 |
-| uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回；如果设置了超时，则返回值可能小于bufferSize。<br>                  详见[OH_UsbSerial_SetTimeout](capi-usb-serial-api-h.md#oh_usbserial_settimeout)。 |
+| uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回；如果设置了超时，则返回值可能小于bufferSize。<br>                  详见[OH_UsbSerial_SetTimeout](#oh_usbserial_settimeout)。 |
 
 **返回：**
 
@@ -188,9 +188,9 @@ int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t buffer
 | 参数项 | 描述 |
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
-| uint8_t *buff | 写入USB串口设备数据的缓冲区。 |
+| uint8_t *buff | 写入USB串口设备数据的缓冲区，需由调用方分配且容量不小于bufferSize。 |
 | uint32_t bufferSize | 缓冲区的大小。 |
-| uint32_t *bytesWritten | 实际写入的字节数。 |
+| uint32_t *bytesWritten | 实际写入的字节数。仅在接口返回成功时有效，且可能小于bufferSize。 |
 
 **返回：**
 
@@ -274,7 +274,7 @@ int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)
 | 参数项 | 描述 |
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
-| int timeout | 读取USB串口设备的超时时间。其取值范围为(0, 25500]时，表示以毫秒为单位的时间值，将其四舍五入为最接近的100毫秒后，作为实际的超时时间，例如输入12321时，实际生效的超时时间为12300；取值为0时，表示立即返回数据，不等待；取值为-1时，表示以阻塞方式读取数据，即读取数据时，只有读到指定长度的数据后才返回，详见[OH_UsbSerial_Read](capi-usb-serial-api-h.md#oh_usbserial_read)。建议在轮询场景使用0，需要超时控制的场景使用(0, 25500]，必须读取完整数据的场景使用-1。 |
+| int timeout | 读取USB串口设备的超时时间。其取值范围为(0, 25500]时，表示以毫秒为单位的时间值，将其四舍五入为最接近的100毫秒后，作为实际的超时时间，例如输入12321时，实际生效的超时时间为12300；取值为0时，表示立即返回数据，不等待；取值为-1时，表示以阻塞方式读取数据，即读取数据时，只有读到指定长度的数据后才返回，详见[OH_UsbSerial_Read](#oh_usbserial_read)。建议在轮询场景使用0，需要超时控制的场景使用(0, 25500]，必须读取完整数据的场景使用-1。 |
 
 **返回：**
 
@@ -345,7 +345,7 @@ int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)
 
 **描述**
 
-刷新输入缓冲区，缓冲区中的数据会被立刻清空。在和USB串口设备通信过程中，特别是在调试阶段，有时会遇到乱序的数据包或者其他异常情况，此时可以用该接口通清理接收端的异常状况，使通信恢复正常。此接口不影响输出缓冲区中的待发送数据。
+刷新输入缓冲区，缓冲区中的数据会被立刻清空。在和USB串口设备通信过程中，特别是在调试阶段，有时会遇到乱序的数据包或者其他异常情况，此时可以用该接口清理接收端的异常状况，使通信恢复正常。此接口不影响输出缓冲区中的待发送数据。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB_SERIAL
 

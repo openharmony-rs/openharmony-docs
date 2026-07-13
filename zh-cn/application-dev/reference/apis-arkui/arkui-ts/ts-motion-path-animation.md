@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件进行位移动画时的运动路径。
+设置组件进行路径动画时的运动路径。
 
 >  **说明：**
 >
@@ -15,7 +15,7 @@
 ## motionPath
 motionPath(value: MotionPathOptions): T
 
-设置组件的路径动画。
+设置组件进行路径动画时的运动路径。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -25,7 +25,7 @@ motionPath(value: MotionPathOptions): T
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件的运动路径。             |
+| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件进行路径动画时的运动路径。             |
 
 **返回值：**
 
@@ -35,7 +35,7 @@ motionPath(value: MotionPathOptions): T
 
 ## MotionPathOptions
 
-设置组件的运动路径。
+路径动画的运动路径参数选项。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

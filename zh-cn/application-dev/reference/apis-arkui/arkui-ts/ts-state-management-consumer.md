@@ -33,7 +33,7 @@ const Consumer: (aliasName?: string) => PropertyDecorator
 
 | 参数名    | 类型   | 必填 | 说明                               |
 | --------- | ------ | ---- | ---------------------------------- |
-| aliasName | string | 否   | 用于设置别名，作为@Consumer与@Provider配对匹配的标识，需与@Provider的别名一致；缺省时为变量名。 |
+| aliasName | string | 否   | 用于设置别名，作为@Consumer与@Provider匹配的标识，需与@Provider的别名一致；缺省时为变量名。 |
 
 **返回值：**
 

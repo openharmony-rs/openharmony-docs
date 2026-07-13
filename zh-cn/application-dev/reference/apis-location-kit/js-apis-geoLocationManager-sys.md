@@ -81,10 +81,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**系统接口**：此接口为系统接口。 |
-
 
 ## ReverseGeocodingMockInfo
 

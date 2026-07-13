@@ -1,10 +1,10 @@
 # 应用级变量的状态管理（系统接口）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhushilin0206-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和环境状态管理能力，适用于跨组件状态共享、数据持久化存储、UIAbility数据管理等场景。
@@ -38,7 +38,7 @@ protected subscribers_: Set\<number\>
 
 |类型   |说明       |
 |-----------|--------------|
-|Set\<number\>  |返回订阅者id的Set集合。 |
+|Set\<number\>  |返回订阅者ID的Set集合。 |
 
 ### id\_
 
@@ -75,7 +75,7 @@ constructor(subscribeMe?: IPropertySubscriber,info?: string)
 
 id(): number
 
-获取id时调用。
+获取ID时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,13 +83,13 @@ id(): number
 
 |类型   |说明       |
 |-----------|--------------|
-|number  |返回该订阅属性的唯一标识id。 |
+|number  |返回该订阅属性的唯一标识ID。 |
 
 ### createTwoWaySync
 
 createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay\<T\>
 
-创建双向同步属性。数据变更在数据源与订阅者之间双向传播。
+创建双向同步属性。数据变更在数据源与订阅者之间双向传播。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或由返回的[SyncedPropertyTwoWay](#syncedpropertytwowayt)对象的[aboutToBeDeleted()](#abouttobedeleted-1)方法处理取消订阅。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +110,7 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyOneWay\<T\>
 
-创建单向同步属性。数据变更仅从数据源向订阅者单向传播。
+创建单向同步属性。数据变更仅从数据源向订阅者单向传播。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或由返回的[SyncedPropertyOneWay](#syncedpropertyonewayt)对象的[aboutToBeDeleted()](#abouttobedeleted-2)方法处理取消订阅。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +139,7 @@ unlinkSuscriber(subscriberId: number): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |是   |要解除订阅的订阅者id，通过IPropertySubscriber.id()方法获取。    |
+|subscriberId   |number   |是   |要解除订阅的订阅者ID，通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)方法获取。    |
 
 ### notifyHasChanged
 
@@ -187,7 +187,7 @@ numberOfSubscrbers(): number
 
 id(): number
 
-获取id时调用。
+获取ID时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +195,7 @@ id(): number
 
 |类型   |说明       |
 |-----------|--------------|
-|number  |返回订阅者的唯一标识id。 |
+|number  |返回订阅者的唯一标识ID。 |
 
 ### aboutToBeDeleted
 
@@ -367,7 +367,7 @@ hasChanged(newValue: T): void
 
 get(): T
 
-获取数据源时调用。
+获取数据时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,7 +429,7 @@ private owningProperties_: Set\<number\>
 
 |类型   |说明     |
 |------|------------|
-|Set\<number\>   |返回所持有属性的订阅者id的Set集合。    |
+|Set\<number\>   |返回所持有属性的订阅者ID的Set集合。    |
 
 ### constructor
 
@@ -458,7 +458,7 @@ protected notifyPropertyHasChanged(propName: string, newValue: any): void
 
 public addOwningProperty(subscriber: IPropertySubscriber): void
 
-添加持有的属性。属性不再使用时，应调用removeOwningProperty或removeOwningPropertyById移除。
+添加持有的属性。属性不再使用时，应调用[removeOwningProperty](#removeowningproperty)或[removeOwningPropertyById](#removeowningpropertybyid)移除。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -480,13 +480,13 @@ public removeOwningProperty(property: IPropertySubscriber): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|property   |[IPropertySubscriber](#ipropertysubscriber)   |是   |要删除的属性，需为已通过addOwningProperty添加的属性。    |
+|property   |[IPropertySubscriber](#ipropertysubscriber)   |是   |要删除的属性，需为已通过[addOwningProperty](#addowningproperty)添加的属性。    |
 
 ### removeOwningPropertyById
 
 public removeOwningPropertyById(subscriberId: number): void
 
-使用id删除持有的属性时调用。
+使用ID删除持有的属性时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,7 +494,7 @@ public removeOwningPropertyById(subscriberId: number): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |是   |要删除的属性id，需为已通过addOwningProperty添加的属性id。    |
+|subscriberId   |number   |是   |要删除的订阅者ID，需为已通过[addOwningProperty](#addowningproperty)添加的订阅者ID，通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)方法获取。    |
 
 ## Environment
 

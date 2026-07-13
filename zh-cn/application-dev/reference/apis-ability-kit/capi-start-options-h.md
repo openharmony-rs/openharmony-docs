@@ -906,6 +906,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口模式
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWindowMode(options,
         ABILITY_RUNTIME_WINDOW_MODE_FULL_SCREEN);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -937,7 +938,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowMode(AbilityRunt
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_WindowMode](capi-context-constant-h.md#abilityruntime_windowmode) windowMode | 启动Ability时的窗口模式。取值范围参见AbilityRuntime_WindowMode。 |
+| [AbilityRuntime_WindowMode](capi-context-constant-h.md#abilityruntime_windowmode) windowMode | 用于获取已设置的窗口模式。取值范围参见AbilityRuntime_WindowMode。 |
 
 **返回：**
 
@@ -959,6 +960,7 @@ void demo()
     }
 
     AbilityRuntime_WindowMode windowMode = ABILITY_RUNTIME_WINDOW_MODE_UNDEFINED;
+    // 获取启动Ability时的窗口模式
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWindowMode(options, windowMode);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1006,6 +1008,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时窗口所在的屏幕ID
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsDisplayId(options, 1);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1036,7 +1039,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayId(AbilityRunti
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| int32_t &displayId | 启动Ability时窗口所在的屏幕ID。 |
+| int32_t &displayId | 用于获取已设置的屏幕ID。 |
 
 **返回：**
 
@@ -1058,6 +1061,7 @@ void demo()
     }
 
     int32_t displayId = 0;
+    // 获取启动Ability时窗口所在的屏幕ID
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsDisplayId(options, displayId);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1105,6 +1109,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时具有动画效果
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWithAnimation(options, true);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1157,6 +1162,7 @@ void demo()
     }
 
     bool withAnimation = false;
+    // 获取启动Ability时是否具有动画效果
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWithAnimation(options, withAnimation);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1204,6 +1210,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口左侧位置
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWindowLeft(options, 200);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1234,7 +1241,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeft(AbilityRunt
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| int32_t &windowLeft | 启动Ability时的窗口左侧位置，单位为px。 |
+| int32_t &windowLeft | 用于获取已设置的窗口左侧位置，单位为px。 |
 
 **返回：**
 
@@ -1256,6 +1263,7 @@ void demo()
     }
 
     int32_t windowLeft = 0;
+    // 获取启动Ability时的窗口左侧位置
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWindowLeft(options, windowLeft);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1303,6 +1311,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口顶部位置
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWindowTop(options, 500);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1333,7 +1342,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTop(AbilityRunti
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| int32_t &windowTop | 启动Ability时的窗口顶部位置，单位为px。 |
+| int32_t &windowTop | 用于获取已设置的窗口顶部位置，单位为px。 |
 
 **返回：**
 
@@ -1355,6 +1364,7 @@ void demo()
     }
 
     int32_t windowTop = 0;
+    // 获取启动Ability时的窗口顶部位置
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWindowTop(options, windowTop);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1402,6 +1412,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWindowHeight(options, 500);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1432,7 +1443,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeight(AbilityRu
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| int32_t &windowHeight | 启动Ability时的窗口高度，单位为px。 |
+| int32_t &windowHeight | 用于获取已设置的窗口高度，单位为px。 |
 
 **返回：**
 
@@ -1454,6 +1465,7 @@ void demo()
     }
 
     int32_t windowHeight = 0;
+    // 获取启动Ability时的窗口高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWindowHeight(options, windowHeight);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1501,6 +1513,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsWindowWidth(options, 500);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1531,7 +1544,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidth(AbilityRun
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| int32_t &windowWidth | 启动Ability时的窗口宽度，单位为px。 |
+| int32_t &windowWidth | 用于获取已设置的窗口宽度，单位为px。 |
 
 **返回：**
 
@@ -1553,6 +1566,7 @@ void demo()
     }
 
     int32_t windowWidth = 0;
+    // 获取启动Ability时的窗口宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsWindowWidth(options, windowWidth);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1578,7 +1592,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(Abilit
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | StartOptions结构体。 |
+| [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象，包含启动Ability时的显示模式配置信息。 |
 | [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) startVisibility | 需要设置的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
@@ -1600,6 +1614,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时窗口和dock栏图标的显示模式
     AbilityRuntime_StartVisibility visibility = AbilityRuntime_StartVisibility::ABILITY_RUNTIME_SHOW_UPON_START;
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsStartVisibility(options, visibility);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -1630,8 +1645,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(Abilit
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | StartOptions结构体。 |
-| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 获取到的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
+| [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
+| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 用于获取已设置的窗口和dock栏图标的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
 
@@ -1731,6 +1746,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口启动图标
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsStartWindowIcon(options, startWindowIcon);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1763,7 +1779,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| OH_PixelmapNative **startWindowIcon | 启动Ability时的窗口启动图标。 |
+| OH_PixelmapNative **startWindowIcon | 用于获取启动Ability时的窗口启动图标。 |
 
 **返回：**
 
@@ -1785,6 +1801,7 @@ void demo()
     }
 
     OH_PixelmapNative *startWindowIcon = nullptr;
+    // 获取启动Ability时的窗口启动图标
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsStartWindowIcon(options, &startWindowIcon);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1836,6 +1853,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口背景颜色
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundColor(options, "#00000000");
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -1854,7 +1872,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 
 **描述**
 
-获取启动Ability时的窗口背景颜色。
+获取启动Ability时的窗口背景颜色。启动UIAbility时，启动页所显示的背景颜色如果未设置该字段，则默认采用module.json5配置文件中abilities标签的startWindowBackground字段的配置。
 
 > **说明：**
 >
@@ -1868,7 +1886,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| char **startWindowBackgroundColor | 启动Ability时的窗口背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。 |
+| char **startWindowBackgroundColor | 用于获取启动Ability时的窗口背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。 |
 | size_t &size | 获取到的窗口背景颜色的大小。 |
 
 **返回：**
@@ -1894,6 +1912,7 @@ void demo()
 
     char *startWindowBackgroundColor = nullptr;
     size_t size = 0;
+    // 获取启动Ability时的窗口背景颜色
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColor(options,
         &startWindowBackgroundColor, size);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -1936,7 +1955,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(A
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者SupportedWindowModes为空，或者Size为0。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者SupportedWindowModes为空，或者size为0。 |
 
 **示例代码：**
 
@@ -1957,6 +1976,7 @@ void demo()
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT,
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
+    // 设置启动Ability时的组件所支持的窗口模式
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(options,
         supportedWindowModes, supportedWindowModesSize);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -1976,7 +1996,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(A
 
 **描述**
 
-获取启动Ability时的组件所支持的窗口模式。
+获取启动Ability时的组件所支持的窗口模式。如果未配置该字段，则默认采用该UIAbility对应的module.json5配置文件中abilities标签的supportWindowMode字段取值。
 
 > **说明：**
 >
@@ -1990,13 +2010,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(A
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
 | [AbilityRuntime_SupportedWindowMode](capi-context-constant-h.md#abilityruntime_supportedwindowmode) **supportedWindowModes | 启动Ability时的组件所支持的窗口模式。取值范围参见AbilityRuntime_SupportedWindowMode。 |
-| size | 组件所支持的窗口模式大小。 |
+| size_t &size | 组件所支持的窗口模式大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者SupportWindowMode没有置为空指针。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者supportedWindowModes参数为非空指针。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误。 |
 
 **示例代码：**
 
@@ -2015,6 +2035,7 @@ void demo()
 
     AbilityRuntime_SupportedWindowMode *supportedWindowModes = nullptr;
     size_t size = 0;
+    // 获取启动Ability时的组件所支持的窗口模式
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(options,
         &supportedWindowModes, size);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -2070,6 +2091,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口最小宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsMinWindowWidth(options, 100);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2123,6 +2145,7 @@ void demo()
     }
 
     int32_t minWindowWidth = 0;
+    // 获取启动Ability时的窗口最小宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsMinWindowWidth(options, minWindowWidth);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2172,6 +2195,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口最大宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(options, 100);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2226,6 +2250,7 @@ void demo()
     }
 
     int32_t maxWindowWidth = 0;
+    // 获取启动Ability时的窗口最大宽度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsMaxWindowWidth(options, maxWindowWidth);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2274,6 +2299,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口最小高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsMinWindowHeight(options, 100);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2328,6 +2354,7 @@ void demo()
     }
 
     int32_t minWindowHeight = 0;
+    // 获取启动Ability时的窗口最小高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsMinWindowHeight(options, minWindowHeight);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2377,6 +2404,7 @@ void demo()
         return;
     }
 
+    // 设置启动Ability时的窗口最大高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(options, 100);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理
@@ -2431,6 +2459,7 @@ void demo()
     }
 
     int32_t maxWindowHeight = 0;
+    // 获取启动Ability时的窗口最大高度
     AbilityRuntime_ErrorCode err = OH_AbilityRuntime_GetStartOptionsMaxWindowHeight(options, maxWindowHeight);
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 记录错误日志以及其他业务处理

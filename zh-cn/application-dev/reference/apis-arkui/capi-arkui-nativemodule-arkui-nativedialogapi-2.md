@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_NativeDialogAPI_2
 
 ## 概述
 
-ArkUI提供的Native侧自定义弹窗接口集合。
+ArkUI提供的Native侧自定义弹窗接口集合，用于在Native层创建和管理自定义弹窗，支持设置弹窗避让键盘距离、显示层级、层级节点id和嵌入式弹窗蒙层显示区域等功能，适用于需要精细化控制弹窗行为的场景。
 
 **起始版本：** 15
 
@@ -33,7 +33,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | 弹窗避让键盘后，和键盘之间距离。 |
+| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | 设置弹窗避让键盘后的间距。 |
 | [int32_t (\*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)](#setlevelmode) | 设置弹窗的显示层级。 |
 | [int32_t (\*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)](#setleveluniqueid) | 设置弹窗显示层级页面下的节点id。 |
 | [int32_t (\*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)](#setimmersivemode) | 设置嵌入式弹窗蒙层的显示区域。 |
@@ -48,7 +48,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 **描述：**
 
-弹窗避让键盘后，和键盘之间距离。
+设置弹窗避让键盘后的间距。
 
 > **说明：** 
 >
@@ -61,14 +61,14 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 | 参数项                                                                                | 描述 |
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| float distance                                                                     | 避让键盘的距离，单位为vp。 |
+| float distance                                                                     | 弹窗与键盘之间保持的避让距离，单位由unit参数指定。 |
 | [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit        | 避让距离的单位，参数类型[ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 接口初始化错误。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 接口初始化错误，请确保Native模块已正确初始化。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，请检查参数是否有效。 |
 
 ### setLevelMode()
 
@@ -83,7 +83,7 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 
 > **说明：** 
 >
-> setLevelMode方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
+> setLevelMode方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用；若需配合[setLevelUniqueId](#setleveluniqueid)使用，则需要在调用setLevelUniqueId方法之后调用。
 
 **起始版本：** 15
 
@@ -92,13 +92,13 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 | 参数项                                                                                | 描述 |
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode               | 显示层级的枚举值， 类型为[ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode)。 |
+| [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode               | 显示层级的枚举值，类型为[ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，请检查参数是否有效。 |
 
 ### setLevelUniqueId()
 
@@ -113,7 +113,7 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 
 > **说明：** 
 >
-> setLevelUniqueId方法需要在调用[setLevelMode](#setlevelmode)方法之前调用。
+> setLevelUniqueId方法需要在调用[setLevelMode](#setlevelmode)方法之前调用，且需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
 
 **起始版本：** 15
 
@@ -122,13 +122,13 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t uniqueId | 指定节点id，会查找该节点所在页面，并将弹窗显示在该页面下。 |
+| int32_t uniqueId | 指定节点ID，会查找该节点所在页面，并将弹窗显示在该页面下。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，请检查参数是否有效。 |
 
 ### setImmersiveMode()
 
@@ -152,12 +152,12 @@ int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode
 | 参数项                                                                                | 描述 |
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode   | 显示区域类型的枚举值， 类型为[ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode)。 |
+| [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode   | 显示区域类型的枚举值，类型为[ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，请检查参数是否有效。 |
 
 
