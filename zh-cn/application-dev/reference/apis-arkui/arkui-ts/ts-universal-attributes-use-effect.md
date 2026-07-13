@@ -18,7 +18,7 @@
 
 useEffect(value: boolean): T
 
-用于控制组件是否继承父级EffectComponent的特效属性参数，对背景模糊等特效进行绘制合并。
+用于控制组件是否继承父级[EffectComponent](ts-container-effectcomponent-sys.md)的特效属性参数，对背景模糊等特效进行绘制合并。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

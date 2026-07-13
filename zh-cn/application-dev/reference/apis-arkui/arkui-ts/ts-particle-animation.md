@@ -228,7 +228,7 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
 | src      | [ResourceStr](ts-types.md#resourcestr) | 否 | 否    | 图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>暂不支持svg图片类型。<br>src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。 |
-| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸。<br/>默认值：[0, 0] |
+| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸，第一个参数为图像宽度，第二个参数为图像高度。<br/>默认值：[0, 0] |
 | objectFit| [ImageFit](ts-appendix-enums.md#imagefit)| 否 | 是   | 图片显示模式。<br/>默认值：ImageFit.Cover |
 
 ## ParticleColorPropertyOptions
@@ -1302,7 +1302,7 @@ struct ParticleExample6 {
       index: 0,
       emitRate: 100,
       annulusRegion: {
-        center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
+        center: {x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
         startAngle: this.startAngle, // 圆环的起始角度
