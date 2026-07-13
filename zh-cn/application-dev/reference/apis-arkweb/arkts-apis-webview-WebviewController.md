@@ -11344,7 +11344,7 @@ struct WebComponent {
         .onControllerAttached(() => {
           this.controller.setErrorPageEnabled(true, true);
           let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
-          console.log("Subframe error page enabled: " + isEnabled);
+          console.info("Subframe error page enabled: " + isEnabled);
         })
     }
   }
@@ -11405,7 +11405,7 @@ struct WebComponent {
         .onControllerAttached(() => {
           this.controller.setErrorPageEnabled(true, true);
           let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
-          console.log("Subframe error page enabled: " + isEnabled);
+          console.info("Subframe error page enabled: " + isEnabled);
         })
     }
   }
