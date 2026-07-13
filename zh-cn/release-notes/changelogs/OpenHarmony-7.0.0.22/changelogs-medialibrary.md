@@ -1,6 +1,6 @@
 # 媒体库变更说明
 
-## cl.medialibrary.1 通过ohos.permission.READ_IMAGEVIDEO权限可读取的媒体库的范围变更
+## cl.medialibrary.1 通过ohos.permission.READ_IMAGEVIDEO权限可读取的媒体库文件的范围变更
 
 **访问级别**
 
