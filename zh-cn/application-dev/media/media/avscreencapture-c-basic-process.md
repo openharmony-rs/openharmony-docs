@@ -132,6 +132,8 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
 }
 int32_t screenWidth = displayInfo->width;
 int32_t screenHeight = displayInfo->height;
+OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+displayInfo = nullptr;
 // 录屏输入规格配置。
 OH_VideoCaptureInfo videoCapInfo = {
     .videoFrameWidth = screenWidth,
@@ -173,7 +175,7 @@ config = {
     .audioInfo = audioInfo,
     .videoInfo = videoInfo
 };
-// 在StartScreenCapture01()函数中调用OH_AVScreenCapture_Init方法将配置项设置到OH_AVScreenCapture中。
+// 在StartScreenCapture_01()函数中调用OH_AVScreenCapture_Init方法将配置项设置到OH_AVScreenCapture中。
 ```
 
 
@@ -279,7 +281,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     }
     return;
 }
-// 设置获取录屏屏幕Id的回调函数OnDisplaySelected()。
+// 设置获取录屏屏幕ID的回调函数OnDisplaySelected()。
 void OnDisplaySelected(struct OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 {
     (void)capture;
@@ -436,8 +438,9 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
 // 根据设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕Id。
+OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+displayInfo = nullptr;
+// 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕ID。
 config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
 config.videoInfo.videoCapInfo.displayId = 0;
 ```
@@ -466,7 +469,8 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
 // 根据设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
+OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+displayInfo = nullptr;
 // 设置录屏模式为OH_CAPTURE_HOME_SCREEN。
 config.captureMode = OH_CAPTURE_HOME_SCREEN;
 ```
@@ -495,12 +499,13 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
 // 根据设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
+OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+displayInfo = nullptr;
+// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕ID。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
-// (可选)若有期望录制的窗口，可传入单个窗口Id。
+// (可选)若有期望录制的窗口，可传入单个窗口ID。
 g_missionIds = {61}; // 表示弹出的Picker默认选中61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
@@ -526,12 +531,13 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
 // 根据设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
+OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+displayInfo = nullptr;
+// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕ID。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
-// 传入多个窗口Id。
+// 传入多个窗口ID。
 g_missionIds2 = {60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = g_missionIds2.data();
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2.size());
