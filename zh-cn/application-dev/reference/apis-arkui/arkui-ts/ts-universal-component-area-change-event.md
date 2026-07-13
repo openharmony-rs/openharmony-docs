@@ -46,7 +46,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 
-组件区域变化时触发该回调，可通过[AreaChangeOptions](#areachangeoptions)中的expectedUpdateInterval设置触发回调的间隔。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。由绘制变化所导致的渲染属性变化不会响应回调，如[translate](ts-universal-attributes-transformation.md#translate)、[offset](ts-universal-attributes-location.md#offset)、[markAnchor](ts-universal-attributes-location.md#markanchor)、[scale](ts-universal-attributes-transformation.md#scale)、[transform](ts-universal-attributes-transformation.md#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
+组件区域变化时触发该回调，可通过[AreaChangeOptions](#areachangeoptions)中的expectedUpdateInterval设置触发回调的间隔。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。由绘制变化所导致的渲染属性变化不会响应回调，如[translate](ts-universal-attributes-transformation.md#translate)、[offset](ts-universal-attributes-location.md#offset)、[markAnchor](ts-universal-attributes-location.md#markanchor)、[scale](ts-universal-attributes-transformation.md#scale)、[transform](ts-universal-attributes-transformation.md#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。
 
 >  **说明：**
 >
@@ -66,7 +66,7 @@ onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | event | [AreaChangeCallback](#areachangecallback) | 是   | onAreaChange事件的回调函数。组件显示的尺寸、位置发生变化时触发该回调。 |
-| options | [AreaChangeOptions](#areachangeoptions) | 否   | 区域变化相关的配置参数，用于设置区域变化回调的计算时间间隔。可通过expectedUpdateInterval设置回调触发间隔，单位为ms；缺省时，expectedUpdateInterval按照0处理。 |
+| options | [AreaChangeOptions](#areachangeoptions) | 否   | 区域变化相关的配置参数，用于设置区域变化回调的计算时间间隔。可通过expectedUpdateInterval设置回调触发间隔，单位为ms；未传入options时，expectedUpdateInterval按照0处理。 |
 
 **返回值：**
 
@@ -109,7 +109,7 @@ type AreaChangeCallback = (oldValue: Area, newValue: Area) => void
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
-| expectedUpdateInterval | number | 否 | 是 | 区域变化的预期更新时间间隔，单位为ms。当该字段大于2^31-1时，默认取值为2^31-1。默认值：1000 |
+| expectedUpdateInterval | number | 否 | 是 | 区域变化的预期更新时间间隔，单位为ms。当该字段大于2^31-1时，取值为2^31-1；当该字段小于0或未设置时，取值为默认值1000。<br>默认值：1000<br>取值范围：[0, 2^31-1] |
 
 ## 示例
 
@@ -122,8 +122,8 @@ type AreaChangeCallback = (oldValue: Area, newValue: Area) => void
 @Entry
 @Component
 struct AreaExample {
-  @State value: string = 'Text'
-  @State sizeValue: string = ''
+  @State value: string = 'Text';
+  @State sizeValue: string = '';
 
   build() {
     Column() {
@@ -135,7 +135,7 @@ struct AreaExample {
           this.value = this.value + 'Text';
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
-          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`)
+          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
           this.sizeValue = JSON.stringify(newValue);
         })
       Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })

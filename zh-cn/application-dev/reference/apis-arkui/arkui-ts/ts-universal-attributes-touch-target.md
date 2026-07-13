@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的响应热区。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
+设置组件的触摸热区。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
 
 
 >  **说明：**
@@ -153,7 +153,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
@@ -167,7 +167,7 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
       // 为一个组件添加多个热区
@@ -189,7 +189,7 @@ struct TouchTargetExample {
           } // 第二个热区宽度为按钮的一半，点击button2左半部，点击事件生效
         ])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
       // 热区大小为整个按钮，且下移一个按钮高度，点击button3下方按钮大小区域，点击事件生效
       Text("{x:0,y:'100%',width:'100%',height:'100%'}")
@@ -201,7 +201,7 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button3 clicked'
+          this.text = 'button3 clicked';
         })
 
       Text(this.text).margin({ top: 50 })
@@ -225,7 +225,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
@@ -239,7 +239,7 @@ struct TouchTargetExample {
           height: LengthMetrics.percent(1),
         }])
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
       // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2右边按钮大小区域，点击事件生效
@@ -259,7 +259,7 @@ struct TouchTargetExample {
           height: 'calc(100% - 0px)',
         }])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
 
       Text(this.text).margin({ top: 50 })

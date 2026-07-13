@@ -18,9 +18,9 @@ ArkUI_VisibleAreaEventOptions用于配置可见区域变化监听的参数，包
 
 使用[OH_ArkUI_VisibleAreaEventOptions_SetRatios](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setratios)设置阈值数组，定义触发可见区域变化的阈值条件。
 
-使用[OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval)设置预期更新间隔。
+使用[OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval)设置预期更新间隔，定义两次可见区域变化通知之间的最小时间间隔。
 
-使用[OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setmeasurefromviewport)设置可见区域的计算模式。
+使用[OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setmeasurefromviewport)设置可见区域计算模式，定义是否从视口区域计算可见比例。
 
 如需获取已设置的参数值，可使用：
 
@@ -37,4 +37,3 @@ ArkUI_VisibleAreaEventOptions用于配置可见区域变化监听的参数，包
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **所在头文件：** [common_attributes.h](capi-common-attributes-h.md)
-

@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>  从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 >
@@ -43,7 +43,7 @@ enableInternalDropAnimation(configuration: string): void
 **参数：**
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| configuration | string | 是   | 动效配置参数，字符串内容为JSON格式。用于配置系统内置拖拽动效的执行效果，需说明支持的JSON字段、字段取值及各字段设置后对动效类型、位置、尺寸、曲线等行为的影响。 |
+| configuration | string | 是   | 系统内置拖拽动效的配置参数，字符串内容为JSON格式，用于配置系统内置拖拽动效的执行效果。 |
 
 **错误码：**
 
@@ -106,7 +106,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 interruptFollowHandMorphDropAnimation(): boolean
 
-中断由[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)触发的待执行跟手变形落位动效，并立即触发其收尾流程。
+中断由[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)触发的待执行跟手变形落位动效，并立即触发其收尾流程，适用于用户取消拖拽、页面切换或需要终止未完成跟手变形落位动效的场景。
 
 
 **起始版本：** 26.0.0

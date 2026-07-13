@@ -451,7 +451,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 组件截图的PixelMap对象，用于表示截取到的组件图像。 |
 
 **错误码：**
 
@@ -489,17 +489,17 @@ struct SnapshotExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
           try {
             // 建议使用this.getUIContext().getComponentSnapshot().getSync()
-            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true });
-            this.pixmap = pixelmap
+            let pixelmap = componentSnapshot.getSync('root', { scale: 2, waitUntilRenderFinished: true });
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
     }
@@ -561,7 +561,7 @@ struct SnapshotExample {
 
 **示例：**
 
-``` ts
+```ts
 import { image } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
@@ -580,17 +580,17 @@ struct SnapshotColorModeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -625,7 +625,7 @@ struct SnapshotColorModeExample {
 
 **示例：**
 
-``` ts
+```ts
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -643,17 +643,17 @@ struct SnapshotDynamicRangeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -673,7 +673,7 @@ struct SnapshotDynamicRangeExample {
 
 ## SnapshotRegionType<sup>15+</sup>
 
-type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
+type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion
 
 表示组件截图区域，取值类型为下表中的任一类型。
 
@@ -686,7 +686,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 | 类型   | 说明   |
 | ------ | ------ |
 | [SnapshotRegion](#snapshotregion15) | 表示组件截图的矩形区域。 |
-| [LocalizedSnapshotRegion ](#localizedsnapshotregion15) | 表示组件截图的矩形区域，根据布局方向确定是否对矩形区域水平翻转，若布局方向为RTL，则把指定的截图区域做左右翻转处理以适应RTL布局方向。 |
+| [LocalizedSnapshotRegion](#localizedsnapshotregion15) | 表示组件截图的矩形区域，根据布局方向确定是否对矩形区域水平翻转，若布局方向为RTL，则把指定的截图区域做左右翻转处理以适应RTL布局方向。 |
 
 ## SnapshotRegion<sup>15+</sup>
 
@@ -741,31 +741,31 @@ struct SnapshotExample {
       Row() {
         Column() {
           TextClock()
-          Button("Button ABCDE").type(ButtonType.Normal)
+          Button('Button ABCDE').type(ButtonType.Normal)
           Row() {
             Checkbox()
-            Text("√")
-            Text(" | ")
+            Text('√')
+            Text(' | ')
             Checkbox()
-            Text("×")
+            Text('×')
           }.align(Alignment.Start)
 
           TextInput()
         }
         .align(Alignment.Start)
-        .id("component1")
-        .width("600px")
-        .height("600px")
+        .id('component1')
+        .width('600px')
+        .height('600px')
         .borderRadius(6)
         .borderWidth(2)
         .borderColor(Color.Green)
 
       }
 
-      Button("get capture")
+      Button('get capture')
         .onClick(() => {
           try {
-            let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
+            let pixelmap = this.getUIContext().getComponentSnapshot().getSync('component1',
               {
                 scale: 2,
                 waitUntilRenderFinished: true,
@@ -776,13 +776,13 @@ struct SnapshotExample {
                   bottom: 240
                 }
               })
-            this.pixmap = pixelmap
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
-      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
-    }.width("100%").align(Alignment.Center)
+      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width('600px')
+    }.width('100%').align(Alignment.Center)
   }
 }
 ```

@@ -32,7 +32,7 @@ hoverEffect(value: HoverEffect): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，支持链式调用。 |
 
 ## 示例
 
@@ -55,31 +55,31 @@ struct HoverExample {
           .backgroundColor(Color.Gray)
           .position({ x: 40, y: 120 })
           .hoverEffect(HoverEffect.Scale)
-          .onHover((isHover?: boolean) => {
+          .onHover((isHover: boolean) => {
             console.info(`Scale isHover: ${isHover}`);
-            this.isHoverVal = isHover as boolean;
-          });
+            this.isHoverVal = isHover;
+          })
 
-        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 })
+        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 });
         Column()
           .width('80%')
           .height(200)
           .backgroundColor(Color.Yellow)
           .hoverEffect(HoverEffect.Highlight)
           .position({ x: 40, y: 420 })
-          .onHover((isHover?: boolean) => {
+          .onHover((isHover: boolean) => {
             console.info(`Highlight isHover: ${isHover}`);
-            this.isHoverVal = isHover as boolean;
-          });
+            this.isHoverVal = isHover;
+          })
       }
       .hoverEffect(HoverEffect.None)
       .width('100%')
       .height('100%')
       .border({ width: 1 })
-      .onHover((isHover?: boolean) => {
+      .onHover((isHover: boolean) => {
         console.info('HoverEffect.None');
-        this.isHoverVal = isHover as boolean;
-      });
+        this.isHoverVal = isHover;
+      })
     }
   }
 }

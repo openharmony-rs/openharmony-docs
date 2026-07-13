@@ -111,9 +111,9 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 | -------- | -------- |
 | T | 返回当前组件，可用于链式调用。 |
 
->**说明：**
+> **说明：**
 >
->- 此接口与[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)接口存在如下差异：onVisibleAreaChange在每一帧都会进行可见区域比例的计算，如果注册节点太多，系统功耗存在劣化。而此接口降低了可见区域比例计算的频度，计算间隔由[VisibleAreaEventOptions](#visibleareaeventoptions12)的expectedUpdateInterval参数决定。
+>- 此接口与[onVisibleAreaChange](#onvisibleareachange)接口存在如下差异：onVisibleAreaChange在每一帧都会进行可见区域比例的计算，如果注册节点太多，系统功耗存在劣化。而此接口降低了可见区域比例计算的频度，计算间隔由[VisibleAreaEventOptions](#visibleareaeventoptions12)的expectedUpdateInterval参数决定。
 >
 >- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
 >
@@ -173,10 +173,10 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 @Entry
 @Component
 struct ScrollExample {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  @State testTextStr: string = 'test'
-  @State testRowStr: string = 'test'
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
 
   build() {
     Column() {
@@ -200,15 +200,15 @@ struct ScrollExample {
             .backgroundColor(Color.Green)
             // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
               if (isExpanding && currentRatio >= 1.0) {
-                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
-                this.testTextStr = 'Test Text is fully visible'
+                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                this.testTextStr = 'Test Text is fully visible';
               }
 
               if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.')
-                this.testTextStr = 'Test Text is completely invisible'
+                console.info('Test Text is completely invisible.');
+                this.testTextStr = 'Test Text is completely invisible';
               }
             })
 
@@ -221,15 +221,15 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
             if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.')
-              this.testRowStr = 'Test Row is fully visible'
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
             }
 
             if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.')
-              this.testRowStr = 'Test Row is completely invisible'
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
             }
           })
 
@@ -252,13 +252,13 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number) => {
-        console.info(`${xOffset} ${yOffset}`)
+        console.info(`${xOffset} ${yOffset}`);
       })
       .onScrollEdge(() => {
-        console.info('To the edge')
+        console.info('To the edge');
       })
       .onScrollStop(() => {
-        console.info('Scroll Stop')
+        console.info('Scroll Stop');
       })
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
@@ -275,10 +275,10 @@ struct ScrollExample {
 @Entry
 @Component
 struct ScrollExample {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  @State testTextStr: string = 'test'
-  @State testRowStr: string = 'test'
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
 
   build() {
     Column() {
@@ -303,15 +303,15 @@ struct ScrollExample {
             // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
               (isExpanding: boolean, currentRatio: number) => {
-                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
                 if (isExpanding && currentRatio >= 1.0) {
-                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
-                  this.testTextStr = 'Test Text is fully visible'
+                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                  this.testTextStr = 'Test Text is fully visible';
                 }
 
                 if (!isExpanding && currentRatio <= 0.0) {
-                  console.info('Test Text is completely invisible.')
-                  this.testTextStr = 'Test Text is completely invisible'
+                  console.info('Test Text is completely invisible.');
+                  this.testTextStr = 'Test Text is completely invisible';
                 }
               })
 
@@ -324,15 +324,15 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
             if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.')
-              this.testRowStr = 'Test Row is fully visible'
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
             }
 
             if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.')
-              this.testRowStr = 'Test Row is completely invisible'
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
             }
           })
 
@@ -355,13 +355,13 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number) => {
-        console.info(`${xOffset} ${yOffset}`)
+        console.info(`${xOffset} ${yOffset}`);
       })
       .onScrollEdge(() => {
-        console.info('To the edge')
+        console.info('To the edge');
       })
       .onScrollStop(() => {
-        console.info('Scroll Stop')
+        console.info('Scroll Stop');
       })
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
@@ -400,10 +400,10 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio1 = currentRatio
+            this.ratio1 = currentRatio;
           }, true)
         }
         .backgroundColor(Color.Pink)
@@ -428,10 +428,10 @@ struct OnVisibleAreaChangeSample {
           // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
             (isExpanding: boolean, currentRatio: number) => {
-              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
             })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio2 = currentRatio
+            this.ratio2 = currentRatio;
           })
         }
         .backgroundColor(Color.Pink)
@@ -459,10 +459,10 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio3 = currentRatio
+            this.ratio3 = currentRatio;
           }, true)
         }
         .clip(true)

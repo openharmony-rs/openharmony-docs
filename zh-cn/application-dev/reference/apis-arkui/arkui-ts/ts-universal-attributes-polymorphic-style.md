@@ -193,7 +193,7 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text(this.isEnable == true ? 'effective' : 'disabled')
+      Text(this.isEnable ? 'effective' : 'disabled')
         .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Solid)
@@ -232,8 +232,8 @@ struct StyleExample {
 @Entry
 @Component
 struct Index {
-  @State value: boolean = false
-  @State value2: boolean = false
+  @State isRadio1Selected: boolean = false
+  @State isRadio2Selected: boolean = false
 
   @Styles
   normalStyles(): void {
@@ -252,13 +252,13 @@ struct Index {
         Text('Radio1')
           .fontSize(25)
         Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.value)
+          .checked(this.isRadio1Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
           .borderRadius(30)
           .onClick(() => {
-            this.value = !this.value;
+            this.isRadio1Selected = !this.isRadio1Selected;
           })
           .stateStyles({
             normal: this.normalStyles,
@@ -271,7 +271,7 @@ struct Index {
         Text('Radio2')
           .fontSize(25)
         Radio({ value: 'Radio2', group: 'radioGroup2' })
-          .checked($$this.value2)
+          .checked($$this.isRadio2Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
@@ -291,7 +291,7 @@ struct Index {
 
 ### 示例3（设置Builder多态样式）
 
-该示例展示了状态为pressed时Builder组件的样式变化。
+该示例展示了状态为pressed时@Builder中自定义组件的样式变化。
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -336,8 +336,8 @@ struct Index {
             console.info('OpenCustomDialog complete.');
           })
           .catch((error: BusinessError) => {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
+            let message = error.message;
+            let code = error.code;
             console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
           });
       })

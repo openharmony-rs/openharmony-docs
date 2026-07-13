@@ -12,7 +12,7 @@ typedef struct ArkUI_DragAction ArkUI_DragAction
 
 ## 概述
 
-拖拽行为，用于主动发起拖拽。开发者可结合主动拖拽流程了解ArkUI_DragAction的创建、配置和执行机制，相关说明请参见拖拽开发指南。
+拖拽行为句柄，用于主动发起拖拽操作，即由开发者主动调用接口启动拖拽，区别于被动响应拖拽事件。开发者可结合主动拖拽流程了解ArkUI_DragAction的创建、配置和执行机制，相关说明请参见[绑定拖拽事件](../../ui/ndk-drag-event.md)。
 
 **起始版本：** 12
 

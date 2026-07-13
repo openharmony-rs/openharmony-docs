@@ -47,7 +47,7 @@ onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 | 名称                                      | 类型                  | 只读    |  可选   |         说明                 |
 | ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
 | axisMap                               | Map<[AxisModel](ts-appendix-enums.md#axismodel15), number>      |  否    |  否     | 焦点轴事件的轴值表。          |
-| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。            |
+| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递，可用于当前组件处理焦点轴事件后，不希望父组件继续响应该事件的场景。            |
 
 ## 示例
 
@@ -62,11 +62,11 @@ struct FocusAxisEventExample {
   @State axisValue: string = ''
 
   aboutToAppear(): void {
-    this.getUIContext().getFocusController().activate(true)
+    this.getUIContext().getFocusController().activate(true);
   }
 
   aboutToDisappear(): void {
-    this.getUIContext().getFocusController().activate(false)
+    this.getUIContext().getFocusController().activate(false);
   }
 
   build() {
