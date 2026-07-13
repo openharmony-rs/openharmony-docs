@@ -110,7 +110,25 @@ The system does not have a cache location.
 
 系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
 
-### 4. 其他原因导致定位失败
+### 4. 获取后处理轨迹失败
+
+**错误信息**
+
+Failed to obtain the post processing track because sports type is not supported.
+
+**错误描述**
+
+不支持当前输入的运动类型，无法获取后处理轨迹。
+
+**可能原因**
+
+入参设置错误，请使用支持的sports类型。
+
+**处理步骤**
+
+请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#getpostprocessingtrack)入参说明，使用支持的sports类型。</br>
+
+### 5. 其他原因导致定位失败
 
 **错误信息**
 
