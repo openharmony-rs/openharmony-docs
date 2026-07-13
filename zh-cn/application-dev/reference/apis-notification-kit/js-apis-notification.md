@@ -464,7 +464,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型,目前分为社交通信、服务提醒、内容咨询和其他类型。 |
+| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，目前分为社交通信、服务提醒、内容咨询和其他类型。 |
 | callback | AsyncCallback\<void\> | 是   | 表示被指定的回调方法。                                        |
 
 **示例：**
@@ -496,7 +496,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型,目前分为社交通信、服务提醒、内容咨询和其他类型。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，目前分为社交通信、服务提醒、内容咨询和其他类型。 |
 
 **返回值：**
 
