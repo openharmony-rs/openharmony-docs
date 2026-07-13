@@ -28,7 +28,7 @@ zIndex(value: number): T
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 同一容器中兄弟组件显示层级关系。zIndex值越大，显示层级越高，即zIndex值大的组件会覆盖在zIndex值小的组件上方。当不涉及新增或减少兄弟节点，动态改变zIndex时会在zIndex改变前层级顺序的基础上进行稳定排序；涉及新增或减少兄弟节点时，zIndex值越大，显示层级越高，zIndex值相等时将按声明顺序显示，即后声明的组件会覆盖在先声明的组件上方。 |
+| value  | number | 是   | 同一容器中兄弟组件显示层级关系。zIndex值越大，显示层级越高，即zIndex值大的组件会覆盖在zIndex值小的组件上方；不同容器内的组件无法根据zIndex值改变跨容器显示层级。当不涉及新增或减少兄弟节点，动态改变zIndex时会在zIndex改变前层级顺序的基础上进行稳定排序；涉及新增或减少兄弟节点时，zIndex值越大，显示层级越高，zIndex值相等时将按声明顺序显示，即后声明的组件会覆盖在先声明的组件上方。 |
 
 **返回值：**
 
@@ -68,7 +68,7 @@ struct ZIndexExample {
   }
 }
 ```
-Stack容器内子组件不设置zIndex的效果。
+Stack容器内子组件不设置zIndex时，默认按照声明顺序显示，后声明的组件会覆盖在先声明的组件上方。
 
 ![nozindex.png](figures/nozindex.png)
 
@@ -85,7 +85,7 @@ Stack容器子组件设置zIndex后的效果。
 @Entry
 @Component
 struct ZIndexExample {
-  @State zIndex_: number = 0
+  @State zIndex_: number = 0;
 
   build() {
     Column() {
@@ -123,7 +123,7 @@ struct ZIndexExample {
 
 ### 示例3（设置不同容器内组件的zIndex属性）
 
-该示例在不同容器内设置zIndex属性。其中，Text1、Text2和Text3在不同的Stack容器内。虽然Text3的zIndex值最小，但Text1、Text2仍无法根据zIndex值显示在Text3的上方。
+该示例在不同容器内设置zIndex属性。其中，Text1、Text2在同一个Stack容器内，Text3在另一个Stack容器内。虽然Text3的zIndex值最小，但Text1、Text2仍无法根据zIndex值显示在Text3的上方。
 
 ```ts
 // xxx.ets

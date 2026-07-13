@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。
+本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽动作，并在拖拽过程中携带拖拽信息，适用于应用需要自主控制拖拽发起时机、拖拽预览效果和拖拽数据传递的场景，帮助应用实现更灵活的自定义拖拽交互。
 
 > **说明：**
 >
@@ -632,9 +632,9 @@ struct DragControllerPage {
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
 
   @Builder
-  DraggingBuilder() {
+  draggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
         .fontColor(Color.White)
         .fontSize(12)
     }
@@ -650,7 +650,7 @@ struct DragControllerPage {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
             this.customBuilders.push(() => {
-              this.DraggingBuilder();
+              this.draggingBuilder();
             });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
@@ -666,12 +666,12 @@ struct DragControllerPage {
                 .createDragAction(this.customBuilders,
                   dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
               if (!this.dragAction) {
-                console.info("listener dragAction is null");
+                console.info('listener dragAction is null');
                 return;
               }
               this.dragAction.startDrag().then(() => {
               }).catch((err: Error) => {
-                console.error(`Failed to start drag. Code: ${err.code}, message: ${err.message}`);
+                console.error(`Failed to start drag. Message: ${err.message}`);
               })
             } catch (err) {
               console.error(`Failed to create dragAction. Code: ${err.code}, message: ${err.message}`);
@@ -699,7 +699,7 @@ import { dragController } from '@kit.ArkUI';
 struct ImageExample {
   private dragAction: dragController.DragAction | null = null;
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @State uri: string = "";
+  @State uri: string = '';
   @State blockArr: string[] = [];
   uiContext = this.getUIContext();
   udKey: string = '';
@@ -725,6 +725,7 @@ struct ImageExample {
                 });
                 const context: Context | undefined = this.uiContext.getHostContext();
                 if (context) {
+                  // 延迟加载拖拽数据时，将rawfile中的视频复制到应用文件目录并构造UnifiedData返回。
                   let loadHandler: unifiedDataChannel.DataLoadHandler = () => {
                     let data =
                       context.resourceManager.getRawFdSync('test1.mp4');
@@ -758,7 +759,7 @@ struct ImageExample {
                     }
                   }
 
-                  let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
+                  let statusChangeCallback = (dragAndDropInfo: dragController.DragAndDropInfo) => {
                     console.info(`ndq Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
                   }
                   try {
@@ -770,7 +771,7 @@ struct ImageExample {
                       console.info("listener dragAction is null");
                       return;
                     }
-                    this.dragAction.on('statusChange', func);
+                    this.dragAction.on('statusChange', statusChangeCallback);
                     this.dragAction.startDrag().then(() => {
                     }).catch((err: Error) => {
                       console.error(`start drag Error: ${err.message}`);
@@ -863,7 +864,7 @@ struct ImageExample {
 
 on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
 
-注册监听拖拽状态改变事件。
+注册监听拖拽状态改变事件，用于在主动拖拽开始或结束时获取拖拽状态，并执行更新UI、记录状态或清理资源等操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -892,9 +893,9 @@ struct DragControllerPage {
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
 
   @Builder
-  DraggingBuilder() {
+  draggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
         .fontColor(Color.White)
         .fontSize(12)
     }
@@ -910,7 +911,7 @@ struct DragControllerPage {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
             this.customBuilders.push(() => {
-              this.DraggingBuilder();
+              this.draggingBuilder();
             });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
@@ -920,7 +921,7 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
+            let statusChangeCallback = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
             try {
@@ -929,13 +930,13 @@ struct DragControllerPage {
                 .createDragAction(this.customBuilders,
                   dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
               if (!this.dragAction) {
-                console.info("listener dragAction is null");
+                console.info('listener dragAction is null');
                 return;
               }
               // 监听状态改变，触发后打印func中的日志
-              this.dragAction.on('statusChange', func);
+              this.dragAction.on('statusChange', statusChangeCallback);
               this.dragAction.startDrag().then(() => {
-              }).catch((err: Error) => {
+              }).catch((err: BusinessError) => {
                 console.error(`Failed to start drag. Code: ${err.code}, message: ${err.message}`);
               })
             } catch (err) {
@@ -982,7 +983,7 @@ struct DragControllerPage {
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
 
   @Builder
-  DraggingBuilder() {
+  draggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -1000,7 +1001,7 @@ struct DragControllerPage {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
             this.customBuilders.push(() => {
-              this.DraggingBuilder();
+              this.draggingBuilder();
             });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
@@ -1010,7 +1011,7 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
+            let statusChangeCallback = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
             this.dragAction = this.getUIContext()
@@ -1018,14 +1019,14 @@ struct DragControllerPage {
               .createDragAction(this.customBuilders,
                 dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
             if (!this.dragAction) {
-              console.info("listener dragAction is null");
+              console.info('listener dragAction is null');
               return;
             }
-            this.dragAction.on('statusChange', func);
+            this.dragAction.on('statusChange', statusChangeCallback);
             // 取消监听，发起拖拽后不会打印func中的日志
-            this.dragAction.off('statusChange', func);
+            this.dragAction.off('statusChange', statusChangeCallback);
             this.dragAction.startDrag().then(() => {
-            }).catch((err: Error) => {
+            }).catch((err: BusinessError) => {
               console.error(`Failed to start drag. Code: ${err.code}, message: ${err.message}`);
             })
           }
@@ -1073,7 +1074,7 @@ struct DragControllerPage {
 
 | 名称        | 类型                                                   | 只读  |  可选 | 说明                                     |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
-| duration    | number                                                 | 否  |  是   | 动画持续时间，单位为毫秒。<br>默认值：1000<br>**说明：**<br>-&nbsp;设置小于0的值时按0处理。<br>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
+| duration    | number                                                 | 否  |  是   | 动画持续时间，单位为毫秒。<br>默认值：1000<br>**说明：**<br>- 设置小于0的值时按0处理。<br>- 设置浮点类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
 | curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否  |  是  | 设置动画曲线。<br>默认值：Curve.EaseInOut|
 
 ## DragEventParam<sup>12+</sup>
@@ -1214,8 +1215,7 @@ animate(options: AnimationOptions, handler: () => void): void
 
    import { unifiedDataChannel } from '@kit.ArkData';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
-   import { image } from '@kit.ImageKit';
+   import { dragController, curves, UIContext } from '@kit.ArkUI';
    import { BusinessError } from '@kit.BasicServicesKit';
 
    class DragInfo {
@@ -1226,25 +1226,14 @@ animate(options: AnimationOptions, handler: () => void): void
    @Entry()
    @Component
    struct DragControllerPage {
-     @State pixmap: image.PixelMap | null = null;
      storages = this.getUIContext().getSharedLocalStorage();
 
      @Builder
-     DraggingBuilder() {
+     draggingBuilder() {
        Column() {
-         Text("DraggingBuilder")
+         Text('DraggingBuilder')
            .fontColor(Color.White)
            .fontSize(12)
-       }
-       .width(100)
-       .height(100)
-       .backgroundColor(Color.Blue)
-     }
-
-     @Builder
-     PixmapBuilder() {
-       Column() {
-         Text("PixmapBuilder")
        }
        .width(100)
        .height(100)
@@ -1290,7 +1279,7 @@ animate(options: AnimationOptions, handler: () => void): void
                this.getUIContext()
                  .getDragController()
                  .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                   this.DraggingBuilder()
+                   this.draggingBuilder()
                  }, dragInfo, (err, eve) => {
                    hilog.info(0x0000, `${JSON.stringify(err)}`, '')
                    if (eve && eve.event) {

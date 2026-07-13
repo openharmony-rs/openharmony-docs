@@ -41,7 +41,7 @@ NODE_ENABLED = 6
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 0表示不可交互，1表示可交互。 |
+| .value[0].i32 | 返回值为0表示不可交互，返回值为1表示可交互。 |
 
 ## NODE_FOCUSABLE
 
@@ -49,7 +49,7 @@ NODE_ENABLED = 6
 NODE_FOCUSABLE = 39
 ```
 
-获焦属性，支持属性设置、属性重置和属性获取。<br>
+设置组件是否可获焦，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -58,13 +58,13 @@ NODE_FOCUSABLE = 39
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数值为1表示可获焦，为0表示不可获焦。默认为不可获焦。 |
+| .value[0].i32 | 取值为0或1，参数值为1表示可获焦，为0表示不可获焦。默认为不可获焦。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数值为1表示可获焦，为0表示不可获焦。 |
+| .value[0].i32 | 返回值为1表示可获焦，为0表示不可获焦。 |
 
 ## NODE_RENDER_GROUP
 
@@ -95,7 +95,7 @@ NODE_RENDER_GROUP = 80
 NODE_CLICK_DISTANCE = 97
 ```
 
-组件所绑定的点击手势移动距离限制，支持属性设置。<br>
+设置组件点击手势的移动距离限制，支持属性设置。<br>
 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -104,7 +104,7 @@ NODE_CLICK_DISTANCE = 97
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 表示识别点击手势时允许手指在该范围内移动，取值范围为[0, +∞)，单位为vp。 |
+| .value[0].f32 | 表示识别点击手势时允许手指在设定的距离阈值内移动，取值范围为[0, +∞)，单位为vp。 |
 
 ## NODE_ALLOW_FORCE_DARK
 

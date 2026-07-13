@@ -110,7 +110,7 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取触摸位置相对于当前组件实时位置的左上角坐标。
+获取触摸位置相对于当前组件实时位置左上角的坐标。
 
 **起始版本：** 26.0.0
 
@@ -171,8 +171,8 @@ struct TouchExample {
             if (event.type === TouchType.Move) {
               this.eventType = 'Move';
             }
-            // 1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
-            // 2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
+            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
+            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
             if (event.type === TouchType.Cancel) {
               this.eventType = 'Cancel';
             }
@@ -202,8 +202,8 @@ struct TouchExample {
             if (event.type === TouchType.Move) {
               this.eventType = 'Move';
             }
-            // 1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
-            // 2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
+            // 1. 手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel
+            // 2. 折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel
             if (event.type === TouchType.Cancel) {
               this.eventType = 'Cancel';
             }

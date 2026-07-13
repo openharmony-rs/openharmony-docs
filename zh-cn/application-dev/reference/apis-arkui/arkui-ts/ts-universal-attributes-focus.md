@@ -44,7 +44,7 @@ focusable(value: boolean): T
 
 tabIndex(index: number): T
 
-自定义组件tab键走焦能力。当组件未设置tabIndex时，默认按照预设的焦点移动规则进行焦点移动。
+自定义组件Tab键走焦能力。当组件未设置tabIndex时，默认按照预设的焦点移动规则进行焦点移动。
 
 >  **说明：**
 >
@@ -59,7 +59,7 @@ tabIndex(index: number): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | ------------------------------------ |
-| index  | number | 是   | 自定义组件tab键走焦能力。若有配置了tabIndex大于0的组件，则tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex >= 0：表示元素是可聚焦的，并且可以通过tab键走焦来访问到该元素。<br>- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过tab键走焦来访问到该元素。<br> **说明：**<br> tabIndex与focusScopeId不能混用。|
+| index  | number | 是   | 自定义组件Tab键走焦能力。若有配置了tabIndex大于0的组件，则Tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex >= 0：表示元素是可聚焦的，并且可以通过Tab键走焦来访问到该元素。<br>- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过Tab键走焦来访问到该元素。<br> **说明：**<br> tabIndex与focusScopeId不能混用。|
 
 **返回值：**
 
@@ -71,7 +71,7 @@ tabIndex(index: number): T
 
 defaultFocus(value: boolean): T
 
-设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点。当未设置defaultFocus时，组件默认不为当前层级页面的默认焦点。
+设置当前组件是否为当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)上的默认焦点。当未设置defaultFocus时，组件默认不为当前层级页面的默认焦点。与[groupDefaultFocus](#groupdefaultfocus9)的区别：defaultFocus作用于层级页面范围，groupDefaultFocus作用于容器获焦范围；两者可同时使用但生效范围不同。
 
 >  **说明：**
 >
@@ -109,7 +109,7 @@ groupDefaultFocus(value: boolean): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前组件是否为当前组件所在容器获焦时的默认焦点，仅在初次创建容器节点第一次获焦时生效。true表示当前组件为所在容器获焦时的默认焦点，false表示当前组件不是所在容器获焦时的默认焦点。<br>**说明：** <br>必须与[tabIndex](#tabindex9)联合使用，当某个容器设置了tabIndex，且容器内某子组件或容器自身设置了groupDefaultFocus(true)，当该容器首次TAB键获焦时，会自动将焦点转移至该指定的组件上。若容器内（包含容器本身）有多个组件设置了groupDefaultFocus(true)，则以组件树深度遍历找到的第一个组件为最终结果。 |
+| value  | boolean | 是   | 设置当前组件是否为当前组件所在容器获焦时的默认焦点，仅在初次创建容器节点第一次获焦时生效。true表示当前组件为所在容器获焦时的默认焦点，false表示当前组件不是所在容器获焦时的默认焦点。<br>**说明：** <br>必须与[tabIndex](#tabindex9)联合使用，单独设置groupDefaultFocus时不会生效。当某个容器设置了tabIndex，且容器内某子组件或容器自身设置了groupDefaultFocus(true)，当该容器首次Tab键获焦时，会自动将焦点转移至该指定的组件上。若容器内（包含容器本身）有多个组件设置了groupDefaultFocus(true)，则以组件树深度遍历找到的第一个组件为最终结果。 |
 
 **返回值：**
 
@@ -131,7 +131,7 @@ focusOnTouch(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前组件是否支持点击获焦能力。true表示组件支持点击获焦，false表示不支持点击获焦。<br>**说明：** <br>仅在组件可点击时才能正常获取焦点。 |
+| value  | boolean | 是   | 设置当前组件是否支持点击获焦能力。true表示组件支持点击获焦，false表示不支持点击获焦。<br>**说明：** <br>仅在组件可点击且可获焦时才能正常获取焦点。 |
 
 **返回值：**
 
@@ -165,15 +165,15 @@ focusBox(style: FocusBoxStyle): T
 
 ## focusControl<sup>9+</sup>
 
-焦点控制模块。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+焦点控制模块，用于通过接口主动请求指定组件获焦，适用于需要在代码中主动控制焦点转移的场景。
 
 > **说明：**
 >
 > 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### requestFocus<sup>9+</sup>
 
@@ -236,7 +236,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | scopeId  | string | 是   | 当前组件设置的获焦优先级生效的容器组件的id标识。<br>**说明：** <br>1.当前组件必须在scopeId所标识的容器内，或其所属容器在scopeId所标识的容器内。<br>2.组件不可重复设置多个优先级。<br>3.设置了focusScopeId的容器组件不可设置优先级。 |
-| priority  | [FocusPriority](#focuspriority12)  | 否   | 获焦优先级。<br>**说明：** <br>未设置priority时，默认为AUTO优先级。<br>优先级对走焦以及获焦组件的影响：<br>1.容器整体获焦（[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br>2.容器非整体获焦（非焦点组场景下使用tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照位置顺序走焦。 |
+| priority  | [FocusPriority](#focuspriority12)  | 否   | 获焦优先级。<br>**说明：** <br>未设置priority时，默认为AUTO优先级。<br>优先级对走焦以及获焦组件的影响：<br>1.容器整体获焦（[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)切换/焦点切换到焦点组/容器组件使用requestFocus申请焦点）时，若容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由容器内上次获焦的组件获焦。<br>2.容器非整体获焦（非焦点组场景下使用Tab键/方向键走焦）时，若容器为首次获焦，则容器内优先级最高的组件获焦，若容器非首次获焦，不考虑优先级按照位置顺序走焦。 |
 
 **返回值：**
 
@@ -246,7 +246,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
 ### FocusPriority<sup>12+</sup>
 
-设置组件焦点的优先级。
+设置组件获焦优先级。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -272,8 +272,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
 | 名称     | 值    | 说明        |
 | -----------| ----------- | --------- |
-| FOCUS_NAVIGATION  | 0 | 默认值，当前组件不消费按键时，tab/方向键优先在当前容器内走焦。 |
-| ANCESTOR_EVENT  | 1  |  当前组件不消费按键时，tab/方向键优先冒泡给父组件。 |
+| FOCUS_NAVIGATION  | 0 | 默认值，当前组件不消费按键时，Tab/方向键优先在当前容器内走焦。 |
+| ANCESTOR_EVENT  | 1  |  当前组件不消费按键时，Tab/方向键优先冒泡给父组件。 |
 
 ## focusScopeId<sup>12+</sup>
 
@@ -292,7 +292,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。 |
-| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
+| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
 
 **返回值：**
 
@@ -317,7 +317,7 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | id  | string | 是   | 设置当前容器组件的id标识。<br>**说明：** <br>单个[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)下，id标识全局唯一，不可重复。|
-| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
+| isGroup  | boolean | 否   | 设置当前容器组件是否为焦点组。true表示容器组件为焦点组，false表示容器组件不是焦点组。默认值为false。<br>**说明：** <br>焦点组不可嵌套，不可重复配置。<br> 焦点组不能和tabIndex混用。<br>配置焦点组的目的是使得容器及容器内的元素可以按照焦点组规则走焦。焦点组走焦规则：<br>1.焦点组容器内只能通过方向键走焦，Tab键会使焦点跳出焦点组容器。<br>2.通过方向键使焦点从焦点组容器外切换到焦点组容器内时，若焦点组容器内存在优先级为PREVIOUS的组件，则优先级为PREVIOUS的组件获焦，否则，由焦点组容器内上次获焦的组件获焦。|
 | arrowStepOut  | boolean | 否   | 设置能否使用方向键走焦出当前焦点组。true表示可以使用方向键走焦出当前焦点组，false表示不能使用方向键走焦出当前焦点组。默认值为true。|
 
 **返回值：**
@@ -343,7 +343,7 @@ tabStop(isTabStop: boolean): T
 <!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isTabStop  | boolean | 是   | 设置当前容器组件是否为走焦可停留容器。true表示当前容器组件为走焦可停留容器，false表示当前容器组件不是走焦可停留容器。<br>**说明：** <br>1.配置tabStop需要确保是容器组件且有可获焦的孩子组件，默认容器组件不能直接获焦。<br> 2.通过[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)请求焦点，如果是容器组件且配置tabStop，焦点能够停留在容器组件，如果未配置tabStop，即使整条焦点链上有配置了tabStop的组件，该组件依然能获取到焦点。<br>3.配置tabStop的容器不允许嵌套超过2层。<br>tabStop走焦规则：<br>1.通过tab键和方向键走焦，焦点会停留在配置了tabStop的组件上，如果焦点停留在配置了tabStop的容器内部时，可以走焦到容器内部的下一个可获焦组件，如果焦点停留在配置了tabStop的容器外部时，可以走焦到容器外的下一个可获焦组件。<br>2.当焦点停留在tabStop上时，按Enter键可以走焦到内部第一个可获焦组件，按ESC能够将焦点退回到不超过当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)根容器的上一个配置了tabStop的组件，按空格键可以响应该容器的onClick事件。<br>3.不建议根容器配置tabStop。如果根容器配置了tabStop，通过[clearFocus](../arkts-apis-uicontext-focuscontroller.md#clearfocus12)将焦点清理到根容器，再按Enter键会重新走回内部上一次获焦组件，通过ESC键将焦点清理到根容器，再按Enter键会走焦到内部第一个可获焦组件。|
+| isTabStop  | boolean | 是   | 设置当前容器组件是否为走焦可停留容器。true表示当前容器组件为走焦可停留容器，false表示当前容器组件不是走焦可停留容器。<br>**说明：** <br>1.配置tabStop需要确保是容器组件且有可获焦的子组件，默认容器组件不能直接获焦。<br> 2.通过[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)请求焦点，如果是容器组件且配置tabStop，焦点能够停留在容器组件，如果目标容器组件未配置tabStop，即使整条焦点链上有配置了tabStop的组件，目标组件依然能获取到焦点。<br>3.配置tabStop的容器不允许嵌套超过2层。<br>tabStop走焦规则：<br>1.通过tab键和方向键走焦，焦点会停留在配置了tabStop的组件上，如果焦点停留在配置了tabStop的容器内部时，可以走焦到容器内部的下一个可获焦组件，如果焦点停留在配置了tabStop的容器外部时，可以走焦到容器外的下一个可获焦组件。<br>2.当焦点停留在tabStop上时，按Enter键可以走焦到内部第一个可获焦组件，按ESC能够将焦点退回到不超过当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)根容器的上一个配置了tabStop的组件，按空格键可以响应该容器的onClick事件。<br>3.不建议根容器配置tabStop。如果根容器配置了tabStop，通过[clearFocus](../arkts-apis-uicontext-focuscontroller.md#clearfocus12)将焦点清理到根容器，再按Enter键会重新走回内部上一次获焦组件，通过ESC键将焦点清理到根容器，再按Enter键会走焦到内部第一个可获焦组件。|
 
 **返回值：**
 
@@ -355,13 +355,13 @@ tabStop(isTabStop: boolean): T
 
 ![tabStop](figures/tabStop.png)
 
-如果当前焦点停留在button2上，按下tab键将会走焦到Column3，再按下tab键会循环走焦到button1。
+如果当前焦点停留在button2上，按下Tab键将会走焦到Column3，再按下Tab键会循环走焦到button1。
 
 ## nextFocus<sup>18+</sup>
 
 nextFocus(nextStep: Optional\<FocusMovement>): T
 
-设置组件的自定义焦点走焦逻辑。
+设置组件的自定义焦点走焦逻辑，适用于需要精确控制焦点流向的场景。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -373,7 +373,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| nextStep  | Optional\<[FocusMovement](#focusmovement18对象说明)> | 是 | 设置当前容器组件的自定义走焦规则。<br>**说明：** <br>默认值为重置nextStep为空。<br>未设置自定义走焦规则，或自定义走焦规则中设置的目标组件不存在时，仍按照默认走焦规则进行走焦。|
+| nextStep  | Optional\<[FocusMovement](#focusmovement18对象说明)> | 是 | 设置当前组件的自定义走焦规则。<br>**说明：** <br>默认值为重置nextStep为空。<br>未设置自定义走焦规则，或自定义走焦规则中设置的目标组件不存在时，仍按照默认走焦规则进行走焦。|
 
 **返回值：**
 
@@ -393,8 +393,8 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| forward  | string | 否 | 是 | 通过tab键走焦到组件的id。<br>默认值为重置forward为空。 |
-| backward  | string | 否 | 是 | 通过shift+tab键走焦到组件的id。<br>默认值为重置backward为空。 |
+| forward  | string | 否 | 是 | 通过Tab键走焦到组件的id。<br>默认值为重置forward为空。 |
+| backward  | string | 否 | 是 | 通过Shift+Tab键走焦到组件的id。<br>默认值为重置backward为空。 |
 | up  | string | 否 | 是 | 通过方向键上键走焦到组件的id。<br>默认值为重置up为空。 |
 | down  | string | 否 | 是 | 通过方向键下键走焦到组件的id。<br>默认值为重置down为空。 |
 | left  | string | 否 | 是 | 通过方向键左键走焦到组件的id。<br>默认值为重置left为空。 |
@@ -446,7 +446,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          .tabIndex(1) // 该Column组件为按TAB键走焦的第一个获焦的组件
+          .tabIndex(1) // 该Column组件为按Tab键走焦的第一个获焦的组件
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -475,13 +475,13 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-          .tabIndex(2) // 该Column组件为按TAB键走焦的第二个获焦的组件
+          .tabIndex(2) // 该Column组件为按Tab键走焦的第二个获焦的组件
         }
 
         Column({ space: 5 }) {
           TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
-              this.inputValue = value
+              this.inputValue = value;
             })
             .width(156)
             .defaultFocus(true) // 该TextInput组件为层级页面的初始默认焦点
@@ -530,7 +530,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .tabIndex(3) // 该Column组件为按TAB键走焦的第三个获焦的组件
+        .tabIndex(3) // 该Column组件为按Tab键走焦的第三个获焦的组件
       }.alignItems(VerticalAlign.Top)
     }
   }
@@ -542,19 +542,19 @@ struct FocusableExample {
 
 ![defaultFocus](figures/defaultFocus.png)
 
-首次按TAB键，焦点切换到tabIndex(1)的容器上，且自动走焦到内部第一个可获焦组件上：
+首次按Tab键，焦点切换到tabIndex(1)的容器上，且自动走焦到内部第一个可获焦组件上：
 
 ![groupDefaultFocus1](figures/groupDefaultFocus1.png)
 
-第二次按TAB键，焦点切换到tabIndex(2)的容器上，且自动走到其内部的groupDefaultFocus绑定的组件上：
+第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走到其内部的groupDefaultFocus绑定的组件上：
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
+第三次按Tab键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 
-点击绑定了focusOnTouch的组件，组件自身获焦，焦点框被清除，再按下TAB键后，显示焦点框：
+点击绑定了focusOnTouch的组件，组件自身获焦，焦点框被清除，再按下Tab键后，显示焦点框：
 
 ![focusOnTouch](figures/focusOnTouch.png)
 
@@ -612,13 +612,13 @@ struct RequestFocusExample {
           { value: this.idList[6] }])
           .value(this.selectId)
           .onSelect((index: number) => {
-            this.selectId = this.idList[index]
+            this.selectId = this.idList[index];
           })
-        Button("RequestFocus")
+        Button('RequestFocus')
           .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // 建议使用this.getUIContext().getFocusController().requestFocus()
-            let res = focusControl.requestFocus(this.selectId) // 使选中的this.selectId的组件获焦
+            let res = focusControl.requestFocus(this.selectId); // 使选中的this.selectId的组件获焦
             if (res) {
               this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
             } else {
@@ -633,7 +633,7 @@ struct RequestFocusExample {
 
 示意图：
 
-按下TAB键，激活焦点态显示。
+按下Tab键，激活焦点态显示。
 
 申请不存在的组件获焦：
 
@@ -659,12 +659,12 @@ import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
 struct FocusBoxExample {
   build() {
     Column({ space: 30 }) {
-      Button("small black focus box")
+      Button('small black focus box')
         .focusBox({
           margin: new LengthMetrics(0),
           strokeColor: ColorMetrics.rgba(0, 0, 0),
         })
-      Button("large red focus box")
+      Button('large red focus box')
         .focusBox({
           margin: LengthMetrics.px(20),
           strokeColor: ColorMetrics.rgba(255, 0, 0),
@@ -814,29 +814,29 @@ struct FocusableExample {
 ```
 示意图：
 
-首次按下TAB键时，焦点转移到容器1中绑定focusScopePriority的组件上。
+首次按下Tab键时，焦点转移到容器1中绑定focusScopePriority的组件上。
 
 ![focusScopePriority1](figures/focusScopePriority1.png)
 
-继续按下TAB键，焦点转移到容器1下一个组件上。
+继续按下Tab键，焦点转移到容器1下一个组件上。
 
 ![focusScopePriority2](figures/focusScopePriority2.png)
 
-再次按下TAB键，焦点转移到容器1下一个组件上。
+再次按下Tab键，焦点转移到容器1下一个组件上。
 
 ![focusScopePriority3](figures/focusScopePriority3.png)
 
-继续按下TAB键，焦点转移到容器2中配置了focusScopePriority的组件上。
+继续按下Tab键，焦点转移到容器2中配置了focusScopePriority的组件上。
 
 ![focusScopePriority4](figures/focusScopePriority4.png)
 
-继续按下TAB键，焦点转移到容器1中名为Group1的组件上。
+继续按下Tab键，焦点转移到容器1中名为Group1的组件上。
 
 ![focusScopePriority5](figures/focusScopePriority5.png)
 
-### 示例5（设置tab走焦停留）
+### 示例5（设置Tab走焦停留）
 
-该示例通过配置[tabStop](#tabstop14)实现使用tab走焦停留在组件上。
+该示例通过配置[tabStop](#tabstop14)实现使用Tab走焦停留在组件上。
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -849,7 +849,7 @@ struct TabStop {
       Column({ space: 20 }) {
         Column({ space: 20 }) {
           Row({ space: 5 }) {
-            Button("button 1")
+            Button('button 1')
               .width(200).height(70).fontColor(Color.White)
               .focusBox({
                 margin: LengthMetrics.px(20),
@@ -859,7 +859,7 @@ struct TabStop {
           }
 
           Row({ space: 5 }) {
-            Button("button 2")
+            Button('button 2')
               .width(200).height(70).fontColor(Color.White)
               .focusBox({
                 margin: LengthMetrics.px(20),
@@ -873,7 +873,7 @@ struct TabStop {
       Column({ space: 20 }) {
         Column({ space: 20 }) {
           Row({ space: 5 }) {
-            Button("button 3")
+            Button('button 3')
               .width(200)
               .height('70%')
               .fontColor(Color.White)
@@ -903,11 +903,11 @@ struct TabStop {
 ```
 示意图：
 
-连续按下两次TAB键，焦点转移到button2上。
+连续按下两次Tab键，焦点转移到button2上。
 
 ![tabStop2](figures/tabStop2.png)
 
-接着按下TAB键，焦点转移到配置了tabStop的组件。
+接着按下Tab键，焦点转移到配置了tabStop的组件。
 
 ![tabStop3](figures/tabStop3.png)
 
@@ -919,7 +919,7 @@ struct TabStop {
 
 ![tabStop3](figures/tabStop3.png)
 
-再按下TAB键，焦点循环走焦到button1上。
+再按下Tab键，焦点循环走焦到button1上。
 
 ![tabStop1](figures/tabStop1.png)
 
@@ -927,13 +927,13 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
 
-如果不配置[nextFocus](#nextfocus18)，默认的按下TAB键的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
+如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
-    instance.id('M')
-    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' })
+    instance.id('M');
+    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' });
   }
 }
 
@@ -946,9 +946,9 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Row({ space: 10 }) {
-        Button("id: M")
+        Button('id: M')
           .attributeModifier(this.modifier)
-        Button("id: " + this.idList[0])
+        Button('id: ' + this.idList[0])
           .id(this.idList[0])
           .nextFocus({
             forward: 'C',
@@ -958,22 +958,22 @@ struct Index {
             down: 'B',
             left: 'D'
           });
-        Button("id: " + this.idList[1])
+        Button('id: ' + this.idList[1])
           .id(this.idList[1])
       }
 
       Column({ space: 10 }) {
-        Button("id: " + this.idList[2])
+        Button('id: ' + this.idList[2])
           .id(this.idList[2]);
-        Button("id: " + this.idList[3])
+        Button('id: ' + this.idList[3])
           .id(this.idList[3])
           .nextFocus({ forward: 'F' });
       }
 
       Row({ space: 10 }) {
-        Button("id: " + this.idList[4])
+        Button('id: ' + this.idList[4])
           .id(this.idList[4]);
-        Button("id: " + this.idList[5])
+        Button('id: ' + this.idList[5])
           .id(this.idList[5])
           .nextFocus({ forward: 'B' });
       }

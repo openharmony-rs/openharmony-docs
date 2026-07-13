@@ -26,20 +26,20 @@
 
 | 名称                                                                                            | typedef关键字                       | 描述                |
 |-----------------------------------------------------------------------------------------------|----------------------------------|-------------------|
-| [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)               | ArkUI_NativeGestureAPI_1         | 手势模块接口集合。         |
-| [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)               | -                                | 定义手势模块接口集合。       |
-| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)                 | ArkUI_GestureRecognizer          | 提供手势组件实例对象定义。     |
-| [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)           | ArkUI_GestureInterruptInfo       | 提供手势打断数据类型对象定义。   |
-| [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)                           | ArkUI_GestureEvent               | 提供手势事件数据类型对象定义。   |
-| [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)       | ArkUI_GestureEventTargetInfo     | 提供手势事件目标信息类型对象定义。 |
-| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | 提供并行内置手势事件类型对象定义。 |
-| [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)                     | ArkUI_TouchRecognizer            | 定义触摸识别器。          |
-| [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)   | ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄。      |
-| [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组。      |
-| [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | 提供手势识别器句柄类型对象定义。   |
-| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义。   |
-| [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)               | ArkUI_NativeGestureAPI_3 | 定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口。      |
-| [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md) | ArkUI_ParallelGestureEvent  | 定义并行手势事件，用于并行手势事件的回调函数[setGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。 |
+| [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)               | ArkUI_NativeGestureAPI_1         | 提供创建敲击、长按、滑动、捏合、旋转、快滑手势及手势组的接口，并支持绑定手势、移除手势、设置手势打断回调和并行内部手势回调，用于配置和管理组件的触控交互识别与事件处理。 使用该模块配置手势时，推荐按以下流程操作：调用[createTapGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createtapgesture)等接口创建手势识别器，调用[setGestureEventTarget](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureeventtarget)注册手势事件回调，再调用[addGestureToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#addgesturetonode)将手势识别器绑定至组件节点；不再使用该手势时，先调用[removeGestureFromNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#removegesturefromnode)解除节点绑定，再调用[dispose](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#dispose)释放手势资源。对于手势竞争场景，可通过手势优先级、屏蔽模式或[setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureinterruptertonode)配置响应策略；对于组件内部手势与外部自定义手势需要并行识别的场景，可调用[setInnerGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)设置并行内部手势事件回调。 |
+| [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)               | -                                | 定义手势模块接口集合，在[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)的基础上扩展提供设置手势打断事件回调的能力，用于在手势处理过程中根据回调结果继续或打断手势。开发者可以通过[gestureApi1](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#成员变量)访问基础手势接口，配合[setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#setgestureinterruptertonode)实现完整的手势打断处理功能。 |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)                 | ArkUI_GestureRecognizer          | 提供手势组件实例对象定义，用于在ArkUI手势识别相关接口中表示手势识别器对象，帮助开发者理解和使用组件手势识别能力。 |
+| [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)           | ArkUI_GestureInterruptInfo       | 提供手势打断信息类型对象定义，用于在手势打断场景中表示与打断处理相关的信息。关于手势打断信息的相关接口，请参见[native_gesture.h](capi-native-gesture-h.md)。 |
+| [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)                           | ArkUI_GestureEvent               | 提供手势事件数据类型对象定义，用于在手势事件处理过程中承载和传递手势事件相关数据，支持获取手势事件类型、坐标、时间戳等关键信息；适用于需要处理触摸手势交互的场景，如点击、长按、拖动、缩放等手势识别与响应；开发者可通过相关手势事件接口获取事件信息。 |
+| [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)       | ArkUI_GestureEventTargetInfo     | 提供手势事件目标信息类型对象定义，用于表示手势事件关联的目标信息，便于在手势处理过程中获取目标对象的滚动状态等相关信息。 |
+| [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | 定义并行内部手势事件。该结构体作为[setInnerGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)的回调函数的参数传递，用于将系统内置手势（如Scroll、List等容器组件的内置滑动手势）与响应链上其他组件设置为并行关系的场景。 |
+| [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)                     | ArkUI_TouchRecognizer            | 定义触摸识别器。触摸识别器是底层触摸事件的识别单元，负责检测和处理触摸按下、移动、抬起等原始触摸事件。 |
+| [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)   | ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄，用于表示触摸识别器对象，并在触摸识别或手势处理接口中传递和管理该对象。适用于自定义手势识别、多点触控事件处理，以及需要对触摸事件进行精细化拦截和分发控制的场景。 |
+| [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组，用于在批量管理多个触摸识别器时使用，例如从手势打断信息中获取多个触摸识别器句柄。 |
+| [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | 提供手势识别器句柄类型定义，用于在ArkUI原生手势相关接口中表示手势识别器对象。 |
+| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义，用于在需要表示或传递多个手势识别器句柄的场景中使用。 |
+| [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)               | ArkUI_NativeGestureAPI_3 | 定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口，支持为ArkUI节点设置并行手势事件回调，适用于需要进行并行手势识别处理的交互场景。 |
+| [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md) | ArkUI_ParallelGestureEvent  | 定义并行手势事件。该结构体作为[setGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)回调函数的参数传递，用于在触发触摸测试时，将开发者自定义手势与响应链上其他组件的手势设置为并行关系的场景。 |
 
 ### 枚举
 
@@ -83,7 +83,7 @@
 | [float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcentery) | - | 捏合手势中心点相对于当前组件元素左上角y轴坐标。 |
 | [ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getnode) | - | 获取绑定该手势的ArkUI组件。 |
 | [int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInterruptInfo* event,ArkUI_GestureRecognizerHandleArray* responseChain, int32_t* count)](#oh_arkui_getresponserecognizersfrominterruptinfo) | - | 获取手势响应链的信息。 |
-| [int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)](#oh_arkui_setgesturerecognizerenabled) | - | 设置手势识别器的使能状态。 |
+| [int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)](#oh_arkui_setgesturerecognizerenabled) | - | 设置手势识别器的使能状态。适用于需要根据应用交互状态动态启用或禁用手势识别的场景，例如在页面滚动动画期间禁用滑动手势以避免误触，或在编辑模式下禁用拖拽手势。 |
 | [int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* recognizer, bool limitFingerCount)](#oh_arkui_setgesturerecognizerlimitfingercount) | - | 设置是否严格检查触摸手指数量的标志。实际触摸手指数量不等于设置的手指数量的时候，该手势识别不成功。 |
 | [bool OH_ArkUI_GetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_getgesturerecognizerenabled) | - | 获取手势识别器的使能状态。 |
 | [int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureRecognizerState* state)](#oh_arkui_getgesturerecognizerstate) | - | 获取手势识别器的状态。 |
@@ -98,7 +98,7 @@
 | [void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getuserdata) | - | 获取并行内置手势事件中的用户自定义数据。 |
 | [ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer(ArkUI_ParallelInnerGestureEvent* event)](#oh_arkui_parallelinnergestureevent_getcurrentrecognizer) | - | 获取并行内置手势事件中的当前手势识别器。 |
 | [int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_ParallelInnerGestureEvent* event,ArkUI_GestureRecognizerHandleArray* array, int32_t* size)](#oh_arkui_parallelinnergestureevent_getconflictrecognizers) | - | 获取并行内置手势事件中的冲突的手势识别器。 |
-| [int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureRecognizerDisposeNotifyCallback callback, void* userData)](#oh_arkui_setarkuigesturerecognizerdisposenotify) | - | 设置手势识别器对象析构通知回调函数。 |
+| [int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureRecognizerDisposeNotifyCallback callback, void* userData)](#oh_arkui_setarkuigesturerecognizerdisposenotify) | - | 设置手势识别器对象析构通知回调函数。适用于需要在手势识别器被销毁时进行资源清理或状态更新的场景，例如释放与手势识别器关联的自定义数据或解除其他对象的引用。 |
 | [int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureDirectionMask* directMask)](#oh_arkui_getgestureparam_directmask) | - | 获取手势识别器的滑动方向。 |
 | [int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer, int* finger)](#oh_arkui_getgestureparam_fingercount) | - | 获取手势识别器的手指数。 |
 | [int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recognizer, bool* isLimited)](#oh_arkui_getgestureparam_limitfingercount) | - | 获取手势识别器是否有手指数限制。 |
@@ -112,7 +112,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)](#oh_arkui_pangesture_getdistancebytooltype) | - | 获取手势识别器的手势移动阈值表。仅支持对通过OH_ArkUI_PanGesture_SetDistanceMap修改过的设备类型的阈值查询。默认滑动阈值可通过查询UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN类型获得，其他未设置过的类型不会返回。 |
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | 注册一个在所有手势识别器收集完成后执行的回调函数。当用户开始触摸屏幕时，系统会进行命中测试并根据触摸位置收集手势识别器。随后，在处理任何移动事件之前，组件可以使用此接口确定将参与识别并相互竞争的手势识别器。 |
 | [void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterrupter_getuserdata) | - | 获取手势中断事件中的用户自定义数据。 |
-| [ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_preventgesturerecognizerbegin) | - | 在手指全部抬起前阻止手势识别器参与当前手势识别。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_preventgesturerecognizerbegin) | - | 在手指全部抬起前阻止手势识别器参与当前手势识别，适用于需要在手势竞争过程中动态排除指定手势识别器的场景。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。 |
 | [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | 设置长按手势识别器识别的手势的最大移动距离。 |
 | [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | 获取长按手势识别器识别的手势的最大移动距离。 |
 | [ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers(const ArkUI_GestureCollectInterceptInfo* info, ArkUI_GestureRecognizerHandleArray* array, int32_t* size)](#oh_arkui_gesturecollectinterceptinfo_getresponserecognizers) | - | 从手势收集拦截信息中获取手势识别器。<br>**起始版本：** 26.0.0 |
@@ -569,7 +569,7 @@ const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_Ges
 **描述：**
 
 
-返回手势输入。
+返回手势的原始输入事件。
 
 **起始版本：** 12
 
@@ -636,7 +636,7 @@ float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 当前手势主方向速度，为xy轴方向速度的平方和的算术平方根，单位px/秒。 |
+| float | 当前手势主方向速度，为xy轴方向速度的平方和的算术平方根，单位px/s。 |
 
 ### OH_ArkUI_PanGesture_GetVelocityX()
 
@@ -1647,7 +1647,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
 | int size | toolTypeArray和distanceArray数组的元素个数。 |
 | int* toolTypeArray | 指向输入事件工具类型数组的指针，元素取值为[UI_INPUT_EVENT_TOOL_TYPE](./capi-ui-input-event-h.md#anonymous2)_XXX；当设置该范围以外的值时，设置不生效。 |
-| double* distanceArray | 指向最小滑动阈值数组的指针，单位为px；distanceArray[i]表示toolTypeArray[i]对应工具类型的最小滑动阈值。 |
+| double* distanceArray | 指向最小滑动阈值数组的指针，取值范围为[0, +∞)，单位为px。传入负数时，设置不生效。distanceArray[i]表示toolTypeArray[i]对应工具类型的最小滑动阈值。 |
 
 **返回：**
 
@@ -1664,7 +1664,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 **描述：**
 
 
-获取手势识别器的手势移动阈值表。仅支持对通过OH_ArkUI_PanGesture_SetDistanceMap修改过的设备类型的阈值查询。默认滑动阈值可通过查询[UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN](./capi-ui-input-event-h.md#anonymous2)类型获得，其他未设置过的类型不会返回对应的滑动阈值。
+获取手势识别器的手势移动阈值表。仅支持对通过OH_ArkUI_PanGesture_SetDistanceMap修改过的设备类型的阈值查询。默认滑动阈值可通过查询[UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN](capi-ui-input-event-h.md#anonymous2)类型获得，其他未设置过的类型不会返回对应的滑动阈值。
 
 **起始版本：** 19
 
@@ -1824,7 +1824,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers(cons
 
 **描述：**
 
-从手势收集拦截信息中获取手势识别器。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；回调结束后继续使用该对象可能导致参数无效。
+从手势收集拦截信息中获取手势识别器。
 
 **起始版本：** 26.0.0
 
@@ -1850,7 +1850,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers(const A
 
 **描述：**
 
-从手势收集拦截信息中获取触摸识别器句柄。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；回调结束后继续使用该对象可能导致参数无效。
+从手势收集拦截信息中获取触摸识别器句柄。
 
 **起始版本：** 26.0.0
 
@@ -1876,7 +1876,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectInterventi
 
 **描述：**
 
-设置手势收集干预模式。该接口应在NODE_ON_GESTURE_COLLECT_INTERCEPT事件回调期间使用，info参数可通过OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo从ArkUI_NodeEvent中获取，且仅在当前回调期间有效；调用后会按指定OH_ArkUI_GestureCollectIntervention值干预当前手势和事件收集流程，回调结束后使用该对象设置干预模式可能导致参数无效。
+设置手势收集干预模式。
 
 **起始版本：** 26.0.0
 

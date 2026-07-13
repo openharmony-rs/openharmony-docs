@@ -18,7 +18,7 @@
 
 onAxisEvent(event: Callback\<AxisEvent>): T
 
-鼠标滚轮滚动或触控板双指轻触滑动、双指捏合时触发该回调。
+当鼠标或触控板等带指针输入设备的指针位于组件区域内时，鼠标滚轮滚动或触控板双指轻触滑动、双指捏合会触发该回调。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -125,7 +125,7 @@ hasAxis(axisType: AxisType): boolean
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| axisType  | [AxisType](ts-appendix-enums.md#axistype22) | 是   | 轴事件的轴类型。 |
+| axisType  | [AxisType](ts-appendix-enums.md#axistype22) | 是   | 要检测的轴类型，用于判断当前轴事件是否包含该指定轴类型。 |
 
 **返回值：**
 
@@ -137,7 +137,7 @@ hasAxis(axisType: AxisType): boolean
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取鼠标光标位置相对于当前组件实时位置的左上角坐标。
+获取鼠标光标相对于当前组件实时位置左上角的坐标。
 
 **起始版本：** 26.0.0
 
@@ -151,7 +151,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
-| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标光标位置相对于当前组件实时位置的左上角坐标。 |
+| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标光标相对于当前组件实时位置左上角的坐标。 |
 
 ## 示例
 

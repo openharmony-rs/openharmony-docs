@@ -18,7 +18,7 @@
 
 onMouse(event: (event: MouseEvent) => void): T
 
-当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该回调。
+当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，或通过触控板触发相同的鼠标操作时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -50,7 +50,7 @@ onMouse(event: (event: MouseEvent) => void): T
 | y                      | number                                    |  否         |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
 | button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  否     |  否     |鼠标按键。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
 | action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  否   |  否     |鼠标动作。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| stopPropagation        | () => void                            |  否          |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
+| stopPropagation        | () => void                            |  否          |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)，适用于当前组件已处理鼠标事件且需要阻止事件继续向父组件传递的场景。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | windowX<sup>10+</sup> | number                           |  否          |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | windowY<sup>10+</sup> | number                           |  否         |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | displayX<sup>10+</sup> | number                          |  否         |  否     |鼠标位置在当前应用屏幕坐标系中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |

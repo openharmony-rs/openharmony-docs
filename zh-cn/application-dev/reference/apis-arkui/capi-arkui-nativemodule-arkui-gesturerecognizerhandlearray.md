@@ -19,4 +19,3 @@ typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **所在头文件：** [native_gesture.h](capi-native-gesture-h.md)
-

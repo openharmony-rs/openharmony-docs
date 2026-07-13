@@ -20,7 +20,7 @@
 >
 > - 仅穿戴设备支持该事件，开发者可通过deviceInfo.[deviceType](../../apis-basic-services-kit/js-apis-device-info.md#常量)获取设备类型进行判断。
 >
-> - 默认支持表冠事件的组件：[Slider](ts-basic-components-slider.md)、[DatePicker](ts-basic-components-datepicker.md)、[TextPicker](ts-basic-components-textpicker.md)、 [TimePicker](ts-basic-components-timepicker.md)、[Scroll](ts-container-scroll.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[WaterFlow](ts-container-waterflow.md)、[ArcList](ts-container-arclist.md)、[Refresh](ts-container-refresh.md)和[ArcSwiper](ts-container-arcswiper.md)。
+> - 默认支持表冠事件的组件：[Slider](ts-basic-components-slider.md)、[DatePicker](ts-basic-components-datepicker.md)、[TextPicker](ts-basic-components-textpicker.md)、[TimePicker](ts-basic-components-timepicker.md)、[Scroll](ts-container-scroll.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[WaterFlow](ts-container-waterflow.md)、[ArcList](ts-container-arclist.md)、[Refresh](ts-container-refresh.md)和[ArcSwiper](ts-container-arcswiper.md)。
 
 ## onDigitalCrown
 
@@ -46,7 +46,7 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 **返回值：**
 | 类型      | 说明           |
 | --------- | ---------------|
-| T         | 返回当前组件。   |
+| T         | 返回当前组件，可用于链式调用。   |
 
 ## CrownEvent对象说明
 
@@ -71,7 +71,7 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 @Entry
 @Component
 struct CityList {
-  @State message: string = "onDigitalCrown";
+  @State message: string = 'onDigitalCrown';
 
   build() {
     Column() {
@@ -80,7 +80,7 @@ struct CityList {
           Text(this.message)
             .fontSize(20)
             .fontColor(Color.White)
-            .backgroundColor("#262626")
+            .backgroundColor('#262626')
             .textAlign(TextAlign.Center)
             .focusable(true)
             .focusOnTouch(true)
@@ -91,11 +91,11 @@ struct CityList {
             .borderRadius(110)
             .onDigitalCrown((event: CrownEvent) => {
               event.stopPropagation();
-              this.message = "CrownEvent\n\n" + JSON.stringify(event);
+              this.message = 'CrownEvent\n\n' + JSON.stringify(event);
               console.info(`action: ${event.action}, angularVelocity: ${event.angularVelocity}, degree: ${event.degree}, timestamp: ${event.timestamp}`);
             })
-        }.width("100%").height("100%")
-      }.width("100%").height("100%")
+        }.width('100%').height('100%')
+      }.width('100%').height('100%')
     }
   }
 }
