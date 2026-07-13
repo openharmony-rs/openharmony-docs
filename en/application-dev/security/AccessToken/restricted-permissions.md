@@ -1471,6 +1471,6 @@ Allows an application to generate, use, and delete secure element keys.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | Wearable | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
