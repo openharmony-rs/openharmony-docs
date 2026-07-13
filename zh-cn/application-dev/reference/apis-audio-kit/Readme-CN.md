@@ -80,6 +80,7 @@
     - [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md)
     - [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)
     - [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md)
+    - [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md)
     - [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md)
     - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
     - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)
