@@ -746,13 +746,13 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   }
   ```
 
-## geoLocationManager.onLocationChange<sup>26+</sup>
+## geoLocationManager.onLocationChange
 
 onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback: Callback\<Location\>): void
 
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -869,7 +869,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   }
   ```
 
-## geoLocationManager.offLocationChange<sup>26+</sup>
+## geoLocationManager.offLocationChange
 
 offLocationChange(callback?: Callback\<Location\>): void
 
@@ -878,7 +878,7 @@ offLocationChange(callback?: Callback\<Location\>): void
 当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
 
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3613,7 +3613,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
   }
   ```
    
-## geoLocationManager.startBluetoothSearch<sup>26+</sup>
+## geoLocationManager.startBluetoothSearch
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
 
@@ -3678,7 +3678,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   }
   ```
    
-## geoLocationManager.stopBluetoothSearch<sup>26+</sup>
+## geoLocationManager.stopBluetoothSearch
    
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
