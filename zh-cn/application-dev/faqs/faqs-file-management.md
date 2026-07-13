@@ -142,4 +142,4 @@ fs的具体使用可以参考：[@ohos.file.fs](../reference/apis-core-file-kit/
 
 **参考链接：**  
 
-[@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)
+[fileIo.createWatcher](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)

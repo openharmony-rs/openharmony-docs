@@ -96,7 +96,7 @@
 
    | 目录名 | Context属性名称 | 类型 | 说明 |
    | -------- | -------- | -------- | -------- |
-   | bundle | bundleCodeDir | 安装文件路径 | 应用安装后的App的HAP资源包所在目录；随应用卸载而清理。<br>不能通过拼接路径访问资源文件，应使用[资源管理接口](../reference/apis-localization-kit/js-apis-resource-manager.md)访问资源。<br>可以用于存储应用的代码资源数据，主要包括应用安装的HAP资源包、可重复使用的库文件以及插件资源等。此路径下存储的代码资源数据可以被用于动态加载。|
+   | bundle | bundleCodeDir | 安装文件路径 | 应用安装后的App的HAP资源包所在目录；随应用卸载而清理。<br>不能通过拼接路径访问资源文件，应使用[@ohos.resourceManager (资源管理)](../reference/apis-localization-kit/js-apis-resource-manager.md)相关接口访问资源。<br>可以用于存储应用的代码资源数据，主要包括应用安装的HAP资源包、可重复使用的库文件以及插件资源等。此路径下存储的代码资源数据可以被用于动态加载。|
    | base | NA | 本设备文件路径 | 应用在本设备上存放持久化数据的目录（随应用卸载而清理），子目录包含files/、cache/、temp/和haps/。<br>不建议将cookie、密码和token等高风险信息明文存储在此目录下。 |
    | database | databaseDir | 数据库路径 | 应用在el2加密条件下存放通过分布式数据库服务操作的文件目录；随应用卸载而清理。<br>仅用于保存应用的私有数据库数据，主要包括数据库文件等。此路径下仅适用于存储分布式数据库相关文件数据。 |
    | distributedfiles | distributedFilesDir | 分布式文件路径 | 应用在el2加密条件下存放分布式文件的目录，应用将文件放入该目录可分布式跨设备直接访问；随应用卸载而清理。<br>可以用于保存应用分布式场景下的数据，主要包括应用多设备共享文件、应用多设备备份文件、应用多设备群组协作文件。此路径下存储这些数据，使得应用更加适合多设备使用场景。 <br> **注意**：<br>distributedfiles下的.remote_share目录由系统创建管理，应用请勿创建或操作。<br>distributedfiles目录支持直接操作其他设备文件，请勿随意删除该目录下的文件。详细注意事项请参考[跨设备文件共享和访问](file-access-across-devices.md) 。|

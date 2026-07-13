@@ -2635,7 +2635,7 @@ favorite(isFavorite: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用photoAccessHelper.MediaAssetChangeRequest.[setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2682,7 +2682,7 @@ favorite(isFavorite: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用photoAccessHelper.MediaAssetChangeRequest.[setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
