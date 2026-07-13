@@ -78,7 +78,7 @@ console.log('count:'); // 仅打印message
 
 static info(message: string, ...arguments: any[]): void
 
-以格式化输出方式打印日志信息。(console.log()的别名）。
+以格式化输出方式打印日志信息（console.log()的别名）。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -474,7 +474,7 @@ console.table({ a: [1, 2, 3, 4, 5], b: 5, c: { e: 5 } });
 
 static time(label?: string): void
 
-启动可用于计算操作持续时间的计时器。可使用console.timeEnd()关闭计时器并打印经过的时间(单位：ms)。
+启动可用于计算操作持续时间的计时器。可使用console.timeEnd()关闭计时器并打印经过的时间（单位：ms）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -504,7 +504,7 @@ console.time('abc');
 
 static timeEnd(label?: string): void
 
-停止之前通过调用 console.time() 启动的计时器并将打印经过的时间(单位：ms)。
+停止之前通过调用 console.time() 启动的计时器并将打印经过的时间（单位：ms）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
