@@ -59109,7 +59109,7 @@
 						"start_line":48
 					},
 					{
-						"end_line":102,
+						"end_line":103,
 						"name":"prepare_audio_recorder",
 						"start_line":75
 					},
@@ -59129,9 +59129,9 @@
 						"start_line":182
 					},
 					{
-						"end_line":197,
+						"end_line":200,
 						"name":"stop_recorder",
-						"start_line":195
+						"start_line":197
 					},
 					{
 						"end_line":209,
@@ -59144,7 +59144,7 @@
 						"start_line":220
 					},
 					{
-						"end_line":242,
+						"end_line":246,
 						"name":"full_audio_recorder",
 						"start_line":16
 					}
@@ -59354,9 +59354,9 @@
 						"start_line":48
 					},
 					{
-						"end_line":137,
+						"end_line":139,
 						"name":"prepare_video_recorder",
-						"start_line":106
+						"start_line":107
 					},
 					{
 						"end_line":148,
@@ -59379,9 +59379,9 @@
 						"start_line":182
 					},
 					{
-						"end_line":197,
+						"end_line":200,
 						"name":"stop_recorder",
-						"start_line":195
+						"start_line":197
 					},
 					{
 						"end_line":209,
@@ -59394,7 +59394,7 @@
 						"start_line":220
 					},
 					{
-						"end_line":243,
+						"end_line":247,
 						"name":"full_video_recorder",
 						"start_line":17
 					}
