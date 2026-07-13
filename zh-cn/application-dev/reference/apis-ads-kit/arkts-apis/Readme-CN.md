@@ -1,28 +1,29 @@
-# AdsKit(广告服务)
+# ArkTS API<!--arkts-adskit-->
 
 - [@ohos.advertising](arkts-advertising.md)
-  - [showAd](arkts-ads-advertising-showad-f.md)
-  - [getAdRequestBody](arkts-ads-advertising-getadrequestbody-f.md)
-  - [parseAdResponse](arkts-ads-advertising-parseadresponse-f.md)
-  - [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md)
-  - [deleteWebAdInterface](arkts-ads-advertising-deletewebadinterface-f.md)
-  - [AdLoader](arkts-ads-advertising-adloader-c.md)
-  - [AdDisplayOptions](arkts-ads-advertising-addisplayoptions-i.md)
-  - [AdInteractionListener](arkts-ads-advertising-adinteractionlistener-i.md)
-  - [AdLoadListener](arkts-ads-advertising-adloadlistener-i.md)
-  - [AdOptions](arkts-ads-advertising-adoptions-i.md)
-  - [AdRequestParams](arkts-ads-advertising-adrequestparams-i.md)
-  - [MultiSlotsAdLoadListener](arkts-ads-advertising-multislotsadloadlistener-i.md)
-  - [Advertisement](arkts-ads-advertising-advertisement-t.md)
+  - [deleteWebAdInterface](arkts-ads-deletewebadinterface-f.md)
+  - [getAdRequestBody](arkts-ads-getadrequestbody-f.md)
+  - [parseAdResponse](arkts-ads-parseadresponse-f.md)
+  - [registerWebAdInterface](arkts-ads-registerwebadinterface-f.md)
+  - [showAd](arkts-ads-showad-f.md)
+  - [AdLoader](arkts-ads-adloader-c.md)
+  - [AdDisplayOptions](arkts-ads-addisplayoptions-i.md)
+  - [AdInteractionListener](arkts-ads-adinteractionlistener-i.md)
+  - [AdLoadListener](arkts-ads-adloadlistener-i.md)
+  - [AdOptions](arkts-ads-adoptions-i.md)
+  - [AdRequestParams](arkts-ads-adrequestparams-i.md)
+  - [MultiSlotsAdLoadListener](arkts-ads-multislotsadloadlistener-i.md)
+  - [Advertisement](arkts-ads-advertisement-t.md)
 - [@ohos.advertising.AdComponent](arkts-advertising-adcomponent.md)
   - [AdComponent](arkts-ads-adcomponent-s.md)
-- [@ohos.advertising.AdsServiceExtensionAbility](arkts-advertising-adsserviceextensionability.md)
-  - [AdsServiceExtensionAbility(系统接口)](arkts-ads-adsserviceextensionability-c-sys.md)
+- [@ohos.advertising.AdsServiceExtensionAbility](arkts-advertising-adsserviceextensionability.md)<!--Del-->
+  - [AdsServiceExtensionAbility(系统接口)](arkts-ads-adsserviceextensionability-c-sys.md)<!--DelEnd-->
   - [RespCallback](arkts-ads-respcallback-i.md)
 - [@ohos.advertising.AutoAdComponent](arkts-advertising-autoadcomponent.md)
   - [AutoAdComponent](arkts-ads-autoadcomponent-s.md)
 - [@ohos.identifier.oaid](arkts-identifier-oaid.md)
-  - [getOAID](arkts-ads-identifier-getoaid-f.md)<!--Del-->
-  - [resetOAID(系统接口)](arkts-ads-identifier-resetoaid-f-sys.md)<!--DelEnd-->
-- [advertisement](arkts-advertisement.md)
-  - [Advertisement](arkts-ads-advertisement-i.md)
+  - [getOAID](arkts-ads-getoaid-f.md)<!--Del-->
+  - [resetOAID(系统接口)](arkts-ads-resetoaid-f-sys.md)<!--DelEnd-->
+- advertising<!--arkts-adskit-advertising-->
+  - [advertisement](arkts-advertisement.md)
+    - [Advertisement](arkts-ads-advertisement-i.md)

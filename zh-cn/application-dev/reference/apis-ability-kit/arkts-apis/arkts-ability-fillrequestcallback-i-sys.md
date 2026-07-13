@@ -4,8 +4,6 @@
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -30,15 +28,15 @@ onCancel(fillContent?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillContent | string | 否 | 表示通知自动填充取消后，返回给输入法框架的填充内容。 [since 12] |
+| fillContent | string | 否 | 表示通知自动填充取消后，返回给输入法框架的填充内容。<br>**起始版本：** 12 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.The input parameter is not valid parameter;<br/><br/>2. Mandatory parameters are left unspecified.&lt;br&gt;**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.The input parameter is not valid parameter;<br>2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
 
 ## onFailure
 
@@ -60,8 +58,8 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## onSuccess
 
@@ -89,9 +87,9 @@ onSuccess(response: FillResponse): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Mandatory) | Mandatory parameters are left unspecified. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Mandatory parameters are left unspecified. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## setAutoFillPopupConfig
 
@@ -119,7 +117,7 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Mandatory) | Mandatory parameters are left unspecified. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Mandatory parameters are left unspecified. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 

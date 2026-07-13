@@ -166,7 +166,7 @@ onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
 **废弃版本：** 11
 
-**替代接口：** [onDoNotDisturbChanged](arkts-notification-notificationsubscriber-i-sys.md#onDoNotDisturbChanged)
+**替代接口：** [onDoNotDisturbChanged](arkts-notification-notificationsubscriber-i-sys.md#ondonotdisturbchanged)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -244,7 +244,7 @@ onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 onNotificationSwitchChanged?: NotificationSwitchChangedCallback
 ```
 
-返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md#setNotificationSwitch-1)接口设置的通知开关状态变化。
+返回由[notificationManager.setNotificationSwitch](arkts-notification-setnotificationswitch-f-sys.md#setnotificationswitch-1)接口设置的通知开关状态变化。
 
 **类型：** NotificationSwitchChangedCallback
 

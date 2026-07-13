@@ -10,8 +10,6 @@
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -26,7 +24,7 @@ constructor(elements: SegmentButtonItemTuple)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +46,7 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +74,7 @@ pop(): SegmentButtonItemOptions | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +96,7 @@ push(...items: SegmentButtonItemArray): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +104,7 @@ push(...items: SegmentButtonItemArray): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | SegmentButtonItemArray | 是 | 被添加的按钮信息数组。<br/>默认值：0个被添加的按钮信息数组。 |
+| items | SegmentButtonItemArray | 是 | 被添加的按钮信息数组。<br>默认值：0个被添加的按钮信息数组。 |
 
 **返回值：**
 
@@ -126,7 +124,7 @@ shift(): SegmentButtonItemOptions | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,7 +146,7 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,7 +156,7 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 | --- | --- | --- | --- |
 | start | number | 是 | 删除元素的起始位置。 |
 | deleteCount | number | 是 | 删除元素的数量。 |
-| items | SegmentButtonItemOptions[] | 是 | 从start开始要加入到数组中的元素。<br/>默认值：不指定任何元素，将从数组中删除元素。 |
+| items | SegmentButtonItemOptions[] | 是 | 从start开始要加入到数组中的元素。<br>默认值：不指定任何元素，将从数组中删除元素。 |
 
 **返回值：**
 
@@ -178,7 +176,7 @@ unshift(...items: SegmentButtonItemArray): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,7 +184,7 @@ unshift(...items: SegmentButtonItemArray): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | SegmentButtonItemArray | 是 | 添加的按钮信息数组。<br/>默认值：0个被添加的按钮信息数组。 |
+| items | SegmentButtonItemArray | 是 | 添加的按钮信息数组。<br>默认值：0个被添加的按钮信息数组。 |
 
 **返回值：**
 

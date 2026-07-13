@@ -4,8 +4,6 @@ animator简易动画参数对象。与AnimatorOptions相比，部分动画参数
 
 **起始版本：** 18
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -20,7 +18,7 @@ SimpleAnimatorOptions的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,7 +65,7 @@ delay(delay: number): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,7 +117,7 @@ direction(direction: PlayMode): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,7 +145,7 @@ duration(duration: number): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +197,7 @@ easing(curve: string): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +205,7 @@ easing(curve: string): SimpleAnimatorOptions
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | string | 是 | 设置animator动画插值曲线，具体说明参考[AnimatorOptions](arkts-arkui-animatoroptions-i.md#AnimatorOptions)。<br/>默认值：“ease” |
+| curve | string | 是 | 设置animator动画插值曲线，具体说明参考[AnimatorOptions](arkts-arkui-animatoroptions-i.md)。<br/>默认值：“ease” |
 
 **返回值：**
 
@@ -251,7 +249,7 @@ fill(fillMode: FillMode): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -279,7 +277,7 @@ iterations(iterations: number): SimpleAnimatorOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

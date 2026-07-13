@@ -1,9 +1,5 @@
 # FileGenerationMode
 
-```TypeScript
-enum FileGenerationMode
-```
-
 表示创建媒体文件模式的枚举。
 
 **起始版本：** 12

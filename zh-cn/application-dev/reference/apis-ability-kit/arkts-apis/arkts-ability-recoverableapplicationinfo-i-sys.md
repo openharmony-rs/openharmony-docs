@@ -1,12 +1,12 @@
 # RecoverableApplicationInfo（系统接口）
 
-Ԥ��Ӧ�ñ�ж�غ���Իָ���Ԥ��Ӧ����Ϣ��ͨ���ӿ�
-[bundleManager.getRecoverableApplicationInfo](arkts-ability-bundlemanager-getrecoverableapplicationinfo-f-sys.md#getRecoverableApplicationInfo-1)
-��ȡ��
+预置应用被卸载后可以恢复的预置应用信息，通过接口
+[bundleManager.getRecoverableApplicationInfo](arkts-ability-getrecoverableapplicationinfo-f-sys.md#getrecoverableapplicationinfo-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@
 readonly bundleName: string
 ```
 
-Ӧ�ð������ơ�
+应用包的名称。
 
 **类型：** string
 
@@ -36,7 +36,7 @@ readonly bundleName: string
 readonly bundleType: bundleManager.BundleType
 ```
 
-��ʶӦ�����͡�
+标识应用类型。
 
 **类型：** bundleManager.BundleType
 
@@ -52,7 +52,7 @@ readonly bundleType: bundleManager.BundleType
 readonly codePaths: Array<string>
 ```
 
-Ӧ�ó���İ�װĿ¼��
+应用程序的安装目录。
 
 **类型：** Array<string>
 
@@ -68,7 +68,7 @@ readonly codePaths: Array<string>
 readonly iconId: number
 ```
 
-ģ��ͼ�����ԴIDֵ��
+模块图标的资源ID值。
 
 **类型：** number
 
@@ -84,7 +84,7 @@ readonly iconId: number
 readonly labelId: number
 ```
 
-ģ���ǩ����ԴIDֵ��
+模块标签的资源ID值。
 
 **类型：** number
 
@@ -100,7 +100,7 @@ readonly labelId: number
 readonly moduleName: string
 ```
 
-ģ�����ơ�
+模块名称。
 
 **类型：** string
 
@@ -116,7 +116,7 @@ readonly moduleName: string
 readonly systemApp: boolean
 ```
 
-��ʶӦ���Ƿ�ΪϵͳӦ�ã�ȡֵΪtrue��ʾϵͳӦ�ã�ȡֵΪfalse��ʾ��ϵͳӦ�á�
+标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。
 
 **类型：** boolean
 

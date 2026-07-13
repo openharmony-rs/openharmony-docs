@@ -1,14 +1,14 @@
 # ShortcutInfo
 
-> **˵����**
+> **说明：**
 >
-> ��API version 7��ʼ֧�֣���API version 9��ʼ����������ʹ��[bundleManager-ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md#ShortcutInfo)�����
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [shortcutInfo:ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md#ShortcutInfo)
+**替代接口：** [shortcutInfo:ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -18,7 +18,7 @@
 readonly bundleName: string
 ```
 
-�����ÿ�ݷ�ʽ��Bundle���ơ�
+包含该快捷方式的Bundle名称。
 
 **类型：** string
 
@@ -36,7 +36,7 @@ readonly bundleName: string
 readonly disableMessage: string
 ```
 
-��ݷ�ʽ�Ľ�����Ϣ��
+快捷方式的禁用消息。
 
 **类型：** string
 
@@ -52,7 +52,7 @@ readonly disableMessage: string
 readonly hostAbility: string
 ```
 
-��ݷ�ʽ�ı���Ability��Ϣ��
+快捷方式的本地Ability信息。
 
 **类型：** string
 
@@ -70,7 +70,7 @@ readonly hostAbility: string
 readonly icon: string
 ```
 
-��ݷ�ʽ��ͼ�ꡣ
+快捷方式的图标。
 
 **类型：** string
 
@@ -88,7 +88,7 @@ readonly icon: string
 readonly iconId: number
 ```
 
-��ݷ�ʽ��ͼ��ID��
+快捷方式的图标ID。
 
 **类型：** number
 
@@ -106,7 +106,7 @@ readonly iconId: number
 readonly id: string
 ```
 
-��ݷ�ʽ����Ӧ�ó����ID��
+快捷方式所属应用程序的ID。
 
 **类型：** string
 
@@ -124,7 +124,7 @@ readonly id: string
 readonly isEnabled?: boolean
 ```
 
-�Ƿ����ÿ�ݷ�ʽ��ȡֵΪtrue��ʾ���ÿ�ݷ�ʽ��ȡֵΪfalse��ʾͣ�ÿ�ݷ�ʽ��
+是否启用快捷方式，取值为true表示启用快捷方式，取值为false表示停用快捷方式。
 
 **类型：** boolean
 
@@ -144,7 +144,7 @@ readonly isEnabled?: boolean
 readonly isHomeShortcut?: boolean
 ```
 
-��ݷ�ʽ�Ƿ�Ϊ��̬��ȡֵΪtrue��ʾ�Ǿ�̬�Ŀ�ݷ�ʽ��ȡֵΪfalse��ʾ���Ǿ�̬�Ŀ�ݷ�ʽ��
+快捷方式是否为静态，取值为true表示是静态的快捷方式，取值为false表示不是静态的快捷方式。
 
 **类型：** boolean
 
@@ -164,7 +164,7 @@ readonly isHomeShortcut?: boolean
 readonly isStatic?: boolean
 ```
 
-��ݷ�ʽ�Ƿ�Ϊ��̬��ȡֵΪtrue��ʾ�Ǿ�̬�Ŀ�ݷ�ʽ��ȡֵΪfalse��ʾ���Ǿ�̬�Ŀ�ݷ�ʽ��
+快捷方式是否为静态，取值为true表示是静态的快捷方式，取值为false表示不是静态的快捷方式。
 
 **类型：** boolean
 
@@ -184,7 +184,7 @@ readonly isStatic?: boolean
 readonly label: string
 ```
 
-��ݷ�ʽ�����ơ�
+快捷方式的名称。
 
 **类型：** string
 
@@ -202,7 +202,7 @@ readonly label: string
 readonly labelId: number
 ```
 
-��ݷ�ʽ������ID��
+快捷方式的名称ID。
 
 **类型：** number
 
@@ -220,7 +220,7 @@ readonly labelId: number
 readonly wants: Array<ShortcutWant>
 ```
 
-��ݷ�ʽ��ͼ�б���
+快捷方式意图列表。
 
 **类型：** Array<ShortcutWant>
 

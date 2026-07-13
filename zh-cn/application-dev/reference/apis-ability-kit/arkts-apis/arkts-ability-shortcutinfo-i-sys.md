@@ -1,6 +1,6 @@
 # ShortcutInfo（系统接口）
 
-��ݷ�ʽ��������Ϣ��
+快捷方式的配置信息。
 
 **起始版本：** 20
 
@@ -14,7 +14,7 @@
 appIndex: number
 ```
 
-��ݷ�ʽ����Ӧ�õķ���������
+快捷方式所属应用的分身索引。
 
 **类型：** number
 
@@ -30,7 +30,7 @@ appIndex: number
 bundleName: string
 ```
 
-��ݷ�ʽ����Ӧ�õİ�����
+快捷方式所属应用的包名。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ bundleName: string
 hostAbility?: string
 ```
 
-��ݷ�ʽ�����������, �����ش˿�ݷ�ʽ���������
+快捷方式的宿主组件名, 即承载此快捷方式的组件名。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ hostAbility?: string
 icon?: string
 ```
 
-��ݷ�ʽ��ͼ�꣬ȡֵΪ��Դ�ļ���������
+快捷方式的图标，取值为资源文件的索引。
 
 **类型：** string
 
@@ -78,7 +78,7 @@ icon?: string
 iconId?: number
 ```
 
-��ݷ�ʽͼ�����ԴID��
+快捷方式图标的资源ID。
 
 **类型：** number
 
@@ -94,7 +94,7 @@ iconId?: number
 id: string
 ```
 
-��ݷ�ʽ��ID��
+快捷方式的ID。
 
 **类型：** string
 
@@ -110,7 +110,7 @@ id: string
 label?: string
 ```
 
-��ݷ�ʽ�ı�ǩ��Ϣ������ݷ�ʽ������ʾ������������Ϣ�����������������ݣ�Ҳ�����Ǳ�ʶlabel����Դ������
+快捷方式的标签信息，即快捷方式对外显示的文字描述信息。可以是描述性内容，也可以是标识label的资源索引。
 
 **类型：** string
 
@@ -126,7 +126,7 @@ label?: string
 labelId?: number
 ```
 
-��ݷ�ʽ��ǩ��ϢΪ��Դ����ʱ����ԴID��
+快捷方式标签信息为资源索引时的资源ID。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ labelId?: number
 moduleName?: string
 ```
 
-��ݷ�ʽ��ģ������
+快捷方式的模块名。
 
 **类型：** string
 
@@ -158,7 +158,7 @@ moduleName?: string
 sourceType: number
 ```
 
-��ݷ�ʽ��Դ���͡�0��ʾ�Զ����ݷ�ʽ��1��ʾ��̬��ݷ�ʽ��2��ʾ��̬��ݷ�ʽ����API version 23��ʼ��֧�ֶ�̬��ݷ�ʽ��
+快捷方式来源类型。0表示自定义快捷方式，1表示静态快捷方式，2表示动态快捷方式。从API version 23开始，支持动态快捷方式。
 
 **类型：** number
 
@@ -174,7 +174,7 @@ sourceType: number
 wants?: Array<ShortcutWant>
 ```
 
-��ݷ�ʽ�ڶ����Ŀ��wants��Ϣ���ϡ�
+快捷方式内定义的目标wants信息集合。
 
 **类型：** Array<ShortcutWant>
 

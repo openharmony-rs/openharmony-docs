@@ -25,7 +25,7 @@ charging: boolean
 
 **废弃版本：** 6
 
-**替代接口：** [chargingStatus](arkts-basicservices-batteryinfo-con.md#chargingStatus)
+**替代接口：** [chargingStatus](arkts-basicservices-batteryinfo-con.md#chargingstatus)
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -46,7 +46,7 @@ level: number
 
 **废弃版本：** 6
 
-**替代接口：** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterySOC)
+**替代接口：** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterysoc)
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 

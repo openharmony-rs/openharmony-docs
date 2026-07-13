@@ -1,9 +1,5 @@
 # SwitchMode
 
-```TypeScript
-enum SwitchMode
-```
-
 表示视频播放的selectTrack模式枚举。
 
 可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。
@@ -22,7 +18,7 @@ SMOOTH = 0
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -36,7 +32,7 @@ SEGMENT = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -50,7 +46,7 @@ CLOSEST = 2
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

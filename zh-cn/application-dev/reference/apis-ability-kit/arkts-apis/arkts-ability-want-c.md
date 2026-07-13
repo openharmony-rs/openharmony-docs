@@ -21,7 +21,7 @@ abilityName?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -38,7 +38,7 @@ action?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -54,7 +54,7 @@ bundleName?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -70,7 +70,7 @@ deviceId?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -86,7 +86,7 @@ entities?: Array<string>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -104,7 +104,7 @@ readonly fds?: Record<string, number>
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -114,7 +114,7 @@ readonly fds?: Record<string, number>
 flags?: number
 ```
 
-表示处理Want的方式。值为枚举类型[Flags](arkts-ability-wantconstant-flags-e.md#Flags)，默认传数字。
+表示处理Want的方式。值为枚举类型[Flags](arkts-ability-flags-e.md)，默认传数字。
 
 例如取值为0x00000001（即wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION）表示临时授予接收方读取该URI指向的数据的权限。
 
@@ -122,7 +122,7 @@ flags?: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -143,7 +143,7 @@ moduleName?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -164,7 +164,7 @@ parameters?: Record<string, Object>
 - ohos.aafwk.param.callerAppId：表示拉起应用的AppId信息，值为字符串类型。
 - ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。
 - ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。
-- ohos.aafwk.param.callerUid：表示[BundleInfo](arkts-ability-bundleinfo-i.md#BundleInfo)中的uid，应用包里应用程序的uid，值为数
+- ohos.aafwk.param.callerUid：表示[BundleInfo](arkts-ability-bundleinfo-i.md)中的uid，应用包里应用程序的uid，值为数
 值类型。
 - ohos.param.callerAppCloneIndex：表示拉起方应用的分身索引，值为数值类型。
 - component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。
@@ -184,10 +184,10 @@ parameters?: Record<string, Object>
 
 **说明**：
 
-want的Params操作的常量的具体信息请参考[wantConstant](arkts-app-ability-wantconstant.md#wantConstant)。
+want的Params操作的常量的具体信息请参考[wantConstant](arkts-app-ability-wantconstant.md)。
 
 需注意，WantParams支持传输的最大数据量遵循[Want约束限制](#约束限制)。当数据量超过该限制时，请使用
-[WriteRawDataBuffer](./@ohos.rpc:rpc.writeRawDataBuffer)或[uri](./@ohos.uri:uri)的方式进行数
+[WriteRawDataBuffer](./@ohos.rpc:rpc.writeRawDataBuffer)或[uri](../../apis-arkts/arkts-apis/arkts-uri.md)的方式进行数
 据传输。
 
 parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。
@@ -196,7 +196,7 @@ parameters的Value值仅支持基本数据类型：String、Number、Boolean、O
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -213,7 +213,7 @@ type?: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -230,7 +230,7 @@ path`信息。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 

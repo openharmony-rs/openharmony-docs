@@ -1,6 +1,6 @@
 # HuksCryptoExtensionResult
 
-�ӿڷ���ֵ��ͨ�����͡�
+接口返回值的通用类型。
 
 **起始版本：** 22
 
@@ -12,7 +12,7 @@
 authState?: number
 ```
 
-��֤״̬��
+认证状态。
 
 **类型：** number
 
@@ -27,7 +27,7 @@ certs?: Array<HuksCryptoExtensionCertInfo>
 ```
 
 /**
-֤�顣
+证书。
 
 **类型：** Array<HuksCryptoExtensionCertInfo>
 
@@ -41,7 +41,7 @@ certs?: Array<HuksCryptoExtensionCertInfo>
 errInfo?: huksExternalCrypto.HuksExternalErrorInfo
 ```
 
-������ϸ������Ϣ
+返回详细错误信息
 
 **类型：** huksExternalCrypto.HuksExternalErrorInfo
 
@@ -57,7 +57,7 @@ errInfo?: huksExternalCrypto.HuksExternalErrorInfo
 handle?: string
 ```
 
-��Դ�����
+资源句柄。
 
 **类型：** string
 
@@ -71,7 +71,7 @@ handle?: string
 outData?: Uint8Array
 ```
 
-���ص����ݡ�
+返回的数据。
 
 **类型：** Uint8Array
 
@@ -85,7 +85,7 @@ outData?: Uint8Array
 property?: Array<huksExternalCrypto.HuksExternalCryptoParam>
 ```
 
-���ص�������Ϣ��
+返回的属性信息。
 
 **类型：** Array<huksExternalCrypto.HuksExternalCryptoParam>
 
@@ -99,11 +99,11 @@ property?: Array<huksExternalCrypto.HuksExternalCryptoParam>
 resourceId?: string
 ```
 
-���ص���ԴID��
+返回的资源ID。
 
 26.0.0
 
-**ģ��Լ����** �˽ӿڽ�����Stageģ����ʹ�á�
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** string
 
@@ -119,7 +119,7 @@ resourceId?: string
 resultCode: number
 ```
 
-����ֵ�Ĵ����롣
+返回值的错误码。
 
 **类型：** number
 
@@ -133,7 +133,7 @@ resultCode: number
 retryCount?: number
 ```
 
-���Դ�����
+重试次数。
 
 **类型：** number
 

@@ -1,12 +1,12 @@
 # DispatchInfo（系统接口）
 
-�ⰲװ�ṹ��ͽӿڰ汾��Ϣ�࣬ͨ���ӿ�
-[freeInstall.getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getDispatchInfo-1)
-��ȡ��
+免安装结构体和接口版本信息类，通过接口
+[freeInstall.getDispatchInfo](arkts-ability-getdispatchinfo-f-sys.md#getdispatchinfo-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 9
 
@@ -20,7 +20,7 @@
 readonly dispatchAPIVersion: string
 ```
 
-�ⰲװ�ӿڰ汾��Ϣ��
+免安装接口版本信息。
 
 **类型：** string
 
@@ -36,7 +36,7 @@ readonly dispatchAPIVersion: string
 readonly version: string
 ```
 
-dispatchInfo�ṹ��汾��Ϣ��
+dispatchInfo结构体版本信息。
 
 **类型：** string
 

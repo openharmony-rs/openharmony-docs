@@ -4,8 +4,6 @@
 
 **起始版本：** 22
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bind
@@ -20,7 +18,7 @@ bind(id: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +40,7 @@ show(x: number, y: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,8 +48,8 @@ show(x: number, y: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 放大镜显示内容相对组件水平方向坐标。<br/>单位为vp。 |
-| y | number | 是 | 放大镜显示内容相对组件垂直方向坐标。<br/>单位为vp。 |
+| x | number | 是 | 放大镜显示内容相对组件水平方向坐标。单位为vp。 |
+| y | number | 是 | 放大镜显示内容相对组件垂直方向坐标。单位为vp。 |
 
 ## unbind
 
@@ -65,7 +63,7 @@ unbind(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

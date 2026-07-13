@@ -1,7 +1,7 @@
 # ProcessRunningInfo
 
 运行进程信息，可以通过appManager中
-[getProcessRunningInfos](../../apis-api10-less-deprecated-modules/arkts-apis/arkts-api10lessdeprecatedmodules-appmanager-getprocessrunninginfos-f.md#getProcessRunningInfos-1)方法来获取运行进程信息。
+[getProcessRunningInfos](arkts-ability-getprocessrunninginfos-depr-f.md#getprocessrunninginfos-1)方法来获取运行进程信息。
 
 **起始版本：** 8
 
@@ -27,7 +27,7 @@ bundleNames: Array<string>
 
 **废弃版本：** 9
 
-**替代接口：** [bundleNames](arkts-ability-processinformation-i.md#bundleNames)
+**替代接口：** [bundleNames](arkts-ability-processinformation-i.md#bundlenames)
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -67,7 +67,7 @@ processName: string
 
 **废弃版本：** 9
 
-**替代接口：** [processName](arkts-ability-processinformation-i.md#processName)
+**替代接口：** [processName](arkts-ability-processinformation-i.md#processname)
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 

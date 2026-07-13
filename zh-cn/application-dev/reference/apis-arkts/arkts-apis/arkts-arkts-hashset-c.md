@@ -16,7 +16,7 @@ HashSet基于HashMap实现。在HashSet中，仅处理value对象。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,11 +30,12 @@ HashSet基于HashMap实现。在HashSet中，仅处理value对象。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The Symbol.iterator method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -47,11 +48,11 @@ for (let item of hashSet) {
 // value: sparrow
 
 // 使用方法二：
-let iter = hashSet[Symbol.iterator]();
-let temp: IteratorResult<string> = iter.next();
-while(!temp.done) {
-  console.info("value: " + temp.value);
-  temp = iter.next();
+let symbolIterator = hashSet[Symbol.iterator]();
+let iterResult: IteratorResult<string> = symbolIterator.next();
+while(!iterResult.done) {
+  console.info("value: " + iterResult.value);
+  iterResult = symbolIterator.next();
 }
 // value: squirrel
 // value: sparrow
@@ -59,12 +60,12 @@ while(!temp.done) {
 ```
 
 ```TypeScript
-// 不建议在Symbol.iterator中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+// 不建议在Symbol.iterator中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashSet = new HashSet<string>();
-for(let i = 0;i < 10;i++) {
+for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
 }
-for(let i = 0;i < 10;i++) {
+for(let i = 0; i < 10; i++) {
   hashSet.remove("sparrow" + i);
 }
 
@@ -80,7 +81,7 @@ add(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -100,12 +101,14 @@ add(value: T): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The add method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例
 let hashSet = new HashSet<string>();
+// 向HashSet中添加元素
 let result = hashSet.add("squirrel");
 console.info("result:", result);  // result: true
 
@@ -121,7 +124,7 @@ clear(): void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -129,11 +132,12 @@ clear(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The clear method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -153,7 +157,7 @@ HashSet的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -161,7 +165,7 @@ HashSet的构造函数。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The HashSet's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The HashSet's constructor cannot be directly invoked. |
 
 **示例：**
 
@@ -180,7 +184,7 @@ entries(): IterableIterator<[T, T]>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -194,20 +198,21 @@ entries(): IterableIterator<[T, T]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The entries method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
-let iter = hashSet.entries();
-let temp: IteratorResult<[string, string]> = iter.next();
-while(!temp.done) {
-  console.info("key:" + temp.value[0]);
-  console.info("value:" + temp.value[1]);
-  temp = iter.next();
+let entriesIterator = hashSet.entries();
+let iterResult: IteratorResult<[string, string]> = entriesIterator.next();
+while(!iterResult.done) {
+  console.info("key:" + iterResult.value[0]);
+  console.info("value:" + iterResult.value[1]);
+  iterResult = entriesIterator.next();
 }
 // key:squirrel
 // value:squirrel
@@ -217,7 +222,7 @@ while(!temp.done) {
 ```
 
 ```TypeScript
-// 不建议在entries中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+// 不建议在entries中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashSet = new HashSet<string>();
 for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
@@ -238,7 +243,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -253,16 +258,17 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The forEach method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("sparrow");
 hashSet.add("squirrel");
 hashSet.forEach((value: string, key: string): void => {
-  console.info("value:" + value, "key:" + key);
+  console.info("value:", value, "key:", key);
 });
 // value:squirrel key:squirrel
 // value:sparrow key:sparrow
@@ -291,7 +297,7 @@ has(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -311,11 +317,12 @@ has(value: T): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The has method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 let result = hashSet.has("squirrel");
@@ -333,7 +340,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -347,11 +354,12 @@ isEmpty(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The isEmpty method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例，判断是否为空
 const hashSet = new HashSet<number>();
 let result = hashSet.isEmpty();
 console.info("result:", result);  // result: true
@@ -368,7 +376,7 @@ remove(value: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -388,11 +396,12 @@ remove(value: T): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The remove method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -411,7 +420,7 @@ values(): IterableIterator<T>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -425,11 +434,12 @@ values(): IterableIterator<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The values method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 创建HashSet实例并添加元素
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -454,7 +464,7 @@ HashSet的元素个数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

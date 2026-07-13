@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md) | LauncherAbilityInfo��Ϣ��ͨ���ӿ�<br/>[innerBundleManager.getLauncherAbilityInfos](../../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)<br/>��ȡ��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[bundleManager-LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md#LauncherAbilityInfo)�����<br/>&gt;<br/>&gt; ��ģ��Ϊϵͳ�ӿڡ�<br/> |
+| [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md) | LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityInfos](../../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)获取。@link launcherAbilityInfo:LauncherAbilityInfo}替代。&gt;&gt; 本模块为系统接口。 |
+<!--DelEnd-->
 

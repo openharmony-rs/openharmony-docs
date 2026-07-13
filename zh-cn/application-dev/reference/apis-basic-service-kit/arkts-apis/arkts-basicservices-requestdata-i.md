@@ -4,7 +4,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [RequestData](arkts-basicservices-request-requestdata-i.md#RequestData)
+**替代接口：** [RequestData](arkts-basicservices-requestdata-i.md)
 
 **系统能力：** SystemCapability.MiscServices.Upload
 

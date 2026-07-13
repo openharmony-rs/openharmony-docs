@@ -20,7 +20,7 @@ declare function mmapSync(file: number | File, mode: MappingMode, offset: number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | file | number \| File | 是 | 已打开的File对象或已打开的文件描述符fd。 |
-| mode | MappingMode | 是 | 创建文件内存映射对象的选项，必须指定如下选项中的一个：<br/><br/>MappingMode.READ_ONLY(0)：只读映射模式。文件映射区不可写，修改会抛出异常。<br/><br/>MappingMode.READ_WRITE(1)：读写映射模式。修改会写入文件映射区，后续由操作系统同步到文件（非实时）。<br/><br/>MappingMode.PRIVATE(2)：私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。 |
+| mode | MappingMode | 是 | 创建文件内存映射对象的选项，必须指定如下选项中的一个：<br>MappingMode.READ_ONLY(0)：只读映射模式。文件映射区不可写，修改会抛出异常。<br>MappingMode.READ_WRITE(1)：读写映射模式。修改会写入文件映射区，后续由操作系统同步到文件（非实时）。<br>MappingMode.PRIVATE(2)：私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。 |
 | offset | number | 是 | 文件映射区的起始位置，单位为Byte。 |
 | size | number | 是 | 文件映射区的大小，单位为Byte。 |
 
@@ -34,20 +34,20 @@ declare function mmapSync(file: number | File, mode: MappingMode, offset: number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900015](../../errorcode-universal.md#13900015-File) | File exists |
-| [13900017](../../errorcode-universal.md#13900017-No) | No such device |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900021](../../errorcode-universal.md#13900021-File) | File table overflow |
-| [13900023](../../errorcode-universal.md#13900023-Text) | Text file busy |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900056](../../errorcode-universal.md#13900056-Mmap) | Mmap does not support mapping this file |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900015 | File exists |
+| 13900017 | No such device |
+| 13900020 | Invalid argument |
+| 13900021 | File table overflow |
+| 13900023 | Text file busy |
+| 13900024 | File too large |
+| 13900038 | Value too large for defined data type |
+| 13900050 | Internal resource error |
+| 13900056 | Mmap does not support mapping this file |
 

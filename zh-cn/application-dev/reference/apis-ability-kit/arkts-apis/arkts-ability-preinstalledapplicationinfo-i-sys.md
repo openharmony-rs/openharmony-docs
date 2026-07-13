@@ -1,6 +1,6 @@
 # PreinstalledApplicationInfo（系统接口）
 
-ԤװӦ�õ���Ϣ��
+预装应用的信息。
 
 **起始版本：** 12
 
@@ -14,7 +14,7 @@
 readonly bundleName: string
 ```
 
-Ӧ�ð������ơ�
+应用包的名称。
 
 **类型：** string
 
@@ -30,9 +30,9 @@ readonly bundleName: string
 readonly descriptionId?: number
 ```
 
-Ӧ������Id��
+应用描述Id。
 
-**ģ��Լ����** �˽ӿڽ�����Stageģ����ʹ�á�
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** number
 
@@ -50,7 +50,7 @@ readonly descriptionId?: number
 readonly iconId: number
 ```
 
-Ӧ��ͼ��Id��
+应用图标Id。
 
 **类型：** number
 
@@ -66,7 +66,7 @@ readonly iconId: number
 readonly labelId: number
 ```
 
-Ӧ�ñ�ǩId��
+应用标签Id。
 
 **类型：** number
 
@@ -82,7 +82,7 @@ readonly labelId: number
 readonly moduleName: string
 ```
 
-Ӧ�ð���ģ����������entryģ���moduleName����������entryģ���򷵻�featureģ���moduleName��
+应用包的模块名，返回entry模块的moduleName。若不存在entry模块则返回feature模块的moduleName。
 
 **类型：** string
 

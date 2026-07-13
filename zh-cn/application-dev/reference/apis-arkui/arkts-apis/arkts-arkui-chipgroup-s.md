@@ -12,8 +12,6 @@
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundSystemMaterial
@@ -22,8 +20,8 @@
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundColor-1)、
-[border](arkts-arkui-commonmethod-c.md#border-1)、[shadow](arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、
+[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
 
 默认值：undefined
 
@@ -37,7 +35,7 @@ backgroundSystemMaterial?: uiMaterial.Material
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +45,7 @@ backgroundSystemMaterial?: uiMaterial.Material
 chipGroupPadding?: ChipGroupPaddingOptions
 ```
 
-设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](arkts-arkui-chipgrouppaddingoptions-i.md#ChipGroupPaddingOptions)。
+设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](arkts-arkui-chipgrouppaddingoptions-i.md)。
 
 默认值：{ top: 14, bottom: 14 }
 
@@ -63,7 +61,7 @@ chipGroupPadding?: ChipGroupPaddingOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +71,7 @@ chipGroupPadding?: ChipGroupPaddingOptions
 chipGroupSpace?: ChipGroupSpaceOptions
 ```
 
-左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](arkts-arkui-chipgroupspaceoptions-i.md#ChipGroupSpaceOptions)类型。
+左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](arkts-arkui-chipgroupspaceoptions-i.md)类型。
 
 默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }
 
@@ -89,7 +87,7 @@ chipGroupSpace?: ChipGroupSpaceOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +97,7 @@ chipGroupSpace?: ChipGroupSpaceOptions
 itemStyle?: ChipItemStyle
 ```
 
-`Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](arkts-arkui-chipitemstyle-i.md#ChipItemStyle)类型。
+`Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](arkts-arkui-chipitemstyle-i.md)类型。
 
 默认值：
 
@@ -117,7 +115,7 @@ selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +137,7 @@ items: ChipGroupItemOptions[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,7 +163,7 @@ multiple?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,7 +183,7 @@ Chip状态改变时的回调方法。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,7 +204,7 @@ selectedBackgroundSystemMaterial?: uiMaterial.Material
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,7 +228,7 @@ selectedIndexes?: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +238,7 @@ selectedIndexes?: Array<number>
 suffix?: Callback<void>
 ```
 
-支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](arkts-arkui-icongroupsuffix-s.md#IconGroupSuffix)接口。
+支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](arkts-arkui-icongroupsuffix-s.md)接口。
 
 默认不传入时，没有suffix。
 
@@ -250,11 +248,11 @@ suffix?: Callback<void>
 
 **起始版本：** 12
 
-**装饰器类型：** @Builder
+**装饰器类型：** @BuilderParam
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

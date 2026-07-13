@@ -1,6 +1,6 @@
 # ExtensionAbility（系统接口）
 
-����extensionAbilities��������Ϣ��
+描述extensionAbilities的配置信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@
 readonly forms: Array<AbilityFormInfo>
 ```
 
-��Ƭ��Ϣ��
+卡片信息。
 
 **类型：** Array<AbilityFormInfo>
 
@@ -30,7 +30,7 @@ readonly forms: Array<AbilityFormInfo>
 readonly name: string
 ```
 
-��ʾ��ExtensionAbility�����ơ�
+表示该ExtensionAbility的名称。
 
 **类型：** string
 

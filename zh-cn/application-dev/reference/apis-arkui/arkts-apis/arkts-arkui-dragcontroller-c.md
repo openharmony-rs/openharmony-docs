@@ -4,11 +4,9 @@
 
 > **说明：**
 >
-> 以下API需先使用UIContext中的[getDragController()](arkts-arkui-uicontext-c.md#getDragController-1)方法获取DragController实例，再通过此实例调用对应方法。
+> 以下API需先使用UIContext中的[getDragController()](arkts-arkui-uicontext-c.md#getdragcontroller-1)方法获取DragController实例，再通过此实例调用对应方法。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +16,13 @@
 cancelDataLoading(key: string): void
 ```
 
-当使用[startDataLoading](arkts-arkui-dragevent-i.md#startDataLoading-1)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
+当使用[startDataLoading](../arkts-components/arkts-arkui-dragevent-i.md#startdataloading-1)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,8 +36,8 @@ cancelDataLoading(key: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. |
-| [190004](../../errorcode-universal.md#190004-Operation) | Operation failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. |
+| [190004](../errorcode-drag-event.md#190004-操作失败) | Operation failed. |
 
 ## createDragAction
 
@@ -58,7 +56,7 @@ createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dra
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,14 +71,14 @@ createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dra
 
 | 类型 | 说明 |
 | --- | --- |
-| dragController.DragAction | **DragAction** object, which is used to subscribe to drag state changes and<br/>start the drag service. |
+| dragController.DragAction | **DragAction** object, which is used to subscribe to drag state changes andstart the drag service. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal handling failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
 ## enableDropDisallowedBadge
 
@@ -88,15 +86,15 @@ createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dra
 enableDropDisallowedBadge(enabled: boolean): void
 ```
 
-当组件的类型与配置的[allowDrop](arkts-arkui-commonmethod-c.md#allowDrop-1)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式
+当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式
 处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否
-应显示拖拽禁止角标。该接口暂不支持[UIExtension](arkts-arkui-uiextension.md#uiExtension)。
+应显示拖拽禁止角标。该接口暂不支持[UIExtension](arkts-arkui-uiextension.md)。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +102,7 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 当组件的类型与配置的[allowDrop](arkts-arkui-commonmethod-c.md#allowDrop-1)无交集时可显示禁用角标，当目标进行拖拽时，通过<br/>enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
+| enabled | boolean | 是 | 当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标，当目标进行拖拽时，通过enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
 
 ## executeDrag
 
@@ -119,7 +117,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,16 +125,16 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。<br/>**说明：**<br/>不支持全局builder。如果builder中使用了<br/>[Image](arkts-arkui-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ImageAttribute#syncLoad)为true。该builder只用于生成当次拖拽中显示的图<br/>片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
+| custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 <br/> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ImageAttribute#syncLoad)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
 | dragInfo | dragController.DragInfo | 是 | 拖拽信息。 |
-| callback | AsyncCallback&lt;dragController.DragEventParam&gt; | 是 | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>-<br/>extraParams：拖拽事件额外信息。 [since 12] |
+| callback | AsyncCallback&lt;dragController.DragEventParam&gt; | 是 | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>-extraParams：拖拽事件额外信息。<br>**起始版本：** 12 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal handling failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
 ## executeDrag
 
@@ -151,7 +149,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,14 +164,14 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;dragController.DragEventParam&gt; | Callback used to return the result.<br/><br/>- **event**: drag event information that includes only the drag result.<br/><br/>- **extraParams**: extra information about the drag event. [since 11 - 11]<br/>@returns { Promise } A Promise with the drag event information. [since 12] |
+| Promise&lt;dragController.DragEventParam&gt; | A Promise with the drag event information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal handling failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
 ## getDragPreview
 
@@ -187,7 +185,7 @@ getDragPreview(): dragController.DragPreview
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +193,7 @@ getDragPreview(): dragController.DragPreview
 
 | 类型 | 说明 |
 | --- | --- |
-| dragController.DragPreview | **DragPreview** object. It provides the API for setting the preview style.<br/>It does not work in the **OnDrop** and **OnDragEnd** callbacks. |
+| dragController.DragPreview | **DragPreview** object. It provides the API for setting the preview style.It does not work in the **OnDrop** and **OnDragEnd** callbacks. |
 
 ## notifyDragStartRequest
 
@@ -209,7 +207,7 @@ notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): vo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,7 +229,7 @@ setDragEventStrictReportingEnabled(enable: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -10,18 +10,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [locks](arkts-arkts-utils-locks-n.md) | 异步锁。<br/> |
-| [ASON](arkts-arkts-utils-ason-n.md) | ArkTS JSON工具。<br/> |
+| [locks](arkts-arkts-locks-n.md) | 异步锁。 |
+| [ASON](arkts-arkts-ason-n.md) | ArkTS JSON工具。 |
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [isSendable](arkts-arkts-utils-issendable-f.md#isSendable-1) | 检查ArkTS值是否为Sendable。<br/> |
+| [isSendable](arkts-arkts-issendable-f.md#issendable-1) | 检查ArkTS值是否为Sendable。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [SendableLruCache](arkts-arkts-utils-sendablelrucache-c.md) | 用于存储近期最少使用的Sendable对象的缓冲区。<br/> |
+| [SendableLruCache](arkts-arkts-sendablelrucache-c.md) | 用于存储近期最少使用的Sendable对象的缓冲区。 |
 

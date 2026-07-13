@@ -1,7 +1,7 @@
 # AVScreenCaptureRecorder
 
 屏幕录制管理类，用于进行屏幕录制。在调用AVScreenCaptureRecorder的方法前，需要先通过
-[createAVScreenCaptureRecorder()](arkts-media-media-createavscreencapturerecorder-f.md#createAVScreenCaptureRecorder-1)创建一个
+[createAVScreenCaptureRecorder()](arkts-media-createavscreencapturerecorder-f.md#createavscreencapturerecorder-1)创建一个
 AVScreenCaptureRecorder实例。
 
 > **说明：**
@@ -28,7 +28,7 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考<br/>[getWindowProperties](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| excludedWindows | Array&lt;number&gt; | 是 | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -40,9 +40,9 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## init
 
@@ -72,9 +72,9 @@ init(config: AVScreenCaptureRecordConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3. Parameter verification failed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## off('stateChange')
 
@@ -93,7 +93,7 @@ off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，<br/>[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次<br/>订阅事件。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 ## off('error')
 
@@ -131,7 +131,7 @@ on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，<br/>[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
 
 ## on('error')
 
@@ -156,9 +156,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission) | permission denied. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by ErrorCallback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by ErrorCallback. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by ErrorCallback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by ErrorCallback. |
 
 ## pauseRecording
 
@@ -184,9 +184,9 @@ pauseRecording(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not be permitted. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not be permitted. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## presentPicker
 
@@ -216,9 +216,9 @@ presentPicker(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## release
 
@@ -242,8 +242,8 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## resumeRecording
 
@@ -269,9 +269,9 @@ resumeRecording(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not be permitted. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not be permitted. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setMicEnabled
 
@@ -301,8 +301,8 @@ setMicEnabled(enable: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setPickerMode
 
@@ -320,7 +320,7 @@ setPickerMode(pickerMode: PickerMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pickerMode | PickerMode | 是 | 选择Picker模式。<br/>定义了在Picker中显示的内容类型：<br/>- SCREEN_ONLY：仅显示屏幕列表。<br/>- WINDOW_ONLY：<br/>仅显示窗口列表。<br/>- SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值）。 |
+| pickerMode | PickerMode | 是 | 选择Picker模式。<br>定义了在Picker中显示的内容类型：<br>- SCREEN_ONLY：仅显示屏幕列表。<br>- WINDOW_ONLY：仅显示窗口列表。<br>- SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值）。 |
 
 **返回值：**
 
@@ -332,9 +332,9 @@ setPickerMode(pickerMode: PickerMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## skipPrivacyMode
 
@@ -354,7 +354,7 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考<br/>[getWindowProperties](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| windowIDs | Array&lt;number&gt; | 是 | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -366,8 +366,8 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## startRecording
 
@@ -391,8 +391,8 @@ startRecording(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## stopRecording
 
@@ -416,6 +416,6 @@ stopRecording(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 

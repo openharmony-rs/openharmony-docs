@@ -4,7 +4,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [request:request](arkts-basicservices-request-n.md#request)
+**替代接口：** [request:request](arkts-basicservices-request-n.md)
 
 **系统能力：** SystemCapability.MiscServices.Download
 

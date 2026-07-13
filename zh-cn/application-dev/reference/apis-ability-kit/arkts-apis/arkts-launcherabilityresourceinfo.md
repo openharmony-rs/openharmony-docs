@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md) | Ӧ�����õ����ͼ���������Ϣ������ͨ��<br/>[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getLauncherAbilityResourceInfo-1)<br/>��ȡ��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ��ģ��Ϊϵͳ�ӿڡ�<br/> |
+| [LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md) | 应用配置的入口图标和名称信息，可以通过[getLauncherAbilityResourceInfo](arkts-ability-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo-1)获取。 |
+<!--DelEnd-->
 

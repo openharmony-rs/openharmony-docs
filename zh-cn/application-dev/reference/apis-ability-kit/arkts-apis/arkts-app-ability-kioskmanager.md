@@ -5,8 +5,6 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 汇总
@@ -15,13 +13,20 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 
 | 名称 | 说明 |
 | --- | --- |
-| [enterKioskMode](arkts-ability-kioskmanager-enterkioskmode-f.md#enterKioskMode-1) | 进入Kiosk模式。使用Promise异步回调。<br/>该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。<br/> |
-| [exitKioskMode](arkts-ability-kioskmanager-exitkioskmode-f.md#exitKioskMode-1) | 退出Kiosk模式。使用Promise异步回调。<br/>该接口仅对已进入Kiosk模式的应用生效。<br/>该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。<br/> |
-| <!--DelRow-->[getKioskStatus](arkts-ability-kioskmanager-getkioskstatus-f-sys.md#getKioskStatus-1) | 获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。<br/>该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。<br/> |
+| [enterKioskMode](arkts-ability-enterkioskmode-f.md#enterkioskmode-1) | 进入Kiosk模式。使用Promise异步回调。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+| [exitKioskMode](arkts-ability-exitkioskmode-f.md#exitkioskmode-1) | 退出Kiosk模式。使用Promise异步回调。该接口仅对已进入Kiosk模式的应用生效。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [getKioskStatus](arkts-ability-getkioskstatus-f-sys.md#getkioskstatus-1) | 获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+<!--DelEnd-->
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [KioskStatus](arkts-ability-kioskmanager-kioskstatus-t.md) | Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应用信息。<br/> |
+| [KioskStatus](arkts-ability-kioskstatus-t.md) | Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应用信息。 |
 

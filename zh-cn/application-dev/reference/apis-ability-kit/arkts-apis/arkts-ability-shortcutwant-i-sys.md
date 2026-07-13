@@ -1,6 +1,6 @@
 # ShortcutWant（系统接口）
 
-��ݷ�ʽ�ڶ����Ŀ��[wants](../../../../quick-start/module-configuration-file.md#wants��ǩ)��Ϣ���ϡ�
+快捷方式内定义的目标[wants](../../../../quick-start/module-configuration-file.md#wants标签)信息集合。
 
 **起始版本：** 20
 
@@ -14,7 +14,7 @@
 parameters?: Array<ParameterItem>
 ```
 
-�����ݷ�ʽʱ���Զ������ݣ���֧�������ַ������͵����ݡ����м�ֵ�����֧��1024���ȵ��ַ�����
+拉起快捷方式时的自定义数据，仅支持配置字符串类型的数据。其中键值均最大支持1024长度的字符串。
 
 **类型：** Array<ParameterItem>
 
@@ -30,7 +30,7 @@ parameters?: Array<ParameterItem>
 targetAbility: string
 ```
 
-��ݷ�ʽ��Ŀ���������
+快捷方式的目标组件名。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ targetAbility: string
 targetBundle: string
 ```
 
-��ݷ�ʽ��Ŀ�������
+快捷方式的目标包名。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ targetBundle: string
 targetModule?: string
 ```
 
-��ݷ�ʽ��Ŀ��ģ������
+快捷方式的目标模块名。
 
 **类型：** string
 

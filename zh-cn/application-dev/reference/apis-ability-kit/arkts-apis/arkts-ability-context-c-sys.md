@@ -2,11 +2,9 @@
 
 Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
 
-**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md#BaseContext)
+**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
 **起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -21,13 +19,13 @@ createBundleContext(bundleName: string): Context
 > **说明：**
 >
 > - stage模型多module的情况下可能发生资源id冲突的情况，建议使用
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md#createModuleContext-1)替代。
+> [application.createModuleContext](arkts-ability-createmodulecontext-f.md#createmodulecontext-1)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [createBundleContext](arkts-ability-application-createbundlecontext-f-sys.md#createBundleContext-1)
+**替代接口：** [createBundleContext](arkts-ability-createbundlecontext-f-sys.md#createbundlecontext-1)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -53,9 +51,9 @@ createBundleContext(bundleName: string): Context
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## createModuleContext
 
@@ -69,7 +67,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 **废弃版本：** 12
 
-**替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md#createModuleContext-1)
+**替代接口：** [createModuleContext](arkts-ability-createmodulecontext-f.md#createmodulecontext-1)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,7 +92,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## createModuleResourceManager
 
@@ -131,9 +129,9 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## createSystemHspModuleResourceManager
 
@@ -142,7 +140,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 ```
 
 该接口用于OEM厂商预置的[系统级HSP](../../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的
-[ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md#resourceManager)。
+[ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)。
 
 **起始版本：** 12
 
@@ -169,6 +167,6 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16400001](../../errorcode-universal.md#16400001-The) | The input bundleName is not a system HSP. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16400001](../errorcode-ability.md#16400001-目标应用类型不是系统级hsp) | The input bundleName is not a system HSP. |
 

@@ -1,0 +1,52 @@
+# PageTransitionEnter
+
+当前页面的自定义入场动效。继承自[CommonTransition]{@link CommonTransition}。
+
+
+## PageTransitionEnter
+
+```TypeScript
+PageTransitionEnter(value: PageTransitionOptions)
+```
+
+设置当前页面的自定义入场动效。
+
+**起始版本：** 7
+
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | PageTransitionOptions | 是 | 配置入场动效的参数。 |
+
+## PageTransitionEnter
+
+```TypeScript
+PageTransitionEnter(event: PageTransitionCallback)
+```
+
+逐帧回调，直到入场动画结束，progress从0变化到1。
+
+**起始版本：** 7
+
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | PageTransitionCallback | 是 | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
+
+## 汇总
+
+- [PageTransitionExitInterface](arkts-arkui-pagetransitionenter-pagetransitionexitinterface-i.md)
+- [PageTransitionOptions](arkts-arkui-pagetransitionenter-pagetransitionoptions-i.md)
+- [PageTransitionCallback](arkts-arkui-pagetransitionenter-pagetransitioncallback-t.md)
+- [RouteType](arkts-arkui-pagetransitionenter-routetype-e.md)
+- [SlideEffect](arkts-arkui-pagetransitionenter-slideeffect-e.md)

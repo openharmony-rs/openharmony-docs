@@ -1,10 +1,8 @@
 # OverlayManagerOptions
 
-初始化[OverlayManager](arkts-arkui-uicontext.md)时所用参数。
+the property of OverlayManager.
 
 **起始版本：** 15
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,7 +12,7 @@
 enableBackPressedEvent?: boolean
 ```
 
-是否支持通过侧滑手势关闭OverlayManager下的ComponentContent，true表示可以通过侧滑关闭，false表示不可以通过侧滑关闭，默认值为false。
+Set whether support backPressed event or not.
 
 **类型：** boolean
 
@@ -24,7 +22,7 @@ enableBackPressedEvent?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +32,7 @@ enableBackPressedEvent?: boolean
 renderRootOverlay?: boolean
 ```
 
-是否渲染overlay根节点，true表示渲染overlay根节点，false表示不渲染overlay根节点，默认值为true。
+the render property of overlay node.
 
 **类型：** boolean
 
@@ -44,7 +42,7 @@ renderRootOverlay?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

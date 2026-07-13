@@ -1,0 +1,26 @@
+# getPorts（系统接口）
+
+## getPorts
+
+```TypeScript
+function getPorts(): Array<USBPort>
+```
+
+获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+
+**起始版本：** 9
+
+**废弃版本：** 12
+
+**替代接口：** [getPortList()](arkts-basicservices-getportlist-f-sys.md#getportlist-1)
+
+**系统能力：** SystemCapability.USB.USBManager
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array&lt;USBPort&gt; | USB端口描述信息列表。 |
+

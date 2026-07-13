@@ -1,10 +1,10 @@
 # AbilityFirstFrameStateData（系统接口）
 
 定义了首帧绘制完成事件回调上报的数据结构。通过
-[on](arkts-ability-appmanager-on-f-sys.md#on-5)
+[on](arkts-ability-on-f-sys.md#on-5)
 注册监听Ability首帧绘制完成事件后，可使用
-[AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md#AbilityFirstFrameStateObserver)的
-[onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onAbilityFirstFrameDrawn-1)
+[AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md)的
+[onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn-1)
 回调获取上报的数据结构。
 
 **起始版本：** 12

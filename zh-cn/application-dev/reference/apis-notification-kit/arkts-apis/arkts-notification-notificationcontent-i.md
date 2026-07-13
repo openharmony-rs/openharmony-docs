@@ -22,7 +22,7 @@ contentType?: notification.ContentType
 
 **废弃版本：** 11
 
-**替代接口：** [notificationContentType](arkts-notification-notificationcontent-i.md#notificationContentType)
+**替代接口：** [notificationContentType](arkts-notification-notificationcontent-i.md#notificationcontenttype)
 
 **系统能力：** SystemCapability.Notification.Notification
 

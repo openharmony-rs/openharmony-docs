@@ -12,11 +12,11 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConvertXML](arkts-arkts-xml-convertxml-c.md) | ConvertXML 表示可扩展标记语言。<br/> |
+| [ConvertXML](arkts-arkts-convertxml-c.md) | ConvertXML 表示可扩展标记语言。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 转换选项。<br/> |
+| [ConvertOptions](arkts-arkts-convertoptions-i.md) | 转换选项。 |
 

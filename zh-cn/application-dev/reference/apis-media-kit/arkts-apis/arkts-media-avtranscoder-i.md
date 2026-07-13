@@ -1,7 +1,7 @@
 # AVTranscoder
 
 视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过
-[createAVTranscoder()](arkts-media-media-createavtranscoder-f.md#createAVTranscoder-1)构建一个AVTranscoder实例。
+[createAVTranscoder()](arkts-media-createavtranscoder-f.md#createavtranscoder-1)构建一个AVTranscoder实例。
 
 视频转码demo可参考：[视频转码开发指导](../../../../media/media/using-avtranscoder-for-transcodering.md)
 
@@ -46,10 +46,10 @@ This API can be called only before the prepared state.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [5400108](../../errorcode-universal.md#5400108-The) | The parameter check failed, parameter value out of range. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 
 ## cancel
 
@@ -64,7 +64,7 @@ cancel(): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -78,9 +78,9 @@ cancel(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## off('complete')
 
@@ -92,7 +92,7 @@ off(type:'complete', callback?: Callback<void>):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -113,7 +113,7 @@ off(type:'error', callback?: ErrorCallback):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -121,7 +121,7 @@ off(type:'error', callback?: ErrorCallback):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 转码错误事件回调类型'error'。<br/>- 'error'：转码过程中发生错误，触发该事件。 |
+| type | 'error' | 是 | 转码错误事件回调类型'error'。 <br>- 'error'：转码过程中发生错误，触发该事件。 |
 | callback | ErrorCallback | 否 | 错误事件回调方法。 |
 
 ## off('progressUpdate')
@@ -134,7 +134,7 @@ off(type:'progressUpdate', callback?: Callback<number>):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -157,7 +157,7 @@ on(type:'complete', callback: Callback<void>):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -181,7 +181,7 @@ on(type:'error', callback: ErrorCallback):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -189,21 +189,21 @@ on(type:'error', callback: ErrorCallback):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 转码错误事件回调类型'error'。<br/>- 'error'：录制过程中发生错误，触发该事件。 |
+| type | 'error' | 是 | 转码错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
 | callback | ErrorCallback | 是 | 转码错误事件回调方法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [5400101](../../errorcode-universal.md#5400101-No) | No memory. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. |
-| [5400104](../../errorcode-universal.md#5400104-Time) | Time out. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. |
-| [5400106](../../errorcode-universal.md#5400106-Unsupported) | Unsupported format. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
+| [5400104](../errorcode-media.md#5400104-操作超时) | Time out. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
+| [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
 
 ## on('progressUpdate')
 
@@ -215,7 +215,7 @@ on(type:'progressUpdate', callback: Callback<number>):void
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -239,7 +239,7 @@ pause(): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -253,9 +253,9 @@ pause(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## prepare
 
@@ -267,7 +267,7 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -275,7 +275,7 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | AVTranscoderConfig | 是 | 配置视频转码的相关参数。 |
+| config | AVTranscoderConfig | 是 | 配置视频转码的相关参数。 &lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
 
 **返回值：**
 
@@ -287,11 +287,11 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [5400106](../../errorcode-universal.md#5400106-Unsupported) | Unsupported format. Returned by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 
 ## release
 
@@ -305,7 +305,7 @@ release(): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -319,8 +319,8 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## resume
 
@@ -334,7 +334,7 @@ resume(): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -348,9 +348,9 @@ resume(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## start
 
@@ -364,7 +364,7 @@ start(): Promise<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -378,9 +378,9 @@ start(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## fdDst
 
@@ -400,7 +400,7 @@ fdDst: number
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -426,7 +426,7 @@ fdSrc: AVFileDescriptor
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 

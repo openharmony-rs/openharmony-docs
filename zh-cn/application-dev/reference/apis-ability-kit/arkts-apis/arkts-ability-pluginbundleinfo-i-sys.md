@@ -1,6 +1,6 @@
 # PluginBundleInfo（系统接口）
 
-�����Ϣ��
+插件信息。
 
 **起始版本：** 26.0.0
 
@@ -14,7 +14,7 @@
 readonly icon: string
 ```
 
-�����ͼ�ꡣ
+插件的图标。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly icon: string
 readonly iconId: number
 ```
 
-���ͼ�����Դidֵ��
+插件图标的资源id值。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ readonly iconId: number
 readonly label: string
 ```
 
-��������ơ�
+插件的名称。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly label: string
 readonly labelId: number
 ```
 
-������Ƶ���Դidֵ��
+插件名称的资源id值。
 
 **类型：** number
 
@@ -78,7 +78,7 @@ readonly labelId: number
 readonly pluginBundleName: string
 ```
 
-��װ�����Ӧ�ð�����
+安装插件的应用包名。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ readonly pluginBundleName: string
 readonly pluginModuleInfos: Array<PluginModuleInfo>
 ```
 
-�����ģ����Ϣ��
+插件的模块信息。
 
 **类型：** Array<PluginModuleInfo>
 
@@ -110,7 +110,7 @@ readonly pluginModuleInfos: Array<PluginModuleInfo>
 readonly versionCode: number
 ```
 
-����İ汾�š�
+插件的版本号。
 
 **类型：** number
 
@@ -126,7 +126,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-����İ汾���ơ�
+插件的版本名称。
 
 **类型：** string
 

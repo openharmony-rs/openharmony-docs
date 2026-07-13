@@ -1,8 +1,8 @@
 # WriteOptions
 
-可选项类型，支持write接口使用，WriteOptions继承至[Options](arkts-corefile-options-i.md#Options)。
+可选项类型，支持write接口使用，WriteOptions继承至[Options](arkts-corefile-options-i.md)。
 
-**继承/实现关系：** WriteOptions extends [Options](arkts-corefile-options-i.md#Options)
+**继承/实现关系：** WriteOptions extends [Options](arkts-corefile-options-i.md)
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@ length?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -36,7 +36,7 @@ offset?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

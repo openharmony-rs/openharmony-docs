@@ -6,13 +6,11 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-arkui-uicontext-c.md#getComponentSnapshot-1)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
+> - 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-arkui-uicontext-c.md#getcomponentsnapshot-1)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 >
 > - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,9 +54,9 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [100001](../../errorcode-universal.md#100001-Invalid) | Invalid ID detected. |
-| [160003](../../errorcode-universal.md#160003-Unsupported) | Unsupported color space or dynamic range mode in snapshot options.&lt;br&gt;**适用版本：** 23+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID detected. |
+| [160003](../errorcode-snapshot.md#160003-截图选项不支持的色彩空间或动态范围模式) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
 **示例：**
 

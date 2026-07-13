@@ -1,9 +1,5 @@
 # ErrorType
 
-```TypeScript
-export enum ErrorType
-```
-
 枚举，错误类型（用于区分错误发生阶段）。
 
 **起始版本：** 20

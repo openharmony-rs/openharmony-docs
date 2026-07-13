@@ -1,14 +1,12 @@
 # AtomicServiceOptions
 
 **AtomicServiceOptions** is used as an input parameter of
-[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openAtomicService-1) to carry arguments. It
-inherits from [StartOptions](@ohos.app.ability.StartOptions:StartOptions).
+[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice-1) to carry arguments. It
+inherits from [StartOptions](arkts-ability-startoptions-c.md).
 
-**继承/实现关系：** AtomicServiceOptions extends [StartOptions](StartOptions)
+**继承/实现关系：** AtomicServiceOptions extends [StartOptions](arkts-ability-startoptions-c.md)
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,7 +24,7 @@ completionHandlerForAtomicService?: CompletionHandlerForAtomicService
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,7 +42,7 @@ flags?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,7 +52,7 @@ flags?: number
 parameters?: Record<string, Object>
 ```
 
-表示额外参数描述。具体描述参考[Want](arkts-ability-want-c.md#Want)中parameters字段描述。
+表示额外参数描述。具体描述参考[Want](arkts-ability-want-c.md)中parameters字段描述。
 
 **类型：** Record<string, Object>
 
@@ -62,7 +60,7 @@ parameters?: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

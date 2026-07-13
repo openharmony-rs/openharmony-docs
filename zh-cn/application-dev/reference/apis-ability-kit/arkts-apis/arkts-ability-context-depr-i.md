@@ -2,11 +2,9 @@
 
 Context模块提供了Ability或Application的上下文的基础能力，包括允许访问特定于应用程序的资源、请求和验证权限等。
 
-**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md#BaseContext)
+**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
 **起始版本：** 6
-
-**模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -783,7 +781,7 @@ requestPermissionsFromUser(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
-| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-permissionrequestresult-depr-i.md#PermissionRequestResult)的请求代码。 |
+| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-permissionrequestresult-depr-i.md)的请求代码。 |
 | resultCallback | AsyncCallback&lt;PermissionRequestResult&gt; | 是 | 回调函数，返回授权结果信息。 |
 
 ## requestPermissionsFromUser
@@ -805,7 +803,7 @@ requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
-| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-permissionrequestresult-depr-i.md#PermissionRequestResult)的请求代码。 |
+| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-permissionrequestresult-depr-i.md)的请求代码。 |
 
 **返回值：**
 
@@ -872,7 +870,7 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setShowOnLockScreen-1)
+**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-windowstage-i-sys.md#setshowonlockscreen-1)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -897,7 +895,7 @@ setShowOnLockScreen(show: boolean): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setShowOnLockScreen-1)
+**替代接口：** [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-windowstage-i-sys.md#setshowonlockscreen-1)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

@@ -1,13 +1,11 @@
 # PictureDrawableDescriptor
 
 支持通过传入Picture对象创建PictureDrawableDescriptor对象。
-继承自[DrawableDescriptor](arkts-arkui-drawabledescriptorloadedresult-i.md#DrawableDescriptorLoadedResult)。
+继承自[DrawableDescriptor](arkts-arkui-drawabledescriptorloadedresult-i.md)。
 
-**继承/实现关系：** PictureDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-drawabledescriptor-c.md#DrawableDescriptor)
+**继承/实现关系：** PictureDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-drawabledescriptor-c.md)
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,7 +21,7 @@ PictureDrawableDescriptor的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,7 +43,7 @@ setHdrComposition(config: HdrCompositionConfig): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +56,7 @@ setHdrComposition(config: HdrCompositionConfig): void
 **示例：**
 
 ```TypeScript
-import { PictureDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { PictureDrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 

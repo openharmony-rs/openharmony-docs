@@ -8,8 +8,6 @@ ChipGroupV2组件提供操作块群组，用于文件或资源内容的分类等
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## build
@@ -24,7 +22,7 @@ build函数用于构造ChipGroupV2高级组件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +42,7 @@ ChipV2项的双向绑定回调方法。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +62,7 @@ $selectedIndexes?: Callback<Array<number>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +72,7 @@ $selectedIndexes?: Callback<Array<number>>
 chipGroupPadding?: ChipGroupV2Padding
 ```
 
-设置ChipGroupV2的上下内边距，以控制整体高度。类型为[ChipGroupV2Padding](arkts-arkui-chipgroupv2padding-c.md#ChipGroupV2Padding)。
+设置ChipGroupV2的上下内边距，以控制整体高度。类型为[ChipGroupV2Padding](arkts-arkui-chipgroupv2padding-c.md)。
 
 默认值：{ top: 14, bottom: 14 }
 
@@ -88,7 +86,7 @@ chipGroupPadding?: ChipGroupV2Padding
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +96,7 @@ chipGroupPadding?: ChipGroupV2Padding
 chipGroupSpace?: ChipGroupV2Space
 ```
 
-左右内边距及ChipV2之间间距。参考[ChipGroupV2Space](arkts-arkui-chipgroupv2space-c.md#ChipGroupV2Space)类型。
+左右内边距及ChipV2之间间距。参考[ChipGroupV2Space](arkts-arkui-chipgroupv2space-c.md)类型。
 
 默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }
 
@@ -112,7 +110,7 @@ chipGroupSpace?: ChipGroupV2Space
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +120,7 @@ chipGroupSpace?: ChipGroupV2Space
 itemStyle?: ChipGroupV2ItemStyle
 ```
 
-ChipV2的style属性，如颜色，大小等，参考[ChipGroupV2ItemStyle](arkts-arkui-chipgroupv2itemstyle-c.md#ChipGroupV2ItemStyle)类型。
+ChipV2的style属性，如颜色，大小等，参考[ChipGroupV2ItemStyle](arkts-arkui-chipgroupv2itemstyle-c.md)类型。
 
 默认值：
 
@@ -134,8 +132,8 @@ selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
 
 图标填充色（[fillColor](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)和
 [activatedFillColor](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)
-）的设置与字体颜色（[fontColor](arkts-arkui-chipgroupv2itemstyleconfig-i.md#ChipGroupV2ItemStyleConfig)）保持一致。如果需要设置不同的颜色，可以在传入items时使用
-[prefixSymbolIcon](arkts-arkui-chipgroupv2itemconfig-i.md#ChipGroupV2ItemConfig)和[suffixSymbolIcon](arkts-arkui-chipgroupv2itemconfig-i.md#ChipGroupV2ItemConfig)。
+）的设置与字体颜色（[fontColor](arkts-arkui-chipgroupv2itemstyleconfig-i.md)）保持一致。如果需要设置不同的颜色，可以在传入items时使用
+[prefixSymbolIcon](arkts-arkui-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-chipgroupv2itemconfig-i.md)。
 
 **类型：** ChipGroupV2ItemStyle
 
@@ -143,7 +141,7 @@ selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +151,7 @@ selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
 items: ChipGroupV2Items
 ```
 
-每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-chipgroupv2itemconfig-i.md#ChipGroupV2ItemConfig)类型。
+每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-chipgroupv2itemconfig-i.md)类型。
 
 值为undefined或空数组时，ChipGroupV2不渲染内部的
 [ChipV2](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md)。
@@ -164,7 +162,7 @@ items: ChipGroupV2Items
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +186,7 @@ true：支持多个ChipV2选中；false：仅支持单个ChipV2选中。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,7 +206,7 @@ ChipV2状态改变时的回调方法。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +230,7 @@ selectedIndexes?: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +241,7 @@ suffix?: Callback<void>
 ```
 
 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用
-[ChipGroupV2IconGroupSuffix](arkts-arkui-chipgroupv2icongroupsuffix-s.md#ChipGroupV2IconGroupSuffix)接口。
+[ChipGroupV2IconGroupSuffix](arkts-arkui-chipgroupv2icongroupsuffix-s.md)接口。
 
 默认值：undefined，不在最右侧显示自定义内容。
 
@@ -251,11 +249,11 @@ suffix?: Callback<void>
 
 **起始版本：** 26.0.0
 
-**装饰器类型：** @Builder
+**装饰器类型：** @BuilderParam
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

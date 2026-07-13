@@ -15,7 +15,7 @@
 > > - [on('playFinished')](arkts-media-soundpool-i.md#on-4)：监听播放完成。
 > > - [on('error')](arkts-media-soundpool-i.md#on-3)：监听错误事件。
 > > - [on('errorOccurred')](arkts-media-soundpool-i.md#on-5)：监听错误事件，同时返回
-> [errorInfo](arkts-media-errorinfo-i.md#ErrorInfo)。
+> [errorInfo](arkts-media-errorinfo-i.md)。
 >
 > - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考
 > [使用SoundPool播放短音频(ArkTS)](../../../../media/media/using-soundpool-for-playback.md)。
@@ -61,9 +61,9 @@ load(uri: string, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## load
 
@@ -107,9 +107,9 @@ load(uri: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## load
 
@@ -135,7 +135,7 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 资源句柄，通过<br/>[resourceManager.getRawFd](../../../../reference/apis-localization-kit/js-apis-resource-manager.md)<br/>获取。 |
+| fd | number | 是 | 资源句柄，通过[resourceManager.getRawFd](../../../../reference/apis-localization-kit/js-apis-resource-manager.md)获取。 |
 | offset | number | 是 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 是 | 资源长度，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 获取回调的soundID，有效值大于0。 |
@@ -144,9 +144,9 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## load
 
@@ -172,7 +172,7 @@ load(fd: number, offset: number, length: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 资源句柄，通过<br/>[resourceManager.getRawFd](../../../../reference/apis-localization-kit/js-apis-resource-manager.md)<br/>获取。 |
+| fd | number | 是 | 资源句柄，通过[resourceManager.getRawFd](../../../../reference/apis-localization-kit/js-apis-resource-manager.md)获取。 |
 | offset | number | 是 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 | length | number | 是 | 资源长度，需要基于预置资源的信息输入，非法值会造成音视频资源解析错误。 |
 
@@ -186,9 +186,9 @@ load(fd: number, offset: number, length: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## off
 
@@ -279,7 +279,7 @@ off(type: 'errorOccurred', callback?:Callback<ErrorInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'errorOccurred' | 是 | 事件回调类型，取消注册的事件为'errorOccurred'。 |
-| callback | Callback&lt;ErrorInfo&gt; | 否 | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](arkts-media-errorinfo-i.md#ErrorInfo)，不设置callback<br/>时不提供相关信息。 |
+| callback | Callback&lt;ErrorInfo&gt; | 否 | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](arkts-media-errorinfo-i.md)，不设置callback时不提供相关信息。 |
 
 ## on('loadComplete')
 
@@ -373,7 +373,7 @@ on(type:'errorOccurred', callback:Callback<ErrorInfo>): void
 ```
 
 监听[SoundPool](../../../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，并返回包含错误码、错误发
-生阶段、资源ID和音频流ID的[ErrorInfo](arkts-media-errorinfo-i.md#ErrorInfo)。使用callback异步回调。
+生阶段、资源ID和音频流ID的[ErrorInfo](arkts-media-errorinfo-i.md)。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -384,7 +384,7 @@ on(type:'errorOccurred', callback:Callback<ErrorInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'errorOccurred' | 是 | 事件回调类型，支持的事件为'errorOccurred'，当用户或系统操作导致错误，触发该事件。 |
-| callback | Callback&lt;ErrorInfo&gt; | 是 | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](arkts-media-errorinfo-i.md#ErrorInfo)。 |
+| callback | Callback&lt;ErrorInfo&gt; | 是 | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](arkts-media-errorinfo-i.md)。 |
 
 ## play
 
@@ -410,9 +410,9 @@ play(soundID: number, params: PlayParameters, callback: AsyncCallback<number>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## play
 
@@ -437,9 +437,9 @@ play(soundID: number, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## play
 
@@ -470,9 +470,9 @@ play(soundID: number, params?: PlayParameters): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## release
 
@@ -496,7 +496,7 @@ release(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## release
 
@@ -520,7 +520,7 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setInterruptMode
 
@@ -561,16 +561,16 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | streamID | number | 是 | 音频流ID，通过play方法获取。 |
-| loop | number | 是 | 设置循环次数。<br/>当loop≥0时，实际播放次数为loop+1。<br/>当loop＜0时，表示一直循环。 |
+| loop | number | 是 | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当setLoop的回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## setLoop
 
@@ -589,7 +589,7 @@ setLoop(streamID: number, loop: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | streamID | number | 是 | 音频流ID，通过play方法获取。 |
-| loop | number | 是 | 设置循环次数。<br/>当loop≥0时，实际播放次数为loop+1。<br/>当loop＜0时，表示一直循环。 |
+| loop | number | 是 | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
 
 **返回值：**
 
@@ -601,9 +601,9 @@ setLoop(streamID: number, loop: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setPriority
 
@@ -629,9 +629,9 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## setPriority
 
@@ -662,9 +662,9 @@ setPriority(streamID: number, priority: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setRate
 
@@ -690,9 +690,9 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## setRate
 
@@ -723,9 +723,9 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setVolume
 
@@ -752,9 +752,9 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## setVolume
 
@@ -786,9 +786,9 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise<vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## stop
 
@@ -813,9 +813,9 @@ stop(streamID: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## stop
 
@@ -845,9 +845,9 @@ stop(streamID: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## unload
 
@@ -872,9 +872,9 @@ unload(soundID: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## unload
 
@@ -904,7 +904,7 @@ unload(soundID: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 

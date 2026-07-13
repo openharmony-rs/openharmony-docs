@@ -22,7 +22,7 @@ events: Array<string>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -38,7 +38,7 @@ priority?: number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -54,7 +54,7 @@ publisherBundleName?: string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -64,13 +64,13 @@ publisherBundleName?: string
 publisherDeviceId?: string
 ```
 
-表示设备ID。通过[@ohos.deviceInfo](arkts-deviceinfo.md#deviceInfo)获取udid，作为订阅者的设备ID。预留能力，暂不支持。
+表示设备ID。通过[@ohos.deviceInfo](arkts-deviceinfo.md)获取udid，作为订阅者的设备ID。预留能力，暂不支持。
 
 **类型：** string
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -86,7 +86,7 @@ publisherPermission?: string
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -97,14 +97,14 @@ userId?: number
 ```
 
 表示用户ID。此参数是可选的，默认值当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。通过
-[getOsAccountLocalId](arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)
+[getOsAccountLocalId](arkts-basicservices-accountmanager-i.md#getosaccountlocalid-1)
 获取系统账号ID，作为订阅者的用户ID。
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

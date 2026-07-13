@@ -1,18 +1,16 @@
 # MultiNavigation
 
-MultiNavigation�����ڴ�ߴ��豸�Ϸ�����ʾ������·����ת��
+MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
-> **˵����**
+> **说明：**
 
-> ����MultiNavigation���ڶ���ջǶ�ף����ñ��ĵ���ȷ˵���Ĳ�֧�ֽӿڻ��ڱ��ĵ�֧�ֽӿ��б��еĽӿ�(����[getParent](arkts-arkui-navpathstack-c.md#getParent-1)��
-> [setInterception](arkts-arkui-navpathstack-c.md#setInterception-1)��
-> [pushDestination](arkts-arkui-navpathstack-c.md#pushDestination-1)��)�����ܻᷢ���޷�Ԥ�ڵ����⡣
+> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](../arkts-components/arkts-arkui-navpathstack-c.md#getparent-1)、
+> [setInterception](../arkts-components/arkts-arkui-navpathstack-c.md#setinterception-1)、
+> [pushDestination](../arkts-components/arkts-arkui-navpathstack-c.md#pushdestination-1)等)，可能会发生无法预期的问题。
 
-> MultiNavigation�����Ƕ�׳����£����ܴ���·�ɶ�Ч�쳣�����⡣
+> MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
 **起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +20,7 @@ MultiNavigation�����ڴ�ߴ��豸�Ϸ�����ʾ����
 multiStack: MultiNavPathStack
 ```
 
-����·��ջ��
+设置路由栈。
 
 **类型：** MultiNavPathStack
 
@@ -32,7 +30,7 @@ multiStack: MultiNavPathStack
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,17 +40,17 @@ multiStack: MultiNavPathStack
 navDestination: NavDestinationBuildFunction
 ```
 
-���ü���Ŀ��ҳ���·�ɹ���
+设置加载目标页面的路由规则。
 
 **类型：** NavDestinationBuildFunction
 
 **起始版本：** 14
 
-**装饰器类型：** @Builder
+**装饰器类型：** @BuilderParam
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +60,7 @@ navDestination: NavDestinationBuildFunction
 onHomeShowOnTop?: OnHomeShowOnTopCallback
 ```
 
-������ҳ����ջ��ʱ�Ļص���
+设置主页处于栈顶时的回调。
 
 **类型：** OnHomeShowOnTopCallback
 
@@ -70,7 +68,7 @@ onHomeShowOnTop?: OnHomeShowOnTopCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +78,7 @@ onHomeShowOnTop?: OnHomeShowOnTopCallback
 onNavigationModeChange?: OnNavigationModeChangeCallback
 ```
 
-����MultiNavigationģʽ���ʱ�Ļص���
+设置MultiNavigation模式变更时的回调。
 
 **类型：** OnNavigationModeChangeCallback
 
@@ -88,7 +86,7 @@ onNavigationModeChange?: OnNavigationModeChangeCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

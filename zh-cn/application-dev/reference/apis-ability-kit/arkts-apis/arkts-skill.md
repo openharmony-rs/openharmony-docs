@@ -6,6 +6,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Skill](arkts-ability-skill-i.md) | skill��ǩ����<br/> |
-| [SkillUri](arkts-ability-skilluri-i.md) | Wantƥ���Uri���ϡ�<br/> |
+| [Skill](arkts-ability-skill-i.md) | skill标签对象。 |
+| [SkillUri](arkts-ability-skilluri-i.md) | Want匹配的Uri集合。 |
 

@@ -1,19 +1,17 @@
 # @ohos.enterprise.bluetoothManager
 
-��ģ���ṩ�豸�����������������������úͲ�ѯ������Ϣ�ȡ�
+本模块提供设备蓝牙管理的能力，包括设置和查询蓝牙信息等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 >
-> ȫ��ͨ�������������restrictionsͳһ�ṩ����Ҫȫ�ֽ�����������ο�
-> [@ohos.enterprise.restrictions ����������ԣ�](arkts-enterprise-restrictions.md#restrictions)��
+> 全局通用限制类策略由restrictions统一提供，若要全局禁用蓝牙，请参考
+> [@ohos.enterprise.restrictions （限制类策略）](arkts-enterprise-restrictions.md)。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -23,34 +21,41 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addAllowedBluetoothDevices-1) | ���������豸�������������������豸����������ǰ�豸���������Ӹ������µ������豸����API version 22��ʼ�������е�MAC��ַ�����������MAC�淶�����磺00:1A:2B:3C:4D:5E��������ʱ���Ƴ����Ϸ���MAC<br/>��ַ�������ӺϷ���MAC��ַ��<br/><br/>��������£�ͨ�����ӿ����������豸�����������ᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ�����������ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿ����������󣬿ɽ����ͻ��<br/>2. �Ѿ�ͨ��[addDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-adddisallowedbluetoothdevices-f.md#addDisallowedBluetoothDevices-1)�ӿ������������豸����������ͨ��[removeDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-removedisallowedbluetoothdevices-f.md#removeDisallowedBluetoothDevices-1)�Ƴ������豸���������󣬿ɽ����ͻ��<br/> |
-| [addDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-adddisallowedbluetoothdevices-f.md#addDisallowedBluetoothDevices-1) | ���������豸�������������ӽ���������ǰ�豸���������Ӹ������µ������豸����API version 22��ʼ�������е�MAC��ַ�����������MAC�淶�����磺00:1A:2B:3C:4D:5E��������ʱ���Ƴ����Ϸ���MAC��ַ����<br/>���ӺϷ���MAC��ַ��<br/><br/>��������£�ͨ�����ӿ����������豸�����������ᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ�����������ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿ����������󣬿ɽ����ͻ��<br/>2. �Ѿ�ͨ��[addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addAllowedBluetoothDevices-1)�ӿ������������豸����������ͨ��[removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeAllowedBluetoothDevices-1)�Ƴ������豸���������󣬿ɽ����ͻ��<br/> |
-| [addDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-adddisallowedbluetoothprotocols-f.md#addDisallowedBluetoothProtocols-1) | ��������Э��������������Ӻ�ָ���û����޷�ʹ�øý��������е�����Э���������豸�ⷢ�ļ���ͨ���ýӿڽ���GATT��SPPЭ�飬��ϵͳ�����ϵͳӦ�ò���Ч��������SPPЭ��ʱ����ͬʱ���ý��պͷ��͹��ܡ�<br/> |
-| [addDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-adddisallowedbluetoothprotocols-f.md#addDisallowedBluetoothProtocols-2) | ��������Э�����������������Ӻ�ָ���û����޷�����ָ���Ĵ������ʹ�øý��������е�����Э�顣<br/><br/>&gt; **˵����**<br/>&gt;<br/> |
-| [getAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-getallowedbluetoothdevices-f.md#getAllowedBluetoothDevices-1) | ��ȡ�����豸����������<br/> |
-| [getBluetoothInfo](arkts-mdm-bluetoothmanager-getbluetoothinfo-f.md#getBluetoothInfo-1) | ��ѯ�豸������Ϣ��<br/> |
-| [getDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-getdisallowedbluetoothdevices-f.md#getDisallowedBluetoothDevices-1) | ��ȡ�����豸����������<br/> |
-| [getDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md#getDisallowedBluetoothProtocols-1) | ��ȡָ���û�������Э�����������<br/> |
-| [getDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md#getDisallowedBluetoothProtocols-2) | ��ȡָ���û�ָ������������ѽ��õ�����Э���б���<br/><br/>&gt; **˵����**<br/>&gt;<br/> |
-| <!--DelRow-->[isBluetoothDisabled](arkts-mdm-bluetoothmanager-isbluetoothdisabled-f-sys.md#isBluetoothDisabled-1) | ��ѯ�����Ƿ񱻽��á�<br/> |
-| [removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeAllowedBluetoothDevices-1) | �Ƴ������豸����������<br/> |
-| [removeDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-removedisallowedbluetoothdevices-f.md#removeDisallowedBluetoothDevices-1) | �Ƴ������豸�������������Ƴ����������еĲ��������豸����ǰ�豸���������ӽ���������ʣ��������豸�����Ƴ����������е����������豸����ǰ�豸������������������豸��<br/> |
-| [removeDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-removedisallowedbluetoothprotocols-f.md#removeDisallowedBluetoothProtocols-1) | �Ƴ�����Э��������������Ƴ�����������ĳ���û��Ĳ�������Э�飬����û�����ʹ�ý���������ʣ�������Э���������豸�ⷢ�ļ������Ƴ�����������ĳ���û�����������Э�飬����û�����ʹ����������Э���������豸�ⷢ�ļ������Ƴ����������в���<br/>�ڵ�����Э�飬�ӿڿɵ��óɹ����������Ƴ����������в����ڵ�����Э�顣<br/> |
-| [removeDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-removedisallowedbluetoothprotocols-f.md#removeDisallowedBluetoothProtocols-2) | �ӽ����������Ƴ�����Э�顣�Ƴ���ָ���û��������ܸô�����Ե����ƣ���������ʹ����Щ����Э�顣<br/><br/>&gt; **˵����**<br/>&gt;<br/> |
-| <!--DelRow-->[setBluetoothDisabled](arkts-mdm-bluetoothmanager-setbluetoothdisabled-f-sys.md#setBluetoothDisabled-1) | ���ý����������ԡ�<br/> |
-| [turnOffBluetooth](arkts-mdm-bluetoothmanager-turnoffbluetooth-f.md#turnOffBluetooth-1) | �ر������������رպ��û������ֶ��򿪡�<br/> |
-| [turnOnBluetooth](arkts-mdm-bluetoothmanager-turnonbluetooth-f.md#turnOnBluetooth-1) | ���������������������û������ֶ��رա�<br/> |
+| [addAllowedBluetoothDevices](arkts-mdm-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices-1) | 添加蓝牙设备可用名单。添加蓝牙设备可用名单后当前设备仅允许连接该名单下的蓝牙设备。从API version 22开始，数组中的MAC地址必须符合蓝牙MAC规范（例如：00:1A:2B:3C:4D:5E），添加时会移除不合法的MAC地址，仅添加合法的MAC地址。以下情况下，通过本接口添加蓝牙设备可用名单，会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了蓝牙。通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用蓝牙后，可解除冲突。2. 已经通过[addDisallowedBluetoothDevices](arkts-mdm-adddisallowedbluetoothdevices-f.md#adddisallowedbluetoothdevices-1)接口添加了蓝牙设备禁用名单。通过[removeDisallowedBluetoothDevices](arkts-mdm-removedisallowedbluetoothdevices-f.md#removedisallowedbluetoothdevices-1)移除蓝牙设备禁用名单后，可解除冲突。 |
+| [addDisallowedBluetoothDevices](arkts-mdm-adddisallowedbluetoothdevices-f.md#adddisallowedbluetoothdevices-1) | 添加蓝牙设备禁用名单。添加禁用名单后当前设备不允许连接该名单下的蓝牙设备。从API version 22开始，数组中的MAC地址必须符合蓝牙MAC规范（例如：00:1A:2B:3C:4D:5E），添加时会移除不合法的MAC地址，仅添加合法的MAC地址。以下情况下，通过本接口添加蓝牙设备禁用名单，会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了蓝牙。通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用蓝牙后，可解除冲突。2. 已经通过[addAllowedBluetoothDevices](arkts-mdm-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices-1)接口添加了蓝牙设备可用名单。通过[removeAllowedBluetoothDevices](arkts-mdm-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices-1)移除蓝牙设备可用名单后，可解除冲突。 |
+| [addDisallowedBluetoothProtocols](arkts-mdm-adddisallowedbluetoothprotocols-f.md#adddisallowedbluetoothprotocols-1) | 添加蓝牙协议禁用名单。添加后，指定用户将无法使用该禁用名单中的蓝牙协议向其他设备外发文件。通过该接口禁用GATT或SPP协议，对系统服务和系统应用不生效。当传入SPP协议时，会同时禁用接收和发送功能。 |
+| [addDisallowedBluetoothProtocols](arkts-mdm-adddisallowedbluetoothprotocols-f.md#adddisallowedbluetoothprotocols-2) | 添加蓝牙协议至禁用名单。添加后，指定用户将无法根据指定的传输策略使用该禁用名单中的蓝牙协议。 |
+| [getAllowedBluetoothDevices](arkts-mdm-getallowedbluetoothdevices-f.md#getallowedbluetoothdevices-1) | 获取蓝牙设备可用名单。 |
+| [getBluetoothInfo](arkts-mdm-getbluetoothinfo-f.md#getbluetoothinfo-1) | 查询设备蓝牙信息。 |
+| [getDisallowedBluetoothDevices](arkts-mdm-getdisallowedbluetoothdevices-f.md#getdisallowedbluetoothdevices-1) | 获取蓝牙设备禁用名单。 |
+| [getDisallowedBluetoothProtocols](arkts-mdm-getdisallowedbluetoothprotocols-f.md#getdisallowedbluetoothprotocols-1) | 获取指定用户的蓝牙协议禁用名单。 |
+| [getDisallowedBluetoothProtocols](arkts-mdm-getdisallowedbluetoothprotocols-f.md#getdisallowedbluetoothprotocols-2) | 获取指定用户指定传输策略下已禁用的蓝牙协议列表。 |
+| [removeAllowedBluetoothDevices](arkts-mdm-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices-1) | 移除蓝牙设备可用名单。 |
+| [removeDisallowedBluetoothDevices](arkts-mdm-removedisallowedbluetoothdevices-f.md#removedisallowedbluetoothdevices-1) | 移除蓝牙设备禁用名单。若移除禁用名单中的部分蓝牙设备，则当前设备不允许连接禁用名单内剩余的蓝牙设备。若移除禁用名单中的所有蓝牙设备，则当前设备可以连接任意的蓝牙设备。 |
+| [removeDisallowedBluetoothProtocols](arkts-mdm-removedisallowedbluetoothprotocols-f.md#removedisallowedbluetoothprotocols-1) | 移除蓝牙协议禁用名单。若移除禁用名单中某个用户的部分蓝牙协议，则该用户不能使用禁用名单内剩余的蓝牙协议向其他设备外发文件。若移除禁用名单中某个用户的所有蓝牙协议，则该用户可以使用任意蓝牙协议向其他设备外发文件。若移除禁用名单中不存在的蓝牙协议，接口可调用成功，但不会移除禁用名单中不存在的蓝牙协议。 |
+| [removeDisallowedBluetoothProtocols](arkts-mdm-removedisallowedbluetoothprotocols-f.md#removedisallowedbluetoothprotocols-2) | 从禁用名单中移除蓝牙协议。移除后，指定用户将不再受该传输策略的限制，可以正常使用这些蓝牙协议。 |
+| [turnOffBluetooth](arkts-mdm-turnoffbluetooth-f.md#turnoffbluetooth-1) | 关闭蓝牙。蓝牙关闭后用户可以手动打开。 |
+| [turnOnBluetooth](arkts-mdm-turnonbluetooth-f.md#turnonbluetooth-1) | 开启蓝牙。蓝牙开启后用户可以手动关闭。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [isBluetoothDisabled](arkts-mdm-isbluetoothdisabled-f-sys.md#isbluetoothdisabled-1) | 查询蓝牙是否被禁用。 |
+| [setBluetoothDisabled](arkts-mdm-setbluetoothdisabled-f-sys.md#setbluetoothdisabled-1) | 设置禁用蓝牙策略。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [BluetoothInfo](arkts-mdm-bluetoothmanager-bluetoothinfo-i.md) | �豸��������Ϣ��<br/> |
+| [BluetoothInfo](arkts-mdm-bluetoothinfo-i.md) | 设备的蓝牙信息。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [Protocol](arkts-mdm-bluetoothmanager-protocol-e.md) | ����Э�����͡�<br/> |
-| [TransferPolicy](arkts-mdm-bluetoothmanager-transferpolicy-e.md) | ������ԡ�<br/> |
+| [Protocol](arkts-mdm-protocol-e.md) | 蓝牙协议类型。 |
+| [TransferPolicy](arkts-mdm-transferpolicy-e.md) | 传输策略。 |
 

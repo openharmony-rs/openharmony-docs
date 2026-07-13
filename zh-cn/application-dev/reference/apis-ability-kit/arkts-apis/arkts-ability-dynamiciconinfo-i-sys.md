@@ -1,6 +1,6 @@
 # DynamicIconInfo（系统接口）
 
-Ӧ�õĶ�̬ͼ����Ϣ��
+应用的动态图标信息。
 
 **起始版本：** 20
 
@@ -14,7 +14,7 @@
 readonly appIndex: number
 ```
 
-��ʶ��ǰ��̬ͼ��������Ӧ�÷���������Ϣ��
+标识当前动态图标所属的应用分身索引信息。
 
 **类型：** number
 
@@ -30,7 +30,7 @@ readonly appIndex: number
 readonly bundleName: string
 ```
 
-��ʶ��ǰ��̬ͼ��������Ӧ�ð�����Ϣ��
+标识当前动态图标所属的应用包名信息。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ readonly bundleName: string
 readonly moduleName: string
 ```
 
-��ʶ��ǰ��̬ͼ��������Ӧ��ģ��������Ϣ��
+标识当前动态图标所属的应用模块名称信息。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly moduleName: string
 readonly userId: number
 ```
 
-��ʶ��ǰ��̬ͼ���������û���Ϣ��
+标识当前动态图标所属的用户信息。
 
 **类型：** number
 

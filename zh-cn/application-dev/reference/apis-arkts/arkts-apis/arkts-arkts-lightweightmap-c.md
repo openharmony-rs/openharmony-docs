@@ -16,7 +16,7 @@ LightWeightMap可用于存储具有关联关系的key-value键值对集合，存
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,7 +30,7 @@ LightWeightMap可用于存储具有关联关系的key-value键值对集合，存
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The Symbol.iterator method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
 **示例：**
 
@@ -86,7 +86,7 @@ clear(): void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -94,7 +94,7 @@ clear(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The clear method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
 **示例：**
 
@@ -118,7 +118,7 @@ LightWeightMap的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -126,7 +126,7 @@ LightWeightMap的构造函数。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The LightWeightMap's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LightWeightMap's constructor cannot be directly invoked. |
 
 **示例：**
 
@@ -145,7 +145,7 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -159,7 +159,7 @@ entries(): IterableIterator<[K, V]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The entries method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
 **示例：**
 
@@ -167,12 +167,12 @@ entries(): IterableIterator<[K, V]>
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let iter = lightWeightMap.entries();
-let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
+let iteratorResult = lightWeightMap.entries();
+let temp: IteratorResult<Object[]> = iteratorResult.next();
+while (!temp.done) {
   console.info("key:" + temp.value[0]);
   console.info("value:" + temp.value[1]);
-  temp = iter.next();
+  temp = iteratorResult.next();
 }
 
 ```
@@ -199,7 +199,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -214,7 +214,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The forEach method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
 **示例：**
 
@@ -233,10 +233,10 @@ lightWeightMap.forEach((value: number, key: string) => {
 ```TypeScript
 // 不建议在forEach中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.set("sparrow" + i, 123);
 }
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.remove("sparrow" + i);
 }
 
@@ -252,7 +252,7 @@ get(key: K): V
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -272,7 +272,7 @@ get(key: K): V
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The get method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 
 **示例：**
 
@@ -295,7 +295,7 @@ getIndexOfKey(key: K): number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -315,7 +315,7 @@ getIndexOfKey(key: K): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The getIndexOfKey method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfKey method cannot be bound. |
 
 **示例：**
 
@@ -338,7 +338,7 @@ getIndexOfValue(value: V): number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -358,7 +358,7 @@ getIndexOfValue(value: V): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The getIndexOfValue method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfValue method cannot be bound. |
 
 **示例：**
 
@@ -381,7 +381,7 @@ getKeyAt(index: number): K
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -401,8 +401,8 @@ getKeyAt(index: number): K
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The getKeyAt method cannot be bound. |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of index is out of range. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getKeyAt method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
 **示例：**
 
@@ -425,7 +425,7 @@ getValueAt(index: number): V
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -445,8 +445,8 @@ getValueAt(index: number): V
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The getValueAt method cannot be bound. |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of index is out of range. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getValueAt method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
 **示例：**
 
@@ -469,7 +469,7 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -489,7 +489,7 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The hasAll method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasAll method cannot be bound. |
 
 **示例：**
 
@@ -497,9 +497,9 @@ hasAll(map: LightWeightMap<K, V>): boolean
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let map = new LightWeightMap<string, number>();
-map.set("sparrow", 356);
-let result = lightWeightMap.hasAll(map); 
+let targetMap = new LightWeightMap<string, number>();
+targetMap.set("sparrow", 356);
+let result = lightWeightMap.hasAll(targetMap); 
 console.info("result = ", result); // result = true
 
 ```
@@ -514,7 +514,7 @@ hasKey(key: K): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -534,7 +534,7 @@ hasKey(key: K): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The hasKey method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasKey method cannot be bound. |
 
 **示例：**
 
@@ -556,7 +556,7 @@ hasValue(value: V): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -576,7 +576,7 @@ hasValue(value: V): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The hasValue method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasValue method cannot be bound. |
 
 **示例：**
 
@@ -598,7 +598,7 @@ increaseCapacityTo(minimumCapacity: number): void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -612,7 +612,7 @@ increaseCapacityTo(minimumCapacity: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The increaseCapacityTo method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The increaseCapacityTo method cannot be bound. |
 
 **示例：**
 
@@ -632,7 +632,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -646,12 +646,12 @@ isEmpty(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The isEmpty method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
-const lightWeightMap = new LightWeightMap<string, number>();
+let lightWeightMap = new LightWeightMap<string, number>();
 let result = lightWeightMap.isEmpty();
 console.info("result:", result);  // result: true
 
@@ -667,7 +667,7 @@ keys(): IterableIterator<K>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -681,11 +681,12 @@ keys(): IterableIterator<K>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The keys method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 不建议在keys中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -708,7 +709,7 @@ remove(key: K): V
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -728,7 +729,7 @@ remove(key: K): V
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The remove method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
 **示例：**
 
@@ -750,7 +751,7 @@ removeAt(index: number): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -770,7 +771,7 @@ removeAt(index: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The removeAt method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeAt method cannot be bound. |
 
 **示例：**
 
@@ -793,7 +794,7 @@ set(key: K, value: V): Object
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -814,7 +815,7 @@ set(key: K, value: V): Object
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The set method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 
 **示例：**
 
@@ -835,7 +836,7 @@ setAll(map: LightWeightMap<K, V>): void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -849,7 +850,7 @@ setAll(map: LightWeightMap<K, V>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The setAll method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setAll method cannot be bound. |
 
 **示例：**
 
@@ -874,7 +875,7 @@ setValueAt(index: number, newValue: V): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -895,8 +896,8 @@ setValueAt(index: number, newValue: V): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The setValueAt method cannot be bound. |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of index is out of range. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setValueAt method cannot be bound. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
 **示例：**
 
@@ -919,7 +920,7 @@ toString(): String
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -933,7 +934,7 @@ toString(): String
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The toString method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 
 **示例：**
 
@@ -956,7 +957,7 @@ values(): IterableIterator<V>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -970,11 +971,12 @@ values(): IterableIterator<V>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The values method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
 **示例：**
 
 ```TypeScript
+// 不建议在values中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -999,7 +1001,7 @@ LightWeightMap的元素个数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -1,11 +1,9 @@
 # CustomComponentContext
 
 `CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过
-[UIUtils.getCustomComponentContext](arkts-arkui-uiutils-c.md#getCustomComponentContext-1)获取实例。
+[UIUtils.getCustomComponentContext](arkts-arkui-uiutils-c.md#getcustomcomponentcontext-1)获取实例。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +20,7 @@ getReusePool(): IReusePool | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +28,7 @@ getReusePool(): IReusePool | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| IReusePool | If a global reuse pool is configured for the current component, the reuse pool<br/>information is returned. Otherwise, **undefined** is returned. |
+| IReusePool | If a global reuse pool is configured for the current component, the reuse poolinformation is returned. Otherwise, **undefined** is returned. |
 
 **示例：**
 

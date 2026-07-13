@@ -10,7 +10,7 @@ declare function close(file: number | File): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -30,12 +30,12 @@ declare function close(file: number | File): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900025 | No space left on device |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 
 ## close
@@ -48,7 +48,7 @@ declare function close(file: number | File, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -63,10 +63,10 @@ declare function close(file: number | File, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900025 | No space left on device |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 

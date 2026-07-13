@@ -1,12 +1,12 @@
 # LauncherAbilityResourceInfo（系统接口）
 
-Ӧ�����õ����ͼ���������Ϣ������ͨ��
-[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getLauncherAbilityResourceInfo-1)
-��ȡ��
+应用配置的入口图标和名称信息，可以通过
+[getLauncherAbilityResourceInfo](arkts-ability-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@
 readonly abilityName: string
 ```
 
-Ӧ�õ�������ơ�
+应用的组件名称。
 
 **类型：** string
 
@@ -36,7 +36,7 @@ readonly abilityName: string
 readonly appIndex: number
 ```
 
-Ӧ�÷���Id��
+应用分身Id。
 
 **类型：** number
 
@@ -52,7 +52,7 @@ readonly appIndex: number
 readonly bundleName: string
 ```
 
-Ӧ�õİ�����
+应用的包名。
 
 **类型：** string
 
@@ -68,7 +68,7 @@ readonly bundleName: string
 readonly drawableDescriptor: DrawableDescriptor
 ```
 
-Ӧ��ͼ���drawableDescriptor����
+应用图标的drawableDescriptor对象。
 
 **类型：** DrawableDescriptor
 
@@ -84,7 +84,7 @@ readonly drawableDescriptor: DrawableDescriptor
 readonly icon: string
 ```
 
-Ӧ��ͼ�꣬ΪBase64�����ʽ��
+应用图标，为Base64编码格式。
 
 **类型：** string
 
@@ -100,7 +100,7 @@ readonly icon: string
 readonly label: string
 ```
 
-Ӧ�����ơ�
+应用名称。
 
 **类型：** string
 
@@ -116,7 +116,7 @@ readonly label: string
 readonly moduleName: string
 ```
 
-Ӧ�õ�ģ�����ơ�
+应用的模块名称。
 
 **类型：** string
 

@@ -1,16 +1,14 @@
 # @ohos.enterprise.securityManager
 
-��ģ���ṩ�豸��ȫ������������������ѯ��ȫ����״̬����ѯ�ļ�����״̬�ȡ�
+本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,64 +18,78 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAllowedPermissionBundle](arkts-mdm-securitymanager-addallowedpermissionbundle-f.md#addAllowedPermissionBundle-1) |  ��������ʹ���ѽ���ָ��Ȩ�޵�Ӧ�õ�Ȩ��ʹ������������Ȩ��ʹ�����������е�Ӧ�ÿ��Բ���[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setDisallowedPermission-1)�Ĳ������ơ�<br/> |
-| [addUserExtCredential](arkts-mdm-securitymanager-adduserextcredential-f.md#addUserExtCredential-1) | ������չ�û���֤ƾ��<br/> |
-| [cancelScreenWatermarkImage](arkts-mdm-securitymanager-cancelscreenwatermarkimage-f.md#cancelScreenWatermarkImage-1) | ȡ����Ļˮӡ<br/> |
-| [cancelWatermarkImage](arkts-mdm-securitymanager-cancelwatermarkimage-f.md#cancelWatermarkImage-1) | ȡ��ָ���û���ˮӡ���ԡ�<br/> |
-| [closeSession](arkts-mdm-securitymanager-closesession-f.md#closeSession-1) | �ر�ָ���û���ƾ�ݱ���Ự<br/> |
-| [getAllowedPermissionBundles](arkts-mdm-securitymanager-getallowedpermissionbundles-f.md#getAllowedPermissionBundles-1) | ��ȡȨ��ʹ������������Ӧ���б���<br/> |
-| [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md#getAppClipboardPolicy-1) | ��ȡ�豸��������ԡ�<br/> |
-| [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md#getAppClipboardPolicy-2) | ��ȡָ���û���ָ��Ӧ�õ��豸��������ԡ�<br/> |
-| <!--DelRow-->[getDeviceEncryptionStatus](arkts-mdm-securitymanager-getdeviceencryptionstatus-f-sys.md#getDeviceEncryptionStatus-1) | ��ѯ�豸�ļ�ϵͳ����״̬��<br/> |
-| [getDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-getdevicesecuritylevelpolicy-f.md#getDeviceSecurityLevelPolicy-1) | ��ѯDSL�л�����<br/> |
-| [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md#getDisallowedPermissions-1) | ��ȡָ���û��½��õ�Ȩ���б���<br/> |
-| [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md#getExternalSourceExtensionsPolicy-1) | ��ȡ�ⲿ��Դ��չ����Ĺܿز��ԡ�<br/> |
-| [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md#getPasswordPolicy-1) | ��ȡ�豸����������ԡ�<br/> |
-| <!--DelRow-->[getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f-sys.md#getPasswordPolicy-2) | ��ȡ�豸����������ԡ�<br/> |
-| [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md#getPermissionManagedState-1) | ��ȡָ��Ӧ�õ�ָ��[user_grantȨ��](permissions:Permissions)�Ĺ������ԡ�<br/> |
-| <!--DelRow-->[getSecurityPatchTag](arkts-mdm-securitymanager-getsecuritypatchtag-f-sys.md#getSecurityPatchTag-1) | ��ѯ�豸��ȫ����Tag��<br/> |
-| [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md#getSecurityStatus-1) | ��ȡ��ǰ�豸��ȫ������Ϣ��<br/> |
-| [getUnlockPolicy](arkts-mdm-securitymanager-getunlockpolicy-f.md#getUnlockPolicy-1) | ��ѯ��������<br/> |
-| [getUserCertificates](arkts-mdm-securitymanager-getusercertificates-f.md#getUserCertificates-1) | ��ȡָ��ϵͳ�˻��µ��û�֤����Ϣ��<br/> |
-| [getUserExtCredential](arkts-mdm-securitymanager-getuserextcredential-f.md#getUserExtCredential-1) | ��ѯָ���û���װ����չ�û�ƾ��<br/> |
-| [getWatermarkImageApps](arkts-mdm-securitymanager-getwatermarkimageapps-f.md#getWatermarkImageApps-1) | ��ѯ������ˮӡ��Ӧ���б�<br/> |
-| [installEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-installenterpriseresignaturecertificate-f.md#installEnterpriseReSignatureCertificate-1) | ��װ��ҵӦ����ǩ��֤�顣<br/><br/>ͬһ�û��������·�10����֤ͬ�顣֤�������Ϊ֤���Ψһ��ʶ����֧���ظ��·���ͬ������֤�顣�������ͬһ������֤�飬���ȵ���<br/>[uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md#uninstallEnterpriseReSignatureCertificate-1)����ж�ء�<br/><br/>��MDMӦ��ж�ػ�adminȡ��������£��Ѱ�װ��֤��ᱣ�����豸�ϣ����ᱻ�Ƴ���<br/><br/>����ҵӦ�÷ַ������£�&lt;!--RP2--&gt;&lt;!--RP2End--&gt;�����߿���ʹ����ǩ��֤�����ҵӦ�ý��ж���ǩ����ǩ����ɺ�Ӧ�ð��ṩ����ҵ����Ա����ҵ����Ա���Խ���ǩ�����Ӧ�ð�װ���Ѳ�����ǩ��֤�����ҵ�豸�ϡ�<br/><br/>��ҵӦ����ǩ��֤��ʹ�����̣�&lt;!--RP3--&gt;&lt;!--RP3End--&gt;<br/><br/>1.ͨ��MDMӦ�ð�װ��ҵӦ����ǩ��֤�飻<br/><br/>2.����������ǩ�����ߣ���ohos-signer��DevEco Studioǩ�����������ԭʼHAP�����ж���ǩ����<br/><br/>3.��װ��ǩ��Ӧ�ã�����ͨ����ҵ˽��Ӧ���г���װ����<br/><br/>4.����Ӧ�á�<br/><br/>���Լ����<br/><br/>1.��װ�µ�ǩ��֤��֮��ʹ�þ�ǩ��֤���Ӧ�ÿ��Լ������У�<br/><br/>2.�Ѿ���װ����ҵӦ�ã���װ���µ���ҵǩ��֤����Ѱ�װ��Ӧ��������£�����ֱ�Ӹ��ǰ�װ��������ж��ԭӦ�ã�<br/><br/>3.��ҵ�����£��ر������漰��Ϣ��ȫ�ĳ����У���ҵ��Ҫȷ��Ա��ʹ�õ��ƶ��豸�н���װ�������ض����ڲ������͹��ߡ���ҵӦ����ǩ��֤��ͨ��ͳһ��Ӧ�����ݱ�ʶ����ϵͳ��Ӧ�ù�����Ȩ�޿��ƻ������ʹ�ã���֧����ҵӦ�õľ�Ĭ��װ���ܿص�ϵͳ<br/>�������ü����з�Χ���ƣ��Ӷ�ʵ����ҵ�������ܿ��ն��ϵ�׼������밲ȫ������<br/> |
-| [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installUserCertificate-1) | ��װ�û�֤�飬ʹ��Promise�첽�ص���<br/> |
-| [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installUserCertificate-2) | ֧�ְ�ϵͳ�˻���װ�û�֤�顣<br/> |
-| [isScreenLockDisabledForAccount](arkts-mdm-securitymanager-isscreenlockdisabledforaccount-f.md#isScreenLockDisabledForAccount-1) | ��ѯ��ǰ�û��Ļ������������Ƿ񱻽��á�<br/> |
-| [openSession](arkts-mdm-securitymanager-opensession-f.md#openSession-1) | ����ָ���û���ƾ�ݱ���Ự<br/> |
-| [removeAllowedPermissionBundle](arkts-mdm-securitymanager-removeallowedpermissionbundle-f.md#removeAllowedPermissionBundle-1) | ��Ȩ��ʹ�������������Ƴ�ָ��Ӧ�ã��Ƴ����Ӧ�����ܼ���ʹ�ö�Ӧ��Ȩ�ޡ�<br/> |
-| [removeUserExtCredential](arkts-mdm-securitymanager-removeuserextcredential-f.md#removeUserExtCredential-1) | �Ƴ���չ�û���֤ƾ��<br/> |
-| [setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md#setAppClipboardPolicy-1) | �����豸��������ԡ�<br/> |
-| [setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md#setAppClipboardPolicy-2) | ����ָ���û���ָ��Ӧ�õ��豸��������ԡ�<br/> |
-| [setDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-setdevicesecuritylevelpolicy-f.md#setDeviceSecurityLevelPolicy-1) | �豸DSL�л�����<br/> |
-| [setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setDisallowedPermission-1) | ����ָ���û��µ�ָ��Ȩ�ޣ����ú�ָ���û��µ�����Ӧ�������ʹ��ָ��Ȩ��ʱĬ�Ͼܾ���<br/> |
-| [setExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-setexternalsourceextensionspolicy-f.md#setExternalSourceExtensionsPolicy-1) | �����ⲿ��Դ��չ����Ĺܿز��ԡ�<br/><br/>- DEFAULT��<br/><br/> Ĭ�ϣ���ʾ�޹ܿز��ԣ��û�����ͨ��������-��˽�밲ȫ-�߼����еġ������ⲿ��Դ����չ���򡱿����������Ƿ�������չ�������С�<br/>- DISALLOW��<br/><br/> ���á����ô˲��Ժ󣬽�ֹ�����ⲿ��Դ����չ���������е���չ����ɼ������У���չ����رպ��޷��������С��û��޷�����������-��˽�Ͱ�ȫ-�߼����еġ������ⲿ��Դ����չ���򡱿��ء�<br/>- FORCE_OPEN��<br/><br/> ǿ�ƿ��������ô˲��Ժ����������ⲿ��Դ����չ�����û��޷��رա�����-��˽�Ͱ�ȫ-�߼����еġ������ⲿ��Դ����չ���򡱿��ء�<br/> |
-| [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md#setPasswordPolicy-1) | �����豸����������ԡ����û�������������ʱ��������õ������������Ҫ�󣬻��а�ȫ��ʾ���������������<br/> |
-| [setPermissionManagedState](arkts-mdm-securitymanager-setpermissionmanagedstate-f.md#setPermissionManagedState-1) | ����ָ��Ӧ�õ�[user_grantȨ��](permissions:Permissions)�Ĺ������ԡ�<br/> |
-| [setScreenLockDisabledForAccount](arkts-mdm-securitymanager-setscreenlockdisabledforaccount-f.md#setScreenLockDisabledForAccount-1) | ����/���õ�ǰ�û��Ļ�����������������ʱ���豸���������������û���Ҫ����Ļ�ϻ�������ܽ������档����ʱ���豸��������������ֱ�ӽ������档<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; 1.�ýӿ����������豸����������ʱ��Ч��<br/>&gt;<br/>&gt; 2.�豸Ĭ���������û���������״̬��<br/>&gt;<br/>&gt; 3.�豸�ϴ�������ʱ�����ý��û���������ʧ�ܣ��׳�9201021�����롣<br/>&gt;<br/>&gt; 4.�·����û��������Ĳ��Ժ��û��������豸���룬��ʱ�������Ч���豸��Ҫ��֤�������ܽ������棬֮ǰ�·��Ĳ���ʧЧ��<br/> |
-| [setScreenWatermarkImage](arkts-mdm-securitymanager-setscreenwatermarkimage-f.md#setScreenWatermarkImage-1) | ������Ļˮӡ<br/> |
-| [setUnlockPolicy](arkts-mdm-securitymanager-setunlockpolicy-f.md#setUnlockPolicy-1) | ���ý�������<br/> |
-| [setWatermarkImage](arkts-mdm-securitymanager-setwatermarkimage-f.md#setWatermarkImage-1) | Ϊָ���û���ָ��Ӧ������ˮӡ���ԡ���ǰֻ֧����ౣ��100�����ԡ�<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ���ӿ���������ҵ������Ϊ����Ӧ������ˮӡ��������ҵ��Ϣй¶���ա�������ΪϵͳӦ������ˮӡ���磺����Ӧ�ã������ܴ���δ֪�쳣��<br/> |
-| [setWatermarkImage](arkts-mdm-securitymanager-setwatermarkimage-f.md#setWatermarkImage-2) | Ϊָ���û���ָ��Ӧ������ˮӡ���ԡ�<br/> |
-| [uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md#uninstallEnterpriseReSignatureCertificate-1) | ж����ҵӦ����ǩ��֤�顣<br/> |
-| [uninstallUserCertificate](arkts-mdm-securitymanager-uninstallusercertificate-f.md#uninstallUserCertificate-1) | ж���û�֤�飬ʹ��Promise�첽�ص���<br/> |
+| [addAllowedPermissionBundle](arkts-mdm-addallowedpermissionbundle-f.md#addallowedpermissionbundle-1) | 添加允许使用已禁用指定权限的应用到权限使用例外名单，权限使用例外名单中的应用可以不受[setDisallowedPermission](arkts-mdm-setdisallowedpermission-f.md#setdisallowedpermission-1)的策略限制。 |
+| [addUserExtCredential](arkts-mdm-adduserextcredential-f.md#adduserextcredential-1) | 添加扩展用户认证凭据 |
+| [cancelScreenWatermarkImage](arkts-mdm-cancelscreenwatermarkimage-f.md#cancelscreenwatermarkimage-1) | 取消屏幕水印 |
+| [cancelWatermarkImage](arkts-mdm-cancelwatermarkimage-f.md#cancelwatermarkimage-1) | 取消指定用户的水印策略。 |
+| [closeSession](arkts-mdm-closesession-f.md#closesession-1) | 关闭指定用户的凭据变更会话 |
+| [getAllowedPermissionBundles](arkts-mdm-getallowedpermissionbundles-f.md#getallowedpermissionbundles-1) | 获取权限使用例外名单的应用列表。 |
+| [getAppClipboardPolicy](arkts-mdm-getappclipboardpolicy-f.md#getappclipboardpolicy-1) | 获取设备剪贴板策略。 |
+| [getAppClipboardPolicy](arkts-mdm-getappclipboardpolicy-f.md#getappclipboardpolicy-2) | 获取指定用户下指定应用的设备剪贴板策略。 |
+| [getDeviceSecurityLevelPolicy](arkts-mdm-getdevicesecuritylevelpolicy-f.md#getdevicesecuritylevelpolicy-1) | 查询DSL切换策略 |
+| [getDisallowedPermissions](arkts-mdm-getdisallowedpermissions-f.md#getdisallowedpermissions-1) | 获取指定用户下禁用的权限列表。 |
+| [getExternalSourceExtensionsPolicy](arkts-mdm-getexternalsourceextensionspolicy-f.md#getexternalsourceextensionspolicy-1) | 获取外部来源扩展程序的管控策略。 |
+| [getPasswordPolicy](arkts-mdm-getpasswordpolicy-f.md#getpasswordpolicy-1) | 获取设备锁屏口令策略。 |
+| [getPermissionManagedState](arkts-mdm-getpermissionmanagedstate-f.md#getpermissionmanagedstate-1) | 获取指定应用的指定[user_grant权限](permissions:Permissions)的管理策略。 |
+| [getSecurityStatus](arkts-mdm-getsecuritystatus-f.md#getsecuritystatus-1) | 获取当前设备安全策略信息。 |
+| [getUnlockPolicy](arkts-mdm-getunlockpolicy-f.md#getunlockpolicy-1) | 查询解锁策略 |
+| [getUserCertificates](arkts-mdm-getusercertificates-f.md#getusercertificates-1) | 获取指定系统账户下的用户证书信息。 |
+| [getUserExtCredential](arkts-mdm-getuserextcredential-f.md#getuserextcredential-1) | 查询指定用户安装的扩展用户凭据 |
+| [getWatermarkImageApps](arkts-mdm-getwatermarkimageapps-f.md#getwatermarkimageapps-1) | 查询设置了水印的应用列表 |
+| [installEnterpriseReSignatureCertificate](arkts-mdm-installenterpriseresignaturecertificate-f.md#installenterpriseresignaturecertificate-1) | 安装企业应用重签名证书。同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](arkts-mdm-uninstallenterpriseresignaturecertificate-f.md#uninstallenterpriseresignaturecertificate-1)进行卸载。在MDM应用卸载或admin取消激活场景下，已安装的证书会保留在设备上，不会被移除。在企业应用分发场景下，&lt;!--RP2--&gt;&lt;!--RP2End--&gt;开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。企业应用重签名证书使用流程：&lt;!--RP3--&gt;&lt;!--RP3End--&gt;1.通过MDM应用安装企业应用重签名证书；2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；3.安装重签名应用（可以通过企业私有应用市场安装）；4.运行应用。规格约束：1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。 |
+| [installUserCertificate](arkts-mdm-installusercertificate-f.md#installusercertificate-1) | 安装用户证书，使用Promise异步回调。 |
+| [installUserCertificate](arkts-mdm-installusercertificate-f.md#installusercertificate-2) | 支持按系统账户安装用户证书。 |
+| [isScreenLockDisabledForAccount](arkts-mdm-isscreenlockdisabledforaccount-f.md#isscreenlockdisabledforaccount-1) | 查询当前用户的滑动解锁能力是否被禁用。 |
+| [openSession](arkts-mdm-opensession-f.md#opensession-1) | 开启指定用户的凭据变更会话 |
+| [removeAllowedPermissionBundle](arkts-mdm-removeallowedpermissionbundle-f.md#removeallowedpermissionbundle-1) | 从权限使用例外名单中移除指定应用，移除后该应用则不能继续使用对应的权限。 |
+| [removeUserExtCredential](arkts-mdm-removeuserextcredential-f.md#removeuserextcredential-1) | 移除扩展用户认证凭据 |
+| [setAppClipboardPolicy](arkts-mdm-setappclipboardpolicy-f.md#setappclipboardpolicy-1) | 设置设备剪贴板策略。 |
+| [setAppClipboardPolicy](arkts-mdm-setappclipboardpolicy-f.md#setappclipboardpolicy-2) | 设置指定用户下指定应用的设备剪贴板策略。 |
+| [setDeviceSecurityLevelPolicy](arkts-mdm-setdevicesecuritylevelpolicy-f.md#setdevicesecuritylevelpolicy-1) | 设备DSL切换策略 |
+| [setDisallowedPermission](arkts-mdm-setdisallowedpermission-f.md#setdisallowedpermission-1) | 禁用指定用户下的指定权限，禁用后指定用户下的所有应用申请和使用指定权限时默认拒绝。 |
+| [setExternalSourceExtensionsPolicy](arkts-mdm-setexternalsourceextensionspolicy-f.md#setexternalsourceextensionspolicy-1) | 设置外部来源扩展程序的管控策略。- DEFAULT： 默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。- DISALLOW： 禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。- FORCE_OPEN： 强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。 |
+| [setPasswordPolicy](arkts-mdm-setpasswordpolicy-f.md#setpasswordpolicy-1) | 设置设备锁屏口令策略。当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。 |
+| [setPermissionManagedState](arkts-mdm-setpermissionmanagedstate-f.md#setpermissionmanagedstate-1) | 设置指定应用的[user_grant权限](permissions:Permissions)的管理策略。 |
+| [setScreenLockDisabledForAccount](arkts-mdm-setscreenlockdisabledforaccount-f.md#setscreenlockdisabledforaccount-1) | 禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。 |
+| [setScreenWatermarkImage](arkts-mdm-setscreenwatermarkimage-f.md#setscreenwatermarkimage-1) | 设置屏幕水印 |
+| [setUnlockPolicy](arkts-mdm-setunlockpolicy-f.md#setunlockpolicy-1) | 设置解锁策略 |
+| [setWatermarkImage](arkts-mdm-setwatermarkimage-f.md#setwatermarkimage-1) | 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。 |
+| [setWatermarkImage](arkts-mdm-setwatermarkimage-f.md#setwatermarkimage-2) | 为指定用户的指定应用设置水印策略。 |
+| [uninstallEnterpriseReSignatureCertificate](arkts-mdm-uninstallenterpriseresignaturecertificate-f.md#uninstallenterpriseresignaturecertificate-1) | 卸载企业应用重签名证书。 |
+| [uninstallUserCertificate](arkts-mdm-uninstallusercertificate-f.md#uninstallusercertificate-1) | 卸载用户证书，使用Promise异步回调。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [getDeviceEncryptionStatus](arkts-mdm-getdeviceencryptionstatus-f-sys.md#getdeviceencryptionstatus-1) | 查询设备文件系统加密状态。 |
+| [getPasswordPolicy](arkts-mdm-getpasswordpolicy-f-sys.md#getpasswordpolicy-2) | 获取设备锁屏口令策略。 |
+| [getSecurityPatchTag](arkts-mdm-getsecuritypatchtag-f-sys.md#getsecuritypatchtag-1) | 查询设备安全补丁Tag。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [AddCredentialInfo](arkts-mdm-securitymanager-addcredentialinfo-i.md) | ����ƾ֤��Ϣ<br/> |
-| [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md) | Ӧ��ʵ����<br/> |
-| [CertBlob](arkts-mdm-securitymanager-certblob-i.md) | ֤����Ϣ��<br/> |
-| <!--DelRow-->[DeviceEncryptionStatus](arkts-mdm-securitymanager-deviceencryptionstatus-i-sys.md) |  |
-| [PasswordPolicy](arkts-mdm-securitymanager-passwordpolicy-i.md) | �豸����������ԡ�<br/> |
-| [WatermarkProperties](arkts-mdm-securitymanager-watermarkproperties-i.md) | ˮӡ����<br/> |
+| [AddCredentialInfo](arkts-mdm-addcredentialinfo-i.md) | 添加凭证信息 |
+| [ApplicationInstance](arkts-mdm-applicationinstance-i.md) | 应用实例。 |
+| [CertBlob](arkts-mdm-certblob-i.md) | 证书信息。 |
+| [PasswordPolicy](arkts-mdm-passwordpolicy-i.md) | 设备锁屏口令策略。 |
+| [WatermarkProperties](arkts-mdm-watermarkproperties-i.md) | 水印参数 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [DeviceEncryptionStatus](arkts-mdm-deviceencryptionstatus-i-sys.md) |  |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | �豸��������ԡ�<br/> |
-| [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md) | Ӧ��Ȩ�޵Ĺ���״̬��<br/> |
+| [ClipboardPolicy](arkts-mdm-clipboardpolicy-e.md) | 设备剪贴板策略。 |
+| [PermissionManagedState](arkts-mdm-permissionmanagedstate-e.md) | 应用权限的管理状态。 |
 

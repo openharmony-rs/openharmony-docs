@@ -1,6 +1,6 @@
 # ModuleConfigInfo（系统接口）
 
-����module������Ϣ��
+包的module配置信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@
 readonly abilities: Array<ModuleAbilityInfo>
 ```
 
-module������ability�����Ϣ��
+module包含的ability组件信息。
 
 **类型：** Array<ModuleAbilityInfo>
 
@@ -30,7 +30,7 @@ module������ability�����Ϣ��
 readonly apiVersion: ApiVersion
 ```
 
-module��api�汾��
+module的api版本。
 
 **类型：** ApiVersion
 
@@ -46,7 +46,7 @@ module��api�汾��
 readonly deviceTypes: Array<string>
 ```
 
-module���豸���͡�
+module的设备类型。
 
 **类型：** Array<string>
 
@@ -62,7 +62,7 @@ module���豸���͡�
 readonly distro: ModuleDistroInfo
 ```
 
-module���а���Ϣ��
+module发行版信息。
 
 **类型：** ModuleDistroInfo
 
@@ -78,7 +78,7 @@ module���а���Ϣ��
 readonly extensionAbilities: Array<ExtensionAbility>
 ```
 
-����extensionAbilities��������Ϣ��
+描述extensionAbilities的配置信息。
 
 **类型：** Array<ExtensionAbility>
 
@@ -94,7 +94,7 @@ readonly extensionAbilities: Array<ExtensionAbility>
 readonly mainAbility: string
 ```
 
-Ӧ����ability�����ơ�
+应用主ability的名称。
 
 **类型：** string
 

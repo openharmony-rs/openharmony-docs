@@ -10,22 +10,28 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[off](arkts-ability-bundlemonitor-off-f-sys.md#off-1) | 注销监听应用的安装，卸载，更新。使用callback异步回调。<br/> |
-| <!--DelRow-->[on](arkts-ability-bundlemonitor-on-f-sys.md#on-1) | 注册监听应用的安装、卸载、更新。使用callback异步回调。<br/> |
+| [off](arkts-ability-off-f-sys.md#off-1) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
+| [on](arkts-ability-on-f-sys.md#on-1) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
+<!--DelEnd-->
 
-### 接口
-
-| 名称 | 说明 |
-| --- | --- |
-| <!--DelRow-->[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md) | 应用变更信息。<br/> |
-
-### 类型
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | 监听的事件类型。<br/> |
+| [BundleChangedInfo](arkts-ability-bundlechangedinfo-i-sys.md) | 应用变更信息。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BundleChangedEvent](arkts-ability-bundlechangedevent-t-sys.md) | 监听的事件类型。 |
+<!--DelEnd-->
 

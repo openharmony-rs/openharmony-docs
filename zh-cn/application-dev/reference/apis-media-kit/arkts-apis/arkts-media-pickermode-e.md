@@ -1,9 +1,5 @@
 # PickerMode
 
-```TypeScript
-enum PickerMode
-```
-
 表示屏幕录制Picker模式的枚举。
 
 **起始版本：** 22

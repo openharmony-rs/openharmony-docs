@@ -1,6 +1,6 @@
 # PackageSummary（系统接口）
 
-pack.info�еİ�ժҪ��Ϣ��
+pack.info中的包摘要信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ pack.info�еİ�ժҪ��Ϣ��
 readonly app: BundleConfigInfo
 ```
 
-����������Ϣ��
+包的配置信息。
 
 **类型：** BundleConfigInfo
 
@@ -30,7 +30,7 @@ readonly app: BundleConfigInfo
 readonly modules: Array<ModuleConfigInfo>
 ```
 
-����module������Ϣ��
+包的module配置信息。
 
 **类型：** Array<ModuleConfigInfo>
 

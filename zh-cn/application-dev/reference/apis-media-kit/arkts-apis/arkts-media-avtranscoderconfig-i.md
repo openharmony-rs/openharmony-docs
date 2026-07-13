@@ -18,7 +18,7 @@ Bitrate of the output audio, in bit/s. The value range is [1-500000]. The defaul
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -34,7 +34,7 @@ Encoding format of the output audio. Currently, only AAC is supported. The defau
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -50,7 +50,7 @@ Indicates whether to enable B Frame Encoding for reduce file size.
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -66,7 +66,7 @@ Container format of the output video file. Currently, only MP4 is supported.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -84,7 +84,7 @@ The default bitrate is 1 Mbit/s for the resolution in the range [240p, 480P],
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -101,7 +101,7 @@ If the source video is in HEVC format, the default value is **HEVC**. Otherwise,
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -118,7 +118,7 @@ The default value is the height of the source video frame.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -135,7 +135,7 @@ The default value is the width of the source video frame.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 

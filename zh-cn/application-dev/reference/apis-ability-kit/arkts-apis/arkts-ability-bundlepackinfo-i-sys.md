@@ -1,6 +1,6 @@
 # BundlePackInfo（系统接口）
 
-Ӧ�ð���Ϣ
+应用包信息
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@
 readonly packages: Array<PackageConfig>
 ```
 
-pack.info�İ���Ϣ��
+pack.info的包信息。
 
 **类型：** Array<PackageConfig>
 
@@ -30,7 +30,7 @@ pack.info�İ���Ϣ��
 readonly summary: PackageSummary
 ```
 
-pack.info�еİ�ժҪ��Ϣ��
+pack.info中的包摘要信息。
 
 **类型：** PackageSummary
 

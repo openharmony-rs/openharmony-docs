@@ -1,13 +1,13 @@
 # @ohos.bundle.bundleResourceManager
 
-��ģ���ṩӦ����Դ���ݲ�ѯ������֧��[BundleResourceInfo](arkts-ability-bundleresourceinfo-i-sys.md#BundleResourceInfo)��
-[LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md#LauncherAbilityResourceInfo)����Ϣ�Ĳ�ѯ��
+本模块提供应用资源数据查询能力，支持[BundleResourceInfo](arkts-ability-bundleresourceinfo-i-sys.md)和
+[LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-i-sys.md)等信息的查询。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ���API version 12 ��ʼ֧�ֲ�ѯ������Ӧ�ú��豸���Ѱ�װӦ��(�����û�)��ͼ���������Դ��
+> 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 11
 
@@ -17,32 +17,38 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[getAllBundleResourceInfo](arkts-ability-bundleresourcemanager-getallbundleresourceinfo-f-sys.md#getAllBundleResourceInfo-1) | ���ݸ�����resourceFlags��ȡ����Ӧ�õ�BundleResourceInfo��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getAllBundleResourceInfo](arkts-ability-bundleresourcemanager-getallbundleresourceinfo-f-sys.md#getAllBundleResourceInfo-2) | ���ݸ�����resourceFlags��ȡ����Ӧ�õ�BundleResourceInfo��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md#getAllLauncherAbilityResourceInfo-1) | ���ݸ�����resourceFlags��ȡ��ǰ����Ӧ�õ�LauncherAbilityResourceInfo��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md#getAllLauncherAbilityResourceInfo-2) | ���ݸ�����resourceFlags��ȡ��ǰ����Ӧ�õ�LauncherAbilityResourceInfo��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getAllUninstalledBundleResourceInfo](arkts-ability-bundleresourcemanager-getalluninstalledbundleresourceinfo-f-sys.md#getAllUninstalledBundleResourceInfo-1) | ���ݸ�����resourceFlags��ȡ������ж���ұ������ݵ�Ӧ�õ�BundleResourceInfo��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getBundleResourceInfo-1) | ��ͬ���������ݸ�����bundleName��resourceFlags��ȡ��ǰӦ�õ�BundleResourceInfo��<br/> |
-| <!--DelRow-->[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getBundleResourceInfo-2) | ��ͬ���������ݸ�����bundleName��resourceFlags��appIndex��ȡ��ǰӦ�û����Ӧ�õ�BundleResourceInfo��<br/> |
-| <!--DelRow-->[getExtensionAbilityResourceInfo](arkts-ability-bundleresourcemanager-getextensionabilityresourceinfo-f-sys.md#getExtensionAbilityResourceInfo-1) | ����Ӧ�ð�������չ������͡���Դ��Ϣ��־��Ӧ�÷���ID��ȡӦ�õ���չ�����Դ��ʹ��ͬ����ʽ���ء�<br/> |
-| <!--DelRow-->[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getLauncherAbilityResourceInfo-1) | ��ͬ���������ݸ�����bundleName��resourceFlags��ȡ��ǰӦ�õ�LauncherAbilityResourceInfo��<br/> |
-| <!--DelRow-->[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md#getLauncherAbilityResourceInfo-2) | ��ͬ���������ݸ�����bundleName��resourceFlags��appIndex��ȡ��ǰӦ�û����Ӧ�õ�LauncherAbilityResourceInfo��<br/> |
-| <!--DelRow-->[getLauncherAbilityResourceInfoList](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfolist-f-sys.md#getLauncherAbilityResourceInfoList-1) | ���ݴ����optionsList��ȡ�б���ÿ��BundleOptionsԪ�ض�Ӧ��Ӧ�õ�LauncherAbilityResourceInfo��ʹ��Promise�첽�ص���<br/> |
+| [getAllBundleResourceInfo](arkts-ability-getallbundleresourceinfo-f-sys.md#getallbundleresourceinfo-1) | 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用callback异步回调。 |
+| [getAllBundleResourceInfo](arkts-ability-getallbundleresourceinfo-f-sys.md#getallbundleresourceinfo-2) | 根据给定的resourceFlags获取所有应用的BundleResourceInfo。使用Promise异步回调。 |
+| [getAllLauncherAbilityResourceInfo](arkts-ability-getalllauncherabilityresourceinfo-f-sys.md#getalllauncherabilityresourceinfo-1) | 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用callback异步回调。 |
+| [getAllLauncherAbilityResourceInfo](arkts-ability-getalllauncherabilityresourceinfo-f-sys.md#getalllauncherabilityresourceinfo-2) | 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用Promise异步回调。 |
+| [getAllUninstalledBundleResourceInfo](arkts-ability-getalluninstalledbundleresourceinfo-f-sys.md#getalluninstalledbundleresourceinfo-1) | 根据给定的resourceFlags获取所有已卸载且保留数据的应用的BundleResourceInfo。使用Promise异步回调。 |
+| [getBundleResourceInfo](arkts-ability-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-1) | 以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。 |
+| [getBundleResourceInfo](arkts-ability-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-2) | 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。 |
+| [getExtensionAbilityResourceInfo](arkts-ability-getextensionabilityresourceinfo-f-sys.md#getextensionabilityresourceinfo-1) | 根据应用包名、扩展组件类型、资源信息标志、应用分身ID获取应用的扩展组件资源。使用同步方式返回。 |
+| [getLauncherAbilityResourceInfo](arkts-ability-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo-1) | 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。 |
+| [getLauncherAbilityResourceInfo](arkts-ability-getlauncherabilityresourceinfo-f-sys.md#getlauncherabilityresourceinfo-2) | 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的LauncherAbilityResourceInfo。 |
+| [getLauncherAbilityResourceInfoList](arkts-ability-getlauncherabilityresourceinfolist-f-sys.md#getlauncherabilityresourceinfolist-1) | 根据传入的optionsList获取列表中每个BundleOptions元素对应的应用的LauncherAbilityResourceInfo。使用Promise异步回调。 |
+<!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| <!--DelRow-->[ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md) | ��Դ��Ϣ��־��ָʾ��Ҫ��ȡ����Դ��Ϣ�����ݡ�<br/> |
-
-### 类型
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md) | Ӧ�����õ�ͼ���������Ϣ��<br/> |
-| <!--DelRow-->[LauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-launcherabilityresourceinfo-t-sys.md) | Ӧ�����õ����ͼ���������Ϣ��<br/> |
+| [ResourceFlag](arkts-ability-resourceflag-e-sys.md) | 资源信息标志，指示需要获取的资源信息的内容。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BundleResourceInfo](arkts-ability-bundleresourceinfo-t-sys.md) | 应用配置的图标和名称信息。 |
+| [LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo-t-sys.md) | 应用配置的入口图标和名称信息。 |
+<!--DelEnd-->
 

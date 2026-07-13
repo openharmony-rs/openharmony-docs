@@ -2,7 +2,7 @@
 
 Worker线程自身的运行环境，与宿主线程环境隔离。
 
-**继承/实现关系：** WorkerGlobalScope extends [EventTarget](arkts-arkts-eventtarget-i.md#EventTarget)
+**继承/实现关系：** WorkerGlobalScope extends [EventTarget](arkts-arkts-eventtarget-i.md)
 
 **起始版本：** 7
 

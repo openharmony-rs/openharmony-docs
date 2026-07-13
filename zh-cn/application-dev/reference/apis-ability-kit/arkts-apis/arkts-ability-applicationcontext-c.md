@@ -1,16 +1,14 @@
 # ApplicationContext
 
-ApplicationContext作为应用上下文，继承自[Context](arkts-ability-context-depr-i.md#Context)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
+ApplicationContext作为应用上下文，继承自[Context](arkts-ability-context-depr-i.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
 > **说明：**
 >
 > 本模块接口仅可在Stage模型下使用。
 
-**继承/实现关系：** ApplicationContext extends [Context](../../apis-arkui/arkts-apis/arkts-arkui-context-t.md#Context)
+**继承/实现关系：** ApplicationContext extends [Context](arkts-ability-context-t.md)
 
 **起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -45,8 +43,8 @@ clearUpApplicationData(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## clearUpApplicationData
 
@@ -73,15 +71,15 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared<br/>up, error is undefined; otherwise, error is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is clearedup, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## getAllRunningInstanceKeys
 
@@ -107,9 +105,9 @@ getAllRunningInstanceKeys(): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
-| [16000078](../../errorcode-universal.md#16000078-The) | The multi-instance is not supported. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000078](../errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported. |
 
 ## getAllWindowStages
 
@@ -125,7 +123,7 @@ getAllWindowStages(): Promise<Array<window.WindowStage>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -133,7 +131,7 @@ getAllWindowStages(): Promise<Array<window.WindowStage>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;window.WindowStage&gt;&gt; | Promise used to return all WindowStage objects in the current<br/>application process. |
+| Promise&lt;Array&lt;window.WindowStage&gt;&gt; | Promise used to return all WindowStage objects in the currentapplication process. |
 
 ## getCurrentAppCloneIndex
 
@@ -147,7 +145,7 @@ getCurrentAppCloneIndex(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -161,8 +159,8 @@ getCurrentAppCloneIndex(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000071](../../errorcode-universal.md#16000071-The) | The MultiAppMode is not {@link App_CLONE}. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000071](../errorcode-ability.md#16000071-不支持应用分身模式) | The MultiAppMode is not {@link App_CLONE}. |
 
 ## getCurrentInstanceKey
 
@@ -188,8 +186,8 @@ getCurrentInstanceKey(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000078](../../errorcode-universal.md#16000078-The) | The multi-instance is not supported. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000078](../errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported. |
 
 ## getRunningProcessInformation
 
@@ -203,7 +201,7 @@ getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -217,9 +215,9 @@ getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## getRunningProcessInformation
 
@@ -233,7 +231,7 @@ getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -247,9 +245,9 @@ getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## killAllProcesses
 
@@ -261,13 +259,13 @@ killAllProcesses(): Promise<void>
 
 > **说明：**
 >
-> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateSelf-2)接口。
+> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateself-2)接口。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -281,8 +279,8 @@ killAllProcesses(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 ## killAllProcesses
 
@@ -294,13 +292,13 @@ killAllProcesses(clearPageStack: boolean): Promise<void>
 
 > **说明：**
 >
-> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateSelf-2)接口。
+> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateself-2)接口。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -320,8 +318,8 @@ killAllProcesses(clearPageStack: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-If) | If the input parameter is not valid parameter. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter is not valid parameter. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 ## killAllProcesses
 
@@ -333,13 +331,13 @@ killAllProcesses(callback: AsyncCallback<void>): void
 
 > **说明：**
 >
-> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateSelf-2)接口。
+> 该接口用于应用异常场景中强制退出应用。如需正常退出应用，可以使用[terminateSelf()](arkts-ability-uiabilitycontext-c.md#terminateself-2)接口。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -353,8 +351,8 @@ killAllProcesses(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 ## off('abilityLifecycle')
 
@@ -368,7 +366,7 @@ off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -377,14 +375,14 @@ off(type: 'abilityLifecycle', callbackId: number, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityLifecycle' | 是 | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
-| callbackId | number | 是 | 通过<br/>[ApplicationContext.on('abilityLifecycle')](arkts-ability-applicationcontext-c.md#on-1)<br/>接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+| callbackId | number | 是 | 通过[ApplicationContext.on('abilityLifecycle')](arkts-ability-applicationcontext-c.md#on-1)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消监听应用内生命周期成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## off('abilityLifecycle')
 
@@ -398,7 +396,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -407,7 +405,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityLifecycle' | 是 | 此类型表示应用内UIAbility的生命周期，固定为'abilityLifecycle'。 |
-| callbackId | number | 是 | 通过<br/>[ApplicationContext.on('abilityLifecycle')](arkts-ability-applicationcontext-c.md#on-1)<br/>接口注册监听应用内UIAbility的生命周期时返回的ID。 |
+| callbackId | number | 是 | 通过[ApplicationContext.on('abilityLifecycle')](arkts-ability-applicationcontext-c.md#on-1)接口注册监听应用内UIAbility的生命周期时返回的ID。 |
 
 **返回值：**
 
@@ -419,7 +417,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## off('environment')
 
@@ -433,7 +431,7 @@ off(type: 'environment', callbackId: number, callback: AsyncCallback<void>): voi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -442,14 +440,14 @@ off(type: 'environment', callbackId: number, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'environment' | 是 | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
-| callbackId | number | 是 | 通过<br/>[ApplicationContext.on('environment')](arkts-ability-applicationcontext-c.md#on-2)<br/>接口注册监听系统环境变化时返回的ID。 |
+| callbackId | number | 是 | 通过[ApplicationContext.on('environment')](arkts-ability-applicationcontext-c.md#on-2)接口注册监听系统环境变化时返回的ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调方法。当取消对系统环境变化的监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2<br/>.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ## off('environment')
 
@@ -463,7 +461,7 @@ off(type: 'environment', callbackId: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -472,7 +470,7 @@ off(type: 'environment', callbackId: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'environment' | 是 | 此类型表示系统环境变化，如系统深浅色发生变化，固定为'environment'。 |
-| callbackId | number | 是 | 通过<br/>[ApplicationContext.on('environment')](arkts-ability-applicationcontext-c.md#on-2)<br/>接口注册监听系统环境变化时返回的ID。 |
+| callbackId | number | 是 | 通过[ApplicationContext.on('environment')](arkts-ability-applicationcontext-c.md#on-2)接口注册监听系统环境变化时返回的ID。 |
 
 **返回值：**
 
@@ -484,7 +482,7 @@ off(type: 'environment', callbackId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2<br/>.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ## off('applicationStateChange')
 
@@ -498,7 +496,7 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -507,13 +505,13 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'applicationStateChange' | 是 | 此类型表示当前应用进程状态变化，固定为'applicationStateChange'。 |
-| callback | ApplicationStateChangeCallback | 否 | 回调函数。取值可以为使用<br/>[ApplicationContext.on('applicationStateChange')](arkts-ability-applicationcontext-c.md#on-3)<br/>方法定义的callback回调，也可以为空。<br/>-?如果传入已定义的回调，则取消该监听。<br/>-?如果未传入参数，则取消所有已注册的该类型事件的监听。 |
+| callback | ApplicationStateChangeCallback | 否 | 回调函数。取值可以为使用[ApplicationContext.on('applicationStateChange')](arkts-ability-applicationcontext-c.md#on-3)方法定义的callback回调，也可以为空。<br/>-?如果传入已定义的回调，则取消该监听。 <br/>-?如果未传入参数，则取消所有已注册的该类型事件的监听。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## offSystemConfigurationUpdated
 
@@ -521,7 +519,7 @@ off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): 
 offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): void
 ```
 
-取消监听系统环境[Configuration](arkts-ability-configuration-i.md#Configuration)的变化。仅支持主线程调用。
+取消监听系统环境[Configuration](arkts-ability-configuration-i.md)的变化。仅支持主线程调用。
 
 <p>**NOTE**:
 <br>It can be called only by the main thread.
@@ -531,7 +529,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本24开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -539,7 +537,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用<br/>[ApplicationContext.onSystemConfigurationUpdated](../../../../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonsystemconfigurationupdated24)<br/>方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。<br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
+| callback | systemConfiguration.UpdatedCallback | 否 | 回调函数。取值可以为使用[ApplicationContext.onSystemConfigurationUpdated](../../../../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonsystemconfigurationupdated24)方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。 |
 
 ## on('abilityLifecycle')
 
@@ -553,7 +551,7 @@ on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -568,13 +566,13 @@ on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回此次注册的callbackID，该ID用于在<br/>[ApplicationContext.off('abilityLifecycle')](arkts-ability-applicationcontext-c.md#off-1)<br/>方法中取消注册对应的callback。 |
+| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.off('abilityLifecycle')](arkts-ability-applicationcontext-c.md#off-1)方法中取消注册对应的callback。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## on('environment')
 
@@ -586,13 +584,13 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 > **说明：**
 >
-> - 使用[onConfigurationUpdate](arkts-ability-ability-c.md#onConfigurationUpdate-1)也可以实现对系统环境变量的监听。相较
-> 于Ability的[onConfigurationUpdate](arkts-ability-ability-c.md#onConfigurationUpdate-1)接口，当前接口的使用场景更
+> - 使用[onConfigurationUpdate](arkts-ability-ability-c.md#onconfigurationupdate-1)也可以实现对系统环境变量的监听。相较
+> 于Ability的[onConfigurationUpdate](arkts-ability-ability-c.md#onconfigurationupdate-1)接口，当前接口的使用场景更
 > 加灵活，不仅可以在应用组件中使用，还可以在页面中使用，但是支持订阅的环境变量与Ability的
-> [onConfigurationUpdate](arkts-ability-ability-c.md#onConfigurationUpdate-1)接口存在差异，如不支持订阅direction
-> 、screenDensity、displayId，详见[Configuration](arkts-ability-configuration-i.md#Configuration)中各个环境变量的说明。
+> [onConfigurationUpdate](arkts-ability-ability-c.md#onconfigurationupdate-1)接口存在差异，如不支持订阅direction
+> 、screenDensity、displayId，详见[Configuration](arkts-ability-configuration-i.md)中各个环境变量的说明。
 >
-> - 当前接口在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setLanguage-1)接口设置应用的语言，即便系统语
+> - 当前接口在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage-1)接口设置应用的语言，即便系统语
 > 言发生变化，系统也不再触发当前接口的[callback](arkts-app-ability-environmentcallback.md)回调。详见
 > [使用场景](../../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
@@ -600,7 +598,7 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -615,13 +613,13 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回此次注册的callbackID，该ID用于在<br/>[ApplicationContext.off('environment')](arkts-ability-applicationcontext-c.md#off-3)<br/>方法中取消注册对应的callback。 |
+| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.off('environment')](arkts-ability-applicationcontext-c.md#off-3)方法中取消注册对应的callback。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2<br/>.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ## on('applicationStateChange')
 
@@ -635,7 +633,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -650,7 +648,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
 ## onSystemConfigurationUpdated
 
@@ -658,7 +656,7 @@ on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): vo
 onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): void
 ```
 
-注册监听系统环境[Configuration](arkts-ability-configuration-i.md#Configuration)的变化。使用callback异步回调。仅支持主线程调用。
+注册监听系统环境[Configuration](arkts-ability-configuration-i.md)的变化。使用callback异步回调。仅支持主线程调用。
 
 > **说明：**
 >
@@ -668,7 +666,7 @@ onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): voi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本24开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -691,17 +689,17 @@ restartApp(want: Want): void
 > 通过该接口重启应用时，不会触发应用中Ability的onDestroy生命周期回调。
 >
 > 在原子化服务调用本接口成功后的3秒内，再次调用本接口、
-> [restartSelfAtomicService()](arkts-ability-abilitymanager-restartselfatomicservice-f.md#restartSelfAtomicService-1)
-> 或[UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartApp-1)接口中的任一接口，系统将返回错误码16000064。
+> [restartSelfAtomicService()](arkts-ability-restartselfatomicservice-f.md#restartselfatomicservice-1)
+> 或[UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp-1)接口中的任一接口，系统将返回错误码16000064。
 >
-> 在应用调用本接口成功后的3秒内，若再次调用本接口或[UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartApp-1)接口中的任
+> 在应用调用本接口成功后的3秒内，若再次调用本接口或[UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp-1)接口中的任
 > 一接口，系统将返回错误码16000064。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -709,17 +707,17 @@ restartApp(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Want information about the UIAbility to start. No verification is performed on the bundle<br/>name passed in. |
+| want | Want | 是 | Want information about the UIAbility to start. No verification is performed on the bundlename passed in. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
-| [16000053](../../errorcode-universal.md#16000053-The) | The ability is not on the top of the UI. |
-| [16000063](../../errorcode-universal.md#16000063-The) | The target to restart does not belong to the current application or is not a<br/>UIAbility. |
-| [16000064](../../errorcode-universal.md#16000064-Restart) | Restart too frequently. Try again at least 3s later. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000053](../errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI. |
+| [16000063](../errorcode-ability.md#16000063-重启应用指定组件无效) | The target to restart does not belong to the current application or is not aUIAbility. |
+| [16000064](../errorcode-ability.md#16000064-重启应用频繁) | Restart too frequently. Try again at least 3s later. |
 
 ## setColorMode
 
@@ -732,14 +730,14 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 > **说明：**
 >
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在
-> [onWindowStageCreate()](arkts-ability-uiability-c.md#onWindowStageCreate-1)生命周期中通过
+> [onWindowStageCreate()](arkts-ability-uiability-c.md#onwindowstagecreate-1)生命周期中通过
 > [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -753,8 +751,8 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 ## setFont
 
@@ -767,7 +765,7 @@ setFont(font: string): void
 > **说明：**
 >
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在
-> [onWindowStageCreate()](arkts-ability-uiability-c.md#onWindowStageCreate-1)生命周期中通过
+> [onWindowStageCreate()](arkts-ability-uiability-c.md#onwindowstagecreate-1)生命周期中通过
 > [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
 
 **起始版本：** 12
@@ -780,14 +778,14 @@ setFont(font: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | string | 是 | 设置字体类型，字体可以通过<br/>[UIContext.registerFont](../../../../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
+| font | string | 是 | 设置字体类型，字体可以通过[UIContext.registerFont](../../../../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 ## setFontSizeScale
 
@@ -801,7 +799,7 @@ setFontSizeScale(fontSizeScale: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -809,7 +807,7 @@ setFontSizeScale(fontSizeScale: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontSizeScale | number | 是 | 表示字体缩放比例，取值为非负数。当应用字体<br/>[跟随系统](../../../../quick-start/app-configuration-file.md#configuration标签)且该字段取值超过<br/>[fontSizeMaxScale](../../../../quick-start/app-configuration-file.md#configuration标签)取值时，实际生效值为<br/>[fontSizeMaxScale](../../../../quick-start/app-configuration-file.md#configuration标签)取值。 |
+| fontSizeScale | number | 是 | 表示字体缩放比例，取值为非负数。当应用字体[跟随系统](../../../../quick-start/app-configuration-file.md#configuration标签)且该字段取值超过[fontSizeMaxScale](../../../../quick-start/app-configuration-file.md#configuration标签)取值时，实际生效值为[fontSizeMaxScale](../../../../quick-start/app-configuration-file.md#configuration标签)取值。 |
 
 ## setLanguage
 
@@ -822,14 +820,14 @@ setLanguage(language: string): void
 > **说明：**
 >
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在
-> [onWindowStageCreate()](arkts-ability-uiability-c.md#onWindowStageCreate-1)生命周期中通过
+> [onWindowStageCreate()](arkts-ability-uiability-c.md#onwindowstagecreate-1)生命周期中通过
 > [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -837,13 +835,13 @@ setLanguage(language: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| language | string | 是 | 设置语言，当前支持的语言列表可以通过<br/>[getSystemLanguages()](./../@ohos.i18n:i18n.System.getSystemLanguages)获取。 |
+| language | string | 是 | 设置语言，当前支持的语言列表可以通过[getSystemLanguages()](./../@ohos.i18n:i18n.System.getSystemLanguages)获取。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 ## setSupportedProcessCache
 
@@ -859,7 +857,7 @@ setSupportedProcessCache(isSupported : boolean): void
 >
 > - 该接口仅表示应用自身是否为缓存后快速启动做好了准备，还需综合其他条件来判断最终是否为应用启用快速启动。
 >
-> - 为了确保该接口在进程退出前生效，调用时机应尽量提前。建议在[AbilityStage](arkts-ability-abilitystage-c.md#AbilityStage)的`onCreate()
+> - 为了确保该接口在进程退出前生效，调用时机应尽量提前。建议在[AbilityStage](arkts-ability-abilitystage-c.md)的`onCreate()
 > `中调用该接口。
 >
 > - 在同一进程多次调用该接口时，会以最后一次调用的结果为准。当存在多个AbilityStage时，为了确保结果符合预期，需要在各个AbilityStage中分别调用该接口并配置相同的取值。
@@ -874,14 +872,14 @@ setSupportedProcessCache(isSupported : boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSupported | boolean | 是 | Whether process cache is supported. The value true means that<br/>process cache is supported, and false means the opposite. |
+| isSupported | boolean | 是 | Whether process cache is supported. The value <code>true</code> means thatprocess cache is supported, and <code>false</code> means the opposite. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [16000011](../../errorcode-universal.md#16000011-The) | The context does not exist. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 

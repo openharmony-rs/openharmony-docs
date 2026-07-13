@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtomicServiceOptions](arkts-ability-atomicserviceoptions-c.md) | **AtomicServiceOptions** is used as an input parameter of<br/>[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openAtomicService-1) to carry arguments. It<br/>inherits from [StartOptions](@ohos.app.ability.StartOptions:StartOptions).<br/> |
+| [AtomicServiceOptions](arkts-ability-atomicserviceoptions-c.md) | **AtomicServiceOptions** is used as an input parameter of[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice-1) to carry arguments. Itinherits from [StartOptions](arkts-ability-startoptions-c.md). |
 

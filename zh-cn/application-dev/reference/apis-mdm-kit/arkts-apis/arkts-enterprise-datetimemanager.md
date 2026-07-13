@@ -1,16 +1,16 @@
 # @ohos.enterprise.dateTimeManager
 
-��ģ���ṩϵͳʱ�����������
+本模块提供系统时间管理能力。
 
-> **˵��**��
+> **说明**：
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ���[�豸����Ӧ��](../../../../mdm/mdm-kit-term.md#mdmӦ���豸����Ӧ��)���ţ��轫
-> [�豸����Ӧ�ü���](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableAdmin-3)
-> ����á�
+> 本模块接口仅对[设备管理应用](../../../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将
+> [设备管理应用激活](arkts-mdm-enableadmin-f-sys.md#enableadmin-3)
+> 后调用。
 >
-> ��ģ��ӿھ�Ϊϵͳ�ӿڡ�
+> 本模块接口均为系统接口。
 
 **起始版本：** 9
 
@@ -20,14 +20,16 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[disallowModifyDateTime](arkts-mdm-datetimemanager-disallowmodifydatetime-f-sys.md#disallowModifyDateTime-1) | ��ֹ�豸�޸�ϵͳʱ�䡣ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[disallowModifyDateTime](arkts-mdm-datetimemanager-disallowmodifydatetime-f-sys.md#disallowModifyDateTime-2) | ��ֹ�豸�޸�ϵͳʱ�䡣ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[isModifyDateTimeDisallowed](arkts-mdm-datetimemanager-ismodifydatetimedisallowed-f-sys.md#isModifyDateTimeDisallowed-1) | ��ѯ�豸�Ƿ������޸�ϵͳʱ�䡣ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isModifyDateTimeDisallowed](arkts-mdm-datetimemanager-ismodifydatetimedisallowed-f-sys.md#isModifyDateTimeDisallowed-2) | ��ѯ�豸�Ƿ������޸�ϵͳʱ�䡣ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[setDateTime](arkts-mdm-datetimemanager-setdatetime-f-sys.md#setDateTime-1) | ����ϵͳʱ�䡣ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setDateTime](arkts-mdm-datetimemanager-setdatetime-f-sys.md#setDateTime-2) | ����ϵͳʱ�䡣ʹ��Promise�첽�ص���<br/> |
+| [disallowModifyDateTime](arkts-mdm-disallowmodifydatetime-f-sys.md#disallowmodifydatetime-1) | 禁止设备修改系统时间。使用callback异步回调。 |
+| [disallowModifyDateTime](arkts-mdm-disallowmodifydatetime-f-sys.md#disallowmodifydatetime-2) | 禁止设备修改系统时间。使用Promise异步回调。 |
+| [isModifyDateTimeDisallowed](arkts-mdm-ismodifydatetimedisallowed-f-sys.md#ismodifydatetimedisallowed-1) | 查询设备是否允许修改系统时间。使用callback异步回调。 |
+| [isModifyDateTimeDisallowed](arkts-mdm-ismodifydatetimedisallowed-f-sys.md#ismodifydatetimedisallowed-2) | 查询设备是否允许修改系统时间。使用Promise异步回调。 |
+| [setDateTime](arkts-mdm-setdatetime-f-sys.md#setdatetime-1) | 设置系统时间。使用callback异步回调。 |
+| [setDateTime](arkts-mdm-setdatetime-f-sys.md#setdatetime-2) | 设置系统时间。使用Promise异步回调。 |
+<!--DelEnd-->
 

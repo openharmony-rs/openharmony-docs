@@ -2,19 +2,21 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[AbilityFormInfo](arkts-ability-abilityforminfo-i-sys.md) | ��Ƭ��Ϣ��<br/> |
-| <!--DelRow-->[ApiVersion](arkts-ability-apiversion-i-sys.md) | module��api�汾��<br/> |
-| <!--DelRow-->[BundleConfigInfo](arkts-ability-bundleconfiginfo-i-sys.md) | ����������Ϣ��<br/> |
-| <!--DelRow-->[BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | Ӧ�ð���Ϣ<br/> |
-| <!--DelRow-->[ExtensionAbility](arkts-ability-extensionability-i-sys.md) | ����extensionAbilities��������Ϣ��<br/> |
-| <!--DelRow-->[ModuleAbilityInfo](arkts-ability-moduleabilityinfo-i-sys.md) | module������ability�����Ϣ��<br/> |
-| <!--DelRow-->[ModuleConfigInfo](arkts-ability-moduleconfiginfo-i-sys.md) | ����module������Ϣ��<br/> |
-| <!--DelRow-->[ModuleDistroInfo](arkts-ability-moduledistroinfo-i-sys.md) | module���а���Ϣ��<br/> |
-| <!--DelRow-->[PackageConfig](arkts-ability-packageconfig-i-sys.md) | pack.info�İ���Ϣ��<br/> |
-| <!--DelRow-->[PackageSummary](arkts-ability-packagesummary-i-sys.md) | pack.info�еİ�ժҪ��Ϣ��<br/> |
-| <!--DelRow-->[Version](arkts-ability-version-i-sys.md) | ���İ汾��<br/> |
+| [AbilityFormInfo](arkts-ability-abilityforminfo-i-sys.md) | 卡片信息。 |
+| [ApiVersion](arkts-ability-apiversion-i-sys.md) | module的api版本。 |
+| [BundleConfigInfo](arkts-ability-bundleconfiginfo-i-sys.md) | 包的配置信息。 |
+| [BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | 应用包信息 |
+| [ExtensionAbility](arkts-ability-extensionability-i-sys.md) | 描述extensionAbilities的配置信息。 |
+| [ModuleAbilityInfo](arkts-ability-moduleabilityinfo-i-sys.md) | module包含的ability组件信息。 |
+| [ModuleConfigInfo](arkts-ability-moduleconfiginfo-i-sys.md) | 包的module配置信息。 |
+| [ModuleDistroInfo](arkts-ability-moduledistroinfo-i-sys.md) | module发行版信息。 |
+| [PackageConfig](arkts-ability-packageconfig-i-sys.md) | pack.info的包信息。 |
+| [PackageSummary](arkts-ability-packagesummary-i-sys.md) | pack.info中的包摘要信息。 |
+| [Version](arkts-ability-version-i-sys.md) | 包的版本。 |
+<!--DelEnd-->
 

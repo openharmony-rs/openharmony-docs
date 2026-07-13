@@ -1,10 +1,10 @@
 # ReqPermissionDetail
 
-> **˵����**
+> **说明：**
 >
-> ��API version 7��ʼ֧�֣���API version 9��ʼ����������ʹ��[ReqPermissionDetail](arkts-ability-reqpermissiondetail-depr-i.md#ReqPermissionDetail)�����
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](arkts-ability-reqpermissiondetail-depr-i.md)替代。
 
-Ӧ������ʱ����ϵͳ�����Ȩ�޼��ϵ���ϸ��Ϣ��
+应用运行时需向系统申请的权限集合的详细信息。
 
 **起始版本：** 7
 
@@ -20,7 +20,7 @@
 name: string
 ```
 
-��Ҫʹ�õ�Ȩ�����ơ�
+需要使用的权限名称。
 
 **类型：** string
 
@@ -40,7 +40,7 @@ name: string
 reason: string
 ```
 
-��������Ȩ�޵�ԭ��
+描述申请权限的原因。
 
 **类型：** string
 
@@ -60,7 +60,7 @@ reason: string
 usedScene: UsedScene
 ```
 
-Ȩ��ʹ�õĳ�����ʱ����
+权限使用的场景和时机。
 
 **类型：** UsedScene
 

@@ -1,12 +1,12 @@
 # BundleResourceInfo（系统接口）
 
-Ӧ�����õ�ͼ���������Ϣ������ͨ��
-[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md#getBundleResourceInfo-1)
-��ȡ��
+应用配置的图标和名称信息，可以通过
+[getBundleResourceInfo](arkts-ability-getbundleresourceinfo-f-sys.md#getbundleresourceinfo-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@
 readonly appIndex: number
 ```
 
-Ӧ�÷���Id��
+应用分身Id。
 
 **类型：** number
 
@@ -36,7 +36,7 @@ readonly appIndex: number
 readonly bundleName: string
 ```
 
-Ӧ�õİ�����
+应用的包名。
 
 **类型：** string
 
@@ -52,7 +52,7 @@ readonly bundleName: string
 readonly drawableDescriptor: DrawableDescriptor
 ```
 
-Ӧ��ͼ���drawableDescriptor����
+应用图标的drawableDescriptor对象。
 
 **类型：** DrawableDescriptor
 
@@ -68,7 +68,7 @@ readonly drawableDescriptor: DrawableDescriptor
 readonly icon: string
 ```
 
-Ӧ��ͼ�꣬ΪBase64�����ʽ��
+应用图标，为Base64编码格式。
 
 **类型：** string
 
@@ -84,7 +84,7 @@ readonly icon: string
 readonly label: string
 ```
 
-Ӧ�����ơ�
+应用名称。
 
 **类型：** string
 

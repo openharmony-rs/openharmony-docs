@@ -15,12 +15,12 @@ static getInfo(): AppResponse
 获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。
 
 从API version9开始，推荐使用
-[bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)
+[bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)
 。
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -221,7 +221,7 @@ if not set, the application will not cache any decoded image.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,7 +273,7 @@ static setImageFileCacheSize(value: number): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +313,7 @@ if not set, the application will not cache any raw image data.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -361,11 +361,11 @@ static terminate(): void
 
 退出当前Ability。在Stage模型下接口功能不生效。
 
-从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](@ohos.ability.featureAbility:featureAbility)。
+从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md)。
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 

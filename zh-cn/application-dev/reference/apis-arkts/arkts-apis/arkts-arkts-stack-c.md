@@ -16,7 +16,7 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,7 +30,7 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The Symbol.iterator method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
 **示例：**
 
@@ -74,7 +74,7 @@ Stack的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -82,7 +82,7 @@ Stack的构造函数。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The Stack's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Stack's constructor cannot be directly invoked. |
 
 **示例：**
 
@@ -101,7 +101,7 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -116,7 +116,7 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The forEach method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
 **示例：**
 
@@ -146,7 +146,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -160,7 +160,7 @@ isEmpty(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The isEmpty method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
 **示例：**
 
@@ -185,7 +185,7 @@ locate(element: T): number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -205,7 +205,7 @@ locate(element: T): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The locate method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The locate method cannot be bound. |
 
 **示例：**
 
@@ -230,7 +230,7 @@ peek(): T
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -244,8 +244,8 @@ peek(): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The peek method cannot be bound. |
-| [10200010](../../errorcode-universal.md#10200010-Container) | Container is empty.&lt;br&gt;**适用版本：** 23+<br/><br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The peek method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -270,7 +270,7 @@ pop(): T
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -284,8 +284,8 @@ pop(): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The pop method cannot be bound. |
-| [10200010](../../errorcode-universal.md#10200010-Container) | Container is empty.&lt;br&gt;**适用版本：** 23+<br/><br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -311,7 +311,7 @@ push(item: T): T
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -331,7 +331,7 @@ push(item: T): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The push method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 
 **示例：**
 
@@ -361,7 +361,7 @@ Stack的元素个数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[RunningAppClone](arkts-ability-runningappclone-i-sys.md) | 定义分身应用在运行态的结构信息。<br/> |
+| [RunningAppClone](arkts-ability-runningappclone-i-sys.md) | 定义分身应用在运行态的结构信息。 |
+<!--DelEnd-->
 

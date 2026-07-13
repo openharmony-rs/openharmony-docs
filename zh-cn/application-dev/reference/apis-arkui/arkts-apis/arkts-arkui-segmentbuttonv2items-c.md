@@ -2,13 +2,11 @@
 
 分段按钮选项集合。
 
-继承自 Array\<[SegmentButtonV2Item](arkts-arkui-segmentbuttonv2items-c.md#SegmentButtonV2Items)>
+继承自 Array\<[SegmentButtonV2Item](arkts-arkui-segmentbuttonv2items-c.md)>
 
 **继承/实现关系：** SegmentButtonV2Items extends [Array<SegmentButtonV2Item>](Array<SegmentButtonV2Item>)
 
 **起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +22,7 @@ constructor(items: SegmentButtonV2ItemOptions[])
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +46,7 @@ get hasHybrid(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

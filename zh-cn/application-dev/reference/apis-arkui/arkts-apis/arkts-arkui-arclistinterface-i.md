@@ -16,7 +16,7 @@
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -30,5 +30,5 @@
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcListAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcListAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 

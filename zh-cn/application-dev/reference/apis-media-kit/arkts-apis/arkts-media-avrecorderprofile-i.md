@@ -18,7 +18,7 @@ AAC profile for AAC audio encoder. If not set, use AAC_LC profile as default.
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -43,7 +43,7 @@ AMR-WB encoding format.<br>**Atomic service API**: This API can be used in atomi
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -62,7 +62,7 @@ used in atomic services since API version 12.
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -80,7 +80,7 @@ atomic services since API version 12.
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -101,7 +101,7 @@ encoding format.<br>- Range [8000] for the G.711 μ-law encoding format.<br>- Ra
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -149,7 +149,7 @@ service API**: This API can be used in atomic services since API version 12.
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

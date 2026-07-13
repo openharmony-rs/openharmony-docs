@@ -1,9 +1,5 @@
 # AVScreenCaptureRecordPreset
 
-```TypeScript
-enum AVScreenCaptureRecordPreset
-```
-
 进行屏幕录制时的编码、封装格式参数的枚举。
 
 **起始版本：** 12

@@ -27,14 +27,14 @@ Unsubscribes from state change events of the system screen recorder.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.<br/>This event is triggered when the state of the system screen recorder changes. |
-| callback | Callback&lt;ScreenCaptureEvent&gt; | 否 | Callback invoked when the event is triggered,<br/>where ScreenCaptureEvent indicates the new state. If this parameter is not specified,<br/>the last subscription event is canceled. |
+| type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.This event is triggered when the state of the system screen recorder changes. |
+| callback | Callback&lt;ScreenCaptureEvent&gt; | 否 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. If this parameter is not specified,the last subscription event is canceled. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not System App. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
 **示例：**
 
@@ -60,14 +60,14 @@ you can determine whether the system screen recorder is working.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.<br/>This event is triggered when the state of the system screen recorder changes. |
-| callback | Callback&lt;ScreenCaptureEvent&gt; | 是 | Callback invoked when the event is triggered,<br/>where ScreenCaptureEvent indicates the new state. |
+| type | 'systemScreenRecorder' | 是 | Event type, which is **'systemScreenRecorder'** in this case.This event is triggered when the state of the system screen recorder changes. |
+| callback | Callback&lt;ScreenCaptureEvent&gt; | 是 | Callback invoked when the event is triggered,where ScreenCaptureEvent indicates the new state. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not System App. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
 **示例：**
 

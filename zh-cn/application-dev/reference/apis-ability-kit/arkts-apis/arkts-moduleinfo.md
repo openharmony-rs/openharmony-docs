@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ModuleInfo](arkts-ability-moduleinfo-depr-i.md) | Ӧ�ó����ģ����Ϣ��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-depr-i.md#HapModuleInfo)�����<br/> |
+| [ModuleInfo](arkts-ability-moduleinfo-depr-i.md) | 应用程序的模块信息。@link hapModuleInfo:HapModuleInfo}替代。 |
 

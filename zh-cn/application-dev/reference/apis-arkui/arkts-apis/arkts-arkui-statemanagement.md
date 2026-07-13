@@ -6,47 +6,47 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AppStorageV2](arkts-arkui-appstoragev2-c.md) | AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../../../ui/state-management/arkts-new-appstoragev2.md)。<br/> |
-| [Binding](arkts-arkui-binding-c.md) | 只读数据绑定的泛型类，可以绑定任意类型的数据。<br/> |
-| [ConnectOptions](arkts-arkui-connectoptions-c.md) | globalConnect参数类型。<br/> |
-| [ConnectOptionsCollections](arkts-arkui-connectoptionscollections-c.md) | [globalConnect](PersistenceV2.globalConnect&lt;T extends CollectionType&lt;S&gt;, S extends object&gt;( type: ConnectOptionsCollections&lt;T, S&gt; \| ConnectOptions&lt;T&gt; ))<br/>接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\&lt;T\&gt;](arkts-arkui-connectoptions-c.md#ConnectOptions)。当开发者需要持久化容器类型数据（如`Array&lt;S&gt;`）时，需要使用<br/>`ConnectOptionsCollections`入参。<br/><br/>如下展示`StorageDefaultCreator&lt;T&gt;`和`StorageDefaultCreator&lt;S&gt;`示例：<br/> |
-| [MutableBinding](arkts-arkui-mutablebinding-c.md) | 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。<br/> |
-| [PersistenceV2](arkts-arkui-persistencev2-c.md) | 继承自[AppStorageV2](arkts-arkui-appstoragev2-c.md#AppStorageV2)，PersistenceV2具体UI使用说明，详见<br/>[PersistenceV2(持久化存储UI状态)](../../../../ui/state-management/arkts-new-persistencev2.md)。<br/> |
-| [UIUtils](arkts-arkui-uiutils-c.md) | UIUtils提供一些方法，用于处理状态管理相关的数据转换。<br/> |
+| [AppStorageV2](arkts-arkui-appstoragev2-c.md) | AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../../../ui/state-management/arkts-new-appstoragev2.md)。 |
+| [Binding](arkts-arkui-binding-c.md) | 只读数据绑定的泛型类，可以绑定任意类型的数据。 |
+| [ConnectOptions](arkts-arkui-connectoptions-c.md) | globalConnect参数类型。 |
+| [ConnectOptionsCollections](arkts-arkui-connectoptionscollections-c.md) | [globalConnect](PersistenceV2.globalConnect&lt;T extends CollectionType&lt;S&gt;, S extends object&gt;( type: ConnectOptionsCollections&lt;T, S&gt; \| ConnectOptions&lt;T&gt; ))接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\&lt;T\&gt;](arkts-arkui-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array&lt;S&gt;`）时，需要使用`ConnectOptionsCollections`入参。如下展示`StorageDefaultCreator&lt;T&gt;`和`StorageDefaultCreator&lt;S&gt;`示例： |
+| [MutableBinding](arkts-arkui-mutablebinding-c.md) | 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。 |
+| [PersistenceV2](arkts-arkui-persistencev2-c.md) | 继承自[AppStorageV2](arkts-arkui-appstoragev2-c.md)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../../../ui/state-management/arkts-new-persistencev2.md)。 |
+| [UIUtils](arkts-arkui-uiutils-c.md) | UIUtils提供一些方法，用于处理状态管理相关的数据转换。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [CustomComponentContext](arkts-arkui-customcomponentcontext-i.md) | `CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过<br/>[UIUtils.getCustomComponentContext](arkts-arkui-uiutils-c.md#getCustomComponentContext-1)获取实例。<br/> |
-| [CustomComponentLifecycle](arkts-arkui-customcomponentlifecycle-i.md) | CustomComponentLifecycle用于监控自定义组件生命周期的变化。<br/> |
-| [CustomComponentLifecycleObserver](arkts-arkui-customcomponentlifecycleobserver-i.md) | 用户注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。<br/> |
-| [DecoratorInfo](arkts-arkui-decoratorinfo-i.md) | 可被观察对象关联的装饰器和组件信息。<br/> |
-| [ElementInfo](arkts-arkui-elementinfo-i.md) | 可被观察对象关联的组件信息，包含系统组件和自定义组件。<br/> |
-| [IReusableInfo](arkts-arkui-ireusableinfo-i.md) | `IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。<br/> |
-| [IReusePool](arkts-arkui-ireusepool-i.md) | `IReusePool` 接口提供自定义组件上的全局复用池的相关功能。<br/> |
-| [MonitorOptions](arkts-arkui-monitoroptions-i.md) | [addMonitor](arkts-arkui-uiutils-c.md#addMonitor-1)的可选参数，用于配置回调类型以及是否使能通配符能力。<br/> |
-| [ObservedResult](arkts-arkui-observedresult-i.md) | 对象是否可被观察的结果。<br/> |
-| [TypeConstructor](arkts-arkui-typeconstructor-i.md) | 类构造函数。<br/> |
-| [TypeConstructorWithArgs](arkts-arkui-typeconstructorwithargs-i.md) | 含有任意入参的类构造器。<br/> |
+| [CustomComponentContext](arkts-arkui-customcomponentcontext-i.md) | `CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](arkts-arkui-uiutils-c.md#getcustomcomponentcontext-1)获取实例。 |
+| [CustomComponentLifecycle](arkts-arkui-customcomponentlifecycle-i.md) | CustomComponentLifecycle用于监控自定义组件生命周期的变化。 |
+| [CustomComponentLifecycleObserver](arkts-arkui-customcomponentlifecycleobserver-i.md) | 用户注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。 |
+| [DecoratorInfo](arkts-arkui-decoratorinfo-i.md) | 可被观察对象关联的装饰器和组件信息。 |
+| [ElementInfo](arkts-arkui-elementinfo-i.md) | 可被观察对象关联的组件信息，包含系统组件和自定义组件。 |
+| [IReusableInfo](arkts-arkui-ireusableinfo-i.md) | `IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。 |
+| [IReusePool](arkts-arkui-ireusepool-i.md) | `IReusePool` 接口提供自定义组件上的全局复用池的相关功能。 |
+| [MonitorOptions](arkts-arkui-monitoroptions-i.md) | [addMonitor](arkts-arkui-uiutils-c.md#addmonitor-1)的可选参数，用于配置回调类型以及是否使能通配符能力。 |
+| [ObservedResult](arkts-arkui-observedresult-i.md) | 对象是否可被观察的结果。 |
+| [TypeConstructor](arkts-arkui-typeconstructor-i.md) | 类构造函数。 |
+| [TypeConstructorWithArgs](arkts-arkui-typeconstructorwithargs-i.md) | 含有任意入参的类构造器。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [CustomComponentLifecycleState](arkts-arkui-customcomponentlifecyclestate-e.md) | 自定义组件当前的生命周期状态。<br/> |
+| [CustomComponentLifecycleState](arkts-arkui-customcomponentlifecyclestate-e.md) | 自定义组件当前的生命周期状态。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。<br/> |
-| [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。<br/> |
-| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](arkts-arkui-common-imonitor-i.md#IMonitor)类型的监听回调函数。<br/> |
-| [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。<br/> |
-| [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。<br/> |
-| [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。<br/> |
-| [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md) | 返回默认构造器的函数。<br/> |
-| [TaskCallback](arkts-arkui-taskcallback-t.md) | 同步执行的回调方法。<br/> |
-| [TypeDecorator](arkts-arkui-typedecorator-t.md) | 属性装饰器，用于装饰嵌套类中属于自定义class类的属性。<br/> |
+| [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。 |
+| [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。 |
+| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。 |
+| [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。 |
+| [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。 |
+| [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。 |
+| [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md) | 返回默认构造器的函数。 |
+| [TaskCallback](arkts-arkui-taskcallback-t.md) | 同步执行的回调方法。 |
+| [TypeDecorator](arkts-arkui-typedecorator-t.md) | 属性装饰器，用于装饰嵌套类中属于自定义class类的属性。 |
 

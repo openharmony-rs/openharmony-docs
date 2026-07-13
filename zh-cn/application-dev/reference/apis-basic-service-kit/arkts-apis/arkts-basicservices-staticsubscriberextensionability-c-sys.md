@@ -1,10 +1,8 @@
 # StaticSubscriberExtensionAbility（系统接口）
 
-StaticSubscriberExtensionAbilityģ���ṩ��̬������ExtensionAbility����������
+StaticSubscriberExtensionAbility模块提供静态订阅者ExtensionAbility类别的能力。
 
 **起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -16,7 +14,7 @@ StaticSubscriberExtensionAbilityģ���ṩ��̬������Extensio
 onReceiveEvent(event: CommonEventData): void
 ```
 
-��̬������ͨ���¼��ص���
+静态订阅者通用事件回调。
 
 **起始版本：** 9
 
@@ -30,7 +28,7 @@ onReceiveEvent(event: CommonEventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | CommonEventData | 是 | ��̬������ͨ���¼��ص��� |
+| event | CommonEventData | 是 | 静态订阅者通用事件回调。 |
 
 **示例：**
 
@@ -51,7 +49,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 context: StaticSubscriberExtensionContext
 ```
 
-�����ġ�
+上下文。
 
 **类型：** StaticSubscriberExtensionContext
 

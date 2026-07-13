@@ -394,7 +394,7 @@ static setValue(options?: SetBrightnessOptions): void
 
 **废弃版本：** 7
 
-**替代接口：** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md#setValue-1)
+**替代接口：** [setValue](arkts-basicservices-setvalue-f-sys.md#setvalue-1)
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 

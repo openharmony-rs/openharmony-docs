@@ -6,25 +6,25 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcAlphabetIndexerAttribute](arkts-arkui-arcalphabetindexerattribute-c.md) | ��֧��[ͨ������](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)�⣬��֧���������ԣ�<br/><br/>��֧��[ͨ���¼�](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)�⣬��֧�������¼���<br/> |
+| [ArcAlphabetIndexerAttribute](arkts-arkui-arcalphabetindexerattribute-c.md) | 除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下事件： |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcAlphabetIndexerInitInfo](arkts-arkui-arcalphabetindexerinitinfo-i.md) | ���廡����ĸ�������ĳ�ʼ��������<br/> |
-| [ArcAlphabetIndexerInterface](arkts-arkui-arcalphabetindexerinterface-i.md) | ������������һ�ֻ��εġ��ɰ���ĸ˳��������п��ٶ�λ�����������������������������߼��ṹ���ٶ�λ��������ʾ����<br/><br/>&gt; **˵����**<br/><br/>&gt; - �����֧����Phone��PC/2in1��Tablet��TV��Wearable�豸��ʹ�á�API version 22����ǰ�汾����Phone��PC/2in1��Tablet��TV��ʹ�û����澯���������������С�<br/> |
+| [ArcAlphabetIndexerInitInfo](arkts-arkui-arcalphabetindexerinitinfo-i.md) | 定义弧形字母索引条的初始化参数。 |
+| [ArcAlphabetIndexerInterface](arkts-arkui-arcalphabetindexerinterface-i.md) | 弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | ����[onSelect](arkts-arkui-arcalphabetindexerattribute-c.md#onSelect-1)��ʹ�õĻص����͡�<br/> |
+| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | 定义[onSelect](arkts-arkui-arcalphabetindexerattribute-c.md#onselect-1)中使用的回调类型。 |
 
 ### 常量
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcAlphabetIndexer](arkts-arkui-arkui-arcalphabetindexer-con.md#ArcAlphabetIndexer) | ������������һ�ֻ��εġ��ɰ���ĸ˳��������п��ٶ�λ�����������������������������߼��ṹ���ٶ�λ��������ʾ����<br/><br/>&gt; **˵����**<br/><br/>&gt; - �����֧����Phone��PC/2in1��Tablet��TV��Wearable�豸��ʹ�á�API version 22����ǰ�汾����Phone��PC/2in1��Tablet��TV��ʹ�û����澯���������������С�<br/><br/>###### �����<br/><br/>��<br/> |
-| [ArcAlphabetIndexerInstance](arkts-arkui-arkui-arcalphabetindexer-con.md#ArcAlphabetIndexerInstance) | Defines ArcAlphabetIndexer Component instance.<br/> |
+| [ArcAlphabetIndexer](arkts-arkui-arkui-arcalphabetindexer-con.md#arcalphabetindexer) | 弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。 |
+| [ArcAlphabetIndexerInstance](arkts-arkui-arkui-arcalphabetindexer-con.md#arcalphabetindexerinstance) | Defines ArcAlphabetIndexer Component instance. |
 

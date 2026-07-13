@@ -1,10 +1,8 @@
 # @ohos.busManager.serial
 
-���ڹ���
+串口管理
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -14,22 +12,29 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addPortAuthorization-1) | ����Ӧ�÷��ʴ��ڶ˿ڵ�Ȩ��<br/>�����򴮿���Ȩ����ϵͳӦ�ÿ���<br/> |
-| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getSerialPortList-1) | ��ȡ�����б���ʹ��Promise�첽�ص���<br/> |
+| [getSerialPortList](arkts-basicservices-getserialportlist-f.md#getserialportlist-1) | 获取串口列表。使用Promise异步回调。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [addPortAuthorization](arkts-basicservices-addportauthorization-f-sys.md#addportauthorization-1) | 添加应用访问串口端口的权限仅面向串口授权弹窗系统应用开放 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [SerialConfigs](arkts-basicservices-serial-serialconfigs-i.md) | ����ͨ������<br/> |
-| [SerialPort](arkts-basicservices-serial-serialport-i.md) | ���ڶ����ṩ�����豸��Ϣ��ͨ���������<br/> |
-| [SerialPortInfo](arkts-basicservices-serial-serialportinfo-i.md) | �����豸��Ϣ<br/> |
+| [SerialConfigs](arkts-basicservices-serialconfigs-i.md) | 串口通信配置 |
+| [SerialPort](arkts-basicservices-serialport-i.md) | 串口对象，提供串口设备信息和通信相关能力 |
+| [SerialPortInfo](arkts-basicservices-serialportinfo-i.md) | 串口设备信息 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [DataBits](arkts-basicservices-serial-databits-e.md) | ����ͨ���е�����λ<br/> |
-| [Parity](arkts-basicservices-serial-parity-e.md) | ����ͨ���е�У��λ<br/> |
-| [StopBits](arkts-basicservices-serial-stopbits-e.md) | ����ͨ���е�ֹͣλ<br/> |
+| [DataBits](arkts-basicservices-databits-e.md) | 串口通信中的数据位 |
+| [Parity](arkts-basicservices-parity-e.md) | 串口通信中的校验位 |
+| [StopBits](arkts-basicservices-stopbits-e.md) | 串口通信中的停止位 |
 

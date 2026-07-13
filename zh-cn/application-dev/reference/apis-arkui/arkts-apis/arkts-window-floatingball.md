@@ -6,7 +6,7 @@
 > **说明：**
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用
-> [canIUse()](arkts-arkui-global-caniuse-f.md#canIUse-1)接口判断当前设备是否支持此syscap及对应接口。
+> [canIUse()](arkts-arkui-global-caniuse-f.md#caniuse-1)接口判断当前设备是否支持此syscap及对应接口。
 
 **起始版本：** 20
 
@@ -18,23 +18,23 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkui-floatingball-create-f.md#create-1) | 创建闪控球控制器，使用Promise异步回调。<br/> |
-| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isFloatingBallEnabled-1) | 判断当前设备是否支持闪控球功能。<br/> |
+| [create](arkts-arkui-create-f.md#create-1) | 创建闪控球控制器，使用Promise异步回调。 |
+| [isFloatingBallEnabled](arkts-arkui-isfloatingballenabled-f.md#isfloatingballenabled-1) | 判断当前设备是否支持闪控球功能。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [FloatingBallConfiguration](arkts-arkui-floatingball-floatingballconfiguration-i.md) | 创建闪控球控制器时需要提供的参数配置。<br/> |
-| [FloatingBallController](arkts-arkui-floatingball-floatingballcontroller-i.md) | 闪控球控制器实例，用于启动、更新、停止闪控球以及注册回调等操作。<br/><br/>下列API示例中都需先使用[floatingBall.create()](arkts-arkui-floatingball-create-f.md#create-1)方法获取到闪控球控制器实例（即floatingBallController），再通过此实例调用对应方法。<br/> |
-| [FloatingBallParams](arkts-arkui-floatingball-floatingballparams-i.md) | 启动和更新闪控球的配置参数。<br/> |
-| [FloatingBallWindowInfo](arkts-arkui-floatingball-floatingballwindowinfo-i.md) | 闪控球窗口信息。<br/> |
+| [FloatingBallConfiguration](arkts-arkui-floatingballconfiguration-i.md) | 创建闪控球控制器时需要提供的参数配置。 |
+| [FloatingBallController](arkts-arkui-floatingballcontroller-i.md) | 闪控球控制器实例，用于启动、更新、停止闪控球以及注册回调等操作。下列API示例中都需先使用[floatingBall.create()](arkts-arkui-create-f.md#create-1)方法获取到闪控球控制器实例（即floatingBallController），再通过此实例调用对应方法。 |
+| [FloatingBallParams](arkts-arkui-floatingballparams-i.md) | 启动和更新闪控球的配置参数。 |
+| [FloatingBallWindowInfo](arkts-arkui-floatingballwindowinfo-i.md) | 闪控球窗口信息。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md) | 闪控球生命周期状态的枚举。<br/> |
-| [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md) | 闪控球模板类型的枚举。<br/> |
-| [FloatingBallTextUpdateAnimationType](arkts-arkui-floatingball-floatingballtextupdateanimationtype-e.md) | 闪控球文本更新动画类型的枚举。<br/> |
+| [FloatingBallState](arkts-arkui-floatingballstate-e.md) | 闪控球生命周期状态的枚举。 |
+| [FloatingBallTemplate](arkts-arkui-floatingballtemplate-e.md) | 闪控球模板类型的枚举。 |
+| [FloatingBallTextUpdateAnimationType](arkts-arkui-floatingballtextupdateanimationtype-e.md) | 闪控球文本更新动画类型的枚举。 |
 

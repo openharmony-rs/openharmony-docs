@@ -10,34 +10,40 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[addWatcher](arkts-performanceanalysis-hisysevent-addwatcher-f-sys.md#addWatcher-1) | 订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-watcher-i.md#Watcher)类型的对象作为事件参数。<br/> |
-| <!--DelRow-->[exportSysEvents](arkts-performanceanalysis-hisysevent-exportsysevents-f-sys.md#exportSysEvents-1) | 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。<br/> |
-| <!--DelRow-->[query](arkts-performanceanalysis-hisysevent-query-f-sys.md#query-1) | 查询系统事件。<br/> |
-| <!--DelRow-->[removeWatcher](arkts-performanceanalysis-hisysevent-removewatcher-f-sys.md#removeWatcher-1) | 取消订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-watcher-i.md#Watcher)类型的对象作为事件参数。<br/> |
-| <!--DelRow-->[subscribe](arkts-performanceanalysis-hisysevent-subscribe-f-sys.md#subscribe-1) | 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。<br/> |
-| <!--DelRow-->[unsubscribe](arkts-performanceanalysis-hisysevent-unsubscribe-f-sys.md#unsubscribe-1) | 取消订阅系统事件。<br/> |
-| <!--DelRow-->[write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-1) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用promise方式作为异步回调。<br/> |
-| <!--DelRow-->[write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-2) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用callback方式作为异步回调。<br/> |
+| [addWatcher](arkts-performanceanalysis-addwatcher-f-sys.md#addwatcher-1) | 订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-watcher-i.md)类型的对象作为事件参数。 |
+| [exportSysEvents](arkts-performanceanalysis-exportsysevents-f-sys.md#exportsysevents-1) | 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
+| [query](arkts-performanceanalysis-query-f-sys.md#query-1) | 查询系统事件。 |
+| [removeWatcher](arkts-performanceanalysis-removewatcher-f-sys.md#removewatcher-1) | 取消订阅系统事件，接收[Watcher](../../apis-core-file-kit/arkts-apis/arkts-corefile-watcher-i.md)类型的对象作为事件参数。 |
+| [subscribe](arkts-performanceanalysis-subscribe-f-sys.md#subscribe-1) | 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。 |
+| [unsubscribe](arkts-performanceanalysis-unsubscribe-f-sys.md#unsubscribe-1) | 取消订阅系统事件。 |
+| [write](arkts-performanceanalysis-write-f-sys.md#write-1) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用promise方式作为异步回调。 |
+| [write](arkts-performanceanalysis-write-f-sys.md#write-2) | 系统事件打点方法，接收[SysEventInfo](SysEventInfo)类型的对象作为事件参数，使用callback方式作为异步回调。 |
+<!--DelEnd-->
 
-### 接口
-
-| 名称 | 说明 |
-| --- | --- |
-| <!--DelRow-->[Querier](arkts-performanceanalysis-hisysevent-querier-i-sys.md) | 系统事件查询者对象接口。<br/> |
-| <!--DelRow-->[QueryArg](arkts-performanceanalysis-hisysevent-queryarg-i-sys.md) | 系统事件查询参数对象接口。<br/> |
-| <!--DelRow-->[QueryRule](arkts-performanceanalysis-hisysevent-queryrule-i-sys.md) | 系统事件查询规则对象接口。<br/> |
-| <!--DelRow-->[SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md) | 系统事件信息对象接口。<br/> |
-| <!--DelRow-->[WatchRule](arkts-performanceanalysis-hisysevent-watchrule-i-sys.md) | 系统事件订阅规则对象接口。<br/> |
-| <!--DelRow-->[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md) | 系统事件订阅者对象接口。<br/> |
-
-### 枚举
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[EventType](arkts-performanceanalysis-hisysevent-eventtype-e-sys.md) | 系统事件类型枚举。<br/> |
-| <!--DelRow-->[RuleType](arkts-performanceanalysis-hisysevent-ruletype-e-sys.md) | 匹配规则类型枚举。<br/> |
+| [Querier](arkts-performanceanalysis-querier-i-sys.md) | 系统事件查询者对象接口。 |
+| [QueryArg](arkts-performanceanalysis-queryarg-i-sys.md) | 系统事件查询参数对象接口。 |
+| [QueryRule](arkts-performanceanalysis-queryrule-i-sys.md) | 系统事件查询规则对象接口。 |
+| [SysEventInfo](arkts-performanceanalysis-syseventinfo-i-sys.md) | 系统事件信息对象接口。 |
+| [WatchRule](arkts-performanceanalysis-watchrule-i-sys.md) | 系统事件订阅规则对象接口。 |
+| [Watcher](arkts-performanceanalysis-watcher-i-sys.md) | 系统事件订阅者对象接口。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [EventType](arkts-performanceanalysis-eventtype-e-sys.md) | 系统事件类型枚举。 |
+| [RuleType](arkts-performanceanalysis-ruletype-e-sys.md) | 匹配规则类型枚举。 |
+<!--DelEnd-->
 

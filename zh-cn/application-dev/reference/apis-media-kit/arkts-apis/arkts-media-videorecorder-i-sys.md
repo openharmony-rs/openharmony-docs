@@ -34,10 +34,10 @@ get input surface.it must be called between prepare completed and start.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -81,10 +81,10 @@ get input surface. it must be called between prepare completed and start.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -127,10 +127,10 @@ Listens for video recording error events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [201](../../errorcode-universal.md#201-permission) | permission denied.&lt;br&gt;**适用版本：** 12+ |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -168,10 +168,10 @@ Pauses video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -213,10 +213,10 @@ Pauses video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -259,11 +259,11 @@ Prepares for recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. Return by callback. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -336,11 +336,11 @@ Prepares for recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. Return by promise. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -403,8 +403,8 @@ Releases resources used for video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -446,8 +446,8 @@ Releases resources used for video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -489,9 +489,9 @@ you must call prepare() to set the recording configurations for another recordin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -535,9 +535,9 @@ you must call prepare() to set the recording configurations for another recordin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -577,10 +577,10 @@ Resumes video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -622,10 +622,10 @@ Resumes video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -665,10 +665,10 @@ Starts video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -710,10 +710,10 @@ Starts video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -753,10 +753,10 @@ Stops video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -798,10 +798,10 @@ Stops video recording.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 

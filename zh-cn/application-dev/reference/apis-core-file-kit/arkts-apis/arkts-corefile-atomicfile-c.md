@@ -32,7 +32,7 @@ constructor(path: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
 
 ## delete
 
@@ -50,11 +50,11 @@ delete(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001) |  |
-| [13900002](../../errorcode-universal.md#13900002) |  |
-| [13900012](../../errorcode-universal.md#13900012) |  |
-| [13900027](../../errorcode-universal.md#13900027) |  |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900027 |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -101,7 +101,7 @@ failWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -141,7 +141,7 @@ finishWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -188,10 +188,10 @@ getBaseFile(): File
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002) |  |
-| [13900005](../../errorcode-universal.md#13900005) |  |
-| [13900012](../../errorcode-universal.md#13900012) |  |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900002 |  |
+| 13900005 |  |
+| 13900012 |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -238,10 +238,10 @@ openRead(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001) |  |
-| [13900002](../../errorcode-universal.md#13900002) |  |
-| [13900012](../../errorcode-universal.md#13900012) |  |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -297,8 +297,8 @@ readFully(): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005) |  |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900005 |  |
+| 13900042 |  |
 
 **示例：**
 
@@ -354,11 +354,11 @@ startWrite(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001) |  |
-| [13900002](../../errorcode-universal.md#13900002) |  |
-| [13900012](../../errorcode-universal.md#13900012) |  |
-| [13900027](../../errorcode-universal.md#13900027) |  |
-| [13900042](../../errorcode-universal.md#13900042) |  |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900027 |  |
+| 13900042 |  |
 
 **示例：**
 

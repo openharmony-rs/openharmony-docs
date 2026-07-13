@@ -1,6 +1,6 @@
 # AbilityFormInfo（系统接口）
 
-��Ƭ��Ϣ��
+卡片信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@
 readonly defaultDimension: string
 ```
 
-��ʾ��ƬĬ����۹��ȡֵ������supportDimensions���õ��б��С�
+表示卡片默认外观规格，取值必须在supportDimensions配置的列表中。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly defaultDimension: string
 readonly name: string
 ```
 
-��ʾforms�����ơ�
+表示forms的名称。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ readonly name: string
 readonly scheduledUpdateTime: string
 ```
 
-��ʾ��Ƭ����ˢ�µ�ʱ�䣬����24Сʱ��������ȷ�����ӡ�
+表示卡片定点刷新的时间，采用24小时计数，精确到分钟。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly scheduledUpdateTime: string
 readonly supportDimensions: Array<string>
 ```
 
-��ʾ��Ƭ��۹��ȡֵΪ��1*2������2*2������2*4������4*4�������忨Ƭʱ����Ҫָ��һ����Ƭ���
+表示卡片外观规格，取值为“1*2”，“2*2”，“2*4”，“4*4”，定义卡片时至少要指定一个卡片规格。
 
 **类型：** Array<string>
 
@@ -78,7 +78,7 @@ readonly supportDimensions: Array<string>
 readonly type: string
 ```
 
-��ʾforms�����͡�
+表示forms的类型。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ readonly type: string
 readonly updateDuration: number
 ```
 
-��ʾ��Ƭ��ʱˢ�µĸ���Ƶ�ʣ���λ�����ӣ�ȡֵΪ30�ı���ֵ����Ƭ�����Ƶ��Ϊÿ30����ˢ��һ�Σ��Ͷ���ˢ�¶�ѡһ�����߶����õ�����£���ʱ���ȡ�
+表示卡片定时刷新的更新频率，单位：分钟，取值为30的倍数值。卡片的最高频率为每30分钟刷新一次，和定点刷新二选一，二者都配置的情况下，定时优先。
 
 **类型：** number
 
@@ -110,7 +110,7 @@ readonly updateDuration: number
 readonly updateEnabled: boolean
 ```
 
-��ʾ�ÿ�Ƭ�Ƿ�֧�ֶ�ʱˢ�£�true��ʾ��Ƭ֧�ֶ�ʱˢ�£�false��ʾ��֧�֡�
+表示该卡片是否支持定时刷新，true表示卡片支持定时刷新，false表示不支持。
 
 **类型：** boolean
 

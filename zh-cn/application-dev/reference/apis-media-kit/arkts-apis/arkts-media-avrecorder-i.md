@@ -1,7 +1,7 @@
 # AVRecorder
 
 音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用
-[createAVRecorder](arkts-media-media-createavrecorder-f.md#createAVRecorder-1)接口构建一个
+[createAVRecorder](arkts-media-createavrecorder-f.md#createavrecorder-1)接口构建一个
 AVRecorder实例。
 
 音视频录制demo可参考：[音频录制开发指导](../../../../media/media/using-avrecorder-for-recording.md)、
@@ -50,10 +50,10 @@ This API can be called only before the prepared state.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
-| [5400108](../../errorcode-universal.md#5400108-The) | The parameter check failed, parameter value out of range. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 
 ## getAVRecorderConfig
 
@@ -79,9 +79,9 @@ getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## getAVRecorderConfig
 
@@ -107,9 +107,9 @@ getAVRecorderConfig(): Promise<AVRecorderConfig>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## getAudioCapturerMaxAmplitude
 
@@ -138,8 +138,8 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## getAudioCapturerMaxAmplitude
 
@@ -168,8 +168,8 @@ getAudioCapturerMaxAmplitude(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## getAvailableEncoder
 
@@ -193,8 +193,8 @@ getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## getAvailableEncoder
 
@@ -218,8 +218,8 @@ getAvailableEncoder(): Promise<Array<EncoderInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## getCurrentAudioCapturerInfo
 
@@ -240,15 +240,15 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;audio.AudioCapturerChangeInfo&gt; | 是 | 回调函数。当获取音频采集参数成功时，err为undefined，data为获取到的<br/>audio.AudioCapturerChangeInfo，否则为错误对象。 |
+| callback | AsyncCallback&lt;audio.AudioCapturerChangeInfo&gt; | 是 | 回调函数。当获取音频采集参数成功时，err为undefined，data为获取到的audio.AudioCapturerChangeInfo，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## getCurrentAudioCapturerInfo
 
@@ -275,9 +275,9 @@ getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## getInputSurface
 
@@ -308,9 +308,9 @@ getInputSurface接口。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## getInputSurface
 
@@ -340,9 +340,9 @@ getInputSurface(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## off('stateChange')
 
@@ -354,7 +354,7 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -363,7 +363,7 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | OnAVRecorderStateChangeHandler | 否 | 回调函数，返回录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消<br/>所有callback。<br/>从API version 12开始支持此参数。 [since 12] |
+| callback | OnAVRecorderStateChangeHandler | 否 | 回调函数，返回录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。<br>**起始版本：** 12 |
 
 ## off('error')
 
@@ -375,7 +375,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -383,8 +383,8 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 录制错误事件回调类型'error'。<br/>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | ErrorCallback | 否 | 回调函数，返回录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API<br/>version 12开始支持此参数。 [since 12] |
+| type | 'error' | 是 | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
+| callback | ErrorCallback | 否 | 回调函数，返回录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从APIversion 12开始支持此参数。<br>**起始版本：** 12 |
 
 ## off('audioCapturerChange')
 
@@ -403,7 +403,7 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioCapturerChange' | 是 | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback | Callback&lt;audio.AudioCapturerChangeInfo&gt; | 否 | 回调函数，返回变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不<br/>能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。 [since 12] |
+| callback | Callback&lt;audio.AudioCapturerChangeInfo&gt; | 否 | 回调函数，返回变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。<br>**起始版本：** 12 |
 
 ## off('photoAssetAvailable')
 
@@ -422,7 +422,7 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'photoAssetAvailable' | 是 | 录音配置变化的回调类型，支持的事件：'photoAssetAvailable'。 |
-| callback | Callback&lt;photoAccessHelper.PhotoAsset&gt; | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（<br/>callback对象不能是匿名函数），否则取消所有callback。 |
+| callback | Callback&lt;photoAccessHelper.PhotoAsset&gt; | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。 |
 
 ## on('audioCapturerChange')
 
@@ -449,7 +449,7 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## on('photoAssetAvailable')
 
@@ -478,8 +478,8 @@ on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## on('stateChange')
 
@@ -492,7 +492,7 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -501,14 +501,14 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | OnAVRecorderStateChangeHandler | 是 | 回调函数，返回录制状态机切换事件。 [since 12] |
+| callback | OnAVRecorderStateChangeHandler | 是 | 回调函数，返回录制状态机切换事件。<br>**起始版本：** 12 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## on('error')
 
@@ -525,7 +525,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -533,23 +533,23 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 录制错误事件回调类型'error'。<br/>- 'error'：录制过程中发生错误，触发该事件。 |
+| type | 'error' | 是 | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
 | callback | ErrorCallback | 是 | 回调函数，返回录制错误事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [5400101](../../errorcode-universal.md#5400101-No) | No memory. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | I/O error. |
-| [5400104](../../errorcode-universal.md#5400104-Time) | Time out. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. |
-| [5400106](../../errorcode-universal.md#5400106-Unsupported) | Unsupported format. |
-| [5400107](../../errorcode-universal.md#5400107-Audio) | Audio interrupted.&lt;br&gt;**适用版本：** 11+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
+| [5400104](../errorcode-media.md#5400104-操作超时) | Time out. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
+| [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
+| [5400107](../errorcode-media.md#5400107-音频焦点冲突) | Audio interrupted.<br>**适用版本：** 11+ |
 
 ## pause
 
@@ -576,9 +576,9 @@ pause(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## pause
 
@@ -593,7 +593,7 @@ pause(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -607,9 +607,9 @@ pause(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## prepare
 
@@ -636,10 +636,10 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. Return by callback. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by callback. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## prepare
 
@@ -651,9 +651,11 @@ prepare(config: AVRecorderConfig): Promise<void>
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.MICROPHONE, ohos.permission.MICROPHONE This permission is required only if audio recording is involved.
+**需要权限：** 
+- API版本12+：ohos.permission.MICROPHONE This permission is required only if audio recording is involved.
+- API版本9 - 11：ohos.permission.MICROPHONE
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -673,10 +675,10 @@ prepare(config: AVRecorderConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. Return by promise. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## release
 
@@ -702,7 +704,7 @@ release(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## release
 
@@ -716,7 +718,7 @@ release(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -730,7 +732,7 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## reset
 
@@ -759,8 +761,8 @@ reset(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## reset
 
@@ -788,8 +790,8 @@ reset(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## resume
 
@@ -815,9 +817,9 @@ resume(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## resume
 
@@ -831,7 +833,7 @@ resume(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -845,9 +847,9 @@ resume(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## setWillMuteWhenInterrupted
 
@@ -877,8 +879,8 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## start
 
@@ -906,9 +908,9 @@ start(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## start
 
@@ -923,7 +925,7 @@ start(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -937,9 +939,9 @@ start(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## stop
 
@@ -971,9 +973,9 @@ stop(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by callback. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by callback. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by callback. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
 ## stop
 
@@ -991,7 +993,7 @@ stop(): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1005,9 +1007,9 @@ stop(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../errorcode-universal.md#5400102-Operate) | Operate not permit. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## updateRotation
 
@@ -1040,10 +1042,10 @@ updateRotation(rotation: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../errorcode-universal.md#5400102-Operation) | Operation not allowed. Return by promise. |
-| [5400103](../../errorcode-universal.md#5400103-IO) | IO error. Return by promise. |
-| [5400105](../../errorcode-universal.md#5400105-Service) | Service died. Return by promise. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3.Parameter verification failed. |
+| [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
+| [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
 ## state
 
@@ -1059,7 +1061,7 @@ readonly state: AVRecorderState
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

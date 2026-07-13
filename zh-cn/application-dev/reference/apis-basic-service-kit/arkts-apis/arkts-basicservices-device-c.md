@@ -30,7 +30,7 @@ Obtains the device information.
 
 **示例：**
 
-ArkTS示例：
+ArkTS（方舟编程语言）示例：
 
 ```TypeScript
 export default class Page {
@@ -45,7 +45,7 @@ export default class Page {
           console.info('Device information obtained successfully. Device brand:' + data.brand);
         },
         fail: (data: string, code: number) => {
-          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+          console.error(`Failed to obtain device information. Code: ${code}, message: ${data}`);
         },
       });
     } catch (error) {
@@ -112,27 +112,27 @@ JS示例：
 import Device from '@system.device';
 
 export default {
-    data: {
-        brandInfo: 'Click the button to get device brand'
-    },
-    
-    getDeviceInfo() {
-        try {
-            Device.getInfo({
-                success: (data) => {
-                    console.info('Device information obtained successfully. Device brand:' + data.brand);
-                    this.brandInfo = 'Device brand: ' + data.brand;
-                },
-                fail: (data, code) => {
-                    console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
-                    this.brandInfo = 'Failed to obtain, error code: ' + code;
-                },
-            });
-        } catch (error) {
-            console.error('Device information API is not supported');
-            this.brandInfo = 'Current device does not support this API';
-        }
+  data: {
+    brandInfo: 'Click the button to get device brand'
+  },
+  
+  getDeviceInfo() {
+    try {
+      Device.getInfo({
+        success: (data) => {
+          console.info('Device information obtained successfully. Device brand:' + data.brand);
+          this.brandInfo = 'Device brand: ' + data.brand;
+        },
+        fail: (data, code) => {
+          console.error(`Failed to obtain device information. Code: ${code}, message: ${data}`);
+          this.brandInfo = 'Failed to obtain, error code: ' + code;
+        },
+      });
+    } catch (error) {
+      console.error('Device information API is not supported');
+      this.brandInfo = 'Current device does not support this API';
     }
+  }
 }
 
 ```

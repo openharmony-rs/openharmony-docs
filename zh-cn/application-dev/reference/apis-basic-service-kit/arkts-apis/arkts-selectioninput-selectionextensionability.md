@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 类
+<!--Del-->
+### 类（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[SelectionExtensionAbility](arkts-basicservices-selectionextensionability-c-sys.md) | 本模块提供划词扩展功能，用于用户通过鼠标、触控板等方式选择文本后的搜索、翻译等场景。<br/><br/>&gt; **说明：**<br/>&gt; - 本模块仅支持PC/2in1设备。<br/> |
+| [SelectionExtensionAbility](arkts-basicservices-selectionextensionability-c-sys.md) | 本模块提供划词扩展功能，用于用户通过鼠标、触控板等方式选择文本后的搜索、翻译等场景。 |
+<!--DelEnd-->
 

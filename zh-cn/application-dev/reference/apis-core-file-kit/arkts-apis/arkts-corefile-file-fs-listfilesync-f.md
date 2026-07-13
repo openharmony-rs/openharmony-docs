@@ -15,7 +15,7 @@ declare function listFileSync(
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +24,7 @@ declare function listFileSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | ListFileOptions | 否 | 文件过滤选项。默认不进行过滤。 [since 11] |
+| options | ListFileOptions | 否 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -36,9 +36,9 @@ declare function listFileSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900042 | Unknown error |
 

@@ -13,7 +13,7 @@ onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCrypt
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-����Ukey��֤PIN�롣ʹ��Promise�첽�ص���
+请求Ukey认证PIN码。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -23,14 +23,34 @@ onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCrypt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��Դ����� |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | 资源句柄。 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0��authState��0����ʾ��֤����ɹ�������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á�<br/>34800006 - Ukey PIN�����<br/>34800007 - Ukey PIN�뱻�� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，authState非0，表示认证请求成功。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。34800006 - Ukey PIN码错误。34800007 - Ukey PIN码被锁 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 执行PIN码认证操作，并且维护应用的PIN码认证状态。
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      authState: 1
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onClearUkeyPinAuthState
 
@@ -39,7 +59,7 @@ onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExt
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-���Ӧ��ά��PIN�����֤״̬��ʹ��Promise�첽�ص���
+清除应用维度PIN码的认证状态。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -49,14 +69,32 @@ onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��Դ��� |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | 资源句柄 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0����ʾ���PIN����֤״̬�ɹ�������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，表示清除PIN码认证状态成功。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onCloseResource
 
@@ -65,7 +103,7 @@ onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCry
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-���ݲ����е�handle���ر�Ukey����Կ��Դ��ʹ��Promise�첽�ص���
+根据参数中的handle，关闭Ukey的密钥资源。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -75,14 +113,33 @@ onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCry
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | �Ự����� |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | 会话句柄。 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | �������ص�promise��<br/>HuksCryptoExtensionResult.resultCode���ܾ�������ֵ��<br/>0-�����ɹ�<br/>34800000 -������չ�з������󡣿���ԭ��<br/>1.��������Ƿ���<br/>2.������չ�����޷������Ĵ���״̬��<br/>34800002-UKey���������������ζ��UKey���������з�����δ֪����<br/>34800004 -��������ڡ�����ԭ��<br/>1.����ľ����Ч��<br/>2.huks����ͼ�����չ��״̬��һ�¡������쳣��<br/>huks������еľ��û�б��ͷš�<br/>34800005 -��������ã���������Ϊ״̬��һ��<br/>�ڼ�����չ��UKey֮�䡣 |
+| Promise&lt;HuksCryptoExtensionResult&gt; | 函数返回的promise。HuksCryptoExtensionResult.resultCode可能具有以下值：0-操作成功34800000 -加密扩展中发生错误。可能原因：1.输入参数非法。2.加密扩展遇到无法解析的错误状态。34800002-UKey驱动程序错误。这意味着UKey驱动程序中发生了未知错误。34800004 -句柄不存在。可能原因：1.输入的句柄无效。2.huks服务和加密扩展的状态不一致。由于异常，huks服务持有的句柄没有被释放。34800005 -句柄不可用，可能是因为状态不一致在加密扩展和UKey之间。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 执行句柄关闭操作。如果需要关闭底层句柄，则执行关闭操作。
+    const result: HuksCryptoExtensionResult = {
+        resultCode: 0,
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onEnumCertificates
 
@@ -91,7 +148,7 @@ onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | 
       Promise<HuksCryptoExtensionResult>
 ```
 
-ö��Extension������Ukey�豸��֤����Ϣ��ʹ��Promise�첽�ص���
+枚举Extension下所有Ukey设备的证书信息。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -101,13 +158,33 @@ onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 否 | �������� |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 否 | 操作属性 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��certs��Ա�ǿգ�������ȡ������֤�顣����ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey�������� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，certs成员非空，包含获取的所有证书。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      certs: certInfoSetArray
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onExportCertificate
 
@@ -116,7 +193,7 @@ onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksEx
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-��ѯָ��resourceId�µ�֤�顣ʹ��Promise�첽�ص���
+查询指定resourceId下的证书。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -126,14 +203,35 @@ onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksEx
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | ��ԴID�� |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 否 | �������� |
+| resourceId | string | 是 | 资源ID。 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 否 | 操作属性 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��certs��Ա�ǿգ�������ȡ�ĵ���֤�顣����ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，certs成员非空，包含获取的单本证书。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。34800004 - 句柄不存在。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      certs: certInfoSetArray
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onExportKeyItem
 
@@ -141,7 +239,7 @@ onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksEx
 onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-���ڵ���ָ����Կ�Ĺ�Կ��ʹ��Promise�첽�ص���
+用于导出指定密钥的公钥。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -153,14 +251,43 @@ onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<Huk
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��������Կ����Դ��� |
-| params | HuksCryptoExtensionParam[] | 是 | ������Կ���������Բ����� |
+| handle | string | 是 | 待导出公钥的资源句柄 |
+| params | HuksCryptoExtensionParam[] | 是 | 导出公钥操作的属性参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0��outDataЯ�������Ĺ�Կ���ݡ�����ʧ��ʱ��resultCodeЯ����������Ϣ��errInfoЯ����ϸ������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，outData携带导出的公钥数据。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数，推荐传入密钥用途
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入用途参数，设置默认值（推荐默认签名用途）
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
+    }
+
+    let pubKey: Uint8Array = new Uint8Array(1024);
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      outData: pubKey
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onFinishSession
 
@@ -169,7 +296,7 @@ onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensi
       Promise<HuksCryptoExtensionResult>
 ```
 
-����ʽ��Կ�Ự����������ʹ��Promise�첽�ص���
+三段式密钥会话结束操作。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -179,14 +306,34 @@ onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| initHandle | string | 是 | ��Դ����� |
-| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | �������ԡ� |
+| initHandle | string | 是 | 资源句柄。 |
+| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800003 - Ukey PIN��δ��֤��<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á�<br/>34800007 - Ukey PIN�뱻���� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800003 - Ukey PIN码未认证。34800004 - 句柄不存在。34800005 - 句柄不可用。34800007 - Ukey PIN码被锁。 |
+
+**示例：**
+
+```TypeScript
+import { huks, HuksCryptoExtensionParams, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
+    let outBuffer: Uint8Array = new Uint8Array(1024);
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      outData: outBuffer
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onGenerateKeyItem
 
@@ -194,7 +341,7 @@ onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensi
 onGenerateKeyItem(handle: string, params:HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-��������չ�豸��������Կ�ԡ�ʹ��Promise�첽�ص���
+用于在扩展设备内生成密钥对。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -206,14 +353,51 @@ onGenerateKeyItem(handle: string, params:HuksCryptoExtensionParam[]): Promise<Hu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��������Կ����Դ����� |
-| params | HuksCryptoExtensionParam[] | 是 | ��Կ���ɲ��������Բ����� |
+| handle | string | 是 | 待生成密钥的资源句柄。 |
+| params | HuksCryptoExtensionParam[] | 是 | 密钥生成操作的属性参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0����ʾ������Կ�ɹ�������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，表示生成密钥成功。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGenerateKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA; // 默认RSA算法
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048; // 默认2048位
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN; // 默认签名用途
+    }
+
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onGetProperty
 
@@ -222,7 +406,7 @@ onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCryp
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-��ѯ�����ص���
+查询操作回调。
 
 **起始版本：** 22
 
@@ -232,15 +416,36 @@ onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCryp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | handle��ʾonOpenResource�򿪵ľ���� |
-| propertyId | string | 是 | propertyId��ʾ���Ժ��������ƣ�GMT 0016-2023�ж��塣 |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | handle表示onOpenResource打开的句柄。 |
+| propertyId | string | 是 | propertyId表示属性函数的名称，GMT 0016-2023中定义。 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | �������ص�promise��<br/>HuksCryptoExtensionResult.resultCode���ܾ�������ֵ��<br/>0-�����ɹ�<br/>34800000 -������չ�з������󡣿���ԭ��<br/>1.��������Ƿ���<br/>2.������չ�����޷������Ĵ���״̬��<br/>34800002-UKey���������������ζ��UKey���������з�����δ֪����<br/>34800003-UKey PINδ��Ȩ��������֤UKey PIN�롣<br/>34800004 -��������ڡ�����ԭ��<br/>1.����ľ����Ч��<br/>2.huks����ͼ�����չ��״̬��һ�¡������쳣��<br/>huks������еľ��û�б��ͷš�<br/>34800005 -��������ã���������Ϊ״̬��һ��<br/>�ڼ�����չ��UKey֮�䡣<br/>34800007-UKey PIN����������Ϊ�ѳ�������������Դ����� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | 函数返回的promise。HuksCryptoExtensionResult.resultCode可能具有以下值：0-操作成功34800000 -加密扩展中发生错误。可能原因：1.输入参数非法。2.加密扩展遇到无法解析的错误状态。34800002-UKey驱动程序错误。这意味着UKey驱动程序中发生了未知错误。34800003-UKey PIN未鉴权。请先验证UKey PIN码。34800004 -句柄不存在。可能原因：1.输入的句柄无效。2.huks服务和加密扩展的状态不一致。由于异常，huks服务持有的句柄没有被释放。34800005 -句柄不可用，可能是因为状态不一致在加密扩展和UKey之间。34800007-UKey PIN被锁定，因为已超过允许的最大尝试次数。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 按照propertyId执行相关函数，函数参数从params中获取。输出数据封装到返回值的property字段中，由HUKS_EXT_CRYPTO_TAG_EXTRA_DATA携带。
+    const emptyArray: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      property: emptyArray
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onGetResourceId
 
@@ -248,7 +453,7 @@ onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCryp
 onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-�ص��Ի�ȡ������չ����ԴID��
+回调以获取加密扩展的资源ID。
 
 **起始版本：** 26.0.0
 
@@ -260,13 +465,32 @@ onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtension
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | HuksCryptoExtensionParam[] | 是 | ��ȡ��ԴID��������Բ����� |
+| params | HuksCryptoExtensionParam[] | 是 | 获取资源ID所需的属性参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | params - ��ȡ��ԴID��������Բ����� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | params - 获取资源ID所需的属性参数。 |
+
+**示例：**
+
+```TypeScript
+import { HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      resourceId: "test resourceId"
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onGetUkeyPinAuthState
 
@@ -275,7 +499,7 @@ onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExter
       HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-��ȡUkey��PIN����֤״̬��ʹ��Promise�첽�ص���
+获取Ukey的PIN码认证状态。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -285,14 +509,34 @@ onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��Դ����� |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | 资源句柄。 |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0��HuksCryptoExtensionResult��authState��Ա�ǿգ�Ϊ��ȡ��PIN����֤״̬������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，HuksCryptoExtensionResult的authState成员非空，为获取的PIN码认证状态。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 查询PIN码认证状态。
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      authState: 1
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onImportCertificate
 
@@ -301,7 +545,7 @@ onImportCertificate(handle: string, params: HuksCryptoExtensionParam[],
       certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult>
 ```
 
-����ָ����Դ�����֤�顣ʹ��Promise�첽�ص���
+导入指定资源句柄的证书。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -313,15 +557,35 @@ onImportCertificate(handle: string, params: HuksCryptoExtensionParam[],
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ����֤�����Դ����� |
-| params | HuksCryptoExtensionParam[] | 是 | Indicates<br/>the needed properties for the import certificate operation. |
-| certInfo | HuksCryptoExtensionCertInfo | 是 | �������֤����Ϣ����ָ��֤�����ͣ�purpose�� |
+| handle | string | 是 | 导入证书的资源句柄。 |
+| params | HuksCryptoExtensionParam[] | 是 | Indicatesthe needed properties for the import certificate operation. |
+| certInfo | HuksCryptoExtensionCertInfo | 是 | 待导入的证书信息。需指定证书类型（purpose） |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0����ʾ����֤��ɹ�������ʧ��ʱ��resultCodeЯ����������Ϣ��errInfoЯ����ϸ������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，表示导入证书成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { CryptoExtensionAbility, HuksCryptoExtensionParam, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onImportCertificate(handle: string, params: HuksCryptoExtensionParam[],
+      certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onImportWrappedKeyItem
 
@@ -330,7 +594,7 @@ onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCrypt
       wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult>
 ```
 
-���ڵ�����ܷ�װ����Կ�ԡ�ʹ��Promise�첽�ص���
+用于导入加密封装的密钥对。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -342,16 +606,52 @@ onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCrypt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��������Կ����Դ����� |
-| wrappingHandle | string | 是 | ��������Կ����Դ����� |
-| params | HuksCryptoExtensionParam[] | 是 | ������Կ��������� |
-| wrappedKey | Uint8Array | 是 | ��װ��Կ���ݣ���ʽ����Կ��չ���塣 |
+| handle | string | 是 | 待导入密钥的资源句柄。 |
+| wrappingHandle | string | 是 | 待导入密钥的资源句柄。 |
+| params | HuksCryptoExtensionParam[] | 是 | 导入密钥所需的属性 |
+| wrappedKey | Uint8Array | 是 | 封装密钥数据，格式由密钥扩展定义。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0����ʾ������Կ�ɹ�������ʧ��ʱ��resultCodeЯ����������Ϣ��errInfoЯ����ϸ������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800001 - Ukey�����ڡ�<br/>34800002 - Ukey��������<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，表示导入密钥成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800001 - Ukey不存在。34800002 - Ukey驱动错误。34800004 - 句柄不存在。34800005 - 句柄不可用。 |
+
+**示例：**
+
+```TypeScript
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCryptoExtensionParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA;
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
+    }
+
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onInitSession
 
@@ -360,7 +660,7 @@ onInitSession(handle: string, params: huks.HuksOptions | HuksCryptoExtensionPara
       Promise<HuksCryptoExtensionResult>
 ```
 
-����ʽ��ʼ����Կ�Ự������ʹ��Promise�첽�ص���
+三段式初始化密钥会话操作。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -370,14 +670,33 @@ onInitSession(handle: string, params: huks.HuksOptions | HuksCryptoExtensionPara
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��Դ����� |
-| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | �������ԡ� |
+| handle | string | 是 | 资源句柄。 |
+| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0��handle��Ա�ǿա�����ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800003 - Ukey PIN��δ��֤��<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á�<br/>34800007 - Ukey PIN�뱻���� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0，handle成员非空。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800003 - Ukey PIN码未认证。34800004 - 句柄不存在。34800005 - 句柄不可用。34800007 - Ukey PIN码被锁。 |
+
+**示例：**
+
+```TypeScript
+import { huks, HuksCryptoExtensionParams, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onInitSession(handle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      handle: "test handle"
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onOpenResource
 
@@ -386,7 +705,7 @@ onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternal
      HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult>
 ```
 
-����Դ����ص����ڼ��ܲ���֮ǰ�����Դ����ȡ�����ע�⣺���صľ�����뱻onCloseResource�رա�
+打开资源句柄回调，在加密操作之前需打开资源，获取句柄。注意：返回的句柄必须被onCloseResource关闭。
 
 **起始版本：** 22
 
@@ -396,14 +715,34 @@ onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | resourceId��ʾ��ԴID |
-| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| resourceId | string | 是 | resourceId表示资源ID |
+| params | Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt; \| HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | �������ص�promise��<br/>HuksCryptoExtensionResult.resultCode���ܾ�������ֵ��<br/>0-�����ɹ�<br/>34800000 -������չ�з������󡣿���ԭ��<br/>1.��������Ƿ���<br/>2.������չ�����޷������Ĵ���״̬��<br/>34800001-UKey�����ڡ�����ԭ��<br/>1.UKey�Ѿ����Ƴ���<br/>2.������չά����һ�������UKey״̬��<br/>34800002-UKey���������������ζ��UKey���������з�����δ֪����<br/>34800004-resourceId�����ڡ���˵��resourceId���豸���ơ�Ӧ�����ƻ��������ƴ��� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | 函数返回的promise。HuksCryptoExtensionResult.resultCode可能具有以下值：0-操作成功34800000 -加密扩展中发生错误。可能原因：1.输入参数非法。2.加密扩展遇到无法解析的错误状态。34800001-UKey不存在。可能原因：1.UKey已经被移除。2.加密扩展维护了一个错误的UKey状态。34800002-UKey驱动程序错误。这意味着UKey驱动程序中发生了未知错误。34800004-resourceId不存在。这说明resourceId、设备名称、应用名称或容器名称错误。 |
+
+**示例：**
+
+```TypeScript
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析resourceId，打开底层句柄，并映射为新的句柄返回。
+    let result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      handle: "test handle"
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onSetProperty
 
@@ -412,7 +751,7 @@ onSetProperty(handle: string, propertyId: string, params: HuksCryptoExtensionPar
       Promise<HuksCryptoExtensionResult>
 ```
 
-���ݲ����е�handle��propertyId�������ԡ�ʹ��Promise�첽�ص���
+根据参数中的handle和propertyId设置属性。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -424,15 +763,34 @@ onSetProperty(handle: string, propertyId: string, params: HuksCryptoExtensionPar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | string | 是 | ��Դ����� |
-| propertyId | string | 是 | ���Ҳ������������ƣ���GMT 0016-2023�ж����SKF�ӿ�����Ҫҵ����Խӿ������䡣 |
-| params | HuksCryptoExtensionParam[] | 是 | �������ԡ� |
+| handle | string | 是 | 资源句柄。 |
+| propertyId | string | 是 | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，要业务针对接口名适配。 |
+| params | HuksCryptoExtensionParam[] | 是 | 操作属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise���ڷ���HuksCryptoExtensionResult��<br/>HuksCryptoExtensionResult.resultCode���ܾ�������ֵ��<br/>0-�����ɹ���<br/>34800000 -������չ�з������󡣿���ԭ��<br/>1.��������Ƿ���<br/>2.������չ�����޷������Ĵ���״̬��<br/>34800002 -����UKey�����ӿ�ʧ�ܡ�����UKey���Ӻ���������״̬��<br/>34800003-UKey PINδ��Ȩ��������֤UKey PIN�롣<br/>34800004 -��������ڡ�����ԭ��<br/>1.����ľ����Ч��<br/>2.HUKS����ͼ�����չ��״̬��һ�¡������쳣��<br/>HUKS������еľ��û���ͷš�<br/>34800005 -��������ã���������Ϊ״̬��һ��<br/>�ڼ�����չ��UKey֮�䡣<br/>34800007-UKey PIN����������Ϊ�ѳ�������������Դ����� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise用于返回HuksCryptoExtensionResult。HuksCryptoExtensionResult.resultCode可能具有以下值：0-操作成功。34800000 -加密扩展中发生错误。可能原因：1.输入参数非法。2.加密扩展遇到无法解析的错误状态。34800002 -调用UKey驱动接口失败。请检查UKey连接和驱动程序状态。34800003-UKey PIN未鉴权。请先验证UKey PIN码。34800004 -句柄不存在。可能原因：1.输入的句柄无效。2.HUKS服务和加密扩展的状态不一致。由于异常，HUKS服务持有的句柄没有释放。34800005 -句柄不可用，可能是因为状态不一致在加密扩展和UKey之间。34800007-UKey PIN被锁定，因为已超过允许的最大尝试次数。 |
+
+**示例：**
+
+```TypeScript
+import { HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onSetProperty(handle: string, propertyId: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    // 按照propertyId执行相关设置操作，操作参数从params中获取。
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 
 ## onUpdateSession
 
@@ -441,7 +799,7 @@ onUpdateSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensi
       Promise<HuksCryptoExtensionResult>
 ```
 
-����ʽ��Կ�Ự�������ݲ�����ʹ��Promise�첽�ص���
+三段式密钥会话更新数据操作。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -451,12 +809,32 @@ onUpdateSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| initHandle | string | 是 | ��Դ����� |
-| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | params indicates the<br/>properties of the operation[since 26.0.0]. |
+| initHandle | string | 是 | 资源句柄。 |
+| params | huks.HuksOptions \| HuksCryptoExtensionParams | 是 | params indicates theproperties of the operation<br>**起始版本：** 26.0.0 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksCryptoExtensionResult&gt; | Promise����<br/>�����óɹ�ʱ��resultCodeΪ0������ʧ��ʱ��resultCodeЯ����������Ϣ��<br/>���ܷ��صĴ�����ֵ��<br/>0 - ���óɹ���<br/>34800000 - ��Կ��չ����<br/>34800002 - Ukey��������<br/>34800003 - Ukey PIN��δ��֤��<br/>34800004 - ��������ڡ�<br/>34800005 - ��������á�<br/>34800007 - Ukey PIN�뱻���� |
+| Promise&lt;HuksCryptoExtensionResult&gt; | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。可能返回的错误码值：0 - 调用成功。34800000 - 密钥扩展错误。34800002 - Ukey驱动错误。34800003 - Ukey PIN码未认证。34800004 - 句柄不存在。34800005 - 句柄不可用。34800007 - Ukey PIN码被锁。 |
+
+**示例：**
+
+```TypeScript
+import { huks, HuksCryptoExtensionParams, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onUpdateSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
+    let outBuffer: Uint8Array = new Uint8Array(1024);
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      outData: outBuffer
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+
+```
 

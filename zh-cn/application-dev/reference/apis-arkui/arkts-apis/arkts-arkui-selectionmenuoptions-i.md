@@ -1,120 +1,190 @@
 # SelectionMenuOptions
 
-菜单的选项。
+SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其具体配置参数。
 
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## menuType
+## backgroundSystemMaterial
 
 ```TypeScript
-menuType?: MenuType
+backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-自定义选择菜单类型。
+菜单的背景板的系统材质。不同系统材质包含不同的属性影响效果。默认值：undefined，无材质效果。
 
-默认值：MenuType.SELECTION_MENU。
+**类型：** uiMaterial.Material
 
-**类型：** MenuType
-
-**起始版本：** 13
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## onAppear
+## controller
 
 ```TypeScript
-onAppear?: MenuOnAppearCallback
+controller?: RichEditorController
 ```
 
-自定义选择菜单弹出时回调。
+扩展下拉菜单。
 
-**类型：** MenuOnAppearCallback
+expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。
 
-**起始版本：** 10
+expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。
+
+**类型：** RichEditorController
+
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## onDisappear
+## editorMenuOptions
 
 ```TypeScript
-onDisappear?: Callback<void>
+editorMenuOptions?: Array<EditorMenuOptions>
 ```
 
-自定义选择菜单关闭时回调。
+编辑菜单。
 
-**类型：** Callback<void>
+editorMenuOptions未配置时，不显示编辑菜单。
 
-**起始版本：** 10
+同时配置EditorMenuOptions中action和builder时，点击图标会同时响应。
+
+点击编辑菜单图标默认不关闭整个菜单，应用可以通过action接口配置RichEditorController的closeSelectionMenu主动关闭菜单。
+
+**类型：** Array<EditorMenuOptions>
+
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## onMenuHide
+## expandedMenuOptions
 
 ```TypeScript
-onMenuHide?: MenuCallback
+expandedMenuOptions?: Array<ExpandedMenuOptions>
 ```
 
-自定义选择菜单隐藏时回调。
+扩展下拉菜单。
 
-**类型：** MenuCallback
+expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。
 
-**起始版本：** 15
+expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。
+
+**类型：** Array<ExpandedMenuOptions>
+
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## onMenuShow
+## onCopy
 
 ```TypeScript
-onMenuShow?: MenuCallback
+onCopy?: (event?: EditorEventInfo) => void
 ```
 
-自定义选择菜单显示时回调。
+替代内置系统菜单复制项的事件回调。
 
-**类型：** MenuCallback
+生效前提是一定要有controller参数，有系统默认菜单才能替换内置复制功能。
 
-**起始版本：** 15
+**说明：**
+
+event为返回信息。
+
+**类型：** (event?: EditorEventInfo) => void
+
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## previewMenuOptions
+## onCut
 
 ```TypeScript
-previewMenuOptions?: PreviewMenuOptions
+onCut?: (event?: EditorEventInfo) => void
 ```
 
-预览菜单的选项。该参数只在RichEditor中生效。
+替代内置系统菜单剪切项的事件回调。
 
-**类型：** PreviewMenuOptions
+生效前提是一定要有controller参数，有系统默认菜单才能替换内置剪切功能。
 
-**起始版本：** 18
+**说明：**
+
+event为返回信息。
+
+**类型：** (event?: EditorEventInfo) => void
+
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onPaste
+
+```TypeScript
+onPaste?: (event?: EditorEventInfo) => void
+```
+
+替代内置系统菜单粘贴项的事件回调。
+
+生效前提是一定要有controller参数，有系统默认菜单才能替换内置粘贴功能。
+
+**说明：**
+
+event为返回信息。
+
+**类型：** (event?: EditorEventInfo) => void
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onSelectAll
+
+```TypeScript
+onSelectAll?: (event?: EditorEventInfo) => void
+```
+
+替代内置系统菜单全选项的事件回调。
+
+生效前提是一定要有controller参数，有系统默认菜单才能替换内置全选功能。
+
+**说明：**
+
+event为返回信息。
+
+**类型：** (event?: EditorEventInfo) => void
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,13 +2,11 @@
 
 DateStyleOptions定义日期内联型Counter的属性和事件。
 
-继承于[CommonOptions](arkts-arkui-commonoptions-c.md#CommonOptions)。
+继承于[CommonOptions](arkts-arkui-commonoptions-c.md)。
 
-**继承/实现关系：** DateStyleOptions extends [CommonOptions](arkts-arkui-commonoptions-c.md#CommonOptions)
+**继承/实现关系：** DateStyleOptions extends [CommonOptions](arkts-arkui-commonoptions-c.md)
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +32,7 @@ day?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +58,7 @@ month?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +80,7 @@ date：当前显示的日期值。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +106,7 @@ year?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

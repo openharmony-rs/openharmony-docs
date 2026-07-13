@@ -1,8 +1,8 @@
 # WindowSize
 
-�������ڳߴ硣
+描述窗口尺寸。
 
-**ԭ�ӻ�����API��** ��API version 11��ʼ���ýӿ�֧����ԭ�ӻ�������ʹ�á�
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 9
 
@@ -14,13 +14,13 @@
 readonly maxWindowHeight: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ����߶ȣ��߶ȵ�λΪvp��
+表示自由窗口状态下窗口的最大高度，高度单位为vp。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,13 +30,13 @@ readonly maxWindowHeight: number
 readonly maxWindowRatio: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ������߱ȣ�ȡֵ��Χ0-1�����磺0.12��
+表示自由窗口状态下窗口的最大宽高比；取值范围0-1，例如：0.12。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,13 +46,13 @@ readonly maxWindowRatio: number
 readonly maxWindowWidth: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ������ȣ����ȵ�λΪvp��
+表示自由窗口状态下窗口的最大宽度，宽度单位为vp。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,13 +62,13 @@ readonly maxWindowWidth: number
 readonly minWindowHeight: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ���С�߶ȣ��߶ȵ�λΪvp��
+表示自由窗口状态下窗口的最小高度，高度单位为vp。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -78,13 +78,13 @@ readonly minWindowHeight: number
 readonly minWindowRatio: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ���С���߱ȣ�ȡֵ��Χ0-1�����磺0.5��
+表示自由窗口状态下窗口的最小宽高比；取值范围0-1，例如：0.5。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -94,13 +94,13 @@ readonly minWindowRatio: number
 readonly minWindowWidth: number
 ```
 
-��ʾ���ɴ���״̬�´��ڵ���С���ȣ����ȵ�λΪvp��
+表示自由窗口状态下窗口的最小宽度，宽度单位为vp。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

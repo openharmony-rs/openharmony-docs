@@ -1,12 +1,12 @@
 # @ohos.enterprise.deviceInfo
 
-��ģ���ṩ��ҵ�豸��Ϣ����������������ȡ�豸���кš��豸���Ƶȡ�
+本模块提供企业设备信息管理能力，包括获取设备序列号、设备名称等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -18,11 +18,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getDeviceInfo-1) | ��ȡ�豸��Ϣ��<br/> |
-| <!--DelRow-->[getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getDeviceName-1) | ��ȡ�豸���ƣ�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getDeviceName-2) | ��ȡ�豸���ƣ�ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getDeviceSerial-1) | ��ȡ�豸���кţ�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getDeviceSerial-2) | ��ȡ�豸���кţ�ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getDisplayVersion-1) | ��ȡ�豸�汾�ţ�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getDisplayVersion-2) | ��ȡ�豸�汾�ţ�ʹ��Promise�첽�ص���<br/> |
+| [getDeviceInfo](arkts-mdm-getdeviceinfo-f.md#getdeviceinfo-1) | 获取设备信息。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [getDeviceName](arkts-mdm-getdevicename-f-sys.md#getdevicename-1) | 获取设备名称，使用callback异步回调。 |
+| [getDeviceName](arkts-mdm-getdevicename-f-sys.md#getdevicename-2) | 获取设备名称，使用Promise异步回调。 |
+| [getDeviceSerial](arkts-mdm-getdeviceserial-f-sys.md#getdeviceserial-1) | 获取设备序列号，使用callback异步回调。 |
+| [getDeviceSerial](arkts-mdm-getdeviceserial-f-sys.md#getdeviceserial-2) | 获取设备序列号，使用Promise异步回调。 |
+| [getDisplayVersion](arkts-mdm-getdisplayversion-f-sys.md#getdisplayversion-1) | 获取设备版本号，使用callback异步回调。 |
+| [getDisplayVersion](arkts-mdm-getdisplayversion-f-sys.md#getdisplayversion-2) | 获取设备版本号，使用Promise异步回调。 |
+<!--DelEnd-->
 

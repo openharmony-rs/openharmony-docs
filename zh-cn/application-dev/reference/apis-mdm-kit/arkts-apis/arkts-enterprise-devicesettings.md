@@ -1,12 +1,12 @@
 # @ohos.enterprise.deviceSettings
 
-��ģ���ṩ��ҵ�豸�����������������á���ȡ�豸Ϣ��ʱ��ȡ�
+本模块提供企业设备设置能力，包括设置、获取设备息屏时间等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -18,42 +18,58 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addHiddenSettingsMenu](arkts-mdm-devicesettings-addhiddensettingsmenu-f.md#addHiddenSettingsMenu-1) | ��������������ǰ�û��µ������������б��������������������б����������ڵ�ǰ�û������ò˵��лᱻ���أ����غ󲻿��������õ������������������ͨ��ĳ�ַ�ʽ������������������Ҳ�޷��򿪡����ýӿں󼴿���Ч��������������Ӧ�á�<br/> |
-| [getHiddenSettingsMenu](arkts-mdm-devicesettings-gethiddensettingsmenu-f.md#getHiddenSettingsMenu-1) | ��ȡ�����ڵ�ǰ�û��±����ص��������б���<br/> |
-| <!--DelRow-->[getPowerPolicy](arkts-mdm-devicesettings-getpowerpolicy-f-sys.md#getPowerPolicy-1) | ��ȡ��Դ���ԡ�<br/> |
-| <!--DelRow-->[getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getScreenOffTime-1) | ��ȡ�豸Ϣ��ʱ�䣬ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getScreenOffTime-2) | ��ȡ�豸Ϣ��ʱ�䣬ʹ��Promise�첽�ص���<br/> |
-| [getSwitchStatus](arkts-mdm-devicesettings-getswitchstatus-f.md#getSwitchStatus-1) | ��ѯ���ص�״̬��<br/> |
-| [getValue](arkts-mdm-devicesettings-getvalue-f.md#getValue-1) | ��ȡ�豸���ò��ԡ�<br/> |
-| [getValueForAccount](arkts-mdm-devicesettings-getvalueforaccount-f.md#getValueForAccount-1) | ��ȡָ���û����豸���ò��ԡ��ýӿڿ��Ի�ȡָ���û�������Ӧ���е�ĳ�������������ȡ�û�100���豸���Ƶȡ�<br/> |
-| <!--DelRow-->[installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installUserCertificate-1) | ��װ�û�֤�飬ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installUserCertificate-2) | ��װ�û�֤�飬ʹ��Promise�첽�ص���<br/> |
-| [removeHiddenSettingsMenu](arkts-mdm-devicesettings-removehiddensettingsmenu-f.md#removeHiddenSettingsMenu-1) | ��������ӵ�ǰ�û��µ������������б����Ƴ��������������б��е��������ڵ�ǰ�û������ò˵��лᱻ���أ����غ󲻿��������õ������������������ͨ��ĳ�ַ�ʽ������������������Ҳ�޷��򿪡����Ƴ���ʣ��������������б�Ϊ�գ����������ȫ<br/>����ʾ�����ýӿں󼴿���Ч��������������Ӧ�á�<br/> |
-| [setHomeWallpaper](arkts-mdm-devicesettings-sethomewallpaper-f.md#setHomeWallpaper-1) | ���������ֽ��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[setPowerPolicy](arkts-mdm-devicesettings-setpowerpolicy-f-sys.md#setPowerPolicy-1) | ���õ�Դ���ԡ�<br/> |
-| <!--DelRow-->[setScreenOffTime](arkts-mdm-devicesettings-setscreenofftime-f-sys.md#setScreenOffTime-1) | �����豸Ϣ��ʱ�䡣<br/> |
-| [setSwitchStatus](arkts-mdm-devicesettings-setswitchstatus-f.md#setSwitchStatus-1) | ���ÿ��ص�״̬��֧������������������Wi-Fi��״̬Ϊ������رգ�������Ϻ��û������ֶ����ء�֧������������״̬Ϊǿ�ƿ�����������Ϻ��û��������ֶ����ء����Ѿ�ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>�ӿڽ�����ĳ�����أ���ͨ�����ӿ�����������ص�״̬���׳�������203����ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>�ӿڽ���ÿ��ؽ��ò��ԡ����豸�ж��MDMӦ��ʱ����MDMӦ�����ÿ���״̬�����ڳ�ͻ��������õĲ�����Ч������(�û����ֶ��������ر�)���ر�(�û����ֶ��������ر�)��ǿ�ƿ���(�û������ֶ��ر�)����״̬���������л���Ҳ�����ڳ�ͻ��<br/> |
-| [setUnlockWallpaper](arkts-mdm-devicesettings-setunlockwallpaper-f.md#setUnlockWallpaper-1) | ����������ֽ��ʹ��Promise�첽�ص���<br/> |
-| [setValue](arkts-mdm-devicesettings-setvalue-f.md#setValue-1) | �����豸���ԡ�<br/> |
-| [setValueForAccount](arkts-mdm-devicesettings-setvalueforaccount-f.md#setValueForAccount-1) | ����ָ���û����豸���ò��ԡ��ýӿڿ�������ָ���û�������Ӧ���е�ĳ�����������������û�100���豸���Ƶȡ�<br/> |
-| <!--DelRow-->[uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallUserCertificate-1) | ж���û�֤�飬ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallUserCertificate-2) | ж���û�֤�飬ʹ��Promise�첽�ص���<br/> |
+| [addHiddenSettingsMenu](arkts-mdm-addhiddensettingsmenu-f.md#addhiddensettingsmenu-1) | 添加设置项至当前用户下的隐藏设置项列表。添加至隐藏设置项列表的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到。如果通过某种方式搜索到该设置项，点击后也无法打开。调用接口后即刻生效，无需重启设置应用。 |
+| [getHiddenSettingsMenu](arkts-mdm-gethiddensettingsmenu-f.md#gethiddensettingsmenu-1) | 获取配置在当前用户下被隐藏的设置项列表。 |
+| [getSwitchStatus](arkts-mdm-getswitchstatus-f.md#getswitchstatus-1) | 查询开关的状态。 |
+| [getValue](arkts-mdm-getvalue-f.md#getvalue-1) | 获取设备设置策略。 |
+| [getValueForAccount](arkts-mdm-getvalueforaccount-f.md#getvalueforaccount-1) | 获取指定用户的设备设置策略。该接口可以获取指定用户在设置应用中的某个参数，比如获取用户100的设备名称等。 |
+| [removeHiddenSettingsMenu](arkts-mdm-removehiddensettingsmenu-f.md#removehiddensettingsmenu-1) | 将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全部显示。调用接口后即刻生效，无需重启设置应用。 |
+| [setHomeWallpaper](arkts-mdm-sethomewallpaper-f.md#sethomewallpaper-1) | 设置桌面壁纸，使用Promise异步回调。 |
+| [setSwitchStatus](arkts-mdm-setswitchstatus-f.md#setswitchstatus-1) | 设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。 |
+| [setUnlockWallpaper](arkts-mdm-setunlockwallpaper-f.md#setunlockwallpaper-1) | 设置锁屏壁纸，使用Promise异步回调。 |
+| [setValue](arkts-mdm-setvalue-f.md#setvalue-1) | 设置设备策略。 |
+| [setValueForAccount](arkts-mdm-setvalueforaccount-f.md#setvalueforaccount-1) | 设置指定用户的设备设置策略。该接口可以设置指定用户在设置应用中的某个参数，比如设置用户100的设备名称等。 |
 
-### 接口
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[CertBlob](arkts-mdm-devicesettings-certblob-i-sys.md) | ֤����Ϣ��<br/> |
-| <!--DelRow-->[PowerPolicy](arkts-mdm-devicesettings-powerpolicy-i-sys.md) | ��Դ���ԡ�<br/> |
+| [getPowerPolicy](arkts-mdm-getpowerpolicy-f-sys.md#getpowerpolicy-1) | 获取电源策略。 |
+| [getScreenOffTime](arkts-mdm-getscreenofftime-f-sys.md#getscreenofftime-1) | 获取设备息屏时间，使用callback异步回调。 |
+| [getScreenOffTime](arkts-mdm-getscreenofftime-f-sys.md#getscreenofftime-2) | 获取设备息屏时间，使用Promise异步回调。 |
+| [installUserCertificate](arkts-mdm-installusercertificate-f-sys.md#installusercertificate-1) | 安装用户证书，使用callback异步回调。 |
+| [installUserCertificate](arkts-mdm-installusercertificate-f-sys.md#installusercertificate-2) | 安装用户证书，使用Promise异步回调。 |
+| [setPowerPolicy](arkts-mdm-setpowerpolicy-f-sys.md#setpowerpolicy-1) | 设置电源策略。 |
+| [setScreenOffTime](arkts-mdm-setscreenofftime-f-sys.md#setscreenofftime-1) | 设置设备息屏时间。 |
+| [uninstallUserCertificate](arkts-mdm-uninstallusercertificate-f-sys.md#uninstallusercertificate-1) | 卸载用户证书，使用callback异步回调。 |
+| [uninstallUserCertificate](arkts-mdm-uninstallusercertificate-f-sys.md#uninstallusercertificate-2) | 卸载用户证书，使用Promise异步回调。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [CertBlob](arkts-mdm-certblob-i-sys.md) | 证书信息。 |
+| [PowerPolicy](arkts-mdm-powerpolicy-i-sys.md) | 电源策略。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[PowerPolicyAction](arkts-mdm-devicesettings-powerpolicyaction-e-sys.md) | ִ�е�Դ���ԵĶ�����<br/> |
-| <!--DelRow-->[PowerScene](arkts-mdm-devicesettings-powerscene-e-sys.md) | ִ�е�Դ���Եĳ�����<br/> |
-| [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md) | ���õĲ������͡�<br/> |
-| [SettingsMenu](arkts-mdm-devicesettings-settingsmenu-e.md) | �������б���<br/> |
-| [SwitchKey](arkts-mdm-devicesettings-switchkey-e.md) | �������Ƶ�ö�١�<br/> |
-| [SwitchStatus](arkts-mdm-devicesettings-switchstatus-e.md) | ����״̬��ö�١�<br/> |
+| [SettingsItem](arkts-mdm-settingsitem-e.md) | 设置的策略类型。 |
+| [SettingsMenu](arkts-mdm-settingsmenu-e.md) | 设置项列表。 |
+| [SwitchKey](arkts-mdm-switchkey-e.md) | 开关名称的枚举。 |
+| [SwitchStatus](arkts-mdm-switchstatus-e.md) | 开关状态的枚举。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [PowerPolicyAction](arkts-mdm-powerpolicyaction-e-sys.md) | 执行电源策略的动作。 |
+| [PowerScene](arkts-mdm-powerscene-e-sys.md) | 执行电源策略的场景。 |
+<!--DelEnd-->
 

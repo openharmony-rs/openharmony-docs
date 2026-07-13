@@ -18,7 +18,7 @@ declare function disconnectDfs(networkId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | string | 是 | 设备的网络Id。通过<br/>[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md#distributedDeviceManager)接口调用<br/>[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#DeviceBasicInfo)获得。 |
+| networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)接口调用[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicebasicinfo-i.md)获得。 |
 
 **返回值：**
 
@@ -30,7 +30,7 @@ declare function disconnectDfs(networkId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed.Possible causes:<br/>1.Mandatory parameters are left unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600004](../../errorcode-universal.md#13600004-Unmount) | Unmount failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600004 | Unmount failed. |
 

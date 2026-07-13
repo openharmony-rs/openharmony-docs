@@ -1,11 +1,9 @@
 # OpenLinkOptions
 
-OpenLinkOptions可以作为[openLink()](arkts-ability-uiabilitycontext-c.md#openLink-1)的入参，用于标识是否仅打开
+OpenLinkOptions可以作为[openLink()](arkts-ability-uiabilitycontext-c.md#openlink-1)的入参，用于标识是否仅打开
 AppLinking和传递键值对可选参数。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -29,7 +27,7 @@ aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -47,7 +45,7 @@ completionHandler?: CompletionHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本21开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -72,7 +70,7 @@ hideFailureTipDialog?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本21开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -84,7 +82,7 @@ parameters?: Record<string, Object>
 
 表示WantParams参数。
 
-**说明**：具体使用规则请参考[want](arkts-ability-want-c.md#Want)中的parameters属性。
+**说明**：具体使用规则请参考[want](arkts-ability-want-c.md)中的parameters属性。
 
 **类型：** Record<string, Object>
 
@@ -92,7 +90,7 @@ parameters?: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

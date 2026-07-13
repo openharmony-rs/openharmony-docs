@@ -1,0 +1,87 @@
+# createAVMetadataExtractor
+
+## createAVMetadataExtractor
+
+```TypeScript
+function createAVMetadataExtractor(): Promise<AVMetadataExtractor>
+```
+
+创建AVMetadataExtractor实例。使用Promise异步回调。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;AVMetadataExtractor&gt; | Promise对象。异步返回元数据获取类对象（AVMetadataExtractor）。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by promise. |
+
+**示例：**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor;
+media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+  } else {
+    console.error(`Failed to create AVMetadataExtractor`);
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+});
+
+```
+
+
+## createAVMetadataExtractor
+
+```TypeScript
+function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void
+```
+
+创建AVMetadataExtractor实例。使用callback异步回调。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | AsyncCallback&lt;AVMetadataExtractor&gt; | 是 | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的AVMetadataExtractor实例，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by callback. |
+
+**示例：**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor;
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+
+```
+

@@ -1,10 +1,6 @@
 # ArcDirection
 
-```TypeScript
-export enum ArcDirection
-```
-
-���η���
+弧形方向。
 
 **起始版本：** 18
 
@@ -16,11 +12,11 @@ export enum ArcDirection
 THREE_CLOCK_DIRECTION = 0
 ```
 
-3���ӷ���
+3点钟方向。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -30,11 +26,11 @@ THREE_CLOCK_DIRECTION = 0
 SIX_CLOCK_DIRECTION = 1
 ```
 
-6���ӷ���
+6点钟方向。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -44,11 +40,11 @@ SIX_CLOCK_DIRECTION = 1
 NINE_CLOCK_DIRECTION = 2
 ```
 
-9���ӷ���
+9点钟方向。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

@@ -1,9 +1,5 @@
 # LiveViewStatus（系统接口）
 
-```TypeScript
-export enum LiveViewStatus
-```
-
 描述普通实况通知的状态。
 
 **起始版本：** 11

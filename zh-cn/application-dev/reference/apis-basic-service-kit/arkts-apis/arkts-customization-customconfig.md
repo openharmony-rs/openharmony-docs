@@ -12,5 +12,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getChannelId-1) | 获取应用的预装渠道号。<br/> |
+| [getChannelId](arkts-basicservices-getchannelid-f.md#getchannelid-1) | 获取应用的预装渠道号。 |
 

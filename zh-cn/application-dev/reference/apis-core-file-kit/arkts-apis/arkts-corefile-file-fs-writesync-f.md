@@ -14,7 +14,7 @@ declare function writeSync(
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +24,7 @@ declare function writeSync(
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | WriteOptions | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length，<br/>number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf-<br/>8'。 [since 11] |
+| options | WriteOptions | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -36,16 +36,16 @@ declare function writeSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 

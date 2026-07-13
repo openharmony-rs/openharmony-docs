@@ -1,9 +1,5 @@
 # PlaybackMetricsKey
 
-```TypeScript
-enum PlaybackMetricsKey
-```
-
 表示播放器指标信息的枚举。
 
 **起始版本：** 23

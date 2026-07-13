@@ -1,9 +1,5 @@
 # ContainerFormatType
 
-```TypeScript
-enum ContainerFormatType
-```
-
 表示容器格式类型的枚举，缩写为CFT。
 
 **起始版本：** 8
@@ -20,7 +16,7 @@ CFT_MPEG_4 = 'mp4'
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -34,7 +30,7 @@ CFT_MPEG_4A = 'm4a'
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

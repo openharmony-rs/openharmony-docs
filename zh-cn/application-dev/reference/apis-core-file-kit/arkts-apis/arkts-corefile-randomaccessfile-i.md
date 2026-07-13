@@ -22,12 +22,12 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900025 | No space left on device |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -60,12 +60,12 @@ getReadStream(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -100,12 +100,12 @@ getWriteStream(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -138,7 +138,7 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | ReadOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，<br/>number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 [since 11] |
+| options | ReadOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -150,16 +150,16 @@ read(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900044](../../errorcode-universal.md#13900044-Network) | Network is unreachable&lt;br&gt;**适用版本：** 12+ |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -210,15 +210,15 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -266,22 +266,22 @@ read(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | ReadOptions | 是 | 支持如下选项：<br/>- length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，number<br/>类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 [since 11] |
+| options | ReadOptions | 是 | 支持如下选项：<br/>- length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，number类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>**起始版本：** 11 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 异步读取完成后的回调。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -332,7 +332,7 @@ readSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| options | ReadOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，<br/>number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/>[since 11] |
+| options | ReadOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/><br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -344,16 +344,16 @@ readSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900044](../../errorcode-universal.md#13900044-Network) | Network is unreachable&lt;br&gt;**适用版本：** 12+ |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -391,11 +391,11 @@ setFilePointer(filePointer: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -427,7 +427,7 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | WriteOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>- offset，number类<br/>型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据是string<br/>类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。 [since 11] |
+| options | WriteOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -439,18 +439,18 @@ write(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -503,18 +503,18 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -561,25 +561,25 @@ write(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | WriteOptions | 是 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，<br/>number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据<br/>是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。 [since 11] |
+| options | WriteOptions | 是 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入数据长度，单位为Byte。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -631,7 +631,7 @@ writeSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | WriteOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，<br/>number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据<br/>是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。 [since 11] |
+| options | WriteOptions | 否 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -643,18 +643,18 @@ writeSync(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900010 | Try again |
+| 13900013 | Bad address |
+| 13900020 | Invalid argument |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900034 | Operation would block |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 

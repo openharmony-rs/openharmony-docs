@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[RecoverableApplicationInfo](arkts-ability-recoverableapplicationinfo-i-sys.md) | Ԥ��Ӧ�ñ�ж�غ���Իָ���Ԥ��Ӧ����Ϣ��ͨ���ӿ�<br/>[bundleManager.getRecoverableApplicationInfo](./../@ohos.bundle.bundleManager:bundleManager.getRecoverableApplicationInfo(callback: AsyncCallback&lt;Array&lt;RecoverableApplicationInfo&gt;&gt;))<br/>��ȡ��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ��ģ��Ϊϵͳ�ӿڡ�<br/> |
+| [RecoverableApplicationInfo](arkts-ability-recoverableapplicationinfo-i-sys.md) | 预置应用被卸载后可以恢复的预置应用信息，通过接口[bundleManager.getRecoverableApplicationInfo](arkts-ability-getrecoverableapplicationinfo-f-sys.md#getrecoverableapplicationinfo-1)获取。 |
+<!--DelEnd-->
 

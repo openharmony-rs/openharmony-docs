@@ -1,16 +1,16 @@
 # CustomizeData
 
-�Զ���Ԫ���ݡ�
+自定义元数据。
 
-> **˵����**
+> **说明：**
 >
-> ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[Metadata](arkts-ability-metadata-i.md#Metadata)�����
+> 从API version 9开始，该模块不再维护，建议使用[Metadata](arkts-ability-metadata-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [/bundleManager/Metadata:Metadata](arkts-ability-metadata-i.md#Metadata)
+**替代接口：** [/bundleManager/Metadata:Metadata](arkts-ability-metadata-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -20,7 +20,7 @@
 extra: string
 ```
 
-��ʶ�û��Զ������ݸ�ʽ����ǩֵΪ��ʶ�����ݵ���Դ������ֵ��
+标识用户自定义数据格式，标签值为标识该数据的资源的索引值。
 
 **类型：** string
 
@@ -40,7 +40,7 @@ extra: string
 name: string
 ```
 
-��ʶ�Զ���������ļ����ơ�
+标识自定义数据项的键名称。
 
 **类型：** string
 
@@ -60,7 +60,7 @@ name: string
 value: string
 ```
 
-��ʶ�Զ����������ֵ���ơ�
+标识自定义数据项的值名称。
 
 **类型：** string
 

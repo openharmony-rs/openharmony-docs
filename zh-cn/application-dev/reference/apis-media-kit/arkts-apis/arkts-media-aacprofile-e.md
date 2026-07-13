@@ -1,9 +1,5 @@
 # AacProfile
 
-```TypeScript
-enum AacProfile
-```
-
 高级音频编码（AAC）类型枚举。
 
 **起始版本：** 22
@@ -20,7 +16,7 @@ AAC_LC = 0
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -34,7 +30,7 @@ AAC_HE = 1
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -48,7 +44,7 @@ AAC_HE_V2 = 2
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

@@ -1,0 +1,36 @@
+# BundleType
+
+标识应用的类型。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## APP
+
+```TypeScript
+APP = 0
+```
+
+该Bundle是应用。
+
+**起始版本：** 9
+
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## ATOMIC_SERVICE
+
+```TypeScript
+ATOMIC_SERVICE = 1
+```
+
+该Bundle是原子化服务。
+
+**起始版本：** 9
+
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+

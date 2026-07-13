@@ -16,7 +16,7 @@ Queue的特点是先进先出，在尾部增加元素，在头部删除元素。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,7 +30,7 @@ Queue的特点是先进先出，在尾部增加元素，在头部删除元素。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The Symbol.iterator method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
 **示例：**
 
@@ -74,7 +74,7 @@ add(element: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -94,7 +94,7 @@ add(element: T): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The add method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
 **示例：**
 
@@ -124,7 +124,7 @@ Queue的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -132,7 +132,7 @@ Queue的构造函数。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The Queue's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Queue's constructor cannot be directly invoked. |
 
 **示例：**
 
@@ -151,7 +151,7 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisAr
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -166,7 +166,7 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisAr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The forEach method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
 **示例：**
 
@@ -196,7 +196,7 @@ getFirst(): T
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -210,8 +210,8 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The getFirst method cannot be bound. |
-| [10200010](../../errorcode-universal.md#10200010-Container) | Container is empty.&lt;br&gt;**适用版本：** 23+<br/><br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -236,7 +236,7 @@ pop(): T
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -250,8 +250,8 @@ pop(): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The pop method cannot be bound. |
-| [10200010](../../errorcode-universal.md#10200010-Container) | Container is empty.&lt;br&gt;**适用版本：** 23+<br/><br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -279,7 +279,7 @@ Queue的元素个数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

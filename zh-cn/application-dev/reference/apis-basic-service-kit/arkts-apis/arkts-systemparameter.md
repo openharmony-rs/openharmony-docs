@@ -8,7 +8,7 @@
 > **说明：**
 >
 > - 本模块接口从API version 9开始不再维护，建议使用新接口
-> [@ohos.systemParameterEnhance](arkts-systemparameterenhance.md#systemParameterEnhance)替代。
+> [@ohos.systemParameterEnhance](arkts-systemparameterenhance.md)替代。
 >
 > - 本模块接口为系统接口。
 >
@@ -18,7 +18,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [systemParameterEnhance:systemParameterEnhance](arkts-systemparameterenhance.md#systemParameterEnhance)
+**替代接口：** [systemParameterEnhance:systemParameterEnhance](arkts-systemparameterenhance.md)
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -26,15 +26,17 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[get](arkts-basicservices-systemparameter-get-f-sys.md#get-1) | 获取系统参数Key对应的值，使用callback异步回调。<br/> |
-| <!--DelRow-->[get](arkts-basicservices-systemparameter-get-f-sys.md#get-2) | 获取系统参数Key对应的值，使用callback异步回调。<br/> |
-| <!--DelRow-->[get](arkts-basicservices-systemparameter-get-f-sys.md#get-3) | 获取系统参数Key对应的值，使用Promise异步回调。<br/> |
-| <!--DelRow-->[getSync](arkts-basicservices-systemparameter-getsync-f-sys.md#getSync-1) | 获取系统参数Key对应的值。<br/> |
-| <!--DelRow-->[set](arkts-basicservices-systemparameter-set-f-sys.md#set-1) | 设置系统参数Key对应的值，使用callback异步回调。<br/> |
-| <!--DelRow-->[set](arkts-basicservices-systemparameter-set-f-sys.md#set-2) | 设置系统参数Key对应的值，使用Promise异步回调。<br/> |
-| <!--DelRow-->[setSync](arkts-basicservices-systemparameter-setsync-f-sys.md#setSync-1) | 设置系统参数Key对应的值。<br/> |
+| [get](arkts-basicservices-get-f-sys.md#get-1) | 获取系统参数Key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-get-f-sys.md#get-2) | 获取系统参数Key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-get-f-sys.md#get-3) | 获取系统参数Key对应的值，使用Promise异步回调。 |
+| [getSync](arkts-basicservices-getsync-f-sys.md#getsync-1) | 获取系统参数Key对应的值。 |
+| [set](arkts-basicservices-set-f-sys.md#set-1) | 设置系统参数Key对应的值，使用callback异步回调。 |
+| [set](arkts-basicservices-set-f-sys.md#set-2) | 设置系统参数Key对应的值，使用Promise异步回调。 |
+| [setSync](arkts-basicservices-setsync-f-sys.md#setsync-1) | 设置系统参数Key对应的值。 |
+<!--DelEnd-->
 

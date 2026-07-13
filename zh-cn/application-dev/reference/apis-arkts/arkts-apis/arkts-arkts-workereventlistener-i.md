@@ -16,7 +16,7 @@
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -30,8 +30,8 @@
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200004](../../errorcode-universal.md#10200004-Worker) | Worker instance is not running. |
-| [10200005](../../errorcode-universal.md#10200005-The) | The invoked API is not supported in workers. |
+| [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
+| [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
 **示例：**
 

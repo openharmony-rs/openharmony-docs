@@ -20,13 +20,13 @@ options: ArcSliderOptions
 
 配置弧形滑动条的参数。
 
-默认值：[ArcSliderOptions](arkts-arkui-arcslideroptions-c.md#ArcSliderOptions)的各项子属性均取其默认值。
+默认值：[ArcSliderOptions](arkts-arkui-arcslideroptions-c.md)的各项子属性均取其默认值。
 
 **类型：** ArcSliderOptions
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

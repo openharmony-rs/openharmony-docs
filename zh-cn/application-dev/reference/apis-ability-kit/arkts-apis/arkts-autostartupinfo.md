@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 定义开机自启动应用组件信息。<br/> |
+| [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 定义开机自启动应用组件信息。 |
+<!--DelEnd-->
 

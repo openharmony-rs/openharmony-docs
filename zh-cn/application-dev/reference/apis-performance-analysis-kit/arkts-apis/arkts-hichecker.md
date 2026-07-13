@@ -1,0 +1,34 @@
+# @ohos.hichecker
+
+HiChecker������ΪӦ�ÿ����׶�ʹ�õļ�⹤�ߣ����ڼ��������й����в����׺��Ե����⣬��Ӧ���̳߳��ֺ�ʱ���á�Ӧ�ý�����Ability��Դй¶�����⡣�����߿���ͨ����־��¼�����crash����ʽ�鿴�������Ⲣ�����޸ģ�����Ӧ��
+��ʹ�����顣
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.HiviewDFX.HiChecker
+
+## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [addCheckRule](arkts-performanceanalysis-addcheckrule-f.md#addcheckrule-1) | ����һ�����������ϵͳ��ϵͳ�������ӵĹ�����м�������������Ӧ���򴥷�ʱ����hilog��grep HiChecker�鿴������Ϣ�� |
+| [addRule](arkts-performanceanalysis-addrule-f.md#addrule-1) | &gt; **˵����**&gt;&gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.addCheckRule](arkts-performanceanalysis-addcheckrule-f.md#addcheckrule-1)���������һ�����������ϵͳ��ϵͳ�������ӵĹ�����м������� |
+| [contains](arkts-performanceanalysis-contains-f.md#contains-1) | &gt; **˵����**&gt;&gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.containsCheckRule](arkts-performanceanalysis-containscheckrule-f.md#containscheckrule-1)�������ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
+| [containsCheckRule](arkts-performanceanalysis-containscheckrule-f.md#containscheckrule-1) | ��ǰ�����ӵĹ������Ƿ������ĳһ���ض��Ĺ����������Ĺ��򼶱�Ϊ�̼߳�������ڵ�ǰ�߳��н��в�ѯ�� |
+| [getRule](arkts-performanceanalysis-getrule-f.md#getrule-1) | ��ȡ��ǰ�̹߳��򡢽��̹��򡢸澯����ĺϼ��� |
+| [removeCheckRule](arkts-performanceanalysis-removecheckrule-f.md#removecheckrule-1) | ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
+| [removeRule](arkts-performanceanalysis-removerule-f.md#removerule-1) | &gt; **˵����**&gt;&gt; ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��[hichecker.removeCheckRule](arkts-performanceanalysis-removecheckrule-f.md#removecheckrule-1)�����ɾ��һ�����������ɾ���Ĺ��������������Ч�� |
+
+### 常量
+
+| 名称 | 说明 |
+| --- | --- |
+| [RULE_CAUTION_PRINT_LOG](arkts-performanceanalysis-hichecker-con.md#rule_caution_print_log) | �澯���򣬵��и澯ʱ��¼��־�� |
+| [RULE_CAUTION_TRIGGER_CRASH](arkts-performanceanalysis-hichecker-con.md#rule_caution_trigger_crash) | �澯���򣬵��и澯ʱ��Ӧ���˳��� |
+| [RULE_CHECK_ABILITY_CONNECTION_LEAK](arkts-performanceanalysis-hichecker-con.md#rule_check_ability_connection_leak) | �����򣬼���Ƿ���abilityй¶�� |
+| [RULE_CHECK_ARKUI_PERFORMANCE](arkts-performanceanalysis-hichecker-con.md#rule_check_arkui_performance) | �����򣬼��arkui���ܡ� |
+| [RULE_THREAD_CHECK_NETWORK_USAGE](arkts-performanceanalysis-hichecker-con.md#rule_thread_check_network_usage) | �����򣬼���߳��Ƿ���������ʱ�ӿڡ� |
+| [RULE_THREAD_CHECK_SLOW_PROCESS](arkts-performanceanalysis-hichecker-con.md#rule_thread_check_slow_process) | �����򣬼���Ƿ��к�ʱ���������á� |
+

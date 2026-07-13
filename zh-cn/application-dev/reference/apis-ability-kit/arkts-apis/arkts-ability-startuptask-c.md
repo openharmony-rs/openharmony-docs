@@ -7,8 +7,6 @@ The module provides capabilities related to startup tasks in
 
 **装饰器类型：** @Sendable
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Ability.AppStartup
 
 ## init
@@ -29,13 +27,13 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | AbilityStageContext | 是 | [AbilityStage](arkts-ability-abilitystage-c.md#AbilityStage)的上下文环境 |
+| context | AbilityStageContext | 是 | [AbilityStage](arkts-ability-abilitystage-c.md)的上下文环境 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Object \\| void&gt; | Promise used to return the execution result. |
+| Promise&lt;Object \| void&gt; | Promise used to return the execution result. |
 
 **示例：**
 

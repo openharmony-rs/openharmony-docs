@@ -1,18 +1,18 @@
 # RemoteAbilityInfo（系统接口）
 
-remoteAbility��Ϣ��
+remoteAbility信息。
 
-> **˵����**
+> **说明：**
 >
-> ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[bundleManager-RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md#RemoteAbilityInfo)�����
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md)替代。
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [remoteAbilityInfo:RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md#RemoteAbilityInfo)
+**替代接口：** [remoteAbilityInfo:RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md)
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -24,7 +24,7 @@ remoteAbility��Ϣ��
 readonly elementName: ElementName
 ```
 
-abilityԪ����Դ��Ϣ��
+ability元素资源信息。
 
 **类型：** ElementName
 
@@ -46,7 +46,7 @@ abilityԪ����Դ��Ϣ��
 readonly icon: string
 ```
 
-ָ����ability��ͼ����Ϣ��
+指明的ability的图标信息。
 
 **类型：** string
 
@@ -68,7 +68,7 @@ readonly icon: string
 readonly label: string
 ```
 
-ָ��ability�����ơ�
+指明ability的名称。
 
 **类型：** string
 

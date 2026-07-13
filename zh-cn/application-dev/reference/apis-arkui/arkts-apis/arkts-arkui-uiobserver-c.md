@@ -4,14 +4,12 @@
 
 > **说明：**
 
-> - 以下API需先使用UIContext中的[getUIObserver()](arkts-arkui-uicontext-c.md#getUIObserver-1)方法获取到UIObserver对象，再通过该对象调用对应方法。
+> - 以下API需先使用UIContext中的[getUIObserver()](arkts-arkui-uicontext-c.md#getuiobserver-1)方法获取到UIObserver对象，再通过该对象调用对应方法。
 >
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](ui_extension_component)等<!--DelEnd-->跨进程场景的信
 > 息。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +26,7 @@ addGlobalGestureListener(type: GestureListenerType,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,13 +44,11 @@ addGlobalGestureListener(type: GestureListenerType,
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback<observer.NavDestinationInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +58,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
 | options | { navigationId: ResourceStr } | 是 | The options object. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and<br/>navigation ID will be removed. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event type andnavigation ID will be removed. |
 
 ## off('navDestinationUpdate')
 
@@ -72,11 +68,11 @@ off(type: 'navDestinationUpdate', callback?: Callback<observer.NavDestinationInf
 
 Removes a callback function that was previously registered with `on()`.
 
-**起始版本：** 11
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,8 +80,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate<br/>'. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all<br/>callbacks for the given event type<br/>will be removed. |
+| type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event typewill be removed. |
 
 ## off('navDestinationUpdateByUniqueId')
 
@@ -99,7 +95,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +105,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdateByUniqueId'. |
 | navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type<br/>will be removed. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event typewill be removed. |
 
 ## off('scrollEvent')
 
@@ -123,7 +119,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,7 +129,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | Callback&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and<br/>scroll ID will be removed. |
+| callback | Callback&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event type andscroll ID will be removed. |
 
 ## off('scrollEvent')
 
@@ -147,7 +143,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,7 +152,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
-| callback | Callback&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type<br/>will be removed. |
+| callback | Callback&lt;observer.ScrollEventInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event typewill be removed. |
 
 ## off('routerPageUpdate')
 
@@ -170,7 +166,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,7 +175,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'routerPageUpdate' | 是 | The type of event to remove the listener for. Must be 'routerPageUpdate'. |
-| callback | Callback&lt;observer.RouterPageInfo&gt; | 否 | The callback function to remove. If not provided, all<br/>callbacks for the given event type<br/>will be removed. |
+| callback | Callback&lt;observer.RouterPageInfo&gt; | 否 | The callback function to remove. If not provided, allcallbacks for the given event typewill be removed. |
 
 ## off('densityUpdate')
 
@@ -193,7 +189,7 @@ off(type: 'densityUpdate', callback?: Callback<observer.DensityInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,7 +198,7 @@ off(type: 'densityUpdate', callback?: Callback<observer.DensityInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| callback | Callback&lt;observer.DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该<br/>[UIContext](arkts-arkui-uicontext.md)下所有屏幕像素密度变化事件监听。 |
+| callback | Callback&lt;observer.DensityInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有屏幕像素密度变化事件监听。 |
 
 ## off('willDraw')
 
@@ -216,7 +212,7 @@ off(type: 'willDraw', callback?: Callback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,7 +235,7 @@ off(type: 'didLayout', callback?: Callback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,7 +261,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,7 +270,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
-| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If notprovided,all callbacks for the given event type will be removed. |
 
 ## off('navDestinationSwitch')
 
@@ -292,7 +288,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,7 +298,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
 | observerOptions | observer.NavDestinationSwitchObserverOptions | 是 | Options. |
-| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 否 | The callback function to remove. If notprovided,all callbacks for the given event type will be removed. |
 
 ## off('willClick')
 
@@ -316,7 +312,7 @@ Removes a callback function to be called before clickEvent is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -325,7 +321,7 @@ Removes a callback function to be called before clickEvent is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willClick' | 是 | The type of event to remove the listener for. |
-| callback | ClickEventListenerCallback | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | ClickEventListenerCallback | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## off('didClick')
 
@@ -339,7 +335,7 @@ Removes a callback function to be called after clickEvent is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,7 +344,7 @@ Removes a callback function to be called after clickEvent is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didClick' | 是 | The type of event to remove the listener for. |
-| callback | ClickEventListenerCallback | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | ClickEventListenerCallback | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## off('willClick')
 
@@ -362,7 +358,7 @@ Removes a callback function to be called before tapGesture is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -371,7 +367,7 @@ Removes a callback function to be called before tapGesture is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willClick' | 是 | The type of event to remove the listener for. |
-| callback | GestureEventListenerCallback | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | GestureEventListenerCallback | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## off('didClick')
 
@@ -385,7 +381,7 @@ Removes a callback function to be called after tapGesture is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -394,7 +390,7 @@ Removes a callback function to be called after tapGesture is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didClick' | 是 | The type of event to remove the listener for. |
-| callback | GestureEventListenerCallback | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | GestureEventListenerCallback | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## off('beforePanStart')
 
@@ -403,13 +399,13 @@ off(type: 'beforePanStart', callback?: PanListenerCallback): void
 ```
 
 取消[on('beforePanStart')](arkts-arkui-uiobserver-c.md#on-16)监听Pan手势
-[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行前的callback回调。
+[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的callback回调。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,8 +413,8 @@ off(type: 'beforePanStart', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，即Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行前的指令下发情况。 |
-| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行前的指令下发监听回调。 |
+| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，即Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况。 |
+| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发监听回调。 |
 
 ## off('beforePanEnd')
 
@@ -427,13 +423,13 @@ off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 ```
 
 取消[on('beforePanEnd')](arkts-arkui-uiobserver-c.md#on-17)监听Pan手势
-[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行前的callback回调。
+[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的callback回调。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -441,8 +437,8 @@ off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，即Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事<br/>件执行前的指令下发情况。 |
-| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势<br/>[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行前的指令下发监听回调。 |
+| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，即Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况。 |
+| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发监听回调。 |
 
 ## off('afterPanStart')
 
@@ -451,13 +447,13 @@ off(type: 'afterPanStart', callback?: PanListenerCallback): void
 ```
 
 取消[on('afterPanStart')](arkts-arkui-uiobserver-c.md#on-18)监听Pan手势
-[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行后的callback回调。
+[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的callback回调。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -465,8 +461,8 @@ off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，即Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行后的指令下发情况。 |
-| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行后的指令下发监听回调。 |
+| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，即Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况。 |
+| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发监听回调。 |
 
 ## off('afterPanEnd')
 
@@ -475,13 +471,13 @@ off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 ```
 
 取消[on('afterPanEnd')](arkts-arkui-uiobserver-c.md#on-19)监听Pan手势
-[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行后的callback回调。
+[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的callback回调。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,8 +485,8 @@ off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，即Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执<br/>行后的指令下发情况。 |
-| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势<br/>[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行后的指令下发监听回调。 |
+| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，即Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况。 |
+| callback | PanListenerCallback | 否 | 需要被注销的回调函数。不传参数时，取消所有的Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发监听回调。 |
 
 ## off('tabContentUpdate')
 
@@ -504,7 +500,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -514,7 +510,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type and Tabs ID will be removed. |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
 
 ## off('tabContentUpdate')
 
@@ -528,7 +524,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -537,7 +533,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type and Tabs ID will be removed. |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type and Tabs ID will be removed. |
 
 ## off('tabChange')
 
@@ -551,7 +547,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback<obs
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -561,7 +557,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback<obs
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要移除监听的事件类型。必须是 'tabChange'。 |
 | config | observer.ObserverOptions | 是 | 选项对象。包含监听的tabs组件ID。 |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。<br/>如果未提供该参数，则将移除该tabs id的所有'tabChange'无感监听回调函数。 |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。如果未提供该参数，则将移除该tabs id的所有'tabChange'无感监听回调函数。 |
 
 ## off('tabChange')
 
@@ -575,7 +571,7 @@ off(type: 'tabChange', callback?: Callback<observer.TabContentInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,7 +580,7 @@ off(type: 'tabChange', callback?: Callback<observer.TabContentInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabChange' | 是 | 要移除监听的事件类型。必须是 'tabChange'。 |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。<br/>如果未提供该参数，则将移除所有tabs的所有'tabChange'无感监听回调函数。 |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 否 | 要移除的回调函数。如果未提供该参数，则将移除所有tabs的所有'tabChange'无感监听回调函数。 |
 
 ## off('windowSizeLayoutBreakpointChange')
 
@@ -598,7 +594,7 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback<observer.Windo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -607,7 +603,7 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback<observer.Windo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeLayoutBreakpointChange' | 是 | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
-| callback | Callback&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该<br/>[UIContext](arkts-arkui-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
+| callback | Callback&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 否 | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-arkui-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
 
 ## off('nodeRenderState')
 
@@ -621,7 +617,7 @@ off(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback?: NodeRenderSt
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -645,7 +641,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,7 +650,7 @@ Removes a callback function that was previously registered with `on()`.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
-| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## off('textChange')
 
@@ -668,7 +664,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -678,7 +674,7 @@ Removes a callback function that was previously registered with `on()`.
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
 | identity | observer.ObserverOptions | 是 | Identity options. |
-| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,<br/>all callbacks for the given event type will be removed. |
+| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 否 | The callback function to remove. If not provided,all callbacks for the given event type will be removed. |
 
 ## offNavDestinationSizeChange
 
@@ -692,7 +688,7 @@ offNavDestinationSizeChange(callback?: Callback<observer.NavDestinationInfo>): v
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,7 +710,7 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Cal
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -722,7 +718,7 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过 [queryNavigationInfo]{@link<br/>BaseCustomComponent#queryNavigationInfo}获取。 |
+| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过 [queryNavigationInfo]{@linkBaseCustomComponent#queryNavigationInfo}获取。 |
 | callback | Callback&lt;observer.NavDestinationInfo&gt; | 否 | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
 
 ## offRouterPageSizeChange
@@ -737,7 +733,7 @@ offRouterPageSizeChange(callback?: Callback<observer.RouterPageInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,7 +755,7 @@ offSwiperContentUpdate(callback?: Callback<SwiperContentInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -781,7 +777,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -798,13 +794,11 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<observer.NavDestinationInfo>): void
 ```
 
-Subscribes to status changes of this **NavDestination** component.
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -812,9 +806,9 @@ Subscribes to status changes of this **NavDestination** component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type.<br/>The value is fixed at **'navDestinationUpdate'**, which indicates the state change event<br/><br/>of the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | Event type.The value is fixed at **'navDestinationUpdate'**, which indicates the state change event<br>of the **NavDestination** component. |
 | options | { navigationId: ResourceStr } | 是 | ID of the target **NavDestination** component. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current<br/><br/>state of the **NavDestination** component. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current<br>state of the **NavDestination** component. |
 
 ## on('navDestinationUpdate')
 
@@ -824,11 +818,11 @@ on(type: 'navDestinationUpdate', callback: Callback<observer.NavDestinationInfo>
 
 Subscribes to status changes of this **NavDestination** component.
 
-**起始版本：** 11
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,8 +830,8 @@ Subscribes to status changes of this **NavDestination** component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type.<br/>The value is fixed at **'navDestinationUpdate'**,<br/><br/>which indicates the state change event of the **NavDestination** component. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current state of<br/><br/>the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | Event type.The value is fixed at **'navDestinationUpdate'**,<br>which indicates the state change event of the **NavDestination** component. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback used to return the current state of<br>the **NavDestination** component. |
 
 ## on('navDestinationUpdateByUniqueId')
 
@@ -851,7 +845,7 @@ Registers a callback function to be called when the navigation destination is up
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -861,7 +855,7 @@ Registers a callback function to be called when the navigation destination is up
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to listen for. Must be 'navDestinationUpdateByUniqueId'. |
 | navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | The callback function to be called when the navigation destination is updated. |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | The callback function to be called when the navigationdestination is updated. |
 
 ## on('scrollEvent')
 
@@ -875,7 +869,7 @@ Registers a callback function to be called when the scroll event start or stop.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -885,7 +879,7 @@ Registers a callback function to be called when the scroll event start or stop.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | Callback&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | Callback&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll eventstart or stop. |
 
 ## on('scrollEvent')
 
@@ -899,7 +893,7 @@ Registers a callback function to be called when the scroll event start or stop.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -908,7 +902,7 @@ Registers a callback function to be called when the scroll event start or stop.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| callback | Callback&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | Callback&lt;observer.ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll eventstart or stop. |
 
 ## on('routerPageUpdate')
 
@@ -918,11 +912,11 @@ on(type: 'routerPageUpdate', callback: Callback<observer.RouterPageInfo>): void
 
 Unsubscribes to state changes of the page in the router.
 
-**起始版本：** 11
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -930,7 +924,7 @@ Unsubscribes to state changes of the page in the router.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'routerPageUpdate' | 是 | Event type.<br/><br/>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
+| type | 'routerPageUpdate' | 是 | Event type.<br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
 | callback | Callback&lt;observer.RouterPageInfo&gt; | 是 | Callback to be unregistered. |
 
 ## on('densityUpdate')
@@ -945,7 +939,7 @@ on(type: 'densityUpdate', callback: Callback<observer.DensityInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,7 +948,7 @@ on(type: 'densityUpdate', callback: Callback<observer.DensityInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| callback | Callback&lt;observer.DensityInfo&gt; | 是 | 回调函数。携带<br/>[DensityInfo](arkts-arkui-uiobserver-densityinfo-c.md#DensityInfo)，返回变化后的屏幕像素密度。 |
+| callback | Callback&lt;observer.DensityInfo&gt; | 是 | 回调函数。携带[DensityInfo](arkts-arkui-densityinfo-c.md)，返回变化后的屏幕像素密度。 |
 
 ## on('willDraw')
 
@@ -968,7 +962,7 @@ on(type: 'willDraw', callback: Callback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -991,7 +985,7 @@ on(type: 'didLayout', callback: Callback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1017,7 +1011,7 @@ Registers a callback function to be called when the navigation switched to a new
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1026,7 +1020,7 @@ Registers a callback function to be called when the navigation switched to a new
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
-| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called when<br/>the navigation switched to a new navDestination. |
+| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called whenthe navigation switched to a new navDestination. |
 
 ## on('navDestinationSwitch')
 
@@ -1044,7 +1038,7 @@ Registers a callback function to be called when the navigation switched to a new
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1054,7 +1048,7 @@ Registers a callback function to be called when the navigation switched to a new
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
 | observerOptions | observer.NavDestinationSwitchObserverOptions | 是 | Options. |
-| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called when the<br/>navigation switched to a new navDestination. |
+| callback | Callback&lt;observer.NavDestinationSwitchInfo&gt; | 是 | The callback function to be called when thenavigation switched to a new navDestination. |
 
 ## on('willClick')
 
@@ -1068,7 +1062,7 @@ Registers a callback function to be called before clickEvent is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1077,7 +1071,7 @@ Registers a callback function to be called before clickEvent is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willClick' | 是 | The type of event to listen for. |
-| callback | ClickEventListenerCallback | 是 | The callback function to be called<br/>when the clickEvent will be trigger or after. |
+| callback | ClickEventListenerCallback | 是 | The callback function to be calledwhen the clickEvent will be trigger or after. |
 
 ## on('didClick')
 
@@ -1091,7 +1085,7 @@ Registers a callback function to be called after clickEvent is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1100,7 +1094,7 @@ Registers a callback function to be called after clickEvent is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didClick' | 是 | The type of event to listen for. |
-| callback | ClickEventListenerCallback | 是 | The callback function to be called<br/>when the clickEvent will be trigger or after. |
+| callback | ClickEventListenerCallback | 是 | The callback function to be calledwhen the clickEvent will be trigger or after. |
 
 ## on('willClick')
 
@@ -1114,7 +1108,7 @@ Registers a callback function to be called before tapGesture is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1123,7 +1117,7 @@ Registers a callback function to be called before tapGesture is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'willClick' | 是 | The type of event to listen for. |
-| callback | GestureEventListenerCallback | 是 | The callback function to be called<br/>when the clickEvent will be trigger or after. |
+| callback | GestureEventListenerCallback | 是 | The callback function to be calledwhen the clickEvent will be trigger or after. |
 
 ## on('didClick')
 
@@ -1137,7 +1131,7 @@ Registers a callback function to be called after tapGesture is called.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1146,7 +1140,7 @@ Registers a callback function to be called after tapGesture is called.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'didClick' | 是 | The type of event to listen for. |
-| callback | GestureEventListenerCallback | 是 | The callback function to be called<br/>when the clickEvent will be trigger or after. |
+| callback | GestureEventListenerCallback | 是 | The callback function to be calledwhen the clickEvent will be trigger or after. |
 
 ## on('beforePanStart')
 
@@ -1154,14 +1148,14 @@ Registers a callback function to be called after tapGesture is called.
 on(type: 'beforePanStart', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件，在
-[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件，在
+[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1169,8 +1163,8 @@ on(type: 'beforePanStart', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，用于监听Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行前的指令下发情况，所注册回调将于Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件触发前触发。 |
-| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的<br/>[GestureEvent](arkts-arkui-tapgesture-gestureevent-i.md#GestureEvent)，[GestureRecognizer](arkts-arkui-tapgesture-gesturerecognizer-c.md#GestureRecognizer)和组件的[FrameNode](arkts-arkui-framenode-c.md#FrameNode)。 |
+| type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，用于监听Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件触发前触发。 |
+| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
 ## on('beforePanEnd')
 
@@ -1178,14 +1172,14 @@ on(type: 'beforePanStart', callback: PanListenerCallback): void
 on(type: 'beforePanEnd', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行前的指令下发情况，在
-[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，在
+[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1193,8 +1187,8 @@ on(type: 'beforePanEnd', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，用于监听Pan手势<br/>[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行前的指令下发情况，所注册回调将于Pan手势<br/>[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件触发前触发。 |
-| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的<br/>[GestureEvent](arkts-arkui-tapgesture-gestureevent-i.md#GestureEvent)，[GestureRecognizer](arkts-arkui-tapgesture-gesturerecognizer-c.md#GestureRecognizer)和组件的[FrameNode](arkts-arkui-framenode-c.md#FrameNode)。 |
+| type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，用于监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件触发前触发。 |
+| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
 ## on('afterPanStart')
 
@@ -1202,14 +1196,14 @@ on(type: 'beforePanEnd', callback: PanListenerCallback): void
 on(type: 'afterPanStart', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行后的指令下发情况，在
-[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，在
+[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1217,8 +1211,8 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，用于监听Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件执行后的指令下发情况，所注册回调将于Pan手势<br/>[onActionStart](arkts-arkui-pangestureinterface-i.md#onActionStart-1)事件触发后触发。 |
-| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的<br/>[GestureEvent](arkts-arkui-tapgesture-gestureevent-i.md#GestureEvent)，[GestureRecognizer](arkts-arkui-tapgesture-gesturerecognizer-c.md#GestureRecognizer)和组件的[FrameNode](arkts-arkui-framenode-c.md#FrameNode)。 |
+| type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，用于监听Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionStart](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionstart-1)事件触发后触发。 |
+| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
 ## on('afterPanEnd')
 
@@ -1226,14 +1220,14 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 on(type: 'afterPanEnd', callback: PanListenerCallback): void
 ```
 
-监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行后的指令下发情况，在
-[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，在
+[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1241,8 +1235,8 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)<br/>事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkts-arkui-pangestureinterface-i.md#onActionEnd-1)事件触发后触发。 |
-| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的<br/>[GestureEvent](arkts-arkui-tapgesture-gestureevent-i.md#GestureEvent)，[GestureRecognizer](arkts-arkui-tapgesture-gesturerecognizer-c.md#GestureRecognizer)和组件的[FrameNode](arkts-arkui-framenode-c.md#FrameNode)。 |
+| type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](../arkts-components/arkts-arkui-pangestureinterface-i.md#onactionend-1)事件触发后触发。 |
+| callback | PanListenerCallback | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
 ## on('tabContentUpdate')
 
@@ -1256,7 +1250,7 @@ Registers a callback function to be called when the tabContent is showed or hidd
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1266,7 +1260,7 @@ Registers a callback function to be called when the tabContent is showed or hidd
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
 | options | observer.ObserverOptions | 是 | The options object. |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 是 | The callback function to be called<br/>when the tabContent show or hide. |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 是 | The callback function to be calledwhen the tabContent show or hide. |
 
 ## on('tabContentUpdate')
 
@@ -1280,7 +1274,7 @@ Registers a callback function to be called when the tabContent is showed or hidd
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1289,7 +1283,7 @@ Registers a callback function to be called when the tabContent is showed or hidd
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
-| callback | Callback&lt;observer.TabContentInfo&gt; | 是 | The callback function to be called<br/>when the tabContent is showed or hidden. |
+| callback | Callback&lt;observer.TabContentInfo&gt; | 是 | The callback function to be calledwhen the tabContent is showed or hidden. |
 
 ## on('tabChange')
 
@@ -1303,7 +1297,7 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback<obser
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1327,7 +1321,7 @@ on(type: 'tabChange', callback: Callback<observer.TabContentInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1350,7 +1344,7 @@ on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1359,7 +1353,7 @@ on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowS
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeLayoutBreakpointChange' | 是 | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
-| callback | Callback&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 是 | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽<br/>度和高度所在的布局断点枚举。 |
+| callback | Callback&lt;observer.WindowSizeLayoutBreakpointInfo&gt; | 是 | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
 
 ## on('nodeRenderState')
 
@@ -1371,7 +1365,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 
 注意节点数量的限制。出于性能考虑，在单个UI实例中，注册节点太多，将会抛出异常。
 
-通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件[Swiper](arkts-arkui-swiper.md)，即使
+通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件[Swiper](../arkts-components/arkts-arkui-swiper.md)，即使
 [cachedCount](SwiperAttribute#cachedCount(count: number, isShown: boolean))属性中的参数isShown配置为true，也不会触发
 RENDER_OUT通知。
 
@@ -1379,7 +1373,7 @@ RENDER_OUT通知。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1389,13 +1383,13 @@ RENDER_OUT通知。
 | --- | --- | --- | --- |
 | type | 'nodeRenderState' | 是 | 监听事件，固定为'nodeRenderState'，用于监听节点渲染状态发生改变。 |
 | nodeIdentity | NodeIdentity | 是 | 节点标识。 |
-| callback | NodeRenderStateChangeCallback | 是 | 回调函数。可以获得节点渲染状态改变事件的<br/>[NodeRenderState](arkts-arkui-noderenderstate-e.md#NodeRenderState)和组件的[FrameNode](arkts-arkui-framenode-c.md#FrameNode)。 |
+| callback | NodeRenderStateChangeCallback | 是 | 回调函数。可以获得节点渲染状态改变事件的[NodeRenderState](arkts-arkui-noderenderstate-e.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [161001](../../errorcode-universal.md#161001-The) | The count of nodes monitoring render state is over the limitation. |
+| [161001](../errorcode-node-render-monitor.md#161001-监听渲染状态的节点数超过限制) | The count of nodes monitoring render state is over the limitation. |
 
 ## on('textChange')
 
@@ -1409,7 +1403,7 @@ Registers a callback function to be called when text field's content is changed.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1418,7 +1412,7 @@ Registers a callback function to be called when text field's content is changed.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
-| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called when<br/>text field's content is changed. |
+| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called whentext field's content is changed. |
 
 ## on('textChange')
 
@@ -1432,7 +1426,7 @@ Registers a callback function to be called when text field's content is changed.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1442,7 +1436,7 @@ Registers a callback function to be called when text field's content is changed.
 | --- | --- | --- | --- |
 | type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
 | identity | observer.ObserverOptions | 是 | Identity options. |
-| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called when the<br/>text field's content is changed. |
+| callback | Callback&lt;observer.TextChangeEventInfo&gt; | 是 | The callback function to be called when thetext field's content is changed. |
 
 ## onNavDestinationSizeChange
 
@@ -1456,7 +1450,7 @@ onNavDestinationSizeChange(callback: Callback<observer.NavDestinationInfo>): voi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1478,7 +1472,7 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callb
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1486,8 +1480,8 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo]{@link<br/>BaseCustomComponent#queryNavigationInfo}获取。 |
-| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback to be removed. If no parameter is passed,<br/>all callbacks with the same **navigationUniqueId** setting are removed. |
+| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo]{@linkBaseCustomComponent#queryNavigationInfo}获取。 |
+| callback | Callback&lt;observer.NavDestinationInfo&gt; | 是 | Callback to be removed. If no parameter is passed,all callbacks with the same **navigationUniqueId** setting are removed. |
 
 ## onRouterPageSizeChange
 
@@ -1501,7 +1495,7 @@ onRouterPageSizeChange(callback: Callback<observer.RouterPageInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1523,7 +1517,7 @@ onSwiperContentUpdate(callback: Callback<SwiperContentInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1545,7 +1539,7 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback<Swipe
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1568,7 +1562,7 @@ removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListene
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

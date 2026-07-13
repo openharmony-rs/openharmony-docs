@@ -1,102 +1,18 @@
 # Offset
 
 ```TypeScript
-declare type Offset = {
-  /**
-   * dx property.
-   *
-   *****/
-  /**
-   * dx property.
-   *
-   ******/
-  /**
-   * dx property.
-   *
-   *******/
-  dx: Length;
-
-  /**
-   * dy property.
-   *
-   *****/
-  /**
-   * dy property.
-   *
-   ******/
-  /**
-   * dy property.
-   *
-   *******/
-  dy: Length;
-}
+export type Offset = Vector2
 ```
 
-Defines the offset property.
+用于设置组件或效果的偏移。
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** {
-  /**
-   * dx property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @since 7
-   */
-  /**
-   * dx property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @crossplatform
-   * @since 10
-   */
-  /**
-   * dx property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @crossplatform
-   * @atomicservice
-   * @since 11
-   */
-  dx: Length;
-
-  /**
-   * dy property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @since 7
-   */
-  /**
-   * dy property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @crossplatform
-   * @since 10
-   */
-  /**
-   * dy property.
-   *
-   * @type { Length }
-   * @syscap SystemCapability.ArkUI.ArkUI.Full
-   * @FaAndStageModel
-   * @crossplatform
-   * @atomicservice
-   * @since 11
-   */
-  dy: Length;
-}
+**属性类型：** Vector2
 

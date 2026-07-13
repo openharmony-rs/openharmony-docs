@@ -1,16 +1,14 @@
 # EnterpriseAdminExtensionAbility
 
-��ģ���ṩ[��ҵ�豸������չ����](../../../../mdm/mdm-kit-term.md#��ҵ�豸������չ����)��
+本模块提供[企业设备管理扩展能力](../../../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
 
-�豸����Ӧ����Ҫ����һ��EnterpriseAdminExtensionAbility����д��ؽӿڣ��Դ˾߱�ģ���ṩ�ĸ������������������ϵͳ���͵ĸ�Ӧ�ñ�������߽�������֪ͨ��
+设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,9 +18,9 @@
 onAccountAdded(accountId: number): void
 ```
 
-ϵͳ�˺������¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_ACCOUNT_ADDED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���ϵͳ�˺������¼���ϵͳ�˺������¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+系统账号新增事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_ACCOUNT_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号新增事件，系统账号新增事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 18
 
@@ -34,7 +32,7 @@ onAccountAdded(accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | number | 是 | �������û�ID�� |
+| accountId | number | 是 | 新增的用户ID。 |
 
 **示例：**
 
@@ -55,9 +53,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAccountRemoved(accountId: number): void
 ```
 
-ϵͳ�˺�ɾ���¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_ACCOUNT_REMOVED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���ϵͳ�˺�ɾ���¼���ϵͳ�˺�ɾ���¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+系统账号删除事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_ACCOUNT_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号删除事件，系统账号删除事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 18
 
@@ -69,7 +67,7 @@ onAccountRemoved(accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | number | 是 | ��ɾ�����û�ID�� |
+| accountId | number | 是 | 被删除的用户ID。 |
 
 **示例：**
 
@@ -90,10 +88,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAccountSwitched(accountId: number): void
 ```
 
-ϵͳ�˺��л��¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_ACCOUNT_SWITCHED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���ϵͳ�˺��л��¼���ϵͳ�˺��л��¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա
-��
+系统账号切换事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_ACCOUNT_SWITCHED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统账号切换事件，系统账号切换事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员
+。
 
 **起始版本：** 18
 
@@ -105,7 +103,7 @@ onAccountSwitched(accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | number | 是 | �л�����û�ID�� |
+| accountId | number | 是 | 切换后的用户ID。 |
 
 **示例：**
 
@@ -126,7 +124,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAdminDisabled(): void
 ```
 
-��ǰ�豸����Ӧ�ñ��������󣬴����ûص�����ҵ����Ա����Ա����������豸������ϵͳ֪ͨ�豸����Ӧ���ѽ������adminȨ�ޡ��豸����Ӧ�ÿ��ڴ˻ص�������֪ͨ��ҵ����Ա�豸���ѹܡ�����ע�ᣬ��������Ĭ�ϴ����ûص���
+当前设备管理应用被解除激活后，触发该回调。企业管理员或者员工解除激活设备管理，系统通知设备管理应用已解除激活admin权限。设备管理应用可在此回调函数中通知企业管理员设备已脱管。无需注册，解除激活后默认触发该回调。
 
 **起始版本：** 12
 
@@ -152,7 +150,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAdminEnabled(): void
 ```
 
-��ǰ�豸����Ӧ�ñ�����󣬴����ûص�����ҵ����Ա����Ա�����𲢼����豸����Ӧ�ã�ϵͳ֪ͨ�豸����Ӧ���Ѽ���adminȨ�ޡ��豸����Ӧ�ÿ��ڴ˻ص������н��г�ʼ���������á�����ע�ᣬ�����Ĭ�ϴ����ûص���
+当前设备管理应用被激活后，触发该回调。企业管理员或者员工部署并激活设备管理应用，系统通知设备管理应用已激活admin权限。设备管理应用可在此回调函数中进行初始化策略设置。无需注册，激活后默认触发该回调。
 
 **起始版本：** 12
 
@@ -178,7 +176,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAdminPolicyChanged(event: common.PolicyChangedEvent): void
 ```
 
-���Ա��ʱ�ص�
+策略变更时回调
 
 **起始版本：** 26.0.0
 
@@ -190,7 +188,7 @@ onAdminPolicyChanged(event: common.PolicyChangedEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | common.PolicyChangedEvent | 是 | ���Ա���¼� |
+| event | common.PolicyChangedEvent | 是 | 策略变更事件 |
 
 **示例：**
 
@@ -212,9 +210,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAppStart(bundleName: string): void
 ```
 
-Ӧ�������¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_APP_START�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ�������¼����˲�Ӧ�������¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用启动事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_APP_START事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用启动事件，端侧应用启动事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
@@ -226,7 +224,7 @@ onAppStart(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ����Ӧ�õİ����� |
+| bundleName | string | 是 | 启动应用的包名。 |
 
 **示例：**
 
@@ -247,9 +245,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onAppStop(bundleName: string): void
 ```
 
-Ӧ��ֹͣ�¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_APP_STOP�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ��ֹͣ�¼����˲�Ӧ��ֹͣ�¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用停止事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_APP_STOP事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用停止事件，端侧应用停止事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
@@ -261,7 +259,7 @@ onAppStop(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ֹͣӦ�õİ����� |
+| bundleName | string | 是 | 停止应用的包名。 |
 
 **示例：**
 
@@ -282,9 +280,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleAdded(bundleName: string): void
 ```
 
-Ӧ�ð�װ�¼��ص����ص��а���Ӧ�ð�����ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BUNDLE_ADDED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ�ð�װ�¼����˲�Ӧ�ð�װ�¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用安装事件回调，回调中包含应用包名。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
@@ -296,7 +294,7 @@ onBundleAdded(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ����װӦ�õİ����� |
+| bundleName | string | 是 | 被安装应用的包名。 |
 
 **示例：**
 
@@ -317,9 +315,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleAdded(bundleName: string, accountId: number): void
 ```
 
-Ӧ�ð�װ�¼��ص����ص��а���Ӧ�ð������˺�ID��ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BUNDLE_ADDED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ�ð�װ�¼����˲�Ӧ�ð�װ�¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用安装事件回调，回调中包含应用包名和账号ID。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 14
 
@@ -331,8 +329,8 @@ onBundleAdded(bundleName: string, accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ����װӦ�õİ����� |
-| accountId | number | 是 | ����װӦ�����ڵ��û�ID�� |
+| bundleName | string | 是 | 被安装应用的包名。 |
+| accountId | number | 是 | 被安装应用所在的用户ID。 |
 
 **示例：**
 
@@ -354,9 +352,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleRemoved(bundleName: string): void
 ```
 
-Ӧ��ж���¼��ص����ص��а���Ӧ�ð�����ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BUNDLE_REMOVED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ��ж���¼����˲�Ӧ��ж���¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用卸载事件回调，回调中包含应用包名。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
@@ -368,7 +366,7 @@ onBundleRemoved(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
+| bundleName | string | 是 | 被卸载应用的包名。 |
 
 **示例：**
 
@@ -389,9 +387,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleRemoved(bundleName: string, accountId: number): void
 ```
 
-Ӧ��ж���¼��ص����ص��а���Ӧ�ð������˺�ID��ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BUNDLE_REMOVED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���Ӧ��ж���¼����˲�Ӧ��ж���¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+应用卸载事件回调，回调中包含应用包名和账号ID。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 14
 
@@ -403,8 +401,8 @@ onBundleRemoved(bundleName: string, accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
-| accountId | number | 是 | ��ж��Ӧ�����ڵ��û�ID�� |
+| bundleName | string | 是 | 被卸载应用的包名。 |
+| accountId | number | 是 | 被卸载应用所在的用户ID。 |
 
 **示例：**
 
@@ -426,10 +424,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onBundleUpdated(bundleName: string, accountId: number): void
 ```
 
-Ӧ�ø����¼��ص����ص��а���Ӧ�ð������û�ID��ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BUNDLE_UPDATED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ÿɶ��������û��µ�Ӧ�ø����¼���Ӧ�ø����¼�����ʱ��֪ͨ��ǰ�û��µ��豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н�����
-���ϱ���֪ͨ���û��µ���ҵ����Ա��
+应用更新事件回调，回调中包含应用包名和用户ID。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BUNDLE_UPDATED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅所有用户下的应用更新事件，应用更新事件触发时会通知当前用户下的设备管理应用，设备管理应用可以在此回调函数中进行事
+件上报，通知主用户下的企业管理员。
 
 **起始版本：** 26.0.0
 
@@ -441,8 +439,8 @@ onBundleUpdated(bundleName: string, accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ������Ӧ�õİ����� |
-| accountId | number | 是 | ������Ӧ�����ڵ��û�ID<br/><br/>ȡֵ��ΧΪȫ�������� |
+| bundleName | string | 是 | 被更新应用的包名。 |
+| accountId | number | 是 | 被更新应用所在的用户ID<br>取值范围为全体整数。 |
 
 **示例：**
 
@@ -463,8 +461,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onDeviceAdminDisabled(bundleName: string): void
 ```
 
-�������豸����Ӧ������ͨ�豸����Ӧ�ñ��������ʱ�ᴥ���˻ص�����ҵ����Ա����Ա�����������ͨ�豸����Ӧ�ã�ϵͳ֪ͨ�����豸����Ӧ���ѽ������adminȨ�ޡ������豸����Ӧ�ÿ��ڴ˻ص�������֪ͨ��ҵ����Ա�豸���ѹܡ�����Ҫע�ᣬ���
-�����Ĭ�ϴ����ûص���
+仅超级设备管理应用在普通设备管理应用被解除激活时会触发此回调。企业管理员或者员工解除激活普通设备管理应用，系统通知超级设备管理应用已解除激活admin权限。超级设备管理应用可在此回调函数中通知企业管理员设备已脱管。不需要注册，解除
+激活后默认触发该回调。
 
 **起始版本：** 23
 
@@ -476,7 +474,7 @@ onDeviceAdminDisabled(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ���������Ӧ�õİ����� |
+| bundleName | string | 是 | 被解除激活应用的包名。 |
 
 **示例：**
 
@@ -496,8 +494,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onDeviceAdminEnabled(bundleName: string): void
 ```
 
-�������豸����Ӧ������ͨ�豸����Ӧ�ñ�����ʱ�ᴥ���˻ص�����ҵ����Ա����Ա�����𲢼�����ͨ�豸����Ӧ�ã�ϵͳ֪ͨ�����豸����Ӧ���Ѽ���adminȨ�ޡ������豸����Ӧ�ÿ��ڴ˻ص������н��г�ʼ���������á�����Ҫע�ᣬ�����Ĭ�ϴ�����
-�ص���
+仅超级设备管理应用在普通设备管理应用被激活时会触发此回调。企业管理员或者员工部署并激活普通设备管理应用，系统通知超级设备管理应用已激活admin权限。超级设备管理应用可在此回调函数中进行初始化策略设置。不需要注册，激活后默认触发该
+回调。
 
 **起始版本：** 23
 
@@ -509,7 +507,7 @@ onDeviceAdminEnabled(bundleName: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ������Ӧ�õİ����� |
+| bundleName | string | 是 | 被激活应用的包名。 |
 
 **示例：**
 
@@ -529,10 +527,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onDeviceBootCompleted(): void
 ```
 
-�豸��������¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_BOOT_COMPLETED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö����豸��������¼����˲�ϵͳ���豸������ɺ��֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ
-����Ա��
+设备开机完成事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_BOOT_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅设备启动完成事件，端侧系统在设备开机完成后会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业
+管理员。
 
 **起始版本：** 24
 
@@ -559,7 +557,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 ```
 
-�����¼�����ʱ�ص���
+按键事件发生时回调。
 
 **起始版本：** 23
 
@@ -679,9 +677,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onKioskModeEntering(bundleName: string, accountId: number): void
 ```
 
-Ӧ�ý���Kioskģʽ�ص����ص��а���Ӧ�ð������û�ID��
+应用进入Kiosk模式回调，回调中包含应用包名和用户ID。
 
-KioskģʽΪϵͳ�����ṩ��һ��Ӧ������ģʽ����ģʽ�»Ὣ�豸�����ڵ���Ӧ�û���һ��Ӧ�����У�ͬʱ������״̬��״̬�������Ʋ����͹ؼ����ܽ��п��ƣ���ֹ�û����豸����������Ӧ�û�ִ������������
+Kiosk模式为系统层面提供的一种应用运行模式，该模式下会将设备锁定在单个应用或者一组应用运行，同时对锁屏状态、状态栏、手势操作和关键功能进行控制，防止用户在设备上启动其它应用或执行其它操作。
 
 **起始版本：** 20
 
@@ -693,8 +691,8 @@ KioskģʽΪϵͳ�����ṩ��һ��Ӧ������ģʽ���
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ����KioskģʽӦ�õİ����� |
-| accountId | number | 是 | ����KioskģʽӦ�����ڵ��û�ID�� |
+| bundleName | string | 是 | 进入Kiosk模式应用的包名。 |
+| accountId | number | 是 | 进入Kiosk模式应用所在的用户ID。 |
 
 **示例：**
 
@@ -715,7 +713,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onKioskModeExiting(bundleName: string, accountId: number): void
 ```
 
-Ӧ���˳�Kioskģʽ�ص����ص��а���Ӧ�ð������û�ID��
+应用退出Kiosk模式回调，回调中包含应用包名和用户ID。
 
 **起始版本：** 20
 
@@ -727,8 +725,8 @@ onKioskModeExiting(bundleName: string, accountId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | �˳�KioskģʽӦ�õİ����� |
-| accountId | number | 是 | �˳�KioskģʽӦ�����ڵ��û�ID�� |
+| bundleName | string | 是 | 退出Kiosk模式应用的包名。 |
+| accountId | number | 是 | 退出Kiosk模式应用所在的用户ID。 |
 
 **示例：**
 
@@ -749,7 +747,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onLogCollected(result: common.Result): void
 ```
 
-��־�ռ���ɻص�
+日志收集完成回调
 
 **起始版本：** 23
 
@@ -812,8 +810,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
 ```
 
-��װӦ���г�Ӧ�ýӿ�[bundleManager.installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md#installMarketApps-1)��װ
-����ص����ص��а���Ӧ�ð����Ͱ�װ�����
+安装应用市场应用接口[bundleManager.installMarketApps](arkts-mdm-installmarketapps-f.md#installmarketapps-1)安装
+结果回调，回调中包含应用包名和安装结果。
 
 **起始版本：** 22
 
@@ -825,8 +823,8 @@ onMarketAppInstallResult(bundleName: string, result: common.InstallationResult):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ���г�Ӧ�ð����� |
-| result | common.InstallationResult | 是 | ��װ����� |
+| bundleName | string | 是 | 应用市场应用包名。 |
+| result | common.InstallationResult | 是 | 安装结果。 |
 
 **示例：**
 
@@ -847,7 +845,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onStart(): void
 ```
 
-EnterpriseAdminExtensionAbility�����¼��ص���
+EnterpriseAdminExtensionAbility启动事件回调。
 
 **起始版本：** 12
 
@@ -874,10 +872,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onStartupGuideCompleted(scene: common.StartupScene): void
 ```
 
-����������¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_STARTUP_GUIDE_COMPLETED�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö��Ŀ���������¼����˲�ϵͳ���״��л����û���ɣ�����PC����OTA������ɡ��״ο�����ɿ�����
-ʱ��֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+开机向导完成事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_STARTUP_GUIDE_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导
+时会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 24
 
@@ -889,7 +887,7 @@ onStartupGuideCompleted(scene: common.StartupScene): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scene | common.StartupScene | 是 | ��������ɳ����� |
+| scene | common.StartupScene | 是 | 开机向导完成场景。 |
 
 **示例：**
 
@@ -916,9 +914,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 ```
 
-ϵͳ�����¼��ص���ͨ���ӿ�
-[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1)
-ע��MANAGED_EVENT_SYSTEM_UPDATE�¼������յ��˻ص�����ҵ�豸���������£��豸����Ӧ�ö���ϵͳ�����¼����˲�ϵͳ�����¼�֪ͨ�豸����Ӧ�ã��豸����Ӧ�ÿ����ڴ˻ص������н����¼��ϱ���֪ͨ��ҵ����Ա��
+系统更新事件回调。通过接口
+[adminManager.subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1)
+注册MANAGED_EVENT_SYSTEM_UPDATE事件才能收到此回调。企业设备管理场景下，设备管理应用订阅系统更新事件，端侧系统更新事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
 
 **起始版本：** 12
 
@@ -930,7 +928,7 @@ onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| systemUpdateInfo | systemManager.SystemUpdateInfo | 是 | ϵͳ���µİ汾��Ϣ�� |
+| systemUpdateInfo | systemManager.SystemUpdateInfo | 是 | 系统更新的版本信息。 |
 
 **示例：**
 
@@ -952,7 +950,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 context: EnterpriseAdminExtensionContext
 ```
 
-EnterpriseAdminExtensionAbility�������ġ��̳���[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#ExtensionContext)��
+EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 **类型：** EnterpriseAdminExtensionContext
 

@@ -4,8 +4,6 @@ Set configuration of a watermark. The position starts at top left corner.
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 ## height

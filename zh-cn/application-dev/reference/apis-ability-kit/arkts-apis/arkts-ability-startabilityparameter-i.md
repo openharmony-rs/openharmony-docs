@@ -1,7 +1,7 @@
 # StartAbilityParameter
 
 定义启动Ability参数，可以作为入参，调用
-[startAbility](./../@ohos.ability.featureAbility:featureAbility.startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<number>))
+[startAbility](arkts-ability-startability-f.md#startability-1)
 启动指定的Ability。
 
 **起始版本：** 6

@@ -88,7 +88,7 @@ const brand: string
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -218,7 +218,7 @@ const deviceType: string
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -454,7 +454,7 @@ const osFullName: string
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -502,7 +502,7 @@ const productModel: string
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -518,7 +518,7 @@ const productModelAlias: string
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -548,7 +548,7 @@ const sdkApiVersion: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -568,7 +568,7 @@ const sdkMinorApiVersion: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -588,7 +588,7 @@ const sdkPatchApiVersion: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 

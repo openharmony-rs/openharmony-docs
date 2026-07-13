@@ -16,7 +16,7 @@ declare function lstat(path: string): Promise<Stat>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br/>**说明**：从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -28,16 +28,16 @@ declare function lstat(path: string): Promise<Stat>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900030](../../errorcode-universal.md#13900030-File) | File name too long |
-| [13900033](../../errorcode-universal.md#13900033-Too) | Too many symbolic links encountered |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900018 | Not a directory |
+| 13900030 | File name too long |
+| 13900033 | Too many symbolic links encountered |
+| 13900038 | Value too large for defined data type |
+| 13900042 | Unknown error |
 
 
 ## lstat
@@ -56,21 +56,21 @@ declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br/>**说明**：从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 | callback | AsyncCallback&lt;Stat&gt; | 是 | 异步获取文件具体信息之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900030](../../errorcode-universal.md#13900030-File) | File name too long |
-| [13900033](../../errorcode-universal.md#13900033-Too) | Too many symbolic links encountered |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900002 | No such file or directory |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900018 | Not a directory |
+| 13900030 | File name too long |
+| 13900033 | Too many symbolic links encountered |
+| 13900038 | Value too large for defined data type |
+| 13900042 | Unknown error |
 

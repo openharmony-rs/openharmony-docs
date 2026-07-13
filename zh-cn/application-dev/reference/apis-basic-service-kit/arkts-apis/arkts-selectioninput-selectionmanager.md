@@ -8,35 +8,44 @@
 
 **起始版本：** 24
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel-1) | 创建划词面板。使用Promise异步回调。<br/>单个划词应用仅允许创建一个[MENU_PANEL](arkts-selectioninput-selectionpanel.md)和一个<br/>[MAIN_PANEL](arkts-selectioninput-selectionpanel.md)。<br/> |
-| <!--DelRow-->[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroyPanel-1) | 销毁划词面板。使用Promise异步回调。<br/> |
-| <!--DelRow-->[getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f-sys.md#getSelectionContent-1) | 获取选中文本的内容。使用Promise异步回调。<br/> |
-| <!--DelRow-->[off](arkts-basicservices-selectionmanager-off-f-sys.md#off-1) | 取消订阅划词完成事件。使用callback异步回调。<br/> |
-| <!--DelRow-->[on](arkts-basicservices-selectionmanager-on-f-sys.md#on-1) | 订阅划词完成事件。使用callback异步回调。<br/> |
+| [createPanel](arkts-basicservices-createpanel-f-sys.md#createpanel-1) | 创建划词面板。使用Promise异步回调。单个划词应用仅允许创建一个[MENU_PANEL](arkts-selectioninput-selectionpanel.md)和一个[MAIN_PANEL](arkts-selectioninput-selectionpanel.md)。 |
+| [destroyPanel](arkts-basicservices-destroypanel-f-sys.md#destroypanel-1) | 销毁划词面板。使用Promise异步回调。 |
+| [getSelectionContent](arkts-basicservices-getselectioncontent-f-sys.md#getselectioncontent-1) | 获取选中文本的内容。使用Promise异步回调。 |
+| [off](arkts-basicservices-off-f-sys.md#off-1) | 取消订阅划词完成事件。使用callback异步回调。 |
+| [on](arkts-basicservices-on-f-sys.md#on-1) | 订阅划词完成事件。使用callback异步回调。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [Panel](arkts-basicservices-selectionmanager-panel-i.md) | 划词面板。<br/> |
-| <!--DelRow-->[Panel](arkts-basicservices-selectionmanager-panel-i-sys.md) | 划词面板。<br/> |
-| <!--DelRow-->[SelectionInfo](arkts-basicservices-selectionmanager-selectioninfo-i-sys.md) | 划词事件信息。<br/> |
+| [Panel](arkts-basicservices-panel-i.md) | 划词面板。 |
 
-### 枚举
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[SelectionType](arkts-basicservices-selectionmanager-selectiontype-e-sys.md) | 定义触发划词的类型枚举。<br/> |
+| [Panel](arkts-basicservices-panel-i-sys.md) | 划词面板。 |
+| [SelectionInfo](arkts-basicservices-selectioninfo-i-sys.md) | 划词事件信息。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [SelectionType](arkts-basicservices-selectiontype-e-sys.md) | 定义触发划词的类型枚举。 |
+<!--DelEnd-->
 

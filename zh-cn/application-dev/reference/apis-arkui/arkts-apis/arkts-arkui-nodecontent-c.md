@@ -2,11 +2,9 @@
 
 NodeContent是节点内容的实体封装。
 
-**继承/实现关系：** NodeContent extends [Content](arkts-arkui-content-c.md#Content)
+**继承/实现关系：** NodeContent extends [Content](arkts-arkui-content-c.md)
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +20,7 @@ addFrameNode(node: FrameNode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +34,7 @@ addFrameNode(node: FrameNode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100025](../../errorcode-universal.md#100025-The) | The parameter is invalid. Details about the invalid parameter and the reason<br/>are included in the error message.<br/>For example: "The parameter 'node' is invalid: it cannot be adopted."&lt;br&gt;**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reasonare included in the error message.For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
 ## constructor
 
@@ -50,7 +48,7 @@ constructor()
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,7 +64,7 @@ removeFrameNode(node: FrameNode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
