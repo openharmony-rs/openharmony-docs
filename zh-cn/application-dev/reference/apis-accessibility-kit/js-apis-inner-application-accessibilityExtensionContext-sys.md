@@ -964,7 +964,8 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | elementId | number | 是 | 修改无障碍节点的elementId。 |
 | windowId | number | 是 | 修改无障碍节点的windowId。 |
-| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值。 |
+| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值，可修改的属性包括：
+accessibilityText，accessibilityGroup，accessibilityLevel，checkable， isChecked, isSelected, isClickable,  isEnable, customComponentType。|
 
 **返回值：**
 
