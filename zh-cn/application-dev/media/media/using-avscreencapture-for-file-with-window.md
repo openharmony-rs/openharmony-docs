@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    创建AVScreenCapture实例capture后，可以设置屏幕录屏所需要的参数。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
