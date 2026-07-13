@@ -240,7 +240,7 @@ setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 流媒体预下载的媒体来源对象。可通过[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreateMediaSourceWithUrl12)接口创建。 |
+| src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 流媒体预下载的媒体来源对象。 |
 | strategy | [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12) | 否   | 流媒体预下载播放策略。不传此参数时，播放器不应用特定的播放策略。 |
 
 **返回值：**
@@ -398,8 +398,8 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 要添加到播放列表的媒体源对象。可通过[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreateMediaSourceWithUrl12)接口创建。 |
-| id | string | 否   | 播放列表中已有媒体源的唯一标识ID，新添加的媒体源会插入到指定媒体源之前。该ID可通过[addPlaybackMediaSource](#addPlaybackMediaSource)接口返回获取。如果未指定，默认添加到列表末尾。 |
+| src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 要添加到播放列表的媒体源对象。 |
+| id | string | 否   | 播放列表中已有媒体源的唯一标识ID，新添加的媒体源会插入到指定媒体源之前。如果未指定，默认添加到列表末尾。 |
 
 **返回值：**
 
@@ -451,7 +451,7 @@ removePlaybackMediaSource(id: string): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| id | string | 是   | 要移除的媒体源的唯一标识ID。该ID是调用[addPlaybackMediaSource](#addPlaybackMediaSource)接口添加媒体源时返回的。 |
+| id | string | 是   | 要移除的媒体源的唯一标识ID。 |
 
 **返回值：**
 
@@ -719,7 +719,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                       |
 | ------ | ------ | ---- | ------------------------------------------ |
-| id    | string | 是 | 要跳转播放的媒体源的唯一标识ID。该ID可通过[addPlaybackMediaSource](#addPlaybackMediaSource)接口添加媒体源时返回获取。 |
+| id    | string | 是 | 要跳转播放的媒体源的唯一标识ID。 |
 
 **返回值：**
 
