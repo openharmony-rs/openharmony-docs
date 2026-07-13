@@ -39,6 +39,8 @@
 
 ## 应用预加载状态识别与判断
 
+从API version 22开始，应用可以在启动过程中识别并判断当前进程的预加载状态。
+
 当应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取当前进程的预加载类型（返回值为[AppPreloadType](../reference/apis-ability-kit/js-apis-app-ability-application.md#apppreloadtype22)）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
 
 > **说明：**
