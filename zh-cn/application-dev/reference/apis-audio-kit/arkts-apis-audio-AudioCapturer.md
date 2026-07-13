@@ -359,6 +359,40 @@ audioCapturer.start().then(() => {
 });
 ```
 
+## requestPlaybackCaptureStart
+
+requestPlaybackCaptureStart(callback: Callback\<PlaybackCaptureStartState>): void
+
+请求启动内录流接口，内录流只能通过该接口触发启动。使用callback异步回调。
+
+内录是指以系统内部音频数据作为音频源的输入类型，简称为内录，对应的流称为内录流。常用于录制目标设备应用发送到系统以供播放的音频。
+
+该接口为非阻塞接口，系统接收到内录启动请求后，会继续处理用户授权检查和内录流启动，最终结果通过回调函数返回。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[PlaybackCaptureStartState](arkts-apis-audio-e.md#playbackcapturestartstate)> | 是 | 回调函数，用于接收启动内录请求的最终结果。 |
+
+**示例：**
+
+```ts
+audioCapturer.requestPlaybackCaptureStart((state: audio.PlaybackCaptureStartState) => {
+  if (state === audio.PlaybackCaptureStartState.STATE_SUCCESS) {
+    console.info('Succeeded in starting Playback capture.');
+  } else {
+    console.error(`Failed to start Playback capture. State: ${state}.`);
+  }
+});
+```
+
 ## stop<sup>8+</sup>
 
 stop(callback: AsyncCallback<void\>): void
@@ -835,7 +869,7 @@ audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused capturer or ignore');
         // 若选择继续采集，需在此处主动执行开始采集的若干操作。
         break;
       default:
@@ -1089,7 +1123,7 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
-如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1204,10 +1238,10 @@ audioCapturer.off('stateChange');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let stateChangeCallback = (state: audio.AudioState) => {
   if (state == 1) {
-    console.info('audio renderer state is: STATE_PREPARED');
+    console.info('audio capturer state is: STATE_PREPARED');
   }
   if (state == 2) {
-    console.info('audio renderer state is: STATE_RUNNING');
+    console.info('audio capturer state is: STATE_RUNNING');
   }
 };
 

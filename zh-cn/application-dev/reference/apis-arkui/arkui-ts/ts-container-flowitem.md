@@ -3,11 +3,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-瀑布流组件[WaterFlow](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
+瀑布流组件[WaterFlow](ts-container-waterflow.md)的子组件，用于展示瀑布流中的具体项。
 
 
 > **说明：**
@@ -27,7 +27,7 @@
 
 FlowItem()
 
-使用该接口来创建瀑布流子组件。
+用于创建瀑布流子组件，仅支持作为[WaterFlow](ts-container-waterflow.md)组件的子组件使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

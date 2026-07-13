@@ -160,11 +160,12 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 
 ``` JSON5
 "module": {
-  // ···
+  // ...
   "deviceTypes": [
+    "default",
     "wearable"
   ],
-  // ···
+  // ...
 }
 ```
 

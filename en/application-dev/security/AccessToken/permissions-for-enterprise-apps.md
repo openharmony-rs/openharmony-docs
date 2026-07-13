@@ -747,3 +747,27 @@ Allows an enterprise common application to obtain the list of all installed appl
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.0
+
+## ohos.permission.kernel.TRAFFIC_FILTER
+
+Allows an application to check data packets in the network traffic path and determine whether to permit their passage, and redirect traffic to local ports.
+
+With this permission, the application can:
+
+1. Inline-intercept the network traffic processing path to perform real-time inspection, analysis, and policy judgment on network packets passing through the device or system. Based on packet attributes such as source address, destination address, port, and protocol type, the application can decide whether to allow the traffic to proceed, block the connection, drop the packets, modify the packets, or execute security actions such as triggering alerts and logging events. 
+2. Redirect specific network traffic to designated local ports for further processing by local security agents, proxy services, detection engines, or policy execution components. For example, it can be used for malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing. 
+
+<!--RP6--><!--RP6End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0

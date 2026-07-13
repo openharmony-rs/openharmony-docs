@@ -66,7 +66,7 @@
    >
    > [clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors)会清空所有已注册的监听回调。如需仅取消某个特定回调而保留其他回调，可使用[unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor)注销指定回调，传入的参数必须与[registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)注册时传入的回调引用一致。
 
-   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->  
+   <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
    
    ``` TypeScript
    // 获取智慧手势控制器实例，用于启停手势、注册监听、控制选中态
@@ -91,7 +91,7 @@
 
    为每个需要响应智慧手势的交互组件设置id和smartGestureShortcut属性。action设为GestureShortcut.PRIMARY表示该组件为首选响应目标，selectable设为true表示该组件可被选中。
 
-   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->  
+   <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
    
    ``` TypeScript
    Button(`按钮A / 点击=${this.btn0Count}`)
@@ -114,7 +114,7 @@
 > 多个监听回调按后注册先执行的顺序触发，某个回调消费手势后后续回调不再执行。
 > 回调返回值必须是合法的GestureHandlingResolution实例，否则改写不生效。
 
-   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->   
+   <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
    
    ``` TypeScript
    import {
@@ -182,7 +182,7 @@
 >
 > ClickActionProposal遵循“先选中，再点击”语义，当节点尚未被选中时不会立即触发点击。
 
-<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->     
+<!-- @[smartgesture_case1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
 
 ``` TypeScript
 import {
@@ -357,7 +357,7 @@ struct Demo1 {
 >
 > 长列表场景中ScrollActionProposal的distance参数应根据列表项高度合理设置，通常设为单个列表项的高度（如100vp），避免滚动过大导致用户错过内容。
 
-<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case2.ets) -->     
+<!-- @[smartgesture_case2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case2.ets) -->
 
 ``` TypeScript
 import {
@@ -510,7 +510,7 @@ struct Demo2 {
 >
 > requestSelected仅当目标组件满足以下全部条件时请求才会生效：组件可以响应智慧手势（smartGestureShortcut中enabled为true）、组件在屏幕内可见、且组件绑定了onClick或绑定了单击手势[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
-<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets) -->   
+<!-- @[smartgesture_case3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets) -->
 
 ``` TypeScript
 import {
@@ -696,7 +696,7 @@ struct Demo3 {
 >
 > PageSwitchActionProposal的pageCount参数取值范围为[0, +∞)，单位为页，小于0时按0处理。默认方向为向前翻页（包括向右和向下）。
 
-<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case4.ets) -->    
+<!-- @[smartgesture_case4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case4.ets) -->
 
 ``` TypeScript
 import {

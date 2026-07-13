@@ -156,7 +156,7 @@ subscribeManagedEventSync(admin: Want, managedEvents: Array\<ManagedEvent>): voi
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200002  | The administrator application does not have permission to manage the device. <br>适用版本：26.0.0+ |
 | 9200008  | The specified system event is invalid.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -602,7 +602,6 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | credential | string                   | 是   | 激活凭证。 |
 
-
 **错误码**：
 
 以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
@@ -611,6 +610,7 @@ enableSelfDeviceAdmin(admin: Want, credential: string): void
 | -------- | ------------------------------------------------------------ |
 | 9200003  | The administrator ability component is invalid.              |
 | 9200004  | Failed to activate the administrator application of the device. |
+| 9200012  | Parameter verification failed. |
 | 9200017  | The self-activation credential of the enterprise device administrator is invalid. |
 | 9200018  | This device is not an enterprise device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |

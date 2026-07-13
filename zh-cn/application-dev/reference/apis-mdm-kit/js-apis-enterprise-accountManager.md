@@ -481,6 +481,12 @@ removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | accountId   | number                                                  | 是   | 系统账号ID，指将被移除系统账号的ID。不可移除默认系统账号 (ID为100) ，会报错误码9201041。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当移除系统账号失败时，会抛出错误对象。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
@@ -515,8 +521,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
   console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
   // 根据系统账号ID移除创建的账号
   let accountId: number = accountInfo.localId;
-  accountManager.removeOsAccount(wantTemp, accountId);
-  console.info(`Succeeded in removing os accountId:${accountId}`);
+  return accountManager.removeOsAccount(wantTemp, accountId);
+}).then(() => {
+  console.info('Succeeded in removing os account');
 }).catch((err: BusinessError) => {
   console.error(`Failed to create and remove normal os account: code is ${err.code}, message is ${err.message}`);
 });
@@ -542,6 +549,12 @@ activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                      |
 | accountId   | number                                                  | 是   | 系统账号ID。切换不存在的系统账号，会报错误码9200012。切换受限制的系统账号，例如使用[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号，会报错误码9201041。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当切换系统账号失败时，会抛出错误对象。 |
 
 **错误码**：
 
@@ -577,8 +590,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
   console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
   // 根据系统账号ID切换账号
   let accountId: number = accountInfo.localId;
-  accountManager.activateOsAccount(wantTemp, accountId);
-  console.info(`Succeeded in activating os accountId:${accountId}`);
+  return accountManager.activateOsAccount(wantTemp, accountId);
+}).then(() => {
+  console.info('Succeeded in activating os account');
 }).catch((err: BusinessError) => {
   console.error(`Failed to create and activate normal os account: code is ${err.code}, message is ${err.message}`);
 });

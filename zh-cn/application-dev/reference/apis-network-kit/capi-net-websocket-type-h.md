@@ -121,7 +121,7 @@ websocket客户端接收数据的回调函数定义。
 | -- | -- |
 | [struct WebSocket](capi-netstack-websocket.md) *client | websocket客户端。 |
 |  char *data |   websocket客户端接收的数据。 |
-|  uint32_t length | websocket客户端接收的数据长度。 |
+|  uint32_t length | websocket客户端接收的数据长度。单位：Byte。|
 
 ### WebSocket_OnErrorCallback()
 

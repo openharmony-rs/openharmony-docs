@@ -9,7 +9,7 @@
 - 通常情况下，可以[通过AudioRoutingManager查询和监听音频输出设备](#通过audioroutingmanager查询和监听音频输出设备)。
 - 从API version 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持[通过AudioSession查询和监听音频输出设备](#通过audiosession查询和监听音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
 
 ## 通过AudioRoutingManager查询和监听音频输出设备
 
@@ -82,7 +82,9 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
   });
   // ...
   // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange');
+  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 <!--Del-->
@@ -144,8 +146,8 @@ let rendererInfo: audio.AudioRendererInfo = {
 // ...
 async function getPreferOutputDeviceForRendererInfo() {
   // ...
-  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
-    console.info(`device descriptor: ${desc}`);
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data: audio.AudioDeviceDescriptors) => {
+    console.info(`device descriptor: ${data}`);
 
     // ...
   }).catch((err: BusinessError) => {
@@ -177,7 +179,9 @@ let rendererInfo: audio.AudioRendererInfo = {
   });
   // ...
   // 取消监听最高优先级输出设备变化。
-  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
+  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', (desc: audio.AudioDeviceDescriptors) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
@@ -210,6 +214,10 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为本机扬声器。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
     console.info('setDefaultOutputDevice Success!');
@@ -219,6 +227,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
     // ...
   });
   // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
     console.info('setDefaultOutputDevice Success!');

@@ -1,12 +1,12 @@
 # 路径动画 (motionPath)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件进行位移动画时的运动路径。
+设置组件进行路径动画时的运动路径。
 
 >  **说明：**
 >
@@ -15,7 +15,7 @@
 ## motionPath
 motionPath(value: MotionPathOptions): T
 
-设置组件的路径动画。
+设置组件进行路径动画时的运动路径。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -25,7 +25,7 @@ motionPath(value: MotionPathOptions): T
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件的运动路径。             |
+| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件进行路径动画时的运动路径。             |
 
 **返回值：**
 
@@ -35,7 +35,7 @@ motionPath(value: MotionPathOptions): T
 
 ## MotionPathOptions
 
-设置组件的运动路径。
+路径动画的运动路径参数选项。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +45,7 @@ motionPath(value: MotionPathOptions): T
 | -------- | -------- | ---- | ---- | -------- |
 | path                         | string                     | 否 | 否  | 位移动画的运动路径，使用[svg路径](ts-drawing-components-path.md#svg路径描述规范)。path中支持使用start和end进行起点和终点的替代，如：'Mstart.x&nbsp;start.y&nbsp;L50&nbsp;50&nbsp;Lend.x&nbsp;end.y&nbsp;Z'，更多说明请参考[绘制路径](../../../ui/ui-js-components-svg-path.md)。<br/>设置为空字符串时相当于不设置路径动画。       |
 | from                         | number                     | 否 | 是   | 运动路径的起点。<br/>默认值：0.0<br/>取值范围：[0.0, 1.0]<br/>设置小于0.0或大于1.0的值时，按默认值0.0处理。   |
-| to                           | number                     | 否 |  是  | 运动路径的终点。<br/>默认值：1.0<br/>取值范围：[0.0, 1.0]<br/>设置小于0.0或大于1.0的值时，按默认值1.0处理，且满足to值 >= 异常值处理后的from值。   |
+| to                           | number                     | 否 |  是  | 运动路径的终点。<br/>默认值：1.0<br/>取值范围：[0.0, 1.0]<br/>设置小于0.0或大于1.0的值时，按默认值1.0处理，且满足to值 >= 异常值处理后的from值。当处理后的to值小于异常值处理后的from值时，to值会被修正为等于异常值处理后的from值，即to被向上修正至与from相同。当from等于to时（无论是开发者主动设置还是因超出范围被修正），组件在路径上不产生位移。  |
 | rotatable                     | boolean                    | 否 | 是   | 是否跟随路径进行旋转。true代表跟随路径进行旋转，false代表不跟随路径进行旋转。<br/>默认值：false   |
 
 

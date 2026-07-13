@@ -127,7 +127,9 @@ onSuccess: OnFillSuccessFn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**模型约束**：此接口仅可在Stage模型下使用。**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
@@ -141,7 +143,7 @@ onSuccess: OnFillSuccessFn
 
 onFailure: OnFillFailureFn
 
-当填充请求失败时，该回调被调用。
+当填充请求失败时，会触发该回调。
 
 **起始版本：** 26.0.0
 
@@ -149,7 +151,9 @@ onFailure: OnFillFailureFn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**模型约束**：此接口仅可在Stage模型下使用。**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
@@ -239,7 +243,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uiContext = AppStorage.get<UIContext>("uiContext");
+let uiContext = AppStorage.get<UIContext>('uiContext');
 let callback: autoFillManager.AutoSaveCallback = {
   onSuccess: () => {
     console.info(`save request on success.`);
@@ -612,4 +616,4 @@ type FillFailureResult = _FillFailureResult
 
 | 类型                                                                                                 | 说明                  |
 | ---------------------------------------------------------------------------------------------------- | --------------------- |
-| [_AutoFillRequest.FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 表示自动填充失败结果。 |
+| [_FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 表示自动填充失败结果。 |

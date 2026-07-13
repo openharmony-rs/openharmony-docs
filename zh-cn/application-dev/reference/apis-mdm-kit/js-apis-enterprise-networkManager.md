@@ -522,7 +522,7 @@ getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.Http
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. <br>适用版本：20+ |
 
 **示例：**
 
@@ -977,7 +977,7 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
 
 **参数：**
 
@@ -1027,7 +1027,7 @@ turnOffMobileData(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
 
 **参数：**
 

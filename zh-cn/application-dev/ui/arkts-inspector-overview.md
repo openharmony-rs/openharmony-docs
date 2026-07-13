@@ -74,7 +74,7 @@ struct ComponentPage {
           hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
           inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result3');
         } catch (e) {
           hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
         }
@@ -85,7 +85,6 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
 
 ## 布局回调
