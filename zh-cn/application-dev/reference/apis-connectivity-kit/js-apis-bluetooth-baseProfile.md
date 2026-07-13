@@ -30,6 +30,8 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 本端和对端蓝牙设备间的Profile连接状态。 |
@@ -54,6 +56,8 @@ type ProfileConnectionState = constant.ProfileConnectionState
 枚举，Profile断开连接的原因。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -90,7 +94,9 @@ getConnectedDevices(): Array&lt;string&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -109,7 +115,7 @@ getConnectedDevices(): Array&lt;string&gt;
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -135,13 +141,15 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                                              | 说明                    |
 | ------------------------------------------------- | ----------------------- |
@@ -161,7 +169,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -185,7 +193,9 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -202,7 +212,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,7 +239,9 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -246,7 +258,7 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
