@@ -17,7 +17,7 @@
 
 - 实体节点：系统内部维护了一棵组件树，用于处理组件的属性设置、生命周期等逻辑。该组件树上的节点即为实体节点。开发者通过TS获取或创建的自定义节点，其本质是一个前端对象，持有对应实体节点的引用。
 
-- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（FrameNode）、自定义渲染节点（RenderNode）、自定义声明式节点（BuilderNode）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
+- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（FrameNode）、自定义渲染节点（RenderNode）、自定义声明式节点（BuilderNode）。
 
 ## 约束与限制
 
@@ -33,7 +33,7 @@
 
 FrameNode表示组件的实体节点，具体可以分为两大类能力：完全自定义节点的能力以及系统组件节点代理的能力。
 
-- 完全自定义节点：提供完整的自定义能力，包括自定义测量、布局以及绘制，支持节点的动态增、删，设置通用属性，设置事件回调。适用于不自带渲染引擎，需要依赖系统的布局、事件、动画、渲染等能力的场景。通过FrameNode的[构造函数](../reference/apis-arkui/js-apis-arkui-frameNode.md#constructor)创建的节点或者通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)的节点创建方法（例如：[createNode('Text')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodetext12)、[createNode('Column')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodecolumn12)、[createNode('Row')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnoderow12)等）创建出来的节点属于完全自定义节点。
+- 完全自定义节点：提供完整的自定义能力，包括自定义测量、布局以及绘制，支持节点的动态增、删，设置通用属性，设置事件回调。适用于不自带渲染引擎，需要依赖系统的布局、事件、动画、渲染等能力的场景。通过FrameNode的[constructor](../reference/apis-arkui/js-apis-arkui-frameNode.md#constructor)创建的节点或者通过[typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)的节点创建方法（例如：[createNode('Text')](../reference/apis-arkui/js-apis-arkui-typeNode.md#createnodetext)、[createNode('Column')](../reference/apis-arkui/js-apis-arkui-typeNode.md#createnodecolumn)、[createNode('Row')](../reference/apis-arkui/js-apis-arkui-typeNode.md#createnoderow)等）创建出来的节点属于完全自定义节点。
 
 - 系统组件代理节点：提供系统组件的代理能力，提供遍历节点树的能力，通过组件树上的FrameNode可以遍历整个组件树，并通过节点访问组件的信息或者注册额外的事件监听回调。适用于结合无感监听的接口实现打点、广告SDK、中台DFX等业务。通过FrameNode相关的查询接口（例如：[getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)、[getParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getparent12)、[getNextSibling](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnextsibling12)、[getAttachedFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getattachedframenodebyid12)等）返回的FrameNode对象，若不属于完全自定义节点则为系统组件代理节点。
 
