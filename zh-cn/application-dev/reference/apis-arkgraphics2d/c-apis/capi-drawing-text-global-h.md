@@ -1,0 +1,113 @@
+# drawing_text_global.h
+
+## 概述
+
+This file declares the functions related to global text information, for example, setting the high contrastmode for text rendering.
+
+**库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+**相关模块：** [Drawing](capi-drawing.md)
+
+## 汇总
+
+### 枚举
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) | OH_Drawing_TextHighContrast | 文本渲染高对比度模式枚举。 |
+| [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) | OH_Drawing_TextUndefinedGlyphDisplay | 显示未定义字形的方式。 |
+
+### 函数
+
+| 名称 | 描述 |
+| -- | -- |
+| [void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)](#oh_drawing_settexthighcontrast) | 设置文本渲染高对比度模式。 |
+| [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | 控制未定义字形的呈现方式，影响此后渲染的所有文本。 |
+
+## 枚举类型说明
+
+### OH_Drawing_TextHighContrast
+
+```c
+enum OH_Drawing_TextHighContrast
+```
+
+**描述**
+
+文本渲染高对比度模式枚举。
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | 跟随系统设置中的高对比度文字配置。 |
+| TEXT_APP_DISABLE_HIGH_CONTRAST | 关闭APP的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。 |
+| TEXT_APP_ENABLE_HIGH_CONTRAST | 开启APP的文本渲染高对比度配置，该模式的优先级要高于系统设置中的高对比度文字配置。 |
+
+### OH_Drawing_TextUndefinedGlyphDisplay
+
+```c
+enum OH_Drawing_TextUndefinedGlyphDisplay
+```
+
+**描述**
+
+显示未定义字形的方式。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TEXT_NO_GLYPH_USE_DEFAULT = 0 | 使用字体文件中定义的默认字形（可能是空框、空白或自定义符号等）。 |
+| TEXT_NO_GLYPH_USE_TOFU = 1 | 始终使用豆腐块显示缺失的字形。 |
+
+
+## 函数说明
+
+### OH_Drawing_SetTextHighContrast()
+
+```c
+void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
+```
+
+**描述**
+
+设置文本渲染高对比度模式。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextHighContrast](capi-drawing-text-global-h.md#oh_drawing_texthighcontrast) action | 表示文本渲染高对比度模式，为[OH_Drawing_TextHighContrast](capi-drawing-text-global-h.md#oh_drawing_texthighcontrast)类型的枚举值。 |
+
+### OH_Drawing_SetTextUndefinedGlyphDisplay()
+
+```c
+void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)
+```
+
+**描述**
+
+控制未定义字形的呈现方式，影响此后渲染的所有文本。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextUndefinedGlyphDisplay](capi-drawing-text-global-h.md#oh_drawing_textundefinedglyphdisplay) undefinedGlyphDisplay | 表示显示未定义字形的方式，为[OH_Drawing_TextUndefinedGlyphDisplay](capi-drawing-text-global-h.md#oh_drawing_textundefinedglyphdisplay)类型的枚举值。 |
+
+

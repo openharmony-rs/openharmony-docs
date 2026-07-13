@@ -1,0 +1,12 @@
+- 头文件
+    - [ability_resource_info.h](capi-ability-resource-info-h.md)
+    - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
+    - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
+- 模块
+    - [Native_Bundle](capi-native-bundle.md)
+- 结构体
+    - [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)
+    - [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md)
+    - [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md)
+    - [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md)
+    - [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)

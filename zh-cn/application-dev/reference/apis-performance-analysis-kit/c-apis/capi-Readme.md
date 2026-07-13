@@ -1,0 +1,20 @@
+- 头文件
+    - [hidebug_type.h](capi-hidebug-type-h.md)
+    - [hidebug.h](capi-hidebug-h.md)
+- 模块
+    - [HiDebug](capi-hidebug.md)
+- 结构体
+    - [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md)
+    - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
+    - [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md)
+    - [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md)
+    - [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)
+    - [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md)
+    - [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)
+    - [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)
+    - [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)
+    - [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md)
+    - [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)
+    - [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)
+    - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
+    - [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md)

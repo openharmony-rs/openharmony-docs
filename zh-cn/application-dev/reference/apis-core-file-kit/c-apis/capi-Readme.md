@@ -1,0 +1,17 @@
+- 头文件
+    - [oh_fileio.h](capi-oh-fileio-h.md)
+    - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
+    - [oh_environment.h](capi-oh-environment-h.md)
+- 模块
+    - [FileIO](capi-fileio.md)
+    - [CloudDisk](capi-clouddisk.md)
+    - [Environment](capi-environment.md)
+- 结构体
+    - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
+    - [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)
+    - [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md)
+    - [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)
+    - [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)
+    - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
+    - [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md)
+    - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
