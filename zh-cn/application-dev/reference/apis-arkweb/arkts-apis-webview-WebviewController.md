@@ -11331,7 +11331,6 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 **示例：**
 
 ```ts
-// xxx.ets
 import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
@@ -11339,15 +11338,29 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(() => {
-        this.controller.setErrorPageEnabled(true, true);
-        let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
-        console.log("Subframe error page enabled: " + isEnabled);
-      })
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          this.controller.setErrorPageEnabled(true, true);
+          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+          console.log("Subframe error page enabled: " + isEnabled);
+        })
     }
   }
 }
+```
+
+```html
+<!dectype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iframe</title>
+</head>>
+<body>
+<iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</body>
+</html>
 ```
 
 ## getSubframeErrorPageEnabled
@@ -11381,7 +11394,6 @@ getSubframeErrorPageEnabled(): boolean
 **示例：**
 
 ```ts
-// xxx.ets
 import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
@@ -11389,13 +11401,27 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(() => {
-        this.controller.setErrorPageEnabled(true, true);
-        let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
-        console.log("Subframe error page enabled: " + isEnabled);
-      })
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          this.controller.setErrorPageEnabled(true, true);
+          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+          console.log("Subframe error page enabled: " + isEnabled);
+        })
     }
   }
 }
+```
+
+```html
+<!dectype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iframe</title>
+</head>>
+<body>
+<iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</body>
+</html>
 ```
