@@ -47868,7 +47868,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":56,
 						"name":"create_castPicker",
 						"start_line":17
 					}
@@ -47963,7 +47963,7 @@
 						"start_line":65
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"state_change",
 						"start_line":83
 					},
@@ -48143,7 +48143,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/WantAgent.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":66,
 						"name":"wantAgent",
 						"start_line":16
 					}
