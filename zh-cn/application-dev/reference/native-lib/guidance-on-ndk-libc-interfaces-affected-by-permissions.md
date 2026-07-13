@@ -287,7 +287,7 @@
 | unistd.h | getpass | `/dev/tty` |
 | utmp.h | login_tty | 无；对传入 fd 执行 `ioctl(TIOCSCTTY)` |
 
-说明：这类接口常关联 `dev_ptmx`、`devpts`、`tty_device`，在策略中通常不是“所有主体无差别放开”。
+>说明：这类接口常关联 `dev_ptmx`、`devpts`、`tty_device`，在策略中通常不是“所有主体无差别放开”。
 
 ### 2. 共享内存与命名信号量
 
@@ -297,7 +297,7 @@
 | semaphore.h | sem_open | `/dev/shm/`、`/dev/shm/tmp-%d` |
 | semaphore.h | sem_unlink | `/dev/shm/` |
 
-说明：`/dev/shm` 路径受系统侧 SELinux 管控。
+>说明：`/dev/shm` 路径受系统侧 SELinux 管控。
 
 ### 3. shell 执行与日志控制台
 
@@ -310,7 +310,7 @@
 | syslog.h | syslog 相关接口 | `/dev/log`、`/dev/console` |
 | fmtmsg.h | fmtmsg | `/dev/console` |
 
-说明：`/dev/log`、`/dev/console` 的访问一般依赖主体域授权，不是默认全放行。
+>说明：`/dev/log`、`/dev/console` 的访问一般依赖主体域授权，不是默认全放行。
 
 ### 4. 账号与敏感文件
 
@@ -318,7 +318,7 @@
 | --- | --- | --- |
 | shadow.h | getspnam_r | `/etc/tcb/%s/shadow`、`/etc/shadow` |
 
-说明：该类接口客体敏感度高，建议按最小权限单独审计。
+>说明：该类接口客体敏感度高，建议按最小权限单独审计。
 
 ### 5. 无固定路径但存在 SELinux 管控点的接口
 
@@ -340,4 +340,4 @@
 | unistd.h | readlink / readlinkat | 路径由参数传入，SELinux 管控 `lnk_file read/getattr` |
 | unistd.h | symlink / symlinkat | 路径由参数传入，SELinux 管控 `lnk_file create`、父目录 `add_name` |
 
-说明：以上接口没有在 musl 内部固定访问路径，是否触发 SELinux 拦截取决于调用主体、传入路径或 fd、内核对象标签及对应策略。
+>说明：以上接口没有在 musl 内部固定访问路径，是否触发 SELinux 拦截取决于调用主体、传入路径或 fd、内核对象标签及对应策略。
