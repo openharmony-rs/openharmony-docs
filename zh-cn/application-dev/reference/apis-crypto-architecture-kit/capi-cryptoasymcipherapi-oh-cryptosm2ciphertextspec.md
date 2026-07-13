@@ -1,0 +1,23 @@
+# OH_CryptoSm2CiphertextSpec
+
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
+```
+
+## 概述
+
+定义SM2密文规格结构。
+
+**起始版本：** 20
+
+**相关模块：** [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+
+**所在头文件：** [crypto_asym_cipher.h](capi-crypto-asym-cipher-h.md)
+

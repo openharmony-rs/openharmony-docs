@@ -1,0 +1,63 @@
+# @ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
+AbilityConstant提供Ability相关的枚举，包括WindowMode等。
+
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
+>
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.AbilityConstant (Ability相关常量)](js-apis-app-ability-abilityConstant.md)。
+
+## 导入模块
+
+```ts
+import { AbilityConstant } from '@kit.AbilityKit';
+```
+
+## WindowMode<sup>12+</sup>
+
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)方法使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+| 名称                        | 值 | 说明                 |
+| ---                         | --- | ---                  |
+| WINDOW_MODE_UNDEFINED       | 0   | 未定义窗口模式。       |
+| WINDOW_MODE_FLOATING        | 102 | 自由悬浮形式窗口模式。 |
+
+**示例：**
+
+```ts
+import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+let option: StartOptions = {
+  windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN
+};
+
+// 确保从上下文获取到context
+export default class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    this.context.startAbility(want, option).then(() => {
+      console.info('Succeed to start ability.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
+    });
+  }
+}
+```

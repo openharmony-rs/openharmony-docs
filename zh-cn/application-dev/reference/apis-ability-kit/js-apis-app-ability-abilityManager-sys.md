@@ -1,0 +1,1521 @@
+# @ohos.app.ability.abilityManager (AbilityManager)(系统接口)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
+AbilityManager模块提供获取、新增、修改Ability相关信息和运行状态信息的能力。
+
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+> 本模块接口均为系统接口，三方应用不支持调用。
+
+## 导入模块
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+```
+
+## UserStatus<sup>12+</sup>
+
+用户操作的断言调试结果，该类型为枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ASSERT_TERMINATE | 0 | 表示用户点击终止的操作的断言调试结果。 |
+| ASSERT_CONTINUE | 1 | 表示用户点击继续的操作的断言调试结果。 |
+| ASSERT_RETRY | 2 | 表示用户点击重试的操作的断言调试结果。 |
+
+## updateConfiguration
+
+updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
+
+通过传入修改的配置项来更新配置。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.UPDATE_CONFIGURATION
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+ 
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| config    | [Configuration](js-apis-app-ability-configuration.md)   | 是    | 新的配置项，仅需配置需要更新的项。 |
+| callback  | AsyncCallback\<void>                   | 是    | 回调函数。当更新配置成功，err为undefined；否则为错误对象。可进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const config: Configuration = {
+  language: 'Zh-Hans',                 // 简体中文
+  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
+  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
+  displayId: 1,                        // 应用在Id为1的物理屏上显示
+  hasPointerDevice: true,              // 指针类型设备已连接
+};
+
+try {
+  abilityManager.updateConfiguration(config, (err: BusinessError) => {
+    if (err) {
+      console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
+    } else {
+      console.info('updateConfiguration success.');
+    }
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## updateConfiguration
+
+updateConfiguration(config: Configuration): Promise\<void>
+
+通过修改配置来更新配置。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.UPDATE_CONFIGURATION
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| config    | [Configuration](js-apis-app-ability-configuration.md)   | 是    | 新的配置项，仅需配置需要更新的项。 |
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const config: Configuration = {
+  language: 'Zh-Hans',                 // 简体中文
+  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
+  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
+  displayId: 1,                        // 应用在Id为1的物理屏上显示
+  hasPointerDevice: true,              // 指针类型设备已连接
+};
+
+try {
+  abilityManager.updateConfiguration(config).then(() => {
+    console.info('updateConfiguration success.');
+  }).catch((err: BusinessError) => {
+    console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## getAbilityRunningInfos
+
+getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): void
+
+获取UIAbility运行相关信息。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+> **说明：**
+>
+> 从API version 14开始，调用该接口将不会抛202错误码。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.getAbilityRunningInfos((err: BusinessError, data: Array<abilityManager.AbilityRunningInfo>) => {
+    if (err) {
+      console.error(`getAbilityRunningInfos fail, error: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## getExtensionRunningInfos
+
+getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
+
+获取关于运行扩展能力的信息。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| upperLimit | number                                   | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
+| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | 是    | 回调函数。当获取运行扩展能力的信息成功，err为undefined，data为获取到的运行扩展能力信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let upperLimit = 10;
+
+try {
+  abilityManager.getExtensionRunningInfos(upperLimit, (err: BusinessError, data: Array<abilityManager.ExtensionRunningInfo>) => {
+    if (err) {
+      console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## getExtensionRunningInfos
+
+getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningInfo>>
+
+获取关于运行扩展能力的信息。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| upperLimit | number                                   | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise对象，返回接口运行结果及运行扩展能力的信息。开发者可在此进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let upperLimit = 10;
+
+try {
+  abilityManager.getExtensionRunningInfos(upperLimit).then((data: Array<abilityManager.ExtensionRunningInfo>) => {
+    console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## getTopAbility
+
+getTopAbility(callback: AsyncCallback\<ElementName>): void
+
+获取窗口焦点所在的Ability。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。      |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getTopAbility((err: BusinessError, data) => {
+  if (err) {
+    console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info(`getTopAbility success, data: ${JSON.stringify(data)}`);
+  }
+});
+```
+
+## getTopAbility
+
+getTopAbility(): Promise\<ElementName>
+
+获取窗口焦点所在的Ability。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getTopAbility().then((data) => {
+  console.info(`getTopAbility success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
+});
+```
+
+## acquireShareData<sup>10+</sup>
+
+acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Object>>): void
+
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](./js-apis-app-ability-uiAbility.md#onshare10)回调并返回分享数据。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| missionId | number                                   | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
+| callback  | AsyncCallback\<Record\<string, Object>>  | 是    | 回调函数。当接口调用成功，err为undefined，data为获取到的分享数据；否则为错误对象。可进行错误处理或其他自定义处理。      |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.acquireShareData(1, (err: BusinessError, wantParam: Record<string, Object>) => {
+    if (err) {
+      console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+    }
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## acquireShareData<sup>10+</sup>
+
+acquireShareData(missionId: number): Promise\<Record\<string, Object>>
+
+系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](./js-apis-app-ability-uiAbility.md#onshare10)回调并返回分享数据。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| missionId | number                                   | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise\<Record\<string, Object>>| Promise对象，返回接口运行结果及分享数据。开发者可在此进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.acquireShareData(1).then((wantParam: Record<string, Object>) => {
+    console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## notifySaveAsResult<sup>(deprecated)</sup>
+
+notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: AsyncCallback\<void>): void
+
+该接口仅供[DLP](../apis-data-protection-kit/js-apis-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 24开始废弃。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 返回给调用startAbilityForResult&nbsp;接口调用方的相关信息。 |
+| requestCode | number                                        | 是 | DLP管理应用传入的请求代码。          |
+| callback  | AsyncCallback<void\>                             | 是 | 回调函数。当另存为结果通知成功，err为undefined，否则为错误对象。         |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager, Want, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+let resultCode = 100;
+// 返回给另存为行为发起方AbilityResult信息
+let abilityResult: common.AbilityResult = {
+  want,
+  resultCode
+};
+let requestCode = 1;
+try {
+  abilityManager.notifySaveAsResult(abilityResult, requestCode, (err: BusinessError) => {
+    if (err && err.code != 0) {
+      console.error(`notifySaveAsResult fail, err: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`notifySaveAsResult success`);
+    }
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## notifySaveAsResult<sup>(deprecated)</sup>
+
+notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void>
+
+该接口仅供[DLP](../apis-data-protection-kit/js-apis-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 24开始废弃。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 返回给调用startAbilityForResult&nbsp;接口调用方的相关信息。 |
+| requestCode | number                                        | 是 | DLP管理应用传入的请求代码。          |
+
+**返回值：**
+
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+| Promise<void\>| Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例**：
+
+```ts
+import { abilityManager, Want, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+let resultCode = 100;
+// 返回给另存为行为发起方AbilityResult信息
+let abilityResult: common.AbilityResult = {
+  want,
+  resultCode
+};
+let requestCode = 1;
+try {
+  abilityManager.notifySaveAsResult(abilityResult, requestCode).then(() => {
+    console.info(`notifySaveAsResult success`);
+  }).catch((err: BusinessError) => {
+    console.error(`notifySaveAsResult fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## abilityManager.on('abilityForegroundState')<sup>11+</sup>
+
+on(type: 'abilityForegroundState', observer: AbilityForegroundStateObserver): void
+
+注册Ability的启动和退出的观测器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 调用接口类型，固定填'abilityForegroundState'字符串。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer: abilityManager.AbilityForegroundStateObserver = {
+  onAbilityStateChanged(abilityStateData) {
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  },
+};
+try {
+  abilityManager.on('abilityForegroundState', observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## abilityManager.off('abilityForegroundState')<sup>11+</sup>
+
+off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): void
+
+取消注册Ability启动和退出的观测器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 调用接口类型，固定填'abilityForegroundState'字符串。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否 | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer_: abilityManager.AbilityForegroundStateObserver | undefined;
+// 1.注册应用启动和退出的监听器
+let observer: abilityManager.AbilityForegroundStateObserver = {
+  onAbilityStateChanged(abilityStateData: abilityManager.AbilityStateData) {
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  },
+};
+try {
+  abilityManager.on('abilityForegroundState', observer);
+  observer_ = observer;
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+
+// 2.注销监听器
+try {
+  abilityManager.off('abilityForegroundState',  observer_);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## abilityManager.getForegroundUIAbilities<sup>11+</sup>
+
+getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
+
+获取前台正在运行的应用Ability的信息。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<abilityManager.AbilityStateData>) => {
+  if (err) {
+    console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(err)}`);
+  } else {
+    console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+  }
+});
+```
+
+## abilityManager.getForegroundUIAbilities<sup>11+</sup>
+
+getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
+
+获取前台正在运行的应用Ability的信息。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
+  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
+});
+```
+
+## abilityManager.notifyDebugAssertResult<sup>12+</sup>
+
+notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
+
+将断言调试结果通知应用程序。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| sessionId | string | 是 | 指示AssertFault的请求ID。 |
+| status | [UserStatus](#userstatus12) | 是 | 用户的操作状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, UIExtensionAbility, wantConstant, Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UiExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let sessionId: string = '';
+    if (want.parameters) {
+      sessionId = want.parameters[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string;
+    }
+    let status = abilityManager.UserStatus.ASSERT_TERMINATE;
+    abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
+      console.info('notifyDebugAssertResult success.');
+    }).catch((err: BusinessError) => {
+      console.error(`notifyDebugAssertResult failed, error: ${JSON.stringify(err)}`);
+    });
+  }
+}
+```
+
+## abilityManager.isEmbeddedOpenAllowed<sup>12+</sup>
+
+isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
+
+判断是否允许嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。 |
+| appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<boolean> | Promise对象。返回true表示允许嵌入式启动；返回false表示不允许嵌入式启动。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let appId: string = '6918661953712445909';
+    try {
+      abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
+        console.info(`isEmbeddedOpenAllowed data: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
+        console.error(`isEmbeddedOpenAllowed failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## abilityManager.setResidentProcessEnabled<sup>12+</sup>
+
+setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
+
+常驻进程支持按需启停。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 常驻进程的包名。 |
+| enable | boolean | 是 | 常驻进程的使能状态。true表示该进程为常驻进程；false表示该进程为普通进程，不会进行保活。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 202 | Not a system application. |
+| 401 | Parameter error. Possible cause: 1.Non empty package name needs to be provided, 2.The second parameter needs to provide a Boolean type setting value |
+| 16000050 | Internal error. |
+| 16200006 | The caller application can only set the resident status of the configured process. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let residentProcessBundleName: string = 'com.xxx.xxxxxx';
+  let enable: boolean = false;
+  abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)
+    .then(() => {
+      console.info('setResidentProcessEnabled success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`setResidentProcessEnabled fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`setResidentProcessEnabled failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.preloadUIExtensionAbility<sup>23+</sup>
+
+preloadUIExtensionAbility(want: Want): Promise\<number>
+
+预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<number> | Promise对象，返回预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)的ID，用于后续清除或管理操作。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.Preload UIExtensionAbility timeout. |
+
+**示例：**
+
+```ts
+import { abilityManager, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const preloadWant: Want = {
+    bundleName: 'com.example.application',
+    abilityName: 'EntryBackupAbility',
+    moduleName: 'entry',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'sys/commonUI'
+    }
+  };
+
+  abilityManager.preloadUIExtensionAbility(preloadWant)
+    .then((preloadId: number) => {
+      console.info(`preloadUIExtensionAbility success, preloadId: ${preloadId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`preloadUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`preloadUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbility<sup>23+</sup>
+
+clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
+
+清除指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| preloadId | number | 是 | 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000003 | The specified ID does not exist. Possible causes: 1.The specified ID is incorrect; 2.The preloaded UIExtensionAbility has been loaded; 3.The preloaded UIExtensionAbility has been destroyed; |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 通过preloadUIExtensionAbility接口预加载后返回的ID
+  let preloadId: number = 1001;
+  abilityManager.clearPreloadedUIExtensionAbility(preloadId)
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbility success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbilities<sup>23+</sup>
+
+clearPreloadedUIExtensionAbilities(): Promise\<void>
+
+清除当前进程中所有已经预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.clearPreloadedUIExtensionAbilities()
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbilities success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbilities fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbilities failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedFn): void
+
+监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载事件。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | 是 | 用于接收被加载的预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例ID的回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityLoaded(onPreloadLoaded);
+  console.info('onPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
+
+注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | 否 | 需要注销监听的回调函数。如果不传入任何回调函数，则会注销当前进程中所有该事件类型的监听。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityLoaded(offPreloadLoaded);
+  console.info('offPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDestroyedFn): void
+
+监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁事件。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | 是 | 用于接收被销毁的预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例ID的回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityDestroyed(onPreloadDestroyed);
+  console.info('onPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDestroyedFn): void
+
+注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | 否 | 需要注销监听的回调函数。如果不传入任何回调函数，则会注销当前进程中所有该事件类型的监听。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**示例：**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityDestroyed(offPreloadDestroyed);
+  console.info('offPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+## AtomicServiceStartupRule<sup>18+</sup>
+
+嵌入式拉起原子化服务的规则。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | ---------| ---- | ---- | --------- |
+| isOpenAllowed | boolean   | 否   | 否   | 是否允许拉起原子化服务。true表示允许拉起原子化服务，false表示不允许拉起原子化服务。 |
+| isEmbeddedAllowed | boolean   | 否   | 否  | 是否允许嵌入式拉起原子化服务。true表示允许嵌入式拉起原子化服务，false表示不允许嵌入式拉起原子化服务。 |
+
+## abilityManager.queryAtomicServiceStartupRule<sup>18+</sup>
+
+queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicServiceStartupRule>
+
+查询嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)的规则。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | -------- | -------- | -------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[AtomicServiceStartupRule](#atomicservicestartuprule18)> | Promise对象。返回嵌入式拉起原子化服务的规则。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not support. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let appId: string = '6918661953712445909';
+    try {
+      abilityManager.queryAtomicServiceStartupRule(this.context, appId).then((data: abilityManager.AtomicServiceStartupRule) => {
+        console.info(`queryAtomicServiceStartupRule data: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
+        console.error(`queryAtomicServiceStartupRule failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## ExtensionRunningInfo
+
+type ExtensionRunningInfo = _ExtensionRunningInfo
+
+ExtensionRunningInfo二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md) | ExtensionRunningInfo二级模块，提供Extension运行的相关信息。 |
+
+## AbilityForegroundStateObserver<sup>11+</sup>
+
+type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default
+
+AbilityForegroundStateObserver二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+
+## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
+
+预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被销毁时的回调函数类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 参数名    | 类型            | 必填 | 说明 |
+|--------|---------------|---| -------- |
+| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |
+
+## PreloadedUIExtensionAbilityLoadedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
+
+预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被加载时的回调函数类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 参数名    | 类型            | 必填 | 说明 |
+|--------|---------------|---| -------- |
+| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |

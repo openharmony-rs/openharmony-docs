@@ -1,0 +1,21 @@
+# OH_Drawing_FontMgr
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @gmiao522-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
+```c
+typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
+```
+
+## 概述
+
+定义字体管理类, 用于字体管理。
+
+**起始版本：** 12
+
+**相关模块：** [Drawing](capi-drawing.md)
+
+**所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
+
