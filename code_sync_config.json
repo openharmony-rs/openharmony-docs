@@ -52992,9 +52992,9 @@
 						"start_line":452
 					},
 					{
-						"end_line":219,
+						"end_line":356,
 						"name":"screenCapture_config",
-						"start_line":159
+						"start_line":296
 					},
 					{
 						"end_line":480,
@@ -56722,19 +56722,19 @@
 						"start_line":93
 					},
 					{
-						"end_line":144,
+						"end_line":283,
 						"name":"screenCapture_config_buffer_video",
-						"start_line":115
+						"start_line":252
 					},
 					{
-						"end_line":154,
+						"end_line":293,
 						"name":"screenCapture_config_buffer_init",
-						"start_line":145
+						"start_line":284
 					},
 					{
-						"end_line":567,
+						"end_line":219,
 						"name":"screenCapture_config_buffer_callback",
-						"start_line":455
+						"start_line":107
 					},
 					{
 						"end_line":558,
@@ -56742,9 +56742,9 @@
 						"start_line":556
 					},
 					{
-						"end_line":551,
+						"end_line":203,
 						"name":"screenCapture_config_buffer_OnBufferAvailable",
-						"start_line":486
+						"start_line":138
 					},
 					{
 						"end_line":1001,
@@ -56757,24 +56757,24 @@
 						"start_line":1005
 					},
 					{
-						"end_line":240,
+						"end_line":434,
 						"name":"screenCapture_PCSpecifiedScreenConfigBuffer",
-						"start_line":224
+						"start_line":417
 					},
 					{
-						"end_line":260,
+						"end_line":455,
 						"name":"screenCapture_PCHomeScreenConfigBuffer",
-						"start_line":245
+						"start_line":439
 					},
 					{
-						"end_line":288,
+						"end_line":484,
 						"name":"SetPCSpecifiedWindowScreenConfigBuffer",
-						"start_line":265
+						"start_line":460
 					},
 					{
-						"end_line":316,
+						"end_line":513,
 						"name":"SetPCSpecifiedWindowScreenConfigBuffer2",
-						"start_line":293
+						"start_line":489
 					},
 					{
 						"end_line":322,
@@ -56832,9 +56832,9 @@
 						"start_line":350
 					},
 					{
-						"end_line":369,
+						"end_line":616,
 						"name":"screenCapture_buffer_setCaptureArea",
-						"start_line":359
+						"start_line":606
 					},
 					{
 						"end_line":538,
@@ -56852,9 +56852,9 @@
 						"start_line":544
 					},
 					{
-						"end_line":386,
+						"end_line":633,
 						"name":"screenCapture_buffer_excludeContent",
-						"start_line":374
+						"start_line":621
 					}
 				]
 			}
@@ -56942,9 +56942,9 @@
 						"start_line":576
 					},
 					{
-						"end_line":219,
+						"end_line":356,
 						"name":"screenCapture_config",
-						"start_line":159
+						"start_line":296
 					},
 					{
 						"end_line":606,
@@ -56982,9 +56982,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":925,
+						"end_line":1046,
 						"name":"screenCapture_startScreenCapture_rectangular",
-						"start_line":899
+						"start_line":1020
 					}
 				]
 			}
