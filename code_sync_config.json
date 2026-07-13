@@ -34430,5 +34430,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avcodec/video-encoding-temporal-scalability.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
+				"functions":[
+					{
+						"end_line":169,
+						"name":"quick_start",
+						"start_line":137
+					}
+				]
+			}
+		]
 	}
 ]
