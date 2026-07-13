@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
@@ -5835,20 +5823,6 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
-## ohos.permission.vehicle.ACCESS_DFT_LOG
-
-Allows a system application to read directory logs of the vehicle log service, Bluetooth, system stability, and system upgrades.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
 ## ohos.permission.vehicle.AUTO_UPDATER
 
 Allows an application to send update instructions to the head unit.
@@ -6531,23 +6505,11 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
-## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+## ohos.permission.SAMBA_CLIENT_ACCESS
 
-Allows an application to set cellular network information.
+Allows an application to connect to the network neighborhood client and manage network neighborhood files.
 
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.TBOX_CELLULAR_INFO
-
-Allows an application to read cellular network information.
+With this permission, the application can connect to or disconnect from network neighborhood, perform operations on network neighborhood files, and obtain basic information about network neighborhood connections.
 
 **Permission level**: system_basic
 
@@ -6555,27 +6517,15 @@ Allows an application to read cellular network information.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: cars
+**Supported devices**: Phone | PC/2in1 | Tablet
 
-**Since**: 26.0.0
+**Valid since**: 26.0.0
 
-## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
 
-Allows an application to set TBox WiFi related information.
+Allows an application to call the file management service APIs to perform operations on files.
 
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.0
-
-## ohos.permission.vehicle.TBOX_WIFI_INFO
-
-Allows an application to obtain T-Box Wi-Fi–related information.
+With this permission, the application can use file management functions, including the recycle bin, frequently used folders, favorites, USB device queries, and shortcuts.
 
 **Permission level**: system_basic
 
@@ -6583,13 +6533,15 @@ Allows an application to obtain T-Box Wi-Fi–related information.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: cars
+**Supported devices**: Phone | PC/2in1 | Tablet
 
-**Since**: 26.0.0
+**Valid since**: 26.0.0
 
-## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
 
-Allows an application to trigger network packet capture.
+Allows an application to obtain and manage smart files.
+
+With this permission, the application can manage smart file categorization, generate file summaries, and provide file recommendations.
 
 **Permission level**: system_basic
 
@@ -6597,19 +6549,22 @@ Allows an application to trigger network packet capture.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: cars
+**Supported devices**: Phone | PC/2in1 | Tablet
 
-**Since**: 26.0.0
+**Valid since**: 26.0.0
 
-## ohos.permission.vehicle.CCN_SELF_HEALING
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
 
-Allows the triggering of network self-check and self-healing.
+Allows an application to obtain and operate files of the file management application.
+
+With this permission, the application can add file event records, search for files, manage recent files, and obtain music files, duplicate files, and aggregated files.
 
 **Permission level**: system_basic
+
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
 
-**Supported devices**: cars
+**Supported devices**: Phone | PC/2in1 | Tablet
 
-**Since**: 26.0.0
+**Valid since**: 26.0.0

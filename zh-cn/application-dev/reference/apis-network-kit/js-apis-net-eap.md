@@ -279,7 +279,7 @@ EAP信息。
 | -------- | -------- | -------- | -------- | -------- |
 | msgId | number | 否 | 否 | 伪随机数，用于关联处理前后的EAP数据。 |
 | eapBuffer | Uint8Array | 否 | 否 | 从EAP header开始的EAP原始数据，未加密。|
-| bufferLen| number | 否 | 否 | 数据长度。 |
+| bufferLen| number | 否 | 否 | 数据长度。单位：Byte。 |
 
 ## CustomResult
 

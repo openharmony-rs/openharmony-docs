@@ -1025,9 +1025,9 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
     }
   }
 

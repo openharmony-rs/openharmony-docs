@@ -573,7 +573,7 @@ struct TextPickerExample {
                   bottomLeft:15,
                   bottomRight:15
                 },
-                color: 'FFC3C3C3'
+                color: '#FFC3C3C3'
               }
             })
           })

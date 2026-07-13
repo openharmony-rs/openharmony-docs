@@ -8,6 +8,8 @@
 
 ## 概述
 
+提供ArkUI在Native侧接入和管理页面交互的能力，适用于使用NDK构建UI、处理输入事件、绑定手势、执行动画和管理节点树等场景。
+
 提供ArkUI在Native侧的通用拖拽及主动发起拖拽能力。更多详细介绍请参考[绑定拖拽事件](../../ui/ndk-drag-event.md)。
 
 提供ArkUI在Native侧的通用按键事件能力。
@@ -29,7 +31,7 @@
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
 | [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
-| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
+| [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [grid.h](capi-grid-h.md) | 定义Grid组件的枚举和接口。 |
 | [list.h](capi-list-h.md) | 定义List组件的枚举和接口。 |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
@@ -46,7 +48,7 @@
 | [native_key_event.h](capi-native-key-event-h.md) | 提供NativeKeyEvent相关接口定义。 |
 | [native_material.h](capi-native-material-h.md) | 提供ArkUI在Native侧的沉浸式材质类型和API声明。 |
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
-| [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
+| [native_node_napi.h](capi-native-node-napi-h.md) | 提供将ArkTS侧的FrameNode转换为ArkUI_NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
 | [text.h](capi-text-h.md) | 定义Text相关的枚举和接口。 |
 | [text_common.h](capi-text-common-h.md) | 定义一组文本公共的枚举和接口。 |

@@ -111,7 +111,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | SSL客户端证书没有私钥。 |
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | HTTPS代理提供的证书无效。 |
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | 在尝试进行域名解析（DNS）时发生错误。 |
-| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ERR_ACCESS_DENIED。 |
+| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ARKWEB_ERR_ACCESS_DENIED。 |
 | ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDOS攻击。 |
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
@@ -128,7 +128,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159 | SSL服务器向我们发送了一个致命的unrecognized_name警告。 |
 | ARKWEB_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160 | 无法按照请求设置套接字的接收缓冲区大小。 |
 | ARKWEB_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161 | 无法按照请求设置套接字的发送缓冲区大小。 |
-| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 |尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
+| ARKWEB_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162 | 尽管setsockopt返回成功代码，但无法将套接字的接收缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163 | 尽管setsockopt返回成功代码，但无法将套接字的发送缓冲区大小设置为所请求的值。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164 | 无法将客户端证书从平台存储导入到SSL库中。 |
 | ARKWEB_ERR_ICANN_NAME_COLLISION = -166 | 将主机名解析为IP地址列表时，包含了IPv4地址“127.0.53.53”。这是ICANN推荐的一个特殊IP地址，用于指示存在名称冲突，并提醒管理员注意潜在问题。 |
@@ -164,7 +164,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_CERT_VALIDITY_TOO_LONG = -213 | 证书的有效期太长。 |
 | ARKWEB_ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214 | 此连接需要证书透明度，但服务器未提供符合策略的CT信息。 |
 | ARKWEB_ERR_CERT_SYMANTEC_LEGACY = -215 | 证书链接到不再受信任的旧版Symantec根证书。 |
-| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 |已知该证书被除设备所有者之外的其他实体拦截。 |
+| ARKWEB_ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217 | 已知该证书被除设备所有者之外的其他实体拦截。 |
 | ARKWEB_ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218 | 连接使用了SSL/TLS或加密算法的过时版本。 |
 | ARKWEB_ERR_CERT_END = -219 | 紧接在最后一个证书错误代码之后的值。 |
 | ARKWEB_ERR_INVALID_URL = -300 | URL无效。 |

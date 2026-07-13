@@ -12,7 +12,7 @@ typedef struct CommonEvent_RcvData CommonEvent_RcvData
 
 ## 概述
 
-提供CommonEvent_RcvData公共事件回调数据结构体声明。
+提供公共事件回调数据结构体声明，当公共事件触发回调时，通过该结构体向开发者传递接收到的事件数据。
 
 **起始版本：** 12
 

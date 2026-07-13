@@ -1404,7 +1404,7 @@ display.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surfaceId，surfaceId用于标识一个surface，表示当前虚拟屏用于显示对应surface中的内容。使用Promise异步回调。
+设置虚拟屏幕的surfaceId，表示虚拟屏幕内容显示在对应surface上。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

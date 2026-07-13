@@ -41,7 +41,7 @@
 >
 > - L/l = lineto   参数x和y表示一个点的x轴和y轴坐标，L命令将会在当前位置和新位置（L前面画笔所在的点）之间画一条线段。
 >
-> - H/h = horizontal lineto    绘制平行线。
+> - H/h = horizontal lineto    绘制水平线。
 >
 > - V/v = vertical lineto   绘制垂直线。
 >
