@@ -43,8 +43,8 @@ openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out s
 ```json
 "sub_component": [
     "//base/update/updateservice/server_sample:testserver",
-    ...
-],
+    "..."
+]
 ```
 
 ### 建立代码目录。
