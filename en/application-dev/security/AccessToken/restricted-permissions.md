@@ -252,7 +252,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -1147,3 +1147,17 @@ Allows an application to apply for a continuous task of the special scenario typ
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+Allows an application to manage sandbox applications.
+
+<!--RP97--><!--RP97End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0

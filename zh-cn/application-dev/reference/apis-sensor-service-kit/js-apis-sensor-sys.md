@@ -923,7 +923,7 @@ function sensorUnsubscribe(): Ret {
 | lightIntensity   | number | 否   | 否   | 表示光的强度。单位：勒克斯（lux）。取值范围：取值为实际上报物理量，由硬件传感器决定。典型室内环境光强度约为300-500 lux，户外阳光可达10000 lux以上。 |
 | colorTemperature | number | 否   | 否   | 表示色温。单位：开尔文（K）。取值范围：取值为实际上报物理量，由硬件传感器决定。典型值：暖白光约2700-3000K，正白光约4000-5000K，冷白光约6500K以上。     |
 
-## SarResponse<sup>10+ </sup>
+## SarResponse<sup>10+</sup>
 
 吸收比率传感器数据，继承于[Response](js-apis-sensor.md#response)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。
 

@@ -221,13 +221,13 @@ onDump(params: Array\<string>): Array\<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| params | Array\<string> | 是 | 表示命令形式的参数。|
+| params | Array\<string> | 是 | 转储命令的参数列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array\<string> | 一个string类型的数组，用于转存客户端信息。 |
+| Array\<string> | 一个string类型的数组，包含转储的客户端信息。 |
 
 **示例：**
     

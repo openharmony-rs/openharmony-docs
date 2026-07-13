@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在List或Grid组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem或GridItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
+在List或Grid组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem或GridItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动起始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
 
 > **说明：**
 > 
@@ -41,7 +41,7 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined): this
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽动作。 |
+| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽排序数据移动回调。 |
 
 **返回值：** 
 
@@ -69,7 +69,7 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined, eventHandler: ItemDragEven
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽动作。 |
+| handler  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽排序数据移动回调。 |
 | eventHandler  | [ItemDragEventHandler](#itemdrageventhandler20) | 是   | 拖拽发生时产生的回调。 |
 
 **返回值：** 
@@ -116,9 +116,9 @@ ArkTS-Sta: type OnMoveHandler = (from: int, to: int) => void
 | 名称 | 类型   | 只读 | 可选 | 说明                 |
 | ------ | ------ | ---- | ---- | -------------------- |
 | onLongPress  |  ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否  | 是 | 长按时触发的回调。<br>- 参数index为长按时当前目标的索引号。 |
-| onDragStart  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 是 | 在页面跟手滑动开始时触发的回调。<br>- 参数index为拖拽开始时当前目标的索引号。 |
+| onDragStart  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 是 | 拖拽开始时触发的回调。<br>- 参数index为拖拽开始时当前目标的索引号。 |
 | onMoveThrough  | [OnMoveHandler](#onmovehandler) | 否   | 是 | 在页面跟手滑动过程中经过其他组件时触发的回调。 |
-| onDrop  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 是 | 在页面跟手滑动结束时触发的回调。<br>- 参数index为拖拽结束时当前目标的索引号。 |
+| onDrop  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 是 | 拖拽结束时触发的回调。<br>- 参数index为拖拽结束时当前目标的索引号。 |
 
 ## 示例
 

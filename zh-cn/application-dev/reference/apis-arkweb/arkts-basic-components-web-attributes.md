@@ -1763,7 +1763,7 @@ ArkTS-Sta: minLogicalFontSize(size: int | undefined)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为18。<br>ArkTS-Sta：传入undefined时为18。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为8。<br>ArkTS-Sta：传入undefined时为8。 |
 
 **示例：**
 
@@ -4564,7 +4564,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| editMenu | ArkTS-Dyn: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) <br/>ArkTS-Sta: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) \|  undefined| 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在web中无意义，传入值为-1。|
+| editMenu | ArkTS-Dyn: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) <br/>ArkTS-Sta: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) \|  undefined| 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。|
 
 **示例**
 
@@ -7532,7 +7532,7 @@ ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置Web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
 
 **示例：**
 
@@ -7571,6 +7571,74 @@ ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
         .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```
+
+## enableMediaNetworkProxy
+
+ArkTS-Dyn: enableMediaNetworkProxy(enabled: boolean)
+
+ArkTS-Sta: enableMediaNetworkProxy(enabled: boolean | undefined)
+
+设置Web组件是否开启媒体资源网络请求代理功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持HLS流媒体视频。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置Web组件是否开启媒体资源网络请求代理功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableMediaNetworkProxy(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableMediaNetworkProxy(true)
       }
     }
   }

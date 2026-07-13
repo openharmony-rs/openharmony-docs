@@ -55,7 +55,7 @@ type OnFailureFn = () => void
 
 type OnFillSuccessFn = (viewData: ViewData) => void
 
-当填充请求成功时，会触发该回调。
+当填充请求成功时，会触发该回调。回调返回的viewData包含系统提供的填充数据，开发者可据此将数据应用到当前页面的表单控件中，例如填充登录页面的用户名和密码、或收货地址表单中的姓名和联系方式等。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -78,7 +78,7 @@ type OnFillSuccessFn = (viewData: ViewData) => void
 
 type OnFillFailureFn = (result: FillFailureResult) => void
 
-当填充请求失败时，会触发该回调。
+当填充请求失败时，会触发该回调。回调返回的result包含失败原因，开发者可据此进行错误处理，例如提示用户填充失败并引导手动输入，或记录失败日志用于排查问题。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -114,7 +114,7 @@ type OnFillFailureFn = (result: FillFailureResult) => void
 
 onSuccess(): void
 
-当保存请求成功时，该回调被调用。
+当保存请求成功时，该回调被调用。开发者可在此时进行后续处理，例如提示用户保存成功或清空表单。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -158,7 +158,7 @@ onSuccess(): OnSuccessFn
 
 onFailure(): void
 
-当保存请求失败时，该回调被调用。
+当保存请求失败时，该回调被调用。开发者可在此时进行失败处理，例如提示用户保存失败并引导重试。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -214,7 +214,7 @@ onFailure(): OnFailureFn
 
 onSuccess: OnFillSuccessFn
 
-当填充请求成功时，该回调被调用。
+当填充请求成功时，该回调被调用，返回的viewData包含可用于填充表单的数据，如用户名密码、收货地址等。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -230,7 +230,7 @@ onSuccess: OnFillSuccessFn
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
-| [OnFillSuccessFn](#onfillsuccessfn) | 当填充请求成功时，会触发该回调。 |
+| [OnFillSuccessFn](#onfillsuccessfn) | 用于处理填充请求成功后的回调，接收包含填充视图数据的viewData参数。 |
 
 **示例：**
 
@@ -240,7 +240,7 @@ onSuccess: OnFillSuccessFn
 
 onFailure: OnFillFailureFn
 
-当填充请求失败时，该回调被调用。
+当填充请求失败时，会触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -256,7 +256,7 @@ onFailure: OnFillFailureFn
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
-| [OnFillFailureFn](#onfillfailurefn) | 当填充请求失败时，会触发该回调。 |
+| [OnFillFailureFn](#onfillfailurefn) | 用于处理填充请求失败后的回调，接收包含失败原因的result参数。 |
 
 **示例：**
 
@@ -289,7 +289,7 @@ requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | context | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | 是 | 将在其中执行保存操作的UI上下文。 |
-| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 当保存请求完成时所触发的回调接口。|
+| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 当保存请求完成时所触发的回调接口，用于异步接收保存操作的结果。不传此参数时不触发回调。|
 
 **错误码：**
 
@@ -314,10 +314,12 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 主窗口创建后，为此Ability设置主页面。
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 创建本地存储实例
     let localStorageData: Record<string, string | common.UIAbilityContext> = {
       'message': "AutoFill Page",
       'context': this.context,
     };
+    // 加载页面内容
     let storage = new LocalStorage(localStorageData);
     windowStage.loadContent('pages/Index', storage, (err, data) => {
       if (err && err.code) {
@@ -334,7 +336,8 @@ export default class EntryAbility extends UIAbility {
         console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
         // 获取UIContext实例。
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-        PersistentStorage.persistProp("uiContext", uiContext);
+        // 将UIContext存储到AppStorage中，供其他页面访问
+        AppStorage.setOrCreate("uiContext", uiContext);
       })
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
@@ -348,6 +351,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义自动保存回调
 let callback: autoFillManager.AutoSaveCallback = {
   onSuccess: () => {
     console.info(`save request on success.`);
@@ -362,6 +366,7 @@ let callback: autoFillManager.AutoSaveCallback = {
 struct Index {
   @State userName: string = "";
   @State password: string = "";
+  // 获取当前UIContext实例
   private uiContext: UIContext = this.getUIContext();
   build() {
     GridRow({ gutter: { y: 20 } }) {
@@ -516,8 +521,8 @@ requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCal
 | 参数名   | 类型                                                                    | 必填 | 说明                            |
 | -------- | ----------------------------------------------------------------------- | ---- | ------------------------------- |
 | context  | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)            | 是   | 将在其中执行保存操作的UI上下文。 |
-| request  | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest) | 是   | 自动保存请求信息。 |
-| callback | [AutoSaveCallback](#autosavecallback)                                   | 否   | 当保存请求完成时所触发的回调接口。 |
+| request  | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest) | 是   | 自动保存请求信息，包含需要保存的视图数据信息。 |
+| callback | [AutoSaveCallback](#autosavecallback)                                   | 否   | 当保存请求完成时所触发的回调接口，用于异步接收保存操作的结果。不传此参数时不触发回调。 |
 
 **错误码：**
 
@@ -577,6 +582,7 @@ let request: autoFillManager.SaveRequest = {
     }
   }
 }
+// 定义自动保存回调
 let callback: autoFillManager.AutoSaveCallback = {
   onSuccess: () => {
     console.info(`save request on success.`);
@@ -712,7 +718,7 @@ requestAutoFill(context: UIContext, request: FillRequest, callback?: AutoFillCal
 | -------- | ----------------------------------------------------------------------- | ---- | ------------------------------- |
 | context  | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)            | 是   | 将在其中执行填充操作的UI上下文。 |
 | request  | [FillRequest](js-apis-inner-application-autoFillRequest.md#fillrequest) | 是   | 自动填充请求信息。 |
-| callback | [AutoFillCallback](#autofillcallback)                                   | 否   | 当填充请求完成时所触发的回调接口。 |
+| callback | [AutoFillCallback](#autofillcallback)                                   | 否   | 当填充请求完成时所触发的回调接口，用于异步接收填充操作的结果。不传此参数时不触发回调。 |
 
 **错误码：**
 
@@ -773,6 +779,7 @@ let request: autoFillManager.FillRequest = {
     }
   }
 }
+// 定义自动填充回调
 let callback: autoFillManager.AutoFillCallback = {
   onSuccess: (viewData: autoFillManager.ViewData) => {
     console.info(`fill request on success, viewData: ${JSON.stringify(viewData)}`);

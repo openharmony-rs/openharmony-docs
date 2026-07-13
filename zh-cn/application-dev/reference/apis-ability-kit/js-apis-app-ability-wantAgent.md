@@ -96,14 +96,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 // getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err.code) {
-    console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
-  } else {
-    wantAgentData = data;
-  }
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    } else {
+      wantAgentData = data;
+    }
 }
 
 try {
-  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
+  // 调用getWantAgent接口创建WantAgent对象
+wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed, error: ${JSON.stringify(err)}`);
 }
@@ -167,7 +168,7 @@ try {
 
 getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 
-创建WantAgent。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
+创建WantAgent实例，用于后续触发指定操作。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -239,6 +240,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 try {
   wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }).catch((err: BusinessError) => {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -316,7 +318,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err为错误对象。 |
+| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为获取的包名；否则err为错误对象。 |
 
 **错误码：**
 
@@ -372,6 +374,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getBundleName回调
@@ -383,6 +386,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getBundleName接口获取WantAgent实例的包名
     wantAgent.getBundleName(wantAgentData, getBundleNameCallback);
   } catch (err) {
     console.error(`getBundleName failed! ${err.code} ${err.message}`);
@@ -390,6 +394,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
@@ -542,12 +547,14 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
-    wantAgent.getBundleName(wantAgentData).then((data)=>{
+    // 使用Promise方式获取WantAgent实例的包名
+    wantAgent.getBundleName(wantAgentData).then((data) => {
       console.info(`getBundleName ok! ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError)=>{
+    }).catch((err: BusinessError) => {
       console.error(`getBundleName failed! ${err.code} ${err.message}`);
     });
   } catch(err){
@@ -555,6 +562,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   }
 }
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
@@ -703,6 +711,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getUid回调
@@ -714,6 +723,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getUid接口获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData, getUidCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -723,6 +733,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -879,9 +890,11 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData).then((data) => {
       console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
     }).catch((err: BusinessError) => {
@@ -895,6 +908,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -972,7 +986,7 @@ try {
 
 cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 
-取消WantAgent实例，使用callback异步回调。
+取消WantAgent实例，取消后该实例将无法被触发。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -987,7 +1001,7 @@ cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 | 参数名     | 类型                  | 必填 | 说明                        |
 | -------- | --------------------- | ---- | --------------------------- |
 | agent    | WantAgent             | 是   | WantAgent对象。               |
-| callback | AsyncCallback\<void\> | 是   | 回调函数，当取消WantAgent实例成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。当取消WantAgent实例成功，err为undefined，data为undefined；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1043,6 +1057,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // cancel回调
@@ -1054,6 +1069,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用cancel接口取消WantAgent实例
     wantAgent.cancel(wantAgentData, cancelCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -1063,6 +1079,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -1141,7 +1158,7 @@ try {
 
 cancel(agent: WantAgent): Promise\<void\>
 
-取消WantAgent实例。使用Promise异步回调。
+取消WantAgent实例，取消后该实例将无法被触发。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1217,9 +1234,11 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式取消WantAgent实例
     wantAgent.cancel(wantAgentData).then((data) => {
       console.info('cancel success.');
     }).catch((err: BusinessError) => {
@@ -1233,6 +1252,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -1384,8 +1404,9 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 // getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
-    console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // trigger回调
@@ -1397,6 +1418,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用trigger接口触发WantAgent实例执行指定操作
     wantAgent.trigger(wantAgentData, triggerInfo, triggerCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -1406,6 +1428,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -1561,6 +1584,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgent1 = data;
     wantAgent2 = data;
   }
@@ -1573,6 +1597,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用equal接口判断两个WantAgent实例是否相等
     wantAgent.equal(wantAgent1, wantAgent2, equalCallback);
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1580,6 +1605,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1674,7 +1700,7 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
 | 参数名       | 类型      | 必填 | 说明          |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | 是   | WantAgent对象。 |
+| agent      | [WantAgent](#wantagent) | 是   | WantAgent对象。 |
 | otherAgent | WantAgent | 是   | WantAgent对象。 |
 
 **返回值：**
@@ -1736,21 +1762,24 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgent1 = data;
     wantAgent2 = data;
   }
   try {
+    // 使用Promise方式判断两个WantAgent实例是否相等
     wantAgent.equal(wantAgent1, wantAgent2).then((data) => {
       console.info(`equal ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      console.error(`equal failed! ${err.code} ${err.message}`);
-    })
+    console.error(`equal failed! ${err.code} ${err.message}`);
+  });
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
   }
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1826,9 +1855,9 @@ try {
 
 ## wantAgent.getOperationType
 
-ArkTS-Dyn: getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getOperationType(agent: WantAgent, callback: AsyncCallback\<number\>): void
 
-ArkTS-Sta: getOperationType(agent: WantAgent, callback: AsyncCallback\<int>): void
+ArkTS-Sta: getOperationType(agent: WantAgent, callback: AsyncCallback\<int\>): void
 
 获取一个WantAgent实例的[OperationType](#operationtype)信息，使用callback异步回调。
 
@@ -1845,7 +1874,7 @@ ArkTS-Sta: getOperationType(agent: WantAgent, callback: AsyncCallback\<int>): vo
 | 参数名       | 类型                     | 必填 | 说明                                    |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | 是   | WantAgent对象。                           |
-| callback   | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是   | 回调函数。当获取一个WantAgent的OperationType信息成功，err为undefined，data为OperationType；否则err为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback\<number\><br>ArkTS-Sta: AsyncCallback\<int> | 是   | 回调函数。当获取一个WantAgent的OperationType信息成功，err为undefined，data为OperationType；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1902,6 +1931,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getOperationTypeCallback回调
@@ -1913,6 +1943,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getOperationType接口获取WantAgent实例的操作类型
     wantAgent.getOperationType(wantAgentData, getOperationTypeCallback);
   } catch (err) {
     console.error(`getOperationTypeCallback failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1920,6 +1951,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -2012,13 +2044,13 @@ ArkTS-Sta: getOperationType(agent: WantAgent): Promise\<int>
 
 | 参数名       | 类型      | 必填 | 说明          |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | 是   | WantAgent对象。 |
+| agent      | [WantAgent](#wantagent) | 是   | WantAgent对象。 |
 
 **返回值：**
 
 | 类型                                                    | 说明                                       |
 | ------------------------------------------------------- | ------------------------------------------ |
-| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，返回OperationType的结果。 |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | Promise对象，返回OperationType的结果。 |
 
 **错误码：**
 
@@ -2075,9 +2107,11 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式获取WantAgent实例的操作类型
     wantAgent.getOperationType(wantAgentData).then((data) => {
       console.info(`getOperationType ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
@@ -2089,6 +2123,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);

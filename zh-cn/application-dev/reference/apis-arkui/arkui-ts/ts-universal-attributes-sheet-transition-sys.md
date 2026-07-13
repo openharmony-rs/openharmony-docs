@@ -24,7 +24,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 只读 | 可选   | 描述              |
+| 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | ------------------------------- | --------- | ---- | --------------- |
 | offset<sup>14+</sup>       | [Position](ts-types.md#position) | 否 | 否    | 设置半模态弹窗偏移量。当半模态为底部弹窗时，支持设置底部间距。不支持设置半模态的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的detents属性。y轴设置为负数的时候不生效。<br/> 默认值：x轴为0vp，y轴坐标为0vp。<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | enableBlurSnapshot | boolean | 否 | 是 | 设置半模态是否开启模糊优化。开启后，半模态设置了blurStyle或systemMaterial后，其模糊效果将使用快照渲染来降低计算开销。该属性在半模态展示后不支持动态切换，半模态的[POPUP](ts-universal-attributes-sheet-transition.md#sheettype11枚举说明)类型不支持模糊优化。<br/>为true时开启模糊优化，为false时关闭模糊优化，默认值：false。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统接口：** 此接口为系统接口。|

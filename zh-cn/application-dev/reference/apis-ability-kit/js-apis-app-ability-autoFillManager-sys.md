@@ -149,7 +149,7 @@ type FillRequestCallback = _FillRequestCallback
 
 type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback
 
-自动保存或者手动保存请求的回调对象。
+自动保存或者手动保存请求的回调对象。用于在保存操作完成后通知应用保存结果，包含保存成功或失败的状态信息。
 
 **系统接口**：此接口为系统接口。
 

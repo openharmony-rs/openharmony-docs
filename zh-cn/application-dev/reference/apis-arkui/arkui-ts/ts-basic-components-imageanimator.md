@@ -49,7 +49,7 @@ ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
-设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
+设置图片帧信息集合。不支持动态更新，否则可能会导致不可预期的行为。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -113,7 +113,7 @@ ArkTS-Sta: duration(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 播放时长。<br/>value为0时，不播放图片。<br/> 设置undefined时，按默认值处理。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/> 设置undefined时，按默认值处理。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
 
 ### reverse
 
@@ -216,6 +216,8 @@ ArkTS-Dyn: iterations(value: number)
 ArkTS-Sta: iterations(value: int | undefined)
 
 设置播放次数。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -356,6 +358,8 @@ ArkTS-Dyn: onRepeat(event: () => void)
 ArkTS-Sta: onRepeat(event: (() => void) | undefined)
 
 状态回调，动画重复播放时触发。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -596,13 +600,20 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
+    // 获取资源文件的内容数据
     let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    // 根据二进制数据创建图像源
     let imageSource = image.createImageSource(uint8Array?.buffer.slice(0, uint8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    try {
+      // 从图像源创建PixelMap对象，指定像素格式为RGBA_8888
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      return createPixelMap;
+    } finally {
+      // 释放图像源资源
+      await imageSource.release();
+    }
   }
 }
 ```

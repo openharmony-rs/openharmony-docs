@@ -309,9 +309,9 @@ const transform: Matrix4 = [
 
 | 名称 | 类型   | 只读 | 可选 | 说明                |
 | ---- | ------ | ---- | ---- | ------------------- |
-| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | x轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| z    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
+| z    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 向量z轴方向的值。<br/>取值范围：(-∞, +∞) |
 
 
 ## Vector4

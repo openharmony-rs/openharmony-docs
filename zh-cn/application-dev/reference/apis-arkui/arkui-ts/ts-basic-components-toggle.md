@@ -258,6 +258,8 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 该示例通过配置ToggleType设置Toggle的勾选框样式、状态按钮样式及开关样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -322,11 +324,99 @@ struct ToggleExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Switch, isOn: true } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+
+      Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Checkbox, isOn: false } as ToggleOptions)
+          .size({ width: 20, height: 20 })
+          .selectedColor('#007DFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Checkbox, isOn: true } as ToggleOptions)
+          .size({ width: 20, height: 20 })
+          .selectedColor('#007DFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+
+      Text('type: Button').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Button, isOn: false } as ToggleOptions) {
+          Text('status button').fontColor('#182431').fontSize(12)
+        }.width(106)
+        .selectedColor('rgba(0,125,255,0.20)')
+        .onChange((isOn: boolean) => {
+          console.info('Component status:' + isOn);
+        })
+
+        Toggle({ type: ToggleType.Button, isOn: true } as ToggleOptions) {
+          Text('status button').fontColor('#182431').fontSize(12)
+        }.width(106)
+        .selectedColor('rgba(0,125,255,0.20)')
+        .onChange((isOn: boolean) => {
+          console.info('Component status:' + isOn);
+        })
+      }
+    }.width('100%').padding(24)
+  }
+}
+```
+
 ![toggle](figures/toggle.gif)
 
 ### 示例2（自定义开关类型的样式）
 
 该示例实现了自定义设置Toggle组件Switch样式，包括圆形滑块半径、关闭状态的背景颜色、圆形滑块颜色、滑轨的圆角。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -364,11 +454,76 @@ struct ToggleExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchStyle({
+            pointRadius: 15,
+            trackBorderRadius: 10,
+            pointColor: '#D2B48C',
+            unselectedColor: Color.Pink
+          } as SwitchStyle)
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Switch, isOn: true } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchStyle({
+            pointRadius: 15,
+            trackBorderRadius: 10,
+            pointColor: '#D2B48C',
+            unselectedColor: Color.Pink
+          } as SwitchStyle)
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+    }.width('100%').padding(24)
+  }
+}
+```
+
 ![toggle](figures/toggleSwitchStyle.gif)
 
 ### 示例3（自定义Toggle样式）
 
 该示例实现自定义Toggle样式，通过按钮切换圆形背景颜色：点击蓝圆按钮，背景变蓝色；点击黄圆按钮，背景变黄色。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -420,6 +575,92 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color,
+  ToggleConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  Row,
+  CircleOptions,
+  Button
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+type BuilderToggle = @Builder
+(config: ToggleConfiguration) => void
+
+class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
+  selectedColor: Color = Color.White;
+  lamp: string = 'string';
+
+  constructor(selectedColor: Color, lamp: string) {
+    this.selectedColor = selectedColor;
+    this.lamp = lamp;
+  }
+
+  applyContent(): WrappedBuilder<BuilderToggle> {
+    return wrapBuilder(buildSwitch);
+  }
+}
+
+@Builder
+function buildSwitch(config: ToggleConfiguration) {
+  Column({ space: 50 } as ColumnOptions) {
+    Circle({ width: 150, height: 150 } as CircleOptions)
+      .fill(config.isOn ? (config.contentModifier as MySwitchStyle).selectedColor : Color.Blue)
+    Row() {
+      Button('蓝' + JSON.stringify((config.contentModifier as MySwitchStyle).lamp))
+        .onClick(() => {
+          config.triggerChange(false);
+        })
+      Button('黄' + JSON.stringify((config.contentModifier as MySwitchStyle).lamp))
+        .onClick(() => {
+          config.triggerChange(true);
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Toggle({ type: ToggleType.Switch })
+        .enabled(true)
+        .contentModifier(new MySwitchStyle(Color.Yellow, '灯'))
+        .onChange((isOn: boolean) => {
+          console.info('Switch Log:' + isOn);
+        })
+    }.height('100%').width('100%')
+  }
+}
+```
+
 ![toggle](figures/Toggle_builder.gif)
 
 ### 示例4（Toggle新材质效果）
@@ -428,6 +669,8 @@ struct Index {
 
 从API版本26.0.0开始，新增systemMaterial属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -435,6 +678,72 @@ struct Index {
 struct ToggleMaterialTest {
   build() {
     Column({ space: 10 }) {
+      // 不设置新材质接口，无新材质效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+
+      // systemMaterial设置undefined，恢复为无材质的效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(undefined)
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），无点光源效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(new uiMaterial.Material())
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），有点光源效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(new uiMaterial.Material())
+        .switchPointColor(Color.White)
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color,
+  ToggleConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  Row,
+  CircleOptions,
+  Button,
+  uiMaterial
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleMaterialTest {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
       // 不设置新材质接口，无新材质效果
       Toggle({ type: ToggleType.Switch, isOn: true })
         .size({ width: 80, height: 40 })

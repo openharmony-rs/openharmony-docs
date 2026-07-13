@@ -2007,7 +2007,7 @@ ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallb
 
 ArkTS-Sta: deleteInvalidForms(formIds: Array\<string>, callback: AsyncCallback\<int>): void
 
-根据列表删除应用程序的无效卡片。使用callback异步回调。
+根据有效的卡片列表，删除应用程序不在有效列表中的卡片。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -3163,7 +3163,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>>| 以Promise方式返回接口运行结果及分享数据。 |
+| Promise\<Record\<string, Object>> | 以Promise方式返回接口运行结果及分享数据。 |
 
 **错误码：**
 
@@ -3380,7 +3380,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
 
 > **说明：**
 >
@@ -3851,7 +3851,7 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-恢复卡片。使用callback异步回调。
+恢复被回收的卡片，并将它的状态更新为不可回收。如果卡片未被回收，则只更新状态为不可回收。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3974,7 +3974,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
@@ -3993,7 +3993,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });

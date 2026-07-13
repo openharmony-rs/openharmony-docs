@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 解耦设计在鸿蒙生态中的必要性与优势
 在鸿蒙跨语言开发中，ArkTS通过Node-API调用C++模块是常见模式。随着业务复杂度和跨平台需求的增加，对C++模块进行分层解耦成为关键的设计原则。良好的分层设计使Node-API模块在支持ANI时，能复用相同代码逻辑，降低开发工作量。通过将代码明确划分为以下两层：

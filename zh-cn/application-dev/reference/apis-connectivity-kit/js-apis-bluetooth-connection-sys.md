@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -942,6 +942,90 @@ try {
 }
 ```
 
+## connection.setCarKeyDfxData
+
+setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
+
+把车钥匙执行开卡、删卡的操作通知蓝牙。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| action | [CarKeyActionType](js-apis-bluetooth-connection-sys.md#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    connection.setCarKeyDfxData('11:22:33:44:55:66', connection.CarKeyActionType.CAR_KEY_ACTION_ADD);
+} catch (err) {
+    console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## connection.getCarKeyDfxData
+
+getCarKeyDfxData(): string
+
+获取车钥匙维测数据，例如蓝牙车钥匙连接、配对等维测数据。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| string | 以字符串格式返回车钥匙维测数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    let dfxData = connection.getCarKeyDfxData();
+} catch (err) {
+    console.error(`Failed to get car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## PinRequiredParam
 
@@ -1141,3 +1225,20 @@ try {
 | DEVICE_ROLE_CENTRAL_ONLY      | 1    | 表示该蓝牙设备仅支持作为中心设备。 |
 | DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | 表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为外围设备。 |
 | DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为中心设备。  |
+
+## CarKeyActionType
+
+枚举，车钥匙执行的操作。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称           | 值   | 说明                 |
+| -------------- | ---- | -------------------- |
+| CAR_KEY_ACTION_ADD       | 0    | 表示车钥匙执行开卡操作。 |
+| CAR_KEY_ACTION_DELETE      | 1    | 表示车钥匙执行删卡操作。 |

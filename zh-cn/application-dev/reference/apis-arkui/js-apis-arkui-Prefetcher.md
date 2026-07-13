@@ -114,8 +114,8 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 列表可见区域的上界。 |
-| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 列表可见区域的下界。 |
+| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值。 |
+| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值。 |
 
 **示例：**
 
@@ -226,8 +226,8 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 列表可见区域的上界。 |
-| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 列表可见区域的下界。 |
+| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值。 |
+| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值。 |
 
 ## IDataSourcePrefetching
 

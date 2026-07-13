@@ -240,7 +240,7 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 ## GridItemOptions<sup>11+</sup>对象说明
 
-GridItem样式对象。
+GridItem可选参数对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -384,7 +384,7 @@ struct GridItemExample {
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: String[] = ['0', '1', '2'];
+  @State numbers: string[] = ['0', '1', '2'];
 
   build() {
     Column({ space: 5 }) {
