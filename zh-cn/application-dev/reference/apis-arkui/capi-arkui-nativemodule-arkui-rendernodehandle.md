@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle
 
 ## 概述
 
-定义渲染节点指针。
+定义渲染节点指针，用于在ArkUI_RenderNodeUtils相关接口中表示和传递渲染节点对象。
 
 **起始版本：** 20
 

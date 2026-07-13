@@ -1823,7 +1823,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力：**: SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1878,7 +1878,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力：**: SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

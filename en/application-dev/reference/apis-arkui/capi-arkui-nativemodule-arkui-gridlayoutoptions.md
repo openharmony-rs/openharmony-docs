@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @guozejun-->
+<!--Owner: @guozejun; @rongShao-Z-->
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@ typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
 
 ## Overview
 
-Defines the **Grid** layout options.
+Defines grid layout options, which are used to set the index, row span, and column span of an irregular grid item as well as the start row, start column, row span, and column span of a grid item at the specified index in **Grid**.
 
 **Since**: 22
 

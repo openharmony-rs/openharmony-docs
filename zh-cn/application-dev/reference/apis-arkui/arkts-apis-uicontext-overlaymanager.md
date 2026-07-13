@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供绘制浮层的能力。
+提供绘制浮层的能力。OverlayManager支持通过配置浮层层级、显示顺序、显示模式等方式管理浮层节点，适用于需要在Page页面之上但Dialog、Popup、Menu等之下的长时间显示的浮层场景，为开发者提供灵活的浮层管理能力。
 
 > **说明：**
 >
@@ -28,7 +28,7 @@
 
 openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
 
-打开一个支持层级配置的浮层，浮层中的内容由开发者传入的组件内容（content字段）决定。使用Promise异步回调。
+在OverlayManager上打开一个支持层级配置的浮层，浮层内容由content参数决定。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -42,14 +42,14 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 | 参数名     | 类型                                       | 必填    | 说明          |
 | ------- | ---------------------------------------- | ------ | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 是    | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
-| options | [OrderOverlayOptions](#orderoverlayoptions) | 否    | 浮层的层级配置选项。 |
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 是    | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br> 新增的节点默认处于页面居中位置，按层级堆叠。|
+| options | [OrderOverlayOptions](#orderoverlayoptions) | 否    | 浮层的层级配置选项。不传入时使用默认配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。成功时无返回结果；失败时抛出错误，错误码参见错误码部分。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 import { ComponentContent, OverlayManager, LevelOrder, LevelMode } from '@kit.ArkUI';
 
 class Params {
-  text: string = "";
+  text: string = '';
   offset: Position;
 
   constructor(text: string, offset: Position) {
@@ -92,7 +92,7 @@ struct OverlayExample {
 
   build() {
     Column({ space: 5 }) {
-      Button("打开浮层").onClick(() => {
+      Button('打开浮层').onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message, { x: 0, y: 110 })
@@ -123,15 +123,15 @@ struct OverlayExample {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |--------| -------- |
-| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。 |
-| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。 |
-| levelUniqueId | number | 否 | 是 | 路由或导航页面中任意节点的uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。需大于等于0。 |
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。<br>**说明：**<br>- 默认值：LevelOrder.clamp(0) |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。<br>**说明：**<br>- 默认值：LevelMode.OVERLAY |
+| levelUniqueId | number | 否 | 是 | 浮层需要显示的层级下的节点uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。取值范围为大于等于0的数字，当且仅当levelMode设置为LevelMode.EMBEDDED时生效。 |
 
 ## addComponentContent<sup>12+</sup>
 
 addComponentContent(content: ComponentContent, index?: number): void
 
-在OverlayManager上新增指定节点。
+在OverlayManager上新增指定节点，可通过index参数控制新增节点的层级位置。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -143,8 +143,8 @@ addComponentContent(content: ComponentContent, index?: number): void
 
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中，按层级堆叠。|
-| index | number | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br/> 当index ≥ 0时，越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br/> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br/>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager上新增此content节点。 <br>**说明：** <br> 新增的节点默认处于页面居中，按层级堆叠。|
+| index | number | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br> 当index ≥ 0时，index值越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。|
 
 **示例：**
 
@@ -152,7 +152,7 @@ addComponentContent(content: ComponentContent, index?: number): void
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
 
 class Params {
-  text: string = "";
+  text: string = '';
   offset: Position;
 
   constructor(text: string, offset: Position) {
@@ -179,17 +179,17 @@ struct OverlayExample {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 110 };
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 110 };
 
   build() {
     Column({ space: 5 }) {
-      Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
+      Button('++componentContentIndex: ' + this.componentContentIndex).onClick(() => {
         ++this.componentContentIndex;
       })
-      Button("--componentContentIndex: " + this.componentContentIndex).onClick(() => {
+      Button('--componentContentIndex: ' + this.componentContentIndex).onClick(() => {
         --this.componentContentIndex;
       })
-      Button("增加ComponentContent" + this.contentArray.length).onClick(() => {
+      Button('增加ComponentContent' + this.contentArray.length).onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message + (this.contentArray.length), this.componentOffset)
@@ -197,40 +197,40 @@ struct OverlayExample {
         this.contentArray.push(componentContent);
         this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
       })
-      Button("++arrayIndex: " + this.arrayIndex).onClick(() => {
+      Button('++arrayIndex: ' + this.arrayIndex).onClick(() => {
         ++this.arrayIndex;
       })
-      Button("--arrayIndex: " + this.arrayIndex).onClick(() => {
+      Button('--arrayIndex: ' + this.arrayIndex).onClick(() => {
         --this.arrayIndex;
       })
-      Button("删除ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('删除ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray.splice(this.arrayIndex, 1);
           this.overlayNode.removeComponentContent(componentContent.pop());
         } else {
-          console.info("arrayIndex有误");
+          console.info('arrayIndex有误');
         }
       })
-      Button("显示ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('显示ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.showComponentContent(componentContent);
         } else {
-          console.info("arrayIndex有误");
+          console.info('arrayIndex有误');
         }
       })
-      Button("隐藏ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('隐藏ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.hideComponentContent(componentContent);
         } else {
-          console.info("arrayIndex有误");
+          console.info('arrayIndex有误');
         }
       })
-      Button("显示所有ComponentContent").onClick(() => {
+      Button('显示所有ComponentContent').onClick(() => {
         this.overlayNode.showAllComponentContents();
       })
-      Button("隐藏所有ComponentContent").onClick(() => {
+      Button('隐藏所有ComponentContent').onClick(() => {
         this.overlayNode.hideAllComponentContents();
       })
     }
@@ -246,9 +246,7 @@ struct OverlayExample {
 
 addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
 
-创建浮层节点时，指定显示顺序。
-
-支持在浮层节点创建时指定显示的顺序。
+创建浮层节点时，指定显示顺序。支持在浮层节点创建时指定显示的顺序。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -260,18 +258,18 @@ addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder)
 
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
-| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否    | 新增浮层节点的显示顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0)|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager上新增此content节点。 <br>**说明：** <br> 新增的节点默认处于页面居中，按层级堆叠。|
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否    | 新增浮层节点的显示顺序。<br>**说明：**<br>- 默认值：LevelOrder.clamp(0)|
 
 **示例：**
 
-该示例通过调用addComponentContentWithOrder接口，实现了按照指定显示顺序创建浮层节点的功能。
+本示例展示如何调用addComponentContentWithOrder接口创建浮层节点并指定显示顺序。
 
 ```ts
 import { ComponentContent, PromptAction, LevelOrder, UIContext, OverlayManager } from '@kit.ArkUI';
 
 class Params {
-  text: string = "";
+  text: string = '';
   offset: Position;
   constructor(text: string, offset: Position) {
     this.text = text;
@@ -297,7 +295,7 @@ struct Index {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 80 };
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
     Row() {
@@ -313,11 +311,11 @@ struct Index {
             this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.1));
             let topOrder: LevelOrder = this.promptAction.getTopOrder();
             if (topOrder !== undefined) {
-              console.error('topOrder: ' + topOrder.getOrder());
+              console.info('topOrder: ' + topOrder.getOrder());
             }
             let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
             if (bottomOrder !== undefined) {
-              console.error('bottomOrder: ' + bottomOrder.getOrder());
+              console.info('bottomOrder: ' + bottomOrder.getOrder());
             }
           })
         Button('OverlayManager上面弹窗')
@@ -331,11 +329,11 @@ struct Index {
             this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.2));
             let topOrder: LevelOrder = this.promptAction.getTopOrder();
             if (topOrder !== undefined) {
-              console.error('topOrder: ' + topOrder.getOrder());
+              console.info('topOrder: ' + topOrder.getOrder());
             }
             let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
             if (bottomOrder !== undefined) {
-              console.error('bottomOrder: ' + bottomOrder.getOrder());
+              console.info('bottomOrder: ' + bottomOrder.getOrder());
             }
           })
       }.width('100%')
@@ -350,7 +348,7 @@ struct Index {
 
 removeComponentContent(content: ComponentContent): void
 
-删除overlay上的指定节点。
+删除OverlayManager上的指定节点。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

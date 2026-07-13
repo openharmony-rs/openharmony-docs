@@ -18,7 +18,7 @@
 
 ## AlertDialogParam
 
-警告弹窗的样式。
+警告弹窗的配置参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

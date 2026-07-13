@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ResolvedUIContext实例对象。
+ResolvedUIContext实例对象。用于表示通过[resolveUIContext](arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取到的UIContext实例及其解析策略，适用于需要获取并识别UIContext来源策略的场景。
 
 > **说明：**
 >
@@ -24,4 +24,4 @@ ResolvedUIContext实例对象。
 
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
-| strategy      | [ResolveStrategy](./arkts-apis-uicontext-e.md#resolvestrategy22) | 否   | 否   | [UIContext](arkts-apis-uicontext-uicontext.md)的解析策略。             |
+| strategy      | [ResolveStrategy](./arkts-apis-uicontext-e.md#resolvestrategy22) | 否   | 否   | [UIContext](arkts-apis-uicontext-uicontext.md)的解析策略，用于标识[resolveUIContext](arkts-apis-uicontext-uicontext.md#resolveuicontext22)返回该UIContext实例时采用的解析规则。             |

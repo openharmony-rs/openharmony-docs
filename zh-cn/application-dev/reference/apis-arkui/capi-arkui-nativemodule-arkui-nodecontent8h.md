@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeContent* ArkUI_NodeContentHandle
 
 ## 概述
 
-定义ArkUI_NodeContent在Native侧的实例对象指针。
+定义 ArkUI_NodeContent 在 Native 侧的实例对象指针。
 
 **起始版本：** 12
 

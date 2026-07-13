@@ -112,7 +112,7 @@ struct LengthMetricsUnitDemo {
 | ------ | ------ | ----- | -------- | --------------------------- |
 | width | number | 是 | 否 | CanvasRenderingContext2D的组件宽度。<br/>默认单位：vp <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | height | number | 是 | 否 | CanvasRenderingContext2D的组件高度。<br/>默认单位：vp <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| canvas<sup>13+</sup> | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br/>默认值：null <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
+| canvas<sup>13+</sup> | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br/>默认值：null <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## toDataURL
 
@@ -402,6 +402,8 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

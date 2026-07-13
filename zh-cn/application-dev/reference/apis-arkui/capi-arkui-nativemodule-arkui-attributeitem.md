@@ -25,10 +25,8 @@ typedef struct {...} ArkUI_AttributeItem
 ### 成员变量
 
 | 名称                                 | 描述 |
-|------------------------------------| -- |
-| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | 数字类型数组，用于存储数字数组类型的参数。 |
-| int32_t size                       | 数字类型数组大小，配合变量value使用，value数组的长度。 |
+| ---------------------------------- | --- |
+| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | 数字类型数组，用于存储数字数组类型的参数，数组长度由size指定。 |
+| int32_t size                       | value数组的长度，需配合变量value使用。 |
 | const char* string                 | 字符串类型，用于存储字符串类型的参数。 |
 | void* object                       | 对象类型，用于存储对象类型的参数。 |
-
-

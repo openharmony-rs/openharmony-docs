@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态。[AppStorage](#appstorage)是与应用进程绑定的全局UI状态存储中心，[LocalStorage](#localstorage9)提供页面级的UI状态存储，[PersistentStorage](#persistentstorage)提供状态变量持久化的能力，[Environment](#environment)提供了读取系统环境变量并将其值写入AppStorage的功能。
+状态管理模块提供了应用的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和环境状态查询能力。[AppStorage](#appstorage)是与应用进程绑定的全局UI状态存储中心，[LocalStorage](#localstorage9)提供了页面级的UI状态存储能力，[PersistentStorage](#persistentstorage)提供了状态变量持久化的能力，[Environment](#environment)提供了读取系统环境变量并将其值写入AppStorage的能力。
 
 开发指南参考：[AppStorage：应用全局的UI状态存储](../../../ui/state-management/arkts-appstorage.md)、[LocalStorage：页面级UI状态存储](../../../ui/state-management/arkts-localstorage.md)、[PersistentStorage：持久化存储UI状态](../../../ui/state-management/arkts-persiststorage.md)和[Environment：设备环境查询](../../../ui/state-management/arkts-environment.md)。
 
@@ -432,7 +432,7 @@ static size(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 返回AppStorage中属性的数量。 |
+| number | AppStorage中属性的数量。 |
 
 **示例：**
 ```ts
@@ -850,7 +850,7 @@ static Size(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 返回AppStorage中属性的数量。 |
+| number | AppStorage中属性的数量。 |
 
 **示例：**
 ```ts
@@ -902,7 +902,7 @@ static getShared(): LocalStorage
 > 
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
 >
-> 从API version 12开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)来明确UI的执行上下文。
+> 从API version 12开始，可使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)明确UI执行上下文中的LocalStorage实例。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1514,7 +1514,7 @@ ref1?.info(); // ref1.info()='PropA'
 
 ## SubscribedAbstractProperty
 
-SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](#abouttobedeleted10)接口手动释放，以取消同步关系并无效化实例。
 
 > **说明：** 
 > 
@@ -1789,7 +1789,7 @@ PersistentStorage.PersistProp('highScore', '0');
 
 static DeleteProp(key: string): void
 
-[PersistProp](#persistpropdeprecated)的逆向操作。将key对应的属性从[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续[AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作，对PersistentStorage不会再有影响。
+[PersistProp](#persistpropdeprecated)的逆向操作。将key对应的属性从[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续[AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作，对PersistentStorage不会再有影响。如需再次持久化，可再次调用[PersistProp](#persistpropdeprecated)接口。
 
 
 > **说明：**

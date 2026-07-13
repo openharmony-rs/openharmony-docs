@@ -394,7 +394,7 @@ if (isBound == true) {
     }
     ```
 
- 4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
+4. **main_pages.json** file. This file corresponds to the page drawn under the **ets/pages/** path for partner device management buttons.
 
     ``` JSON
     {
@@ -404,7 +404,7 @@ if (isBound == true) {
     }
     ```
 
- 5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
+5. Register **PartnerAgentExtensionAbility** in the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to the project module. The **type** tag must be set to **partnerAgent**, and the **srcEntry** tag indicates the code path corresponding to the current **PartnerAgentExtensionAbility** component.
 
     ``` JSON5
     "extensionAbilities": [

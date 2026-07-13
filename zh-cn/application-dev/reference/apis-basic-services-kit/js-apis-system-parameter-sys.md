@@ -29,6 +29,14 @@ getSync(key: string, def?: string): string
 
 获取系统参数key对应的值。
 
+> **说明：**
+>
+> getSync和get方法都用于获取系统参数值：
+> - getSync：同步方法，直接返回系统参数值，适用于简单同步场景。
+> - get：异步方法，使用callback或Promise异步返回结果，适用于需要异步处理的场景。
+>
+> 开发者应根据具体场景选择合适的方法。
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **参数：**
@@ -43,6 +51,17 @@ getSync(key: string, def?: string): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 系统参数值。<br> 若key存在，返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -70,9 +89,16 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 | key | string | 是 | 待查询的系统参数key。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数查询。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -108,9 +134,16 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 | def | string | 是 | def为所要获取的系统参数的默认值。调用时必须传入此参数，但参数值可以传任意字符串类型的值。仅当系统参数不存在时，def参数值生效。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数查询。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -151,9 +184,16 @@ get(key: string, def?: string): Promise&lt;string&gt;
 | -------- | -------- |
 | Promise&lt;string&gt; | Promise实例，用于异步获取结果。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数查询。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -178,6 +218,14 @@ setSync(key: string, value: string): void
 
 设置系统参数key对应的值。
 
+> **说明：**
+>
+> setSync和set方法都用于设置系统参数值：
+> - setSync：同步方法，直接设置系统参数并立即返回，适用于简单同步场景。
+> - set：异步方法，使用callback或Promise异步返回结果，适用于需要异步处理的场景。
+>
+> 开发者应根据具体场景选择合适的方法。
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **参数：**
@@ -187,9 +235,16 @@ setSync(key: string, value: string): void
 | key | string | 是 | 待设置的系统参数key。 |
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 
 **示例：**
@@ -220,9 +275,16 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -263,9 +325,16 @@ set(key: string, value: string): Promise&lt;void&gt;
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档：[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -283,13 +352,3 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
-## 错误码
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
-| 14700102 | Invalid system parameter value.                                          |
-| 14700103 | The operation on the system permission is denied.                        |
-| 14700104 | System internal error such as out memory or deadlock.                    |
-
-以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。

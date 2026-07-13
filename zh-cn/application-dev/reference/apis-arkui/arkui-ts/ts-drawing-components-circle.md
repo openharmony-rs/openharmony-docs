@@ -76,7 +76,7 @@ Circle(value?: CircleOptions)
 
 ### stroke
 
-stroke(value: ResourceColor | ColorMetrics): CircleAttribute
+stroke(value: ResourceColor | ColorMetrics)
 
 设置边框颜色，支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色，可进行HDR提亮，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
 

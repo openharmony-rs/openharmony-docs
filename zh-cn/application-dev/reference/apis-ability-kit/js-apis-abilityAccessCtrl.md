@@ -556,6 +556,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
 ```ts
@@ -619,6 +620,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 | 12100013 | The specific global switch is already open. |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
 ```ts

@@ -63,7 +63,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 on(type: 'layout', callback: () => void): void
 
-通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
+通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。请注意，该接口无法监听窗口尺寸变化，相关需求请参考[on('windowSizeChange')](./arkts-apis-window-Window.md#onwindowsizechange7)。此外，布局回调和窗口尺寸变化回调之间不存在确定的执行顺序依赖。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

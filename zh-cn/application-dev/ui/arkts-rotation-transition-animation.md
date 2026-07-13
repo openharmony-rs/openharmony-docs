@@ -37,7 +37,9 @@ struct rotation {
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation",
+}
 ```
 
 布局切换的旋转屏动画，会对同步旋转的窗口与应用视图做大小和位置的过渡。
@@ -140,7 +142,9 @@ const TAG: string = 'EntryAbility';
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation",
+}
 ```
 
 透明度变化的旋转屏动画，会对窗口做大小和位置的过渡，并同时对应用视图做切换过渡，且为消失隐藏的应用视图做渐隐效果，对新出现的视图做渐显的效果。

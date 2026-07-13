@@ -300,6 +300,7 @@
   - 媒体展示<!--arkts-build-media-ndk-->
     - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
+    - [使用弧形滑块视图容器 (ArcSwiper)](ndk-arc-swiper.md)
   - [构建表单组件](ndk-build-form-components.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - 使用动画<!--arkts-use-animation-ndk-->
