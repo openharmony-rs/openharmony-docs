@@ -11300,12 +11300,12 @@ struct WebComponent {
 
 setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
-设置是否启用subframe默认错误页。
+设置是否启用默认错误页，且支持控制subframe错误页是否启用。
 
-在当前接口的enable参数和includeSubframe参数都设置为true时，如果页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，可在该回调接口中设置自定义的错误展示页面。
+当enable设置为true时，如果主页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调；当enable和includeSubframe同时为true时，子页面加载发生错误也会触发onOverrideErrorPage回调，可在该回调接口中设置自定义的错误展示页面。
 
 > **说明：**
->
+
 > - 当enable设置为false时，includeSubframe设置不生效。
 > - includeSubframe的配置同样受onOverrideErrorPage回调影响，可在该接口中设置自定义subframe的错误展示页面。
 
@@ -11318,7 +11318,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
 | enable | boolean | 是 | 表示是否启用默认错误页。true表示启用，false表示不启用。|
-| includeSubframe | boolean | 是 | 表示是否启用subframe默认错误页。true表示启用，false表示不启用。如果enable设置为false，该配置项无效。 |
+| includeSubframe | boolean | 是 | 表示是否启用subframe默认错误页。true表示启用，false表示不启用。|
 
 **错误码：**
 
@@ -11340,12 +11340,11 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true, false);
-            if (!this.controller.getSubframeErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true, true);
-            }
-        })
+      .onControllerAttached(()=>{
+        this.controller.setErrorPageEnabled(true, true);
+        let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+        console.log("Subframe error page enabled: " + isEnabled);
+      })
     }
   }
 }
@@ -11391,12 +11390,11 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true, false);
-            if (!this.controller.getSubframeErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true, true);
-            }
-        })
+      .onControllerAttached(()=>{
+        this.controller.setErrorPageEnabled(true, true);
+        let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+        console.log("Subframe error page enabled: " + isEnabled);
+      })
     }
   }
 }
