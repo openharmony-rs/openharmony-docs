@@ -11381,7 +11381,7 @@ getSubframeErrorPageEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。不启用默认错误页功能或者不启用subframe错误页功能时，返回false。|
+| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。<br>不启用默认错误页功能或者不启用subframe错误页功能时，返回false。|
 
 **错误码：**
 
