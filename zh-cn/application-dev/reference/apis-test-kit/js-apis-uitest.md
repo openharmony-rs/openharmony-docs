@@ -3984,7 +3984,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景，应用可以在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置"orientation" = "auto_rotation" 使能旋转功能。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
