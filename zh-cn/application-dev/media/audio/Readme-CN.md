@@ -40,6 +40,7 @@
   - [音频录制开发概述](audio-recording-overview.md)
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
   - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
+  - [使用AudioCapturer采集内录音频(ArkTS)](using-audiocapturer-for-playback-capture.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
