@@ -6,15 +6,15 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创建独立且可重用的组件。这些组件可在不同应用程序中使用，不会与其他组件产生冲突。
+IsolatedComponent是一个跨线程嵌入式组件，能够在本页面中嵌入并展示由独立Abc提供的隔离UI内容。这些内容在受限worker线程中独立运行，不会与其他组件产生冲突。
 
 每个IsolatedComponent组件独立存在，具有专属的作用域和生命周期，不与其他组件共享状态或数据，能够方便地在不同应用程序中重用，降低重复开发的工作量。
 
 ## 基本概念
 
-[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的[worker](../reference/apis-arkts/js-apis-worker.md)线程中执行。
+[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的[worker](../reference/apis-arkts/js-apis-worker.md)线程中执行。
 
-该组件通常用于有Abc热更新（可动态替换IsolatedComponent加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
+该组件通常用于有Abc热更新（可动态替换IsolatedComponent加载的Abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
 
 ## 约束与限制
 
@@ -30,7 +30,7 @@ IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创
 
 6. 当独立Abc通过IsolatedComponent组件嵌入到宿主进程中显示时，即表明其内容完全向宿主开放，宿主可对独立Abc的内容进行操作。因此，涉及安全敏感的场景应禁用此功能。
 
-7. 独立Abc运行在受限worker线程中可保证相对安全，并且不会影响主线程。
+7. 独立Abc运行在受限worker线程中可保证相对安全，不会导致主线程崩溃或直接影响主线程的数据完整性。
 
 ## 场景示例
 
@@ -40,7 +40,7 @@ IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创
 
 在使用IsolatedComponent组件时，首先需要导入@kit.AbilityKit模块，该模块提供了构建隔离组件所需的必要功能，包括bundleManager等关键API。
 
-bundleManager作为AbilityKit的核心组件，提供了管理应用包的能力，是构建IsolatedComponent的基础。通过导入此模块，能够使用其提供的API来创建和管理隔离组件，确保不同组件之间的数据和资源隔离，从而提高应用的安全性。
+bundleManager是@kit.AbilityKit中提供应用包管理能力的模块，通过其verifyAbc接口可对Abc文件进行校验，是使用IsolatedComponent组件前的必要步骤。通过导入此模块，能够使用其提供的API来创建和管理隔离组件，确保不同组件之间的数据和资源隔离，从而提高应用的安全性。
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
@@ -50,7 +50,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 使用IsolatedComponent组件时，合理配置[requestPermissions标签](../security/AccessToken/declare-permissions.md)是保障组件在受限环境中安全运行的关键步骤。通过此配置，能够准确指定组件所需的权限，实现权限的精细化管理。
 
-在受限模式下，IsolatedComponent组件默认不具备执行动态代码的能力。通过在module.json5配置文件中添加requestPermissions标签，可以授权组件在特定条件下执行动态下发的方舟字节码。
+在受限模式下，IsolatedComponent组件默认不具备执行动态代码的能力。通过在module.json5配置文件中添加requestPermissions标签声明所需权限，可以使组件在特定条件下获得执行动态下发的方舟字节码的能力。
 
 ```json
 "requestPermissions": [
@@ -70,11 +70,11 @@ import { bundleManager } from '@kit.AbilityKit';
 
 受限[worker](../reference/apis-arkts/js-apis-worker.md)是一个在隔离环境中运行的worker线程。这种隔离特性确保了受限worker与其他线程或组件之间实现内存隔离，避免它们之间的相互干扰或安全问题。
 
-在IsolatedComponent场景中，组件常需动态加载外部hap资源。受限worker通过以下机制保障安全：
+在IsolatedComponent场景中，组件常需动态加载外部HAP资源。受限worker通过以下机制保障安全：
 
 - [沙箱路径](../file-management/app-sandbox-directory.md)校验
 
-  abcPath指向经系统校验的安全目录，防止恶意代码注入。
+  abcPath指向经系统校验的安全目录下的Abc文件，防止恶意代码注入。
 
 - 通信管控
 
@@ -100,9 +100,9 @@ IsolatedComponent({
   want: {
     "parameters": {
       // 资源路径
-      "resourcePath": `${getContext(this).filesDir}/${this.fileName}.hap`,
+      "resourcePath": `${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}.hap`,
       // Abc文件校验后的沙箱路径
-      "abcPath": `/abcs${getContext(this).filesDir}/${this.fileName}`,
+      "abcPath": `/abcs${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}`,
       // 需要显示页面的入口路径
       "entryPoint": `${this.bundleName}/entry/ets/pages/extension`,
     }
@@ -229,7 +229,7 @@ struct Index {
 
 **预期效果**
 
-1. 在DevEco Studio上编译构建生成hap包，并安装到设备上；
+1. 在DevEco Studio上编译构建生成HAP包，并安装到设备上；
 
 2. 将本应用构建生成的modules.abc文件通过DevEco Studio或hdc工具上传至应用沙箱路径/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files下，其中，hdc工具参考命令如下：
 

@@ -4,7 +4,7 @@
 <!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决多并发实例间的数据竞争问题，ArkTS语言基础库引入了异步锁能力。为了开发者的开发效率，AsyncLock对象支持跨并发实例引用传递。
 
@@ -21,7 +21,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## AsyncLockCallback
@@ -88,7 +88,7 @@ class A {
 
 @Concurrent
 async function foo(a: A) {
-  await a.setCount(10)
+  await a.setCount(10);
 }
 ```
 

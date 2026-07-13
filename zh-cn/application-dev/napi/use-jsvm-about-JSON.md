@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行JSON操作
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -33,10 +33,7 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_json_parse_and_json_stringify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/aboutjson/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
-#include <string>
-
+``` C++
 // 解析JSON数字
 static JSVM_Value JsonParseNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -85,16 +82,16 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 
 JSVM_PropertyDescriptor descriptor[] = {
-    {"jsonParseNumber", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"jsonParseObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"jsonParseNumber", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"jsonParseObject", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 // 待执行的js代码
-static const char *srcCallNative = R"JS(jsonParseNumber();jsonParseObject();)JS";
+static const char *STR_TASK = R"JS(jsonParseNumber();jsonParseObject();)JS";
 ```
 
 ## 预期结果：
-```cpp
+``` C++
 Test JSVM jsonParseNumber: 10.555000
 
 Test JSVM jsonParseObject: {"first":"one","second":"two","third":"three"}

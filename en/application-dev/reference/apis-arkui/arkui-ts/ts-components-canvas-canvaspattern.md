@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**CanvasPattern** represents an object, created by the [createPattern](ts-canvasrenderingcontext2d.md#createpattern) API, describing an image filling pattern based on the image and repetition mode.
+A **CanvasPattern** object is created via the [createPattern](ts-components-canvas-common-method.md#createpattern) method. It is a pattern for image filling based on a specified image and repeat mode.
 
 >  **NOTE**
 >
@@ -91,3 +91,5 @@ struct CanvasPatternPage {
 ```
 
 ![CanvasPattern](./figures/canvas_pattern.gif)
+
+<!--no_check-->

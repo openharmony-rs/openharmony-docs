@@ -1,8 +1,8 @@
 # @ohos.display (Display) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -34,7 +34,7 @@ Checks whether there is a visible privacy window on a display. The privacy windo
 
 | Name| Type                     | Mandatory| Description      |
 | ------ | ------------------------- | ---- |----------|
-| displayId    | number                    | Yes  | ID of the display. The value must be an integer greater than or equal to 0.|
+| displayId    | number                    | Yes  | Display ID, which must be a non-negative integer.|
 
 **Return value**
 
@@ -48,8 +48,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -59,24 +59,26 @@ import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
+  // Obtain the default Display object.
   displayClass = display.getDefaultDisplaySync();
 
-  let ret: boolean = true;
+  let ret: boolean | undefined = undefined;
   try {
+    // Check whether there is a privacy window on the default display.
     ret = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
-    console.error(`Failed to check has privateWindow or not. Code: ${exception.code} , message : ${exception.message}`);
+    console.error(`Failed to check has privateWindow or not. Code: ${exception.code}, message: ${exception.message}`);
   }
   if (ret == undefined) {
-    console.error("Failed to check has privateWindow or not.");
+    console.error('Failed to check has privateWindow or not.');
   }
   if (ret) {
-    console.info("There has privateWindow.");
+    console.info('There has privateWindow.');
   } else if (!ret) {
-    console.info("There has no privateWindow.");
+    console.info('There has no privateWindow.');
   }
 } catch (exception) {
-  console.error(`Failed to obtain the default display object. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to obtain the default display object. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -103,8 +105,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
 
@@ -115,9 +117,10 @@ let callback: Callback<boolean> = (data: boolean) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
 try {
-  display.on("privateModeChange", callback);
+  // Register the callback for listening to privacy mode changes.
+  display.on('privateModeChange', callback);
 } catch (exception) {
-  console.error(`Failed to register callback. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -144,16 +147,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
 try {
-  display.off("privateModeChange");
+  // Unregister the callback for listening to privacy mode changes.
+  display.off('privateModeChange');
 } catch (exception) {
-  console.error(`Failed to unregister callback. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -180,8 +184,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -191,9 +195,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
+  // Set the display mode to full-screen display.
   display.setFoldDisplayMode(mode);
 } catch (exception) {
-  console.error(`Failed to change the fold display mode. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -213,7 +218,7 @@ Sets the display mode of the foldable device, with the reason for the change spe
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | mode     | [FoldDisplayMode](js-apis-display.md#folddisplaymode10)    | Yes  | Display mode.|
-| reason     | string    | Yes  | Reason for changing the display mode. If this parameter is not set, an empty string is used by default.|
+| reason     | string    | Yes  | Reason for changing the display mode. If this parameter is not set, the default value is an empty string.|
 
 **Error codes**
 
@@ -221,7 +226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -231,9 +236,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
+  // Set the display mode to main screen display and specify the reason as "backSelfie".
   display.setFoldDisplayMode(mode, 'backSelfie');
 } catch (exception) {
-  console.error(`Failed to change the fold display mode. Code: ${exception}`);
+  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -258,8 +264,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -269,9 +275,10 @@ import { display } from '@kit.ArkUI';
 
 try {
   let locked: boolean = false;
+  // Set the fold status to not locked.
   display.setFoldStatusLocked(locked);
 } catch (exception) {
-  console.error(`Failed to change the fold status locked mode. Code: ${exception.code} , message : ${exception.message}`);
+  console.error(`Failed to change the fold status locked mode. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -288,7 +295,7 @@ Adds windows to the list of windows that are not allowed to be displayed during 
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | Yes  | List of window IDs. If a child window ID is passed in, it will not take effect. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowIds     | Array\<number>    | Yes  | Window ID list. This parameter does not take effect when the child window ID is passed. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 
 **Return value**
 
@@ -302,9 +309,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 801     | Capability not supported.Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801     | Capability not supported. Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -317,15 +324,16 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     // ...
-    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id; // Obtain the window IDs.
     let windowIds = [windowId];
 
+    // Add windows to the list of windows that are not allowed to be displayed during casting.
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
-    })
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -333,7 +341,7 @@ export default class EntryAbility extends UIAbility {
 ## display.removeVirtualScreenBlocklist<sup>18+</sup>
 removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 
-Removes windows from the list of windows that are not allowed to be displayed during casting. This API takes effect only for the main window of an application or system windows. This API uses a promise to return the result.
+Removes windows from the list of windows that are not allowed to be displayed during casting. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -343,7 +351,7 @@ Removes windows from the list of windows that are not allowed to be displayed du
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | Yes  | List of window IDs. If a child window ID is passed in, it will not take effect. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowIds     | Array\<number>    | Yes  | Window ID list. This parameter does not take effect when the child window ID is passed. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 
 **Return value**
 
@@ -357,9 +365,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 801     | Capability not supported.Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801     | Capability not supported. Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -372,22 +380,179 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     // ...
-    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id; // Obtain the window IDs.
     let windowIds = [windowId];
 
+    // Add windows to the list of windows that are not allowed to be displayed during casting.
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
-    })
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
 
+    // Remove windows from the list of windows that are not allowed to be displayed during casting.
     promise = display.removeVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in removing virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code} , message: ${err.message}`);
-    })
+      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+## display.addVirtualScreenSurface
+
+addVirtualScreenSurface(screenId: number, surfaceId: string, surfaceRegion?: Rect): Promise&lt;void&gt;
+
+Adds a surface for a virtual screen. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description         |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
+| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
+| surfaceRegion | [Rect](js-apis-display.md#rect9) | No  | Rectangle area on the surface that displays the virtual screen. If the virtual screen has not been bound to a surface using [setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16) or [addVirtualScreenSurface()](#displayaddvirtualscreensurface), the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In mirror mode, the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In independent mode, the value of **surfaceRegion** is valid. The left vertex of the virtual screen is used as the origin. When the area specified by **surfaceRegion** does not overlap with the virtual screen, error code 1400004 is returned.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message |
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function addVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**Example**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  addVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in adding surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('addSurface')
+        .onClick((event: ClickEvent) => {
+          this.addVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## display.removeVirtualScreenSurface
+
+removeVirtualScreenSurface(screenId: number, surfaceId: string): Promise&lt;void&gt;
+
+Removes the surface bound to a virtual screen. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description         |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
+| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function removeVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**Example**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  removeVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in removing surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('removeSurface')
+        .onClick((event: ClickEvent) => {
+          this.removeVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -418,7 +583,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -430,14 +595,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
+// Obtain the default Display object.
 displayClass = display.getDefaultDisplaySync();
-displayClass.hasImmersiveWindow((err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message : ${err.message}`);
-      return;
-    }
-    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+// Check whether an immersive window is included.
+displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 });
 ```
 ### hasImmersiveWindow<sup>11+</sup>
@@ -461,7 +628,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -473,11 +640,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
+// Obtain the default Display object.
 displayClass = display.getDefaultDisplaySync();
+// Check whether an immersive window is included.
 let promise = displayClass.hasImmersiveWindow();
 promise.then((data) => {
   console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message: ${err.message}`);
-})
+  console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+});
 ```

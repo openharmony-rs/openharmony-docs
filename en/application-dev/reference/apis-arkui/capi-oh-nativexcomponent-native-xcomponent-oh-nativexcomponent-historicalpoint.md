@@ -12,7 +12,7 @@ typedef struct {...} OH_NativeXComponent_HistoricalPoint
 
 ## Overview
 
-Represents a historical touch point.
+Defines a historical touch point.
 
 **Since**: 10
 

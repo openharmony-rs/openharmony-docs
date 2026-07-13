@@ -5,8 +5,9 @@
 <!--Designer: @hejunfei1991-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:04.932Z pushedAt=2026-06-30T03:20:00.887Z -->
 
-Display management is centered around the oversight of a device's displays, which includes physical, virtual, and foldable displays. It involves managing their properties and serving as a broadcaster to relay monitored information to services that have subscribed to display information.
+Display management is responsible for managing various types of displays on a device, including physical, virtual, and foldable displays. It manages their properties and acts as a publisher, broadcasting display-related events and information to subscribed services that require display information.
 
 Display management includes the following capabilities:
 

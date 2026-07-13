@@ -62,7 +62,7 @@ The number of servers exceeds the limit.
 
 **处理步骤**
 
-应用已申请的Server资源数量超过最大允许数量(10个)，需要调用close()方法释放这些资源。
+应用已申请的Server资源数量超过最大允许数量（10个），需要调用close()方法释放这些资源。
 
 ## 32390203 服务名重复注册
 
@@ -129,8 +129,6 @@ Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified
 参数非法。
 
 **可能原因**
-
-建议与错误信息保持一致，可能原因调整为：
 
 1. 必选参数没有传入。
 

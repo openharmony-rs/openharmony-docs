@@ -560,6 +560,7 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -616,6 +617,7 @@ getUidRxBytes(uid: number): Promise\<number>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -663,6 +665,7 @@ getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -719,6 +722,7 @@ getUidTxBytes(uid: number): Promise\<number>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |

@@ -6,7 +6,7 @@
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:32.119Z pushedAt=2026-06-25T09:26:45.586Z -->
+<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:14:49.453Z pushedAt=2026-07-07T06:54:03.242Z -->
 
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 
@@ -102,7 +102,7 @@ The following table lists the commands supported by the SQLite debugging tool.
 | Command              | Description                               |
 | ------------------ | --------------------------------------- |
 | .help           | Displays all available SQLite commands and brief descriptions.   |
-| .open *database name*| Opens or creates a database.             |
+| .open *database name*| Opens or creates a database file.             |
 | .databases      | Lists all connected databases.             |
 | .tables         | Lists all tables in a database.             |
 | .show          | Displays the default settings of the SQLite command prompt.       |
@@ -295,7 +295,7 @@ sqlite>SELECT * FROM COMPANY;
 
 ### Deleting Data
 
-At the **sqlite>** prompt, drun the **DELETE FROM *table name* WHERE name = 'Wang Wu';** SQL statement to delete the data.
+At the **sqlite>** prompt, run the **DELETE FROM *table name* WHERE name = 'Wang Wu';** SQL statement to delete the data.
 
 ```sql
 sqlite> DELETE FROM COMPANY WHERE name = 'Wang Wu';

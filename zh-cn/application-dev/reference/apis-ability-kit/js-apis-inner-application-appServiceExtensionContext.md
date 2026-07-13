@@ -75,10 +75,10 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 16000005 | The specified process does not have the permission. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
-| 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000055 | Installation-free timed out. |
@@ -140,7 +140,7 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要连接的Ability的信息，如Ability名称，Bundle名称等。 |
-| callback | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
+| callback | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，用于监听服务连接状态的变化，包括连接成功、连接失败、断开连接。 |
 
 **返回值：**
 

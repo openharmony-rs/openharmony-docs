@@ -3949,7 +3949,7 @@ try {
 
 moveFile(src: string, dest: string, mode?: number): Promise\<void>
 
-移动文件至目标路径。使用Promise异步回调。
+移动文件至目标路径，支持设置冲突处理模式。使用Promise异步回调。
 
 > **说明：**
 >
