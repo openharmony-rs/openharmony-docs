@@ -37,7 +37,7 @@ ArkTS-Dyn: constructor(init?: string[][] | Record&lt;string, string&gt; | string
 
 ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; | string | URLParams)
 
-URLParams的构造函数。
+URLParams的构造函数，用于创建URL参数对象，适用于需要解析、构造或操作URL查询参数的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +189,7 @@ let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
 let params = new url.URLParams(urlObject.search.slice(1));
 params.append('fod', '3'); // 追加第二个fod参数值
 // 获取指定名称fod的所有值
-console.info(params.getAll('fod').toString()); // Output ["1","3"].
+console.info(params.getAll('fod').toString()); // Output ["1","3"]
 ```
 
 ### entries<sup>9+</sup>
