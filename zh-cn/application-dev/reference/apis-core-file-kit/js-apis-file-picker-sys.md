@@ -30,7 +30,7 @@ import { picker } from '@kit.CoreFileKit';
 
 | 名称                    | 类型                                         | 只读  | 可选  | 说明                                     |
 | :---------------------- |---------------------------------------------| ---- | ---- |------------------------------------------|
-| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  否  |  是 |主题色参数，默认为空，跟随FilePicker应用颜色。当themeColor设置为特定的主题色属性（[brand, fontPrimary, fontEmphasize, compBackgroundEmphasize, iconFourth](../apis-arkui/js-apis-arkui-theme.md#colors)）时，被拉起的FilePicker应用将按照传入的主题色参数显示对应的界面配色；设置为其他属性时，不产生适配效果，仍跟随FilePicker应用默认颜色。<br> **设备行为差异**：该参数在Phone设备上可正常生效，在其他设备上设置不产生视觉效果（不影响选择器本身的正常调用）。开发者可通过deviceInfo.deviceType获取设备类型进行判断。 |
+| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  否  |  是 |主题色参数，默认为空，跟随FilePicker应用颜色。当themeColor设置为特定的主题色属性（[brand, fontPrimary, compBackgroundEmphasize, iconFourth](../apis-arkui/js-apis-arkui-theme.md#colors)）时，被拉起的FilePicker应用将按照传入的主题色参数显示对应的界面配色；设置为其他属性时，不产生适配效果，仍跟随FilePicker应用默认颜色。<br> **设备行为差异**：该参数在Phone设备上可正常生效，在其他设备上设置不产生视觉效果（不影响选择器本身的正常调用）。开发者可通过deviceInfo.deviceType获取设备类型进行判断。 |
 
 ## DocumentSaveOptions
 
@@ -44,4 +44,4 @@ import { picker } from '@kit.CoreFileKit';
 
 | 名称                    | 类型                                          |  只读  | 可选  |说明                                       |
 | :---------------------- |---------------------------------------------| ----- |--------| ------------------------------------------|
-| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  否   | 是 | 主题色参数，默认为空，跟随FilePicker应用颜色。当themeColor设置为特定的主题色属性（[brand, fontPrimary, fontEmphasize, compBackgroundEmphasize, iconFourth](../apis-arkui/js-apis-arkui-theme.md#colors)）时，被拉起的FilePicker应用将按照传入的主题色参数显示对应的界面配色；设置为其他属性时，不产生适配效果，仍跟随FilePicker应用默认颜色。<br> **设备行为差异**：该参数在Phone设备上可正常生效，在其他设备上设置不产生视觉效果（不影响选择器本身的正常调用）。开发者可通过deviceInfo.deviceType获取设备类型进行判断。 |
+| themeColor<sup>18+</sup>     | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |  否   | 是 | 主题色参数，默认为空，跟随FilePicker应用颜色。当themeColor设置为特定的主题色属性（[fontEmphasize, compBackgroundEmphasize](../apis-arkui/js-apis-arkui-theme.md#colors)(../apis-arkui/js-apis-arkui-theme.md#colors)）时，被拉起的FilePicker应用将按照传入的主题色参数显示对应的界面配色；设置为其他属性时，不产生适配效果，仍跟随FilePicker应用默认颜色。<br> **设备行为差异**：该参数在Phone设备上可正常生效，在其他设备上设置不产生视觉效果（不影响选择器本身的正常调用）。开发者可通过deviceInfo.deviceType获取设备类型进行判断。 |
