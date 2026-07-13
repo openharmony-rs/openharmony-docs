@@ -3982,7 +3982,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### convertAssetToCompatibleAsset
 
-convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;PhotoAsset&gt;&gt;;
+convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;PhotoAsset&gt;&gt;
 
 转换资产属性到兼容性属性
 
