@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
+typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle;
 ```
 
 ## 概述
