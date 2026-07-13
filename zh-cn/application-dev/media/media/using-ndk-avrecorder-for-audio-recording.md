@@ -290,7 +290,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static constexpr int32_t VIDEO_FRAME_HEIGHT = 1080;
    static constexpr int32_t VIDEO_FRAME_RATE = 30;
    static constexpr int32_t CALLBACK_ARG_COUNT = 2;
-   static constexpr int32_t FILE_PERMISSIONS = 0777;
+   static constexpr int32_t FILE_PERMISSIONS = 0644;
    
    static OH_AVRecorder *g_recorder = nullptr;
    static int32_t g_outputFd = -1;
