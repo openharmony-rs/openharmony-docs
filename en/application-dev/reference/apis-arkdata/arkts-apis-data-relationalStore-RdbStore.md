@@ -5535,7 +5535,7 @@ Stops data syncing with the cloud. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md) and [Universal Error Codes](errorcode-universal.md).
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
