@@ -68,7 +68,7 @@ if (ohos_kernel_type == "liteos_m") {
       "components": [
         { "component": "peripheral", "features":[] }
       ]
-   },
+   }
    ```
 
 2. 添加适配文件。
