@@ -4847,7 +4847,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 > **说明：**
 >
-> 该功能需通过调用[setErrorPageEnabled<sup>20+</sup>](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)或[setErrorPageEnabled<sup>26+</sup>](./arkts-apis-webview-WebviewController.md#seterrorpageenabled26)接口启用默认错误页，才会生效。
+> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>或[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled26)接口启用默认错误页，才会生效。
 >
 > 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
