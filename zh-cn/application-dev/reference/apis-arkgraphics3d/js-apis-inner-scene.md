@@ -28,7 +28,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定填写，用于标识该场景资源。|
+| name | string | 否 | 否 | 要创建资源的名称，可由开发者自定义填写，用于标识该场景资源。|
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | 否 | 是 | 3D场景所需的资源文件路径。默认值为undefined。|
 
 **示例：**
