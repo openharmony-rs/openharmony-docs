@@ -22,6 +22,24 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+## BundleInfo
+
+应用包信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| sandboxCreatorBundleName          | string                                                       | 是   | 是   | 沙箱分身的创建方包名。 |
+
 ## DynamicIconInfo
 
 应用的动态图标信息。
