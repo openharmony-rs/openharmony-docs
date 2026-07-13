@@ -6,13 +6,13 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件区域变化事件指组件显示的尺寸、位置等发生变化时触发的事件。
+组件区域变化事件指组件显示的尺寸、位置等发生变化时触发的事件，适用于需要监听组件布局变化并获取变化前后区域信息的场景，帮助开发者根据组件尺寸或位置变化及时更新页面内容或执行相关业务逻辑。
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
+> onAreaChange回调执行仅与本组件有关，不保证本组件与祖先组件或子孙组件上的onAreaChange回调之间存在固定的执行顺序。
 
 ## onAreaChange
 
@@ -30,7 +30,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -40,13 +40,18 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onAreaChange
 
 onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 
-组件区域变化时触发该回调，可通过[AreaChangeOptions](#areachangeoptions)中的expectedUpdateInterval设置触发回调的间隔。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
+组件区域变化时触发该回调，可通过[AreaChangeOptions](#areachangeoptions)中的expectedUpdateInterval设置触发回调的间隔。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。由绘制变化所导致的渲染属性变化不会响应回调，如[translate](ts-universal-attributes-transformation.md#translate)、[offset](ts-universal-attributes-location.md#offset)、[markAnchor](ts-universal-attributes-location.md#markanchor)、[scale](ts-universal-attributes-transformation.md#scale)、[transform](ts-universal-attributes-transformation.md#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
+
+>  **说明：**
+>
+> 当组件同时绑定onAreaChange事件和[position](ts-universal-attributes-location.md#position)属性时，onAreaChange事件响应设置[Position](ts-types.md#position)类型的position属性变化，不响应设置[Edges](ts-types.md#edges12)和[LocalizedEdges](ts-types.md#localizededges12)类型的position属性变化。
+
 
 **起始版本：** 26.0.0
 
@@ -56,18 +61,18 @@ onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | event | [AreaChangeCallback](#areachangecallback) | 是   | onAreaChange事件的回调函数。组件显示的尺寸、位置发生变化时触发该回调。 |
-| options | [AreaChangeOptions](#areachangeoptions) | 否   | 区域变化相关的参数。缺省时，expectedUpdateInterval时间间隔按照0处理。 |
+| options | [AreaChangeOptions](#areachangeoptions) | 否   | 区域变化相关的配置参数，用于设置区域变化回调的计算时间间隔。可通过expectedUpdateInterval设置回调触发间隔，单位为ms；缺省时，expectedUpdateInterval按照0处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## AreaChangeCallback
 
@@ -127,11 +132,11 @@ struct AreaExample {
         .margin(30)
         .fontSize(20)
         .onClick(() => {
-          this.value = this.value + 'Text'
+          this.value = this.value + 'Text';
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
-          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} value is ${JSON.stringify(newValue)}`)
-          this.sizeValue = JSON.stringify(newValue)
+          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`)
+          this.sizeValue = JSON.stringify(newValue);
         })
       Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
     }
@@ -163,12 +168,12 @@ struct AreaExample {
         .margin(30)
         .fontSize(20)
         .onClick(() => {
-          this.value = this.value + 'Text'
+          this.value = this.value + 'Text';
         })
         // 当设置expectedUpdateInterval时，区域变化的回调会按照设置的时间间隔触发。
         .onAreaChange((oldValue: Area, newValue: Area) => {
-          console.info(`ACE: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`)
-          this.sizeValue = JSON.stringify(newValue)
+          console.info(`ACE: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          this.sizeValue = JSON.stringify(newValue);
         }, {expectedUpdateInterval: 1000})
       Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
     }

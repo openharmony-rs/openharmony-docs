@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureCollectInterceptInfo ArkUI_GestureCollectInterceptIn
 
 ## 概述
 
-定义手势收集拦截信息。
+定义手势收集拦截信息，用于描述手势收集拦截场景中的拦截相关信息。关于手势收集拦截的触发流程、使用时机及相关接口，请参见对应的手势处理机制说明文档。
 
 **起始版本：** 26.0.0
 

@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的鼠标悬浮态显示效果。
+设置组件的鼠标悬浮态显示效果，用于在鼠标指针悬停到组件上时呈现视觉反馈，帮助用户识别当前交互区域并提升界面交互体验。
 
 >  **说明：**
 >
-> 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## hoverEffect
 
@@ -56,9 +56,9 @@ struct HoverExample {
           .position({ x: 40, y: 120 })
           .hoverEffect(HoverEffect.Scale)
           .onHover((isHover?: boolean) => {
-            console.info(`Scale isHover: ${isHover}`)
-            this.isHoverVal = isHover as boolean
-          })
+            console.info(`Scale isHover: ${isHover}`);
+            this.isHoverVal = isHover as boolean;
+          });
 
         Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 })
         Column()
@@ -68,18 +68,18 @@ struct HoverExample {
           .hoverEffect(HoverEffect.Highlight)
           .position({ x: 40, y: 420 })
           .onHover((isHover?: boolean) => {
-            console.info(`Highlight isHover: ${isHover}`)
-            this.isHoverVal = isHover as boolean
-          })
+            console.info(`Highlight isHover: ${isHover}`);
+            this.isHoverVal = isHover as boolean;
+          });
       }
       .hoverEffect(HoverEffect.None)
       .width('100%')
       .height('100%')
       .border({ width: 1 })
       .onHover((isHover?: boolean) => {
-        console.info('HoverEffect.None')
-        this.isHoverVal = isHover as boolean
-      })
+        console.info('HoverEffect.None');
+        this.isHoverVal = isHover as boolean;
+      });
     }
   }
 }

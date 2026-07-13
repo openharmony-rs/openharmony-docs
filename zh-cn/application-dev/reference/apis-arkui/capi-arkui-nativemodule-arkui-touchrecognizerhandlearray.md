@@ -1,4 +1,4 @@
-# ArkUI_TouchRecognizerHandle*
+# ArkUI_TouchRecognizerHandleArray
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->

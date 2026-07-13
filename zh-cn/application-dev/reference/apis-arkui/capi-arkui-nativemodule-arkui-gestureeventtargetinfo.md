@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
 
 ## 概述
 
-提供手势事件目标信息类型对象定义。
+提供手势事件目标信息类型对象定义，用于表示手势事件关联的目标信息，便于在手势处理过程中获取和管理目标对象相关信息。
 
 **起始版本：** 12
 

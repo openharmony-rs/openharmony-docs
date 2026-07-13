@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者可以设置组件的自定义组合键，每个组件可以设置多个组合键。
+开发者可以设置组件的自定义组合键，每个组件可以设置多个组合键，适用于需要通过键盘快速触发组件操作的场景，可提升键盘操作效率。
 
 即使组件未获焦或是在所在页面未展示，只要已经挂载到获焦窗口的组件树上就会响应自定义组合键。
 
@@ -14,7 +14,7 @@
 
 >  **说明：**
 >
-> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -22,7 +22,7 @@
 
 keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?: () => void): T
 
-设置组件的自定义组合键。
+设置组件的自定义组合键。快捷键的响应、绑定和不生效场景需满足下文[快捷键使用注意事项](#快捷键使用注意事项)和[禁止绑定的系统快捷键](#禁止绑定的系统快捷键)中的约束。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -32,34 +32,34 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 
 | 参数名   | 类型                                  | 必填   | 说明                                     |
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
-| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br />空字符串意为取消快捷键绑定。<br/> |
-| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | 是 | 热键组合。<br />仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br/> |
-| action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。<br/>                               |
+| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br>空字符串意为取消快捷键绑定；绑定了多个快捷键的组件不能解除绑定快捷键。<br>当value有多个字符时，不绑定组合键，先前绑定的组合键仍然有效。<br> |
+| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | 是 | 热键组合。<br>仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br>当keys有重复的控制键时，不绑定组合键，先前绑定的组合键仍然有效。<br> |
+| action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。<br>                               |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于支持后续链式调用。 |
 
 ## 快捷键使用注意事项
 
-快捷键是对系统按键的响应，优先于普通的按键事件`OnKeyEvent`，按键事件触发的逻辑详见[按键事件数据流](../../../ui/arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
+快捷键是对系统按键的响应，优先于普通的按键事件`onKeyEvent`，按键事件触发的逻辑详见[按键事件数据流](../../../ui/arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
 
 | 场景                                       | 快捷键处理逻辑                            | 例子                                       |
 | ---------------------------------------- | ---------------------------------- | ---------------------------------------- |
 | 所有支持onClick事件的组件                         | 支持自定义组合键                           | 无                                        |
 | 自定义组合键要求                                 | 控制键Ctrl、Shift、Alt及它们的组合加上热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10) | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| 多个不同组件设置相同组合键                            | 只响应节点树上的深度最浅的组件，其它组件不响应快捷键          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
+| 多个不同组件设置相同组合键                            | 只响应节点树上的深度最浅的组件，其它组件不响应快捷键          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
 | 无论组件是否获焦                               | 只要窗口获焦，快捷键就会响应                      | 无                                        |
 | 使用单个`FunctionKey`触发快捷键 | 单个`FunctionKey`，没有`ModifierKey`，可以绑定为快捷键 | Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
-| `keyboardShortcut`的入参`value`为空 | 取消绑定的快捷键。<br />绑定了多个快捷键的不能解除绑定快捷键| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('',[]) |
+| `keyboardShortcut`的入参`value`为空 | 取消绑定的快捷键。<br>绑定了多个快捷键的组件不能解除绑定快捷键。| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
 | keyboardShortcut接口中的keys参数中Ctrl、Shift、Alt | 不区分左右键都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
-| keyboardShortcut接口中的value单个字符            | 不区分大小写都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
+| keyboardShortcut接口中的value单个字符            | 不区分大小写都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | 快捷键的响应                                   | `keys`键处于按下状态且`value`键触发down事件（长按会连续响应）              | 无                                        |
-| 隐藏组件<br />                               | 响应快捷键                              | 无                                        |
+| 隐藏组件<br>                               | 响应快捷键                              | 无                                        |
 | 不可交互（[enabled](ts-universal-attributes-enable.md#enabled)设置为false）状态的组件                              | 不响应快捷键                             | 无                                        |
-| 1. 组件的组合键(包括系统预定义快捷键)相同时<br />2. 接口参数value有多个字符时<br />3. 接口参数keys有重复的控制键时 | 这几种情况不绑定组合键，先前绑定的组合键仍然有效          | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br />Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br />Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
+| 1. 组件的组合键（包括系统预定义快捷键）相同时<br>2. 接口参数value有多个字符时<br>3. 接口参数keys有重复的控制键时 | 这几种情况不绑定组合键，先前绑定的组合键仍然有效          | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('a',[ModifierKey.CTRL,ModifierKey.CTRL]) |
 
 ### 禁止绑定的系统快捷键
 
@@ -99,27 +99,27 @@ struct Index {
     Row() {
       Column({ space: 5 }) {
         Text(this.message)
-        Button("Test short cut 1").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 1";
-          console.info("I clicked 1");
+        Button('Test short cut 1').onClick((event: ClickEvent) => {
+          this.message = 'I clicked Button 1';
+          console.info('I clicked 1');
         }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
           .onKeyEvent((event: KeyEvent) => {
-            console.info("event.keyCode: " + JSON.stringify(event));
+            console.info('event.keyCode: ' + JSON.stringify(event));
           })
-        Button("Test short cut 2").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 2";
-          console.info("I clicked 2");
+        Button('Test short cut 2').onClick((event: ClickEvent) => {
+          this.message = 'I clicked Button 2';
+          console.info('I clicked 2');
         }).keyboardShortcut('1', [ModifierKey.CTRL])
-        Button("Test short cut 3").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 3";
-          console.info("I clicked 3");
+        Button('Test short cut 3').onClick((event: ClickEvent) => {
+          this.message = 'I clicked Button 3';
+          console.info('I clicked 3');
         }).keyboardShortcut('A', [ModifierKey.SHIFT])
-        Button("Test short cut 4").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 4";
-          console.info("I clicked 4");
+        Button('Test short cut 4').onClick((event: ClickEvent) => {
+          this.message = 'I clicked Button 4';
+          console.info('I clicked 4');
         }).keyboardShortcut(FunctionKey.F5, [], () => {
-          this.message = "I clicked Button 4";
-          console.info("I clicked user callback.");
+          this.message = 'I clicked Button 4';
+          console.info('I clicked user callback.');
         }).keyboardShortcut(FunctionKey.F3, [])
       }
       .width('100%')
@@ -147,17 +147,17 @@ struct Index {
     Row() {
       Column({ space: 5 }) {
         Text('Ctrl+A is ' + this.message)
-        Button("Test short cut").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button";
-          console.info("I clicked");
+        Button('Test short cut').onClick((event: ClickEvent) => {
+          this.message = 'I clicked Button';
+          console.info('I clicked');
         }).keyboardShortcut(this.keyValue, [ModifierKey.CTRL])
-        Button(this.message + 'shortCut').onClick((event: ClickEvent) => {
+        Button(this.message + 'shortCut').onClick(() => {
           this.shortCutEnable = !this.shortCutEnable;
           this.message = this.shortCutEnable ? 'enable' : 'disable';
           this.keyValue = this.shortCutEnable ? 'a' : '';
         })
-        Button('multi-shortcut').onClick((event: ClickEvent) => {
-          console.info('Trigger keyboard shortcut success.')
+        Button('multi-shortcut').onClick(() => {
+          console.info('Trigger keyboard shortcut success.');
         }).keyboardShortcut('q', [ModifierKey.CTRL])
           .keyboardShortcut('w', [ModifierKey.CTRL])
           .keyboardShortcut('', []) // 不生效，绑定了多个快捷键的组件不能解除绑定快捷键

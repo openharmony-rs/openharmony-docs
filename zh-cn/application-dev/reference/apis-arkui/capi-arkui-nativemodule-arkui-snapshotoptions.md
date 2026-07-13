@@ -12,7 +12,7 @@ typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
 
 ## 概述
 
-定义截图的可选项。
+定义截图的可选项，用于在执行组件截图时配置相关截图行为，适用于需要按业务需求控制截图输出效果的场景。
 
 **起始版本：** 15
 

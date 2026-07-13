@@ -12,7 +12,7 @@ typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
 
 ## 概述
 
-可见区域变化监听的参数。
+ArkUI_VisibleAreaEventOptions用于配置可见区域变化监听的参数，包括阈值数组、预期更新间隔和可见区域计算模式，适用于需要监听组件可见区域变化并按指定阈值触发更新的场景。
 
 开发者在使用该类型时，首先需要调用[OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create)创建一个ArkUI_VisibleAreaEventOptions参数对象。然后可通过如下接口配置监听行为：
 

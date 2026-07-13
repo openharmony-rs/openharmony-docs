@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
 
 ## 概述
 
-提供手势打断数据类型对象定义。
+提供手势打断数据类型对象定义，用于在手势打断场景中表示与打断处理相关的数据；更多手势打断机制和使用方式请参见对应手势打断接口说明。
 
 **起始版本：** 12
 

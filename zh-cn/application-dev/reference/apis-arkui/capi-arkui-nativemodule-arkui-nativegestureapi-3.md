@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_NativeGestureAPI_3
 
 ## 概述
 
-定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口。
+定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口，支持为ArkUI节点设置并行手势事件回调，适用于需要进行并行手势识别处理的交互场景。
 
 **起始版本：** 26.0.0
 
@@ -46,14 +46,14 @@ ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, A
 **描述：**
 
 
-设置并行手势事件的回调函数。
+设置并行手势事件的回调函数。此接口适用于开发者自定义手势与响应链上其他组件手势需要并行处理的场景。
 
 **参数：**
 
 | 参数项                                                              | 描述 |
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要设置并行手势事件回调的ArkUI节点指针。 |
-| void* userData                                                         | 用户自定义数据。调用者需要确保数据的生命周期安全。 |
+| void* userData                                                         | 用户自定义数据，用于在并行手势事件回调过程中传递调用方自定义上下文信息。调用者需要确保数据的生命周期安全。 |
 | ArkUI_GestureRecognizer* (*parallelGesture)(ArkUI_ParallelGestureEvent* event) | 并行手势事件的回调函数。event为并行手势事件的数据；parallelGesture返回需要并行识别的手势识别器指针。 |
 
 **返回：**
