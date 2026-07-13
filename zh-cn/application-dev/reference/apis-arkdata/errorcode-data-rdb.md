@@ -142,7 +142,7 @@ The current operation failed because the database is corrupted.
 
 **错误信息**
 
-ResultSet is empty or pointer index is out of bounds. The row index is `rowIndex`, and the row count is `rowCount`.
+ResultSet is empty or pointer index is out of bounds.
 
 **错误描述**
 
@@ -174,7 +174,7 @@ ResultSet is empty or pointer index is out of bounds. The row index is `rowIndex
 
 **错误信息**
 
-Column index is out of bounds. The columnIndex: `columnIndex` is out of range.
+Column index is out of bounds.
 
 **错误描述**
 
@@ -332,7 +332,7 @@ The secret key is corrupted or lost.
 
 **错误信息**
 
-SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. `sqliteErrorMsg`.
+SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.
 
 **错误描述**
 
