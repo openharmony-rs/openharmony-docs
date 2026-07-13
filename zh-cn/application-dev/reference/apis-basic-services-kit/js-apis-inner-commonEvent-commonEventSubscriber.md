@@ -25,7 +25,7 @@
 
 ### 使用说明
 
-在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriberSync](js-apis-commonEventManager.md#commoneventmanagercreatesubscribersync10)获取subscriber对象。
+在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)获取subscriber对象。
 
 <!--code_no_check-->
 ```ts
@@ -72,7 +72,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callba
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -225,7 +225,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callba
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -291,7 +291,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promis
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -348,7 +348,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -389,7 +389,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -522,7 +522,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -584,7 +584,7 @@ setData(data: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -637,7 +637,7 @@ setDataSync(data: string): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -682,7 +682,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -747,7 +747,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -801,7 +801,7 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -841,7 +841,7 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -965,7 +965,7 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1089,7 +1089,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1248,7 +1248,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1409,7 +1409,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1535,7 +1535,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1675,7 +1675,7 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 

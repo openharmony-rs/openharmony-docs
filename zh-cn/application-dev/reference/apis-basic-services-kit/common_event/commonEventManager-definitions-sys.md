@@ -8,7 +8,7 @@
 
 本文档提供了系统定义的公共事件清单。
 
-公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
+公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager-sys.md#support)中。
 
 > **说明：**
 >
