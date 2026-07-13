@@ -93,11 +93,11 @@ typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy
 
 输入法获取输入框配置时触发的回调函数。开发者需实现此函数，在函数中对config参数设置编辑框的配置信息（输入类型、回车键类型、光标信息等），输入法框架将据此调整键盘布局和输入行为。
 
-**使用场景：** 当输入法应用需要获取编辑框的配置信息时，系统将自动调用此回调。此回调是输入法与编辑器交互的核心回调之一，必须实现。
+使用场景：当输入法应用需要获取编辑框的配置信息时，系统将自动调用此回调。此回调是输入法与编辑器交互的核心回调之一，必须实现。
 
-**使用后效果：** 回调返回后，输入法框架将读取config中的配置信息并据此调整键盘行为。config参数的内存将在回调返回后被释放，不可再访问。
+使用后效果：回调返回后，输入法框架将读取config中的配置信息并据此调整键盘行为。config参数的内存将在回调返回后被释放，不可再访问。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetGetTextConfigFunc](#oh_texteditorproxy_setgettextconfigfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。此回调的执行线程由调用Attach的线程决定，不受[OH_TextEditorProxy_SetCallbackInMainThread](#oh_texteditorproxy_setcallbackinmainthread)影响。
+前置条件：须通过[OH_TextEditorProxy_SetGetTextConfigFunc](#oh_texteditorproxy_setgettextconfigfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。此回调的执行线程由调用Attach的线程决定，不受[OH_TextEditorProxy_SetCallbackInMainThread](#oh_texteditorproxy_setcallbackinmainthread)影响。
 
 **起始版本：** 12
 
@@ -118,11 +118,11 @@ typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *t
 
 输入法应用插入文本时触发的回调函数。开发者需实现此函数，在函数中将text参数指定的文本内容插入到编辑框的光标位置。
 
-**使用场景：** 当输入法应用向编辑框插入文本时（如用户选择候选词、输入字符等），系统将自动调用此回调。此回调是输入法与编辑器交互的核心回调之一，必须实现。
+使用场景：当输入法应用向编辑框插入文本时（如用户选择候选词、输入字符等），系统将自动调用此回调。此回调是输入法与编辑器交互的核心回调之一，必须实现。
 
-**使用后效果：** 回调执行后，编辑框应在光标位置插入指定文本，并更新文本内容和光标位置。
+使用后效果：回调执行后，编辑框应在光标位置插入指定文本，并更新文本内容和光标位置。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetInsertTextFunc](#oh_texteditorproxy_setinserttextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetInsertTextFunc](#oh_texteditorproxy_setinserttextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -144,11 +144,11 @@ typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy
 
 输入法删除光标右侧文本时触发的回调函数。开发者需实现此函数，在函数中从光标位置向右删除指定数量的字符。
 
-**使用场景：** 当输入法应用请求删除光标右侧文本时（如用户在输入法中执行向前删除操作），系统将自动调用此回调。
+使用场景：当输入法应用请求删除光标右侧文本时（如用户在输入法中执行向前删除操作），系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应从光标位置向右删除指定数量的字符，并更新文本内容和光标位置。
+使用后效果：回调执行后，编辑框应从光标位置向右删除指定数量的字符，并更新文本内容和光标位置。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetDeleteForwardFunc](#oh_texteditorproxy_setdeleteforwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetDeleteForwardFunc](#oh_texteditorproxy_setdeleteforwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -169,11 +169,11 @@ typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProx
 
 输入法删除光标左侧文本时触发的回调函数。开发者需实现此函数，在函数中从光标位置向左删除指定数量的字符。
 
-**使用场景：** 当输入法应用请求删除光标左侧文本时（如用户在输入法中执行退格删除操作），系统将自动调用此回调。
+使用场景：当输入法应用请求删除光标左侧文本时（如用户在输入法中执行退格删除操作），系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应从光标位置向左删除指定数量的字符，并更新文本内容和光标位置。
+使用后效果：回调执行后，编辑框应从光标位置向左删除指定数量的字符，并更新文本内容和光标位置。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetDeleteBackwardFunc](#oh_texteditorproxy_setdeletebackwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetDeleteBackwardFunc](#oh_texteditorproxy_setdeletebackwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -194,11 +194,11 @@ typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditor
 
 输入法通知键盘状态时触发的回调函数。开发者需实现此函数，在函数中根据keyboardStatus参数更新编辑框对键盘状态的感知。
 
-**使用场景：** 当输入法应用的键盘状态发生变化（显示或隐藏）时，系统将自动调用此回调，通知编辑框当前的键盘状态。
+使用场景：当输入法应用的键盘状态发生变化（显示或隐藏）时，系统将自动调用此回调，通知编辑框当前的键盘状态。
 
-**使用后效果：** 回调执行后，编辑框应据此更新对键盘可见性的感知，例如调整避让策略或UI布局。
+使用后效果：回调执行后，编辑框应据此更新对键盘可见性的感知，例如调整避让策略或UI布局。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetSendKeyboardStatusFunc](#oh_texteditorproxy_setsendkeyboardstatusfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetSendKeyboardStatusFunc](#oh_texteditorproxy_setsendkeyboardstatusfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -219,11 +219,11 @@ typedef void (*OH_TextEditorProxy_SendEnterKeyFunc)(InputMethod_TextEditorProxy 
 
 输入法发送回车键时触发的回调函数。开发者需实现此函数，在函数中根据enterKeyType参数执行对应的回车键动作。
 
-**使用场景：** 当输入法应用通知编辑框回车键事件时，系统将自动调用此回调。
+使用场景：当输入法应用通知编辑框回车键事件时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应据此执行对应的回车键行为（如搜索、发送、完成等）。
+使用后效果：回调执行后，编辑框应据此执行对应的回车键行为（如搜索、发送、完成等）。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetSendEnterKeyFunc](#oh_texteditorproxy_setsendenterkeyfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetSendEnterKeyFunc](#oh_texteditorproxy_setsendenterkeyfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -244,11 +244,11 @@ typedef void (*OH_TextEditorProxy_MoveCursorFunc)(InputMethod_TextEditorProxy *t
 
 输入法移动光标时触发的回调函数。开发者需实现此函数，在函数中根据direction参数移动编辑框中的光标位置。
 
-**使用场景：** 当输入法应用请求移动光标时，系统将自动调用此回调。
+使用场景：当输入法应用请求移动光标时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应据此移动光标位置，并更新光标显示。
+使用后效果：回调执行后，编辑框应据此移动光标位置，并更新光标显示。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetMoveCursorFunc](#oh_texteditorproxy_setmovecursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetMoveCursorFunc](#oh_texteditorproxy_setmovecursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -269,11 +269,11 @@ typedef void (*OH_TextEditorProxy_HandleSetSelectionFunc)(InputMethod_TextEditor
 
 输入法请求选中文本时触发的回调函数。开发者需实现此函数，在函数中根据start和end参数选中编辑框中的指定范围文本。
 
-**使用场景：** 当输入法应用请求选中编辑框中一段文本时，系统将自动调用此回调。
+使用场景：当输入法应用请求选中编辑框中一段文本时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应将start到end范围内的文本选中，并更新选中状态和UI显示。
+使用后效果：回调执行后，编辑框应将start到end范围内的文本选中，并更新选中状态和UI显示。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetHandleSetSelectionFunc](#oh_texteditorproxy_sethandlesetselectionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetHandleSetSelectionFunc](#oh_texteditorproxy_sethandlesetselectionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -295,11 +295,11 @@ typedef void (*OH_TextEditorProxy_HandleExtendActionFunc)(InputMethod_TextEditor
 
 输入法发送扩展编辑操作时触发的回调函数。开发者需实现此函数，在函数中根据action参数执行对应的扩展编辑操作。
 
-**使用场景：** 当输入法应用请求执行扩展编辑操作（如剪切、复制、全选等）时，系统将自动调用此回调。
+使用场景：当输入法应用请求执行扩展编辑操作（如剪切、复制、全选等）时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应据此执行对应的扩展编辑动作。
+使用后效果：回调执行后，编辑框应据此执行对应的扩展编辑动作。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetHandleExtendActionFunc](#oh_texteditorproxy_sethandleextendactionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetHandleExtendActionFunc](#oh_texteditorproxy_sethandleextendactionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -320,11 +320,11 @@ typedef void (*OH_TextEditorProxy_GetLeftTextOfCursorFunc)(InputMethod_TextEdito
 
 输入法获取光标左侧文本时触发的回调函数。开发者需实现此函数，在函数中将光标左侧指定数量的文本内容写入text参数，并将实际字符数量写入length参数。
 
-**使用场景：** 当输入法应用需要获取光标左侧的文本内容（如用于联想输入、上下文分析等）时，系统将自动调用此回调。
+使用场景：当输入法应用需要获取光标左侧的文本内容（如用于联想输入、上下文分析等）时，系统将自动调用此回调。
 
-**使用后效果：** 回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
+使用后效果：回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetGetLeftTextOfCursorFunc](#oh_texteditorproxy_setgetlefttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetLeftTextOfCursorFunc](#oh_texteditorproxy_setgetlefttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -347,11 +347,11 @@ typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEdit
 
 输入法获取光标右侧文本时触发的回调函数。开发者需实现此函数，在函数中将光标右侧指定数量的文本内容写入text参数，并将实际字符数量写入length参数。
 
-**使用场景：** 当输入法应用需要获取光标右侧的文本内容时，系统将自动调用此回调。
+使用场景：当输入法应用需要获取光标右侧的文本内容时，系统将自动调用此回调。
 
-**使用后效果：** 回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
+使用后效果：回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetGetRightTextOfCursorFunc](#oh_texteditorproxy_setgetrighttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetRightTextOfCursorFunc](#oh_texteditorproxy_setgetrighttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -374,11 +374,11 @@ typedef int32_t (*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextE
 
 输入法获取光标所在输入框文本索引时触发的回调函数。开发者需实现此函数，在函数中返回光标在编辑框文本中的字符索引位置。
 
-**使用场景：** 当输入法应用需要获取光标在文本中的精确位置时，系统将自动调用此回调。
+使用场景：当输入法应用需要获取光标在文本中的精确位置时，系统将自动调用此回调。
 
-**使用后效果：** 回调返回后，输入法应用将读取返回的索引值用于定位上下文。
+使用后效果：回调返回后，输入法应用将读取返回的索引值用于定位上下文。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](#oh_texteditorproxy_setgettextindexatcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](#oh_texteditorproxy_setgettextindexatcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -404,11 +404,11 @@ typedef int32_t (*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_Text
 
 输入法应用发送私有数据命令时触发的回调函数。开发者需实现此函数，在函数中处理输入法应用发送的私有命令数据。
 
-**使用场景：** 当输入法应用通过[OH_InputMethodProxy_SendPrivateCommand](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_sendprivatecommand)向编辑框发送私有命令时，系统将自动调用此回调。
+使用场景：当输入法应用通过[OH_InputMethodProxy_SendPrivateCommand](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_sendprivatecommand)向编辑框发送私有命令时，系统将自动调用此回调。
 
-**使用后效果：** 回调返回后，输入法应用将根据返回值判断命令是否被成功处理。
+使用后效果：回调返回后，输入法应用将根据返回值判断命令是否被成功处理。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetReceivePrivateCommandFunc](#oh_texteditorproxy_setreceiveprivatecommandfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetReceivePrivateCommandFunc](#oh_texteditorproxy_setreceiveprivatecommandfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -436,11 +436,11 @@ typedef int32_t (*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorP
 
 输入法设置预上屏文本时触发的回调函数。预上屏是输入法的候选文本展示功能，通常在用户输入拼音或输入码未确定汉字时显示。此函数负责设置预上屏文本及其光标位置。与[OH_TextEditorProxy_FinishTextPreviewFunc](#oh_texteditorproxy_finishtextpreviewfunc)配合使用：先调用SetPreviewTextFunc设置预上屏内容，当用户选择候选词或取消输入时，调用FinishTextPreviewFunc结束预上屏。
 
-**使用场景：** 当输入法应用需要展示候选文本（如拼音输入时的预上屏文本）时，系统将自动调用此回调。
+使用场景：当输入法应用需要展示候选文本（如拼音输入时的预上屏文本）时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应将text内容以预上屏样式显示在start到end范围内，并将返回值反馈给输入法。
+使用后效果：回调执行后，编辑框应将text内容以预上屏样式显示在start到end范围内，并将返回值反馈给输入法。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetSetPreviewTextFunc](#oh_texteditorproxy_setsetpreviewtextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。编辑框需在TextConfig中设置支持预上屏（supported=true）。
+前置条件：须通过[OH_TextEditorProxy_SetSetPreviewTextFunc](#oh_texteditorproxy_setsetpreviewtextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。编辑框需在TextConfig中设置支持预上屏（supported=true）。
 
 **起始版本：** 12
 
@@ -470,11 +470,11 @@ typedef void (*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorP
 
 输入法结束预上屏时触发的回调函数。此函数用于清理预上屏状态，通常在用户选择候选词（确定输入）或取消输入时调用。与[OH_TextEditorProxy_SetPreviewTextFunc](#oh_texteditorproxy_setpreviewtextfunc)配合使用。
 
-**使用场景：** 当输入法应用需要结束预上屏状态时，系统将自动调用此回调。
+使用场景：当输入法应用需要结束预上屏状态时，系统将自动调用此回调。
 
-**使用后效果：** 回调执行后，编辑框应清理预上屏显示状态，恢复到正常文本显示。
+使用后效果：回调执行后，编辑框应清理预上屏显示状态，恢复到正常文本显示。
 
-**前置条件：** 须通过[OH_TextEditorProxy_SetFinishTextPreviewFunc](#oh_texteditorproxy_setfinishtextpreviewfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetFinishTextPreviewFunc](#oh_texteditorproxy_setfinishtextpreviewfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
 
 **起始版本：** 12
 
@@ -494,11 +494,11 @@ InputMethod_TextEditorProxy *OH_TextEditorProxy_Create(void)
 
 创建一个新的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例。创建后需通过Set*Func接口注册回调函数，再通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成绑定注册。
 
-**使用场景：** 当应用需要创建文本编辑器代理对象以接收输入法请求和通知时调用此函数。
+使用场景：当应用需要创建文本编辑器代理对象以接收输入法请求和通知时调用此函数。
 
-**使用后效果：** 创建成功后返回一个新的TextEditorProxy实例指针，后续可通过Set*Func接口注册回调函数。
+使用后效果：创建成功后返回一个新的TextEditorProxy实例指针，后续可通过Set*Func接口注册回调函数。
 
-**生命周期管理：** 返回的对象必须通过[OH_TextEditorProxy_Destroy](#oh_texteditorproxy_destroy)销毁，Create与Destroy必须配对使用。未销毁会导致内存泄漏。同一个实例只能被销毁一次。
+生命周期管理：返回的对象必须通过[OH_TextEditorProxy_Destroy](#oh_texteditorproxy_destroy)销毁，Create与Destroy必须配对使用。未销毁会导致内存泄漏。同一个实例只能被销毁一次。
 
 **起始版本：** 12
 
@@ -518,11 +518,11 @@ void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy *proxy)
 
 销毁一个[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例。销毁后proxy指针不可再使用，建议将指针设置为NULL避免误用。
 
-**使用场景：** 当应用不再需要TextEditorProxy对象时（如Detach后或应用退出时）调用此函数释放资源。
+使用场景：当应用不再需要TextEditorProxy对象时（如Detach后或应用退出时）调用此函数释放资源。
 
-**使用后效果：** proxy对象将被释放，其内部资源被回收，此后不可再通过proxy指针调用任何函数。
+使用后效果：proxy对象将被释放，其内部资源被回收，此后不可再通过proxy指针调用任何函数。
 
-**生命周期管理：** 与[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)配对使用，Create返回的对象必须最终通过Destroy释放。同一个实例只能被销毁一次，不可重复销毁。若proxy为NULL，函数不做任何处理。
+生命周期管理：与[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)配对使用，Create返回的对象必须最终通过Destroy释放。同一个实例只能被销毁一次，不可重复销毁。若proxy为NULL，函数不做任何处理。
 
 **起始版本：** 12
 
@@ -542,11 +542,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEd
 
 将函数[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成，Attach后设置的回调不会被输入法调用。
 
-**使用场景：** 当应用需要注册GetTextConfigFunc回调以响应输入法获取配置请求时调用此函数。
+使用场景：当应用需要注册GetTextConfigFunc回调以响应输入法获取配置请求时调用此函数。
 
-**使用后效果：** 设置成功后，GetTextConfigFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求获取配置时将自动触发此回调。
+使用后效果：设置成功后，GetTextConfigFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求获取配置时将自动触发此回调。
 
-**前置条件：** proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。
+前置条件：proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。
 
 **起始版本：** 12
 
@@ -1298,11 +1298,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_Tex
 
 为InputMethod_TextEditorProxy的回调函数配置执行线程（主线程/IPC线程）。本接口仅控制InputMethod_TextEditorProxy中除[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)之外的所有回调函数。[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)的执行线程由调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)的线程决定，不受本接口影响。若需GetTextConfigFunc也在主线程执行，需确保Attach在主线程调用。
 
-**使用场景：** 当应用需要避免多线程并发问题时，可将回调切换到主线程执行；当应用对回调响应速度要求较高时，可保持IPC线程执行。
+使用场景：当应用需要避免多线程并发问题时，可将回调切换到主线程执行；当应用对回调响应速度要求较高时，可保持IPC线程执行。
 
-**使用后效果：** 设置为true后，除GetTextConfigFunc外的所有回调将在主线程执行，避免多线程并发但需注意避免在回调内执行耗时操作；设置为false后，回调在IPC线程执行，响应更快但可能存在并发问题。
+使用后效果：设置为true后，除GetTextConfigFunc外的所有回调将在主线程执行，避免多线程并发但需注意避免在回调内执行耗时操作；设置为false后，回调在IPC线程执行，响应更快但可能存在并发问题。
 
-**前置条件：** proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。建议在Attach之前调用此接口配置线程策略。
+前置条件：proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。建议在Attach之前调用此接口配置线程策略。
 
 **起始版本：** 22
 
