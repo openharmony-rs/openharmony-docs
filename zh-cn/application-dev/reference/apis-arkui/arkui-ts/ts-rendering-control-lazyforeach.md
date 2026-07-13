@@ -16,9 +16,13 @@
 
 ## 接口
 
-LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string, options?: LazyForEachOptions)
+### LazyForEach
+
+LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string)
 
 LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。当在滚动容器中使用了LazyForEach，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会进行组件销毁回收以降低内存占用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,14 +30,40 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
-| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- 建议item的数据类型与数据源的数据类型保持一致，否则，当itemGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
+| dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。  |
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- 建议item的数据类型与数据源的数据类型保持一致，否则，当itemGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。 |
+| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。 |
 
 > **说明：** 
 >
 > 应避免在`keyGenerator`和`itemGenerator`函数中执行耗时操作，以此来减少应用滑动时卡顿丢帧问题，最佳实践请参考[主线程耗时操作优化-循环渲染](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439)。例如，不推荐使用JSON.stringify函数。在复杂的业务场景中，使用JSON.stringify会对item对象进行序列化，该过程会消耗大量时间与计算资源，从而降低页面性能，最佳实践请参考[懒加载优化性能-键值生成规则](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section68711519072)。
+
+### LazyForEach
+
+LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string, options?: LazyForEachOptions)
+
+LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。当在滚动容器中使用了LazyForEach，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会进行组件销毁回收以降低内存占用。
+
+> **说明**
+>
+> 从API版本26.0.0开始，LazyForEach支持传入[LazyForEachOptions](#lazyforeachoptions)，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                      | 必填 | 说明                                                         |
+| ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。|
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- 建议item的数据类型与数据源的数据类型保持一致，否则，当itemGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。 |
+| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。 |
+| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。   |
 
 ## 属性
 
@@ -353,7 +383,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### DataAddOperation
+### DataAddOperation<sup>12+</sup>
 
 添加数据操作。
 
@@ -365,12 +395,12 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 否 | 否   | 数据添加类型。         |
+| type   | [DataOperationType](#dataoperationtype12).ADD     | 否 | 否   | 数据添加类型。         |
 | index  | number                    | 否 | 否   | 插入数据索引值。取值范围是[0, 数据源长度]。 |
 | count  | number                    | 否 | 是   | 插入数量，默认为1。   |
 | key    | string \| Array\<string\> | 否 | 是   | 为插入的数据分配键值，默认使用原键值。 |
 
-### DataDeleteOperation
+### DataDeleteOperation<sup>12+</sup>
 
 删除数据操作。
 
@@ -382,11 +412,11 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).DELETE     | 否 | 否   | 数据删除类型。         |
+| type   | [DataOperationType](#dataoperationtype12).DELETE     | 否 | 否   | 数据删除类型。         |
 | index  | number                    | 否 | 否   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。|
 | count  | number                    | 否 | 是   | 删除数据数量，默认为1。    |
 
-### DataChangeOperation
+### DataChangeOperation<sup>12+</sup>
 
 改变数据操作。
 
@@ -398,11 +428,11 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).CHANGE     | 否 | 否   | 数据改变类型。         |
+| type   | [DataOperationType](#dataoperationtype12).CHANGE     | 否 | 否   | 数据改变类型。         |
 | index  | number                    | 否 | 否   | 改变的数据的索引值。取值范围是[0, 数据源长度-1]。|
 | key  | string                    | 否 | 是   | 为改变的数据分配新的键值，默认使用原键值。    |
 
-### DataMoveOperation
+### DataMoveOperation<sup>12+</sup>
 
 移动数据操作。
 
@@ -414,11 +444,11 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).MOVE     | 否 | 否   | 数据移动类型。 |
+| type   | [DataOperationType](#dataoperationtype12).MOVE     | 否 | 否   | 数据移动类型。 |
 | index  | [MoveIndex](#moveindex12)        | 否 | 否   | 移动位置。取值范围是[0, 数据源长度-1]。|
 | key | string              | 否 | 是   | 为被移动的数据分配新的键值，默认使用原键值。 |
 
-### DataExchangeOperation
+### DataExchangeOperation<sup>12+</sup>
 
 交换数据操作。
 
@@ -430,11 +460,11 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                       | 只读 | 可选 | 说明                         |
 | ------ | -------------------------- | ---- | ---- | ---------------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).EXCHANGE | 否 | 否   | 数据交换类型。                 |
+| type   | [DataOperationType](#dataoperationtype12).EXCHANGE | 否 | 否   | 数据交换类型。                 |
 | index  | [ExchangeIndex](#exchangeindex12)            | 否 | 否   | 交换位置。取值范围是[0, 数据源长度-1]。|
 | key    | [ExchangeKey](#exchangekey12)              | 否 | 是   | 分配新的键值，默认使用原键值。 |
 
-### DataReloadOperation
+### DataReloadOperation<sup>12+</sup>
 
 重载所有数据操作，并配置是否允许在更新过程中复用旧的子组件。当onDatasetChange含有DataOperationType.RELOAD操作时，其余操作全部失效，框架会自己调用keyGenerator进行键值比对。
 
@@ -452,10 +482,10 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 | 名称 | 类型                     | 只读 | 可选 | 说明             |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).RELOAD | 否 | 否   | 数据全部重载类型。 |
+| type   | [DataOperationType](#dataoperationtype12).RELOAD | 否 | 否   | 数据全部重载类型。 |
 | reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
-### DataOperationType枚举说明
+### DataOperationType<sup>12+</sup>
 
 枚举类型，数据操作说明。
 
