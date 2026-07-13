@@ -1,6 +1,6 @@
 # 跨设备唤醒与消息传输开发指导
 <!--Kit: Distributed Service Kit-->
-<!--Subsystem: DistributedSched-->
+<!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
@@ -45,7 +45,7 @@
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| getTrustedDevices()                        | 获取所有可信设备列表。                                                                               |
+| getTrustedDevices()                        | 获取历史可信设备列表（最新20个）。                                                                               |
 | postConversationData(deviceId, bundleName, abilityName, msg) | 向指定设备的指定Ability发送会话数据。                                                                                     |
 | registerConversationListener(bundleName, abilityName, dataCallback) | 注册会话监听器，接收来自可信设备的数据。                                                                              |
 | unregisterConversationListener(bundleName, abilityName) | 注销会话监听器，停止接收数据。                                                                                  |
@@ -99,9 +99,10 @@
 
 3. 定义会话监听器回调函数。
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // 定义消息回调
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
      hilog.info(DOMAIN, TAG, 'Received message from: %{public}s', deviceId);
      hilog.info(DOMAIN, TAG, 'Message length: %{public}d', msg.byteLength);
@@ -116,9 +117,10 @@
 
 4. 注册会话监听器，接收来自可信设备的数据。
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // 注册监听器
    registerListener(): void {
      hilog.info(DOMAIN, TAG, 'registerListener called');
      try {
@@ -133,9 +135,10 @@
 
 5. 注销会话监听器。
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // 注销监听器
    unregisterListener(): void {
      hilog.info(DOMAIN, TAG, 'unregisterListener called');
      try {
@@ -191,18 +194,19 @@
 
 3. 获取可信设备列表，选择目标设备。
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // 获取受信任设备
    getTrustedDevices(): void {
      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
      try {
        let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
        if (devices && devices.length > 0) {
-         let deviceInfo = devices.map((d, idx) =>
+           let deviceInfo = devices.map((d, idx) =>
            `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
          ).join('\n');
-         hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+           hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
            hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
          } else {
            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
@@ -216,9 +220,10 @@
 
 4. 向指定设备发送会话数据。
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
+   // 发送消息
    sendMessage(): void {
      hilog.info(DOMAIN, TAG, 'sendMessage called');
      try {
