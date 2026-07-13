@@ -2186,7 +2186,7 @@ function foo(arg1: number) {
 ``` TypeScript
 // 注解的声明：
 @interface ClassAuthor {
-  authorName: string
+  authorName: string;
 }
 
 // 注解的使用：
