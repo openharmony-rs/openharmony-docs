@@ -747,6 +747,75 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   }
   ```
 
+## geoLocationManager.onLocationChange
+
+onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback: Callback\<Location\>): void
+
+开启位置变化订阅，并发起定位请求。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| request | [LocationRequest](#locationrequest) &#124; [ContinuousLocationRequest](#continuouslocationrequest12) | 是 | 设置位置请求参数。 |
+| callback | Callback&lt;[Location](#location)&gt; | 是 | 回调函数，返回位置信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call ${geoLocationManager.onLocationChange} due to limited device capabilities. |
+| 3301000 | The location service is unavailable. |
+| 3301100 | The location switch is off. |
+
+**示例**
+
+```ts
+import { geoLocationManager } from '@kit.LocationKit';
+
+// 方式一：使用LocationRequest作为入参
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(requestInfo, locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+
+// 方式二：使用ContinuousLocationRequest作为入参
+let request: geoLocationManager.ContinuousLocationRequest = {
+  'interval': 1,
+  'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
+};
+let locationCallback = (location: geoLocationManager.Location): void => {
+  console.info('locationCallback: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(request, locationCallback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 ## geoLocationManager.off('locationChange')
 
@@ -765,7 +834,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 设置事件类型。type为“locationChange”，表示位置变化。 |
-  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致，否则会取消订阅失败且不会返回任何错误码。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
 
@@ -801,6 +870,62 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   }
   ```
 
+## geoLocationManager.offLocationChange
+
+offLocationChange(callback?: Callback\<Location\>): void
+
+关闭位置变化订阅，并删除对应的定位请求。
+
+当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
+
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与onLocationChange接口传入的回调函数保持一致，否则将抛出401错误码。若无此参数，则取消所有订阅。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call ${geoLocationManager.offLocationChange} due to limited device capabilities. |
+| 3301000 | The location service is unavailable. |
+
+**示例**
+
+```ts
+import { geoLocationManager } from '@kit.LocationKit';
+
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(requestInfo, locationChange);
+  geoLocationManager.offLocationChange(locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 ## geoLocationManager.on('locationError')<sup>12+</sup>
 
@@ -3489,7 +3614,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
   }
   ```
    
-## geoLocationManager.startBluetoothSearch<sup>26+</sup>
+## geoLocationManager.startBluetoothSearch
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
 
@@ -3554,7 +3679,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   }
   ```
    
-## geoLocationManager.stopBluetoothSearch<sup>26+</sup>
+## geoLocationManager.stopBluetoothSearch
    
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
