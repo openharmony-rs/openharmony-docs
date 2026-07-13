@@ -1302,7 +1302,7 @@ struct ParticleExample6 {
       index: 0,
       emitRate: 100,
       annulusRegion: {
-        center: {x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
+        center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
         startAngle: this.startAngle, // 圆环的起始角度

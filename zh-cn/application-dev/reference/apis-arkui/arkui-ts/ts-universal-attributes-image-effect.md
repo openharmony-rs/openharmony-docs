@@ -1095,7 +1095,7 @@ type FractionStop = [ number, number ]
 | -------------- | ------ | ----- | ----- | ------------------------------------------ |
 | low            | number | 否    | 否    | 背景颜色灰度值大于阈值区间时的取值。 <br/>取值范围：[0, 1]                 |
 | high           | number | 否    | 否    | 背景颜色灰度值小于阈值区间时的取值。  <br/>取值范围：[0, 1]            |
-| threshold      | number | 否    | 否    | 灰度阈值。    <br/>取值范围：[0, 1]                            |
+| threshold      | number | 否    | 否    | 灰度阈值。与thresholdRange配合使用，灰度阈值上下偏移thresholdRange构成阈值区间。    <br/>取值范围：[0, 1]                            |
 | thresholdRange | number | 否    | 否    | 阈值范围。<br/>取值范围：[0, 1]<br/>**说明：**<br/>灰度阈值上下偏移thresholdRange构成阈值区间，背景颜色灰度值在区间内取值由high线性渐变到low。|
 
 ## BackgroundImageOptions<sup>18+</sup>

@@ -40,7 +40,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 参数名  | 类型                                             | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [DistortionComponentOptions](#distortioncomponentoptions)  | 否  | 空间扭曲形变选项，用于配置组件的空间形变效果。不传入时组件正常渲染、不施加任何形变效果。                                           |
+| options | [DistortionComponentOptions](#distortioncomponentoptions)  | 否  | 空间扭曲形变选项，用于配置组件的空间形变效果。不设置该参数或该参数设置为undefined时组件正常渲染、不施加任何形变效果。                                           |
 
 ## DistortionComponentOptions
 

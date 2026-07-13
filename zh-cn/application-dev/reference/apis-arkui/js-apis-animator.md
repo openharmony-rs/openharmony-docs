@@ -794,7 +794,7 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| direction | [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode) | 是    | 设置animator动画播放模式。<br/>默认值：PlayMode.Normal |
+| direction | [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode) | 是    | 设置animator动画播放方向。<br/>默认值：PlayMode.Normal |
 
 **返回值：** 
 

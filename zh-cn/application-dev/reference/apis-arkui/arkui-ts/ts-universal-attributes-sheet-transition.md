@@ -623,7 +623,7 @@ struct Index {
 
   build() {
     Column() {
-      Button("BindSheet")
+      Button('BindSheet')
         .onClick(() => {
           this.isShow = true;
         })
