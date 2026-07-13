@@ -30,11 +30,12 @@ ArrayBuffer可以用来表示图片等资源，在应用开发中，处理图片
 
 最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
 
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
+<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 在Task执行的处理函数，用于处理ArrayBuffer数据
 @Concurrent
@@ -51,7 +52,11 @@ function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean):
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
   if (!isParamsByTransfer) {
     // 传递空数组[]，全部arrayBuffer参数传递均采用拷贝方式
-    task.setTransferList([]);
+    try {
+      task.setTransferList([]);
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', 'Failed to set transferList. Cause: %{public}s', JSON.stringify(err));
+    }
   }
   return task;
 }
