@@ -4014,7 +4014,7 @@ convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202      | Called by non-system application.        |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid Array<PhotoAsset>.|
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid Array&lt;PhotoAsset&gt;.|
 
 **示例：**
 
