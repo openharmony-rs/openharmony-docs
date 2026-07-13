@@ -27,5 +27,5 @@ typedef struct OH_MultiDisplayCapability {...} OH_MultiDisplayCapability
 | 名称 | 描述 |
 | -- | -- |
 | bool isMultiDisplaySupport | 是否支持多屏幕联合录制，true表示支持多屏幕联合录制，此时width和height为联合录制区域尺寸；false表示不支持多屏幕联合录制，此时width和height无效。 |
-| uint32_t width | 多屏幕联合录制的屏幕区域宽度（单位：像素）。当isMultiDisplaySupport为true时，该值为所有选中屏幕联合录制区域的高度；当isMultiDisplaySupport为false时，该值无效。 |
+| uint32_t width | 多屏幕联合录制的屏幕区域宽度（单位：像素）。当isMultiDisplaySupport为true时，该值为所有选中屏幕联合录制区域的宽度；当isMultiDisplaySupport为false时，该值无效。 |
 | uint32_t height | 多屏幕联合录制的屏幕区域高度（单位：像素）。当isMultiDisplaySupport为true时，该值为所有选中屏幕联合录制区域的高度；当isMultiDisplaySupport为false时，该值无效。 |
