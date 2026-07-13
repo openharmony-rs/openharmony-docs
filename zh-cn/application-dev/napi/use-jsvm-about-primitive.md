@@ -424,7 +424,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(getNull())JS";
 ```
 
-预期结果:
+预期结果：
 ```txt
 JSVM OH_JSVM_GetNull success
 ```
@@ -472,7 +472,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(getUndefined())JS";
 ```
 
-预期结果:
+预期结果：
 ```txt
 JSVM OH_JSVM_GetUndefined success
 ```

@@ -379,7 +379,7 @@ JSVM OH_JSVM_HasOwnProperty success:0
 
 ### OH_JSVM_SetNamedProperty
 
-用于在传入的Javascript对象上设置一个命名属性。
+用于在传入的JavaScript对象上设置一个命名属性。
 
 cpp部分代码：
 
@@ -438,7 +438,7 @@ JSVM OH_JSVM_SetNamedProperty success
 
 ### OH_JSVM_GetNamedProperty
 
-用于从Javascript对象中获取命名属性的值。
+用于从JavaScript对象中获取命名属性的值
 
 cpp部分代码：
 
@@ -491,7 +491,7 @@ JSVM OH_JSVM_GetNamedProperty success
 
 ### OH_JSVM_HasNamedProperty
 
-用于检查Javascript对象中是否包含指定的命名属性。
+用于检查JavaScript对象中是否包含指定的命名属性。
 
 cpp部分代码：
 

@@ -62,7 +62,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
   }
 ```
 
-（3）打开Sdk安装目录，在“{Sdk安装目录}\{版本号}\openharmony\native\llvm\lib\aarch64-linux-ohos”目录下找到libomp.so动态库文件，并将其拷贝到工程目录entry/libs/arm64-v8a文件夹。
+（3）打开SDK安装目录，在“{SDK安装目录}\{版本号}\openharmony\native\llvm\lib\aarch64-linux-ohos”目录下找到libomp.so动态库文件，并将其拷贝到工程目录entry/libs/arm64-v8a文件夹。
 
 ### 修改源文件
 
@@ -123,7 +123,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 export const ompTest: () => null;
 ```
 
-（3）Ts侧调用，修改entry/src/main/ets/pages/Index.ets，调用ompTest函数。
+（3）TS侧调用，修改entry/src/main/ets/pages/Index.ets，调用ompTest函数。
 
 ```TS
 import testNapi from 'libentry.so';
@@ -158,6 +158,6 @@ struct Index {
 
 > **注意：**
 > 
-> OpenMP程序运行时，HiLog中会输出“dlopen_impl load library header failed for libarcher.so”的报错信息（如下图）。该报错信息中提到的libarcher.so，在OpenMP程序开启Tsan检测时才需要使用。目前OpenHarmony未支持OpenMP程序的Tsan检测能力，因此该错误信息可忽略，不影响程序正常运行。
+> OpenMP程序运行时，HiLog中会输出“dlopen_impl load library header failed for libarcher.so”的报错信息（如下图）。该报错信息中提到的libarcher.so，在OpenMP程序开启TSan检测时才需要使用。目前OpenHarmony未支持OpenMP程序的TSan检测能力，因此该错误信息可忽略，不影响程序正常运行。
 >
 > ![image2](./figures/omp-error.png)
