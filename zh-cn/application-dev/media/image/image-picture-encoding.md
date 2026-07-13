@@ -36,7 +36,8 @@
    ``` TypeScript
    let packOpts: image.PackingOption = {
      format: 'image/jpeg',
-     quality: 95,
+     // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+     quality: 90,
      needsPackProperties: true
    };
    ```
