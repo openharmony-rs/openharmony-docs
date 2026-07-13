@@ -40,7 +40,7 @@ ConsoleMessage的构造函数。
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | message | string | 是   | ConsoleMessage的日志输出信息。 |
 | sourceId | string | 是   | 网页源文件的路径和文件名。 |
-| lineNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ConsoleMessage的行号。 |
+| lineNumber | number | 是   | ConsoleMessage的行号。 |
 | messageLevel | [MessageLevel](./arkts-basic-components-web-e.md#messagelevel) | 是   | ConsoleMessage的日志级别。 |
 
 ## constructor<sup>9+</sup>
