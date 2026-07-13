@@ -6407,7 +6407,7 @@ Allows a system application to control CEC devices through HDMI CEC.
 
 ## ohos.permission.TV_CAMERA_AI
 
-Allows a system application to access  camera AI algorithm of Vision.
+Allows a system application to access camera AI algorithms of Vision.
 
 **Permission level**: system_basic
 
