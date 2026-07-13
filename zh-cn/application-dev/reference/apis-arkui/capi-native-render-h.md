@@ -2532,7 +2532,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeBorderWidthOption](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)* option | 指向节点边框宽度的指针。 |
-| float edgeWidth | 节点边框的边缘宽度值，单位：px。取值范围为[0, +∞)；传入负值时不更新对应边缘的宽度。 |
+| float edgeWidth | 节点边框的边缘宽度值，单位：px。取值范围为[0, +∞)；传入负值时，对应边缘的宽度保持不变。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 边缘的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()
