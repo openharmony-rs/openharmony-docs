@@ -8504,7 +8504,7 @@ offSyncComplete(syncCallback?: Callback&lt;Array&lt;[string, int]&gt;&gt;): void
 
 | 参数名       | 类型                                      | 必填 | 说明                                                       |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
-| syncCallback | Callback&lt;Array&lt;[string, int]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
+| syncCallback | Callback&lt;Array&lt;[string, int]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。需要注意的是：如果同一个数据库存在多个ArkTS实例（通过[getKVStore](#getkvstore)接口获取），且这些实例分别注册了同步完成事件回调，那么当任意一个实例调用off('syncComplete')且不传入syncCallback参数（即取消该实例的所有回调）时，其他实例已订阅的同步完成回调函数也会被一并取消。  |
 
 **示例：**
 
@@ -8518,7 +8518,7 @@ try {
   kvStore.onSyncComplete(syncCompleteCallback);
   kvStore.offSyncComplete(syncCompleteCallback);
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8557,15 +8557,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.getSecurityLevel((err: BusinessError, data: distributedKVStore.SecurityLevel) => {
-    if (err != undefined) {
-      console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get SecurityLevel. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting securityLevel');
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8577,13 +8577,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   kvStore!.getSecurityLevel((err: BusinessError | null, data: distributedKVStore.SecurityLevel | undefined): void => {
     if (err != null) {
-      console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get SecurityLevel. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting securityLevel');
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8624,11 +8624,11 @@ try {
   kvStore.getSecurityLevel().then((data: distributedKVStore.SecurityLevel) => {
     console.info('Succeeded in getting securityLevel');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get SecurityLevel. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8641,10 +8641,10 @@ try {
   kvStore!.getSecurityLevel().then((data: distributedKVStore.SecurityLevel): void => {
     console.info('Succeeded in getting securityLevel');
   }).catch((err): void => {
-    console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get SecurityLevel. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8676,7 +8676,7 @@ ArkTS-Sta: get(key: string, callback: AsyncCallback&lt;boolean | string | long |
 
 | 参数名   | 类型                                                                                                                                                  | 必填 | 说明                                                         |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
-| key      | string                                                                                                                                              | 是   | 要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
+| key      | string                                                                                                                                              | 是   | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是   | 回调函数。返回获取查询的值。                                 |
 
 **错误码：**
@@ -8701,24 +8701,24 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
   kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     if (kvStore != null) {
       kvStore.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError, data: boolean | string | number | Uint8Array) => {
-        if (err != undefined) {
-          console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info(`Succeeded in getting data.data=${data}`);
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8732,20 +8732,20 @@ const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
 try {
   kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError | null): void => {
     if (err) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     kvStore!.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError | null, data: boolean | string | long | double | Uint8Array): void => {
       if (err) {
-        console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`Succeeded in getting data. Data=${data}`);
     });
   });
 } catch (error) {
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8767,7 +8767,7 @@ ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| key    | string | 是   | 要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
+| key    | string | 是   | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -8802,15 +8802,15 @@ try {
       kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
         console.info(`Succeeded in getting data.data=${data}`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8829,14 +8829,14 @@ try {
         console.info(`Succeeded in getting data.data=${data}`);
         done();
       }).catch((err): void => {
-        console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err): void => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8862,8 +8862,8 @@ ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean
 
 | 参数名  | 类型                                                                                                                                                       | 必填  | 说明                    |
 | -----  |----------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
-| deviceId  | string                                                                                                                                                   | 是    |标识要查询其数据的设备。    |
-| key       | string                                                                                                                                                   | 是    |表示要查询Key值的键, 不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。    |
+| deviceId  | string                                                                                                                                                   | 是    |设备的networkId，标识要查询其数据的设备，不能为空。    |
+| key       | string                                                                                                                                                   | 是    |表示要查询Key值的键, 不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。    |
 | callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。成功时返回匹配给定条件的字符串值（值的类型取决于存储时的数据类型），失败时返回错误对象。    |
 
 **错误码：**
@@ -8888,24 +8888,24 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
   kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting');
     if (kvStore != null) {
       kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT, (err: BusinessError, data: boolean | string | number | Uint8Array) => {
-        if (err != undefined) {
-          console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting');
       });
     }
-  })
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8919,20 +8919,20 @@ const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
   kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError | null): void => {
     if (err) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     kvStore!.get('localDeviceId', KEY_TEST_STRING_ELEMENT, (err: BusinessError | null, data: boolean | string | long | double | Uint8Array): void => {
       if (err) {
-        console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`Succeeded in getting data.data=${data}`);
     });
   });
 } catch (error) {
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -8958,8 +8958,8 @@ ArkTS-Sta: get(deviceId: string, key: string): Promise&lt;boolean | string | lon
 
 | 参数名   | 类型 | 必填 | 说明                     |
 | -------- | -------- | ---- | ------------------------ |
-| deviceId | string   | 是   | 标识要查询其数据的设备。 |
-| key      | string   | 是   | 表示要查询Key值的键, 不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。    |
+| deviceId | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
+| key      | string   | 是   | 表示要查询Key值的键, 不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。    |
 
 **返回值：**
 
@@ -8994,15 +8994,15 @@ try {
       kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
         console.info('Succeeded in getting');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((error: BusinessError) => {
-    console.error(`Failed to put.code is ${error.code},message is ${error.message}`);
+    console.error(`Failed to put. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9016,18 +9016,18 @@ const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
   kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError | null): void => {
     if (err) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     kvStore!.get('localDeviceId', KEY_TEST_STRING_ELEMENT).then((data: boolean | string | long | double | Uint8Array): void => {
       console.info(`Succeeded in getting data.data=${data}`);
     }).catch((err): void => {
-      console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9047,7 +9047,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 | 参数名    | 类型                                   | 必填 | 说明                                     |
 | --------- | -------------------------------------- | ---- | ---------------------------------------- |
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回匹配指定前缀的键值对列表。 |
 
 **错误码：**
@@ -9082,15 +9082,15 @@ try {
   }
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     if (kvStore != null) {
       kvStore.getEntries('batch_test_string_key', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
-        if (err != undefined) {
-          console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting Entries');
@@ -9099,9 +9099,9 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9125,13 +9125,13 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     kvStore!.getEntries('batch_test_string_key', (err: BusinessError | null, entries: distributedKVStore.Entry[] | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (entries != undefined) {
@@ -9142,7 +9142,7 @@ try {
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9162,7 +9162,7 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 
 | 参数名    | 类型   | 必填 | 说明                 |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -9208,15 +9208,15 @@ try {
         console.info('Succeeded in getting Entries');
         console.info(`PutBatch ${entries}`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9240,7 +9240,7 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
@@ -9248,11 +9248,11 @@ try {
       console.info('Succeeded in getting Entries');
       console.info(`PutBatch ${entries}`);
     }).catch((err): void => {
-      console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9276,8 +9276,8 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;Entry
 
 | 参数名    | 类型                               | 必填 | 说明                                           |
 | --------- | -------------------------------------- | ---- | ---------------------------------------------- |
-| deviceId  | string                                 | 是   | 标识要查询其数据的设备。                       |
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| deviceId  | string                                 | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                       |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数，返回满足给定条件的所有键值对的列表。 |
 
 **错误码：**
@@ -9312,15 +9312,15 @@ try {
   }
   console.info(`entries : ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     if (kvStore != null) {
       kvStore.getEntries('localDeviceId', 'batch_test_string_key', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
-        if (err != undefined) {
-          console.error(`Failed to get entries.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get entries. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting entries');
@@ -9329,9 +9329,9 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to put batch.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to put batch. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9355,13 +9355,13 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     kvStore!.getEntries('localDeviceId', 'batch_test_string_key', (err: BusinessError | null, entries: distributedKVStore.Entry[] | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (entries != undefined) {
@@ -9372,7 +9372,7 @@ try {
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9396,8 +9396,8 @@ getEntries(deviceId: string, keyPrefix: string): Promise&lt;Entry[]&gt;
 
 | 参数名    | 类型 | 必填 | 说明                     |
 | --------- | -------- | ---- | ------------------------ |
-| deviceId  | string   | 是   | 标识要查询其数据的设备。 |
-| keyPrefix | string   | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。|
+| deviceId  | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
+| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。|
 
 **返回值：**
 
@@ -9447,15 +9447,15 @@ try {
         console.info(`entries[0].value: ${entries[0].value}`);
         console.info(`entries[0].value.value: ${entries[0].value.value}`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get entries. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to put batch.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to put batch. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9479,7 +9479,7 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
@@ -9490,11 +9490,11 @@ try {
       console.info(`entries[0].value: ${entries[0].value}`);
       console.info(`entries[0].value.value: ${entries[0].value.value}`);
     }).catch((err): void => {
-      console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9548,15 +9548,15 @@ try {
     }
     entries.push(entry);
   }
-  console.info(`entries: {entries}`);
+  console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting Batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getEntries(query, (err: BusinessError, entries: distributedKVStore.Entry[]) => {
-        if (err != undefined) {
-          console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting Entries');
@@ -9565,9 +9565,9 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get Entries.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get Entries. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9592,15 +9592,15 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getEntries(query, (err: BusinessError | null, entries: distributedKVStore.Entry[] | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (entries != undefined) {
@@ -9611,7 +9611,7 @@ try {
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9670,25 +9670,25 @@ try {
     }
     entries.push(entry);
   }
-  console.info(`entries: {entries}`);
+  console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getEntries(query).then((entries: distributedKVStore.Entry[]) => {
         console.info('Succeeded in getting Entries');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`)
+    console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`)
   });
   console.info('Succeeded in getting Entries');
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get Entries.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get Entries. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9713,22 +9713,22 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getEntries(query).then((entries: distributedKVStore.Entry[]): void => {
       console.info('Succeeded in getting Entries');
       console.info(`entries.length: ${entries.length}`);
       console.info(`entries[0]: ${entries[0]}`);
     }).catch((err): void => {
-      console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9789,30 +9789,30 @@ try {
   }
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     let query = new distributedKVStore.Query();
     query.deviceId('localDeviceId');
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getEntries('localDeviceId', query, (err: BusinessError, entries: distributedKVStore.Entry[]) => {
-        if (err != undefined) {
-          console.error(`Failed to get entries.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get entries. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting entries');
         console.info(`entries.length: ${entries.length}`);
         console.info(`entries[0]: ${entries[0]}`);
-      })
+      });
     }
   });
   console.info('Succeeded in getting entries');
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get entries.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get entries. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9837,16 +9837,16 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.deviceId('localDeviceId');
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getEntries('localDeviceId', query, (err: BusinessError | null, entries: distributedKVStore.Entry[] | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (entries != undefined) {
@@ -9857,7 +9857,7 @@ try {
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9927,21 +9927,21 @@ try {
     console.info('Succeeded in putting batch');
     let query = new distributedKVStore.Query();
     query.deviceId('localDeviceId');
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getEntries('localDeviceId', query).then((entries: distributedKVStore.Entry[]) => {
         console.info('Succeeded in getting entries');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get entries.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get entries. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   console.info('Succeeded in getting entries');
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get entries.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get entries. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -9966,23 +9966,23 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.deviceId('localDeviceId');
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getEntries('localDeviceId', query).then((entries: distributedKVStore.Entry[]): void => {
       console.info('Succeeded in getting Entries');
       console.info(`entries.length: ${entries.length}`);
       console.info(`entries[0]: ${entries[0]}`);
     }).catch((err): void => {
-      console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -9990,7 +9990,7 @@ try {
 
 getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -10002,7 +10002,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 | 参数名    | 类型                                                       | 必填 | 说明                                                                                 |
 | --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度不超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                 |
 
 **错误码：**
@@ -10038,34 +10038,34 @@ try {
     entries.push(entry);
   }
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     if (kvStore != null) {
       kvStore.getResultSet('batch_test_string_key', async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-        if (err != undefined) {
-          console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting result set');
         resultSet = result;
         if (kvStore != null) {
           kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-            if (err != undefined) {
-              console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            if (err) {
+              console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in closing result set');
-          })
+          });
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10090,13 +10090,13 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     kvStore!.getResultSet('batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in getting result set');
@@ -10104,16 +10104,16 @@ try {
         resultSet = result;
         kvStore!.closeResultSet(resultSet, (err: BusinessError | null): void => {
           if (err != null) {
-            console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
             return;
           }
           console.info('Succeeded in closing result set');
-        })
+        });
       }
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10121,7 +10121,7 @@ try {
 
 getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -10133,7 +10133,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 
 | 参数名    | 类型   | 必填 | 说明                 |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -10176,7 +10176,7 @@ try {
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
@@ -10185,15 +10185,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10217,8 +10217,8 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KVS
 
 | 参数名    | 类型                                                     | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| deviceId  | string                                                       | 是   | 标识要查询其数据的设备。                                     |
-| keyPrefix | string                                                       | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
+| keyPrefix | string                                                       | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回与指定设备ID和Key前缀匹配的KVStoreResultSet对象。 |
 
 **错误码：**
@@ -10242,25 +10242,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   kvStore.getResultSet('localDeviceId', 'batch_test_string_key', async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting resultSet');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing resultSet');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSet.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10285,13 +10285,13 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     kvStore!.getResultSet('localDeviceId', 'batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in getting result set');
@@ -10299,16 +10299,16 @@ try {
         resultSet = result;
         kvStore!.closeResultSet(resultSet, (err: BusinessError | null): void => {
           if (err != null) {
-            console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
             return;
           }
           console.info('Succeeded in closing result set');
-        })
+        });
       }
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10332,8 +10332,8 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KVStoreResultSet&g
 
 | 参数名    | 类型 | 必填 | 说明                     |
 | --------- | -------- | ---- | ------------------------ |
-| deviceId  | string   | 是   | 标识要查询其数据的设备。 |
-| keyPrefix | string   | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| deviceId  | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -10369,15 +10369,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing resultSet');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSet.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10402,7 +10402,7 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
@@ -10412,14 +10412,14 @@ try {
       kvStore!.closeResultSet(resultSet).then((): void => {
         console.info('Succeeded in closing result set');
       }).catch((err): void => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }).catch((err): void => {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10443,7 +10443,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KVStoreR
 
 | 参数名   | 类型                                                     | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| deviceId | string                                                       | 是   | KVStoreResultSet对象所属的设备ID。                           |
+| deviceId | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                           |
 | query    | [Query](#query)                                               | 是   | 表示查询对象。                                               |
 | callback | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的KVStoreResultSet对象。 |
 
@@ -10480,36 +10480,36 @@ try {
     entries.push(entry);
   }
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getResultSet('localDeviceId', query, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-        if (err != undefined) {
-          console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting resultSet');
         resultSet = result;
         if (kvStore != null) {
           kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-            if (err != undefined) {
-              console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+            if (err) {
+              console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in closing resultSet');
-          })
+          });
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSet.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10534,15 +10534,15 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getResultSet('localDeviceId', query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in getting resultSet');
@@ -10550,16 +10550,16 @@ try {
         resultSet = result;
         kvStore!.closeResultSet(resultSet, (err: BusinessError | null): void => {
           if (err != null) {
-            console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
             return;
           }
           console.info('Succeeded in closing resultSet');
-        })
+        });
       }
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10583,7 +10583,7 @@ getResultSet(deviceId: string, query: Query): Promise&lt;KVStoreResultSet&gt;
 
 | 参数名   | 类型       | 必填 | 说明                               |
 | -------- | -------------- | ---- | ---------------------------------- |
-| deviceId | string         | 是   | KVStoreResultSet对象所属的设备ID。 |
+| deviceId | string         | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
 | query    | [Query](#query) | 是   | 表示查询对象。                     |
 
 **返回值：**
@@ -10628,10 +10628,10 @@ try {
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   const query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
+  query.prefixKey('batch_test');
   if (kvStore != null) {
     kvStore.getResultSet('localDeviceId', query).then((result: distributedKVStore.KVStoreResultSet) => {
       console.info('Succeeded in getting resultSet');
@@ -10640,19 +10640,19 @@ try {
         kvStore.closeResultSet(resultSet).then(() => {
           console.info('Succeeded in closing resultSet');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
         });
       }
     }).catch((err: BusinessError) => {
-      console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
     });
   }
   query.deviceId('localDeviceId');
-  console.info("GetResultSet " + query.getSqlLike());
+  console.info(`GetResultSet ` + query.getSqlLike());
 
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSet.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10677,26 +10677,26 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getResultSet('localDeviceId', query).then((result: distributedKVStore.KVStoreResultSet): void => {
       console.info('Succeeded in getting resultSet');
       resultSet = result;
       kvStore!.closeResultSet(resultSet).then((): void => {
         console.info('Succeeded in closing resultSet');
       }).catch((err): void => {
-        console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
       });
     }).catch((err): void => {
-      console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10759,19 +10759,19 @@ try {
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   const query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
+  query.prefixKey('batch_test');
   kvStore.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -10832,35 +10832,35 @@ try {
     entries.push(entry);
   }
   kvStore.putBatch(entries, async (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getResultSet(query, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-        if (err != undefined) {
-          console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get resultSet. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting resultSet');
         resultSet = result;
         if (kvStore != null) {
           kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-            if (err != undefined) {
-              console.error(`Failed to close resultSet.code is ${err.code},message is ${err.message}`);
+            if (err) {
+              console.error(`Failed to close resultSet. Code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in closing resultSet');
-          })
+          });
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to get resultSet`);
 }
 ```
@@ -10886,15 +10886,15 @@ try {
   }
     kvStore!.putBatch(entries, (err: BusinessError | null): void => {
       if (err != null) {
-        console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
         return;
       }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getResultSet(query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in getting resultSet');
@@ -10902,16 +10902,16 @@ try {
         resultSet = result;
         kvStore!.closeResultSet(resultSet, (err: BusinessError | null): void => {
           if (err != null) {
-            console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
             return;
           }
           console.info('Succeeded in closing resultSet');
-        })
+        });
       }
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -10970,20 +10970,20 @@ try {
   kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
-        if (err != undefined) {
-          console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting result set size');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11008,20 +11008,20 @@ try {
   kvStore!.putBatch(entries, (err: BusinessError|null) :void=> {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore!.getResultSize(query, (err: BusinessError|null, resultSize: number|undefined): void=> {
         if (err != null) {
-          console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting result set size');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11085,18 +11085,18 @@ try {
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   const query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
+  query.prefixKey('batch_test');
   kvStore.getResultSize(query).then((resultSize: number) => {
     console.info('Succeeded in getting result set size');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11121,18 +11121,18 @@ try {
   kvStore!.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   const query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
+  query.prefixKey('batch_test');
   kvStore!.getResultSize(query).then((resultSize: int) => {
     console.info('Succeeded in getting result set size');
   }).catch((err) => {
-    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11158,7 +11158,7 @@ ArkTS-Sta: getResultSize(deviceId: string, query: Query, callback: AsyncCallback
 
 | 参数名   | 类型                    | 必填 | 说明                                                |
 | -------- | --------------------------- | ---- | --------------------------------------------------- |
-| deviceId | string                      | 是   | KVStoreResultSet对象所属的设备ID。                  |
+| deviceId | string                      | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                  |
 | query    | [Query](#query)              | 是   | 表示查询对象。                                      |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的结果数。 |
 
@@ -11194,26 +11194,26 @@ try {
     entries.push(entry);
   }
   kvStore.putBatch(entries, (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     if (kvStore != null) {
       kvStore.getResultSize('localDeviceId', query, (err: BusinessError, resultSize: number) => {
-        if (err != undefined) {
-          console.error(`Failed to get resultSize.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to get resultSize. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in getting resultSize');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSize.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSize. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11237,22 +11237,22 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getResultSize('localDeviceId', query, (err: BusinessError | null, resultSize: int | undefined): void => {
       if (err != null) {
-        console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in getting result size');
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
 
@@ -11278,7 +11278,7 @@ ArkTS-Sta: getResultSize(deviceId: string, query: Query): Promise&lt;int&gt;
 
 | 参数名   | 类型       | 必填 | 说明                               |
 | -------- | -------------- | ---- | ---------------------------------- |
-| deviceId | string         | 是   | KVStoreResultSet对象所属的设备ID。 |
+| deviceId | string         | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
 | query    | [Query](#query) | 是   | 表示查询对象。                     |
 
 **返回值：**
@@ -11321,18 +11321,18 @@ try {
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
   });
   let query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
+  query.prefixKey('batch_test');
   kvStore.getResultSize('localDeviceId', query).then((resultSize: number) => {
     console.info('Succeeded in getting resultSize');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultSize.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultSize. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get resultSize.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get resultSize. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -11356,19 +11356,19 @@ try {
   }
   kvStore!.putBatch(entries, (err: BusinessError | null): void => {
     if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put Batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
-    query.prefixKey("batch_test");
+    query.prefixKey('batch_test');
     kvStore!.getResultSize('localDeviceId', query).then((resultSize: int): void => {
       console.info('Succeeded in getting result size');
     }).catch((err): void => {
-      console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get result size. Code: ${err.code}, message: ${err.message}`);
     });
   });
 } catch (error) {
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message} `);
 }
 ```
