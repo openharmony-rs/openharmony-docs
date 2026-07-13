@@ -1448,8 +1448,8 @@ Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被平移的OH_PixelmapNative的指针。 |
-| float x | 横向平移的距离。方向为正数向右，负数向左。为负数时，平移的效果等同于裁剪掉自图像左侧开始的x列像素。取值范围是(-图像宽度, +∞)。单位：像素（px）。 |
-| float y | 纵向平移的距离。方向为正数向下，负数向上。为负数时，平移的效果等同于裁剪掉自图像上方开始的y行像素。取值范围是(-图像高度, +∞)。单位：像素（px）。 |
+| float x | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。为负数时，平移的效果等同于裁剪掉自图像左侧开始的x列像素。 |
+| float y | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。为负数时，平移的效果等同于裁剪掉自图像上方开始的y行像素。 |
 
 **返回：**
 
@@ -1474,8 +1474,8 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| float x | 横向平移的距离。方向为正数向右，负数向左。为负数时，平移的效果等同于裁剪掉自图像左侧开始的x列像素。取值范围是(-图像宽度, +∞)。单位：像素（px）。 |
-| float y | 纵向平移的距离。方向为正数向下，负数向上。为负数时，平移的效果等同于裁剪掉自图像上方开始的y行像素。取值范围是(-图像高度, +∞)。单位：像素（px）。 |
+| float x | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。为负数时，平移的效果等同于裁剪掉自图像左侧开始的x列像素。 |
+| float y | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。为负数时，平移的效果等同于裁剪掉自图像上方开始的y行像素。 |
 
 **返回：**
 
