@@ -11371,10 +11371,6 @@ getSubframeErrorPageEnabled(): boolean
 
 查询是否启用了subframe错误页功能。
 
-> **说明：**
->
-> - 不启用默认错误页功能或者没有启用subframe错误页功能时，返回false。
-
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
