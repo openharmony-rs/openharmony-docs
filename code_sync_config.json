@@ -3479,6 +3479,11 @@
 						"end_line":358,
 						"name":"all_audioLoopback",
 						"start_line":15
+					},
+					{
+						"end_line":191,
+						"name":"set_ReverbPreset",
+						"start_line":23
 					}
 				]
 			},
@@ -3549,6 +3554,16 @@
 						"end_line":356,
 						"name":"render_process",
 						"start_line":16
+					},
+					{
+						"end_line":212,
+						"name":"create_audiorender",
+						"start_line":18
+					},
+					{
+						"end_line":353,
+						"name":"render_release",
+						"start_line":51
 					}
 				]
 			},
@@ -6938,6 +6953,11 @@
 						"end_line":314,
 						"name":"cset_capturer_mute_hint",
 						"start_line":305
+					},
+					{
+						"end_line":229,
+						"name":"clistencallback_process",
+						"start_line":61
 					}
 				]
 			}
@@ -13358,6 +13378,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets",
+				"functions":[
+					{
+						"end_line":273,
+						"name":"all_VoIPDemoForAudioRenderer",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -13526,6 +13556,21 @@
 						"end_line":470,
 						"name":"all_audioCapturer",
 						"start_line":15
+					},
+					{
+						"end_line":250,
+						"name":"create_AudioCapturer",
+						"start_line":16
+					},
+					{
+						"end_line":295,
+						"name":"start_AudioCapturer",
+						"start_line":20
+					},
+					{
+						"end_line":385,
+						"name":"stop_AudioCapturer",
+						"start_line":21
 					}
 				]
 			}
