@@ -73,7 +73,7 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[faultLogger错误码](errorcode-faultlogger.md)。
+以下错误码的详细介绍参见[Faultlogger 错误码](errorcode-faultlogger.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -135,7 +135,7 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[faultLogger错误码](errorcode-faultlogger.md)。
+以下错误码的详细介绍参见[Faultlogger 错误码](errorcode-faultlogger.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |

@@ -167,7 +167,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 ***
 ```
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 **NOTE信息说明：**
 
