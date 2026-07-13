@@ -3984,7 +3984,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;PhotoAsset&gt;&gt;
 
-转换资产属性到兼容性属性
+转换传入的PhotoAsset属性到媒体库兼容文件格式属性。
 
 
 **起始版本：** 26.1.0
@@ -4005,7 +4005,7 @@ convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;[PhotoAsset]&gt;&gt; | Promise对象，返回转换后的资产数组。 |
+| Promise&lt;Array&lt;[PhotoAsset](#photoasset)&gt;&gt; | Promise对象，返回转换后的资产数组。 |
 
 **错误码：**
 
@@ -4033,9 +4033,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let assets: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
     let compatibleAssets: Array<photoAccessHelper.PhotoAsset> = await phAccessHelper.convertAssetToCompatibleAsset(assets);
-    console.info(`convertAssetToCompatibleAsset success, compatibleAssets count: ${compatibleAssets.length}`);
+    console.info(`convertAssetToCompatibleAsset successfully, compatibleAssets count: ${compatibleAssets.length}`);
   } catch (err) {
-    console.error(`convertAssetToCompatibleAsset failed with error: ${err.code}, ${err.message}`);
+    console.error(`failed to convertAssetToCompatibleAsset with error: ${err.code}, ${err.message}`);
   }
 }
 ```
