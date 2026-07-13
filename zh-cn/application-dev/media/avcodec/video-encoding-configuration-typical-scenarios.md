@@ -1,4 +1,4 @@
-# 典型场景的视频编码配置
+# 各类场景的视频编码基础参数配置
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
