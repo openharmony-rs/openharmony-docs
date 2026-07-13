@@ -2321,7 +2321,7 @@ static getCookie(url: string): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2374,35 +2374,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('getCookie')
-        .onClick(() => {
-          try {
-            let value = webview.WebCookieManager.getCookie('https://www.example.com');
-            console.info("value: " + value);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## setCookie<sup>(deprecated)</sup>
 
 static setCookie(url: string, value: string): void
@@ -2417,7 +2388,7 @@ static setCookie(url: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2465,34 +2436,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('setCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.setCookie('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## deleteEntireCookie<sup>(deprecated)</sup>
 
 static deleteEntireCookie(): void
@@ -2507,7 +2450,7 @@ static deleteEntireCookie(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **示例：**
 
@@ -2520,30 +2463,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('deleteEntireCookie')
-        .onClick(() => {
-          webview.WebCookieManager.deleteEntireCookie();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -2571,7 +2490,7 @@ static deleteSessionCookie(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **示例：**
 
@@ -2584,30 +2503,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('deleteSessionCookie')
-        .onClick(() => {
-          webview.WebCookieManager.deleteSessionCookie();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
