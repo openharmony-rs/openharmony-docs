@@ -78,7 +78,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    {
        // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
        OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
-
+   
        OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
        // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
        // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
@@ -86,11 +86,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
            .audioBitrate = 128000,
            .audioCodecformat = OH_AAC_LC
        };
-
+   
        // 获取屏幕信息。
        uint64_t displayId = 0;
        NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
+   
        NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
        ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
        if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
@@ -105,24 +105,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
            .videoFrameHeight = screenHeight,
            .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
        };
-
+   
        OH_VideoEncInfo videoEncInfo = {
            .videoCodec = OH_H264,
            .videoBitrate = 2000000,
            .videoFrameRate = 30
        };
-
+   
        OH_AudioInfo audioInfo = {
            .micCapInfo = micCapInfo,
            .innerCapInfo = innerCapInfo,
            .audioEncInfo = audioEncInfo
        };
-
+   
        OH_VideoInfo videoInfo = {
            .videoCapInfo = videoCapInfo,
            .videoEncInfo = videoEncInfo
        };
-
+   
        config = {
            .captureMode = OH_CAPTURE_HOME_SCREEN,
            .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
