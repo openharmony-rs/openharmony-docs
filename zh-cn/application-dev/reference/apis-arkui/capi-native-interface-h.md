@@ -41,7 +41,7 @@
 
 | 名称  | 描述   |
 |--------------|-----------|
-| [OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)](#oh_arkui_getmoduleinterface)      | 基于结构体类型获取对应结构体指针的宏函数。 |
+| [OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)](#oh_arkui_getmoduleinterface)      | 初始化C-API环境，并基于结构体类型获取对应结构体指针。 |
 
 ## 枚举类型说明
 
@@ -111,7 +111,8 @@ do {                                                                            
 **描述：**
 
 
-基于结构体类型获取对应结构体指针的宏函数，适用于已确定Native接口集合类型和接口结构体类型，需要获取具体Native接口结构体指针以调用ArkUI Native C API的场景。此宏函数接收[ArkUI_NativeAPIVariantKind](#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、结构体类型参数structType、结构体指针变量structPtr；structPtr需与structType类型匹配。该宏调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
+初始化C-API环境，并基于结构体类型获取对应结构体指针。
+适用于已确定Native接口集合类型和接口结构体类型，需要获取具体Native接口结构体指针以调用ArkUI Native C API的场景。此宏函数接收[ArkUI_NativeAPIVariantKind](#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、结构体类型参数structType、结构体指针变量structPtr；structPtr需与structType类型匹配。该宏调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)初始化C-API环境并获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
 
 **起始版本：** 12
 
@@ -123,7 +124,7 @@ const char* OH_ArkUI_NativeModule_GetErrorMessage()
 
 **描述：**
 
-获取最新一次的报错信息，包括错误码、方法名称和错误原因。错误码相关信息请参考[ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误信息。返回的字符串是由系统创建的线程局部全局字符串，不得修改其内容。如需任何编辑，请自行创建字符串内容的拷贝副本。该接口返回的信息可能随版本演进而变化，仅用于输出以辅助分析与故障排查，不应作为逻辑判断依据。返回的报错信息无需手动释放。
+获取最新一次的报错信息，包括错误码、方法名称和错误原因。错误码相关信息请参考[ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。当其他接口返回错误码时，会保存对应的报错信息，通过此接口可获取当前存储的报错信息。返回的字符串是由系统创建的线程局部全局字符串，不得修改其内容。如需任何编辑，请自行创建字符串内容的副本。该接口返回的信息可能随版本演进而变化，仅用于输出以辅助分析与故障排查，不应作为逻辑判断依据。返回的报错信息无需手动释放。
 
 **起始版本：** 26.0.0
 
