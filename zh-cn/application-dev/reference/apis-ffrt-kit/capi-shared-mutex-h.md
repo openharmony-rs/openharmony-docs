@@ -89,6 +89,7 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 **参考：**
 
 [ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock)
+
 [ffrt_rwlock_trywrlock](capi-shared-mutex-h.md#ffrt_rwlock_trywrlock)
 
 
@@ -148,6 +149,7 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 **参考：**
 
 [ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock)
+
 [ffrt_rwlock_tryrdlock](capi-shared-mutex-h.md#ffrt_rwlock_tryrdlock)
 
 

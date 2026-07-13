@@ -147,7 +147,9 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 **参考：**
 
 [ffrt_cond_timedwait](capi-condition-variable-h.md#ffrt_cond_timedwait)
+
 [ffrt_cond_signal](capi-condition-variable-h.md#ffrt_cond_signal)
+
 [ffrt_cond_broadcast](capi-condition-variable-h.md#ffrt_cond_broadcast)
 
 
@@ -180,7 +182,9 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 **参考：**
 
 [ffrt_cond_wait](capi-condition-variable-h.md#ffrt_cond_wait)
+
 [ffrt_cond_signal](capi-condition-variable-h.md#ffrt_cond_signal)
+
 [ffrt_cond_broadcast](capi-condition-variable-h.md#ffrt_cond_broadcast)
 
 

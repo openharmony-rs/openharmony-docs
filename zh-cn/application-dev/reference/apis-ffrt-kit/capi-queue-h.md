@@ -144,7 +144,7 @@ FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | 指向队列属性的指针。 |
-| [ffrt_qos_t](capi-type-def-h.md#变量) qos | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | QoS等级，取值范围参见[ffrt_qos_t](capi-type-def-h.md#变量)枚举定义。 |
 
 ### ffrt_queue_attr_get_qos()
 
@@ -168,7 +168,7 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API [ffrt_qos_t](capi-type-def-h.md#变量) | QoS等级，取值范围参见{@link ffrt_qos_t}枚举定义。 |
+| FFRT_C_API [ffrt_qos_t](capi-type-def-h.md#变量) | QoS等级，取值范围参见[ffrt_qos_t](capi-type-def-h.md#变量)枚举定义。 |
 
 ### ffrt_queue_attr_set_timeout()
 
@@ -540,7 +540,7 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 任务取消成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | 任务取消成功时返回`0`；<br>          任务已执行完毕或已从队列中移除时返回`1`；<br>          handle为空时返回`-1`。 |
 
 ### ffrt_get_main_queue()
 

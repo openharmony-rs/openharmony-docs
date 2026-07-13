@@ -157,7 +157,7 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
-| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 待设置的QoS等级，取值参考{@link ffrt_qos_t}。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 待设置的QoS等级，取值参考[ffrt_qos_t](capi-type-def-h.md#变量)。 |
 
 ### ffrt_task_attr_get_qos()
 
@@ -286,7 +286,7 @@ FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t s
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | 指向任务属性的指针。 |
-| uint64_t size | 任务栈大小，单位是字节。需大于系统支持的最小栈大小，否则可能导致栈溢出；设置过大时可能导致内存分配失败。 |
+| uint64_t size | 任务栈大小，单位是字节。需大于系统支持的最小栈大小，否则可能导致栈溢出；<br>          设置过大时可能导致内存分配失败。 |
 
 ### ffrt_task_attr_get_stack_size()
 
@@ -328,7 +328,7 @@ FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 任务待更新的QoS等级，取值参考{@link ffrt_qos_t}。 |
+| [ffrt_qos_t](capi-type-def-h.md#变量) qos | 任务待更新的QoS等级，取值参考[ffrt_qos_t](capi-type-def-h.md#变量)。 |
 
 **返回：**
 
@@ -393,7 +393,7 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ffrt_function_kind_t](capi-type-def-h.md#ffrt_function_kind_t) kind | 函数执行结构体类型。通用类型适用于通过[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)或[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)提交的任务，队列类型适用于通过并发队列提交接口提交的任务。 |
+| [ffrt_function_kind_t](capi-type-def-h.md#ffrt_function_kind_t) kind | 函数执行结构体类型。通用类型适用于通过[ffrt_submit_base](capi-task-h.md#ffrt_submit_base)或[ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)提交的任务，<br>          队列类型适用于通过并发队列提交接口提交的任务。 |
 
 **返回：**
 
@@ -404,6 +404,7 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 **参考：**
 
 [ffrt_submit_base](capi-task-h.md#ffrt_submit_base)
+
 [ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base)
 
 

@@ -23,6 +23,14 @@
 
 ## 汇总
 
+### 变量
+
+| 名称  | typedef关键字 | 描述                     |
+|-----|------------|------------------------|
+| int | ffrt_qos_t | QoS类型，用于设置任务的Qos等级。 |
+| int | ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。 |
+| using qos = int | - | QoS类型。<br>**起始版本：** 10 |
+
 ### 结构体
 
 | 名称 | typedef关键字 | 描述 |
@@ -38,6 +46,7 @@
 | [ffrt_mutex_t](capi-ffrt-ffrt-mutex-t.md) | ffrt_mutex_t | 互斥锁结构体，用于存储互斥锁的内部数据。 |
 | [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md) | ffrt_rwlock_t | 读写锁结构体，用于存储读写锁的内部数据。 |
 | [ffrt_cond_t](capi-ffrt-ffrt-cond-t.md) | ffrt_cond_t | 条件变量结构体，用于存储条件变量的内部数据。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | ffrt_task_handle_t | 任务句柄，用于标识不同的任务。 |
 | [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md) | ffrt_fiber_t | 纤程结构体，用于存储纤程执行上下文。 |
 
 ### 枚举
@@ -60,15 +69,6 @@
 | [typedef void(\*ffrt_function_t)(void*)](#ffrt_function_t) | ffrt_function_t | 任务执行函数指针类型。函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过参数传入用户数据指针。 |
 | [typedef void (\*ffrt_poller_cb)(void* data, uint32_t event)](#ffrt_poller_cb) | ffrt_poller_cb | poller回调函数类型。当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。 |
 | [typedef void (\*ffrt_timer_cb)(void* data)](#ffrt_timer_cb) | ffrt_timer_cb | 定时器回调函数类型。当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。                 |
-| ffrt_qos_t | QoS类型，用于设置任务的Qos等级。
-| [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t)  | 纤程存储大小，单位是字节。该常量定义纤程存储大小。实际值取决于目标架构：- `__aarch64__`：22- `__arm__`：64- `__x86_64__`：8<br>**起始版本：** 20 |
-| using qos = int | QoS类型。<br>**起始版本：** 10 |
 
 ## 枚举类型说明
 
@@ -105,14 +105,14 @@ enum ffrt_qos_default_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_qos_inherit = -1 | 继承。继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| ffrt_qos_background | 后台任务。最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| ffrt_qos_utility | 实用工具类任务。用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| ffrt_qos_default | 默认类型。无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| ffrt_qos_user_initiated | 用户发起的任务。用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| ffrt_qos_deadline_request | 时限请求任务。用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| ffrt_qos_user_interactive | 用户交互任务。适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| ffrt_qos_inherit = -1 | 继承。<br>继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
+| ffrt_qos_background | 后台任务。<br>最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
+| ffrt_qos_utility | 实用工具类任务。<br>用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
+| ffrt_qos_default | 默认类型。<br>无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
+| ffrt_qos_user_initiated | 用户发起的任务。<br>用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
+| ffrt_qos_deadline_request | 时限请求任务。<br>用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
+| ffrt_qos_user_interactive | 用户交互任务。<br>适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
+| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br>等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
 
 ### ffrt_storage_size_t
 
@@ -222,14 +222,14 @@ enum qos_default
 
 | 枚举项 | 描述 |
 | -- | -- |
-| qos_inherit = ffrt_qos_inherit | 继承。继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| qos_background = ffrt_qos_background | 后台任务。最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| qos_utility = ffrt_qos_utility | 实用工具类任务。用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| qos_default = ffrt_qos_default | 默认类型。无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| qos_max = ffrt_qos_user_interactive | 最高QoS等级。等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| qos_inherit = ffrt_qos_inherit | 继承。<br>继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
+| qos_background = ffrt_qos_background | 后台任务。<br>最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
+| qos_utility = ffrt_qos_utility | 实用工具类任务。<br>用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
+| qos_default = ffrt_qos_default | 默认类型。<br>无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
+| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。<br>用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
+| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。<br>用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
+| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。<br>适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
+| qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br>等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
 
 
 ## 函数说明

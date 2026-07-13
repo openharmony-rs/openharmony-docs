@@ -54,7 +54,7 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 执行后返回`ffrt_success`。 |
+| FFRT_C_API int | `ffrt_success`。该函数不会失败。 |
 
 ### ffrt_yield()
 
