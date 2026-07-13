@@ -500,9 +500,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
