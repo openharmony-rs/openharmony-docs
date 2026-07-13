@@ -12,7 +12,7 @@
 
 以下代码示范了同时使用AudioRenderer和AudioCapturer实现音频通话功能的基本过程，其中未包含音频通话数据的传输过程，实际开发中，需要将网络传输来的对端通话数据解码播放，此处仅以读取音频文件的数据代替；同时需要将本端录制的通话数据编码打包，通过网络发送给对端，此处仅以将数据写入音频文件代替。
 
-示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS?_fb=blob)。
+示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS)。
 
 ## 使用AudioRenderer播放对端的通话声音
 
@@ -20,7 +20,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -70,24 +70,26 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧,空白区域需要使用静音数据填充,否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据,使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
       // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
-      return audio.AudioDataCallbackResult.VALID;
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // ...
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
   };
@@ -170,7 +172,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -197,6 +198,7 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```

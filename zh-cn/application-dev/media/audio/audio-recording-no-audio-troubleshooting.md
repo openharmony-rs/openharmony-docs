@@ -70,16 +70,40 @@
 
    创建流程可参考AudioCaptureSampleJS页面代码中的`create_AudioCapturer`。
 
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   
    ``` TypeScript
-   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => {
-     if (err) {
-       console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     audioCapturer = capturer;
-   });
+   import { audio } from '@kit.AudioKit';
+   // ...
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+     channels: audio.AudioChannel.CHANNEL_2, // 通道。
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+   };
+   let audioCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型:Mic音频源。根据业务场景配置,参考SourceType。
+     capturerFlags: 0 // 音频采集器标志。
+   };
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
+   // ...
+     audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
+       if (err) {
+         console.error(`${TAG}: Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+         // ...
+         return;
+       }
+       console.info(`${TAG}: create AudioCapturer success`);
+       // ...
+       audioCapturer = capturer;
+       if (audioCapturer !== undefined) {
+         audioCapturer.on('readData', onReadData);
+         // ...
+       }
+     });
    ```
 
 2. 确认录音实例是否进入运行状态。
@@ -96,15 +120,11 @@
 
    状态查询和状态监听可参考AudioCaptureSampleJS页面代码中的`view_AudioCapturerState`和`listen_AudioCapturerState`。
 
-   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   
    ``` TypeScript
    let audioCapturerState: audio.AudioState = audioCapturer.state;
-   console.info(`Current state is: ${audioCapturerState}`);
-
-   audioCapturer.on('stateChange', (capturerState: audio.AudioState) => {
-     console.info(`State change to: ${capturerState}`);
-   });
+   console.info(`Current state is: ${audioCapturerState }`)
    ```
 
 3. 如果没有收到录音数据回调，检查回调注册和对象生命周期。
@@ -121,12 +141,35 @@
 
    回调注册可参考AudioCaptureSampleJS页面代码中的`listen_AudioCapturer`。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   
    ``` TypeScript
-   if (audioCapturer !== undefined) {
-     audioCapturer.on('readData', readDataCallback);
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+   
+   // ...
+   class Options {
+     public offset?: number;
+     public length?: number;
    }
+   
+   // ...
+     let writtenBytes: number = 0;
+     let path = context.cacheDir;
+     let filePath = path + '/S16LE_2_48000.pcm';
+     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     onReadData = (buffer: ArrayBuffer) => {
+       // ...
+       let options: Options = {
+         offset: writtenBytes,
+         length: buffer.byteLength
+       }
+       fs.writeSync(file.fd, buffer, options);
+       writtenBytes += buffer.byteLength;
+     };
+     // ...
+         audioCapturer.on('readData', onReadData);
    ```
 
 4. 如果收到`readData`回调但录音结果无声，检查数据写入和解析逻辑。
@@ -179,19 +222,32 @@
 
    如果无声与通话、其他录音任务、蓝牙耳机、有线耳机或USB声卡有关，可通过录音流变化和输入设备信息确认当前录音流、`SourceType`和输入设备是否符合预期。
 
-   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-
+   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) --> 
+   
    ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
+     // ...
      for (let i = 0; i < audioCapturerChangeInfoArray.length; i++) {
+       console.info(`## CapChange on is called for element ${i} ##`);
        console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
        console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
+       console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+   
+       // ...
+   
        let devDescriptor: audio.AudioDeviceDescriptors = audioCapturerChangeInfoArray[i].deviceDescriptors;
-       for (let j = 0; j < devDescriptor.length; j++) {
-         console.info(`Type: ${j} : ${devDescriptor[j].deviceType}`);
-         console.info(`Role: ${j} : ${devDescriptor[j].deviceRole}`);
+       for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
+         console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+         console.info(`Type: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+         console.info(`Role: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+         console.info(`Name: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+         console.info(`Address: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+         console.info(`SampleRates: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+         console.info(`ChannelCounts ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+         console.info(`ChannelMask: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
        }
      }
+     // ...
    });
    ```
 
