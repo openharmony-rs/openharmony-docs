@@ -3639,7 +3639,7 @@ async function test() {
   let avPlayer = await media.createAVPlayer();
 
   let isSeeking = false;    // 标记是否正在seek。
-  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒（ms）（ms））。
+  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒（ms））。
 
   // 1.监听seekDone：确认跳转完成。
   avPlayer.on('seekDone', (seekDoneTime: number) => {
