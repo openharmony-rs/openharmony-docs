@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 `Array<T>`和`T[]`在ArkTS中是相同类型，它们在编译后都对应为标准库中的`std.core.Array`类。这些数组对象可以像普通对象一样通过类实例化、方法调用进行管理。
 

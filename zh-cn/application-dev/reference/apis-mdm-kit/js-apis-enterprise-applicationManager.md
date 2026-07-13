@@ -57,7 +57,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：21+ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -1429,7 +1429,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>适用版本：26.0.0+ |
 | 9200012  | Parameter verification failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -2158,7 +2158,7 @@ let accountId: number = 100;
 
 // 步骤1. 禁用100用户下的设备间单向传输数据能力（若之前已经设置过设备间单向传输数据能力的禁用，此处无需重复设置）
 try {
-  restrictions.setDisallowedPolicyForAccount(wantTemp, 'distributedTransmissionOutgoing', true, accountId);
+  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.DISTRIBUTED_TRANSMISSION_OUTGOING, true, accountId);
   console.info('Succeeded in setting distributedTransmissionOutgoing disabled');
 } catch (err) {
   console.error(`Failed to set distributedTransmissionOutgoing disabled. Code is ${err.code}, message is ${err.message}`);

@@ -91,8 +91,7 @@ export struct Embedded {
               this.message = `Error: code = ${error.code}`;
             })
             .onDrawReady(() => {
-              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
-              this.message = 'onDrawReady';
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调
             })
         }
         .width('100%')

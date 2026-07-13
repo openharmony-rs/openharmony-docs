@@ -51,11 +51,11 @@
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
-- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并挂起，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
@@ -76,13 +76,13 @@
 
 ### 约束与限制
 
-**申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
+**申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：
+**数量限制：**
 - 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
-**运行限制**：
+**运行限制：**
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 

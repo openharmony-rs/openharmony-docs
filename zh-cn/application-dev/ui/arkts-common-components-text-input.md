@@ -1,7 +1,7 @@
 # 文本输入 (TextInput/TextArea/Search)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -17,38 +17,6 @@ TextInput、TextArea是输入框组件，用于响应用户输入，比如评论
 ## 创建输入框
 
 TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。通过以下接口创建这些组件。
-
-ArkTS-Dyn示例：
-```ts
-TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
-```
-
-```ts
-TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextAreaController})
-```
-
-```ts
-Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: SearchController, icon?: string})
-```
-
-ArkTS-Sta示例：
-```ts
-import { TextInput, ResourceStr, TextInputController } from '@kit.ArkUI';
-// ...
-TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
-```
-
-```ts
-import { TextArea, ResourceStr, TextAreaController } from '@kit.ArkUI';
-// ...
-TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextAreaController})
-```
-
-```ts
-import { Search, ResourceStr, SearchController } from '@kit.ArkUI';
-// ...
-Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: SearchController, icon?: string})
-```
 
 - 单行输入框。
 
@@ -73,29 +41,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ![textinput-create](figures/textinput-create.png)
 
 
-- 多行输入框。
-
-  ArkTS-Dyn示例：
-
-  <!-- @[create_text_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-  
-  ``` TypeScript
-  TextArea()
-  ```
-
-  ArkTS-Sta示例：
-
-  <!-- @[create_text_area](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
-  ``` TypeScript
-  import { TextArea } from '@kit.ArkUI';
-  // ...
-  TextArea()
-  ```
-
-  ![textarea-create](figures/textarea-create.png)
-
-- 多行输入框文字超出一行时会自动折行。
+- 多行输入框，文字超出一行时会自动折行。
 
   ArkTS-Dyn示例：
 
@@ -156,9 +102,9 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
 TextInput、TextArea和Search都支持设置输入框类型，通过type属性进行设置，但是各组件的枚举值略有不同。下面以单行输入框为例进行说明。
 
-TextInput有以下类型可选择：Normal（基本）、Password（密码）、Email（邮箱地址）、Number（纯数字）、PhoneNumber（电话号码）、USER_NAME（用户名）、NEW_PASSWORD（新密码）、NUMBER_PASSWORD（纯数字密码）、<!--Del-->SCREEN_LOCK_PASSWORD（锁屏应用密码）、<!--DelEnd-->NUMBER_DECIMAL（带小数点的数字）以及带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
+TextInput有以下类型可选择：Normal基本输入、Password密码输入、Email邮箱地址输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
-### 基本输入模式（默认类型）
+### 基本输入模式
 
 ArkTS-Dyn示例：
 
@@ -236,262 +182,182 @@ TextInput()
 
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
-### 纯数字输入模式
-纯数字输入模式的输入框，只能输入数字[0-9]。
+## 设置输入框样式
+可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)实现。
 
-ArkTS-Dyn示例：
-
-<!-- @[set_number_input_type_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-```TypeScript
-TextInput()
-  .type(InputType.Number)
-```
-
-ArkTS-Sta示例：
-
-<!-- @[set_number_input_type_4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
-TextInput()
-  .type(InputType.NUMBER)
-```
-
-![text_input_type_number](figures/text_input_type_number.PNG)
-
-### 电话号码输入模式
-
-电话号码输入模式的输入框，支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
-
-ArkTS-Dyn示例：
-
-<!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.PhoneNumber)
-```
-
-ArkTS-Sta示例：
-
-<!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
-TextInput()
-  .type(InputType.PhoneNumber)
-```
-
-![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
-
-### 带小数点的数字输入模式
-
-带小数点的数字输入模式的输入框，只能输入数字[0-9]和小数点，只能存在一个小数点。
-
-ArkTS-Dyn示例：
-
-<!-- @[set_number_decimal_input_type_6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.NUMBER_DECIMAL)
-```
-
-ArkTS-Sta示例：
-
-<!-- @[set_number_decimal_input_type_6](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
-TextInput()
-  .type(InputType.NUMBER_DECIMAL)
-```
-
-![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
-
-### 带URL的输入模式
-
-带URL的输入模式，无特殊限制。
-
-ArkTS-Dyn示例：
-
-<!-- @[set_url_input_type_7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-TextInput()
-  .type(InputType.URL)
-```
-
-ArkTS-Sta示例：
-
-<!-- @[set_url_input_type_7](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
-
-``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
-TextInput()
-  .type(InputType.URL)
-```
-
-![text_input_type_url](figures/text_input_type_url.PNG)
-
-## 设置输入框多态样式
+### 设置输入框多态样式
 
 TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。下面以多行输入框TextArea为例进行说明。
 
 TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
 
-### 默认风格
+- 默认风格的输入框，在编辑态和非编辑态，样式没有区别。
 
-默认风格的输入框，在编辑态和非编辑态，样式没有区别。
+  ArkTS-Dyn示例：
+
+  <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.DEFAULT)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.DEFAULT)
+  ```
+
+  ![textArea_style_default](figures/textArea_style_default.gif)
+
+- 内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
+
+  ArkTS-Dyn示例：
+
+  <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.INLINE)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  
+  ``` TypeScript
+  TextArea()
+    .style(TextContentStyle.INLINE)
+  ```
+
+  ![textArea_style_inline](figures/textArea_style_inline.gif)
+
+### 设置无输入时的提示文本
+
+以下示例展示无输入时提示文本的效果。
 
 ArkTS-Dyn示例：
 
-<!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+<!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
-TextArea()
-  .style(TextContentStyle.DEFAULT)
+// 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
+TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 ```
 
 ArkTS-Sta示例：
 
-<!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+<!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
-import { TextArea, TextContentStyle } from '@kit.ArkUI';
-// ...
-TextArea()
-  .style(TextContentStyle.DEFAULT)
+// 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
+TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 ```
 
-![textArea_style_default](figures/textArea_style_default.gif)
+![textinput-placeholder](figures/textinput-placeholder.png)
 
-### 内联模式
+### 设置输入框当前的文本内容
 
-内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
+以下示例展示输入框内当前输入文本效果。
 
 ArkTS-Dyn示例：
 
-<!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+<!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
-TextArea()
-  .style(TextContentStyle.INLINE)
+TextInput({
+  // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
+  placeholder: $r('app.string.i_am_placeholder'),
+  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
+  text: $r('app.string.i_am_current_text_content')
+})
 ```
 
 ArkTS-Sta示例：
 
-<!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+<!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
-import { TextArea, TextContentStyle } from '@kit.ArkUI';
-// ...
-TextArea()
-  .style(TextContentStyle.INLINE)
+TextInput({
+  // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
+  placeholder: $r('app.string.i_am_placeholder'),
+  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
+  text: $r('app.string.i_am_current_text_content')
+})
 ```
 
-![textArea_style_inline](figures/textArea_style_inline.gif)
+![textinput-border](figures/textinput-border.png)
 
-## 自定义样式
+### 设置输入框背景颜色
 
-- 设置无输入时的提示文本。
+以下示例展示设置输入框背景颜色效果。
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
+<!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+
+``` TypeScript
+TextInput({
   // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-  TextInput({ placeholder: $r('app.string.i_am_placeholder') })
-  ```
+  placeholder: $r('app.string.i_am_placeholder'),
+  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
+  text: $r('app.string.i_am_current_text_content')
+})
+  .backgroundColor(Color.Pink)
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+<!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
-  ``` TypeScript
-  import { TextInput, $r } from '@kit.ArkUI';
-  // ...
+``` TypeScript
+TextInput({
   // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-  TextInput({ placeholder: $r('app.string.i_am_placeholder') })
-  ```
+  placeholder: $r('app.string.i_am_placeholder'),
+  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
+  text: $r('app.string.i_am_current_text_content')
+})
+  .backgroundColor(Color.Pink)
+```
 
-  ![textinput-placeholder](figures/textinput-placeholder.png)
+![textinput-pink-bg](figures/textinput-pink-bg.png)
 
-- 设置输入框当前的文本内容。
+### 设置输入框自动填充类型
 
-  ArkTS-Dyn示例：
+输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。
 
-  <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  TextInput({
-    // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-    placeholder: $r('app.string.i_am_placeholder'),
-    // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
-    text: $r('app.string.i_am_current_text_content')
-  })
-  ```
+支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
 
-  ArkTS-Sta示例：
+ArkTS-Dyn示例：
 
-  <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
-  ``` TypeScript
-  import { TextInput, $r } from '@kit.ArkUI';
-  // ...
-  TextInput({
-    // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-    placeholder: $r('app.string.i_am_placeholder'),
-    // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
-    text: $r('app.string.i_am_current_text_content')
-  })
-  ```
+``` TypeScript
+// 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
+TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+```
 
-  ![textinput-border](figures/textinput-border.png)
+ArkTS-Sta示例：
 
-- 添加backgroundColor改变输入框的背景颜色。
+<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
-  ArkTS-Dyn示例：
+``` TypeScript
+// 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
+TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+```
 
-  <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  TextInput({
-    // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-    placeholder: $r('app.string.i_am_placeholder'),
-    // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
-    text: $r('app.string.i_am_current_text_content')
-  })
-    .backgroundColor(Color.Pink)
-  ```
-
-  ArkTS-Sta示例：
-
-  <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-
-  ``` TypeScript
-  import { TextInput, Color, $r } from '@kit.ArkUI';
-  // ...
-  TextInput({
-    // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-    placeholder: $r('app.string.i_am_placeholder'),
-    // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
-    text: $r('app.string.i_am_current_text_content')
-  })
-    .backgroundColor(Color.Pink)
-  ```
-
-  ![textinput-pink-bg](figures/textinput-pink-bg.png)
-
-  更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)实现。
-
-## 添加事件
+## 绑定文本输入框事件
 
 文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange)事件可以获取输入框内改变的文本内容，绑定[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit)事件可以获取回车提交的文本信息，绑定[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10)事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
 
@@ -537,7 +403,6 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
-          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -692,7 +557,10 @@ export struct TextInputEventAdd {
 
 ![text_input_event](figures/text_input_event.gif)
 
-## 选中菜单
+## 文本菜单管理
+TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、混合内容等多类型Span的场景，因此仅提供系统文本菜单。可通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口对系统菜单项进行定制，包括追加自定义菜单项、移除系统菜单项、修改菜单项内容及拦截菜单项点击事件，从而在系统菜单框架内实现菜单选项的自定义。
+
+### 系统菜单
 
 输入框中的文字被选中时会弹出包含剪切、复制、翻译、分享的菜单。
 
@@ -744,7 +612,155 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
-## 禁用系统服务类菜单
+### 系统菜单中自定义菜单项
+从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调中，进行菜单数据的设置。
+
+ArkTS-Dyn示例：
+
+<!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  // 从API version 23开始支持TextMenuItemId.autoFill
+  const idsToFilter: TextMenuItemId[] = [
+    TextMenuItemId.autoFill
+  ]
+  const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
+  let item1: TextMenuItem = {
+    content: 'create1',
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('create1'),
+  };
+  let item2: TextMenuItem = {
+    content: 'create2',
+    id: TextMenuItemId.of('create2'),
+    icon: $r('app.media.startIcon'),
+  };
+  items.push(item1);
+  items.unshift(item2);
+  return items;
+}
+onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+  if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.COPY)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+    return false;
+  }
+  return false;
+}
+// $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+  let item1: TextMenuItem = {
+    content: 'prepare1_' + this.endIndex,
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('prepare1'),
+  };
+  menuItems.unshift(item1);
+  return menuItems;
+}
+@State editMenuOptions: EditMenuOptions = {
+  onCreateMenu: this.onCreateMenu,
+  onMenuItemClick: this.onMenuItemClick,
+  onPrepareMenu: this.onPrepareMenu
+};
+```
+
+<!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+// 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+TextInput({ text: $r('app.string.show_selected_menu') })
+  .editMenuOptions(this.editMenuOptions)
+  .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+    this.endIndex = selectionEnd;
+  })
+```
+
+ArkTS-Sta示例：
+
+<!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+onCreateMenu: OnCreateMenuCallback = (menuItems: Array<TextMenuItem>) => {
+  let item1: TextMenuItem = {
+    content: 'create1',
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('create1'),
+  };
+  let item2: TextMenuItem = {
+    content: 'create2',
+    id: TextMenuItemId.of('create2'),
+    icon: $r('app.media.startIcon'),
+  };
+  menuItems.push(item1);
+  menuItems.unshift(item2);
+  return menuItems;
+}
+onMenuItemClick: OnMenuItemClickCallback = (menuItem: TextMenuItem, textRange: TextRange) => {
+  if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s',
+      'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s',
+      'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.COPY)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+    hilog.info(0x0000, 'testTag', '%{public}s',
+      'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+    return false;
+  }
+  return false;
+}
+// $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+onPrepareMenu: OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => {
+  let item1: TextMenuItem = {
+    content: 'prepare1_' + this.endIndex,
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('prepare1'),
+  };
+  menuItems.unshift(item1);
+  return menuItems;
+}
+@State editMenuOptions: EditMenuOptions = {
+  onCreateMenu: this.onCreateMenu,
+  onMenuItemClick: this.onMenuItemClick,
+  onPrepareMenu: this.onPrepareMenu
+} as EditMenuOptions;
+```
+
+<!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+// 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+TextInput({ text: $r('app.string.show_selected_menu') })
+  .editMenuOptions(this.editMenuOptions)
+  .onTextSelectionChange((selectionStart: int, selectionEnd: int) => {
+    this.endIndex = selectionEnd;
+  })
+```
+
+![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)
+
+### 系统菜单中屏蔽系统菜单项
 
 从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)方法屏蔽文本选择菜单中的所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。ArkTS-Sta不支持此设置。
 
@@ -827,7 +843,7 @@ struct DisableMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems不包含搜索和翻译
+              // menuItems不包含搜索、翻译和AI帮写
               return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -843,147 +859,72 @@ struct DisableMenuItem {
 
 ![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
 
-## 自动填充
+### 在子窗口中显示文本菜单
 
-输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。
-
-支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
+TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
 ArkTS-Dyn示例：
 
-<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
+<!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
 ``` TypeScript
-// 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
-TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
-  .width('95%')
-  .height(40)
-  .margin(20)
-  .contentType(ContentType.EMAIL_ADDRESS)
+this.getUIContext()
+  .getTextMenuController()
+  .setMenuOptions(
+    {
+      showMode: TextMenuShowMode.PREFER_WINDOW
+    }
+  );
 ```
+
+<!-- @[textmenushowmode_create_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
+
+``` TypeScript
+// 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
+TextInput({ text: $r('app.string.Service_MenuItems_Text') })
+  .fontSize(15)
+  .margin({ top: 100 })
+  .copyOption(CopyOptions.InApp)
+```
+
+
+
 
 ArkTS-Sta示例：
 
-<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
+<!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) --> 
 
 ``` TypeScript
-import { TextInput, ContentType, $r } from '@kit.ArkUI';
-// ...
-// 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
-TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
-  .width('95%')
-  .height(40)
-  .margin(20)
-  .contentType(ContentType.EMAIL_ADDRESS)
+this.getUIContext()
+  .getTextMenuController()
+  .setMenuOptions(
+    {
+      showMode: TextMenuShowMode.PREFER_WINDOW
+    }
+  );
 ```
 
-## 设置属性
 
-- 设置省略属性。
 
-  输入框可以通过[ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18)属性设置省略位置。
-
-  ellipsisMode属性需要配合[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textoverflow12)属性设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
-
-  ArkTS-Dyn示例：
-
-  <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-  
-  ``` TypeScript
-  // 请将$r('app.string.Set_Omission_Property_textContent')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示省略模式"
-  TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
-    .textOverflow(TextOverflow.Ellipsis)
-    .ellipsisMode(EllipsisMode.END)
-    .style(TextInputStyle.Inline)
-    .fontSize(30)
-    .margin(30)
-  ```
-
-  ArkTS-Sta示例：
-
-  <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-
-  ``` TypeScript
-  import { TextInput, TextOverflow, EllipsisMode, TextInputStyle, $r } from '@kit.ArkUI';
-  // ...
-  // 请将$r('app.string.Set_Omission_Property_textContent')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示省略模式"
-  TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
-    .textOverflow(TextOverflow.Ellipsis)
-    .ellipsisMode(EllipsisMode.END)
-    .style(TextInputStyle.Inline)
-    .fontSize(30)
-    .margin(30)
-  ```
-
-  ![TextInput_ellipsismode](figures/TextInput_ellipsismode.jpg)
-
-- 设置文本描边属性。
-
-  从API version 20开始，输入框可以通过[strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20)和[strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20)属性设置文本的描边宽度及颜色。
-
-  ArkTS-Dyn示例：
-
-  <!-- @[set_stroke_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-  
-  ``` TypeScript
-  TextInput({ text: 'Text with stroke' })
-    .width('100%')
-    .height(60)
-    .borderWidth(1)
-    .fontSize(40)
-    .strokeWidth(LengthMetrics.px(3.0))
-    .strokeColor(Color.Red)
-  ```
-
-  ArkTS-Sta示例：
-
-  <!-- @[set_stroke_property](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-
-  ``` TypeScript
-  import { TextInput, LengthMetrics, Color } from '@kit.ArkUI';
-  // ...
-  TextInput({ text: 'Text with stroke' })
-    .width('100%')
-    .height(60)
-    .borderWidth(1)
-    .fontSize(40)
-    .strokeWidth(LengthMetrics.px(3.0))
-    .strokeColor(Color.Red)
-  ```
-
-  ![TextInput_stroke](figures/TextInput_stroke.jpg)
-
-## 设置文本行间距
-
-从API version 20开始，支持通过[lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20)设置文本的行间距。如果不配置[LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20对象说明)时，首行上方和尾行下方默认会有行间距。如果onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外行间距。
-
-ArkTS-Dyn示例：
-
-<!-- @[SetTextMargin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets) -->
+<!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) --> 
 
 ``` TypeScript
-TextArea({
-  text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
-})
-  .fontSize(22)
-  .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+// 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
+TextInput({ text: $r('app.string.Service_MenuItems_Text')})
+  .fontSize(15)
+  .margin({ top: 100 })
+  .copyOption(CopyOptions.InApp)
 ```
 
-ArkTS-Sta示例：
 
-<!-- @[SetTextMargin](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets) -->
 
-``` TypeScript
-import { TextArea, LengthMetrics } from '@kit.ArkUI';
-// ...
-TextArea({
-  text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
-})
-  .fontSize(22)
-  .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
-```
 
-![TextInput_line_spacing](figures/TextInput_line_spacing.jpg)
+
+![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
+
+## 设置输入框避让
+
+提供对键盘避让与光标避让两种场景示例。
 
 ## 键盘避让
 
@@ -1070,7 +1011,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET_WITH_CARET);
     if (err.code) {
       hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -1128,139 +1069,4 @@ struct CursorAvoid {
 
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
-## 相关实例
-
-针对文本输入开发，有以下相关实例可供参考：
-
-- [聊天实例应用（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat#%E8%81%8A%E5%A4%A9%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8)
-
-## 常见问题
-
-### 如何设置TextArea的文本最少展示行数并自适应高度
-
-**问题现象**
-
-设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
-
-**解决措施**
-
-设置[minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20)（从API version 20开始），或者设置height为"auto"，并使用[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)自行计算高度。
-
-ArkTS-Dyn示例：
-
-<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
-
-``` TypeScript
-import { MeasureUtils } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TextExample {
-  private textAreaPadding = 12;
-  private setMaxLines = 3;
-  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
-  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
-  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
-  @State fullText: string = this.changeText;
-  @State originText: string = this.changeText;
-  @State uiContext: UIContext = this.getUIContext();
-  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
-  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
-    textContent: this.originText,
-    fontSize: 18
-  });
-
-  build() {
-    Column() {
-      TextArea({ text: 'minLines: ' + this.fullText })
-        .fontSize(18)
-        .width(300)
-        .minLines(3)
-
-      Blank(50)
-
-      TextArea({ text: 'constraintSize: ' + this.fullText })
-        .fontSize(18)
-        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
-        .width(300)
-        .height('auto')
-        .constraintSize({
-          // 结合padding计算，设置至少显示this.setMaxLines行文本
-          // 若涉及适老化字号缩放，需要监听并调整高度
-          minHeight: this.textAreaPadding * 2 +
-            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
-        })
-
-      Blank(50)
-      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
-      Button($r('app.string.NormalQuestion_AddInput'))
-        .onClick(() => {
-          this.fullText += this.changeText;
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .padding({ top: 30 })
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
-
-``` TypeScript
-import { Entry, Component, Blank, Button, Column, ConstraintSizeOptions, FlexAlign, SizeOptions, TextArea, $r } from '@kit.ArkUI';
-import { State } from '@ohos.arkui.stateManagement';
-
-@Entry
-@Component
-export struct TextExample {
-  private textAreaPadding: int = 12;
-  private setMaxLines: int = 3;
-  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
-  private changeText: string =
-    this.getUIContext().getHostContext()?.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
-  @State fullText: string = this.changeText;
-  @State originText: string = this.changeText;
-  textSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
-    textContent: this.originText,
-    fontSize: 18
-  });
-
-  build(): void {
-    Column() {
-      TextArea({ text: 'minLines: ' + this.fullText })
-        .fontSize(18)
-        .width(300)
-        .minLines(3)
-
-      Blank(50)
-
-      TextArea({ text: 'constraintSize: ' + this.fullText })
-        .fontSize(18)
-        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
-        .width(300)
-        .height('auto')
-        .constraintSize({
-          // 结合padding计算，设置至少显示this.setMaxLines行文本
-          // 若涉及适老化字号缩放，需要监听并调整高度
-          minHeight: this.textAreaPadding * 2 +
-            this.setMaxLines * this.getUIContext().px2vp(this.textSize.height as number)
-        } as ConstraintSizeOptions)
-
-      Blank(50)
-      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
-      Button($r('app.string.NormalQuestion_AddInput'))
-        .onClick(() => {
-          this.fullText += this.changeText;
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .padding({ top: 30 })
-  }
-}
-```
-
-![textinputkeyboardavoid](figures/textareaHeight.gif)
+<!--RP1--><!--RP1End-->

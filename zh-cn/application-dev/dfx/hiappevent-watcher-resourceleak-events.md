@@ -31,7 +31,7 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | 设置资源泄漏日志规格参数，name应为资源泄漏事件名称常量hiappevent.event.RESOURCE_OVERLIMIT。**仅支持js内存泄漏类型。**<br />**说明**：从API version 20开始，支持该接口。 |
+| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | 设置资源泄漏日志规格参数，name应为资源泄漏事件名称常量hiappevent.event.RESOURCE_OVERLIMIT。**仅支持js内存泄漏类型。**<br>**说明**：从API version 20开始，支持该接口。 |
 
 ### setEventConfig接口参数设置说明
 
@@ -39,7 +39,7 @@
 
 | 参数名          | 类型   | 必填 | 说明                                                         |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br />event_rawheap：应用发生oom时，系统生成并传递堆快照<br />**注意**：当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
+| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br>event_rawheap：应用发生oom时，系统生成并传递堆快照<br>**注意**：当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
 
 > **注意：**
 >
@@ -91,6 +91,7 @@ import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 let policy: hiAppEvent.EventPolicy = {
     resourceOverlimitPolicy: {
         pageSwitchLogEnable: true, // 启用页面切换日志。ArkTS-Dyn起始版本：24；ArkTS-Sta起始版本：24
+        useRefinedLogFileName: true, // 启用事件日志文件名精细化开关。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
         js_heap_logtype: "event", // 仅获取事件。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
         // js_heap_logtype: "event_rawheap", // 同时获取堆快照。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
     }
@@ -127,8 +128,9 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | 取值 | 说明 |
 | -------- | -------- |
 | pss_memory | pss内存泄漏。 |
-| ion_memory | ion内存泄漏。<br />**说明**：从API version 20开始，支持该字段。 |
-| gpu_memory | gpu内存泄漏。<br />**说明**：从API version 20开始，支持该字段。 |
+| rss_memory | rss内存泄漏。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| ion_memory | ion内存泄漏。<br>**说明**：从API version 20开始，支持该字段。 |
+| gpu_memory | gpu内存泄漏。<br>**说明**：从API version 20开始，支持该字段。 |
 | js_heap | js内存泄漏。 |
 | fd | 句柄泄漏。 |
 | thread | 线程泄漏。 |
@@ -141,13 +143,38 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | rss | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际占用内存大小，单位：KB。 |
 | vss | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程向系统申请的虚拟内存大小，单位：KB。 |
 | pss | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际使用的物理内存大小，单位：KB。 |
-| ion | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际使用的ION内存大小，单位：KB。<br />**说明**：从API version 20开始，支持该字段。 |
-| gpu | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际使用的GPU内存大小，单位：KB。<br />**说明**：从API version 20开始，支持该字段。 |
+| ion | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际使用的ION内存大小，单位：KB。<br>**说明**：从API version 20开始，支持该字段。 |
+| gpu | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）进程实际使用的GPU内存大小，单位：KB。<br>**说明**：从API version 20开始，支持该字段。 |
 | sys_free_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）空闲内存大小，单位：KB。 |
 | sys_avail_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）可用内存大小，单位：KB。 |
 | sys_total_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）总内存大小，单位：KB。 |
 | limit_size | number | （resource_type为js_heap专有）基线大小，单位：KB。 |
 | live_object_size | number | （resource_type为js_heap专有）实际使用内存大小，单位：KB。 |
+| rss_detail | object | （resource_type为rss_memory）RSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| pss_detail | object | （resource_type为pss_memory）PSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+
+### detail字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| .db | number | 数据库文件占用内存大小，单位：KB。 |
+| .hap | number | HAP文件占用内存大小，单位：KB。 |
+| .so | number | 共享库文件占用内存大小，单位：KB。 |
+| .ttf | number | 字体文件占用内存大小，单位：KB。 |
+| anon_page_other | number | 其他匿名页占用内存大小，单位：KB。 |
+| ark ts heap | number | ArkTS堆占用内存大小，单位：KB。 |
+| arkts-static heap | number | ArkTS静态堆占用内存大小，单位：KB。 |
+| arkweb-js heap | number | ArkWeb JS堆占用内存大小，单位：KB。 |
+| arkweb-pa heap | number | ArkWeb PA堆占用内存大小，单位：KB。 |
+| dart heap | number | Dart堆占用内存大小，单位：KB。 |
+| dev | number | /dev开头的各类文件占用内存大小，单位：KB。 |
+| file_page_other | number | 其他文件页占用内存大小，单位：KB。 |
+| jsvm heap | number | JSVM堆占用内存大小，单位：KB。 |
+| kotlin heap | number | Kotlin堆占用内存大小，单位：KB。 |
+| native heap | number | Native堆占用内存大小，单位：KB。 |
+| other | number | 其他类型占用内存大小，单位：KB。 |
+| rn-hermes heap | number | React Native Hermes堆占用内存大小，单位：KB。 |
+| stack | number | 栈空间占用内存大小，单位：KB。 |
 
 ### fd字段说明
 
@@ -171,4 +198,4 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setEventParam(params: Record&lt;string, ParamType>, domain: string, name?: string): Promise&lt;void> | 事件自定义参数设置方法。<br />**说明**：从API version 20开始，支持该接口。 |
+| setEventParam(params: Record&lt;string, ParamType>, domain: string, name?: string): Promise&lt;void> | 事件自定义参数设置方法。<br>**说明**：从API version 20开始，支持该接口。 |

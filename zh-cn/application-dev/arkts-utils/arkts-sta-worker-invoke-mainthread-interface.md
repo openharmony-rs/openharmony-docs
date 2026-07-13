@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)中的任务如果需要调用宿主线程接口，可以使用EAWorker.postToMain将函数投递到主线程执行，并通过返回的任务句柄等待主线程执行结果。
 

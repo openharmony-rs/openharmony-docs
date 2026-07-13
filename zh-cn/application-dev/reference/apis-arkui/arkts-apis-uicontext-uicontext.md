@@ -2237,7 +2237,7 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 | 类型                                              | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServerBar类型，否则返回undefined。 |
+| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServiceBar类型，否则返回undefined。 |
 
 **示例：**
 

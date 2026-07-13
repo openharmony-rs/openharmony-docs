@@ -115,7 +115,7 @@ appendChild(node: RenderNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -199,7 +199,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -859,7 +859,7 @@ ArkTS-Sta: set backgroundColor(color: int)
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| color  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 背景颜色值，ARGB格式，示例：0xE5E5E5。 |
+| color  | number | 是   | 背景颜色值，ARGB格式，示例：0xFFE5E5E5。 |
 
 ArkTS-Dyn: get backgroundColor(): number
 

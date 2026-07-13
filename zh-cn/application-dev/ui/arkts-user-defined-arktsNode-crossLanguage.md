@@ -110,7 +110,7 @@ struct CrossLanguage {
 
 获取节点后，若节点的跨语言配置设置为允许属性设置，ArkTS侧可利用getAttribute接口获取修改Native节点属性的对象，Native侧可利用[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)接口修改ArkTS节点属性。
 
-以下示例创建了ArkTS的[Scroll](../reference/apis-arkui/js-apis-arkui-frameNode.md#scroll12)类型节点，并在Native侧修改了Scroll的属性。
+以下示例创建了ArkTS的[Scroll](../reference/apis-arkui/js-apis-arkui-typeNode.md#scroll)类型节点，并在Native侧修改了Scroll的属性。
 
 1. 在ArkTS侧创建组件类型为Scroll的命令式节点。
     ```ts
@@ -402,33 +402,33 @@ struct CrossLanguage {
 
 ## 支持跨语言设置属性的节点类型
 
-仅以下节点类型支持跨语言设置节点属性。
+仅以下节点类型支持跨语言设置节点属性。Native侧需要使用[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)获取待修改属性的节点，不支持对[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)获取的目标节点跨语言设置属性。
 
 | ArkTS侧[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型 | Native侧[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)类型 | ArkTS属性获取接口 | ArkTS控制器获取/绑定接口 |
 | -------- | -------- | -------- | -------- |
-| [Button](../reference/apis-arkui/js-apis-arkui-frameNode.md#button12) | ARKUI_NODE_BUTTON | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributebutton20) | NA |
-| [Checkbox](../reference/apis-arkui/js-apis-arkui-frameNode.md#checkbox18) | ARKUI_NODE_CHECKBOX | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributecheckbox20) | NA |
-| [Radio](../reference/apis-arkui/js-apis-arkui-frameNode.md#radio18) | ARKUI_NODE_RADIO | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeradio20) | NA |
-| [Slider](../reference/apis-arkui/js-apis-arkui-frameNode.md#slider18) | ARKUI_NODE_SLIDER | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeslider20) | NA |
-| [Toggle](../reference/apis-arkui/js-apis-arkui-frameNode.md#toggle18) | ARKUI_NODE_TOGGLE | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributetoggle20) | NA |
-| [Progress](../reference/apis-arkui/js-apis-arkui-frameNode.md#progress12) | ARKUI_NODE_PROGRESS | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeprogress20) | NA |
-| [LoadingProgress](../reference/apis-arkui/js-apis-arkui-frameNode.md#loadingprogress12) | ARKUI_NODE_LOADING_PROGRESS | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeloadingprogress20) | NA |
-| [Image](../reference/apis-arkui/js-apis-arkui-frameNode.md#image12) | ARKUI_NODE_IMAGE | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeimage20) | NA |
-| [XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#xcomponent12) | ARKUI_NODE_XCOMPONENT | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributexcomponent20) | getController |
-| [Column](../reference/apis-arkui/js-apis-arkui-frameNode.md#column12) | ARKUI_NODE_COLUMN | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributecolumn20) | NA |
-| [Row](../reference/apis-arkui/js-apis-arkui-frameNode.md#row12) | ARKUI_NODE_ROW | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributerow20) | NA |
-| [Stack](../reference/apis-arkui/js-apis-arkui-frameNode.md#stack12) | ARKUI_NODE_STACK | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributestack20) | NA |
-| [Flex](../reference/apis-arkui/js-apis-arkui-frameNode.md#flex12) | ARKUI_NODE_FLEX | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeflex20) | NA |
-| [RelativeContainer](../reference/apis-arkui/js-apis-arkui-frameNode.md#relativecontainer12) | ARKUI_NODE_RELATIVE_CONTAINER | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributerelativecontainer20) | NA |
-| [Swiper](../reference/apis-arkui/js-apis-arkui-frameNode.md#swiper12) | ARKUI_NODE_SWIPER | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeswiper20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollerswiper20) |
-| [Scroll](../reference/apis-arkui/js-apis-arkui-frameNode.md#scroll12) | ARKUI_NODE_SCROLL | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributescroll15) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollerscroll15) |
-| [List](../reference/apis-arkui/js-apis-arkui-frameNode.md#list12) | ARKUI_NODE_LIST | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributelist20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollerlist20) |
-| [ListItem](../reference/apis-arkui/js-apis-arkui-frameNode.md#listitem12) | ARKUI_NODE_LIST_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributelistitem20) | NA |
-| [ListItemGroup](../reference/apis-arkui/js-apis-arkui-frameNode.md#listitemgroup12) | ARKUI_NODE_LIST_ITEM_GROUP | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributelistitemgroup20) | NA |
-| [WaterFlow](../reference/apis-arkui/js-apis-arkui-frameNode.md#waterflow12) | ARKUI_NODE_WATER_FLOW | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributewaterflow20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollerwaterflow20) |
-| [FlowItem](../reference/apis-arkui/js-apis-arkui-frameNode.md#flowitem12) | ARKUI_NODE_FLOW_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributeflowitem20) | NA |
-| [Grid](../reference/apis-arkui/js-apis-arkui-frameNode.md#grid14) | ARKUI_NODE_GRID | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributegrid20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollergrid20) |
-| [GridItem](../reference/apis-arkui/js-apis-arkui-frameNode.md#griditem14) | ARKUI_NODE_GRID_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributegriditem20) | NA |
-| [Text](../reference/apis-arkui/js-apis-arkui-frameNode.md#text12) | ARKUI_NODE_TEXT | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributetext20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollertext20) |
-| [TextInput](../reference/apis-arkui/js-apis-arkui-frameNode.md#textinput12) | ARKUI_NODE_TEXT_INPUT | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributetextinput20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollertextinput20) |
-| [TextArea](../reference/apis-arkui/js-apis-arkui-frameNode.md#textarea14) | ARKUI_NODE_TEXT_AREA | [getAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#getattributetextarea20) | [bindController](../reference/apis-arkui/js-apis-arkui-frameNode.md#bindcontrollertextarea20) |
+| [Button](../reference/apis-arkui/js-apis-arkui-typeNode.md#button) | ARKUI_NODE_BUTTON | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributebutton20) | NA |
+| [Checkbox](../reference/apis-arkui/js-apis-arkui-typeNode.md#checkbox18) | ARKUI_NODE_CHECKBOX | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributecheckbox20) | NA |
+| [Radio](../reference/apis-arkui/js-apis-arkui-typeNode.md#radio18) | ARKUI_NODE_RADIO | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeradio20) | NA |
+| [Slider](../reference/apis-arkui/js-apis-arkui-typeNode.md#slider18) | ARKUI_NODE_SLIDER | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeslider20) | NA |
+| [Toggle](../reference/apis-arkui/js-apis-arkui-typeNode.md#toggle18) | ARKUI_NODE_TOGGLE | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributetoggle20) | NA |
+| [Progress](../reference/apis-arkui/js-apis-arkui-typeNode.md#progress) | ARKUI_NODE_PROGRESS | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeprogress20) | NA |
+| [LoadingProgress](../reference/apis-arkui/js-apis-arkui-typeNode.md#loadingprogress) | ARKUI_NODE_LOADING_PROGRESS | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeloadingprogress20) | NA |
+| [Image](../reference/apis-arkui/js-apis-arkui-typeNode.md#image) | ARKUI_NODE_IMAGE | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeimage20) | NA |
+| [XComponent](../reference/apis-arkui/js-apis-arkui-typeNode.md#xcomponent) | ARKUI_NODE_XCOMPONENT | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributexcomponent20) | getController |
+| [Column](../reference/apis-arkui/js-apis-arkui-typeNode.md#column) | ARKUI_NODE_COLUMN | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributecolumn20) | NA |
+| [Row](../reference/apis-arkui/js-apis-arkui-typeNode.md#row) | ARKUI_NODE_ROW | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributerow20) | NA |
+| [Stack](../reference/apis-arkui/js-apis-arkui-typeNode.md#stack) | ARKUI_NODE_STACK | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributestack20) | NA |
+| [Flex](../reference/apis-arkui/js-apis-arkui-typeNode.md#flex) | ARKUI_NODE_FLEX | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeflex20) | NA |
+| [RelativeContainer](../reference/apis-arkui/js-apis-arkui-typeNode.md#relativecontainer) | ARKUI_NODE_RELATIVE_CONTAINER | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributerelativecontainer20) | NA |
+| [Swiper](../reference/apis-arkui/js-apis-arkui-typeNode.md#swiper) | ARKUI_NODE_SWIPER | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeswiper20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollerswiper20) |
+| [Scroll](../reference/apis-arkui/js-apis-arkui-typeNode.md#scroll) | ARKUI_NODE_SCROLL | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributescroll15) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollerscroll15) |
+| [List](../reference/apis-arkui/js-apis-arkui-typeNode.md#list) | ARKUI_NODE_LIST | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributelist20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollerlist20) |
+| [ListItem](../reference/apis-arkui/js-apis-arkui-typeNode.md#listitem) | ARKUI_NODE_LIST_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributelistitem20) | NA |
+| [ListItemGroup](../reference/apis-arkui/js-apis-arkui-typeNode.md#listitemgroup) | ARKUI_NODE_LIST_ITEM_GROUP | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributelistitemgroup20) | NA |
+| [WaterFlow](../reference/apis-arkui/js-apis-arkui-typeNode.md#waterflow) | ARKUI_NODE_WATER_FLOW | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributewaterflow20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollerwaterflow20) |
+| [FlowItem](../reference/apis-arkui/js-apis-arkui-typeNode.md#flowitem) | ARKUI_NODE_FLOW_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributeflowitem20) | NA |
+| [Grid](../reference/apis-arkui/js-apis-arkui-typeNode.md#grid14) | ARKUI_NODE_GRID | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributegrid20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollergrid20) |
+| [GridItem](../reference/apis-arkui/js-apis-arkui-typeNode.md#griditem14) | ARKUI_NODE_GRID_ITEM | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributegriditem20) | NA |
+| [Text](../reference/apis-arkui/js-apis-arkui-typeNode.md#text) | ARKUI_NODE_TEXT | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributetext20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollertext20) |
+| [TextInput](../reference/apis-arkui/js-apis-arkui-typeNode.md#textinput) | ARKUI_NODE_TEXT_INPUT | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributetextinput20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollertextinput20) |
+| [TextArea](../reference/apis-arkui/js-apis-arkui-typeNode.md#textarea14) | ARKUI_NODE_TEXT_AREA | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributetextarea20) | [bindController](../reference/apis-arkui/js-apis-arkui-typeNode.md#bindcontrollertextarea20) |

@@ -73,6 +73,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 1600025  | Geofencing disabled. |
 | 1600026  | The location switch is off. |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -192,6 +193,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 1600025  | Geofencing disabled. |
 | 1600026  | The location switch is off. |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4007,12 +4009,14 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
 | 1600026  | The location switch is off. |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4131,12 +4135,14 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
 | 1600026  | The location switch is off. |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4244,12 +4250,14 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600008  | The user does not exist.                    |
 | 1600009  | The notification sending frequency reaches the upper limit. |
 | 1600012  | No memory space.                          |
+| 1600014  | The right of liveView is not enabled. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
 | 1600026  | The location switch is off. |
 | 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -5027,6 +5035,91 @@ notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`isNotificationSlotEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.isNotificationSlotEnabledByBundles
+
+isNotificationSlotEnabledByBundles(bundles: Array\<BundleOption\>, type: SlotType): Promise\<Map\<BundleOption, boolean\>\>
+
+批量获取多个应用的指定渠道类型的使能状态。使用Promise异步回调。所有应用共享同一个渠道类型。未创建渠道的应用不会出现在返回结果中。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
+| type | [SlotType](./js-apis-notificationManager.md#slottype) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态（true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 批量查询多个应用的实况窗开关状态
+const bundles: Array<notificationManager.BundleOption> = [
+    { bundle: 'com.example.app1', uid: 10001 },
+    { bundle: 'com.example.app2', uid: 10002 },
+];
+
+notificationManager.isNotificationSlotEnabledByBundles(
+    bundles, notificationManager.SlotType.LIVE_VIEW).then((data) => {
+    data.forEach((value: boolean, key: notificationManager.BundleOption) => {
+        console.info(`bundle: ${key.bundle}, enabled: ${value}`);
+    });
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+// 批量查询多个应用的实况窗开关状态
+const bundles: Array<notificationManager.BundleOption> = [
+    { bundle: 'bundleName1', uid: 10001 },
+    { bundle: 'bundleName2', uid: 10002 },
+];
+
+notificationManager.isNotificationSlotEnabledByBundles(
+    bundles, notificationManager.SlotType.LIVE_VIEW).then((data) => {
+    data.forEach((value: boolean, key: notificationManager.BundleOption) => {
+        console.info(`bundle: ${key.bundle}, enabled: ${value}`);
+    });
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationSlotEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 

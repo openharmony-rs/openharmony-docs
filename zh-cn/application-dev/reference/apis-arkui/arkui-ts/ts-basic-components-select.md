@@ -1917,8 +1917,6 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 在PC/2in1设备中可生效，在其他设备类型中不生效。
-
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
@@ -2690,7 +2688,7 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("请选择")
-        **
+        /**
          * 自定义下拉选项分割线完整样式
          * strokeWidth：分割线粗细，使用vp单位统一适配不同屏幕
          * color：分割线浅灰色

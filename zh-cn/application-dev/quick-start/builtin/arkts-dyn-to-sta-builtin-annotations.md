@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 Annotations用于为程序元素（类、函数、字段等）添加元数据，配合编译器或运行时框架完成校验、代码生成和行为扩展等能力。
 

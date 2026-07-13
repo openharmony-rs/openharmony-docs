@@ -59,6 +59,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 | 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
 | 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0 |
 | 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
@@ -163,6 +164,7 @@ publish(request: NotificationRequest): Promise\<void\>
 | 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
 | 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0 |
 | 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
@@ -2467,7 +2469,9 @@ class MyAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbility extends UIAbility {
@@ -2559,6 +2563,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAbility extends UIAbility {

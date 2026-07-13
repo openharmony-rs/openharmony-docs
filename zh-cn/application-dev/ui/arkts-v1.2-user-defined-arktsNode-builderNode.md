@@ -368,7 +368,8 @@ import {
   State,
   BuilderNode,
   FrameNode,
-  NodeController
+  NodeController,
+  ColumnOptions
 } from '@kit.ArkUI';
 
 export class Params {
@@ -449,7 +450,7 @@ struct Index {
 
   build(): void {
     Row() {
-      Column() {
+      Column({ space: 5 } as ColumnOptions) {
         NodeContainer(this.textNodeController)
           .width('100%')
           .height(200)

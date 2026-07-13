@@ -1,10 +1,10 @@
 # jsvm_types.h
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 

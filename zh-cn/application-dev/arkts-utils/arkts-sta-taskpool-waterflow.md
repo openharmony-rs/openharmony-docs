@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkUI瀑布流页面通常需要在滑动过程中持续加载图片、商品或资讯卡片。如果数据查询、解析或预处理直接运行在UI线程，数据量较大时会阻塞页面渲染，造成滑动卡顿。ArkTS-Sta可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)在后台线程生成或查询数据，UI线程接收结果后追加到WaterFlow的数据源，并通过LazyForEach按需渲染。
 

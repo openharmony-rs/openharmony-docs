@@ -29,6 +29,7 @@
 | [OH_AudioCommon_Result](#oh_audiocommon_result) | OH_AudioCommon_Result | 音频错误码。 |
 | [OH_AudioScene](#oh_audioscene) | OH_AudioScene | 定义音频场景。 |
 | [OH_AudioRingerMode](#oh_audioringermode) | OH_AudioRingerMode | 定义铃音模式。 |
+| [OH_AudioNoiseReductionMode](#oh_audionoisereductionmode) | OH_AudioNoiseReductionMode | 定义录音降噪模式。 |
 
 ## 枚举类型说明
 
@@ -93,5 +94,23 @@ enum OH_AudioRingerMode
 | AUDIO_RINGER_MODE_SILENT = 0 | 静音模式。 |
 | AUDIO_RINGER_MODE_VIBRATE = 1 | 振动模式。 |
 | AUDIO_RINGER_MODE_NORMAL = 2 | 响铃模式。 |
+
+### OH_AudioNoiseReductionMode
+
+```c
+enum OH_AudioNoiseReductionMode
+```
+
+**描述**
+
+定义录音降噪模式。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0 | 保真模式，不进行降噪。 |
+| AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1 | 纯人声模式，强降噪。 |
+| AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2 | 标准模式，弱降噪。 |
 
 

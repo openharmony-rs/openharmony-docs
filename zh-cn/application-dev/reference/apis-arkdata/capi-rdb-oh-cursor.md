@@ -58,7 +58,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 **描述**
 
-函数指针，获取结果集中的列数。
+函数指针，获取结果集中的行数。
 
 **起始版本：** 10
 
@@ -68,7 +68,7 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 | 参数项            | 描述                                         |
 | ----------------- | -------------------------------------------- |
 | OH_Cursor *cursor | 表示指向OH_Cursor实例的指针                  |
-| int *count        | 该参数是输出参数，结果集中的列数会写入该变量 |
+| int *count        | 该参数是输出参数，结果集中的行数会写入该变量 |
 
 **返回：**
 
@@ -87,7 +87,6 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 函数指针，根据指定的列索引获取列类型。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -175,8 +174,8 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 | 参数项            | 描述                                         |
 | ----------------- | -------------------------------------------- |
-| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针                  |
-| int *count        | 该参数是输出参数，结果集中的列数会写入该变量 |
+| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针。                  |
+| int *count        | 该参数是输出参数，结果集中的行数会写入该变量。 |
 
 **返回：**
 
@@ -253,8 +252,8 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
-| int32_t columnIndex | 该表示结果集中指定列的索引，索引值从0开始。                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
+| int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                  |
 | char *value         | 该参数是输出参数，结果集中指定列的值会以字符串形式写入该变量。 |
 | int length          | 该参数是输入参数，表示value的长度，该值可通过getSize获取。   |
 

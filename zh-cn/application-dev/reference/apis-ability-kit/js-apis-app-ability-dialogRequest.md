@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-dialogRequest模块用于处理模态弹框的能力，包括获取RequestInfo（用于绑定模态弹框）、获取RequestCallback（用于设置结果）。
+dialogRequest模块提供处理模态弹框的能力，包括获取RequestInfo（用于绑定模态弹框）和获取RequestCallback（用于设置返回结果）。适用于需要跨应用展示系统级模态弹框并拦截弹框下方页面交互事件的场景，请求方应用能够安全拉起其他应用的模态弹框并接收处理结果。
 
 模态弹框是指一个系统弹框，该弹框会拦截弹框之下的页面的鼠标、键盘、触屏等事件。销毁该弹框后，才能对页面进行操作。
 
@@ -69,9 +69,10 @@ import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // 获取请求方的RequestInfo
       let requestInfo = dialogRequest.getRequestInfo(want);
     } catch (err) {
-      console.error(`getRequestInfo err= ${JSON.stringify(err)}`);
+      console.error(`Failed to getRequestInfo. Code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -121,9 +122,10 @@ import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // 获取请求方的RequestCallback
       let requestCallback = dialogRequest.getRequestCallback(want);
-    } catch(err) {
-      console.error(`getRequestInfo err= ${JSON.stringify(err)}`);
+    } catch (err) {
+      console.error(`Failed to getRequestCallback. Code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -143,10 +145,10 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 类型   | 只读 | 可选 | 说明                        |
 | ---- | ------ | ---- | ----| --------------------------- |
-| left  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否 |弹框边框的左上角的X坐标。 |
-| top  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 |弹框边框的左上角的Y坐标。 |
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 弹框的宽度，单位为px。 |
-| height  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 |弹框的高度，单位为px。 |
+| left  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否 |模态弹框边框的左上角的X坐标。 |
+| top  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 |模态弹框边框的左上角的Y坐标。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 模态弹框的宽度，单位为px。 |
+| height  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 |模态弹框的高度，单位为px。 |
 
 ## RequestInfo
 
@@ -162,7 +164,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称      | 类型       | 只读 | 可选   | 说明     |
 | ------------ | --------| ------ | ----- | ----------------- |
-| windowRect<sup>10+</sup>   | [WindowRect](#windowrect10)    | 否 | 是  | 表示模态弹框的位置属性。          |
+| windowRect<sup>10+</sup>   | [WindowRect](#windowrect10)    | 否 | 是  | 表示模态弹框的位置属性。当需要自定义模态弹框的位置和尺寸时传入此参数；不传入时使用系统默认的弹窗位置和尺寸。  |
 
 **示例：**
 
@@ -172,10 +174,11 @@ import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // 获取请求方的RequestInfo
       let requestInfo = dialogRequest.getRequestInfo(want);
       console.info(`getRequestInfo windowRect=, ${JSON.stringify(requestInfo.windowRect)}` );
-    } catch(err) {
-      console.error(`getRequestInfo err= ${JSON.stringify(err)}`);
+    } catch (err) {
+      console.error(`Failed to getRequestInfo. Code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -197,7 +200,8 @@ export default class EntryAbility extends UIAbility {
 | RESULT_CANCEL        | 1          | 表示失败。          |
 
 ## RequestResult
-模态弹框请求结果，包含结果码ResultCode和请求结果ResultWant。
+
+模态弹框请求结果，包含结果码ResultCode和Want类型信息。
 
 ### 属性
 
@@ -207,8 +211,8 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| result | [ResultCode](#resultcode) | 否 | 否 | 表示结果码。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| want<sup>10+</sup> | [Want](js-apis-app-ability-want.md)  | 否 | 是 | 表示Want类型信息，如ability名称，包名等。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| result | [ResultCode](#resultcode) | 否 | 否 | 表示请求的结果码，用于判断请求是否成功。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| want<sup>10+</sup> | [Want](js-apis-app-ability-want.md)  | 否 | 是 | 表示Want类型信息，如ability名称，包名等。不传此参数时默认为空。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestCallback
 
@@ -220,7 +224,7 @@ export default class EntryAbility extends UIAbility {
 
 setRequestResult(result: RequestResult): void
 
-设置请求结果
+设置请求结果。用于在用户完成模态弹框操作后，将操作结果（如确认、取消、用户输入数据等）通过RequestCallback返回给请求方，完成请求响应流程。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -252,13 +256,15 @@ import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // 从Want中获取请求方的RequestCallback
       let requestCallback = dialogRequest.getRequestCallback(want);
       let myResult: dialogRequest.RequestResult = {
         result : dialogRequest.ResultCode.RESULT_CANCEL,
       };
+      // 设置模态弹框的请求结果
       requestCallback.setRequestResult(myResult);
-    } catch(err) {
-      console.error(`getRequestInfo err= ${JSON.stringify(err)}`);
+    } catch (err) {
+      console.error(`Failed to setRequestResult. Code: ${err.code}, message: ${err.message}`);
     }
   }
 }

@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 基于typedArray的Atomics类型接口，通过对基于ArrayBuffer构建的typedArray执行原子操作，确保对共享数据的并发操作安全。
 

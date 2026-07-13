@@ -70,7 +70,7 @@ createModuleContext(moduleName: string): Context
 
 > **说明：**
 >
-> - 仅支持获取本应用中其他Module的Context和应用内HSP的Context，不支持获取其他应用的Context。
+> - 仅支持获取本应用中其他Module的Context和应用内HSP（共享包）的Context，不支持获取其他应用的Context。
 >
 > - 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext)替代，否则可能导致资源获取异常。
 >
@@ -94,7 +94,7 @@ createModuleContext(moduleName: string): Context
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Context | 模块的上下文。 |
+| Context | 模块的上下文，可用于访问模块资源、获取模块路径、执行模块级操作等。 |
 
 **错误码**：
 
@@ -115,6 +115,7 @@ export default class EntryAbility extends UIAbility {
     console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
+      // 根据模块名创建上下文
       moduleContext = this.context.createModuleContext('entry');
     } catch (error) {
       console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
@@ -127,7 +128,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-获取当前应用上下文。
+获取当前应用上下文。提供应用级事件订阅等能力，与应用内所有UIAbility共享。详情请参见[ApplicationContext (应用上下文)](js-apis-inner-application-applicationContext.md)。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -141,7 +142,7 @@ getApplicationContext(): ApplicationContext
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ApplicationContext](js-apis-inner-application-applicationContext.md) | 应用上下文。 |
+| [ApplicationContext](js-apis-inner-application-applicationContext.md) | 应用上下文，提供应用级别的上下文能力，包括应用生命周期管理、环境变量配置等。 |
 
 **错误码**：
 
@@ -162,9 +163,10 @@ export default class EntryAbility extends UIAbility {
     console.info('MyAbility onCreate');
     let applicationContext: common.Context;
     try {
+      // 获取当前应用上下文
       applicationContext = this.context.getApplicationContext();
     } catch (error) {
-      console.error(`getApplicationContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+      console.error(`Failed to get application context. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     }
   }
 }
@@ -214,14 +216,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     console.info('MyAbility onCreate');
-    let groupId = "1";
+    let groupId = '1';
     let getGroupDirContext: common.Context = this.context;
     try {
+      // 通过Group ID获取共享目录（Promise方式）
       getGroupDirContext.getGroupDir(groupId).then(data => {
-        console.info("getGroupDir result:" + data);
+        console.info('getGroupDir result:' + data);
       })
     } catch (error) {
-      console.error(`getGroupDirContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+      console.error(`Failed to get group directory. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     }
   }
 }
@@ -268,6 +271,7 @@ export default class EntryAbility extends UIAbility {
     console.info('MyAbility onCreate');
     let getGroupDirContext: common.Context = this.context;
 
+    // 通过Group ID获取共享目录（callback方式）
     getGroupDirContext.getGroupDir("1", (err: BusinessError<void> | null, data: String | undefined) => {
       if (err) {
         console.error(`getGroupDir failed, err: ${JSON.stringify(err)}`);
@@ -303,7 +307,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
 | 类型    | 说明                   |
 | ------- | ---------------------- |
-| Context | 指定数据加密等级的上下文。 |
+| Context | 指定数据加密等级的上下文，可用于获取对应加密级别的沙箱路径、访问相应加密级别的文件和数据。 |
 
 **示例：**
 
@@ -317,9 +321,11 @@ export default class EntryAbility extends UIAbility {
     let areaMode: contextConstant.AreaMode = contextConstant.AreaMode.EL2;
     let areaModeContext: common.Context;
     try {
+      // 创建特定数据加密级别的应用上下文
       areaModeContext = this.context.createAreaModeContext(areaMode);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'createAreaModeContext error is:%{public}s', JSON.stringify(error));
+      const err: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'Failed to create area mode context. Code: %{public}d, message: %{public}s', err.code, err.message);
     }
   }
 }
@@ -372,9 +378,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     let displayContext: common.Context;
     try {
+      // displayId通过display.getDefaultDisplay()等接口获取，详见屏幕管理开发指导
       displayContext = this.context.createDisplayContext(0);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'createDisplayContext error is:%{public}s', JSON.stringify(error));
+      const err: BusinessError = error as BusinessError;
+      hilog.error(0x0000, 'testTag', 'Failed to create display context. Code: %{public}d, message: %{public}s', err.code, err.message);
     }
   }
 }
@@ -524,6 +532,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // 判断当前Context是否为指定的ContextType类型
     let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }

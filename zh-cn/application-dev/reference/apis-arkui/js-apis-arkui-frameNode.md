@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -413,7 +413,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -449,7 +449,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -1066,7 +1066,7 @@ ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -7217,7 +7217,7 @@ struct CreateAnimationExample {
 
 ## 检验FrameNode是否有效示例
 
-该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -7332,7 +7332,7 @@ struct Index {
 
 ## 检验NodeAdapter是否有效示例
 
-该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';

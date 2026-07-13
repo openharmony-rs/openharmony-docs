@@ -35,6 +35,7 @@
 | sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| automotiveCameraPosition | [AutomotiveCameraPosition](arkts-apis-camera-e.md#automotivecameraposition) | 是 | 是 | Car设备摄像头位置。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatusInfo
 
@@ -296,6 +297,7 @@
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  是  |  否  | metadata 类型。    |
 | timestamp   | number                                      |  是  |  否  | 当前时间戳。单位为纳秒（ns）。|
 | boundingBox | [Rect](#rect)                               |  是  |  否  | metadata 区域框。  |
+| isLockFocusTracked | boolean                              |  是  |  是  | 是否已锁定焦点跟踪。true表示已锁定，false表示未锁定。**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  |
 
 ## MetadataBasicFaceObject
 

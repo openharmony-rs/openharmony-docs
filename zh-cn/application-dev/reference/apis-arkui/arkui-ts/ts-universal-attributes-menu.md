@@ -1607,9 +1607,9 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" })
     }
   }
 
@@ -1687,9 +1687,9 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
+      MenuItem({ startIcon: this.iconStr, content: "Menu option" } as MenuItemOptions)
     }
   }
 

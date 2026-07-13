@@ -1061,9 +1061,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
-### isBefore
+### beforeComponent
 
-isBefore(com: Component): On
+beforeComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之前，返回On对象自身。
 
@@ -1104,7 +1104,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isBefore(component); // 查找第一个Text组件之前的text为123的组件
+  let on: On = ON.text('123').beforeComponent(component); // 查找第一个Text组件之前的text为123的组件
 }
 ```
 
@@ -1152,9 +1152,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找text为123之后的第一个Text组件
 ```
 
-### isAfter
+### afterComponent
 
-isAfter(com: Component): On
+afterComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之后，返回On对象自身。
 
@@ -1195,7 +1195,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isAfter(component); // 查找第一个Text组件之后的text为123的组件
+  let on: On = ON.text('123').afterComponent(component); // 查找第一个Text组件之后的text为123的组件
 }
 ```
 
@@ -1243,9 +1243,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的text为java的子组件
 ```
 
-### within
+### withinComponent
 
-within(com: Component): On
+withinComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之内，返回On对象自身。
 
@@ -1286,7 +1286,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').within(component); // 查找第一个Text组件内部的text为123的组件
+  let on: On = ON.text('123').withinComponent(component); // 查找第一个Text组件内部的text为123的组件
 }
 ```
 
@@ -3926,9 +3926,9 @@ async function demo() {
 }
 ```
 
-### clickAt
+### clickAtWithOptions
 
-clickAt(point: Point, options?: TouchOptions): Promise\<void>
+clickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
 
 在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
 
@@ -3974,7 +3974,7 @@ async function demo() {
     pressure: 0.5
   };
   // 在目标坐标点进行单击，并指定触摸压力
-  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
+  await driver.clickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -4148,9 +4148,9 @@ ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 | point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
 | duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 
-### longClickAt
+### longClickAtWithOptions
 
-longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+longClickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
 
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4197,7 +4197,7 @@ async function demo() {
     pressure: 0.8  // 触摸压力值
   };
   // 在目标坐标点进行长按，并指定长按时长和触摸压力
-  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
+  await driver.longClickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -4305,9 +4305,9 @@ async function demo() {
 }
 ```
 
-### swipeBetween
+### swipeBetweenWithOptions
 
-swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+swipeBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4355,7 +4355,7 @@ async function demo() {
     pressure: 0.5  // 触摸压力值
   };
   // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力
-  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+  await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -4400,6 +4400,7 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4467,9 +4468,9 @@ async function demo() {
 }
 ```
 
-### dragBetween
+### dragBetweenWithOptions
 
-dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+dragBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4520,7 +4521,7 @@ async function demo() {
     pressure: 0.5   // 触摸压力值
   };
   // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力
-  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+  await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -6065,9 +6066,9 @@ async function demo() {
 }
 ```
 
-### mouseDrag
+### mouseDragWithOptions
 
-mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+mouseDragWithOptions(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
 
@@ -6122,7 +6123,7 @@ async function demo() {
     key2: 2019   // C键
   };
   // 鼠标拖拽并同时按下Ctrl+C组合键
-  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
+  await driver.mouseDragWithOptions({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 

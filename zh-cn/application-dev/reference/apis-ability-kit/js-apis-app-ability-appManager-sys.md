@@ -2956,10 +2956,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| CREATE     | 1 << 0    | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。 |
-| FOREGROUND | 1 << 1    | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。 |
-| BACKGROUND | 1 << 2    | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。 |
-| DESTROY    | 1 << 3    | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。 |
+| CREATE     | 1 << 0    | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_CREATE。 |
+| FOREGROUND | 1 << 1    | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_FOREGROUND。 |
+| BACKGROUND | 1 << 2    | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_BACKGROUND。 |
+| DESTROY    | 1 << 3    | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态fa模型)中的ABILITY_STATE_TERMINATED。 |
 
 ## FilterCallback<sup>21+</sup>
 
