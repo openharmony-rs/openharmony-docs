@@ -11340,7 +11340,7 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(()=>{
+      .onControllerAttached(() => {
         this.controller.setErrorPageEnabled(true, true);
         let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
         console.log("Subframe error page enabled: " + isEnabled);
@@ -11390,7 +11390,7 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-      .onControllerAttached(()=>{
+      .onControllerAttached(() => {
         this.controller.setErrorPageEnabled(true, true);
         let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
         console.log("Subframe error page enabled: " + isEnabled);
