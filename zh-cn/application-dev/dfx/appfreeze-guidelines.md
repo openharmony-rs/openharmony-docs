@@ -171,7 +171,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 ***
 ```
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 **NOTE信息说明：**
 
@@ -618,7 +618,7 @@ DisplayPowerInfo:powerState:AWAKE
 
    > **说明：**
    >
-   > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈的会与应用当前配置的采集堆栈的个数一致。
+   > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
    >
    > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT。
 
