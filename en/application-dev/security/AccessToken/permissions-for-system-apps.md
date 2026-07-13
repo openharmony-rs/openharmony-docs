@@ -6307,6 +6307,160 @@ With this permission, the application can access and modify the offline map data
 
 **Valid since**: 20
 
+## ohos.permission.TV_MANAGE_SOURCE
+
+Allows a system application to manage and control Vision input sources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+Allows a system application to manage the Vision picture quality.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+Allows a system application to read Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+Allows a system application to set Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+Allows a system application to query and set Vision sound effects.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+Allows a system application to query and set Vision computational audio.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+Allows a system application to control CEC devices through HDMI CEC.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+Allows a system application to access  camera AI algorithm of Vision.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+Allows a system application to perform smart diagnostics on Vision faults.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+Allows a system application to access Vision projection.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+Allows a system application to manage Vision log synchronization.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
 ## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
 
 Allows a system application to use the credential management feature of the passkey service.
