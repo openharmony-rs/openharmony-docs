@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 TreeMap可用于存储具有关联关系的key-value键值对集合，存储元素中key值唯一，每个key对应一个value。
 
@@ -89,12 +89,12 @@ let treeMap = new TreeMap<number, number>();
 let treeMap: TreeMap<string, string> = new TreeMap<string, string>((firstValue: string, secondValue: string): boolean => {
   return firstValue > secondValue;
 });
-treeMap.set("aa", "3");
-treeMap.set("dd", "1");
-treeMap.set("cc", "2");
-treeMap.set("bb", "4");
+treeMap.set('aa', '3');
+treeMap.set('dd', '1');
+treeMap.set('cc', '2');
+treeMap.set('bb', '4');
 for (let item of treeMap) {
-  console.info("key: " + item[0], "value: " + item[1]);
+  console.info('key: ' + item[0], 'value: ' + item[1]);
 };
 // 输出结果：
 // key: dd value: 1
@@ -118,9 +118,9 @@ let entry1: TestEntry = {
 let entry2: TestEntry = {
   id: 1
 }
-testEntryMap.set(entry1, "0");
-testEntryMap.set(entry2, "1");
-console.info("length:", testEntryMap.length); // length: 2
+testEntryMap.set(entry1, '0');
+testEntryMap.set(entry2, '1');
+console.info('length:', testEntryMap.length); // length: 2
 ```
 
 
@@ -154,7 +154,7 @@ isEmpty(): boolean
 let treeMap = new TreeMap<number, number>();
 // 判断容器是否为空
 let result = treeMap.isEmpty();
-console.info("result:", result);  // result: true
+console.info('result:', result);  // result: true
 ```
 
 
@@ -193,10 +193,10 @@ hasKey(key: K): boolean
 ```ts
 let treeMap = new TreeMap<string, number>();
 // 向容器中添加数据
-treeMap.set("squirrel", 123);
+treeMap.set('squirrel', 123);
 // 判断容器中是否包含指定key
-let result = treeMap.hasKey("squirrel");
-console.info("result:", result);  // result: true
+let result = treeMap.hasKey('squirrel');
+console.info('result:', result);  // result: true
 ```
 
 
@@ -234,10 +234,10 @@ hasValue(value: V): boolean
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
+treeMap.set('squirrel', 123);
 // 判断容器中是否包含指定value
 let result = treeMap.hasValue(123);
-console.info("result:", result);  // result: true
+console.info('result:', result);  // result: true
 ```
 
 
@@ -275,11 +275,11 @@ get(key: K): V
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取指定key对应的value
-let result = treeMap.get("sparrow");
-console.info("result:", result); // result: 356
+let result = treeMap.get('sparrow');
+console.info('result:', result); // result: 356
 ```
 
 
@@ -311,11 +311,11 @@ getFirstKey(): K
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取容器中排序第一的key
 let result = treeMap.getFirstKey();
-console.info("result:", result); // result: sparrow
+console.info('result:', result); // result: sparrow
 ```
 
 
@@ -347,11 +347,11 @@ getLastKey(): K
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取容器中排序最后的key
 let result = treeMap.getLastKey();
-console.info("result:", result); // result: squirrel
+console.info('result:', result); // result: squirrel
 ```
 
 
@@ -383,13 +383,13 @@ setAll(map: TreeMap<K, V>): void
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 let map: TreeMap<string, number> = new TreeMap();
-map.set("demo", 12);
+map.set('demo', 12);
 map.setAll(treeMap); // 将treeMap中的所有元素添加到map中
 map.forEach((value?: number, key?: string) : void => {
-  console.info("value: " + value, "key: " + key); 
+  console.info('value: ' + value, 'key: ' + key); 
 });
 // 输出结果:
 // value: 12 key: demo
@@ -433,8 +433,8 @@ set(key: K, value: V): Object
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-console.info("squirrel:", treeMap.get("squirrel")); // squirrel: 123
+treeMap.set('squirrel', 123);
+console.info('squirrel:', treeMap.get('squirrel')); // squirrel: 123
 ```
 
 
@@ -472,10 +472,10 @@ remove(key: K): V
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
-let result = treeMap.remove("sparrow"); // 删除数据
-console.info("result = " + result); // result = 356
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+let result = treeMap.remove('sparrow'); // 删除数据
+console.info('result = ' + result); // result = 356
 ```
 
 
@@ -513,13 +513,13 @@ getLowerKey(key: K): K
 
 ```ts
 let treeMap = new TreeMap<number, string>();
-treeMap.set(1, "one");
-treeMap.set(2, "two");
-treeMap.set(3, "three");
-treeMap.set(4, "four");
+treeMap.set(1, 'one');
+treeMap.set(2, 'two');
+treeMap.set(3, 'three');
+treeMap.set(4, 'four');
 // 获取小于对比key值3的最大键
 let result = treeMap.getLowerKey(3);
-console.info("result:", result); // result: 2
+console.info('result:', result); // result: 2
 ```
 
 
@@ -563,7 +563,7 @@ treeMap.set(3, 'three');
 treeMap.set(4, 'four');
 // 获取大于对比key值3的最小键
 let result = treeMap.getHigherKey(3);
-console.info("result:", result); // result: 4
+console.info('result:', result); // result: 4
 ```
 
 ### replace
@@ -601,10 +601,10 @@ replace(key: K, newValue: V): boolean
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("sparrow", 123);
+treeMap.set('sparrow', 123);
 // 替换指定key对应的value
-treeMap.replace("sparrow", 357);
-console.info("sparrow:", treeMap.get("sparrow")); // sparrow: 357
+treeMap.replace('sparrow', 357);
+console.info('sparrow:', treeMap.get('sparrow')); // sparrow: 357
 ```
 
 
@@ -630,12 +630,12 @@ clear(): void
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 清除容器中的所有元素
 treeMap.clear();
 let result = treeMap.isEmpty();
-console.info("result:", result); // result: true
+console.info('result:', result); // result: true
 ```
 
 
@@ -667,12 +667,12 @@ keys(): IterableIterator&lt;K&gt;
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取包含所有键的迭代器
 let keys = treeMap.keys();
 for (let key of keys) {
-  console.info("key:", key);
+  console.info('key:', key);
 }
 // 输出结果：
 // key: sparrow
@@ -708,12 +708,12 @@ values(): IterableIterator&lt;V&gt;
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取包含所有值的迭代器
 let values = treeMap.values();
 for (let value of values) {
-  console.info("value:", value);
+  console.info('value:', value);
 }
 // value: 356
 // value: 123
@@ -756,11 +756,11 @@ callbackFn的参数说明：
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("sparrow", 123);
-treeMap.set("gull", 357);
+treeMap.set('sparrow', 123);
+treeMap.set('gull', 357);
 // 通过回调函数遍历TreeMap中的所有元素
 treeMap.forEach((value: number, key: string): void => {
-  console.info("value: " + value, "key: " + key);
+  console.info('value: ' + value, 'key: ' + key);
 });
 // 输出结果：
 // value: 357 key: gull
@@ -770,11 +770,11 @@ treeMap.forEach((value: number, key: string): void => {
 ```ts
  // 不建议在forEach中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0; i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0; i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```
 
@@ -806,14 +806,14 @@ entries(): IterableIterator<[K, V]>
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 // 获取键值对迭代器
 let entriesIterator = treeMap.entries();
 // 通过迭代器遍历所有键值对
 let nextResult: IteratorResult<Object[]> = entriesIterator.next();
-while(!nextResult.done) {
-  console.info("TreeMap:", nextResult.value);
+while (!nextResult.done) {
+  console.info('TreeMap:', nextResult.value);
   nextResult = entriesIterator.next();
 }
 // 输出结果：
@@ -824,11 +824,11 @@ while(!nextResult.done) {
 ```ts
  // 不建议在entries中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0;i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0;i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```
 
@@ -859,12 +859,12 @@ while(!nextResult.done) {
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 
 // 使用方法一：
 for (let item of treeMap) {
-  console.info("TreeMap:", item[0], item[1]);
+  console.info('TreeMap:', item[0], item[1]);
 }
 // 输出结果：
 // TreeMap: sparrow,356
@@ -873,9 +873,9 @@ for (let item of treeMap) {
 // 使用方法二：
 let iter = treeMap[Symbol.iterator]();
 let nextResult: IteratorResult<Object[]> = iter.next();
-while(!nextResult.done) {
-  console.info("key:", nextResult.value[0]);
-  console.info("value:", nextResult.value[1]);
+while (!nextResult.done) {
+  console.info('key:', nextResult.value[0]);
+  console.info('value:', nextResult.value[1]);
   nextResult = iter.next();
 }
 // 输出结果：
@@ -888,10 +888,10 @@ while(!nextResult.done) {
 ```ts
  // 不建议在Symbol.iterator中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0;i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0;i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```

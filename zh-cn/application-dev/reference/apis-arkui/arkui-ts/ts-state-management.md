@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态。[AppStorage](#appstorage)是与应用进程绑定的全局UI状态存储中心，[LocalStorage](#localstorage9)提供页面级的UI状态存储，[PersistentStorage](#persistentstorage)提供状态变量持久化的能力，[Environment](#environment)提供了读取系统环境变量并将其值写入AppStorage的功能。
+状态管理模块提供了应用的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和环境状态查询能力。[AppStorage](#appstorage)是与应用进程绑定的全局UI状态存储中心，[LocalStorage](#localstorage9)提供了页面级的UI状态存储能力，[PersistentStorage](#persistentstorage)提供了状态变量持久化的能力，[Environment](#environment)提供了读取系统环境变量并将其值写入AppStorage的能力。
 
 开发指南参考：[AppStorage：应用全局的UI状态存储](../../../ui/state-management/arkts-appstorage.md)、[LocalStorage：页面级UI状态存储](../../../ui/state-management/arkts-localstorage.md)、[PersistentStorage：持久化存储UI状态](../../../ui/state-management/arkts-persiststorage.md)和[Environment：设备环境查询](../../../ui/state-management/arkts-environment.md)。
 
@@ -31,7 +31,7 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 ### ref<sup>12+</sup>
 
-static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
+static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;\|&nbsp;undefined
 
 如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。否则，返回undefined。
 
@@ -99,7 +99,7 @@ let ref2: AbstractProperty<number> = AppStorage.setAndRef('PropA', 50); // PropA
 
 static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
-与[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的propName建立双向数据绑定。如果给定的propName在AppStorage中存在，返回AppStorage中propName对应属性的双向绑定数据。与[prop](#prop10)的单向绑定不同，link的修改会同步回AppStorage，AppStorage会将变化同步到所有绑定该propName的数据和自定义组件中。
+与[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的propName建立双向数据绑定。如果给定的propName在AppStorage中存在，返回AppStorage中propName对应属性的双向绑定数据。与[prop](#prop10)的单向数据绑定不同，link的修改会同步回AppStorage，AppStorage会将变化同步到所有绑定该propName的数据和自定义组件中。
 
 如果AppStorage中不存在propName，则返回undefined。
 
@@ -148,7 +148,7 @@ static setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例。是AppStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的双向绑定的数据。 |
 
 **示例：**
 ```ts
@@ -246,7 +246,7 @@ AppStorage.has('simpleProp');
 
 ### get<sup>10+</sup>
 
-static get&lt;T&gt;(propName: string): T | undefined
+static get&lt;T&gt;(propName: string): T \| undefined
 
 获取propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的属性值。如果不存在则返回undefined。
 
@@ -276,7 +276,7 @@ let value: number = AppStorage.get('PropA') as number; // 47
 
 static set&lt;T&gt;(propName: string, newValue: T): boolean
 
-在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。与[setOrCreate](#setorcreate10)不同，set仅在key已存在时生效，key不存在时返回false。
+在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。与[setOrCreate](#setorcreate10)不同，set仅在propName已存在时生效，propName不存在时返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -432,7 +432,7 @@ static size(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 返回AppStorage中属性的数量。 |
+| number | AppStorage中属性的数量。 |
 
 **示例：**
 ```ts
@@ -499,7 +499,7 @@ static SetAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 | 类型                                  | 说明                                       |
 | ----------------------------------- | ---------------------------------------- |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例，和AppStorage中propName对应属性的双向绑定的数据。 |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | SubscribedAbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的双向绑定的数据。 |
 
 **示例：**
 ```ts
@@ -603,7 +603,7 @@ AppStorage.Has('simpleProp');
 
 ### Get<sup>(deprecated)</sup>
 
-static Get&lt;T&gt;(propName: string): T | undefined
+static Get&lt;T&gt;(propName: string): T \| undefined
 
 获取propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中对应的属性值。如果不存在则返回undefined。
 
@@ -635,7 +635,7 @@ let value: number = AppStorage.Get('PropA') as number; // 47
 
 static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
-在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。从API version 12开始，newValue可以为null或undefined。
+在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。与[SetOrCreate](#setorcreatedeprecated)不同，Set仅在propName已存在时生效，propName不存在时返回false。从API version 12开始，newValue可以为null或undefined。
 
 > **说明：**
 >
@@ -667,7 +667,7 @@ let res1: boolean = AppStorage.Set('PropB', 47); // false
 
 static SetOrCreate&lt;T&gt;(propName: string, newValue: T): void
 
-如果propName已经在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则设置propName对应的属性值为newValue。如果不存在，则创建propName属性，值为newValue。
+如果propName已经在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。如果不存在，则创建propName属性，值为newValue。
 
 newValue不能为null或undefined。
 
@@ -850,7 +850,7 @@ static Size(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 返回AppStorage中属性的数量。 |
+| number | AppStorage中属性的数量。 |
 
 **示例：**
 ```ts
@@ -902,7 +902,7 @@ static getShared(): LocalStorage
 > 
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
 >
-> 从API version 12开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)来明确UI的执行上下文。
+> 从API version 12开始，可使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)明确UI执行上下文中的LocalStorage实例。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -952,7 +952,7 @@ storage.has('PropA'); // true
 
 ### get<sup>9+</sup>
 
-get&lt;T&gt;(propName: string): T | undefined
+get&lt;T&gt;(propName: string): T \| undefined
 
 获取propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中对应的属性值。如果不存在则返回undefined。
 
@@ -986,7 +986,7 @@ let value: number = storage.get('PropA') as number; // 47
 
 set&lt;T&gt;(propName: string, newValue: T): boolean
 
-在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。
+在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中设置propName对应属性的值。如果newValue与propName对应属性的值相同，则不做赋值操作，状态变量不会通知UI刷新propName对应属性的值。与[setOrCreate](#setorcreate9)不同，set仅在propName已存在时生效，propName不存在时返回false。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -999,7 +999,7 @@ set&lt;T&gt;(propName: string, newValue: T): boolean
 | 参数名      | 类型     | 必填   | 说明                    |
 | -------- | ------ | ---- | ----------------------- |
 | propName | string | 是    | LocalStorage中的属性名。      |
-| newValue | T      | 是    | propName对应属性的新值，从API version 12开始可以为undefined或者null。 |
+| newValue | T      | 是    | propName对应属性的新值，从API version 12开始可以为null或undefined。 |
 
 **返回值：**
 
@@ -1036,13 +1036,13 @@ setOrCreate&lt;T&gt;(propName: string, newValue: T): boolean
 | 参数名      | 类型     | 必填   | 说明                    |
 | -------- | ------ | ---- | ----------------------- |
 | propName | string | 是    | LocalStorage中的属性名。      |
-| newValue | T      | 是    | propName对应属性的新值，从API version 12开始可以为undefined或者null。 |
+| newValue | T      | 是    | propName对应属性的新值，从API version 12开始可以为null或undefined。 |
 
 **返回值：**
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 如果LocalStorage中存在propName，则更新其值为newValue，返回true。<br>如果LocalStorage中不存在propName，则创建propName，并初始化其值为newValue，返回true。 |
+| boolean | 如果LocalStorage中存在propName，则更新其值为newValue，返回true。<br>如果LocalStorage中不存在propName，则创建propName，并初始化其值为newValue，返回true。<br>API version 12之前，当newValue为null或undefined时返回false。 |
 
 **示例：**
 
@@ -1056,7 +1056,7 @@ let res2: boolean = storage.setOrCreate('PropB', null); // true（API version 12
 
 ### ref<sup>12+</sup>
 
-ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
+ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;\|&nbsp;undefined
 
 如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引用。否则，返回undefined。
 
@@ -1126,7 +1126,7 @@ let ref2: AbstractProperty<number> = storage.setAndRef('PropA', 50); // PropA已
 
 link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;
 
-如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属性的双向绑定数据。与[prop](#prop9)的单向绑定不同，link建立双向绑定，修改会同步回LocalStorage，LocalStorage会将变化同步到所有绑定该propName的数据和自定义组件中。
+如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)实例中存在，则返回与LocalStorage中propName对应属性的双向绑定数据。与[prop](#prop9)的单向数据绑定不同，link建立双向数据绑定，修改会同步回LocalStorage，LocalStorage会将变化同步到所有绑定该propName的数据和自定义组件中。
 
 如果LocalStorage中不存在propName，则返回undefined。
 
@@ -1514,7 +1514,7 @@ ref1?.info(); // ref1.info()='PropA'
 
 ## SubscribedAbstractProperty
 
-SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。
+SubscribedAbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的单/双向同步绑定对象，用于与AppStorage/LocalStorage中的属性建立数据同步关系。SubscribedAbstractProperty实例需要通过[aboutToBeDeleted](#abouttobedeleted10)接口手动释放，以取消同步关系并无效化实例。
 
 > **说明：** 
 > 
@@ -1550,7 +1550,7 @@ prop1.get(); // prop1.get()=47
 
 abstract set(newValue: T): void
 
-设置[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)同步属性的数据，newValue必须是T类型，从API version 12开始可以为null或undefined。
+设置[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中所同步属性的数据，newValue必须是T类型，从API version 12开始可以为null或undefined。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1789,7 +1789,7 @@ PersistentStorage.PersistProp('highScore', '0');
 
 static DeleteProp(key: string): void
 
-[PersistProp](#persistpropdeprecated)的逆向操作。将key对应的属性从[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续[AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作，对PersistentStorage不会再有影响。
+[PersistProp](#persistpropdeprecated)的逆向操作。将key对应的属性从[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续[AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作，对PersistentStorage不会再有影响。如需再次持久化，可再次调用[PersistProp](#persistpropdeprecated)接口。
 
 
 > **说明：**
@@ -1951,7 +1951,7 @@ Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, 
   defaultValue: 'en'
 }, { key: 'prop', defaultValue: 'hhhh' }]);
 
-let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnabled，languageCode，prop
+let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnabled、languageCode、prop
 ```
 
 
@@ -2043,7 +2043,7 @@ Environment.EnvProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, 
   defaultValue: 'en'
 }, { key: 'prop', defaultValue: 'hhhh' }]);
 
-let keys: Array<string> = Environment.Keys(); // keys 包含 accessibilityEnabled，languageCode，prop
+let keys: Array<string> = Environment.Keys(); // keys 包含 accessibilityEnabled、languageCode、prop
 ```
 
 

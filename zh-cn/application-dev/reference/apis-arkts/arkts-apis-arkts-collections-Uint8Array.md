@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 一种线性数据结构，底层基于[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。
 
 > **说明：**
@@ -13,7 +13,7 @@
 >
 > 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
-**装饰器类型：**[\@Sendable](..\..\arkts-utils\arkts-sendable.md#sendable装饰器)
+**装饰器类型：**[\@Sendable](../../arkts-utils/arkts-sendable.md#sendable装饰器)
 
 ## 导入模块
 

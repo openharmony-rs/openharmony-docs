@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
+从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
 
 > **说明**
 >
@@ -17,7 +17,7 @@
 
 ### 设备限制
 
-- ModularObjectExtensionAbility组件当前仅支持PC/2in1设备。
+ModularObjectExtensionAbility组件当前仅支持PC/2in1设备。
 
 ### 规格限制
 

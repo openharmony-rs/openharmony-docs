@@ -2339,7 +2339,7 @@ let accountId: number = 100;
 
 // 步骤1. 禁用100用户下的设备间单向传输数据能力（若之前已经设置过设备间单向传输数据能力的禁用，此处无需重复设置）
 try {
-  restrictions.setDisallowedPolicyForAccount(wantTemp, 'distributedTransmissionOutgoing', true, accountId);
+  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.DISTRIBUTED_TRANSMISSION_OUTGOING, true, accountId);
   console.info('Succeeded in setting distributedTransmissionOutgoing disabled');
 } catch (err) {
   console.error(`Failed to set distributedTransmissionOutgoing disabled. Code is ${err.code}, message is ${err.message}`);

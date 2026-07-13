@@ -17,18 +17,6 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock to keep running in the background.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Since**: 7
-
 ## ohos.permission.SET_WALLPAPER
 
 Allows an application to set wallpapers.
@@ -5847,7 +5835,7 @@ Allows a system application to read directory logs of the vehicle log service, B
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -6301,7 +6289,7 @@ Allows a system application to access available functions.
 
 **Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
@@ -6656,6 +6644,20 @@ Allows the triggering of network self-check and self-healing.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+Allows a system application to send OTA-related vehicle control and domain control commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
@@ -6697,3 +6699,81 @@ Allows an application to configure the capability of unlocking devices via enter
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+Allows an application to access associated assistant service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+Allows an application to connect to the network neighborhood client and manage network neighborhood files.
+
+With this permission, the application can connect to or disconnect from network neighborhood, perform operations on network neighborhood files, and obtain basic information about network neighborhood connections.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+Allows an application to call the file management service APIs to perform operations on files.
+
+With this permission, the application can use file management functions, including the recycle bin, frequently used folders, favorites, USB device queries, and shortcuts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+Allows an application to obtain and manage smart files.
+
+With this permission, the application can manage smart file categorization, generate file summaries, and provide file recommendations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+Allows an application to obtain and operate files of the file management application.
+
+With this permission, the application can add file event records, search for files, manage recent files, and obtain music files, duplicate files, and aggregated files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0

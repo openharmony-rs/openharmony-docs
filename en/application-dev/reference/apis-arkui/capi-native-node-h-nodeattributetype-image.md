@@ -366,7 +366,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Width for image decoding, in px.|
-| .value[1].i32 | Height for image decoding, in px. If the value of any parameter is less than or equal to **0**, the attribute setting fails and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned, indicating a parameter error.|
+| .value[1].i32 | Height for image decoding, in px. If the value of any parameter is less than or equal to 0, the attribute setting fails and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned, indicating a parameter error.|
 
 **Returns**
 
@@ -391,7 +391,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned, indicating a parameter error. If the number of parameters exceeds 16, only the first 16 data entries are used.|
+| .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. If the number of parameters exceeds 16, only the first 16 data entries are used.|
 
 **Returns**
 

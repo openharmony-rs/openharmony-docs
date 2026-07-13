@@ -22,7 +22,7 @@ The rendering process is as follows:
 
    - Create a **Column** component.
 
-   - Create a Text component. **This.count++** is triggered when the **Text** component is created.
+   - Create a Text component. **this.count++** is triggered when the **Text** component is created.
 
    - The value change of **count** triggers the re-render of the **Text** component.
 

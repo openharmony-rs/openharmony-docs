@@ -109,7 +109,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image($rawfile('example1.png'))
   ```
 
-- 媒体库file://data/storage
+- 媒体库资源（file://路径前缀）
   
   支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
   1. 调用接口获取图库的照片url。
@@ -172,7 +172,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
        <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
        ``` TypeScript
-       // 'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+       // 'file://media/Photos/5'为媒体库URL示例，实际使用时需通过选择器（PhotoViewPicker）动态获取真实媒体库图片URL
        Image('file://media/Photos/5')
          .width(200)
        ```
@@ -375,7 +375,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md)。
 
-如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过image标签引用SVG格式和gif格式的本地其他图片。
+如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过`<image>`标签引用SVG格式和gif格式的本地其他图片。
 
 SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 

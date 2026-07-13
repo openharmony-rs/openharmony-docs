@@ -12,7 +12,7 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets.<!--Del--> Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.<!--DelEnd-->
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -687,8 +687,9 @@ Updates the media content size when the media content changes.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
-
-**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices, but does not take effect or report errors when being called on other devices.
+<!--Del-->
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. On cars, only fixed sizes are supported. If the aspect ratio is greater than or equal to 1, a small window in landscape mode is used. If the aspect ratio is less than 1, a large window in portrait mode is used.
+<!--DelEnd-->
 
 **Parameters**
 

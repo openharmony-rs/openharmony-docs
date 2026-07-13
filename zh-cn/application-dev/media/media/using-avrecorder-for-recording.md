@@ -1,4 +1,4 @@
-# 使用AVRecorder录制音频(ArkTS)
+# 使用AVRecorder录制音频（ArkTS）
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_dyOv3Sds-->
@@ -65,6 +65,7 @@
    | error | 必要事件，监听AVRecorder的错误信息。 |
 
    ```ts
+   import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
    // 状态上报回调函数。
@@ -74,7 +75,7 @@
    });
 
    // 错误上报回调函数。
-   this.avRecorder?.on('error', (error) => {
+   this.avRecorder?.on('error', (error: BusinessError) => {
      console.error(`Error occurred in avRecorder, error code: ${error.code}, message: ${error.message}`);
    });
    ```
@@ -107,7 +108,7 @@
    };
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
-   let filePath: string = context.filesDir + '/example.mp3';
+   let filePath: string = context.filesDir + '/example.m4a';
    let audioFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = audioFile.fd; // 获取文件fd。
     
@@ -223,7 +224,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   // 创建文件以及设置avConfig.url。
   let audioFile: fileIo.File | undefined = undefined;
   try {
-    let path: string = context.filesDir + '/example.mp3'; // 文件沙箱路径，文件后缀名应与封装格式对应。
+    let path: string = context.filesDir + '/example.m4a'; // 文件沙箱路径，文件后缀名应与封装格式对应。
     audioFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;

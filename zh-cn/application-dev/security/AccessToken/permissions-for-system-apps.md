@@ -17,18 +17,6 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：7
-
 ## ohos.permission.SET_WALLPAPER
 
 允许应用设置壁纸。
@@ -5877,7 +5865,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -6317,7 +6305,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.0
 
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
@@ -6687,6 +6675,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.AUTO_OTA_PROXY
+
+允许系统应用发送OTA相关的车辆控制及域控制命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
 
 允许应用管理分身偏好设置。
@@ -6728,3 +6730,81 @@
 **支持设备**：PC/2in1
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
+
+允许应用接入互联互通助手服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+允许应用连接网络邻居客户端，管理网络邻居文件。
+
+获取权限后，应用可以连接、断开网络邻居，操作网络邻居文件，获取网络邻居连接基本信息等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+允许应用调用文件管理服务的接口操作文件。
+
+获取该权限后，应用可以使用回收站、常用文件夹、收藏文件、USB设备查询、快捷方式等文件管理功能。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+允许应用获取和管理文件管理智能文件。
+
+获取权限后，应用可以管理文件的智能分类、生成文件摘要和进行文件推荐等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+允许应用获取和管理文件管理文件。
+
+获取该权限后，应用可以添加文件事件记录、搜索文件、管理最近文件、以及获取音乐文件、重复文件、聚合文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0

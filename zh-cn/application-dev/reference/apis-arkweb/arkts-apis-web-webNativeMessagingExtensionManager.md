@@ -241,7 +241,7 @@ connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConne
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | Web原生消息扩展的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 调用方UIAbility的上下文。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
 | callback | [WebExtensionConnectionCallback](#webextensionconnectioncallback) | 是 | WebExtensionConnection状态的回调对象。 |
 

@@ -1022,7 +1022,7 @@ minLogicalFontSize(size: number)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>传入null或undefined时为18。 |
+| size | number | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>传入null或undefined时为8。 |
 
 **示例：**
 
@@ -2693,7 +2693,7 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| editMenu | [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) | 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在web中无意义，传入值为-1。|
+| editMenu | [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) | 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。|
 
 **示例**
 
@@ -4626,7 +4626,7 @@ enableFullscreenVideoOverlay(enabled: boolean)
 
 | 参数名 | 类型 | 必填 | 说明                         |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | boolean  | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+| enabled | boolean  | 是   | 设置Web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
 
 **示例：**
 
@@ -4643,6 +4643,48 @@ enableFullscreenVideoOverlay(enabled: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
         .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```
+
+## enableMediaNetworkProxy
+
+enableMediaNetworkProxy(enabled: boolean)
+
+设置Web组件是否开启媒体资源网络请求代理功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持HLS流媒体视频。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | boolean  | 是   | 设置Web组件是否开启媒体资源网络请求代理功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableMediaNetworkProxy(true)
       }
     }
   }

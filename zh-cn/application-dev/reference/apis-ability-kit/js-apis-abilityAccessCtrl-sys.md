@@ -7,8 +7,6 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 程序访问控制提供程序的权限管理能力，包括鉴权、授权和取消授权等。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../security/AccessToken/app-permission-mgmt-overview.md)。
 
 该模块主要用于以下场景：

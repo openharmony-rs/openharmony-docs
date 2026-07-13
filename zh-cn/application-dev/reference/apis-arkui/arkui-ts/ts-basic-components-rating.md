@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供在给定范围内选择评分的组件。
+提供在给定范围内选择评分的组件，通常用于商品评价、内容打分等应用场景。
 
 >  **说明：**
 >
@@ -54,13 +54,13 @@ stars(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | number | 是   | 设置评分总数。<br/>默认值：5 |
+| value  | number | 是   | 设置评分总数。<br/>默认值：5<br/>取值范围：大于0，小于等于0时按默认值显示。 |
 
 ### stars<sup>18+</sup>
 
 stars(starCount: Optional\<number>)
 
-设置评分总数。设置为小于等于0的值时，按默认值显示。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。
+设置评分总数。设置为小于等于0的值时，按默认值显示。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。当starCount的值为undefined时，默认值：5。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -74,13 +74,13 @@ stars(starCount: Optional\<number>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                       |
 | --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5 |
+| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5<br/>取值范围：大于0，小于等于0时按默认值显示。 |
 
 ### stepSize
 
 stepSize(value: number)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。取值范围：[0.1, stars]。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -98,7 +98,7 @@ stepSize(value: number)
 
 stepSize(size: Optional\<number>)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。当size的值为undefined时，默认值：0.5。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -172,7 +172,7 @@ starStyle(options: Optional\<StarStyleOptions>)
 
 contentModifier(modifier: ContentModifier\<RatingConfiguration>)
 
-定制Rating内容区的方法。
+定制Rating内容区的方法。开发者需自定义class实现ContentModifier接口，并在applyContent方法中返回WrappedBuilder，以此重新定义Rating组件内容区的渲染逻辑。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -190,7 +190,7 @@ contentModifier(modifier: ContentModifier\<RatingConfiguration>)
 
 contentModifier(modifier: Optional<ContentModifier\<RatingConfiguration>>)
 
-定制Rating内容区的方法。与[contentModifier](#contentmodifier12)相比，modifier参数新增了对undefined类型的支持。
+定制Rating内容区的方法。与[contentModifier](#contentmodifier12)相比，modifier参数新增了对undefined类型的支持。当modifier的值为undefined时，不使用内容修改器。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -210,7 +210,7 @@ contentModifier(modifier: Optional<ContentModifier\<RatingConfiguration>>)
 
 onChange(callback:(value:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-当评分条的评星变化时触发该回调。
+当评分条的评分变化时触发该回调。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -222,13 +222,13 @@ onChange(callback:(value:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | number | 是   | 评分条的评分。 |
+| value  | number | 是   | 评分条的评分值。取值范围为[0, stars]，精度受stepSize影响。 |
 
 ### onChange<sup>18+</sup>
 
 onChange(callback:Optional\<OnRatingChangeCallback>)
 
-当评分条的评星变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+当评分条的评分变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。当callback的值为undefined时，不使用回调函数。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -242,13 +242,13 @@ onChange(callback:Optional\<OnRatingChangeCallback>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)> | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)> | 是   | 当评分条的评分变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnRatingChangeCallback<sup>18+</sup>
 
 type OnRatingChangeCallback = (rating: number) => void
 
-操作评分条的评星变化时触发该回调。
+当评分条的评分变化时触发该回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -260,16 +260,16 @@ type OnRatingChangeCallback = (rating: number) => void
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| rating | number | 是   | 评分条的评分。 |
+| rating | number | 是   | 评分条的评分值。取值范围为[0, stars]。 |
 
 ## 键盘走焦规格                                    
 | 按键         | 功能描述                        |
 |------------|-----------------------------|
 | Tab        | 组件间切换焦点。                    |
-| 左右方向键   | 评分预览增加/减少（步长为step），不改变实际分值。 |
-| Home       | 移动到第一个星星， 不改变实际分值。          |
-| End        | 移动到最后一个星星， 不改变实际分值。         |
-| Space/Enter | 根据当前评分提交评分结果。               |
+| 左右方向键   | 评分预览增加/减少（步长为stepSize），不改变实际分值。 |
+| Home       | 移动到第一个星星，不改变实际分值。          |
+| End        | 移动到最后一个星星，不改变实际分值。         |
+| Space/Enter | 将当前预览的评分值设置为实际评分。               |
 
 ## RatingConfiguration<sup>12+</sup>对象说明
 
@@ -283,11 +283,11 @@ type OnRatingChangeCallback = (rating: number) => void
 
 | 名称  | 类型    |    只读    |    可选      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| rating    | number  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| rating    | number  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)的值按[stars](#stars)的值显示。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
 | indicator | boolean | 否 | 否 | 评分条是否作为指示器使用。当值为true时，表示作为指示器；当值为false时，表示不作为指示器。<br/>默认值：false |
-| stars | number | 否 | 否 |评分条的星级总数。<br/>默认值：5 |
-| stepSize | number | 否 | 否 |评分条的评分步长。<br/>默认值：0.5 |
-| triggerChange | Callback\<number> | 否 | 否 |触发评分数量变化。 |
+| stars | number | 否 | 否 |评分条的星级总数。<br/>默认值：5<br/>取值范围：大于0，小于等于0时按默认值显示。<br/>该参数同时定义了rating的最大值与stepSize的最大值。 |
+| stepSize | number | 否 | 否 |评分条的评分步长。<br/>默认值：0.5<br/>取值范围：[0.1, stars] |
+| triggerChange | [Callback](ts-types.md#callback12)\<number> | 否 | 否 |触发评分变化的回调，参数为新的评分值。 |
 
 ## RatingOptions<sup>18+</sup>对象说明
 
@@ -308,7 +308,7 @@ type OnRatingChangeCallback = (rating: number) => void
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | rating<sup>7+</sup>    | number  | 否   | 否   | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分。<br/>默认值：false，可进行评分<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用。值为true时，作为指示器使用，不可改变评分；值为false时，可进行评分。<br/>默认值：false<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## StarStyleOptions<sup>18+</sup>对象说明
 
@@ -328,13 +328,13 @@ type OnRatingChangeCallback = (rating: number) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
+| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该字段支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
+| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该字段支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。未设置时将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该字段支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
 
 > **说明：** 
 >
-> string格式可用于加载网络图片和本地图片。当使用相对路径引用本地图片时，例如Image("common/test.jpg")，其中common目录与pages同级，同时支持Base64字符串。
+> string格式可用于加载网络图片和本地图片，还支持Base64字符串。当使用相对路径引用本地图片时，例如Image("common/test.jpg")，其中common目录与pages同级。
 
 ## 示例
 
@@ -352,6 +352,7 @@ struct RatingExample {
   build() {
     Column() {
       Column() {
+        // 创建评分组件，并设置初始评分与可交互模式
         Rating({ rating: this.rating, indicator: false })
           .stars(5)
           .stepSize(0.5)
@@ -397,10 +398,11 @@ struct RatingExample {
 ![rating](figures/rating.gif)
 
 ### 示例2（自定义评分条）
-以下示例实现了自定义评分条的功能，其中每个圆圈表示0.5分。当ratingIndicator为true时，评分条作为指示器使用，不可改变评分；当为false时，可进行评分。ratingStars用于设置评分总数，ratingStepsize用于设置评分步长。
+以下示例实现自定义评分条，其中每个圆圈表示0.5分。ratingIndicator为true时，评分条作为指示器使用，不可改变评分。ratingStars用于设置评分总数，ratingStepSize用于设置评分步长。
 
 ```ts
 // xxx.ets
+// 自定义评分样式类，实现ContentModifier接口，用于定制Rating组件内容区
 class MyRatingStyle implements ContentModifier<RatingConfiguration> {
   name: string = "";
   style: number = 0;
@@ -421,6 +423,7 @@ function buildRating(config: RatingConfiguration) {
     Row() {
       Circle({ width: 25, height: 25 })
         .fill(config.rating >= 0.4 ? Color.Black : Color.Red)
+        // 非指示器模式下，根据步长触发对应的评分变化
         .onClick((event: ClickEvent) => {
           if (!config.indicator) {
             if (config.stepSize === 0.5) {
@@ -532,12 +535,11 @@ function buildRating(config: RatingConfiguration) {
 
 @Entry
 @Component
-struct ratingExample {
+struct RatingExample {
   @State rating: number = 0;
   @State ratingIndicator: boolean = true;
   @State ratingStars: number = 0;
   @State ratingStepSize: number = 0.5;
-  @State ratingEnabled: boolean = true;
 
   build() {
     Row() {
@@ -613,14 +615,15 @@ struct RatingExample {
 
   build() {
     Column() {
+      // 创建评分组件，并通过Resource资源设置星级样式
       Rating({ rating: this.rating, indicator: false })
         .stars(5)
         .stepSize(0.5)
         .starStyle({
           // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
-          backgroundUri: $r('app.media.imag1'),
-          foregroundUri: $r('app.media.imag2'),
-          secondaryUri: $r('app.media.imag3')
+          backgroundUri: $r('app.media.image1'),
+          foregroundUri: $r('app.media.image2'),
+          secondaryUri: $r('app.media.image3')
         })
         .margin({ top: 24 })
         .onChange((value: number) => {
@@ -643,7 +646,7 @@ struct RatingExample {
 
 > **说明**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
 
 ```ts
 // xxx.ets
@@ -654,6 +657,7 @@ struct RatingExample {
 
   build() {
     Column() {
+      // 创建评分组件，并通过本地图片路径设置星级样式
       Rating({ rating: this.rating, indicator: false })
         .stars(5)
         .stepSize(0.5)
