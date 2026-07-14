@@ -17,7 +17,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Related module:** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Since**: 26.0.0
 

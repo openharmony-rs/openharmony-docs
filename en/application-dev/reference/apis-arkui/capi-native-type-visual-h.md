@@ -613,7 +613,7 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)
 
 **Description**
 
-Creates a copy of a fourth-order matrix object, By copying the original matrix, you can perform operations on it independently without affecting the original matrix.
+Creates a copy of a fourth-order matrix object. By copying the original matrix, you can perform operations on it independently without affecting the original matrix.
 
 **Since**: 24
 
