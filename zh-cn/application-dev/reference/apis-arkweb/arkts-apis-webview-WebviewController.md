@@ -10580,7 +10580,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 打印文档的适配器，用于控制打印行为和打印任务，可通过打印服务打印当前网页内容。 |
 
 **错误码：**
 
@@ -15194,6 +15194,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
@@ -15249,6 +15253,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
                 fileIo.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
                   console.info("createPDF write data to file succeed and size is:" + writeLen);
@@ -15291,7 +15299,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页数据流。 |
+| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页PDF数据流（PdfData对象，包含ArrayBuffer表示的PDF二进制数据）。 |
 
 **错误码：**
 
@@ -15337,6 +15345,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
@@ -15391,6 +15403,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
                   console.info("createPDF write data to file succeed and size is:" + writeLen);
                 }).catch((err: Error) => {
