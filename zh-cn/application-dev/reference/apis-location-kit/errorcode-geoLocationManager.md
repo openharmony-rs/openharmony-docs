@@ -92,7 +92,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 - 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
 
-### 3. 获取缓存位置失败
+### 错误原因3. 获取缓存位置失败
 
 **错误信息**
 
