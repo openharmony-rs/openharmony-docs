@@ -1468,8 +1468,8 @@ start和end的index同时返回0，代表List内只有一个子组件。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | ------ | ------|
 | index | number | 否 | 否 | 表示ListItem或ListItemGroup在List中的索引值。 |
-| itemGroupArea | [ListItemGroupArea](#listitemgrouparea12枚举说明) | 否 | 是 | 表示当前可见内容处于ListItemGroup的哪一个区域。当前可见内容不属于ListItemGroup时为undefined。 |
-| itemIndexInGroup | number | 否 | 是 | 表示当前可见ListItem在ListItemGroup中的索引值。当前可见ListItem不属于ListItemGroup时为undefined。 |
+| itemGroupArea | [ListItemGroupArea](#listitemgrouparea12枚举说明) | 否 | 是 | 表示处于ListItemGroup的哪一个区域。 |
+| itemIndexInGroup | number | 否 | 是 | 表示ListItem在ListItemGroup中的索引值。 |
 
 ## ListItemGroupArea<sup>12+</sup>枚举说明
 

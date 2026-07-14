@@ -21,7 +21,7 @@ LazyVWaterFlowLayout用于实现支持懒加载的瀑布流布局，适用于展
 >   3. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且[layoutDirection](ts-container-waterflow.md#layoutdirection)属性设置为FlexDirection.Column时支持懒加载。当WaterFlow为多列模式或布局方向为FlexDirection.Row、FlexDirection.RowReverse时，该组件的懒加载功能会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
 >   4. 通过FlowItem、LazyColumnLayout、自定义组件或NodeContainer封装使用时，懒加载行为取决于其上层滚动组件（如WaterFlow、Scroll或List）的配置条件。
 > - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
-> - 此处的父组件指从当前组件向上查找到的最近一个List、Scroll或WaterFlow组件；FlowItem、LazyColumnLayout、自定义组件和NodeContainer仅作为中间封装层，不作为此处的父组件，其他文档下的具体含义请参考对应内容。
+> - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 
