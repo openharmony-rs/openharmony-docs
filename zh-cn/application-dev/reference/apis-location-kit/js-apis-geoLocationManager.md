@@ -3533,13 +3533,13 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 **示例**
 
   ```ts
-  // 请求
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let request: geoLocationManager.ContinuousLocationRequest = {
     'interval': 1,
     'locationScenario': geoLocationManager.UserActivityScenario.SPORT,
+    //  设置运动类型为滑雪
     'sportsType': geoLocationManager.SportsType.SKIING,
   };
 
@@ -3560,6 +3560,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
   }
 
   try {
+    // 发起滑雪模式定位请求
     geoLocationManager.on('locationChange', request, locationCallback);
     // 满足轨迹采集条件后，移除定位请求并获取后处理轨迹，这里设定1000ms后满足轨迹采集要求。
     let delayTaskTime = 1000;
