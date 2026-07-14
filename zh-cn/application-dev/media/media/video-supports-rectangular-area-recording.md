@@ -102,4 +102,6 @@ uint64_t regionDisplayId = 0;
 OH_AVScreenCapture_SetCaptureArea(g_avCapture, regionDisplayId, region);
 // 开始录屏。
 result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
+delete region;
+region = nullptr;
 ```

@@ -194,7 +194,7 @@ OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_
 OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
 // 添加过滤通知音。
 OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
-// 排除指定窗口ID。
+// 如果需要排除指定窗口，先填充窗口ID数组。
 std::vector<int> windowIdsExclude = {};
 OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, windowIdsExclude.empty() ?
     nullptr : &windowIdsExclude[0], static_cast<int32_t>(windowIdsExclude.size()));

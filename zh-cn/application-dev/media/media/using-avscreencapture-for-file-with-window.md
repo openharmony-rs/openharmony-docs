@@ -134,6 +134,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    OH_AVScreenCapture_CaptureStrategy *strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
+   OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
    ```
 
    方式二：需传入期望录制的窗口ID进行录屏。
@@ -151,6 +152,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
+   OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
    ```
 
 4. 调用[OH_AVScreenCapture_StartScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)方法开始进行窗口级录屏。
