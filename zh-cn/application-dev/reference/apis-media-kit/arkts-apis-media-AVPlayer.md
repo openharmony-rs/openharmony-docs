@@ -860,7 +860,7 @@ async function  test(){
 
 prepare(callback: AsyncCallback\<void>): void
 
-准备播放音频/视频，需在[stateChange](#onstatechange9)事件成功触发至initialized状态后，才能调用。使用callback方式异步回调。
+准备播放音频/视频，需在[stateChange](#onstatechange9)事件成功触发至initialized状态后，才能调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -997,7 +997,7 @@ async function  test(){
 
 play(callback: AsyncCallback\<void>): void
 
-开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步回调。
+开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1079,7 +1079,7 @@ async function  test(){
 
 pause(callback: AsyncCallback\<void>): void
 
-暂停播放音视频资源，只能在playing状态调用。使用callback方式异步回调。
+暂停播放音视频资源，只能在playing状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1161,7 +1161,7 @@ async function  test(){
 
 stop(callback: AsyncCallback\<void>): void
 
-停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步回调。
+停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1243,7 +1243,7 @@ async function  test(){
 
 reset(callback: AsyncCallback\<void>): void
 
-重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步回调。
+重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1325,7 +1325,7 @@ async function  test(){
 
 release(callback: AsyncCallback\<void>): void
 
-销毁播放资源，除released状态外，AVPlayer在其他状态都可以调用该接口。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用callback方式异步回调。
+销毁播放资源，除released状态外，AVPlayer在其他状态都可以调用该接口。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1407,7 +1407,7 @@ async function  test(){
 
 getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 
-获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback方式异步回调。
+获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3070,7 +3070,7 @@ async function test(){
 
 on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStreamDeviceChangeInfo>): void
 
-订阅监听音频流输出设备变化及原因，使用callback方式返回结果。
+订阅监听音频流输出设备变化及原因。使用callback异步回调。
 
 在订阅此监听时，建议参考[响应输出设备变更时合理暂停](../../media/audio/audio-output-device-change.md)自行实现设备连接或者断开时的播放器行为。
 
@@ -3111,7 +3111,7 @@ async function test(){
 
 off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStreamDeviceChangeInfo>): void
 
-取消订阅监听音频流输出设备变化及原因，使用callback方式返回结果。
+取消订阅监听音频流输出设备变化及原因。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
