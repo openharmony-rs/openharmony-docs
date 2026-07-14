@@ -485,6 +485,12 @@
 | result.entries | url | string | 历史项URL。 |
 | result.entries | title | string | 历史项标题。 |
 
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 132 | browser host is not available | browser或browser host为空。 |
+
 ### 请求示例
 
 ```json
@@ -540,6 +546,17 @@
 | method | - | - | string | 是 | 命令名称，固定为`goBack`。 |
 | params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
 
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | Cannot go back | 当前页面没有可后退的历史项。 |
+| 132 | browser is not available | browser为空。 |
+
 ### 返回示例
 
 可后退时返回：
@@ -579,6 +596,17 @@
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称，固定为`goForward`。 |
 | params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | Cannot go forward | 当前页面没有可前进的历史项。 |
+| 132 | browser is not available | browser为空。 |
 
 ### 返回示例
 
@@ -628,6 +656,19 @@
 > - `params.url`缺失、不是string或为空字符串时，返回`{"code":391,"message":"params.url is required"}`。
 > - `params.url`不是合法URL，或使用不支持的协议时，返回`{"code":392,"message":"params.url is invalid"}`。
 > - `resource`、`javascript`、`data`和`ftp`协议不支持。
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 132 | browser is not available | browser为空。 |
+| 160 | main frame is not available | browser存在，但main frame为空。 |
+| 391 | params.url is required | `params`缺失或不是Object，或者`url`缺失、不是string或为空字符串。 |
+| 392 | params.url is invalid | `url`是非空字符串，但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
 
 ### 请求示例
 

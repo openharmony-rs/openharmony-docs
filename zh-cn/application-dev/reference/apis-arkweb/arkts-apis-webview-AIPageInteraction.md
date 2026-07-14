@@ -63,7 +63,7 @@
 
 ### 失败
 
-任意命令失败时返回：
+返回格式列为本节[返回格式](#返回格式)的命令失败时返回：
 
 ```json
 {
@@ -698,6 +698,35 @@
 > - 入参说明中列出的字段为当前实现会校验并下发的公开参数。参数是否产生可观察页面行为，取决于事件类型、目标元素状态以及页面脚本/浏览器输入链路对该字段的处理。
 > - 未在入参说明中列出的字段不作为该命令的公开参数。
 
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 110 | invalid params JSON | `params`缺失或不是Object。 |
+| 132 | browser or host is null | browser或browser host为空。 |
+| 350 | SendDevToolsMessage failed | 鼠标事件命令下发失败。 |
+| 391 | missing type | `type`缺失、不是string或为空字符串。 |
+| 391 | missing x or y | `x`或`y`缺失，或者不是number。 |
+| 392 | invalid mouse event type | `type`是非空字符串，但不在`mousePressed`、`mouseReleased`、`mouseMoved`、`mouseWheel`范围内。 |
+| 392 | invalid param: timestamp | `timestamp`已传入，但不是number。 |
+| 392 | invalid param: force | `force`已传入，但不是number。 |
+| 392 | invalid param: tangentialPressure | `tangentialPressure`已传入，但不是number。 |
+| 392 | invalid param: tiltX | `tiltX`已传入，但不是number。 |
+| 392 | invalid param: tiltY | `tiltY`已传入，但不是number。 |
+| 392 | invalid param: deltaX | `deltaX`已传入，但不是number。 |
+| 392 | invalid param: deltaY | `deltaY`已传入，但不是number。 |
+| 392 | invalid param: modifiers | `modifiers`已传入，但不是整数。 |
+| 392 | invalid param: buttons | `buttons`已传入，但不是整数。 |
+| 392 | invalid param: clickCount | `clickCount`已传入，但不是整数。 |
+| 392 | invalid param: twist | `twist`已传入，但不是整数。 |
+| 392 | invalid param: button | `button`不是string，或取值不在`none`、`left`、`middle`、`right`、`back`、`forward`范围内。 |
+| 392 | invalid param: pointerType | `pointerType`已传入，但不是string。 |
+| 392 | pointerType must be mouse | `pointerType`是string，但取值不是`mouse`。 |
+
 ### 返回示例
 
 成功时返回：
@@ -764,6 +793,34 @@
 > - 字段类型错误或`type`取值不支持时，返回参数错误结果。
 > - 入参说明中列出的字段为当前实现会校验并下发的公开参数。参数是否产生可观察页面行为，取决于事件类型、目标元素状态以及页面脚本/浏览器输入链路对该字段的处理。
 > - 未在入参说明中列出的字段不作为该命令的公开参数。
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 110 | invalid params JSON | `params`缺失或不是Object。 |
+| 132 | browser or host is null | browser或browser host为空。 |
+| 350 | SendDevToolsMessage failed | 键盘事件命令下发失败。 |
+| 391 | missing type | `type`缺失、不是string或为空字符串。 |
+| 392 | invalid key event type | `type`是非空字符串，但不在`keyDown`、`keyUp`、`rawKeyDown`、`char`范围内。 |
+| 392 | invalid param: text | `text`已传入，但不是string。 |
+| 392 | invalid param: unmodifiedText | `unmodifiedText`已传入，但不是string。 |
+| 392 | invalid param: key | `key`已传入，但不是string。 |
+| 392 | invalid param: code | `code`已传入，但不是string。 |
+| 392 | invalid param: timestamp | `timestamp`已传入，但不是number。 |
+| 392 | invalid param: modifiers | `modifiers`已传入，但不是整数。 |
+| 392 | invalid param: windowsVirtualKeyCode | `windowsVirtualKeyCode`已传入，但不是整数。 |
+| 392 | invalid param: nativeVirtualKeyCode | `nativeVirtualKeyCode`已传入，但不是整数。 |
+| 392 | invalid param: location | `location`已传入，但不是整数。 |
+| 392 | invalid param: autoRepeat | `autoRepeat`已传入，但不是boolean。 |
+| 392 | invalid param: isKeypad | `isKeypad`已传入，但不是boolean。 |
+| 392 | invalid param: isSystemKey | `isSystemKey`已传入，但不是boolean。 |
+| 392 | invalid param: isForwarded | `isForwarded`已传入，但不是boolean。 |
+| 392 | invalid param: commands | `commands`不是数组，或数组中存在非string成员。 |
 
 ### 返回示例
 
@@ -834,6 +891,32 @@
 > - `type`为`default`时，不按传入类型与目标输入框实际类型做精确匹配，但目标元素仍必须是可设置字符串值的`input`元素。
 > - `type`不为`default`时，传入类型必须与目标输入框实际类型匹配。
 > - `value`必须满足目标输入框类型的值格式要求。
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | input command failed | 输入命令执行超时，或renderer侧执行对象不可用。 |
+| 110 | invalid params JSON | `params`缺失或不是Object。 |
+| 131 | input command failed | XPath未匹配到元素，或节点标识对应的frame、文档或DOM节点已失效。 |
+| 132 | browser or host is null | browser或browser host为空。 |
+| 160 | input command failed | main frame无效、frame未就绪或renderer通信通道未就绪。 |
+| 161 | input command failed | 定位到的目标元素不是`input`元素。 |
+| 201 | invalid input value | `value`已传入，但不是string。 |
+| 202 | unsupported input type | `type`是非空字符串，但不在该命令支持的输入框类型范围内。 |
+| 202 | input command failed | 目标`input`元素的实际类型不支持设置字符串值。 |
+| 203 | input command failed | `value`不满足目标`input`元素实际类型的值格式要求。 |
+| 204 | input command failed | `type`不是`default`，且与目标`input`元素的实际类型不一致。 |
+| 391 | id or xpath is required | `id`和`xpath`均未提供。 |
+| 391 | missing type | `type`缺失、不是string或为空字符串。 |
+| 391 | missing value | `value`缺失。 |
+| 392 | id and xpath are mutually exclusive | `id`和`xpath`同时传入。 |
+| 392 | invalid id or xpath | `id`或`xpath`已传入，但不是string或为空字符串。 |
+| 392 | input command failed | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
 
 ### 返回示例
 
@@ -918,17 +1001,28 @@
 
 ### 返回说明
 
-命令执行成功时返回`{"code":10,"message":"success"}`；失败时返回错误码JSON，常见错误码见下表：
+命令执行成功时返回`{"code":10,"message":"success"}`。
 
-| 错误码 | 触发条件 |
-| ---- | ---- |
-| 110 | `params`字段非JSON对象 |
-| 130 | 通过`id`解析目标元素位置超时 |
-| 131 | 通过`id`解析目标元素位置失败、元素不存在或元素无有效矩形 |
-| 132 | browser或host为空，通常表示Web实例不可用 |
-| 350 | 滚动命令下发失败 |
-| 391 | 未传入`id`时缺少必要参数`x`或`y` |
-| 392 | `id`无效、`x`/`y`/`deltaX`/`deltaY`/`speed`取值或类型无效（如`speed=0`），或`id`与`x`/`y`同时传入 |
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 110 | invalid params JSON | `params`缺失或不是Object。 |
+| 130 | element rect resolve timeout | 通过`id`解析目标元素位置超时。 |
+| 131 | element rect is not available | `id`通路未获得有效的元素位置解析结果。 |
+| 131 | element not found | `id`格式有效，但对应元素不存在、已失效或无法解析。 |
+| 131 | element rect is empty | 元素位置解析结果中没有有效矩形，或矩形宽度、高度不为正数。 |
+| 132 | browser or host is null | browser或browser host为空。 |
+| 350 | SendDevToolsMessage failed | 滚动命令下发失败。 |
+| 391 | missing id or x/y | 未传入`id`，也未传入`x`或`y`。 |
+| 391 | missing x or y | 坐标通路只传入了`x`或`y`其中一个。 |
+| 392 | invalid param: x | `x`已传入，但不是number。 |
+| 392 | invalid param: y | `y`已传入，但不是number。 |
+| 392 | invalid param: deltaX | `deltaX`已传入，但不是number。 |
+| 392 | invalid param: deltaY | `deltaY`已传入，但不是number。 |
+| 392 | invalid param: speed | `speed`已传入但不是整数，或取值为0。 |
+| 392 | id is mutually exclusive with x/y | `id`与`x`或`y`同时传入。 |
+| 392 | invalid id | `id`不是string、为空字符串或不符合ArkWeb节点标识格式。 |
 
 ### 请求示例
 
@@ -1053,22 +1147,27 @@
 
 ### 返回说明
 
-命令执行成功时返回`{"code":10,"message":"success"}`；失败时返回错误码JSON，常见错误码见下表：
+命令执行成功时返回`{"code":10,"message":"success"}`。
 
-| 错误码 | 触发条件 |
-| ---- | ---- |
-| 110 | `params`字段非JSON对象 |
-| 115 | 未提供`id`或`xpath`定位参数，或`xpath`为空字符串 |
-| 131 | 目标元素不存在 |
-| 132 | browser或host为空，通常表示Web实例不可用 |
-| 161 | 目标元素不是`<select>`元素 |
-| 251 | `indexes`和`values`均未提供、不是数组或解析后无有效项 |
-| 252 | `indexes`索引越界（小于0或大于等于option数量） |
-| 253 | `values`中的值在option列表中无匹配项 |
-| 254 | 单选`<select>`传入多个索引 |
-| 255 | 选中的option被禁用 |
-| 256 | `<select>`元素无option子元素 |
-| 392 | `id`和`xpath`同时传入，或`id`/`xpath`字段类型无效 |
+失败结果如下：
+
+| code | message | 触发场景 |
+| ---- | ---- | ---- |
+| 11 | select command failed | select命令执行超时，或renderer侧执行对象不可用。 |
+| 110 | invalid params JSON | `params`缺失或不是Object。 |
+| 115 | missing or empty xpath | 未使用`id`通路，且`xpath`缺失、不是string或为空字符串。 |
+| 131 | select command failed | XPath未匹配到元素，或节点标识对应的frame、文档或DOM节点已失效。 |
+| 132 | browser or host is null | browser或browser host为空。 |
+| 160 | select command failed | main frame无效、frame未就绪或renderer通信通道未就绪。 |
+| 161 | select command failed | 定位到的目标元素不是`select`元素。 |
+| 251 | both indexes and values are empty | `indexes`和`values`均未提供、不是数组，或数组解析后均无有效成员。 |
+| 252 | select command failed | `indexes`中存在小于0或大于等于option数量的索引。 |
+| 253 | select command failed | `values`中存在无法匹配任何option `value`属性的值。 |
+| 254 | select command failed | 单选`select`元素传入多个索引或多个值。 |
+| 255 | select command failed | 选中的option被禁用。 |
+| 392 | id and xpath are mutually exclusive | `id`和`xpath`同时传入。 |
+| 392 | invalid id or xpath | 未传入`xpath`，且`id`已传入但不是string或为空字符串。 |
+| 392 | select command failed | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
 
 ### 请求示例
 
