@@ -629,7 +629,7 @@ if (isRegistered) {
 | BUSINESS_CONFLICT | 2 | 发生业务冲突，其他服务占用导致测距停止。 |
 | BACKGROUND_PAUSED | 3 | 应用退到后台时测距暂停。应用回到前台会自动恢复测距。 |
 
-## ranging.RangingConfidence
+## RangingConfidence
 
 枚举，测距测量置信度，表示测量结果值的可信程度。
 
