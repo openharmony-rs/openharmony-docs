@@ -123,7 +123,8 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 **起始版本**：26.0.0
 
 > **说明：**
->
+> - 使用测距接口前，需先通过[getRangingCapability](#ranginggetrangingcapability)确认设备支持对应的测距类型。
+> - 使用星闪[HADM](../../connectivity/terminology.md#hadm)测距时，本端设备在发起主动测距后，无法使用被动测距模式。如需使用被动测距，需先调用[stopRanging](#rangingstopranging)停止主动测距。
 > - 对同一设备连续重复调用[startRanging](#rangingstartranging)会提示设备已初始化测距并返回错误码34900051。
 > - 如果启动测距时，对应类型的测距服务已下线，那么调用本接口时会抛出服务未使能错误码34900053。
 > - 接口入参需要按照要求填写，如果不符合要求接口会返回对应的错误码，详细要求见参数的定义。
