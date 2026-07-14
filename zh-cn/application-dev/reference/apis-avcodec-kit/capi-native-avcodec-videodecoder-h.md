@@ -507,7 +507,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
 | uint32_t index | 输入Buffer对应的索引值。由[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)给出。 |
-| [OH_AVCodecBufferAttr](capi-codecbase-oh-avcodecbufferattr.md) attr | 描述缓冲区中包含的数据的信息。 |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) attr | 描述缓冲区中包含的数据的信息。 |
 
 **返回：**
 
