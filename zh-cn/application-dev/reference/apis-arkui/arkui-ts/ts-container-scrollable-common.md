@@ -1124,7 +1124,7 @@ ChildrenMainSize有参构造函数。
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| childDefaultSize | number | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
+| childDefaultSize | number | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
 
 **错误码**：
 
@@ -1467,7 +1467,7 @@ struct ListExample {
           ' end index in group: ' + end.itemIndexInGroup);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
       })
       .width('90%')
     }
