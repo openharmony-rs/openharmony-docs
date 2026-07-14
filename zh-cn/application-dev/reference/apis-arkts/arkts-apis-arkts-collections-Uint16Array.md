@@ -31,9 +31,9 @@ import { collections } from '@kit.ArkTS';
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
-| buffer | ArrayBuffer | 是   | 否  | ArkTS Uint16Array底层使用的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | 是   | 否  | ArkTS Uint16Array底层使用的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。|
 | byteLength | number | 是   | 否   | ArkTS Uint16Array所占的字节数。|
-| byteOffset | number | 是   | 否   | ArkTS Uint16Array距离其ArrayBuffer起始位置的偏移。|
+| byteOffset | number | 是   | 否   | ArkTS Uint16Array距离其ArrayBuffer起始位置的字节偏移。|
 | length | number | 是   | 否  | ArkTS Uint16Array元素个数。|
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint16Array中每个元素所占的字节数。|
 
@@ -182,7 +182,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名  | 类型   | 必填 | 说明                                         |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | 是 | 用于构造ArkTS Uint16Array的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。buffer所占的字节数需是2的整数倍。|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | 是 | 用于构造ArkTS Uint16Array的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。buffer所占的字节数需是2的整数倍。|
 | byteOffset | number | 否 | 指定buffer的字节偏移，需为非负整数。默认值为0。 |
 | length | number | 否 | 指定ArkTS Uint16Array的长度，需为非负整数。默认值为0，此时表示从byteOffset开始到buffer末尾的全部元素。 |
 
@@ -244,7 +244,7 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 | 参数名  | 类型   | 必填 | 说明                                        |
 | ------- | ------ | ---- | ------------------------------------------|
 | arrayLike | ArrayLike\<T> | 是 | 用于构造ArkTS Uint16Array的ArrayLike对象。              |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | 是 | 映射函数。|
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | 是 | 映射函数，将ArrayLike中类型为T的每个元素映射为number类型，映射结果用于创建ArkTS Uint16Array的对应元素。|
 
 **返回值：**
 
@@ -288,7 +288,7 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | -----------------------------------|
 | arrayLike | Iterable\<number> | 是 | 用于构造ArkTS Uint16Array的可迭代对象。   |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | 否 | 映射函数。如果省略，则不对元素进行加工处理。|
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | 否 | 映射函数。如果省略，则不对元素进行映射转换，直接使用原始元素值。|
 
 **返回值：**
 
@@ -317,7 +317,7 @@ let array: collections.Uint16Array = collections.Uint16Array.from(
 
 static of(...items: number[]): Uint16Array
 
-通过可变数量的参数创建一个新的ArkTS Uint16Array对象，参数个数可以是0个、1个或者多个。
+通过可变数量的参数创建一个新的ArkTS Uint16Array对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -333,7 +333,7 @@ static of(...items: number[]): Uint16Array
 
 | 类型      | 说明                    |
 | --------- | ----------------------- |
-| Uint16Array | 新的ArkTS Uint16Array实例。 |
+| Uint16Array | 新的ArkTS Uint16Array对象。 |
 
 **示例：**
 
@@ -430,7 +430,7 @@ copyWithin(target: number, start: number, end?: number): Uint16Array
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Uint16Array | 修改后的Uint16Array。 |
+| Uint16Array | 修改后的ArkTS Uint16Array。 |
 
 **错误码：**
 
@@ -727,7 +727,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名        | 类型   | 必填 | 说明                        |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | 是   | 待索引的值。                |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Uint16Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从前到后搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Uint16Array的长度，则返回-1。如果下标为负数，则被视为距离数组尾部的偏移，从前到后搜索。 |
 
 **返回值：**
 
@@ -769,7 +769,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名           | 类型     | 必填  | 说明                                                                                |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | 是   | 待索引的值。                                                                            |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为ArkTS Uint16Array的长度减1。如果下标大于等于ArkTS Uint16Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标，从该位置开始往前查找。默认值为ArkTS Uint16Array长度减1（即从末尾开始）。如果提供的下标值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -845,7 +845,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Uint16Array>): Uint16Array
 **参数：**
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
-| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint16Array> | 是  | 回调函数。 |
+| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint16Array> | 是  | 对每个元素进行变换的回调函数，其返回值依次构成新ArkTS Uint16Array的对应元素。 |
 
 
 **返回值：**
@@ -911,7 +911,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Uint16Array>): number
 
-反向遍历ArkTS Uint16Array，对ArkTS Uint16Array中的每个元素执行归约函数，并返回最终的归约结果。
+反向遍历ArkTS Uint16Array，对每个元素执行归约函数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -948,7 +948,7 @@ console.info(reducedValue + ''); // 预期输出： 15
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint16Array>, initialValue: number): number
 
-对ArkTS Uint16Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+对ArkTS Uint16Array中的每个元素执行归约函数，接收初始值作为首次调用参数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -988,7 +988,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint16Array>, initialValue: U): U
 
-反向遍历ArkTS Uint16Array，对ArkTS Uint16Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+反向遍历ArkTS Uint16Array，对每个元素执行归约函数，接收初始值作为首次调用参数，并返回最终的归约结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1065,7 +1065,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ## reverse
 reverse(): Uint16Array
 
-反转ArkTS Uint16Array。
+原地反转ArkTS Uint16Array的元素顺序（修改原数组），并返回修改后的原数组引用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1138,14 +1138,14 @@ slice(start?: number, end?: number): Uint16Array
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | -----------------------------------------------------|
-| start  | number | 否   | 开始索引，如果`start < 0`，则会从`start + Uint16Array.length`位置开始。默认值为0。 |
-| end    | number | 否   | 结束索引（不包括该元素），如果`end < 0`，则会到`end + Uint16Array.length`位置结束。默认为ArkTS Uint16Array的长度。|
+| start  | number | 否   | 开始索引，取值范围为[0, Uint16Array.length - 1]。如果`start < 0`，则会从`start + Uint16Array.length`位置开始。超出范围时自动修正为边界值。默认值为0。 |
+| end    | number | 否   | 结束索引（不包括该元素），取值范围为[0, Uint16Array.length]。如果`end < 0`，则会到`end + Uint16Array.length`位置结束。超出范围时自动修正为边界值。默认为ArkTS Uint16Array的长度。|
 
 **返回值：**
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Uint16Array | 新的ArkTS Uint16Array对象。 |
+| Uint16Array | 包含原ArkTS Uint16Array指定范围内容的新Uint16Array对象。 |
 
 **错误码：**
 
@@ -1168,7 +1168,7 @@ array.slice(-2); // Uint16Array [4, 5]
 ## sort
 sort(compareFn?: TypedArrayCompareFn\<number>): Uint16Array
 
-对ArkTS Uint16Array进行排序，并返回排序后的ArkTS Uint16Array对象。
+原地对ArkTS Uint16Array进行排序（修改原数组），并返回排序后的原数组引用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1200,8 +1200,8 @@ sort(compareFn?: TypedArrayCompareFn\<number>): Uint16Array
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 3, 5, 4, 2]);
 array.sort(); // Uint16Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => a - b); // Uint16Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => b - a); // Uint16Array [5, 4, 3, 2, 1]
+array.sort((first: number, second: number) => first - second); // Uint16Array [1, 2, 3, 4, 5]
+array.sort((first: number, second: number) => second - first); // Uint16Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
@@ -1217,7 +1217,7 @@ subarray(begin?: number, end?: number): Uint16Array
 
 | 参数名 | 类型   | 必填 | 说明                                                |
 | ------ | ------ | ---- | ------------------------------------------------- |
-| begin  | number | 否   | 开始索引，如果`begin < 0`，则会从`begin + Uint16Array.length`位置开始。默认值为0。 |
+| begin  | number | 否   | 开始索引，取值范围为[0, Uint16Array.length - 1]。如果`begin < 0`，则会从`begin + Uint16Array.length`位置开始。超出范围时自动修正为边界值。默认值为0。 |
 | end    | number | 否   | 结束索引（不包括该元素），如果`end < 0`，则会到`end + Uint16Array.length`位置结束。默认为ArkTS Uint16Array的长度。 |
 
 **返回值：**
