@@ -168,7 +168,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400104  | Operation timeout. Returned by promise. |
+| 5400104  | Operation timeout. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
@@ -240,9 +240,9 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400104  | Fetch timeout. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback. |
-| 5400105  | Service died. Returned by callback. |
+| 5400105  | Service died. |
 | 5400108  | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext not permitted. |
 
 **示例：**
 
@@ -312,9 +312,9 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400104  | Fetch timeout. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback. |
-| 5400105  | Service died. Returned by callback. |
+| 5400105  | Service died. |
 | 5400108  | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext not permitted. |
 
 **示例：**
 
@@ -492,7 +492,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400104  | Operation timeout. Returned by promise. |
+| 5400104  | Operation timeout. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise.  |
 | 5411012  | Http cleartext traffic is not permitted. |
@@ -537,7 +537,7 @@ fetchAlbumCover(callback: AsyncCallback\<image.PixelMap>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Returned by callback. |
+| 5400102  | Operation not allowed. Return by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
 
 **示例：**
