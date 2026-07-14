@@ -118,7 +118,7 @@
 4. 注册会话监听器，接收来自可信设备的数据。
 
    <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 注册监听器
    registerListener(): void {
