@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@Monitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor)装饰器对状态变量进行监听。
 
 
 \@Monitor提供了对V2状态变量的监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
