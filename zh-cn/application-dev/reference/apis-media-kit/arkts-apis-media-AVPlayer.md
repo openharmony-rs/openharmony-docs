@@ -12,7 +12,7 @@
 
 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
-音频/视频播放demo可参考：[音频播放开发指导](../../media/media/using-avplayer-for-playback.md)、[视频播放开发指导](../../media/media/video-playback.md)。
+音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
 > **说明：**
 >
@@ -34,19 +34,19 @@ import { media } from '@kit.MediaKit';
 | url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http://xx`。<br/>3. https网络播放：`https://xx`。<br/>4. HLS网络播放路径：`http://xx`或者`https://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认值为空（未设置窗口）。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认值为空（表示未设置窗口）。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式。当需要自定义视频显示效果时设置此参数，不设置时使用默认值VIDEO_SCALE_TYPE_FIT（保持视频原始比例，适合常规播放场景）。VIDEO_SCALE_TYPE_FILL适合全屏显示场景，VIDEO_SCALE_TYPE_CROP适合裁剪适配场景。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型。当需要控制多音频流并发播放行为时设置此参数，不设置时使用默认值SHARE_MODE（共享模式，允许多音频同时播放，适合后台音乐等场景）。EXCLUSIVE_MODE（独占模式）适合需要独占音频焦点的场景（如语音通话、重要提示音）。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若未主动配置，则使用缺省配置：当媒体源包含视频时，usage默认值为STREAM_USAGE_MOVIE；否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| audioEffectMode<sup>10+</sup>                       | [audio.AudioEffectMode](../apis-audio-kit/arkts-apis-audio-e.md#audioeffectmode10)  | 否   | 是   | 设置音频音效模式。当需要启用特定音效时设置此参数，不设置时使用默认值EFFECT_DEFAULT（默认音效，适合普通播放场景）。EFFECT_NONE适合需要原始音频的场景，其他音效模式适合特定的音频处理需求。audioRendererInfo的usage变动时会恢复为默认值，只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| audioEffectMode<sup>10+</sup>                       | [audio.AudioEffectMode](../apis-audio-kit/arkts-apis-audio-e.md#audioeffectmode10)  | 否   | 是   | 设置音频音效模式。<br>当需要启用特定音效时设置此参数，不设置时使用默认值EFFECT_DEFAULT（默认音效，适合普通播放场景）。<br>EFFECT_NONE适合需要原始音频的场景，其他音效模式适合特定的音频处理需求。<br>audioRendererInfo的usage变动时会恢复为默认值，只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | state<sup>9+</sup>                                  | [AVPlayerState](arkts-apis-media-t.md#avplayerstate9)                             | 是   | 否   | 音视频播放的状态，全状态有效，可查询参数。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
 | currentTime<sup>9+</sup>                            | number                                                       | 是   | 否   | 当前播放位置，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | duration<sup>9+</sup> | number                                                       | 是   | 否   | 音视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | playlistLoopMode                     | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| privacyType | [audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。当需要设置音频隐私级别时设置此参数，不设置时使用默认值PRIVACY_TYPE_PUBLIC（公开音频，适合普通播放场景）。PRIVACY_TYPE_PRIVATE（私密音频）适合隐私敏感的音频内容播放。详细信息请参阅[audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| privacyType | [audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。<br>当需要设置音频隐私级别时设置此参数，不设置时使用默认值PRIVACY_TYPE_PUBLIC（公开音频，适合普通播放场景）。<br>PRIVACY_TYPE_PRIVATE（私密音频）适合隐私敏感的音频内容播放。<br>详细信息请参阅[audio.AudioPrivacyType](../apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -230,7 +230,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-流媒体预下载资源设置。预下载是指在播放前预先下载部分媒体数据，可减少播放开始时的等待时间，提升用户体验。下载URL对应的流媒体数据并暂存在内存中，此接口只能在idle状态下调用。
+流媒体预下载资源设置。预下载是指在播放前预先下载部分媒体数据，可减少播放开始时的等待时间，提升用户体验。下载URL对应的流媒体数据并暂存在内存中，此接口只能在idle状态下调用。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -241,13 +241,13 @@ setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 流媒体预下载的媒体来源对象。 |
-| strategy | [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12) | 否   | 流媒体预下载播放策略。不传此参数时，播放器不应用特定的播放策略。 |
+| strategy | [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12) | 否   | 流媒体预下载的播放策略。不传此参数时，播放器不应用特定的播放策略。 |
 
 **返回值：**
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | Promise对象。resolve表示设置成功，无返回值；reject表示设置失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -342,7 +342,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | Promise对象。resolve表示设置成功，无返回值；reject表示设置失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -457,7 +457,7 @@ removePlaybackMediaSource(id: string): Promise\<void>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | Promise对象。resolve表示移除成功，无返回值；reject表示移除失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -631,7 +631,7 @@ advanceToNextMediaSource(): Promise\<void>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+| 5400108  | The previous media source does not exist in the playlist. Returned via promise. |
 
 **示例：**
 
@@ -678,7 +678,7 @@ advanceToPrevMediaSource(): Promise\<void>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
-| 5400108  | The previous media source does not exist in the playlist. Returned via promise. |
+| 5400108  | The next media source does not exist in the playlist. Returned via promise. |
 
 **示例：**
 
@@ -822,8 +822,8 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| startTimeMs | number | 是   | 区间开始位置，单位ms，取值原则：该值必须为整数，范围为[0, duration)。可以取值-1，表示从0位置开始播放。|
-| endTimeMs | number | 是   | 区间结束位置，单位ms，取值原则：该值必须为整数，范围为(startTimeMs, duration]。可以取值-1，表示播放到资源末尾。|
+| startTimeMs | number | 是   | 区间开始位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为[0, duration)。可以取值-1，表示从0位置开始播放。|
+| endTimeMs | number | 是   | 区间结束位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为(startTimeMs, duration]。可以取值-1，表示播放到资源末尾。|
 | mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST, <br/>默认值为SeekMode.SEEK_PREV_SYNC。|
 
 **返回值：**
@@ -860,7 +860,7 @@ async function  test(){
 
 prepare(callback: AsyncCallback\<void>): void
 
-准备播放音频/视频，需在[stateChange](#onstatechange9)事件成功触发至initialized状态后，才能调用。使用callback方式异步获取返回值。
+准备播放音频/视频，需在[stateChange](#onstatechange9)事件成功触发至initialized状态后，才能调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -915,7 +915,7 @@ prepare(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示准备成功，无返回值；reject表示准备失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -958,7 +958,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| mediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 是   | 媒体类型枚举，决定静音或画面显示的控制范围。设置MEDIA_TYPE_AUD影响音频静音；从API version 20开始，设置MEDIA_TYPE_VID影响视频画面显示。<br>**API version 12-19**：仅支持MEDIA_TYPE_AUD。<br>**API version 20及以后**：支持MEDIA_TYPE_VID。 |
+| mediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 是   | 媒体类型枚举，决定静音或画面显示的控制范围。<br>**API version 12-19**：仅支持MEDIA_TYPE_AUD，影响音频静音。<br>**API version 20及以后**：支持MEDIA_TYPE_VID，影响视频画面显示。 |
 | muted | boolean | 是   | **API version 12-19**：仅支持设置音频播放策略，表示音频是否静音播放。true为静音播放，false为取消静音播放。<br>**API version 20及以后**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。|
 
 **返回值：**
@@ -997,7 +997,7 @@ async function  test(){
 
 play(callback: AsyncCallback\<void>): void
 
-开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步获取返回值。
+开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1049,7 +1049,7 @@ play(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示开始播放成功，无返回值；reject表示开始播放失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1079,7 +1079,7 @@ async function  test(){
 
 pause(callback: AsyncCallback\<void>): void
 
-暂停播放音视频资源，只能在playing状态调用。使用callback方式异步获取返回值。
+暂停播放音视频资源，只能在playing状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1131,7 +1131,7 @@ pause(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示暂停成功，无返回值；reject表示暂停失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1161,7 +1161,7 @@ async function  test(){
 
 stop(callback: AsyncCallback\<void>): void
 
-停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步获取返回值。
+停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1213,7 +1213,7 @@ stop(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示停止成功，无返回值；reject表示停止失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1243,7 +1243,7 @@ async function  test(){
 
 reset(callback: AsyncCallback\<void>): void
 
-重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步获取返回值。
+重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1295,7 +1295,7 @@ reset(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示重置成功，无返回值；reject表示重置失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1325,7 +1325,7 @@ async function  test(){
 
 release(callback: AsyncCallback\<void>): void
 
-销毁播放资源，除released状态，都可以调用。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用callback方式异步获取返回值。
+销毁播放资源，除released状态外，AVPlayer在其他状态都可以调用该接口。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1367,7 +1367,7 @@ async function  test(){
 
 release(): Promise\<void>
 
-销毁播放资源，除released状态，都可以调用。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用Promise异步回调。
+销毁播放资源，除released状态外，AVPlayer在其他状态都可以调用该接口。应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则可能导致系统终止应用。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1377,7 +1377,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示释放资源成功，无返回值；reject表示释放资源失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1407,7 +1407,7 @@ async function  test(){
 
 getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 
-获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。
+获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1673,7 +1673,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise对象。resolve表示轨道选择成功，无返回值；reject表示轨道选择失败，返回错误信息。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1784,7 +1784,7 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
 | mediaKeySession | [drm.MediaKeySession](../apis-drm-kit/arkts-apis-drm-MediaKeySession.md) | 是   | 解密会话对象，用于播放DRM加密内容。 |
-| secureVideoPath | boolean | 是 | 安全视频通路标志。true表示使用安全视频通路（用于播放受保护的DRM内容），false表示使用非安全视频通路（用于播放普通内容）。当播放DRM加密的高清视频内容时，通常需要设置为true。 |
+| secureVideoPath | boolean | 是 | 是否使用安全视频通路。true表示使用安全视频通路（用于播放受保护的DRM内容），false表示使用非安全视频通路（用于播放普通内容）。当播放DRM加密的高清视频内容时，通常需要设置为true。 |
 
 **错误码：**
 
@@ -1982,7 +1982,9 @@ async function  test(){
 
 setSpeed(speed: PlaybackSpeed): void
 
-设置倍速模式，setSpeed使用固定的枚举倍速值，适合标准倍速场景；setPlaybackRate支持任意倍速值且取值范围更大，适合自定义倍速场景。两者功能相同，建议根据API版本和精度需求选择：若使用API version 9-19，使用setSpeed；若使用API version 20及以上且需要精确倍速控制，使用setPlaybackRate。只能在prepared/playing/paused/completed状态调用，可以通过[on('speedDone')](#onspeeddone9)事件确认是否生效。
+设置倍速模式，只能在prepared/playing/paused/completed状态调用，可以通过[on('speedDone')](#onspeeddone9)事件确认是否生效。
+
+setSpeed使用固定的枚举倍速值，适合标准倍速场景；setPlaybackRate支持任意倍速值且取值范围更大，适合自定义倍速场景。两者功能相同，建议根据API版本和精度需求选择：API version 9-19，使用setSpeed；API version 20及以上且需要精确倍速控制，使用setPlaybackRate。
 
 > **注意：**
 >
@@ -2082,7 +2084,7 @@ setPlaybackRate(rate: number): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率值，单位为倍。在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]。默认值为1.0（正常速度）。 |
+| rate  | number | 是   | 指定播放倍速速率值，单位为倍速（x）。<br>在API版本26.0.0之前的取值范围是[0.125, 4.0]，API版本26.0.0及以后的取值范围是[0.125, 8.0]。默认值为1.0x（正常速度）。 |
 
 **错误码：**
 
@@ -2308,7 +2310,7 @@ setBitrate(bitrate: number): void
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| bitrate | number | 是   | 指定比特率，单位为bps。须通过[availableBitrates](#onavailablebitrates9)事件获得当前HLS/DASH协议网络流可用的比特率列表，如果用户指定的比特率不在此列表中，则播放器将从可用比特率列表中选择最接近的比特率。如果通过availableBitrates事件获得的比特率列表长度为0，则不支持指定比特率，也不会产生bitrateDone回调。 |
+| bitrate | number | 是   | 指定比特率，单位为比特每秒（bps）。<br>须通过[availableBitrates](#onavailablebitrates9)事件获得当前HLS/DASH协议网络流可用的比特率列表，如果用户指定的比特率不在此列表中，则播放器将从可用比特率列表中选择最接近的比特率。<br>如果通过availableBitrates事件获得的比特率列表长度为0，则不支持指定比特率，也不会产生bitrateDone回调。 |
 
 **示例：**
 
@@ -2515,7 +2517,7 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| loudnessGain | number | 是   | 设置播放器的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。|
+| loudnessGain | number | 是   | 设置播放器的响度值，单位为分贝（dB），响度范围为[-90.0, 24.0]。默认值为0.0dB。|
 
 **返回值：**
 
@@ -2554,7 +2556,7 @@ setVolume(volume: number): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| volume | number | 是   | 指定的相对音量大小，取值原则：范围为0.00到1.00，1表示最大音量，即100%。 |
+| volume | number | 是   | 指定的相对音量大小，取值范围为[0.00, 1.00]，1表示最大音量，即100%。 |
 
 **示例：**
 
@@ -2720,7 +2722,7 @@ async function test() {
   let avPlayer = await media.createAVPlayer();
 
   let isSeeking = false;    // 标记是否正在seek。
-  let seekTargetTime = 0;   // 记录目标时间（单位：毫秒（ms））。
+  let seekTargetTime = 0;   // 记录目标时间，单位为毫秒（ms）。
 
   // 1.监听seekDone：确认跳转完成。
   avPlayer.on('seekDone', (seekDoneTime: number) => {
@@ -2745,7 +2747,7 @@ async function test() {
   // 3.模拟seek操作。
   let seekTime: number = 1000;
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
-  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位：毫秒（ms）。
+  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位为毫秒（ms）。
   isSeeking = true; // 标记正在seek。
 }
 ```
@@ -3068,7 +3070,7 @@ async function test(){
 
 on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStreamDeviceChangeInfo>): void
 
-订阅监听音频流输出设备变化及原因，使用callback方式返回结果。
+订阅监听音频流输出设备变化及原因。使用callback异步回调。
 
 在订阅此监听时，建议参考[响应输出设备变更时合理暂停](../../media/audio/audio-output-device-change.md)自行实现设备连接或者断开时的播放器行为。
 
@@ -3109,7 +3111,7 @@ async function test(){
 
 off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStreamDeviceChangeInfo>): void
 
-取消订阅监听音频流输出设备变化及原因，使用callback方式返回结果。
+取消订阅监听音频流输出设备变化及原因。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3190,7 +3192,7 @@ avPlayer.addSubtitleFromFd(fileDescriptor.fd, fileDescriptor.offset, fileDescrip
 
 addSubtitleFromUrl(url: string): Promise\<void>
 
-依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在AVPlayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
+依据URL为视频添加外挂字幕，当前仅支持与视频资源同时设置（在AVPlayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3539,7 +3541,7 @@ async function test(){
 
 setSuperResolution(enabled: boolean) : Promise\<void>
 
-动态开启/关闭超分辨率（超分）算法。超分辨率是一种视频画质增强技术，可将低分辨率视频提升至更高分辨率显示。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
+动态开启/关闭超分辨率（超分）算法。超分辨率是一种视频画质增强技术，可将低分辨率视频提升至更高分辨率显示。可在'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped'状态下调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3934,7 +3936,7 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举，决定获取轨道索引的类型。设置MEDIA_TYPE_AUD获取音频轨道索引；设置MEDIA_TYPE_VID获取视频轨道索引。<br>仅支持MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举，决定获取轨道索引的类型。<br>仅支持设置MEDIA_TYPE_AUD获取音频轨道索引和设置MEDIA_TYPE_VID获取视频轨道索引。 |
 
 **返回值：**
 
