@@ -134,7 +134,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。|
 | locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 |
-| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，该参数不生效。<br/>**起始版本：** 26.0.0 |
+| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 |
 | needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
@@ -3495,7 +3495,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
 getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;&gt;
 
-根据传入的[sportsType](#sportstype18)获取特定运动模式下得后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置想要获取的运动模式轨迹，以开始轨迹记录。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
+根据传入的[sportsType](#sportstype18)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置正确的运动模式，以开始轨迹记录。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
 
 **起始版本：** 26.0.0
 
@@ -3515,7 +3515,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt; | Promise对象，后处理运动轨迹。 |
+  | Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
 
 **错误码**：
 
@@ -3562,8 +3562,8 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
   try {
     // 发起滑雪模式定位请求
     geoLocationManager.on('locationChange', request, locationCallback);
-    // 满足轨迹采集条件后，移除定位请求并获取后处理轨迹，这里设定1000ms后满足轨迹采集要求。
-    let delayTaskTime = 1000;
+    // 满足轨迹采集条件后，移除定位请求并获取后处理轨迹，这里设定30分钟后满足轨迹采集要求。
+    let delayTaskTime = 30 * 60 * 1000;
     setTimeout(processTrackTask, delayTaskTime);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
