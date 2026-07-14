@@ -56632,14 +56632,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":156,
+						"end_line":160,
 						"name":"buffer_compress_example",
 						"start_line":114
 					},
 					{
-						"end_line":322,
+						"end_line":343,
 						"name":"buffer_decompress_example",
-						"start_line":281
+						"start_line":298
 					}
 				]
 			}
@@ -56652,14 +56652,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":501,
+						"end_line":544,
 						"name":"zip_file_compress_example",
-						"start_line":465
+						"start_line":501
 					},
 					{
-						"end_line":574,
+						"end_line":623,
 						"name":"zip_file_decompress_example",
-						"start_line":546
+						"start_line":589
 					}
 				]
 			}
@@ -56672,24 +56672,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":222,
+						"end_line":232,
 						"name":"stream_compress_example",
-						"start_line":158
+						"start_line":162
 					},
 					{
-						"end_line":278,
+						"end_line":295,
 						"name":"stream_compress_cancel_example",
-						"start_line":224
+						"start_line":234
 					},
 					{
-						"end_line":405,
+						"end_line":433,
 						"name":"stream_decompress_example",
-						"start_line":360
+						"start_line":381
 					},
 					{
-						"end_line":455,
+						"end_line":491,
 						"name":"stream_decompress_cancel_example",
-						"start_line":407
+						"start_line":435
 					}
 				]
 			}
