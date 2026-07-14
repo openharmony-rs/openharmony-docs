@@ -5683,7 +5683,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。<br>默认为false。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。 |
 
 **错误码：**
 
@@ -15426,7 +15426,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **示例：**
 
@@ -15578,7 +15578,7 @@ getPageOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **错误码：**
 
@@ -16330,7 +16330,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16389,7 +16389,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -17453,7 +17453,7 @@ export default class EntryAbility extends UIAbility {
 
 static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
-在Web页面场景，设置全局滚动条模式。不显式调用时，默认为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
+在Web页面场景，设置全局滚动条模式。不显式调用时，默认为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。典型使用场景包括：需要常驻滚动条提升用户体验的场景可以使用常驻模式，需要节省屏幕空间的场景可以使用非常驻模式。
 
 > **说明：**
 >
