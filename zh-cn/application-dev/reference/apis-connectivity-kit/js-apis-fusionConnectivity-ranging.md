@@ -186,7 +186,7 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 
 停止正在进行中的主动测距。
 
-- 需与[startRanging](#rangingstartranging)配合使用，传入的callback必须与启动测距时的callback为同一引用对象。
+需与[startRanging](#rangingstartranging)配合使用，传入的callback必须与启动测距时的callback为同一引用对象。
 
 > **说明：**
 >
