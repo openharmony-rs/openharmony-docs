@@ -61,7 +61,7 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 查询本端设备支持的测距能力，使用Promise异步回调。
 
 - 建议先使用[isRangingSupported](#rangingisrangingsupported)判断本端是否支持测距特性。仅在特性支持的情况下才能使用融合测距的功能。
-- 获取成功后，使用Promise异步返回测距类型是否支持。仅当[nearlinkHadm](#rangingrangingcapabilitysupported)值为true，才可以使用[startRanging](#rangingstartranging)发起星闪[HADM](../../connectivity/terminology.md#hadm)测距，或使用[startPassiveRanging](#rangingstartpassiveranging)启动被动测距。
+- 获取成功后，使用Promise异步返回测距类型是否支持。仅当[nearlinkHadm](#rangingcapabilitysupported)值为true，才可以使用[startRanging](#rangingstartranging)发起星闪[HADM](../../connectivity/terminology.md#hadm)测距，或使用[startPassiveRanging](#rangingstartpassiveranging)启动被动测距。
 
 **起始版本**：26.0.0
 
@@ -75,7 +75,7 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 
 | 类型                                                         | 说明                         |
 | ---------------------------------------------------------- | -------------------------- |
-| Promise&lt;[RangingCapabilitySupported](#rangingrangingcapabilitysupported)&gt; | Promise对象，返回本端设备支持的测距类型。 |
+| Promise&lt;[RangingCapabilitySupported](#rangingcapabilitysupported)&gt; | Promise对象，返回本端设备支持的测距类型。 |
 
 **错误码**：
 
@@ -109,10 +109,10 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 
 向指定设备发起主动测距。
 
-该接口的执行流程取决于本端设备与目标设备的连接状态：
+该接口的执行流程取决于本端设备与目标设备的星闪连接状态：
 
-- 若本端设备已与目标设备建立了连接，调用此接口会直接向目标设备发起测距。
-- 若本端设备与目标设备未连接，该接口将执行以下流程：
+- 若本端设备已与目标设备建立了星闪连接，调用此接口会直接向目标设备发起测距。
+- 若本端设备与目标设备未建立星闪连接，该接口将执行以下流程：
   1. 融合测距服务内部先尝试与目标设备建立连接，连接成功后进行配对和加密操作；配对时需要用户主动在设备上操作授权；如果用户拒绝授权或者超时未授权，本次测距将会停止，停止的状态会通过[onRangingStateChange](#rangingonrangingstatechange)接口注册的callback通知，停止后需要在应用侧主动调用[stopRanging](#rangingstopranging)停止测距接口释放测距资源。
   2. 连接完成后，测距服务会先查询目标设备是否支持对应的测距服务[UUID](../../connectivity/terminology.md#uuid)，确认服务支持后自动发起测距；如果在连接后，对端设备不支持测距服务[UUID](../../connectivity/terminology.md#uuid)，融合测距服务内部会主动断开与对端设备已建立的连接，并通过回调通知测距停止。
 
@@ -138,8 +138,8 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 
 | 参数名          | 类型                                   | 必填 | 说明                    |
 | ------------- | ------------------------------------ | ---- | --------------------- |
-| params        | [RangingParams](#rangingrangingparams)            | 是   | 目标设备的测距参数，包含设备的地址和测距类型。如果填入的参数不符合要求，接口会按照参数要求返回对应的错误码。   |
-| callback      | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距目标标识，需在调用[stopRanging](#rangingstopranging)时传入相同引用进行关联已启动的测距，因此在应用侧不要使用临时callback作为入参。同一callback可关联多个设备的测距会话，但如果调用[stopRanging](#rangingstopranging)接口停止测距时未指定[params](#rangingrangingparams)，接口将根据callback停止全部关联的测距设备，不建议多个设备共用同一测距回调。    |
+| params        | [RangingParams](#rangingparams)            | 是   | 目标设备的测距参数，包含设备的地址和测距类型。如果填入的参数不符合要求，接口会按照参数要求返回对应的错误码。   |
+| callback      | Callback&lt;[RangingResult](#rangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距目标标识，需在调用[stopRanging](#rangingstopranging)时传入相同引用进行关联已启动的测距，因此在应用侧不要使用临时callback作为入参。同一callback可关联多个设备的测距会话，但如果调用[stopRanging](#rangingstopranging)接口停止测距时未指定[params](#rangingrangingparams)，接口将根据callback停止全部关联的测距设备，不建议多个设备共用同一测距回调。    |
 
 **错误码**：
 
@@ -206,8 +206,8 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 
 | 参数名    | 类型                                         | 必填 | 说明                      |
 | ------- | ------------------------------------------ | ---- | ----------------------- |
-| callback | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是 | 测距结果回调，需与[startRanging](#rangingstartranging)传入的callback为同一引用对象，否则将无法停止已启动的测距。该入参要求与[startRanging](#rangingstartranging)中的callback要求相同。   |
-| params   | [RangingParams](#rangingrangingparams) | 否 | 测距参数，包含deviceId和测距类型与[startRanging](#rangingstartranging)接口中的params相同。默认值：undefined。指定此参数时仅停止与指定目标设备的测距；不传入此参数时停止与callback关联的所有设备的测距。 |
+| callback | Callback&lt;[RangingResult](#rangingresult)&gt; | 是 | 测距结果回调，需与[startRanging](#rangingstartranging)传入的callback为同一引用对象，否则将无法停止已启动的测距。该入参要求与[startRanging](#rangingstartranging)中的callback要求相同。   |
+| params   | [RangingParams](#rangingparams) | 否 | 测距参数，包含deviceId和测距类型与[startRanging](#rangingstartranging)接口中的params相同。默认值：undefined。指定此参数时仅停止与指定目标设备的测距；不传入此参数时停止与callback关联的所有设备的测距。 |
 
 **错误码**：
 
@@ -276,13 +276,13 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;number&gt;
 
 | 参数名         | 类型                         | 必填 | 说明         |
 | ------------ | -------------------------- | ---- | ---------- |
-| capabilityType | [RangingTypes](#rangingrangingtypes) | 是   | 测距能力类型。参数必须要填入有效值，否则接口会抛出[34900052](errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务)错误码。   |
+| capabilityType | [RangingTypes](#rangingtypes) | 是   | 测距能力类型。参数必须要填入有效值，否则接口会抛出[34900052](errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务)错误码。   |
 
 **返回值**：
 
 | 类型               | 说明         |
 | ---------------- | ---------- |
-| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。<br> 该句柄用于：1. 在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2. 在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。   |
+| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。<br> 该句柄用于：1. 在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2. 在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingstatechangeinfo)中标识对应的被动测距会话。   |
 
 **错误码**：
 
@@ -341,7 +341,7 @@ stopPassiveRanging(handle: number, capabilityType: RangingTypes): void
 | 参数名         | 类型                         | 必填 | 说明         |
 | ------------ | -------------------------- | ---- | ---------- |
 | handle       | number                     | 是   | 测距监控句柄，由startPassiveRanging返回。handle应为[startPassiveRanging](#rangingstartpassiveranging)返回的有效句柄，否则会抛出34900054错误；停止后该handle不再有效，不可重复使用。   |
-| capabilityType | [RangingTypes](#rangingrangingtypes) | 是   | 测距能力类型，参数要求与[startPassiveRanging](#rangingstartpassiveranging)接口中的capabilityType相同，并且需与[startPassiveRanging](#rangingstartpassiveranging)接口传入的类型一致。   |
+| capabilityType | [RangingTypes](#rangingtypes) | 是   | 测距能力类型，参数要求与[startPassiveRanging](#rangingstartpassiveranging)接口中的capabilityType相同，并且需与[startPassiveRanging](#rangingstartpassiveranging)接口传入的类型一致。   |
 
 **错误码**：
 
@@ -378,13 +378,13 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 
 通知主动测距或者被动测距操作的状态变化。回调中通过不同字段区分：
 
-- 主动测距场景：通过[stateInfo.deviceId](#rangingrangingstatechangeinfo)标识发生状态变化的设备。
-- 被动测距场景：通过[stateInfo.handle](#rangingrangingstatechangeinfo)标识发生状态变化的被动测距会话。
+- 主动测距场景：通过[stateInfo.deviceId](#rangingstatechangeinfo)标识发生状态变化的设备。
+- 被动测距场景：通过[stateInfo.handle](#rangingstatechangeinfo)标识发生状态变化的被动测距会话。
 
 > **说明：**
 >
 > - 多次调用将注册多个回调，每个回调都会收到状态变化通知。
-> - 当测距状态变为[RANGING_STOPPED](#rangingrangingstate)时，[cause](#rangingrangingstoppedcause)字段表示停止原因。
+> - 当测距状态变为[RANGING_STOPPED](#rangingstate)时，[cause](#rangingstoppedcause)字段表示停止原因。
 
 **起始版本**：26.0.0
 
@@ -398,7 +398,7 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 
 | 参数名     | 类型                                           | 必填 | 说明      |
 | ------- | -------------------------------------------- | ---- | ------- |
-| callback | Callback&lt;[RangingStateChangeInfo](#rangingrangingstatechangeinfo)&gt; | 是   | 测距状态回调，当测距状态发生变化时触发。该参数可用于[offRangingStateChange](#rangingoffrangingstatechange)接口的入参取消注册测距状态回调。   |
+| callback | Callback&lt;[RangingStateChangeInfo](#rangingstatechangeinfo)&gt; | 是   | 测距状态回调，当测距状态发生变化时触发。该参数可用于[offRangingStateChange](#rangingoffrangingstatechange)接口的入参取消注册测距状态回调。   |
 
 **错误码**：
 
@@ -456,7 +456,7 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 
 | 参数名     | 类型                                           | 必填 | 说明      |
 | ------- | -------------------------------------------- | ---- | ------- |
-| callback | Callback&lt;[RangingStateChangeInfo](#rangingrangingstatechangeinfo)&gt; | 否   | 测距状态回调。传入此参数时仅取消通过[onRangingStateChange](#rangingonrangingstatechange)接口使用相同入参已注册的回调，如果传入的callback未注册过，该接口不会处理；不传入此参数时接口会取消所有通过[onRangingStateChange](#rangingonrangingstatechange)接口已注册过的回调。   |
+| callback | Callback&lt;[RangingStateChangeInfo](#rangingstatechangeinfo)&gt; | 否   | 测距状态回调。传入此参数时仅取消通过[onRangingStateChange](#rangingonrangingstatechange)接口使用相同入参已注册的回调，如果传入的callback未注册过，该接口不会处理；不传入此参数时接口会取消所有通过[onRangingStateChange](#rangingonrangingstatechange)接口已注册过的回调。   |
 
 **错误码**：
 
@@ -518,7 +518,7 @@ if (isRegistered) {
 | 名称            | 类型                     | 只读 | 可选 | 说明        |
 | ------------- | ---------------------- | ---- | ---- | --------- |
 | deviceId      | string                 | 否   | 否   | 目标测距设备的地址，格式为xx:xx:xx:xx:xx:xx，其中x为十六进制数字，范围为0\~9和A\~F，分隔符为冒号，示例："11:22:33:44:55:66"。该参数需要按照指定格式填写，如果填入的参数不合法，会抛出[34900054](errorcode-fusionConnectivity.md#34900054-参数不符合业务规格)的错误码。  |
-| capabilityType | [RangingTypes](#rangingrangingtypes) | 否   | 否   | 测距能力类型，用于指定使用的测距技术。该参数必须要填入定义的有效值，否则引用该参数的接口会抛出[34900052](errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务)错误。 |
+| capabilityType | [RangingTypes](#rangingtypes) | 否   | 否   | 测距能力类型，用于指定使用的测距技术。该参数必须要填入定义的有效值，否则引用该参数的接口会抛出[34900052](errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务)错误。 |
 
 ## RangingStateChangeInfo
 
@@ -532,8 +532,8 @@ if (isRegistered) {
 
 | 名称    | 类型                                   | 只读 | 可选 | 说明        |
 | ----- | ------------------------------------ | ---- | ---- | --------- |
-| state  | [RangingState](#rangingrangingstate)              | 否   | 否   | 测距状态。    |
-| cause  | [RangingStoppedCause](#rangingrangingstoppedcause) | 否   | 否   | 测距停止原因，仅在state为RANGING_STOPPED时有意义。  |
+| state  | [RangingState](#rangingstate)              | 否   | 否   | 测距状态。    |
+| cause  | [RangingStoppedCause](#rangingstoppedcause) | 否   | 否   | 测距停止原因，仅在state为RANGING_STOPPED时有意义。  |
 | deviceId | string           | 否   | 是   | 测距设备地址，主动测距场景下标识发生状态变化的目标设备。  |
 | handle | number           | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
 
@@ -550,8 +550,8 @@ if (isRegistered) {
 | 名称     | 类型                               | 只读 | 可选 | 说明          |
 | ------ | -------------------------------- | ---- | ---- | ----------- |
 | deviceId | string                           | 否   | 否   | 测距设备地址。    |
-| distance | [RangingMeasurement](#rangingrangingmeasurement) | 否   | 否   | 测距输出的距离测量结果，value单位：cm。  |
-| angle   | [RangingMeasurement](#rangingrangingmeasurement) | 否   | 否   | 测距输出的方位角，value单位：度，取值范围：[0, 360)。   |
+| distance | [RangingMeasurement](#rangingmeasurement) | 否   | 否   | 测距输出的距离测量结果，value单位：cm。  |
+| angle   | [RangingMeasurement](#rangingmeasurement) | 否   | 否   | 测距输出的方位角，value单位：度，取值范围：[0, 360)。   |
 | rssi    | number                           | 否   | 否   | 接收信号强度指示[RSSI](../../connectivity/terminology.md#rssi)，单位：dBm。    |
 
 ## RangingCapabilitySupported
@@ -581,7 +581,7 @@ if (isRegistered) {
 | 名称       | 类型                                 | 只读 | 可选 | 说明             |
 | -------- | ---------------------------------- | ---- | ---- | -------------- |
 | value    | number                             | 否   | 否   | 测量结果值。距离测量时单位：cm，角度测量时单位：度。 |
-| confidence | [RangingConfidence](#rangingrangingconfidence) | 否   | 否   | 测量结果的置信度，表示本次测量值的可信程度。   |
+| confidence | [RangingConfidence](#rangingconfidence) | 否   | 否   | 测量结果的置信度，表示本次测量值的可信程度。   |
 
 ## RangingTypes
 
@@ -609,7 +609,7 @@ if (isRegistered) {
 
 | 名称           | 值   | 说明      |
 | ------------ | ---- | ------- |
-| RANGING_STOPPED | 0   | 已停止。停止原因参见[RangingStoppedCause](#rangingrangingstoppedcause)。 |
+| RANGING_STOPPED | 0   | 已停止。停止原因参见[RangingStoppedCause](#rangingstoppedcause)。 |
 | RANGING_STARTED | 1   | 已启动，测距正在进行中。 |
 
 ## RangingStoppedCause
