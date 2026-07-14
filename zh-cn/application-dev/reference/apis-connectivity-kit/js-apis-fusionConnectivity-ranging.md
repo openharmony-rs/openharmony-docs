@@ -263,7 +263,6 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;number&gt;
 > - 使用星闪[HADM](../../connectivity/terminology.md#hadm)测距时，本端设备在发起被动测距后，无法使用主动测距模式。如需使用主动测距，需先调用[stopPassiveRanging](#rangingstoppassiveranging)停止被动测距。
 > - 同一测距能力类型仅支持单次调用[startPassiveRanging](#rangingstartpassiveranging)，成功后返回的handle对应独立的广播会话。
 > - 同一测距能力如果想再次调用[startPassiveRanging](#rangingstartpassiveranging)，需要先调用[stopPassiveRanging](#rangingstoppassiveranging)结束本次的被动测距，如果直接再次调用，接口将返回错误码34900099。
-> - 被动测距期间，主动测距设备可以通过[startRanging](#rangingstartranging)向本端设备发起测距。
 > - 如果启动测距时，对应类型的测距服务已下线，那么调用本接口时会抛出服务未使能错误码34900053。
 
 **起始版本**：26.0.0
