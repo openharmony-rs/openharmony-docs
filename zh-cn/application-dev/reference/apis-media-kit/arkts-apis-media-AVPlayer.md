@@ -3877,7 +3877,7 @@ onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。若未指定此参数，则取消订阅该事件的所有回调函数。|
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。|
 
 **示例：**
 
