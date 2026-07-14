@@ -12,7 +12,7 @@ typedef struct OH_AVSeiMessageArray OH_AVSeiMessageArray;
 
 ## 概述
 
-SEI消息数组的结构体类型。用于存储和管理SEI(Supplemental Enhancement Information) 消息的数组结构体，支持批量获取和处理视频流中的SEI消息，适用于需要解析视频补充怎强信息的场景。
+SEI（Supplemental Enhancement Information）消息数组的结构体类型。用于存储和管理SEI消息的数组结构体，支持批量获取和处理视频流中的SEI消息，适用于需要解析视频补充怎强信息的场景。
 
 **起始版本：** 23
 
