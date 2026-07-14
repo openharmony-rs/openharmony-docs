@@ -1667,5 +1667,5 @@ Icc账户信息。
 | iccId      | string  |  否 | 否| ICCID号码。        |
 | showName   | string  |  否 | 否| SIM卡显示名称。    |
 | showNumber | string  |  否 | 否| SIM卡显示号码。    |
-| simLabelIndex  | number  |  否 | 是| SIM卡显示号码。  <br>**起始版本:** 26.0.0 |
-| operatorName | string  |  否 | 是| SIM卡显示号码。    <br>**起始版本:** 26.0.0|
+| simLabelIndex  | number  |  否 | 是| 卡槽位置  <br>**起始版本:** 26.0.0 |
+| operatorName | string  |  否 | 是| SIM卡运营商名字。    <br>**起始版本:** 26.0.0|
