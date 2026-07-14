@@ -36,7 +36,7 @@
 | const char * OH_AVMETA_KEY_HEIGHT | 视频高度，单位为像素（px），值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_CHANNEL_COUNT | 音频声道数，值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_SAMPLE_RATE | 音频采样率，单位为赫兹（Hz），值类型为int32_t。<br>**起始版本：** 23 |
-| const char * OH_AVMETA_KEY_SAMPLE_DEPTH | 音频采样位深（单位：bit），值类型为int32_t。<br>**起始版本：** 23 |
+| const char * OH_AVMETA_KEY_SAMPLE_DEPTH | 音频采样位深，单位为比特（bit），值类型为int32_t。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_LANGUAGE | 语言标识，值类型为字符串（string）。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_TRACK_NAME | 轨道名称，值类型为字符串（string）。<br>**起始版本：** 23 |
 | const char * OH_AVMETA_KEY_HDR_TYPE | HDR类型，值类型为int32_t。<br>**起始版本：** 23 |
