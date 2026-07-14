@@ -237,7 +237,9 @@
       - [弹簧曲线](arkts-spring-curve.md)
     - [动画衔接](arkts-animation-smoothing.md)
     - 动画效果<!--arkts-animation-effects-->
-      - [模糊](arkts-blur-effect.md)
+      <!--RP13-->
+      - [动态模糊](arkts-blur-effect.md)
+      <!--RP13End-->
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
     - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
