@@ -1,4 +1,4 @@
-# 时域可分层视频编码，抗弱网视频丢包
+# 具有抗弱网丢包能力的时域可分层编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

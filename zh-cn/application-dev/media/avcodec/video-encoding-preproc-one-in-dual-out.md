@@ -1,4 +1,4 @@
-# 一入两出视频编码
+# 一入二出视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

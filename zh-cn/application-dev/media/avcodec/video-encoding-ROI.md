@@ -1,4 +1,4 @@
-# ROI视频编码，让感兴趣区域更清晰
+# 指定区域更清晰的ROI视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

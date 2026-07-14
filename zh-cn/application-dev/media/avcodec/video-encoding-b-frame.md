@@ -1,4 +1,4 @@
-# B帧视频编码，提升编码压缩率
+# 高压缩率B帧编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
