@@ -35,7 +35,7 @@ struct Index {
       Button('Button')
           .onClick(() => {
             // 通过自定义组件内置方法获取
-            this.getUIContext()
+            this.getUIContext();
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
@@ -51,7 +51,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
+    windowStage.getMainWindowSync().getUIContext();
     // 其他运行逻辑
   }
 }

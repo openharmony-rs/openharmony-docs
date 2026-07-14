@@ -14,6 +14,8 @@
 
 提供ArkUI在Native侧的通用拖拽及主动发起拖拽能力。更多详细介绍请参考[绑定拖拽事件](../../ui/ndk-drag-event.md)。
 
+提供ArkUI在Native侧的通用按键事件能力。详细介绍请参考[绑定基础输入事件](../../ui/ndk-bind-input-events.md#按键事件)。
+
 提供ArkUI在Native侧注册手势回调的能力。详细介绍请参考[绑定手势事件](../../ui/ndk-bind-gesture-events.md)。
 
 提供ArkUI在Native侧使用动画回调的能力。详细介绍请参考[使用动画](../../ui/ndk-use-animation.md)。
@@ -33,7 +35,7 @@
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
 | [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
-| [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
+| [custom_attributes.h](capi-native-node-node-attributes-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [grid.h](capi-grid-h.md) | 定义Grid组件的枚举和接口。 |
 | [list.h](capi-list-h.md) | 定义List组件的枚举和接口。 |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
@@ -46,7 +48,7 @@
 | [native_dialog.h](capi-native-dialog-h.md) | 提供ArkUI在Native侧的自定义弹窗接口定义集合。 |
 | [native_gesture.h](capi-native-gesture-h.md) | 提供NativeGesture接口的类型定义。 |
 | [native_interface.h](capi-native-interface-h.md) | 提供NativeModule接口的统一入口函数。 |
-| [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，主要用于主动转移焦点或管理控制焦点转移默认行为，控制焦点激活态。 |
+| [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，主要用于主动转移焦点、管理焦点转移的默认行为以及控制焦点激活态。 |
 | [native_key_event.h](capi-native-key-event-h.md) | 提供NativeKeyEvent相关接口定义。 |
 | [native_material.h](capi-native-material-h.md) | 提供ArkUI在Native侧的沉浸式材质类型和API声明。 |
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
