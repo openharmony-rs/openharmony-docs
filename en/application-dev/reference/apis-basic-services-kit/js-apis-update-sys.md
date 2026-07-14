@@ -247,11 +247,11 @@ Users can obtain system updates in a timely manner, improving upgrade efficiency
 
 ```mermaid
 graph TD
-    A[Obtain an **Updater** object by calling **getOnlineUpdater** and pass the app upgrade information and service type.] --> B[Check for new versions by calling **checkNewVersion** and obtain the result **CheckResult**.]
-    B --> C[Check the **isExistNewVersion** field in the returned result. If the value is **true**, call **getNewVersionInfo** to obtain the detailed information about the new version.]
-    C --> D[Download the upgrade package to the device by calling **download**. The download can be paused and resumed.]
-    D --> E[Perform the upgrade and installation by calling **upgrade**. The device will restart to apply the new version.]
-    E --> F[Register an event listener using **on** to monitor the download and installation progress in real time.]
+    A[Obtain an Updater object by calling getOnlineUpdater and pass the app upgrade information and service type.] --> B[Check for new versions by calling checkNewVersion and obtain the result CheckResult.]
+    B --> C[Check the isExistNewVersion field in the returned result. If the value is true, call getNewVersionInfo to obtain the detailed information about the new version.]
+    C --> D[Download the upgrade package to the device by calling download. The download can be paused and resumed.]
+    D --> E[Perform the upgrade and installation by calling upgrade. The device will restart to apply the new version.]
+    E --> F[Register an event listener using on to monitor the download and installation progress in real time.]
 ```
 
 **Implementation mechanism**
@@ -915,7 +915,7 @@ This API obtains the description of each component of the current version from t
 
 ```mermaid
 graph TD
-    A[Read the current version ID.] --> B[Send a request to the server to obtain the description.<br/>Specify the format and language by **descriptionOptions**.]
+    A[Read the current version ID.] --> B[Send a request to the server to obtain the description.<br/>Specify the format and language by descriptionOptions.]
     B --> C[The server queries the description based on the version ID.]
     C --> D[Parse the description data<br/>and convert it to the target format and language.]
     D --> E[Return the description array.]
@@ -1232,7 +1232,7 @@ This method downloads the upgrade package from the upgrade package management se
 
 ```mermaid
 graph TD
-    A[Parse the version digest information.] --> B[Select the network type based on **downloadOptions**.]
+    A[Parse the version digest information.] --> B[Select the network type based on downloadOptions.]
     B --> C[Initiate a download request.]
     C --> D[Receive data by block and write the data to a local file.]
     D --> E[Update the progress in real time.]
@@ -1342,7 +1342,7 @@ This method downloads the upgrade package from the upgrade package management se
 
 ```mermaid
 graph TD
-    A[Parse the version digest information.] --> B[Select the network type based on **downloadOptions**.]
+    A[Parse the version digest information.] --> B[Select the network type based on downloadOptions.]
     B --> C[Initiate a download request.]
     C --> D[Receive data by block and write the data to a local file.]
     D --> E[Update the progress in real time.]
@@ -2732,7 +2732,7 @@ graph TD
         B --- B2(security level: fast data erasure)
     end
     
-    Subgraph Sensitive data
+    subgraph Sensitive data
         C --- C1(Clearing scope: data in the user partition and file keys)
         C --- C2(security level: synchronous key erasure)
     end
@@ -3106,10 +3106,10 @@ This upgrade mode applies to offline system upgrade or upgrade with poor network
 
 ```mermaid
 graph TD
-    A[Call **getLocalUpdater** to obtain a **LocalUpdater** object.] --> B[Download the local upgrade package (in .zip or .bin format) and the corresponding certificate file (in .cert format) from the official website of the vendor, and save them to an accessible path on the device.]
-    B --> C[Call **verifyUpgradePackage** to verify the digital signature, file integrity, and version compatibility of the upgrade package.]
-    C --> D[After the verification is successful, call **applyNewVersion** to install the upgrade package. The system restarts to apply the new version.]
-    D --> E[Call **on** to register an event listener to monitor the installation progress and status changes in real time.]
+    A["Call getLocalUpdater to obtain a LocalUpdater object."] --> B["Download the local upgrade package (in .zip or .bin format) and the corresponding certificate file (in .cert format) from the official website of the vendor, and save them to an accessible path on the device."]
+    B --> C[Call verifyUpgradePackage to verify the digital signature, file integrity, and version compatibility of the upgrade package.]
+    C --> D[After the verification is successful, call applyNewVersion to install the upgrade package. The system restarts to apply the new version.]
+    D --> E[Call on to register an event listener to monitor the installation progress and status changes in real time.]
 ```
 
 **Implementation mechanism**
