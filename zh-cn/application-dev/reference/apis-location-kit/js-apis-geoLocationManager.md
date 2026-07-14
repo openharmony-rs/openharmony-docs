@@ -3615,8 +3615,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
     if (bluetoothScanResult) {
       console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
         try {
-          
-           //开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
+           // 开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
            geoLocationManager.stopBluetoothSearch(this.callback);
         } catch (err) {
            console.error("errCode:" + err.code + ", message:" + err.message);
