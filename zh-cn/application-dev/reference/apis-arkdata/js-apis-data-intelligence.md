@@ -178,7 +178,7 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
-| text | string | 是   | 待分块的文本。单个文本长度上限为100000个字符。 |
+| text | string | 是   | 待分块的文本。单个文本长度上限为100000个字符。超出长度时抛出异常。 |
 | config | [SplitConfig](#splitconfig) | 是   | 文本分块的配置信息。 |
 
 **返回值：**
@@ -312,9 +312,9 @@ loadModel(): Promise&lt;void&gt;
 加载文本嵌入模型。使用Promise异步回调。
 
 **配对调用：**
-- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源
-- 未调用releaseModel()会导致资源泄漏，影响系统性能
-- 建议将releaseModel()放在finally块中确保资源被正确释放
+- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源。
+- 未调用releaseModel()会导致资源泄漏，影响系统性能。
+- 建议将releaseModel()放在finally块中确保资源被正确释放。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -515,9 +515,9 @@ loadModel(): Promise&lt;void&gt;
 加载图像嵌入模型。使用Promise异步回调。
 
 **配对调用：**
-- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源
-- 未调用releaseModel()会导致资源泄漏，影响系统性能
-- 建议将releaseModel()放在finally块中确保资源被正确释放
+- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源。
+- 未调用releaseModel()会导致资源泄漏，影响系统性能。
+- 建议将releaseModel()放在finally块中确保资源被正确释放。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
