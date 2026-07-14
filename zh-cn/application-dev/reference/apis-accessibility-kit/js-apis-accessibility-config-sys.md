@@ -1011,8 +1011,6 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 启用闪光灯或屏幕以进行闪烁提醒。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -1020,6 +1018,10 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -1063,8 +1065,6 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 停止闪光灯闪烁或屏幕闪烁。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -1072,6 +1072,10 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
