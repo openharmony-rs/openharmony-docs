@@ -3759,7 +3759,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   }
   ```
    
-## geoLocationManager.stopBluetoothSearch<sup>26+</sup>
+## geoLocationManager.stopBluetoothSearch
    
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
