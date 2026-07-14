@@ -72,9 +72,6 @@ Date对象用于处理日期和时间，使用方式如下。
 | year        | number | 是   | 设置年份，例如2025。|
 | monthIndex  | number | 是   | 设置月份索引（取值范围0-11），其中0表示1月，11表示12月。例如：传入0表示1月，传入2表示3月。超出范围时会导致日期计算错误。|
 | date        | number | 否   | 设置日期，例如10（如果设置hours，则date不能省略）。|
-| hours       | number | 否   | 设置小时，例如15（如果设置minutes，则hours不能省略）。|
-| minutes     | number | 否   | 设置分钟，例如20（如果设置seconds，则minutes不能省略）。|
-| seconds     | number | 否   | 设置秒，例如20（如果设置ms，则seconds不能省略）。|
 | hours       | number | 否   | 设置小时，取值范围[0, 23]。超出范围时会导致日期计算错误。例如15（如果设置minutes，则hours不能省略）。单位：小时。|
 | minutes     | number | 否   | 设置分钟，取值范围[0, 59]。超出范围时会导致日期计算错误。例如20（如果设置seconds，则minutes不能省略）。单位：分钟。|
 | seconds     | number | 否   | 设置秒，取值范围[0, 59]。超出范围时会导致日期计算错误。例如20（如果设置ms，则seconds不能省略）。单位：秒。|
@@ -589,7 +586,7 @@ struct TimePickerExample {
       .onChange((value: TimePickerResult) => {
         if (value.hour >= 0) {
           this.selectedTime.setHours(value.hour, value.minute);
-            this.selectedTime.setHours(value.hour, value.minute, value.second);
+          console.info('select current time is: ' + JSON.stringify(value));
         }
       })
   }
