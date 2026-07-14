@@ -3694,3 +3694,16 @@ SIM卡鉴权响应。
 | simStatusWord1 | number |  是  | SIM卡状态字1。 |
 | simStatusWord2 | number |  是  | SIM卡状态字2。 |
 | response       | string |  是  | 鉴权响应。     |
+
+## IccAccountInfo<sup>10+</sup>
+
+Icc账户信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+
+| 名称       | 类型    | 只读|可选| 说明             |
+| simLabelIndex  | number  |  否 | 是| 卡槽位置。  <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| operatorName | string  |  否 | 是| SIM卡运营商名称。    <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
