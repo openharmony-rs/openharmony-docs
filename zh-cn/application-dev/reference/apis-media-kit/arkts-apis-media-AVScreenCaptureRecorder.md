@@ -343,7 +343,7 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 >
 > - 应用最多可添加5个水印。
 >
-> - 需在[startRecording](#startRecording12)接口调用前调用addWatermark接口。
+> - 需在[startRecording](#startrecording12)接口调用前调用addWatermark接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -691,7 +691,7 @@ presentPicker(): Promise\<void>
 
 录屏开始后，调用该接口再次弹出Picker，可动态更新录制源（窗口、屏幕）。使用Promise异步回调。
 
-使用前需要先调用[startRecording](#startRecording12)接口。
+使用前需要先调用[startRecording](#startrecording12)接口。
 
 > **说明：**
 >
