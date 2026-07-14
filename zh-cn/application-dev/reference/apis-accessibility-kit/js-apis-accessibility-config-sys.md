@@ -757,7 +757,7 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#blinkResultcode)&gt; | 接口调用返回的结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkresultcode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
@@ -809,7 +809,7 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#blinkResultcode)&gt; | 接口调用返回的结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkresultcode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
