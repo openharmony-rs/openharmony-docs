@@ -37,7 +37,7 @@ type UpdateRequest = _AutoFillRequest.UpdateRequest
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | 表示自动填充的更新信息。 |
+| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | 表示自动填充的更新信息，用于传递需要更新的自动填充数据内容。 |
 
 ## FillResponse
 
@@ -59,7 +59,7 @@ type FillResponse = _AutoFillRequest.FillResponse
 
 type FillRequestCallback = _AutoFillRequest.FillRequestCallback
 
-自动填充或者生成密码时的回调对象，可以通过此回调通知客户端成功或者失败。
+自动填充或者生成密码时的回调对象，用于通知客户端成功或者失败。
 
 **系统接口**：此接口为系统接口。
 
