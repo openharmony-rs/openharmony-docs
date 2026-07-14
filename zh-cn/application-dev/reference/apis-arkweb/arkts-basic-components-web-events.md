@@ -4851,7 +4851,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 >
 > 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 >
-> 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)分别设置mainframe和subframe的自定义错误展示页。
+> 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)判断请求来源为mainframe还是subframe，以便分别设置对应的自定义错误展示页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
