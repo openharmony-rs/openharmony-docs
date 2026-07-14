@@ -195,7 +195,7 @@
 3. 获取可信设备列表，选择目标设备。
 
    <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 获取受信任设备
    getTrustedDevices(): void {
