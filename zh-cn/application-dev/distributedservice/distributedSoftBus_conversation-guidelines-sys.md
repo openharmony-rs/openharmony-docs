@@ -221,7 +221,7 @@
 4. 向指定设备发送会话数据。
 
    <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 发送消息
    sendMessage(): void {
@@ -232,7 +232,7 @@
        for (let i = 0; i < messageToSend.length; i++) {
          bufferView[i] = messageToSend.charCodeAt(i);
        }
-
+   
        conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
          .then(() => {
            hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
