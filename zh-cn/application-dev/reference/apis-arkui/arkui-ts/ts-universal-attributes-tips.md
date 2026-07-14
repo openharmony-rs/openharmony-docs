@@ -14,7 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 目前支持通过外接鼠标、手写笔以及触控板触发。
+> - 在支持外界鼠标、手写笔以及触控板的Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在不支持外界鼠标、手写笔以及触控板的Phone、PC/2in1、Tablet、TV、Wearable设备中不生效。
 
 ## bindTips
 bindTips(message: TipsMessageType, options?: TipsOptions): T
