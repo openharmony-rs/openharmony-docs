@@ -612,7 +612,7 @@ if (isRegistered) {
 | RANGING_STOPPED | 0   | 已停止。停止原因参见[RangingStoppedCause](#rangingrangingstoppedcause)。 |
 | RANGING_STARTED | 1   | 已启动，测距正在进行中。 |
 
-## ranging.RangingStoppedCause
+## RangingStoppedCause
 
 枚举，测距停止原因。
 
