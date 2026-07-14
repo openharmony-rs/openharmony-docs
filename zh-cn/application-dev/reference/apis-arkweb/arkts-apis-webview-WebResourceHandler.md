@@ -252,7 +252,8 @@ ArkTS-Sta示例：
 // xxx.ets
 'use static'
 import { Entry, Column, Component, Web } from '@kit.ArkUI';
-import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
