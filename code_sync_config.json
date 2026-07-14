@@ -52997,9 +52997,9 @@
 						"start_line":296
 					},
 					{
-						"end_line":480,
+						"end_line":949,
 						"name":"screenCapture_createCaptureStrategy",
-						"start_line":475
+						"start_line":943
 					},
 					{
 						"end_line":493,
@@ -53017,9 +53017,9 @@
 						"start_line":496
 					},
 					{
-						"end_line":402,
+						"end_line":650,
 						"name":"screenCapture_withWindow_forID",
-						"start_line":391
+						"start_line":638
 					}
 				]
 			}
@@ -56982,9 +56982,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":1046,
+						"end_line":1050,
 						"name":"screenCapture_startScreenCapture_rectangular",
-						"start_line":1020
+						"start_line":1022
 					}
 				]
 			}
