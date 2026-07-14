@@ -59,4 +59,4 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | mode | [AppClonePreferenceMode](#appclonepreferencemode)         | 否   | 否   | 表示应用分身偏好设置的模式。 |
-| appIndex | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否   | 是   | 表示应用分身索引。<br>仅在mode取值为AppClonePreferenceMode.CLONE_APP时有效，取值范围为1~5的整数（系统最多支持5个分身）。   |
+| appIndex | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否   | 是   | 表示应用分身索引。<br>当mode取值为AppClonePreferenceMode.CLONE_APP时为必填参数，用于指定具体的分身应用，取值范围为1~5的整数（系统最多支持5个分身）。   |
