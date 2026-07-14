@@ -537,7 +537,7 @@ if (isRegistered) {
 | deviceId | string           | 否   | 是   | 测距设备地址，主动测距场景下标识发生状态变化的目标设备。  |
 | handle | number           | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
 
-## ranging.RangingResult
+## RangingResult
 
 描述测距结果，每次测距测量完成后通过[startRanging](#rangingstartranging)的callback回调返回。
 
