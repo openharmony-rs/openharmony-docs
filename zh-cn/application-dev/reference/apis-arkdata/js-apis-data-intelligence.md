@@ -229,7 +229,7 @@ intelligence.splitText(textToSplit, splitConfig)
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。超出长度时抛出异常。 |
 | modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](#intelligencegetsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型时使用的网络策略。在使用文本嵌入模型时，默认值为WIFI_ONLY。在使用图像嵌入模型场景此参数不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型时使用的网络策略，默认值为WIFI_ONLY。此次参数仅在使用文本嵌入模型时生效，在使用图像嵌入模型场景此参数不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ModelVersion
 
@@ -312,7 +312,7 @@ loadModel(): Promise&lt;void&gt;
 加载文本嵌入模型。使用Promise异步回调。
 
 **配对调用：**
-- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源。
+- 调用loadModel()后，必须在使用完毕后调用[releaseModel()](#releasemodel)释放模型资源。
 - 未调用releaseModel()会导致资源泄漏，影响系统性能。
 - 建议将releaseModel()放在finally块中确保资源被正确释放。
 
@@ -515,7 +515,7 @@ loadModel(): Promise&lt;void&gt;
 加载图像嵌入模型。使用Promise异步回调。
 
 **配对调用：**
-- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源。
+- 调用loadModel()后，必须在使用完毕后调用[releaseModel()](#releasemodel-1)释放模型资源。
 - 未调用releaseModel()会导致资源泄漏，影响系统性能。
 - 建议将releaseModel()放在finally块中确保资源被正确释放。
 
