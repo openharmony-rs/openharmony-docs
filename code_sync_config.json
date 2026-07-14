@@ -7418,19 +7418,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp",
 				"functions":[
 					{
-						"end_line":492,
+						"end_line":483,
 						"name":"abilitycap_one_start",
 						"start_line":16
 					},
 					{
-						"end_line":257,
+						"end_line":260,
 						"name":"abilitycap_two_start",
-						"start_line":116
+						"start_line":122
 					},
 					{
-						"end_line":347,
+						"end_line":344,
 						"name":"abilitycap_three_start",
-						"start_line":291
+						"start_line":288
 					},
 					{
 						"end_line":264,
@@ -7443,7 +7443,7 @@
 						"start_line":266
 					},
 					{
-						"end_line":409,
+						"end_line":400,
 						"name":"abilitycap_six_start",
 						"start_line":37
 					},
@@ -9367,7 +9367,7 @@
 					{
 						"end_line":46,
 						"name":"componentIdentifier_start",
-						"start_line":17
+						"start_line":16
 					}
 				]
 			}
@@ -15965,9 +15965,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":87,
 						"name":"accessibility_checked_start",
-						"start_line":76
+						"start_line":77
 					},
 					{
 						"end_line":98,
@@ -15975,7 +15975,7 @@
 						"start_line":87
 					},
 					{
-						"end_line":126,
+						"end_line":127,
 						"name":"accessibility_text_start",
 						"start_line":16
 					}
@@ -18585,9 +18585,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":78,
 						"name":"exampleEmbeddedAbility_start",
-						"start_line":63
+						"start_line":72
 					}
 				]
 			}
@@ -18600,7 +18600,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":88,
 						"name":"embeddedComponentCTest_start",
 						"start_line":21
 					}
