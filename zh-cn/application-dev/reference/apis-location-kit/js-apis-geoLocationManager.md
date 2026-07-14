@@ -3539,7 +3539,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
   let request: geoLocationManager.ContinuousLocationRequest = {
     'interval': 1,
     'locationScenario': geoLocationManager.UserActivityScenario.SPORT,
-    //  设置运动类型为滑雪
+    // 设置运动类型为滑雪
     'sportsType': geoLocationManager.SportsType.SKIING,
   };
 
