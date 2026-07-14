@@ -1052,7 +1052,7 @@ function isTorchLevelControlSupported(cameraManager: camera.CameraManager): bool
 }
 ```
 
-## SetTorchModeOnWithLevel
+## setTorchModeOnWithLevel
 
 setTorchModeOnWithLevel(torchLevel: number): void
 
