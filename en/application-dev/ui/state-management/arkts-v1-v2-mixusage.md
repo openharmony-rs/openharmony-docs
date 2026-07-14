@@ -582,7 +582,7 @@ struct CompV2 {
 
   build() {
     Column() {
-      Text(`count: ${this.observedClass.name}`).onClick(() => {
+      Text(`name: ${this.observedClass.name}`).onClick(() => {
         // Trigger the refresh.
         this.observedClass.name += 'a';
       })
