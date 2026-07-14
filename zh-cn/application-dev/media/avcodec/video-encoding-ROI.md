@@ -1,4 +1,4 @@
-# ROI视频编码
+# 指定区域更清晰的ROI视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -476,7 +476,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    OH_AVCodec *codec = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
    ```
 
-   视频编码的详细操作步骤请参考[视频编码](video-encoding.md)开发指南，下面仅针对ROI编码做具体说明。
+   视频编码的详细操作步骤请参考[异步模式视频编码](video-encoding.md)开发指南，下面仅针对ROI编码做具体说明。
    ```c++
    const std::chrono::milliseconds ROI_WAIT_TIMEOUT = std::chrono::milliseconds(4); // 4ms超时。
    static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)

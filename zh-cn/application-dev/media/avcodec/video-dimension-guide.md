@@ -219,13 +219,13 @@ picHeight = cropBottom - cropTop + 1
 
 在编码器Buffer模式下，编码器通过`OnNeedInputBuffer`回调提供可用的输入Buffer。开发者需要将原始图像数据拷贝到`OH_AVBuffer`中。当Buffer内存跨距大于配置宽高时，必须按行拷贝有效数据并跳过Padding区域，否则会导致画面错位。
 
-参考代码：视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤3、视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤8。
+参考代码：异步模式视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤3、异步模式视频编码开发指导-[Buffer模式](video-encoding.md#buffer模式)步骤8。
 
 ### 场景二：从解码器输出Buffer读取数据
 
 在解码器Buffer模式下，读取数据时需根据有效图像尺寸和跨距按行读取，并结合裁剪信息跳过Padding及无效边缘。
 
-参考代码：视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤3、视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤11。
+参考代码：异步模式视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤3、异步模式视频解码开发指导-[Buffer模式](video-decoding.md#buffer模式)步骤11。
 
 ### 场景三：Surface模式
 
@@ -320,8 +320,8 @@ Configure 配置参数：
 
 ## 参考文档
 
-- [视频编码开发指导](video-encoding.md) —— Surface模式/Buffer模式完整流程。
-- [视频解码开发指导](video-decoding.md) —— Surface模式/Buffer模式完整流程。
-- [Codec Base API参考](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md) —— 所有键名定义。
-- [AVCodec Kit API Reference - VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
-- [AVCodec Kit API Reference - VideoDecoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。
+- [异步模式视频编码开发指导](video-encoding.md) —— Surface模式/Buffer模式完整流程。
+- [异步模式视频解码开发指导](video-decoding.md) —— Surface模式/Buffer模式完整流程。
+- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md) —— 所有键名定义。
+- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) —— 编码器接口。
+- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md) —— 解码器接口。

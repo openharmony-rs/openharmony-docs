@@ -1,4 +1,4 @@
-# 音频解码同步模式
+# 同步模式音频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -17,7 +17,7 @@
 
 **适用场景**
 
-通常推荐使用异步模式，详细内容请参考[音频解码](audio-decoding.md)。若需要主动请求buffer去送帧，则可以使用同步模式。
+通常推荐使用异步模式，详细内容请参考[异步模式音频解码](audio-decoding.md)。若需要主动请求buffer去送帧，则可以使用同步模式。
 
 将音视频文件解码为PCM码流，通常需要以下步骤：[媒体数据解封装](audio-video-demuxer.md) -> 音频解码。
 
