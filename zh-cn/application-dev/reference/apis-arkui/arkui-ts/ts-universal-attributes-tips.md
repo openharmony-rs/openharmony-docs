@@ -14,7 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 在支持外界鼠标、手写笔以及触控板的Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在不支持外界鼠标、手写笔以及触控板的Phone、PC/2in1、Tablet、TV、Wearable设备中不生效。
+> - bindTips依赖设备可以触发[悬浮事件](./ts-universal-events-hover.md)，对于无法触发[悬浮事件](./ts-universal-events-hover.md)的硬件设备无法使用bindTips方法。
 
 ## bindTips
 bindTips(message: TipsMessageType, options?: TipsOptions): T
