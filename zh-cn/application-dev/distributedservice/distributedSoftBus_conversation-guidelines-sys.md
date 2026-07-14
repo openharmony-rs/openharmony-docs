@@ -136,7 +136,7 @@
 5. 注销会话监听器。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 注销监听器
    unregisterListener(): void {
