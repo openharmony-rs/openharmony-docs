@@ -4880,17 +4880,13 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
             }
           })
           .onOverrideErrorPage(event => {
-            let htmlStr = ""
+            let htmlStr = event.error.getErrorCode() + "</h1></html>"
             if (event.request.isMainFrame()) {
-              htmlStr = "<html><h1>mainframe error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
+              let mainFrameHtml = "<html><h1>mainframe error occur : " + htmlStr;
+              return mainFrameHtml;
             }
-            htmlStr = "<html><h1>subframe error occur : ";
-            htmlStr += event.error.getErrorCode();
-            htmlStr += "</h1></html>";
-            return htmlStr;
+            let subFrameHtml = "<html><h1>subframe error occur : " + htmlStr;
+            return subFrameHtml;
           })
       }
     }
