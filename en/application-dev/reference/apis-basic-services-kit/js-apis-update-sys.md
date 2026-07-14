@@ -61,8 +61,8 @@ The following standard process must be followed for restoring the equipment to f
 
 ```mermaid
 graph TD
-    A[System verification permission:
-    (Check whether the current caller has the permission to perform the restoration operation.)] --> B{Application developer selects the factory reset mode.}
+    A["System verification permission:</br>
+    (Check whether the current caller has the permission to perform the restoration operation.)"] --> B{Application developer selects the factory reset mode.}
     B -->|factoryReset| C1[Common factory reset: Clear data in the user partition only.]
     B -->|forceFactoryReset| C2[Forcible factory reset: Clear data and file keys.]
     B -->|deepFactoryReset| C3[Deep factory reset: Overwrite data for multiple times and perform complete data destruction in the configurable range.]
