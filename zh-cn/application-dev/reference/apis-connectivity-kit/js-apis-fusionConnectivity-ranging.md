@@ -520,7 +520,7 @@ if (isRegistered) {
 | deviceId      | string                 | 否   | 否   | 目标测距设备的地址，格式为xx:xx:xx:xx:xx:xx，其中x为十六进制数字，范围为0\~9和A\~F，分隔符为冒号，示例："11:22:33:44:55:66"。该参数需要按照指定格式填写，如果填入的参数不合法，会抛出[34900054](errorcode-fusionConnectivity.md#34900054-参数不符合业务规格)的错误码。  |
 | capabilityType | [RangingTypes](#rangingrangingtypes) | 否   | 否   | 测距能力类型，用于指定使用的测距技术。该参数必须要填入定义的有效值，否则引用该参数的接口会抛出[34900052](errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务)错误。 |
 
-## ranging.RangingStateChangeInfo
+## RangingStateChangeInfo
 
 描述测距状态变化信息，主动测距和被动测距的状态变化共用此结构。
 
