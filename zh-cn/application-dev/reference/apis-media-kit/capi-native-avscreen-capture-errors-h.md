@@ -40,6 +40,8 @@ enum OH_AVSCREEN_CAPTURE_ErrCode
 
 屏幕录制过程中产生的不同错误码。
 
+开发者可在屏幕录制应用、在线会议屏幕共享、远程协助等场景中，根据返回的错误码判断接口调用的异常原因并进行相应的错误处理。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10

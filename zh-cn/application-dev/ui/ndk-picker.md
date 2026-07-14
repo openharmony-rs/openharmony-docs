@@ -226,7 +226,7 @@ picker->SetHapticFeedback(K_HAPTIC_FEEDBACK);
 
 > **说明：**
 >
-> 如果子组件的个数小于8个，无论设置为true还是false，都不会循环滚动。
+> 当子组件个数小于或等于可见选项行数（由`NODE_PICKER_DISPLAYED_ITEM_COUNT`设置，默认为7）时，无论设置为true还是false，都不会循环滚动。
 
 使用[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)时可直接调用`setAttribute`。
 
@@ -272,7 +272,7 @@ g_state->api->setAttribute(g_state->pickerNode, NODE_PICKER_ITEM_HEIGHT, &itemHe
 
 通过设置`NODE_PICKER_SELECTION_INDICATOR`属性，可以自定义Picker组件的选择指示器样式。选择指示器包括背景样式和分割线样式两部分。
 
-背景样式指示器通过[ArkUI_PickerIndicatorBackground](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)结构体设置，包括背景颜色和圆角半径。
+选择指示器的背景样式通过[ArkUI_PickerIndicatorBackground](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)结构体设置，包括背景颜色和圆角半径。
 
 <!-- @[set_indicator_background](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.h) -->
 
@@ -298,7 +298,7 @@ void SetSelectionIndicatorBackground(uint32_t backgroundColor, float cornerRadiu
 }
 ```
 
-分割线样式指示器通过[ArkUI_PickerIndicatorDivider](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)结构体设置，包括线宽、颜色和边距。
+选择指示器的分割线样式通过[ArkUI_PickerIndicatorDivider](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)结构体设置，包括线宽、颜色和边距。
 
 <!-- @[set_indicator_divider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.h) -->
 
@@ -326,7 +326,7 @@ void SetSelectionIndicatorDivider(uint32_t dividerColor, float strokeWidth = 2.0
 
 将背景样式或分割线样式组合到[ArkUI_PickerIndicatorStyle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)结构体中，并设置给Picker组件。
 
-若使用上文封装的`ContainerPickerMonthMaker`，可调用已封装的接口。
+若使用上文封装的`ContainerPickerCanLoopMaker`，可调用已封装的接口。
 
 <!-- @[set_selection_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerMonthMaker.cpp) -->
 

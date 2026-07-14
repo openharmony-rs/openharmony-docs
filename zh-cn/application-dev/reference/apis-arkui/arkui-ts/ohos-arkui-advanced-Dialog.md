@@ -159,15 +159,15 @@ CustomContentDialog({controller: CustomDialogController, contentBuilder: () => v
 
 | 名称                | 类型                                                                                               | 必填 | 装饰器类型 | 说明                                                         |
 | ------------------- |--------------------------------------------------------------------------------------------------| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -  | 弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
+| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -  | 弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。                                             |
 | contentBuilder      | () => void                                                                                       | 是   | @BuilderParam | 用于构建弹出框内容区域的组件构建函数。                                                 |
 | primaryTitle        | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -  | 弹出框标题。<br/> 默认不设置或设置为undefined，弹出框标题不显示。<br/> **说明：** 标题超过两行会显示“...”。                                                 |
 | secondaryTitle      | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -  | 弹出框辅助文本。<br/> 默认不设置或设置为undefined，弹出框辅助文本不显示。<br/> **说明：** 辅助文本超过两行会显示“...”。                                             |
 | localizedContentAreaPadding | [LocalizedPadding](ts-types.md#localizedpadding12)                                               | 否   | -  | 弹出框内容区内边距，支持按语言方向自适应。设置了该属性时，contentAreaPadding不生效。                                         |
 | contentAreaPadding  | [Padding](ts-types.md#padding)                                                                   | 否   | -  | 弹出框内容区内边距。设置了localizedContentAreaPadding属性时该属性不生效。|
 | buttons             | [ButtonOptions](#buttonoptions)[]                                                                | 否   | -  | 弹出框操作区按钮，最多支持4个按钮。                          |
-| theme | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | -  | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| themeColorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | - | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| theme | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | -  | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。 |
+| themeColorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | - | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM。 |
 
 >  **说明：**
 >

@@ -527,7 +527,7 @@
 
 ## ohos.permission.SET_ABILITY_CONTROLLER
 
-允许应用拦截Ability组件启动，主要用测试调试，比如：稳定性金刚测试。
+允许应用拦截Ability组件启动，主要用于测试调试，比如：稳定性金刚测试。
 
 **权限级别**：system_basic
 
@@ -4144,7 +4144,7 @@
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
-允许系统应用或者系统服务为三方应用授予存图片和视频的短时访问权限。
+允许系统应用或者系统服务为三方应用授予存储图片和视频的短时访问权限。
 
 **权限级别**：system_core
 
@@ -5571,7 +5571,7 @@
 
 允许系统应用拉起其他应用卡片添加到桌面的预览面板。
 
-获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+获取该权限后，应用可以拉起其他应用卡片添加到桌面预览面板，以引导用户将希望分发的卡片添加到桌面。
 
 **权限级别**：system_basic
 
@@ -6322,6 +6322,160 @@
 **支持设备**：Phone
 
 **起始版本**：20
+
+## ohos.permission.TV_MANAGE_SOURCE
+
+允许系统应用管理和控制智慧屏输入源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+允许系统应用管理智慧屏图像画质。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+允许系统应用读取智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+允许系统应用设置智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+允许系统应用查询与设置智慧屏音效。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+允许系统应用查询与设置智慧屏计算音频。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+允许系统应用通过HDMI CEC联动控制CEC设备。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+允许系统应用访问智慧屏Camera AI算法。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+允许系统应用对智慧屏故障进行智能检测。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+允许系统应用访问智慧屏投屏。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+允许系统应用管理智慧屏日志同步。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
 
 ## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
 

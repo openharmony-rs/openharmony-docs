@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从 API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -150,7 +150,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 查询系统是否支持该类型的锁。使用callback异步回调。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -179,7 +179,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 查询系统是否支持该类型的锁。使用Promise异步回调。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -213,7 +213,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 创建RunningLock锁。使用callback异步回调。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[runningLock.create](#runninglockcreate9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -245,7 +245,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 创建RunningLock锁。使用Promise异步回调。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[runningLock.create](#runninglockcreate9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -320,7 +320,7 @@ class RunningLockTest {
                 RunningLockTest.recordLock.hold(500);
                 console.info('hold running lock success');
             } catch(err) {
-                console.error('hold running lock failed, err: ' + err);
+                console.error(`Failed to hold running lock. Code: ${err.code}, message: ${err.message}`);
             }
         } else {
             runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
@@ -374,7 +374,7 @@ class RunningLockTest {
                 RunningLockTest.recordLock.unhold();
                 console.info('unhold running lock success');
             } catch(err) {
-                console.error('unhold running lock failed, err: ' + err);
+                console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
             }
         } else {
             runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
@@ -443,7 +443,7 @@ lock(timeout: number): void
 
 持有RunningLock锁。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[RunningLock.hold](#hold9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[RunningLock.hold](#hold9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -474,7 +474,7 @@ unlock(): void
 
 释放RunningLock锁。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[RunningLock.unhold](#unhold9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[RunningLock.unhold](#unhold9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -499,7 +499,7 @@ isUsed(): boolean
 
 查询当前RunningLock是持有状态还是释放状态。
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始废弃。建议使用[RunningLock.isHolding](#isholding9)替代。
+> **说明：**<br>从 API version 7开始支持，从 API version 9开始废弃。建议使用[RunningLock.isHolding](#isholding9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -529,6 +529,6 @@ RunningLock锁的类型。
 
 | 名称                              | 值   | 说明                                                         |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
+| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从 API version 7开始支持，从 API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
 | BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。<br>**注意：** 不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|
