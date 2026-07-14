@@ -1276,7 +1276,7 @@ struct ParticleExample5 {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->  
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
