@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @ww_Machine_cc-->
+<!--Adviser: @w_Machine_cc-->
 
 本文档展示了Image Kit接口的典型错误用法案例，帮助开发者避免常见的开发问题，提高应用的稳定性和性能。
 
