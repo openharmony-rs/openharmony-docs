@@ -33,7 +33,7 @@ const Component: ClassDecorator & ((options: ComponentOptions) => ClassDecorator
 
 | 名称                  | 类型    | 必填  | 说明                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
-| options<sup>11+</sup> | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@Component装饰器选项，用于配置组件冻结和全局复用。可通过freezeWhenInactive控制组件冻结，通过reusePool和poolAccepts配置全局复用池，具体属性详见ComponentOptions。缺省时关闭组件冻结和全局复用功能。 |
+| options<sup>11+</sup> | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@Component装饰器选项，用于配置组件冻结和全局复用。可通过freezeWhenInactive控制组件冻结（适用于页面路由、TabContent、LazyForEach、Navigation等组件非激活时冻结UI刷新以减少不必要刷新、优化性能的场景），通过reusePool和poolAccepts配置全局复用池（适用于多个父组件共用同类可复用组件、通过if等切换时需跨父组件复用已回收实例的场景），具体属性详见ComponentOptions。缺省时关闭组件冻结和全局复用功能。 |
 
 **返回值：**
 
