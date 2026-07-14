@@ -75,11 +75,12 @@ let permissionQuery: abilityToolAccessCtrl.PermissionQuery = {
   operationInfo: [{
     operationType: abilityToolAccessCtrl.OperationType.CLI,
     info: {
-      cliCmdName: 'cliCmdName',
-      subCliCmdName: 'subCliCmdName'
+      cliCmdName: 'ohos-displayManager',
+      subCliCmdName: 'set-brightness'
     }
   }],
-  needTicket: true
+  needTicket: true,
+  ticketExpireTimeMs: 10000,
 };
 abilityToolAccessCtrl.requestToolPermissions(permissionQuery).then((data: abilityToolAccessCtrl.PermissionQueryResult) => {
   console.info('requestToolPermissions success, data: ' + JSON.stringify(data));
@@ -139,13 +140,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userAuthResult: Array<abilityToolAccessCtrl.UserAuthResult> = [{
   permissionInfo: [{
-    permission: 'ohos.permission.CAMERA' as Permissions,
-    permissionStatus: abilityAccessCtrl.PermissionStatus.PERMISSION_DENIED
+    permission: 'ohos.permission.cli.BUNDLE_ACTIVE_INFO' as Permissions,
+    permissionStatus: abilityAccessCtrl.PermissionStatus.GRANTED
   }],
   permissionQuery: {
     operationInfo: [{
-      operationType: abilityToolAccessCtrl.OperationType.API,
-      info: 'ohos.permission.CAMERA' as Permissions
+      operationType: abilityToolAccessCtrl.OperationType.CLI,
+      info: 'ohos.permission.cli.BUNDLE_ACTIVE_INFO'
     }],
     needTicket: true
   }
@@ -185,7 +186,7 @@ abilityToolAccessCtrl.grantToolPermissionsByUser(userAuthResult).then((data: Arr
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | operationInfo | Array&lt;[OperationInfo](#operationinfo)&gt; | 否 | 否 | 操作信息列表，指定待查询的CLI命令或API接口。 |
-| needTicket | boolean | 否 | 是 | 是否需要生成ticket用于远程授权。true表示需要生成ticket，false表示不需要。<br>默认值：false |
+| needTicket | boolean | 否 | 是 | 是否需要生成ticket用于本地或远程授权。true表示需要生成ticket，false表示不需要。<br>默认值：false |
 | ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。<br>默认值：10000 |
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenID。<br> 如果该项为空，默认获取调用方进程的tokenId|
 | domainId | string | 否 | 是 | 域标识。 <br> 如果该项为空，则默认获取调用方当前的域标识|
