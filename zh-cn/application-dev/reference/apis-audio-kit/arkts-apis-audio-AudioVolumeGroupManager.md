@@ -1025,7 +1025,7 @@ audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo
     console.error(`Failed to get maxAmplitude for output device. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred output device for capturer info. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
 })
 ```
 ## setMicrophoneMute<sup>(deprecated)</sup>

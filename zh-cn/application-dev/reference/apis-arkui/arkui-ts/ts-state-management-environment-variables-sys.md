@@ -13,7 +13,7 @@
 
 ## Storage
 
-持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化。
+持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除，支持自定义存储文件路径和跨线程安全访问。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存储的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -40,7 +40,7 @@ constructor(needCrossThread?: boolean, file?: string)
 
 get(key: string): string \| undefined
 
-从磁盘读取数据时调用。
+根据指定的key从磁盘中读取对应的存储数据。
 
 **系统接口：** 此接口为系统接口。
 
@@ -56,13 +56,13 @@ get(key: string): string \| undefined
 
 | 类型      | 说明                                                      |
 | --------- | -------------------------------------------------------- |
-| string \| undefined | 键对应的值；key不存在时返回undefined。            |
+| string \| undefined | key对应的值；key不存在时返回undefined。          |
 
 ### set
 
 set(key: string, val: any): void
 
-持久化数据时调用。
+将指定key对应的数据持久化存储到磁盘。
 
 **系统接口：** 此接口为系统接口。
 
@@ -73,7 +73,7 @@ set(key: string, val: any): void
 | 参数名   | 类型                    | 必填 | 说明                             |
 | -------- | ----------------------- | ---- | ------------------------------- |
 | key      | string                  | 是   | 要设置的存储key名称。             |
-| val      | any                     | 是   | 要存储的数据。                    |
+| val      | any                     | 是   | 要存储的数据，支持string、number、boolean等基本类型以及可序列化的对象和数组，数据将被序列化后持久化到存储文件中。                    |
 
 ### clear
 
