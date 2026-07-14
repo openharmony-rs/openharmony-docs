@@ -96,7 +96,7 @@ struct WebComponent {
                     console.info("[schemeHandler] onRequestStart postDataStream isChunked:" + stream.isChunked());
                     console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
                     console.info("[schemeHandler] onRequestStart postDataStream isInMemory:" + stream.isInMemory());
-                    stream.read(stream.getSize()).then((buffer) => {
+                    stream.read(stream.getSize().toInt()).then((buffer) => {
                       if (!stream) {
                         return;
                       }
