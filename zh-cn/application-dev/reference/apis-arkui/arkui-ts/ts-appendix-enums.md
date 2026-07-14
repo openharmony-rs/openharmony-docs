@@ -7,6 +7,8 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+本文档汇总ArkUI开发中的公共枚举，供开发者查询枚举值的含义和适用场景。
+
 >**说明：**
 >
 >本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -1185,7 +1187,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 type Nullable\<T> = T \| undefined
 
-在使用该类型时，该类型的对象可以是自定义类型，也可以是undefined。
+在使用该类型时，其值可以是泛型参数T所指定的类型，也可以是undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1195,7 +1197,7 @@ type Nullable\<T> = T \| undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-|  T   | 表示该类型声明的对象是自定义类型。 |
+|  T   | 表示泛型参数T所指定的类型。 |
 | undefined | 表示该类型声明的对象是undefined。 |
 
 ## ObscuredReasons<sup>10+</sup>
@@ -1388,7 +1390,7 @@ type Nullable\<T> = T \| undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                          | 值                          | 说明                                                                              |
 | --------------------------- | -- | ---------------------------------------------------------------------------------- |
