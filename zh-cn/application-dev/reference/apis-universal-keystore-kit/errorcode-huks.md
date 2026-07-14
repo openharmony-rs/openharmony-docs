@@ -326,7 +326,7 @@ A device password is required but not set.
 
 **可能原因**
 
-密钥设置了需要设备密码的用户认证访问控制属性，但设备密码尚未设置。
+该密钥配置了依赖设备密码的用户访问认证属性，但设备密码未配置，导致无法操作。
 
 **处理步骤**
 
@@ -523,7 +523,7 @@ the secure element is not available.
 
 **错误信息**
 
-The internet is unavailable.
+The Internet is unavailable.
 
 **错误描述**
 
