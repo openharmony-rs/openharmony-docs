@@ -1001,28 +1001,17 @@
 
 ### 返回说明
 
-命令执行成功时返回`{"code":10,"message":"success"}`。
+命令执行成功时返回`{"code":10,"message":"success"}`；失败时返回错误码JSON，常见错误码见下表：
 
-失败结果如下：
-
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 110 | invalid params JSON | `params`缺失或不是Object。 |
-| 130 | element rect resolve timeout | 通过`id`解析目标元素位置超时。 |
-| 131 | element rect is not available | `id`通路未获得有效的元素位置解析结果。 |
-| 131 | element not found | `id`格式有效，但对应元素不存在、已失效或无法解析。 |
-| 131 | element rect is empty | 元素位置解析结果中没有有效矩形，或矩形宽度、高度不为正数。 |
-| 132 | browser or host is null | browser或browser host为空。 |
-| 350 | SendDevToolsMessage failed | 滚动命令下发失败。 |
-| 391 | missing id or x/y | 未传入`id`，也未传入`x`或`y`。 |
-| 391 | missing x or y | 坐标通路只传入了`x`或`y`其中一个。 |
-| 392 | invalid param: x | `x`已传入，但不是number。 |
-| 392 | invalid param: y | `y`已传入，但不是number。 |
-| 392 | invalid param: deltaX | `deltaX`已传入，但不是number。 |
-| 392 | invalid param: deltaY | `deltaY`已传入，但不是number。 |
-| 392 | invalid param: speed | `speed`已传入但不是整数，或取值为0。 |
-| 392 | id is mutually exclusive with x/y | `id`与`x`或`y`同时传入。 |
-| 392 | invalid id | `id`不是string、为空字符串或不符合ArkWeb节点标识格式。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 110 | `params`字段非JSON对象 |
+| 130 | 通过`id`解析目标元素位置超时 |
+| 131 | 通过`id`解析目标元素位置失败、元素不存在或元素无有效矩形 |
+| 132 | browser或host为空，通常表示Web实例不可用 |
+| 350 | 滚动命令下发失败 |
+| 391 | 未传入`id`时缺少必要参数`x`或`y` |
+| 392 | `id`无效、`x`/`y`/`deltaX`/`deltaY`/`speed`取值或类型无效（如`speed=0`），或`id`与`x`/`y`同时传入 |
 
 ### 请求示例
 
@@ -1147,27 +1136,22 @@
 
 ### 返回说明
 
-命令执行成功时返回`{"code":10,"message":"success"}`。
+命令执行成功时返回`{"code":10,"message":"success"}`；失败时返回错误码JSON，常见错误码见下表：
 
-失败结果如下：
-
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | select command failed | select命令执行超时，或renderer侧执行对象不可用。 |
-| 110 | invalid params JSON | `params`缺失或不是Object。 |
-| 115 | missing or empty xpath | 未使用`id`通路，且`xpath`缺失、不是string或为空字符串。 |
-| 131 | select command failed | XPath未匹配到元素，或节点标识对应的frame、文档或DOM节点已失效。 |
-| 132 | browser or host is null | browser或browser host为空。 |
-| 160 | select command failed | main frame无效、frame未就绪或renderer通信通道未就绪。 |
-| 161 | select command failed | 定位到的目标元素不是`select`元素。 |
-| 251 | both indexes and values are empty | `indexes`和`values`均未提供、不是数组，或数组解析后均无有效成员。 |
-| 252 | select command failed | `indexes`中存在小于0或大于等于option数量的索引。 |
-| 253 | select command failed | `values`中存在无法匹配任何option `value`属性的值。 |
-| 254 | select command failed | 单选`select`元素传入多个索引或多个值。 |
-| 255 | select command failed | 选中的option被禁用。 |
-| 392 | id and xpath are mutually exclusive | `id`和`xpath`同时传入。 |
-| 392 | invalid id or xpath | 未传入`xpath`，且`id`已传入但不是string或为空字符串。 |
-| 392 | select command failed | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 110 | `params`字段非JSON对象 |
+| 115 | 未提供`id`或`xpath`定位参数，或`xpath`为空字符串 |
+| 131 | 目标元素不存在 |
+| 132 | browser或host为空，通常表示Web实例不可用 |
+| 161 | 目标元素不是`<select>`元素 |
+| 251 | `indexes`和`values`均未提供、不是数组或解析后无有效项 |
+| 252 | `indexes`索引越界（小于0或大于等于option数量） |
+| 253 | `values`中的值在option列表中无匹配项 |
+| 254 | 单选`<select>`传入多个索引 |
+| 255 | 选中的option被禁用 |
+| 256 | `<select>`元素无option子元素 |
+| 392 | `id`和`xpath`同时传入，或`id`/`xpath`字段类型无效 |
 
 ### 请求示例
 
