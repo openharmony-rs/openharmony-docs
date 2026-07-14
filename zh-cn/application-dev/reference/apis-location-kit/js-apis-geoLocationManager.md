@@ -134,6 +134,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。|
 | locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 |
+| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 |
 | needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
@@ -545,6 +546,7 @@ POI信息结构体。
 | RUNNING   | 1 |  表示跑步。 |
 | WALKING    | 2 | 表示步行。 |
 | CYCLING     | 3 | 表示骑行。 |
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
@@ -3615,6 +3617,85 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
     console.error("getCurrentDistrict: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
+  
+  ## geoLocationManager.getPostProcessingTrack
+
+getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;&gt;
+
+根据传入的[sportsType](#sportstype18)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，并在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Gnss
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | sportsType | [SportsType](#sportstype18) | 否 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Array&lt;[Location](#location)&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off.  |
+|3301200 | Failed to obtain the geographical location.  |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let request: geoLocationManager.ContinuousLocationRequest = {
+    'interval': 1,
+    'locationScenario': geoLocationManager.UserActivityScenario.SPORT,
+    // 设置运动类型为滑雪
+    'sportsType': geoLocationManager.SportsType.SKIING,
+  };
+
+  let locationCallback = (location: geoLocationManager.Location): void => {
+    console.info('locationCallback: data: ' + JSON.stringify(location));
+  };
+
+  let processTrackTask = (): void => {
+    // 先移除定位请求
+    geoLocationManager.off('locationChange', locationCallback);
+    // 获取后处理轨迹
+    geoLocationManager.getPostProcessingTrack(geoLocationManager.SportsType.SKIING)
+      .then((res) => {
+        console.info('getPostProcessingTrack len: ' + JSON.stringify(res.length));
+      }).catch((err: BusinessError) => {
+        console.info('getPostProcessingTrack err: ' + JSON.stringify(err));
+      })
+  }
+
+  try {
+    // 发起滑雪模式定位请求
+    geoLocationManager.on('locationChange', request, locationCallback);
+    // 满足轨迹采集条件后，移除定位请求并获取后处理轨迹，这里设定30分钟后满足轨迹采集要求。
+    let delayTaskTime = 30 * 60 * 1000;
+    setTimeout(processTrackTask, delayTaskTime);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
    
 ## geoLocationManager.startBluetoothSearch
   
@@ -3661,8 +3742,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
     if (bluetoothScanResult) {
       console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
         try {
-          
-          //开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
+          // 开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
           geoLocationManager.stopBluetoothSearch(this.callback);
         } catch (err) {
           console.error("errCode:" + err.code + ", message:" + err.message);
