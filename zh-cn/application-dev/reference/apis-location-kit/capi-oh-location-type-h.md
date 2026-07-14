@@ -158,7 +158,7 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回 bool 类型的结果，用于指示该位置是否来自模拟位置功能。<br> 如果值为 true，表示该位置来自模拟位置功能；如果值为 false，表示该位置源自系统的真实定位结果。<br> |
+| bool | 返回bool类型的结果，用于指示该位置是否来自模拟位置功能。<br> 如果值为 true，表示该位置来自模拟位置功能；如果值为false，表示该位置源自系统的真实定位结果。<br> |
 
 ### OH_LocationInfo_GetBasicInfo()
 
