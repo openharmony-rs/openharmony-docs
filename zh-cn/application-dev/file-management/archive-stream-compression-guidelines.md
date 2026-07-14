@@ -72,12 +72,13 @@ static void InitStreamConfig(OH_Archive_Stream_Config *config)
 {
     config->blockSize = 65536; // 设置block大小为65536 bytes
     config->threadNum = 4;     // 设置线程数为4
-    config->method = OH_ARCHIVE_COMPRESS_DEFLATE;
-    config->checksum = OH_ARCHIVE_CRC32;
+    config->method = OH_ARCHIVE_COMPRESS_DEFLATE; // 设置压缩算法为DEFLATE
+    config->checksum = OH_ARCHIVE_CRC32;          // 设置校验方式为CRC32
 }
 
 static napi_value StreamCompress(napi_env env, napi_callback_info info)
 {
+    // 获取输入文件路径和输出文件路径
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -89,21 +90,24 @@ static napi_value StreamCompress(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[0], inPathBuf, sizeof(inPathBuf), &inPathSize);
     napi_get_value_string_utf8(env, argv[1], outPathBuf, sizeof(outPathBuf), &outPathSize);
 
+    // 初始化流式压缩配置并创建流式压缩写入器
     OH_Archive_Stream_Config config = {0};
     InitStreamConfig(&config);
     OH_Archive_StreamWrite_Ctx ctx = OH_Archive_StreamWrite_Create(config);
 
-    const int bufferSize = 32 * 1024 * 4 + 2;
+    const int bufferSize = 32 * 1024 * 4 + 2; // 设置读取缓冲区大小
     unsigned char buffer[bufferSize];
 
-    CreateRandomFile(inPathBuf, 1024 * 1024); // 1024K大小文件
+    CreateRandomFile(inPathBuf, 1024 * 1024); // 创建1024K大小的测试文件
 
+    // 打开输出文件，用于写入压缩后的数据
     FILE *fout = fopen(outPathBuf, "wb");
     if (!fout) {
         return nullptr;
     }
     OH_Archive_ErrCode result = OH_ARCHIVE_OK;
-    result = OH_Archive_StreamWrite_SetCompressLevel(ctx, 6); // 压缩等级为6
+    result = OH_Archive_StreamWrite_SetCompressLevel(ctx, 6); // 设置压缩等级为6
+    // 启动流式压缩，通过WriteCallBack回调将压缩数据写入文件
     result = OH_Archive_StreamWrite_Start(ctx, WriteCallBack, fout);
     uint64_t totalSize = 0;
     FILE *fi = fopen(inPathBuf, "rb");
@@ -113,6 +117,7 @@ static napi_value StreamCompress(napi_env env, napi_callback_info info)
     }
     (void)fseek(fi, 0, SEEK_SET);
 
+    // 循环读取文件数据并输入到压缩器进行压缩
     uint64_t read = 0;
     while ((read = fread(buffer, 1, bufferSize, fi)) > 0) {
         totalSize += read;
@@ -122,6 +127,7 @@ static napi_value StreamCompress(napi_env env, napi_callback_info info)
         }
     }
     (void)fclose(fi);
+    // 结束流式压缩并获取压缩结果信息
     OH_Archive_StreamInfo streamInfo;
     result = OH_Archive_StreamWrite_End(ctx, &streamInfo);
     (void)fclose(fout);
@@ -146,6 +152,7 @@ static napi_value StreamCompress(napi_env env, napi_callback_info info)
 ``` C++
 static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
 {
+    // 获取输入文件路径和输出文件路径
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -155,19 +162,22 @@ static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[0], inPathBuf, sizeof(inPathBuf), nullptr);
     napi_get_value_string_utf8(env, argv[1], outPathBuf, sizeof(outPathBuf), nullptr);
 
+    // 初始化流式压缩配置并创建流式压缩写入器
     OH_Archive_Stream_Config config;
     InitStreamConfig(&config);
     OH_Archive_StreamWrite_Ctx ctx = OH_Archive_StreamWrite_Create(config);
 
-    CreateRandomFile(inPathBuf, 1024 * 1024); // 1024K大小文件
+    CreateRandomFile(inPathBuf, 1024 * 1024); // 创建1024K大小的测试文件
+    // 打开输出文件，用于写入压缩后的数据
     FILE *fout = fopen(outPathBuf, "wb");
     if (!fout) {
         return nullptr;
     }
     OH_Archive_ErrCode result = OH_ARCHIVE_OK;
-    result = OH_Archive_StreamWrite_SetCompressLevel(ctx, 6); // 压缩等级为6
+    result = OH_Archive_StreamWrite_SetCompressLevel(ctx, 6); // 设置压缩等级为6
+    // 启动流式压缩，通过WriteCallBack回调将压缩数据写入文件
     result = OH_Archive_StreamWrite_Start(ctx, WriteCallBack, fout);
-    const int bufferSize = 32 * 1024 * 4 + 2;
+    const int bufferSize = 32 * 1024 * 4 + 2; // 设置读取缓冲区大小
     unsigned char buffer[bufferSize];
     uint64_t totalSize = 0;
     FILE *fi = fopen(inPathBuf, "rb");
@@ -176,11 +186,13 @@ static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
         return nullptr;
     }
 
+    // 循环读取文件数据并输入到压缩器进行压缩，累计数据量超过阈值时取消压缩
     uint64_t read = 0;
-    uint64_t cancelThreshold = 2000;
+    uint64_t cancelThreshold = 2000; // 设置取消阈值为2000 bytes
     while ((read = fread(buffer, 1, bufferSize, fi)) > 0) {
         totalSize += read;
         if (totalSize > cancelThreshold) {
+            // 累计数据量超过阈值，取消流式压缩
             result = OH_Archive_StreamWrite_Cancel(ctx);
             break;
         } else {
@@ -191,6 +203,7 @@ static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
         }
     }
     (void)fclose(fi);
+    // 结束流式压缩，取消场景下不获取压缩结果信息
     result = OH_Archive_StreamWrite_End(ctx, nullptr);
     (void)fclose(fout);
     napi_value retVal = nullptr;
@@ -216,36 +229,43 @@ static napi_value StreamDecompress(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, nullptr, nullptr, nullptr);
 
     int ret;
+    // 初始化流式压缩配置，解压缩配置需与压缩时保持一致
     OH_Archive_Stream_Config config = {0};
     InitStreamConfig(&config);
 
+    // 先通过流式压缩生成测试用的压缩数据
     uint64_t srcSize = 30 * 1024; // 数据长度为30 * 1024
     uint64_t zipSize = srcSize * 1.1;
     void *zipBuffer = reinterpret_cast<void *>(malloc(zipSize));
     OH_Archive_StreamInfo compressInfo = {0, 0, 0};
     CreateFileWithStreamWrite(&config, srcSize, zipBuffer, &compressInfo);
 
+    // 创建流式解压缩读取器
     OH_Archive_StreamRead_Ctx readCtx = OH_Archive_StreamRead_Create(config);
 
     uint64_t unzipSize = srcSize;
     void *unzipBuffer = reinterpret_cast<void *>(malloc(unzipSize));
 
+    // 启动流式解压缩，通过WriteHandler回调将解压后的数据写入unzipBuffer
     ret = OH_Archive_StreamRead_Start(readCtx, WriteHandler, unzipBuffer);
 
+    // 分段输入压缩数据进行解压缩
     uint8_t *unzPtr = (uint8_t *)zipBuffer;
     size_t unzLeft = compressInfo.totalOutSize;
 
     while (unzLeft > 0) {
-        size_t unzchunk = (unzLeft > 1024) ? 1024 : unzLeft;
+        size_t unzchunk = (unzLeft > 1024) ? 1024 : unzLeft; // 每次最多处理1024 bytes
         ret = OH_Archive_StreamRead_Update(readCtx, unzPtr, unzchunk);
 
         unzPtr += unzchunk;
         unzLeft -= unzchunk;
     }
 
+    // 结束流式解压缩并获取解压缩结果信息
     OH_Archive_StreamInfo decompressInfo2 = {};
     ret = OH_Archive_StreamRead_End(readCtx, &decompressInfo2);
 
+    // 销毁流式解压缩读取器，释放资源
     OH_Archive_StreamRead_Destroy(readCtx);
 
     free(zipBuffer);
@@ -275,26 +295,32 @@ static napi_value StreamDecompressCancel(napi_env env, napi_callback_info info)
 
     int ret;
 
+    // 初始化流式压缩配置，解压缩配置需与压缩时保持一致
     OH_Archive_Stream_Config config = {0};
     InitStreamConfig(&config);
 
+    // 先通过流式压缩生成测试用的压缩数据
     uint64_t srcSize = 30 * 1024; // 数据长度为30 * 1024
     uint64_t zipSize = srcSize * 1.1;
     void *zipBuffer = reinterpret_cast<void *>(malloc(zipSize));
     OH_Archive_StreamInfo compressInfo = {0, 0, 0};
     CreateFileWithStreamWrite(&config, srcSize, zipBuffer, &compressInfo);
+    // 创建流式解压缩读取器
     OH_Archive_StreamRead_Ctx readCtx = OH_Archive_StreamRead_Create(config);
 
     uint64_t unzipSize = srcSize;
     void *unzipBuffer = reinterpret_cast<void *>(malloc(unzipSize));
 
+    // 启动流式解压缩，通过WriteHandler回调将解压后的数据写入unzipBuffer
     ret = OH_Archive_StreamRead_Start(readCtx, WriteHandler, unzipBuffer);
     uint8_t *unzPtr = (uint8_t *)zipBuffer;
     size_t unzLeft = compressInfo.totalOutSize;
 
+    // 分段输入压缩数据进行解压缩，剩余数据量小于阈值时取消解压缩
     while (unzLeft > 0) {
-        size_t unzchunk = (unzLeft > 1024) ? 1024 : unzLeft;
+        size_t unzchunk = (unzLeft > 1024) ? 1024 : unzLeft; // 每次最多处理1024 bytes
         if (unzLeft < 20 * 1024) { // 剩余数据小于 20 * 1024 bytes时取消
+            // 取消流式解压缩
             ret = OH_Archive_StreamRead_Cancel(readCtx);
             ret = OH_Archive_StreamRead_Update(readCtx, unzPtr, unzchunk);
             break;
@@ -305,8 +331,10 @@ static napi_value StreamDecompressCancel(napi_env env, napi_callback_info info)
         unzLeft -= unzchunk;
     }
 
+    // 结束流式解压缩，取消场景下不获取解压缩结果信息
     OH_Archive_StreamInfo *decompressInfo2 = nullptr;
     ret = OH_Archive_StreamRead_End(readCtx, decompressInfo2);
+    // 销毁流式解压缩读取器，释放资源
     OH_Archive_StreamRead_Destroy(readCtx);
 
     free(zipBuffer);

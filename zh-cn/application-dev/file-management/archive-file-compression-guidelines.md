@@ -73,6 +73,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 ``` C++
 static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
 {
+    // 获取输入文件路径和输出归档文件路径
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -84,6 +85,7 @@ static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[0], inPathBuf, sizeof(inPathBuf), &inPathSize);
     napi_get_value_string_utf8(env, argv[1], zipPathBuf, sizeof(zipPathBuf), &zipPathSize);
 
+    // 创建测试文件并写入内容
     std::string content = "test content这是测试内容Hello, hello!第一行数据";
     std::string file(inPathBuf);
     std::ofstream stdfile(file, std::ios::out | std::ios::trunc);
@@ -95,12 +97,17 @@ static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
     srcFiles.push_back(file.c_str());
 
     int ret;
+    // 打开归档文件并创建写入器，指定ZIP格式
     OH_Archive_Writer_Ctx arc = OH_Archive_Writer_OpenFile(zipPathBuf, OH_ARCHIVE_OPEN_MODE_CREATE, OH_ARCHIVE_FMT_ZIP);
+    // 设置压缩算法为DEFLATE，压缩级别为6
     ret = OH_Archive_Writer_SetCompressMethod(arc, OH_ARCHIVE_COMPRESS_DEFLATE, int32_t(6)); // 压缩等级为6
 
+    // 设置进度回调，用于获取压缩进度信息
     OH_Archive_ProgressHandlerWithData progressHandlerFunc = ProgressHandler;
     ret = OH_Archive_Writer_SetProgressHandlerWithData(arc, progressHandlerFunc, nullptr);
+    // 添加文件到归档中
     ret = OH_Archive_Writer_Add(arc, srcFiles.data(), srcFiles.size());
+    // 关闭归档写入器，完成压缩并释放资源
     ret = OH_Archive_Writer_Close(arc);
     napi_value retVal = nullptr;
     napi_create_int32(env, ret, &retVal);
@@ -120,6 +127,7 @@ static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
 ``` C++
 static napi_value ZipFileDecompress(napi_env env, napi_callback_info info)
 {
+    // 获取输入文件路径、归档文件路径和解压输出目录路径
     size_t argc = 3;
     napi_value argv[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -134,11 +142,16 @@ static napi_value ZipFileDecompress(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[1], zipPathBuf, sizeof(zipPathBuf), &zipPathSize);
     napi_get_value_string_utf8(env, argv[2], outDirBuf, sizeof(outDirBuf), &outDirSize); // 第2个参数
 
+    // 先压缩文件生成归档文件，用于后续解压缩
     int ret = ArchiveCompressFile(inPathBuf, zipPathBuf);
+    // 打开归档文件并创建读取器
     OH_Archive_Reader_Ctx ctx = OH_Archive_Reader_OpenFile(zipPathBuf);
     int userData[2] = {0};
+    // 设置解压缩进度回调
     ret = OH_Archive_Reader_SetProgressHandlerWithData(ctx, ProgressHandler, (void *)userData);
+    // 解压缩归档文件中的所有文件到指定目录
     ret = OH_Archive_Reader_ExtractAllFile(ctx, outDirBuf);
+    // 关闭归档读取器，释放资源
     ret = OH_Archive_Reader_Close(ctx);
 
     napi_value result = nullptr;
