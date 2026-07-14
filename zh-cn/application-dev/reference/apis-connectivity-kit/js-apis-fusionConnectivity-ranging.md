@@ -139,7 +139,7 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 | 参数名          | 类型                                   | 必填 | 说明                    |
 | ------------- | ------------------------------------ | ---- | --------------------- |
 | params        | [RangingParams](#rangingparams)            | 是   | 目标设备的测距参数，包含设备的地址和测距类型。如果填入的参数不符合要求，接口会按照参数要求返回对应的错误码。   |
-| callback      | Callback&lt;[RangingResult](#rangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距目标标识，需在调用[stopRanging](#rangingstopranging)时传入相同引用进行关联已启动的测距，因此在应用侧不要使用临时callback作为入参。同一callback可关联多个设备的测距会话，但如果调用[stopRanging](#rangingstopranging)接口停止测距时未指定[params](#rangingrangingparams)，接口将根据callback停止全部关联的测距设备，不建议多个设备共用同一测距回调。    |
+| callback      | Callback&lt;[RangingResult](#rangingresult)&gt; | 是   | 测距结果回调，每次测距结果产生时触发回调。同时作为测距目标标识，需在调用[stopRanging](#rangingstopranging)时传入相同引用进行关联已启动的测距，因此在应用侧不要使用临时callback作为入参。同一callback可关联多个设备的测距会话，但如果调用[stopRanging](#rangingstopranging)接口停止测距时未指定[params](#rangingparams)，接口将根据callback停止全部关联的测距设备，不建议多个设备共用同一测距回调。    |
 
 **错误码**：
 
