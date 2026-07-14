@@ -19,7 +19,7 @@ Must enable super-resolution feature before calling {@link #setSuperResolution} 
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -36,7 +36,7 @@ which is used to facilitate quick opening of the media. Currently only supports 
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -66,7 +66,7 @@ Audio language.
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -85,7 +85,7 @@ see [Online Video Frame Freezing Optimization Practice](https://developer.huawei
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -101,7 +101,7 @@ Customize the buffering threshold for start or restart playing. The unit is seco
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -117,7 +117,7 @@ If true, the player should choose HDR stream if exist.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -133,7 +133,7 @@ Choose a stream with height close to it.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -149,7 +149,7 @@ Subtitle language.
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -165,7 +165,7 @@ Choose a stream with width close to it.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -181,7 +181,7 @@ Show first frame on prepare.
 
 **起始版本：** 17
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本17开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -198,7 +198,7 @@ It is recommended that the value be 2 seconds greater than the starting waterlin
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

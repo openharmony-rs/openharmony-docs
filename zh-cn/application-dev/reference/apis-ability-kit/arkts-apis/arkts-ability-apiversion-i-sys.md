@@ -1,6 +1,6 @@
 # ApiVersion（系统接口）
 
-module��api�汾��
+module的api版本。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ module��api�汾��
 readonly compatible: number
 ```
 
-��С���ݰ汾�š�
+最小兼容版本号。
 
 **类型：** number
 
@@ -30,7 +30,7 @@ readonly compatible: number
 readonly releaseType: string
 ```
 
-�汾�����ơ�
+版本的名称。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ readonly releaseType: string
 readonly target: number
 ```
 
-Ŀ��汾�š�
+目标版本号。
 
 **类型：** number
 

@@ -10,7 +10,7 @@ export declare function getInspectorTree(): Object
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,5 +18,5 @@ export declare function getInspectorTree(): Object
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform<br/>@atomicservice |
+| Object | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@atomicservice |
 

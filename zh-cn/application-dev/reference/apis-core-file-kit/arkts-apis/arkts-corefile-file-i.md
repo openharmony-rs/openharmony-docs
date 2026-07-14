@@ -28,9 +28,9 @@ getParent(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [14300002](../../errorcode-universal.md#14300002-Invalid) | Invalid URI |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
+| 14300002 | Invalid URI |
 
 **示例：**
 
@@ -70,12 +70,12 @@ lock(exclusive?: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900043](../../errorcode-universal.md#13900043-No) | No record locks available |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900043 | No record locks available |
 
 **示例：**
 
@@ -116,12 +116,12 @@ lock(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900043](../../errorcode-universal.md#13900043-No) | No record locks available |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900043 | No record locks available |
 
 **示例：**
 
@@ -164,12 +164,12 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900043](../../errorcode-universal.md#13900043-No) | No record locks available |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900043 | No record locks available |
 
 **示例：**
 
@@ -211,12 +211,12 @@ tryLock(exclusive?: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900043](../../errorcode-universal.md#13900043-No) | No record locks available |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900043 | No record locks available |
 
 **示例：**
 
@@ -245,12 +245,12 @@ unlock(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [13900043](../../errorcode-universal.md#13900043-No) | No record locks available |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900034 | Operation would block |
+| 13900042 | Unknown error |
+| 13900043 | No record locks available |
 
 **示例：**
 
@@ -276,7 +276,7 @@ readonly fd: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

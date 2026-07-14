@@ -1,10 +1,8 @@
 # HuksCryptoExtensionParams
 
-����API��ʹ�õ�ѡ�
+定义API中使用的选项。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -14,7 +12,7 @@
 inData?: Uint8Array
 ```
 
-�������������ݡ�
+操作的输入数据。
 
 **类型：** Uint8Array
 
@@ -30,7 +28,7 @@ inData?: Uint8Array
 properties: HuksCryptoExtensionParam[]
 ```
 
-���������ԡ�
+操作的属性。
 
 **类型：** HuksCryptoExtensionParam[]
 

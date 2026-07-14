@@ -1,10 +1,8 @@
 # MonitorOptions
 
-[addMonitor](arkts-arkui-uiutils-c.md#addMonitor-1)的可选参数，用于配置回调类型以及是否使能通配符能力。
+[addMonitor](arkts-arkui-uiutils-c.md#addmonitor-1)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
 **起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +22,7 @@ enableWildcard?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +42,7 @@ isSynchronous?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

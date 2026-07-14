@@ -1,6 +1,6 @@
 # AppCloneIdentity
 
-����Ӧ�ð���������Ϣ��
+描述应用包的身份信息。
 
 **起始版本：** 14
 
@@ -12,7 +12,7 @@
 readonly appIndex: number
 ```
 
-Ӧ�ð��ķ���������Ϣ��
+应用包的分身索引信息。
 
 **类型：** number
 
@@ -26,7 +26,7 @@ readonly appIndex: number
 readonly bundleName: string
 ```
 
-Ӧ�õ�bundleName��
+应用的bundleName。
 
 **类型：** string
 

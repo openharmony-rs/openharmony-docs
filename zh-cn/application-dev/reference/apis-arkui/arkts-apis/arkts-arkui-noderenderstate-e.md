@@ -1,9 +1,5 @@
 # NodeRenderState
 
-```TypeScript
-export const enum NodeRenderState
-```
-
 An enumeration type that identifies the current node's rendering state. The UI components used in
 the application are automatically managed by the system and controlled for participation in graphical
 rendering by either mounting them onto the render tree or removing them from it. Only nodes that
@@ -13,8 +9,6 @@ actual implementation of the application. Nevertheless, if a node does not parti
 it will definitely not be visible.
 
 **起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +28,7 @@ trigger the callback once, and the state notified at this time typically represe
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +47,7 @@ trigger the callback once, and the state notified at this time typically represe
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -28,11 +28,11 @@ declare function dup(fd: number): File
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900022](../../errorcode-universal.md#13900022-Too) | Too many open files |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900014 | Device or resource busy |
+| 13900020 | Invalid argument |
+| 13900022 | Too many open files |
+| 13900042 | Unknown error |
 

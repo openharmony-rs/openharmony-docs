@@ -1,0 +1,65 @@
+# Column
+
+沿垂直方向布局的容器。
+
+> **说明：**
+
+> Column未设置高度或宽度时，在主轴或交叉轴方向上自适应子组件大小。
+
+
+## Column
+
+```TypeScript
+Column(options?: ColumnOptions)
+```
+
+创建垂直方向线性布局容器，可以设置子组件的间距。
+
+> **说明：**
+>
+> 在复杂界面中使用多组件嵌套时，若布局组件的嵌套层数过深或嵌套的组件数量过多，将会产生额外开销。建议通过移除冗余节点、利用布局边界减少布局计算、合理采用渲染控制语法及布局组件方法来优化性能。最佳实践请参考
+> [布局优化指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-improve-layout-performance)。
+
+**起始版本：** 7
+
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | ColumnOptions | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
+
+## Column
+
+```TypeScript
+Column(options?: ColumnOptions | ColumnOptionsV2)
+```
+
+创建垂直方向线性布局容器，可以设置子组件的间距。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | ColumnOptions \| ColumnOptionsV2 | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
+
+## 汇总
+
+- [ColumnOptions](arkts-arkui-column-columnoptions-i.md)
+- [ColumnOptionsV2](arkts-arkui-column-columnoptionsv2-i.md)
+- [SpaceType](arkts-arkui-column-spacetype-t.md)

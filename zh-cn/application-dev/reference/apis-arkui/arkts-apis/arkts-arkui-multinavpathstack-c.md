@@ -1,13 +1,11 @@
 # MultiNavPathStack
 
-��ǰ��MultiNavigation��·��ջ��֧����ʹ�÷����д�������֧��ͨ���ص���ʽ��ȡ������ʹ��[NavDestination](arkts-arkui-navdestination.md)��
-[onReady](NavDestinationAttribute#onReady)�������¼���ӿ�����ȡNavPathStack������ջ��������Ϊ����ܻᵼ�²���Ԥ֪�����⡣
+当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用[NavDestination](../arkts-components/arkts-arkui-navdestination.md)的
+[onReady](NavDestinationAttribute#onReady)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
 
-**继承/实现关系：** MultiNavPathStack extends [NavPathStack](arkts-arkui-navigation-navpathstack-c.md#NavPathStack)
+**继承/实现关系：** MultiNavPathStack extends [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
 
 **起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -17,17 +15,17 @@
 clear(animated?: boolean): void
 ```
 
-���ջ������ҳ�档
+清除栈中所有页面。
 
-> **˵����**
+> **说明：**
 
-> ������[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepBottomPage-1)�ӿڲ�����Ϊtrueʱ���ᱣ��ջ��ҳ�档
+> 当调用[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepbottompage-1)接口并设置为true时，会保留栈底页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +33,7 @@ clear(animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## constructor
 
@@ -49,7 +47,7 @@ Creates an instance of MultiNavPathStack.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,13 +57,13 @@ Creates an instance of MultiNavPathStack.
 disableAnimation(disable: boolean): void
 ```
 
-�رգ�true����򿪣�false����ǰMultiNavigation������ת��������
+关闭（true）或打开（false）当前MultiNavigation中所有转场动画。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +71,7 @@ disableAnimation(disable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disable | boolean | 是 | �Ƿ�ر�ת��������<br/>Ĭ��ֵ��false<br/>true���ر�ת��������<br/>false�����ر�ת�������� |
+| disable | boolean | 是 | 是否关闭转场动画。<br/>默认值：false<br/>true：关闭转场动画。<br/>false：不关闭转场动画。 |
 
 ## getAllPathName
 
@@ -81,13 +79,13 @@ disableAnimation(disable: boolean): void
 getAllPathName(): Array<string>
 ```
 
-��ȡջ������NavDestinationҳ������ơ�
+获取栈中所有NavDestination页面的名称。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +93,7 @@ getAllPathName(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | ����ջ������NavDestinationҳ������ơ� |
+| Array&lt;string&gt; | 返回栈中所有NavDestination页面的名称。 |
 
 ## getIndexByName
 
@@ -103,13 +101,13 @@ getAllPathName(): Array<string>
 getIndexByName(name: string): Array<number>
 ```
 
-��ȡȫ����Ϊname��NavDestinationҳ���λ��������
+获取全部名为name的NavDestination页面的位置索引。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,13 +115,13 @@ getIndexByName(name: string): Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
+| name | string | 是 | NavDestination页面名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Indexes of all the matching navigation destination pages.<br/><br/>Value range of the number type: [0, +��). |
+| Array&lt;number&gt; | Indexes of all the matching navigation destination pages.<br>Value range of the number type: [0, +∞). |
 
 ## getParamByIndex
 
@@ -131,13 +129,13 @@ getIndexByName(name: string): Array<number>
 getParamByIndex(index: number): Object | undefined
 ```
 
-��ȡindexָ����NavDestinationҳ��Ĳ�����Ϣ��
+获取index指定的NavDestination页面的参数信息。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,13 +143,13 @@ getParamByIndex(index: number): Object | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | NavDestinationҳ���λ��������<br/>ȡֵ��Χ��[0, +��) |
+| index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | **Object**: parameter information of the matching navigation destination page.<br/><br/>**undefined**: returned when an invalid index is provided. |
+| Object | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
 
 ## getParamByName
 
@@ -159,13 +157,13 @@ getParamByIndex(index: number): Object | undefined
 getParamByName(name: string): Array<Object>
 ```
 
-��ȡȫ����Ϊname��NavDestinationҳ��Ĳ�����Ϣ��
+获取全部名为name的NavDestination页面的参数信息。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,13 +171,13 @@ getParamByName(name: string): Array<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
+| name | string | 是 | NavDestination页面名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Object&gt; | ����ȫ����Ϊname��NavDestinationҳ��Ĳ�����Ϣ�� |
+| Array&lt;Object&gt; | 返回全部名为name的NavDestination页面的参数信息。 |
 
 ## keepBottomPage
 
@@ -187,18 +185,18 @@ getParamByName(name: string): Array<Object>
 keepBottomPage(keepBottom: boolean): void
 ```
 
-�����ڵ���pop��clear�ӿ�ʱ�Ƿ���ջ��ҳ�档
+设置在调用pop和clear接口时是否保留栈底页面。
 
-> **˵����**
+> **说明：**
 
-> MultiNavigation����ҳҲ������NavDestinationҳ����ջ�����Ե���pop��clear�ӿ�ʱ�Ὣջ��ҳ��Ҳ��ջ��
-> > Ӧ�õ��ô˽ӿڲ�����Ϊtrueʱ��MultiNavigation���ڵ���pop��clear�ӿ�ʱ����ջ��ҳ�档
+> MultiNavigation将主页也当作了NavDestination页面入栈，所以调用pop或clear接口时会将栈底页面也出栈。
+> > 应用调用此接口并设置为true时，MultiNavigation会在调用pop和clear接口时保留栈底页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,7 +204,7 @@ keepBottomPage(keepBottom: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keepBottom | boolean | 是 | �Ƿ���ջ��ҳ�档<br/>Ĭ��ֵ��false<br/>true������ջ��ҳ�档<br/>false��������ջ��ҳ�档 |
+| keepBottom | boolean | 是 | 是否保留栈底页面。<br/>默认值：false<br/>true：保留栈底页面。<br/>false：不保留栈底页面。 |
 
 ## moveIndexToTop
 
@@ -214,27 +212,27 @@ keepBottomPage(keepBottom: boolean): void
 moveIndexToTop(index: number, animated?: boolean): void
 ```
 
-��ָ��index��NavDestinationҳ���Ƶ�ջ����
+将指定index的NavDestination页面移到栈顶。
 
-> **˵����**
+> **说明：**
 
-> �����ҵ��ĵ�һ����Ϊname��ҳ��Ĳ�ͬ��MultiNavigation����в�ͬ�Ĵ�����
+> 根据找到的第一个名为name的页面的不同，MultiNavigation会进行不同的处理：
 
-> 1)���ҵ��������ϲ���ҳ����ȫ��ҳ����ʱ�����κδ�����
+> 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 
-> 2)���ҵ��������ϲ���ҳ��Ӧ������ҳ����Ὣ��Ӧ������ҳ�Ƶ�ջ����
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 
-> 3)���ҵ����Ƿ����ϲ����ҳ����Ὣ��ҳ�Ͷ�Ӧ��������ҳ�Ƶ�ջ��������ҳ���ջ��ϵ���䣻
+> 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 
-> 4)���ҵ����Ƿ����ϲ������ҳ����Ὣ��ҳ�Ͷ�Ӧ��������ҳ�Ƶ�ջ�����ҽ�Ŀ������ҳ�ƶ�����Ӧ��������ҳ��ջ����
+> 4)当找到的是非最上层的详情页，则会将主页和对应所有详情页移到栈顶，且将目标详情页移动到对应所有详情页的栈顶；
 
-> 5)���ҵ����Ƿ����ϲ��ȫ��ҳ����Ὣȫ��ҳ�ƶ���ջ����
+> 5)当找到的是非最上层的全屏页，则会将全屏页移动到栈顶。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,8 +240,8 @@ moveIndexToTop(index: number, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | NavDestinationҳ���λ��������<br/>ȡֵ��Χ��[0, +��) |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## moveToTop
 
@@ -251,27 +249,27 @@ moveIndexToTop(index: number, animated?: boolean): void
 moveToTop(name: string, animated?: boolean): number
 ```
 
-����ջ�׿�ʼ��һ����Ϊname��NavDestinationҳ���Ƶ�ջ����
+将由栈底开始第一个名为name的NavDestination页面移到栈顶。
 
-> **˵����**
+> **说明：**
 
-> �����ҵ��ĵ�һ����Ϊname��ҳ��Ĳ�ͬ��MultiNavigation����в�ͬ�Ĵ�����
+> 根据找到的第一个名为name的页面的不同，MultiNavigation会进行不同的处理：
 
-> 1)���ҵ��������ϲ���ҳ����ȫ��ҳ����ʱ�����κδ�����
+> 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 
-> 2)���ҵ��������ϲ���ҳ��Ӧ������ҳ����Ὣ��Ӧ������ҳ�Ƶ�ջ����
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 
-> 3)���ҵ����Ƿ����ϲ����ҳ����Ὣ��ҳ�Ͷ�Ӧ��������ҳ�Ƶ�ջ��������ҳ���ջ��ϵ���䣻
+> 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 
-> 4)���ҵ����Ƿ����ϲ������ҳ����Ὣ��ҳ�Ͷ�Ӧ��������ҳ�Ƶ�ջ�����ҽ�Ŀ������ҳ�ƶ�����Ӧ��������ҳ��ջ����
+> 4)当找到的是非最上层的详情页，则会将主页和对应所有详情页移到栈顶，且将目标详情页移动到对应所有详情页的栈顶；
 
-> 5)���ҵ����Ƿ����ϲ��ȫ��ҳ����Ὣȫ��ҳ�ƶ���ջ����
+> 5)当找到的是非最上层的全屏页，则会将全屏页移动到栈顶。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -279,14 +277,14 @@ moveToTop(name: string, animated?: boolean): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| name | string | 是 | NavDestination页面名称。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ���ջ�д�����Ϊname��NavDestinationҳ�棬�򷵻���ջ�׿�ʼ��һ����Ϊname��NavDestinationҳ������������򷵻�-1�� |
+| number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
 ## pop
 
@@ -294,17 +292,17 @@ moveToTop(name: string, animated?: boolean): number
 pop(animated?: boolean): NavPathInfo | undefined
 ```
 
-����·��ջջ��Ԫ�ء�
+弹出路由栈栈顶元素。
 
-> **˵����**
+> **说明：**
 
-> ������[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepBottomPage-1)�ӿڲ�����Ϊtrueʱ���ᱣ��ջ��ҳ�档
+> 当调用[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepbottompage-1)接口并设置为true时，会保留栈底页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,7 +310,7 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
@@ -326,17 +324,17 @@ pop(animated?: boolean): NavPathInfo | undefined
 pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 ```
 
-����·��ջջ��Ԫ�أ�������onPop�ص�����ҳ�洦�������
+弹出路由栈栈顶元素，并触发onPop回调传入页面处理结果。
 
-> **˵����**
+> **说明：**
 
-> ������[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepBottomPage-1)�ӿڲ�����Ϊtrueʱ���ᱣ��ջ��ҳ�档
+> 当调用[keepBottomPage](arkts-arkui-multinavpathstack-c.md#keepbottompage-1)接口并设置为true时，会保留栈底页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,8 +342,8 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | Object | 否 | ҳ���Զ��崦������� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| result | Object | 否 | 页面自定义处理结果。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
@@ -359,13 +357,13 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 popToIndex(index: number, animated?: boolean): void
 ```
 
-����·��ջ��indexָ����NavDestinationҳ�档
+回退路由栈到index指定的NavDestination页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -373,8 +371,8 @@ popToIndex(index: number, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | NavDestinationҳ���λ��������<br/>ȡֵ��Χ��[0, +��) |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## popToIndex
 
@@ -382,13 +380,13 @@ popToIndex(index: number, animated?: boolean): void
 popToIndex(index: number, result: Object, animated?: boolean): void
 ```
 
-����·��ջ��indexָ����NavDestinationҳ�棬������onPop�ص�����ҳ�洦�������
+回退路由栈到index指定的NavDestination页面，并触发onPop回调传入页面处理结果。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -396,9 +394,9 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | NavDestinationҳ���λ��������<br/>ȡֵ��Χ��[0, +��) |
-| result | Object | 是 | ҳ���Զ��崦������� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+| result | Object | 是 | 页面自定义处理结果。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## popToName
 
@@ -406,13 +404,13 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 popToName(name: string, animated?: boolean): number
 ```
 
-����·��ջ����ջ�׿�ʼ��һ����Ϊname��NavDestinationҳ�档
+回退路由栈到由栈底开始第一个名为name的NavDestination页面。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,14 +418,14 @@ popToName(name: string, animated?: boolean): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| name | string | 是 | NavDestination页面名称。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Returns the index of the first navigation destination page that matches **name** from the<br/>bottom of the navigation stack; returns **-1** if no such a page is found.<br/><br/>Value range: [-1, +��). |
+| number | Returns the index of the first navigation destination page that matches **name** from thebottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
 ## popToName
 
@@ -435,13 +433,13 @@ popToName(name: string, animated?: boolean): number
 popToName(name: string, result: Object, animated?: boolean): number
 ```
 
-����·��ջ����ջ�׿�ʼ��һ����Ϊname��NavDestinationҳ�棬������onPop�ص�����ҳ�洦�������
+回退路由栈到由栈底开始第一个名为name的NavDestination页面，并触发onPop回调传入页面处理结果。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -449,15 +447,15 @@ popToName(name: string, result: Object, animated?: boolean): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| result | Object | 是 | ҳ���Զ��崦������� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| name | string | 是 | NavDestination页面名称。 |
+| result | Object | 是 | 页面自定义处理结果。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Returns the index of the first navigation destination page that matches **name** from the<br/>bottom of the navigation stack; returns **-1** if no such a page is found.<br/><br/>Value range: [-1, +��). |
+| number | Returns the index of the first navigation destination page that matches **name** from thebottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
 ## pushPath
 
@@ -465,13 +463,13 @@ popToName(name: string, result: Object, animated?: boolean): number
 pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 ```
 
-��ָ����NavDestinationҳ����Ϣ��ջ��
+将指定的NavDestination页面信息入栈。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -479,9 +477,9 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | NavPathInfo | 是 | NavDestinationҳ�����Ϣ�� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
-| policy | SplitPolicy | 否 | ��ǰ��ջҳ��Ĳ��ԡ�Ĭ��ֵ��DETAIL_PAGE |
+| info | NavPathInfo | 是 | NavDestination页面的信息。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+| policy | SplitPolicy | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ## pushPath
 
@@ -489,13 +487,13 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): void
 ```
 
-��ָ����NavDestinationҳ����Ϣ��ջ��ͨ��NavigationOptions����ҳ��ջ����ѡ�
+将指定的NavDestination页面信息入栈，通过NavigationOptions设置页面栈操作选项。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -503,9 +501,9 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | NavPathInfo | 是 | NavDestinationҳ�����Ϣ�� |
-| options | NavigationOptions | 否 | ҳ��ջ����ѡ���֧�����е�animated�ֶΡ� |
-| policy | SplitPolicy | 否 | ��ǰ��ջҳ��Ĳ��ԡ�Ĭ��ֵ��DETAIL_PAGE |
+| info | NavPathInfo | 是 | NavDestination页面的信息。 |
+| options | NavigationOptions | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
+| policy | SplitPolicy | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ## pushPathByName
 
@@ -513,13 +511,13 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPolicy): void
 ```
 
-��nameָ����NavDestinationҳ����Ϣ��ջ�����ݵ�����Ϊparam��
+将name指定的NavDestination页面信息入栈，传递的数据为param。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -527,10 +525,10 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| param | Object | 是 | NavDestinationҳ����ϸ������ |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
-| policy | SplitPolicy | 否 | ��ǰ��ջҳ��Ĳ��ԡ�Ĭ��ֵ��DETAIL_PAGE |
+| name | string | 是 | NavDestination页面名称。 |
+| param | Object | 是 | NavDestination页面详细参数。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+| policy | SplitPolicy | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ## pushPathByName
 
@@ -539,13 +537,13 @@ pushPathByName(
     name: string, param: Object, onPop?: base.Callback<PopInfo>, animated?: boolean, policy?: SplitPolicy): void
 ```
 
-��nameָ����NavDestinationҳ����Ϣ��ջ�����ݵ�����Ϊparam������onPop�ص�������ջҳ���ջʱ�ķ��ؽ���������д�����
+将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -553,11 +551,11 @@ pushPathByName(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| param | Object | 是 | NavDestinationҳ����ϸ������ |
-| onPop | base.Callback&lt;PopInfo&gt; | 否 | Callback�ص�������ҳ���ջʱ�����ûص��������ؽ���� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
-| policy | SplitPolicy | 否 | ��ǰ��ջҳ��Ĳ��ԡ�Ĭ��ֵ��DETAIL_PAGE |
+| name | string | 是 | NavDestination页面名称。 |
+| param | Object | 是 | NavDestination页面详细参数。 |
+| onPop | base.Callback&lt;PopInfo&gt; | 否 | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+| policy | SplitPolicy | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ## removeByIndexes
 
@@ -565,13 +563,13 @@ pushPathByName(
 removeByIndexes(indexes: Array<number>): number
 ```
 
-��ҳ��ջ������ֵ��indexes�е�NavDestinationҳ��ɾ����
+将页面栈内索引值在indexes中的NavDestination页面删除。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -579,13 +577,13 @@ removeByIndexes(indexes: Array<number>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indexes | Array&lt;number&gt; | 是 | ��ɾ��NavDestinationҳ�������ֵ���顣<br/>number���͵�ȡֵ��Χ��[0, +��) |
+| indexes | Array&lt;number&gt; | 是 | 待删除NavDestination页面的索引值数组。<br/>number类型的取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ����ɾ����NavDestinationҳ�������� |
+| number | 返回删除的NavDestination页面数量。 |
 
 ## removeByName
 
@@ -593,13 +591,13 @@ removeByIndexes(indexes: Array<number>): number
 removeByName(name: string): number
 ```
 
-��ҳ��ջ��ָ��name��NavDestinationҳ��ɾ����
+将页面栈内指定name的NavDestination页面删除。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -607,13 +605,13 @@ removeByName(name: string): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | ��ɾ��NavDestinationҳ������֡� |
+| name | string | 是 | 待删除NavDestination页面的名字。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ����ɾ����NavDestinationҳ�������� |
+| number | 返回删除的NavDestination页面数量。 |
 
 ## replacePath
 
@@ -621,13 +619,13 @@ removeByName(name: string): number
 replacePath(info: NavPathInfo, animated?: boolean): void
 ```
 
-����ǰҳ��ջջ���˳�����ָ����NavDestinationҳ����Ϣ��ջ����ҳ��ķ������Լ̳�ԭջ��ҳ��Ĳ��ԡ�
+将当前页面栈栈顶退出，将指定的NavDestination页面信息入栈，新页面的分栏策略继承原栈顶页面的策略。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -635,8 +633,8 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | NavPathInfo | 是 | NavDestinationҳ�����Ϣ�� |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| info | NavPathInfo | 是 | NavDestination页面的信息。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## replacePath
 
@@ -644,13 +642,13 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 replacePath(info: NavPathInfo, options?: NavigationOptions): void
 ```
 
-����ǰҳ��ջջ���˳�����ָ����NavDestinationҳ����Ϣ��ջ����ҳ��ķ������Լ̳�ԭջ��ҳ��Ĳ��ԣ�ͨ��NavigationOptions����ҳ��ջ����ѡ�
+将当前页面栈栈顶退出，将指定的NavDestination页面信息入栈，新页面的分栏策略继承原栈顶页面的策略，通过NavigationOptions设置页面栈操作选项。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -658,8 +656,8 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | NavPathInfo | 是 | NavDestinationҳ�����Ϣ�� |
-| options | NavigationOptions | 否 | ҳ��ջ����ѡ���֧�����е�animated�ֶΡ� |
+| info | NavPathInfo | 是 | NavDestination页面的信息。 |
+| options | NavigationOptions | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
 
 ## replacePathByName
 
@@ -667,13 +665,13 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 replacePathByName(name: string, param: Object, animated?: boolean): void
 ```
 
-����ǰҳ��ջջ���˳�����nameָ����ҳ����ջ����ҳ��ķ������Լ̳�ԭջ��ҳ��Ĳ��ԡ�
+将当前页面栈栈顶退出，将name指定的页面入栈，新页面的分栏策略继承原栈顶页面的策略。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -681,9 +679,9 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestinationҳ�����ơ� |
-| param | Object | 是 | NavDestinationҳ����ϸ������ |
-| animated | boolean | 否 | �Ƿ�֧��ת��������<br/>Ĭ��ֵ��true<br/>true��֧��ת��������<br/>false����֧��ת�������� |
+| name | string | 是 | NavDestination页面名称。 |
+| param | Object | 是 | NavDestination页面详细参数。 |
+| animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ## setHomeWidthRange
 
@@ -691,13 +689,13 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 setHomeWidthRange(minPercent: number, maxPercent: number): void
 ```
 
-������ҳ���ȿ��϶���Χ��Ӧ�ò����õ�����¿���Ϊ50%���Ҳ����϶���
+设置主页宽度可拖动范围。应用不设置的情况下宽度为50%，且不可拖动。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,8 +703,8 @@ setHomeWidthRange(minPercent: number, maxPercent: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| minPercent | number | 是 | ��С��ҳ���Ȱٷֱȡ�<br/>ȡֵ��Χ��[0, 100] |
-| maxPercent | number | 是 | �����ҳ���Ȱٷֱȡ�<br/>ȡֵ��Χ��[0, 100] |
+| minPercent | number | 是 | 最小主页宽度百分比。<br/>取值范围：[0, 100] |
+| maxPercent | number | 是 | 最大主页宽度百分比。<br/>取值范围：[0, 100] |
 
 ## setPlaceholderPage
 
@@ -714,20 +712,20 @@ setHomeWidthRange(minPercent: number, maxPercent: number): void
 setPlaceholderPage(info: NavPathInfo): void
 ```
 
-����ռλҳ�档
+设置占位页面。
 
-> **˵��**
+> **说明**
 
-> ռλҳ��Ϊ����ҳ�����ͣ���Ӧ�����ú���һЩ�����豸�ϻ����ҳĬ���γ����ҷ�����Ч�����������ҳ���ұ�ռλҳ��
+> 占位页面为特殊页面类型，当应用设置后，在一些大屏设备上会和主页默认形成左右分栏的效果，即左边主页，右边占位页。
 
-> ��Ӧ�ÿɻ�������С��600vp���۵�����չ��̬�л�Ϊ�۵�̬��ƽ�����ת�����ȳ���ʱ�����Զ���ռλҳ��ջ��ֻ��ʾ��ҳ��
-> > ����Ӧ�ÿɻ���������ڵ���600vp���۵������۵�̬�л�Ϊչ��̬��ƽ������ת�����ȳ���ʱ�����Զ�����ռλҳ���γɷ�����
+> 当应用可绘制区域小于600vp、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
+> > 而当应用可绘制区域大于等于600vp、折叠屏由折叠态切换为展开态及平板竖屏转横屏等场景时，会自动补充占位页，形成分栏。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -735,7 +733,7 @@ setPlaceholderPage(info: NavPathInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | NavPathInfo | 是 | ռλҳҳ����Ϣ�� |
+| info | NavPathInfo | 是 | 占位页页面信息。 |
 
 ## size
 
@@ -743,13 +741,13 @@ setPlaceholderPage(info: NavPathInfo): void
 size(): number
 ```
 
-��ȡջ��С��
+获取栈大小。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -757,7 +755,7 @@ size(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Stack size.<br/><br/>Value range: [0, +��). |
+| number | Stack size.<br>Value range: [0, +∞). |
 
 ## switchFullScreenState
 
@@ -765,13 +763,13 @@ size(): number
 switchFullScreenState(isFullScreen?: boolean): boolean
 ```
 
-�л���ǰ��ջ����ҳ�����ʾģʽ��
+切换当前顶栈详情页面的显示模式。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -779,11 +777,11 @@ switchFullScreenState(isFullScreen?: boolean): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isFullScreen | boolean | 否 | �Ƿ��л�Ϊȫ����Ĭ��ֵΪfalse��true��ʾȫ��ģʽ��false��ʾ����ģʽ�� |
+| isFullScreen | boolean | 否 | 是否切换为全屏。默认值为false。true表示全屏模式，false表示分栏模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | �л��ɹ���ʧ�ܡ�<br/>true���л��ɹ���<br/>false���л�ʧ�ܡ� |
+| boolean | 切换成功或失败。<br/>true：切换成功。<br/>false：切换失败。 |
 

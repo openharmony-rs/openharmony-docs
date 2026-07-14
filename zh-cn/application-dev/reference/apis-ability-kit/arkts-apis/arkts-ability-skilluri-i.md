@@ -1,6 +1,6 @@
 # SkillUri
 
-Wantƥ���Uri���ϡ�
+Want匹配的Uri集合。
 
 **起始版本：** 12
 
@@ -12,13 +12,13 @@ Wantƥ���Uri���ϡ�
 readonly host: string
 ```
 
-��ʶ URI ������ַ���֣����� scheme ����ʱ����Ч��
+标识 URI 主机地址部分，仅当 scheme 存在时才生效。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,13 +28,13 @@ readonly host: string
 readonly linkFeature: string
 ```
 
-��ʶ URI �ṩ��[��������](../../../../application-models/app-uri-config.md#linkfeature��ǩ˵��)������ʵ��Ӧ�ü���ת������AbilityInfo�д��ڡ�
+标识 URI 提供的[功能类型](../../../../application-models/app-uri-config.md#linkfeature标签说明)，用于实现应用间跳转，仅在AbilityInfo中存在。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,13 +44,13 @@ readonly linkFeature: string
 readonly maxFileSupported: number
 ```
 
-����ָ�����͵��ļ�����ʶһ���ܽ��ջ�򿪵����������ȡֵ��Χ����С��0��������
+对于指定类型的文件，标识一次能接收或打开的最大数量。取值范围：不小于0的整数。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,13 +60,13 @@ readonly maxFileSupported: number
 readonly path: string
 ```
 
-��ʶ URI ·�����֣����� scheme �� host ͬʱ����ʱ����Ч��
+标识 URI 路径部分，仅当 scheme 和 host 同时存在时才生效。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -76,13 +76,13 @@ readonly path: string
 readonly pathRegex: string
 ```
 
-��ʶ URI ·�����֣���������ƥ�䣬���� scheme �� host ͬʱ����ʱ����Ч��
+标识 URI 路径部分，用于正则匹配，仅当 scheme 和 host 同时存在时才生效。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -92,13 +92,13 @@ readonly pathRegex: string
 readonly pathStartWith: string
 ```
 
-��ʶ URI ·�����֣�����ǰ׺ƥ�䣬���� scheme �� host ͬʱ����ʱ����Ч��
+标识 URI 路径部分，用于前缀匹配，仅当 scheme 和 host 同时存在时才生效。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -108,13 +108,13 @@ readonly pathStartWith: string
 readonly port: number
 ```
 
-��ʶ URI �˿ڣ����� scheme �� host ͬʱ����ʱ����Ч��
+标识 URI 端口，仅当 scheme 和 host 同时存在时才生效。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -124,13 +124,13 @@ readonly port: number
 readonly scheme: string
 ```
 
-��ʶ URI Э��������������http��https��file��ftp�ȡ�
+标识 URI 协议名，常见的有http、https、file、ftp等。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -140,14 +140,14 @@ readonly scheme: string
 readonly type: string
 ```
 
-��ʶ��Want��ƥ����������ͣ�ʹ��MIME��Multipurpose?Internet?Mail?Extensions�����͹淶��
-[UniformDataType](./../@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)���͹淶��
+标识与Want相匹配的数据类型，使用MIME（Multipurpose?Internet?Mail?Extensions）类型规范和
+[UniformDataType](./../@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)类型规范。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -157,13 +157,13 @@ readonly type: string
 readonly utd: string
 ```
 
-��ʶ�� Want ��ƥ��� URI �ı�׼���������ͣ������ڷ����ȳ�����
+标识与 Want 相匹配的 URI 的标准化数据类型，适用于分享等场景。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -1,9 +1,5 @@
 # AudioOutputFormat
 
-```TypeScript
-enum AudioOutputFormat
-```
-
 > **说明：**
 > > 从API version 6开始支持，从API version 8 开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)替代。
 

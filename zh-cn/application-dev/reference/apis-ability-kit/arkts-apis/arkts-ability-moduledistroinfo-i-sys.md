@@ -1,6 +1,6 @@
 # ModuleDistroInfo（系统接口）
 
-module���а���Ϣ��
+module发行版信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ module���а���Ϣ��
 readonly deliveryWithInstall: boolean
 ```
 
-�Ƿ����Ӧ��һ��װ��true��ʾ����Ӧ��һ��װ��false��ʾ������Ӧ��һ��װ��
+是否跟随应用一起安装。true表示跟随应用一起安装，false表示不跟随应用一起安装。
 
 **类型：** boolean
 
@@ -30,7 +30,7 @@ readonly deliveryWithInstall: boolean
 readonly installationFree: boolean
 ```
 
-��ʾ��ǰHAP�Ƿ�֧���ⰲװ���ԡ�true��ʾ֧���ⰲװ���ԣ��ҷ����ⰲװԼ����false��ʾ��֧���ⰲװ���ԡ�
+表示当前HAP是否支持免安装特性。true表示支持免安装特性，且符合免安装约束，false表示不支持免安装特性。
 
 **类型：** boolean
 
@@ -46,7 +46,7 @@ readonly installationFree: boolean
 readonly moduleName: string
 ```
 
-module���ơ�
+module名称。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ module���ơ�
 readonly moduleType: string
 ```
 
-module���͡�
+module类型。
 
 **类型：** string
 

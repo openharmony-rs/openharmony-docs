@@ -1,12 +1,10 @@
 # IDataSourcePrefetching
 
-继承自[IDataSource](arkts-arkui-lazyforeach-idatasource-i.md#IDataSource)。实现该接口，提供具备预取能力的DataSource。
+继承自[IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)。实现该接口，提供具备预取能力的DataSource。
 
-**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](arkts-arkui-lazyforeach-idatasource-i.md#IDataSource)
+**继承/实现关系：** IDataSourcePrefetching extends [IDataSource](../arkts-components/arkts-arkui-idatasource-i.md)
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +20,7 @@ cancel?(index: number): Promise<void> | void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +34,7 @@ cancel?(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this API<br/>is executed synchronously. The promise only indicates that the operation is completed and contains no actual<br/>return content. |
+| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this APIis executed synchronously. The promise only indicates that the operation is completed and contains no actualreturn content. |
 
 ## prefetch
 
@@ -50,7 +48,7 @@ prefetch(index: number): Promise<void> | void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,5 +62,5 @@ prefetch(index: number): Promise<void> | void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this API<br/>is executed synchronously. The promise only indicates that the operation is completed and contains no actual<br/>return content. |
+| Promise&lt;void&gt; | Promise when this API is executed asynchronously; no return value when this APIis executed synchronously. The promise only indicates that the operation is completed and contains no actualreturn content. |
 

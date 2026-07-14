@@ -48,7 +48,7 @@ code:200，表示返回结果中存在无法获得的信息。
 success?: (data: DeviceResponse) => void
 ```
 
-接口调用成功的回调函数。 data为成功返回的设备信息，具体参考[DeviceResponse](arkts-basicservices-deviceresponse-i.md#DeviceResponse)。
+接口调用成功的回调函数。 data为成功返回的设备信息，具体参考[DeviceResponse](arkts-basicservices-deviceresponse-i.md)。
 
 **类型：** (data: DeviceResponse) => void
 

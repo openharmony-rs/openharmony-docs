@@ -1,10 +1,8 @@
 # SkillInfo
 
-�ṩSkill�������Ϣ��Skill��һ���ɰ�װ��������λ�����Ա����ֲ���Agent��ܵ��á�
+提供Skill的相关信息。Skill是一个可安装的能力单位，可以被发现并由Agent框架调用。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -14,7 +12,7 @@
 readonly abilityName: string
 ```
 
-Skill������ability���ơ�
+Skill关联的ability名称。
 
 **类型：** string
 
@@ -22,7 +20,7 @@ Skill������ability���ơ�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,7 +30,7 @@ Skill������ability���ơ�
 readonly bundleName: string
 ```
 
-Skill��Ӧ�����ơ�
+Skill的应用名称。
 
 **类型：** string
 
@@ -40,7 +38,7 @@ Skill��Ӧ�����ơ�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -50,7 +48,7 @@ Skill��Ӧ�����ơ�
 readonly description?: string
 ```
 
-Skill��������Ϣ��
+Skill的描述信息。
 
 **类型：** string
 
@@ -58,7 +56,7 @@ Skill��������Ϣ��
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -68,7 +66,7 @@ Skill��������Ϣ��
 readonly moduleName: string
 ```
 
-Skill��ģ�����ơ�
+Skill的模块名称。
 
 **类型：** string
 
@@ -76,7 +74,7 @@ Skill��ģ�����ơ�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -86,7 +84,7 @@ Skill��ģ�����ơ�
 readonly permissions?: Array<string>
 ```
 
-Skill�����Ȩ�ޡ�
+Skill所需的权限。
 
 **类型：** Array<string>
 
@@ -94,7 +92,7 @@ Skill�����Ȩ�ޡ�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -104,7 +102,7 @@ Skill�����Ȩ�ޡ�
 readonly requestPermissions?: Array<string>
 ```
 
-��ʾӦ�ð���requestPermissions��������Ȩ�ޡ�
+表示应用包中requestPermissions下声明的权限。
 
 **类型：** Array<string>
 
@@ -112,7 +110,7 @@ readonly requestPermissions?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -122,7 +120,7 @@ readonly requestPermissions?: Array<string>
 readonly skillName: string
 ```
 
-Skill���ơ�
+Skill名称。
 
 **类型：** string
 
@@ -130,7 +128,7 @@ Skill���ơ�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -140,7 +138,7 @@ Skill���ơ�
 readonly skillPath: string
 ```
 
-Skill�İ�װ��·����
+Skill的安装包路径。
 
 **类型：** string
 
@@ -148,7 +146,7 @@ Skill�İ�װ��·����
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -158,7 +156,7 @@ Skill�İ�װ��·����
 readonly skillType: SkillType
 ```
 
-Skill���͡�
+Skill类型。
 
 **类型：** SkillType
 
@@ -166,7 +164,7 @@ Skill���͡�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -176,7 +174,7 @@ Skill���͡�
 readonly srcEntries?: Array<string>
 ```
 
-Skill��srcEntries��Ϣ��
+Skill的srcEntries信息。
 
 **类型：** Array<string>
 
@@ -184,7 +182,7 @@ Skill��srcEntries��Ϣ��
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -194,7 +192,7 @@ Skill��srcEntries��Ϣ��
 readonly versionCode: number
 ```
 
-Skill�İ汾�š�
+Skill的版本号。
 
 **类型：** number
 
@@ -202,7 +200,7 @@ Skill�İ汾�š�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

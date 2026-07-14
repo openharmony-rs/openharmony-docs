@@ -1,8 +1,8 @@
 # ArcAlphabetIndexerAttribute
 
-��֧��[ͨ������](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)�⣬��֧���������ԣ�
+除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
-��֧��[ͨ���¼�](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)�⣬��֧�������¼���
+除支持[通用事件](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下事件：
 
 **继承/实现关系：** ArcAlphabetIndexerAttribute extends [CommonMethod<ArcAlphabetIndexerAttribute>](CommonMethod<ArcAlphabetIndexerAttribute>)
 
@@ -16,11 +16,11 @@
 autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 ```
 
-�����Ƿ�ʹ������Ӧ�۵�ģʽ��
+设置是否使用自适应折叠模式。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -28,13 +28,13 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | Optional&lt;boolean&gt; | 是 | �Ƿ�ʹ������Ӧ�۵�ģʽ��<br/>Ĭ��ֵ��true<br/>true��ʹ������Ӧ�۵�ģʽ��<br/>false����ʹ������Ӧ�۵�ģʽ�� |
+| enable | Optional&lt;boolean&gt; | 是 | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## color
 
@@ -42,11 +42,11 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-������ͨ״̬��������������ɫ��
+设置普通状态下索引项文字颜色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -54,13 +54,13 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | ������ɫ��<br/>Ĭ��ֵ��0xFFFFFF����ʾΪ��ɫ�� |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## font
 
@@ -68,11 +68,11 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 ```
 
-������ĸ������Ĭ��������ʽ��
+设置字母索引条默认字体样式。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -80,13 +80,13 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | ��ĸ������Ĭ��������ʽ��<br/>Ĭ��ֵ��<br/>{<br/>size:'13.0fp',<br/>style:FontStyle.Normal,<br/><br/>weight:500,<br/>family:'HarmonyOS Sans'<br/>} |
+| font | Optional&lt;Font&gt; | 是 | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## itemSize
 
@@ -94,11 +94,11 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-������ĸ��������ĸ�����С��
+设置字母索引条字母区域大小。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -106,13 +106,13 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | Optional&lt;LengthMetrics&gt; | 是 | ��ĸ��������ĸ�����С����ĸ����ΪԲ�Σ���Բ��ֱ������֧������Ϊ�ٷֱȡ�<br/>Ĭ��ֵ��24.0<br/>��λ��vp |
+| size | Optional&lt;LengthMetrics&gt; | 是 | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## onSelect
 
@@ -120,11 +120,11 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 ```
 
-������ѡ�лص�������ֵΪ��ǰѡ��������
+索引条选中回调，返回值为当前选中索引。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -132,13 +132,13 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | Optional&lt;OnSelectCallback&gt; | 是 | �ص��������͡� |
+| handler | Optional&lt;OnSelectCallback&gt; | 是 | 回调函数类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## popupBackground
 
@@ -146,11 +146,11 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-������ʾ��������ɫ��
+设置提示弹窗背景色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -158,13 +158,13 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | ��ʾ��������ɫ��<br/>Ĭ��ֵ��0xD8404040����ʾΪ΢͸�������ɫ�� |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## popupBackgroundBlurStyle
 
@@ -172,16 +172,16 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribute
 ```
 
-������ʾ�����ı���ģ�����ʡ�δͨ���ýӿ�����ʱ��Ĭ��Ϊ�ر�ģ������ӦȡֵΪBlurStyle�е�NONE��
+设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。
 
-> **˵����**
+> **说明：**
 
-> ��ͨ��popupBackgroundBlurStyle���õ������ݵı���ģ������ʱ����������ͨ��
-> [popupBackground](arkts-arkui-arcalphabetindexerattribute-c.md#popupBackground-1)���ñ���ɫ��
+> 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过
+> [popupBackground](arkts-arkui-arcalphabetindexerattribute-c.md#popupbackground-1)设置背景色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -189,13 +189,13 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | Optional&lt;BlurStyle&gt; | 是 | ������ʾ�����ı���ģ�����ʡ� |
+| style | Optional&lt;BlurStyle&gt; | 是 | 设置提示弹窗的背景模糊材质。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## popupColor
 
@@ -203,11 +203,11 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-������ʾ����������ɫ��
+设置提示弹窗文字颜色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -215,13 +215,13 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | ��ʾ����������ɫ��<br/>Ĭ��ֵ��0xFFFFFF����ʾΪ��ɫ�� |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## popupFont
 
@@ -229,11 +229,11 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 ```
 
-������ʾ����������ʽ��
+设置提示弹窗字体样式。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -241,13 +241,13 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | ��ʾ����������ʽ��<br/>Ĭ��ֵ��<br/>{<br/>size:'19.0fp',<br/>style:FontStyle.Normal,<br/><br/>weight:500,<br/>family:'HarmonyOS Sans'<br/>} |
+| font | Optional&lt;Font&gt; | 是 | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/>weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## selected
 
@@ -255,11 +255,11 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 ```
 
-����ѡ��������ֵ��
+设置选中项索引值。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -267,13 +267,13 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | Optional&lt;number&gt; | 是 | ѡ��������ֵ��<br/>Ĭ��ֵ��0<br/>�ò���֧��<br/>[!!](../../../../ui/state-management/arkts-new-binding.md)˫��󶨱����� |
+| index | Optional&lt;number&gt; | 是 | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## selectedBackgroundColor
 
@@ -281,11 +281,11 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-����ѡ�������ɫ��
+设置选中项背景颜色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -293,13 +293,13 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | ѡ�������ɫ��<br/>Ĭ��ֵ��0x1F71FF����ʾΪ����ɫ�� |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## selectedColor
 
@@ -307,11 +307,11 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 ```
 
-����ѡ����������ɫ��
+设置选中项文字颜色。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -319,13 +319,13 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | ѡ����������ɫ��<br/>Ĭ��ֵ��0xFFFFFF����ʾΪ��ɫ�� |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## selectedFont
 
@@ -333,11 +333,11 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 ```
 
-����ѡ�������ֳߴ硢��ϸ�������塢��б����ʽ��
+设置选中项文字尺寸、粗细、字体族、倾斜等样式。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -345,13 +345,13 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | ѡ����������ʽ��<br/>Ĭ��ֵ��{<br/>size:'13.0fp',<br/>style:FontStyle.Normal,<br/>weight:500<br/>,<br/>family:'HarmonyOS Sans'<br/>} |
+| font | Optional&lt;Font&gt; | 是 | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## usePopup
 
@@ -359,11 +359,11 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 usePopup(enabled: Optional<boolean>): ArcAlphabetIndexerAttribute
 ```
 
-�����Ƿ�ʹ����ʾ������
+设置是否使用提示弹窗。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -371,11 +371,11 @@ usePopup(enabled: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | Optional&lt;boolean&gt; | 是 | �Ƿ�ʹ����ʾ������<br/>true��ʾʹ����ʾ������false��ʾ��ʹ����ʾ������<br/>Ĭ��ֵ��false |
+| enabled | Optional&lt;boolean&gt; | 是 | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcAlphabetIndexerAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 

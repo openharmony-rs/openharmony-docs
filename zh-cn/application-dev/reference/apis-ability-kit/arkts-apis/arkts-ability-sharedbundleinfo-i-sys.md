@@ -1,6 +1,6 @@
 # SharedBundleInfo（系统接口）
 
-��������Ϣ��
+共享包信息。
 
 **起始版本：** 10
 
@@ -14,7 +14,7 @@
 readonly compatiblePolicy: bundleManager.CompatiblePolicy
 ```
 
-���������ݲ��Ե����͡�
+共享包兼容策略的类型。
 
 **类型：** bundleManager.CompatiblePolicy
 
@@ -30,7 +30,7 @@ readonly compatiblePolicy: bundleManager.CompatiblePolicy
 readonly name: string
 ```
 
-Ӧ�ù��������ơ�
+应用共享包名称。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ readonly name: string
 readonly sharedModuleInfo: Array<SharedModuleInfo>
 ```
 
-Ӧ�ù���ģ����Ϣ��
+应用共享模块信息。
 
 **类型：** Array<SharedModuleInfo>
 

@@ -1,6 +1,6 @@
 # BundleConfigInfo（系统接口）
 
-����������Ϣ��
+包的配置信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@
 readonly bundleName: string
 ```
 
-Ӧ��Bundle���ƣ����ڱ�ʶӦ�õ�Ψһ�ԡ�
+应用Bundle名称，用于标识应用的唯一性。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly bundleName: string
 readonly version: Version
 ```
 
-���İ汾��
+包的版本。
 
 **类型：** Version
 

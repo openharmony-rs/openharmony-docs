@@ -1,10 +1,10 @@
 # CheckPackageHasInstalledResponse
 
-> **˵����**
+> **说明：**
 >
-> ��API version 3��ʼ֧�֣���API version 9��ʼ������
+> 从API version 3开始支持，从API version 9开始废弃。
 
-ָʾӦ�ð��Ƿ��Ѱ�װ��
+指示应用包是否已安装。
 
 **起始版本：** 3
 
@@ -18,7 +18,7 @@
 result: boolean
 ```
 
-ָʾӦ���Ƿ��Ѱ�װ��
+指示应用是否已安装。
 
 **类型：** boolean
 

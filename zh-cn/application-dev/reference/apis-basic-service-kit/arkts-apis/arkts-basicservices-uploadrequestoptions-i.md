@@ -4,7 +4,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [UploadConfig](arkts-basicservices-request-uploadconfig-i.md#UploadConfig)
+**替代接口：** [UploadConfig](arkts-basicservices-uploadconfig-i.md)
 
 **系统能力：** SystemCapability.MiscServices.Upload
 

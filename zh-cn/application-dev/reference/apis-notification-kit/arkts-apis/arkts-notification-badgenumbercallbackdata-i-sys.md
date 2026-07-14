@@ -70,7 +70,7 @@ readonly instanceKey?: number
 
 **废弃版本：** 15
 
-**替代接口：** [appInstanceKey](arkts-notification-badgenumbercallbackdata-i-sys.md#appInstanceKey)
+**替代接口：** [appInstanceKey](arkts-notification-badgenumbercallbackdata-i-sys.md#appinstancekey)
 
 **系统能力：** SystemCapability.Notification.Notification
 

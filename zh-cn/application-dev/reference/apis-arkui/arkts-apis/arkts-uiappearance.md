@@ -1,10 +1,10 @@
 # @ohos.uiAppearance
 
-�û���������ṩ��ȡϵͳ��۵�һЩ����������������ȡ��ǳɫģʽ�������С���ű����������ϸ���ű�����
+用户界面外观提供获取系统外观的一些基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
 
-> **˵����**
+> **说明：**
 
-> ��API version 20��ʼ֧�֡������汾�����������ݣ�������ϽǱ굥����Ǹ����ݵ���ʼ�汾��
+> 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 **起始版本：** 20
 
@@ -14,21 +14,25 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[getDarkMode](arkts-arkui-uiappearance-getdarkmode-f-sys.md#getDarkMode-1) | ��ȡϵͳ��ǰ����ɫģʽ���á�<br/><br/>&lt;!--Del--&gt;<br/><br/>&gt; **˵����**<br/><br/>&gt; �ýӿ���API version 19��֮ǰ�汾��Ϊϵͳ�ӿڡ�������ʹ�øýӿ�ʱ��Ҫ����<br/>&gt; [ohos.permission.UPDATE_CONFIGURATION](../../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)<br/>&gt; Ȩ�ޡ�<br/><br/>&lt;!--DelEnd--&gt;<br/> |
-| <!--DelRow-->[getFontScale](arkts-arkui-uiappearance-getfontscale-f-sys.md#getFontScale-1) | ��ȡϵͳ��ǰ�������С���ű�����<br/><br/>&lt;!--Del--&gt;<br/><br/>&gt; **˵����**<br/><br/>&gt; �ýӿ���API version 19��֮ǰ�汾��Ϊϵͳ�ӿڡ�������ʹ�øýӿ�ʱ��Ҫ����<br/>&gt; [ohos.permission.UPDATE_CONFIGURATION](../../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)<br/>&gt; Ȩ�ޡ�<br/><br/>&lt;!--DelEnd--&gt;<br/> |
-| <!--DelRow-->[getFontWeightScale](arkts-arkui-uiappearance-getfontweightscale-f-sys.md#getFontWeightScale-1) | ��ȡϵͳ��ǰ�������ϸ���ű�����<br/><br/>&lt;!--Del--&gt;<br/><br/>&gt; **˵����**<br/><br/>&gt; �ýӿ���API version 19��֮ǰ�汾��Ϊϵͳ�ӿڡ�������ʹ�øýӿ�ʱ��Ҫ����<br/>&gt; [ohos.permission.UPDATE_CONFIGURATION](../../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)<br/>&gt; Ȩ�ޡ�<br/><br/>&lt;!--DelEnd--&gt;<br/> |
-| <!--DelRow-->[setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setDarkMode-1) | ����ϵͳ��ɫģʽ��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setDarkMode-2) | ����ϵͳ��ɫģʽ��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[setFontScale](arkts-arkui-uiappearance-setfontscale-f-sys.md#setFontScale-1) | ����ϵͳ�����С��<br/> |
-| <!--DelRow-->[setFontWeightScale](arkts-arkui-uiappearance-setfontweightscale-f-sys.md#setFontWeightScale-1) | ����ϵͳ�����ϸ��<br/> |
+| [getDarkMode](arkts-arkui-getdarkmode-f-sys.md#getdarkmode-1) | 获取系统当前的深色模式配置。&lt;!--Del--&gt; |
+| [getFontScale](arkts-arkui-getfontscale-f-sys.md#getfontscale-1) | 获取系统当前的字体大小缩放比例。&lt;!--Del--&gt; |
+| [getFontWeightScale](arkts-arkui-getfontweightscale-f-sys.md#getfontweightscale-1) | 获取系统当前的字体粗细缩放比例。&lt;!--Del--&gt; |
+| [setDarkMode](arkts-arkui-setdarkmode-f-sys.md#setdarkmode-1) | 设置系统深色模式。使用callback异步回调。 |
+| [setDarkMode](arkts-arkui-setdarkmode-f-sys.md#setdarkmode-2) | 设置系统深色模式。使用Promise异步回调。 |
+| [setFontScale](arkts-arkui-setfontscale-f-sys.md#setfontscale-1) | 设置系统字体大小。 |
+| [setFontWeightScale](arkts-arkui-setfontweightscale-f-sys.md#setfontweightscale-1) | 设置系统字体粗细。 |
+<!--DelEnd-->
 
-### 枚举
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[DarkMode](arkts-arkui-uiappearance-darkmode-e-sys.md) | ��ɫģʽö�١�<br/><br/>\| ���� \| ֵ \| ˵�� \|<br/>\| -- \| -- \| -- \|<br/>\| ALWAYS_DARK \| 0 \| ϵͳʼ��Ϊ��ɫ��  \|<br/>\| ALWAYS_LIGHT \| 1 \| ϵͳʼ��Ϊǳɫ�� \|<br/> |
+| [DarkMode](arkts-arkui-darkmode-e-sys.md) | 深色模式枚举。\| 名称 \| 值 \| 说明 \|\| -- \| -- \| -- \|\| ALWAYS_DARK \| 0 \| 系统始终为深色。 \|\| ALWAYS_LIGHT \| 1 \| 系统始终为浅色。 \| |
+<!--DelEnd-->
 

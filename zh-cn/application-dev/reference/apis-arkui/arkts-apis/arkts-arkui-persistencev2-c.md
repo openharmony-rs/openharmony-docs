@@ -1,13 +1,11 @@
 # PersistenceV2
 
-继承自[AppStorageV2](arkts-arkui-appstoragev2-c.md#AppStorageV2)，PersistenceV2具体UI使用说明，详见
+继承自[AppStorageV2](arkts-arkui-appstoragev2-c.md)，PersistenceV2具体UI使用说明，详见
 [PersistenceV2(持久化存储UI状态)](../../../../ui/state-management/arkts-new-persistencev2.md)。
 
-**继承/实现关系：** PersistenceV2 extends [AppStorageV2](arkts-arkui-appstoragev2-c.md#AppStorageV2)
+**继承/实现关系：** PersistenceV2 extends [AppStorageV2](arkts-arkui-appstoragev2-c.md)
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,7 +27,7 @@ static globalConnect<T extends object>(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +41,7 @@ static globalConnect<T extends object>(
 
 | 类型 | 说明 |
 | --- | --- |
-| T | Returns the data if creation or acquisition is successful; otherwise, returns<br/>**undefined**. |
+| T | Returns the data if creation or acquisition is successful; otherwise, returns**undefined**. |
 
 ## globalConnect
 
@@ -55,14 +53,14 @@ static globalConnect<T extends CollectionType<S>, S extends object>(
 
 将键值对数据储存在应用磁盘中。支持集合类型
 [`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。
-注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](arkts-arkui-uiutils-c.md#makeObserved-1)使返回的对象被观察到。不支持多个嵌套集合，例如不支持
+注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](arkts-arkui-uiutils-c.md#makeobserved-1)使返回的对象被观察到。不支持多个嵌套集合，例如不支持
 `Array<Array<ClassA>>`的持久化。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,13 +68,13 @@ static globalConnect<T extends CollectionType<S>, S extends object>(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | ConnectOptionsCollections&lt;T, S&gt; \| ConnectOptions&lt;T&gt; | 是 | 传入的globalConnect参数，详细说明见ConnectOptions和<br/>ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器<br/>defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。 |
+| type | ConnectOptionsCollections&lt;T, S&gt; \| ConnectOptions&lt;T&gt; | 是 | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | Returns the data if creation or acquisition is successful; otherwise, returns<br/>**undefined**. |
+| T | Returns the data if creation or acquisition is successful; otherwise, returns**undefined**. |
 
 ## notifyOnError
 
@@ -90,7 +88,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +110,7 @@ static save<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

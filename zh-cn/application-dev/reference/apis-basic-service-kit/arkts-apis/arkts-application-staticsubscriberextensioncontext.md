@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 类
+<!--Del-->
+### 类（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[StaticSubscriberExtensionContext](arkts-basicservices-staticsubscriberextensioncontext-c-sys.md) | StaticSubscriberExtensionContext模块是StaticSubscriberExtensionAbility的上下文环境，继承自ExtensionContext。<br/><br/>StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具有的接口和能力。<br/> |
+| [StaticSubscriberExtensionContext](arkts-basicservices-staticsubscriberextensioncontext-c-sys.md) | StaticSubscriberExtensionContext模块是StaticSubscriberExtensionAbility的上下文环境，继承自ExtensionContext。StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具有的接口和能力。 |
+<!--DelEnd-->
 

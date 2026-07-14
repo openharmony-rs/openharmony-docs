@@ -12,5 +12,5 @@ ArkTS语言。
 
 | 名称 | 说明 |
 | --- | --- |
-| [ISendable](arkts-arkts-lang-isendable-i.md) | ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。<br/> |
+| [ISendable](arkts-arkts-isendable-i.md) | ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。 |
 

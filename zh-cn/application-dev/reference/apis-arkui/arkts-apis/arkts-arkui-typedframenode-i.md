@@ -1,8 +1,8 @@
 # TypedFrameNode
 
-TypedFrameNode继承自[FrameNode](arkts-arkui-framenode-c.md#FrameNode)，用于声明具体类型的FrameNode。
+TypedFrameNode继承自[FrameNode](arkts-arkui-framenode-c.md)，用于声明具体类型的FrameNode。
 
-**继承/实现关系：** TypedFrameNode extends [FrameNode](arkts-arkui-framenode-c.md#FrameNode)
+**继承/实现关系：** TypedFrameNode extends [FrameNode](arkts-arkui-framenode-c.md)
 
 **起始版本：** 12
 
@@ -22,7 +22,7 @@ readonly attribute: T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ initialize: C
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,13 +1,13 @@
 # @ohos.bundle.innerBundleManager
 
-��ģ���ṩlauncherӦ��ʹ�õĽӿڡ�
+本模块提供launcher应用使用的接口。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ���API version 9��ʼ����֧�֡�����ʹ��[launcherBundleManager](arkts-bundle-launcherbundlemanager.md#launcherBundleManager)
-> ��[bundleMonitor](arkts-bundle-bundlemonitor.md#bundleMonitor)�����
+> 本模块从API version 9开始不再支持。建议使用[launcherBundleManager](arkts-bundle-launcherbundlemanager.md)
+> 及[bundleMonitor](arkts-bundle-bundlemonitor.md)替代。
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 ## 汇总
 
@@ -15,11 +15,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [innerBundleManager](arkts-ability-innerbundlemanager-sta-n.md) | ��ģ���ṩlauncherӦ��ʹ�õĽӿڡ�<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ��ģ���API version 9��ʼ����֧�֡�����ʹ��[launcherBundleManager](arkts-bundle-launcherbundlemanager.md#launcherBundleManager)<br/>&gt; ��[bundleMonitor](arkts-bundle-bundlemonitor.md#bundleMonitor)�����<br/>&gt;<br/>&gt; ��ģ��Ϊϵͳ�ӿڡ�<br/> |
+| [innerBundleManager](arkts-ability-innerbundlemanager-n.md) | 本模块提供launcher应用使用的接口。@link @ohos.bundle.launcherBundleManager:launcherBundleManager}&gt; 及[bundleMonitor](arkts-bundle-bundlemonitor.md)替代。&gt;&gt; 本模块为系统接口。 |
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | Ӧ��״̬�����仯ʱ�ص�����Ϣ��<br/> |
+| [BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | 应用状态发生变化时回调的信息。 |
+<!--DelEnd-->
 

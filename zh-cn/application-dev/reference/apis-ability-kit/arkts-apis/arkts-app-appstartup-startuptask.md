@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [StartupTask](arkts-ability-startuptask-c.md) | The module provides capabilities related to startup tasks in<br/>[AppStartup](../../../../application-models/app-startup.md).<br/> |
+| [StartupTask](arkts-ability-startuptask-c.md) | The module provides capabilities related to startup tasks in[AppStartup](../../../../application-models/app-startup.md). |
 

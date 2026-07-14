@@ -1,6 +1,6 @@
 # ApplicationInfo
 
-Ӧ�ó�����Ϣ��
+应用程序信息。
 
 **起始版本：** 9
 
@@ -12,8 +12,8 @@
 readonly flags?: number
 ```
 
-��ʶ��ǰӦ�ú͵�ǰ�û�֮���״̬���ϣ�ÿһλ��ʾһ���ض��Ĳ���״̬��ȡֵ�ο�
-[ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md#ApplicationInfoFlag)��
+标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考
+[ApplicationInfoFlag](arkts-ability-applicationinfoflag-e-sys.md)。
 
 **类型：** number
 

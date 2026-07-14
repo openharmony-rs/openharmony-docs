@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChildProcess](arkts-ability-childprocess-c.md) | 开发者自定义子进程的基类。通过[childProcessManager](arkts-app-ability-childprocessmanager.md#childProcessManager)启动子进程时，需要继承此类并重写<br/>入口方法。<br/> |
+| [ChildProcess](arkts-ability-childprocess-c.md) | 开发者自定义子进程的基类。通过[childProcessManager](arkts-app-ability-childprocessmanager.md)启动子进程时，需要继承此类并重写入口方法。 |
 

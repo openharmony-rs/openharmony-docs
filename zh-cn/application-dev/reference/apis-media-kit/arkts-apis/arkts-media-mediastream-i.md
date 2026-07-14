@@ -18,7 +18,7 @@ biterate of this mediaStream.
 
 **起始版本：** 19
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -34,7 +34,7 @@ video height.
 
 **起始版本：** 19
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -50,7 +50,7 @@ url for this mediaStream
 
 **起始版本：** 19
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -66,7 +66,7 @@ video width.
 
 **起始版本：** 19
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

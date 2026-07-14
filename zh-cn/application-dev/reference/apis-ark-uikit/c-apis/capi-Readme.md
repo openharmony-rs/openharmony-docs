@@ -1,0 +1,7 @@
+- 结构体
+    - [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md)
+    - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
+    - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
+    - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
+    - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
+    - [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)

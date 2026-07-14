@@ -1,11 +1,9 @@
 # DataAbilityHelper
 
-可以通过[acquireDataAbilityHelper](./../@ohos.ability.featureAbility:featureAbility.acquireDataAbilityHelper)接口获取
+可以通过[acquireDataAbilityHelper](arkts-ability-acquiredataabilityhelper-f.md#acquiredataabilityhelper-1)接口获取
 DataAbilityHelper对象。
 
 **起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 

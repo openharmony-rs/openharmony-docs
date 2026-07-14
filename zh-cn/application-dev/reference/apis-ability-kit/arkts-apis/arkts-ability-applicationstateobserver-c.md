@@ -1,7 +1,7 @@
 # ApplicationStateObserver
 
 应用状态监听器，可以作为入参传入
-[on('applicationState')](arkts-ability-appmanager-on-f.md#on-1)
+[on('applicationState')](arkts-ability-on-f.md#on-1)
 方法，监听应用的生命周期变化。
 
 **起始版本：** 14

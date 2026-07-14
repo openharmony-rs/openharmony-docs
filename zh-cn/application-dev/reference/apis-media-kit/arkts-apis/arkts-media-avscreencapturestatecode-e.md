@@ -1,9 +1,5 @@
 # AVScreenCaptureStateCode
 
-```TypeScript
-enum AVScreenCaptureStateCode
-```
-
 屏幕录制的状态回调。
 
 **起始版本：** 12

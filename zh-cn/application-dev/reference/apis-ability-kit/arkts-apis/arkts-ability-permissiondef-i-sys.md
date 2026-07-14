@@ -1,12 +1,12 @@
 # PermissionDef（系统接口）
 
-[module.json5�����ļ�](../../../../quick-start/module-configuration-file.md)�ж����Ȩ����ϸ��Ϣ��ͨ���ӿ�
-[bundleManager.getPermissionDef](arkts-ability-bundlemanager-getpermissiondef-f-sys.md#getPermissionDef-1)
-��ȡ��
+[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中定义的权限详细信息，通过接口
+[bundleManager.getPermissionDef](arkts-ability-getpermissiondef-f-sys.md#getpermissiondef-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 9
 
@@ -20,7 +20,7 @@
 readonly descriptionId: number
 ```
 
-����Ȩ�޵�ID��
+描述权限的ID。
 
 **类型：** number
 
@@ -36,7 +36,7 @@ readonly descriptionId: number
 readonly grantMode: number
 ```
 
-[Ȩ�޵����跽ʽ](../../../../security/AccessToken/app-permission-mgmt-overview.md#��Ȩ��ʽ)��0����ʾ�û���Ȩ��1����ʾϵͳ��Ȩ��
+[权限的授予方式](../../../../security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。
 
 **类型：** number
 
@@ -52,7 +52,7 @@ readonly grantMode: number
 readonly labelId: number
 ```
 
-Ȩ�޵ı�ǩID��
+权限的标签ID。
 
 **类型：** number
 
@@ -68,7 +68,7 @@ readonly labelId: number
 readonly permissionName: string
 ```
 
-�û�Ȩ�����ơ�
+用户权限名称。
 
 **类型：** string
 

@@ -1,12 +1,12 @@
 # @ohos.enterprise.restrictions
 
-��ģ���ṩ����ͨ���������������������ȫ�ֽ��úͽ������������HDC��USB��Wi-Fi�����ԡ�
+本模块提供设置通用限制类策略能力。可以全局禁用和解除禁用蓝牙、HDC、USB、Wi-Fi等特性。
 
-> **˵��**��
+> **说明**：
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 10
 
@@ -18,38 +18,45 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#addDisallowedListForAccount-1) | Ϊָ���û����ӽ�ֹʹ��ĳ���Ե�Ӧ��������ָ���û��£����ӵ������е�Ӧ�ò�����ʹ��ָ��������������<br/> |
-| <!--DelRow-->[disableMicrophone](arkts-mdm-restrictions-disablemicrophone-f-sys.md#disableMicrophone-1) | ʹ�豸���û�������˷硣<br/> |
-| [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getDisallowedListForAccount-1) | ��ȡָ���û���ֹʹ��ĳ���Ե�Ӧ��������<br/> |
-| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1) | ��ѯĳ�����Ƿ񱻽��á�<br/> |
-| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-2) | ��ѯָ���豸�����Ƿ񱻽��á�<br/> |
-| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getDisallowedPolicyForAccount-1) | ��ȡָ���û���ĳ����״̬��<br/> |
-| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getDisallowedPolicyForAccount-2) | ��ȡָ���û���ĳ����״̬��<br/> |
-| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getUserRestricted-1) | ��ȡ������Ľ���״̬��<br/> |
-| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getUserRestrictedForAccount-1) | ��ȡָ���û�������Ľ���״̬��<br/> |
-| <!--DelRow-->[isFingerprintAuthDisabled](arkts-mdm-restrictions-isfingerprintauthdisabled-f-sys.md#isFingerprintAuthDisabled-1) | ��ѯָ����֤�Ƿ񱻽��á�<br/> |
-| <!--DelRow-->[isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#isHdcDisabled-1) | ��ѯHDC�Ƿ񱻽��á�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#isHdcDisabled-2) | ��ѯHDC�Ƿ񱻽��á�ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[isMicrophoneDisabled](arkts-mdm-restrictions-ismicrophonedisabled-f-sys.md#isMicrophoneDisabled-1) | ��ѯ��˷��Ƿ񱻽��á�<br/> |
-| <!--DelRow-->[isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isPrinterDisabled-1) | ��ѯ�豸��ӡ�����Ƿ񱻽��á�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isPrinterDisabled-2) | ��ѯ�豸��ӡ�����Ƿ񱻽��á�ʹ��Promise�첽�ص���<br/> |
-| [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removeDisallowedListForAccount-1) | Ϊָ���û��Ƴ���ֹʹ��ĳ���Ե�Ӧ��������<br/> |
-| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1) | ���ý���/����ĳ���ԡ�<br/> |
-| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-2) | ���ý���/����ָ���豸���ԣ����ú�����豸�����޷���ʹ�á�<br/> |
-| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1) | ���ý���/����ָ���û���ĳ���ԡ�<br/> |
-| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-2) | ���ý���/����ָ���û���ĳ���ԡ�<br/> |
-| <!--DelRow-->[setFingerprintAuthDisabled](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md#setFingerprintAuthDisabled-1) | ���û�����ָ����֤��<br/> |
-| <!--DelRow-->[setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#setHdcDisabled-1) | ʹ�豸���û�����[HDC](../../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#setHdcDisabled-2) | ʹ�豸���û�����HDC��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setPrinterDisabled-1) | ʹ�豸���û����ô�ӡ������ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setPrinterDisabled-2) | ʹ�豸���û����ô�ӡ������ʹ��Promise�첽�ص���<br/> |
-| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setUserRestriction-1) | �����û���Ϊ�����ƹ���<br/> |
-| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setUserRestrictionForAccount-1) | ����ָ���û���Ϊ�����ƹ���<br/> |
+| [addDisallowedListForAccount](arkts-mdm-adddisallowedlistforaccount-f.md#adddisallowedlistforaccount-1) | 为指定用户添加禁止使用某特性的应用名单。指定用户下，添加到名单中的应用不允许使用指定的特性能力。 |
+| [getDisallowedListForAccount](arkts-mdm-getdisallowedlistforaccount-f.md#getdisallowedlistforaccount-1) | 获取指定用户禁止使用某特性的应用名单。 |
+| [getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1) | 查询某特性是否被禁用。 |
+| [getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-2) | 查询指定设备特性是否被禁用。 |
+| [getDisallowedPolicyForAccount](arkts-mdm-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount-1) | 获取指定用户的某特性状态。 |
+| [getDisallowedPolicyForAccount](arkts-mdm-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount-2) | 获取指定用户的某特性状态。 |
+| [getUserRestricted](arkts-mdm-getuserrestricted-f.md#getuserrestricted-1) | 获取设置项的禁用状态。 |
+| [getUserRestrictedForAccount](arkts-mdm-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount-1) | 获取指定用户设置项的禁用状态。 |
+| [removeDisallowedListForAccount](arkts-mdm-removedisallowedlistforaccount-f.md#removedisallowedlistforaccount-1) | 为指定用户移除禁止使用某特性的应用名单。 |
+| [setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1) | 设置禁用/启用某特性。 |
+| [setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-2) | 设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。 |
+| [setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1) | 设置禁用/启用指定用户的某特性。 |
+| [setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-2) | 设置禁用/启用指定用户的某特性。 |
+| [setUserRestriction](arkts-mdm-setuserrestriction-f.md#setuserrestriction-1) | 设置用户行为的限制规则。 |
+| [setUserRestrictionForAccount](arkts-mdm-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount-1) | 设置指定用户行为的限制规则。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [disableMicrophone](arkts-mdm-disablemicrophone-f-sys.md#disablemicrophone-1) | 使设备禁用或启用麦克风。 |
+| [isFingerprintAuthDisabled](arkts-mdm-isfingerprintauthdisabled-f-sys.md#isfingerprintauthdisabled-1) | 查询指纹认证是否被禁用。 |
+| [isHdcDisabled](arkts-mdm-ishdcdisabled-f-sys.md#ishdcdisabled-1) | 查询HDC是否被禁用。使用callback异步回调。 |
+| [isHdcDisabled](arkts-mdm-ishdcdisabled-f-sys.md#ishdcdisabled-2) | 查询HDC是否被禁用。使用Promise异步回调。 |
+| [isMicrophoneDisabled](arkts-mdm-ismicrophonedisabled-f-sys.md#ismicrophonedisabled-1) | 查询麦克风是否被禁用。 |
+| [isPrinterDisabled](arkts-mdm-isprinterdisabled-f-sys.md#isprinterdisabled-1) | 查询设备打印能力是否被禁用。使用callback异步回调。 |
+| [isPrinterDisabled](arkts-mdm-isprinterdisabled-f-sys.md#isprinterdisabled-2) | 查询设备打印能力是否被禁用。使用Promise异步回调。 |
+| [setFingerprintAuthDisabled](arkts-mdm-setfingerprintauthdisabled-f-sys.md#setfingerprintauthdisabled-1) | 禁用或启用指纹认证。 |
+| [setHdcDisabled](arkts-mdm-sethdcdisabled-f-sys.md#sethdcdisabled-1) | 使设备禁用或启用[HDC](../../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 |
+| [setHdcDisabled](arkts-mdm-sethdcdisabled-f-sys.md#sethdcdisabled-2) | 使设备禁用或启用HDC。使用Promise异步回调。 |
+| [setPrinterDisabled](arkts-mdm-setprinterdisabled-f-sys.md#setprinterdisabled-1) | 使设备禁用或启用打印能力。使用callback异步回调。 |
+| [setPrinterDisabled](arkts-mdm-setprinterdisabled-f-sys.md#setprinterdisabled-2) | 使设备禁用或启用打印能力。使用Promise异步回调。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md) | ��Ϊָ���û����ý���/���õ����Ե�ö�١�<br/> |
-| [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md) | �豸����ö�١�<br/> |
+| [FeatureForAccount](arkts-mdm-featureforaccount-e.md) | 可为指定用户设置禁用/启用的特性的枚举。 |
+| [FeatureForDevice](arkts-mdm-featurefordevice-e.md) | 设备特性枚举。 |
 

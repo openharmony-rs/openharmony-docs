@@ -1,6 +1,6 @@
 # MultiAppMode
 
-��ʾ[Ӧ�ö࿪](../../../../quick-start/multiInstance.md)ģʽ��
+表示[应用多开](../../../../quick-start/multiInstance.md)模式。
 
 **起始版本：** 12
 
@@ -12,7 +12,7 @@
 readonly maxCount: number
 ```
 
-Ӧ�ö࿪����������
+应用多开的最大个数。
 
 **类型：** number
 
@@ -26,7 +26,7 @@ readonly maxCount: number
 readonly multiAppModeType: bundleManager.MultiAppModeType
 ```
 
-Ӧ�ö࿪ģʽ�����͡�
+应用多开模式的类型。
 
 **类型：** bundleManager.MultiAppModeType
 

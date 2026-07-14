@@ -1,10 +1,8 @@
 # AlternateIconInfo
 
-����Ӧ�ñ���ͼ����Ϣ��
+描述应用备用图标信息。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -14,13 +12,13 @@
 readonly enabled: boolean
 ```
 
-����ͼ���Ƿ����á�
+备用图标是否启用。
 
-true����ʾ��ǰ����ͼ�����á�
+true：表示当前备用图标启用。
 
-false����ʾ��ǰ����ͼ��δ���á�
+false：表示当前备用图标未启用。
 
-**˵����** Ӧ�����ֻ������һ������ͼ�ꡣ
+**说明：** 应用最多只能启用一个备用图标。
 
 **类型：** boolean
 
@@ -36,7 +34,7 @@ false����ʾ��ǰ����ͼ��δ���á�
 readonly iconId: number
 ```
 
-����ͼ�����Դid���Ǳ��빹��ʱ����Ӧ�����õ�icon�Զ����ɵ���Դid��
+备用图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。
 
 **类型：** number
 
@@ -52,7 +50,7 @@ readonly iconId: number
 readonly iconName: string
 ```
 
-����ͼ������ơ�
+备用图标的名称。
 
 **类型：** string
 

@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> - 以下API需要配合[UIContext](arkts-arkui-uicontext.md)中的[postFrameCallback](arkts-arkui-uicontext-c.md#postFrameCallback-1)和
-> [postDelayedFrameCallback](arkts-arkui-uicontext-c.md#postDelayedFrameCallback-1)使用。开发者需要继承该类并重写
-> [onFrame](arkts-arkui-framecallback-c.md#onFrame-1)或[onIdle](arkts-arkui-framecallback-c.md#onIdle-1)方法，实现具体的业务逻辑。
+> - 以下API需要配合[UIContext](arkts-arkui-uicontext.md)中的[postFrameCallback](arkts-arkui-uicontext-c.md#postframecallback-1)和
+> [postDelayedFrameCallback](arkts-arkui-uicontext-c.md#postdelayedframecallback-1)使用。开发者需要继承该类并重写
+> [onFrame](arkts-arkui-framecallback-c.md#onframe-1)或[onIdle](arkts-arkui-framecallback-c.md#onidle-1)方法，实现具体的业务逻辑。
 
 **起始版本：** 12
 
@@ -24,7 +24,7 @@ onFrame(frameTimeInNano: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +46,7 @@ onIdle(timeLeftInNano: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

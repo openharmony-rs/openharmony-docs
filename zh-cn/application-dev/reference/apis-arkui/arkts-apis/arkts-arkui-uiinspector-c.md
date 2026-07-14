@@ -4,8 +4,6 @@ class UIInspector
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## createComponentObserver
@@ -20,7 +18,7 @@ Sets the component after layout or draw criteria and returns the corresponding l
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +26,13 @@ Sets the component after layout or draw criteria and returns the corresponding l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | component id. |
+| id | string | 是 | ID of the target component, set using the universal attributes [id](../arkts-components/arkts-arkui-commonmethod-c.md#id-1)or [key](../arkts-components/arkts-arkui-commonmethod-c.md#key-1). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| inspector.ComponentObserver | create listener for observer component event. |
+| inspector.ComponentObserver | Component observer, which is used to register or unregister listenersfor completion of component layout or drawing display. |
 
 ## createComponentObserver
 
@@ -48,7 +46,7 @@ createComponentObserver(id: string | number): inspector.ComponentObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,5 +60,5 @@ createComponentObserver(id: string | number): inspector.ComponentObserver
 
 | 类型 | 说明 |
 | --- | --- |
-| inspector.ComponentObserver | create listener for observer component event. |
+| inspector.ComponentObserver | Component observer, which is used to register or unregister listenersfor completion of component layout or drawing display. |
 

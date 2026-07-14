@@ -1,56 +1,59 @@
-# NA(null)
+# ArkTS API<!--arkts-na-->
 
-- [@ohos.notification](arkts-notification.md)
-  - [publish](arkts-na-notification-publish-f.md)<!--Del-->
-  - [publish(系统接口)](arkts-na-notification-publish-f-sys.md)<!--DelEnd-->
-  - [cancel](arkts-na-notification-cancel-f.md)
-  - [cancelAll](arkts-na-notification-cancelall-f.md)
-  - [addSlot](arkts-na-notification-addslot-f.md)<!--Del-->
-  - [addSlot(系统接口)](arkts-na-notification-addslot-f-sys.md)<!--DelEnd--><!--Del-->
-  - [addSlots(系统接口)](arkts-na-notification-addslots-f-sys.md)<!--DelEnd-->
-  - [getSlot](arkts-na-notification-getslot-f.md)
-  - [getSlots](arkts-na-notification-getslots-f.md)
-  - [removeSlot](arkts-na-notification-removeslot-f.md)
-  - [removeAllSlots](arkts-na-notification-removeallslots-f.md)<!--Del-->
-  - [subscribe(系统接口)](arkts-na-notification-subscribe-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unsubscribe(系统接口)](arkts-na-notification-unsubscribe-f-sys.md)<!--DelEnd--><!--Del-->
-  - [enableNotification(系统接口)](arkts-na-notification-enablenotification-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isNotificationEnabled(系统接口)](arkts-na-notification-isnotificationenabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [displayBadge(系统接口)](arkts-na-notification-displaybadge-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isBadgeDisplayed(系统接口)](arkts-na-notification-isbadgedisplayed-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setSlotByBundle(系统接口)](arkts-na-notification-setslotbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSlotsByBundle(系统接口)](arkts-na-notification-getslotsbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSlotNumByBundle(系统接口)](arkts-na-notification-getslotnumbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [remove(系统接口)](arkts-na-notification-remove-f-sys.md)<!--DelEnd--><!--Del-->
-  - [removeAll(系统接口)](arkts-na-notification-removeall-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getAllActiveNotifications(系统接口)](arkts-na-notification-getallactivenotifications-f-sys.md)<!--DelEnd-->
-  - [getActiveNotificationCount](arkts-na-notification-getactivenotificationcount-f.md)
-  - [getActiveNotifications](arkts-na-notification-getactivenotifications-f.md)
-  - [cancelGroup](arkts-na-notification-cancelgroup-f.md)<!--Del-->
-  - [removeGroupByBundle(系统接口)](arkts-na-notification-removegroupbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setDoNotDisturbDate(系统接口)](arkts-na-notification-setdonotdisturbdate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getDoNotDisturbDate(系统接口)](arkts-na-notification-getdonotdisturbdate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [supportDoNotDisturbMode(系统接口)](arkts-na-notification-supportdonotdisturbmode-f-sys.md)<!--DelEnd-->
-  - [isSupportTemplate](arkts-na-notification-issupporttemplate-f.md)
-  - [requestEnableNotification](arkts-na-notification-requestenablenotification-f.md)<!--Del-->
-  - [enableDistributed(系统接口)](arkts-na-notification-enabledistributed-f-sys.md)<!--DelEnd-->
-  - [isDistributedEnabled](arkts-na-notification-isdistributedenabled-f.md)<!--Del-->
-  - [enableDistributedByBundle(系统接口)](arkts-na-notification-enabledistributedbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isDistributedEnabledByBundle(系统接口)](arkts-na-notification-isdistributedenabledbybundle-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getDeviceRemindType(系统接口)](arkts-na-notification-getdeviceremindtype-f-sys.md)<!--DelEnd-->
-  - [BundleOption](arkts-na-notification-bundleoption-i.md)
-  - [DoNotDisturbDate(系统接口)](arkts-na-notification-donotdisturbdate-i-sys.md)
-  - [NotificationKey](arkts-na-notification-notificationkey-i.md)
-  - [ContentType](arkts-na-notification-contenttype-e.md)
-  - [DeviceRemindType(系统接口)](arkts-na-notification-deviceremindtype-e-sys.md)
-  - [DoNotDisturbType(系统接口)](arkts-na-notification-donotdisturbtype-e-sys.md)
-  - [RemoveReason(系统接口)](arkts-na-notification-removereason-e-sys.md)
-  - [SlotLevel](arkts-na-notification-slotlevel-e.md)
-  - [SlotType](arkts-na-notification-slottype-e.md)
-  - [SourceType(系统接口)](arkts-na-notification-sourcetype-e-sys.md)
-- [AppServiceExtensionContext](arkts-appserviceextensioncontext.md)
-  - [AppServiceExtensionContext](arkts-na-appserviceextensioncontext-c.md)
-- [ServiceExtensionContext](arkts-serviceextensioncontext.md)
-  - [ServiceExtensionContext(系统接口)](arkts-na-serviceextensioncontext-c-sys.md)
-- [UIServiceExtensionContext](arkts-uiserviceextensioncontext.md)
-  - [UIServiceExtensionContext(系统接口)](arkts-na-uiserviceextensioncontext-c-sys.md)
+- [@ohos.arkui.advanced.FoldSplitContainer](arkts-arkui-advanced-foldsplitcontainer.md)
+  - [FoldSplitContainer](arkts-na-foldsplitcontainer-s.md)
+  - [ExpandedRegionLayoutOptions](arkts-na-expandedregionlayoutoptions-i.md)
+  - [FoldedRegionLayoutOptions](arkts-na-foldedregionlayoutoptions-i.md)
+  - [HoverModeRegionLayoutOptions](arkts-na-hovermoderegionlayoutoptions-i.md)
+  - [HoverModeStatus](arkts-na-hovermodestatus-i.md)
+  - [OnHoverStatusChangeHandler](arkts-na-onhoverstatuschangehandler-t.md)
+  - [ExtraRegionPosition](arkts-na-extraregionposition-e.md)
+  - [PresetSplitRatio](arkts-na-presetsplitratio-e.md)
+- [@ohos.inputMethodSystemPanelManager](arkts-inputmethodsystempanelmanager.md)<!--Del-->
+  - [connectSystemChannel(系统接口)](arkts-na-connectsystemchannel-f-sys.md)<!--DelEnd--><!--Del-->
+  - [offSystemPanelStatusChange(系统接口)](arkts-na-offsystempanelstatuschange-f-sys.md)<!--DelEnd--><!--Del-->
+  - [offSystemPrivateCommand(系统接口)](arkts-na-offsystemprivatecommand-f-sys.md)<!--DelEnd--><!--Del-->
+  - [onSystemPanelStatusChange(系统接口)](arkts-na-onsystempanelstatuschange-f-sys.md)<!--DelEnd--><!--Del-->
+  - [onSystemPrivateCommand(系统接口)](arkts-na-onsystemprivatecommand-f-sys.md)<!--DelEnd--><!--Del-->
+  - [sendPrivateCommand(系统接口)](arkts-na-sendprivatecommand-f-sys.md)<!--DelEnd--><!--Del-->
+  - [SystemPanelStatus(系统接口)](arkts-na-systempanelstatus-i-sys.md)<!--DelEnd--><!--Del-->
+  - [CommandDataType(系统接口)](arkts-na-commanddatatype-t-sys.md)<!--DelEnd--><!--Del-->
+  - [InputMethodInputType(系统接口)](arkts-na-inputmethodinputtype-e-sys.md)<!--DelEnd-->
+- [@ohos.wallpaper](arkts-wallpaper.md)
+  - [getColors](arkts-na-getcolors-f.md)<!--Del-->
+  - [getColorsSync(系统接口)](arkts-na-getcolorssync-f-sys.md)<!--DelEnd-->
+  - [getFile](arkts-na-getfile-f.md)
+  - [getId](arkts-na-getid-f.md)<!--Del-->
+  - [getImage(系统接口)](arkts-na-getimage-f-sys.md)<!--DelEnd-->
+  - [getMinHeight](arkts-na-getminheight-f.md)<!--Del-->
+  - [getMinHeightSync(系统接口)](arkts-na-getminheightsync-f-sys.md)<!--DelEnd-->
+  - [getMinWidth](arkts-na-getminwidth-f.md)<!--Del-->
+  - [getMinWidthSync(系统接口)](arkts-na-getminwidthsync-f-sys.md)<!--DelEnd--><!--Del-->
+  - [getPixelMap(系统接口)](arkts-na-getpixelmap-f-sys.md)<!--DelEnd--><!--Del-->
+  - [getWallpaperByState(系统接口)](arkts-na-getwallpaperbystate-f-sys.md)<!--DelEnd-->
+  - [isChangePermitted](arkts-na-ischangepermitted-f.md)
+  - [isOperationAllowed](arkts-na-isoperationallowed-f.md)
+  - [off](arkts-na-off-f.md)<!--Del-->
+  - [off(系统接口)](arkts-na-off-f-sys.md)<!--DelEnd-->
+  - [on](arkts-na-on-f.md)<!--Del-->
+  - [on(系统接口)](arkts-na-on-f-sys.md)<!--DelEnd-->
+  - [reset](arkts-na-reset-f.md)<!--Del-->
+  - [restore(系统接口)](arkts-na-restore-f-sys.md)<!--DelEnd--><!--Del-->
+  - [setAllWallpapers(系统接口)](arkts-na-setallwallpapers-f-sys.md)<!--DelEnd--><!--Del-->
+  - [setCustomWallpaper(系统接口)](arkts-na-setcustomwallpaper-f-sys.md)<!--DelEnd--><!--Del-->
+  - [setImage(系统接口)](arkts-na-setimage-f-sys.md)<!--DelEnd--><!--Del-->
+  - [setVideo(系统接口)](arkts-na-setvideo-f-sys.md)<!--DelEnd-->
+  - [setWallpaper](arkts-na-setwallpaper-f.md)
+  - [RgbaColor](arkts-na-rgbacolor-i.md)<!--Del-->
+  - [WallpaperInfo(系统接口)](arkts-na-wallpaperinfo-i-sys.md)<!--DelEnd--><!--Del-->
+  - [FoldState(系统接口)](arkts-na-foldstate-e-sys.md)<!--DelEnd--><!--Del-->
+  - [RotateState(系统接口)](arkts-na-rotatestate-e-sys.md)<!--DelEnd--><!--Del-->
+  - [WallpaperResourceType(系统接口)](arkts-na-wallpaperresourcetype-e-sys.md)<!--DelEnd-->
+  - [WallpaperType](arkts-na-wallpapertype-e.md)
+- application<!--arkts-na-application-->
+  - [AppServiceExtensionContext](arkts-appserviceextensioncontext.md)
+    - [AppServiceExtensionContext](arkts-na-appserviceextensioncontext-c.md)
+  - [ServiceExtensionContext](arkts-serviceextensioncontext.md)<!--Del-->
+    - [ServiceExtensionContext(系统接口)](arkts-na-serviceextensioncontext-c-sys.md)<!--DelEnd-->
+  - [UIServiceExtensionContext](arkts-uiserviceextensioncontext.md)<!--Del-->
+    - [UIServiceExtensionContext(系统接口)](arkts-na-uiserviceextensioncontext-c-sys.md)<!--DelEnd-->

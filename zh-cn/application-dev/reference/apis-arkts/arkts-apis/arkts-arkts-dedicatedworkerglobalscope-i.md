@@ -2,7 +2,7 @@
 
 Worker线程自身的运行环境，与宿主线程环境隔离。
 
-**继承/实现关系：** DedicatedWorkerGlobalScope extends [WorkerGlobalScope](arkts-arkts-workerglobalscope-i.md#WorkerGlobalScope)
+**继承/实现关系：** DedicatedWorkerGlobalScope extends [WorkerGlobalScope](arkts-arkts-workerglobalscope-i.md)
 
 **起始版本：** 7
 

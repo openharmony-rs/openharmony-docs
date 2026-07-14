@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## createHDRColor
@@ -31,11 +29,11 @@ static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpace | ColorSpace | 是 | 颜色的颜色空间。<br/>支持SRGB、Display_P3、BT2020颜色空间。 |
-| red | number | 是 | 红色分量值。有效范围：[0, +∞)。<br/>大于1.0的值启用HDR亮度。 |
-| green | number | 是 | 绿色分量值。有效范围：[0, +∞)。<br/>大于1.0的值启用HDR亮度。 |
-| blue | number | 是 | 蓝色分量值。有效范围：[0, +∞)。<br/>大于1.0的值启用HDR亮度。 |
-| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。<br/>默认值为1.0（完全不透明）。 |
+| colorSpace | ColorSpace | 是 | 颜色的颜色空间。支持SRGB、Display_P3、BT2020颜色空间。 |
+| red | number | 是 | 红色分量值。有效范围：[0, +∞)。大于1.0的值启用HDR亮度。 |
+| green | number | 是 | 绿色分量值。有效范围：[0, +∞)。大于1.0的值启用HDR亮度。 |
+| blue | number | 是 | 蓝色分量值。有效范围：[0, +∞)。大于1.0的值启用HDR亮度。 |
+| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。默认值为1.0（完全不透明）。 |
 
 **返回值：**
 
@@ -67,12 +65,12 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| linearExposure | number | 是 | 曝光值中的线性曝光值。<br/>值为1.0表示标准曝光。<br/>大于1.0的值会线性增加亮度。 |
-| colorSpace | ColorSpace | 是 | 颜色的颜色空间。<br/>支持SRGB、Display_P3、BT2020颜色空间。 |
+| linearExposure | number | 是 | 曝光值中的线性曝光值。值为1.0表示标准曝光。大于1.0的值会线性增加亮度。 |
+| colorSpace | ColorSpace | 是 | 颜色的颜色空间。支持SRGB、Display_P3、BT2020颜色空间。 |
 | red | number | 是 | 红色分量值。有效范围：【0,1】。 |
 | green | number | 是 | 绿色分量值。有效范围：【0,1】。 |
 | blue | number | 是 | 蓝色分量值。有效范围：【0,1】。 |
-| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。<br/>默认值为1.0（完全不透明）。 |
+| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。默认值为1.0（完全不透明）。 |
 
 **返回值：**
 
@@ -104,12 +102,12 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| exposure | number | 是 | 对数曝光值，单位为秒。<br/>有效范围：[0, +∞)。<br/>值0.0表示标准曝光。<br/>每增加1.0将使亮度加倍（一次停止）。 |
-| colorSpace | ColorSpace | 是 | 颜色的颜色空间。<br/>支持SRGB、Display_P3、BT2020颜色空间。 |
+| exposure | number | 是 | 对数曝光值，单位为秒。有效范围：[0, +∞)。值0.0表示标准曝光。每增加1.0将使亮度加倍（一次停止）。 |
+| colorSpace | ColorSpace | 是 | 颜色的颜色空间。支持SRGB、Display_P3、BT2020颜色空间。 |
 | red | number | 是 | 红色分量值。有效范围：【0,1】。 |
 | green | number | 是 | 绿色分量值。有效范围：【0,1】。 |
 | blue | number | 是 | 蓝色分量值。有效范围：【0,1】。 |
-| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。<br/>默认值为1.0（完全不透明）。 |
+| alpha | number | 否 | Alpha（不透明度）分量值。有效范围：【0,1】。默认值为1.0（完全不透明）。 |
 
 **返回值：**
 
@@ -140,7 +138,7 @@ getBlueValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 蓝色值。<br/>有效范围：<br/>对于SDR颜色：【0,1】。<br/>HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 蓝色值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
 
 ## getColorSpace
 
@@ -163,7 +161,7 @@ getColorSpace(): ColorSpace
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpace | The color space of the ColorMetrics.<br/>Possible value: ColorSpace.SRGB, ColorSpace.DISPLAY_P3, ColorSpace.BT2020. |
+| ColorSpace | The color space of the ColorMetrics.Possible value: ColorSpace.SRGB, ColorSpace.DISPLAY_P3, ColorSpace.BT2020. |
 
 ## getGreenValue
 
@@ -188,7 +186,7 @@ getGreenValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 绿色的值。<br/>有效范围：<br/>对于SDR颜色：【0,1】。<br/>HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 绿色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
 
 ## getRedValue
 
@@ -213,7 +211,7 @@ getRedValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 红色的值。<br/>有效范围：<br/>对于SDR颜色：【0,1】。<br/>HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
+| number | 红色的值。有效范围：对于SDR颜色：【0,1】。HDR颜色：[0,+∞),&gt;1.0表示HDR亮度。 |
 
 ## isHDR
 
@@ -236,5 +234,5 @@ isHDR(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | ColorMetrics是否是HDR颜色。<br/>如果满足以下条件，则返回true：<br/>-颜色是使用createHDRColorWithXx()方法创建的。<br/>-任何RGB通道值都大于1.0。 |
+| boolean | ColorMetrics是否是HDR颜色。如果满足以下条件，则返回true：-颜色是使用createHDRColorWithXx()方法创建的。-任何RGB通道值都大于1.0。 |
 

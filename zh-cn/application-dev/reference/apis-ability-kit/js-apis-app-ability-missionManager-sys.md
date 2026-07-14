@@ -1,0 +1,2055 @@
+# @ohos.app.ability.missionManager (missionManager)(系统接口)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
+missionManager模块提供系统任务管理能力，包括对系统任务执行锁定、解锁、清理、切换到前台等操作。
+
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口均为系统接口，三方应用不支持调用。
+
+## 导入模块
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+```
+
+## 权限列表
+
+ohos.permission.MANAGE_MISSIONS
+
+## missionManager.on('mission')
+
+on(type:'mission', listener: MissionListener): number
+
+注册系统任务状态监听器。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
+  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | number | 监听器的index值，由系统创建，在注册系统任务状态监听时分配，和监听器一一对应&nbsp;。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (mission: number) => {console.info('--------onMissionCreated-------');},
+  onMissionDestroyed: (mission: number) => {console.info('--------onMissionDestroyed-------');},
+  onMissionSnapshotChanged: (mission: number) => {console.info('--------onMissionSnapshotChanged-------');},
+  onMissionMovedToFront: (mission: number) => {console.info('--------onMissionMovedToFront-------');},
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {console.info('--------onMissionIconUpdated-------');},
+  onMissionClosed: (mission: number) => {console.info('--------onMissionClosed-------');},
+  onMissionLabelUpdated: (mission: number) => {console.info('--------onMissionLabelUpdated-------');}
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('mission', listenerId).catch((error: BusinessError) => {
+          console.info(JSON.stringify(error));
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('mission', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('mission')
+
+off(type: 'mission', listenerId: number, callback: AsyncCallback&lt;void&gt;): void
+
+解注册任务状态监听器。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified mission listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (mission: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (mission: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (mission: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (mission: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (mission: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (mission: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('mission', listenerId, (error: BusinessError) => {
+          if (error) {
+            console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}`);
+            return;
+          }
+          console.info(`MissionManager.off success.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('mission', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('mission')
+
+off(type: 'mission', listenerId: number): Promise&lt;void&gt;
+
+解注册任务状态监听。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified mission listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (mission: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (mission: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (mission: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (mission: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (mission: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (mission: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('mission', listenerId).catch((error: BusinessError) => {
+          console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('mission', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+## missionManager.getMissionInfo
+
+getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback&lt;MissionInfo&gt;): void
+
+获取任务信息。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | 是 | 执行结果回调函数，返回任务信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 1;
+
+missionManager.getMissionInfos('', 10)
+  .then((allMissions: Array<missionManager.MissionInfo>) => {
+    try {
+      if (allMissions && allMissions.length > 0) {
+        testMissionId = allMissions[0].missionId;
+      }
+
+      missionManager.getMissionInfo('', testMissionId, (error: BusinessError, mission: missionManager.MissionInfo) => {
+        if (error) {
+          console.error(`getMissionInfo failed, error.code: ${error.code}, error.message: ${error.message}`);
+        } else {
+          console.info(`mission.missionId = ${mission.missionId}`);
+          console.info(`mission.runningState = ${mission.runningState}`);
+          console.info(`mission.lockedState = ${mission.lockedState}`);
+          console.info(`mission.timestamp = ${mission.timestamp}`);
+          console.info(`mission.label = ${mission.label}`);
+          console.info(`mission.iconPath = ${mission.iconPath}`);
+        }
+      });
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+  })
+  .catch((error: BusinessError) => {
+    console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
+  });
+```
+
+## missionManager.getMissionInfo
+
+getMissionInfo(deviceId: string, missionId: number): Promise&lt;MissionInfo&gt;
+
+获取任务信息。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | Promise对象，返回任务信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 1;
+
+try {
+  missionManager.getMissionInfo('', testMissionId)
+    .then((data: missionManager.MissionInfo) => {
+      console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`getMissionInfo failed. Cause: ${error.message}`);
+    });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionInfo failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.getMissionInfos
+
+getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallback&lt;Array&lt;MissionInfo&gt;&gt;): void
+
+获取所有任务信息。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | numMax | number | 是 | 任务信息数量上限。 |
+  | callback | AsyncCallback&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | 是 | 执行结果回调函数，返回任务信息数组。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos('', 10, (error: BusinessError, missions: Array<missionManager.MissionInfo>) => {
+    if (error) {
+      console.error(`getMissionInfos failed, error.code: ${error.code}, error.message: ${error.message}`);
+    } else {
+      console.info(`size = ${missions.length}`);
+      console.info(`missions = ${JSON.stringify(missions)}`);
+    }
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`getMissionInfos failed, error code: ${code}, error msg: ${message}.`);
+}
+```
+
+
+## missionManager.getMissionInfos
+
+getMissionInfos(deviceId: string, numMax: number): Promise&lt;Array&lt;MissionInfo&gt;&gt;
+
+获取所有任务信息。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | numMax | number | 是 | 任务信息数量上限。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | Promise对象，返回所有任务信息的数组。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos('', 10).then((data: Array<missionManager.MissionInfo>) => {
+    console.info(`getMissionInfos successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionInfos failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionInfos failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.getMissionSnapShot
+
+getMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback&lt;MissionSnapshot&gt;): void
+
+获取任务快照。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.getMissionSnapShot('', testMissionId, (err: BusinessError, data: missionManager.MissionSnapshot) => {
+    if (err) {
+      console.error(`getMissionSnapShot failed: ${err.message}`);
+    } else {
+      console.info(`getMissionSnapShot successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionSnapShot failed: ${err.message}`);
+}
+```
+
+## missionManager.getMissionSnapShot
+
+getMissionSnapShot(deviceId: string, missionId: number): Promise&lt;MissionSnapshot&gt;
+
+获取任务快照。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Promise对象，返回任务快照信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.getMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
+    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionSnapShot failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.getLowResolutionMissionSnapShot
+
+getLowResolutionMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback\<MissionSnapshot>): void
+
+获取任务低分辨率快照。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.getLowResolutionMissionSnapShot('', testMissionId,
+    (err: BusinessError, data: missionManager.MissionSnapshot) => {
+      if (err) {
+        console.error(`getLowResolutionMissionSnapShot failed: ${err.message}`);
+      } else {
+        console.info(`getLowResolutionMissionSnapShot successfully: ${JSON.stringify(data)}`);
+      }
+    });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getLowResolutionMissionSnapShot failed: ${err.message}`);
+}
+```
+
+## missionManager.getLowResolutionMissionSnapShot
+
+getLowResolutionMissionSnapShot(deviceId: string, missionId: number): Promise\<MissionSnapshot>
+
+获取任务低分辨率快照。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Promise对象，返回任务快照信息。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.getLowResolutionMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
+    console.info(`getLowResolutionMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getLowResolutionMissionSnapShot failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getLowResolutionMissionSnapShot failed. Cause: ${err.message}`);
+}
+```
+
+
+## missionManager.lockMission
+
+lockMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
+
+锁定指定任务ID的任务。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300001 | Mission not found. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.lockMission(testMissionId, (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`lockMission failed: ${err.message}`);
+    } else {
+      console.info(`lockMission successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`lockMission failed: ${err.message}`);
+}
+```
+
+## missionManager.lockMission
+
+lockMission(missionId: number): Promise&lt;void&gt;
+
+锁定指定任务ID的任务。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300001 | Mission not found. |
+
+**示例：**
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.lockMission(testMissionId).then((data: void) => {
+    console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`lockMission failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`lockMission failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.unlockMission
+
+unlockMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
+
+解锁指定任务ID的任务。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| missionId | number | 是 | 任务ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300001 | Mission not found. |
+
+**示例：**
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.unlockMission(testMissionId, (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`unlockMission failed: ${err.message}`);
+    } else {
+      console.info(`unlockMission successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`unlockMission failed: ${err.message}`);
+}
+```
+
+## missionManager.unlockMission
+
+unlockMission(missionId: number): Promise&lt;void&gt;
+
+解锁指定任务ID的任务。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300001 | Mission not found. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.unlockMission(testMissionId).then((data: void) => {
+    console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`unlockMission failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`unlockMission failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.clearMission
+
+clearMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
+
+清理指定任务ID的任务，无论该任务是否被锁定。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.clearMission(testMissionId, (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`clearMission failed: ${err.message}`);
+    } else {
+      console.info(`clearMission successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`clearMission failed: ${err.message}`);
+}
+```
+
+
+## missionManager.clearMission
+
+clearMission(missionId: number): Promise&lt;void&gt;
+
+清理指定任务ID的任务，无论该任务是否被锁定。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.clearMission(testMissionId).then((data: void) => {
+    console.info(`clearMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`clearMission failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`clearMission failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.clearAllMissions
+
+clearAllMissions(callback: AsyncCallback&lt;void&gt;): void
+
+清理所有未锁定的任务。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.clearAllMissions((err: BusinessError) => {
+    if (err) {
+      console.error(`clearAllMissions failed: ${err.message}`);
+    } else {
+      console.info('clearAllMissions successfully.');
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`clearAllMissions failed: ${err.message}`);
+}
+```
+
+## missionManager.clearAllMissions
+
+clearAllMissions(): Promise&lt;void&gt;
+
+清理所有未锁定的任务。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.clearAllMissions().then((data: void) => {
+    console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearAllMissions failed: ${err.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`clearAllMissions failed: ${err.message}`);
+}
+```
+
+## missionManager.moveMissionToFront
+
+moveMissionToFront(missionId: number, callback: AsyncCallback&lt;void&gt;): void
+
+把指定任务ID的任务切到前台。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.moveMissionToFront(testMissionId, (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`moveMissionToFront failed: ${err.message}`);
+    } else {
+      console.info(`moveMissionToFront successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`moveMissionToFront failed: ${err.message}`);
+}
+```
+
+## missionManager.moveMissionToFront
+
+moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
+
+把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+  | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`moveMissionToFront failed: ${err.message}`);
+    } else {
+      console.info(`moveMissionToFront successfully: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`moveMissionToFront failed: ${err.message}`);
+}
+```
+
+## missionManager.moveMissionToFront
+
+moveMissionToFront(missionId: number, options?: StartOptions): Promise&lt;void&gt;
+
+把指定任务ID的任务切到前台，同时指定任务切换到前台时的启动参数，例如窗口模式、设备ID等。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionId | number | 是 | 任务ID。 |
+  | options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。默认为空，表示按照默认启动参数。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+
+**示例：**
+
+```ts
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 2;
+
+try {
+  missionManager.moveMissionToFront(testMissionId).then((data: void) => {
+    console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`moveMissionToFront failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`moveMissionToFront failed. Cause: ${err.message}`);
+}
+```
+
+## missionManager.moveMissionsToForeground<sup>10+</sup>
+
+moveMissionsToForeground(missionIds: Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;): void
+
+将指定任务批量切到前台。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos("", 10, (error: BusinessError, missionInfos: Array<missionManager.MissionInfo>) => {
+    if (error.code) {
+      console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
+      return;
+    }
+    if (missionInfos.length < 1) {
+      return;
+    }
+
+    let toShows = new Array<number>();
+    for (let missionInfo of missionInfos) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.BACKGROUND) {
+        toShows.push(missionInfo.missionId);
+      }
+    }
+    missionManager.moveMissionsToForeground(toShows, (err: BusinessError, data: void) => {
+      if (err) {
+        console.error(`moveMissionsToForeground failed: ${err.message}`);
+      } else {
+        console.info(`moveMissionsToForeground successfully: ${JSON.stringify(data)}`);
+      }
+    });
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.moveMissionsToForeground<sup>10+</sup>
+
+moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission: number, callback: AsyncCallback&lt;void&gt;): void
+
+将指定任务批量切换到前台，并将任务ID等于topMission的任务移动到最顶层。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+  | topMission | number | 是 | 待移动到最顶层的任务ID |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos("", 10, (error: BusinessError, missionInfos: Array<missionManager.MissionInfo>) => {
+    if (error.code) {
+      console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
+      return;
+    }
+    if (missionInfos.length < 1) {
+      return;
+    }
+
+    let toShows = new Array<number>();
+    for (let missionInfo of missionInfos) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.BACKGROUND) {
+        toShows.push(missionInfo.missionId);
+      }
+    }
+    missionManager.moveMissionsToForeground(toShows, toShows[0], (err: BusinessError, data: void) => {
+      if (err) {
+        console.error(`moveMissionsToForeground failed: ${err.message}`);
+      } else {
+        console.info(`moveMissionsToForeground successfully`);
+      }
+    });
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.moveMissionsToForeground<sup>10+</sup>
+
+moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission?: number): Promise&lt;void&gt;
+
+将指定任务批量切到前台，并将任务ID等于topMission的任务移动到最顶层。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+  | topMission | number | 否 | 待移动到最顶层的任务ID。默认值为-1，表示将默认任务移动到最顶层。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos("", 10, (error: BusinessError, missionInfos: Array<missionManager.MissionInfo>) => {
+    if (error.code) {
+      console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}`);
+      return;
+    }
+    if (missionInfos.length < 1) {
+      return;
+    }
+
+    let toShows = new Array<number>();
+    for (let missionInfo of missionInfos) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.BACKGROUND) {
+        toShows.push(missionInfo.missionId);
+      }
+    }
+    missionManager.moveMissionsToForeground(toShows, toShows[0]).then(() => {
+      console.info(`moveMissionsToForeground is called`);
+    });
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.moveMissionsToBackground<sup>10+</sup>
+
+moveMissionsToBackground(missionIds: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+
+将指定任务批量切到后台，返回的结果任务ID按被隐藏时的任务层级排序。使用callback异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+  | callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是 | 执行结果回调函数。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos("", 10, (error: BusinessError, missionInfos: Array<missionManager.MissionInfo>) => {
+    if (error.code) {
+      console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}`);
+      return;
+    }
+
+    let toHides = new Array<number>();
+    for (let missionInfo of missionInfos) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.FOREGROUND) {
+        toHides.push(missionInfo.missionId);
+      }
+    }
+    missionManager.moveMissionsToBackground(toHides, (err: BusinessError, data: Array<number>) => {
+      if (err) {
+        console.error(`moveMissionsToBackground failed: ${err.message}`);
+      } else {
+        console.info(`moveMissionsToBackground successfully: ${JSON.stringify(data)}`);
+      }
+    });
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.moveMissionsToBackground<sup>10+</sup>
+
+moveMissionsToBackground(missionIds : Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+将指定任务批量切到后台，返回的结果按被隐藏时的任务层级排序。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回任务ID。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+```ts
+import { abilityManager, missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  missionManager.getMissionInfos("", 10, (error: BusinessError, missionInfos: Array<missionManager.MissionInfo>) => {
+    if (error.code) {
+      console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}`);
+      return;
+    }
+
+    let toHides = new Array<number>();
+    for (let missionInfo of missionInfos) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.FOREGROUND) {
+        toHides.push(missionInfo.missionId);
+      }
+    }
+    missionManager.moveMissionsToBackground(toHides).then((hideRes: Array<number>) => {
+      console.info(`moveMissionsToBackground is called, res: ${JSON.stringify(hideRes)}`);
+    });
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.on('missionEvent')<sup>(deprecated)</sup>
+
+on(type:'missionEvent', listener: MissionListener): number
+
+注册系统任务状态监听器。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.on('mission')](#missionmanageronmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | number | 监听器的index值，由系统创建，在注册系统任务状态监听时分配，和监听器一一对应&nbsp;。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {console.info('--------onMissionCreated-------');},
+  onMissionDestroyed: (missionEvent: number) => {console.info('--------onMissionDestroyed-------');},
+  onMissionSnapshotChanged: (missionEvent: number) => {console.info('--------onMissionSnapshotChanged-------');},
+  onMissionMovedToFront: (missionEvent: number) => {console.info('--------onMissionMovedToFront-------');},
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {console.info('--------onMissionIconUpdated-------');},
+  onMissionClosed: (missionEvent: number) => {console.info('--------onMissionClosed-------');},
+  onMissionLabelUpdated: (missionEvent: number) => {console.info('--------onMissionLabelUpdated-------');}
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId).catch((error: BusinessError) => {
+          console.info(JSON.stringify(error));
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('missionEvent')<sup>(deprecated)</sup>
+
+off(type: 'missionEvent', listenerId: number, callback: AsyncCallback&lt;void&gt;): void
+
+解注册任务状态监听器。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。解注册任务状态监听器成功，err为undefined，否则为错误对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified missionEvent listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (missionEvent: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (missionEvent: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (missionEvent: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (missionEvent: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (missionEvent: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId, (error: BusinessError) => {
+          if (error) {
+            console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}`);
+            return;
+          }
+          console.info(`MissionManager.off success.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('missionEvent')<sup>(deprecated)</sup>
+
+off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
+
+解注册任务状态监听。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified missionEvent listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (missionEvent: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (missionEvent: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (missionEvent: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (missionEvent: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (missionEvent: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId).catch((error: BusinessError) => {
+          console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```

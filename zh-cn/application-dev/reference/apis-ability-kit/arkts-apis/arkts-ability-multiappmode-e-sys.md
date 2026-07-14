@@ -1,14 +1,8 @@
 # MultiAppMode（系统接口）
 
-```TypeScript
-export enum MultiAppMode
-```
-
 定义应用是否支持多开模式。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -1,9 +1,5 @@
 # AVScreenCaptureFillMode
 
-```TypeScript
-enum AVScreenCaptureFillMode
-```
-
 进行屏幕录制时视频填充模式的枚举。
 
 **起始版本：** 18

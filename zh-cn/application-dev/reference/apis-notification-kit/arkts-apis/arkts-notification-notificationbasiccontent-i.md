@@ -27,7 +27,7 @@ lockscreenPicture?: image.PixelMap
 ```
 
 通知在锁屏界面显示的图片，默认为空。当前仅支持实况窗类型通知。图标像素的总字节数不超过192KB（图标像素的总字节数通过
-[getPixelBytesNumber](@ohos.multimedia.image:image.PixelMap.getPixelBytesNumber)获取），建议图标像素长宽为128*128。实际显示效果依赖
+[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-pixelmap-i.md#getpixelbytesnumber-1)获取），建议图标像素长宽为128*128。实际显示效果依赖
 于设备能力和通知中心UI样式。
 
 **类型：** image.PixelMap

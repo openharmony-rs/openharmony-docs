@@ -12,10 +12,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getFreeSize-1) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。<br/> |
-| [getFreeSize](arkts-corefile-statfs-getfreesize-f.md#getFreeSize-2) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。<br/> |
-| [getFreeSizeSync](arkts-corefile-statfs-getfreesizesync-f.md#getFreeSizeSync-1) | 以同步方法获取指定文件系统空闲字节数。<br/> |
-| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#getTotalSize-1) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。<br/> |
-| [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md#getTotalSize-2) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。<br/> |
-| [getTotalSizeSync](arkts-corefile-statfs-gettotalsizesync-f.md#getTotalSizeSync-1) | 以同步方法获取指定文件系统总字节数。<br/> |
+| [getFreeSize](arkts-corefile-getfreesize-f.md#getfreesize-1) | 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。 |
+| [getFreeSize](arkts-corefile-getfreesize-f.md#getfreesize-2) | 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。 |
+| [getFreeSizeSync](arkts-corefile-getfreesizesync-f.md#getfreesizesync-1) | 以同步方法获取指定文件系统空闲字节数。 |
+| [getTotalSize](arkts-corefile-gettotalsize-f.md#gettotalsize-1) | 异步方法获取指定文件系统总字节数，以Promise形式返回结果。 |
+| [getTotalSize](arkts-corefile-gettotalsize-f.md#gettotalsize-2) | 异步方法获取指定文件系统总字节数，使用callback形式返回结果。 |
+| [getTotalSizeSync](arkts-corefile-gettotalsizesync-f.md#gettotalsizesync-1) | 以同步方法获取指定文件系统总字节数。 |
 

@@ -28,9 +28,9 @@ next(): ReaderIteratorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900037](../../errorcode-universal.md#13900037-No) | No data available |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900037 | No data available |
+| 13900042 | Unknown error |
 
 **示例：**
 

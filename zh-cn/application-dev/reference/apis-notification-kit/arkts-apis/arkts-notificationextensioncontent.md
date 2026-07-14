@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md) | 通知扩展内容。<br/> |
+| [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md) | 通知扩展内容。 |
 

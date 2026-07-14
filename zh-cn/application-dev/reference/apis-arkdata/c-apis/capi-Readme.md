@@ -1,0 +1,12 @@
+- 头文件
+    - [oh_preferences_value.h](capi-oh-preferences-value-h.md)
+    - [oh_preferences.h](capi-oh-preferences-h.md)
+    - [oh_preferences_err_code.h](capi-oh-preferences-err-code-h.md)
+    - [oh_preferences_option.h](capi-oh-preferences-option-h.md)
+- 模块
+    - [Preferences](capi-preferences.md)
+- 结构体
+    - [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)
+    - [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)
+    - [OH_Preferences](capi-preferences-oh-preferences.md)
+    - [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)

@@ -22,9 +22,9 @@ cancel(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system |
-| [13900043](../../errorcode-universal.md#13900043-No) | No task can be canceled. |
+| 13900010 | Try again |
+| 13900012 | Permission denied by the file system |
+| 13900043 | No task can be canceled. |
 
 **示例：**
 
@@ -97,9 +97,9 @@ onCancel(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900008 | Bad file descriptor |
+| 13900042 | Unknown error |
 
 **示例：**
 

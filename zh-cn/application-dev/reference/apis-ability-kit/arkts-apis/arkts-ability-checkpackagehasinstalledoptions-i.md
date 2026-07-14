@@ -1,10 +1,10 @@
 # CheckPackageHasInstalledOptions
 
-> **˵����**
+> **说明：**
 >
-> ��API version 3��ʼ֧�֣���API version 9��ʼ������
+> 从API version 3开始支持，从API version 9开始废弃。
 
-ָʾӦ�ð��Ƿ��Ѱ�װ��
+指示应用包是否已安装。
 
 **起始版本：** 3
 
@@ -18,7 +18,7 @@
 bundleName: string
 ```
 
-Ӧ��Bundle���ơ�
+应用Bundle名称。
 
 **类型：** string
 
@@ -34,7 +34,7 @@ bundleName: string
 complete?: () => void
 ```
 
-�ӿڵ��ý����Ļص�������
+接口调用结束的回调函数。
 
 **类型：** () => void
 
@@ -50,7 +50,7 @@ complete?: () => void
 fail?: (data: any, code: number) => void
 ```
 
-�ӿڵ���ʧ�ܵĻص�������
+接口调用失败的回调函数。
 
 **类型：** (data: any, code: number) => void
 
@@ -66,7 +66,7 @@ fail?: (data: any, code: number) => void
 success?: (data: CheckPackageHasInstalledResponse) => void
 ```
 
-�ӿڵ��óɹ��Ļص�������
+接口调用成功的回调函数。
 
 **类型：** (data: CheckPackageHasInstalledResponse) => void
 

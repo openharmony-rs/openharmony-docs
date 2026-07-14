@@ -12,7 +12,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -26,5 +26,5 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/>- request对象对应句柄唯一。 |
+| long | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> - request对象对应句柄唯一。 |
 

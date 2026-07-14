@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## decoratorName
@@ -20,9 +18,9 @@ decoratorName: string
 
 当V2对象使用[@Trace](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)时，值为：'@Trace'。
 
-当V2对象使用[makeObserved](arkts-arkui-uiutils-c.md#makeObserved-1)时，值为：'MakeObserved'。
+当V2对象使用[makeObserved](arkts-arkui-uiutils-c.md#makeobserved-1)时，值为：'MakeObserved'。
 
-当V2对象使用[enableV2Compatibility](arkts-arkui-uiutils-c.md#enableV2Compatibility-1)时，值为：'EnableV2Compatible'。
+当V2对象使用[enableV2Compatibility](arkts-arkui-uiutils-c.md#enablev2compatibility-1)时，值为：'EnableV2Compatible'。
 
 当V2对象使用built-in类型数据时，值为：'ProxyObservedV2'。
 
@@ -32,7 +30,7 @@ decoratorName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +48,7 @@ dependentInfo: Array<ElementInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +68,7 @@ V1对象返回被使用的组件id。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +90,7 @@ V2对象返回对象名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +108,7 @@ stateVariableName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

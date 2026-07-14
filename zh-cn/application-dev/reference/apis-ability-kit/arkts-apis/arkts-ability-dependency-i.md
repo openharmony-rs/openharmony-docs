@@ -1,6 +1,6 @@
 # Dependency
 
-����ģ���������Ķ�̬��������Ϣ��
+描述模块所依赖的动态共享库信息。
 
 **起始版本：** 9
 
@@ -12,13 +12,13 @@
 readonly bundleName: string
 ```
 
-��ʶ��ǰģ�������Ĺ�����������
+标识当前模块依赖的共享包包名。
 
 **类型：** string
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,13 +28,13 @@ readonly bundleName: string
 readonly moduleName: string
 ```
 
-��ʶ��ǰģ�������Ĺ�����ģ������
+标识当前模块依赖的共享包模块名。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,13 +44,13 @@ readonly moduleName: string
 readonly versionCode: number
 ```
 
-��ʶ��ǰ�������İ汾�š�
+标识当前共享包的版本号。
 
 **类型：** number
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

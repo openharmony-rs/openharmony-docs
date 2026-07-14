@@ -1,15 +1,15 @@
 # @ohos.enterprise.usbManager
 
-��ģ���ṩUSB����������
+本模块提供USB管理能力。
 
-> **˵��**��
+> **说明**：
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 >
-> ȫ��ͨ�������������restrictionsͳһ�ṩ����Ҫȫ�ֽ���USB����ο�
-> [@ohos.enterprise.restrictions����������ԣ�](arkts-enterprise-restrictions.md#restrictions)��
+> 全局通用限制类策略由restrictions统一提供，若要全局禁用USB，请参考
+> [@ohos.enterprise.restrictions（限制类策略）](arkts-enterprise-restrictions.md)。
 
 **起始版本：** 10
 
@@ -21,30 +21,37 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md#addAllowedUsbDevices-1) | ����USB�豸����������<br/><br/>��������£����ñ��ӿڻᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ������豸USB����USBת����������<br/>2. �Ѿ�ͨ��[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy-1)�ӿ�������USB�洢�豸���ʲ���Ϊ���á�<br/>3. �Ѿ�ͨ��[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)�ӿ������˽�ֹʹ�õ�USB�豸���͡�<br/> |
-| [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1) | ���ӽ�ֹʹ�õ�USB�豸���͡�<br/><br/>��������£����ñ��ӿڻᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ������豸USB������<br/>2. �Ѿ�ͨ��[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md#addAllowedUsbDevices-1)�ӿ�������USB�豸����������<br/>3. �Ѿ�ͨ��[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)�ӿڽ�����ĳ�û�USB�洢�豸д��������<br/> |
-| <!--DelRow-->[disableUsb](arkts-mdm-usbmanager-disableusb-f-sys.md#disableUsb-1) | ���ý��û�����USB��<br/> |
-| [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md#getAllowedUsbDevices-1) | ��ȡUSB�豸����������<br/> |
-| [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getDisallowedUsbDevices-1) | ��ȡ��ֹʹ�õ�USB�豸���͡�<br/> |
-| [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getUsbStorageDeviceAccessPolicy-1) | ��ȡUSB�洢�豸���ʲ��ԡ�<br/> |
-| <!--DelRow-->[isUsbDisabled](arkts-mdm-usbmanager-isusbdisabled-f-sys.md#isUsbDisabled-1) | ��ѯUSB�Ƿ���á�<br/> |
-| [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md#removeAllowedUsbDevices-1) | �Ƴ�USB�豸����������<br/> |
-| [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md#removeDisallowedUsbDevices-1) | �Ƴ���ֹʹ�õ�USB�豸���͡�<br/> |
-| <!--DelRow-->[setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md#setUsbPolicy-1) | ����USB�Ķ�д���ԡ�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md#setUsbPolicy-2) | ����USB�Ķ�д���ԡ�ʹ��Promise�첽�ص���<br/> |
-| [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy-1) | ����USB�洢�豸���ʲ��ԡ�<br/><br/>&gt; **˵��**��<br/>&gt; &gt; �ڵ��ýӿ�ǰ��ȷ������ͣUSB�洢�豸�Ķ�д��������֤�������ȶ��Ժ����ݵ������ԣ�������ܳ��ֲ���Ԥ�ڵ��쳣��<br/><br/>��������£�ͨ�����ӿ�����USB�洢�豸���ʲ���Ϊ�ɶ���д/ֻ�����ᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ������豸USB������<br/>2. �Ѿ�ͨ��[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)�ӿڽ��洢���͵�USB�豸����Ϊ��ֹʹ�õ�USB�豸���͡�<br/>3. �Ѿ�ͨ��[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)�ӿڽ�����ĳ�û�USB�洢�豸д��������<br/><br/>��������£�ͨ�����ӿ�����USB�洢�豸���ʲ���Ϊ���ã��ᱨ���Գ�ͻ��<br/><br/>1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ������豸USB������<br/>2. �Ѿ�ͨ��[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md#addAllowedUsbDevices-1)�ӿ�������USB�豸����������<br/>3. �Ѿ�ͨ��[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)�ӿڽ�����ĳ�û�USB�洢�豸д��������<br/><br/>ͨ�����ӿ����ã�����ͨ��[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)�ӿ����Ӵ洢���͵�USB�豸�����ɽ���USB�洢�豸���Ƽ�ʹ�ú��ߡ�<br/> |
+| [addAllowedUsbDevices](arkts-mdm-addallowedusbdevices-f.md#addallowedusbdevices-1) | 添加USB设备可用名单。以下情况下，调用本接口会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备USB或者USB转串口能力。2. 已经通过[setUsbStorageDeviceAccessPolicy](arkts-mdm-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)接口设置了USB存储设备访问策略为禁用。3. 已经通过[addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)接口添加了禁止使用的USB设备类型。 |
+| [addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1) | 添加禁止使用的USB设备类型。以下情况下，调用本接口会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备USB能力。2. 已经通过[addAllowedUsbDevices](arkts-mdm-addallowedusbdevices-f.md#addallowedusbdevices-1)接口添加了USB设备可用名单。3. 已经通过[setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1)接口禁用了某用户USB存储设备写入能力。 |
+| [getAllowedUsbDevices](arkts-mdm-getallowedusbdevices-f.md#getallowedusbdevices-1) | 获取USB设备可用名单。 |
+| [getDisallowedUsbDevices](arkts-mdm-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1) | 获取禁止使用的USB设备类型。 |
+| [getUsbStorageDeviceAccessPolicy](arkts-mdm-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1) | 获取USB存储设备访问策略。 |
+| [removeAllowedUsbDevices](arkts-mdm-removeallowedusbdevices-f.md#removeallowedusbdevices-1) | 移除USB设备可用名单。 |
+| [removeDisallowedUsbDevices](arkts-mdm-removedisallowedusbdevices-f.md#removedisallowedusbdevices-1) | 移除禁止使用的USB设备类型。 |
+| [setUsbStorageDeviceAccessPolicy](arkts-mdm-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1) | 设置USB存储设备访问策略。&gt; **说明**：&gt; &gt; 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。以下情况下，通过本接口设置USB存储设备访问策略为可读可写/只读，会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备USB能力。2. 已经通过[addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)接口将存储类型的USB设备添加为禁止使用的USB设备类型。3. 已经通过[setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1)接口禁用了某用户USB存储设备写入能力。以下情况下，通过本接口设置USB存储设备访问策略为禁用，会报策略冲突：1. 已经通过[setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备USB能力。2. 已经通过[addAllowedUsbDevices](arkts-mdm-addallowedusbdevices-f.md#addallowedusbdevices-1)接口添加了USB设备可用名单。3. 已经通过[setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1)接口禁用了某用户USB存储设备写入能力。通过本接口设置，或者通过[addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [disableUsb](arkts-mdm-disableusb-f-sys.md#disableusb-1) | 设置禁用或启用USB。 |
+| [isUsbDisabled](arkts-mdm-isusbdisabled-f-sys.md#isusbdisabled-1) | 查询USB是否禁用。 |
+| [setUsbPolicy](arkts-mdm-setusbpolicy-f-sys.md#setusbpolicy-1) | 设置USB的读写策略。使用callback异步回调。 |
+| [setUsbPolicy](arkts-mdm-setusbpolicy-f-sys.md#setusbpolicy-2) | 设置USB的读写策略。使用Promise异步回调。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [UsbDeviceId](arkts-mdm-usbmanager-usbdeviceid-i.md) | USB�豸ID��Ϣ��<br/> |
-| [UsbDeviceType](arkts-mdm-usbmanager-usbdevicetype-i.md) | USB�豸������Ϣ��<br/> |
+| [UsbDeviceId](arkts-mdm-usbdeviceid-i.md) | USB设备ID信息。 |
+| [UsbDeviceType](arkts-mdm-usbdevicetype-i.md) | USB设备类型信息。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [Descriptor](arkts-mdm-usbmanager-descriptor-e.md) | USB��������ö�١�<br/> |
-| [UsbPolicy](arkts-mdm-usbmanager-usbpolicy-e.md) | USB��д���Ե�ö�١�<br/> |
+| [Descriptor](arkts-mdm-descriptor-e.md) | USB描述符的枚举。 |
+| [UsbPolicy](arkts-mdm-usbpolicy-e.md) | USB读写策略的枚举。 |
 

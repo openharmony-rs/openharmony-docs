@@ -2,7 +2,7 @@
 
 描述普通实况通知。
 
-**继承/实现关系：** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationbasiccontent-i.md#NotificationBasicContent)
+**继承/实现关系：** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationbasiccontent-i.md)
 
 **起始版本：** 11
 

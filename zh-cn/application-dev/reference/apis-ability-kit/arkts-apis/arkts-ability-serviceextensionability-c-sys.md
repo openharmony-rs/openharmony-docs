@@ -4,8 +4,6 @@ ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台
 
 **起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -71,7 +69,7 @@ Extension生命周期回调，如果是connectAbility拉起的服务，会在onC
 
 | 类型 | 说明 |
 | --- | --- |
-| rpc.RemoteObject | RemoteObject or Promise used to return a RemoteObject,<br/>which is used for communication between the client and server. |
+| rpc.RemoteObject | RemoteObject or Promise used to return a RemoteObject,which is used for communication between the client and server. |
 
 **示例：**
 

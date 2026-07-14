@@ -1,10 +1,8 @@
 # HuksCryptoExtensionParam
 
-������ýӿڵ�param���͡�
+定义调用接口的param类型。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -14,7 +12,7 @@
 tag: huksExternalCrypto.HuksExternalCryptoTag | huks.HuksTag | number
 ```
 
-������ǩ���������ֲ�����
+参数标签，用于区分参数。
 
 **类型：** huksExternalCrypto.HuksExternalCryptoTag | huks.HuksTag | number
 
@@ -30,7 +28,7 @@ tag: huksExternalCrypto.HuksExternalCryptoTag | huks.HuksTag | number
 value: boolean | number | bigint | Uint8Array
 ```
 
-��ǩ��ֵ��
+标签的值。
 
 **类型：** boolean | number | bigint | Uint8Array
 

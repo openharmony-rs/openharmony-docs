@@ -1,6 +1,6 @@
 # @ohos.file.cloudSync
 
-��ģ����Ӧ���ṩ����ͬ����������������/ֹͣ����ͬ���Լ�����/ֹͣԭͼ���ع��ܡ�
+该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
 
 **起始版本：** 11
 
@@ -12,57 +12,85 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md#getCoreFileSyncState-1) | ͬ��������ȡ�����ļ�ͬ������״̬��<br/> |
-| <!--DelRow-->[getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getFileSyncState-1) | �첽������ȡ�ļ�ͬ��״̬��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getFileSyncState-2) | �첽������ȡ�ļ�ͬ��״̬��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getFileSyncState-3) | ��ȡ�ļ�ͬ��״̬��<br/> |
-| <!--DelRow-->[optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md#optimizeStorage-1) | �Ż�ͼ����ͬ���ƿռ�ı�����Դ�����ձ���ʣ��ռ�ִ���Զ��ϻ����ԡ�ʹ��Promise�첽�ص���<br/> |
-| [registerChange](arkts-corefile-cloudsync-registerchange-f.md#registerChange-1) | ���ļ���ָ���ļ��ı仯֪ͨ��callback���ظ��ĵ����ݡ�<br/> |
-| <!--DelRow-->[startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md#startOptimizeSpace-1) | �Ż�ͼ����ͬ���ƿռ�ı�����Դ��ִ�������Ż��ռ���ԣ����ϻ�����ǰδ���ʵı���ͼƬ/��Ƶ�����Ż���ʹ��Promise�첽�ص���callback�����Ż����ȡ�<br/><br/>startOptimizeSpace��ʹ�ú�stopOptimizeSpace��������һһ��Ӧ���ظ�����������������������ִ�еĴ�����Ϣ��22400006����<br/> |
-| <!--DelRow-->[stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md#stopOptimizeSpace-1) | ͬ������ֹͣͼ����ͼ��Դ�ռ��Ż�����startOptimizeSpace���ʹ�á�<br/> |
-| [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md#unregisterChange-1) | ȡ�����ļ���ָ���ļ��ı仯֪ͨ��<br/> |
+| [getCoreFileSyncState](arkts-corefile-getcorefilesyncstate-f.md#getcorefilesyncstate-1) | 同步方法获取云盘文件同步上行状态。 |
+| [registerChange](arkts-corefile-registerchange-f.md#registerchange-1) | 订阅监听指定文件的变化通知。callback返回更改的数据。 |
+| [unregisterChange](arkts-corefile-unregisterchange-f.md#unregisterchange-1) | 取消订阅监听指定文件的变化通知。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [getFileSyncState](arkts-corefile-getfilesyncstate-f-sys.md#getfilesyncstate-1) | 异步方法获取文件同步状态。使用Promise异步回调。 |
+| [getFileSyncState](arkts-corefile-getfilesyncstate-f-sys.md#getfilesyncstate-2) | 异步方法获取文件同步状态。使用callback异步回调。 |
+| [getFileSyncState](arkts-corefile-getfilesyncstate-f-sys.md#getfilesyncstate-3) | 获取文件同步状态。 |
+| [optimizeStorage](arkts-corefile-optimizestorage-f-sys.md#optimizestorage-1) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
+| [startOptimizeSpace](arkts-corefile-startoptimizespace-f-sys.md#startoptimizespace-1) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。 |
+| [stopOptimizeSpace](arkts-corefile-stopoptimizespace-f-sys.md#stopoptimizespace-1) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
+<!--DelEnd-->
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [CloudFileCache](arkts-corefile-cloudsync-cloudfilecache-c.md) | �����ļ������������֧���ļ�����Ӧ��ԭ�ļ��������̡�<br/> |
-| <!--DelRow-->[CloudFileCache](arkts-corefile-cloudsync-cloudfilecache-c-sys.md) | �����ļ������������֧���ļ�����Ӧ��ԭ�ļ��������̡�<br/> |
-| <!--DelRow-->[Download](arkts-corefile-cloudsync-download-c-sys.md) | ���ļ����ض�������֧��ͼ��Ӧ��ԭͼ�ļ��������̡���ʹ��ǰ����Ҫ�ȴ���Downloadʵ����<br/> |
-| [FileSync](arkts-corefile-cloudsync-filesync-c.md) | ����ͬ����������֧���ļ�������Ӧ����������ļ��Ķ���ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���FileSyncʵ����<br/> |
-| <!--DelRow-->[FileSync](arkts-corefile-cloudsync-filesync-c-sys.md) | ����ͬ����������֧���ļ�������Ӧ����������ļ��Ķ���ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���FileSyncʵ����<br/> |
-| [FileVersion](arkts-corefile-cloudsync-fileversion-c.md) | �����ļ��汾�����ࡣ֧�ֶԶ����ļ�����ʷ�汾���й������ṩ��ȡ�ļ���ʷ�汾��Ϣ�б���������ͨ����ʷ�汾��Ϣ���ɽ���ʷ�汾���ص����أ����ṩ��ʷ�汾�ļ��滻��ǰ�����ļ�����������԰汾��ͻ���ṩ��ѯ��ͻ��־�������ͻ��־��������<br/> |
-| <!--DelRow-->[GallerySync](arkts-corefile-cloudsync-gallerysync-c-sys.md) | ��ͼͬ����������֧��ͼ��Ӧ��ý����Դ����ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���GallerySyncʵ����<br/> |
-| [MultiDownloadProgress](arkts-corefile-cloudsync-multidownloadprogress-c.md) | ���ļ���������Ľ�����Ϣ��<br/> |
+| [CloudFileCache](arkts-corefile-cloudfilecache-c.md) | 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。 |
+| [FileSync](arkts-corefile-filesync-c.md) | 云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。 |
+| [FileVersion](arkts-corefile-fileversion-c.md) | 端云文件版本管理类。支持对端云文件的历史版本进行管理，提供获取文件历史版本信息列表的能力，通过历史版本信息，可将历史版本下载到本地；并提供历史版本文件替换当前本地文件的能力，针对版本冲突，提供查询冲突标志，解除冲突标志的能力。 |
+| [MultiDownloadProgress](arkts-corefile-multidownloadprogress-c.md) | 云文件批量缓存的进度信息。 |
+
+<!--Del-->
+### 类（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [CloudFileCache](arkts-corefile-cloudfilecache-c-sys.md) | 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。 |
+| [Download](arkts-corefile-download-c-sys.md) | 云文件下载对象，用来支撑图库应用原图文件下载流程。在使用前，需要先创建Download实例。 |
+| [FileSync](arkts-corefile-filesync-c-sys.md) | 云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。 |
+| [GallerySync](arkts-corefile-gallerysync-c-sys.md) | 云图同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChangeData](arkts-corefile-cloudsync-changedata-i.md) | ���������ݡ�<br/> |
-| [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md) | ���ļ����ع��̡�<br/> |
-| [FailedFileInfo](arkts-corefile-cloudsync-failedfileinfo-i.md) | ���ļ���������ʧ���б���ʧ��ԭ��<br/> |
-| [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md) | �����ļ���ʷ�汾��Ϣ�����ö����ļ��汾������[FileVersion](arkts-corefile-cloudsync-fileversion-c.md#FileVersion)��<br/>[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#getHistoryVersionList-1)����ʱ����ʷ�汾�б��е����ԡ�<br/> |
-| <!--DelRow-->[OptimizeSpaceParam](arkts-corefile-cloudsync-optimizespaceparam-i-sys.md) | �����Ż��ռ����ò����������Ż��ܿռ���ϻ�������<br/> |
-| <!--DelRow-->[OptimizeSpaceProgress](arkts-corefile-cloudsync-optimizespaceprogress-i-sys.md) | �����Ż��ռ�״̬�͵�ǰ���ȡ�<br/> |
-| [SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md) | ����ͬ�����̡�<br/> |
-| <!--DelRow-->[UploadProgress](arkts-corefile-cloudsync-uploadprogress-i-sys.md) | �ļ��ϴ�������Ϣ��<br/> |
-| [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md) | ��ʷ�汾�ļ�����״̬�ͽ�����Ϣ�����ö����ļ��汾������[FileVersion](arkts-corefile-cloudsync-fileversion-c.md#FileVersion)��<br/>[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadHistoryVersion-1)����ʱ���ص�������������͡�<br/> |
+| [ChangeData](arkts-corefile-changedata-i.md) | 定义变更数据。 |
+| [DownloadProgress](arkts-corefile-downloadprogress-i.md) | 云文件下载过程。 |
+| [FailedFileInfo](arkts-corefile-failedfileinfo-i.md) | 云文件批量缓存失败列表及失败原因。 |
+| [HistoryVersion](arkts-corefile-historyversion-i.md) | 端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-fileversion-c.md)的[gethistoryversionlist](arkts-corefile-fileversion-c.md#gethistoryversionlist-1)方法时，历史版本列表中的属性。 |
+| [SyncProgress](arkts-corefile-syncprogress-i.md) | 端云同步过程。 |
+| [VersionDownloadProgress](arkts-corefile-versiondownloadprogress-i.md) | 历史版本文件下载状态和进度信息，调用端云文件版本管理类[FileVersion](arkts-corefile-fileversion-c.md)的[downloadHistoryVersion](arkts-corefile-fileversion-c.md#downloadhistoryversion-1)方法时，回调函数的入参类型。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [OptimizeSpaceParam](arkts-corefile-optimizespaceparam-i-sys.md) | 立即优化空间设置参数，设置优化总空间和老化天数。 |
+| [OptimizeSpaceProgress](arkts-corefile-optimizespaceprogress-i-sys.md) | 立即优化空间状态和当前进度。 |
+| [UploadProgress](arkts-corefile-uploadprogress-i-sys.md) | 文件上传进度信息。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md) | �������ش������ͣ�Ϊö�����͡�<br/> |
-| [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md) | ���̻����ļ����͵�ö�١�<br/> |
-| [ErrorType](arkts-corefile-cloudsync-errortype-e.md) | ����ͬ��ʧ�����ͣ�Ϊö�����͡�<br/><br/>- ��ǰ�׶Σ�ͬ�������У�������������ʹ���ƶ��������磬�ƶ����������WIFI��������ʱ���Ż᷵��NETWORK_UNAVAILABLE������������ʹ���ƶ��������磬����һ������������ã���������ͬ����<br/>- ͬ�������У��ǳ�糡���£���������10%����ɵ�ǰ������ͬ����ֹͣͬ�������ص͵�����<br/>- ����ͬ��ʱ���ǳ�糡���£�����������10%��������ͬ��<br/>- ����ʱ�����ƶ˿ռ䲻�㣬���ļ�����ʧ�ܣ��ƶ��޸��ļ���¼��<br/> |
-| <!--DelRow-->[ErrorType](arkts-corefile-cloudsync-errortype-e-sys.md) | ����ͬ��ʧ�����ͣ�Ϊö�����͡�<br/><br/>- ��ǰ�׶Σ�ͬ�������У�������������ʹ���ƶ��������磬�ƶ����������WIFI��������ʱ���Ż᷵��NETWORK_UNAVAILABLE������������ʹ���ƶ��������磬����һ������������ã���������ͬ����<br/>- ͬ�������У��ǳ�糡���£���������10%����ɵ�ǰ������ͬ����ֹͣͬ�������ص͵�����<br/>- ����ͬ��ʱ���ǳ�糡���£�����������10%��������ͬ��<br/>- ����ʱ�����ƶ˿ռ䲻�㣬���ļ�����ʧ�ܣ��ƶ��޸��ļ���¼��<br/> |
-| [FileState](arkts-corefile-cloudsync-filestate-e.md) | �����ļ�ͬ��״̬��Ϊö�����͡�<br/> |
-| <!--DelRow-->[FileSyncState](arkts-corefile-cloudsync-filesyncstate-e-sys.md) | �����ļ�ͬ��״̬��Ϊö�����͡�<br/> |
-| [NotifyType](arkts-corefile-cloudsync-notifytype-e.md) | ���ݱ��֪ͨ���͡�<br/> |
-| <!--DelRow-->[OptimizeState](arkts-corefile-cloudsync-optimizestate-e-sys.md) | �Ż��ռ�״̬��Ϊö�����͡�<br/> |
-| [State](arkts-corefile-cloudsync-state-e.md) | ���ļ�����״̬��Ϊö�����͡�<br/> |
-| <!--DelRow-->[State](arkts-corefile-cloudsync-state-e-sys.md) | ���ļ�����״̬��Ϊö�����͡�<br/> |
-| [SyncState](arkts-corefile-cloudsync-syncstate-e.md) | ����ͬ��״̬��Ϊö�����͡�<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ����ͬ��״̬�������ʱ�����Ӧ��ע����ͬ�������¼���������ͨ���ص�֪ͨӦ�á�<br/> |
-| <!--DelRow-->[UploadState](arkts-corefile-cloudsync-uploadstate-e-sys.md) | �ļ��ϴ�״̬��ö�١�<br/> |
+| [DownloadErrorType](arkts-corefile-downloaderrortype-e.md) | 端云下载错误类型，为枚举类型。 |
+| [DownloadFileType](arkts-corefile-downloadfiletype-e.md) | 云盘缓存文件类型的枚举。 |
+| [ErrorType](arkts-corefile-errortype-e.md) | 端云同步失败类型，为枚举类型。- 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。- 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；- 触发同步时，非充电场景下，若电量低于10%，则不允许同步- 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
+| [FileState](arkts-corefile-filestate-e.md) | 端云文件同步状态，为枚举类型。 |
+| [NotifyType](arkts-corefile-notifytype-e.md) | 数据变更通知类型。 |
+| [State](arkts-corefile-state-e.md) | 云文件下载状态，为枚举类型。 |
+| [SyncState](arkts-corefile-syncstate-e.md) | 端云同步状态，为枚举类型。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ErrorType](arkts-corefile-errortype-e-sys.md) | 端云同步失败类型，为枚举类型。- 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。- 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；- 触发同步时，非充电场景下，若电量低于10%，则不允许同步- 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。 |
+| [FileSyncState](arkts-corefile-filesyncstate-e-sys.md) | 端云文件同步状态，为枚举类型。 |
+| [OptimizeState](arkts-corefile-optimizestate-e-sys.md) | 优化空间状态，为枚举类型。 |
+| [State](arkts-corefile-state-e-sys.md) | 云文件下载状态，为枚举类型。 |
+| [UploadState](arkts-corefile-uploadstate-e-sys.md) | 文件上传状态的枚举。 |
+<!--DelEnd-->
 

@@ -4,8 +4,6 @@ UIUtils提供一些方法，用于处理状态管理相关的数据转换。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## addMonitor
@@ -21,7 +19,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,18 +27,18 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | object | 是 | 目标对象，仅支持<br/>[@ComponentV2](../../../../ui/state-management/arkts-create-custom-components.md#componentv2)和<br/>[@ObservedV2](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br/>对于不支持的类型，会抛出运行时错误。 |
-| path | string \| string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。<br/>仅支持string和string数组，对于不支持的类型，会抛出运行时错误。 |
-| monitorCallback | MonitorCallback | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。<br/>对于不支持的类型，会抛出运行时错误。 |
-| options | MonitorOptions | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-monitoroptions-i.md#MonitorOptions)。默认为异步回调。 |
+| target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。&lt;/br&gt;对于不支持的类型，会抛出运行时错误。 |
+| path | string \| string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。&lt;/br&gt;仅支持string和string数组，对于不支持的类型，会抛出运行时错误。 |
+| monitorCallback | MonitorCallback | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。&lt;/br&gt;对于不支持的类型，会抛出运行时错误。 |
+| options | MonitorOptions | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-monitoroptions-i.md)。默认为异步回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [130000](../../errorcode-universal.md#130000-The) | The target is not a custom component instance or V2 class instance. |
-| [130001](../../errorcode-universal.md#130001-The) | The path is invalid. |
-| [130002](../../errorcode-universal.md#130002-monitorCallback) | monitorCallback is not a function or an anonymous function. |
+| [130000](../errorcode-stateManagement.md#130000-addmonitorclearmonitor非法目标对象) | The target is not a custom component instance or V2 class instance. |
+| [130001](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径) | The path is invalid. |
+| [130002](../errorcode-stateManagement.md#130002-addmonitorclearmonitor非法回调方法) | monitorCallback is not a function or an anonymous function. |
 
 ## applySync
 
@@ -56,7 +54,7 @@ static applySync<T>(task: TaskCallback): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +74,7 @@ static applySync<T>(task: TaskCallback): T
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [140001](../../errorcode-universal.md#140001-The) | The function is not allowed to be called in @Computed |
+| [140001](../errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用) | The function is not allowed to be called in @Computed |
 
 **示例：**
 
@@ -137,7 +135,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,7 +143,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 输入一个数据对象，判断其是否可被观察。支持Array、Map、Set和Date类型数据。<br/>具体使用规则，详见<br/>[canBeObserved接口：判断对象是否为可被观察对象](../../../../ui/state-management/arkts-new-canBeObserved.md)。 |
+| source | T | 是 | 输入一个数据对象，判断其是否可被观察。支持Array、Map、Set和Date类型数据。&lt;/br&gt;具体使用规则，详见[canBeObserved接口：判断对象是否为可被观察对象](../../../../ui/state-management/arkts-new-canBeObserved.md)。 |
 
 **返回值：**
 
@@ -202,8 +200,8 @@ class Student {
         // 装饰器关联的组件id
         const eleId = elementInfo.elementId;
         hilog.info(0x00, TAG, `elementId: ${eleId}`);
-      })
-    })
+      });
+    });
   }
 }
 
@@ -271,14 +269,14 @@ export struct School {
 static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
 ```
 
-删除通过[addMonitor](arkts-arkui-uiutils-c.md#addMonitor-1)给状态管理V2的状态变量添加的监听方法，详见
+删除通过[addMonitor](arkts-arkui-uiutils-c.md#addmonitor-1)给状态管理V2的状态变量添加的监听方法，详见
 [addMonitor/clearMonitor](../../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,17 +284,17 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | object | 是 | 目标对象，仅支持<br/>[@ComponentV2](../../../../ui/state-management/arkts-create-custom-components.md#componentv2)和<br/>[@ObservedV2](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br/>对于不支持的类型，会抛出运行时错误。 |
-| path | string \| string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。<br/>仅支持string和数组，对于不支持的类型，会抛出运行时错误。 |
-| monitorCallback | MonitorCallback | 否 | 指定被删除的监听函数。<br/>当开发者不传此参数时，将删除path对应变量注册的所有监听函数。<br/>对于不支持的类型，会抛出运行时错误。 |
+| target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。&lt;/br&gt;对于不支持的类型，会抛出运行时错误。 |
+| path | string \| string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。&lt;/br&gt;仅支持string和数组，对于不支持的类型，会抛出运行时错误。 |
+| monitorCallback | MonitorCallback | 否 | 指定被删除的监听函数。&lt;/br&gt;当开发者不传此参数时，将删除path对应变量注册的所有监听函数。&lt;/br&gt;对于不支持的类型，会抛出运行时错误。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [130000](../../errorcode-universal.md#130000-The) | The target is not a custom component instance or V2 class instance. |
-| [130001](../../errorcode-universal.md#130001-The) | The path is invalid. |
-| [130002](../../errorcode-universal.md#130002-monitorCallback) | monitorCallback is not a function or an anonymous function. |
+| [130000](../errorcode-stateManagement.md#130000-addmonitorclearmonitor非法目标对象) | The target is not a custom component instance or V2 class instance. |
+| [130001](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径) | The path is invalid. |
+| [130002](../errorcode-stateManagement.md#130002-addmonitorclearmonitor非法回调方法) | monitorCallback is not a function or an anonymous function. |
 
 ## enableV2Compatibility
 
@@ -311,7 +309,7 @@ static enableV2Compatibility<T extends object>(source: T): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -381,7 +379,7 @@ static flushUIUpdates(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -389,8 +387,8 @@ static flushUIUpdates(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [140001](../../errorcode-universal.md#140001-The) | The function is not allowed to be called in @Computed |
-| [140002](../../errorcode-universal.md#140002-The) | The function is not allowed to be called in @Monitor |
+| [140001](../errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用) | The function is not allowed to be called in @Computed |
+| [140002](../errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用) | The function is not allowed to be called in @Monitor |
 
 **示例：**
 
@@ -413,6 +411,7 @@ struct Index {
           this.w = 100;
           this.h = 100;
           this.message = 'Hello World';
+          // 立即处理上述状态变量修改，同步标脏对应的UI节点
           UIUtils.flushUIUpdates();
           // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
           this.getUIContext().animateTo({
@@ -451,7 +450,7 @@ static flushUpdates(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -459,8 +458,8 @@ static flushUpdates(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [140001](../../errorcode-universal.md#140001-The) | The function is not allowed to be called in @Computed |
-| [140002](../../errorcode-universal.md#140002-The) | The function is not allowed to be called in @Monitor |
+| [140001](../errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用) | The function is not allowed to be called in @Computed |
+| [140002](../errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用) | The function is not allowed to be called in @Monitor |
 
 **示例：**
 
@@ -514,14 +513,14 @@ struct Index {
 static getCustomComponentContext<T extends BaseCustomComponent>(customComponent: T): CustomComponentContext
 ```
 
-返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](arkts-arkui-customcomponentcontext-i.md#CustomComponentContext)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅
+返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](arkts-arkui-customcomponentcontext-i.md)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅
 [全局复用池：集中化的组件回收与复用](../../../../ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -561,7 +560,7 @@ struct ReusableChild {
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
   poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
-  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
+  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须在声明reusePool时提供，也可以开启组件冻结。
 })
 struct Index {
   @Local showChild: boolean = true;
@@ -610,7 +609,7 @@ getLifecycle用于获取[自定义组件的生命周期](ComponentInit)实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,7 +661,7 @@ static getTarget<T extends object>(source: T): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -717,7 +716,7 @@ static makeBinding<T>(getter: GetterCallback<T>): Binding<T>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -736,7 +735,7 @@ static makeBinding<T>(getter: GetterCallback<T>): Binding<T>
 **示例：**
 
 ```TypeScript
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -790,7 +789,7 @@ static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): Mut
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -868,7 +867,7 @@ static makeObserved<T extends object>(source: T): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -876,7 +875,7 @@ static makeObserved<T extends object>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。<br/>支持Array、Map、Set和Date。<br/>支持collections.Array, collections.Set和collections.Map。<br/>具体使用规则，详见<br/>[makeObserved接口：将非观察数据变为可观察数据](../../../../ui/state-management/arkts-new-makeObserved.md)。 |
+| source | T | 是 | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。&lt;/br&gt;支持Array、Map、Set和Date。&lt;/br&gt;支持collections.Array, collections.Set和collections.Map。&lt;/br&gt;具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../../../ui/state-management/arkts-new-makeObserved.md)。 |
 
 **返回值：**
 
@@ -896,6 +895,7 @@ class NonObservedClass {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用makeObserved将NonObservedClass实例变为可观察对象
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
 
@@ -923,14 +923,14 @@ static makeV1Observed<T extends object>(source: T): T
 
 将不可观察的对象包装成状态管理V1可观察的对象，其能力等同于@Observed，可初始化@ObjectLink。
 
-该接口可搭配[enableV2Compatibility](arkts-arkui-uiutils-c.md#enableV2Compatibility-1)应用于状态管理V1和V2混用场景，详见
+该接口可搭配[enableV2Compatibility](arkts-arkui-uiutils-c.md#enablev2compatibility-1)应用于状态管理V1和V2混用场景，详见
 [状态管理V1和V2混用指导（API version 19及之后）](../../../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本19开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -938,7 +938,7 @@ static makeV1Observed<T extends object>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 数据源。支持普通class、Array、Map、Set、Date类型。<br/>不支持[@arkts.collections (ArkTS容器集)](../../apis-arkts/arkts-apis/arkts-collections.md#collections)和<br/>[@Sendable](../../../../arkts-utils/arkts-sendable.md)修饰的class。<br/>不支持undefined和null。不支持状态管理V2的数据和<br/>[makeObserved](arkts-arkui-uiutils-c.md#makeObserved-1)的返回值。 |
+| source | T | 是 | 数据源。支持普通class、Array、Map、Set、Date类型。&lt;/br&gt;不支持[@arkts.collections (ArkTS容器集)](../../apis-arkts/arkts-apis/arkts-collections.md)和[@Sendable](../../../../arkts-utils/arkts-sendable.md)修饰的class。&lt;/br&gt;不支持undefined和null。不支持状态管理V2的数据和[makeObserved](arkts-arkui-uiutils-c.md#makeobserved-1)的返回值。 |
 
 **返回值：**
 
@@ -967,6 +967,7 @@ class Inner {
 @Entry
 @Component
 struct Index {
+  // 使用makeV1Observed将Inner实例包装为V1可观察对象，传入Outer构造函数
   @State outer: Outer = new Outer(UIUtils.makeV1Observed(new Inner()));
 
   build() {

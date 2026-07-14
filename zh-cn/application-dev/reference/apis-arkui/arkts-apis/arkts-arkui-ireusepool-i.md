@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getReusableInfo
@@ -21,7 +19,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +34,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 | 类型 | 说明 |
 | --- | --- |
-| IReusableInfo[] | If the reuse pool is not configured to accept the given<br/>component type, **undefined** is returned.<br/><br/>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and<br/>**maxCount** is set to the default value).<br/><br/>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo**<br/>is returned.<br/><br/>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array** is<br/>returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-<br/>default value of **maxCount** as well as an entry of **reuseId: undefined**. |
+| IReusableInfo[] | If the reuse pool is not configured to accept the givencomponent type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and**maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo**is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** isreturned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**. |
 
 **示例：**
 
@@ -118,7 +116,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +124,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | WrappedBuilder&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV<br/>2组件。 |
+| builder | WrappedBuilder&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
 | times | number | 是 | 执行@Builder函数的次数。 |
 
 **返回值：**
@@ -173,7 +171,7 @@ struct Index {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });

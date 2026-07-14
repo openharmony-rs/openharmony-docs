@@ -12,16 +12,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSecurityLabel](arkts-corefile-securitylabel-getsecuritylabel-f.md#getSecurityLabel-1) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。<br/> |
-| [getSecurityLabel](arkts-corefile-securitylabel-getsecuritylabel-f.md#getSecurityLabel-2) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。<br/> |
-| [getSecurityLabelSync](arkts-corefile-securitylabel-getsecuritylabelsync-f.md#getSecurityLabelSync-1) | 以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。<br/> |
-| [setSecurityLabel](arkts-corefile-securitylabel-setsecuritylabel-f.md#setSecurityLabel-1) | 设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用Promise异步回调。<br/> |
-| [setSecurityLabel](arkts-corefile-securitylabel-setsecuritylabel-f.md#setSecurityLabel-2) | 设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用callback异步回调。<br/> |
-| [setSecurityLabelSync](arkts-corefile-securitylabel-setsecuritylabelsync-f.md#setSecurityLabelSync-1) | 以同步方法设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。<br/> |
+| [getSecurityLabel](arkts-corefile-getsecuritylabel-f.md#getsecuritylabel-1) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。 |
+| [getSecurityLabel](arkts-corefile-getsecuritylabel-f.md#getsecuritylabel-2) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。 |
+| [getSecurityLabelSync](arkts-corefile-getsecuritylabelsync-f.md#getsecuritylabelsync-1) | 以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。 |
+| [setSecurityLabel](arkts-corefile-setsecuritylabel-f.md#setsecuritylabel-1) | 设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用Promise异步回调。 |
+| [setSecurityLabel](arkts-corefile-setsecuritylabel-f.md#setsecuritylabel-2) | 设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用callback异步回调。 |
+| [setSecurityLabelSync](arkts-corefile-setsecuritylabelsync-f.md#setsecuritylabelsync-1) | 以同步方法设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [DataLevel](arkts-corefile-securitylabel-datalevel-t.md) | 数据安全等级。<br/> |
+| [DataLevel](arkts-corefile-datalevel-t.md) | 数据安全等级。 |
 

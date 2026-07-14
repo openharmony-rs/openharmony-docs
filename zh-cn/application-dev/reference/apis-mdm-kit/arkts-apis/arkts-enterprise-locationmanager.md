@@ -1,16 +1,14 @@
 # @ohos.enterprise.locationManager
 
-��ģ���ṩ�豸λ�÷�����Թ������������������úͲ�ѯλ�÷��񿪹ز��Եȡ�
+本模块提供设备位置服务策略管理的能力，包括设置和查询位置服务开关策略等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,12 +18,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getLocationPolicy-1) | ��ѯλ�÷���������ԡ�<br/> |
-| [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setLocationPolicy-1) | ����λ�÷���������ԡ�<br/> |
+| [getLocationPolicy](arkts-mdm-getlocationpolicy-f.md#getlocationpolicy-1) | 查询位置服务管理策略。 |
+| [setLocationPolicy](arkts-mdm-setlocationpolicy-f.md#setlocationpolicy-1) | 设置位置服务管理策略。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [LocationPolicy](arkts-mdm-locationmanager-locationpolicy-e.md) | λ�÷������ֵ��<br/> |
+| [LocationPolicy](arkts-mdm-locationpolicy-e.md) | 位置服务策略值。 |
 

@@ -16,7 +16,7 @@ ArcSliderOptions的构造函数。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -40,7 +40,7 @@ digitalCrownSensitivity?: CrownSensitivity
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -52,13 +52,13 @@ layoutOptions?: ArcSliderLayoutOptions
 
 配置弧形Slider的样式信息。
 
-默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md#ArcSliderStyleOptions)的各项子属性均取其默认值。
+默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
 
 **类型：** ArcSliderLayoutOptions
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -76,7 +76,7 @@ onChange?: ArcSliderChangeHandler
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -94,7 +94,7 @@ onEnlarge?: ArcSliderEnlargeHandler
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -112,7 +112,7 @@ onTouch?: ArcSliderTouchHandler
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -124,13 +124,13 @@ styleOptions?: ArcSliderStyleOptions
 
 配置弧形Slider的样式信息。
 
-默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md#ArcSliderStyleOptions)的各项子属性均取其默认值。
+默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
 
 **类型：** ArcSliderStyleOptions
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -142,13 +142,13 @@ valueOptions?: ArcSliderValueOptions
 
 配置弧形Slider的样式信息。
 
-默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md#ArcSliderStyleOptions)的各项子属性均取其默认值。
+默认值：[ArcSliderStyleOptions](arkts-arkui-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
 
 **类型：** ArcSliderValueOptions
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

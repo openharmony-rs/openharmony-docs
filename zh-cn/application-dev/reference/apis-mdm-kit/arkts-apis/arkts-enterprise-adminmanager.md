@@ -1,213 +1,213 @@
 # @ohos.enterprise.adminManager
 
-# ��¼
+# 附录
 
-### ��ί�в����б�
+### 可委托策略列表
 
-| �������� | ��Ӧ�ӿ� | ˵�� |
+| 策略名称 | 对应接口 | 说明 |
 | --- | --- | --- |
 |disallow_add_local_account|
-[accountManager.disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowOsAccountAddition-1)
+[accountManager.disallowOsAccountAddition](arkts-mdm-disallowosaccountaddition-f.md#disallowosaccountaddition-1)
 <br>
-[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isOsAccountAdditionDisallowed-1)
-| ����accountId��������ֹ�豸���������û���<br>����accountId��������ѯ�Ƿ��ֹ�豸���������û���|
+[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-isosaccountadditiondisallowed-f.md#isosaccountadditiondisallowed-1)
+| 不传accountId参数，禁止设备创建本地用户。<br>不传accountId参数，查询是否禁止设备创建本地用户。|
 |disallow_add_os_account_by_user|
-[accountManager.disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowOsAccountAddition-1)
+[accountManager.disallowOsAccountAddition](arkts-mdm-disallowosaccountaddition-f.md#disallowosaccountaddition-1)
 <br>
-[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isOsAccountAdditionDisallowed-1)
-| �贫��accountId��������ָֹ���û������˺š�<br>�贫��accountId��������ѯ�Ƿ��ָֹ���û������˺š�|
+[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-isosaccountadditiondisallowed-f.md#isosaccountadditiondisallowed-1)
+| 需传入accountId参数，禁止指定用户添加账号。<br>需传入accountId参数，查询是否禁止指定用户添加账号。|
 |disallow_running_bundles|
-[applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md#addDisallowedRunningBundlesSync-1)
+[applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-adddisallowedrunningbundlessync-f.md#adddisallowedrunningbundlessync-1)
 <br>
-[applicationManager.removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1)
+[applicationManager.removeDisallowedRunningBundlesSync](arkts-mdm-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1)
 <br>
-[applicationManager.getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md#getDisallowedRunningBundlesSync-1)
-|����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û������С�<br>��Ӧ�����н�ֹ�������Ƴ�Ӧ�á�<br>��ȡ��ǰ/ָ���û��µ�Ӧ�����н�ֹ������ |
+[applicationManager.getDisallowedRunningBundlesSync](arkts-mdm-getdisallowedrunningbundlessync-f.md#getdisallowedrunningbundlessync-1)
+|添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。<br>从应用运行禁止名单中移除应用。<br>获取当前/指定用户下的应用运行禁止名单。 |
 |manage_auto_start_apps|
-[applicationManager.addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md#addAutoStartApps-1)
+[applicationManager.addAutoStartApps](arkts-mdm-addautostartapps-f.md#addautostartapps-1)
 <br>
-[applicationManager.removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md#removeAutoStartApps-1)
+[applicationManager.removeAutoStartApps](arkts-mdm-removeautostartapps-f.md#removeautostartapps-1)
 <br>
-[applicationManager.getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getAutoStartApps-1)
-|���ӿ���������Ӧ��������<br>�ӿ���������Ӧ���������Ƴ�Ӧ�á�<br>��ѯ����������Ӧ��������|
+[applicationManager.getAutoStartApps](arkts-mdm-getautostartapps-f.md#getautostartapps-1)
+|添加开机自启动应用名单。<br>从开机自启动应用名单中移除应用。<br>查询开机自启动应用名单。|
 |allowed_bluetooth_devices|
-[bluetoothManager.addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addAllowedBluetoothDevices-1)
+[bluetoothManager.addAllowedBluetoothDevices](arkts-mdm-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices-1)
 <br>
-[bluetoothManager.removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeAllowedBluetoothDevices-1)
+[bluetoothManager.removeAllowedBluetoothDevices](arkts-mdm-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices-1)
 <br>
-[bluetoothManager.getAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-getallowedbluetoothdevices-f.md#getAllowedBluetoothDevices-1)
-|���������豸����������<br>�������豸�����������Ƴ���<br>��ѯ�����豸����������|
-|set_browser_policies|[browser.setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setPolicySync-1)<br>
-[browser.getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getPoliciesSync-1)|Ϊָ�������������������Ӳ��ԡ�<br>��ȡָ��������Ĳ��ԡ�|
+[bluetoothManager.getAllowedBluetoothDevices](arkts-mdm-getallowedbluetoothdevices-f.md#getallowedbluetoothdevices-1)
+|添加蓝牙设备可用名单。<br>从蓝牙设备可用名单中移除。<br>查询蓝牙设备可用名单。|
+|set_browser_policies|[browser.setPolicySync](arkts-mdm-setpolicysync-f.md#setpolicysync-1)<br>
+[browser.getPoliciesSync](arkts-mdm-getpoliciessync-f.md#getpoliciessync-1)|为指定的浏览器设置浏览器子策略。<br>获取指定浏览器的策略。|
 |allowed_install_bundles|
-[bundleManager.addAllowedInstallBundlesSync](arkts-mdm-bundlemanager-addallowedinstallbundlessync-f.md#addAllowedInstallBundlesSync-1)
+[bundleManager.addAllowedInstallBundlesSync](arkts-mdm-addallowedinstallbundlessync-f.md#addallowedinstallbundlessync-1)
 <br>
-[bundleManager.removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeAllowedInstallBundlesSync-1)
+[bundleManager.removeAllowedInstallBundlesSync](arkts-mdm-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1)
 <br>
-[bundleManager.getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getAllowedInstallBundlesSync-1)
-|����Ӧ����Ӧ�ó������װ��������������������������Ӧ�������ڵ�ǰ/ָ���û��°�װ������������װ��<br>��Ӧ�ó������װ�����������Ƴ�Ӧ�á�<br>��ȡ��ǰ/ָ���û��µ�Ӧ�ó������װ����������|
+[bundleManager.getAllowedInstallBundlesSync](arkts-mdm-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1)
+|添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，否则不允许安装。<br>从应用程序包安装允许名单中移除应用。<br>获取当前/指定用户下的应用程序包安装允许名单。|
 |disallowed_install_bundles|
-[bundleManager.addDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-adddisallowedinstallbundlessync-f.md#addDisallowedInstallBundlesSync-1)
+[bundleManager.addDisallowedInstallBundlesSync](arkts-mdm-adddisallowedinstallbundlessync-f.md#adddisallowedinstallbundlessync-1)
 <br>
-[bundleManager.removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md#removeDisallowedInstallBundlesSync-1)
+[bundleManager.removeDisallowedInstallBundlesSync](arkts-mdm-removedisallowedinstallbundlessync-f.md#removedisallowedinstallbundlessync-1)
 <br>
-[bundleManager.getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getDisallowedInstallBundlesSync-1)
-|����Ӧ����Ӧ�ó������װ��ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û��°�װ��<br>��Ӧ�ó������װ��ֹ�������Ƴ�Ӧ�á�<br>��ȡ��ǰ/ָ���û��µ�Ӧ�ó������װ��ֹ������|
+[bundleManager.getDisallowedInstallBundlesSync](arkts-mdm-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-1)
+|添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。<br>从应用程序包安装禁止名单中移除应用。<br>获取当前/指定用户下的应用程序包安装禁止名单。|
 |disallowed_uninstall_bundles|
-[bundleManager.addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md#addDisallowedUninstallBundlesSync-1)
+[bundleManager.addDisallowedUninstallBundlesSync](arkts-mdm-adddisalloweduninstallbundlessync-f.md#adddisalloweduninstallbundlessync-1)
 <br>
-[bundleManager.removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md#removeDisallowedUninstallBundlesSync-1)
+[bundleManager.removeDisallowedUninstallBundlesSync](arkts-mdm-removedisalloweduninstallbundlessync-f.md#removedisalloweduninstallbundlessync-1)
 <br>
-[bundleManager.getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getDisallowedUninstallBundlesSync-1)
-|����Ӧ����Ӧ�ó����ж�ؽ�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û���ж�ء�<br>��Ӧ�ó����ж�ؽ�ֹ�������Ƴ�Ӧ�á�<br>��ȡ��ǰ/ָ���û��µ�Ӧ�ð�����ж�ؽ�ֹ������|
-|get_device_info|[deviceInfo.getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getDeviceInfo-1)|��ȡ�豸��Ϣ��|
+[bundleManager.getDisallowedUninstallBundlesSync](arkts-mdm-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1)
+|添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。<br>从应用程序包卸载禁止名单中移除应用。<br>获取当前/指定用户下的应用包程序卸载禁止名单。|
+|get_device_info|[deviceInfo.getDeviceInfo](arkts-mdm-getdeviceinfo-f.md#getdeviceinfo-1)|获取设备信息。|
 |location_policy|
-[locationManager.setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setLocationPolicy-1)<br>
-[locationManager.getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getLocationPolicy-1)|����λ�÷����
-�����ԡ�<br>��ѯλ�÷�����ԡ�|
+[locationManager.setLocationPolicy](arkts-mdm-setlocationpolicy-f.md#setlocationpolicy-1)<br>
+[locationManager.getLocationPolicy](arkts-mdm-getlocationpolicy-f.md#getlocationpolicy-1)|设置位置服务管
+理策略。<br>查询位置服务策略。|
 |disabled_network_interface|
-[networkManager.setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setNetworkInterfaceDisabledSync-1)
+[networkManager.setNetworkInterfaceDisabledSync](arkts-mdm-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync-1)
 <br>
-[networkManager.isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isNetworkInterfaceDisabledSync-1)
-|��ֹ�豸ʹ��ָ�����硣<br>��ѯָ������ӿ��Ƿ񱻽��á�|
+[networkManager.isNetworkInterfaceDisabledSync](arkts-mdm-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync-1)
+|禁止设备使用指定网络。<br>查询指定网络接口是否被禁用。|
 |global_proxy|
-[networkManager.setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setGlobalProxySync-1)<br>
-[networkManager.getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getGlobalProxySync-1)|��������ȫ�ִ���
-��<br>��ȡ����ȫ�ִ�����|
+[networkManager.setGlobalProxySync](arkts-mdm-setglobalproxysync-f.md#setglobalproxysync-1)<br>
+[networkManager.getGlobalProxySync](arkts-mdm-getglobalproxysync-f.md#getglobalproxysync-1)|设置网络全局代理
+。<br>获取网络全局代理。|
 |disabled_bluetooth|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����bluetooth������/��������������<br>feature����bluetooth����ѯ�Ƿ��������������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入bluetooth，禁用/启用蓝牙能力。<br>feature传入bluetooth，查询是否禁用蓝牙能力。|
 |disallow_modify_datetime|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����modifyDateTime������/��������ϵͳʱ��������<br>feature����modifyDateTime����ѯ�Ƿ�����޸�ϵͳʱ��������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入modifyDateTime，禁用/启用设置系统时间能力。<br>feature传入modifyDateTime，查询是否禁用修改系统时间能力。|
 |disabled_printer|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����printer������/���ô�ӡ������<br>feature����printer����ѯ�Ƿ���ô�ӡ������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入printer，禁用/启用打印能力。<br>feature传入printer，查询是否禁用打印能力。|
 |disabled_hdc|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����hdc������/���ñ������豸ͨ��hdc���ӡ����Ե�������<br>feature����hdc����ѯ�Ƿ���ñ������豸ͨ��hdc���ӡ����Ե�������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入hdc，禁用/启用被其他设备通过hdc连接、调试的能力。<br>feature传入hdc，查询是否禁用被其他设备通过hdc连接、调试的能力。|
 |disable_microphone|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����microphone������/������˷�������<br>feature����microphone����ѯ�Ƿ������˷�������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入microphone，禁用/启用麦克风能力。<br>feature传入microphone，查询是否禁用麦克风能力。|
 |fingerprint_auth|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
 <br>
-[restrictions.setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)
+[restrictions.setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1)
 <br>
-[restrictions.getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getDisallowedPolicyForAccount-1)
-|feature����fingerprint������/����ָ����֤������<br>feature����fingerprint����ѯ�Ƿ����ָ����֤������<br>feature����fingerprint������/����ָ���û���ָ����֤������<br
->feature����fingerprint����ѯ�Ƿ����ָ���û���ָ����֤������|
+[restrictions.getDisallowedPolicyForAccount](arkts-mdm-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount-1)
+|feature传入fingerprint，禁用/启用指纹认证能力。<br>feature传入fingerprint，查询是否禁用指纹认证能力。<br>feature传入fingerprint，禁用/启用指定用户的指纹认证能力。<br
+>feature传入fingerprint，查询是否禁用指定用户的指纹认证能力。|
 |disable_usb|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����usb������/����USB������<br>feature����usb����ѯ�Ƿ����USB������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入usb，禁用/启用USB能力。<br>feature传入usb，查询是否禁用USB能力。|
 |disable_wifi|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����wifi������/����Wi-Fi������<br>feature����wifi����ѯ�Ƿ����Wi-Fi������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入wifi，禁用/启用Wi-Fi能力。<br>feature传入wifi，查询是否禁用Wi-Fi能力。|
 |disallowed_tethering|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����tethering������/�������繲��������<br>feature����tethering����ѯ�Ƿ�������繲��������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入tethering，禁用/启用网络共享能力。<br>feature传入tethering，查询是否禁用网络共享能力。|
 |inactive_user_freeze|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����inactiveUserFreeze������/���÷ǻ�Ծ�û�����������<br>feature����inactiveUserFreeze����ѯ�Ƿ���÷ǻ�Ծ�û�����������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入inactiveUserFreeze，禁用/启用非活跃用户运行能力。<br>feature传入inactiveUserFreeze，查询是否禁用非活跃用户运行能力。|
 |snapshot_skip|
-[restrictions.addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#addDisallowedListForAccount-1)
+[restrictions.addDisallowedListForAccount](arkts-mdm-adddisallowedlistforaccount-f.md#adddisallowedlistforaccount-1)
 <br>
-[restrictions.removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removeDisallowedListForAccount-1)
+[restrictions.removeDisallowedListForAccount](arkts-mdm-removedisallowedlistforaccount-f.md#removedisallowedlistforaccount-1)
 <br>
-[restrictions.getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getDisallowedListForAccount-1)
-|feature����snapshotSkip��������Ļ����������Ӧ��������<br>feature����snapshotSkip���ӽ�����Ļ����������Ӧ���������Ƴ���<br>feature����snapshotSkip����ѯ������Ļ��������
-��Ӧ��������|
+[restrictions.getDisallowedListForAccount](arkts-mdm-getdisallowedlistforaccount-f.md#getdisallowedlistforaccount-1)
+|feature传入snapshotSkip，禁用屏幕快照能力的应用名单。<br>feature传入snapshotSkip，从禁用屏幕快照能力的应用名单中移除。<br>feature传入snapshotSkip，查询禁用屏幕快照能力
+的应用名单。|
 |password_policy|
-[securityManager.setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md#setPasswordPolicy-1)<br>
-[securityManager.getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md#getPasswordPolicy-1)
-|�����豸����������ԡ�<br>��ȡ�豸����������ԡ�|
+[securityManager.setPasswordPolicy](arkts-mdm-setpasswordpolicy-f.md#setpasswordpolicy-1)<br>
+[securityManager.getPasswordPolicy](arkts-mdm-getpasswordpolicy-f.md#getpasswordpolicy-1)
+|设置设备锁屏口令策略。<br>获取设备锁屏口令策略。|
 |clipboard_policy|
-[securityManager.setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md#setAppClipboardPolicy-1)
+[securityManager.setAppClipboardPolicy](arkts-mdm-setappclipboardpolicy-f.md#setappclipboardpolicy-1)
 <br>
-[securityManager.getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md#getAppClipboardPolicy-1)
-|�����豸��������ԡ�<br>��ȡ�豸��������ԡ�|
+[securityManager.getAppClipboardPolicy](arkts-mdm-getappclipboardpolicy-f.md#getappclipboardpolicy-1)
+|设置设备剪贴板策略。<br>获取设备剪贴板策略。|
 |watermark_image_policy|
-[securityManager.setWatermarkImage](arkts-mdm-securitymanager-setwatermarkimage-f.md#setWatermarkImage-1)
+[securityManager.setWatermarkImage](arkts-mdm-setwatermarkimage-f.md#setwatermarkimage-1)
 <br>
-[securityManager.cancelWatermarkImage](arkts-mdm-securitymanager-cancelwatermarkimage-f.md#cancelWatermarkImage-1)|��
-��ˮӡ���ԣ���ǰ��֧��PC/2in1ʹ�á�<br>ȡ��ˮӡ���ԣ���ǰ��֧��PC/2in1ʹ�á�|
-|ntp_server|[systemManager.setNTPServer](arkts-mdm-systemmanager-setntpserver-f.md#setNTPServer-1)<br>
-[systemManager.getNTPServer](arkts-mdm-systemmanager-getntpserver-f.md#getNTPServer-1)|����NTP�������Ĳ��ԡ�<br>��ȡNTP����
-����Ϣ��|
+[securityManager.cancelWatermarkImage](arkts-mdm-cancelwatermarkimage-f.md#cancelwatermarkimage-1)|设
+置水印策略，当前仅支持PC/2in1使用。<br>取消水印策略，当前仅支持PC/2in1使用。|
+|ntp_server|[systemManager.setNTPServer](arkts-mdm-setntpserver-f.md#setntpserver-1)<br>
+[systemManager.getNTPServer](arkts-mdm-getntpserver-f.md#getntpserver-1)|设置NTP服务器的策略。<br>获取NTP服务
+器信息。|
 |set_update_policy|
-[systemManager.setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md#setOtaUpdatePolicy-1)<br>
-[systemManager.getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md#getOtaUpdatePolicy-1)|�����������ԡ�<br>
-��ѯ�������ԡ�|
+[systemManager.setOtaUpdatePolicy](arkts-mdm-setotaupdatepolicy-f.md#setotaupdatepolicy-1)<br>
+[systemManager.getOtaUpdatePolicy](arkts-mdm-getotaupdatepolicy-f.md#getotaupdatepolicy-1)|设置升级策略。<br>
+查询升级策略。|
 |notify_upgrade_packages|
-[systemManager.notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md#notifyUpdatePackages-1)<br>
-[systemManager.getUpdateResult](arkts-mdm-systemmanager-getupdateresult-f.md#getUpdateResult-1)|֪ͨϵͳ���°���Ϣ��<br>��ȡϵ
-ͳ���½����|
+[systemManager.notifyUpdatePackages](arkts-mdm-notifyupdatepackages-f.md#notifyupdatepackages-1)<br>
+[systemManager.getUpdateResult](arkts-mdm-getupdateresult-f.md#getupdateresult-1)|通知系统更新包信息。<br>获取系
+统更新结果。|
 |allowed_usb_devices|
-[usbManager.addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md#addAllowedUsbDevices-1)<br>
-[usbManager.removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md#removeAllowedUsbDevices-1)<br>
-[usbManager.getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md#getAllowedUsbDevices-1)|����USB�豸����������<br>
-�Ƴ�USB�豸����������<br>��ȡUSB�豸����������|
+[usbManager.addAllowedUsbDevices](arkts-mdm-addallowedusbdevices-f.md#addallowedusbdevices-1)<br>
+[usbManager.removeAllowedUsbDevices](arkts-mdm-removeallowedusbdevices-f.md#removeallowedusbdevices-1)<br>
+[usbManager.getAllowedUsbDevices](arkts-mdm-getallowedusbdevices-f.md#getallowedusbdevices-1)|添加USB设备可用名单。<br>
+移除USB设备可用名单。<br>获取USB设备可用名单。|
 |usb_read_only|
-[usbManager.setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy-1)
+[usbManager.setUsbStorageDeviceAccessPolicy](arkts-mdm-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)
 <br>
-[usbManager.getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getUsbStorageDeviceAccessPolicy-1)
-|����USB�洢�豸���ʲ��ԡ�<br>��ȡUSB�洢�豸���ʲ��ԡ�|
+[usbManager.getUsbStorageDeviceAccessPolicy](arkts-mdm-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1)
+|设置USB存储设备访问策略。<br>获取USB存储设备访问策略。|
 |disallowed_usb_devices|
-[usbManager.addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)<br>
-[usbManager.removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md#removeDisallowedUsbDevices-1)<br>
-[usbManager.getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getDisallowedUsbDevices-1)|���ӽ�ֹʹ�õ�USB
-�豸���͡�<br>�Ƴ���ֹʹ�õ�USB�豸���͡�<br>��ȡ��ֹʹ�õ�USB�豸���͡�|
+[usbManager.addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)<br>
+[usbManager.removeDisallowedUsbDevices](arkts-mdm-removedisallowedusbdevices-f.md#removedisallowedusbdevices-1)<br>
+[usbManager.getDisallowedUsbDevices](arkts-mdm-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1)|添加禁止使用的USB
+设备类型。<br>移除禁止使用的USB设备类型。<br>获取禁止使用的USB设备类型。|
 |disallowed_sms|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����sms������/�����豸���ա����Ͷ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�<br>feature����sms����ѯ�Ƿ�����豸���ա����Ͷ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入sms，禁用/启用设备接收、发送短信的能力，当前仅支持手机、平板设备使用。<br>feature传入sms，查询是否禁用设备接收、发送短信的能力，当前仅支持手机、平板设备使用。|
 |disallowed_mms|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����mms������/�����豸���ա����Ͳ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�<br>feature����mms����ѯ�Ƿ�����豸���ա����Ͳ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入mms，禁用/启用设备接收、发送彩信的能力，当前仅支持手机、平板设备使用。<br>feature传入mms，查询是否禁用设备接收、发送彩信的能力，当前仅支持手机、平板设备使用。|
 |disable_backup_and_restore|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����backupAndRestore������/���ñ��ݺͻָ���������ǰ��֧���ֻ���ƽ��ʹ�á�<br>feature����backupAndRestore����ѯ�Ƿ���ñ��ݺͻָ���������ǰ��֧���ֻ���ƽ��ʹ�á�|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入backupAndRestore，禁用/启用备份和恢复能力，当前仅支持手机、平板使用。<br>feature传入backupAndRestore，查询是否禁用备份和恢复能力，当前仅支持手机、平板使用。|
 |installed_bundle_info_list|
-[bundleManager.getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getInstalledBundleList-1)
-|��ȡ�豸ָ���û����Ѱ�װӦ���б���|
+[bundleManager.getInstalledBundleList](arkts-mdm-getinstalledbundlelist-f.md#getinstalledbundlelist-1)
+|获取设备指定用户下已安装应用列表。|
 |clear_up_application_data|
-[applicationManager.clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md#clearUpApplicationData-1)
-|���Ӧ�ò������������ݡ�|
+[applicationManager.clearUpApplicationData](arkts-mdm-clearupapplicationdata-f.md#clearupapplicationdata-1)
+|清除应用产生的所有数据。|
 |disallow_unmute_device|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����unmuteDevice������/�����豸ý�岥������������<br>feature����unmuteDevice����ѯ�Ƿ�����豸ý�岥������������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入unmuteDevice，禁用/启用设备媒体播放声音能力。<br>feature传入unmuteDevice，查询是否禁用设备媒体播放声音能力。|
 |disabled_hdc_remote|
-[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 <br>
-[restrictions.getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy-1)
-|feature����hdcRemote������/�����豸ͨ��hdc���������豸��������<br>feature����hdcRemote����ѯ�Ƿ�����豸ͨ��hdc���������豸��������|
+[restrictions.getDisallowedPolicy](arkts-mdm-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
+|feature传入hdcRemote，禁用/启用设备通过hdc调试其他设备的能力。<br>feature传入hdcRemote，查询是否禁用设备通过hdc调试其他设备的能力。|
 
 **起始版本：** 9
 
@@ -219,59 +219,75 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[authorizeAdmin](arkts-mdm-adminmanager-authorizeadmin-f-sys.md#authorizeAdmin-1) | ����ָ��Ӧ�ù���ԱȨ�ޡ�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[authorizeAdmin](arkts-mdm-adminmanager-authorizeadmin-f-sys.md#authorizeAdmin-2) | ����ָ��Ӧ�ù���ԱȨ�ޡ�ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[disableAdmin](arkts-mdm-adminmanager-disableadmin-f-sys.md#disableAdmin-1) | ����ǰ�û���ָ������ͨ�豸����Ӧ�ý�����ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[disableAdmin](arkts-mdm-adminmanager-disableadmin-f-sys.md#disableAdmin-2) | ��ָ���û���ͨ��userIdָ������ָ������ͨ����Ӧ�ý�����ʹ��callback�첽�ص���<br/> |
-| [disableAdmin](arkts-mdm-adminmanager-disableadmin-f.md#disableAdmin-3) | �������ָ���û����豸����Ӧ�á�ʹ��Promise�첽�ص���<br/> |
-| [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md#disableDeviceAdmin-1) | [�����豸����Ӧ��](../../../../mdm/mdm-kit-term.md#sda)ͨ���ýӿڿ��Խ����������[��ͨ�豸����Ӧ��](../../../../mdm/mdm-kit-term.md#da)��ʹ��Promise�첽��<br/>�����ýӿڽ�֧�ֳ����豸����Ӧ�õ��á�<br/> |
-| <!--DelRow-->[disableSuperAdmin](arkts-mdm-adminmanager-disablesuperadmin-f-sys.md#disableSuperAdmin-1) | ����bundleName�������豸����Ӧ�ý�����ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[disableSuperAdmin](arkts-mdm-adminmanager-disablesuperadmin-f-sys.md#disableSuperAdmin-2) | ����bundleName�������豸����Ӧ�ý�����ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[enableAdmin](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableAdmin-1) | ����ָ�����豸����Ӧ�á������豸����Ӧ�ý������û���u100���¿ɼ�������Ӧ�ò���ж�أ���[��ҵ�豸������չ����](../../../../mdm/mdm-kit-term.md#��ҵ�豸������չ����)������������������û��л�<br/>��������ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[enableAdmin](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableAdmin-2) | ����ָ���û���ͨ��userIdָ������ָ�����豸����Ӧ�ã����г�������Ӧ�ý��������û���u100���±����ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[enableAdmin](arkts-mdm-adminmanager-enableadmin-f-sys.md#enableAdmin-3) | ���ǰ/ָ���û���ָ�����豸����Ӧ�ã����г�������Ӧ�ý��������û���u100���±����ʹ��Promise�첽�ص���<br/> |
-| [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md#enableDeviceAdmin-1) | [�����豸����Ӧ��](../../../../mdm/mdm-kit-term.md#sda)ͨ���ýӿڿ��Լ�������[��ͨ�豸����Ӧ��](../../../../mdm/mdm-kit-term.md#da)��ʹ��Promise�첽�ص���<br/>�ýӿڽ�֧�ֳ����豸����Ӧ�õ��á�<br/> |
-| [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md#enableSelfDeviceAdmin-1) | ����ҵ�豸�У�MDMӦ��û��Ԥ�ü���ĳ����£�MDMӦ�ÿ���ͨ���ýӿ�ʵ���Լ���ýӿڽ�֧�ּ���MDMӦ����������֧�ּ�������MDMӦ�ã�֧�ֵļ������Ͱ��������豸����Ӧ�ú���ͨ�豸����Ӧ�á�<br/><br/>&lt;!--RP1--&gt;&lt;!--RP1End--&gt;<br/> |
-| <!--DelRow-->[getAdmins](arkts-mdm-adminmanager-getadmins-f-sys.md#getAdmins-1) | ��ѯ��ǰ�û��µ������豸����Ӧ�á�ʹ��Promise�첽�ص���<br/> |
-| [getDelegatedBundleNames](arkts-mdm-adminmanager-getdelegatedbundlenames-f.md#getDelegatedBundleNames-1) | ��ѯ���Է���ĳ��ί�в��Եı�ί��Ӧ�ã������ί��Ӧ���б���<br/> |
-| [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md#getDelegatedPolicies-1) | ��ѯ��ί��Ӧ�ÿɷ��ʵĲ����б���<br/> |
-| <!--DelRow-->[getEnterpriseInfo](arkts-mdm-adminmanager-getenterpriseinfo-f-sys.md#getEnterpriseInfo-1) | ��ȡ�豸����Ӧ�õ���ҵ��Ϣ��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getEnterpriseInfo](arkts-mdm-adminmanager-getenterpriseinfo-f-sys.md#getEnterpriseInfo-2) | ��ȡ�豸����Ӧ�õ���ҵ��Ϣ��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getEnterpriseManagedTips](arkts-mdm-adminmanager-getenterprisemanagedtips-f-sys.md#getEnterpriseManagedTips-1) | ��ѯ��ҵ������Ϣ<br/> |
-| <!--DelRow-->[getSuperAdmin](arkts-mdm-adminmanager-getsuperadmin-f-sys.md#getSuperAdmin-1) | ��ѯ���û���u100���µĳ����豸����Ӧ�á�ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[isAdminEnabled](arkts-mdm-adminmanager-isadminenabled-f-sys.md#isAdminEnabled-1) | ��ѯ��ǰ�û���ָ�����豸����Ӧ���Ƿ񱻼��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isAdminEnabled](arkts-mdm-adminmanager-isadminenabled-f-sys.md#isAdminEnabled-2) | ��ѯָ���û���ͨ��userIdָ������ָ�����豸����Ӧ���Ƿ񱻼��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isAdminEnabled](arkts-mdm-adminmanager-isadminenabled-f-sys.md#isAdminEnabled-3) | ��ѯ��ǰ/ָ���û���ָ�����豸����Ӧ���Ƿ񱻼��ʹ��Promise�첽�ص���<br/> |
-| [isByodAdmin](arkts-mdm-adminmanager-isbyodadmin-f.md#isByodAdmin-1) | ������ҵ�豸������չ�����ѯ��ǰӦ���Ƿ񱻼���ΪBYOD�豸����Ӧ�á�<br/> |
-| <!--DelRow-->[isSuperAdmin](arkts-mdm-adminmanager-issuperadmin-f-sys.md#isSuperAdmin-1) | ����bundleName��ѯ���û���u100���µĳ����豸����Ӧ���Ƿ񱻼��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[isSuperAdmin](arkts-mdm-adminmanager-issuperadmin-f-sys.md#isSuperAdmin-2) | ����bundleName��ѯ���û���u100���µĳ����豸����Ӧ���Ƿ񱻼��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[replaceSuperAdmin](arkts-mdm-adminmanager-replacesuperadmin-f-sys.md#replaceSuperAdmin-1) | ��ָ��Ӧ���滻�ɳ����豸����Ӧ�á�<br/> |
-| <!--DelRow-->[setAdminRunningMode](arkts-mdm-adminmanager-setadminrunningmode-f-sys.md#setAdminRunningMode-1) | �����豸����Ӧ�õ�����ģʽ��<br/> |
-| [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md#setDelegatedPolicies-1) | ί������Ӧ���������豸�Ĺܿز��ԡ���ί�е�����Ӧ��������ί�в��Զ�Ӧ�ӿ�����Ȩ�ޡ�<br/> |
-| <!--DelRow-->[setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f-sys.md#setDelegatedPolicies-2) | ί������Ӧ���������豸�Ĺܿز��ԡ���ί�е�����Ӧ��������ί�в��Զ�Ӧ�ӿ�����Ȩ�ޡ�<br/> |
-| <!--DelRow-->[setEnterpriseInfo](arkts-mdm-adminmanager-setenterpriseinfo-f-sys.md#setEnterpriseInfo-1) | �����豸����Ӧ�õ���ҵ��Ϣ��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[setEnterpriseInfo](arkts-mdm-adminmanager-setenterpriseinfo-f-sys.md#setEnterpriseInfo-2) | �����豸����Ӧ�õ���ҵ��Ϣ��ʹ��Promise�첽�ص���<br/> |
-| [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startAdminProvision-1) | �豸����Ӧ������BYOD����Ա����ҳ����м��<br/> |
-| <!--DelRow-->[subscribeManagedEvent](arkts-mdm-adminmanager-subscribemanagedevent-f-sys.md#subscribeManagedEvent-1) | ����ϵͳ�����¼���ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[subscribeManagedEvent](arkts-mdm-adminmanager-subscribemanagedevent-f-sys.md#subscribeManagedEvent-2) | ����ϵͳ�����¼���ʹ��Promise�첽�ص���<br/> |
-| [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribeManagedEventSync-1) | ����ϵͳ�����¼���<br/> |
-| <!--DelRow-->[unsubscribeManagedEvent](arkts-mdm-adminmanager-unsubscribemanagedevent-f-sys.md#unsubscribeManagedEvent-1) | ȡ������ϵͳ�����¼���ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[unsubscribeManagedEvent](arkts-mdm-adminmanager-unsubscribemanagedevent-f-sys.md#unsubscribeManagedEvent-2) | ȡ������ϵͳ�����¼���ʹ��Promise�첽�ص���<br/> |
-| [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md#unsubscribeManagedEventSync-1) | ȡ������ϵͳ�����¼���<br/> |
+| [disableAdmin](arkts-mdm-disableadmin-f.md#disableadmin-3) | 解除激活指定用户的设备管理应用。使用Promise异步回调。 |
+| [disableDeviceAdmin](arkts-mdm-disabledeviceadmin-f.md#disabledeviceadmin-1) | [超级设备管理应用](../../../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
+| [enableDeviceAdmin](arkts-mdm-enabledeviceadmin-f.md#enabledeviceadmin-1) | [超级设备管理应用](../../../../mdm/mdm-kit-term.md#sda)通过该接口可以激活其他[普通设备管理应用](../../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。 |
+| [enableSelfDeviceAdmin](arkts-mdm-enableselfdeviceadmin-f.md#enableselfdeviceadmin-1) | 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。&lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
+| [getDelegatedBundleNames](arkts-mdm-getdelegatedbundlenames-f.md#getdelegatedbundlenames-1) | 查询可以访问某个委托策略的被委托应用，输出被委托应用列表。 |
+| [getDelegatedPolicies](arkts-mdm-getdelegatedpolicies-f.md#getdelegatedpolicies-1) | 查询被委托应用可访问的策略列表。 |
+| [isByodAdmin](arkts-mdm-isbyodadmin-f.md#isbyodadmin-1) | 根据企业设备管理扩展组件查询当前应用是否被激活为BYOD设备管理应用。 |
+| [setDelegatedPolicies](arkts-mdm-setdelegatedpolicies-f.md#setdelegatedpolicies-1) | 委托其他应用来设置设备的管控策略。被委托的其他应用需申请委托策略对应接口所需权限。 |
+| [startAdminProvision](arkts-mdm-startadminprovision-f.md#startadminprovision-1) | 设备管理应用拉起BYOD管理员激活页面进行激活。 |
+| [subscribeManagedEventSync](arkts-mdm-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1) | 订阅系统管理事件。 |
+| [unsubscribeManagedEventSync](arkts-mdm-unsubscribemanagedeventsync-f.md#unsubscribemanagedeventsync-1) | 取消订阅系统管理事件。 |
 
-### 接口
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[EnterpriseInfo](arkts-mdm-adminmanager-enterpriseinfo-i-sys.md) | �豸����Ӧ�õ���ҵ��Ϣ��<br/> |
+| [authorizeAdmin](arkts-mdm-authorizeadmin-f-sys.md#authorizeadmin-1) | 授予指定应用管理员权限。使用callback异步回调。 |
+| [authorizeAdmin](arkts-mdm-authorizeadmin-f-sys.md#authorizeadmin-2) | 授予指定应用管理员权限。使用Promise异步回调。 |
+| [disableAdmin](arkts-mdm-disableadmin-f-sys.md#disableadmin-1) | 将当前用户下指定的普通设备管理应用解除激活。使用callback异步回调。 |
+| [disableAdmin](arkts-mdm-disableadmin-f-sys.md#disableadmin-2) | 将指定用户（通过userId指定）下指定的普通管理应用解除激活。使用callback异步回调。 |
+| [disableSuperAdmin](arkts-mdm-disablesuperadmin-f-sys.md#disablesuperadmin-1) | 根据bundleName将超级设备管理应用解除激活。使用callback异步回调。 |
+| [disableSuperAdmin](arkts-mdm-disablesuperadmin-f-sys.md#disablesuperadmin-2) | 根据bundleName将超级设备管理应用解除激活。使用Promise异步回调。 |
+| [enableAdmin](arkts-mdm-enableadmin-f-sys.md#enableadmin-1) | 激活指定的设备管理应用。超级设备管理应用仅在首用户（u100）下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。 |
+| [enableAdmin](arkts-mdm-enableadmin-f-sys.md#enableadmin-2) | 激活指定用户（通过userId指定）下指定的设备管理应用，其中超级管理应用仅能在首用户（u100）下被激活。使用callback异步回调。 |
+| [enableAdmin](arkts-mdm-enableadmin-f-sys.md#enableadmin-3) | 激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在首用户（u100）下被激活。使用Promise异步回调。 |
+| [getAdmins](arkts-mdm-getadmins-f-sys.md#getadmins-1) | 查询当前用户下的所有设备管理应用。使用Promise异步回调。 |
+| [getEnterpriseInfo](arkts-mdm-getenterpriseinfo-f-sys.md#getenterpriseinfo-1) | 获取设备管理应用的企业信息。使用callback异步回调。 |
+| [getEnterpriseInfo](arkts-mdm-getenterpriseinfo-f-sys.md#getenterpriseinfo-2) | 获取设备管理应用的企业信息，使用Promise异步回调。 |
+| [getEnterpriseManagedTips](arkts-mdm-getenterprisemanagedtips-f-sys.md#getenterprisemanagedtips-1) | 查询企业定制信息 |
+| [getSuperAdmin](arkts-mdm-getsuperadmin-f-sys.md#getsuperadmin-1) | 查询首用户（u100）下的超级设备管理应用。使用Promise异步回调。 |
+| [isAdminEnabled](arkts-mdm-isadminenabled-f-sys.md#isadminenabled-1) | 查询当前用户下指定的设备管理应用是否被激活。使用callback异步回调。 |
+| [isAdminEnabled](arkts-mdm-isadminenabled-f-sys.md#isadminenabled-2) | 查询指定用户（通过userId指定）下指定的设备管理应用是否被激活。使用callback异步回调。 |
+| [isAdminEnabled](arkts-mdm-isadminenabled-f-sys.md#isadminenabled-3) | 查询当前/指定用户下指定的设备管理应用是否被激活。使用Promise异步回调。 |
+| [isSuperAdmin](arkts-mdm-issuperadmin-f-sys.md#issuperadmin-1) | 根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用callback异步回调。 |
+| [isSuperAdmin](arkts-mdm-issuperadmin-f-sys.md#issuperadmin-2) | 根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用Promise异步回调。 |
+| [replaceSuperAdmin](arkts-mdm-replacesuperadmin-f-sys.md#replacesuperadmin-1) | 将指定应用替换成超级设备管理应用。 |
+| [setAdminRunningMode](arkts-mdm-setadminrunningmode-f-sys.md#setadminrunningmode-1) | 设置设备管理应用的运行模式。 |
+| [setDelegatedPolicies](arkts-mdm-setdelegatedpolicies-f-sys.md#setdelegatedpolicies-2) | 委托其他应用来设置设备的管控策略。被委托的其他应用需申请委托策略对应接口所需权限。 |
+| [setEnterpriseInfo](arkts-mdm-setenterpriseinfo-f-sys.md#setenterpriseinfo-1) | 设置设备管理应用的企业信息。使用callback异步回调。 |
+| [setEnterpriseInfo](arkts-mdm-setenterpriseinfo-f-sys.md#setenterpriseinfo-2) | 设置设备管理应用的企业信息。使用Promise异步回调。 |
+| [subscribeManagedEvent](arkts-mdm-subscribemanagedevent-f-sys.md#subscribemanagedevent-1) | 订阅系统管理事件。使用callback异步回调。 |
+| [subscribeManagedEvent](arkts-mdm-subscribemanagedevent-f-sys.md#subscribemanagedevent-2) | 订阅系统管理事件。使用Promise异步回调。 |
+| [unsubscribeManagedEvent](arkts-mdm-unsubscribemanagedevent-f-sys.md#unsubscribemanagedevent-1) | 取消订阅系统管理事件。使用callback异步回调。 |
+| [unsubscribeManagedEvent](arkts-mdm-unsubscribemanagedevent-f-sys.md#unsubscribemanagedevent-2) | 取消订阅系统管理事件。使用Promise异步回调。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [EnterpriseInfo](arkts-mdm-enterpriseinfo-i-sys.md) | 设备管理应用的企业信息。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [AdminType](arkts-mdm-adminmanager-admintype-e.md) | �豸����Ӧ�õ����͡�<br/> |
-| <!--DelRow-->[AdminType](arkts-mdm-adminmanager-admintype-e-sys.md) | �豸����Ӧ�õ����͡�<br/> |
-| [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md) | �ɶ��ĵ�ϵͳ�����¼���<br/> |
-| [Policy](arkts-mdm-adminmanager-policy-e.md) | # ��ί�в����б�<br/><br/>\| �������� \| ��Ӧ�ӿ�                                                     \| ˵�� \|<br/>\| --- \| --- \| --- \|<br/>\|disallow_add_local_account\|<br/>[accountManager.disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowOsAccountAddition-1)<br/>&lt;br&gt;<br/>[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isOsAccountAdditionDisallowed-1)<br/>\| ����accountId��������ֹ�豸���������û���&lt;br&gt;����accountId��������ѯ�Ƿ��ֹ�豸���������û���\|<br/>\|disallow_add_os_account_by_user\|<br/>[accountManager.disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md#disallowOsAccountAddition-1)<br/>&lt;br&gt;<br/>[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isOsAccountAdditionDisallowed-1)<br/>\| �贫��accountId��������ָֹ���û������˺š�&lt;br&gt;�贫��accountId��������ѯ�Ƿ��ָֹ���û������˺š�\|<br/>\|disallow_running_bundles\|<br/>[applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md#addDisallowedRunningBundlesSync-1)<br/>&lt;br&gt;<br/>[applicationManager.removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1)<br/>&lt;br&gt;<br/>[applicationManager.getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md#getDisallowedRunningBundlesSync-1)<br/>\|����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û������С�&lt;br&gt;��Ӧ�����н�ֹ�������Ƴ�Ӧ�á�&lt;br&gt;��ȡ��ǰ/ָ���û��µ�Ӧ�����н�ֹ������ \|<br/>\|manage_auto_start_apps\|<br/>[applicationManager.addAutoStartApps](@ohos.enterprise.applicationManager:applicationManager.addAutoStartApps(admin: Want, autoStartApps: Array&lt;Want&gt;))<br/>&lt;br&gt;<br/>[applicationManager.removeAutoStartApps](@ohos.enterprise.applicationManager:applicationManager.removeAutoStartApps(admin: Want, autoStartApps: Array&lt;Want&gt;))<br/>&lt;br&gt;<br/>[applicationManager.getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getAutoStartApps-1)<br/>\|���ӿ���������Ӧ��������&lt;br&gt;�ӿ���������Ӧ���������Ƴ�Ӧ�á�&lt;br&gt;��ѯ����������Ӧ��������\|<br/>\|allowed_bluetooth_devices\|<br/>[bluetoothManager.addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md#addAllowedBluetoothDevices-1)<br/>&lt;br&gt;<br/>[bluetoothManager.removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md#removeAllowedBluetoothDevices-1)<br/>&lt;br&gt;<br/>[bluetoothManager.getAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-getallowedbluetoothdevices-f.md#getAllowedBluetoothDevices-1)<br/>\|���������豸����������&lt;br&gt;�������豸�����������Ƴ���&lt;br&gt;��ѯ�����豸����������\|<br/>\|set_browser_policies\|[browser.setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setPolicySync-1)&lt;br&gt;<br/>[browser.getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getPoliciesSync-1)\|Ϊָ�������������������Ӳ��ԡ�&lt;br&gt;��ȡָ��������Ĳ��ԡ�\|<br/>\|allowed_install_bundles\|<br/>[bundleManager.addAllowedInstallBundlesSync](arkts-mdm-bundlemanager-addallowedinstallbundlessync-f.md#addAllowedInstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeAllowedInstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getAllowedInstallBundlesSync-1)<br/>\|����Ӧ����Ӧ�ó������װ��������������������������Ӧ�������ڵ�ǰ/ָ���û��°�װ������������װ��&lt;br&gt;��Ӧ�ó������װ�����������Ƴ�Ӧ�á�&lt;br&gt;��ȡ��ǰ/ָ���û��µ�Ӧ�ó������װ����������\|<br/>\|disallowed_install_bundles\|<br/>[bundleManager.addDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-adddisallowedinstallbundlessync-f.md#addDisallowedInstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md#removeDisallowedInstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getDisallowedInstallBundlesSync-1)<br/>\|����Ӧ����Ӧ�ó������װ��ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û��°�װ��&lt;br&gt;��Ӧ�ó������װ��ֹ�������Ƴ�Ӧ�á�&lt;br&gt;��ȡ��ǰ/ָ���û��µ�Ӧ�ó������װ��ֹ������\|<br/>\|disallowed_uninstall_bundles\|<br/>[bundleManager.addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md#addDisallowedUninstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md#removeDisallowedUninstallBundlesSync-1)<br/>&lt;br&gt;<br/>[bundleManager.getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getDisallowedUninstallBundlesSync-1)<br/>\|����Ӧ����Ӧ�ó����ж�ؽ�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û���ж�ء�&lt;br&gt;��Ӧ�ó����ж�ؽ�ֹ�������Ƴ�Ӧ�á�&lt;br&gt;��ȡ��ǰ/ָ���û��µ�Ӧ�ð�����ж�ؽ�ֹ������\|<br/>\|get_device_info\|[deviceInfo.getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getDeviceInfo-1)\|��ȡ�豸��Ϣ��\|<br/>\|location_policy\|<br/>[locationManager.setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setLocationPolicy-1)&lt;br&gt;<br/>[locationManager.getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getLocationPolicy-1)\|����λ�÷�<br/>��������ԡ�&lt;br&gt;��ѯλ�÷�����ԡ�\|<br/>\|disabled_network_interface\|<br/>[networkManager.setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setNetworkInterfaceDisabledSync-1)<br/>&lt;br&gt;<br/>[networkManager.isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isNetworkInterfaceDisabledSync-1)<br/>\|��ֹ�豸ʹ��ָ�����硣&lt;br&gt;��ѯָ������ӿ��Ƿ񱻽��á�\|<br/>\|global_proxy\|<br/>[networkManager.setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setGlobalProxySync-1)&lt;br&gt;<br/>[networkManager.getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getGlobalProxySync-1)\|��������ȫ��<br/>������&lt;br&gt;��ȡ����ȫ�ִ�����\|<br/>\|disabled_bluetooth\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����bluetooth������/��������������&lt;br&gt;feature����bluetooth����ѯ�Ƿ��������������\|<br/>\|disallow_modify_datetime\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����modifyDateTime������/��������ϵͳʱ��������&lt;br&gt;feature����modifyDateTime����ѯ�Ƿ�����޸�ϵͳʱ��������\|<br/>\|disabled_printer\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����printer������/���ô�ӡ������&lt;br&gt;feature����printer����ѯ�Ƿ���ô�ӡ������\|<br/>\|disabled_hdc\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����hdc������/���ñ������豸ͨ��hdc���ӡ����Ե�������&lt;br&gt;feature����hdc����ѯ�Ƿ���ñ������豸ͨ��hdc���ӡ����Ե�������\|<br/>\|disable_microphone\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����microphone������/������˷�������&lt;br&gt;feature����microphone����ѯ�Ƿ������˷�������\|<br/>\|fingerprint_auth\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>&lt;br&gt;<br/>[restrictions.setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicyForAccount](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicyForAccount(admin: Want \| null, feature: string, accountId: number))<br/>\|feature����fingerprint������/����ָ����֤������&lt;br&gt;feature����fingerprint����ѯ�Ƿ����ָ����֤������&lt;br&gt;feature����fingerprint������/����ָ���û���ָ����֤������&lt;<br/>br&gt;feature����fingerprint����ѯ�Ƿ����ָ���û���ָ����֤������\|<br/>\|disable_usb\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����usb������/����USB������&lt;br&gt;feature����usb����ѯ�Ƿ����USB������\|<br/>\|disable_wifi\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����wifi������/����Wi-Fi������&lt;br&gt;feature����wifi����ѯ�Ƿ����Wi-Fi������\|<br/>\|disallowed_tethering\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����tethering������/�������繲��������&lt;br&gt;feature����tethering����ѯ�Ƿ�������繲��������\|<br/>\|inactive_user_freeze\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����inactiveUserFreeze������/���÷ǻ�Ծ�û�����������&lt;br&gt;feature����inactiveUserFreeze����ѯ�Ƿ���÷ǻ�Ծ�û�����������\|<br/>\|snapshot_skip\|<br/>[restrictions.addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#addDisallowedListForAccount-1)<br/>&lt;br&gt;<br/>[restrictions.removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removeDisallowedListForAccount-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getDisallowedListForAccount-1)<br/>\|feature����snapshotSkip��������Ļ����������Ӧ��������&lt;br&gt;feature����snapshotSkip���ӽ�����Ļ����������Ӧ���������Ƴ���&lt;br&gt;feature����snapshotSkip����ѯ������Ļ����<br/>������Ӧ��������\|<br/>\|password_policy\|<br/>[securityManager.setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md#setPasswordPolicy-1)&lt;br&gt;<br/>[securityManager.getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md#getPasswordPolicy-1)<br/>\|�����豸����������ԡ�&lt;br&gt;��ȡ�豸����������ԡ�\|<br/>\|clipboard_policy\|<br/>[securityManager.setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md#setAppClipboardPolicy-1)<br/>&lt;br&gt;<br/>[securityManager.getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md#getAppClipboardPolicy-1)<br/>\|�����豸��������ԡ�&lt;br&gt;��ȡ�豸��������ԡ�\|<br/>\|watermark_image_policy\|<br/>[securityManager.setWatermarkImage](@ohos.enterprise.securityManager:securityManager.setWatermarkImage(admin: Want, bundleName: string, source: string \| image.PixelMap, accountId: number))<br/>&lt;br&gt;<br/>[securityManager.cancelWatermarkImage](arkts-mdm-securitymanager-cancelwatermarkimage-f.md#cancelWatermarkImage-1)<br/>\|����ˮӡ���ԣ���ǰ��֧��PC/2in1ʹ�á�&lt;br&gt;ȡ��ˮӡ���ԣ���ǰ��֧��PC/2in1ʹ�á�\|<br/>\|ntp_server\|[systemManager.setNTPServer](arkts-mdm-systemmanager-setntpserver-f.md#setNTPServer-1)&lt;br&gt;<br/>[systemManager.getNTPServer](arkts-mdm-systemmanager-getntpserver-f.md#getNTPServer-1)\|����NTP�������Ĳ��ԡ�&lt;br&gt;��ȡNTP<br/>��������Ϣ��\|<br/>\|set_update_policy\|<br/>[systemManager.setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md#setOtaUpdatePolicy-1)&lt;br&gt;<br/>[systemManager.getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md#getOtaUpdatePolicy-1)\|�����������ԡ�&lt;<br/>br&gt;��ѯ�������ԡ�\|<br/>\|notify_upgrade_packages\|<br/>[systemManager.notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md#notifyUpdatePackages-1)&lt;br&gt;<br/>[systemManager.getUpdateResult](arkts-mdm-systemmanager-getupdateresult-f.md#getUpdateResult-1)\|֪ͨϵͳ���°���Ϣ��&lt;br&gt;��<br/>ȡϵͳ���½����\|<br/>\|allowed_usb_devices\|<br/>[usbManager.addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md#addAllowedUsbDevices-1)&lt;br&gt;<br/>[usbManager.removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md#removeAllowedUsbDevices-1)&lt;br&gt;<br/>[usbManager.getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md#getAllowedUsbDevices-1)\|����USB�豸����������&lt;<br/>br&gt;�Ƴ�USB�豸����������&lt;br&gt;��ȡUSB�豸����������\|<br/>\|usb_read_only\|<br/>[usbManager.setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy-1)<br/>&lt;br&gt;<br/>[usbManager.getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getUsbStorageDeviceAccessPolicy-1)<br/>\|����USB�洢�豸���ʲ��ԡ�&lt;br&gt;��ȡUSB�洢�豸���ʲ��ԡ�\|<br/>\|disallowed_usb_devices\|<br/>[usbManager.addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)&lt;br&gt;<br/>[usbManager.removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md#removeDisallowedUsbDevices-1)&lt;br<br/>&gt;[usbManager.getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getDisallowedUsbDevices-1)\|���ӽ�ֹʹ�õ�<br/>USB�豸���͡�&lt;br&gt;�Ƴ���ֹʹ�õ�USB�豸���͡�&lt;br&gt;��ȡ��ֹʹ�õ�USB�豸���͡�\|<br/>\|disallowed_sms\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����sms������/�����豸���ա����Ͷ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�&lt;br&gt;feature����sms����ѯ�Ƿ�����豸���ա����Ͷ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�\|<br/>\|disallowed_mms\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����mms������/�����豸���ա����Ͳ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�&lt;br&gt;feature����mms����ѯ�Ƿ�����豸���ա����Ͳ��ŵ���������ǰ��֧���ֻ���ƽ���豸ʹ�á�\|<br/>\|disable_backup_and_restore\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����backupAndRestore������/���ñ��ݺͻָ���������ǰ��֧���ֻ���ƽ��ʹ�á�&lt;br&gt;feature����backupAndRestore����ѯ�Ƿ���ñ��ݺͻָ���������ǰ��֧���ֻ���ƽ��ʹ�á�\|<br/>\|installed_bundle_info_list\|<br/>[bundleManager.getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getInstalledBundleList-1)<br/>\|��ȡ�豸ָ���û����Ѱ�װӦ���б���\|<br/>\|clear_up_application_data\|<br/>[applicationManager.clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md#clearUpApplicationData-1)<br/>\|���Ӧ�ò������������ݡ�\|<br/>\|disallow_unmute_device\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����unmuteDevice������/�����豸ý�岥������������&lt;br&gt;feature����unmuteDevice����ѯ�Ƿ�����豸ý�岥������������\|<br/>\|disabled_hdc_remote\|<br/>[restrictions.setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&lt;br&gt;<br/>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br/>\|feature����hdcRemote������/�����豸ͨ��hdc���������豸��������&lt;br&gt;feature����hdcRemote����ѯ�Ƿ�����豸ͨ��hdc���������豸��������\|<br/> |
-| <!--DelRow-->[RunningMode](arkts-mdm-adminmanager-runningmode-e-sys.md) | �豸����������ģʽ��<br/> |
+| [AdminType](arkts-mdm-admintype-e.md) | 设备管理应用的类型。 |
+| [ManagedEvent](arkts-mdm-managedevent-e.md) | 可订阅的系统管理事件。 |
+| [Policy](arkts-mdm-policy-e.md) | # 可委托策略列表\| 策略名称 \| 对应接口 \| 说明 \|\| --- \| --- \| --- \|\|disallow_add_local_account\|[accountManager.disallowOsAccountAddition](arkts-mdm-disallowosaccountaddition-f.md#disallowosaccountaddition-1)<br>[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-isosaccountadditiondisallowed-f.md#isosaccountadditiondisallowed-1)\| 不传accountId参数，禁止设备创建本地用户。<br>不传accountId参数，查询是否禁止设备创建本地用户。\|\|disallow_add_os_account_by_user\|[accountManager.disallowOsAccountAddition](arkts-mdm-disallowosaccountaddition-f.md#disallowosaccountaddition-1)<br>[accountManager.isOsAccountAdditionDisallowed](arkts-mdm-isosaccountadditiondisallowed-f.md#isosaccountadditiondisallowed-1)\| 需传入accountId参数，禁止指定用户添加账号。<br>需传入accountId参数，查询是否禁止指定用户添加账号。\|\|disallow_running_bundles\|[applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-adddisallowedrunningbundlessync-f.md#adddisallowedrunningbundlessync-1)<br>[applicationManager.removeDisallowedRunningBundlesSync](arkts-mdm-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1)<br>[applicationManager.getDisallowedRunningBundlesSync](arkts-mdm-getdisallowedrunningbundlessync-f.md#getdisallowedrunningbundlessync-1)\|添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。<br>从应用运行禁止名单中移除应用。<br>获取当前/指定用户下的应用运行禁止名单。 \|\|manage_auto_start_apps\|[applicationManager.addAutoStartApps](arkts-mdm-addautostartapps-f.md#addautostartapps-1)<br>[applicationManager.removeAutoStartApps](arkts-mdm-removeautostartapps-f.md#removeautostartapps-1)<br>[applicationManager.getAutoStartApps](arkts-mdm-getautostartapps-f.md#getautostartapps-1)\|添加开机自启动应用名单。<br>从开机自启动应用名单中移除应用。<br>查询开机自启动应用名单。\|\|allowed_bluetooth_devices\|[bluetoothManager.addAllowedBluetoothDevices](arkts-mdm-addallowedbluetoothdevices-f.md#addallowedbluetoothdevices-1)<br>[bluetoothManager.removeAllowedBluetoothDevices](arkts-mdm-removeallowedbluetoothdevices-f.md#removeallowedbluetoothdevices-1)<br>[bluetoothManager.getAllowedBluetoothDevices](arkts-mdm-getallowedbluetoothdevices-f.md#getallowedbluetoothdevices-1)\|添加蓝牙设备可用名单。<br>从蓝牙设备可用名单中移除。<br>查询蓝牙设备可用名单。\|\|set_browser_policies\|[browser.setPolicySync](arkts-mdm-setpolicysync-f.md#setpolicysync-1)<br>[browser.getPoliciesSync](arkts-mdm-getpoliciessync-f.md#getpoliciessync-1)\|为指定的浏览器设置浏览器子策略。<br>获取指定浏览器的策略。\|\|allowed_install_bundles\|[bundleManager.addAllowedInstallBundlesSync](arkts-mdm-addallowedinstallbundlessync-f.md#addallowedinstallbundlessync-1)<br>[bundleManager.removeAllowedInstallBundlesSync](arkts-mdm-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1)<br>[bundleManager.getAllowedInstallBundlesSync](arkts-mdm-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1)\|添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，否则不允许安装。<br>从应用程序包安装允许名单中移除应用。<br>获取当前/指定用户下的应用程序包安装允许名单。\|\|disallowed_install_bundles\|[bundleManager.addDisallowedInstallBundlesSync](arkts-mdm-adddisallowedinstallbundlessync-f.md#adddisallowedinstallbundlessync-1)<br>[bundleManager.removeDisallowedInstallBundlesSync](arkts-mdm-removedisallowedinstallbundlessync-f.md#removedisallowedinstallbundlessync-1)<br>[bundleManager.getDisallowedInstallBundlesSync](arkts-mdm-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-1)\|添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。<br>从应用程序包安装禁止名单中移除应用。<br>获取当前/指定用户下的应用程序包安装禁止名单。\|\|disallowed_uninstall_bundles\|[bundleManager.addDisallowedUninstallBundlesSync](arkts-mdm-adddisalloweduninstallbundlessync-f.md#adddisalloweduninstallbundlessync-1)<br>[bundleManager.removeDisallowedUninstallBundlesSync](arkts-mdm-removedisalloweduninstallbundlessync-f.md#removedisalloweduninstallbundlessync-1)<br>[bundleManager.getDisallowedUninstallBundlesSync](arkts-mdm-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1)\|添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。<br>从应用程序包卸载禁止名单中移除应用。<br>获取当前/指定用户下的应用包程序卸载禁止名单。\|\|get_device_info\|[deviceInfo.getDeviceInfo](arkts-mdm-getdeviceinfo-f.md#getdeviceinfo-1)\|获取设备信息。\|\|location_policy\|[locationManager.setLocationPolicy](arkts-mdm-setlocationpolicy-f.md#setlocationpolicy-1)<br>[locationManager.getLocationPolicy](arkts-mdm-getlocationpolicy-f.md#getlocationpolicy-1)\|设置位置服务管理策略。<br>查询位置服务策略。\|\|disabled_network_interface\|[networkManager.setNetworkInterfaceDisabledSync](arkts-mdm-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync-1)<br>[networkManager.isNetworkInterfaceDisabledSync](arkts-mdm-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync-1)\|禁止设备使用指定网络。<br>查询指定网络接口是否被禁用。\|\|global_proxy\|[networkManager.setGlobalProxySync](arkts-mdm-setglobalproxysync-f.md#setglobalproxysync-1)<br>[networkManager.getGlobalProxySync](arkts-mdm-getglobalproxysync-f.md#getglobalproxysync-1)\|设置网络全局代理。<br>获取网络全局代理。\|\|disabled_bluetooth\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入bluetooth，禁用/启用蓝牙能力。<br>feature传入bluetooth，查询是否禁用蓝牙能力。\|\|disallow_modify_datetime\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入modifyDateTime，禁用/启用设置系统时间能力。<br>feature传入modifyDateTime，查询是否禁用修改系统时间能力。\|\|disabled_printer\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入printer，禁用/启用打印能力。<br>feature传入printer，查询是否禁用打印能力。\|\|disabled_hdc\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入hdc，禁用/启用被其他设备通过hdc连接、调试的能力。<br>feature传入hdc，查询是否禁用被其他设备通过hdc连接、调试的能力。\|\|disable_microphone\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入microphone，禁用/启用麦克风能力。<br>feature传入microphone，查询是否禁用麦克风能力。\|\|fingerprint_auth\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))<br>[restrictions.setDisallowedPolicyForAccount](arkts-mdm-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-1)<br>[restrictions.getDisallowedPolicyForAccount](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicyForAccount(admin: Want \| null, feature: string, accountId: number))\|feature传入fingerprint，禁用/启用指纹认证能力。<br>feature传入fingerprint，查询是否禁用指纹认证能力。<br>feature传入fingerprint，禁用/启用指定用户的指纹认证能力。&lt;br&gt;feature传入fingerprint，查询是否禁用指定用户的指纹认证能力。\|\|disable_usb\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入usb，禁用/启用USB能力。<br>feature传入usb，查询是否禁用USB能力。\|\|disable_wifi\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入wifi，禁用/启用Wi-Fi能力。<br>feature传入wifi，查询是否禁用Wi-Fi能力。\|\|disallowed_tethering\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入tethering，禁用/启用网络共享能力。<br>feature传入tethering，查询是否禁用网络共享能力。\|\|inactive_user_freeze\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入inactiveUserFreeze，禁用/启用非活跃用户运行能力。<br>feature传入inactiveUserFreeze，查询是否禁用非活跃用户运行能力。\|\|snapshot_skip\|[restrictions.addDisallowedListForAccount](arkts-mdm-adddisallowedlistforaccount-f.md#adddisallowedlistforaccount-1)<br>[restrictions.removeDisallowedListForAccount](arkts-mdm-removedisallowedlistforaccount-f.md#removedisallowedlistforaccount-1)<br>[restrictions.getDisallowedListForAccount](arkts-mdm-getdisallowedlistforaccount-f.md#getdisallowedlistforaccount-1)\|feature传入snapshotSkip，禁用屏幕快照能力的应用名单。<br>feature传入snapshotSkip，从禁用屏幕快照能力的应用名单中移除。<br>feature传入snapshotSkip，查询禁用屏幕快照能力的应用名单。\|\|password_policy\|[securityManager.setPasswordPolicy](arkts-mdm-setpasswordpolicy-f.md#setpasswordpolicy-1)<br>[securityManager.getPasswordPolicy](arkts-mdm-getpasswordpolicy-f.md#getpasswordpolicy-1)\|设置设备锁屏口令策略。<br>获取设备锁屏口令策略。\|\|clipboard_policy\|[securityManager.setAppClipboardPolicy](arkts-mdm-setappclipboardpolicy-f.md#setappclipboardpolicy-1)<br>[securityManager.getAppClipboardPolicy](arkts-mdm-getappclipboardpolicy-f.md#getappclipboardpolicy-1)\|设置设备剪贴板策略。<br>获取设备剪贴板策略。\|\|watermark_image_policy\|[securityManager.setWatermarkImage](@ohos.enterprise.securityManager:securityManager.setWatermarkImage(admin: Want, bundleName: string, source: string \| image.PixelMap, accountId: number))<br>[securityManager.cancelWatermarkImage](arkts-mdm-cancelwatermarkimage-f.md#cancelwatermarkimage-1)\|设置水印策略，当前仅支持PC/2in1使用。<br>取消水印策略，当前仅支持PC/2in1使用。\|\|ntp_server\|[systemManager.setNTPServer](arkts-mdm-setntpserver-f.md#setntpserver-1)<br>[systemManager.getNTPServer](arkts-mdm-getntpserver-f.md#getntpserver-1)\|设置NTP服务器的策略。<br>获取NTP服务器信息。\|\|set_update_policy\|[systemManager.setOtaUpdatePolicy](arkts-mdm-setotaupdatepolicy-f.md#setotaupdatepolicy-1)<br>[systemManager.getOtaUpdatePolicy](arkts-mdm-getotaupdatepolicy-f.md#getotaupdatepolicy-1)\|设置升级策略。&lt;br&gt;查询升级策略。\|\|notify_upgrade_packages\|[systemManager.notifyUpdatePackages](arkts-mdm-notifyupdatepackages-f.md#notifyupdatepackages-1)<br>[systemManager.getUpdateResult](arkts-mdm-getupdateresult-f.md#getupdateresult-1)\|通知系统更新包信息。<br>获取系统更新结果。\|\|allowed_usb_devices\|[usbManager.addAllowedUsbDevices](arkts-mdm-addallowedusbdevices-f.md#addallowedusbdevices-1)<br>[usbManager.removeAllowedUsbDevices](arkts-mdm-removeallowedusbdevices-f.md#removeallowedusbdevices-1)<br>[usbManager.getAllowedUsbDevices](arkts-mdm-getallowedusbdevices-f.md#getallowedusbdevices-1)\|添加USB设备可用名单。&lt;br&gt;移除USB设备可用名单。<br>获取USB设备可用名单。\|\|usb_read_only\|[usbManager.setUsbStorageDeviceAccessPolicy](arkts-mdm-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)<br>[usbManager.getUsbStorageDeviceAccessPolicy](arkts-mdm-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1)\|设置USB存储设备访问策略。<br>获取USB存储设备访问策略。\|\|disallowed_usb_devices\|[usbManager.addDisallowedUsbDevices](arkts-mdm-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)<br>[usbManager.removeDisallowedUsbDevices](arkts-mdm-removedisallowedusbdevices-f.md#removedisallowedusbdevices-1)<br>[usbManager.getDisallowedUsbDevices](arkts-mdm-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1)\|添加禁止使用的USB设备类型。<br>移除禁止使用的USB设备类型。<br>获取禁止使用的USB设备类型。\|\|disallowed_sms\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入sms，禁用/启用设备接收、发送短信的能力，当前仅支持手机、平板设备使用。<br>feature传入sms，查询是否禁用设备接收、发送短信的能力，当前仅支持手机、平板设备使用。\|\|disallowed_mms\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入mms，禁用/启用设备接收、发送彩信的能力，当前仅支持手机、平板设备使用。<br>feature传入mms，查询是否禁用设备接收、发送彩信的能力，当前仅支持手机、平板设备使用。\|\|disable_backup_and_restore\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入backupAndRestore，禁用/启用备份和恢复能力，当前仅支持手机、平板使用。<br>feature传入backupAndRestore，查询是否禁用备份和恢复能力，当前仅支持手机、平板使用。\|\|installed_bundle_info_list\|[bundleManager.getInstalledBundleList](arkts-mdm-getinstalledbundlelist-f.md#getinstalledbundlelist-1)\|获取设备指定用户下已安装应用列表。\|\|clear_up_application_data\|[applicationManager.clearUpApplicationData](arkts-mdm-clearupapplicationdata-f.md#clearupapplicationdata-1)\|清除应用产生的所有数据。\|\|disallow_unmute_device\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入unmuteDevice，禁用/启用设备媒体播放声音能力。<br>feature传入unmuteDevice，查询是否禁用设备媒体播放声音能力。\|\|disabled_hdc_remote\|[restrictions.setDisallowedPolicy](arkts-mdm-setdisallowedpolicy-f.md#setdisallowedpolicy-1)<br>[restrictions.getDisallowedPolicy](@ohos.enterprise.restrictions:restrictions.getDisallowedPolicy(admin: Want \| null, feature: string))\|feature传入hdcRemote，禁用/启用设备通过hdc调试其他设备的能力。<br>feature传入hdcRemote，查询是否禁用设备通过hdc调试其他设备的能力。\| |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AdminType](arkts-mdm-admintype-e-sys.md) | 设备管理应用的类型。 |
+| [RunningMode](arkts-mdm-runningmode-e-sys.md) | 设备管理的运行模式。 |
+<!--DelEnd-->
 

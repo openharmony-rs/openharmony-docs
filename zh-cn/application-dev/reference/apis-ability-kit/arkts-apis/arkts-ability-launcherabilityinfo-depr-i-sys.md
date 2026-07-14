@@ -1,20 +1,20 @@
 # LauncherAbilityInfo（系统接口）
 
-LauncherAbilityInfo��Ϣ��ͨ���ӿ�
+LauncherAbilityInfo信息，通过接口
 [innerBundleManager.getLauncherAbilityInfos](../../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)
-��ȡ��
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[bundleManager-LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md#LauncherAbilityInfo)�����
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md)替代。
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [launcherAbilityInfo:LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md#LauncherAbilityInfo)
+**替代接口：** [launcherAbilityInfo:LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -26,7 +26,7 @@ LauncherAbilityInfo��Ϣ��ͨ���ӿ�
 readonly applicationInfo: ApplicationInfo
 ```
 
-launcher ability��Ӧ�ó����������Ϣ��
+launcher ability的应用程序的配置信息。
 
 **类型：** ApplicationInfo
 
@@ -46,7 +46,7 @@ launcher ability��Ӧ�ó����������Ϣ��
 readonly elementName: ElementName
 ```
 
-launcher ability��ElementName��Ϣ��
+launcher ability的ElementName信息。
 
 **类型：** ElementName
 
@@ -66,7 +66,7 @@ launcher ability��ElementName��Ϣ��
 readonly iconId: number
 ```
 
-launcher ability��ͼ�����ԴIDֵ��
+launcher ability的图标的资源ID值。
 
 **类型：** number
 
@@ -86,7 +86,7 @@ launcher ability��ͼ�����ԴIDֵ��
 readonly installTime: number
 ```
 
-launcher ability�İ�װʱ�������λ���롣
+launcher ability的安装时间戳，单位毫秒。
 
 **类型：** number
 
@@ -106,7 +106,7 @@ launcher ability�İ�װʱ�������λ���롣
 readonly labelId: number
 ```
 
-launcher ability�ı�ǩ����ԴIDֵ��
+launcher ability的标签的资源ID值。
 
 **类型：** number
 
@@ -126,7 +126,7 @@ launcher ability�ı�ǩ����ԴIDֵ��
 readonly userId: number
 ```
 
-launcher ability���û�ID��
+launcher ability的用户ID。
 
 **类型：** number
 

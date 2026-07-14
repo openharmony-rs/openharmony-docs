@@ -12,19 +12,26 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDistributedAccountAbility](arkts-basicservices-distributedaccount-getdistributedaccountability-f.md#getDistributedAccountAbility-1) | 获取分布式账号单实例对象。<br/> |
+| [getDistributedAccountAbility](arkts-basicservices-getdistributedaccountability-f.md#getdistributedaccountability-1) | 获取分布式账号单实例对象。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [DistributedAccountAbility](arkts-basicservices-distributedaccount-distributedaccountability-i.md) | 提供查询和更新分布式账号登录状态方法（需要先获取分布式账号的单实例对象）。<br/> |
-| <!--DelRow-->[DistributedAccountAbility](arkts-basicservices-distributedaccount-distributedaccountability-i-sys.md) | 提供查询和更新分布式账号登录状态方法（需要先获取分布式账号的单实例对象）。<br/> |
-| [DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md) | 提供操作系统账号的分布式信息。<br/> |
+| [DistributedAccountAbility](arkts-basicservices-distributedaccountability-i.md) | 提供查询和更新分布式账号登录状态方法（需要先获取分布式账号的单实例对象）。 |
+| [DistributedInfo](arkts-basicservices-distributedinfo-i.md) | 提供操作系统账号的分布式信息。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [DistributedAccountAbility](arkts-basicservices-distributedaccountability-i-sys.md) | 提供查询和更新分布式账号登录状态方法（需要先获取分布式账号的单实例对象）。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [DistributedAccountStatus](arkts-basicservices-distributedaccount-distributedaccountstatus-e.md) | 表示分布式账号状态枚举。<br/> |
+| [DistributedAccountStatus](arkts-basicservices-distributedaccountstatus-e.md) | 表示分布式账号状态枚举。 |
 

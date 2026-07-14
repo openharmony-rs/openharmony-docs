@@ -1,9 +1,5 @@
 # PlaybackSpeed
 
-```TypeScript
-enum PlaybackSpeed
-```
-
 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。
 
 **起始版本：** 8
@@ -20,7 +16,7 @@ SPEED_FORWARD_0_75_X = 0
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -34,7 +30,7 @@ SPEED_FORWARD_1_00_X = 1
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -48,7 +44,7 @@ SPEED_FORWARD_1_25_X = 2
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -62,7 +58,7 @@ SPEED_FORWARD_1_75_X = 3
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -76,7 +72,7 @@ SPEED_FORWARD_2_00_X = 4
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -90,7 +86,7 @@ SPEED_FORWARD_0_50_X = 5
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -104,7 +100,7 @@ SPEED_FORWARD_1_50_X = 6
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -118,7 +114,7 @@ SPEED_FORWARD_3_00_X = 7
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -132,7 +128,7 @@ SPEED_FORWARD_0_25_X = 8
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -146,7 +142,7 @@ SPEED_FORWARD_0_125_X = 9
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 

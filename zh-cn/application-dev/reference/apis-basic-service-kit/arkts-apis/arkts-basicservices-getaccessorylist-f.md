@@ -1,0 +1,40 @@
+# getAccessoryList
+
+## getAccessoryList
+
+```TypeScript
+function getAccessoryList(): Array<Readonly<USBAccessory>>
+```
+
+获取当前已接入主机的USB配件列表。
+
+**起始版本：** 14
+
+**系统能力：** SystemCapability.USB.USBManager
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array&lt;Readonly&lt;USBAccessory&gt;&gt; | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [14400004](../../apis-basic-services-kit/errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:<br>1. No accessory is plugged in. |
+
+**示例：**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+try {
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+  hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
+} catch (error) {
+  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+}
+
+```
+

@@ -6,8 +6,6 @@
 
 **起始版本：** 7
 
-**模型约束：** 此接口仅可在FA模型下使用。
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## appName
@@ -24,9 +22,10 @@ readonly appName: string
 
 **起始版本：** 7
 
-**模型约束：** 此接口仅可在FA模型下使用。
+**模型约束：** 
+- API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,9 +43,10 @@ readonly versionCode: number
 
 **起始版本：** 7
 
-**模型约束：** 此接口仅可在FA模型下使用。
+**模型约束：** 
+- API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,9 +64,10 @@ readonly versionName: string
 
 **起始版本：** 7
 
-**模型约束：** 此接口仅可在FA模型下使用。
+**模型约束：** 
+- API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -1,6 +1,6 @@
 # ModuleAbilityInfo（系统接口）
 
-module������ability�����Ϣ��
+module包含的ability组件信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ module������ability�����Ϣ��
 readonly exported: boolean
 ```
 
-��ʾability�Ƿ���Ա�����Ӧ�õ��á�true��ʾ���Ա�����Ӧ�õ��ã�false��ʾ�����Ա�����Ӧ�õ��á�
+表示ability是否可以被其它应用调用。true表示可以被其它应用调用，false表示不可以被其它应用调用。
 
 **类型：** boolean
 
@@ -30,7 +30,7 @@ readonly exported: boolean
 readonly forms: Array<AbilityFormInfo>
 ```
 
-��Ƭ��Ϣ��
+卡片信息。
 
 **类型：** Array<AbilityFormInfo>
 
@@ -46,7 +46,7 @@ readonly forms: Array<AbilityFormInfo>
 readonly label: string
 ```
 
-��ʾability���û���ʾ�����ƣ���ǩֵ����Ϊ�����Ƶ���Դ������֧�ֶ����ԡ�
+表示ability对用户显示的名称，标签值配置为该名称的资源索引以支持多语言。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly label: string
 readonly name: string
 ```
 
-��ʾ��ǰability�����ƣ�������������Ӧ��ҪΨһ��
+表示当前ability的名称，该名称在整个应用要唯一。
 
 **类型：** string
 

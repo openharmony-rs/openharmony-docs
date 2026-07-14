@@ -1,12 +1,12 @@
 # RemoteAbilityInfo（系统接口）
 
-����Զ�̵�ability��Ϣ��ͨ���ӿ�
-[distributedBundle.getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getRemoteAbilityInfo-1)
-��ȡ��
+包含远程的ability信息，通过接口
+[distributedBundle.getRemoteAbilityInfo](arkts-ability-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-1)
+获取。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 9
 
@@ -20,7 +20,7 @@
 readonly elementName: ElementName
 ```
 
-ָ��Զ��ability��ElementName��Ϣ��
+指明远程ability的ElementName信息。
 
 **类型：** ElementName
 
@@ -36,7 +36,7 @@ readonly elementName: ElementName
 readonly icon: string
 ```
 
-ָ����Զ��ability��ͼ����Ϣ��
+指明的远程ability的图标信息。
 
 **类型：** string
 
@@ -52,7 +52,7 @@ readonly icon: string
 readonly label: string
 ```
 
-ָ��Զ��ability�ı�ǩ��Ϣ��
+指明远程ability的标签信息。
 
 **类型：** string
 

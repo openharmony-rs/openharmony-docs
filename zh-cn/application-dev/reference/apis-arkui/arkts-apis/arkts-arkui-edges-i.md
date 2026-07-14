@@ -1,90 +1,80 @@
 # Edges
 
-Defines the Edges.
+用于设置边框的属性。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
 
 ```TypeScript
-bottom?: Dimension
+bottom: T
 ```
 
-bottom property.
+底部边框的属性。
 
-**类型：** Dimension
+**类型：** T
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
 
 ```TypeScript
-left?: Dimension
+left: T
 ```
 
-left property.
+左侧边框的属性。
 
-**类型：** Dimension
+**类型：** T
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
 
 ```TypeScript
-right?: Dimension
+right: T
 ```
 
-right property.
+右侧边框的属性。
 
-**类型：** Dimension
+**类型：** T
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
 
 ```TypeScript
-top?: Dimension
+top: T
 ```
 
-top property.
+顶部边框的属性。
 
-**类型：** Dimension
+**类型：** T
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

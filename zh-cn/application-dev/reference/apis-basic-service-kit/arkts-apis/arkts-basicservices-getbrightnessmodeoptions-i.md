@@ -46,7 +46,7 @@ fail?: (data: string, code: number) => void
 success?: (data: BrightnessModeResponse) => void
 ```
 
-接口调用成功的回调函数。data为[BrightnessModeResponse](arkts-basicservices-brightnessmoderesponse-i.md#BrightnessModeResponse)类型的返回值。
+接口调用成功的回调函数。data为[BrightnessModeResponse](arkts-basicservices-brightnessmoderesponse-i.md)类型的返回值。
 
 **类型：** (data: BrightnessModeResponse) => void
 

@@ -1,14 +1,8 @@
 # PopupPlacement（系统接口）
 
-```TypeScript
-export declare enum PopupPlacement
-```
-
 表示气泡弹窗位置的枚举。
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

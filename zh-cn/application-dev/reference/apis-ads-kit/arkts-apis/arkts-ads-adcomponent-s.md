@@ -16,7 +16,7 @@ build(): void
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -33,9 +33,9 @@ adRenderer?: () => void
 
 **起始版本：** 12
 
-**装饰器类型：** @Builder
+**装饰器类型：** @BuilderParam
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -53,7 +53,7 @@ ads: advertising.Advertisement[]
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -69,7 +69,7 @@ displayOptions: advertising.AdDisplayOptions
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -85,7 +85,7 @@ interactionListener: advertising.AdInteractionListener
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -105,7 +105,7 @@ rollPlayState?: number
 
 **装饰器类型：** @Prop
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Advertising.Ads
 

@@ -1,9 +1,5 @@
 # SeekMode
 
-```TypeScript
-enum SeekMode
-```
-
 视频播放的Seek模式枚举，可通过seek方法作为参数传递下去。
 
 **起始版本：** 8
@@ -20,7 +16,7 @@ SEEK_NEXT_SYNC = 0
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -34,7 +30,7 @@ SEEK_PREV_SYNC = 1
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -48,7 +44,7 @@ SEEK_CLOSEST = 2
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -63,7 +59,7 @@ SEEK_CONTINUOUS = 3
 应用可以调用[isSeekContinuousSupported](@ohos.multimedia.media:media.AVPlayer.isSeekContinuousSupported)方法根据返回结果感
 知视频源是否支持该模式Seek。
 
-对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误(参考[AVErrorCode](arkts-media-media-averrorcode-e.md#AVErrorCode))，同时画面更
+对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误(参考[AVErrorCode](arkts-media-averrorcode-e.md))，同时画面更
 新的流畅性会降低。
 
 该Seek模式不会触发
@@ -73,7 +69,7 @@ SEEK_CONTINUOUS = 3
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

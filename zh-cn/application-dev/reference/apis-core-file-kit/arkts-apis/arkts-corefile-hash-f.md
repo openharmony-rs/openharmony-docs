@@ -10,7 +10,7 @@ function hash(path: string, algorithm: string): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -31,13 +31,14 @@ function hash(path: string, algorithm: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let filePath = pathDir + "/test.txt";
 hash.hash(filePath, "sha256").then((str: string) => {
   console.info("Succeeded in calculating file hash: " + str);
@@ -58,7 +59,7 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -74,8 +75,8 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 

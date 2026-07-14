@@ -1,7 +1,7 @@
 # AbilityFirstFrameStateObserver（系统接口）
 
 定义了Ability首帧绘制完成事件监听对象，可以作为
-[on](arkts-ability-appmanager-on-f-sys.md#on-5)
+[on](arkts-ability-on-f-sys.md#on-5)
 的入参，用于监听Ability首帧绘制完成事件。
 
 **起始版本：** 12

@@ -1,6 +1,6 @@
 # DataItem
 
-����ģ�����õ�·�ɱ��е��Զ������ݡ�
+描述模块配置的路由表中的自定义数据。
 
 **起始版本：** 12
 
@@ -12,13 +12,13 @@
 readonly key: string
 ```
 
-��ʶ·�ɱ��Զ������ݵļ���
+标识路由表自定义数据的键。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,13 +28,13 @@ readonly key: string
 readonly value: string
 ```
 
-��ʶ·�ɱ��Զ������ݵ�ֵ��
+标识路由表自定义数据的值。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

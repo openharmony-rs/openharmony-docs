@@ -1,18 +1,16 @@
 # UIExtensionAbility
 
 UIExtensionAbility组件是带界面的ExtensionAbility组件，继承自
-[ExtensionAbility](arkts-ability-extensionability-c.md#ExtensionAbility)，提供了组件创建、销毁、前后台切换等基础生命周期。和UIAbility组件
+[ExtensionAbility](arkts-ability-extensionability-c.md)，提供了组件创建、销毁、前后台切换等基础生命周期。和UIAbility组件
 不同，UIExtensionAbility组件不会作为单独的任务在任务视图中体现。UIExtensionAbility组件被宿主窗口启动，该组件的前后台切换状态、以及是否可见均跟随宿主窗口。
 开发者不可以直接继承UIExtensionAbility组件，但可以根据实际业务场景选择使用继承自UIExtensionAbility组件的其他组件。例如，开发者处理其他应用分享的数据时，可以使用
-[ShareExtensionAbility组件](arkts-ability-shareextensionability-c.md#ShareExtensionAbility)；开发者提供卡片编辑功能时，可以使用
+[ShareExtensionAbility组件](arkts-ability-shareextensionability-c.md)；开发者提供卡片编辑功能时，可以使用
 [FormEditExtensionAbility组件](./@ohos.app.form.FormEditExtensionAbility:FormEditExtensionAbility)。
 各类Ability组件的继承关系详见[继承关系说明](../../../../reference/apis-ability-kit/js-apis-app-ability-ability.md#ability的继承关系说明)。
 
-**继承/实现关系：** UIExtensionAbility extends [ExtensionAbility](arkts-ability-extensionability-c.md#ExtensionAbility)
+**继承/实现关系：** UIExtensionAbility extends [ExtensionAbility](arkts-ability-extensionability-c.md)
 
 **起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,7 +62,7 @@ onCreate(launchParam: AbilityConstant.LaunchParam): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| launchParam | AbilityConstant.LaunchParam | 是 | 应用启动参数，包含应用启动原因、应用上次退出原因等。 [since 12] |
+| launchParam | AbilityConstant.LaunchParam | 是 | 应用启动参数，包含应用启动原因、应用上次退出原因等。<br>**起始版本：** 12 |
 
 **示例：**
 

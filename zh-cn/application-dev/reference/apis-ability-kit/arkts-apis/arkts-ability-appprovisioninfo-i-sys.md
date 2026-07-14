@@ -1,6 +1,6 @@
 # AppProvisionInfo（系统接口）
 
-Ӧ��[HarmonyAppProvision�����ļ�](../../../../security/app-provision-structure.md)�е���Ϣ��
+应用[HarmonyAppProvision配置文件](../../../../security/app-provision-structure.md)中的信息。
 
 **起始版本：** 10
 
@@ -14,7 +14,7 @@
 readonly apl: string
 ```
 
-�����ļ��е�apl�ֶΣ�Ϊnormal��system_basic��system_core����֮һ��
+配置文件中的apl字段，为normal、system_basic和system_core其中之一。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly apl: string
 readonly appDistributionType: string
 ```
 
-�����ļ��е�[�ַ�����](../../../../security/app-provision-structure.md)��
+配置文件中的[分发类型](../../../../security/app-provision-structure.md)。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ readonly appDistributionType: string
 readonly appIdentifier: string
 ```
 
-Ӧ�õ�Ψһ��ʶ��������Ϣ�ɲο�[ʲô��appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)��
+应用的唯一标识，详情信息可参考[什么是appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly appIdentifier: string
 readonly bundleName?: string
 ```
 
-Ӧ�õİ�����
+应用的包名。
 
 **类型：** string
 
@@ -78,7 +78,7 @@ readonly bundleName?: string
 readonly certificate: string
 ```
 
-�����ļ��е�֤����Ϣ��
+配置文件中的证书信息。
 
 **类型：** string
 
@@ -94,7 +94,7 @@ readonly certificate: string
 readonly developerId: string
 ```
 
-�����ļ��еĿ�����ID��
+配置文件中的开发者ID。
 
 **类型：** string
 
@@ -110,7 +110,7 @@ readonly developerId: string
 readonly issuer: string
 ```
 
-�����ļ��еķ��������ơ�
+配置文件中的发行者名称。
 
 **类型：** string
 
@@ -126,7 +126,7 @@ readonly issuer: string
 readonly organization: string
 ```
 
-Ӧ�õ���֯��Ϣ��
+应用的组织信息。
 
 **类型：** string
 
@@ -142,7 +142,7 @@ readonly organization: string
 readonly type: string
 ```
 
-�����ļ������ͣ�Ϊdebug��release��
+配置文件的类型，为debug或release。
 
 **类型：** string
 
@@ -158,7 +158,7 @@ readonly type: string
 readonly uuid: string
 ```
 
-�����ļ��е�uuid��
+配置文件中的uuid。
 
 **类型：** string
 
@@ -174,7 +174,7 @@ readonly uuid: string
 readonly validity: Validity
 ```
 
-�����ļ��е���Ч�ڡ�
+配置文件中的有效期。
 
 **类型：** Validity
 
@@ -190,7 +190,7 @@ readonly validity: Validity
 readonly versionCode: number
 ```
 
-�����ļ��İ汾�š�
+配置文件的版本号。
 
 **类型：** number
 
@@ -206,7 +206,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-�����ļ��İ汾���ơ�
+配置文件的版本名称。
 
 **类型：** string
 

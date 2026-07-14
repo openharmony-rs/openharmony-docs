@@ -1,14 +1,8 @@
 # AutoFillType
 
-```TypeScript
-export enum AutoFillType
-```
-
 表示提供自动填充类型的枚举。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -1,13 +1,13 @@
 # @ohos.enterprise.applicationManager
 
-��ģ���ṩӦ�ù�����������������Ӧ�����н�ֹ��������ȡӦ�����н�ֹ�������Ƴ�Ӧ�����н�ֹ�����ȡ�
+本模块提供应用管理能力，包括添加应用运行禁止名单、获取应用运行禁止名单、移除应用运行禁止名单等。
 
-> **˵����**
+> **说明：**
 >
-> ��ģ��ӿڽ�����Stageģ����ʹ�á�
+> 本模块接口仅可在Stage模型下使用。
 >
-> ��ģ��ӿڽ����豸����Ӧ�ÿ��ţ��ҵ��ýӿ�ǰ�輤���豸����Ӧ�ã�������ο�[MDM Kit����ָ��](../../../../mdm/mdm-kit-guide.md)��
-> [applicationManager.isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md#isAppKioskAllowed-1)���⣬�ýӿڶ�����Ӧ�ÿ��š�
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
+> [applicationManager.isAppKioskAllowed](arkts-mdm-isappkioskallowed-f.md#isappkioskallowed-1)除外，该接口对所有应用开放。
 
 **起始版本：** 10
 
@@ -19,76 +19,83 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-addalloweddistributeabilityconnbundles-f.md#addAllowedDistributeAbilityConnBundles-1) | Ϊָ���û���������ʹ�÷ֲ�ʽ������Ӧ�������������е�Ӧ����ָ���û��¿���ʹ��ָ���ķֲ�ʽ������<br/><br/>��ǰ֧�ֵķֲ�ʽ�����У�[Эͬ����](arkts-mdm-applicationmanager-servicetype-e.md#ServiceType)��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; 1.���Ҫ��������ʹ��Эͬ�����Ӧ���������ڵ��ñ��ӿ�ǰ�����Ѿ�ͨ��<br/>&gt; [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount-1)<br/>&gt; �ӿڽ������������豸�������ݵ��豸�䵥�������ݵ�������������׳�������9201043��<br/><br/>&gt; 2.���������豸�������ݵ��豸�䵥�������ݵ��������������ʱ��ͨ�����ӿ����õ�����ʹ��Эͬ�����Ӧ�������ᱻͬ�������<br/> |
-| [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md#addAllowedNotificationBundles-1) | ������������֪ͨ��Ӧ������������֪ͨ�������󣬲��ڴ������ڵ�Ӧ���޷�����֪ͨ��<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; 1.���Kioskģʽ��֪ͨ����������ͬʱ���ã���ô����Kioskģʽ��Ӧ����֪ͨ�������е�Ӧ�ö����Է���֪ͨ��<br/><br/>&gt; 2.���Ѿ�ͨ��<br/>&gt; [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)<br/>&gt; �����˽����豸֪ͨ����ʱ����ͨ�����ӿ�����֪ͨ�����������׳�������9200010��<br/><br/>&gt; 3.֪ͨ��������ϵͳ������Ч��ϵͳ����ʼ�տ��Է���֪ͨ��ϵͳӦ����֪ͨ�������ܿء�<br/><br/>&gt; 4.֧�ֿ��û����ã����ú���û�������Ч��<br/> |
-| [addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addAllowedRunningBundles-1) | ����Ӧ����Ӧ��������������������������������Ӧ��������ָ���û������У���������������Ӧ�ò�������ָ���û������С�<br/><br/>&gt; **˵����**<br/>&gt;<br/> |
-| [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md#addAutoStartApps-1) | Ϊ��ǰ�û����ӿ���������Ӧ��������ͨ�����ӿ�������������������Ӧ�ã���ֹ�û����豸���ֶ�ȡ��Ӧ��������&lt;!--RP4--&gt;&lt;!--RP4End--&gt;������ͨ��<br/>[removeAutoStartApps](applicationManager.removeAutoStartApps(admin: Want, autoStartApps: Array&lt;Want&gt;))�ӿڽ�Ӧ�ô���<br/>�����������Ƴ���<br/> |
-| [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md#addAutoStartApps-2) | Ϊָ���û����ӿ���������Ӧ���������������Ƿ��ֹ���û��ֶ�ȡ��Ӧ��������&lt;!--RP4--&gt;&lt;!--RP4End--&gt;��<br/><br/>ͨ�����ӿڡ�[addAutoStartApps](applicationManager.addAutoStartApps(admin: Want, autoStartApps: Array&lt;Want&gt;))�ӿھ������ӿ�<br/>��������Ӧ�������������ӿڵ����ÿ�ͬʱ��Ч��ͬһ�û��£�����������Ӧ���������֧�ְ���10��Ӧ�á����磺����ǰ����������3��Ӧ�ã�����໹��ͨ�����ӿ�Ϊ��ǰ�û�����7��Ӧ�á�<br/> |
-| <!--DelRow-->[addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md#addDisallowedRunningBundles-1) | ����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ�û������У����ڽ�ֹ�����е�Ӧ���������С�ʹ��callback�첽�ص�����API version 21��ʼ�����Ӧ��������������<br/>[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addAllowedRunningBundles-1)�ǿ�<br/>���Ͳ�����ͨ�����ӿ�����Ӧ�����н�ֹ����������ᱨ9200010��ͻ�����롣<br/> |
-| <!--DelRow-->[addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md#addDisallowedRunningBundles-2) | ����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò�������ָ���û���ͨ��userIdָ���������У����ڽ�ֹ�����е�Ӧ���������С�ʹ��callback�첽�ص�����API version 21��ʼ�����Ӧ��������������<br/>[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addAllowedRunningBundles-1)�ǿ�<br/>���Ͳ�����ͨ�����ӿ�����Ӧ�����н�ֹ����������ᱨ9200010��ͻ�����롣<br/> |
-| <!--DelRow-->[addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md#addDisallowedRunningBundles-3) | ����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û������С�ʹ��Promise�첽�ص�����API version 21��ʼ�����Ӧ��������������<br/>[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addAllowedRunningBundles-1)�ǿ�<br/>���Ͳ�����ͨ�����ӿ�����Ӧ�����н�ֹ����������ᱨ9200010��ͻ�����롣<br/> |
-| [addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md#addDisallowedRunningBundlesSync-1) | ����Ӧ����Ӧ�����н�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û������С���API version 21��ʼ�����Ӧ��������������<br/>[addallowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md#addAllowedRunningBundles-1)�ǿգ��Ͳ�����ͨ�����ӿ�����Ӧ�����н�ֹ����������ᱨ9200010��ͻ����<br/>�롣<br/> |
-| [addDockApp](arkts-mdm-applicationmanager-adddockapp-f.md#addDockApp-1) | ����λ����������Ӧ�õ�PC/2in1�豸�ĵײ�����������Ӻ��û�����ͨ������������Ӧ��ͼ��ֱ������Ӧ�ã�Ӧ��ͼ��ΪӦ������������ʾ��Ĭ��ͼ�ꡣ<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; 1.��λ��0��1���Ѵ��ڡ�Ӧ�����ġ����������ġ����������λ������Ӧ�û᷵�ش�����9201019������λ��Ϊ����Ӧ�ã�����������ӡ�<br/>&gt;<br/>&gt; 2.����Ӧ�ò���ͨ�����ӿ����ӵ����������Ӧ�����ġ������������ġ������ļ���������������վ����<br/>&gt;<br/>&gt; 3.��֧�����Ӿ���Ӧ�ó�����ڣ�����ͼ�꣩��Ӧ�ã���ͼ���Ӧ�ò�֧�����ӡ�<br/>&gt;<br/>&gt; 4.��֧�����õ�ǰ�û��µĿ������ÿ���û��Ŀ������������100��Ӧ�á�<br/>&gt;<br/>&gt; 5.������Ӧ�õ�λ�ò�����Ӧ��ʱ����Ӧ�ý�ֱ��ռ�ø�λ�ã�ԭӦ�ü�����Ӧ���������˳��һλ��<br/>&gt;<br/>&gt; 6.������index�����������indexֵ���ڿ������ǰӦ������������Ӧ��Ĭ��׷�ӵ������ĩβ��<br/>&gt;<br/>&gt; 7.ͨ�����ӿ�����Ӧ�õ���������û������ֶ��Ƴ������Ӧ�õ�λ�á�<br/> |
-| [addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md#addFreezeExemptedApps-1) | Ϊָ���û����Ӻ�̨������Ӧ�����������ɶ��Ѱ�װӦ�����øò��ԣ��ò���������ʧЧ���������б��д���δ��װӦ�ã��򷵻�9200012�����롣�����ò��Ժ���������Ӧ�ñ�ж�أ���ж�ص�Ӧ�ý����������Ƴ����������Ѵ����������е�Ӧ�ã�����<br/>�ɹ����������ò��������в����ظ����Ӹ�Ӧ�á�<br/><br/>�����������Ŀ��Ӧ�õĹ���������Դ������Ӳ����Դ�����͸߹��ĹܿصȲ�����<br/> |
-| [addHideLauncherIcon](arkts-mdm-applicationmanager-addhidelaunchericon-f.md#addHideLauncherIcon-1) | ������������Ӧ��ͼ��������<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; 1�����ӿڽ�֧�����ص�ǰ�û�������Ӧ��ͼ�꣬��֧������Ӧ�ÿ�Ƭ��<br/>&gt;<br/>&gt; 2����������ص�Ӧ����Ӧ�÷�������ͬ������Ӧ�÷�����<br/>&gt;<br/>&gt; 3�����ܰ���������Ӧ�ö����ӵ����������У���������Ӧ�ö�����ʾ�������ϡ�<br/> |
-| [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md#addKeepAliveApps-1) | ���ӱ���Ӧ�����������Ӻ��Զ�����Ӧ�ý��̡��ڿ�����Ӧ�ñ�ɱ������ϵͳ��������Ӧ�ý��̡�&lt;!--RP7--&gt;&lt;!--RP7End--&gt;<br/><br/>ͨ�����ӿ�����������������Ӧ�ã���ֹ�û����豸���ֶ�ȡ������&lt;!--RP6--&gt;&lt;!--RP6End--&gt;������ͨ��<br/>[removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md#removeKeepAliveApps-1)�ӿڽ�Ӧ�ôӱ����������Ƴ���<br/><br/>�����Ӧ��������Ӧ�ý�ֹ��������[addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md#addDisallowedRunningBundlesSync-1)���Ͳ��ܽ�Ӧ����<br/>��������Ӧ������������ᱨ9200010��ͻ�����롣<br/><br/>�����Ҫ��Phone/Tablet�豸ʹ�����ƹ��ܣ����Ե���[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addUserNonStopApps-1)����<br/>[addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md#addFreezeExemptedApps-1)�ӿڣ����幦����ο�����ĵ���<br/> |
-| [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md#addKeepAliveApps-2) | ���ӱ���Ӧ���������������Ƿ��ֹ�û��ֶ�ȡ��������Ӻ��Զ�����Ӧ�ý��̡��ڿ�����Ӧ�ñ�ɱ������ϵͳ��������Ӧ�ý��̡�<br/><br/>ͨ�����ӿڡ�<br/>[addKeepAliveApps](applicationManager.addKeepAliveApps(admin: Want, bundleNames: Array&lt;string&gt;, accountId: number))<br/>�ӿھ������ӱ���Ӧ�������������ӿڵ����ÿ�ͬʱ��Ч��ͬһ�û��£�����Ӧ���������֧�ְ���5��Ӧ�á����磺����ǰ����������3��Ӧ�ã�����໹��ͨ�����ӿ�Ϊ��ǰ�û�����2��Ӧ�á�<br/><br/>���ͨ��[addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md#addDisallowedRunningBundlesSync-1)�ӿڽ�Ӧ��������Ӧ�ý�ֹ�����������Ͳ���<br/>��Ӧ������������Ӧ������������ᱨ9200010��ͻ�����롣<br/><br/>�����Ҫ��Phone/Tablet�豸ʹ�����ƹ��ܣ����Ե���[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addUserNonStopApps-1)����<br/>[addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md#addFreezeExemptedApps-1)�ӿڣ����幦����ο�����ĵ���<br/> |
-| [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addUserNonStopApps-1) | Ϊָ���û����Ӳ��ɹ�ͣӦ�����������ɶ��Ѱ�װӦ�����øò��ԡ��������б��д���δ��װӦ�ã��򷵻�9200012�����롣�����ò��Ժ���������Ӧ�ñ�ж�أ���ж�ص�Ӧ�ý����������Ƴ����������Ѵ����������е�Ӧ�ã����سɹ����������ò�����<br/>���в����ظ����Ӹ�Ӧ�á�<br/><br/>���ɹ�ͣӦ����Phone��Tablet�豸��Ч�����û����������������ϻ��ر�Ӧ�ã�������-Ӧ�ú�Ԫ�����е��Ӧ�����ƽ�������ҳ���ҳ���е�ǿ��ֹͣ��ť�ʻ�ɫ�����ã�ҳ���е�ͣ�ð�ť������Ч��<br/><br/>���ɹ�ͣӦ����PC/2in1�豸��Ч�����û�������-Ӧ�ú�Ԫ�����е��Ӧ�����ƽ�������ҳ���ҳ���е�ǿ��ֹͣ��ť�ʻ�ɫ�����ã�ҳ���е�ͣ�ð�ť������Ч��<br/> |
-| [clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md#clearUpApplicationData-1) | ���Ӧ�ò������������ݡ�<br/> |
-| [getAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-getalloweddistributeabilityconnbundles-f.md#getAllowedDistributeAbilityConnBundles-1) | ��ȡָ���û�������ʹ��ָ�����͵ķֲ�ʽ������Ӧ��������<br/> |
-| [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md#getAllowedKioskApps-1) | ��ȡ������Kioskģʽ�����е�Ӧ�á�<br/> |
-| [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md#getAllowedNotificationBundles-1) | ��ȡ��������֪ͨ��Ӧ��������<br/> |
-| [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md#getAllowedRunningBundles-1) | ��ȡָ���û��µ�Ӧ����������������<br/> |
-| [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md#getApplicationWindowStates-1) | ��ѯӦ�ô���״̬<br/> |
-| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getAutoStartApps-1) | ��ѯ��ǰ�û�����������Ӧ��������<br/> |
-| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getAutoStartApps-2) | ��ѯָ���û��µĿ���������Ӧ��������<br/> |
-| <!--DelRow-->[getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md#getDisallowedRunningBundles-1) | ��ȡ��ǰ�û��µ�Ӧ�����н�ֹ������ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md#getDisallowedRunningBundles-2) | ��ȡָ���û���ͨ��userIdָ�����µ�Ӧ�����н�ֹ������ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md#getDisallowedRunningBundles-3) | ��ȡ��ǰ/ָ���û��µ�Ӧ�����н�ֹ������ʹ��Promise�첽�ص���<br/> |
-| [getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md#getDisallowedRunningBundlesSync-1) | ��ȡ��ǰ/ָ���û��µ�Ӧ�����н�ֹ������<br/> |
-| [getDockApps](arkts-mdm-applicationmanager-getdockapps-f.md#getDockApps-1) | ��ȡ��ǰ�������Ӧ����Ϣ���б���<br/> |
-| [getFreezeExemptedApps](arkts-mdm-applicationmanager-getfreezeexemptedapps-f.md#getFreezeExemptedApps-1) | ��ȡ��ǰ�豸�������û���̨������Ӧ��������<br/> |
-| [getHideLauncherIcon](arkts-mdm-applicationmanager-gethidelaunchericon-f.md#getHideLauncherIcon-1) | ��ѯ��ǰ�û�����������Ӧ��ͼ��������<br/> |
-| [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md#getKeepAliveApps-1) | ��ȡ����Ӧ�ð�����<br/> |
-| [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md#getUserNonStopApps-1) | ��ȡ��ǰ�豸�������û����ɹ�ͣӦ��������<br/> |
-| [isAbilityDisabled](arkts-mdm-applicationmanager-isabilitydisabled-f.md#isAbilityDisabled-1) | ��ȡָ��Ӧ�ã�ϵͳӦ�ú�����Ӧ�þ�֧�֣���Ability����Ƿ񱻽��á�<br/> |
-| [isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md#isAppKioskAllowed-1) | ��ѯĳӦ���Ƿ�������Kioskģʽ�����С�<br/> |
-| [isModifyAutoStartAppsDisallowed](arkts-mdm-applicationmanager-ismodifyautostartappsdisallowed-f.md#isModifyAutoStartAppsDisallowed-1) | ��ѯָ���û��Ƿ��ֹȡ��Ӧ����������<br/> |
-| [isModifyKeepAliveAppsDisallowed](arkts-mdm-applicationmanager-ismodifykeepaliveappsdisallowed-f.md#isModifyKeepAliveAppsDisallowed-1) | ��ѯӦ���Ƿ��ֹȡ�����<br/> |
-| [publishFormToDesktop](arkts-mdm-applicationmanager-publishformtodesktop-f.md#publishFormToDesktop-1) | ��Ƭ����<br/> |
-| [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md#queryBundleStatsInfos-1) | ��ѯָ���û��˻��ڸ���ʱ����ڣ���Ӧ����ǰ̨���е��ۼ�ʱ��ͳ����Ϣ����ѯ����С�������죬����ʱ��Ҫ������ʼʱ�䣨startTime��������ʱ�䣨endTime���Լ�Ŀ���û��˻�ID��accountId�����������startTime<br/>��endTimeΪ���뼶ʱ�����֧�ֵ��÷������Զ���ֵ��startTimeĬ��ȡ�����00:00:00.000��endTimeĬ��ȡ�����24:00:00.000����������㣩����������ӿڷ���BundleStatsInfo���飬<br/>ÿ��Ԫ�ذ���һ��Ӧ�õİ��������������ֵ�����Ӧʱ����ڵ�ǰ̨ʹ��ʱ�������뼶ʱ���������startTimeΪ0�����ʾ���豸�״ο�����ʱ�俪ʼ��ѯ������ʼʱ�����ڽ���ʱ�䣬�ӿڽ����ش�����9200012��<br/> |
-| [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md#queryTrafficStats-1) | ��ѯ��ǰ�û���ָ��Ӧ�����ض�ʱ�����ʹ�����������ʹ��Promise�첽�ص���<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ������������ͣ�networkInfo.type����֧�ַ������磨connection.NetBearType.BEARER_CELLULAR����Wi-Fi���磨<br/>&gt; connection.NetBearType.BEARER_WIFI��������������ֵ���ӿڻ᷵�ش�����9200012��<br/>&gt;<br/>&gt; �������ʼʱ�䣨networkInfo.startTime��������ʱ�䣨networkInfo.endTime��Ϊ�뼶ʱ��������������ʼʱ�䡢����ʱ��Ϊ����������ʼʱ����ڽ���ʱ�䣬�ӿڻ᷵�ش�����9200012��<br/>&gt;<br/>&gt; ������û�ID��accountId���ǵ�ǰ�û�ʱ���ӿڻ᷵�ش�����9200012��<br/>&gt;<br/>&gt; �����ѯ��ʱ����������ʱ��-��ʼʱ�䣩��СΪ1�죬���Ϊ30�졣ʱ����̫С����ѯ������ܲ�׼ȷ��ʱ����̫�󣬲�ѯ��ʱ��ܳ���<br/> |
-| [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md#removeAllowedDistributeAbilityConnBundles-1) | Ϊָ���û��Ƴ�����ʹ�÷ֲ�ʽ������Ӧ���������Ƴ����������л���ʣ���Ӧ�ã���������е�Ӧ����ָ���û��¿���ʹ��ָ�����͵ķֲ�ʽ���������������ѱ���գ���ʣ���Ӧ�ã�������Ӧ����ָ���û��¶�������ʹ��ָ�����͵ķֲ�ʽ������<br/> |
-| [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md#removeAllowedNotificationBundles-1) | ����������֪ͨ��Ӧ���������Ƴ�Ӧ�á�<br/> |
-| [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md#removeAllowedRunningBundles-1) | ��Ӧ�ô�ָ���û��µ�Ӧ�����������������Ƴ���<br/> |
-| [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md#removeAutoStartApps-1) | Ϊ��ǰ�û�ɾ������������Ӧ��������<br/> |
-| [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md#removeAutoStartApps-2) | ɾ��ָ���û��Ŀ���������Ӧ�������е�ָ��Ӧ�á�<br/> |
-| <!--DelRow-->[removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md#removeDisallowedRunningBundles-1) | �Ƴ���Ӧ�����н�ֹ�����е�Ӧ�ã��ڽ�ֹ�������ڵ�����£���Ӧ�����н�ֹ�����е�Ӧ�ò������ڵ�ǰ�û������С�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md#removeDisallowedRunningBundles-2) | �Ƴ���Ӧ�����н�ֹ�����е�Ӧ�ã��ڽ�ֹ�������ڵ�����£���Ӧ�����н�ֹ�����е�Ӧ�ò�������ָ���û���ͨ��userIdָ���������С�ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md#removeDisallowedRunningBundles-3) | �Ƴ���ǰ/ָ���û���Ӧ�����н�ֹ�����е�Ӧ�ã�ʹ��Promise�첽�ص���<br/> |
-| [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1) | ��Ӧ�ôӵ�ǰ/ָ���û��µ�Ӧ�����н�ֹ�������Ƴ���<br/> |
-| [removeDockApp](arkts-mdm-applicationmanager-removedockapp-f.md#removeDockApp-1) | �ӿ�������Ƴ�Ӧ�á�<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ����Ӧ�ò���ͨ�����ӿڴӿ�������Ƴ�����Ӧ�����ġ������������ġ������ļ���������������վ�������򱨴�9201018�����롣<br/><br/>&gt; **˵��**<br/>&gt; ����Ӧ�ò���ͨ�����ӿڴӿ�������Ƴ�����Ӧ�����ġ������������ġ������ļ���������������վ�������򱨴�9201018�����롣<br/> |
-| [removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md#removeFreezeExemptedApps-1) | Ϊָ���û�ɾ����̨������Ӧ��������ִ��ɾ������ʱ���������б��а���δ��װӦ�ã�ɾ���������ܳɹ�ִ�У��Ѱ�װ��Ӧ�ý���ɾ����δ��װ��Ӧ�ò�Ӱ��ɾ��������<br/> |
-| [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md#removeHideLauncherIcon-1) | ȡ����������Ӧ��ͼ��������<br/><br/>&gt; **˵����**<br/>&gt;<br/>&gt; ȡ�����ص�Ӧ�û�������2����ʼ�ҿ�λ��ʾ�������2~18���޿�λ�����ڵ�1���ҿ�λ�������1���޿�λ�����ڵ�2����1��Ӧ�õ�λ�ô���С�ļ��з���Ӧ�á�<br/> |
-| [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md#removeKeepAliveApps-1) | �Ƴ�����Ӧ�������е�ָ��Ӧ�á�<br/> |
-| [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeUserNonStopApps-1) | Ϊָ���û�ɾ�����ɹ�ͣӦ��������ִ��ɾ������ʱ���������б��а���δ��װӦ�ã�ɾ���������ܳɹ�ִ�У��Ѱ�װ��Ӧ�ý���ɾ����δ��װ��Ӧ�ò�Ӱ��ɾ��������<br/> |
-| [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md#setAbilityDisabled-1) | �����Ƿ����ָ��Ӧ�ã�ϵͳӦ�ú�����Ӧ�þ�֧�֣���Ability�������ǰ��֧��UIAbility���ͣ����ú��޷������Ability������û����档<br/> |
-| [setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md#setAllowedKioskApps-1) | ����������Kioskģʽ�����е�Ӧ�á�<br/><br/>KioskģʽΪϵͳ�����ṩ��һ��Ӧ������ģʽ����ģʽ�»Ὣ�豸�����ڵ���Ӧ�û���һ��Ӧ�����У�ͬʱ������״̬��״̬�������Ʋ����͹ؼ����ܽ��п��ƣ���ֹ�û����豸����������Ӧ�û�ִ������������<br/> |
-| [setKioskFeatures](arkts-mdm-applicationmanager-setkioskfeatures-f.md#setKioskFeatures-1) | ����Kioskģʽ��������ͨ�����ӿڿ��Կ�����Kioskģʽ���ܷ����֪ͨ���ġ��������ġ�<br/><br/>��API version 24��ʼ������֧�������Ƿ������ײ��ϻ�����������������󻬻��һ���ͣչʾ���DOCK����<br/><br/>�ڷ�Kioskģʽ�£����ӿڿ����������ã����ǲ�����Ч������Kioskģʽ��Ż���Ч��<br/> |
+| [addAllowedDistributeAbilityConnBundles](arkts-mdm-addalloweddistributeabilityconnbundles-f.md#addalloweddistributeabilityconnbundles-1) | 为指定用户添加允许使用分布式能力的应用名单，名单中的应用在指定用户下可以使用指定的分布式能力。当前支持的分布式类型有：[协同服务](arkts-mdm-servicetype-e.md)。@link @ohos.enterprise.restrictions:restrictions.setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number)}&gt; 接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。&gt; 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用协同服务的应用名单会被同步清除。 |
+| [addAllowedNotificationBundles](arkts-mdm-addallowednotificationbundles-f.md#addallowednotificationbundles-1) | 添加允许发送通知的应用名单。设置通知白名单后，不在此名单内的应用无法发送通知。@link @ohos.enterprise.restrictions:restrictions.setDisallowedPolicy(admin: Want, feature: string, disallow: boolean)}&gt; 设置了禁用设备通知能力时，再通过本接口设置通知白名单，会抛出错误码9200010。&gt; 3.通知白名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知白名单管控。&gt; 4.支持跨用户设置，设置后跨用户立即生效。 |
+| [addAllowedRunningBundles](arkts-mdm-addallowedrunningbundles-f.md#addallowedrunningbundles-1) | 添加应用至应用运行允许名单，添加至允许名单的应用允许在指定用户下运行，不在允许名单的应用不允许在指定用户下运行。 |
+| [addAutoStartApps](arkts-mdm-addautostartapps-f.md#addautostartapps-1) | 为当前用户添加开机自启动应用名单。通过本接口添加至自启动名单的应用，禁止用户在设备上手动取消应用自启动&lt;!--RP4--&gt;&lt;!--RP4End--&gt;，但可通过[removeAutoStartApps](arkts-mdm-removeautostartapps-f.md#removeautostartapps-1)接口将应用从自启动名单中移除。 |
+| [addAutoStartApps](arkts-mdm-addautostartapps-f.md#addautostartapps-2) | 为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动&lt;!--RP4--&gt;&lt;!--RP4End--&gt;。通过本接口、[addAutoStartApps](arkts-mdm-addautostartapps-f.md#addautostartapps-1)接口均可添加开机自启动应用名单，两个接口的设置可同时生效。同一用户下，开机自启动应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| [addDisallowedRunningBundlesSync](arkts-mdm-adddisallowedrunningbundlessync-f.md#adddisallowedrunningbundlessync-1) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-addallowedrunningbundles-f.md#addallowedrunningbundles-1)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDockApp](arkts-mdm-adddockapp-f.md#adddockapp-1) | 根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。 |
+| [addFreezeExemptedApps](arkts-mdm-addfreezeexemptedapps-f.md#addfreezeexemptedapps-1) | 为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。 |
+| [addHideLauncherIcon](arkts-mdm-addhidelaunchericon-f.md#addhidelaunchericon-1) | 添加隐藏桌面应用图标名单。 |
+| [addKeepAliveApps](arkts-mdm-addkeepaliveapps-f.md#addkeepaliveapps-1) | 添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。&lt;!--RP7--&gt;&lt;!--RP7End--&gt;通过本接口添加至保活名单的应用，禁止用户在设备上手动取消保活&lt;!--RP6--&gt;&lt;!--RP6End--&gt;，但可通过[removeKeepAliveApps](arkts-mdm-removekeepaliveapps-f.md#removekeepaliveapps-1)接口将应用从保活名单中移除。如果将应用添加至应用禁止运行名单[addDisallowedRunningBundlesSync](arkts-mdm-adddisallowedrunningbundlessync-f.md#adddisallowedrunningbundlessync-1)，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](arkts-mdm-addusernonstopapps-f.md#addusernonstopapps-1)或者[addFreezeExemptedApps](arkts-mdm-addfreezeexemptedapps-f.md#addfreezeexemptedapps-1)接口，具体功能请参考相关文档。 |
+| [addKeepAliveApps](arkts-mdm-addkeepaliveapps-f.md#addkeepaliveapps-2) | 添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。通过本接口、[addKeepAliveApps](arkts-mdm-addkeepaliveapps-f.md#addkeepaliveapps-1)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。如果通过[addDisallowedRunningBundlesSync](arkts-mdm-adddisallowedrunningbundlessync-f.md#adddisallowedrunningbundlessync-1)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](arkts-mdm-addusernonstopapps-f.md#addusernonstopapps-1)或者[addFreezeExemptedApps](arkts-mdm-addfreezeexemptedapps-f.md#addfreezeexemptedapps-1)接口，具体功能请参考相关文档。 |
+| [addUserNonStopApps](arkts-mdm-addusernonstopapps-f.md#addusernonstopapps-1) | 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。不可关停应用在Phone和Tablet设备的效果：用户不能在任务中心上滑关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用，页面中的停用按钮功能无效。不可关停应用在PC/2in1设备的效果：用户在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用，页面中的停用按钮功能无效。 |
+| [clearUpApplicationData](arkts-mdm-clearupapplicationdata-f.md#clearupapplicationdata-1) | 清除应用产生的所有数据。 |
+| [getAllowedDistributeAbilityConnBundles](arkts-mdm-getalloweddistributeabilityconnbundles-f.md#getalloweddistributeabilityconnbundles-1) | 获取指定用户下允许使用指定类型的分布式能力的应用名单。 |
+| [getAllowedKioskApps](arkts-mdm-getallowedkioskapps-f.md#getallowedkioskapps-1) | 获取允许在Kiosk模式下运行的应用。 |
+| [getAllowedNotificationBundles](arkts-mdm-getallowednotificationbundles-f.md#getallowednotificationbundles-1) | 获取允许发送通知的应用名单。 |
+| [getAllowedRunningBundles](arkts-mdm-getallowedrunningbundles-f.md#getallowedrunningbundles-1) | 获取指定用户下的应用运行允许名单。 |
+| [getApplicationWindowStates](arkts-mdm-getapplicationwindowstates-f.md#getapplicationwindowstates-1) | 查询应用窗口状态 |
+| [getAutoStartApps](arkts-mdm-getautostartapps-f.md#getautostartapps-1) | 查询当前用户开机自启动应用名单。 |
+| [getAutoStartApps](arkts-mdm-getautostartapps-f.md#getautostartapps-2) | 查询指定用户下的开机自启动应用名单。 |
+| [getDisallowedRunningBundlesSync](arkts-mdm-getdisallowedrunningbundlessync-f.md#getdisallowedrunningbundlessync-1) | 获取当前/指定用户下的应用运行禁止名单。 |
+| [getDockApps](arkts-mdm-getdockapps-f.md#getdockapps-1) | 获取当前快捷栏中应用信息的列表。 |
+| [getFreezeExemptedApps](arkts-mdm-getfreezeexemptedapps-f.md#getfreezeexemptedapps-1) | 获取当前设备下所有用户后台防冻结应用名单。 |
+| [getHideLauncherIcon](arkts-mdm-gethidelaunchericon-f.md#gethidelaunchericon-1) | 查询当前用户下隐藏桌面应用图标名单。 |
+| [getKeepAliveApps](arkts-mdm-getkeepaliveapps-f.md#getkeepaliveapps-1) | 获取保活应用包名。 |
+| [getUserNonStopApps](arkts-mdm-getusernonstopapps-f.md#getusernonstopapps-1) | 获取当前设备下所有用户不可关停应用名单。 |
+| [isAbilityDisabled](arkts-mdm-isabilitydisabled-f.md#isabilitydisabled-1) | 获取指定应用（系统应用和三方应用均支持）的Ability组件是否被禁用。 |
+| [isAppKioskAllowed](arkts-mdm-isappkioskallowed-f.md#isappkioskallowed-1) | 查询某应用是否允许在Kiosk模式下运行。 |
+| [isModifyAutoStartAppsDisallowed](arkts-mdm-ismodifyautostartappsdisallowed-f.md#ismodifyautostartappsdisallowed-1) | 查询指定用户是否禁止取消应用自启动。 |
+| [isModifyKeepAliveAppsDisallowed](arkts-mdm-ismodifykeepaliveappsdisallowed-f.md#ismodifykeepaliveappsdisallowed-1) | 查询应用是否禁止取消保活。 |
+| [publishFormToDesktop](arkts-mdm-publishformtodesktop-f.md#publishformtodesktop-1) | 卡片加桌 |
+| [queryBundleStatsInfos](arkts-mdm-querybundlestatsinfos-f.md#querybundlestatsinfos-1) | 查询指定用户账户在给定时间段内，各应用在前台运行的累计时长统计信息。查询的最小粒度是天，调用时需要传入起始时间（startTime）、结束时间（endTime）以及目标用户账户ID（accountId）。请求参数startTime和endTime为毫秒级时间戳，支持调用方传入自定义值，startTime默认取当天的00:00:00.000，endTime默认取当天的24:00:00.000（即次日零点）。请求参数接口返回BundleStatsInfo数组，每个元素包含一个应用的包名，其分身索引值及其对应时间段内的前台使用时长（毫秒级时间戳）。若startTime为0，则表示从设备首次开机的时间开始查询。若起始时间晚于结束时间，接口将返回错误码9200012。 |
+| [queryTrafficStats](arkts-mdm-querytrafficstats-f.md#querytrafficstats-1) | 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。 |
+| [removeAllowedDistributeAbilityConnBundles](arkts-mdm-removealloweddistributeabilityconnbundles-f.md#removealloweddistributeabilityconnbundles-1) | 为指定用户移除允许使用分布式能力的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用在指定用户下可以使用指定类型的分布式能力；若名单中已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用指定类型的分布式能力。 |
+| [removeAllowedNotificationBundles](arkts-mdm-removeallowednotificationbundles-f.md#removeallowednotificationbundles-1) | 从允许发送通知的应用名单中移除应用。 |
+| [removeAllowedRunningBundles](arkts-mdm-removeallowedrunningbundles-f.md#removeallowedrunningbundles-1) | 将应用从指定用户下的应用运行允许名单中移除。 |
+| [removeAutoStartApps](arkts-mdm-removeautostartapps-f.md#removeautostartapps-1) | 为当前用户删除开机自启动应用名单。 |
+| [removeAutoStartApps](arkts-mdm-removeautostartapps-f.md#removeautostartapps-2) | 删除指定用户的开机自启动应用名单中的指定应用。 |
+| [removeDisallowedRunningBundlesSync](arkts-mdm-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1) | 将应用从当前/指定用户下的应用运行禁止名单中移除。 |
+| [removeDockApp](arkts-mdm-removedockapp-f.md#removedockapp-1) | 从快捷栏中移除应用。 |
+| [removeFreezeExemptedApps](arkts-mdm-removefreezeexemptedapps-f.md#removefreezeexemptedapps-1) | 为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
+| [removeHideLauncherIcon](arkts-mdm-removehidelaunchericon-f.md#removehidelaunchericon-1) | 取消隐藏桌面应用图标名单。 |
+| [removeKeepAliveApps](arkts-mdm-removekeepaliveapps-f.md#removekeepaliveapps-1) | 移除保活应用名单中的指定应用。 |
+| [removeUserNonStopApps](arkts-mdm-removeusernonstopapps-f.md#removeusernonstopapps-1) | 为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
+| [setAbilityDisabled](arkts-mdm-setabilitydisabled-f.md#setabilitydisabled-1) | 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。 |
+| [setAllowedKioskApps](arkts-mdm-setallowedkioskapps-f.md#setallowedkioskapps-1) | 设置允许在Kiosk模式下运行的应用。Kiosk模式为系统层面提供的一种应用运行模式，该模式下会将设备锁定在单个应用或者一组应用运行，同时对锁屏状态、状态栏、手势操作和关键功能进行控制，防止用户在设备上启动其它应用或执行其它操作。 |
+| [setKioskFeatures](arkts-mdm-setkioskfeatures-f.md#setkioskfeatures-1) | 设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。在非Kiosk模式下，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [addDisallowedRunningBundles](arkts-mdm-adddisallowedrunningbundles-f-sys.md#adddisallowedrunningbundles-1) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前用户下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-addallowedrunningbundles-f.md#addallowedrunningbundles-1)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDisallowedRunningBundles](arkts-mdm-adddisallowedrunningbundles-f-sys.md#adddisallowedrunningbundles-2) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在指定用户（通过userId指定）下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-addallowedrunningbundles-f.md#addallowedrunningbundles-1)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDisallowedRunningBundles](arkts-mdm-adddisallowedrunningbundles-f-sys.md#adddisallowedrunningbundles-3) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用Promise异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](arkts-mdm-addallowedrunningbundles-f.md#addallowedrunningbundles-1)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [getDisallowedRunningBundles](arkts-mdm-getdisallowedrunningbundles-f-sys.md#getdisallowedrunningbundles-1) | 获取当前用户下的应用运行禁止名单。使用callback异步回调。 |
+| [getDisallowedRunningBundles](arkts-mdm-getdisallowedrunningbundles-f-sys.md#getdisallowedrunningbundles-2) | 获取指定用户（通过userId指定）下的应用运行禁止名单。使用callback异步回调。 |
+| [getDisallowedRunningBundles](arkts-mdm-getdisallowedrunningbundles-f-sys.md#getdisallowedrunningbundles-3) | 获取当前/指定用户下的应用运行禁止名单，使用Promise异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-removedisallowedrunningbundles-f-sys.md#removedisallowedrunningbundles-1) | 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在当前用户下运行。使用callback异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-removedisallowedrunningbundles-f-sys.md#removedisallowedrunningbundles-2) | 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在指定用户（通过userId指定）下运行。使用callback异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-removedisallowedrunningbundles-f-sys.md#removedisallowedrunningbundles-3) | 移除当前/指定用户在应用运行禁止名单中的应用，使用Promise异步回调。 |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [BundleStatsInfo](arkts-mdm-applicationmanager-bundlestatsinfo-i.md) | Ӧ�ð�ͳ����Ϣ��<br/> |
-| [DockInfo](arkts-mdm-applicationmanager-dockinfo-i.md) | ������е�Ӧ����Ϣ��<br/> |
-| [WindowStateInfo](arkts-mdm-applicationmanager-windowstateinfo-i.md) | ����״̬��Ϣ<br/> |
+| [BundleStatsInfo](arkts-mdm-bundlestatsinfo-i.md) | 应用包统计信息。 |
+| [DockInfo](arkts-mdm-dockinfo-i.md) | 快捷栏中的应用信息。 |
+| [WindowStateInfo](arkts-mdm-windowstateinfo-i.md) | 窗口状态信息 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md) | Kioskģʽ��������<br/> |
-| [ServiceType](arkts-mdm-applicationmanager-servicetype-e.md) | �ֲ�ʽ�������͡�<br/> |
-| [WindowState](arkts-mdm-applicationmanager-windowstate-e.md) | ����״̬<br/> |
+| [KioskFeature](arkts-mdm-kioskfeature-e.md) | Kiosk模式的特征。 |
+| [ServiceType](arkts-mdm-servicetype-e.md) | 分布式能力类型。 |
+| [WindowState](arkts-mdm-windowstate-e.md) | 窗口状态 |
 

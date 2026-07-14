@@ -4,11 +4,9 @@
 
 > **说明：**
 >
-> 以下API需先使用UIContext中的[getDragController()](arkts-arkui-uicontext-c.md#getDragController-1)方法获取DragController实例，再通过此实例调用对应方法。
+> 以下API需先使用UIContext中的[getDragController()](arkts-arkui-uicontext-c.md#getdragcontroller-1)方法获取DragController实例，再通过此实例调用对应方法。
 
 **起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,5 +30,5 @@ interruptFollowHandMorphDropAnimation(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回中断结果。<br/>返回true表示中断成功，返回false表示当前不存在待中断的跟手变形落位动效。 |
+| boolean | 返回中断结果。<br>返回true表示中断成功，返回false表示当前不存在待中断的跟手变形落位动效。 |
 

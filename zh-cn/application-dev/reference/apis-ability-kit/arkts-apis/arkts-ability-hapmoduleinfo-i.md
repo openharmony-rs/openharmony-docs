@@ -1,6 +1,6 @@
 # HapModuleInfo
 
-HAP��Ϣ��
+HAP信息。
 
 **起始版本：** 9
 
@@ -12,15 +12,15 @@ HAP��Ϣ��
 readonly abilitiesInfo: Array<AbilityInfo>
 ```
 
-��ǰģ������Ability����Ϣ��ͨ������
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)��
-�ڣ�bundleFlags��������GET_BUNDLE_INFO_WITH_HAP_MODULE��GET_BUNDLE_INFO_WITH_ABILITY��ȡ��
+当前模块所有Ability的信息。通过调用
+[getBundleInfoForSelf](arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)接
+口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY获取。
 
 **类型：** Array<AbilityInfo>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,13 +30,13 @@ readonly abilitiesInfo: Array<AbilityInfo>
 readonly codePath: string
 ```
 
-ģ��İ�װ·����
+模块的安装路径。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,13 +46,13 @@ readonly codePath: string
 readonly dependencies: Array<Dependency>
 ```
 
-ģ�����������Ķ�̬�������б���
+模块运行依赖的动态共享库列表。
 
 **类型：** Array<Dependency>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,13 +62,13 @@ readonly dependencies: Array<Dependency>
 readonly description: string
 ```
 
-ģ��������Ϣ��
+模块描述信息。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -78,13 +78,13 @@ readonly description: string
 readonly descriptionId: number
 ```
 
-������Ϣ����ԴIDֵ��
+描述信息的资源ID值。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -94,13 +94,13 @@ readonly descriptionId: number
 readonly deviceTypes: Array<string>
 ```
 
-ģ��֧�ְ�װ���е�[�豸����](../../../../quick-start/module-configuration-file.md#devicetypes��ǩ)�ļ��ϡ�
+模块支持安装运行的[设备类型](../../../../quick-start/module-configuration-file.md#devicetypes标签)的集合。
 
 **类型：** Array<string>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -110,15 +110,15 @@ readonly deviceTypes: Array<string>
 readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
 ```
 
-��ǰģ������ExtensionAbility����Ϣ��ͨ������
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)��
-�ڣ�bundleFlags��������GET_BUNDLE_INFO_WITH_HAP_MODULE��GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY��ȡ��
+当前模块所有ExtensionAbility的信息。通过调用
+[getBundleInfoForSelf](arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)接
+口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY获取。
 
 **类型：** Array<ExtensionAbilityInfo>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -128,15 +128,15 @@ readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
 readonly fileContextMenuConfig: string
 ```
 
-ģ����ļ��˵����á�ͨ������
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)��
-�ڣ�bundleFlags��������GET_BUNDLE_INFO_WITH_HAP_MODULE��GET_BUNDLE_INFO_WITH_MENU��ȡ��
+模块的文件菜单配置。通过调用
+[getBundleInfoForSelf](arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)接
+口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_MENU获取。
 
 **类型：** string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -146,13 +146,13 @@ readonly fileContextMenuConfig: string
 readonly hashValue: string
 ```
 
-ģ���Hashֵ��
+模块的Hash值。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -162,16 +162,16 @@ readonly hashValue: string
 readonly icon: string
 ```
 
-��ǰģ�����Ability��[ͼ��](../../../../quick-start/layered-image.md)��ȡֵΪͼ����Դ�ļ�����������ģ�������ļ���
-[abilities��ǩ](../../../../quick-start/module-configuration-file.md#abilities��ǩ)��
-[extensionAbilities��ǩ](../../../../quick-start/module-configuration-file.md#extensionabilities��ǩ)��icon�ֶ�ֵһ�¡���δ�������
-Ability����Ϊ�ա�
+当前模块入口Ability的[图标](../../../../quick-start/layered-image.md)，取值为图标资源文件的索引，与模块配置文件中
+[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)或
+[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)的icon字段值一致。若未配置入口
+Ability，则为空。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -181,13 +181,13 @@ Ability����Ϊ�ա�
 readonly iconId: number
 ```
 
-��ǰģ�����Ability��ͼ��[��ԴID](../../../../quick-start/resource-categories-and-access.md#��ԴĿ¼)ֵ����δ�������Ability����Ϊ0��
+当前模块入口Ability的图标[资源ID](../../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -197,13 +197,13 @@ readonly iconId: number
 readonly installationFree: boolean
 ```
 
-ģ���Ƿ�֧���ⰲװ�������û�ͨ��Ӧ���г���ʽ��װ����ȡֵΪtrue��ʾ֧���ⰲװ��ȡֵΪfalse��ʾ��֧���ⰲװ��
+模块是否支持免安装（无需用户通过应用市场显式安装），取值为true表示支持免安装，取值为false表示不支持免安装。
 
 **类型：** boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -213,15 +213,15 @@ readonly installationFree: boolean
 readonly label: string
 ```
 
-��ǰģ�����Ability�����ƣ�ȡֵΪ�ַ�����Դ����������ģ�������ļ���[abilities��ǩ](../../../../quick-start/module-configuration-file.md#abilities��ǩ)��
-[extensionAbilities��ǩ](../../../../quick-start/module-configuration-file.md#extensionabilities��ǩ)��label�ֶ�ֵһ�¡���δ�������
-Ability����Ϊ�ա�
+当前模块入口Ability的名称，取值为字符串资源的索引，与模块配置文件中[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)或
+[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)的label字段值一致。若未配置入口
+Ability，则为空。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -231,13 +231,13 @@ Ability����Ϊ�ա�
 readonly labelId: number
 ```
 
-��ǰģ�����Ability���Ƶ�[��ԴID](../../../../quick-start/resource-categories-and-access.md#��ԴĿ¼)ֵ����δ�������Ability����Ϊ0��
+当前模块入口Ability名称的[资源ID](../../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -247,13 +247,13 @@ readonly labelId: number
 readonly mainElementName: string
 ```
 
-��ǰģ������UIAbility���ƻ���ExtensionAbility���ơ�
+当前模块的入口UIAbility名称或者ExtensionAbility名称。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -263,15 +263,15 @@ readonly mainElementName: string
 readonly metadata: Array<Metadata>
 ```
 
-��ǰģ���Ԫ���ݡ�ͨ������
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)��
-�ڣ�bundleFlags��������GET_BUNDLE_INFO_WITH_HAP_MODULE��GET_BUNDLE_INFO_WITH_METADATA��ȡ��
+当前模块的元数据。通过调用
+[getBundleInfoForSelf](arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)接
+口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_METADATA获取。
 
 **类型：** Array<Metadata>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -281,13 +281,13 @@ readonly metadata: Array<Metadata>
 readonly name: string
 ```
 
-ģ�����ơ�
+模块名称。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -297,7 +297,7 @@ readonly name: string
 readonly nativeLibraryPath: string
 ```
 
-Ӧ�ó�����ģ�鱾�ؿ��ļ�·����
+应用程序内模块本地库文件路径。
 
 **类型：** string
 
@@ -311,13 +311,13 @@ readonly nativeLibraryPath: string
 readonly preloads: Array<PreloadItem>
 ```
 
-ԭ�ӻ�������ģ���Ԥ�����б���
+原子化服务中模块的预加载列表。
 
 **类型：** Array<PreloadItem>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -327,15 +327,15 @@ readonly preloads: Array<PreloadItem>
 readonly routerMap: Array<RouterItem>
 ```
 
-[ģ���·�ɱ�����](../../../../quick-start/module-configuration-file.md#routermap��ǩ)��ͨ������
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getBundleInfoForSelf-1)��
-�ڣ�bundleFlags��������GET_BUNDLE_INFO_WITH_HAP_MODULE��GET_BUNDLE_INFO_WITH_ROUTER_MAP��ȡ��
+[模块的路由表配置](../../../../quick-start/module-configuration-file.md#routermap标签)。通过调用
+[getBundleInfoForSelf](arkts-ability-getbundleinfoforself-f.md#getbundleinfoforself-1)接
+口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
 
 **类型：** Array<RouterItem>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -345,13 +345,13 @@ readonly routerMap: Array<RouterItem>
 readonly type: bundleManager.ModuleType
 ```
 
-��ʶ��ǰģ������͡�
+标识当前模块的类型。
 
 **类型：** bundleManager.ModuleType
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

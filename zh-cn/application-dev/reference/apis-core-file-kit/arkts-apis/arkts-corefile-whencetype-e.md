@@ -1,9 +1,5 @@
 # WhenceType
 
-```TypeScript
-declare enum WhenceType
-```
-
 枚举，文件偏移指针相对偏移位置类型，支持lseek接口使用。
 
 **起始版本：** 11

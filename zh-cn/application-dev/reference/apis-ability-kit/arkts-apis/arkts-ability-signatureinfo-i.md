@@ -1,6 +1,6 @@
 # SignatureInfo
 
-����Ӧ�ð���ǩ����Ϣ��
+描述应用包的签名信息。
 
 **起始版本：** 9
 
@@ -12,13 +12,13 @@
 readonly appId: string
 ```
 
-Ӧ�õ�appId����ʾӦ�õ�Ψһ��ʶ��������Ϣ�ɲο�[ʲô��appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)��
+应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,13 +28,13 @@ readonly appId: string
 readonly appIdentifier: string
 ```
 
-Ӧ�õ�Ψһ��ʶ��������Ϣ�ɲο�[ʲô��appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)��
+应用的唯一标识。详情信息可参考[什么是appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **类型：** string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,13 +44,13 @@ readonly appIdentifier: string
 readonly certificate?: string
 ```
 
-Ӧ�õ�֤�鹫Կ��
+应用的证书公钥。
 
 **类型：** string
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,13 +60,13 @@ readonly certificate?: string
 readonly fingerprint: string
 ```
 
-Ӧ�ð���ָ����Ϣ����ǩ��֤��ͨ��SHA-256�㷨�����ϣֵ���ɡ�ʹ�õ�ǩ��֤�鷢���仯ʱ�����ֶ�Ҳ�ᷢ���仯��
+应用包的指纹信息，由签名证书通过SHA-256算法计算哈希值生成。使用的签名证书发生变化时，该字段也会发生变化。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

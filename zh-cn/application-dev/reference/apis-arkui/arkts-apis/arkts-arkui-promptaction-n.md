@@ -22,55 +22,69 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [showToast](arkts-arkui-promptaction-showtoast-f.md#showToast-1) | Creates and displays a toast.<br/><br/>创建并显示即时反馈。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 9开始支持，从API version 18开始废弃，建议使用[showToast](arkts-apis-uicontext-promptaction.md#showtoast)替代。<br/>     showToast需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>     [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，<br/>     然后通过该对象进行调用。且直接使用showToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>     [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>     [PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/>&gt;<br/>&gt; - Toast样式单一，不支持内容的自定义，具体支持能力请参考[ShowToastOptions](#showtoastoptions)提供的接口。<br/> |
-| [openToast](arkts-arkui-promptaction-opentoast-f.md#openToast-1) | 显示即时反馈并通过Promise返回其id。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 不支持在输入法类型窗口中使用子窗（showMode设置为TOP_MOST或者SYSTEM_TOP_MOST）的openToast，详情见输入法框架的约束与限制说明<br/>&gt; [createPanel](@ohos.inputMethodEngine:inputMethodEngine.InputMethodAbility.createPanel(ctx: BaseContext, info: PanelInfo))<br/>&gt; 。<br/>&gt;<br/>&gt; - 直接使用openToast可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获<br/>&gt; 取到PromptAction对象，再通过该对象调用<br/>&gt; [openToast](../../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)实现。<br/> |
-| [closeToast](arkts-arkui-promptaction-closetoast-f.md#closeToast-1) | 关闭即时反馈。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; 直接使用closeToast可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用<br/>  UIContext中的getPromptAction方法获取<br/>&gt; 到PromptAction对象，再通过该对象调用<br/>&gt; [closeToast](../../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closetoast18)实现。<br/> |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showDialog-1) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 9开始支持，从API version 18开始废弃，建议使用[showDialog](arkts-apis-uicontext-promptaction.md#showdialog)替代。<br/>showDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，<br/>然后通过该对象进行调用。且直接使用showDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showDialog-2) | 创建并显示对话框，对话框通过Promise返回结果。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 9开始支持，从API version 18开始废弃，建议使用[showDialog](arkts-apis-uicontext-promptaction.md#showdialog-1)替代。<br/>showDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，<br/>然后通过该对象进行调用。且直接使用showDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
-| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#openCustomDialog-1) | 打开自定义弹窗。通过Promise返回结果。<br/><br/>&lt;!--Del--&gt;不支持在ServiceExtension中使用。&lt;!--DelEnd--&gt;<br/><br/>弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 11开始支持，从API version 18开始废弃，建议使用[openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)替代。<br/>openCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致<br/>[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
-| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closeCustomDialog-1) | 关闭自定义弹窗。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 11开始支持，从API version 18开始废弃，建议使用[closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1)替代。<br/>closeCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用closeCustomDialog可能导致<br/>[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showActionMenu-1) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 9开始支持，从API version 18开始废弃，建议使用[showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu11)替代。<br/>showActionMenu需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致<br/>[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showActionMenu-2) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。<br/><br/>&gt; **说明：**<br/>&gt;<br/>&gt; - 从API version 9开始支持，从API version 18开始废弃，建议使用[showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu)替代。<br/>showActionMenu需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致<br/>[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。<br/>&gt;<br/>&gt; - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的<br/>[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的<br/>[PromptAction](arkts-apis-uicontext-promptaction.md)对象。<br/> |
+| [showToast](arkts-arkui-showtoast-f.md#showtoast-1) | Creates and displays a toast.创建并显示即时反馈。 |
+| [openToast](arkts-arkui-opentoast-f.md#opentoast-1) | 显示即时反馈并通过Promise返回其id。@link @ohos.inputMethodEngine:inputMethodEngine.InputMethodAbility.createPanel(ctx: BaseContext, info: PanelInfo)}&gt; 。&gt;&gt; - 直接使用openToast可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获&gt; 取到PromptAction对象，再通过该对象调用&gt; [openToast](../../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)实现。 |
+| [closeToast](arkts-arkui-closetoast-f.md#closetoast-1) | 关闭即时反馈。 |
+| [showDialog](arkts-arkui-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
+| [showDialog](arkts-arkui-showdialog-f.md#showdialog-2) | 创建并显示对话框，对话框通过Promise返回结果。 |
+| [openCustomDialog](arkts-arkui-opencustomdialog-f.md#opencustomdialog-1) | 打开自定义弹窗。通过Promise返回结果。&lt;!--Del--&gt;不支持在ServiceExtension中使用。&lt;!--DelEnd--&gt;弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。 |
+| [closeCustomDialog](arkts-arkui-closecustomdialog-f.md#closecustomdialog-1) | 关闭自定义弹窗。 |
+| [showActionMenu](arkts-arkui-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
+| [showActionMenu](arkts-arkui-showactionmenu-f.md#showactionmenu-2) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [CommonController](arkts-arkui-promptaction-commoncontroller-c.md) | 公共控制器，可以控制promptAction相关组件。<br/> |
-| [DialogController](arkts-arkui-promptaction-dialogcontroller-c.md) | 自定义弹窗控制器，继承自[CommonController](#commoncontroller18)。<br/><br/>DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看<br/>[openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和<br/>[presentCustomDialog](arkts-apis-uicontext-promptaction.md#presentcustomdialog18)示例。<br/> |
+| [CommonController](arkts-arkui-commoncontroller-c.md) | 公共控制器，可以控制promptAction相关组件。 |
+| [DialogController](arkts-arkui-dialogcontroller-c.md) | 自定义弹窗控制器，继承自[CommonController](#commoncontroller18)。DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看[openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和[presentCustomDialog](arkts-apis-uicontext-promptaction.md#presentcustomdialog18)示例。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) | Toast的选项。 |
-| [Button](arkts-arkui-promptaction-button-i.md) | 菜单中的菜单项按钮。<br/> |
-| [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md) | 对话框的响应结果。<br/> |
-| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | 对话框的选项。<br/> |
-| <!--DelRow-->[ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i-sys.md) | 对话框的选项。<br/> |
-| [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) | 弹窗的选项。<br/> |
-| <!--DelRow-->[BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i-sys.md) | 弹窗的选项。<br/> |
-| [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)。<br/> |
-| [DialogOptions](arkts-arkui-promptaction-dialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)。<br/> |
-| [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md) | 操作菜单的响应结果。<br/> |
-| [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | 操作菜单的选项。<br/> |
-| <!--DelRow-->[ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i-sys.md) | 操作菜单的选项。<br/> |
+| [ShowToastOptions](arkts-arkui-showtoastoptions-i.md) | Toast的选项。 |
+| [Button](arkts-arkui-button-i.md) | 菜单中的菜单项按钮。 |
+| [ShowDialogSuccessResponse](arkts-arkui-showdialogsuccessresponse-i.md) | 对话框的响应结果。 |
+| [ShowDialogOptions](arkts-arkui-showdialogoptions-i.md) | 对话框的选项。 |
+| [BaseDialogOptions](arkts-arkui-basedialogoptions-i.md) | 弹窗的选项。 |
+| [CustomDialogOptions](arkts-arkui-customdialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)。 |
+| [DialogOptions](arkts-arkui-dialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)。 |
+| [ActionMenuSuccessResponse](arkts-arkui-actionmenusuccessresponse-i.md) | 操作菜单的响应结果。 |
+| [ActionMenuOptions](arkts-arkui-actionmenuoptions-i.md) | 操作菜单的选项。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ShowDialogOptions](arkts-arkui-showdialogoptions-i-sys.md) | 对话框的选项。 |
+| [BaseDialogOptions](arkts-arkui-basedialogoptions-i-sys.md) | 弹窗的选项。 |
+| [ActionMenuOptions](arkts-arkui-actionmenuoptions-i-sys.md) | 操作菜单的选项。 |
+<!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。<br/> |
-| <!--DelRow-->[ToastShowMode](arkts-arkui-promptaction-toastshowmode-e-sys.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。<br/> |
-| [CommonState](arkts-arkui-promptaction-commonstate-e.md) | 自定义弹窗的状态。<br/> |
+| [ToastShowMode](arkts-arkui-toastshowmode-e.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。 |
+| [CommonState](arkts-arkui-commonstate-e.md) | 自定义弹窗的状态。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ToastShowMode](arkts-arkui-toastshowmode-e-sys.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。 |
+<!--DelEnd-->
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md) | 表示弹窗背板的圆角半径允许的数据字段类型。<br/> |
-| [DialogOptionsBorderWidth](arkts-arkui-promptaction-dialogoptionsborderwidth-t.md) | 表示弹窗背板的边框宽度允许的数据字段类型。<br/> |
-| [DialogOptionsBorderColor](arkts-arkui-promptaction-dialogoptionsbordercolor-t.md) | 表示弹窗背板的边框颜色允许的数据字段类型。<br/> |
-| [DialogOptionsBorderStyle](arkts-arkui-promptaction-dialogoptionsborderstyle-t.md) | 表示弹窗背板的边框样式允许的数据字段类型。<br/> |
-| [DialogOptionsShadow](arkts-arkui-promptaction-dialogoptionsshadow-t.md) | 表示弹窗背板的阴影允许的数据字段类型。<br/> |
+| [DialogOptionsCornerRadius](arkts-arkui-dialogoptionscornerradius-t.md) | 表示弹窗背板的圆角半径允许的数据字段类型。 |
+| [DialogOptionsBorderWidth](arkts-arkui-dialogoptionsborderwidth-t.md) | 表示弹窗背板的边框宽度允许的数据字段类型。 |
+| [DialogOptionsBorderColor](arkts-arkui-dialogoptionsbordercolor-t.md) | 表示弹窗背板的边框颜色允许的数据字段类型。 |
+| [DialogOptionsBorderStyle](arkts-arkui-dialogoptionsborderstyle-t.md) | 表示弹窗背板的边框样式允许的数据字段类型。 |
+| [DialogOptionsShadow](arkts-arkui-dialogoptionsshadow-t.md) | 表示弹窗背板的阴影允许的数据字段类型。 |
 

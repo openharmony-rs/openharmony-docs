@@ -26,7 +26,7 @@ Return -2 to indicate that an unrecoverable error has been encountered.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -43,7 +43,7 @@ seek and setSpeed can't be executed, loop can't be set, and can't replay.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

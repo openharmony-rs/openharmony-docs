@@ -1,46 +1,36 @@
 # ColorSpace
 
-```TypeScript
-declare enum ColorSpace
-```
+色域模式。
 
-定义了颜色空间的类型，用于指定颜色显示的模式。
+**起始版本：** 8
 
-**起始版本：** 20
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SRGB
+## DEFAULT
 
 ```TypeScript
-SRGB = 0
+DEFAULT = 0
 ```
 
-SRGB颜色空间，适用于大多数显示设备。
+默认SRGB色域模式。
 
-**起始版本：** 20
+**起始版本：** 8
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DISPLAY_P3
+## WIDE_GAMUT
 
 ```TypeScript
-DISPLAY_P3 = 1
+WIDE_GAMUT = 1
 ```
 
-Display-P3颜色空间，具有更广的色域，适用于高端显示设备。
+广色域模式。
 
-**起始版本：** 20
+**起始版本：** 8
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

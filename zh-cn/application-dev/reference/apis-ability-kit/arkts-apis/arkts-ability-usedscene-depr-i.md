@@ -1,16 +1,16 @@
 # UsedScene
 
-> **˵����**
+> **说明：**
 >
-> ��API version 7��ʼ֧�֣���API version 9��ʼ����������ʹ��[UsedScene](arkts-ability-usedscene-depr-i.md#UsedScene)�����
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](arkts-ability-usedscene-depr-i.md)替代。
 
-����Ȩ��ʹ�õĳ�����ʱ����
+描述权限使用的场景和时机。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [bundleInfo:UsedScene](arkts-ability-usedscene-depr-i.md#UsedScene)
+**替代接口：** [bundleInfo:UsedScene](arkts-ability-usedscene-depr-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -20,7 +20,7 @@
 abilities: Array<string>
 ```
 
-ʹ�õ���Ȩ�޵�Ability���ϡ�
+使用到该权限的Ability集合。
 
 **类型：** Array<string>
 
@@ -40,7 +40,7 @@ abilities: Array<string>
 when: string
 ```
 
-ʹ�ø�Ȩ�޵�ʱ����
+使用该权限的时机。
 
 **类型：** string
 

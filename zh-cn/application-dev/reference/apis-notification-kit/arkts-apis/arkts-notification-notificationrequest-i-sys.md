@@ -71,7 +71,7 @@ readonly creatorInstanceKey?: number
 
 **废弃版本：** 15
 
-**替代接口：** [appInstanceKey](arkts-notification-notificationrequest-i-sys.md#appInstanceKey)
+**替代接口：** [appInstanceKey](arkts-notification-notificationrequest-i-sys.md#appinstancekey)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -177,7 +177,8 @@ ohos.permission.SET_UNREMOVABLE_NOTIFICATION
 
 **起始版本：** 8
 
-**需要权限：** ohos.permission.SET_UNREMOVABLE_NOTIFICATION
+**需要权限：** 
+- API版本11+：ohos.permission.SET_UNREMOVABLE_NOTIFICATION
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -218,7 +219,7 @@ notificationControlFlags?: number
 通知提醒方式管控。默认值为0。
 
 可以通过此接口减少当前通知的提醒方式。与
-[NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md#NotificationControlFlagStatus)的
+[NotificationControlFlagStatus](arkts-notification-notificationcontrolflagstatus-e-sys.md)的
 枚举进行按位或运算得到该参数。
 
 **类型：** number
@@ -236,9 +237,9 @@ overlayIcon?: image.PixelMap
 ```
 
 通知重叠图标，默认为空。图像像素的总字节数不超过192KB（图标像素的总字节数通过
-[getPixelBytesNumber](@ohos.multimedia.image:image.PixelMap.getPixelBytesNumber)获取）。
+[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-pixelmap-i.md#getpixelbytesnumber-1)获取）。
 
-此接口只在[notificationSlotType](arkts-notification-notificationrequest-i.md#NotificationRequest)类型设置为SOCIAL_COMMUNICATION时生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通
+此接口只在[notificationSlotType](arkts-notification-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通
 知中心UI样式。
 
 **类型：** image.PixelMap

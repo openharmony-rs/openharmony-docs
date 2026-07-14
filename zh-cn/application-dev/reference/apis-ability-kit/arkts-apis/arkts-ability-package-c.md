@@ -1,10 +1,10 @@
 # Package
 
-> **˵����**
+> **说明：**
 >
-> ��API version 3��ʼ֧�֣���API version 9��ʼ������
+> 从API version 3开始支持，从API version 9开始废弃。
 
-ָʾӦ�ð��Ƿ��Ѱ�װ��
+指示应用包是否已安装。
 
 **起始版本：** 3
 
@@ -18,7 +18,7 @@
 static hasInstalled(options: CheckPackageHasInstalledOptions): void
 ```
 
-��ѯָ��Ӧ���Ƿ���ڣ�����ԭ��Ӧ���Ƿ�װ��
+查询指定应用是否存在，或者原生应用是否安装。
 
 **起始版本：** 3
 

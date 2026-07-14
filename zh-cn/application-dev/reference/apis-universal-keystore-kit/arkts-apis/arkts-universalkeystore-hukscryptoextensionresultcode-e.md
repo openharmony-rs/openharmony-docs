@@ -1,14 +1,8 @@
 # HuksCryptoExtensionResultCode
 
-```TypeScript
-export const enum HuksCryptoExtensionResultCode
-```
-
-[HuksCryptoExtensionResult](arkts-universalkeystore-hukscryptoextensionresultcode-e.md#HuksCryptoExtensionResultCode)�е�resultCodeö��ֵ��
+[HuksCryptoExtensionResult](arkts-universalkeystore-hukscryptoextensionresultcode-e.md)中的resultCode枚举值。
 
 **起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -18,10 +12,10 @@ export const enum HuksCryptoExtensionResultCode
 HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL = 34800000
 ```
 
-��Կ��չ���󡣿��ܵ�ԭ��
+密钥扩展错误。可能的原因：
 
-1. ���������Ч��
-2. ��Կ��չ�����޷�����Ĵ���״̬��
+1. 输入参数无效。
+2. 密钥扩展出现无法解决的错误状态。
 
 **起始版本：** 22
 
@@ -35,10 +29,10 @@ HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL = 34800000
 HUKS_CRYPTO_EXTENSION_ERR_UKEY_NOT_EXIST = 34800001
 ```
 
-UKey�����ڡ����ܵ�ԭ��
+UKey不存在。可能的原因：
 
-1. UKey�ѱ��Ƴ���
-2. ��Կ��չ��������UKey״̬��
+1. UKey已被移除。
+2. 密钥扩展陷入错误的UKey状态。
 
 **起始版本：** 22
 
@@ -52,7 +46,7 @@ UKey�����ڡ����ܵ�ԭ��
 HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL = 34800002
 ```
 
-UKey��������δ֪����
+UKey驱动出现未知错误。
 
 **起始版本：** 22
 
@@ -66,7 +60,7 @@ UKey��������δ֪����
 HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH = 34800003
 ```
 
-UKey PIN��δ��֤����Ҫ����֤Ukey PIN�롣
+UKey PIN码未认证，需要先认证Ukey PIN码。
 
 **起始版本：** 22
 
@@ -80,10 +74,10 @@ UKey PIN��δ��֤����Ҫ����֤Ukey PIN�롣
 HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST = 34800004
 ```
 
-��������ڡ����ܵ�ԭ��
+句柄不存在。可能的原因：
 
-1. �����Ч��
-2. HUKS�������Կ��չ��״̬��һ�¡������쳣�����HUKS������еľ��δ���ͷš�
+1. 句柄无效。
+2. HUKS服务和密钥扩展的状态不一致。由于异常情况，HUKS服务持有的句柄未能释放。
 
 **起始版本：** 22
 
@@ -97,9 +91,9 @@ HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST = 34800004
 HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE = 34800005
 ```
 
-��������á����ܵ�ԭ��
+句柄不可用。可能的原因：
 
-��Կ��չ��Ukey��״̬��һ�¡�
+密钥扩展和Ukey的状态不一致。
 
 **起始版本：** 22
 
@@ -113,7 +107,7 @@ HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE = 34800005
 HUKS_CRYPTO_EXTENSION_ERR_PIN_INCORRECT = 34800006
 ```
 
-UKey PIN�������Ҫ��������PIN�롣
+UKey PIN码错误，需要检查输入的PIN码。
 
 **起始版本：** 22
 
@@ -127,9 +121,9 @@ UKey PIN�������Ҫ��������PIN�롣
 HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED = 34800007
 ```
 
-UKey PIN�뱻�������ܵ�ԭ��
+UKey PIN码被锁。可能的原因：
 
-PIN���������������ࡣ
+PIN码输入错误次数过多。
 
 **起始版本：** 22
 

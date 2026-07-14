@@ -1,19 +1,19 @@
 # @ohos.distributedBundle
 
-��ģ���ṩ�ֲ�ʽ���Ĺ�����
+本模块提供分布式包的管理。
 
-> **˵����**
+> **说明：**
 >
-> ��API version 9��ʼ����ģ�鲻��ά��������ʹ��
-> [@ohos.bundle.distributedBundleManager](arkts-bundle-distributedbundlemanager.md#distributedBundleManager)�����
+> 从API version 9开始，该模块不再维护，建议使用
+> [@ohos.bundle.distributedBundleManager](arkts-bundle-distributedbundlemanager.md)替代。
 >
-> ��ģ��Ϊϵͳ�ӿڡ�
+> 本模块为系统接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [distributedBundleManager:distributedBundleManager](arkts-bundle-distributedbundlemanager.md#distributedBundleManager)
+**替代接口：** [distributedBundleManager:distributedBundleManager](arkts-bundle-distributedbundlemanager.md)
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -21,12 +21,14 @@
 
 ## 汇总
 
-### 函数
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getRemoteAbilityInfo-1) | ���ݸ�����ElementName��ȡ�й�Զ���豸AbilityInfo��Ϣ��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getRemoteAbilityInfo-2) | ���ݸ�����ElementName��ȡ�й�Զ���豸AbilityInfo��Ϣ��ʹ��Promise�첽�ص���<br/> |
-| <!--DelRow-->[getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getRemoteAbilityInfos-1) | ���ݸ�����ElementName��ȡ�й�Զ���豸AbilityInfos��Ϣ��ʹ��callback�첽�ص���<br/> |
-| <!--DelRow-->[getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getRemoteAbilityInfos-2) | ���ݸ�����ElementName��ȡ�й�Զ���豸AbilityInfos��Ϣ��ʹ��Promise�첽�ص���<br/> |
+| [getRemoteAbilityInfo](arkts-ability-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-1) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-2) | 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用Promise异步回调。 |
+| [getRemoteAbilityInfos](arkts-ability-getremoteabilityinfos-f-sys.md#getremoteabilityinfos-1) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用callback异步回调。 |
+| [getRemoteAbilityInfos](arkts-ability-getremoteabilityinfos-f-sys.md#getremoteabilityinfos-2) | 根据给定的ElementName获取有关远程设备AbilityInfos信息，使用Promise异步回调。 |
+<!--DelEnd-->
 

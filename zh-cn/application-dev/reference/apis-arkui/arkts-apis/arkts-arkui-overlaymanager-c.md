@@ -1,22 +1,8 @@
 # OverlayManager
 
-提供绘制浮层的能力。
-
-> **说明：**
->
-> - 本Class首批接口从API version 12开始支持。
-
-> - 以下API需先使用UIContext中的[getOverlayManager()](arkts-arkui-uicontext-c.md#getOverlayManager-1)方法获取到OverlayManager对象，再通过该对象调用对应方法。
->
-> - OverlayManager上节点的层级在Page页面层级之上，在Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等之下。
->
-> - OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。
->
-> - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
+class OverlayManager
 
 **起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,13 +12,13 @@
 addComponentContent(content: ComponentContent, index?: number): void
 ```
 
-在OverlayManager上新增指定节点。
+Adds a specified ComponentContent node to the OverlayManager.
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +26,7 @@ addComponentContent(content: ComponentContent, index?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 在OverlayManager的指定节点上添加此content。<br/>**说明：**<br/><br/>新增的节点默认处于页面居中，按层级堆叠。 |
+| content | ComponentContent | 是 | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br>By default, the new node is centered on the page and stacked according to its stacking level. |
 | index | number | 否 |  |
 
 ## addComponentContentWithOrder
@@ -49,14 +35,14 @@ addComponentContent(content: ComponentContent, index?: number): void
 addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
 ```
 
-创建浮层节点时，指定显示顺序。
-支持在浮层节点创建时指定显示的顺序。
+Creates a floating layer node with the specified display order.
+This API allows you to define the stacking order of the nodes when they are created.
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +50,7 @@ addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 在OverlayManager的指定节点上添加此content。<br/><br/>**说明：**<br/><br/>新增的节点默认处于页面居中位置，按层级堆叠。 |
+| content | ComponentContent | 是 | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br>By default, the new node is centered on the page and stacked according to its stacking level. |
 | levelOrder | LevelOrder | 否 |  |
 
 ## hideAllComponentContents
@@ -73,13 +59,13 @@ addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder)
 hideAllComponentContents(): void
 ```
 
-隐藏OverlayManager上的所有ComponentContent。
+Hide all ComponentContents on the OverlayManager.
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,13 +75,13 @@ hideAllComponentContents(): void
 hideComponentContent(content: ComponentContent): void
 ```
 
-隐藏OverlayManager上的指定节点。
+Hide the ComponentContent.
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +89,7 @@ hideComponentContent(content: ComponentContent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 在OverlayManager上隐藏此content。 |
+| content | ComponentContent | 是 | Content to hide on the **OverlayManager**. |
 
 ## openOrderOverlay
 
@@ -111,13 +97,13 @@ hideComponentContent(content: ComponentContent): void
 openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>
 ```
 
-打开一个支持层级配置的浮层，浮层中的内容由开发者传入的组件内容（content字段）决定。使用Promise异步回调。
+打开具有指定ComponentContent和选项的浮层。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,20 +111,20 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。<br/>**说明：**<br/>新增的节点默认处于页面居中位置，按层级堆叠。 |
+| content | ComponentContent | 是 | OverlayManager新增节点需要添加的内容。&lt;p&gt;<strong>注意</strong>：。<br>默认情况下，新节点在页面中居中，并根据其堆叠级别进行堆叠。&lt;/p&gt; |
 | options | OrderOverlayOptions | 否 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [103307](../../errorcode-universal.md#103307-The) | The overlay cannot be opened due to the system pop-up window. |
+| [103307](../errorcode-promptAction.md#103307-系统弹出窗口导致无法打开浮层) | The overlay cannot be opened due to the system pop-up window. |
 
 ## removeComponentContent
 
@@ -146,13 +132,13 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 removeComponentContent(content: ComponentContent): void
 ```
 
-删除overlay上的指定节点。
+Removes a specified ComponentContent node from the OverlayManager
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +146,7 @@ removeComponentContent(content: ComponentContent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 在OverlayManager上删除此content。 |
+| content | ComponentContent | 是 | Content to remove from the **OverlayManager**. |
 
 ## showAllComponentContents
 
@@ -168,13 +154,13 @@ removeComponentContent(content: ComponentContent): void
 showAllComponentContents(): void
 ```
 
-显示OverlayManager上所有的ComponentContent。
+Show all ComponentContents on the OverlayManager.
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,13 +170,13 @@ showAllComponentContents(): void
 showComponentContent(content: ComponentContent): void
 ```
 
-在OverlayManager上显示指定节点。
+Show the ComponentContent.
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,5 +184,5 @@ showComponentContent(content: ComponentContent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent | 是 | 在OverlayManager上显示此content。 |
+| content | ComponentContent | 是 | Content to show on the **OverlayManager**. |
 

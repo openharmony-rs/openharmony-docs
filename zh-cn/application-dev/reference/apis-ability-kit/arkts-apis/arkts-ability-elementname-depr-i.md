@@ -1,17 +1,17 @@
 # ElementName
 
-ElementName��Ϣ��ͨ���ӿ�
-[Context.getElementName](../../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetelementname7)��ȡ��
+ElementName信息，通过接口
+[Context.getElementName](../../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetelementname7)获取。
 
-> **˵����**
+> **说明：**
 >
-> ��API version 9��ʼ����ģ�鲻��ά��������ʹ��[bundleManager-ElementName](arkts-ability-elementname-depr-i.md#ElementName)�����
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-ElementName](arkts-ability-elementname-depr-i.md)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [elementName:ElementName](arkts-ability-elementname-depr-i.md#ElementName)
+**替代接口：** [elementName:ElementName](arkts-ability-elementname-depr-i.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -21,7 +21,7 @@ ElementName��Ϣ��ͨ���ӿ�
 abilityName: string
 ```
 
-Ability�����ơ�
+Ability的名称。
 
 **类型：** string
 
@@ -41,7 +41,7 @@ Ability�����ơ�
 bundleName: string
 ```
 
-Ӧ��Bundle�����ơ�
+应用Bundle的名称。
 
 **类型：** string
 
@@ -61,7 +61,7 @@ bundleName: string
 deviceId?: string
 ```
 
-�豸idֵ��
+设备id值。
 
 **类型：** string
 
@@ -81,7 +81,7 @@ deviceId?: string
 shortName?: string
 ```
 
-Ability�Ķ����ơ�
+Ability的短名称。
 
 **类型：** string
 
@@ -101,7 +101,7 @@ Ability�Ķ����ơ�
 uri?: string
 ```
 
-��Դ��ʶ����
+资源标识符。
 
 **类型：** string
 

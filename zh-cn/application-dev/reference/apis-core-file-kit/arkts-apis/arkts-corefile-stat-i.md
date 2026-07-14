@@ -29,8 +29,8 @@ isBlockDevice(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -62,8 +62,8 @@ isCharacterDevice(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -83,7 +83,7 @@ isDirectory(): boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -97,8 +97,8 @@ isDirectory(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -130,8 +130,8 @@ isFIFO(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -151,7 +151,7 @@ isFile(): boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -165,8 +165,8 @@ isFile(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -198,8 +198,8 @@ isSocket(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -231,8 +231,8 @@ isSymbolicLink(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -256,7 +256,7 @@ readonly atime: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -378,7 +378,7 @@ readonly mode: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -394,7 +394,7 @@ readonly mtime: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -424,7 +424,7 @@ readonly size: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

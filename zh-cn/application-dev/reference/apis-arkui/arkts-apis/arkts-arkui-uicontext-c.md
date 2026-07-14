@@ -9,12 +9,10 @@ UIContext实例对象。
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的
 > [getUIContext()](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定
 > 义组件内置方法[getUIContext()](../../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext
-> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-uicontext-c.md#getCallingScopeUIContext-1)获取UIContext实例。本文中
+> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-uicontext-c.md#getcallingscopeuicontext-1)获取UIContext实例。本文中
 > UIContext对象以uiContext表示。
 
 **起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,52 +22,30 @@ UIContext实例对象。
 addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor
 ```
 
-Registers a local input event monitor.
-The "Local" in the interface name indicates that the monitor is only valid within the current UIContext,
-and does not affect other UIContext instances. Each UIContext maintains its own independent list of monitors.
-> **NOTE**
-> Performance Warning: Do not perform time-consuming operations in the callback!
-> Monitor Object Notes:
-> - The returned Monitor object is a unique identifier created by the system.
-> - Developers cannot actively construct or forge this object.
-> - Must save the returned monitor object reference for subsequent cancellation.
-> - It is recommended to use a variable to save it to avoid losing the reference.
-> Usage Examples:
-> ```typescript
-> // Monitor a single event type
-> const monitor1 = uiContext.addLocalInputEventMonitor(
-> InputEventSubTypeMask.LEFT_MOUSE_DOWN,
-> (wrapper: RawInputEventWrapper) => {
-> if (wrapper.isMouseEvent()) {
-> const mouseEvent = wrapper.asMouseEvent();
-> console.log(`Mouse: (${mouseEvent.windowX}, ${mouseEvent.windowY})`);
-> return { action: InputEventInterceptAction.CONTINUE }; // Allow event to continue
-> }
-> return { action: InputEventInterceptAction.BLOCK }; // Block event
-> }
-> );
-> // Monitor multiple event types (using bitwise operations)
-> const monitor2 = uiContext.addLocalInputEventMonitor(
-> InputEventSubTypeMask.LEFT_MOUSE_DOWN | InputEventSubTypeMask.RIGHT_MOUSE_DOWN,
-> (wrapper: RawInputEventWrapper) => {
-> if (wrapper.isMouseEvent()) {
-> const mouseEvent = wrapper.asMouseEvent()!;
-> console.log(`Mouse button: ${mouseEvent.button}`);
-> return { action: InputEventInterceptAction.BLOCK };
-> }
-> return { action: InputEventInterceptAction.CONTINUE };
-> }
-> );
-> // When unregistering the monitor, use the returned Monitor object
-> uiContext.removeLocalInputEventMonitor(monitor1);
-> uiContext.removeLocalInputEventMonitor(monitor2);
-> ```.
+注册本地输入事件监视器。
+
+接口名中的“Local”表示监视器只在当前UIContext内有效。
+并且不影响其他UIContext实例。每个UIContext都维护自己独立的监视器列表。
+
+> **说明**
+> >性能警告：不要在回调中执行耗时操作！
+> >监控对象注释：
+> >
+> -返回的Monitor对象是系统创建的唯一标识符。
+> >
+> -开发人员不能主动构造或伪造此对象。
+> >
+> -必须保存返回的监控对象引用，以便后续取消。
+> >
+> -建议使用变量来保存，以免丢失引用。
+> >使用示例：
+> >。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,14 +53,14 @@ and does not affect other UIContext instances. Each UIContext maintains its own 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventMask | number | 是 | Event type mask, specifying the types of events to monitor through<br/>bitwise operations.<br/>The value should be an integer. |
-| listener | InputEventListener | 是 | Event listener callback function. |
+| eventMask | number | 是 | 事件类型掩码，指定要监视的事件类型位运算。<br>取值限定为整数。 |
+| listener | InputEventListener | 是 | 事件监听器回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| InputEventMonitor | Unique identifier object for the monitor, used for subsequent<br/>cancellation of registration. |
+| InputEventMonitor | Unique identifier object for the monitor, used for subsequentcancellation of registration. |
 
 ## animateTo
 
@@ -104,16 +80,16 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 执行[aboutToDisappear](../../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)
 > 时，组件即将销毁，不能在aboutToDisappear里面做动画。
 >
-> - 在组件出现和消失时，可以通过[组件内转场](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)添加动画效果。
+> - 在组件出现和消失时，可以通过[组件内转场](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)添加动画效果。
 >
-> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)中的
+> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的
 > [示例2](../../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效
 > 果。
 >
 > - 某些场景下，在[状态管理V2](../../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，
 > 具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 >
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](arkts-arkui-common-animateparam-i.md#AnimateParam)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](../arkts-components/arkts-arkui-animateparam-i.md)。
 >
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
@@ -121,7 +97,7 @@ animateTo(value: AnimateParam, event: () => void): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +120,7 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +144,7 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +171,7 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,9 +191,9 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [120001](../../errorcode-universal.md#120001-The) | The bindSheetContent is incorrect. |
-| [120003](../../errorcode-universal.md#120003-The) | The bindSheetContent cannot be found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
+| [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## constructor
 
@@ -235,7 +211,7 @@ constructor()
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,7 +227,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,7 +247,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## createAnimator
 
@@ -279,14 +255,14 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[createAnimator](arkts-arkui-uicontext-c.md#createAnimator-1)相比，新增对
-[SimpleAnimatorOptions](arkts-arkui-simpleanimatoroptions-c.md#SimpleAnimatorOptions)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[createAnimator](arkts-arkui-uicontext-c.md#createanimator-1)相比，新增对
+[SimpleAnimatorOptions](arkts-arkui-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -306,7 +282,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## createUIContextWithoutWindow
 
@@ -324,7 +300,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本17开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,7 +308,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.UIAbilityContext \| common.ExtensionContext | 是 | * [UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)或<br/>[ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-extensionability-c.md#ExtensionAbility)所对应的上下文环境。 |
+| context | common.UIAbilityContext \| common.ExtensionContext | 是 | * [UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)或[ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-extensionability-c.md)所对应的上下文环境。 |
 
 **返回值：**
 
@@ -344,8 +320,8 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. The number of parameters is incorrect.<br/><br/>2. Invalid parameter type of context. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect.<br> 2. Invalid parameter type of context. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
 ## destroyUIContextWithoutWindow
 
@@ -353,13 +329,13 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 static destroyUIContextWithoutWindow(): void
 ```
 
-销毁[createUIContextWithoutWindow](arkts-arkui-uicontext-c.md#createUIContextWithoutWindow-1)创建的UI实例。
+销毁[createUIContextWithoutWindow](arkts-arkui-uicontext-c.md#createuicontextwithoutwindow-1)创建的UI实例。
 
 **起始版本：** 17
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本17开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,7 +351,7 @@ Dispach keyboard event to the frameNode with inspector key.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,7 +360,7 @@ Dispach keyboard event to the frameNode with inspector key.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | number \| string | 是 | The uniqueId or inspector key of the target FrameNode. |
-| event | KeyEvent | 是 | The key event to be sent. |
+| event | KeyEvent | 是 | The keyboard event. |
 
 **返回值：**
 
@@ -398,13 +374,13 @@ Dispach keyboard event to the frameNode with inspector key.
 enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
 ```
 
-Whether to enable or disable event passthrough.
+是否启用或禁用事件直通。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -412,8 +388,8 @@ Whether to enable or disable event passthrough.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | enable or disable event passthrough. The default value is false. |
-| eventType | RawInputEventType | 是 | the type of raw input event. |
+| enabled | boolean | 是 | 启用或禁用事件透传。默认值为false。 |
+| eventType | RawInputEventType | 是 | 原始输入事件的类型。 |
 
 ## enableSwipeBack
 
@@ -425,7 +401,7 @@ whether to enable or disable swipe to back event.
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -441,15 +417,25 @@ whether to enable or disable swipe to back event.
 fp2px(value: number): number
 ```
 
-Converts a value in fp units to a value in px.
+将fp单位的数值转换为以px为单位的数值。
 
-**起始版本：** 22
+转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
+
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-virtualscreenconfig-i.md).density。
+
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
+
+> **说明：**
+>
+> getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -461,7 +447,7 @@ Converts a value in fp units to a value in px.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
 ## getAllUIContexts
 
@@ -475,7 +461,7 @@ static getAllUIContexts(): UIContext[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -483,7 +469,7 @@ static getAllUIContexts(): UIContext[]
 
 | 类型 | 说明 |
 | --- | --- |
-| UIContext[] | Array of all currently valid UIContext instances. Returns an empty array if no valid<br/>UIContext instance exists. |
+| UIContext[] | Array of all currently valid UIContext instances. Returns an empty array if no validUIContext instance exists. |
 
 ## getAtomicServiceBar
 
@@ -497,7 +483,7 @@ Get AtomicServiceBar.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,7 +505,7 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -527,7 +513,7 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 节点对应的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)。 |
+| id | string | 是 | 节点对应的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
 **返回值：**
 
@@ -545,13 +531,13 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 > **说明：**
 >
-> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](arkts-arkui-uicontext-c.md#isAvailable-1)接口判断其有效性。
+> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](arkts-arkui-uicontext-c.md#isavailable-1)接口判断其有效性。
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -559,7 +545,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| UIContext | UIContext of the current<br/>[calling scope](../../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling<br/>scope is ambiguous. |
+| UIContext | UIContext of the current[calling scope](../../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the callingscope is ambiguous. |
 
 ## getComponentSnapshot
 
@@ -567,13 +553,13 @@ static getCallingScopeUIContext(): UIContext | undefined
 getComponentSnapshot(): ComponentSnapshot
 ```
 
-Get ComponentSnapshot.
+获取组件快照。
 
-**起始版本：** 22
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -581,7 +567,7 @@ Get ComponentSnapshot.
 
 | 类型 | 说明 |
 | --- | --- |
-| ComponentSnapshot | the ComponentSnapshot |
+| ComponentSnapshot | 组件快照。 |
 
 ## getComponentUtils
 
@@ -591,11 +577,11 @@ getComponentUtils(): ComponentUtils
 
 get object ComponentUtils.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -617,7 +603,7 @@ Get object context menu controller.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -639,7 +625,7 @@ Get object cursor controller.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -649,6 +635,28 @@ Get object cursor controller.
 | --- | --- |
 | CursorController | object cursor controller. |
 
+## getDialogPresenter
+
+```TypeScript
+getDialogPresenter(): DialogPresenter
+```
+
+获取Dialog对象。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**元服务API：** 从API版本26.1.0开始，该接口支持在元服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| DialogPresenter | Dialog对象。 |
+
 ## getDragController
 
 ```TypeScript
@@ -657,11 +665,11 @@ getDragController(): DragController
 
 Get DragController.
 
-**起始版本：** 18
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -683,7 +691,7 @@ get the filtered attributes of the component tree.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -691,19 +699,19 @@ get the filtered attributes of the component tree.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filters | Array&lt;string&gt; | 否 | the list of filters used to filter out component tree to be obtained. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the followingfilter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results.<br>If **filters** is not provided or is an empty array, none of the aforementioned fields<br>will be filtered out.<br>The following filter field is supported since API version 20:<br>**"isLayoutInspector"**: whether the component tree contains custom components.<br>If **filters** is omitted or<br>does not contain **"isLayoutInspector"**, the returned component tree<br>will not include custom component details.<br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the specified attributes of the component tree in json string. |
+| string | JSON string of the component tree and component attributes. For details about each field inthe component, see the return value description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo-1). |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## getFilteredInspectorTreeById
 
@@ -717,7 +725,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,21 +733,21 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | ID of the specified component tree to be obtained. |
-| depth | number | 是 | depth of the component tree to be obtained. |
-| filters | Array&lt;string&gt; | 否 | the list of filters used to filter out component tree to be obtained. |
+| id | string | 是 | [ID](../arkts-components/arkts-arkui-commonmethod-c.md#id-1) of the target component. |
+| depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of thespecified component and all its child components are obtained. If the value is **1**, only the attributes of<br>the specified component are obtained. If the value is **2**, the attributes of<br>the specified component and its<br>level-1 child components are obtained. The rest can be deduced by analogy. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the followingfilter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results.<br>If **filters** is not provided or is an empty array, none of the aforementioned fields<br>will be filtered out.<br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the specified attributes of the component tree in json string. |
+| string | JSON string of the attributes of the specified component and its child components. For detailsabout each field in the component, see the return value<br>description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo-1). |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## getFocusController
 
@@ -747,13 +755,13 @@ get the filtered attributes of the component tree with the specified id and dept
 getFocusController(): FocusController
 ```
 
-Get FocusController.
+获取焦点控制器。
 
-**起始版本：** 22
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -761,7 +769,7 @@ Get FocusController.
 
 | 类型 | 说明 |
 | --- | --- |
-| FocusController | the FocusController |
+| FocusController | 焦点控制器 |
 
 ## getFont
 
@@ -771,11 +779,11 @@ getFont(): Font
 
 get object font.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -797,7 +805,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -805,7 +813,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 节点对应的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)。 |
+| id | string | 是 | 节点对应的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
 **返回值：**
 
@@ -831,7 +839,7 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -859,7 +867,7 @@ getHostContext(): Context | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -867,7 +875,7 @@ getHostContext(): Context | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| Context | Context of the ability. The context type depends on the ability type. For example,<br/>if this API is called in a page within a UIAbility window, the returned context type is<br/>[UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#UIAbilityContext). If this API is called in a page within an<br/>ExtensionAbility window, the returned context type is<br/>[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#ExtensionContext). If the ability context does not exist,<br/>**undefined** is returned. |
+| Context | Context of the ability. The context type depends on the ability type. For example,if this API is called in a page within a UIAbility window, the returned context type is[UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md). If this API is called in a page within anExtensionAbility window, the returned context type is[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). If the ability context does not exist,**undefined** is returned. |
 
 ## getId
 
@@ -881,7 +889,7 @@ getId(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -897,13 +905,13 @@ getId(): number
 getKeyboardAvoidMode(): KeyboardAvoidMode
 ```
 
-Obtains the avoidance mode of the virtual keyboard.
+返回虚拟键盘抬起时页面的避让模式。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -911,7 +919,7 @@ Obtains the avoidance mode of the virtual keyboard.
 
 | 类型 | 说明 |
 | --- | --- |
-| KeyboardAvoidMode | Avoidance mode of the virtual keyboard. |
+| KeyboardAvoidMode | 返回虚拟键盘抬起时的页面避让模式。 |
 
 ## getLastFocusedUIContext
 
@@ -925,7 +933,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -933,7 +941,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| UIContext | UIContext of the UI instance that most recently switched to the focused state.<br/>Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been<br/>focused. |
+| UIContext | UIContext of the UI instance that most recently switched to the focused state.Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever beenfocused. |
 
 ## getLastForegroundUIContext
 
@@ -947,7 +955,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -955,7 +963,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| UIContext | UIContext of the UI instance that most recently switched to the foreground<br/>state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI<br/>instance has ever been in the foreground. |
+| UIContext | UIContext of the UI instance that most recently switched to the foregroundstate. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UIinstance has ever been in the foreground. |
 
 ## getMagnifier
 
@@ -963,13 +971,13 @@ static getLastForegroundUIContext(): UIContext | undefined
 getMagnifier(): Magnifier
 ```
 
-Obtains the Magnifier object.
+获取[Magnifier](arkts-arkui-uicontext.md)对象，可控制放大镜显示和隐藏。
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -977,7 +985,7 @@ Obtains the Magnifier object.
 
 | 类型 | 说明 |
 | --- | --- |
-| Magnifier | Magnifier instance obtained. |
+| Magnifier | Magnifier对象，可用于控制放大镜的显示和隐藏。 |
 
 ## getMaxFontScale
 
@@ -991,7 +999,7 @@ Get the max font scale.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1013,7 +1021,7 @@ Get MeasureUtils.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1031,11 +1039,11 @@ getMediaQuery(): MediaQuery
 
 get object mediaQuery.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1057,7 +1065,7 @@ Get navigation information of the frameNode with uniqueId.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1071,7 +1079,7 @@ Get navigation information of the frameNode with uniqueId.
 
 | 类型 | 说明 |
 | --- | --- |
-| observer.NavigationInfo | - The navigation information of the frameNode with the<br/>target uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
+| observer.NavigationInfo | - The navigation information of the frameNode with thetarget uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
 
 ## getOverlayManager
 
@@ -1085,7 +1093,7 @@ Obtains the OverlayManager object.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1107,7 +1115,7 @@ Get object OverlayManagerOptions.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1129,7 +1137,7 @@ Get page information of the frameNode with uniqueId.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1143,7 +1151,7 @@ Get page information of the frameNode with uniqueId.
 
 | 类型 | 说明 |
 | --- | --- |
-| PageInfo | - The page information of the frameNode with the target uniqueId, includes<br/>navDestination and router page information. If the frame node does not have navDestination and<br/>router page information, it will return an empty object. |
+| PageInfo | - The page information of the frameNode with the target uniqueId, includesnavDestination and router page information. If the frame node does not have navDestination androuter page information, it will return an empty object. |
 
 ## getPageRootNode
 
@@ -1155,7 +1163,7 @@ getPageRootNode(): FrameNode | null
 
 **起始版本：** 24
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本24开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1163,13 +1171,13 @@ getPageRootNode(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| FrameNode | FrameNode of the root node of the page or **null**.<br/><br/>If no valid FrameNode is available, **null** is returned.<br/><br/>If no page is loaded in the window, **null** is returned. |
+| FrameNode | FrameNode of the root node of the page or **null**.<br>If no valid FrameNode is available, **null** is returned.<br>If no page is loaded in the window, **null** is returned. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [120007](../../errorcode-universal.md#120007-The) | The UIContext is not available. |
+| [120007](../errorcode-uicontext.md#120007-实例不存在) | The UIContext is not available. |
 
 ## getPixelRoundMode
 
@@ -1177,13 +1185,13 @@ getPageRootNode(): FrameNode | null
 getPixelRoundMode(): PixelRoundMode
 ```
 
-Obtains the pixel rounding mode for this page.
+获取当前应用的像素取整模式。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1199,13 +1207,13 @@ Obtains the pixel rounding mode for this page.
 getPromptAction(): PromptAction
 ```
 
-Obtains a PromptAction object.
+get object PromptAction.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1223,11 +1231,11 @@ getRouter(): Router
 
 Obtains a Router object.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1249,7 +1257,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1265,13 +1273,13 @@ getSharedLocalStorage(): LocalStorage | undefined
 getSmartGestureController(): SmartGestureController
 ```
 
-Get object smart gesture controller.
+获取对象智能手势控制器。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1279,7 +1287,7 @@ Get object smart gesture controller.
 
 | 类型 | 说明 |
 | --- | --- |
-| SmartGestureController | object smart gesture controller. |
+| SmartGestureController | 智能手势控制器对象。 |
 
 ## getTextMenuController
 
@@ -1293,7 +1301,7 @@ Get object text menu controller.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本16开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1311,11 +1319,11 @@ getUIInspector(): UIInspector
 
 get object UIInspector.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1323,7 +1331,7 @@ get object UIInspector.
 
 | 类型 | 说明 |
 | --- | --- |
-| UIInspector | object UIInspector. |
+| UIInspector | **UIInspector** object. |
 
 ## getUIObserver
 
@@ -1337,7 +1345,7 @@ getUIObserver(): UIObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1353,13 +1361,13 @@ getUIObserver(): UIObserver
 getWindowHeightBreakpoint(): HeightBreakpoint
 ```
 
-获取当前实例所在窗口的高度断点。具体枚举值根据窗口高宽比确定，详见 [HeightBreakpoint](arkts-arkui-enums-heightbreakpoint-e.md#HeightBreakpoint)。
+获取当前实例所在窗口的高度断点。具体枚举值根据窗口高宽比确定，详见 [HeightBreakpoint](../arkts-components/arkts-arkui-heightbreakpoint-e.md)。
 
 **起始版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1379,14 +1387,14 @@ getWindowId(): number | undefined
 
 > **说明：**
 >
-> 若UIContext位于主应用程序进程中的[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensionability-c.md#UIExtensionAbility)内，则返回主应用程
+> 若UIContext位于主应用程序进程中的[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensionability-c.md)内，则返回主应用程
 > 序的顶层窗口ID。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1394,7 +1402,7 @@ getWindowId(): number | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ID of the window to which the current application instance belongs. If the window<br/>does not exist, **undefined** is returned. |
+| number | ID of the window to which the current application instance belongs. If the windowdoes not exist, **undefined** is returned. |
 
 ## getWindowName
 
@@ -1408,7 +1416,7 @@ getWindowName(): string | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1416,7 +1424,7 @@ getWindowName(): string | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Name of the window where the current instance is located. If the window does not<br/>exist, **undefined** is returned. |
+| string | Name of the window where the current instance is located. If the window does notexist, **undefined** is returned. |
 
 ## getWindowWidthBreakpoint
 
@@ -1424,13 +1432,13 @@ getWindowName(): string | undefined
 getWindowWidthBreakpoint(): WidthBreakpoint
 ```
 
-获取当前实例所在窗口的宽度断点枚举值。具体枚举值根据窗口宽度vp值确定，详见 [WidthBreakpoint](arkts-arkui-enums-widthbreakpoint-e.md#WidthBreakpoint)。
+获取当前实例所在窗口的宽度断点枚举值。具体枚举值根据窗口宽度vp值确定，详见 [WidthBreakpoint](../arkts-components/arkts-arkui-widthbreakpoint-e.md)。
 
 **起始版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1456,7 +1464,7 @@ isAvailable(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1472,13 +1480,13 @@ isAvailable(): boolean
 isEasySplit(): boolean
 ```
 
-Checks whether the current UI instance is in easy split mode.
+检查当前UI实例是否处于分栏模式。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本24开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1486,7 +1494,7 @@ Checks whether the current UI instance is in easy split mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if the current UI instance is in easy split mode; returns false otherwise. |
+| boolean | 返回当前UI实例是否处于分栏模式。true表示处于分栏模式，false表示未处于分栏模式。 |
 
 ## isFollowingSystemFontScale
 
@@ -1500,7 +1508,7 @@ Checks whether current font scale follows the system.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1516,13 +1524,13 @@ Checks whether current font scale follows the system.
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void
 ```
 
-产生关键帧动画。该接口的使用说明请参考[keyframeAnimateTo](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)。
+产生关键帧动画。该接口的使用说明请参考[keyframeAnimateTo](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1539,15 +1547,21 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 lpx2px(value: number): number
 ```
 
-Converts a value in lpx units to a value in px.
+将lpx单位的数值转换为以px为单位的数值。
 
-**起始版本：** 22
+转换公式为：px值 = lpx值 × 实际屏幕宽度与逻辑宽度（通过[designWidth](../../../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
+
+> **说明：**
+>
+> getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -1559,7 +1573,7 @@ Converts a value in lpx units to a value in px.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
 ## openBindSheet
 
@@ -1573,7 +1587,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 >
 > 1. 使用该接口时，若未传入有效的targetId，则不支持设置SheetOptions.preferType为POPUP模式、不支持设置SheetOptions.mode为EMBEDDED模式。
 >
-> 2. 由于[updateBindSheet](arkts-arkui-uicontext-c.md#updateBindSheet-1)和[closeBindSheet](arkts-arkui-uicontext-c.md#closeBindSheet-1)依赖
+> 2. 由于[updateBindSheet](arkts-arkui-uicontext-c.md#updatebindsheet-1)和[closeBindSheet](arkts-arkui-uicontext-c.md#closebindsheet-1)依赖
 > bindSheetContent去更新或者关闭指定的半模态页面，开发者需自行维护传入的bindSheetContent。
 >
 > 3. 不支持设置SheetOptions.UIContext。
@@ -1582,7 +1596,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1591,7 +1605,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | ComponentContent&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | SheetOptions | 否 | 半模态页面样式。<br/>**说明：**<br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的<br/>UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递<br/>targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkts-arkui-common-sheetoptions-i.md#SheetOptions)文<br/>档。 |
+| sheetOptions | SheetOptions | 否 | 半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md)文档。 |
 | targetId | number | 否 | 需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
@@ -1604,12 +1618,12 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [120001](../../errorcode-universal.md#120001-The) | The bindSheetContent is incorrect. |
-| [120002](../../errorcode-universal.md#120002-The) | The bindSheetContent already exists. |
-| [120004](../../errorcode-universal.md#120004-The) | The targetId does not exist. |
-| [120005](../../errorcode-universal.md#120005-The) | The node of targetId is not in the component tree. |
-| [120006](../../errorcode-universal.md#120006-The) | The node of targetId is not a child of the page node or NavDestination node. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
+| [120002](../errorcode-bindSheet.md#120002-内容节点对应半模态页面已存在) | The bindSheetContent already exists. |
+| [120004](../errorcode-bindSheet.md#120004-指定的targetid不存在) | The targetId does not exist. |
+| [120005](../errorcode-bindSheet.md#120005-指定的targetid对应的节点未挂载在节点树上) | The node of targetId is not in the component tree. |
+| [120006](../errorcode-bindSheet.md#120006-指定的targetid对应的节点并不是page节点或navdestination节点的子节点) | The node of targetId is not a child of the page node or NavDestination node. |
 
 ## postDelayedFrameCallback
 
@@ -1623,7 +1637,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1646,7 +1660,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1662,15 +1676,25 @@ postFrameCallback(frameCallback: FrameCallback): void
 px2fp(value: number): number
 ```
 
-Converts a value in px units to a value in fp.
+将px单位的数值转换为以fp为单位的数值。
 
-**起始版本：** 22
+转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
+
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-virtualscreenconfig-i.md).density。
+
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。
+
+> **说明：**
+>
+> getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -1682,7 +1706,7 @@ Converts a value in px units to a value in fp.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
 ## px2lpx
 
@@ -1690,15 +1714,21 @@ Converts a value in px units to a value in fp.
 px2lpx(value: number): number
 ```
 
-Converts a value in px units to a value in lpx.
+将px单位的数值转换为以lpx为单位的数值。
 
-**起始版本：** 22
+转换公式为：lpx值 = px值 ÷ 实际屏幕宽度与逻辑宽度（通过[designWidth](../../../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
+
+> **说明：**
+>
+> getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -1710,7 +1740,7 @@ Converts a value in px units to a value in lpx.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
 ## px2vp
 
@@ -1718,15 +1748,26 @@ Converts a value in px units to a value in lpx.
 px2vp(value: number): number
 ```
 
-Converts a value in px units to a value in vp.
+将px单位的数值转换为以vp为单位的数值。
 
-**起始版本：** 22
+转换公式为：vp值 = px值 ÷ 像素密度
+
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-virtualscreenconfig-i.md).density。
+
+> **说明：**
+>
+> 1. getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考
+> [像素单位转换接口替换为UIContext接口](../../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -1738,7 +1779,7 @@ Converts a value in px units to a value in vp.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 
 ## removeLocalInputEventMonitor
 
@@ -1746,18 +1787,18 @@ Converts a value in px units to a value in vp.
 removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 ```
 
-Removes a local input event monitor.
+删除本地输入事件监视器。
 
-**Important Notes**:
-- Only Monitor objects returned by addLocalInputEventMonitor can be removed.
-- Cannot unregister a monitor by manually constructing an object.
-- If an invalid object is passed, the system silently ignores it.
+**重要说明**：
+-只能移除addLocalInputEventMonitor返回的Monitor对象。
+-无法通过手动构造对象来注销监视器。
+-如果传递了一个无效的对象，系统会默默地忽略它。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1765,7 +1806,7 @@ Removes a local input event monitor.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitor | InputEventMonitor | 是 | Monitor identifier object (returned by addLocalInputEventMonitor). |
+| monitor | InputEventMonitor | 是 | 监控标识对象（由addLocalInputEventMonitor返回）。 |
 
 ## requireDynamicSyncScene
 
@@ -1773,13 +1814,13 @@ Removes a local input event monitor.
 requireDynamicSyncScene(id: string): Array<DynamicSyncScene>
 ```
 
-Require DynamicSyncScene by id.
+请求组件的动态帧率场景，用于自定义场景相关帧率配置。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1787,7 +1828,7 @@ Require DynamicSyncScene by id.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | The id of DynamicSyncScene. |
+| id | string | 是 | 节点对应的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
 
 **返回值：**
 
@@ -1825,7 +1866,7 @@ static resolveUIContext(): ResolvedUIContext
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1847,7 +1888,7 @@ runScopedTask(callback: () => void): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1863,13 +1904,13 @@ runScopedTask(callback: () => void): void
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 ```
 
-Set custom keyboard continue feature.
+设置自定义键盘接续特性。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1877,7 +1918,7 @@ Set custom keyboard continue feature.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| feature | CustomKeyboardContinueFeature | 是 | The custom keyboard continue feature. |
+| feature | CustomKeyboardContinueFeature | 是 | 自定义键盘接续特性。 |
 
 ## setImageCacheCount
 
@@ -1885,14 +1926,13 @@ Set custom keyboard continue feature.
 setImageCacheCount(value: number): void
 ```
 
-Set image cache capacity of decoded image count.
-if not set, the application will not cache any decoded image.
+设置内存中缓存解码后图片的数量上限，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。缓存采用内置的LRU策略，新图片加载后，如果超过缓存上限，会删除最久未再次加载的缓存。建议根据应用内存需求，设置合理缓存数量，数字过大可能导致内存使用过高。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1900,7 +1940,7 @@ if not set, the application will not cache any decoded image.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | capacity of decoded image count. |
+| value | number | 是 | 内存中缓存解码后图片的数量上限 |
 
 ## setImageRawDataCacheSize
 
@@ -1908,14 +1948,13 @@ if not set, the application will not cache any decoded image.
 setImageRawDataCacheSize(value: number): void
 ```
 
-Set image cache capacity of raw image data size in bytes before decode.
-if not set, the application will not cache any raw image data.
+设置内存中缓存解码前图片数据的大小上限，单位为字节，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。缓存采用内置的LRU策略，新图片加载后，如果解码前数据超过缓存上限，会删除最久未再次加载的图片数据缓存。建议根据应用内存需求，设置合理缓存上限，过大可能导致应用内存使用过高。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1931,29 +1970,25 @@ if not set, the application will not cache any raw image data.
 setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 ```
 
-Sets the avoidance mode for the virtual keyboard.
+控制虚拟键盘抬起时页面的避让模式。
 
-> **NOTE**
+> **说明：**
 >
-> With **KeyboardAvoidMode.RESIZE**, the page is resized to prevent the virtual keyboard from obstructing the
-> view. Regarding components on the page, those whose width and height are set in percentage are resized with the
-> page, and those whose width and height are set to specific values are laid out according to their settings.
-> With **KeyboardAvoidMode.RESIZE**, **expandSafeArea([SafeAreaType.KEYBOARD],[SafeAreaEdge.BOTTOM])** does not
-> take effect.
 >
-> With **KeyboardAvoidMode.NONE**, keyboard avoidance is disabled, and the page will be covered by the displayed
-> keyboard.
+KeyboardAvoidMode.RESIZE模式会压缩页面大小，页面中设置百分比宽高的组件会跟随页面压缩，而直接设置宽高的组件会按设置的固定大小布局。设置KeyboardAvoidMode的RESIZE模式时，expandSa
+feArea([SafeAreaType.KEYBOARD],[SafeAreaEdge.BOTTOM])不生效。
 >
-> **setKeyboardAvoidMode** only affects page layouts. It does not apply to popup components, including the
-> following: **Dialog**, **Popup**, **Menu**, **BindSheet**, **BindContentCover**, **Toast**, **OverlayManager**.
-> For details about the avoidance mode of popup components, see
-> [CustomDialogControllerOptions](../../../../reference/arkui-ts/ts-methods-custom-dialog-box.md).
+> KeyboardAvoidMode.NONE模式配置页面不避让键盘，页面会被抬起的键盘遮盖。
+>
+>
+setKeyboardAvoidMode针对页面生效，对于弹窗类组件不生效，比如Dialog、Popup、Menu、BindSheet、BindContentCover、Toast、OverlayManager。弹窗类组件的避让模
+式可以参考CustomDialogControllerOptions对象说明。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1961,7 +1996,7 @@ Sets the avoidance mode for the virtual keyboard.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | KeyboardAvoidMode | 是 | Avoidance mode of the virtual keyboard.<br/>Default value:<br/>**KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br/>When<br/>**setKeyboardAvoidMode** is set to an invalid value, this attribute does not take effect. |
+| value | KeyboardAvoidMode | 是 | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br/>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 ## setOverlayManagerOptions
 
@@ -1975,7 +2010,7 @@ Init OverlayManager.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本15开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1989,7 +2024,7 @@ Init OverlayManager.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if it is called first and before getting an OverlayManager instance; returns false otherwise. |
+| boolean | Returns true if it is called first and before getting an OverlayManager instance; returnsfalse otherwise. |
 
 ## setPixelRoundMode
 
@@ -1997,13 +2032,13 @@ Init OverlayManager.
 setPixelRoundMode(mode: PixelRoundMode): void
 ```
 
-Sets the pixel rounding mode for this page.
+设置当前页面的像素取整模式。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2011,7 +2046,7 @@ Sets the pixel rounding mode for this page.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | PixelRoundMode | 是 | Pixel rounding mode.<br/>Default value:**PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH**.<br/>If this parameter is set to an invalid value,<br/>the default value will be used. |
+| mode | PixelRoundMode | 是 | 像素取整模式。<br />默认值：PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH<br/>设置异常值时，该属性为默认值。 |
 
 ## setResourceManagerCacheMaxCountForHSP
 
@@ -2019,16 +2054,16 @@ Sets the pixel rounding mode for this page.
 static setResourceManagerCacheMaxCountForHSP(count: number): void
 ```
 
-Set the upper limit for the cache count of HSP resource management objects.
+设置HSP资源管理对象的缓存数量上限。
 
-If the upper limit of the cache is set too high, there is a risk of excessive memory overhead.
-It is recommended to configure it according to actual needs.
+如果缓存的上限设置得过高，可能会导致内存开销过大，存在内存过载的风险。
+建议根据实际需求进行配置。
 
-**起始版本：** 23
+**起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本21开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2036,15 +2071,15 @@ It is recommended to configure it according to actual needs.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | number | 是 | The cache limit of resource manager for HSP, must be non negative integers. |
+| count | number | 是 | HSP资源管理器的缓存限制必须为非负整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100101](../../errorcode-universal.md#100101-The) | The parameter is less than 0. |
-| [100102](../../errorcode-universal.md#100102-The) | The parameter value cannot be a floating point number. |
-| [100103](../../errorcode-universal.md#100103-The) | The function cannot be called from a non main thread.<br/>@static |
+| [100101](../errorcode-uicontext.md#100101-小于0的非法值) | The parameter is less than 0. |
+| [100102](../errorcode-uicontext.md#100102-参数类型错误) | The parameter value cannot be a floating point number. |
+| [100103](../errorcode-uicontext.md#100103-调用线程错误) | The function cannot be called from a non main thread. |
 
 ## setTextSelectionClearPolicy
 
@@ -2052,14 +2087,14 @@ It is recommended to configure it according to actual needs.
 setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 ```
 
-Sets the text selection clear policy for text component.
-Default policy: **TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH**
+设置文本组件的文本选择清除策略。
+默认策略：**TextSelectionClearPolicy.KEEP_ON_EXTERNAL_CLICK**。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2067,7 +2102,7 @@ Default policy: **TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH*
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | TextSelectionClearPolicy | 是 | The text selection clear policy. |
+| policy | TextSelectionClearPolicy | 是 | 文本选择清除策略。 |
 
 ## showActionSheet
 
@@ -2081,7 +2116,7 @@ Shows an action sheet in the given settings.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2097,13 +2132,13 @@ Shows an action sheet in the given settings.
 showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void
 ```
 
-Shows an alert dialog box.
+alertDialog display.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2111,7 +2146,7 @@ Shows an alert dialog box.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | AlertDialogParamWithConfirm \| AlertDialogParamWithButtons \| AlertDialogParamWithOptions | 是 | Shows<br/>an AlertDialog component in the given settings. |
+| options | AlertDialogParamWithConfirm \| AlertDialogParamWithButtons \| AlertDialogParamWithOptions | 是 | Showsan AlertDialog component in the given settings. |
 
 ## showDatePickerDialog
 
@@ -2121,11 +2156,11 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 datePickerDialog display.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2143,11 +2178,11 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 
 textPickerDialog display.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2169,7 +2204,7 @@ textPickerDialog display.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本20开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2187,11 +2222,11 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 timePickerDialog display.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2213,7 +2248,7 @@ Unbind tabs from nested scrollable container components.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2237,7 +2272,7 @@ Unbind tabs from scrollable container component.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本13开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2264,7 +2299,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2273,8 +2308,8 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | ComponentContent&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | SheetOptions | 是 | 半模态页面样式。<br/>**说明：**<br/>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函<br/>数。 |
-| partialUpdate | boolean | 否 | 半模态页面更新方式, 默认值为false。<br/>**说明：**<br/>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。<br/><br/>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
+| sheetOptions | SheetOptions | 是 | 半模态页面样式。<br/>**说明：** <br/>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函数。 |
+| partialUpdate | boolean | 否 | 半模态页面更新方式, 默认值为false。<br/>**说明：** <br/>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。<br/>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
 
 **返回值：**
 
@@ -2286,9 +2321,9 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [120001](../../errorcode-universal.md#120001-The) | The bindSheetContent is incorrect. |
-| [120003](../../errorcode-universal.md#120003-The) | The bindSheetContent cannot be found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
+| [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## vp2px
 
@@ -2296,15 +2331,26 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 vp2px(value: number): number
 ```
 
-Converts a value in vp units to a value in px.
+将vp单位的数值转换为以px为单位的数值。
 
-**起始版本：** 22
+转换公式为：px值 = vp值 × 像素密度
+
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-virtualscreenconfig-i.md).density。
+
+> **说明：**
+>
+> 1. getUIContext需在windowStage.
+> [loadContent](../../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后
+> 调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考
+> [像素单位转换接口替换为UIContext接口](../../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **参数：**
 
@@ -2316,5 +2362,5 @@ Converts a value in vp units to a value in px.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@stagemodelonly<br/>@crossplatform<br/>@atomicservice |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞)@stagemodelonly@crossplatform |
 

@@ -43,18 +43,19 @@ Vector和[ArrayList](arkts-util-arraylist.md)都是基于数组实现，但Vecto
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
-// 使用方法一：
+// 使用方法一：通过convertToArray将Vector转为数组后使用for-of遍历
 let nums: Array<number> =  vector.convertToArray()
 for (let item of nums) {
   console.info("value:" + item);
 }
 
-// 使用方法二：
+// 使用方法二：通过Symbol.iterator获取迭代器，使用next()逐个访问元素
 let iter = vector[Symbol.iterator]();
 let temp: IteratorResult<number> = iter.next().value;
 while(temp != undefined) {
@@ -93,17 +94,23 @@ add(element: T): boolean
 **示例：**
 
 ```TypeScript
-class C1 {
+// 定义自定义类PersonInfo
+class PersonInfo {
   name: string = ""
   age: string = ""
 }
-let vector : Vector<string | number | C1 | Array<number>> = new Vector();
+// 创建Vector实例
+let vector : Vector<string | number | PersonInfo | Array<number>> = new Vector();
+// 添加字符串元素
 let result = vector.add("a");
+// 添加数字元素
 let result1 = vector.add(1);
-let b = [1, 2, 3];
-let result2 = vector.add(b);
-let c: C1 = {name : "Jack", age : "13"};
-let result3 = vector.add(c);
+let numArray = [1, 2, 3];
+// 添加数组元素
+let result2 = vector.add(numArray);
+let personInfo: PersonInfo = {name : "Jack", age : "13"};
+// 添加自定义类实例
+let result3 = vector.add(personInfo);
 
 ```
 
@@ -262,12 +269,14 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, this
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
-vector.forEach((value : number, index ?: number) : void => {
+// 遍历Vector中的每个元素，打印元素值和下标
+vector.forEach((value : number, index?: number) : void => {
   console.info("value:" + value, "index:" + index);
 });
 
@@ -596,9 +605,13 @@ has(element: T): boolean
 **示例：**
 
 ```TypeScript
+// 创建Vector实例
 let vector : Vector<string> = new Vector();
+// 在添加元素前判断是否包含"squirrel"，预期返回false
 let result = vector.has("squirrel");
+// 添加元素"squirrel"
 vector.add("squirrel");
+// 在添加元素后判断是否包含"squirrel"，预期返回true
 let result1 = vector.has("squirrel");
 
 ```
@@ -626,12 +639,15 @@ increaseCapacityTo(newCapacity: number): void
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// 传入容量2小于元素个数4，不会变更容量
 vector.increaseCapacityTo(2);
+// 传入容量12大于元素个数4，容量变更为12
 vector.increaseCapacityTo(12);
 
 ```
@@ -660,9 +676,13 @@ insert(element: T, index: number): void
 **示例：**
 
 ```TypeScript
+// 创建Vector实例
 let vector : Vector<string | number | Object | Array<number>> = new Vector();
+// 在索引0处插入字符串"A"
 vector.insert("A", 0);
+// 在索引1处插入数字0
 vector.insert(0, 1);
+// 在索引2处插入布尔值true
 vector.insert(true, 2);
 
 ```
@@ -800,11 +820,13 @@ removeByRange(fromIndex: number, toIndex: number): void
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// 删除索引2到4之间的元素（包含起始索引2，不包含终止索引4）
 vector.removeByRange(2,4);
 
 ```
@@ -833,11 +855,13 @@ replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) =>
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// 对Vector中的每个元素执行替换操作，回调函数返回替换后的元素
 vector.replaceAllElements((value : number) : number => {
   // 用户操作逻辑根据实际场景进行添加。
   return value;
@@ -928,13 +952,17 @@ sort(comparator?: (firstValue: T, secondValue: T) => number): void
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// 按升序排序
 vector.sort((a: number, b: number) => a - b);
+// 按降序排序
 vector.sort((a: number, b: number) => b - a);
+// 使用默认排序规则
 vector.sort();
 
 ```
@@ -969,6 +997,7 @@ subVector(fromIndex: number, toIndex: number): Vector<T>
 **示例：**
 
 ```TypeScript
+// 创建Vector实例并添加元素
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
@@ -976,7 +1005,9 @@ vector.add(5);
 vector.add(4);
 vector.add(6);
 vector.add(8);
+// 截取索引0到4之间的元素（包含起始索引0，不包含终止索引4）
 let result = vector.subVector(0,4);
+// 截取索引2到4之间的元素（包含起始索引2，不包含终止索引4）
 let result1 = vector.subVector(2,4);
 
 

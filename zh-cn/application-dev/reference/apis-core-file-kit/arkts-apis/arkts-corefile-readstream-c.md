@@ -3,7 +3,7 @@
 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。
 ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
-**继承/实现关系：** ReadStream extends [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readable-c.md#Readable)
+**继承/实现关系：** ReadStream extends [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-readable-c.md)
 
 **起始版本：** 12
 
@@ -25,12 +25,12 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900004 | Interrupted system call |
+| 13900005 | I/O error |
+| 13900008 | Bad file descriptor |
+| 13900025 | No space left on device |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
 
 **示例：**
 
@@ -70,7 +70,7 @@ seek(offset: number, whence?: WhenceType): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | offset | number | 是 | Relative offset, in bytes. |
-| whence | WhenceType | 否 | Where to start the offset. The default value is **SEEK_SET**, which indicates the<br/>beginning of the file. |
+| whence | WhenceType | 否 | Where to start the offset. The default value is **SEEK_SET**, which indicates thebeginning of the file. |
 
 **返回值：**
 
@@ -82,10 +82,10 @@ seek(offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900026](../../errorcode-universal.md#13900026-Illegal) | Illegal seek |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error |
+| 13900020 | Invalid argument |
+| 13900026 | Illegal seek |
+| 13900042 | Unknown error |
 
 **示例：**
 

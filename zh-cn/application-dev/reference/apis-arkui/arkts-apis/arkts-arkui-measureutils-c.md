@@ -9,8 +9,6 @@ and then call the APIs using the obtained instance.
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getParagraphs
@@ -52,7 +50,7 @@ Obtains the width of the specified text in a single line layout.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +78,7 @@ Obtains the width and height of the specified text in a single line layout.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,5 +92,5 @@ Obtains the width and height of the specified text in a single line layout.
 
 | 类型 | 说明 |
 | --- | --- |
-| SizeOptions | width and height for text to display.The return values for text width and height are both in px. |
+| SizeOptions | width and height for text to display.The return values for text width and height are bothin px. |
 

@@ -1,9 +1,9 @@
 # ElementName
 
-Ӧ������ṹ�壬����bundleName��moduleName��abilityName�ȡ�ͨ���������������Ϣ
-[AbilityRunningInfo.ability](arkts-ability-abilityrunninginfo-i.md#AbilityRunningInfo)����������ص�����
-[connectOptions.onConnect](arkts-ability-connectoptions-i.md#onConnect-1)
-�С�
+应用组件结构体，包含bundleName、moduleName和abilityName等。通常用于组件启动信息
+[AbilityRunningInfo.ability](arkts-ability-abilityrunninginfo-i.md)和组件启动回调函数
+[connectOptions.onConnect](arkts-ability-connectoptions-i.md#onconnect-1)
+中。
 
 **起始版本：** 9
 
@@ -15,13 +15,13 @@
 abilityName: string
 ```
 
-Ability���ơ�
+Ability名称。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -31,7 +31,7 @@ Ability���ơ�
 bundleName: string
 ```
 
-Ӧ��Bundle���ơ�
+应用Bundle名称。
 
 **类型：** string
 
@@ -39,7 +39,7 @@ bundleName: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -49,13 +49,13 @@ bundleName: string
 deviceId?: string
 ```
 
-�豸ID��
+设备ID。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -65,7 +65,7 @@ deviceId?: string
 moduleName?: string
 ```
 
-Ability������HAP��ģ�����ơ�
+Ability所属的HAP的模块名称。
 
 **类型：** string
 
@@ -73,7 +73,7 @@ Ability������HAP��ģ�����ơ�
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -83,13 +83,13 @@ Ability������HAP��ģ�����ơ�
 shortName?: string
 ```
 
-Ability�����ƣ��ԡ�.��Ϊ��ͷ���ַ�����
+Ability短名称，以“.”为开头的字符串。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -99,13 +99,13 @@ Ability�����ƣ��ԡ�.��Ϊ��ͷ���ַ�����
 uri?: string
 ```
 
-��Դ��ʶ����
+资源标识符。
 
 **类型：** string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

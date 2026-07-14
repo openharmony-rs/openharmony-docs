@@ -30,9 +30,9 @@ declare function lseek(fd: number, offset: number, whence?: WhenceType): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900026](../../errorcode-universal.md#13900026-Illegal) | Illegal seek |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900008 | Bad file descriptor |
+| 13900020 | Invalid argument |
+| 13900026 | Illegal seek |
+| 13900038 | Value too large for defined data type |
+| 13900042 | Unknown error |
 

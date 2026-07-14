@@ -1,9 +1,5 @@
 # CoordinateSystemType（系统接口）
 
-```TypeScript
-export enum CoordinateSystemType
-```
-
 表示地理围栏坐标系类型的枚举。
 
 **起始版本：** 23

@@ -22,7 +22,7 @@ begin: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ delay: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,7 +66,7 @@ direction: "normal" | "reverse" | "alternate" | "alternate-reverse"
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +86,7 @@ duration: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ easing: string
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +124,7 @@ end: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,9 +140,9 @@ fill: "none" | "forwards" | "backwards" | "both"
 
 'forwards'：在动画结束后，目标将保留动画结束时的状态（在最后一个关键帧中定义）。
 
-'backwards'：动画将在[AnimatorOptions](arkts-arkui-animatoroptions-i.md#AnimatorOptions)中的delay期间应用第一个关键帧中定义的值。当
-[AnimatorOptions](arkts-arkui-animatoroptions-i.md#AnimatorOptions)中的direction为'normal'或'alternate'时应用from关键帧中的值，当
-[AnimatorOptions](arkts-arkui-animatoroptions-i.md#AnimatorOptions)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。
+'backwards'：动画将在[AnimatorOptions](arkts-arkui-animatoroptions-i.md)中的delay期间应用第一个关键帧中定义的值。当
+[AnimatorOptions](arkts-arkui-animatoroptions-i.md)中的direction为'normal'或'alternate'时应用from关键帧中的值，当
+[AnimatorOptions](arkts-arkui-animatoroptions-i.md)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。
 
 'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。
 
@@ -150,7 +150,7 @@ fill: "none" | "forwards" | "backwards" | "both"
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +168,7 @@ iterations: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

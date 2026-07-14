@@ -1,10 +1,10 @@
 # LauncherAbilityInfo
 
-����Ӧ�õ�Ability��Ϣ������ͨ��
-[getLauncherAbilityInfoSync](arkts-ability-launcherbundlemanager-getlauncherabilityinfosync-f.md#getLauncherAbilityInfoSync-1)
-<!--Del-->����
+桌面应用的Ability信息，可以通过
+[getLauncherAbilityInfoSync](arkts-ability-getlauncherabilityinfosync-f.md#getlauncherabilityinfosync-1)
+<!--Del-->或者
 [getLauncherAbilityInfo](./../@ohos.bundle.launcherBundleManager:launcherBundleManager.getLauncherAbilityInfo(bundleName: string, userId: int, callback: AsyncCallback<Array<LauncherAbilityInfo>>))
-<!--DelEnd-->��ȡ��
+<!--DelEnd-->获取。
 
 **起始版本：** 18
 
@@ -16,7 +16,7 @@
 readonly applicationInfo: ApplicationInfo
 ```
 
-launcher ability��Ӧ�ó���������Ϣ��
+launcher ability的应用程序配置信息。
 
 **类型：** ApplicationInfo
 
@@ -30,7 +30,7 @@ launcher ability��Ӧ�ó���������Ϣ��
 readonly elementName: ElementName
 ```
 
-launcher ability��ElementName��Ϣ��
+launcher ability的ElementName信息。
 
 **类型：** ElementName
 
@@ -44,7 +44,7 @@ launcher ability��ElementName��Ϣ��
 readonly iconId: number
 ```
 
-launcher ability��ͼ�����ԴIDֵ��
+launcher ability的图标的资源ID值。
 
 **类型：** number
 
@@ -58,7 +58,7 @@ launcher ability��ͼ�����ԴIDֵ��
 readonly installTime: number
 ```
 
-launcher ability�İ�װʱ�������λ���롣
+launcher ability的安装时间戳，单位毫秒。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ launcher ability�İ�װʱ�������λ���롣
 readonly labelId: number
 ```
 
-launcher ability�����Ƶ���ԴIDֵ��
+launcher ability的名称的资源ID值。
 
 **类型：** number
 
@@ -86,7 +86,7 @@ launcher ability�����Ƶ���ԴIDֵ��
 readonly userId: number
 ```
 
-launcher ability���û�ID��
+launcher ability的用户ID。
 
 **类型：** number
 

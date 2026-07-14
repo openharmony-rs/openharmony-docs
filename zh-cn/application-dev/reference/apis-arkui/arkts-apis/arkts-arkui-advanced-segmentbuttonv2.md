@@ -7,28 +7,35 @@
 | 名称 | 说明 |
 | --- | --- |
 | [SegmentButtonV2Item](arkts-arkui-segmentbuttonv2item-c.md) |  |
-| [SegmentButtonV2Items](arkts-arkui-segmentbuttonv2items-c.md) | 分段按钮选项集合。<br/><br/>继承自 Array\&lt;[SegmentButtonV2Item](arkts-arkui-segmentbuttonv2items-c.md#SegmentButtonV2Items)&gt;<br/> |
+| [SegmentButtonV2Items](arkts-arkui-segmentbuttonv2items-c.md) | 分段按钮选项集合。继承自 Array\&lt;[SegmentButtonV2Item](arkts-arkui-segmentbuttonv2items-c.md)&gt; |
 
 ### 结构体
 
 | 名称 | 说明 |
 | --- | --- |
 | [CapsuleSegmentButtonV2](arkts-arkui-capsulesegmentbuttonv2-s.md) |  |
-| <!--DelRow-->[CapsuleSegmentButtonV2](arkts-arkui-capsulesegmentbuttonv2-s-sys.md) |  |
 | [MultiCapsuleSegmentButtonV2](arkts-arkui-multicapsulesegmentbuttonv2-s.md) |  |
 | [TabSegmentButtonV2](arkts-arkui-tabsegmentbuttonv2-s.md) |  |
-| <!--DelRow-->[TabSegmentButtonV2](arkts-arkui-tabsegmentbuttonv2-s-sys.md) |  |
+
+<!--Del-->
+### 结构体（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [CapsuleSegmentButtonV2](arkts-arkui-capsulesegmentbuttonv2-s-sys.md) |  |
+| [TabSegmentButtonV2](arkts-arkui-tabsegmentbuttonv2-s-sys.md) |  |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [SegmentButtonV2ItemOptions](arkts-arkui-segmentbuttonv2itemoptions-i.md) | 配置分段按钮选项参数。<br/><br/>&gt; **说明**<br/>&gt;<br/>&gt; 1. 当配置`symbol`和`icon`时，`symbol`的显示优先级更高。<br/>&gt;<br/>&gt; 2. 当`symbol`和`symbolModifier`同时设置HM Symbol资源时，`symbolModifier`设置的资源具有更高的显示优先级。<br/> |
+| [SegmentButtonV2ItemOptions](arkts-arkui-segmentbuttonv2itemoptions-i.md) | 配置分段按钮选项参数。&gt; **说明**&gt;&gt; 1. 当配置`symbol`和`icon`时，`symbol`的显示优先级更高。&gt;&gt; 2. 当`symbol`和`symbolModifier`同时设置HM Symbol资源时，`symbolModifier`设置的资源具有更高的显示优先级。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md) | 单选分段按钮选中项变更时调用的回调函数类型。<br/> |
-| [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md) | 多选分段按钮选中项变更时调用的回调函数类型。<br/> |
+| [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md) | 单选分段按钮选中项变更时调用的回调函数类型。 |
+| [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md) | 多选分段按钮选中项变更时调用的回调函数类型。 |
 

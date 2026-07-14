@@ -36,8 +36,8 @@ declare function listFileExt(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
+| 13900002 | No such file or directory |
+| 13900011 | Out of memory |
+| 13900018 | Not a directory |
+| 13900020 | Invalid argument |
 

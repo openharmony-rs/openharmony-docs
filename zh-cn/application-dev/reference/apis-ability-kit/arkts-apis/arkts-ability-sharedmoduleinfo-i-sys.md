@@ -1,6 +1,6 @@
 # SharedModuleInfo（系统接口）
 
-����ģ����Ϣ��
+共享模块信息。
 
 **起始版本：** 10
 
@@ -14,7 +14,7 @@
 readonly description: string
 ```
 
-��������ģ��������Ϣ��
+共享包的模块描述信息。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly description: string
 readonly descriptionId: number
 ```
 
-��������������Դidֵ��
+共享包描述的资源id值。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ readonly descriptionId: number
 readonly name: string
 ```
 
-������ģ�����ơ�
+共享包模块名称。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly name: string
 readonly versionCode: number
 ```
 
-�������İ汾�š�
+共享包的版本号。
 
 **类型：** number
 
@@ -78,7 +78,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-�������İ汾�ı�������Ϣ��
+共享包的版本文本描述信息。
 
 **类型：** string
 

@@ -87,7 +87,7 @@ level?: notification.SlotLevel
 
 **废弃版本：** 20
 
-**替代接口：** [notificationLevel](arkts-notification-notificationslot-i.md#notificationLevel)
+**替代接口：** [notificationLevel](arkts-notification-notificationslot-i.md#notificationlevel)
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -194,7 +194,7 @@ type?: notification.SlotType
 
 **废弃版本：** 11
 
-**替代接口：** [notificationType](arkts-notification-notificationslot-i.md#notificationType)
+**替代接口：** [notificationType](arkts-notification-notificationslot-i.md#notificationtype)
 
 **系统能力：** SystemCapability.Notification.Notification
 

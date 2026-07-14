@@ -1,9 +1,5 @@
 # MonitorEvent（系统接口）
 
-```TypeScript
-export enum MonitorEvent
-```
-
 表示地理围栏的监控事件类型的枚举。
 
 **起始版本：** 23

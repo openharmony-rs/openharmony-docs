@@ -1,6 +1,6 @@
 # ArcListItemAttribute
 
-除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md#common)外，还支持以下属性：
+除支持[通用属性](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)外，还支持以下属性：
 
 **继承/实现关系：** ArcListItemAttribute extends [CommonMethod<ArcListItemAttribute>](CommonMethod<ArcListItemAttribute>)
 
@@ -18,7 +18,7 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -32,7 +32,7 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcListItemAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcListItemAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 
 ## swipeAction
 
@@ -44,7 +44,7 @@ swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -58,5 +58,5 @@ swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute
 
 | 类型 | 说明 |
 | --- | --- |
-| ArcListItemAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle<br/>@crossplatform<br/>@atomicservice |
+| ArcListItemAttribute | @syscap SystemCapability.ArkUI.ArkUI.Circle@crossplatform@atomicservice |
 

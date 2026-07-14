@@ -13,7 +13,7 @@ abortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
 添加有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以中止当前的有序公共事
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事
 件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
@@ -30,7 +30,7 @@ abortCommonEvent(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## abortCommonEvent
 
@@ -39,7 +39,7 @@ abortCommonEvent(): Promise<void>
 ```
 
 添加有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以中止当前的有序公共事
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事
 件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
@@ -59,7 +59,7 @@ abortCommonEventSync(): void
 ```
 
 添加有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以中止当前的有序公共事
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以中止当前的有序公共事
 件，使该公共事件不再向下一个订阅者传递。
 
 **起始版本：** 10
@@ -73,7 +73,7 @@ clearAbortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
 清理有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以使该公共事件继续向下
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下
 一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
@@ -90,7 +90,7 @@ clearAbortCommonEvent(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## clearAbortCommonEvent
 
@@ -99,7 +99,7 @@ clearAbortCommonEvent(): Promise<void>
 ```
 
 清理有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以使该公共事件继续向下
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下
 一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
@@ -119,7 +119,7 @@ clearAbortCommonEventSync(): void
 ```
 
 清理有序公共事件的中止状态。当该接口与
-[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishCommonEvent-1)配合使用时，可以使该公共事件继续向下
+[finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)配合使用时，可以使该公共事件继续向下
 一个订阅者传递。
 
 **起始版本：** 10
@@ -148,7 +148,7 @@ finishCommonEvent(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## finishCommonEvent
 
@@ -190,7 +190,7 @@ getAbortCommonEvent(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## getAbortCommonEvent
 
@@ -238,7 +238,7 @@ getCode(callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -252,7 +252,7 @@ getCode(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## getCode
 
@@ -264,7 +264,7 @@ getCode(): Promise<number>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -284,7 +284,7 @@ getCodeSync(): number
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -304,7 +304,7 @@ getData(callback: AsyncCallback<string>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -318,7 +318,7 @@ getData(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## getData
 
@@ -330,7 +330,7 @@ getData(): Promise<string>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -350,7 +350,7 @@ getDataSync(): string
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -370,7 +370,7 @@ getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -384,7 +384,7 @@ getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## getSubscribeInfo
 
@@ -396,7 +396,7 @@ getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -416,7 +416,7 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -448,7 +448,7 @@ isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## isOrderedCommonEvent
 
@@ -508,7 +508,7 @@ isStickyCommonEvent(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## isStickyCommonEvent
 
@@ -556,7 +556,7 @@ setCode(code: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -571,7 +571,7 @@ setCode(code: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCode
 
@@ -583,7 +583,7 @@ setCode(code: number): Promise<void>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -603,7 +603,7 @@ setCode(code: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCodeAndData
 
@@ -615,7 +615,7 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -631,7 +631,7 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCodeAndData
 
@@ -643,7 +643,7 @@ setCodeAndData(code: number, data: string): Promise<void>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -664,7 +664,7 @@ setCodeAndData(code: number, data: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCodeAndDataSync
 
@@ -676,7 +676,7 @@ setCodeAndDataSync(code: number, data: string): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -691,7 +691,7 @@ setCodeAndDataSync(code: number, data: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setCodeSync
 
@@ -703,7 +703,7 @@ setCodeSync(code: number): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -717,7 +717,7 @@ setCodeSync(code: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setData
 
@@ -729,7 +729,7 @@ setData(data: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -744,7 +744,7 @@ setData(data: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setData
 
@@ -756,7 +756,7 @@ setData(data: string): Promise<void>
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -776,7 +776,7 @@ setData(data: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setDataSync
 
@@ -788,7 +788,7 @@ setDataSync(data: string): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -802,5 +802,5 @@ setDataSync(data: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 

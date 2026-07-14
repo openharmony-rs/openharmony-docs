@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionResult, ShowNotificationOptions } from '@system.notification';
+import { ActionResult, ShowNotificationOptions } from '@kit.NotificationKit';
 ```
 
 ## abilityName

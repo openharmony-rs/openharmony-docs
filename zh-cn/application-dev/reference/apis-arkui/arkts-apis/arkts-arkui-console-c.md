@@ -16,7 +16,7 @@ Prints a message if value is false or omitted.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -31,7 +31,7 @@ Prints a message if value is false or omitted.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## count
 
@@ -44,7 +44,7 @@ console.count() has been called with the given label.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -58,7 +58,7 @@ console.count() has been called with the given label.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## countReset
 
@@ -70,7 +70,7 @@ Reset the internal counter specific to label.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -84,7 +84,7 @@ Reset the internal counter specific to label.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## debug
 
@@ -96,7 +96,7 @@ Prints "debug" logs.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -107,7 +107,7 @@ Prints "debug" logs.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | Text to print. |
-| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform [since 10]<br/>@form [since 9]<br/>@atomicservice [since 11] |
+| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
 ## dir
 
@@ -119,7 +119,7 @@ Prints properties of the specified JavaScript object.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -140,7 +140,7 @@ This method does not produce any XML formatting.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -160,7 +160,7 @@ Prints "error" logs.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -171,7 +171,7 @@ Prints "error" logs.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | Text to print. |
-| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform [since 10]<br/>@form [since 9]<br/>@atomicservice [since 11] |
+| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
 ## group
 
@@ -183,7 +183,7 @@ Creates a new inline group, causing any subsequent console messages to be indent
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -203,7 +203,7 @@ Same as console.group()
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -223,7 +223,7 @@ Exit current inline group.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -237,7 +237,7 @@ Prints "info" logs.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -248,7 +248,7 @@ Prints "info" logs.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | Text to print. |
-| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform [since 10]<br/>@form [since 9]<br/>@atomicservice [since 11] |
+| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
 ## log
 
@@ -260,7 +260,7 @@ Prints "log" logs.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -271,7 +271,7 @@ Prints "log" logs.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | Text to print. |
-| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform [since 10]<br/>@form [since 9]<br/>@atomicservice [since 11] |
+| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 
 ## table
 
@@ -283,7 +283,7 @@ Prints tabular data as a table.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -303,7 +303,7 @@ Start a timer.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -317,7 +317,7 @@ Start a timer.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## timeEnd
 
@@ -329,7 +329,7 @@ End a timer and print time duration.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -343,7 +343,7 @@ End a timer and print time duration.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## timeLog
 
@@ -355,7 +355,7 @@ Print the elapsed time and other data arguments.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -370,7 +370,7 @@ Print the elapsed time and other data arguments.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The parameter check failed. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
 ## trace
 
@@ -382,7 +382,7 @@ Prints stack information for the current code location.
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -402,7 +402,7 @@ Prints information about the current hybrid stack of the calling thread in the m
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -416,7 +416,7 @@ Prints "warn" logs.
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -427,5 +427,5 @@ Prints "warn" logs.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | string | 是 | Text to print. |
-| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full<br/>@crossplatform [since 10]<br/>@form [since 9]<br/>@atomicservice [since 11] |
+| arguments | any[] | 是 | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform<br>**起始版本：** 10 |
 

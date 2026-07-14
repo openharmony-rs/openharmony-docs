@@ -4,7 +4,7 @@
 export type BundleStatusCallback = _BundleStatusCallback
 ```
 
-Ӧ��״̬�����仯ʱ�ص�����Ϣ��
+应用状态发生变化时回调的信息。
 
 **起始版本：** 8
 

@@ -2,8 +2,6 @@
 
 定义拉起UIExtensionAbility执行结果的回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onError
@@ -18,7 +16,7 @@ onError(code: number, name: string, message: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,7 +40,7 @@ onResult?(parameter: AbilityResult): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,7 +48,7 @@ onResult?(parameter: AbilityResult): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | AbilityResult | 是 | 当调用<br/>[terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateSelfWithResult-1)<br/>方法终止UIExtensionAbility时返回的结果。 |
+| parameter | AbilityResult | 是 | 当调用[terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateselfwithresult-1)方法终止UIExtensionAbility时返回的结果。 |
 
 ## completionHandler
 
@@ -66,7 +64,7 @@ completionHandler?: CompletionHandlerForAbilityStartCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本21开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -4,8 +4,6 @@ ChipGroupV2ItemStyle定义了ChipV2的共通属性类。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -26,7 +24,7 @@ ChipV2背景颜色。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,10 +34,10 @@ ChipV2背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundColor-1)、边框颜色
-[borderColor](arkts-arkui-commonmethod-c.md#borderColor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderWidth-1)、阴影
-[shadow](arkts-arkui-commonmethod-c.md#shadow-1)效果、材质层滤镜效果
-[materialFilter](arkts-arkui-commonmethod-c.md#materialFilter-1)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色
+[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影
+[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)效果、材质层滤镜效果
+[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter-1)。
 
 默认值：undefined，不应用材质样式。
 
@@ -49,7 +47,7 @@ backgroundSystemMaterial?: uiMaterial.Material
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +69,7 @@ ChipV2文字颜色。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +91,7 @@ ChipV2激活时的背景颜色。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,10 +102,10 @@ selectedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
 设置组件选中状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色
-[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundColor-1)、边框颜色
-[borderColor](arkts-arkui-commonmethod-c.md#borderColor-1)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderWidth-1)、阴影
-[shadow](arkts-arkui-commonmethod-c.md#shadow-1)效果、材质层滤镜效果
-[materialFilter](arkts-arkui-commonmethod-c.md#materialFilter-1)。
+[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色
+[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影
+[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)效果、材质层滤镜效果
+[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter-1)。
 
 默认值：undefined，不应用材质样式。
 
@@ -117,7 +115,7 @@ selectedBackgroundSystemMaterial?: uiMaterial.Material
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +137,7 @@ ChipV2激活时的文字颜色。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,7 +159,7 @@ ChipV2尺寸。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,6 +1,6 @@
 # PluginModuleInfo（系统接口）
 
-�����ģ����Ϣ��
+插件的模块信息。
 
 **起始版本：** 26.0.0
 
@@ -14,7 +14,7 @@
 readonly description: string
 ```
 
-���ģ���������Ϣ��
+插件模块的描述信息。
 
 **类型：** string
 
@@ -30,7 +30,7 @@ readonly description: string
 readonly descriptionId: number
 ```
 
-���ģ����������Դidֵ��
+插件模块描述的资源id值。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ readonly descriptionId: number
 readonly moduleName: string
 ```
 
-���ģ������ơ�
+插件模块的名称。
 
 **类型：** string
 

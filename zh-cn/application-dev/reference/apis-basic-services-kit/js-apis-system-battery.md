@@ -1,0 +1,134 @@
+# @system.battery (电量信息)
+
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: PowerManager-->
+<!--Owner: @zhang-yinglie; @volcano_wang-->
+<!--Designer: @wangyantian0-->
+<!--Tester: @alien0208-->
+<!--Adviser: @fang-jinxu-->
+
+该模块提供充电状态及剩余电量的查询功能。
+
+>  **说明：**
+>
+>- 模块维护策略：
+>
+>    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>
+>    \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，建议使用[@ohos.batteryInfo](js-apis-battery-info.md)替代。
+>
+>- 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+
+
+## 导入模块
+
+
+```js
+import {Battery, BatteryResponse } from '@kit.BasicServicesKit';
+```
+
+
+## Battery.getStatus<sup>(deprecated)</sup>
+
+getStatus(options?: GetStatusOptions): void;
+
+获取设备当前的充电状态及剩余电量。
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [GetStatusOptions](#getstatusoptionsdeprecated) | 否 | 包含接口调用结果的对象。可选，默认为空。 |
+
+**示例：**
+
+ArkTS示例：
+```js
+Battery.getStatus({
+    success: (data: BatteryResponse) => {
+        console.info('success get battery level:' + data.level);
+    },
+    fail: (data: string, code: number) => {
+        console.error('fail to get battery level code:' + code + ', data: ' + data);
+    }
+});
+```
+
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="getBatteryInfo"></input>
+    <text class="title">level: {{ capacity }}</text>
+    <text class="title">charging: {{ charging }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import Battery from '@system.battery';
+
+export default {
+    data: {
+        capacity: '',
+        charging: ''
+    },
+    getBatteryInfo() {
+        let TAG = 'get_status_success_test';
+        Battery.getStatus({
+            success: (batteryResponse) => {
+                this.capacity = batteryResponse.level;
+                this.charging = batteryResponse.charging;
+                console.info(`${TAG} batteryResponse.level: ${batteryResponse.level}`);
+                console.info(`${TAG} batteryResponse.charging: ${batteryResponse.charging}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getStatus complete`);
+            }
+        });
+    },
+}
+```
+
+## GetStatusOptions<sup>(deprecated)</sup>
+
+包含接口调用结果的对象。
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
+
+| 参数名   | 类型                                                | 必填 | 说明                                                         |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| success  | (data: [BatteryResponse](#batteryresponsedeprecated)) => void | 否   | 接口调用成功的回调函数，data为[BatteryResponse](#batteryresponsedeprecated)类型的返回值。 |
+| fail     | (data: string, code: number) => void                | 否   | 接口调用失败的回调函数。data为错误信息，code为错误码。       |
+| complete | () => void                                          | 否   | 接口调用结束的回调函数。                                     |
+
+## BatteryResponse<sup>(deprecated)</sup>
+
+包含充电状态及剩余电量的对象。
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| charging | boolean | 否 | 否 | 当前电池是否在充电中。true表示在充电，false表示没有充电，默认为false。<br>**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用batteryInfo.[chargingStatus](js-apis-battery-info.md#常量)替代。 |
+| level | number | 否 | 否 | 当前电池的电量百分比，取值范围：**0.00~1.00**。 <br>**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用batteryInfo.[batterySOC](js-apis-battery-info.md#常量)替代。 |

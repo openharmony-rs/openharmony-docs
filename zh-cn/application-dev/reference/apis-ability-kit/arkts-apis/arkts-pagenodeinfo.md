@@ -2,9 +2,11 @@
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| <!--DelRow-->[PageNodeInfo](arkts-ability-pagenodeinfo-i-sys.md) | 自动填充的页面节点信息。<br/> |
+| [PageNodeInfo](arkts-ability-pagenodeinfo-i-sys.md) | 自动填充的页面节点信息。 |
+<!--DelEnd-->
 

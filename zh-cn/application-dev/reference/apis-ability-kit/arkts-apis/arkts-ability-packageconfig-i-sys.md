@@ -1,6 +1,6 @@
 # PackageConfig（系统接口）
 
-pack.info�İ���Ϣ��
+pack.info的包信息。
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ pack.info�İ���Ϣ��
 readonly deliveryWithInstall: boolean
 ```
 
-�Ƿ����Ӧ��һ��װ��true��ʾ����Ӧ��һ��װ��false��ʾ������Ӧ��һ��װ��
+是否跟随应用一起安装。true表示跟随应用一起安装，false表示不跟随应用一起安装。
 
 **类型：** boolean
 
@@ -30,7 +30,7 @@ readonly deliveryWithInstall: boolean
 readonly deviceTypes: Array<string>
 ```
 
-��֧�ֵ��豸���͡�
+包支持的设备类型。
 
 **类型：** Array<string>
 
@@ -46,7 +46,7 @@ readonly deviceTypes: Array<string>
 readonly moduleType: string
 ```
 
-����module���͡�
+包的module类型。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly moduleType: string
 readonly name: string
 ```
 
-�������ơ�
+包的名称。
 
 **类型：** string
 

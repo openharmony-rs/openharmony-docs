@@ -23,10 +23,10 @@ declare function utimes(path: string, mtime: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900027](../../errorcode-universal.md#13900027-Readonly) | Read-only file system |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900012 | Permission denied |
+| 13900020 | Invalid argument |
+| 13900027 | Read-only file system |
+| 13900042 | Unknown error |
 

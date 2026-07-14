@@ -1,9 +1,5 @@
 # AccessFlagType
 
-```TypeScript
-declare enum AccessFlagType
-```
-
 枚举，表示需要校验的文件位置。
 
 **起始版本：** 12

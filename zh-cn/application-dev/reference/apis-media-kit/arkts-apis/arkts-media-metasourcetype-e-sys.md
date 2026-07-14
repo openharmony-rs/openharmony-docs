@@ -1,9 +1,5 @@
 # MetaSourceType（系统接口）
 
-```TypeScript
-enum MetaSourceType
-```
-
 Enumerates meta source type for recorder.
 
 **起始版本：** 12

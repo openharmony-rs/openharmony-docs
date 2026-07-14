@@ -1,9 +1,5 @@
 # TriggerType（系统接口）
 
-```TypeScript
-export enum TriggerType
-```
-
 表示触发条件的事件类型的枚举。
 
 **起始版本：** 23

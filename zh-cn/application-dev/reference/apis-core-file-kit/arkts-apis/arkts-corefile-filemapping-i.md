@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 ## capacity
@@ -32,9 +30,9 @@ capacity(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -67,9 +65,9 @@ flip(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -115,9 +113,9 @@ getLimit(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -156,9 +154,9 @@ getPosition(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -198,12 +196,12 @@ msync(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900055](../../errorcode-universal.md#13900055-Mmap) | Mmap operation not supported |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
+| 13900055 | Mmap operation not supported |
 
 **示例：**
 
@@ -260,12 +258,12 @@ msync(position: number, length: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900055](../../errorcode-universal.md#13900055-Mmap) | Mmap operation not supported |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
+| 13900055 | Mmap operation not supported |
 
 **示例：**
 
@@ -309,12 +307,12 @@ msyncSync(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900055](../../errorcode-universal.md#13900055-Mmap) | Mmap operation not supported |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
+| 13900055 | Mmap operation not supported |
 
 **示例：**
 
@@ -362,12 +360,12 @@ msyncSync(position: number, length: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900055](../../errorcode-universal.md#13900055-Mmap) | Mmap operation not supported |
+| 13900011 | Out of memory |
+| 13900014 | Device or resource busy |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
+| 13900055 | Mmap operation not supported |
 
 **示例：**
 
@@ -420,11 +418,11 @@ read(buffer: ArrayBuffer, length?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900051](../../errorcode-universal.md#13900051-Buffer) | Buffer read/write out of bounds |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900054](../../errorcode-universal.md#13900054-Mmap) | Mmap buffer is inaccessible |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例：**
 
@@ -474,11 +472,11 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900051](../../errorcode-universal.md#13900051-Buffer) | Buffer read/write out of bounds |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900054](../../errorcode-universal.md#13900054-Mmap) | Mmap buffer is inaccessible |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例：**
 
@@ -520,9 +518,9 @@ remaining(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -564,9 +562,9 @@ setLimit(limit: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -605,9 +603,9 @@ setPosition(position: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900052 | Mmap buffer released |
 
 **示例：**
 
@@ -646,8 +644,8 @@ unmap(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 
 **示例：**
 
@@ -688,8 +686,8 @@ unmapSync(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
 
 **示例：**
 
@@ -737,12 +735,12 @@ write(data: ArrayBuffer, length?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900051](../../errorcode-universal.md#13900051-Buffer) | Buffer read/write out of bounds |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900053](../../errorcode-universal.md#13900053-Readonly) | Read-only mmap buffer |
-| [13900054](../../errorcode-universal.md#13900054-Mmap) | Mmap buffer is inaccessible |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900053 | Read-only mmap buffer |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例：**
 
@@ -793,12 +791,12 @@ write(position: number, data: ArrayBuffer, length?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900050](../../errorcode-universal.md#13900050-Internal) | Internal resource error |
-| [13900051](../../errorcode-universal.md#13900051-Buffer) | Buffer read/write out of bounds |
-| [13900052](../../errorcode-universal.md#13900052-Mmap) | Mmap buffer released |
-| [13900053](../../errorcode-universal.md#13900053-Readonly) | Read-only mmap buffer |
-| [13900054](../../errorcode-universal.md#13900054-Mmap) | Mmap buffer is inaccessible |
+| 13900020 | Invalid argument |
+| 13900050 | Internal resource error |
+| 13900051 | Buffer read/write out of bounds |
+| 13900052 | Mmap buffer released |
+| 13900053 | Read-only mmap buffer |
+| 13900054 | Mmap buffer is inaccessible |
 
 **示例：**
 
