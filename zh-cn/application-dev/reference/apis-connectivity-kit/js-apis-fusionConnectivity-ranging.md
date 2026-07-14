@@ -505,7 +505,7 @@ if (isRegistered) {
 }
 ```
 
-## ranging.RangingParams
+## RangingParams
 
 测距参数，用于指定主动测距的目标设备和测距类型。
 
