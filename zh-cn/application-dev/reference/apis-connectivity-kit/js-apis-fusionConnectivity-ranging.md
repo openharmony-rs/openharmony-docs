@@ -597,7 +597,7 @@ if (isRegistered) {
 | ------------ | ---- | ----------------------------------------- |
 | NEARLINK_HADM | 1    | 星闪[HADM](../../connectivity/terminology.md#hadm)测距类型。  |
 
-## ranging.RangingState
+## RangingState
 
 枚举，测距状态。
 
