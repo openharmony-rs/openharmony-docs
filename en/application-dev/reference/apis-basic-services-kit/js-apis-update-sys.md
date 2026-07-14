@@ -3106,7 +3106,7 @@ This upgrade mode applies to offline system upgrade or upgrade with poor network
 
 ```mermaid
 graph TD
-    A["Call getLocalUpdater to obtain a LocalUpdater object."] --> B[Download the local upgrade package (in .zip or .bin format) and the corresponding certificate file (in .cert format) from the official website of the vendor, and save them to an accessible path on the device.]
+    A["Call getLocalUpdater to obtain a LocalUpdater object."] --> B["Download the local upgrade package (in .zip or .bin format) and the corresponding certificate file (in .cert format) from the official website of the vendor, and save them to an accessible path on the device."]
     B --> C[Call verifyUpgradePackage to verify the digital signature, file integrity, and version compatibility of the upgrade package.]
     C --> D[After the verification is successful, call applyNewVersion to install the upgrade package. The system restarts to apply the new version.]
     D --> E[Call on to register an event listener to monitor the installation progress and status changes in real time.]
