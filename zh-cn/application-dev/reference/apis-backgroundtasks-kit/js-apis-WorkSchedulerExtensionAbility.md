@@ -23,6 +23,7 @@ import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 ## 约束限制
 为保障系统安全性和稳定性，防止WorkSchedulerExtensionAbility滥用系统资源，系统对其能力进行管控，不支持以下模块的引用：
+
   [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](./js-apis-resourceschedule-backgroundTaskManager.md)
 
   [@ohos.backgroundTaskManager (后台任务管理)](./js-apis-backgroundTaskManager.md)
