@@ -97,7 +97,7 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-// 2.传入矩形区域所在的屏幕Id。
+// 2.传入矩形区域所在的屏幕ID。
 uint64_t regionDisplayId = 0;
 OH_AVScreenCapture_SetCaptureArea(g_avCapture, regionDisplayId, region);
 // 开始录屏。
