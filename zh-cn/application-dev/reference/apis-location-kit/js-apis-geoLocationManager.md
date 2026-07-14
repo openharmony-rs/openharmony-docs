@@ -3509,13 +3509,13 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | sportsType | [SportsType](#sportsType) | 否 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
+  | sportsType | [SportsType](#sportstype18) | 否 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
 
 **返回值**：
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
+  | Promise&lt;Array&lt;[Location](#location)&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
 
 **错误码**：
 
