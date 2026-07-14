@@ -6563,7 +6563,7 @@ Allows a system application to access the file cache path of the file transfer s
 
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
  	 
-Allows an application to create content trust signature.
+Allows an application to create a content trust signature.
 
 **Permission level**: system_basic
 
@@ -6577,7 +6577,7 @@ Allows an application to create content trust signature.
 
 ## ohos.permission.APPEND_SIGN_CONTENT_TRUST
 
-Allows an application to trigger network packet capture.
+Allows an application to append a content trust signature.
 
 **Permission level**: system_basic
 
