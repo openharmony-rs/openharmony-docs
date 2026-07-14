@@ -128,19 +128,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 | plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
-## ContinuousLocationRequest<sup>12+</sup>
-
-持续定位的请求参数。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | 否 | 是 | 表示运动类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**系统接口**：此接口为系统接口。|
-
-
 ## LocatingRequiredData<sup>10+</sup>
 
 表示定位业务所需的数据，包含WiFi或蓝牙扫描结果，APP拿到这些数据之后可以用于网络定位等业务。
