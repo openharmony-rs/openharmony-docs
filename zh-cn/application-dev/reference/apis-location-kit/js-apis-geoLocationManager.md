@@ -246,7 +246,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
+| isFromMock | boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## GeofenceTransition<sup>12+</sup>
