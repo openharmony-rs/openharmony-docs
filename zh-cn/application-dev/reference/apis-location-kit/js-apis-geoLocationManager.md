@@ -547,7 +547,7 @@ POI信息结构体。
 | RUNNING   | 1 |  表示跑步。 |
 | WALKING    | 2 | 表示步行。 |
 | CYCLING     | 3 | 表示骑行。 |
-| SKIING     | 4 | 表示滑雪。 |
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
