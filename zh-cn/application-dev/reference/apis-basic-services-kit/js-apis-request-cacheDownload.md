@@ -219,7 +219,8 @@ download(url: string, options: CacheDownloadOptions): void
   try {
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -261,7 +262,8 @@ cancel(url: string): void
   try {
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -270,7 +272,8 @@ cancel(url: string): void
   try {
     // 在不需要特定任务缓存时，移除缓存下载任务，已缓存的内容不受影响。
     cacheDownload.cancel("https://www.example.com");
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel the task. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -309,7 +312,8 @@ setMemoryCacheSize(bytes: number): void
   try {
     // 设置内存缓存大小上限。  
     cacheDownload.setMemoryCacheSize(10 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set memory cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -350,7 +354,8 @@ setFileCacheSize(bytes: number): void
   try {
     // 设置文件缓存大小上限。  
     cacheDownload.setFileCacheSize(100 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set file cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -389,7 +394,8 @@ setDownloadInfoListSize(size: number): void
   try {
     // 设置下载信息列表大小。  
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -438,7 +444,8 @@ getDownloadInfo(url: string): DownloadInfo | undefined
   try {
     // 设置下载信息列表大小。  
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -448,7 +455,8 @@ getDownloadInfo(url: string): DownloadInfo | undefined
   try {
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -462,7 +470,8 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
