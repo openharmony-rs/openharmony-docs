@@ -50,7 +50,7 @@ Popup(options: PopupOptions): void
 
 | 参数名  | 类型                          | 必填 | 说明                  |
 | ------- | ----------------------------- | ---- | --------------------- |
-| options | [PopupOptions](#popupoptions) | 是   | 定义Popup组件的类型。 |
+| options | [PopupOptions](#popupoptions) | 是   | 定义Popup组件的样式参数。 |
 
 ## PopupOptions
 

@@ -7,9 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Computed为方法装饰器，用于状态管理V2中，装饰getter方法。
+@Computed为方法装饰器，用于状态管理V2中，装饰getter方法，使被装饰的getter方法变为计算属性，其返回值会被缓存，仅当依赖的源数据发生变化时才重新计算，减少重复计算带来的开销。
 
-在ArkTS-Dyn中使用时，开发指南参考：[@Computed装饰器：计算属性（ArkTS-Dyn）](../../../ui/state-management/arkts-new-computed.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Computed装饰器：计算属性](../../../ui/state-management/arkts-new-computed.md)。
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ const Computed: MethodDecorator
 ```ts
 @Entry
 @ComponentV2
-  struct Index {
+struct Index {
   @Local firstName: string = 'Hua';
   @Local lastName: string = 'Li';
 

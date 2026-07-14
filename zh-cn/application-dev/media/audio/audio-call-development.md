@@ -12,7 +12,7 @@
 
 以下代码示范了同时使用AudioRenderer和AudioCapturer实现音频通话功能的基本过程，其中未包含音频通话数据的传输过程，实际开发中，需要将网络传输来的对端通话数据解码播放，此处仅以读取音频文件的数据代替；同时需要将本端录制的通话数据编码打包，通过网络发送给对端，此处仅以将数据写入音频文件代替。
 
-示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS?_fb=blob)。
+示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS)。
 
 ## 使用AudioRenderer播放对端的通话声音
 
@@ -20,7 +20,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -28,7 +28,7 @@ import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { fileIo as fs } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 
-// 与使用AudioRenderer开发音频播放功能过程相似,关键区别在于audioRendererInfo参数和音频数据来源。
+// 与使用AudioRenderer开发音频播放功能过程相似，关键区别在于audioRendererInfo参数和音频数据来源。
 const TAG = 'VoIPDemoForAudioRenderer';
 
 class Options {
@@ -46,8 +46,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioRendererInfo: audio.AudioRendererInfo = {
   // 需使用通话场景相应的参数。
-  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型:VoIP通话。
-  rendererFlags: 0 // 音频渲染器标志:默认为0即可。
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：VoIP通话。
+  rendererFlags: 0 // 音频渲染器标志：默认为0即可。
 };
 let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
@@ -58,7 +58,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 // ...
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 此处仅作示例,实际使用时需要将文件替换为应用要播放的PCM文件。
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -70,7 +70,7 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充,否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
@@ -78,22 +78,28 @@ async function initArguments(context: common.UIAbilityContext) {
           view.setUint8(i, 0);
         }
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
       // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
-      return audio.AudioDataCallbackResult.VALID;
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
+      // ...
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
-      return audio.AudioDataCallbackResult.INVALID;
     }
   };
 }
 
-// 初始化,创建实例,设置监听事件。
+// 初始化，创建实例，设置监听事件。
 async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
     if (!err) {
@@ -170,7 +176,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -178,7 +183,7 @@ async function stop() {
   }
 }
 
-// 销毁实例,释放资源。
+// 销毁实例，释放资源。
 async function release() {
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态,才能release。
@@ -197,6 +202,7 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```
@@ -433,14 +439,15 @@ async function release() {
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { fileIo as fs } from '@kit.CoreFileKit'; // 导入文件操作模块。
-import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
-// 与使用AudioCapturer开发音频录制功能过程相似,关键区别在于audioCapturerInfo参数和音频数据流向。
+import { common, abilityAccessCtrl } from '@kit.AbilityKit'; // 导入UIAbilityContext。
+// ...
+// 与使用AudioCapturer开发音频录制功能过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。
 const TAG = 'VoIPDemoForAudioCapturer';
 
 class Options {
@@ -458,8 +465,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioCapturerInfo: audio.AudioCapturerInfo = {
   // 需使用通话场景相应的参数。
-  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // 音源类型:语音通话。
-  capturerFlags: 0 // 音频采集器标志:默认为0即可。
+  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // 音源类型：语音通话。
+  capturerFlags: 0 // 音频采集器标志：默认为0即可。
 };
 let audioCapturerOptions: audio.AudioCapturerOptions = {
   streamInfo: audioStreamInfo,
@@ -486,7 +493,7 @@ async function initArguments(context: common.UIAbilityContext) {
   }
 }
 
-// 初始化,创建实例,设置监听事件。
+// 初始化，创建实例，设置监听事件。
 async function init() {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
     if (err) {
@@ -552,7 +559,7 @@ async function stop() {
   }
 }
 
-// 销毁实例,释放资源。
+// 销毁实例，释放资源。
 async function release() {
   if (audioCapturer !== undefined) {
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。

@@ -11,6 +11,8 @@ ArkTS是OpenHarmony应用开发的官方高级语言。
 
 ArkTS在[TypeScript](https://www.typescriptlang.org/)（简称TS）生态基础上做了进一步扩展，保持了TS的基本风格，同时通过规范定义强化开发期静态检查和分析，提升代码健壮性，并实现更好的程序执行稳定性和性能。对比标准TS的差异可以参考[从TypeScript到ArkTS的适配规则](../quick-start/typescript-to-arkts-migration-guide.md)。ArkTS同时也支持与TS/JavaScript（简称JS）高效互操作。
 
+ArkTS基础语法提供了语言核心概念的详细讲解，包括基础知识、基本操作符、字符串、集合类型、控制语句、函数、枚举、类、属性、方法、继承、初始化、错误处理、类型转换、接口、泛型、异步并发、高级运算符、模块系统和注解等内容，帮助开发者全面掌握ArkTS语言特性，详细信息请参考[基础知识](../quick-start/arkts-language-guide-basics.md)。
+
 ArkTS基础类库和容器类库增强了语言的基础功能，提供包括[任意精度数学库Decimal](../reference/apis-arkts/js-apis-arkts-decimal.md)、[Buffer与FastBuffer](buffer.md)、[XML概述](xml-overview.md)和多种容器库等能力，协助开发者简化开发工作，提升开发效率。
 
 针对TS/JS并发能力支持有限的问题，ArkTS对并发编程API和能力进行了增强，提供了[TaskPool](taskpool-introduction.md)和[Worker](worker-introduction.md)两种并发API供开发者选择。另外，ArkTS进一步提出了Sendable的概念来支持对象在并发实例间的引用传递，提升ArkTS对象在并发实例间的通信性能。

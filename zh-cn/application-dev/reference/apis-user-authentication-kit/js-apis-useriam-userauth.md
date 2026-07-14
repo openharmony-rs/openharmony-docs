@@ -2694,7 +2694,7 @@ onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
 | module    | number | 是   | 发送提示信息的模块标识。             |
-| acquire   | number | 是   | 认证执过程中的提示信息。 |
+| acquire   | number | 是   | 认证执行过程中的提示信息。 |
 | extraInfo | any    | 是   | 预留字段。                     |
 
 **示例：**

@@ -42,7 +42,7 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
-Ability状态发生变化时执行的回调函数。
+[Ability](js-apis-app-ability-ability.md)状态发生变化时执行的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -160,7 +160,7 @@ type ProcessData = _ProcessData.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [ProcessData](js-apis-inner-application-processData.md) | 进程数据信息。 |
+| _[ProcessData](js-apis-inner-application-processData.md).default | 进程数据信息。 |
 
 ## ProcessData<sup>23+</sup>
 
@@ -176,7 +176,7 @@ type ProcessData = _ProcessData
 
 | 类型                                                     | 说明           |
 | -------------------------------------------------------- | -------------- |
-| [_ProcessData](js-apis-inner-application-processData.md) | 进程数据信息。 |
+| _[ProcessData](js-apis-inner-application-processData.md) | 进程数据信息。 |
 
 **示例：**
 
