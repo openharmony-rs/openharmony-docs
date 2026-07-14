@@ -100,7 +100,7 @@
 3. 定义会话监听器回调函数。
 
    <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 定义消息回调
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
