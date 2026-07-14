@@ -315,6 +315,7 @@
     <!--Del-->
     - [Grid (系统接口)](arkui-ts/ts-container-grid-sys.md)
     - [List (系统接口)](arkui-ts/ts-container-list-sys.md)
+    - [Swiper (系统接口)](arkui-ts/ts-container-swiper-sys.md)
     <!--DelEnd-->
   - 导航与切换<!--navigation-and-switching-->
     - [Indicator](arkui-ts/ts-swiper-components-indicator.md)
