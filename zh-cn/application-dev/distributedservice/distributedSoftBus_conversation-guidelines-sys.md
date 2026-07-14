@@ -117,8 +117,9 @@
 4. 注册会话监听器，接收来自可信设备的数据。
 
    <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 注册监听器
    registerListener(): void {
      hilog.info(DOMAIN, TAG, 'registerListener called');
      try {
@@ -134,8 +135,9 @@
 5. 注销会话监听器。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 注销监听器
    unregisterListener(): void {
      hilog.info(DOMAIN, TAG, 'unregisterListener called');
      try {
@@ -192,17 +194,18 @@
 3. 获取可信设备列表，选择目标设备。
 
    <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
+   // 获取受信任设备
    getTrustedDevices(): void {
      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
      try {
        let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
        if (devices && devices.length > 0) {
-         let deviceInfo = devices.map((d, idx) =>
+           let deviceInfo = devices.map((d, idx) =>
            `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
          ).join('\n');
-         hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+           hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
            hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
          } else {
            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
