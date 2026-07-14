@@ -4882,10 +4882,10 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
           .onOverrideErrorPage(event => {
             let htmlStr = event.error.getErrorCode() + "</h1></html>"
             if (event.request.isMainFrame()) {
-              let mainFrameHtml = "<html><h1>mainframe error occur : " + htmlStr;
+              let mainFrameHtml = "<html><h1>mainframe error occurs : " + htmlStr;
               return mainFrameHtml;
             }
-            let subFrameHtml = "<html><h1>subframe error occur : " + htmlStr;
+            let subFrameHtml = "<html><h1>subframe error occurs : " + htmlStr;
             return subFrameHtml;
           })
       }
