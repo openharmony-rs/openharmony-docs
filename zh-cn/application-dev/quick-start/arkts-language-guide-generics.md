@@ -1229,7 +1229,7 @@ console.info(`${typeofConfig.timeout.toString()}`);
 <!-- @[ts_indexed_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 索引访问类型：通过键名获取属性类型
+// 变型标注：协变out、逆变in、不变in out
 type IndexedPerson = { name: string; age: number; alive: boolean };
 type IndexedName = IndexedPerson['name'];   // string
 type IndexedAge = IndexedPerson['age'];     // number
@@ -1264,7 +1264,7 @@ console.info(`${iaPersonAlive.toString()}`);
 <!-- @[ts_conditional_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 条件类型：根据类型关系选择不同结果
+// 变型标注：协变out、逆变in、不变in out
 type IsString<T> = T extends string ? true : false;
 type CondA = IsString<string>;   // true
 type CondB = IsString<number>;   // false
@@ -1307,7 +1307,7 @@ console.info(`${condN}`);  // 42.00
 <!-- @[ts_mapped_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
 
 ``` TypeScript
-// 映射类型：遍历属性键生成新类型
+// 变型标注：协变out、逆变in、不变in out
 type MappedReadonly<T> = { readonly [P in keyof T]: T[P] };
 type MappedPartial<T> = { [P in keyof T]?: T[P] };
 

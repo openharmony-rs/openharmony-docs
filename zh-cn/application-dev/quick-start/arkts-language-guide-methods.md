@@ -1072,7 +1072,7 @@ class Animal {
 }
 
 class Dog extends Animal {
-  // 重写方法（override关键字为可选）
+  // 重写方法（TypeScript中override可选）
   speak(): string {
     return 'Dog barks';
   }

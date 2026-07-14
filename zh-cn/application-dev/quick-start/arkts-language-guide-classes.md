@@ -785,8 +785,8 @@ class Base {
 }
 
 class Derived extends Base {
-  // 使用override标记（可选）
-  override method(): void {
+  // TypeScript使用override标记（可选）
+  method(): void {
     console.info('Derived method');
   }
 }

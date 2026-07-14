@@ -409,18 +409,18 @@ class C {
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
 
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
-
+   
    ``` TypeScript
    // MyAnno.ets
    export @interface ClassAuthor5 {}
-
+   
    @interface MethodAnno { // 没导出
      data: number;
    }
    ```
 
    <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
-
+   
    ``` TypeScript
    // NameAnno.d.ets
    export declare @interface ClassAuthor3 {}
@@ -433,40 +433,40 @@ class C {
   - 2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
 
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
-
+   
    ``` TypeScript
    // MyAnno.ets
    import { ClassAuthor4 } from './Author';
-
+   
    export @interface MethodAnno4 {
      data: number = 0;
    }
-
+   
    @ClassAuthor4
    class MyClass {
      @MethodAnno4({data: 123})
      foo() {}
-
+   
      @MethodAnno4({data: 456})
      private bar() {}
    }
    ```
 
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
-
+   
    ``` TypeScript
    // NameAnno.d.ets 编译器生成的声明文件
    import { ClassAuthor4 } from './Author';
-
+   
    export declare @interface MethodAnno4 {
      data: number = 0;
    }
-
+   
    @ClassAuthor4
    export declare class MyClass {
      @MethodAnno4({data: 123})
      foo(): void;
-
+   
      bar; // 私有方法不保留注解
    }
    ```
