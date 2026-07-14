@@ -2,6 +2,7 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -821,7 +822,7 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| startTimeMs | number | 是   | 区间开始位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为[0, duration)。可以取值-1，表示从0位置开始播放。|
+| startTimeMs | number | 是   | 区间开始位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为[0, duration)。可以取值-1，表示从0位置开始播放。小于-1的其他值不满足要求会报错。|
 | endTimeMs | number | 是   | 区间结束位置，单位为毫秒（ms）。<br>取值原则：该值必须为整数，范围为(startTimeMs, duration]。可以取值-1，表示播放到资源末尾。|
 | mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 支持SeekMode.SEEK_PREV_SYNC和SeekMode.SEEK_CLOSEST, <br/>默认值为SeekMode.SEEK_PREV_SYNC。|
 
