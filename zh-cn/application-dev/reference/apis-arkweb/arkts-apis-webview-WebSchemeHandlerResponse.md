@@ -87,7 +87,8 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
-import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNetErrorList } from '@ohos.web.netErrorList';
 import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 
 @Entry
