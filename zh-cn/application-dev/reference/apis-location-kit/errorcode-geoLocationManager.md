@@ -52,7 +52,7 @@ The location switch is off.
 
 ## 3301200 定位失败，未获取到定位结果
 
-### 1. 网络不可用导致定位失败
+### 错误原因1. 网络不可用导致定位失败
 
 **错误信息**
 
@@ -70,7 +70,7 @@ The network locating is failed because the network cannot be accessed.
 
 请检查设备是否能联网，设备是否插入SIM卡，Wi-Fi开关是否开启等。</br>
 
-### 2. 定位结果不满足精度要求导致定位超时
+### 错误原因2. 定位结果不满足精度要求导致定位超时
 
 **错误信息**
 
@@ -110,7 +110,25 @@ The system does not have a cache location.
 
 系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
 
-### 4. 其他原因导致定位失败
+### 错误原因4. 获取后处理轨迹失败
+ 	 
+ **错误信息**
+ 	 
+ Failed to obtain the post processing track because sports type is not supported.
+ 	 
+ **错误描述**
+ 	 
+ 不支持当前输入的运动类型，无法获取后处理轨迹。
+ 	 
+ **可能原因**
+ 	 
+ 入参设置错误，请使用支持的sports类型。
+ 	 
+ **处理步骤**
+ 	 
+ 请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#geolocationmanagergetpostprocessingtrack)入参说明，使用支持的sports类型。</br>
+
+### 错误原因5. 其他原因导致定位失败
 
 **错误信息**
 
