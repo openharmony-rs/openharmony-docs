@@ -6323,6 +6323,160 @@
 
 **起始版本**：20
 
+## ohos.permission.TV_MANAGE_SOURCE
+
+允许系统应用管理和控制智慧屏输入源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+允许系统应用管理智慧屏图像画质。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+允许系统应用读取智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+允许系统应用设置智慧屏声音输出设备信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+允许系统应用查询与设置智慧屏音效。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+允许系统应用查询与设置智慧屏计算音频。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+允许系统应用通过HDMI CEC联动控制CEC设备。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+允许系统应用访问智慧屏Camera AI算法。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+允许系统应用对智慧屏故障进行智能检测。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+允许系统应用访问智慧屏投屏。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+允许系统应用管理智慧屏日志同步。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
 
 允许系统应用使用通行密钥服务的管理凭据功能。
