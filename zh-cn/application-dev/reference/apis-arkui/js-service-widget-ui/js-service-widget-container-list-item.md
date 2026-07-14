@@ -42,7 +42,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | column-span | &lt;number&gt; | 1 | 否 | 当前的list-item需要在list中占据的列的数量，默认占一列，仅在list为多列时生效。 |
-| click-color | &lt;color&gt; | - | 否 | 设置列表项按压点击时的背板颜色。 |
+| click-color | &lt;color&gt; | - | 否 | 设置list-item按压点击时的背板颜色。 |
 
 
 ## 事件

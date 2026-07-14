@@ -6,6 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+本模块提供图片处理相关的多种接口，涵盖图片区域数据访问、图片信息查询、图像解码与编码配置、元数据管理、HDR合成等能力，适用于图片解码、编码、元数据查询和HDR图像处理等场景。
+
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -20,32 +22,32 @@
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-| 名称   | 类型               | 只读|  可选| 说明                                                         |
+| 名称   | 类型               | 只读|  可选| 说明                                                    |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
-| pixels | ArrayBuffer        | 否 |   否  | 像素数据缓冲区。仅支持BGRA_8888格式的像素数据。 |
-| offset | number             | 否 |   否  | 偏移量。单位：字节（Byte）。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride >= region.size.width * 4，不满足时数据读取异常。                   |
-| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
+| pixels | ArrayBuffer        | 否 |   否  | 像素数据缓冲区。                                        |
+| offset | number             | 否 |   否  | 偏移量。单位：字节（Byte）。                             |
+| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。       |
+| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。指定的区域宽度加X坐标不能大于原图的宽度，指定的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
 
-表示图片信息。
+表示图像的基本信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称 | 类型          | 只读 | 可选 | 说明       |
 | ---- | ------------- | --- |-----|---------- |
-| size | [Size](#size) | 否 |  否  | 图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| size | [Size](#size) | 否 |  否  | 图像尺寸。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | density<sup>9+</sup> | number | 否  | 否 | 像素密度。单位：ppi（像素/英寸）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride >= size.width * 4，不满足时数据读取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| stride<sup>11+</sup> | number | 否  | 否  | 跨距（行跨距），内存中每行像素所占的空间。单位：字节（Byte）。跨距 >= 图像宽度 * 每像素字节数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用ImageSource[属性](arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](arkts-apis-image-ImagePacker.md#属性)中的supportedFormats查看解码和编码支持的格式范围。  |
-| isHdr<sup>12+</sup> | boolean  |  否  | 否  | true表示图片为高动态范围（HDR），false表示图片非高动态范围（SDR）。对于[ImageSource](arkts-apis-image-ImageSource.md)，代表源图片是否为HDR；对于[PixelMap](arkts-apis-image-PixelMap.md)，代表解码后的PixelMap是否为HDR。 |
+| alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  | 透明度类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| mimeType<sup>12+</sup> | string  |  否  |   否  | 图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用ImageSource[属性](arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](arkts-apis-image-ImagePacker.md#属性)中的supportedFormats查看解码和编码支持的格式范围。  |
+| isHdr<sup>12+</sup> | boolean  |  否  | 否  | true表示图像为高动态范围（HDR），false表示图像非高动态范围（SDR）。对于[ImageSource](arkts-apis-image-ImageSource.md)，代表源图片是否为HDR；对于[PixelMap](arkts-apis-image-PixelMap.md)，代表解码后的PixelMap是否为HDR。 |
 
 ## Size
 
-表示图片尺寸。
+表示图像尺寸。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -53,10 +55,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-| 名称   | 类型   | 只读 |  可选  |说明           |
+| 名称   | 类型   | 只读 |  可选  | 说明           |
 | ------ | ------ | -- |-----| -------------- |
-| height | number | 否  |  否  |输出图片的高。单位：像素（px）。 |
-| width  | number | 否  |  否 | 输出图片的宽。单位：像素（px）。 |
+| height | number | 否  | 否 | 图像或区域的高度。单位：像素（px）。取值范围是正整数。 |
+| width  | number | 否  | 否 | 图像或区域的宽度。单位：像素（px）。取值范围是正整数。 |
 
 ## HdrComposeOptions<sup>23+</sup>
 
@@ -108,12 +110,12 @@ PixelMap的初始化选项。
 
 | 名称                     | 类型                               | 只读 |可选 |  说明           |
 | ------------------------ | ---------------------------------- | ----| -----|  -------------- |
-| alphaType<sup>9+</sup>   | [AlphaType](arkts-apis-image-e.md#alphatype9)           | 否   | 是| 透明度。默认值为IMAGE_ALPHA_TYPE_PREMUL。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
-| editable                 | boolean                            | 否   | 是 | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。设为false时，可提升图像的渲染和传输性能，但是图像不可被二次编辑。例如，writePixels操作将失败。默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。|
-| srcPixelFormat<sup>12+</sup>  | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是 | 传入的缓冲区数据的像素格式。默认值为BGRA_8888。|
+| alphaType<sup>9+</sup>   | [AlphaType](arkts-apis-image-e.md#alphatype9)           | 否   | 是 | 透明度类型。默认值为IMAGE_ALPHA_TYPE_PREMUL。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
+| editable                 | boolean                            | 否   | 是 | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。设为false时，可提升图像的渲染和传输性能，但是图像不可被二次编辑，例如，writePixels操作将失败。默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。|
+| srcPixelFormat<sup>12+</sup>  | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是 | 传入的缓冲区数据的像素格式。默认值为BGRA_8888。 |
 | pixelFormat              | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是| 生成的PixelMap的像素格式。默认值为RGBA_8888。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。     |
 | scaleMode<sup>9+</sup>   | [ScaleMode](arkts-apis-image-e.md#scalemode9)           | 否  | 是 | 缩放模式。默认值为FIT_TARGET_SIZE。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
-| size                     | [Size](#size)                      | 否  | 否 | 创建的图片尺寸，宽高值必须为正整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| size                     | [Size](#size)                      | 否  | 否 | 创建的图像尺寸，宽高值必须为正整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 
 ## DecodingOptions<sup>7+</sup>
 
@@ -174,9 +176,9 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size | [Size](#size) | 否   | 否   | 区域大小。   |
-| x    | number        | 否   | 否  | 区域左上角横坐标。单位：像素（px）。 |
-| y    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素（px）。 |
+| size | [Size](#size) | 否   | 否   | 区域尺寸。    |
+| x    | number        | 否   | 否  | 区域左上角像素的横坐标（X坐标）。单位：像素（px）。 |
+| y    | number        | 否  | 否  | 区域左上角像素的纵坐标（Y坐标）。单位：像素（px）。 |
 
 ## PackingSizeLimit
 
@@ -257,28 +259,28 @@ PixelMap的初始化选项。
 
 | 名称          | 类型       | 只读 | 可选 | 说明         |
 | ------------- | ----------| -- | -- | ------------ |
-| displayPrimariesX     | Array\<number>  | 否 | 否 | 归一化后显示设备三基色的X坐标，数组的长度为3，以0.00002为单位，范围[0.0, 1.0]。  |
-| displayPrimariesY     | Array\<number>  | 否 | 否 | 归一化后显示设备三基色的Y坐标，数组的长度为3，以0.00002为单位，范围[0.0, 1.0]。  |
-| whitePointX  | number  | 否 | 否 | 归一化后白点值的X坐标，以0.00002为单位，范围[0.0, 1.0]。   |
-| whitePointY  | number   | 否 | 否 | 归一化后白点值的Y坐标，以0.00002为单位，范围[0.0, 1.0]。   |
-| maxLuminance  | number  | 否 | 否 | 图像主监视器最大亮度。单位：尼特（nit），最大值为65535。   |
-| minLuminance  | number   | 否 | 否 | 图像主监视器最小亮度。单位：尼特（nit），实际值 = 存储值 × 0.0001，最大值为6.5535。   |
-| maxContentLightLevel  | number  | 否 | 否 | 显示内容的最大亮度。单位：尼特（nit），最大值为65535。   |
-| maxFrameAverageLightLevel  | number  | 否 | 否 | 显示内容的最大平均亮度。单位：尼特（nit），最大值为65535。 |
+| displayPrimariesX     | Array\<number>  | 否 | 否 | 归一化后显示设备三基色的X坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。 |
+| displayPrimariesY     | Array\<number>  | 否 | 否 | 归一化后显示设备三基色的Y坐标。数组的长度为3，按R、G、B顺序存储，以0.00002为单位，取值范围是[0.0, 0.99998]。 |
+| whitePointX  | number  | 否 | 否 | 归一化后白点值的X坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。 |
+| whitePointY  | number   | 否 | 否 | 归一化后白点值的Y坐标。以0.00002为单位，取值范围是[0.0, 0.99998]。 |
+| maxLuminance  | number  | 否 | 否 | 图像主监视器最大亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。 |
+| minLuminance  | number   | 否 | 否 | 图像主监视器最小亮度。以0.0001为单位，取值范围是[0, 6.5535]。单位：尼特（nit）。 |
+| maxContentLightLevel  | number  | 否 | 否 | 显示内容的最大亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。   |
+| maxFrameAverageLightLevel  | number  | 否 | 否 | 显示内容的最大平均亮度。浮点数，以1为单位，取值范围是[0, 65535]。单位：尼特（nit）。 |
 
 ## GainmapChannel<sup>12+</sup>
 
-Gainmap图单个通道的数据内容，参考ISO 21496-1。
+HDR增益图单个通道的数据内容，参考ISO 21496-1。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称          | 类型       | 只读 | 可选 | 说明         |
 | ------------- | ----------| -- | -- | ------------ |
-| gainmapMax     | number   | 否 | 否 | 增强图像的最大值，参考ISO 21496-1。  |
-| gainmapMin     | number   | 否 | 否 | 增强图像的最小值，参考ISO 21496-1。  |
-| gamma  | number    | 否 | 否 | gamma值，参考ISO 21496-1。   |
-| baseOffset  | number     | 否 | 否 | 基础图的偏移，参考ISO 21496-1。   |
-| alternateOffset  | number    | 否 | 否 | 提取的可选择图像偏移量，参考ISO 21496-1。    |
+| gainmapMax     | number   | 否 | 否 | 增益图的最大值。浮点数，取值范围是(0, +∞)且必须大于gainmapMin，参考ISO 21496-1。  |
+| gainmapMin     | number   | 否 | 否 | 增益图的最小值。浮点数，取值可以为0或负值但必须小于gainmapMax，参考ISO 21496-1。  |
+| gamma  | number    | 否 | 否 | 增益曲线的Gamma校正值。浮点数，取值范围是(0, +∞)，参考ISO 21496-1。   |
+| baseOffset  | number     | 否 | 否 | 基础图的偏移量。浮点数，参考ISO 21496-1。   |
+| alternateOffset  | number    | 否 | 否 | 可选择图像的偏移量。浮点数，参考ISO 21496-1。    |
 
 ## ImageMetadata<sup>23+</sup>
 
@@ -404,19 +406,19 @@ Dng图像元数据类，用于存储图像的元数据。
 
 ## HdrGainmapMetadata<sup>12+</sup>
 
-Gainmap使用的元数据值，[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
+增益图使用的元数据值，[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称          | 类型       | 只读 | 可选 | 说明         |
 | ------------- | ----------| -- | -- | ------------ |
-| writerVersion     | number   | 否 | 否 | 元数据编写器使用的版本。  |
-| miniVersion     | number   | 否 | 否 | 元数据解析需要理解的最小版本。  |
-| gainmapChannelCount  | number    | 否 | 否 | Gainmap的颜色通道数，值为3时RGB通道的元数据值不同，值为1时各通道元数据值相同，参考ISO 21496-1。  |
-| useBaseColorFlag  | boolean     | 否 | 否 | 是否使用基础图的色彩空间，参考ISO 21496-1。true表示是，false表示否。   |
-| baseHeadroom  | number    | 否 | 否 |  基础图提亮比，参考ISO 21496-1。   |
-| alternateHeadroom  | number     | 否 | 否 |  提取的可选择图像提亮比，参考ISO 21496-1。  |
-| channels  | Array\<[GainmapChannel](#gainmapchannel12)> | 否 | 否 | 各通道的数据，长度为3，参考ISO 21496-1。 |
+| writerVersion     | number   | 否 | 否 | 元数据编写器的版本。  |
+| miniVersion     | number   | 否 | 否 | 元数据解析所需的最小版本。  |
+| gainmapChannelCount  | number    | 否 | 否 | 增益图的颜色通道数。取值为1或3，值为3时RGB通道的元数据值不同，值为1时各通道元数据值相同，参考ISO 21496-1。  |
+| useBaseColorFlag  | boolean     | 否 | 否 | 是否使用基础图的色彩空间。true表示使用，false表示不使用，参考ISO 21496-1。 |
+| baseHeadroom  | number    | 否 | 否 | 基础图的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。   |
+| alternateHeadroom  | number     | 否 | 否 | 可选择图像的提亮比。取值范围是[1.0, +∞)，参考ISO 21496-1。  |
+| channels  | Array\<[GainmapChannel](#gainmapchannel12)> | 否 | 否 | 各通道的数据，长度为3，按R、G、B三通道存储，参考ISO 21496-1。 |
 
 ## ImageReceiverOptions<sup>23+</sup>
 

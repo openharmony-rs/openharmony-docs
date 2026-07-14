@@ -43,7 +43,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | background-color | &lt;color&gt; | white<br/> | 否 | 设置刷新组件的背景颜色。 |
-| progress-color | &lt;color&gt; | black<br/> | 否 | 设置刷新组件的loading图标颜色。 |
+| progress-color | &lt;color&gt; | black<br/> | 否 | 设置刷新组件的进度图标颜色。 |
 
 
 ## 事件

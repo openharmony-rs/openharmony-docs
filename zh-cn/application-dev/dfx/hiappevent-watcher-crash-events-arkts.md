@@ -284,7 +284,7 @@ HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty
 HiAppEvent eventInfo.params.hilog.size=100
 HiAppEvent eventInfo.params.process_life_time=25
 HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log","/data/storage/el2/log/hiappevent/APP_CRASH_1503045716409_2610.dmp"]
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.page_switch_log=["/data/storage/el2/log/page_switch/snapshot/page_switch.20260420-134923-267.1.log"]
 HiAppEvent eventInfo.params.test_data=100
@@ -292,7 +292,7 @@ HiAppEvent eventInfo.params.test_data=100
 
 ## 从Faultlogger接口迁移崩溃事件
 
-[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用, 不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
 
 在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
 

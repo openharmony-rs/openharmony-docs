@@ -21,14 +21,14 @@
 
 | 名称                        | 类型    | 只读 | 可选 | 说明                                           |
 | --------------------------- | ------- | ---- | ---- | ---------------------------------------------- |
-| bundleName                  | string  | 否   | 否   | 应用程序的Bundle名称。                         |
+| bundleName                  | string  | 否   | 否   | 应用程序的Bundle名称。用于唯一标识应用程序。       |
 | moduleName                  | string  | 否   | 是   | 应用程序的Module名称。                         |
-| abilityName                 | string  | 否   | 否   | 应用程序的Ability名称。                        |
+| abilityName                 | string  | 否   | 否   | 应用程序的Ability名称，用于标识启动的具体Ability组件。  |
 | abilityTypeName             | string  | 否   | 是   | 应用程序的Ability类型。                        |
-| appCloneIndex<sup>12+</sup> | number  | 否   | 是   | 分身应用索引。                                 |
+| appCloneIndex<sup>12+</sup> | number  | 否   | 是   | 分身应用索引。默认值为0，表示主应用。            |
 | userId<sup>20+</sup>        | number  | 是   | 是   | 应用程序所属的用户ID，用于区分同一设备上不同用户账号下的应用。      |
 | setterUserId<sup>20+</sup>  | number  | 是   | 是   | 设置者的用户ID，记录了将当前应用设置为开机自启动的用户ID。         |
-| canUserModify<sup>20+</sup> | boolean | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态，true表示允许，false表示不允许。 |
+| canUserModify<sup>20+</sup> | boolean | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态，true表示允许，false表示不允许。默认值为false。 |
 
 **示例：**
 

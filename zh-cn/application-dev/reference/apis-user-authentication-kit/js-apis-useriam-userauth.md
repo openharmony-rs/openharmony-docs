@@ -7,8 +7,6 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 **userAuth**模块是OpenHarmony系统中用于用户身份认证的核心模块，提供了设备解锁、支付验证、应用登录等场景下的身份认证能力。
 
 该模块支持多种生物特征认证方式（人脸、指纹）和密码认证（PIN），并提供不同级别的安全信任等级。从API版本26.0.0开始，新增伴随设备认证的方式。
@@ -1954,7 +1952,7 @@ onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
 | module    | number | 是   | 发送提示信息的模块标识。             |
-| acquire   | number | 是   | 认证执过程中的提示信息。 |
+| acquire   | number | 是   | 认证执行过程中的提示信息。 |
 | extraInfo | any    | 是   | 预留字段。                     |
 
 **示例：**

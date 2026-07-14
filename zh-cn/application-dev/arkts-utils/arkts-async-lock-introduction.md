@@ -4,7 +4,7 @@
 <!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决多线程并发实例间的数据竞争问题，ArkTS引入了异步锁能力。异步锁可能会被类对象持有，因此为了更方便地在并发实例间获取同一个异步锁对象，[AsyncLock对象](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#asynclock)支持跨线程引用传递。
 

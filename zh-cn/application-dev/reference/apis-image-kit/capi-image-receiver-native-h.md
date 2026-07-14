@@ -148,7 +148,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| 表示OH_ImageReceiverOptions对象的指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示Image_Size对象的指针。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示将设置的Image_Size对象。 |
 
 **返回：**
 

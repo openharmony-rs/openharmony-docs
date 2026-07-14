@@ -132,7 +132,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullp
 
 可以根据需要设置区域坐标和大小，使用[OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100px，宽100px的矩形区域。此接口在录屏开始前后都可以设置。
 
-<!-- @[screenCapture_buffer_setCaptureArea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_buffer_setCaptureArea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_Rect* region = new OH_Rect;
@@ -140,7 +140,7 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
+uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕ID。
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 delete region;
 region = nullptr;
@@ -188,13 +188,13 @@ OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_
 
 使用[OH_AVScreenCapture_ContentFilter_AddWindowContent](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_contentfilter_addwindowcontent)设置可过滤的窗口，通过窗口ID来指定。
 
-<!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
 // 添加过滤通知音。
 OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
-// 排除指定窗口id。
+// 排除指定窗口ID。
 std::vector<int> windowIdsExclude = {};
 OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, windowIdsExclude.empty() ?
     nullptr : &windowIdsExclude[0], static_cast<int32_t>(windowIdsExclude.size()));

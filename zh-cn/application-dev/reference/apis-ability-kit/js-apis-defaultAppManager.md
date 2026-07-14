@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供查询默认应用的能力，支持查询当前应用是否是默认应用。
@@ -48,7 +48,7 @@ isDefaultApplication(type: string): Promise\<boolean>
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型中的值。                           |
+| type  | string | 是    | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型中的值。                           |
 
 **返回值：**
 
@@ -83,7 +83,7 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 
 isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
-根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。
+根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -91,8 +91,8 @@ isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
 | 参数名         | 类型                              | 必填   | 说明                                      |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| type  | string                          | 是    | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型中的值。                            |
-| callback    | AsyncCallback\<boolean> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为bool值，true表示是默认应用，false表示不是默认应用；否则为错误对象。 |
+| type  | string                          | 是    | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型中的值。                            |
+| callback    | AsyncCallback\<boolean> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为bool值，true表示是默认应用，false表示不是默认应用；否则为错误对象。 |
 
 **错误码：**
 
@@ -122,7 +122,7 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 
 isDefaultApplicationSync(type: string): boolean
 
-以同步方法根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用boolean形式返回结果。
+以同步方法根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型判断当前应用是否是该类型的默认应用，使用boolean形式返回结果。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -130,7 +130,7 @@ isDefaultApplicationSync(type: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | -------| ------ | ---- | --------------------------------------- |
-|  type  | string | 是   | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型中的值。   |
+|  type  | string | 是   | 要查询的应用类型，取[ApplicationType](#applicationtype)或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型中的值。   |
 
 **返回值：**
 

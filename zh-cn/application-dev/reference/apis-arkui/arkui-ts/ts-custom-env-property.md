@@ -15,7 +15,7 @@
 ## \@CustomEnv
 CustomEnv\<T\>(key: CustomEnvKey\<T\>): PropertyDecorator
 
-\@CustomEnv装饰器，支持环境变量自定义能力。
+\@CustomEnv装饰器，支持环境变量自定义能力。使用前需先通过[CustomEnvKey.create()](#createt)方法创建自定义环境变量的Key，再将该Key作为参数传入\@CustomEnv装饰器。
 
 **起始版本：** 26.0.0
 
@@ -25,7 +25,7 @@ CustomEnv\<T\>(key: CustomEnvKey\<T\>): PropertyDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
+**参数：**
 
 |名称|类型|说明|
 | ----- | ----- | ------ |
@@ -65,7 +65,7 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+### 属性
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                              |
 | -------- | -------- | -------- | -------- |-------------------------------------------------------------------------------------------------|

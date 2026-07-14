@@ -285,7 +285,7 @@ struct formHostSample {
             this.getAllBundleFormsInfo();
           })
 
-        // 点击按钮弹出选择界面，点击确定后，添加默认尺寸的所选卡片。
+        // 点击按钮弹出选择界面，选择卡片后通过FormComponent显示所选卡片。
         // 请将$r('app.string.selectAddForm')替换为实际资源文件，在本示例中该资源文件的value值为"选择添加卡片"
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)

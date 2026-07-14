@@ -1,14 +1,14 @@
 # @ohos.file.RecentPhotoComponent (RecentPhotoComponent)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:35:18.775Z pushedAt=2026-06-23T09:25:46.756Z -->
 
 The RecentPhotoComponent embedded in the UI of an application allows the application to access the recent image or video in the user directory without the required permission. This component grants the application only the read permission.
+
+Note that **RecentPhotoComponent** does not support nesting. Additionally, prevent overlaying components with the **overlay** attribute or of higher levels on top it, as this will prevent it from receiving gesture events.
 
 > **NOTE**
 >
@@ -72,7 +72,7 @@ Represents information about the recent image or video.
 
 | Name        | Type    | Read-Only| Optional | Description                                                       |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | No | Yes    | Shooting time of the recent photo/video, in milliseconds (ms) (millisecond value since January 1, 1970).                     |
+| dateTaken  | number | No| Yes   | Time when the recent image or video is taken, in ms. The value is the number of milliseconds elapsed since the Unix epoch (00:00:00 UTC on January 1, 1970).                    |
 | identifier | string | No| Yes   | Hash value of the name of the recent image or video, which is used to help the application determine whether the image or video to be displayed is the same as the one displayed before.|
 
 ## RecentPhotoCheckResultCallback
@@ -95,7 +95,7 @@ Called to return the query result of the recent image or video.
 
 type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 
-Called when a recent photo is selected. No special processing is performed on the return value.
+Called when the recent image or video is selected. No special processing is performed on the return value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -148,8 +148,8 @@ Enumerates the sources of the image or video data.
 
 ```ts
 // xxx.ets
-// Since API version 23, it is recommended to use the unified import method to import the required modules from '@kit.MediaLibraryKit'.
-// In versions before API version 23, the modules need to be imported separately.
+// Since API version 23, you are advised to import required modules from '@kit.MediaLibraryKit'.
+// In versions earlier than API version 23, you need to import the required modules separately.
 // import { RecentPhotoComponent, RecentPhotoOptions, PhotoSource, RecentPhotoInfo, RecentPhotoCheckResultCallback, RecentPhotoClickCallback, RecentPhotoCheckInfoCallback } from '@ohos.file.RecentPhotoComponent';
 // import { BaseItemInfo } from '@ohos.file.PhotoPickerComponent';
 // import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
@@ -180,7 +180,7 @@ struct PickerDemo {
   }
 
   private onRecentPhotoCheckResult(recentPhotoExists: boolean): void {
-    // Image or video that meets the conditions exists.
+    // Image or video that meets the search criteria exists.
     if (recentPhotoExists) {
       console.info('The photo is exist.');
     }

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 > **说明：**
 >
@@ -146,17 +146,17 @@ The buffer size must be a multiple of ${size}.
 
 **错误描述**
 
-Buffer的长度不符合要求，长度需为特定size（16-bits、32-bits或64-bits）的整数倍。
+Buffer的长度不符合要求，长度需为特定size（2字节、4字节或8字节）的整数倍。
 
 **可能原因**
 
-Buffer的长度错误，不符合要求。Buffer长度要求为size的整数倍。其中size为16-bits、32-bits或者64-bits。
+Buffer的长度错误，不符合要求。Buffer长度要求为size的整数倍。其中size为2字节、4字节或者8字节。
 
 **处理步骤**
 
 确保Buffer长度符合要求。
 
-Buffer长度要求为size的整数倍。其中size为16-bits、32-bits或者64-bits。
+Buffer长度要求为size的整数倍。其中size为2字节、4字节或者8字节。
 
 ## 10200010 容器为空
 
@@ -203,7 +203,7 @@ The {className}'s constructor cannot be directly invoked.
 
 **错误描述**
 
-构造内置容器类的构造方法不支持直接调用。
+构造内置容器类的构造函数不支持直接调用。
 
 **可能原因**
 
@@ -239,7 +239,7 @@ The function is not marked as concurrent.
 
 **错误描述**
 
-函数未被标记为concurrent。
+函数未被标记为@Concurrent。
 
 **可能原因**
 
@@ -441,7 +441,7 @@ dependent task not allowed.
 
 **可能原因**
 
-当前串行队列中添加了存在依赖的任务。
+在串行队列中添加了使用addDependency()设置了依赖关系的任务，串行队列不允许存在依赖的任务。
 
 **处理步骤**
 
@@ -459,7 +459,7 @@ There is a circular dependency.
 
 **可能原因**
 
-当前任务存在循环依赖关系。
+多个任务之间通过addDependency()互相依赖，形成循环依赖链，导致任务无法正常执行。
 
 **处理步骤**
 
@@ -499,7 +499,7 @@ The delayTime is less than zero.
 
 **处理步骤**
 
-调用时，确保给定参数[delayTime](js-apis-taskpool.md#taskpoolexecutedelayed11)的值大于零（单位：ms）。无法保证时，需要捕获异常。
+调用时，确保给定参数[delayTime](js-apis-taskpool.md#taskpoolexecutedelayed11)的值不小于零（单位：ms）。无法保证时，需要捕获异常。
 
 ## 10200029 无法将ArrayBuffer同时设置为transferList和cloneList
 
@@ -573,7 +573,7 @@ Concurrent modification error.
 
 使用collections提供的非并发安全的容器时，使用异步锁进行保护。
 
-## 10200034 监听任务未注册回调函数
+## 10200034 已执行的任务不支持注册监听器
 
 **错误信息**
 
@@ -617,7 +617,7 @@ The stream has been ended.
 
 **错误描述**
 
-流已经结束仍然进行写操作。
+调用end接口结束流之后，仍尝试对已结束的流进行数据写操作，导致操作失败。
 
 **可能原因**
 
@@ -772,7 +772,7 @@ The asyncRunner task has been canceled.
 
 取消任务前，确保任务进入任务池且开始执行。无法保证时，需要捕获异常。
 
-## 10200056 异步队列任务不能具有依赖项
+## 10200056 任务已被AsyncRunner执行
 
 **错误信息**
 
@@ -780,7 +780,7 @@ The task has been executed by AsyncRunner.
 
 **错误描述**
 
-异步队列任务不能具有依赖项。
+已被AsyncRunner执行的异步队列任务不能再添加或移除依赖项。
 
 **可能原因**
 
@@ -990,7 +990,7 @@ The underlying ArrayBuffer is null or detached.
 
 **可能原因**
 
-ArrayBuffer已分离，或者ArrayBuffer为空。
+ArrayBuffer已分离，或者ArrayBuffer为null。
 
 **处理步骤**
 
@@ -1031,4 +1031,5 @@ Loading native module failed.
 
 **处理步骤**
 
-检查待加载的native模块是否在当前包内。
+1. 检查待加载的native模块是否在当前包内，确保模块路径正确。
+2. 检查native模块的内容是否完整且格式正确，确保模块可以被正确加载。

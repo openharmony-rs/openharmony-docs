@@ -29,7 +29,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [image.h](capi-image-h.md) | Defines **Image** node types for **NativeNode** APIs.|
 | [image_animator.h](capi-image-animator-h.md) | Defines **ImageAnimator** node types for **NativeNode** APIs.|
 | [layout.h](capi-layout-h.md) | Defines layout-related enumerations and APIs.|
-| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | Declares the custom node events for **NativeNode** APIs.|
+| [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md) | Declares the custom node events for **NativeNode** APIs.|
 | [grid.h](capi-grid-h.md) | Defines the enumerations and APIs of the **Grid** component.|
 | [list.h](capi-list-h.md) | Defines the enumerations and APIs of the **List** component.|
 | [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations and APIs of the **Navigation** or **Router** component.|

@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后台服务的创建、销毁、连接、断开等生命周期回调。
+AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后台服务的创建、销毁、连接、断开等生命周期回调。适用于需要长时间执行后台任务或维持后台连接的场景，例如后台流量监控行为，能够帮助应用提升后台服务的持续运行能力。
 
 > **说明：**
 >
@@ -133,7 +133,7 @@ onRequest(want: Want, startId: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | 是 | 调用方拉起当前AppServiceExtensionAbility实例时传递的Want类型信息，包括Ability名称、Bundle名称等。 |
-| startId | number | 是 | 返回拉起次数。首次拉起初始值返回1，多次拉起时自动递增。 |
+| startId | number | 是 | 拉起次数标识。首次拉起初始值为1，多次拉起时自动递增。建议开发者根据startId值判断是否为首次启动，避免重复执行初始化操作。 |
 
 **示例：**
 
@@ -156,8 +156,7 @@ onConnect(want: Want): rpc.RemoteObject
 
 调用方使用[connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility实例时，系统会触发该回调。
 
-
-应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
+应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -171,7 +170,7 @@ onConnect(want: Want): rpc.RemoteObject
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 一个RemoteObject对象，用于客户端和服务端进行通信。 |
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | RemoteObject对象，用于客户端和服务端通信。 |
 
 **示例：**
 

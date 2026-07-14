@@ -24,7 +24,7 @@
 
 
 ```ts
-@Extend(UIComponentName) function functionName { ... }
+@Extend(UIComponentName) function functionName() { ... }
 ```
 
 

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 一种线性数据结构，底层基于[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。且对元素数值有钳制，小于0的会被钳制为0，大于255的会被钳制为255，不同于Uint8Array的截断处理。
 
 > **说明：**

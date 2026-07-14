@@ -46,6 +46,8 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**系统接口**：此接口为系统接口。
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -63,8 +65,13 @@ let config: Configuration = {
   language: 'chinese' 
 };
 
-abilityManager.updateConfiguration(config, () => {
-    console.info('------------ updateConfiguration -----------');
+// 更新配置项
+abilityManager.updateConfiguration(config, (err: BusinessError) => {
+  if (err) {
+    console.error(`updateConfiguration fail, error code: ${err.code}, error msg: ${err.message}.`);
+    return;
+  }
+  console.info('------------ updateConfiguration success-----------');
 });
 ```
 
@@ -90,7 +97,7 @@ updateConfiguration(config: Configuration): Promise\<void>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | 成功时无返回值，仅表示操作完成；失败时返回错误对象。 |
 
 **示例**：
 
@@ -103,6 +110,7 @@ let config: Configuration = {
   language: 'chinese' 
 };
 
+// 更新配置信息
 abilityManager.updateConfiguration(config).then(() => {
   console.info('updateConfiguration success');
 }).catch((err: BusinessError) => {
@@ -134,6 +142,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 import abilityManager from '@ohos.application.abilityManager';
 import { BusinessError } from '@ohos.base';
 
+// 获取Ability运行信息
 abilityManager.getAbilityRunningInfos((error: BusinessError, data) => {
   if (error) {
     console.error(`GetAbilityRunningInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
@@ -159,7 +168,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回Ability运行相关信息。 |
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象。成功时返回Ability运行相关信息数组；失败时返回错误对象。 |
 
 **示例**：
 
@@ -167,6 +176,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 import abilityManager from '@ohos.application.abilityManager';
 import { BusinessError } from '@ohos.base';
 
+// 获取Ability运行信息
 abilityManager.getAbilityRunningInfos().then((data) => {
   console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {

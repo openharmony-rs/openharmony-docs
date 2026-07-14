@@ -10,7 +10,7 @@
 
 Defines enumerations and APIs related to **WaterFlow**.
 
-**File to include:** <arkui/water_flow.h>
+**File to include:** <arkui/node_attributes/water_flow.h>
 
 **Library:** libace_ndk.z.so
 

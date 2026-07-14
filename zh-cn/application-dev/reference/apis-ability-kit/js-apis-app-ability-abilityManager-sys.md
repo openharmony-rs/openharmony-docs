@@ -323,7 +323,7 @@ try {
 
 getTopAbility(callback: AsyncCallback\<ElementName>): void
 
-获取窗口焦点所在的Ability。使用callback异步回调。
+获取当前拥有窗口焦点的UIAbility信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -333,7 +333,7 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的ElementName对象；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -374,7 +374,7 @@ getTopAbility(): Promise\<ElementName>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及ElementName对象。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -835,7 +835,7 @@ abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.Abili
 
 notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
-将断言调试结果通知应用程序。使用Promise异步回调。
+将断言调试结果通知应用程序。使用Promise异步回调。调试工具或应用需要在断言调试场景中处理用户操作结果时使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -952,7 +952,7 @@ export default class EntryAbility extends UIAbility {
 
 setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
-常驻进程支持按需启停。
+设置或移除指定包名的进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
 
 **系统接口**：此接口为系统接口。
 
@@ -1009,7 +1009,7 @@ try {
 
 preloadUIExtensionAbility(want: Want): Promise\<number>
 
-预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
+预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。应用需要提前加载UIExtensionAbility以提升启动性能时使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1486,7 +1486,7 @@ AbilityForegroundStateObserver二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md).default | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 

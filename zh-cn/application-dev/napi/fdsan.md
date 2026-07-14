@@ -1,10 +1,10 @@
 # fdsan使用指导
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @liyiming13-->
 <!--Designer: @huang_huijin-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 功能介绍
 

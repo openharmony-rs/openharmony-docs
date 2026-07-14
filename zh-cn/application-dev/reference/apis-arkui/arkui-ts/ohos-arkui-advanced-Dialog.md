@@ -36,7 +36,7 @@ import { TipsDialog, SelectDialog, ConfirmDialog, AlertDialog, LoadingDialog, Cu
 TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) => void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 
-提示弹出框，即为带图形确认弹出框，必要时可通过图形化方式展现确认弹出框。
+提示弹出框，用于提醒用户关注特定事项或进行确认操作。
 
 
 **装饰器类型：**\@CustomDialog
@@ -46,14 +46,14 @@ TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap
 
 | 名称                          | 类型                                                                                                                                  | 必填 | 装饰器类型 | 说明                                                                                                                                                                  |
 | ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------| ---- | ---------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                                                    | 是 | -          | 提示弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                 |
+| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                                                    | 是 | -          | 提示弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                 |
 | imageRes                      | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                          |
 | imageSize                     | [SizeOptions](ts-types.md#sizeoptions)                                                                                              | 否   | -          | 自定义图片尺寸。<br/>默认值：64*64vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框标题。<br/>默认不设置或设置为undefined，弹出框标题不显示。<br/>  **说明：**  标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                        |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框内容。<br/>默认不设置或设置为undefined，弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                       |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | checkbox的提示内容。<br/>默认不设置或设置为undefined，提示内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                  |
 | isChecked                     | boolean                                                                                                                             | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
-| checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                                                                                        | 否   | -          | checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。现推荐使用onCheckedChange<sup>12+</sup>。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                                                                                        | 否   | -          | checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。<br/>**说明：** 推荐使用onCheckedChange<sup>12+</sup>。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                                                        | 否   | -          | checkbox的选中状态改变事件回调。回调参数类型为boolean，true表示checkbox已选中，false表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                                                     | 否   | -          | 提示弹出框左侧按钮。<br/>默认不设置或设置为undefined，左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                              |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                                                                                                     | 否   | -          | 提示弹出框右侧按钮。<br/>默认不设置或设置为undefined，右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                   |
@@ -72,11 +72,11 @@ SelectDialog({controller: CustomDialogController, title: ResourceStr, content?: 
 
 | 名称                | 类型                                                         | 必填 | 说明                                                                                                                      |
 | ------------------- | ------------------------------------------------------------ | ---- |-------------------------------------------------------------------------------------------------------------------------|
-| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | 选择弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | 选择弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
 | title               | [ResourceStr](ts-types.md#resourcestr)                       | 是   | 选择弹出框标题。<br/> **说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                            |
 | content             | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 选择弹出框内容。<br/>默认不设置或设置为undefined，弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                            |
 | selectedIndex       | number                                                       | 否   | 选择弹出框的选中项。<br/>取值范围：大于等于-1的整数。<br/>默认值：-1，没有选中项。若设置数值小于-1，按没有选中项处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| confirm             | [ButtonOptions](#buttonoptions)                              | 否   | 选择弹出框底部按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                          |
+| confirm             | [ButtonOptions](#buttonoptions)                              | 否   | 选择弹出框底部按钮。<br/>默认不设置或设置为undefined，底部按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                          |
 | radioContent        | Array&lt;[SheetInfo](ts-methods-action-sheet.md#sheetinfo对象说明)&gt; | 是   | 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                   |
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
 | themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                         |
@@ -85,18 +85,18 @@ SelectDialog({controller: CustomDialogController, title: ResourceStr, content?: 
 
 ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
-信息确认类弹出框，操作未正确执行（如网络错误、电池电量过低），或未正确操作时（如指纹录入），反馈的错误或提示信息。
+信息确认类弹出框，用于在操作未正确执行（如网络错误、电池电量过低），或未正确操作时（如指纹录入）反馈错误或提示信息。
 
 **装饰器类型：**\@CustomDialog
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                          | 类型                                                                                               | 必填 | 装饰器类型 | 说明                                                                                                                                                   |
-| ----------------------------- |--------------------------------------------------------------------------------------------------| ---- | ---------- |------------------------------------------------------------------------------------------------------------------------------------------------------|
-| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -          | 确认弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                  |
+| 名称                          | 类型                                                                                               | 必填 | 装饰器类型 | 说明               |
+| ----------------------------- |--------------------------------------------------------------------------------------------------| ---- | ---------- |-------------------------------|
+| controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -          | 确认弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                  |
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                           | 是   | -          | 确认弹出框标题。<br/>**说明：** 标题超过两行会显示“...”。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                            |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -          | 确认弹出框内容。<br/>默认不设置或设置为undefined，确认弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                  |
-| checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -          | checkbox的提示内容。<br/>默认不设置或设置为undefined，checkbox的提示内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                   |
+| checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -          | checkbox的提示内容。<br/>默认不设置或设置为undefined，checkbox的提示内容不显示。<br/>**说明：** 当提示内容不设置时，checkbox也会显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                   |
 | isChecked                     | boolean                                                                                          | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                      |
 | onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                     | 否   | -          | checkbox的选中状态改变事件回调。回调参数类型为boolean，true表示checkbox已选中，false表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                  | 否   | -          | 确认弹出框左侧按钮。<br/>默认不设置或设置为undefined，确认弹出框左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                         |
@@ -109,7 +109,7 @@ ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?:
 
 AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content: ResourceStr, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
-操作确认类弹出框，触发一个将产生严重后果的不可逆操作时，如删除、重置、取消编辑、停止等。
+操作确认类弹出框，用于在触发一个将产生严重后果的不可逆操作（如删除、重置、取消编辑、停止等）时进行确认。
 
 **装饰器类型：**\@CustomDialog
 
@@ -117,12 +117,12 @@ AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, sec
 
 | 名称                         | 类型                                                         | 必填 | 说明                                                                                                               |
 | ---------------------------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------------------------------------------------------------|
-| controller                   | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | 确认弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
-| primaryTitle<sup>12+</sup>   | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 确认弹出框一级标题。<br/> 默认不设置或设置为undefined，确认弹出框一级标题不显示。<br/>**说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| secondaryTitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 确认弹出框二级标题。<br/> 默认不设置或设置为undefined，确认弹出框二级标题不显示。<br/>**说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| content                      | [ResourceStr](ts-types.md#resourcestr)                       | 是   | 确认弹出框内容。<br/> 默认不设置或设置为undefined，确认弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                             |
-| primaryButton                | [ButtonOptions](#buttonoptions)                              | 否   | 确认弹出框左侧按钮。<br/>默认不设置或设置为undefined，确认弹出框左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
-| secondaryButton              | [ButtonOptions](#buttonoptions)                              | 否   | 确认弹出框右侧按钮。<br/>默认不设置或设置为undefined，确认弹出框右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
+| controller                   | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | 操作确认弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
+| primaryTitle<sup>12+</sup>   | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 操作确认弹出框一级标题。<br/> 默认不设置或设置为undefined，操作确认弹出框一级标题不显示。<br/>**说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| secondaryTitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 操作确认弹出框二级标题。<br/> 默认不设置或设置为undefined，操作确认弹出框二级标题不显示。<br/>**说明：** 标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| content                      | [ResourceStr](ts-types.md#resourcestr)                       | 是   | 操作确认弹出框内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                             |
+| primaryButton                | [ButtonOptions](#buttonoptions)                              | 否   | 操作确认弹出框左侧按钮。<br/>默认不设置或设置为undefined，操作确认弹出框左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
+| secondaryButton              | [ButtonOptions](#buttonoptions)                              | 否   | 操作确认弹出框右侧按钮。<br/>默认不设置或设置为undefined，操作确认弹出框右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
 | theme<sup>12+</sup>          | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                  |
 
@@ -139,7 +139,7 @@ LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?
 
 | 名称                | 类型                                                                                               | 必填 | 说明                                                                                                    |
 | ------------------- |--------------------------------------------------------------------------------------------------| ---- |-------------------------------------------------------------------------------------------------------|
-| Controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | content             | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | 加载弹出框内容。<br/> 默认不设置或设置为undefined，加载弹出框内容不显示。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
@@ -147,7 +147,7 @@ LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?
 
 ## CustomContentDialog<sup>12+</sup>
 
-CustomContentDialog({controller: CustomDialogController, contentBuilder: () => void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+CustomContentDialog({controller: CustomDialogController, contentBuilder: () => void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, localizedContentAreaPadding?: LocalizedPadding, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 自定义内容区弹出框，同时支持定义操作区按钮样式。
 
@@ -159,15 +159,15 @@ CustomContentDialog({controller: CustomDialogController, contentBuilder: () => v
 
 | 名称                | 类型                                                                                               | 必填 | 装饰器类型 | 说明                                                         |
 | ------------------- |--------------------------------------------------------------------------------------------------| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -  | 弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。                                               |
-| contentBuilder      | () => void                                                                                       | 是   | @BuilderParam | 弹出框内容。                                                 |
+| controller          | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | -  | 弹出框控制器，用于控制弹出框的显示和隐藏。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。                                             |
+| contentBuilder      | () => void                                                                                       | 是   | @BuilderParam | 用于构建弹出框内容区域的组件构建函数。                                                 |
 | primaryTitle        | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -  | 弹出框标题。<br/> 默认不设置或设置为undefined，弹出框标题不显示。<br/> **说明：** 标题超过两行会显示“...”。                                                 |
 | secondaryTitle      | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -  | 弹出框辅助文本。<br/> 默认不设置或设置为undefined，弹出框辅助文本不显示。<br/> **说明：** 辅助文本超过两行会显示“...”。                                             |
-| localizedContentAreaPadding | [LocalizedPadding](ts-types.md#localizedpadding12)                                               | 否   | -  | 弹出框内容区内边距。                                         |
+| localizedContentAreaPadding | [LocalizedPadding](ts-types.md#localizedpadding12)                                               | 否   | -  | 弹出框内容区内边距，支持按语言方向自适应。设置了该属性时，contentAreaPadding不生效。                                         |
 | contentAreaPadding  | [Padding](ts-types.md#padding)                                                                   | 否   | -  | 弹出框内容区内边距。设置了localizedContentAreaPadding属性时该属性不生效。|
 | buttons             | [ButtonOptions](#buttonoptions)[]                                                                | 否   | -  | 弹出框操作区按钮，最多支持4个按钮。                          |
 | theme | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | -  | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。 |
-| themeColorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | - | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM |
+| themeColorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | - | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM。 |
 
 >  **说明：**
 >
@@ -179,7 +179,7 @@ CustomContentDialog({controller: CustomDialogController, contentBuilder: () => v
 
 PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callback\<void>})
 
-跟手弹出框，基于目标组件位置弹出，上文中的TipsDialog、SelectDialog、ConfirmDialog、AlertDialog、LoadingDialog、CustomContentDialog都可作为弹出框内容。
+跟手弹出框，基于目标组件位置弹出，上述的TipsDialog、SelectDialog、ConfirmDialog、AlertDialog、LoadingDialog、CustomContentDialog都可作为弹出框内容。
 
 **装饰器类型：**\@Component
 
@@ -189,9 +189,9 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。visible为true时，表示显示弹出框，visible为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
-| popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹出框的参数。 |
-| targetBuilder | [Callback](ts-types.md#callback12)\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
+| visible | boolean | 是 | \@Link | 是否显示跟手弹出框。true表示显示弹出框，false表示隐藏弹出框。<br/>默认值为false。 |
+| popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹出框的参数，包含弹出框内容、位置等属性，具体参见PopoverOptions类型说明。 |
+| targetBuilder | [Callback](ts-types.md#callback12)\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件构建器函数，用于定义弹出框显示的参考位置组件。 |
 
 
 ## ButtonOptions
@@ -250,18 +250,18 @@ struct Index {
       primaryButton: {
         value: '取消',
         action: () => {
-          console.info('Callback when the first button is clicked')
+          console.info('Callback when the first button is clicked');
         },
       },
       secondaryButton: {
         value: '删除',
         role: ButtonRole.ERROR,
         action: () => {
-          console.info('Callback when the second button is clicked')
+          console.info('Callback when the second button is clicked');
         }
       },
       onCheckedChange: () => {
-        console.info('Callback when the checkbox is clicked')
+        console.info('Callback when the checkbox is clicked');
       }
     }),
   })
@@ -274,7 +274,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogControllerImage.open()
+              this.dialogControllerImage.open();
             })
         }.margin({bottom: 300})
       }.align(Alignment.Bottom)
@@ -311,19 +311,19 @@ struct Index {
         {
           title: '文本文本文本文本文本',
           action: () => {
-            this.radioIndex = 0
+            this.radioIndex = 0;
           }
         },
         {
           title: '文本文本文本文本',
           action: () => {
-            this.radioIndex = 1
+            this.radioIndex = 1;
           }
         },
         {
           title: '文本文本文本文本',
           action: () => {
-            this.radioIndex = 2
+            this.radioIndex = 2;
           }
         },
       ]
@@ -338,7 +338,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogControllerList.open()
+              this.dialogControllerList.open();
             })
         }.margin({ bottom: 300 })
       }
@@ -379,12 +379,12 @@ struct Index {
       secondaryButton: {
         value: '允许',
         action: () => {
-          this.isChecked = false
-          console.info('Callback when the second button is clicked')
+          this.isChecked = false;
+          console.info('Callback when the second button is clicked');
         }
       },
       onCheckedChange: () => {
-        console.info('Callback when the checkbox is clicked')
+        console.info('Callback when the checkbox is clicked');
       },
     }),
     autoCancel: true,
@@ -399,7 +399,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogControllerCheckBox.open()
+              this.dialogControllerCheckBox.open();
             })
         }
         .margin({bottom: 300})
@@ -439,7 +439,7 @@ struct Index {
         value: '确认',
         role: ButtonRole.ERROR,
         action: () => {
-          console.info('Callback when the second button is clicked')
+          console.info('Callback when the second button is clicked');
         }
       },
     }),
@@ -453,7 +453,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogControllerConfirm.open()
+              this.dialogControllerConfirm.open();
             })
         }
         .margin({ bottom: 300 })
@@ -493,7 +493,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogControllerProgress.open()
+              this.dialogControllerProgress.open();
             })
         }
         .margin({ bottom: 300 })
@@ -545,7 +545,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button('dialog')
+          Button("dialog")
             .width(96)
             .height(40)
             .onClick(() => {
@@ -586,7 +586,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button('Dialog')
+          Button("Dialog")
             .width(96)
             .height(40)
             .onClick(() => {
@@ -626,9 +626,9 @@ struct Index {
       buttons: [
         { 
           value: '按钮1',
-          buttonStyle: ButtonStyleMode.TEXTUAL, 
+          buttonStyle: ButtonStyleMode.TEXTUAL,
           action: () => {
-            console.info('Callback when the button is clicked')
+            console.info('Callback when the button is clicked');
           }
         },
         {
@@ -644,7 +644,7 @@ struct Index {
     Column() {
       Button("支持自定义内容弹出框")
         .onClick(() => {
-          this.dialogController.open()
+          this.dialogController.open();
         })
     }
     .width('100%')
@@ -700,7 +700,7 @@ struct Index {
       },
     });
   }
-  
+
   // 跟手弹出框绑定的builder
   @Builder buttonBuilder() {
     Button('跟手弹出框目标组件')
@@ -759,7 +759,7 @@ struct Index {
             .width(96)
             .height(40)
             .onClick(() => {
-              this.dialogController.open()
+              this.dialogController.open();
             })
         }
         .margin({ bottom: 300 })

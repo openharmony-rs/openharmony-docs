@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义Navigation或Router组件的枚举和接口。
+定义Navigation和Router组件的相关枚举。
 
 **引用文件：** <arkui/node_attributes/navigation_router.h>
 

@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:06.030Z pushedAt=2026-06-30T13:36:47.863Z -->
+<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T08:40:46.032Z pushedAt=2026-07-07T12:16:15.121Z -->
 
 - [About This Kit](distributedservice-kit-intro.md)
 
@@ -25,3 +25,11 @@
   <!--DelEnd-->
 
   - [Enhanced Connection Development](linkEnhance_development-guide.md)
+
+  <!--Del-->
+
+- Distributed SoftBus<!--distributed-softbus-->
+
+  - [Cross-Device Agent Wake-Up and Message Transmission (for System Applications Only)](distributedSoftBus_conversation-guidelines-sys.md)
+
+  <!--DelEnd-->

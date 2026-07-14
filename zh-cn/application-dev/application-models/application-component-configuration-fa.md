@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 
@@ -69,7 +69,7 @@ PageAbility的图标和标签配置请参见[PageAbility组件配置](pageabilit
         "type": "page",
         "visible": true,
         "launchType": "singleton"
-      },
+      }
     ]
   }
 }

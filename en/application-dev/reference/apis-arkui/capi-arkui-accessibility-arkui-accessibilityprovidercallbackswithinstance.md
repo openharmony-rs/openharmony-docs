@@ -29,7 +29,7 @@ Defines callback functions of a third-party operation [provider](capi-arkui-acce
 | [int32_t (\*findAccessibilityNodeInfosById)(const char* instanceId, int64_t elementId,ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbyid) | Finds the information about an accessibility node based on the specified node ID. Multi-instance scenarios are supported. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elementId, const char* text,int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbytext) | Finds the node information matching the specified text content. Multi-instance scenarios are supported. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findFocusedAccessibilityNode)(const char* instanceId, int64_t elementId,ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findfocusedaccessibilitynode) | Finds the node that currently has focus within a given node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
-| [int32_t (\*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Finds the next node in a specified direction from a given node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
+| [int32_t (\*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Finds the next focusable node in a specified direction from a given node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
 | [int32_t (\*executeAccessibilityAction)(const char* instanceId, int64_t elementId,ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)](#executeaccessibilityaction) | Performs a specified action on a specified node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
 | [int32_t (\*clearFocusedFocusAccessibilityNode)(const char* instanceId)](#clearfocusedfocusaccessibilitynode) | Removes focus from the current node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
 | [int32_t (\*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t elementId,int32_t requestId, int32_t* index)](#getaccessibilitynodecursorposition) | Obtains the cursor position within a text component of the current accessibility node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.|
@@ -128,7 +128,7 @@ int32_t (*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elemen
 
 **Description**
 
-Finds the next node in a specified direction from a given node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.
+Finds the next focusable node in a specified direction from a given node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.
 
 **Since**: 15
 
@@ -138,7 +138,7 @@ Finds the next node in a specified direction from a given node. Callback functio
 |-----------------------------------------------------------------------------------------------------------------------------------| -- |
 | const char* instanceId                                                                                                            | Instance ID of the third-party framework.|
 | int64_t elementId                                                                                                                 | Unique ID of the accessibility element.|
-| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Search direction.|
+| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Focus movement direction.|
 | int32_t requestId                                                                                                                 | Request ID for identifying the request process. It is recommended for logging to aid troubleshooting.|
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                         | List of all accessibility elements found.|
 

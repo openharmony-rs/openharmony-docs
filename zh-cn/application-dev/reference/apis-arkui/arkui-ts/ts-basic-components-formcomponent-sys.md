@@ -1,9 +1,9 @@
 # FormComponent (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 提供卡片组件，实现卡片的显示功能。
@@ -272,7 +272,7 @@ colorMode(value: FormColorMode)
 
 ### onAcquired
 
-onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onAcquired(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 获取到卡片后触发的回调。
 
@@ -320,7 +320,7 @@ onRouter(callback: Callback\<object\>)
 
 ### onUninstall
 
-onUninstall(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUninstall(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 卡片卸载回调。
 
@@ -352,7 +352,7 @@ onLoad(callback: VoidCallback)
 
 ### onUpdate<sup>18+</sup>
 
-onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 卡片内容更新回调。
 

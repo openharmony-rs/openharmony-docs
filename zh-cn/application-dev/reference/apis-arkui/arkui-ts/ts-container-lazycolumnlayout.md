@@ -3,13 +3,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
+<!--Designer: @yylong; @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的垂直线性布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
-该组件支持嵌套懒加载容器[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)、及其自身LazyColumnLayout。
+该组件支持嵌套懒加载容器[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)及其自身LazyColumnLayout。
 
 更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
 
@@ -198,7 +198,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [OnVisibleIndexesChangeCallback](ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数。<br/>方法入参为undefined时，取消监听。 |
+| callback  | [OnVisibleIndexesChangeCallback](ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，用于接收可视区域内子组件起始索引值和结束索引值的变化通知。<br/>方法入参为undefined时，取消监听。 |
 
 ## 示例
 

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 免安装结构体和接口版本信息类，通过接口[freeInstall.getDispatchInfo](js-apis-freeInstall-sys.md#getdispatchinfo)获取。

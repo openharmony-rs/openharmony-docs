@@ -240,7 +240,7 @@ console.info('Synchronous Verification Result:', resultSync);
 
 ## networkSecurity.verifyCertChain
 
-verifyCertChain(certs: Array\<CertBlob\>, caCert?: CertBlob, hostname?: string): Promise\<Array\<CertBlob\>\>
+verifyCertChain(cert: CertBlob\[\], caCert?: CertBlob, hostname?: string): Promise\<CertBlob\[\]\>
 
 传入证书链数组，进行证书链校验并构建排序后的证书链。系统将使用证书管理中的预置CA证书和用户安装的CA证书来配合校验传入的证书。使用promise异步回调。
 
@@ -254,15 +254,15 @@ verifyCertChain(certs: Array\<CertBlob\>, caCert?: CertBlob, hostname?: string):
 
 | 参数名 | 类型     | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| certs   | Array\<CertBlob\> | 是   | 待校验证书数组。第一个元素（certs[0]）必须是叶子证书（end-entity certificate），其余元素为中间证书。 |
-| caCert | CertBlob | 否   | 传入自定义的CA证书。不传入则使用系统预置CA证书。 |
+| cert   | [CertBlob](#certblob)\[\] | 是   | 待校验证书数组。第一个元素必须是叶子证书（end-entity certificate），其余元素为中间证书。 |
+| caCert | [CertBlob](#certblob) | 否   | 传入自定义的CA证书。不传入则使用系统预置CA证书。 |
 | hostname | string | 否   | 需要验证的主机名，用于校验证书中的主机名是否匹配。不传入则跳过主机名验证。 |
 
 **返回值：**
 
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[CertBlob](#certblob)\>\> | 以promise形式返回排序后的证书链数组，顺序为从叶子节点到根节点。 |
+| Promise\<[CertBlob](#certblob)\[\]\> | 以promise形式返回排序后的证书链数组，顺序为从叶子节点到根节点。 |
 
 **错误码：**
 
@@ -270,24 +270,17 @@ verifyCertChain(certs: Array\<CertBlob\>, caCert?: CertBlob, hostname?: string):
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 401      | Parameter error.                                     |
 | 2305001  | Unspecified error.                                   |
 | 2305002  | Unable to get issuer certificate.                    |
-| 2305003  | Unable to get certificate revocation list (CRL).     |
 | 2305004  | Unable to decrypt certificate signature.             |
-| 2305005  | Unable to decrypt CRL signature.                     |
 | 2305006  | Unable to decode issuer public key.                  |
 | 2305007  | Certificate signature failure.                       |
-| 2305008  | CRL signature failure.                               |
 | 2305009  | Certificate is not yet valid.                        |
 | 2305010  | Certificate has expired.                             |
-| 2305011  | CRL is not yet valid.                                |
-| 2305012  | CRL has expired.                                     |
 | 2305018  | Self-signed certificate.                             |
-| 2305023  | Certificate has been revoked.                        |
 | 2305024  | Invalid certificate authority (CA).                  |
 | 2305027  | Certificate is untrusted.                            |
-| 2305062  | Hostname verification failed.                        |
+| 2305062  | Invalid hostname.                                    |
 | 2305069  | Invalid certificate verification context.            |
 
 > **说明：**

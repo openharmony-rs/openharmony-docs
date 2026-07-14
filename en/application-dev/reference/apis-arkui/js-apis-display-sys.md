@@ -1,8 +1,8 @@
 # @ohos.display (Display) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -398,6 +398,161 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
     });
+  }
+}
+```
+
+## display.addVirtualScreenSurface
+
+addVirtualScreenSurface(screenId: number, surfaceId: string, surfaceRegion?: Rect): Promise&lt;void&gt;
+
+Adds a surface for a virtual screen. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description         |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
+| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
+| surfaceRegion | [Rect](js-apis-display.md#rect9) | No  | Rectangle area on the surface that displays the virtual screen. If the virtual screen has not been bound to a surface using [setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16) or [addVirtualScreenSurface()](#displayaddvirtualscreensurface), the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In mirror mode, the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In independent mode, the value of **surfaceRegion** is valid. The left vertex of the virtual screen is used as the origin. When the area specified by **surfaceRegion** does not overlap with the virtual screen, error code 1400004 is returned.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message |
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function addVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**Example**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  addVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in adding surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('addSurface')
+        .onClick((event: ClickEvent) => {
+          this.addVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## display.removeVirtualScreenSurface
+
+removeVirtualScreenSurface(screenId: number, surfaceId: string): Promise&lt;void&gt;
+
+Removes the surface bound to a virtual screen. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description         |
+| --------- | ------ | ---- | ------------- |
+| screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
+| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Function removeVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+| 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**Example**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  removeVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in removing surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('removeSurface')
+        .onClick((event: ClickEvent) => {
+          this.removeVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```

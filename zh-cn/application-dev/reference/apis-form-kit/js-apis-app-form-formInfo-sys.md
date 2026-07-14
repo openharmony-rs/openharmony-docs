@@ -271,7 +271,7 @@ import { formInfo } from '@kit.FormKit';
 // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
-    return new Promise<formInfo.Rect>((resolve: Function) => {
+    return new Promise<formInfo.Rect>((resolve: (value: formInfo.Rect) => void) => {
       console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {
         left: 0,

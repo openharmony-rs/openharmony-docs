@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HellloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS运行时提供了多种模块化调试工具，帮助开发者快速定位和解决模块化相关问题。
 

@@ -313,7 +313,7 @@ export class ClassForFuncDemo {
     'schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'object',
     'title': 'Weather Schema',
-    'description': 'A schema for get weather of a location',
+    'description': 'A schema for getting weather of a location',
     'properties': {
       'location': {
         'type': 'string',

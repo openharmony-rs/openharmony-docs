@@ -1,10 +1,10 @@
 # 使用Node-API进行扩展能力功能开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -821,7 +821,7 @@ hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.a
 | napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。|
 | napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|
 | napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|
-| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|
+| napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。|
 
 ### 使用示例
 
@@ -1324,7 +1324,7 @@ testNapi.unwrapSendable();
 
 **napi_remove_wrap_sendable**
 
-移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象包裹的native实例，移除后回调后续会被自动触发，需注意避免出现重复释放问题。
 
 cpp部分代码
 

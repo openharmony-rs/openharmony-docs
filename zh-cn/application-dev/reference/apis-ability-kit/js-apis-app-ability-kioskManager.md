@@ -14,7 +14,7 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
-> - 本模块接口仅适用于通过[setAllowedKioskApps接口](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
+> - 本模块接口仅适用于通过[applicationManager.setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
 
 ## 导入模块
 
@@ -36,7 +36,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文，用于指定执行进入Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }
@@ -104,7 +104,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文，用于指定执行退出Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -145,7 +145,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }

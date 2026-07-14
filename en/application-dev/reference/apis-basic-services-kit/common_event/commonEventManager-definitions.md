@@ -572,7 +572,7 @@ Indicates the action of a common event that the user unlocks the device.
 
   > **NOTE**
   >
-  > This API is deprecated since API Version 10 and replaced by [COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked).
+  > This type is supported since API version 9 and deprecated since API version 10. You are advised to use [COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

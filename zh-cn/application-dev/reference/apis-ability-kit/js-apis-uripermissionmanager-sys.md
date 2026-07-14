@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
+URI权限管理模块。用于应用A授权/撤销授权URI给应用B。支持在应用间安全地共享文件访问权限，授权后目标应用可访问指定URI的文件，临时授权的权限在目标应用退出后自动回收。适用于应用间文件分享、跨应用数据访问等需要临时授权的场景。
 
 > **说明：**
 > 
@@ -44,12 +44,12 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
-  | targetBundleName | string | 是 | 被授权URI的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 |
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 |
+  | targetBundleName | string | 是 | 被授权URI的应用包名。 |
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示授权成功，返回-1表示授权失败。 |
 
 **错误码：**
 
@@ -78,19 +78,19 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir success.`);
+      return;
     }
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
+      (error) => {
+        if (error && error.code !== 0) {
+          console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
+          return;
+        }
+        console.info(`grantUriPermission success.`);
+      });
   });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
-    (error) => {
-      if (error && error.code !== 0) {
-        console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
-        return;
-      }
-      console.info(`grantUriPermission success.`);
-    });
   ```
 
 
@@ -125,7 +125,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 | 
+  | Promise&lt;number&gt; | Promise对象。返回0表示授权成功，返回-1表示授权失败。 | 
 
 **错误码：**
 
@@ -155,16 +155,16 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir success.`);
+      return;
     }
-  });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
-    .then((data) => {
-      console.info(`Verification succeeded, data: ${JSON.stringify(data)}.`);
-    }).catch((err: BusinessError) => {
-    console.error(`Verification failed, err code: ${err.code}, err msg: ${err.message}.`);
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
+      .then((data) => {
+        console.info(`grantUriPermission succeeded, data: ${JSON.stringify(data)}.`);
+      }).catch((err: BusinessError) => {
+      console.error(`grantUriPermission failed, err code: ${err.code}, err msg: ${err.message}.`);
+    });
   });
   ```
 
@@ -289,7 +289,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
   | -------- | -------- | -------- | -------- |
   | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | targetBundleName | string | 是 | 被撤销授权uri的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示撤销成功，返回-1表示撤销失败。 |
 
 **错误码：**
 
@@ -351,7 +351,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 | 
+  | Promise&lt;number&gt; | Promise对象。返回0表示撤销成功，返回-1表示撤销失败。 | 
 
 **错误码：**
 

@@ -32,7 +32,7 @@ target_link_libraries(entry PUBLIC libavtranscoder.so libace_napi.z.so)
 #include <hilog/log.h>
 ```
 
-并需要在CMake脚本中链接如下动态库:
+并需要在CMake脚本中链接如下动态库：
 
 ```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
@@ -50,11 +50,11 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 2. 设置回调事件函数：使用OH_AVTranscoder_SetStateCallback()、OH_AVTranscoder_SetErrorCallback()和OH_AVTranscoder_SetProgressUpdateCallback()接口设置回调转码状态、转码错误事件和转码进度更新回调函数，搭配全流程场景使用。支持的回调事件包括：
 
-   | 事件类型 | 说明 |
-   | -------- | -------- |
-   | OH_AVTranscoder_OnStateChange | 可选事件，回调转码过程中状态。 |
-   | OH_AVTranscoder_OnError | 可选事件，回调转码错误事件。 |
-   | OH_AVTranscoder_OnProgressUpdate | 可选事件，回调转码进度更新事件。 |
+    | 事件类型 | 说明 |
+    | -------- | -------- |
+    | OH_AVTranscoder_OnStateChange | 可选事件，回调转码过程中状态。 |
+    | OH_AVTranscoder_OnError | 可选事件，回调转码错误事件。 |
+    | OH_AVTranscoder_OnProgressUpdate | 可选事件，回调转码进度更新事件。 |
 
    应用使用OH_AVTranscoder_SetStateCallback()、OH_AVTranscoder_SetErrorCallback()和OH_AVTranscoder_SetProgressUpdateCallback()接口设置回调转码状态、转码错误事件和转码进度更新回调函数，可以获取更多信息，还可以通过设置userData自定义数据。
 
@@ -84,9 +84,9 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
        this->avTranscoderProgress = progress;
     }
  
-    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t  errorCode, const char *errorMsg)
+    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg)
     {
-       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public} s", errorCode,
+       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
           errorMsg == nullptr ? "unknown" : errorMsg);
        this->errorCode = errorCode;
     }
@@ -144,7 +144,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
        LOG("AvTranscoderStateChangeCbImpl state: %{public}d", state);
        NdkAVTransCoderUser *ndkAVTransCoderUser =  reinterpret_cast<NdkAVTransCoderUser *>(userData);
        if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-          LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is  nullptr");
+          LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is nullptr");
           return;
        }
        ndkAVTransCoderUser->OnStateChangeCb(transcoder, state);
@@ -157,7 +157,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
           errorMsg == nullptr ? "unknown" : errorMsg);
        NdkAVTransCoderUser *ndkAVTransCoderUser =  reinterpret_cast<NdkAVTransCoderUser *>(userData);
        if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-          LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is  nullptr");
+          LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is nullptr");
           return;
        }
        ndkAVTransCoderUser->OnErrorCb(transcoder, errorCode, errorMsg);
@@ -175,6 +175,8 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
     }
     static napi_value OHAvTranscoderNdkPlay(napi_env env, napi_callback_info info)
     {
+       OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
+       NdkAVTransCoderUser *transcoderUser = new NdkAVTransCoderUser();
        OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl,  transcoderUser); // 设置状态回调
        OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl,  transcoderUser); // 设置错误码回调
        OH_AVTranscoder_SetProgressUpdateCallback(transcoder,  AvTranscoderProgressUpdateCbImpl, transcoderUser); // 设置进度值回调

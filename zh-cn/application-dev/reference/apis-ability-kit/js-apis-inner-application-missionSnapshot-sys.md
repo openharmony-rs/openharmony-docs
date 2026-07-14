@@ -45,6 +45,10 @@ try {
     }
     console.info(`size = ${missions.length}`);
     console.info(`missions = ${JSON.stringify(missions)}`);
+    if (missions.length === 0) {
+      console.error('missions is empty');
+      return;
+    }
     let id = missions[0].missionId;
 
     missionManager.getMissionSnapShot('', id, (err, snapshot) => {

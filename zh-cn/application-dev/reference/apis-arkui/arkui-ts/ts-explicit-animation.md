@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供全局animateTo显式动画接口来指定由于闭包代码导致的状态变化插入过渡动效。同属性动画，对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，例如文字或[Canvas](ts-components-canvas-canvas.md)中的内容。如果希望内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性进行配置。
+提供全局animateTo显式动画接口来指定由于闭包代码导致的状态变化插入过渡动效。与属性动画相同，对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，例如文字或[Canvas](ts-components-canvas-canvas.md)中的内容。如果希望内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性进行配置。
 
 >  **说明：**
 >
@@ -65,7 +65,7 @@ interpolate(fraction:&nbsp;number): number
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| number | 返回归一化时间点对应的曲线插值。 |
 
 ## FinishCallbackType<sup>11+</sup>
 
@@ -96,8 +96,8 @@ interpolate(fraction:&nbsp;number): number
 
 | 名称  | 类型     |  只读 | 可选    | 说明      |
 |-----|--------|---------|------- |---------|
-| min | number | 否 | 否 | 期望的最小帧率，单位为帧/秒（fps）。<br/>取值范围为[0, 设备最大帧率]。 |
-| max | number | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br/>取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。 |
+| min | number | 否 | 否 | 期望的最小帧率，单位为帧/秒（fps）。<br>取值范围为[0, 设备最大帧率]。 |
+| max | number | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br>取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。 |
 | expected | number | 否 | 否 | 期望的最优帧率，单位为帧/秒（fps）。<br/>取值范围为[min, max]。设置为0时，将跟随应用的帧率。 |
 
 ## animateTo<sup>(deprecated)</sup>
@@ -110,7 +110,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 从API version 7开始支持，从API version 18开始废弃，建议使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)替代。
 > - 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)来明确UI的执行上下文。
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
-> - 如果在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。
+> - 如果在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中调用动画，由于自定义组件内的build还未执行、内部组件还未创建，动画时机过早。此时动画属性没有初值，无法对组件产生动画。
 > - 执行[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > - 在组件出现和消失时，可以通过[组件内转场](./ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[示例2](#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
@@ -126,7 +126,7 @@ animateTo(value: AnimateParam, event: () => void): void
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [AnimateParam](#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| event | () => void                        | 是    | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| event | () => void                        | 是    | 指定动效的闭包函数，闭包函数内引起的状态变化，系统会自动插入过渡动画。 |
 
 ## 示例
 

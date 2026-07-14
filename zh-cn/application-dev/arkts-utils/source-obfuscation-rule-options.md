@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API version 10开始，ArkGuard提供混淆配置选项来控制混淆效果。开发者可在[obfuscation-rules.txt](./source-obfuscation-guide.md#混淆配置文件)文件中自定义这些选项。若开启混淆但未配置任何选项，则仅应用默认混淆效果，即混淆局部变量和参数名。
 

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的前景色。与背景色相对应，前景色会影响绘制组件内容的颜色。主要影响文字的颜色、形状绘制组件的填充色。
+设置组件的前景色。与背景色相对应，前景色会影响绘制组件内容的颜色。主要影响文字的颜色、形状绘制组件（如Circle、Rect、Path等）的填充色。
 
 >  **说明：**
 >
@@ -16,9 +16,9 @@
 
 ## foregroundColor
 
-foregroundColor(value: ResourceColor | ColoringStrategy): T
+foregroundColor(value: ResourceColor \| ColoringStrategy): T
 
-设置组件的前景色。当组件未设置前景色，默认继承父组件。
+设置组件的前景色。当组件未设置前景色时，默认继承父组件的前景色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -38,9 +38,9 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 ## foregroundColor<sup>18+</sup>
 
-foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>): T
+foregroundColor(color: Optional\<ResourceColor \| ColoringStrategy>): T
 
-设置组件的前景色。当组件未设置前景色，默认继承父组件。与[foregroundColor](#foregroundcolor)相比，color参数新增了对undefined类型的支持。
+设置组件的前景色。当组件未设置前景色时，默认继承父组件的前景色。与[foregroundColor](#foregroundcolor)相比，color参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -93,7 +93,7 @@ struct ForegroundColorExample {
 struct ColoringStrategyExample {
   build() {
     Column({ space: 100 }) {
-      // 绘制一个直径为150的圆,默认填充色为黑色
+      // 绘制一个直径为150的圆，默认填充色为黑色
       Circle({ width: 150, height: 200 })
       // 绘制一个直径为150的圆，设置前景色为组件背景色的反色
       Circle({ width: 150, height: 200 })

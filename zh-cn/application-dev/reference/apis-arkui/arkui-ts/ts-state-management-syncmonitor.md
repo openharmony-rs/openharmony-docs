@@ -7,9 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@SyncMonitor用于状态管理V2，同步监听状态变量修改，使得状态变量具有深度监听的能力。适用于需要精确监听对象嵌套属性变化、数组元素修改等深层状态变化的场景，解决了传统监听方式无法感知深层属性变化的问题，提升状态管理的精确性和开发效率。
+@SyncMonitor用于状态管理V2，同步监听状态变量修改，使得状态变量支持深度监听。适用于需要精确监听对象嵌套属性变化、数组元素修改等深层状态变化的场景，解决了传统监听方式无法感知深层属性变化的问题，提升状态管理的精确性和开发效率。
 
-开发指南参考：[\@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
+开发指南参考：[@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ const SyncMonitor: MonitorDecorator
 
 | 类型     | 说明                                         |
 | -------- | -------------------------------------------- |
-| [MonitorDecorator](./ts-state-management-watch-monitor.md#monitordecorator12) | @SyncMonitor装饰器方法类型。 |
+| [MonitorDecorator](./ts-state-management-monitor.md#monitordecorator) | @SyncMonitor装饰器类型。 |
 
 **错误码：**
 

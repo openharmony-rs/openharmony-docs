@@ -112,7 +112,7 @@ struct ModalTransitionExample {
   @Builder
   myBuilder2() {
     Column() {
-      Button("close modal 2")
+      Button('close modal 2')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -135,7 +135,7 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.info("BindContentCover onWillAppear.");
+          console.info('BindContentCover onWillAppear.');
         },
         onAppear: () => {
           console.info("BindContentCover onAppear.");
@@ -624,7 +624,7 @@ struct ModalTransitionExample {
 
 ### 示例6（设置全屏模态适配安全区）
 
-从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器的背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets

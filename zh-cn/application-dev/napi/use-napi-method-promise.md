@@ -1,10 +1,10 @@
 # 使用Node-API调用返回值为promise的ArkTS方法
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 当ArkTS的返回值为Promise时，可以按以下方式在创建的ArkTS运行环境中调用异步接口。

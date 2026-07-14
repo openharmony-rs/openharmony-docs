@@ -531,7 +531,7 @@ FFRT任务中使用标准库的递归互斥锁可能发生死锁，需要更换�
             ffrt::create_function_wrapper(std::function<void()>([](){ printf("Test task running...\n"); })),
             NULL, NULL, NULL);
         // ...
-        // 内存泄露
+        // 内存泄漏
     }
     ```
 

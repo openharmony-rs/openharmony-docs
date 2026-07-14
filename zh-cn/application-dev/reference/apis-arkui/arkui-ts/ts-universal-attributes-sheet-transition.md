@@ -124,7 +124,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值    | 说明                            |
 | ------ | ----------------------------- | ----------------------------- |
@@ -642,11 +642,11 @@ struct Index {
   }
 }
 ```
-跟手触发挡位切换时，松手才触发面板内容高度刷新
+跟手触发挡位切换时，松手才触发面板内容高度刷新。
 
 ![zh-cn_sheet](figures/sheet5-ltr.gif)
 
-跟手触发挡位切换时，跟手时期就会触发面板内容高度刷新
+跟手触发挡位切换时，跟手时期就会触发面板内容高度刷新。
 
 ![zh-cn_sheet](figures/sheet5-rtl.gif)
 

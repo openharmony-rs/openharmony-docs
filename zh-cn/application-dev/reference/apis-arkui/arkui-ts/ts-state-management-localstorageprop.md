@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@LocalStorageProp在状态管理V1中使用，用于与LocalStorage中指定键名对应的属性建立单向数据同步：LocalStorage中对应属性值的变更会同步到@LocalStorageProp装饰的变量，但仅修改@LocalStorageProp装饰的变量不会同步回LocalStorage。
+@LocalStorageProp在状态管理V1中使用，用于与LocalStorage中指定键名对应的属性建立单向数据同步：LocalStorage中对应属性值的变更会同步到@LocalStorageProp装饰的变量，但仅修改@LocalStorageProp装饰的变量不会同步回LocalStorage。适用于需要在多个组件间共享LocalStorage且仅保持单向数据流的场景，可避免不必要的数据回写。
 
 开发指南参考：[LocalStorage：页面级UI状态存储](../../../ui/state-management/arkts-localstorage.md)。
 
@@ -29,7 +29,7 @@ const LocalStorageProp: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | string | 是   | LocalStorage中的属性键名，用于建立与该键名对应属性的单向数据同步。若LocalStorage中已存在该键名对应的属性，则@LocalStorageProp装饰变量的本地初始值将被LocalStorage中对应属性的值覆盖；若LocalStorage中不存在该键名对应的属性，则使用@LocalStorageProp装饰变量的本地初始值在LocalStorage中创建该属性。|
+| value  | string | 是   | LocalStorage中的属性键名，用于与该键名对应的属性建立单向数据同步。若LocalStorage中已存在该键名对应的属性，则@LocalStorageProp装饰变量的本地初始值将被LocalStorage中对应属性的值覆盖；若LocalStorage中不存在该键名对应的属性，则使用@LocalStorageProp装饰变量的本地初始值在LocalStorage中创建该属性。|
 
 **返回值：**
 

@@ -481,7 +481,7 @@ Called when the display status changes.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | ID of the display.|
+| uint64_t displayId | ID of the display whose status changes.|
 
 ### OH_NativeDisplayManager_RegisterDisplayChangeListener()
 
@@ -1019,7 +1019,7 @@ Obtains the display source mode. The default value is **DISPLAY_SOURCE_MODE_NONE
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: The parameter is invalid. For example, **sourceMode** is a null pointer or **displayId** is invalid.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
@@ -1050,4 +1050,4 @@ You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDi
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.<br>Currently, only the primary screen and extended screen support position information query. Queries for other screens return **DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**.|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: The parameter is invalid. For example, **x** or **y** is a null pointer, **displayId** is invalid, or the screen display mode is not the main screen or extend mode.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|

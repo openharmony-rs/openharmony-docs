@@ -3,8 +3,8 @@
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @wanghuan2025-->
-<!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 使用场景
 

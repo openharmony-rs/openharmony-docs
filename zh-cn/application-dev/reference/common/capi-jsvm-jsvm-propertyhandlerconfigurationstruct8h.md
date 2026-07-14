@@ -1,10 +1,10 @@
 # JSVM_PropertyHandlerConfigurationStruct*
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg

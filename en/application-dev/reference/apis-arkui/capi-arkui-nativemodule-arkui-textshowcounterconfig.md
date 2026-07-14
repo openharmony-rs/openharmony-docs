@@ -12,7 +12,7 @@ typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
 
 ## Overview
 
-Defines the counter display configuration of a text box.
+Defines the text input character counter configuration. It is used to manage the character count and help users understand the input progress in real time, preventing the character count from exceeding the limit.
 
 **Since**: 22
 

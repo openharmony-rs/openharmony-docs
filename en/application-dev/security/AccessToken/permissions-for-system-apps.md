@@ -6289,7 +6289,7 @@ Allows a system application to access available functions.
 
 **Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
@@ -6306,6 +6306,160 @@ With this permission, the application can access and modify the offline map data
 **Supported devices**: phones
 
 **Valid since**: 20
+
+## ohos.permission.TV_MANAGE_SOURCE
+
+Allows a system application to manage and control Vision input sources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_PICTURE_QUALITY
+
+Allows a system application to manage the Vision picture quality.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_GET_AUDIO_DEVICE_INFO
+
+Allows a system application to read Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_SET_AUDIO_DEVICE_INFO
+
+Allows a system application to set Vision audio output device information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_SOUND_EFFECT
+
+Allows a system application to query and set Vision sound effects.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_AI_AQ
+
+Allows a system application to query and set Vision computational audio.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_CEC
+
+Allows a system application to control CEC devices through HDMI CEC.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_CAMERA_AI
+
+Allows a system application to access camera AI algorithms of Vision.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_DIAGNOSIS
+
+Allows a system application to perform smart diagnostics on Vision faults.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_ACCESS_PROJECTION
+
+Allows a system application to access Vision projection.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
+
+## ohos.permission.TV_MANAGE_LOGSYNC
+
+Allows a system application to manage Vision log synchronization.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
 
 ## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
 
@@ -6711,5 +6865,69 @@ Allows an application to access associated assistant service.
 **Certificate-based authorization**: true
 
 **Supported devices**: Phone | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
+## ohos.permission.SAMBA_CLIENT_ACCESS
+
+Allows an application to connect to the network neighborhood client and manage network neighborhood files.
+
+With this permission, the application can connect to or disconnect from network neighborhood, perform operations on network neighborhood files, and obtain basic information about network neighborhood connections.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_ACCESS
+
+Allows an application to call the file management service APIs to perform operations on files.
+
+With this permission, the application can use file management functions, including the recycle bin, frequently used folders, favorites, USB device queries, and shortcuts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_SMART_FILE_ACCESS
+
+Allows an application to obtain and manage smart files.
+
+With this permission, the application can manage smart file categorization, generate file summaries, and provide file recommendations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.FILE_MANAGER_SERVICE_DATA_ACCESS
+
+Allows an application to obtain and operate files of the file management application.
+
+With this permission, the application can add file event records, search for files, manage recent files, and obtain music files, duplicate files, and aggregated files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0

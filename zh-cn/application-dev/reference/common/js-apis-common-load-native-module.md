@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供了同步动态加载系统库接口的能力。
 

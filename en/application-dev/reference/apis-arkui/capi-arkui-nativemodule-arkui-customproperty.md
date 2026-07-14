@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 
 ## Overview
 
-Defines custom **ArkUI_CustomProperty** information.
+Defines custom property information, which is used to represent the custom property of a component. You can use related APIs to add, remove, and obtain custom properties for ArkUI components, and obtain the string values of custom properties.
 
 **Since**: 14
 
@@ -22,7 +22,7 @@ Defines custom **ArkUI_CustomProperty** information.
 
 **Related APIs**
 | Name                                                                             | Description|
-|---------------------------------------------------------------------------------| -- |
+|---------------------------------------------------------------------------------|------|
 | [OH_ArkUI_NodeUtils_AddCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_addcustomproperty) | Adds a custom property for the specified component.|
 | [OH_ArkUI_NodeUtils_RemoveCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_removecustomproperty) | Removes a custom property that has been set for the specified component.|
 | [OH_ArkUI_NodeUtils_GetCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_getcustomproperty) | Obtains the value of a custom property of the specified component.|

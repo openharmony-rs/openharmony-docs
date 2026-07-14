@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS在保留TypeScript（简称TS）基本语法风格的基础上，进一步通过规范强化了静态检查和分析，使得开发者在程序开发阶段能够检测出更多错误，提升程序的稳定性和运行性能。本文将详细解释为什么建议将TS代码适配为ArkTS代码。
 
@@ -57,6 +57,7 @@ class Person {
     return this.name;
   }
 }
+// ...
   let buddy = new Person()
   // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
   let len = buddy.getName().length; // 0, 没有运行时异常
@@ -78,6 +79,7 @@ class Person1 {
     return this.name;
   }
 }
+// ...
   let buddy = new Person1()
   // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
 

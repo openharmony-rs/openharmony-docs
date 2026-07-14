@@ -62,7 +62,7 @@ The parameter value cannot be less than 0.
 
 **处理步骤**
 
-传入正常范围的参数。
+传入大于或等于0的参数。
 
 ## 100102 参数类型错误
 

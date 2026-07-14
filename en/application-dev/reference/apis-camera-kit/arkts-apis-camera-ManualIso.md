@@ -41,7 +41,7 @@ Obtains the ISO value.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -86,7 +86,7 @@ When [ExposureMode](arkts-apis-camera-e.md#exposuremode) is set to **EXPOSURE_MO
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |

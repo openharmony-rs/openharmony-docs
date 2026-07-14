@@ -26,7 +26,7 @@ enum ArkUI_NodeAttributeType
 NODE_BACKGROUND_COLOR = 2
 ```
 
-背景色属性，支持属性设置，属性重置和属性获取接口。<br>
+背景色属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -35,7 +35,7 @@ NODE_BACKGROUND_COLOR = 2
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式，形如 `0xFFFF0000` 表示红色。 |
+| .value[0].u32 | 背景色数值，0xargb格式，取值范围0x00000000~0xFFFFFFFF，形如 `0xFFFF0000` 表示红色。 |
 
 **返回：**
 
@@ -133,7 +133,7 @@ NODE_BACKGROUND_IMAGE_SIZE_WITH_STYLE = 31
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-image-h.md#arkui_imagesize)枚举值。 |
+| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-image-h.md#arkui_imagesize)枚举值。不同枚举值决定了背景图片的缩放和裁剪方式，如按原图大小显示、保持宽高比覆盖组件区域、保持宽高比完整显示等。 |
 
 **返回：**
 
@@ -176,7 +176,7 @@ NODE_BACKGROUND_IMAGE_POSITION = 56
 NODE_RENDER_GROUP = 80
 ```
 
-设置当前组件和子组件是否先整体离屏渲染绘制后再与父控件融合绘制，支持属性设置，属性重置和属性获取。<br>
+设置当前组件和子组件是否先整体离屏渲染绘制后再与父组件融合绘制，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
