@@ -95,7 +95,7 @@ The device has not initiated ranging.
 
 **可能原因**
 
-该设备未发起测距。
+该设备未发起测距，例如：在未调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)的情况下直接调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)。
 
 **处理步骤**
 
@@ -113,7 +113,7 @@ The device has already initiated ranging.
 
 **可能原因**
 
-该设备已发起测距。
+该设备已发起测距，例如：对同一设备重复调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)而未先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)停止之前的测距。
 
 **处理步骤**
 
@@ -131,7 +131,7 @@ The specified type of ranging service is not supported.
 
 **可能原因**
 
-不支持指定类型的测距服务。
+不支持指定类型的测距服务，例如：传入的测距类型枚举值不在规定范围内，或指定的测距类型在本设备上不支持。
 
 **处理步骤**
 
@@ -149,7 +149,7 @@ The ranging service is disabled.
 
 **可能原因**
 
-测距服务关闭。
+测距服务关闭，例如：测距服务未使能或已被关闭，无法发起测距操作。
 
 **处理步骤**
 
