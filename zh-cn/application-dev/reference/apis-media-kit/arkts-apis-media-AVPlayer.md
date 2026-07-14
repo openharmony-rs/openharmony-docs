@@ -160,14 +160,14 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 201      | Permission denied. 权限校验失败。请申请ohos.permission.INTERNET权限，权限申请方式请参见[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)    |
-| 401      | The parameter check failed. 参数检查失败。可能原因：1.必填参数未指定；2.参数类型错误；3.参数验证失败。请检查参数类型、取值范围和必填性要求。|
+| 201      | Permission denied. |
+| 401      | The parameter check failed. |
 | 801      | Capability not supported. |
-| 5400101  | No memory. 内存不足。可能原因：系统内存资源不足或同时创建过多AVPlayer实例。处理步骤：建议释放不必要的播放资源，避免持有过多AVPlayer实例。|
-| 5400102  | Operation not allowed. 操作不被允许。可能原因：当前播放器状态不支持该操作。处理步骤：请检查当前播放器状态是否满足接口调用的状态要求，参考接口说明中的状态约束。|
+| 5400101  | No memory. |
+| 5400102  | Operation not allowed. |
 | 5400103  | I/O error.  <br>适用版本：9-13    |
 | 5400104  | Time out.              |
-| 5400105  | Service died. 服务死亡。可能原因：播放服务进程异常终止。处理步骤：建议重新创建AVPlayer实例并重新播放。 |
+| 5400105  | Service died.     |
 | 5400106  | Unsupported format.     |
 | 5410002  | Seek continuous unsupported.  <br>适用版本：18+     |
 | 5411001  | IO can not find host.  <br>适用版本：14+    |
