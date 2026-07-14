@@ -3936,7 +3936,7 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举，决定获取轨道索引的类型。<br>仅支持设置MEDIA_TYPE_AUD获取音频轨道索引和设置MEDIA_TYPE_VID获取视频轨道索引。 |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举，决定获取轨道索引的类型。<br>仅支持设置MEDIA_TYPE_AUD获取音频轨道索引、MEDIA_TYPE_VID获取视频轨道索引。 |
 
 **返回值：**
 
