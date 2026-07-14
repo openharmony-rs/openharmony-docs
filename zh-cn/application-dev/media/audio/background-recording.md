@@ -6,11 +6,12 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+系统从API version 9开始支持后台长时任务开发，配置后台长时任务可以支持应用后台录音。
+
 后台录音是指应用在前台启动录音任务后，退至后台仍持续采集音频的场景。典型场景包括会议记录、语音备忘、采访录音等需要长时间录制的业务。
 
 后台录音涉及麦克风采集和后台运行，属于隐私敏感能力。应用需要同时满足麦克风权限、录音能力实现、后台长时任务声明和系统管控要求，不应在用户无感知或未授权的情况下启动录音。
 
-后台长时任务是实现后台录音的必备条件，从API version 9开始支持后台长时任务开发，详情见[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 ## 约束与限制
 
@@ -25,9 +26,9 @@
 
 ## 开发步骤
 
-应用实现录音功能的具体内容请参考[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)或[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)实现录音。需要退至后台持续录音时，还需要申请录音类型的[长时任务(ArkTS)](../../task-management/continuous-task.md)。
+应用实现录音功能的具体内容请参考[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)或[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)。当应用需要退至后台持续录音时，还需要申请录音类型的[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
-1. 声明后台录音模式
+1. 声明后台录音模式。
 
    在[module.json5配置文件](../../quick-start/module-configuration-file.md)中，为需要执行后台录音的UIAbility声明`audioRecording`后台模式。
 
@@ -44,7 +45,7 @@
    }
    ```
 
-2. 启动录音任务
+2. 启动录音任务。
 
    应用需要在前台启动录音任务，启动后可以退至后台继续录音。在后台直接启动录音会失败。
 
@@ -52,11 +53,10 @@
 
    针对应用在后台录音被其他音频流打断后无法恢复的场景，推荐使用以下解决方案：
 
-   - 通话场景接入Call Service Kit在后台启动录音，开发方式请参考[Call Service Kit简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/call-introduction)。
    - 应用录音在后台被打断，收到焦点恢复通知时出现start失败，可以弹窗提醒用户再次打开应用手动重新开始录音。
    - 可以使用[OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerwillmutewheninterrupted)将录音模式设置成静音打断模式。
 
-3. 申请录音类型长时任务
+3. 申请录音类型长时任务。
 
    当录音需要退至后台持续运行时，应用需要申请`AUDIO_RECORDING`类型长时任务，使系统识别该后台任务与录音业务匹配。
 
@@ -73,7 +73,7 @@
 
    长时任务启动失败时，应用不应继续以后台录音方式运行，应停止录音或引导用户回到前台处理。长时任务的完整申请和取消流程请参考[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
-4. 停止录音并释放资源
+4. 停止录音并释放资源。
 
    用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
 
