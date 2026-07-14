@@ -583,7 +583,7 @@ if (isRegistered) {
 | value    | number                             | 否   | 否   | 测量结果值。距离测量时单位：cm，角度测量时单位：度。 |
 | confidence | [RangingConfidence](#rangingrangingconfidence) | 否   | 否   | 测量结果的置信度，表示本次测量值的可信程度。   |
 
-## ranging.RangingTypes
+## RangingTypes
 
 枚举，测距能力类型。
 
