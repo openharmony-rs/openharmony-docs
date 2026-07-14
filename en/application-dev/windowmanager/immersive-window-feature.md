@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:16:07.775Z pushedAt=2026-07-13T12:10:09.161Z -->
+<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:16:07.775Z pushedAt=2026-07-14T03:47:19.072Z -->
 
 ## When to Use
 
@@ -20,7 +20,7 @@ Developing an app's immersive effect primarily involves adjusting the display of
 
 You can implement immersive effects within the app interface in three ways:
 
-- [Hide system UI elements](#hiding-system-UI-elements-to-implement-an-immersive-effect) to make the app content fill the entire window display area.
+- [Hide system UI elements](#hiding-system-ui-elements-to-implement-an-immersive-effect) to make the app content fill the entire window display area.
 
 - Set the window to [immersive layout](#immersive-layout), extending the app content to the entire window display area, and use [layout avoidance](#layout-avoidance) to prevent important components from overlapping with system UI elements.
 
@@ -30,7 +30,7 @@ You can implement immersive effects within the app interface in three ways:
 
 A typical full-screen app window includes system UI elements and the app UI. The system UI elements include the status bar and navigation area, which are usually referred to as avoid areas in [immersive layout](#immersive-layout), while the area outside the avoid areas is called the safe area.
 
-
+![UI element composition](figures/window-ui-elements.png)
 
 ### Immersive Layout
 
@@ -550,3 +550,4 @@ You can avoid system UI elements by adding **padding** or placeholder components
 | Not Adapted to Immersive Layout and Avoid Area | Adapted to Immersive Layout and Avoid Area |
 | -------- | -------- |
 | ![Not adapted to immersive layout and avoid area](figures/avoid-area-before-adaptation.png) | ![Adapted to immersive layout and avoid area](figures/avoid-area-after-adaptation.png)|
+

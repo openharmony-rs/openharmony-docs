@@ -44,7 +44,7 @@ The **LazyDynamicLayout** component is supported from API version 26.0.0.
 
 3. When the layout algorithm is [LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm), the [setMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#setmeasuredsize12) method of the **LazyDynamicLayout** component's [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) takes precedence over the [size settings](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md) and [border settings](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md) attributes, and the [measure](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12) and [layout](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12) methods of the child component's [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) take precedence over the [ignoreLayoutSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute.
 
-## Development Procedure for a Custom Layout Algorithm 
+## Development Procedure for a Custom Layout Algorithm
 
 A custom layout algorithm needs to inherit the [LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm) class and implement the **onMeasure** and **onLayout** methods. The following uses **LazyColumnLayoutAlgorithm** as an example to introduce the development steps of a custom layout algorithm.
 

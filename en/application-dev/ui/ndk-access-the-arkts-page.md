@@ -6,7 +6,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:25.531Z pushedAt=2026-07-10T02:24:45.764Z -->
+<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:25.531Z pushedAt=2026-07-14T03:42:53.846Z -->
 
 ## Placeholder Components
 
@@ -549,7 +549,7 @@ Sample code directory structure:
         }
     
     protected:
-        // Component tree operation implementation class..
+        // Component tree operation implementation class.
         void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
         {
             nativeModule_->addChild(handle_, child->GetHandle());
